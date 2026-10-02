@@ -83,9 +83,10 @@ function humanPrompt(s,short){
  const sequence=[s.action,...s.sequence],multi=['storyboard','keyframes','pet'].includes(s.output);
  const acts=(multi?sequence:[s.action]).map((a,i)=>`${i+1}. ${label('action',a)}：${DATA.action[a][2].replace('不添加眉毛、嘴巴或问号文字','以自然人物五官表达，不添加文字').replace('不添加嘴巴','保留自然、克制的微笑')}`).join('；');
  const scene=s.output==='sticker'?DATA.scene.transparent[1]:s.output==='sheet'?'干净浅色背景':DATA.scene[s.scene][1];
+ const outputDesc=s.output==='avatar'?'单个人物形象，1:1 构图，主体居中，清晰适合头像使用；以所选人物构图为准':DATA.output[s.output][2];
  const extra=s.accessories.length?s.accessories.map(a=>DATA.accessories[a][1]).join('、'):'无额外配饰；参考人物原有眼镜与服装细节不算额外配饰，应保留';
- if(short)return `${ref}\n${framing}，${s.proportion==='two'?'2':'3'} 头身，正常人物五官与手脚。${DATA.style[s.style][2]}。${s.style==='plush'?'头发、服装与皮肤均为精细短绒，五官以刺绣表达。':''}配饰：${extra}。\n${acts}。背景：${scene}。${DATA.output[s.output][2]}。保持身份与比例一致，工作时不自动眨眼，无额外肢体或水印。`;
- return `【人物与身份】\n${ref}\n${framing}，${s.proportion==='two'?'2':'3'} 头身 Q 版比例，简化但自然的人物五官，不使用 Mira 的无嘴巴或无手无脚设定；手脚保持正常解剖数量，由构图自然裁切。\n\n【风格与搭配】\n${DATA.style[s.style][2]}。${s.style==='plush'?'人物皮肤、头发和服装都转为可辨识的短绒玩偶材质，五官用精细刺绣表达；不要变成真实人像，也不要丢失身份特征。':''}配饰：${extra}。手持道具最多一件，其余自然放在身旁或桌面，避免遮挡脸。\n\n【动作与输出】\n${multi?'按顺序分别呈现，不能同时发生：':'静态图表现主动作的代表瞬间：'}${acts}。${sequence.includes('work')?'工作阶段保持目光稳定、双眼睁开，不自动眨眼；眨眼只在单独指定的眨眼阶段发生。':''}\n背景：${scene}。${DATA.output[s.output][2]}。\n\n保持人物脸型、发型、服装、比例和色彩一致，无额外肢体，无文字、水印或标志。${s.reference?'当前 SVG 只是通用人物示意，并未读取参考图；需在 ChatGPT 中附上参考图。':''}`;
+ if(short)return `${ref}\n${framing}，${s.proportion==='two'?'2':'3'} 头身，正常人物五官与手脚。${DATA.style[s.style][2]}。${s.style==='plush'?'头发、服装与皮肤均为精细短绒，五官以刺绣表达。':''}配饰：${extra}。\n${acts}。背景：${scene}。${outputDesc}。保持身份与比例一致，工作时不自动眨眼，无额外肢体或水印。`;
+ return `【人物与身份】\n${ref}\n${framing}，${s.proportion==='two'?'2':'3'} 头身 Q 版比例，简化但自然的人物五官，不使用 Mira 的无嘴巴或无手无脚设定；手脚保持正常解剖数量，由构图自然裁切。\n\n【风格与搭配】\n${DATA.style[s.style][2]}。${s.style==='plush'?'人物皮肤、头发和服装都转为可辨识的短绒玩偶材质，五官用精细刺绣表达；不要变成真实人像，也不要丢失身份特征。':''}配饰：${extra}。手持道具最多一件，其余自然放在身旁或桌面，避免遮挡脸。\n\n【动作与输出】\n${multi?'按顺序分别呈现，不能同时发生：':'静态图表现主动作的代表瞬间：'}${acts}。${sequence.includes('work')?'工作阶段保持目光稳定、双眼睁开，不自动眨眼；眨眼只在单独指定的眨眼阶段发生。':''}\n背景：${scene}。${outputDesc}。\n\n保持人物脸型、发型、服装、比例和色彩一致，无额外肢体，无文字、水印或标志。${s.reference?'当前 SVG 只是通用人物示意，并未读取参考图；需在 ChatGPT 中附上参考图。':''}`;
 }
 function shade(hex,amount){return '#'+[1,3,5].map(i=>Math.max(0,Math.min(255,parseInt(hex.slice(i,i+2),16)+amount)).toString(16).padStart(2,'0')).join('')}
 let svgSerial=0;
@@ -179,7 +180,7 @@ $('copyPrompt').onclick=async()=>{notify(await copy()?'提示词已复制，可�
 $('copyOpen').onclick=async()=>{const copyPromise=copy();const opened=window.open('https://chatgpt.com/','_blank');if(opened)opened.opener=null;const ok=await copyPromise;notify(ok?(opened?'已复制，在 ChatGPT 新对话中粘贴即可':'已复制，浏览器拦截了新窗口，请打开 chatgpt.com'):'提示词已选中，请手动复制后粘贴到 ChatGPT')};
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 const filename=()=>((state.name||'dot').replace(/[^\p{L}\p{N}_-]/gu,'-').slice(0,40)||'dot');
-$('saveConfig').onclick=()=>{download(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),filename()+'-config.json');notify('配置已保存为 JSON 文件')};
+$('saveConfig').onclick=()=>{download(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),filename()+'-config.json');notify('已请求下载 JSON 配置，请查看浏览器下载列表')};
 $('loadConfig').onclick=()=>$('configFile').click();
 function validateConfig(raw){
  if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('配置必须是 JSON 对象');
@@ -199,9 +200,9 @@ function validateConfig(raw){
 }
 $('configFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>50000)throw Error('配置文件过大，请选择本工作台导出的 JSON');const loaded=validateConfig(JSON.parse(await f.text()));state=loaded;render();notify('配置已载入：'+(state.name||'未命名角色'))}catch(err){notify(err instanceof SyntaxError?'无法读取 JSON，请检查配置文件格式':err.message)}e.target.value=''};
 $('resetConfig').onclick=()=>{state=structuredClone(DEFAULT);render();notify('已重置为 Mira')};
-$('exportSVG').onclick=()=>{download(new Blob([svg(state,false)],{type:'image/svg+xml'}),filename()+'-schematic.svg');notify('静态 SVG 示意图已导出')};
-$('exportAnimated').onclick=()=>{download(new Blob([svg(state,true)],{type:'image/svg+xml'}),filename()+'-animated-schematic.svg');notify('动态 SVG 已导出，请用浏览器查看；不是宠物导入文件')};
-$('exportPNG').onclick=()=>{const im=new Image(),url=URL.createObjectURL(new Blob([svg(state,false)],{type:'image/svg+xml'}));im.onload=()=>{const c=document.createElement('canvas');c.width=1200;c.height=1170;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,1200,1170);c.toBlob(b=>{if(b){download(b,filename()+'-schematic.png');notify('PNG 示意图已导出，保留透明底')}else notify('PNG 导出失败，请尝试 SVG')},'image/png');URL.revokeObjectURL(url)};im.onerror=()=>{URL.revokeObjectURL(url);notify('PNG 导出失败，请尝试 SVG')};im.src=url};
+$('exportSVG').onclick=()=>{download(new Blob([svg(state,false)],{type:'image/svg+xml'}),filename()+'-schematic.svg');notify('已请求下载静态 SVG 示意图')};
+$('exportAnimated').onclick=()=>{download(new Blob([svg(state,true)],{type:'image/svg+xml'}),filename()+'-animated-schematic.svg');notify('已请求下载动态 SVG，请用浏览器查看；不是宠物导入文件')};
+$('exportPNG').onclick=()=>{const im=new Image(),url=URL.createObjectURL(new Blob([svg(state,false)],{type:'image/svg+xml'}));im.onload=()=>{const c=document.createElement('canvas');c.width=1200;c.height=1170;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,1200,1170);c.toBlob(b=>{if(b){download(b,filename()+'-schematic.png');notify('已请求下载透明底 PNG 示意图')}else notify('PNG 导出失败，请尝试 SVG')},'image/png');URL.revokeObjectURL(url)};im.onerror=()=>{URL.revokeObjectURL(url);notify('PNG 导出失败，请尝试 SVG')};im.src=url};
 document.querySelector('.mobile-tabs').onclick=e=>{const b=e.target.closest('[data-view]');if(!b)return;document.querySelector('.workspace').dataset.view=b.dataset.view;document.querySelectorAll('.mobile-tabs button').forEach(t=>t.setAttribute('aria-pressed',t===b));window.scrollTo({top:0,behavior:'smooth'})};
 render();
 // WebMCP uses the same configuration validation and render path as visible controls.
