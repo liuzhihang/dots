@@ -55,7 +55,7 @@ function compatible(s){
 }
 function buildPrompt(s,short=false){
  if(s.body==='human')return humanPrompt(s,short);
- const chain=[s.action,...s.sequence],multi=['storyboard','keyframes','pet'].includes(s.output),noHands=['none','feet','hover'].includes(s.limbs),noFeet=['none','arms','hover'].includes(s.limbs);
+ const multi=['storyboard','keyframes','pet'].includes(s.output),chain=multi?[s.action,...s.sequence]:[s.action],noHands=['none','feet','hover'].includes(s.limbs),noFeet=['none','arms','hover'].includes(s.limbs);
  const name=s.name.trim()||'这个角色';
  const identity=s.reference?`请先等待我在本对话上传参考图，再以图中的角色为身份基准，保留它的主体轮廓、配色、五官间距和可辨识特征；不要声称已经读取参考图。下方参数用于明确材质、动作与配饰变化，如与参考图身份冲突，优先保留参考图身份。`:`创作一个名为「${name}」的原创角色：${DATA.body[s.body][2]}，主色 ${s.color}。`;
  const face=`两只${s.eyeColor==='#FFFFFF'?'白色':'深色'}竖向胶囊眼，无嘴巴；眼睛的间距、尺寸与所在位置保持一致。${DATA.limbs[s.limbs][1]}。`;
@@ -80,7 +80,7 @@ function humanPrompt(s,short){
  const hair={short:'简洁短发',long:'长发轮廓',curly:'卷发轮廓',bald:'光头或极短发'}[s.hair];
  const clothes={sweater:'针织上衣',suit:'西装',hoodie:'连帽衫',dress:'连衣裙'}[s.clothing];
  const ref=s.reference?'请先等待我上传参考图，然后将图中人物转为立体 Q 版角色。保留其年龄感、脸型、发型轮廓与发色、肤色、眼镜及衣服等身份线索；不要把参考人物换成任意默认人物。若以下基础参数与参考图冲突，优先沿用参考图身份特征。':'创作名为「'+(s.name||'毛绒人物')+'」的原创 Q 版人物，'+hair+'，发色 '+s.hairColor+'，肤色 '+s.skinColor+'，身穿'+clothes+'，服装主色 '+s.color+'。';
- const sequence=[s.action,...s.sequence],multi=['storyboard','keyframes','pet'].includes(s.output);
+ const multi=['storyboard','keyframes','pet'].includes(s.output),sequence=multi?[s.action,...s.sequence]:[s.action];
  const acts=(multi?sequence:[s.action]).map((a,i)=>`${i+1}. ${label('action',a)}：${DATA.action[a][2].replace('不添加眉毛、嘴巴或问号文字','以自然人物五官表达，不添加文字').replace('不添加嘴巴','保留自然、克制的微笑')}`).join('；');
  const scene=s.output==='sticker'?DATA.scene.transparent[1]:s.output==='sheet'?'干净浅色背景':DATA.scene[s.scene][1];
  const outputDesc=s.output==='avatar'?'单个人物形象，1:1 构图，主体居中，清晰适合头像使用；以所选人物构图为准':DATA.output[s.output][2];
