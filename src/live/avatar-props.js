@@ -382,7 +382,9 @@ export function decorateAvatar(avatar, c) {
       if (a.face === 'catEye') {
         outline = closedOutline([[-.96, .48], [-.86, -.31], [-.35, -.64], [.34, -.62], [.83, -.29],
           [1.13, .77], [.57, .60], [0, .54]].map(([x, y]) => [x * rx * sign, y * ry]));
-      } else if (a.face === 'square' || a.face === 'sunglasses') {
+      } else if (a.face === 'sunglasses') {
+        outline=closedOutline([[-.96,.66],[-.38,.72],[.34,.69],[.98,.61],[.90,-.22],[.64,-.69],[0,-.76],[-.65,-.62],[-.90,-.21]].map(([x,y])=>[x*rx,y*ry]));
+      } else if (a.face === 'square') {
         outline = roundShape(rx * 2.08, ry * 1.94, rx * .28).getPoints(12).slice(0, -1).map(p => V([p.x, p.y, 0]));
       } else outline = Array.from({length: 64}, (_, j) => {const t = j / 64 * Math.PI * 2; return V([Math.cos(t) * rx, Math.sin(t) * ry, 0]);});
       tube(g, outline.map(p => p.toArray()), (shade ? .019 : .013) * s, accent, true);
@@ -404,7 +406,7 @@ export function decorateAvatar(avatar, c) {
     });
     if (monocle) {
       const lens = lensFrames[0], start = point(lens.g, [lens.rx * .72, -lens.ry * .72, 0]);
-      const tailX = start[0] + .09 * s, tailY = start[1] - .15 * s;
+      const tailX = start[0] + .15 * s, tailY = start[1] - .25 * s;
       tube(glasses, [start, [start[0] + .025 * s, start[1] - .095 * s, start[2] - .015 * s],
         [tailX, tailY, contact.front(tailX, tailY, start[2] - .065 * s) + .023 * s],
         [tailX + .048 * s, tailY + .012 * s, contact.front(tailX + .048 * s, tailY + .012 * s, start[2] - .09 * s) + .023 * s]], .011 * s, accent);
