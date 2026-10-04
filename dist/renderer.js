@@ -4,9 +4,11 @@
   const BODIES = ['sphere','circle','ring','roundedsquare','roundedcube','cuboid','capsule','drop','cloud','star','mushroom','spirit','shiba','bear','lion','cloudspirit','rat','ox','tiger','rabbit','dragon','snake','horse','goat','monkey','rooster','dog','pig','cat','penguin','human','robot','monster'];
   const GEOMETRY = new Set(['sphere','circle','ring','roundedsquare','roundedcube','cuboid','capsule','drop','cloud','star','mushroom','spirit','cloudspirit']);
   const ENUMS = {
+    ears:['auto','none','round','pointed','long','floppy'],tail:['auto','none','curl','long','puff'],horns:['auto','none','short','unicorn'],wings:['none','feather','bat'],marking:['auto','none','freckles','spots','stripes'],brows:['none','soft','straight','angled'],highlights:['none','single','double'],
     eyes:['capsule','dot','oval','sparkle','visor','natural'],expression:['calm','happy','curious','sleepy','focused'],faceShape:['round','oval','square','pear'],nose:['none','dot','button','triangle','long'],mouth:['none','smile','tiny','open'],hair:['none','short','bob','long','curly','quiff','bald'],limbs:['none','feet','arms','both','hover'],hat:['none','beanie','cap','beret','magichat','mushroomhat','crown'],glasses:['none','round','square','sunglasses','heart'],clothing:['none','sweater','suit','hoodie','dress'],pose:['neutral','sit','wave','fold','chin','magic','crossleg'],action:['idle','breathe','blink','look','puzzled','happy','bounce','sleep','listen','work','skate','magic','rotate'],effect:['none','halo','stars','mist','energy'],scene:['transparent','solid','gradient','desk','cafe','bedroom','library','forest','mushroomhouse','rink','underwater','space','festive'],previewFinish:['soft','flat','outline'],bodyplan:['blob','chibi','biped','quad']
   };
-  const DEFAULTS={body:'sphere',color:'#3064ED',eyeColor:'#FFFFFF',skinColor:'#E7BFA6',hairColor:'#453B4A',eyes:'capsule',expression:'calm',faceShape:'round',bodyWidth:1,bodyHeight:1,headSize:1,eyeSpacing:42,eyeSize:1,nose:'none',mouth:'none',hair:'none',limbs:'none',limbLength:1,hat:'none',glasses:'none',clothing:'none',pose:'neutral',action:'idle',tempo:1,effect:'none',scene:'transparent',previewFinish:'soft',bodyplan:'blob',accessories:[]};
+  const DEFAULTS={ears:'auto',earSize:1,tail:'auto',tailSize:1,horns:'auto',wings:'none',marking:'auto',markingColor:'#B88D73',faceY:0,eyeY:0,eyeTilt:0,pupilSize:1,highlights:'single',heterochromia:false,eyeColorRight:'#87B5A4',brows:'none',blush:0,noseSize:1,noseY:0,mouthSize:1,mouthY:0,motionIntensity:.7,signText:'Hello',
+    body:'sphere',color:'#3064ED',eyeColor:'#FFFFFF',skinColor:'#E7BFA6',hairColor:'#453B4A',eyes:'capsule',expression:'calm',faceShape:'round',bodyWidth:1,bodyHeight:1,headSize:1,eyeSpacing:42,eyeSize:1,nose:'none',mouth:'none',hair:'none',limbs:'none',limbLength:1,hat:'none',glasses:'none',clothing:'none',pose:'neutral',action:'idle',tempo:1,effect:'none',scene:'transparent',previewFinish:'soft',bodyplan:'blob',accessories:[]};
   let serial=0;
   const esc=v=>String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
   const num=(v,d,lo,hi)=>Number.isFinite(+v)?Math.min(hi,Math.max(lo,+v)):d;
@@ -17,11 +19,12 @@
     s.body=BODIES.includes(s.body)?s.body:'sphere';
     if(['pet','sticker'].includes(s.output))s.scene='transparent';
     for(const [key,values] of Object.entries(ENUMS))s[key]=values.includes(s[key])?s[key]:DEFAULTS[key];
-    for(const k of ['color','eyeColor','skinColor','hairColor'])s[k]=hex(s[k],DEFAULTS[k]);
-    for(const [k,lo,hi] of [['bodyWidth',.8,1.2],['bodyHeight',.8,1.2],['headSize',.85,1.2],['eyeSpacing',24,68],['eyeSize',.65,1.35],['limbLength',.7,1.4],['tempo',.65,1.6]])s[k]=num(s[k],DEFAULTS[k],lo,hi);
-    s.accessories=Array.isArray(x.accessories)?[...new Set(x.accessories)].filter(v=>['scarf','bow','collar','headphones','cloak','phone','macbook','tea','book','wand','pajamas','skates','magichat','mushroomhat','glasses','sunglasses'].includes(v)):[];
+    for(const k of ['color','eyeColor','skinColor','hairColor','eyeColorRight','markingColor'])s[k]=hex(s[k],DEFAULTS[k]);
+    for(const [k,lo,hi] of [['bodyWidth',.8,1.2],['bodyHeight',.8,1.2],['headSize',.85,1.2],['eyeSpacing',24,68],['eyeSize',.65,1.35],['limbLength',.7,1.4],['tempo',.65,1.6],['earSize',.7,1.3],['tailSize',.7,1.3],['faceY',-16,16],['eyeY',-12,12],['eyeTilt',-18,18],['pupilSize',.5,1.3],['blush',0,1],['noseSize',.6,1.4],['noseY',-10,10],['mouthSize',.6,1.4],['mouthY',-10,10],['motionIntensity',.2,1.4]])s[k]=num(s[k],DEFAULTS[k],lo,hi);
+    s.accessories=Array.isArray(x.accessories)?[...new Set(x.accessories)].filter(v=>['console','sign','scarf','bow','collar','headphones','cloak','phone','macbook','tea','book','wand','pajamas','skates','magichat','mushroomhat','glasses','sunglasses'].includes(v)):[];
     if(s.hat==='none')s.hat=s.accessories.includes('magichat')?'magichat':s.accessories.includes('mushroomhat')?'mushroomhat':'none';
     if(s.glasses==='none')s.glasses=s.accessories.includes('sunglasses')?'sunglasses':s.accessories.includes('glasses')?'round':'none';
+    s.heterochromia=!!s.heterochromia;s.signText=String(s.signText||'').slice(0,16);
     return s;
   }
   const group=(part,content,attrs='')=>`<g data-part="${part}" ${attrs}>${content}</g>`;
@@ -59,17 +62,22 @@
     const garmentY=tall?25:quad?25:bottom*.40,baseY=tall?103:quad?94:bottom-6;
     const headTop=headY+top*headScale,headHalf=half*headScale;
     const anim=options.animated!==false,playing=options.playing!==false,action=s.action;
-    const duration=n=>(n/s.tempo).toFixed(3)+'s';
+    const duration=n=>(n/s.tempo).toFixed(3)+'s',amp=s.motionIntensity;
+    const earMotion=`class="${id}ears" data-motion="ears"`,tailMotion=`class="${id}tail" data-motion="tail"`;
     const defs=`<defs><radialGradient id="${id}body" cx="29%" cy="18%" r="90%"><stop offset="0" stop-color="${shade(s.color,43)}"/><stop offset=".45" stop-color="${shade(s.color,13)}"/><stop offset=".8" stop-color="${s.color}"/><stop offset="1" stop-color="${dark}"/></radialGradient><radialGradient id="${id}skin" cx="32%" cy="20%" r="85%"><stop stop-color="${shade(s.skinColor,24)}"/><stop offset="1" stop-color="${s.skinColor}"/></radialGradient><linearGradient id="${id}scene" x2="1" y2="1"><stop stop-color="#EEF4FF"/><stop offset="1" stop-color="#F1EAFE"/></linearGradient><linearGradient id="${id}night" x2="0" y2="1"><stop stop-color="#273458"/><stop offset="1" stop-color="#52668D"/></linearGradient><linearGradient id="${id}water" x2="0" y2="1"><stop stop-color="#CDF5F4"/><stop offset="1" stop-color="#69B6CD"/></linearGradient><linearGradient id="${id}glass" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".4"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".06"/></linearGradient><radialGradient id="${id}glow"><stop stop-color="#D6C8FF" stop-opacity=".45"/><stop offset="1" stop-color="#D6C8FF" stop-opacity="0"/></radialGradient></defs>`;
     const motion=anim?`<style>
       #${id}stage [data-motion]{animation-play-state:${playing?'running':'paused'};transform-box:view-box;transform-origin:0px 45px}
-      @keyframes ${id}breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-      @keyframes ${id}bounce{0%,100%{transform:translateY(0)}45%,55%{transform:translateY(-25px)}}
-      @keyframes ${id}sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
-      @keyframes ${id}puzzle{0%,15%,100%{transform:rotate(0deg)}38%,70%{transform:rotate(-8deg)}}
-      @keyframes ${id}listen{0%,50%,100%{transform:rotate(-3deg) translateY(0)}25%,75%{transform:rotate(3deg) translateY(3px)}}
-      @keyframes ${id}skate{0%,100%{transform:translateX(-27px) rotate(-3deg)}50%{transform:translateX(27px) rotate(3deg)}}
+      @keyframes ${id}breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(${-4*amp}px)}}
+      @keyframes ${id}bounce{0%,100%{transform:translateY(0)}45%,55%{transform:translateY(${-25*amp}px)}}
+      @keyframes ${id}sway{0%,100%{transform:rotate(${-3*amp}deg)}50%{transform:rotate(${3*amp}deg)}}
+      @keyframes ${id}puzzle{0%,15%,100%{transform:rotate(0deg)}38%,70%{transform:rotate(${-8*amp}deg)}}
+      @keyframes ${id}listen{0%,50%,100%{transform:rotate(${-3*amp}deg) translateY(0)}25%,75%{transform:rotate(${3*amp}deg) translateY(3px)}}
+      @keyframes ${id}skate{0%,100%{transform:translateX(-27px) rotate(${-3*amp}deg)}50%{transform:translateX(27px) rotate(${3*amp}deg)}}
       @keyframes ${id}turn{0%,100%{transform:rotate(-7deg) translateX(-5px)}50%{transform:rotate(7deg) translateX(5px)}}
+      @keyframes ${id}ear{0%,100%{transform:rotate(0deg)}50%{transform:rotate(${3*amp}deg)}}
+      @keyframes ${id}tailwag{0%,100%{transform:rotate(${-3*amp}deg)}50%{transform:rotate(${5*amp}deg)}}
+      #${id}stage .${id}ears{${action!=='idle'?`animation:${id}ear ${duration(4)} ease-in-out infinite;`:''}transform-origin:0px -50px}
+      #${id}stage .${id}tail{${action!=='idle'?`animation:${id}tailwag ${duration(3)} ease-in-out infinite;`:''}transform-origin:65px 64px}
       @keyframes ${id}blink{0%,39%,47%,100%{transform:scaleY(1)}43%{transform:scaleY(.06)}}
       @keyframes ${id}look{0%,15%,100%{transform:translateX(-5px)}45%,65%{transform:translateX(5px)}}
       @keyframes ${id}type{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
@@ -150,16 +158,16 @@
       if(isAnimal&&s.body!=='snake'){
         if(s.body==='horse')shape=e(0,3,70,87);else if(s.body==='penguin')shape=e(0,5,78,91);else shape=faceForm(83,84);
         const ear=(x,y,rx,ry,angle=0)=>e(x,y,rx,ry,bodyFill,angle?`transform="rotate(${angle} ${x} ${y})"`:'')+ellipse(x,y+1,rx*.55,ry*.55,shade(s.color,38));
-        if(['cat','shiba','pig'].includes(s.body)){back+=f('M-78-36L-80-101Q-77-113-62-101L-28-72Z')+f('M28-72L62-101Q79-114 80-101L78-35Z');back+=path('M-66-75L-67-91L-46-76Z',s.body==='pig'?pink:shade(s.color,48))+path('M46-76L67-91L66-75Z',s.body==='pig'?pink:shade(s.color,48));}
-        if(['bear','tiger','rat','lion'].includes(s.body)){const rr=s.body==='rat'?32:24;back+=ear(-58,-70,rr,rr)+ear(58,-70,rr,rr);}
-        if(s.body==='monkey'){back+=ear(-81,-7,27,29)+ear(81,-7,27,29);detail+=path('M0-44C-50-82-82-27-58 27C-38 69 40 69 60 24C83-30 48-82 0-44Z',cream);}
-        if(s.body==='rabbit'){back+=ear(-38,-117,20,58,-9)+ear(38,-117,20,58,9);}
-        if(s.body==='dog')back+=e(-78,-23,26,60,dark,'transform="rotate(15 -78 -23)"')+e(78,-23,26,60,dark,'transform="rotate(-15 78 -23)"');
-        if(s.body==='ox'||s.body==='goat'){back+=f('M-42-69Q-100-73-79-118Q-79-89-46-99Z',cream)+f('M42-69Q100-73 79-118Q79-89 46-99Z',cream)+ear(-77,-39,26,15,-15)+ear(77,-39,26,15,15);}
+        if(s.ears==='auto'&&(['cat','shiba','pig'].includes(s.body))){back+=f('M-78-36L-80-101Q-77-113-62-101L-28-72Z')+f('M28-72L62-101Q79-114 80-101L78-35Z');back+=path('M-66-75L-67-91L-46-76Z',s.body==='pig'?pink:shade(s.color,48))+path('M46-76L67-91L66-75Z',s.body==='pig'?pink:shade(s.color,48));}
+        if(s.ears==='auto'&&(['bear','tiger','rat','lion'].includes(s.body))){const rr=s.body==='rat'?32:24;back+=ear(-58,-70,rr,rr)+ear(58,-70,rr,rr);}
+        if(s.body==='monkey'){if(s.ears==='auto')back+=ear(-81,-7,27,29)+ear(81,-7,27,29);detail+=path('M0-44C-50-82-82-27-58 27C-38 69 40 69 60 24C83-30 48-82 0-44Z',cream);}
+        if(s.ears==='auto'&&(s.body==='rabbit')){back+=ear(-38,-117,20,58,-9)+ear(38,-117,20,58,9);}
+        if(s.ears==='auto'&&(s.body==='dog'))back+=e(-78,-23,26,60,dark,'transform="rotate(15 -78 -23)"')+e(78,-23,26,60,dark,'transform="rotate(-15 78 -23)"');
+        if(s.body==='ox'||s.body==='goat'){if(s.horns==='auto')back+=f('M-42-69Q-100-73-79-118Q-79-89-46-99Z',cream)+f('M42-69Q100-73 79-118Q79-89 46-99Z',cream);if(s.ears==='auto')back+=ear(-77,-39,26,15,-15)+ear(77,-39,26,15,15);}
         if(s.body==='goat'){for(let i=0;i<7;i++)back+=e(-66+i*22,-65-13*Math.sin(i/6*Math.PI),23,23);detail+=line('M-39-69q11-15 21-1M-8-79q12-10 22 1M21-68q9-12 20-2',light,4);}
-        if(s.body==='horse'){back+=f('M-54-50L-55-119Q-37-116-27-67Z')+f('M25-64Q36-114 55-120L55-46Z');detail+=f('M-28-74Q-25-118 6-111Q42-106 30-75L8-49L3-79L-17-57Z',dark)+ellipse(0,37,52,35,shade(s.color,42));}
+        if(s.body==='horse'){if(s.ears==='auto')back+=f('M-54-50L-55-119Q-37-116-27-67Z')+f('M25-64Q36-114 55-120L55-46Z');detail+=f('M-28-74Q-25-118 6-111Q42-106 30-75L8-49L3-79L-17-57Z',dark)+ellipse(0,37,52,35,shade(s.color,42));}
         if(s.body==='rooster'){back+=f('M-31-69Q-45-114-18-109Q-10-146 8-112Q38-127 37-83L29-67Z','#E59DA7');detail+=path('M-16 23Q0 6 16 23L0 39Z','#F4C86A');}
-        if(s.body==='dragon'||s.body==='monster'){back+=f('M-48-69Q-75-91-51-125Q-43-100-27-81Z',shade(s.color,52))+f('M28-81Q46-102 50-125Q76-94 47-68Z',shade(s.color,52));detail+=circle(-55,12,8,light,'opacity=".6"')+circle(55,12,8,light,'opacity=".6"');if(s.body==='dragon')detail+=ellipse(0,33,41,28,shade(s.color,40))+circle(-16,26,3,dark)+circle(16,26,3,dark);}
+        if(s.body==='dragon'||s.body==='monster'){if(s.horns==='auto')back+=f('M-48-69Q-75-91-51-125Q-43-100-27-81Z',shade(s.color,52))+f('M28-81Q46-102 50-125Q76-94 47-68Z',shade(s.color,52));detail+=circle(-55,12,8,light,'opacity=".6"')+circle(55,12,8,light,'opacity=".6"');if(s.body==='dragon')detail+=ellipse(0,33,41,28,shade(s.color,40))+circle(-16,26,3,dark)+circle(16,26,3,dark);}
         if(s.body==='lion'){back=path('M0-107Q20-116 35-96Q60-103 72-78Q98-71 95-48Q116-29 101-7Q112 21 92 35Q88 62 66 62Q48 86 27 78Q0 97-20 81Q-44 91-62 69Q-91 68-93 42Q-116 23-104 0Q-116-27-98-45Q-102-73-76-81Q-67-109-41-100Q-20-120 0-107Z',dark,fillAttrs)+back;detail+=ellipse(0,29,43,31,cream);}
         if(['shiba','cat','dog','bear','tiger','pig','ox'].includes(s.body)){
           if(s.body==='shiba')detail+=path('M-76 2Q-40 3-21 30Q0 46 21 30Q42 3 76 2C70 62 35 82 0 81C-36 82-71 59-76 2Z',cream);
@@ -168,21 +176,23 @@
           else detail+=ellipse(0,31,s.body==='bear'?34:43,s.body==='bear'?25:27,cream);
         }
         if(s.body==='penguin')detail+=path('M0-51C-23-89-66-54-63-1C-76 91 74 97 64 1C67-56 21-88 0-51Z',cream)+path('M-13 19L13 19L0 31Z','#EDB75E');
-        if(s.body==='tiger')detail+=path('M-21-79L-12-53L-5-81M5-82L13-52L22-79M-79-27L-54-17L-78-7M79-27L54-17L78-7M-76 26L-57 31L-67 40M76 26L57 31L67 40Z',ink,'opacity=".7"');
-        if(s.body==='cat')detail+=path('M-18-81L-12-57L-5-82M7-82L14-59L23-79Z',dark)+line('M-51 26L-66 20M-50 35L-66 35M51 26L66 20M50 35L66 35',dark,2.5);
+        if(s.marking==='auto'&&s.body==='tiger')detail+=path('M-21-79L-12-53L-5-81M5-82L13-52L22-79M-79-27L-54-17L-78-7M79-27L54-17L78-7M-76 26L-57 31L-67 40M76 26L57 31L67 40Z',ink,'opacity=".7"');
+        if(s.marking==='auto'&&s.body==='cat')detail+=path('M-18-81L-12-57L-5-82M7-82L14-59L23-79Z',dark)+line('M-51 26L-66 20M-50 35L-66 35M51 26L66 20M50 35L66 35',dark,2.5);
       }
       if(isHuman){
-        back=e(-70,4,13,20,skinFill)+e(70,4,13,20,skinFill);
+        back=s.ears==='auto'?e(-70,4,13,20,skinFill)+e(70,4,13,20,skinFill):'';
         const faces={round:()=>e(0,0,72,77,skinFill),oval:()=>e(0,0,66,84,skinFill),square:()=>r(-70,-76,140,148,35,skinFill),pear:()=>f('M0-80C-73-80-70-27-75 14C-80 90 81 94 75 14C70-27 73-80 0-80Z',skinFill)};
         shape=faces[s.faceShape]();
-        detail=ellipse(-43,27,12,6,pink,'opacity=".38"')+ellipse(43,27,12,6,pink,'opacity=".38"');
+        detail='';
       }
       if(isRobot){back=r(-96,-26,20,52,9,dark)+r(76,-26,20,52,9,dark)+line('M0-84V-110',dark,7)+circle(0,-116,10,shade(s.color,45));shape=r(-81,-85,162,173,37);detail=r(-66,-42,132,79,25,'#273B57')+line('M-34 66H-10',dark,5)+circle(33,63,4,'#9AD1BF')+circle(46,63,4,'#EFC181');}
-      return group('head-back',back)+group('body-silhouette',shape)+group('species-markings',detail);
+      return group('head-back',back,(isAnimal&&s.body!=='snake'||isHuman)?earMotion:'')+group('body-silhouette',shape)+group('species-markings',detail)+markings();
     }
 
     function tail(){
-      if(!isAnimal||s.body==='snake')return '';
+      if(s.tail==='none'||s.body==='snake')return '';
+      if(s.tail!=='auto'){let t=s.tail==='puff'?circle(102,61,24,light):s.tail==='curl'?line('M65 61C142 81 154-18 110-9C81-3 96 32 117 19',dark,17):line('M65 61Q139 102 139-17',dark,16);return group('tail',group('tail-shape',t,`transform="translate(65 61) scale(${s.tailSize}) translate(-65 -61)"`),tailMotion)}
+      if(!isAnimal)return '';
       let x=quad?76:65,y=quad?62:64,t='';
       if(['shiba','pig'].includes(s.body))t=line(`M${x} ${y}C${x+64} ${y+6} ${x+64} ${y-62} ${x+35} ${y-58}C${x+11} ${y-54} ${x+17} ${y-20} ${x+37} ${y-30}`,dark,s.body==='shiba'?23:9);
       if(['cat','tiger','lion','monkey','rat','dragon','dog','horse','ox'].includes(s.body)){
@@ -193,7 +203,31 @@
       }
       if(s.body==='rabbit'||s.body==='bear')t=circle(x+16,y+3,s.body==='rabbit'?18:12,light);
       if(s.body==='rooster')t=path(`M${x} ${y}Q${x+76} ${y-58} ${x+55} ${y-74}Q${x+26} ${y-80} ${x+20} ${y-25}Q${x+19} ${y-71} ${x-3} ${y-66}Q${x-16} ${y-48} ${x} ${y}Z`,dark);
-      return group('tail',t);
+      return group('tail',group('tail-shape',t,`transform="translate(65 61) scale(${s.tailSize}) translate(-65 -61)"`),tailMotion);
+    }
+
+    function anatomy(){
+      let ears='',horns='';const y=top+20,x=Math.min(half*.65,64),c=isHuman?s.skinColor:bodyFill;
+      for(const sign of [-1,1]){
+        let a='';if(s.ears==='round')a=e(sign*x,y,25,28,c)+ellipse(sign*x,y,13,17,pink);
+        if(s.ears==='pointed')a=f(`M${sign*(x-23)} ${y+10}L${sign*x} ${y-63}Q${sign*(x+9)} ${y-72} ${sign*(x+28)} ${y+24}Z`,c);
+        if(s.ears==='long')a=e(sign*x,y-31,17,58,c,`transform="rotate(${sign*12} ${sign*x} ${y})"`)+ellipse(sign*x,y-34,8,37,pink);
+        if(s.ears==='floppy')a=e(sign*(half-2),y+52,23,58,dark,`transform="rotate(${-sign*13} ${sign*(half-2)} ${y+52})"`);
+        ears+=group('ear-'+(sign<0?'left':'right'),a,`transform="translate(${sign*x} ${y}) scale(${s.earSize}) translate(${-sign*x} ${-y})"`);
+        if(s.horns==='short')horns+=f(`M${sign*25} ${top+16}Q${sign*47} ${top-60} ${sign*51} ${top-49}L${sign*66} ${top+28}Z`,cream);
+      }
+      if(s.horns==='unicorn')horns=f(`M-18 ${top+15}L0 ${top-66}L18 ${top+15}Z`,cream)+line(`M-8 ${top-19}L8 ${top-12}M-12 ${top-1}L13 ${top+6}`,'#D9B5CB',3);
+      return group('ears',ears,earMotion)+group('horns',horns);
+    }
+    function markings(){
+      const c=s.markingColor;let a='';
+      if(s.marking==='freckles')for(const sign of [-1,1])for(const [x,y]of [[36,17],[48,24],[31,29]])a+=circle(sign*x,y,2.8,c);
+      if(s.marking==='spots')for(const [x,y,rx,ry]of [[-55,-48,15,11],[39,-58,13,9],[63,14,10,16],[-39,55,16,9]])a+=ellipse(x,y,rx,ry,c,'opacity=".65"');
+      if(s.marking==='stripes')a=path('M-22-78L-12-47L-4-81M7-82L16-48L25-78M-78-24L-52-15L-77-5M78-24L52-15L77-5Z',c);
+      return group('custom-markings',a);
+    }
+    function wings(){
+      let w='';for(const sign of [-1,1]){const a=s.wings==='feather'?path('M53 25Q112-83 158-78Q152-33 123-7Q154-25 160-6Q139 44 75 72Z',shade(s.color,54),fillAttrs)+line('M77 45Q120-10 141-55',light,3):s.wings==='bat'?path('M50 31Q99-49 159-61L145 12Q115-7 112 42Q84 20 70 75Z',shade(s.color,-12),fillAttrs)+line('M59 33L145-43M59 33L112 42',light,3):'';w+=group('wing-'+sign,a,`transform="scale(${sign} 1)"`)}return group('wings',w);
     }
 
     function torso(){
@@ -274,16 +308,18 @@
       const sleepy=(s.expression==='sleepy'&&action!=='work')||action==='sleep';
       const focus=action==='work'||s.expression==='focused';
       for(const sign of [-1,1]){
+        const eye=s.heterochromia&&sign===1?s.eyeColorRight:s.eyeColor;
         const x=sign*gap,y=action==='puzzled'&&sign===1?-4:s.expression==='curious'&&sign===1?-3:0;
         let item='';
         if(closed)item=line(`M-8 1Q0 ${happy?-10:7} 8 1`,eye,4.5);
         else if(s.eyes==='dot')item=circle(0,0,6.5,eye);
         else if(s.eyes==='capsule')item=rect(-6.5,-13,13,sleepy?17:focus?23:26,6.5,eye);
-        else if(s.eyes==='sparkle')item=ellipse(0,0,10.5,sleepy?10:14,eye)+circle(-3,-5,3.4,eye.toUpperCase()==='#FFFFFF'?shade(s.color,85):'#FFFFFF','opacity=".94"')+circle(4,5,1.6,'#FFFFFF','opacity=".65"');
-        else if(s.eyes==='visor')item=rect(-9,-8,18,16,5,eye)+line('M-5-4H4','#FFFFFF',1.5,'opacity=".55"');
-        else if(s.eyes==='oval')item=ellipse(0,0,11.5,16,'#FFF7E5')+ellipse(focus?0:1,1,5.5,8,eye.toUpperCase()==='#FFFFFF'?'#344059':eye)+circle(-1,-2,1.5,'#FFFFFF');
-        else item=ellipse(0,0,7.5,sleepy?7:11,eye)+circle(-2,-3,2.3,'#FFFFFF','opacity=".92"');
-        eyes+=`<g transform="translate(${x} ${y}) scale(${es})">${item}</g>`;
+        else if(s.eyes==='sparkle')item=ellipse(0,0,10.5,sleepy?10:14,eye);
+        else if(s.eyes==='visor')item=rect(-9,-8,18,16,5,eye);
+        else if(s.eyes==='oval')item=ellipse(0,0,11.5,16,'#FFF7E5')+group('pupil',ellipse(focus?0:1,1,5.5*s.pupilSize,8*s.pupilSize,eye.toUpperCase()==='#FFFFFF'?'#344059':eye),'data-gaze="pupil"');
+        else item=ellipse(0,0,7.5,sleepy?7:11,eye);
+        if(!closed&&s.highlights!=='none'&&!['capsule','dot'].includes(s.eyes))item+=circle(-2,-4,2.3,'#FFFFFF','opacity=".94"')+(s.highlights==='double'?circle(3,3,1.4,'#FFFFFF','opacity=".7"'):'');
+        eyes+=`<g transform="translate(${x} ${y+s.eyeY}) rotate(${sign*s.eyeTilt}) scale(${es})">${item}</g>`;
       }
       if(s.eyes==='visor'&&!isRobot)eyes=rect(-gap-16,-20,gap*2+32,40,17,shade(s.color,-70),'opacity=".75"')+eyes;
       let nose='',mouth='',glasses='';
@@ -306,7 +342,8 @@
         }
         glasses+=line(`M${-gap+gr} -3Q0-10 ${gap-gr}-3`,gc,3)+line(`M${-gap-gr} -7l-9-3M${gap+gr}-7l9-3`,gc,3);
       }
-      return group('face',`<g transform="translate(0 ${faceY}) scale(${sf})">`+group('eyes',eyes,`class="${id}eyes" data-motion="eyes"`)+group('nose',nose)+group('mouth',mouth)+group('glasses',glasses)+'</g>');
+      let brows='',blush='';for(const sign of [-1,1]){const x=sign*gap,y=s.eyeY-25;if(s.brows!=='none')brows+=line(`M${x-9} ${y+(s.brows==='angled'?sign*4:0)}Q${x} ${y-(s.brows==='soft'?7:0)} ${x+9} ${y-(s.brows==='angled'?sign*4:0)}`,s.hairColor,3);if(s.blush>0)blush+=ellipse(sign*(gap+11),25,11,6,pink,`opacity="${s.blush}"`)}
+      return group('face',`<g transform="translate(0 ${faceY+s.faceY}) scale(${sf})">`+group('blush',blush)+group('brows',brows)+group('gaze',group('eyes',eyes,`class="${id}eyes" data-motion="eyes"`),'data-gaze="face"')+group('nose',nose,`transform="translate(0 ${noseY+s.noseY}) scale(${s.noseSize}) translate(0 ${-noseY})"`)+group('mouth',mouth,`transform="translate(0 ${mouthY+s.mouthY}) scale(${s.mouthSize}) translate(0 ${-mouthY})"`)+group('glasses',glasses,`transform="translate(0 ${s.eyeY})"`)+'</g>');
     }
 
     function accessories(){
@@ -320,7 +357,7 @@
         const yy=headY,hh=Math.min(headHalf,92);
         front+=line(`M${headX-hh-5} ${yy+8}V${yy-22}C${headX-hh-5} ${headTop-27} ${headX+hh+5} ${headTop-27} ${headX+hh+5} ${yy-22}V${yy+8}`,'#465371',9)+rect(headX-hh-15,yy-19,23,47,10,'#8191B4')+rect(headX+hh-8,yy-19,23,47,10,'#8191B4')+line(`M${headX+hh+8} ${yy+24}Q${headX+hh+6} ${yy+42} ${headX+hh-9} ${yy+42}`,'#465371',3);
       }
-      const props=s.accessories.filter(a=>['phone','tea','book','wand'].includes(a));
+      const props=s.accessories.filter(a=>['phone','tea','book','wand','console','sign'].includes(a));
       props.forEach((a,i)=>{
         const x=i%2===0?102:-125,y0=18+Math.floor(i/2)*63;
         let item='';
@@ -328,6 +365,8 @@
         if(a==='tea')item=line('M29 11C48 6 48 35 29 33','#CFB49D',6)+path('M0 4H30V31Q15 46 0 31Z','#F5E4CF')+ellipse(15,5,15,4,'#D1B593')+ellipse(15,4,11,2,'#A5AD82')+line('M8-8Q2-16 9-22M22-8Q16-16 23-22','#D0DBE8',2.5);
         if(a==='book')item=r(-3,-2,36,49,5,'#A5B6A7')+rect(2,0,27,44,2,'#EFE9DB')+rect(-4,-3,33,45,4,'#A5B6A7')+line('M3 1V38','#D5DDD0',3)+star(16,15,6,'#EDF0D6');
         if(a==='wand')item=line('M9 13V64','#9B85B5',6)+path('M9-17L16-5L30-3L20 7L22 21L9 15L-4 21L-2 7L-12-3L2-5Z','#E9CC83');
+        if(a==='console')item=rect(-12,0,62,34,11,'#667795')+rect(1,5,28,23,3,'#C2E5E3')+line('M-6 14H-1M-3.5 11V17','#E0E7F2',2)+circle(37,11,2.5,'#F1CED3')+circle(41,20,2.5,'#F1DDA8');
+        if(a==='sign')item=line('M14 32V75','#AD957D',5)+rect(-29,-5,86,43,8,'#F8E9CE',`stroke="#CFB68E" stroke-width="2"`)+`<text x="14" y="20" text-anchor="middle" font-family="system-ui,sans-serif" font-size="${s.signText.length>8?7:10}" fill="#675646">${esc(s.signText)}</text>`;
         front+=group('prop-'+a,item,`transform="translate(${x} ${y0}) rotate(${i%2===0?8:-9})"`);
       });
       if(s.accessories.includes('macbook'))front+=group('prop-macbook',path('M-76 63H76L67 120H-67Z','#B6C5D8',fillAttrs)+path('M-79 119H79L87 127Q88 134 76 134H-76Q-88 134-87 127Z','#D7E0EB')+rect(-66,71,132,2,1,'#DCE6F0')+circle(0,93,7,'#D9E3EF','opacity=".8"'));
@@ -347,7 +386,7 @@
     // All silhouette attachments share a common rig and the same body transform.
     // Human / animal heads get their own nested head-size transform, including hats,
     // ears, hair, glasses and all facial parts; body proportions never detach them.
-    let head=hairParts.back+characterShape()+face()+hairParts.front+hat();
+    let head=hairParts.back+anatomy()+characterShape()+face()+hairParts.front+hat();
     if(isHuman&&s.hair==='bald')head+=group('scalp-detail',line('M-9-72q9-3 18 0',shade(s.skinColor,-16),2));
     if((isHuman||isAnimal||isRobot)&&!GEOMETRY.has(s.body))head=group('head-rig',head,`transform="translate(${headX} ${headY}) scale(${headScale})"`);
     else head=group('head-rig',head);
@@ -356,17 +395,17 @@
     let apparel=clothing();
     if(ring&&apparel){apparel=`<defs><clipPath id="${id}ringclip"><path d="M0-98A98 98 0 1 0 0 98A98 98 0 1 0 0-98ZM0-20A44 44 0 1 1 0 68A44 44 0 1 1 0-20Z" fill-rule="evenodd" clip-rule="evenodd"/></clipPath></defs><g clip-path="url(#${id}ringclip)">${apparel}</g>`;}
     const lowArms=arms();
-    const composition=effects(false)+acc.back+tail()+feet()+torso()+(tall||quad?apparel:'')+head+(!tall&&!quad?apparel:'')+lowArms+acc.front+effects(true);
+    const composition=effects(false)+wings()+acc.back+tail()+feet()+torso()+(tall||quad?apparel:'')+head+(!tall&&!quad?apparel:'')+lowArms+acc.front+effects(true);
     // Extra-tall headwear needs a little more framing room without deforming the rig.
     const speciesTop=s.body==='rabbit'?-175:['dragon','monster','ox','goat'].includes(s.body)?-127:s.body==='rooster'?-130:['cat','shiba','pig','horse'].includes(s.body)?-120:top;
     const hatTop=top+(s.hat==='magichat'?-134:s.hat==='mushroomhat'?-85:['beanie','cap','beret','crown'].includes(s.hat)?-83:0);
     const hairTop=top+(s.hair==='quiff'?-64:s.hair==='curly'?-24:0);
-    const topExtent=(headY+Math.min(speciesTop,hatTop,hairTop)*headScale)*s.bodyHeight;
+    const topExtent=(headY+Math.min(s.ears==='auto'?speciesTop:top,hatTop,hairTop,s.ears==='long'?top-90*s.earSize:s.ears==='pointed'?top-63*s.earSize:top,s.horns==='unicorn'?top-66:top)*headScale)*s.bodyHeight;
     const feetBottom=['feet','both'].includes(s.limbs)?baseY+20*s.limbLength+24:s.limbs==='hover'?baseY+43:bottom;
     const bottomExtent=Math.max(tall||quad?116:bottom,feetBottom,s.accessories.includes('macbook')?136:0)*s.bodyHeight;
-    const frameScale=Math.min(1.14,192/Math.max(1,-topExtent),187/Math.max(1,bottomExtent),204/(Math.max(half+20,isAnimal?143:130)*s.bodyWidth));
+    const frameScale=Math.min(1.14,192/Math.max(1,-topExtent),187/Math.max(1,bottomExtent),204/(Math.max(half+20,s.wings!=='none'?165:0,s.tail!=='none'?(65+90*s.tailSize):0,s.accessories.includes('sign')?178:150)*s.bodyWidth));
     const label=esc(input&&input.name||'Dot');
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" width="440" height="420" role="img" aria-label="${label}" data-renderer="dot-live-v1" data-body="${s.body}" data-action="${action}"><title>${label}</title>${defs}${motion}${scene()}<g id="${id}stage" transform="translate(220 217) scale(${frameScale})"><g class="${id}avatar" data-part="avatar" data-motion="body"><g data-part="proportions" transform="scale(${s.bodyWidth} ${s.bodyHeight})"><g data-part="pose-rig" transform="${s.pose==='sit'?'translate(0 7)':s.pose==='magic'?'rotate(-3 0 45)':'translate(0 0)'}">${composition}</g></g></g></g></svg>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" width="440" height="420" role="img" aria-label="${label}" data-renderer="dot-live-v2" data-body="${s.body}" data-action="${action}"><title>${label}</title>${defs}${motion}${scene()}<g id="${id}stage" transform="translate(220 217) scale(${frameScale})"><g class="${id}avatar" data-part="avatar" data-motion="body"><g data-part="proportions" transform="scale(${s.bodyWidth} ${s.bodyHeight})"><g data-part="pose-rig" transform="${s.pose==='sit'?'translate(0 7)':s.pose==='magic'?'rotate(-3 0 45)':'translate(0 0)'}">${composition}</g></g></g></g></svg>`;
   }
   function pause(svg,paused=true){
     if(!svg)return;
