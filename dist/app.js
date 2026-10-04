@@ -224,7 +224,7 @@ function renderResult(){
  $('previewNote').textContent=state.body!==p.state.body?'样例供外观参考；当前主体为'+label('body',state.body):'样例固定展示，调整会写入创作说明';
  $('outputBadge').textContent='静态样例';
  $('configSummary').innerHTML=`<div class="summary-label">${showExample?'当前设定':'已调整的设定'}</div><div class="summary-values">${[label('body',state.body),label('bodyplan',state.bodyplan),label('style',state.style),label('expression',state.expression)].map(x=>`<span>${html(x)}</span>`).join('')}</div>`;
- $('compatibility').textContent=compatible(state).slice(0,2).join(' · ');
+ const importantNotes=compatible(state).filter(x=>x.includes('工作')||x.includes('背景'));$('compatibility').textContent=importantNotes.join(' · ');$('compatibility').hidden=!importantNotes.length;
  $('referenceMode').checked=state.reference;$('referenceHelp').hidden=!state.reference;
  $('copyPrompt').textContent=copyLabel();
  $('promptPreview').textContent=buildPrompt(state,false);
