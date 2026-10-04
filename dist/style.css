@@ -6,3 +6,4 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
 @media(max-width:760px) and (min-height:660px){.workspace{display:block}.preview-panel{display:contents}.canvas{position:sticky;top:0;z-index:5;height:240px;box-shadow:0 8px 20px #4c64900a}.config-panel{margin-top:18px}.more-presets{margin-bottom:0}.section-tabs{position:relative}}
 .preview-actions{margin:0 0 10px}.preview-actions .primary,.preview-actions .secondary{min-height:42px;font-size:12px}.preview-actions+.export-row .outline{min-height:34px;padding:7px;font-size:11px}
+@media(max-width:760px) and (min-height:660px){.config-panel{overflow:visible}.section-tabs{position:sticky;top:240px;z-index:4;background:#fff;border-radius:17px 17px 0 0;box-shadow:0 5px 12px #ffffffd9}.controls button,.controls input,.controls select{scroll-margin-top:304px}}

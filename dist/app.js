@@ -11,6 +11,7 @@ Object.assign(DATA,{
  previewFinish:{soft:['柔和','柔和渐变'],flat:['平涂','平涂色块'],outline:['描边','清晰轮廓线']}
 });
 DATA.action.idle=['静静待着','•','身体和眼睛保持静止，不自动眨眼'];
+const canShapeFace=s=>['sphere','circle','spirit','human'].includes(s.body)||isAnimal(s)&&!['horse','penguin','snake'].includes(s.body);
 const LIVE_ACTIONS=['idle','breathe','blink','look','happy','bounce','listen','work','sleep','puzzled','skate','magic'];
 const PERSONAS={gentle:{expression:'calm',pose:'neutral',action:'breathe',tempo:.8},lively:{expression:'happy',pose:'wave',action:'bounce',tempo:1.2},curious:{expression:'curious',pose:'chin',action:'puzzled',tempo:1},focused:{expression:'focused',pose:'neutral',action:'work',tempo:.8},sleepy:{expression:'sleepy',pose:'sit',action:'sleep',tempo:.65},cool:{expression:'calm',pose:'fold',action:'look',tempo:.75}};
 const NEW_DEFAULT={version:4,faceShape:'round',bodyWidth:1,bodyHeight:1,headSize:1,eyeSpacing:48,eyeSize:1,nose:'none',mouth:'none',hair:'none',glasses:'none',hat:'none',clothing:'none',limbLength:1,personality:'gentle',tempo:.8,previewFinish:'soft',manualOverrides:[]};
@@ -70,12 +71,12 @@ function controls(){
  v+=field('手脚',chips('limbs'),state.body==='snake'?'蛇保持无肢体':'随轮廓一起变化');
  v+=range('limbLength','手脚长度');
  if(!isGeometry(state))v+=field('身体结构',chips('bodyplan',state.body==='human'?['chibi','biped']:state.body==='snake'?['blob']:['blob','chibi','biped','quad']));
- v+=`<div class="pair">${range('headSize',isGeometry(state)?'五官比例':'头部比例')}${selectField('faceShape','脸型')}</div>`;
+ v+=`<div class="pair">${range('headSize',isGeometry(state)?'五官比例':'头部比例')}${canShapeFace(state)?selectField('faceShape','脸型'):''}</div>`;
  v+=`<label class="field-title" for="nameInput">角色名字</label><input id="nameInput" class="text-input" maxlength="24" value="${html(state.name)}" placeholder="给它起个名字">`;
  if(state.body==='cat')v+=field('毛色花纹',chips('pattern'));
  }
  if(tab==='face'){
- v=heading('让它有自己的表情')+field('脸型',chips('faceShape'))+field('眼睛',chips('eyes'))+`<div class="pair">${range('eyeSpacing','眼距',1)}${range('eyeSize','眼睛大小')}</div>`+colors('eyeColor','眼睛颜色',[['白色眼睛','#FFFFFF'],['深色眼睛','#263044'],['蓝色眼睛','#6096E8'],['紫色眼睛','#8B73CD']])+field('鼻子',chips('nose'))+field('嘴巴',chips('mouth'))+field('表情',chips('expression'))+field('眼镜',chips('glasses'))+`<p class="helper">睡觉、眨眼和专注工作会临时优先使用对应眼神；切换动作后恢复所选表情。</p>`;
+ v=heading('让它有自己的表情')+(canShapeFace(state)?field('脸型',chips('faceShape')):'<p class="helper" style="margin:0 0 12px">当前主体保留特定轮廓；可在造型中调整身体宽高，圆球与多数人物、动物可单独调整脸型。</p>')+field('眼睛',chips('eyes'))+`<div class="pair">${range('eyeSpacing','眼距',1)}${range('eyeSize','眼睛大小')}</div>`+colors('eyeColor','眼睛颜色',[['白色眼睛','#FFFFFF'],['深色眼睛','#263044'],['蓝色眼睛','#6096E8'],['紫色眼睛','#8B73CD']])+field('鼻子',chips('nose'))+field('嘴巴',chips('mouth'))+field('表情',chips('expression'))+field('眼镜',chips('glasses'))+`<p class="helper">睡觉、眨眼和专注工作会临时优先使用对应眼神；切换动作后恢复所选表情。</p>`;
  }
  if(tab==='hair'){
  v=heading('换个发型')+field('发型',chips('hair'))+colors('hairColor','头发颜色',[['深棕','#3A3438'],['栗色','#78513E'],['奶棕','#B98D63'],['浅金','#DCCC9F'],['银灰','#BBC1CB'],['淡紫','#A293D6'],['粉发','#D89EB9']])+field('帽子',chips('hat'));
@@ -152,7 +153,7 @@ function buildPrompt(input){
  const clothes=desc('clothing',s.clothing);
  const hair=desc('hair',s.hair);
  const bodyplan=desc('bodyplan',s.bodyplan);
- let identity=`${ref}创作名为「${s.name.trim()||'Dot'}」的单个原创角色。主体：${desc('body',s.body)}。身体结构：${bodyplan}。主体主色 ${s.color}，${s.body==='human'?'肤色 '+s.skinColor+'，':''}保留主体应有的辨识特征。\n脸型：${desc('faceShape',s.faceShape)}。宽度 ${Math.round(s.bodyWidth*100)}%，高度 ${Math.round(s.bodyHeight*100)}%，${isGeometry(s)?'五官比例':'头部比例'} ${Math.round(s.headSize*100)}%，相对于该主体的标准轮廓。${limbs}；手脚长度 ${Math.round(s.limbLength*100)}%。`;
+ let identity=`${ref}创作名为「${s.name.trim()||'Dot'}」的单个原创角色。主体：${desc('body',s.body)}。身体结构：${bodyplan}。主体主色 ${s.color}，${s.body==='human'?'肤色 '+s.skinColor+'，':''}保留主体应有的辨识特征。\n脸型：${canShapeFace(s)?desc('faceShape',s.faceShape):'沿用'+label('body',s.body)+'的特定轮廓'}。宽度 ${Math.round(s.bodyWidth*100)}%，高度 ${Math.round(s.bodyHeight*100)}%，${isGeometry(s)?'五官比例':'头部比例'} ${Math.round(s.headSize*100)}%，相对于该主体的标准轮廓。${limbs}；手脚长度 ${Math.round(s.limbLength*100)}%。`;
  if(isAnimal(s))identity+='保留物种应有的耳朵、尾巴和花纹，手脚数量严格按所选身体结构；不额外添加肢体。';
  if(s.body==='cat')identity+=desc('pattern',s.pattern)+'。';
  const face=`眼睛：${desc('eyes',s.eyes)}，眼睛/瞳孔颜色 ${s.eyeColor}，相对大小 ${Math.round(s.eyeSize*100)}%，以 440 单位设计画布计双眼中心距 ${s.eyeSpacing} 单位。\n鼻子：${desc('nose',s.nose)}。嘴巴：${desc('mouth',s.mouth)}。基础表情：${desc('expression',s.expression)}。\n${hair}，发色 ${s.hairColor}。${desc('glasses',s.glasses)}；${desc('hat',s.hat)}。帽子覆盖头发顶层但保留侧发，眼镜位于眼睛外层，不遮挡鼻子。所有五官随脸型与头部比例对齐；环形角色的五官位于上方实体区域，保留中央孔洞。`;

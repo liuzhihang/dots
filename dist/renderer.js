@@ -44,7 +44,7 @@
     const tall=isHuman||(isAnimal&&plan==='biped')||isRobot&&plan==='biped';
     const quad=isAnimal&&plan==='quad'&&s.body!=='snake';
     const ring=s.body==='ring',mush=s.body==='mushroom';
-    const headX=quad?-19:0,headY=tall?-58:quad?-38:0,headScale=tall?(.79*s.headSize):quad?(.83*s.headSize):1;
+    const headX=quad?-19:0,headY=tall?-58:quad?-38:0,headScale=tall?((s.bodyplan==='biped'?.69:.79)*s.headSize):quad?(.83*s.headSize):1;
     let top=-91,bottom=92,half=91,faceY=-6,faceScale=1;
     if(s.body==='capsule'){top=-114;bottom=111;half=67;faceY=-15;}
     if(s.body==='cuboid'){top=-68;bottom=78;half=111;faceY=0;}
@@ -366,7 +366,7 @@
     const bottomExtent=Math.max(tall||quad?116:bottom,feetBottom,s.accessories.includes('macbook')?136:0)*s.bodyHeight;
     const frameScale=Math.min(1.14,192/Math.max(1,-topExtent),187/Math.max(1,bottomExtent),204/(Math.max(half+20,isAnimal?143:130)*s.bodyWidth));
     const label=esc(input&&input.name||'Dot');
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" width="440" height="420" role="img" aria-label="${label}" data-renderer="dot-live-v1" data-body="${s.body}" data-action="${action}"><title>${label}</title>${defs}${motion}${scene()}<g id="${id}stage" transform="translate(220 217) scale(${frameScale})"><g class="${id}avatar" data-part="avatar" data-motion="body"><g data-part="proportions" transform="scale(${s.bodyWidth} ${s.bodyHeight})">${composition}</g></g></g></svg>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 420" width="440" height="420" role="img" aria-label="${label}" data-renderer="dot-live-v1" data-body="${s.body}" data-action="${action}"><title>${label}</title>${defs}${motion}${scene()}<g id="${id}stage" transform="translate(220 217) scale(${frameScale})"><g class="${id}avatar" data-part="avatar" data-motion="body"><g data-part="proportions" transform="scale(${s.bodyWidth} ${s.bodyHeight})"><g data-part="pose-rig" transform="${s.pose==='sit'?'translate(0 7)':s.pose==='magic'?'rotate(-3 0 45)':'translate(0 0)'}">${composition}</g></g></g></g></svg>`;
   }
   function pause(svg,paused=true){
     if(!svg)return;
