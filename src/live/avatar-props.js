@@ -210,32 +210,33 @@ export function decorateAvatar(avatar, c) {
   const headStyle = action === 'listen' ? 'headphones' : a.head || 'none';
   if (headStyle !== 'none') {
     const hat = part('head-' + headStyle);
-    const felt = accent.clone(); felt.roughness = 1;
+    const headAccent=material(colors.headAccessory||colors.accessory||'#292A2D');
+    const felt = headAccent.clone(); felt.roughness = 1;
     if (headStyle === 'beret') {
       softBeret(hat, {rx: hatRadius, rz: hatRadius * .78, s, contact,
         center: [head[0] - .045 * s, head[1], head[2] + .02 * s]}, felt);
     } else if (headStyle === 'headphones') {
       // Sample the actual head cross-section. A rounded triangle and a sphere
       // need different arcs and cup angles even when their total width matches.
-      const earY = Math.min(head[1] - .26 * s, face[1] + .005 * s), z = head[2] + .015 * s;
+      const earY = Math.min(head[1] - .26 * s, face[1] - .23 * s), z = head[2] + .015 * s;
       const center = [head[0], earY, z], pts = [];
       for (let i = 0; i <= 24; i++) {
         const angle = .055 + i / 24 * (Math.PI - .110), direction = [Math.cos(angle), Math.sin(angle), 0];
         const hit = contact.around(center, direction, false, true);
-        const p = hit ? hit.point.addScaledVector(V(direction), .039 * s) : V(center).add(V([Math.cos(angle) * headHalfWidth, Math.sin(angle) * (head[1] - earY), 0]));
+        const p = hit ? hit.point.addScaledVector(V(direction), .055 * s) : V(center).add(V([Math.cos(angle) * headHalfWidth, Math.sin(angle) * (head[1] - earY), 0]));
         pts.push(p.toArray());
       }
       // The band bridges grooves between curls and lobes instead of copying
       // every dent into a wavy wire. Ears remain in front of the headband.
-      tube(hat, upperEnvelope(pts), .038 * s, accent);
+      tube(hat, upperEnvelope(pts), .035 * s, headAccent);
       for (const sign of [-1, 1]) {
         const hit = contact.side(sign, earY, z), normal = hit?.normal || V([sign, 0, 0]);
         if (normal.x * sign < .2) normal.set(sign, .15, 0).normalize();
         const surface = hit?.point || V([head[0] + sign * headHalfWidth, earY, z]);
         const cup = group(hat, 'earcup-' + sign, surface.clone().addScaledVector(normal, .040 * s).toArray());
         cup.quaternion.setFromUnitVectors(V([1, 0, 0]), normal);
-        ball(cup, [.10 * s, .235 * s, .188 * s], dark, [-.006 * s, 0, 0]);
-        ball(cup, [.10 * s, .256 * s, .197 * s], accent, [.070 * s, 0, 0]);
+        ball(cup, [.14 * s, .270 * s, .198 * s], dark, [-.006 * s, 0, 0]);
+        ball(cup, [.135 * s, .286 * s, .220 * s], headAccent, [.090 * s, 0, 0]);
         cup.userData.contactFit = {kind: 'side', point: surface.toArray(), normal: normal.toArray()};
       }
     } else {
@@ -249,9 +250,12 @@ export function decorateAvatar(avatar, c) {
       });
       const seatY = rimSamples.reduce((a, b) => a + b, 0) / rimSamples.length - .035 * s;
       hat.position.set(head[0], seatY, head[2]);
-      if (headStyle === 'pom') {
-        hat.position.set(head[0], head[1] + .105 * s, head[2]);
-        const pom = ball(hat, [.15 * s, .155 * s, .15 * s], felt); pom.name = 'hat-pom';
+      if (headStyle === 'tuft') {
+        hat.position.set(head[0],head[1]-.025*s,head[2]);
+        for(const [i,x] of [-.16,0,.16].entries()){const petal=ball(hat,[.095*s,(i===1?.22:.17)*s,.105*s],felt,[x*s,.08*s,0]);petal.rotation.z=(1-i)*.40;petal.name='tuft-lobe';petal.userData.surfaceMaterial='plush';avatar.surfaces?.push(petal);}
+      } else if (headStyle === 'pom') {
+        hat.position.set(head[0], head[1] + .17 * s, head[2]);
+        const pom = ball(hat, [.20 * s, .205 * s, .20 * s], felt); pom.name = 'hat-pom';
         pom.userData.surfaceMaterial = 'micro'; avatar.surfaces?.push(pom);
       } else if (['beanie', 'cap'].includes(headStyle)) {
         const cap = headStyle === 'cap', dome = mesh(hat,
@@ -326,7 +330,7 @@ export function decorateAvatar(avatar, c) {
           hat.userData.contactFit = {kind: 'ornament', point: attachment.point.toArray(), normal: attachment.normal.toArray(), offset: .010 * s};
         }
         flower(hat, .15 * s, secondary, gold);
-        ball(hat, [.042 * s, .039 * s, .023 * s], material('#678b62'), [0, 0, -.020 * s]);
+        ball(hat, [.042 * s, .055 * s, .023 * s], material('#678b62'), [0, 0, -.020 * s]);
         const leaf = ball(hat, [.044 * s, .115 * s, .021 * s], material('#678b62'), [.105 * s, -.06 * s, -.025 * s]);
         leaf.rotation.z = -.8;
       } else if (headStyle === 'wizard') {
@@ -369,7 +373,7 @@ export function decorateAvatar(avatar, c) {
     eyePoses.forEach(({center, quaternion, bounds}, i) => {
       if (monocle && i === 0) return;
       const sign = i ? 1 : -1, eyeWidth = bounds.max.x - bounds.min.x, eyeHeight = bounds.max.y - bounds.min.y;
-      const rx = Math.max(clamp(spacing * .41, .11 * s, .27 * s), eyeWidth * .5 + .024 * s);
+      const rx = Math.max(clamp(spacing * (a.face==='roundSun'?.43:.41), .11 * s, .27 * s), eyeWidth * .5 + .024 * s);
       const ry = Math.max(rx * (a.face === 'square' || a.face === 'sunglasses' ? .81 : 1.04), eyeHeight * .5 + .021 * s);
       const offset = Math.max(.025 * s, bounds.max.z + .022 * s);
       const g = group(glasses, 'lens-' + i, center.clone().addScaledVector(V([0, 0, 1]).applyQuaternion(quaternion), offset).toArray());
@@ -459,7 +463,7 @@ export function decorateAvatar(avatar, c) {
       box(g, [.078 * s, .009 * s, .055 * s], keys, [(col - 4.5) * .098 * s, .026 * s, (row * .079 - .06) * s], .014 * s);
     box(g, [.32 * s, .004 * s, .135 * s], muted, [0, .024 * s, -.225 * s], .018 * s);
     const lid = group(g, 'laptop-lid', [0, .025 * s, dd * .45]); lid.rotation.x = .54;
-    box(lid, [ww, sh, .039 * s], silver, [0, sh / 2, 0], .043 * s);
+    box(lid, [ww, sh, .055 * s], silver, [0, sh / 2, 0], .043 * s);
     const screen = material('#203943', {roughness: .42, emissive: '#214c58', emissiveIntensity: .23});
     box(lid, [ww - .07 * s, sh - .055 * s, .005 * s], screen, [0, sh / 2, -.024 * s], .027 * s);
     const ui = material('#8daea7', {emissive: '#618c83', emissiveIntensity: .15});
@@ -607,7 +611,7 @@ export function decorateAvatar(avatar, c) {
         palm.rotation.x = prop === 'macbook' ? Math.PI * .4 : -.22;
         for (let j = 0; j < 4; j++) ball(palm, [.023 * s, (.065 - Math.abs(j - 1.5) * .008) * s, .025 * s], handMat,
           [(j - 1.5) * .043 * s, .067 * s, .018 * s]);
-        const thumb = ball(palm, [.039 * s, .059 * s, .035 * s], handMat, [-sign * .09 * s, .006 * s, .035 * s]);
+        const thumb = ball(palm, [.055 * s, .059 * s, .035 * s], handMat, [-sign * .09 * s, .006 * s, .035 * s]);
         thumb.rotation.z = sign * .42;
       }
       arms.push(arm); palms.push(palm);

@@ -9,7 +9,7 @@ const UP=new THREE.Vector3(0,1,0);
 let graphicsMode=null;
 const stillTime=c=>c?.action==='bounce'?.45:c?.action==='blink'?.17:c?.action==='listen'?.4:c?.action==='wave'?.35:0;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-function visualKey(config){const c={...config};for(const k of ['name','notes','reference','presetId','version','rendererVersion','palette','output','eyeColorManual'])delete c[k];return JSON.stringify(c);}
+function visualKey(config){const c={...config};for(const k of ['name','notes','reference','presetId','version','rendererVersion','palette','output','eyeColorManual','provenance'])delete c[k];return JSON.stringify(c);}
 const seedRandom=seed=>{let n=2166136261;for(const ch of String(seed))n=Math.imul(n^ch.charCodeAt(0),16777619);return()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;};};
 function disposeRoot(root){
  const geometries=new Set(),materials=new Set(),textures=new Set();
@@ -68,15 +68,16 @@ class RenderWorld{
    this.environment=pmrem.fromScene(room,.055);this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.35;
    room.dispose();pmrem.dispose();
   }
-  this.scene.add(new THREE.HemisphereLight('#ffffff','#b8c4d3',1.05));
-  const key=new THREE.DirectionalLight('#fffaf6',2.7);key.position.set(-3.8,5.2,4.4);key.castShadow=!thumbnail;
+  this.scene.add(new THREE.HemisphereLight('#ffffff','#e1e5eb',1.45));
+  const key=new THREE.DirectionalLight('#fffdfb',2.3);key.position.set(-3.8,5.2,4.4);key.castShadow=!thumbnail;
   key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-4,right:4,top:5,bottom:-3,near:.1,far:20});key.shadow.bias=-.0003;key.shadow.normalBias=.010;key.shadow.radius=5;this.scene.add(key);
-  const fill=new THREE.DirectionalLight('#edf5ff',.42);fill.position.set(4,2.8,2.4);this.scene.add(fill);
+  const fill=new THREE.DirectionalLight('#f2f6ff',.84);fill.position.set(4,2.8,2.4);this.scene.add(fill);
+  const bounceLight=new THREE.DirectionalLight('#f4f7ff',.42);bounceLight.position.set(0,-2,4);this.scene.add(bounceLight);
   const rim=new THREE.DirectionalLight('#ffffff',.8);rim.position.set(2,4.2,-3.6);this.scene.add(rim);
-  this.floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({color:'#68718a',opacity:.16}));this.floor.rotation.x=-Math.PI/2;this.floor.position.y=-.016;this.floor.receiveShadow=true;this.scene.add(this.floor);
+  this.floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({color:'#68718a',opacity:.11}));this.floor.rotation.x=-Math.PI/2;this.floor.position.y=-.016;this.floor.receiveShadow=true;this.scene.add(this.floor);
   // A very soft contact core remains stable under gentle idle motion.
   const size=128,data=new Uint8Array(size*size*4);
-  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const r=((x-size/2)/(size/2))**2+((y-size/2)/(size/2))**2;const i=(y*size+x)*4;data[i]=88;data[i+1]=103;data[i+2]=125;data[i+3]=Math.round(Math.exp(-r*4.2)*64);}
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const r=((x-size/2)/(size/2))**2+((y-size/2)/(size/2))**2;const i=(y*size+x)*4;data[i]=88;data[i+1]=103;data[i+2]=125;data[i+3]=Math.round(Math.exp(-r*4.2)*43);}
   const map=new THREE.DataTexture(data,size,size);map.needsUpdate=true;
   this.contact=new THREE.Mesh(new THREE.PlaneGeometry(3.3,2.2),new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false}));this.contact.rotation.x=-Math.PI/2;this.contact.position.y=.002;this.scene.add(this.contact);
   this.turn=new THREE.Group();this.scene.add(this.turn);this.frame={width:512,height:512};
@@ -112,15 +113,19 @@ class RenderWorld{
   if(!this.avatar)return;const a=this.avatar,c=this.config,rest=a.root.userData;
   a.root.position.y=rest.restY;a.root.scale.copy(rest.restScale);a.root.rotation.copy(rest.restRotation);
   if(c.action==='bounce'){
-   const v=Math.max(0,Math.sin(time*3.1));a.root.position.y+=v*.24;a.root.scale.y=rest.restScale.y*(1+v*.05);a.root.scale.x=rest.restScale.x*(1-v*.025);
+   const v=Math.max(0,Math.sin(time*3.1));a.root.position.y+=v*.24;
   }else{
    const breath=Math.sin(time*(c.action==='sleep'?1.3:1.8));a.root.scale.y=rest.restScale.y*(1+breath*.008);
    if(c.action==='listen')a.root.rotation.z+=Math.sin(time*2)*.035;
    if(c.expression==='curious'||c.expression==='skeptical')a.root.rotation.z+=.055;
    if(c.expression==='shy')a.root.rotation.y+=.11;
+   if(c.expression==='sleepy')a.root.rotation.z-=.04;
+   if(c.expression==='expectant')a.root.rotation.x+=.045;
+   if(c.expression==='panicked')a.root.rotation.x-=.08;
+   if(c.expression==='laughing')a.root.rotation.x-=.06;
   }
   const blinkCycle=time%(c.action==='blink'?2.3:5.5),blink=Math.abs(blinkCycle-.17)<.16?Math.max(.07,Math.abs(blinkCycle-.17)/.16):1;
-  for(const eye of a.eyeGroups)eye.scale.y=(c.expression==='closed'||c.expression==='wink'||c.expression==='delighted'||c.action==='sleep')?1:blink;
+  for(const eye of a.eyeGroups)eye.scale.y=(c.expression==='closed'||c.expression==='wink'||['delighted','laughing'].includes(c.expression)||c.action==='sleep'||c.action==='work')?1:blink;
   if(a.tail&&c.action!=='sleep')a.tail.rotation.y=Math.sin(time*2.5)*.035;
   this.props?.tick(time);this.renderer.render(this.scene,this.camera);
  }

@@ -1,7 +1,49 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Dot Studio · 精细结构编辑</title><meta name="description" content="捏出你的 Dot：实时调整脸型、五官、头发、穿搭与动作，导出角色或复制完整 AI 创作说明。"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%233064ed'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="./style.css?v=19"><script defer src="./data.js?v=19"></script><script defer src="./renderer.js?v=19"></script><script defer src="./app.js?v=19"></script><script defer src="./legacy-bridge.js?v=20"></script></head>
-<body><header class="topbar"><a href="./" class="brand" aria-label="Dot Icon Studio 首页"><span class="brand-dot"></span><strong>dot</strong><span class="brand-slash">/</span><span>精细结构编辑</span></a><div class="header-actions"><a href="./" class="outline" style="padding:9px 12px;text-decoration:none;color:#346af0">返回 Studio</a><button id="undoConfig" class="quiet" aria-label="撤销" title="撤销">↶</button><button id="redoConfig" class="quiet" aria-label="重做" title="重做">↷</button><button id="loadConfig" class="quiet">导入</button><button id="saveConfig" class="outline">保存配置</button><button id="resetConfig" class="icon-button" aria-label="重置为蓝色 Dot" title="重置为蓝色 Dot">↺</button></div><input hidden type="file" id="configFile" accept=".json,application/json"></header>
-<main><div class="intro"><div><h1>捏一个你的 Dot。</h1><p>圆圆的轮廓，一点点个性。</p></div><span class="live-label"><i></i> 实时预览</span></div><div class="workspace">
-<section class="preview-panel" aria-label="实时角色预览"><div class="canvas checker" id="canvas"><div class="canvas-toolbar"><div><strong id="characterTitle">Dot</strong><span id="bodyLabel">团子精灵</span></div><button id="playPause" class="play-button" aria-label="暂停动作">Ⅱ 暂停</button></div><div id="showcase" class="showcase" aria-live="off"></div><div class="canvas-bottom"><span id="actionBadge"></span><div class="finish-controls" id="finishControls" aria-label="预览画法"></div></div></div><div class="interaction-row"><select id="interactionMode" aria-label="网页互动"><option value="off">互动关闭</option><option value="gaze">目光跟随</option><option value="touch">点击 / 轻抚</option></select><span id="interactionStatus" role="status">网页本地互动</span></div><p class="preview-note" id="previewNote">实时 2D 造型预览 · 毛绒、3D 和写实材质在 ChatGPT 中生成</p><div class="prompt-actions preview-actions"><button id="previewCopy" class="primary">复制创作说明</button><button id="previewOpen" class="secondary">打开 ChatGPT ↗</button></div><div class="export-row"><button id="exportSVG" class="outline">导出 SVG</button><button id="exportPNG" class="outline">导出 PNG</button><button id="exportAnimated" class="outline">动态 SVG</button></div><div class="seed-row"><input id="seedInput" aria-label="随机搭配种子" value="dot-01" maxlength="40"><button id="randomConfig" class="quiet">按种子搭配</button><button id="nextSeed" class="quiet" aria-label="换个种子随机搭配">🎲 换一套</button></div><div class="preset-title"><strong>从喜欢的搭配开始</strong><span>点击载入整套</span></div><div id="presetGrid" class="preset-grid"></div><details class="more-presets"><summary>更多 Dot <span>动物 · 人物 · 机器人 · 奇幻</span></summary><div id="allSubjects"></div><div class="preset-title"><strong>原创材质参考</strong><span>点击载入预设，主画布实时组装</span></div><div id="referenceGallery" class="reference-gallery"></div></details></section>
-<section class="config-panel" aria-label="捏脸控制"><nav id="sectionTabs" class="section-tabs" aria-label="角色设置"></nav><div id="controls" class="controls"></div><details class="role-details"><summary>角色设定 <span>可选 · 文字指令</span></summary><div id="roleFields"></div></details><div class="editor-bottom"><div class="purpose-row"><strong>用这个角色创作</strong><div id="purposeControls" class="purpose-options"></div></div><p id="purposeHelp" class="helper"></p><div class="prompt-actions"><button id="copyPrompt" class="primary">复制创作说明</button><button id="copyOpen" class="secondary">打开 ChatGPT ↗</button></div><p class="action-note">打开时也会复制 · 粘贴后生成所选画法与材质</p><details class="prompt-details"><summary>查看完整创作说明</summary><pre id="promptPreview" tabindex="0"></pre></details></div></section></div></main>
-<footer><span>dot icon studio</span><span>原创角色 · SVG 导出不是已验证 Pet</span></footer><div id="toast" role="status" aria-live="polite" class="toast"></div></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8fafc">
+  <title>Dot Studio · 共享配置 2D 结构图</title>
+  <meta name="description" content="从 Dots、Grok Bot、Muse 与宠物开始，探索柔软材质、自然动作与小配饰，带走属于你的角色 Prompt。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%232166E8'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./studio.css?v=43"><link rel="stylesheet" href="./studio-layout.css?v=43"><script type="module" src="./studio.js?v=43"></script>
+</head>
+<body class="studio-r4" data-renderer="schematic">
+<a class="skip-link" href="#workspace">跳到角色工作台</a>
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Dot Studio 首页"><span class="brand-symbol" aria-hidden="true"><i></i><i></i></span><b>Dot <span>Studio</span></b></a>
+  <div class="header-tools">
+    <button class="icon-btn" id="undo" aria-label="撤销" title="撤销"></button><button class="icon-btn" id="redo" aria-label="重做" title="重做"></button>
+    <button class="text-button desktop-guide" data-command="guide">风格指南</button>
+    <details class="project-menu"><summary>配置 <span aria-hidden="true">⌄</span></summary><div class="project-menu-items">
+      <button data-command="save-config"><span data-icon="save"></span>保存 JSON 配置</button>
+      <button data-command="import-config"><span data-icon="upload"></span>导入 JSON 配置</button>
+      <button data-command="reference"><span data-icon="image"></span>参考图 Prompt</button>
+      <button data-command="guide"><span data-icon="book"></span>风格与设计来源</button>
+      <a href="./editor.html"><span data-icon="external"></span>结构草图编辑器</a>
+    </div></details>
+  </div>
+</header>
+<main id="workspace" class="studio-layout">
+  <section class="creative-area" aria-label="角色展示">
+    <div class="preview-panel">
+      <div class="workspace-heading"><div><h1 id="stageName">蓝色团子</h1><span id="stageTag">Dots / 细密短绒</span></div></div>
+      <div class="stage-card" id="stageCard">
+        <div class="stage-top"><a class="renderer-switch" href="./">返回同一角色 3D</a><span id="sourceBadge" class="source-badge"></span><span class="sample-badge live-badge" id="previewBadge">实时 3D</span></div>
+        <div id="stageArt" class="stage-art-area"></div>
+        <div class="stage-caption"><span id="sampleCaption"></span><div class="preview-actions"><button id="playPreview" class="text-button" data-command="toggle-play" aria-pressed="true">暂停动作</button><button class="icon-btn" data-command="expand" title="放大或导出当前预览" aria-label="放大或导出当前预览"><span data-icon="maximize"></span></button></div></div>
+      </div>
+      <div class="preview-truth" id="previewTruth" aria-live="polite"></div>
+    </div>
+  </section>
+  <aside class="inspector" aria-label="角色定制">
+    <nav id="families" class="family-tabs" aria-label="选择角色体系"></nav>
+    <div class="character-picker"><button class="current-preset" data-command="catalog" aria-label="打开当前体系的角色库"><span data-icon="grid"></span><span><b id="presetName">蓝色团子</b><small><span id="presetCount">12</span> 个角色起点</small></span><span class="picker-arrow" aria-hidden="true">⌄</span></button><button class="icon-btn" data-command="random" aria-label="随机搭配" title="随机搭配"><span data-icon="shuffle"></span></button><button class="icon-btn" data-command="reset" aria-label="重置当前角色" title="重置当前角色"><span data-icon="reset"></span></button></div>
+    <nav class="setting-tabs" aria-label="定制选项" role="tablist"><button role="tab" aria-selected="true" aria-controls="settings" id="tab-appearance" data-tab="appearance">外形</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-face" data-tab="face" tabindex="-1">五官</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-accessories" data-tab="accessories" tabindex="-1">配件</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-motion" data-tab="motion" tabindex="-1">动作</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-scene" data-tab="scene" tabindex="-1">画面</button></nav>
+    <div id="settings" class="settings" role="tabpanel" aria-labelledby="tab-appearance"></div>
+    <footer class="prompt-dock" aria-label="生成与导出 Prompt"><div class="prompt-dock-heading"><button class="prompt-summary-button" data-command="prompt"><b>Prompt</b><span>查看全文 <span aria-hidden="true">↗</span></span></button><span id="configCount">实时联动</span></div><span id="promptSummary" class="prompt-summary-text"></span><div class="prompt-dock-actions"><button class="button outlined export-text" data-command="export-prompt" aria-label="导出 Prompt TXT" title="导出 Prompt TXT"><span data-icon="download"></span></button><button class="button primary" data-command="copy"><span data-icon="copy"></span>复制 Prompt</button><button class="button outlined chatgpt-open" data-command="copy-open" aria-label="复制并打开 ChatGPT" title="复制并打开 ChatGPT"><span data-icon="external"></span><span>ChatGPT</span></button></div><button class="reference-shortcut" data-command="reference">用自己的参考图创作 <span aria-hidden="true">↗</span></button></footer>
+  </aside>
+</main>
+<div id="currentConfig" hidden></div><input id="configFile" type="file" accept=".json,application/json" hidden>
+<dialog id="modal" aria-labelledby="modalTitle"><div class="modal-shell"><div class="modal-top"><div><span class="eyebrow" id="modalEyebrow"></span><h2 id="modalTitle"></h2></div><button class="icon-btn" id="closeModal" aria-label="关闭弹窗"><span data-icon="x"></span></button></div><div id="modalBody" class="modal-body"></div></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div><noscript><p>请启用 JavaScript 以使用角色定制与 Prompt 导出。</p></noscript>
+</body></html>

@@ -5,7 +5,7 @@ const circle=(x,y,r)=>`<circle cx="${x}" cy="${y}" r="${r}"/>`;
 const ink='#313642',base='#e9ecf1';
 const flower=(x,y,r,n=6)=>Array.from({length:n},(_,i)=>{const a=i*2*Math.PI/n;return circle(x+Math.cos(a)*r*.62,y+Math.sin(a)*r*.62,r*.53);}).join('')+circle(x,y,r*.6);
 const radial=(n,low,high,phase=-Math.PI/2)=>{let d='';for(let i=0;i<120;i++){const a=phase+i/120*Math.PI*2,r=low+(high-low)*(.5+.5*Math.cos(n*(a-phase)));d+=(i?'L':'M')+(40+Math.cos(a)*r).toFixed(2)+' '+(32+Math.sin(a)*r).toFixed(2);}return path(d+'Z');};
-const shapes={
+export const schematicShapes={
  sphere:circle(40,32,23),triangle:path('M33 12Q40 1 47 12L65 45Q71 57 57 57H23Q9 57 15 45Z'),
  pill:'<rect x="14" y="16" width="52" height="32" rx="16"/>',capsule:'<rect x="25" y="6" width="30" height="52" rx="15"/>',
  frog:path('M18 21Q12 6 24 7Q34 6 33 20H47Q46 6 57 7Q68 7 62 22Q71 33 64 47Q59 55 47 55H32Q20 55 16 45Q9 34 18 21Z'),
@@ -59,7 +59,7 @@ const heads={
  cap:'<path d="M20 24C21 4 58 3 61 23Z"/><path d="M21 23Q51 20 69 28Q71 34 50 30L23 27Z"/>',
  bowler:'<path d="M25 24V18C25 0 55 0 55 18V24Z"/><ellipse cx="40" cy="24" rx="22" ry="5"/>',
  topHat:'<path d="M27 23L24 6Q40 2 56 6L53 23Z"/><ellipse cx="40" cy="24" rx="23" ry="5"/>',
- pom:circle(40,10,8),flower:`<g fill="#e9c75c">${flower(24,18,7)}</g><circle cx="24" cy="18" r="2.3" fill="#8c7249"/>`,
+ tuft:'<ellipse cx="32" cy="13" rx="5" ry="8" transform="rotate(-25 32 13)"/><ellipse cx="40" cy="9" rx="5" ry="10"/><ellipse cx="48" cy="13" rx="5" ry="8" transform="rotate(25 48 13)"/>',pom:circle(40,10,8),flower:`<g fill="#e9c75c">${flower(24,18,7)}</g><circle cx="24" cy="18" r="2.3" fill="#8c7249"/>`,
  wizard:'<path d="M40 2L57 26H22Z"/><ellipse cx="40" cy="26" rx="23" ry="4"/><path d="M40 13L42 16L45 17L42 18L41 21L40 18L37 17L39 16Z" fill="#ead69a" stroke="none"/>',
  crown:'<path d="M23 24L20 11L31 17L40 5L49 17L60 11L57 24Z" fill="#c7a85d"/><circle cx="20" cy="10" r="2.5" fill="#c7a85d"/><circle cx="40" cy="5" r="2.5" fill="#c7a85d"/><circle cx="60" cy="10" r="2.5" fill="#c7a85d"/>'
 };
@@ -70,7 +70,7 @@ export function pickerIllustration(pathName,id,color='#6383ec'){
  if(pathName==='shape'){
   const channels=(color.match(/[a-f\d]{2}/gi)||[]).map(c=>parseInt(c,16));
   const light=channels.length===3&&(channels[0]*.2126+channels[1]*.7152+channels[2]*.0722)>205;
-  body=`<g fill="${color}"${light?' stroke="#aeb8c9" stroke-width=".9" stroke-linejoin="round"':''}>${shapes[id]||shapes.sphere}</g>`;
+  body=`<g fill="${color}"${light?' stroke="#aeb8c9" stroke-width=".9" stroke-linejoin="round"':''}>${schematicShapes[id]||schematicShapes.sphere}</g>`;
  }
  else if(pathName==='eyes')body=blankHead+eyes(id);
  else if(pathName==='accessories.face')body=blankHead+(['sunglasses','catEye','roundSun'].includes(id)?'':plainEyes)+`<g fill="none" stroke="${ink}" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">${glasses[id]||''}</g>`;

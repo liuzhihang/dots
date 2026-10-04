@@ -1,13 +1,23 @@
 // Every entry is a Studio art direction, not an official downloadable avatar.
 // Sources inform the visual vocabulary; the real-time meshes are original work.
 const preset=(id,family,name,description,shape,color,extra={})=>({id,family,name,description,shape,color,...extra});
+export const REFERENCE_INFO={date:'2026-10-04',basis:'用户提供的 App 设置截图',notice:'依据可见截图独立复刻；色值为视觉近似，不是官方素材、官方参数或官方背书。截图未展示完整眼镜、配饰与表情菜单。'};
 export const PRESETS=[
+ preset('app-blue','dots','蓝球耳机','圆球 · 小椭圆眼 · 黑色耳机','sphere','#3264FA',{provenance:'official-recreation',head:'headphones',eyeColor:'#222326',accessory:'#292A2D'}),
+ preset('app-petal','dots','蓝瓣画家','六瓣团 · 小椭圆眼 · 贝雷帽','puff','#398FED',{provenance:'official-recreation',head:'beret',eyeColor:'#222326',accessory:'#252729'}),
+ preset('app-triangle','dots','黄团绅士','软三角 · 闭眼 · 圆框与领结','triangle','#F4D13D',{provenance:'official-recreation',face:'round',neck:'bow',expression:'closed',eyeColor:'#242626',accessory:'#292A27'}),
+ preset('app-heart','dots','莓紫爱心','爱心 · 圆形墨镜','heart','#D448DC',{provenance:'official-recreation',face:'roundSun',eyeColor:'#242429',accessory:'#26242A'}),
+ preset('app-frog','dots','青柠蛙蛙','突起双眼 · 黑色领结','frog','#B9DF4A',{provenance:'official-recreation',neck:'bow',eyeColor:'#242922',accessory:'#272C24'}),
+ preset('app-scallop','dots','橙橙花边','花边圆 · 圆点眼 · 单片镜','scallop','#EF703C',{provenance:'official-recreation',eyes:'glossy',face:'monocle',eyeColor:'#23272A',accessory:'#292A2B'}),
+ preset('app-diamond','dots','黄菱小酷','软菱形 · 顶部圆球 · 墨镜','diamond','#E9DC54',{provenance:'official-recreation',head:'pom',headColor:'#E9DC54',face:'sunglasses',eyeColor:'#242627',accessory:'#252727'}),
+ preset('app-pebble','dots','蓝石望望','鹅卵石 · 顶饰 · 圆框与侧望眼','pebble','#45A5E4',{provenance:'official-recreation',head:'tuft',headColor:'#45A5E4',face:'round',eyes:'side',eyeColor:'#252B2D',accessory:'#252B2D'}),
+ preset('app-twin','dots','桃桃听歌','顶部双瓣 · 闭眼 · 黑色耳机','twin','#E9829B',{provenance:'official-recreation',head:'headphones',expression:'closed',eyeColor:'#29262A',accessory:'#292A2C'}),
  preset('dots-blue','dots','蓝色团子','圆润小球 · 贴合耳机','sphere','#386AFF',{head:'headphones',eyeColor:'#17191C',accessory:'#252525'}),
- preset('dots-cloud','dots','云朵画家','Felipe 的云朵轮廓灵感','cloud','#3B9DF2',{head:'beret',source:'dots'}),
- preset('dots-triangle','dots','奶油小绅士','Alfred 的三角与圆框灵感','triangle','#F4CC57',{face:'round',source:'dots'}),
- preset('dots-frog','dots','青柠蛙蛙','Todd 的突起双眼灵感','frog','#A8D849',{source:'dots'}),
- preset('dots-heart','dots','莓莓爱心','Jojo 的爱心与墨镜灵感','heart','#D68AD7',{face:'sunglasses',source:'dots'}),
- preset('dots-twin','dots','桃桃听歌','Iggy 的双瓣与耳机灵感','twin','#EF96C0',{head:'headphones',expression:'closed',source:'dots'}),
+ preset('dots-cloud','dots','云朵画家','原创云团 · 贝雷帽','cloud','#3B9DF2',{head:'beret',source:'dots'}),
+ preset('dots-triangle','dots','奶油小绅士','原创奶油配色 · 圆框','triangle','#F4CC57',{face:'round',source:'dots'}),
+ preset('dots-frog','dots','青柠蛙蛙','原创青柠配色','frog','#A8D849',{source:'dots'}),
+ preset('dots-heart','dots','莓莓爱心','原创粉紫 · 方形墨镜','heart','#D68AD7',{face:'sunglasses',source:'dots'}),
+ preset('dots-twin','dots','桃桃听歌','原创桃粉 · 闭眼耳机','twin','#EF96C0',{head:'headphones',expression:'closed',source:'dots'}),
  preset('dots-bean','dots','开心豆','有一点歪歪的豆形','bean','#ABD5B5',{mouth:'smile'}),
  preset('dots-drop','dots','水滴晴晴','柔和小尖顶与饱满底部','drop','#87CBED'),
  preset('dots-pebble','dots','奶白鹅卵石','宽扁、安静的小石头','pebble','#EAE7DF'),
@@ -53,7 +63,7 @@ export const PRESETS=[
 ];
 export const familyPresets=family=>PRESETS.filter(p=>p.family===family);
 export const STYLE_SOURCES=[
- {family:'dots',title:'ChatGPT Dots · 官方角色示例',url:'https://chatgpt.com/features/dots/',note:'官网展示 Felipe、Alfred、Todd、Jojo、Iggy。本站对应预设为轮廓与搭配的原创转译。'},
+ {family:'dots',title:'ChatGPT Dots · 官方角色示例',url:'https://chatgpt.com/features/dots/',note:'公开介绍可辅助理解风格；本站的 9 个同款复刻以 2026-10-04 提供的 App 截图为依据，名称为本站描述性命名。'},
  {family:'grok',title:'xAI · Designing Grok Bot',url:'https://x.ai/news/designing-grok-bot',note:'简洁外形、富有表现力的眼睛与克制的变化。'},
  {family:'grok',title:'Bloub · 独立交互项目',url:'https://bloub.vercel.app',note:'8 种可切换几何外形、表情与配色参考；非 xAI 官方网站。'},
  {family:'muse',title:'Muse · How We Designed Muse',url:'https://introducing.muse.ai/',note:'个人化头像与身份；Veda 是文章作者自己的 Muse，不是统一默认形象。'},

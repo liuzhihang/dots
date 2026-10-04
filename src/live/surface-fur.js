@@ -48,7 +48,7 @@ export function addFur(avatar,c,quality=1) {
     // Plush needs visible, combed pile above a fine undercoat. Tiny surface
     // noise alone reads as painted plastic at the actual workbench scale.
     // Keep a separate much shorter profile for velvet and woven cloth.
-    const length=textile?.0050:micro?.0090:.034,radius=textile?.00050:micro?.00064:.00105;
+    const length=textile?.0050:micro?.0090:.023,radius=textile?.00050:micro?.00064:.00088;
     const geometry=pileGeometry(length,radius),material=new THREE.MeshStandardMaterial({color:mesh.material.color,roughness:1,metalness:0,side:THREE.DoubleSide});
     material.name='fine-pile';const fur=new THREE.InstancedMesh(geometry,material,count);fur.name='surface-fibers';fur.castShadow=false;fur.receiveShadow=true;
     fur.userData.surfaceMaterial=kind;fur.userData.fiberProfile=geometry.userData.fiberProfile;fur.userData.fiberRadius=radius;fur.userData.fiberTones=new Float32Array(count);
@@ -66,7 +66,7 @@ export function addFur(avatar,c,quality=1) {
       worldPoint.copy(p).applyMatrix4(mesh.matrixWorld);
       for(const eye of eyes){const d=worldPoint.distanceToSquared(eye);if(d<.035)localLength*=.36+.64*Math.min(1,d/.035);}
       const girth=.76+random()*.35;o.scale.set(girth,localLength,girth);o.updateMatrix();fur.setMatrixAt(j,o.matrix);
-      const tone=textile?.91+random()*.13:micro?.91+random()*.15:.82+random()*.29;
+      const tone=textile?.91+random()*.13:micro?.91+random()*.15:.91+random()*.17;
       fur.userData.fiberTones[j]=tone;color.copy(surfaceColor).multiplyScalar(tone);fur.setColorAt(j,color);
     }
     fur.instanceMatrix.needsUpdate=true;fur.instanceColor.needsUpdate=true;fur.frustumCulled=false;mesh.add(fur);

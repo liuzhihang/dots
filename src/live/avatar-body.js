@@ -185,7 +185,7 @@ export function buildAvatarBody(input={}) {
   function material(color,kind=c.material) {
     const hex=new THREE.Color(color).getHexString(),key=hex+':'+kind;
     if(materialCache.has(key))return materialCache.get(key);
-    const roughness={rubber:.71,plush:.97,micro:.93,clay:.89,skin:.80,hair:.71,fiber:.90,knit:.99,fabric:.95,eye:.31,matteEye:.78,nose:.52};
+    const roughness={rubber:.71,plush:.97,micro:.93,clay:.89,skin:.80,hair:.71,fiber:.90,knit:.99,fabric:.95,eye:.35,matteEye:.60,nose:.52};
     const m=new THREE.MeshStandardMaterial({color,roughness:roughness[kind]??.88,metalness:0});m.name=kind;
     if(!['eye','matteEye','nose','hair'].includes(kind)) {
       if(!textureCache.has(kind))textureCache.set(kind,surfaceTexture(kind));
@@ -296,7 +296,7 @@ export function buildAvatarBody(input={}) {
     faceTargets=[mesh];
     mesh.geometry.computeBoundingBox();const bottom=mesh.geometry.boundingBox.min.y*sz[1];
     const feet=['feet','both'].includes(c.limbs);head.position.y=-bottom*h+(feet?.22:.035);
-    faceLayout={eyeX:(shape==='triangle'?.255:shape==='pill'?.30:.275)*w,eyeY:shape==='dumpling'?.015:shape==='cloud'?.03:shape==='triangle'?.075:shape==='sprout'?.07:.12,mouthY:shape==='dumpling'?-.22:-.23,size:shape==='triangle'?.91:shape==='dumpling'?.95:1,neckY:bottom*.72};
+    faceLayout={eyeX:(shape==='triangle'?.265:shape==='heart'?.29:shape==='pebble'?.27:shape==='scallop'?.25:shape==='twin'?.25:shape==='pill'?.26:c.family==='dots'?.20:.275)*w,eyeY:shape==='dumpling'?.015:shape==='cloud'?.10:shape==='triangle'?.18:shape==='sprout'?.13:.23,mouthY:shape==='dumpling'?-.22:-.23,size:shape==='triangle'?.91:shape==='dumpling'?.95:1,neckY:bottom*.72};
     const hands=['hands','both'].includes(c.limbs)||c.accessories?.prop&&c.accessories.prop!=='none'||['work','flowers','magic','camera','drink','read','wave'].includes(c.action);
     if(hands)for(const side of [-1,1])arm(side,[side*1.03*w,head.position.y-.10,.10],.40,.15,bodyMat,bodyMat,'mitten');
     if(feet)for(const side of [-1,1])paw(side,side*.46*w,.13,.12,[.21,.13,.28]);
@@ -596,11 +596,11 @@ export function buildAvatarBody(input={}) {
     const expression=c.expression,scale=clamp(Number(c.eyeScale)||1,.45,1.8)*faceLayout.size,spacing=clamp(Number(c.eyeSpacing)||1,.6,1.6),ex=faceLayout.eyeX*spacing;
     const dims={softOval:[.064,.102],capsule:[.067,.179],round:[.063,.063],sparkle:[.079,.109],oval:[.098,.118],lash:[.064,.105],star:[.084,.128],glossy:[.086,.086],side:[.093,.093],sleepy:[.079,.091]};
     const [ew,eh]=dims[c.eyes]||dims.softOval,closed=expression==='closed';
-    const squint={sleepy:.43,happy:.85,excited:1.13,surprised:1.26,sad:.87,focused:.79,confident:.79,shy:.76,angry:.68,proud:.74,worried:.94}[expression]??1;
+    const squint={deadpan:.35,tearful:1.08,expectant:1.16,panicked:1.43,sleepy:.43,happy:.85,excited:1.13,surprised:1.26,sad:.87,focused:.79,confident:.79,shy:.76,angry:.68,proud:.74,worried:.94}[expression]??1;
     for(const side of [-1,1]) {
       const x=side*ex,y=faceLayout.eyeY+(['curious','skeptical'].includes(expression)&&side>0?.025:0),surfaceZ=frontZ(x,y);
-      const eyeClosed=closed||(expression==='wink'&&side>0)||expression==='delighted';
-      const eyeHeight=squint*(expression==='skeptical'&&side<0?.52:1);
+      const eyeClosed=closed||(expression==='wink'&&side>0)||['delighted','laughing'].includes(expression);
+      const eyeHeight=squint*(expression==='skeptical'&&side<0?.52:expression==='panicked'&&side>0?.84:1);
       const delta=.012,gx=(frontZ(x+delta,y)-frontZ(x-delta,y))/(delta*2),gy=(frontZ(x,y+delta)-frontZ(x,y-delta))/(delta*2);
       const normal=new THREE.Vector3(-gx,-gy,1).normalize();let clearance=.009;
       for(const sx of [-1,0,1])for(const sy of [-1,0,1]) {
@@ -609,19 +609,19 @@ export function buildAvatarBody(input={}) {
       }
       const group=new THREE.Group();group.name=side<0?'eye-left':'eye-right';group.position.set(x,y,surfaceZ+clearance);face.add(group);eyeGroups.push(group);group.userData.restScaleY=1;
       group.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),normal);
-      group.rotateZ(['sad','shy','worried'].includes(expression)?side*.15:expression==='angry'?-side*.24:expression==='happy'?side*.06:expression==='focused'?-side*.09:expression==='proud'?side*.09:0);
-      if(eyeClosed)tube(group,[[-ew*scale,0,0],[0,(expression==='delighted'?.043:-.021)*scale,.010],[ew*scale,0,0]],.013*scale,eyeMat,18,false,expression==='delighted'?'delighted-lid':'closed-lid');
+      group.rotateZ(['sad','shy','worried','tearful'].includes(expression)?side*.15:expression==='angry'?-side*.24:expression==='happy'?side*.06:expression==='focused'?-side*.09:expression==='proud'?side*.09:c.eyes==='softOval'&&c.family==='dots'?.13:0);
+      if(eyeClosed)tube(group,[[-ew*scale,0,0],[0,(expression==='laughing'?.070:expression==='delighted'?.043:-.021)*scale,.010],[ew*scale,0,0]],.013*scale,eyeMat,18,false,['delighted','laughing'].includes(expression)?'delighted-lid':'closed-lid');
       else {
         const smallWhite=material('#FCFCF5','eye'),reflection=material('#FFFFFF','eye');
         if(c.shape==='frog'&&!['oval','side'].includes(c.eyes))ell(group,[0,0,-.073],[ew*scale*2.35,eh*scale*1.47,.098],material('#F8FFE8','rubber'),false,'frog-eye-white');
-        if(c.eyes==='sleepy'&&!['focused','surprised','excited'].includes(expression)&&!['work','read','camera'].includes(c.action)) {
+        if((c.eyes==='sleepy'||expression==='deadpan')&&!['focused','surprised','excited'].includes(expression)&&!['work','read','camera'].includes(c.action)) {
           ell(group,[0,-eh*.29*scale,.003],[ew*.44*scale,eh*.57*scale,.023],eyeMat,false,'eye');
           tube(group,[[-ew*scale,eh*.12*scale,.006],[0,eh*.16*scale,.011],[ew*scale,eh*.12*scale,.006]],.023*scale,eyeMat,16,false,'sleepy-upper-lid');
         } else if(c.eyes==='capsule')add(group,geometry('capsule-eye',()=>new THREE.CapsuleGeometry(1,2.8,6,20)),eyeMat,[0,0,0],[ew*scale,eh*scale*eyeHeight/2.4,.021],false,'eye');
         else ell(group,[0,0,0],[ew*scale,eh*scale*eyeHeight,.022],['oval','side'].includes(c.eyes)?smallWhite:eyeMat,false,'eye');
         if(['oval','side'].includes(c.eyes)) {
           const lookDown=['work','read','camera'].includes(c.action),lookX=c.eyes==='side'&&!lookDown?-.030*scale:expression==='thinking'?.019*scale:0;
-          ell(group,[lookX,lookDown?-.020*scale:expression==='proud'?.017*scale:0,.021],[ew*(c.eyes==='side'?.74:.58)*scale,eh*(c.eyes==='side'?.74:.70)*scale*eyeHeight,.017],eyeMat,false,'pupil');
+          ell(group,[lookX,lookDown?-.020*scale:['proud','expectant'].includes(expression)?.025*scale:0,.021],[ew*(c.eyes==='side'?.74:.58)*scale,eh*(c.eyes==='side'?.74:.70)*scale*eyeHeight,.017],eyeMat,false,'pupil');
         }
         if(c.eyes==='lash') {
           tube(group,[[side*ew*.50*scale,eh*.17*scale,.009],[side*ew*1.12*scale,eh*.10*scale,.004],[side*ew*1.72*scale,eh*.31*scale,-.005]],.012*scale,eyeMat,14,false,'outer-lash');
@@ -656,18 +656,22 @@ export function buildAvatarBody(input={}) {
       }
     }
     const my=faceLayout.mouthY,mw=.103*faceLayout.size;
-    if(c.mouth==='smile') {
+    if(c.mouth==='smile'&&expression!=='laughing') {
       const down=['sad','worried','angry'].includes(expression),asymmetric=['skeptical','confident','proud'].includes(expression);
       const curve=Array.from({length:13},(_,i)=>{const t=i/12,x=(t*2-1)*mw,bend=(down?-.031:.039)*(2*t-1)**2;return[x,my+(down?.023:-.027)+bend+(asymmetric?t*.024:0)];});
       faceLine(curve,c.shape==='human'?.0085:.010,c.shape==='human'?material(mix(c.colors.skin,'#684538',.70),'matteEye'):eyeMat,down?'frown':'smile');
     }
     else if(c.mouth==='pout')faceLine([[-mw*.68,my-.014],[0,my+.020],[mw*.68,my-.014]],.013,eyeMat,'pout');
-    else if(c.mouth==='tiny'||c.mouth==='laugh') {
-      const laugh=c.mouth==='laugh';ell(face,[0,my,frontZ(0,my)+.019],[mw*(laugh?1.16:.42),mw*(laugh?.93:.51),.024],eyeMat,false,'mouth');
+    else if(c.mouth==='tiny'||c.mouth==='laugh'||c.mouth!=='none'&&expression==='laughing') {
+      const laugh=c.mouth==='laugh'||expression==='laughing';ell(face,[0,my,frontZ(0,my)+.019],[mw*(laugh?1.16:.42),mw*(laugh?.93:.51),.024],eyeMat,false,'mouth');
       if(laugh)ell(face,[0,my-.043,frontZ(0,my)+.041],[mw*.62,.032,.012],material('#D98C91','skin'),false,'tongue');
     }
+    if(c.expressionAccents&&['tearful','panicked'].includes(expression)){
+      const dropMat=material('#8BD6F4','eye'),sides=expression==='tearful'?[-1,1]:[1];
+      for(const side of sides){const x=side*(ex+.085),y=faceLayout.eyeY-(expression==='tearful'?.19:-.14);const drop=ell(face,[x,y,frontZ(x,y)+.025],[.025,.056,.018],dropMat,false,'expression-drop');drop.rotation.z=-side*.15;}
+    }
     if(c.shape==='human')ell(face,[0,-.095,frontZ(0,-.095)+.006],[.033,.044,.025],material(mix(c.colors.skin,'#C29076',.05),'skin'),false,'nose');
-    if(c.shape!=='human'&&['shy','happy','excited'].includes(expression))for(const side of [-1,1]) {
+    if(c.shape!=='human'&&['shy','happy','excited','laughing'].includes(expression))for(const side of [-1,1]) {
       const x=side*ex*1.32,y=faceLayout.eyeY-.17,m=material(mix(c.shape==='human'?c.colors.skin:c.colors.body,'#D98791',.25),'skin');
       ell(face,[x,y,frontZ(x,y)+.008],[.085*faceLayout.size,.033*faceLayout.size,.009],m,false,'cheek');
     }

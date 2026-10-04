@@ -5,7 +5,7 @@
   <title>Dot Studio · 角色与 Prompt 工作台</title>
   <meta name="description" content="从 Dots、Grok Bot、Muse 与宠物开始，探索柔软材质、自然动作与小配饰，带走属于你的角色 Prompt。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%232166E8'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./studio.css?v=42"><link rel="stylesheet" href="./studio-layout.css?v=42"><script type="module" src="./studio.js?v=42"></script>
+  <link rel="stylesheet" href="./studio.css?v=43"><link rel="stylesheet" href="./studio-layout.css?v=43"><script type="module" src="./studio.js?v=43"></script>
 </head>
 <body class="studio-r4">
 <a class="skip-link" href="#workspace">跳到角色工作台</a>
@@ -28,7 +28,7 @@
     <div class="preview-panel">
       <div class="workspace-heading"><div><h1 id="stageName">蓝色团子</h1><span id="stageTag">Dots / 细密短绒</span></div></div>
       <div class="stage-card" id="stageCard">
-        <div class="stage-top"><span class="sample-badge live-badge" id="previewBadge">实时 3D</span></div>
+        <div class="stage-top"><a class="renderer-switch" href="./editor.html">查看 2D 结构</a><span id="sourceBadge" class="source-badge"></span><span class="sample-badge live-badge" id="previewBadge">实时 3D</span></div>
         <div id="stageArt" class="stage-art-area"></div>
         <div class="stage-caption"><span id="sampleCaption"></span><div class="preview-actions"><button id="playPreview" class="text-button" data-command="toggle-play" aria-pressed="true">暂停动作</button><button class="icon-btn" data-command="expand" title="放大或导出当前预览" aria-label="放大或导出当前预览"><span data-icon="maximize"></span></button></div></div>
       </div>

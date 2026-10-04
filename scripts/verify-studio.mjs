@@ -5,8 +5,8 @@ import {createPreset,setCharacterValue,resolveCharacter,buildPrompt,validateConf
 import {buildAvatarBody} from '../src/live/avatar-body.js';
 import {decorateAvatar} from '../src/live/avatar-props.js';
 
-for(const family of ['dots','grok','muse','pets'])assert.equal(familyPresets(family).length,12);
-assert.equal(new Set(PRESETS.map(p=>p.id)).size,48);
+for(const family of ['dots','grok','muse','pets'])assert.equal(familyPresets(family).length,family==='dots'?21:12);
+assert.equal(new Set(PRESETS.map(p=>p.id)).size,57);
 for(const preset of PRESETS){
  const c=validateConfig(createPreset(preset.id));
  assert.deepEqual(validateConfig(JSON.parse(exportConfiguration(c))),c);
@@ -26,7 +26,7 @@ c=setCharacterValue(c,'action','listen');assert.equal(c.accessories.head,'beret'
 c=setCharacterValue(c,'action','idle');assert.equal(resolveCharacter(c).config.accessories.head,'beret');
 c=setCharacterValue(c,'accessories.face','sunglasses');c=setCharacterValue(c,'action','sleep');assert.equal(c.accessories.face,'sunglasses');assert.equal(resolveCharacter(c).config.accessories.face,'none');
 c=setCharacterValue(c,'action','idle');assert.equal(resolveCharacter(c).config.accessories.face,'sunglasses');
-c=setCharacterValue(c,'action','work');c=setCharacterValue(c,'expression','wink');assert.equal(c.action,'idle');assert.equal(resolveCharacter(c).config.expression,'wink');
+c=setCharacterValue(c,'action','work');c=setCharacterValue(c,'expression','wink');assert.equal(c.action,'work');assert.equal(resolveCharacter(c).config.expression,'wink');
 c=setCharacterValue(c,'background','solid');c=setCharacterValue(c,'output','sticker');assert.equal(resolveCharacter(c).config.background,'transparent');c=setCharacterValue(c,'output','image');assert.equal(resolveCharacter(c).config.background,'solid');
 
 c=createPreset('pet-owl');c=setCharacterValue(c,'action','flowers');
@@ -67,4 +67,4 @@ for(const shade of OPAQUE_EYEWEAR){
  selected=setCharacterValue(selected,'action','sleep');assert.equal(resolveCharacter(selected).config.accessories.face,'none');
  selected=setCharacterValue(selected,'action','idle');assert.equal(resolveCharacter(selected).config.accessories.face,shade);
 }
-console.log('48 catalog presets and state/Prompt/anatomy regression journeys passed.');
+console.log('57 catalog presets and state/Prompt/anatomy regression journeys passed.');
