@@ -2,10 +2,10 @@
 // Sources inform the visual vocabulary; the real-time meshes are original work.
 const preset=(id,family,name,description,shape,color,extra={})=>({id,family,name,description,shape,color,...extra});
 export const PRESETS=[
- preset('dots-blue','dots','蓝色贝雷团子','低低软软的小团子','dumpling','#299CF3',{head:'beret'}),
+ preset('dots-blue','dots','蓝色团子','圆润小球 · 贴合耳机','sphere','#386AFF',{head:'headphones',eyeColor:'#17191C',accessory:'#252525'}),
  preset('dots-cloud','dots','云朵画家','Felipe 的云朵轮廓灵感','cloud','#3B9DF2',{head:'beret',source:'dots'}),
- preset('dots-triangle','dots','奶油小绅士','Alfred 的三角与圆框灵感','triangle','#F4CC57',{face:'round',neck:'bow',source:'dots'}),
- preset('dots-frog','dots','青柠蛙蛙','Todd 的突起双眼灵感','frog','#A8D849',{neck:'bow',source:'dots'}),
+ preset('dots-triangle','dots','奶油小绅士','Alfred 的三角与圆框灵感','triangle','#F4CC57',{face:'round',source:'dots'}),
+ preset('dots-frog','dots','青柠蛙蛙','Todd 的突起双眼灵感','frog','#A8D849',{source:'dots'}),
  preset('dots-heart','dots','莓莓爱心','Jojo 的爱心与墨镜灵感','heart','#D68AD7',{face:'sunglasses',source:'dots'}),
  preset('dots-twin','dots','桃桃听歌','Iggy 的双瓣与耳机灵感','twin','#EF96C0',{head:'headphones',expression:'closed',source:'dots'}),
  preset('dots-bean','dots','开心豆','有一点歪歪的豆形','bean','#ABD5B5',{mouth:'smile'}),

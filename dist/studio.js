@@ -1,7 +1,8 @@
 import {getArtSample} from './studio-art.js';
 import {PRESETS,familyPresets,STYLE_SOURCES} from './studio-catalog.js';
 import {CharacterPreview,characterThumbnail} from './live-runtime.js';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference} from './studio-model.js';
+import {pickerIllustration} from './studio-pickers.js';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference} from './studio-model.js';
 
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 // Lucide-compatible functional icons; character artwork is raster imagery.
@@ -33,7 +34,6 @@ const paths={
 };
 const icon=n=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.sparkles}</svg>`;
 function icons(root=document){root.querySelectorAll('[data-icon]').forEach(el=>{el.innerHTML=icon(el.dataset.icon);});}
-const ART_KEYS=['idle','work','sleep','listen','flowers','magic'];
 function art(family,material,action='idle',className='',label=''){
  const sample=getArtSample(family,material,action);
  const desc=esc(label||FAMILIES[family].name+' · '+MATERIALS[sample.material].label+' · '+ACTIONS[sample.action].label+'样张');
@@ -42,7 +42,7 @@ function art(family,material,action='idle',className='',label=''){
  return '<span class="art '+cls+' '+className+'" role="img" aria-label="'+desc+'" data-art-src="'+sample.src+'" style="background-image:url('+sample.src+');background-position:'+pos+'"></span>';
 }
 
-let state=createCharacter(),activeTab='appearance',stageView='live',promptLanguage='zh',toastTimer,modalType='',lastTrigger=null,referenceDraft=null,draftFamily='';
+let state=createCharacter(),activeTab='appearance',activeAccessory='face',stageView='live',promptLanguage='zh',toastTimer,modalType='',lastTrigger=null,referenceDraft=null,draftFamily='';
 const history=[],future=[],familyDrafts=new Map();let grouping='',previewFailure='',livePreview=null,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,thumbTimer,renderFrame;
 const thumbNodes=new WeakMap();
 try{const saved=(sessionStorage.getItem('dot-studio-v8')||sessionStorage.getItem('dot-studio-v7')||sessionStorage.getItem('dot-studio-v6'));if(saved)state=validateConfig(JSON.parse(saved));}catch{}
@@ -63,26 +63,45 @@ function select(path,label,entries){
 }
 function range(path,title,min,max,step=.05){return field(`<label for="range-${path}">${title}</label>`,`<div class="range-row"><input id="range-${path}" type="range" data-range="${path}" min="${min}" max="${max}" step="${step}" value="${val(path)}"><output id="out-${path}" for="range-${path}">${path==='scale'?val(path):Math.round(val(path)*100)}%</output></div>`);}
 function colorControl(k,name){return `<label class="color-detail"><input type="color" data-setting="colors.${k}" value="${state.colors[k]}" aria-label="${name}"><span>${name}</span></label>`;}
+function visualChoices(path,entries,extra=''){
+ return `<div class="visual-picker ${extra}">${Object.entries(entries).map(([id,item])=>{
+  const selected=!inheritsReference(state,path)&&val(path)===id,label=item.label||item;
+  const preview=path==='hair'?`<img data-thumb-hair="${id}" alt="${esc(label)}预览">`:path==='shape'&&state.family==='pets'?`<img data-thumb-shape="${id}" alt="${esc(label)}预览">`:pickerIllustration(path,id,state.colors.body);
+  return `<button class="visual-choice ${selected?'selected':''}" data-path="${path}" data-value="${id}" aria-pressed="${selected}" aria-label="${esc(label)}">${preview}<span>${esc(label)}</span></button>`;
+ }).join('')}</div>`;
+}
+function shapeControls(){
+ if(state.shape==='human')return field('发型',visualChoices('hair',HAIRS))+field('脸型',chips('faceShape',FACE_SHAPES));
+ const available=FAMILY_SHAPES[state.family].filter(k=>k!=='human'),core=state.family==='dots'?DOT_CORE_SHAPES:available,extra=available.filter(k=>!core.includes(k));
+ return field(state.family==='pets'?'动物种类':'轮廓',visualChoices('shape',Object.fromEntries(core.map(k=>[k,SHAPES[k]]))))+(extra.length?`<details class="advanced shape-more" id="extra-shapes" ${extra.includes(state.shape)?'open':''}><summary>更多造型 · ${extra.length}</summary>${visualChoices('shape',Object.fromEntries(extra.map(k=>[k,SHAPES[k]])))}</details>`:'');
+}
 function renderFamilies(){
- $('families').innerHTML=Object.entries(FAMILIES).map(([id,f])=>`<button class="family-card ${state.family===id?'selected':''}" data-family="${id}" aria-pressed="${state.family===id}" aria-label="选择 ${f.name}">${art(id,f.material,'idle','mini-art')}<span class="card-copy"><b><span class="family-long-name">${f.name}</span><span class="family-short-name">${f.short}</span></b><small>${familyPresets(id).length} 个角色 · ${f.subtitle}</small></span></button>`).join('');
+ $('families').innerHTML=Object.entries(FAMILIES).map(([id,f])=>`<button class="family-tab ${state.family===id?'selected':''}" data-family="${id}" aria-pressed="${state.family===id}" aria-label="选择 ${f.name}">${f.short}</button>`).join('');
 }
 function renderSettings(){
  const el=$('settings'),scroll=el.scrollTop,opened=[...el.querySelectorAll('details[open]')].map(x=>x.id);let out=state.reference.enabled?'<div class="rule-note reference-priority">'+icon('info')+'<span>保留项沿用参考图。手动改动会作为明确覆盖写入 Prompt。</span></div>':'';
  if(activeTab==='appearance'){
-  out+=`<button class="preset-entry" data-command="catalog"><span><b>浏览 ${familyPresets(state.family).length} 个${state.family==='pets'?'动物':state.family==='muse'?'人物':'角色'}</b><small>先选一个，再自由定制</small></span>${icon('grid')}</button>`;
-  out+=field('想要什么触感？',`<div class="material-grid">${['plush','rubber'].map(m=>`<button class="material-card ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}" aria-label="${MATERIALS[m].label}">${art(state.family,m)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'软乎乎，有纤维':'圆润，低光泽'}</small></button>`).join('')}</div><div class="secondary-materials">${['micro','clay'].map(m=>`<button class="choice ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}">${MATERIALS[m].label}<small>实时材质</small></button>`).join('')}</div>`);
-  out+=field('一组喜欢的颜色',`<div class="palette-row">${PALETTES.filter(p=>!['shiba','teal'].includes(p.id)||state.family==='pets'&&p.id==='shiba'||state.family==='muse'&&p.id==='teal').map(p=>`<button class="swatch ${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())?'selected':''}" style="--color:${p.body}" data-palette="${p.id}" aria-label="${p.name}" title="${p.name}" aria-pressed="${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())}"></button>`).join('')}<input class="color-input" type="color" data-setting="colors.body" value="${state.colors.body}" aria-label="自定义主体颜色" title="自定义主体颜色"></div><div class="color-detail-row">${colorControl('secondary','辅助色')}${colorControl('eyes','眼睛')}${colorControl('accessory','配饰')}</div><p class="section-helper">${inheritsReference(state,'colors.body')?'当前配色沿用参考图；点击色板或色块可明确覆盖对应颜色。':'深色主体自动搭配浅眼睛，手动选过的眼色会保留。'}</p>`);
-  out+=field('轮廓',chips('shape',Object.fromEntries(FAMILY_SHAPES[state.family].map(k=>[k,SHAPES[k]]))),state.family==='muse'?'通过发型、脸型区分':'实时切换');
-  out+=`<details class="advanced" id="shape-advanced"><summary>外观细调</summary>${field('<label for="character-name">角色名字</label>',`<input id="character-name" class="name-input" type="text" data-setting="name" value="${esc(state.name)}" maxlength="40">`)}${range('headScale',state.shape==='human'||state.family==='pets'?'头部比例':'轮廓高度',.85,1.12,.01)}${range('bodyWidth','主体宽度',.85,1.15,.01)}${state.shape==='human'?`<div class="input-pair">${select('hair','发型',HAIRS)}${select('faceShape','脸型',FACE_SHAPES)}</div><div class="input-pair" style="margin-top:14px">${select('outfit','服装',OUTFITS)}${select('skinMaterial','面部材质',{auto:'跟随整体',fabric:'细腻织物',matte:'柔和肤感'})}</div><div class="color-detail-row">${colorControl('skin','肤色')}${colorControl('hair','发色')}${colorControl('clothing','衣服')}</div><div class="input-pair" style="margin-top:14px">${select('hairMaterial','头发材质',{auto:'跟随整体',fiber:'卷曲纤维',layered:'分层发束'})}${select('clothMaterial','服装材质',{knit:'细致针织',fabricCloth:'柔软布料'})}</div>`:state.family==='pets'?'<p class="section-helper">动物保持对应物种的耳朵、口鼻、尾巴和肢体。企鹅与猫头鹰使用双翼。</p>':field('手脚',chips('limbs',{auto:'跟随动作',none:'无手脚',hands:'小圆手',feet:'短脚',both:'短手短脚'}))}<p class="section-helper">外形、比例和五官会同步到实时角色与 Prompt。</p></details>`;
+  out+=shapeControls();
+  out+=field('材质',`<div class="material-options">${['plush','micro','rubber','clay'].map(m=>`<button class="material-option ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}" aria-label="${MATERIALS[m].label}"><span class="material-dot ${m}" aria-hidden="true"></span><b>${MATERIALS[m].label}</b></button>`).join('')}</div>`);
+  out+=field('配色',`<div class="palette-row">${PALETTES.filter(p=>!['shiba','teal'].includes(p.id)||state.family==='pets'&&p.id==='shiba'||state.family==='muse'&&p.id==='teal').map(p=>`<button class="swatch ${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())?'selected':''}" style="--color:${p.body}" data-palette="${p.id}" aria-label="${p.name}" title="${p.name}" aria-pressed="${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())}"></button>`).join('')}<input class="color-input" type="color" data-setting="colors.body" value="${state.colors.body}" aria-label="自定义主体颜色" title="自定义主体颜色"></div><div class="color-detail-row">${colorControl('secondary','辅助色')}${colorControl('eyes','眼睛')}${colorControl('accessory','配饰')}</div><p class="section-helper">${inheritsReference(state,'colors.body')?'当前配色沿用参考图；点击色板或色块可明确覆盖对应颜色。':'深色主体自动搭配浅眼睛，手动选过的眼色会保留。'}</p>`);
+  out+=`<details class="advanced" id="shape-advanced"><summary>外观细调</summary>${field('<label for="character-name">角色名字</label>',`<input id="character-name" class="name-input" type="text" data-setting="name" value="${esc(state.name)}" maxlength="40">`)}${range('headScale',state.shape==='human'||state.family==='pets'?'头部比例':'轮廓高度',.85,1.12,.01)}${range('bodyWidth','主体宽度',.85,1.15,.01)}${state.shape==='human'?`<div class="input-pair">${select('outfit','服装',OUTFITS)}${select('skinMaterial','面部材质',{auto:'跟随整体',fabric:'细腻织物',matte:'柔和肤感'})}</div><div class="color-detail-row">${colorControl('skin','肤色')}${colorControl('hair','发色')}${colorControl('clothing','衣服')}</div><div class="input-pair" style="margin-top:14px">${select('hairMaterial','头发材质',{auto:'跟随整体',fiber:'卷曲纤维',layered:'分层发束'})}${select('clothMaterial','服装材质',{knit:'细致针织',fabricCloth:'柔软布料'})}</div>`:state.family==='pets'?'<p class="section-helper">动物保持对应物种的耳朵、口鼻、尾巴和肢体。企鹅与猫头鹰使用双翼。</p>':field('手脚',chips('limbs',{auto:'跟随动作',none:'无手脚',hands:'小圆手',feet:'短脚',both:'短手短脚'}))}<p class="section-helper">外形、比例和五官会同步到实时角色与 Prompt。</p></details>`;
  }else if(activeTab==='face'){
-  out+=field('眼睛的样子',`<div class="face-choices">${Object.entries(EYES).map(([id,e])=>`<button class="choice ${(!inheritsReference(state,'eyes')&&val('eyes')===id)?'selected':''}" data-path="eyes" data-value="${id}" aria-pressed="${(!inheritsReference(state,'eyes')&&val('eyes')===id)}">${icon('eye')}<span>${e.label}</span></button>`).join('')}</div>`);
+  const eyeKeys=state.family==='dots'?DOT_CORE_EYES:state.family==='grok'?['capsule',...DOT_CORE_EYES,'oval']:Object.keys(EYES);
+  out+=field('眼睛的样子',visualChoices('eyes',Object.fromEntries(eyeKeys.map(id=>[id,EYES[id]]))));
   out+=field('此刻的表情',chips('expression',EXPRESSIONS)+(['sleep','work','magic','camera','read','blink'].includes(state.action)?`<p class="face-lock">${icon('info')} ${ACTIONS[state.action].label}正在使用${EXPRESSIONS[ACTIONS[state.action].expression].label}表情；选择其他表情会回到待机展示。</p>`:''));
   out+=field('眉毛',chips('brows',BROWS));out+=field('嘴巴',chips('mouth',MOUTHS));
-  out+=`<details class="advanced" id="face-advanced"><summary>五官比例</summary>${range('eyeScale','眼睛大小',.65,1.35)}${range('eyeSpacing','眼睛间距',.75,1.3)}<p class="section-helper">Dots / Grok Bot 默认克制五官。新增眉毛与嘴巴属于你的扩展设计。</p></details>`;
+  out+=`<details class="advanced" id="face-advanced"><summary>五官细调</summary>${state.family==='dots'?field('其他眼型',visualChoices('eyes',{capsule:EYES.capsule,oval:EYES.oval})):''}${range('eyeScale','眼睛大小',.65,1.35)}${range('eyeSpacing','眼睛间距',.75,1.3)}<p class="section-helper">Dots / Grok Bot 默认克制五官。新增眉毛与嘴巴属于你的扩展设计。</p></details>`;
  }else if(activeTab==='accessories'){
-  for(const [slot,title,ic]of [['head','头顶的小心思','hat'],['face','眼镜','glasses'],['neck','颈部配饰','neck'],['prop','拿在手里的','wand']])out+=field(`<span class="slot-title">${icon(ic)}${title}</span>`,`<div class="slot-grid">${Object.entries(ACCESSORIES[slot]).map(([id,v])=>`<button class="choice ${(!inheritsReference(state,'accessories.'+slot)&&val('accessories.'+slot)===id)?'selected':''}" data-path="accessories.${slot}" data-value="${id}" aria-pressed="${(!inheritsReference(state,'accessories.'+slot)&&val('accessories.'+slot)===id)}">${v.label}</button>`).join('')}</div>`,'每类一件');
+  out+=`<div class="accessory-tabs" aria-label="配件类别">${Object.entries({face:'眼镜',head:'头饰',neck:'颈饰',prop:'道具'}).map(([key,label])=>`<button data-accessory-tab="${key}" class="${activeAccessory===key?'selected':''}" aria-pressed="${activeAccessory===key}">${label}</button>`).join('')}</div>`;
+  out+=visualChoices('accessories.'+activeAccessory,ACCESSORIES[activeAccessory],'accessory-picker');
+  out+=`<div class="accessory-color">${colorControl('accessory','配件颜色')}</div>`;
   out+=`<div class="rule-note">${icon('info')}<span>道具会匹配对应动作。耳机与帽子共用头部位置；墨镜会自然遮挡眼睛。</span></div>`;
+ }else if(activeTab==='motion'){
+  out+=field('挑一个小动作',`<div class="motion-grid">${Object.entries(ACTIONS).map(([id,a])=>`<button class="motion-choice ${val('action')===id?'selected':''}" data-path="action" data-value="${id}" aria-pressed="${val('action')===id}"><img data-thumb-action="${id}" alt="${a.label}动作预览"><b>${a.label}</b></button>`).join('')}</div>`);
+  out+=field('姿态',chips('pose',{auto:'跟随动作',sit:'坐姿',side:'侧身',chin:'托腮'}));
+  out+=`<p class="section-helper">动作会同步视线、手部和道具。选择表情时可回到待机，查看五官的变化。</p>`;
  }else{
+  out+=`<div class="view-options"><span>展示方式</span><div class="stage-views" aria-label="角色显示方式"><button data-view="live" class="${stageView==='live'?'active':''}" aria-pressed="${stageView==='live'}">实时角色</button><button data-view="reference" class="${stageView==='reference'?'active':''}" aria-pressed="${stageView==='reference'}">美术参考</button></div></div>`;
   out+=field('怎么出镜',chips('framing',COMPOSITION.framing));
   out+=field('镜头角度',chips('camera',COMPOSITION.camera));
   out+=field('背景',chips('background',COMPOSITION.background)+(state.background==='solid'?`<div class="color-detail-row">${colorControl('background','背景色')}<small>${state.colors.background}</small></div>`:''));
@@ -93,14 +112,14 @@ function renderSettings(){
   out+=`<div class="rule-note">${icon('info')}<span>背景、镜头与画幅即时预览。${state.output==='pet'?'Pet 还需按目标版本制作与校验动画，本页导出的是创作简报。':'透明背景导出的 PNG 含真实透明通道。'}</span></div>`;
  }
  if(state.reference.enabled)out+=`<div class="ref-indicator">参考图 Prompt 模式 · 图片在 ChatGPT 添加<br><button data-command="reference">调整保留要求</button></div>`;
- out+=`<details class="advanced" id="legacy-access"><summary>需要更细的结构控制？</summary><p class="section-helper">结构草图编辑器保留五官位置、几何造型、角色设定、动作序列与 SVG / PNG 导出。它使用独立的结构草图配置。</p><a class="text-button" href="./editor.html">打开结构草图编辑器 ${icon('external')}</a></details>`;
- el.innerHTML=out;for(const id of opened){const d=$(id);if(d)d.open=true;}el.scrollTop=scroll;
+ el.innerHTML=out;for(const id of opened){const d=$(id);if(d)d.open=true;}el.scrollTop=scroll;queueThumbnails(el);
 }
 function queueThumbnails(root=document){
  clearTimeout(thumbTimer);thumbTimer=setTimeout(()=>{
   const snapshot=structuredClone(state);
-  for(const node of root.querySelectorAll('[data-thumb-preset],[data-thumb-action]')){
-   const config=node.dataset.thumbPreset?createPreset(node.dataset.thumbPreset):setCharacterValue(snapshot,'action',node.dataset.thumbAction);
+  for(const node of root.querySelectorAll('[data-thumb-preset],[data-thumb-action],[data-thumb-shape],[data-thumb-hair]')){
+   if(!node.offsetParent)continue;
+   const config=node.dataset.thumbPreset?createPreset(node.dataset.thumbPreset):node.dataset.thumbShape?setCharacterValue(snapshot,'shape',node.dataset.thumbShape):node.dataset.thumbHair?setCharacterValue(snapshot,'hair',node.dataset.thumbHair):setCharacterValue(snapshot,'action',node.dataset.thumbAction);
    const clean=resolveCharacter(config).config,key=JSON.stringify(clean);
    if(thumbNodes.get(node)===key)continue;thumbNodes.set(node,key);
    characterThumbnail(clean,200).then(url=>{if(node.isConnected&&thumbNodes.get(node)===key){node.src=url;node.classList.add('loaded');}}).catch(()=>{node.classList.add('unavailable');node.alt='预览未能加载，点击查看角色';});
@@ -132,20 +151,11 @@ function renderResult(){
  $('sampleCaption').textContent=stageView==='live'?SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:'精选样张 · 用于材质与最终生图参考';
  $('playPreview').hidden=stageView!=='live';$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));
  $('previewTruth').classList.remove('has-changes');
- $('previewTruth').innerHTML=icon('info')+`<span>${stageView==='live'?(c.reference.enabled?'当前参数实时预览；参考图的特征在 ChatGPT 附图后处理。':'调整即刻呈现。实时角色预览外形与动作，最终图片可用 Prompt 在 ChatGPT 创作。'):'高清样张保持既有美术质量，不随自定义设置变化。'}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>`;
- const presetKey=c.family;
- if($('catalogBanner').dataset.family!==presetKey){
-  $('catalogBanner').dataset.family=presetKey;
-  $('catalogBanner').innerHTML=`<button class="catalog-preview" data-command="catalog"><span class="catalog-faces">${familyPresets(c.family).slice(1,4).map(p=>`<img data-thumb-preset="${p.id}" alt="${p.name}">`).join('')}</span><span><b>${f.short} 角色库 <em>${familyPresets(c.family).length}</em></b><small>${c.family==='pets'?'耳朵、口鼻、尾巴，各有自己的样子':c.family==='muse'?'发型、脸型与服装，找到你的角色':'从不同轮廓开始，继续加一点个性'}</small></span><span class="catalog-arrow">浏览全部 ${icon('grid')}</span></button>`;
- }
- const actionKey=JSON.stringify({...c,action:'idle',accessories:{...c.accessories,prop:'none'}});
- if($('actionStrip').dataset.key!==actionKey){
-  $('actionStrip').dataset.key=actionKey;
-  $('actionStrip').innerHTML=ART_KEYS.map(a=>`<button class="action-card ${c.action===a?'selected':''}" data-path="action" data-value="${a}" aria-pressed="${c.action===a}" aria-label="动作：${ACTIONS[a].label}"><img class="live-thumb" data-thumb-action="${a}" alt="${ACTIONS[a].label}动作预览"><span>${ACTIONS[a].label}</span></button>`).join('');
- }
- $('actionStrip').querySelectorAll('[data-value]').forEach(b=>{b.classList.toggle('selected',b.dataset.value===c.action);b.setAttribute('aria-pressed',String(b.dataset.value===c.action));});
+ $('previewTruth').innerHTML=icon('info')+`<span>${stageView==='live'?(c.reference.enabled?'当前参数实时预览；参考图的特征在 ChatGPT 附图后处理。':'外形与动作实时预览 · 用 Prompt 在 ChatGPT 创作最终图片。'):'高清样张保持既有美术质量，不随自定义设置变化。'}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>`;
+ $('presetName').textContent=c.name||f.template;
+ $('presetCount').textContent=familyPresets(c.family).length;
  const accessories=Object.entries(c.accessories).filter(([slot,value])=>value!=='none'&&!inheritsReference(c,'accessories.'+slot)).map(([slot,value])=>ACCESSORIES[slot][value].label);
- const summaryTags=[inheritsReference(c,'shape')?'轮廓沿用参考图':SHAPES[c.shape].label,MATERIALS[c.material].label,EXPRESSIONS[c.expression].label,ACTIONS[c.action].label,...accessories];
+ const summaryTags=[inheritsReference(c,'shape')?'轮廓沿用参考图':SHAPES[c.shape].label,MATERIALS[c.material].label,inheritsReference(c,'eyes')?'眼型沿用参考图':EYES[c.eyes].label,EXPRESSIONS[c.expression].label,ACTIONS[c.action].label,...accessories];
  $('currentConfig').innerHTML='<span>当前设定</span>'+summaryTags.map((x,i)=>`<span class="config-chip">${i===0?`<i class="tiny-color" style="background:${c.colors.body}"></i>`:''}${esc(x)}</span>`).join('')+`<span class="config-chip">${c.aspect}</span>`;
  $('promptSummary').textContent=[f.name,...summaryTags,COMPOSITION.output[c.output].label].join(' · ');
  $('configCount').textContent='实时联动';$('undo').disabled=!history.length;$('redo').disabled=!future.length;
@@ -250,9 +260,10 @@ document.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||b.disabled)return;
  try{
   if(b.id==='undo'){undo();return;}if(b.id==='redo'){undo(true);return;}if(b.id==='closeModal'){closeModal();return;}
-  if(b.dataset.command){commands[b.dataset.command]?.();return;}
+  if(b.dataset.command){document.querySelector('.project-menu')?.removeAttribute('open');commands[b.dataset.command]?.();return;}
+  if(b.dataset.accessoryTab){activeAccessory=b.dataset.accessoryTab;$('settings').scrollTop=0;renderSettings();return;}
   if(b.dataset.family){switchFamily(b.dataset.family);return;}
-  if(b.dataset.preset){const changedView=stageView!=='live';stageView='live';commit(createPreset(b.dataset.preset,state));if(changedView)render();closeModal();return;}
+  if(b.dataset.preset){const changedView=stageView!=='live';stageView='live';commit(createPreset(b.dataset.preset,state));if(changedView)render();if($('modal').open)closeModal();return;}
   if(b.dataset.path){const p=b.dataset.path,v=b.dataset.value,oldAction=state.action;change(p,v);if(oldAction!==state.action&&p==='expression')toast('已回到待机，展示你选择的表情。');return;}
   if(b.dataset.palette){const changedView=stageView!=='live';stageView='live';commit(applyPalette(state,b.dataset.palette));if(changedView)render();return;}
   if(b.dataset.view){stageView=b.dataset.view;render();return;}
@@ -262,7 +273,7 @@ document.addEventListener('click',e=>{
  }catch(error){toast(error.message||'这项设置未能应用，请重试。');}
 });
 function setTab(id){activeTab=id;document.querySelectorAll('[data-tab]').forEach(b=>{const selected=b.dataset.tab===id;b.setAttribute('aria-selected',selected);b.tabIndex=selected?0:-1;});$('settings').setAttribute('aria-labelledby','tab-'+id);$('settings').scrollTop=0;renderSettings();}
-document.querySelector('.setting-tabs').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const ids=['appearance','face','accessories','scene'],i=ids.indexOf(activeTab),index=e.key==='Home'?0:e.key==='End'?3:(i+(e.key==='ArrowRight'?1:3))%4;setTab(ids[index]);$('tab-'+ids[index]).focus();});
+document.querySelector('.setting-tabs').addEventListener('keydown',e=>{if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;e.preventDefault();const ids=['appearance','face','accessories','motion','scene'],i=ids.indexOf(activeTab),index=e.key==='Home'?0:e.key==='End'?ids.length-1:(i+(e.key==='ArrowRight'?1:ids.length-1))%ids.length;setTab(ids[index]);$('tab-'+ids[index]).focus();});
 document.addEventListener('input',e=>{
  const el=e.target;if(el.dataset.range){const v=Number(el.value);change(el.dataset.range,v,false);$('out-'+el.dataset.range).textContent=(el.dataset.range==='scale'?v:Math.round(v*100))+'%';return;}
  if(el.dataset.setting&&['text','color','textarea'].includes(el.type)){change(el.dataset.setting,el.value,false);return;}

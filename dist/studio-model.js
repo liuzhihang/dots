@@ -3,7 +3,7 @@ import {PRESETS,familyPresets} from './studio-catalog.js';
 export const VERSION = 8;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
-  dots: {name:'ChatGPT Dots',short:'Dots',subtitle:'明亮几何 · 轻盈可爱',template:'蓝色贝雷团子',color:'#299CF3',secondary:'#F8F6F1',shape:'dumpling',eyes:'softOval',mouth:'none',material:'plush',framing:'full',anatomy:'blob',about:'鲜明的单色、饱满的几何轮廓、克制的五官。绒毛服从体积，配饰点到为止。蓝色团子以低重心、柔和起伏和小贝雷帽建立辨识度；圆球、云团、水滴是可选的造型延伸。',en:'A bright, minimal geometric companion. A full rounded silhouette, restrained facial features, no default limbs, and a single clear primary color. This is an original Dots-inspired design, not an official character.'},
+  dots: {name:'ChatGPT Dots',short:'Dots',subtitle:'明亮几何 · 轻盈可爱',template:'蓝色团子',color:'#386AFF',secondary:'#F5F8FF',shape:'sphere',eyes:'softOval',mouth:'none',material:'plush',framing:'full',anatomy:'blob',about:'鲜明的单色、饱满的几何轮廓、克制的五官。以 App 设置截图中的圆球、软三角、横胶囊等轮廓为参考，默认是戴着贴合耳机的蓝色圆团子。绒毛服从体积，眼睛与配饰自然贴合；叠团与云团保留为创作扩展。本站模型与比例为原创转译。',en:'A bright, minimal Dots-inspired geometric companion. A full rounded silhouette, restrained facial features, no default limbs, and a single clear primary color. The default is a blue orb with naturally fitted headphones. The original meshes and proportions interpret the supplied App references; they are not official assets or specifications.'},
   grok: {name:'Grok Bot',short:'Grok Bot',subtitle:'软几何 · 胶囊眼',template:'白色软拱',color:'#F4F4F2',secondary:'#F8F6F1',shape:'arch',eyes:'capsule',mouth:'none',material:'rubber',framing:'full',anatomy:'blob',about:'以软几何和眼神建立辨识度。胶囊眼保持简洁、等宽；造型变化有节制。本站以参考图里的白色软拱为起点，提供软方块和短绒等延伸。',en:'An original Grok Bot-inspired soft geometric character. A softly rounded block silhouette and two identical solid dark capsule eyes. Controlled variation, clear small-scale identity, no mechanical robot parts or brand logo.'},
   muse: {name:'Muse',short:'Muse',subtitle:'人物玩偶 · 分层织物',template:'针织小沐',color:'#2C8D82',secondary:'#EBC4A6',shape:'human',eyes:'sparkle',mouth:'smile',material:'rubber',framing:'bust',anatomy:'human',about:'本站的人物玩偶预设。脸、头发、衣服分别处理，保留脸型和发束层次。小沐是本站原创人物，不代表官方默认角色。',en:'An original Muse-inspired human doll portrait, with a distinct human face, layered short chestnut hair and a teal knitted sweater. Keep the face, hair and clothing as separate materials. Balanced head and upper-body proportions. Do not copy Veda or claim this is an official Muse avatar.'},
   pets: {name:'ChatGPT 宠物',short:'Pets',subtitle:'动物伙伴 · 自然姿态',template:'柴犬团子',color:'#ECAE57',secondary:'#FFF0D5',shape:'shiba',eyes:'sparkle',mouth:'smile',material:'plush',framing:'full',anatomy:'quadruped',about:'保留物种的耳朵、口鼻、尾巴和身体。柴犬使用茶白配色与卷尾，猫咪保留猫爪与尾巴；可爱来自紧凑的整体比例。角色图与可安装的 Pet 动画文件是不同输出。',en:'An original animal companion suitable as a starting point for a ChatGPT pet. Preserve species-specific ears, muzzle, paws, tail and color markings. Compact balanced proportions with a visible torso. This prompt does not create an installable or validated pet.'}
@@ -15,9 +15,13 @@ export const MATERIALS = {
   clay:option('柔和陶土','Soft clay','整洁的哑光陶土，极细颗粒和轻微手作痕迹，柔和体积光；不要裂纹、脏污、油亮釉面。','Clean matte clay with very fine grain and subtle handmade marks. Soft volumetric light; no cracks, dirt or glossy glaze.')
 };
 export const SHAPES = {
-  dumpling:option('软团子','Soft dumpling','低重心、底部宽、顶部圆缓的一体化团子，两侧有轻微柔软起伏，不做标准正球','A low grounded dumpling, wider at the base with a softly domed top and gentle side lobes, never a standard sphere'),
+  dumpling:option('叠叠软团','Layered dumpling','低重心的一体化三层软团：底层宽而饱满，中层稍窄，顶层圆缓；横向层沟宽浅、曲面连续，不做独立圆球堆叠','A single low grounded three-tier dumpling: a wide full base, a slightly narrower middle and a softly domed top. Broad shallow horizontal seams and continuous curved surfaces, never a stack of disconnected spheres'),
   arch:option('软拱形','Soft arch','饱满软拱形，顶部弧面、底部微凹、边缘圆润，保留区别于正球和立方体的轮廓','A plump soft arch with a domed top, subtly concave base and rounded edges, distinct from a sphere or cube'),
   sphere:option('小圆球','Orb','饱满近球体，略微压低重心，保留圆润体积','A full near-spherical orb with a subtly grounded base and generous rounded volume'),
+  pill:option('横胶囊','Horizontal pill','横向饱满的短胶囊，圆润两端、宽缓上下沿和柔软体积；不是竖向药丸或扁平圆角矩形','A plump short horizontal pill with rounded ends, gently flattened upper and lower edges and soft volume; neither a vertical capsule nor a flat rounded rectangle'),
+  puff:option('六瓣团','Six-lobe puff','六个短圆瓣围绕饱满中心连成一体，浅凹口自然过渡；不拆成六个独立圆球','Six short rounded lobes joined around one full center with shallow flowing indentations; never six disconnected balls'),
+  clover:option('四瓣团','Four-lobe clover','四个圆润短瓣组成紧凑四叶轮廓，中央饱满、连接宽厚；不增加叶脉或细长叶柄','Four short rounded lobes form a compact clover silhouette, with a full center and broad connections; no leaf veins or narrow stems'),
+  scallop:option('花边圆','Scalloped orb','饱满圆形主体带一圈均匀、细小的圆润花边，边缘起伏浅而柔和；保留完整三维体积','A full round body edged by evenly spaced small soft scallops; shallow gentle undulations and a complete three-dimensional volume'),
   bean:option('软豆形','Bean','饱满豆形，一体化圆润轮廓','A full soft bean-shaped silhouette'),
   cloud:option('云团','Cloud','三个柔和起伏组成的完整云团','A single compact cloud with three gentle rounded lobes'),
   drop:option('小水滴','Droplet','圆润水滴，顶端柔和、没有尖角','A rounded droplet with a soft tip and no sharp corners'),
@@ -35,7 +39,7 @@ Object.assign(SHAPES,{
  star:option('小星星','Soft star','五个短而圆润的角，中心饱满，整体柔软','Five short rounded star points and a full soft center'),
  heart:option('爱心','Heart','顶部双瓣与底部圆尖构成饱满爱心','A full heart with two top lobes and a softly tapered base'),
  sprout:option('小豆芽','Sprout','圆润豆形身体，头顶两片小嫩叶','A rounded bean body with two small tender leaves on top'),
- frog:option('蛙蛙','Frog','宽扁绿色蛙脸，两只眼睛位于头顶突起上，整体保持几何伙伴的简洁','A broad geometric frog face with two raised eye lobes at the top, keeping the geometric companion simple'),
+ frog:option('蛙蛙','Frog','宽扁蛙脸，两只眼睛位于头顶突起上，主体使用所选配色，整体保持几何伙伴的简洁','A broad geometric frog face with two raised eye lobes at the top, using the selected body color and keeping the geometric companion simple'),
  twin:option('双瓣团','Twin lobe','饱满椭圆身体，顶部柔和双瓣小结','A full oval body with two gentle little lobes at the top'),
  ghost:option('小幽灵','Soft ghost','圆顶、柔软波浪底边的小幽灵体积，非平面剪影','A soft domed ghost volume with a gently scalloped base, not a flat silhouette'),
  diamond:option('软菱形','Soft diamond','四个圆润角组成饱满菱形，柔和曲面','A full diamond with four rounded corners and soft curved surfaces'),
@@ -50,12 +54,14 @@ Object.assign(SHAPES,{
  hedgehog:option('小刺猬','Hedgehog','小尖鼻、浅色脸腹、背部层叠的短软刺和四只小爪','A hedgehog with a small pointed nose, pale face and belly, layered short soft spines and four small paws')
 });
 export const ANIMALS=['shiba','cat','rabbit','fox','panda','bear','otter','capybara','axolotl','penguin','owl','hedgehog'];
-export const FAMILY_SHAPES={dots:['dumpling','cloud','triangle','frog','heart','twin','bean','drop','pebble','sphere','star','sprout','roundedcube','capsule'],grok:['arch','sphere','pebble','roundedcube','capsule','triangle','hexagon','cloud','drop','ghost','diamond','bean','human'],muse:['human'],pets:ANIMALS};
+// The first eleven choices follow the supplied App Shape panel; extensions follow.
+export const DOT_CORE_SHAPES=['sphere','triangle','pill','frog','puff','heart','clover','sprout','scallop','pebble','diamond'];
+export const FAMILY_SHAPES={dots:[...DOT_CORE_SHAPES,'dumpling','cloud','twin','bean','drop','star','roundedcube','capsule'],grok:['arch','sphere','pebble','roundedcube','capsule','triangle','hexagon','cloud','drop','ghost','diamond','bean','human'],muse:['human'],pets:ANIMALS};
 export const HAIRS={'short-curly':'自然短卷发',short:'利落短发',bob:'齐颈短发',long:'自然长发',ponytail:'利落马尾',braids:'双辫子',bun:'丸子头',wavy:'层次波浪'};
 export const FACE_SHAPES={round:'圆脸',oval:'柔和椭圆', 'soft-square':'圆角方脸'};
 export const OUTFITS={sweater:'针织毛衣',hoodie:'柔软卫衣',cardigan:'小开衫',shirt:'简洁衬衫'};
 export const PALETTES = [
- {id:'sky',name:'晴空蓝',body:'#299CF3',secondary:'#F5F8FF',eyes:'#172131',accessory:'#283446'},
+ {id:'sky',name:'明亮蓝',body:'#386AFF',secondary:'#F5F8FF',eyes:'#17191C',accessory:'#252525'},
  {id:'lime',name:'青柠绿',body:'#AFD946',secondary:'#F4F6D7',eyes:'#26301B',accessory:'#5A603C'},
  {id:'butter',name:'奶油黄',body:'#F4CC57',secondary:'#FFF2D5',eyes:'#352C25',accessory:'#564B43'},
  {id:'rose',name:'莓果粉',body:'#E987B3',secondary:'#FCEBF2',eyes:'#412D3E',accessory:'#61405D'},
@@ -65,7 +71,19 @@ export const PALETTES = [
  {id:'shiba',name:'柴犬茶白',body:'#ECAE57',secondary:'#FFF0D5',eyes:'#2B2420',accessory:'#447A73'},
  {id:'teal',name:'针织青绿',body:'#2C8D82',secondary:'#EBC4A6',eyes:'#2B2420',accessory:'#D9B67D'}
 ];
-export const EYES={softOval:option('小椭圆眼','Small oval eyes','两只小巧的黑色竖椭圆眼，间距稳定，保留极少量柔和反光；不画夸张眼白或大虹膜','Two small black vertical oval eyes, stable spacing, a very subtle soft reflection; no exaggerated whites or large irises'),capsule:option('胶囊眼','Capsule eyes','两只等宽、平行、实心竖胶囊眼，长宽比约 2.7:1；不加瞳孔、描边或高光','Two identical parallel solid vertical capsule eyes, about 2.7:1 height-to-width; no pupils, outline or highlights'),round:option('圆点眼','Dot eyes','两只克制的小圆点眼，间距稳定','Two restrained small dot eyes with stable spacing'),sparkle:option('柔光眼','Soft eyes','两只小巧深色椭圆眼，各一个克制高光；不额外画大虹膜，跨材质保持同一眼形','Two small dark oval eyes with one restrained catchlight each; no large irises, preserve the same eye design across materials'),oval:option('椭圆眼','Oval eyes','两只小巧椭圆眼白与深色瞳孔，不夸张放大','Two small oval whites with dark pupils; do not oversize them')};
+export const EYES={
+ lash:option('短睫眼','Short lashes','两只小巧竖椭圆眼，外眼角各有一笔短而柔和的睫毛；睫毛顺着面部，不做浓密长睫毛','Two small vertical oval eyes, each with one short soft lash at the outer corner, fitted to the face; no thick or long eyelashes'),
+ softOval:option('小椭圆眼','Small oval eyes','两只小巧竖椭圆眼，间距稳定，保留极少量柔和反光；眼色按配色设定，不画夸张眼白或大虹膜','Two small vertical oval eyes with stable spacing and a very subtle soft reflection, using the specified eye color; no exaggerated whites or large irises'),
+ star:option('星光眼','Star eyes','两只小巧短胶囊眼，各有一个小星形高光和一个细小光点；星光位于眼睛内部，不额外漂浮在脸旁','Two small short capsule eyes, each containing one tiny star-shaped catchlight and one small light dot; keep the highlights inside the eyes, without floating stars beside the face'),
+ glossy:option('明亮圆眼','Glossy round eyes','两只稍大的圆润眼睛，各有一个柔和圆形主高光与极小的辅助反光；保持简洁眼形，不做写实大眼球','Two slightly larger rounded eyes, each with one soft round primary catchlight and a tiny secondary reflection; keep the eye design simple, never large realistic eyeballs'),
+ round:option('圆点眼','Dot eyes','两只克制的小圆点眼，间距稳定','Two restrained small dot eyes with stable spacing'),
+ sparkle:option('柔光椭圆眼','Soft oval eyes','两只小巧竖椭圆眼，各有一个克制的圆点高光；眼色按配色设定，不额外画大虹膜，跨材质保持同一眼形','Two small vertical oval eyes with one restrained round catchlight each, using the specified eye color; no large irises, preserve the same eye design across materials'),
+ side:option('侧望眼','Side glance','两只小圆眼白与同向侧移的瞳孔，目光方向一致；有动作目标时看向该目标，不让两只眼睛各看一边','Two small round whites with pupils offset together in one direction; follow the action target when one is present, never look in different directions'),
+ sleepy:option('半睁眼','Half-lidded eyes','两道柔和短上眼睑与半露的小瞳孔，表达放松的半睁眼形；眨眼、闭眼与动作视线服从当前表情和活动','Two soft short upper lids with small partly visible pupils, forming a relaxed half-lidded eye design; blinking, closure and gaze follow the current expression and activity'),
+ capsule:option('胶囊眼','Capsule eyes','两只等宽、平行、实心竖胶囊眼，长宽比约 2.7:1；不加瞳孔、描边或高光','Two identical parallel solid vertical capsule eyes, about 2.7:1 height-to-width; no pupils, outline or highlights'),
+ oval:option('椭圆眼','Oval eyes','两只小巧椭圆眼白，瞳孔使用设定眼色，不夸张放大','Two small oval whites with pupils in the selected eye color; do not oversize them')
+};
+export const DOT_CORE_EYES=['lash','softOval','star','sparkle','round','glossy','side','sleepy'];
 export const EXPRESSIONS={calm:option('平静','Calm','放松、平静，目光稳定','Relaxed and calm with a steady gaze'),happy:option('开心','Happy','自然愉快，眼睛略弯；保持选择的嘴巴样式','Naturally cheerful with subtly curved eyes, respecting the selected mouth design'),curious:option('疑惑','Curious','轻微歪头，眼神好奇，不增加问号符号','A slight head tilt and curious gaze, without question-mark symbols'),sleepy:option('困倦','Sleepy','眼睛半闭，姿态放松','Half-closed sleepy eyes and a relaxed posture'),closed:option('闭眼','Eyes closed','双眼自然完全闭合','Both eyes fully and naturally closed'),focused:option('专注','Focused','双眼睁开，目光专注于动作目标','Eyes open, focused on the action target')};
 Object.assign(EXPRESSIONS,{
  excited:option('兴奋','Excited','明亮、稍微睁大的双眼与轻快姿态','Bright slightly widened eyes and a lively posture'),
@@ -89,6 +107,19 @@ export const ACCESSORIES={
  neck:{none:option('不加颈饰','None','无颈部配饰','No neck accessory'),scarf:option('针织围巾','Scarf','简洁短针织围巾，不遮脸','A simple short knitted scarf that leaves the face visible'),bow:option('小领结','Bow tie','一枚小巧领结','One small bow tie'),collar:option('项圈','Collar','贴合的简洁项圈','A simple well-fitted collar')},
  prop:{none:option('不拿道具','None','无手持道具','No held prop'),macbook:option('MacBook','MacBook','比例协调的银色 MacBook，屏幕面向角色，电脑不超过画面下方约三分之一','A proportional silver MacBook facing the character, occupying at most roughly the lower third of the image'),flowers:option('一束花','Bouquet','小束鲜花，花头不挡脸，双手或前爪共同承托花茎','A small bouquet supported at the stems by both hands or front paws; blooms must not hide the face'),wand:option('星星法杖','Star wand','一根小巧星形法杖，手掌或爪掌与柄接触','One small star-tipped wand with the hand or paw contacting its handle'),tea:option('奶茶','Milk tea','小巧奶茶杯与吸管，握持自然，杯子不遮住主体','A small milk-tea cup and straw held naturally without hiding the character'),camera:option('相机','Camera','小巧相机，握持与取景方向一致，不遮全部面部','A compact camera naturally held with a coherent shooting direction, not covering the whole face'),book:option('书本','Book','一本小书，自然打开，双手或前爪承托','A small open book naturally supported by hands or front paws')}
 };
+Object.assign(ACCESSORIES.head,{
+ bowler:option('圆顶礼帽','Bowler hat','小巧圆顶礼帽，短而圆润的帽檐沿头部自然落座，留出双眼与耳朵','A compact bowler hat with a short rounded brim seated naturally on the head, leaving eyes and ears clear'),
+ topHat:option('高顶礼帽','Top hat','短而端正的高顶礼帽，圆柱帽冠与小帽檐比例协调，帽底贴合头顶','A modest top hat with a proportional cylindrical crown and small brim, its base fitted to the crown of the head'),
+ pom:option('小毛球','Pom-pom','一颗小而圆的毛球轻贴头顶，有清楚连接与柔软短绒，不悬浮、不增加第二颗头','One small rounded pom-pom softly attached at the crown, with a clear connection and fine short pile; neither floating nor a second head'),
+ crown:option('小王冠','Small crown','轻巧的小王冠自然贴合头顶，冠尖短而圆钝，比例克制、留出双眼与耳朵；不悬浮、不加尖锐长刺','A light small crown seated naturally on the head, with short softly rounded tips, restrained proportions and clear space for eyes and ears; no floating crown or long sharp spikes')
+});
+Object.assign(ACCESSORIES.face,{
+ monocle:option('单片眼镜','Monocle','一枚小巧透明单片眼镜，贴合一侧眼睛，短链顺着脸侧下垂；另一只眼正常露出，不添加多余镜桥','One small clear monocle fitted over one eye, with a short chain following the side of the face; leave the other eye visible and add no extra bridge'),
+ catEye:option('猫眼墨镜','Cat-eye sunglasses','两片外角轻扬的深色猫眼墨镜，小巧圆润、镜架贴合面部，自然遮挡双眼，不露出重复眼睛','Small softly rounded cat-eye sunglasses with subtly raised outer corners, fitted frames and dark lenses naturally occluding both eyes without duplicated eyes'),
+ roundSun:option('圆形墨镜','Round sunglasses','小巧深色圆形墨镜，细镜桥与两侧镜腿自然贴合，镜片遮住双眼、不重复画眼睛','Small dark round sunglasses with a thin bridge and naturally fitted temples; lenses hide both eyes without duplicated eyes')
+});
+export const OPAQUE_EYEWEAR=['sunglasses','catEye','roundSun'];
+export const obscuresEyes=value=>OPAQUE_EYEWEAR.includes(value);
 export const ACTIONS={
  idle:{label:'发会儿呆',en:'At ease',short:'放松待机',prop:'none',expression:'calm',art:0,zh:'主体自然放松，重心稳定。默认无手脚的几何角色保持完整简洁轮廓。',english:'Relax naturally with a stable center of gravity. A geometric character without default limbs keeps its clean uninterrupted silhouette.'},
  work:{label:'专注工作',en:'Working',short:'目光看向屏幕',prop:'macbook',expression:'focused',art:1,zh:'依据所选镜头摆放角色，电脑相对角色自然偏转，屏幕面向角色，视线明确看向屏幕；两只手自然触及键盘。四足动物使用前爪接触键盘，后爪支撑，不能增加人手。电脑约占画面下方 25%–33%，不遮住脸或大部分主体。',english:'Position the character for the selected camera. Rotate the laptop naturally relative to the character with its screen facing them. The gaze clearly meets the screen. Both hands rest naturally on the keyboard. A quadruped uses front paws on the keyboard with hind paws supporting the body, never extra human hands. The laptop occupies about the lower 25–33%, leaving the face and most of the body visible.'},
@@ -103,11 +134,11 @@ export const ACTIONS={
  wave:{label:'挥手打招呼',en:'Waving',short:'一只手或前爪',prop:'none',expression:'calm',art:0,zh:'一只手或前爪抬起自然挥动，另一侧支撑或放松；只保留正确数量的手或爪。',english:'Raise one hand or front paw in a natural wave; the other supports or rests. Keep the correct number of hands or paws.'},
  blink:{label:'轻轻眨眼',en:'Blinking',short:'自然闭合再睁开',prop:'none',expression:'calm',art:0,zh:'从自然睁眼开始，双眼缓慢闭合再睁开；身体与五官位置保持稳定，不一直闭眼。',english:'Begin with open eyes, close both gently, then open them again. Keep the body and face stable; do not remain permanently closed-eyed.'}
 };
-export const COMPOSITION={framing:{full:option('完整角色','Full character','完整主体，耳朵、尾巴与配饰不裁切','Full character with ears, tail and accessories uncropped'),bust:option('头像与上半身','Head & shoulders','头像与适量上半身，手与道具需要时可进入画面','Head and shoulders with enough upper body; hands and props may enter where needed'),portrait:option('近景头像','Close portrait','近景头像；持物动作需略微放宽构图，确保手与道具关系可读','Close portrait; widen enough for a prop action to keep hand–prop contact legible')},camera:{front:option('正面','Front','平视正面，轻微自然透视','Eye-level front view with gentle natural perspective'),threeQuarter:option('轻侧身','Three-quarter','自然四分之三视角，双眼可读','A natural three-quarter view with readable eyes'),side:option('侧面','Side','明确的侧面视角，保持身份轮廓','A clear side view preserving the identity silhouette')},background:{studio:option('浅色棚拍','Light studio','安静的浅色棚拍背景，柔和接触阴影','Quiet light studio background with soft contact shadows'),solid:option('自定义纯色','Solid color','干净的纯色背景','A clean solid-color background'),transparent:option('透明背景','Transparent','真正透明的 alpha 背景，不画棋盘格、不画白底、不画地板','True transparent alpha background; no checkerboard, white backdrop or floor')},output:{image:option('角色图','Character image','输出一张高完成度角色图片','Produce one finished character image'),sticker:option('贴纸','Sticker','输出完整轮廓的单枚透明贴纸，保留安全边距','Produce one transparent sticker with a full silhouette and safe margins'),storyboard:option('动作分镜','Storyboard','输出动作的起始、过程、结束三个静态分镜，固定身份、机位、比例与配饰位置','Produce three static frames: start, action and end. Keep identity, camera, proportions and accessories consistent'),pet:option('Pet 创作简报','Pet brief','输出角色与动作制作说明，后续按 ChatGPT Pet 目标版本的当前规范制作并验证素材。本次输出不是已安装、可直接导入或已验证的宠物文件','Produce a character and animation production brief. Create and validate assets against the current requirements of the target ChatGPT Pet version later. This output is not an installed, importable or validated pet file')}};
+export const COMPOSITION={framing:{full:option('完整角色','Full character','完整主体，耳朵、尾巴与配饰不裁切','Full character with ears, tail and accessories uncropped'),bust:option('头像与上半身','Head & shoulders','头像与适量上半身，手与道具需要时可进入画面','Head and shoulders with enough upper body; hands and props may enter where needed'),portrait:option('近景头像','Close portrait','近景头像；持物动作需略微放宽构图，确保手与道具关系可读','Close portrait; widen enough for a prop action to keep hand–prop contact legible')},camera:{front:option('正面','Front','正面视角，轻微自然透视；工作或阅读时镜头略微抬高，让手与道具的接触清楚可见','Front view with gentle natural perspective; slightly elevate the camera for working or reading to reveal natural hand–prop contact'),threeQuarter:option('轻侧身','Three-quarter','自然四分之三视角，双眼可读','A natural three-quarter view with readable eyes'),side:option('侧面','Side','明确的侧面视角，保持身份轮廓','A clear side view preserving the identity silhouette')},background:{studio:option('浅色棚拍','Light studio','安静的浅色棚拍背景，柔和接触阴影','Quiet light studio background with soft contact shadows'),solid:option('自定义纯色','Solid color','干净的纯色背景','A clean solid-color background'),transparent:option('透明背景','Transparent','真正透明的 alpha 背景，不画棋盘格、不画白底、不画地板','True transparent alpha background; no checkerboard, white backdrop or floor')},output:{image:option('角色图','Character image','输出一张高完成度角色图片','Produce one finished character image'),sticker:option('贴纸','Sticker','输出完整轮廓的单枚透明贴纸，保留安全边距','Produce one transparent sticker with a full silhouette and safe margins'),storyboard:option('动作分镜','Storyboard','输出动作的起始、过程、结束三个静态分镜，固定身份、机位、比例与配饰位置','Produce three static frames: start, action and end. Keep identity, camera, proportions and accessories consistent'),pet:option('Pet 创作简报','Pet brief','输出角色与动作制作说明，后续按 ChatGPT Pet 目标版本的当前规范制作并验证素材。本次输出不是已安装、可直接导入或已验证的宠物文件','Produce a character and animation production brief. Create and validate assets against the current requirements of the target ChatGPT Pet version later. This output is not an installed, importable or validated pet file')}};
 export const PRESERVE={silhouette:['轮廓与物种','silhouette and species'],hair:['发型与发色','hairstyle and hair color'],face:['脸型与可见五官','face shape and visible features'],colors:['主体配色','primary color palette'],clothing:['服装特征','clothing details'],accessories:['已有配饰','existing accessories']};
 export function createCharacter(family='dots'){
  const f=FAMILIES[family]||FAMILIES.dots,p=PALETTES.find(x=>x.body===f.color)||PALETTES[0];
- return {version:VERSION,rendererVersion:'live-1',presetId:familyPresets(family)[0]?.id||'custom',faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:p.eyes,accessory:p.accessory,background:'#F3F6FA',skin:'#EBC4A6',hair:'#523729',clothing:'#2C8D82'},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='muse'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short-curly',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'beret':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'studio',aspect:'1:1',scale:72,output:'image',skinMaterial:'auto',hairMaterial:'auto',clothMaterial:'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
+ return {version:VERSION,rendererVersion:'live-1',presetId:familyPresets(family)[0]?.id||'custom',faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:p.eyes,accessory:p.accessory,background:'#F3F6FA',skin:'#EBC4A6',hair:'#523729',clothing:'#2C8D82'},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='muse'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short-curly',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'headphones':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'studio',aspect:'1:1',scale:72,output:'image',skinMaterial:'auto',hairMaterial:'auto',clothMaterial:'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
 }
 export function createPreset(id,previous=null){
  const p=PRESETS.find(x=>x.id===id);if(!p)throw new Error('角色预设不存在');
@@ -151,7 +182,7 @@ export function setCharacterValue(input,path,value){
   c.action=match[value]||'idle';
  }
  if(path==='accessories.head'&&value!=='headphones'&&c.action==='listen')c.action='idle';
- if(path==='accessories.face'&&value==='sunglasses'&&c.action==='sleep')c.action='idle';
+ if(path==='accessories.face'&&obscuresEyes(value)&&c.action==='sleep')c.action='idle';
  if(path==='limbs'&&['none','feet'].includes(value)&&(ACTIONS[c.action].prop!=='none'||c.action==='wave'||c.pose==='chin')){c.action='idle';c.pose='auto';}
  if(path==='colors.eyes')c.eyeColorManual=true;
  if(path==='colors.body'){
@@ -164,7 +195,7 @@ export function setCharacterValue(input,path,value){
 
  return validateConfig(c);
 }
-export function applyPalette(c,id){const p=PALETTES.find(x=>x.id===id);if(!p)return copy(c);const n=copy(c);n.palette=id;for(const k of ['body','secondary','accessory']){n.colors[k]=p[k];markOverride(n,'colors.'+k);}if(!n.eyeColorManual){n.colors.eyes=p.eyes;markOverride(n,'colors.eyes');}if(n.shape==='human'){n.colors.clothing=p.body;markOverride(n,'colors.clothing');}return n;}
+export function applyPalette(c,id){const p=PALETTES.find(x=>x.id===id);if(!p)return copy(c);const n=copy(c);n.palette=id;for(const k of ['body','secondary','accessory']){n.colors[k]=p[k];markOverride(n,'colors.'+k);}if(!n.eyeColorManual){n.colors.eyes=n.shape==='human'?eyeColorFor(n.colors.skin):p.eyes;markOverride(n,'colors.eyes');}if(n.shape==='human'){n.colors.clothing=p.body;markOverride(n,'colors.clothing');}return n;}
 export function eyeColorFor(hex){const rgb=hex.slice(1).match(/../g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722<.14?'#FFF7E9':'#172131';}
 export function resolveCharacter(input){
  const c=copy(input),adjustments=[];const act=ACTIONS[c.action];
@@ -172,7 +203,7 @@ export function resolveCharacter(input){
  if(['sleep','work','magic','camera','read','blink'].includes(c.action)&&c.expression!==act.expression){c.expression=act.expression;adjustments.push('表情已跟随当前动作');}
  if(act.prop!==c.accessories.prop){c.accessories.prop=act.prop;adjustments.push('道具已与动作匹配');}
  if(c.action==='listen'&&c.accessories.head!=='headphones'){c.accessories.head='headphones';adjustments.push('听歌时使用耳机；原来的头饰已保留');}
- if(c.action==='sleep'&&c.accessories.face==='sunglasses'){c.accessories.face='none';adjustments.push('睡觉时暂时收起墨镜');}
+ if(c.action==='sleep'&&obscuresEyes(c.accessories.face)){c.accessories.face='none';adjustments.push('睡觉时暂时收起墨镜；原来的选择已保留');}
  if(c.action!=='idle'&&c.pose!=='auto'){c.pose='auto';adjustments.push('姿态已跟随当前动作');}
  if(c.output==='sticker'||c.output==='pet')c.background='transparent';
  const activeHands=!!(act.prop!=='none'||c.action==='wave'||c.pose==='chin');
@@ -205,7 +236,7 @@ export function buildPrompt(input,lang='zh'){
  const lines=[say('请按以下完整设定创作角色。','Create a character from the complete specification below.')];
  const add=(zh,enTitle,value)=>{if(value)lines.push((en?enTitle+': ':'【'+zh+'】')+value);};
  const familyRules={
-  dots:say('Dots 灵感的几何伙伴：重心低、圆润而有辨识度的整体轮廓，克制的小眼睛和少量配饰。默认软团子不是正圆球；轮廓可按下文选择调整。','A Dots-inspired geometric companion: grounded, rounded but distinctive silhouette, restrained small eyes and a few accessories. The default soft dumpling is not a sphere; use the selected silhouette below.'),
+  dots:say('Dots 灵感的几何伙伴：饱满、圆润而有辨识度的整体轮廓，克制的小眼睛和少量配饰。轮廓、配色与五官以下方设定为准；形状、眼睛与配饰保持相互独立。','A Dots-inspired geometric companion: a full, rounded and distinctive silhouette, restrained small eyes and a few accessories. Follow the silhouette, colors and features specified below. Keep silhouette, eye design and accessories independently configurable.'),
   grok:say('Grok Bot 灵感伙伴：软拱或圆角几何体与竖向胶囊眼建立辨识度；非机械机器人，无金属面板、天线或屏幕脸。按下文选择的轮廓与五官表达。','A Grok Bot-inspired companion: a soft arch or rounded geometric form, identified by simple vertical capsule eyes. No mechanical panels, antennae or screen face. Follow the selected silhouette and facial design below.'),
   muse:say('本站人物玩偶预设：脸、头发与衣服分部件处理，保留脸型、肩部和自然发丝层次。换材质时保留同一身份，头发不能变成粗绳条。','An original human doll preset: distinct face, hair and clothing regions, a readable face shape, shoulders and natural layered strands. Keep the same identity across materials; no thick rope-like hair.'),
   pets:say('本站动物伙伴预设：保留物种的耳朵、口鼻、自然爪形、躯干与尾巴，头身比例均衡，四足动物不长出人手。','An original animal companion: retain species-specific ears, muzzle, natural paws, torso and tail. Balanced head and body; a quadruped must not grow human hands.')
@@ -266,15 +297,17 @@ export function buildPrompt(input,lang='zh'){
   if(!inherited('colors.'+key))palette.push(labels[en?1:0]+' '+c.colors[key]);
  }
  if(palette.length)add('配色','PALETTE',palette.join(en?'; ':'；')+say('。按角色结构分区，保持面部清楚。银色电脑与花朵保留自然对象本色。','. Apply color regions according to the anatomy and keep the face legible. Keep the laptop silver and flowers naturally colored.'));
- const face=[];
- if(c.expression==='closed')face.push(say('双眼完全闭合为自然眼线，无睁开的眼形、瞳孔或高光','Both eyes fully closed as natural eyelid curves, with no open eye shapes, pupils or catchlights'));
+ const face=[],opaqueGlasses=!inherited('accessories.face')&&obscuresEyes(c.accessories.face);
+ if(opaqueGlasses)face.push(say('双眼由深色镜片自然遮挡，眼形与眼色保留在镜片后，不在镜片上或旁边重复画眼睛、瞳孔或睫毛','Dark lenses naturally occlude both eyes. Keep the selected eye design and color behind the lenses, without duplicated eyes, pupils or lashes on or beside them'));
+ else if(c.expression==='closed')face.push(say('双眼完全闭合为自然眼线，无睁开的眼形、瞳孔或高光','Both eyes fully closed as natural eyelid curves, with no open eye shapes, pupils or catchlights'));
  else if(!inherited('eyes'))face.push(text(EYES[c.eyes]));
  else face.push(say('眼形从参考特征简化，适配目标风格，避免写实大眼球','Simplify the reference eye design for the target style; avoid large realistic eyeballs'));
  if(!inherited('brows'))face.push(text(BROWS[c.brows]));
  if(!inherited('mouth'))face.push(text(MOUTHS[c.mouth]));
- face.push(text(EXPRESSIONS[c.expression]));
- if(!inherited('eyeScale'))face.push(say('眼睛相对大小 ','Relative eye size ')+Math.round(c.eyeScale*100)+'%');
- if(!inherited('eyeSpacing'))face.push(say('相对眼距 ','Relative eye spacing ')+Math.round(c.eyeSpacing*100)+'%');
+ face.push(opaqueGlasses?say('表情意图为“'+EXPRESSIONS[c.expression].label+'”，眼部变化发生在镜片后，露出的眉毛、嘴巴与头部姿态自然配合','The expression is '+EXPRESSIONS[c.expression].en.toLowerCase()+'. Eye changes occur behind the lenses; visible brows, the selected mouth and head posture respond naturally'):text(EXPRESSIONS[c.expression]));
+ if(!opaqueGlasses&&c.expression!=='closed')face.push(say('当前表情与动作决定眼睑开合和目光目标；闭合的眼睛不显示瞳孔、高光或星光，睁开的眼睛保留所选眼形','The expression and activity determine eyelid closure and gaze target. Closed eyes have no visible pupils, catchlights or stars; open eyes retain the selected design'));
+ if(!opaqueGlasses&&!inherited('eyeScale'))face.push(say('眼睛相对大小 ','Relative eye size ')+Math.round(c.eyeScale*100)+'%');
+ if(!opaqueGlasses&&!inherited('eyeSpacing'))face.push(say('相对眼距 ','Relative eye spacing ')+Math.round(c.eyeSpacing*100)+'%');
  add('五官与表情','FACE',face.join(en?'. ':'。'));
  const birdAction={
   work:['面向小型电脑，两只翼尖自然触及键盘，目光看向屏幕；两只脚支撑身体。电脑保持低位，露出脸与主体。','Face a small laptop, with both wing tips naturally contacting the keyboard and gaze directed at its screen. Two feet support the body. Keep the laptop low and the face visible.'],
@@ -342,5 +375,30 @@ export function validateConfig(raw){
  c.reference={enabled:ref.enabled,notes:textValue(ref.notes,1200,'参考说明'),preserve:[...new Set(ref.preserve)],overrides:[...new Set(ref.overrides)]};
  return c;
 }
-export function randomizeCharacter(input,seed){let n=2166136261;for(const k of seed)n=Math.imul(n^k.charCodeAt(0),16777619);const rand=()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;},pick=a=>a[Math.floor(rand()*a.length)];let c=copy(input);c.randomSeed=seed;c=applyPalette(c,pick(PALETTES).id);c.material=pick(['plush','rubber','micro','clay']);c=setCharacterValue(c,'action',pick(['idle','listen','flowers','work','sleep','magic']));c=setCharacterValue(c,'accessories.face',c.action==='sleep'?'none':pick(['none','round','square']));return c;}
+export function randomizeCharacter(input,seed){
+ let n=2166136261;for(const k of seed)n=Math.imul(n^k.charCodeAt(0),16777619);
+ const rand=()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;},pick=a=>a[Math.floor(rand()*a.length)];
+ let c=copy(input);c.randomSeed=seed;
+ const palette=pick(PALETTES);
+ // Keep reference-inherited features and explicit eye colors intact when remixing.
+ const paletteResult=applyPalette(c,palette.id);
+ for(const path of ['colors.body','colors.secondary','colors.accessory','colors.eyes','colors.clothing']){
+  if(inheritsReference(input,path))continue;
+  const key=path.split('.')[1];
+  if(c.colors[key]!==paletteResult.colors[key]){c.colors[key]=paletteResult.colors[key];markOverride(c,path);}
+ }
+ if(!inheritsReference(input,'colors.body'))c.palette=palette.id;
+ c.material=pick(Object.keys(MATERIALS));
+ if(!['human',...ANIMALS].includes(c.shape)&&!inheritsReference(c,'shape'))c=setCharacterValue(c,'shape',pick(FAMILY_SHAPES[c.family].filter(x=>x!=='human')));
+ if(!inheritsReference(c,'eyes'))c=setCharacterValue(c,'eyes',pick(Object.keys(EYES)));
+ if(!inheritsReference(c,'accessories.head'))c=setCharacterValue(c,'accessories.head',pick(['none','none',...Object.keys(ACCESSORIES.head)]));
+ const action=pick(['idle','listen','flowers','work','sleep','magic']);
+ if(!inheritsReference(c,'accessories.face')){
+  const hasHead=action==='listen'||c.accessories.head!=='none';
+  const glasses=c.accessories.neck!=='none'&&hasHead?['none']:Object.keys(ACCESSORIES.face).filter(x=>action!=='sleep'||!obscuresEyes(x));
+  c=setCharacterValue(c,'accessories.face',pick(['none','none',...glasses]));
+ }
+ c=setCharacterValue(c,'action',action);
+ return validateConfig(c);
+}
 export function exportConfiguration(input){return JSON.stringify(validateConfig(input),null,2);}

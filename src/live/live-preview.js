@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
-import {MeshSurfaceSampler} from 'three/addons/math/MeshSurfaceSampler.js';
+import {addFur} from './surface-fur.js';
 import {buildAvatarBody} from './avatar-body.js';
 import {decorateAvatar} from './avatar-props.js';
 import {SoftwareRenderer} from './software-renderer.js';
@@ -19,32 +19,6 @@ function disposeRoot(root){
 
 // Individual tapered fibers are attached to the actual mesh surface. Sampling
 // and colors are seeded so a slider change does not make the fur swim or flicker.
-function addFur(avatar,c,quality=1){
- const surfaces=avatar.surfaces.filter(mesh=>{
-  const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material;
-  let visible=true;for(let parent=mesh;parent;parent=parent.parent)if(!parent.visible)visible=false;
-  return ['plush','micro','fabric','knit'].includes(kind)&&visible;
- });
- let total=0;
- const areas=surfaces.map(mesh=>{mesh.geometry.computeBoundingBox();const s=mesh.geometry.boundingBox.getSize(new THREE.Vector3()).multiply(mesh.scale);const a=Math.max(.02,2*(s.x*s.y+s.x*s.z+s.y*s.z));total+=a;return a;});
- surfaces.forEach((mesh,i)=>{
-  const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material;
-  const textile=['knit','fabric'].includes(kind),micro=kind==='micro';
-  const count=Math.max(120,Math.round((textile?13000:38000)*quality*areas[i]/total));
-  const length=textile?.009:micro?.012:.027;
-  const geometry=new THREE.CylinderGeometry(.0003,textile?.001:.00135,length,3,1);geometry.translate(0,length/2,0);
-  const material=new THREE.MeshStandardMaterial({color:mesh.material.color,roughness:1,metalness:0,side:THREE.DoubleSide});
-  const fur=new THREE.InstancedMesh(geometry,material,count);fur.name='surface-fibers';fur.castShadow=false;fur.receiveShadow=true;
-  const random=seedRandom((c.randomSeed||'dot')+mesh.name+i),sampler=new MeshSurfaceSampler(mesh).setRandomGenerator(random).build();
-  const p=new THREE.Vector3(),n=new THREE.Vector3(),o=new THREE.Object3D(),color=new THREE.Color();
-  for(let j=0;j<count;j++){
-   sampler.sample(p,n);o.position.copy(p);n.x+=(random()-.5)*.15;n.y-=.12;n.normalize();
-   o.quaternion.setFromUnitVectors(UP,n);o.scale.set(1,.62+random()*.75,1);o.updateMatrix();fur.setMatrixAt(j,o.matrix);
-   color.setRGB(1,1,1).multiplyScalar(.78+random()*.31);fur.setColorAt(j,color);
-  }
-  fur.instanceMatrix.needsUpdate=true;fur.instanceColor.needsUpdate=true;fur.frustumCulled=false;mesh.add(fur);
- });
-}
 
 function setPose(avatar,c){
  const human=c.shape==='human',animal=avatar.root.userData.anatomy==='animal';
@@ -64,7 +38,7 @@ function setPose(avatar,c){
  }else if(c.pose==='chin'){
   avatar.head.rotation.z=.10;
  }
- if(['work','read'].includes(c.action)){avatar.head.rotation.x=.11;avatar.head.position.z+=.025;}
+ if(['work','read'].includes(c.action)){avatar.head.rotation.x=.15;avatar.head.position.z+=.025;if(c.action==='work')avatar.head.rotation.y=-.08;}
  if(c.action==='magic'){avatar.head.rotation.y=.16;avatar.head.rotation.x=-.035;}
  if(c.action==='camera')avatar.head.rotation.x=.035;
  avatar.root.updateMatrixWorld(true);
@@ -84,25 +58,25 @@ class RenderWorld{
   else{graphicsMode='software';this.renderer=new SoftwareRenderer(canvas);}
   canvas.dataset.renderMode=graphicsMode;
   this.renderer.setPixelRatio(thumbnail?1:Math.min(window.devicePixelRatio||1,1.7));
-  if(this.renderer.isSoftwareRenderer)this.renderer.previewLimit=thumbnail?240:640;
+  if(this.renderer.isSoftwareRenderer){this.renderer.previewLimit=thumbnail?240:640;this.renderer.minPreviewScale=thumbnail?.62:.80;}
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.NeutralToneMapping;this.renderer.toneMappingExposure=1.18;
   this.renderer.shadowMap.enabled=!thumbnail;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   this.scene=new THREE.Scene();
   this.camera=new THREE.OrthographicCamera(-2,2,2,-2,.1,40);
   if(!this.renderer.isSoftwareRenderer){
    const pmrem=new THREE.PMREMGenerator(this.renderer),room=new RoomEnvironment();
-   this.environment=pmrem.fromScene(room,.055);this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.65;
+   this.environment=pmrem.fromScene(room,.055);this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.35;
    room.dispose();pmrem.dispose();
   }
-  this.scene.add(new THREE.HemisphereLight('#ffffff','#b8c1d0',1.45));
-  const key=new THREE.DirectionalLight('#fff8ee',2.5);key.position.set(-3.5,6,5);key.castShadow=!thumbnail;
-  key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-4,right:4,top:5,bottom:-3,near:.1,far:20});key.shadow.bias=-.0003;key.shadow.normalBias=.018;key.shadow.radius=4;this.scene.add(key);
-  const fill=new THREE.DirectionalLight('#dceaff',.6);fill.position.set(4,2,2);this.scene.add(fill);
-  const rim=new THREE.DirectionalLight('#ffffff',1.1);rim.position.set(1,4,-3);this.scene.add(rim);
+  this.scene.add(new THREE.HemisphereLight('#ffffff','#b8c4d3',1.05));
+  const key=new THREE.DirectionalLight('#fffaf6',2.7);key.position.set(-3.8,5.2,4.4);key.castShadow=!thumbnail;
+  key.shadow.mapSize.set(1024,1024);Object.assign(key.shadow.camera,{left:-4,right:4,top:5,bottom:-3,near:.1,far:20});key.shadow.bias=-.0003;key.shadow.normalBias=.010;key.shadow.radius=5;this.scene.add(key);
+  const fill=new THREE.DirectionalLight('#edf5ff',.42);fill.position.set(4,2.8,2.4);this.scene.add(fill);
+  const rim=new THREE.DirectionalLight('#ffffff',.8);rim.position.set(2,4.2,-3.6);this.scene.add(rim);
   this.floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({color:'#68718a',opacity:.16}));this.floor.rotation.x=-Math.PI/2;this.floor.position.y=-.016;this.floor.receiveShadow=true;this.scene.add(this.floor);
   // A very soft contact core remains stable under gentle idle motion.
   const size=128,data=new Uint8Array(size*size*4);
-  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const r=((x-size/2)/(size/2))**2+((y-size/2)/(size/2))**2;const i=(y*size+x)*4;data[i]=88;data[i+1]=103;data[i+2]=125;data[i+3]=Math.round(Math.exp(-r*5)*28);}
+  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const r=((x-size/2)/(size/2))**2+((y-size/2)/(size/2))**2;const i=(y*size+x)*4;data[i]=88;data[i+1]=103;data[i+2]=125;data[i+3]=Math.round(Math.exp(-r*4.2)*64);}
   const map=new THREE.DataTexture(data,size,size);map.needsUpdate=true;
   this.contact=new THREE.Mesh(new THREE.PlaneGeometry(3.3,2.2),new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false}));this.contact.rotation.x=-Math.PI/2;this.contact.position.y=.002;this.scene.add(this.contact);
   this.turn=new THREE.Group();this.scene.add(this.turn);this.frame={width:512,height:512};
@@ -115,7 +89,7 @@ class RenderWorld{
   this.turn.updateMatrixWorld(true);
   const bounds=new THREE.Box3().setFromObject(this.turn);this.center=bounds.getCenter(new THREE.Vector3());this.bounds=bounds.getSize(new THREE.Vector3());
   this.floor.visible=this.contact.visible=c.background!=='transparent';
-  this.scene.background=c.background==='solid'?new THREE.Color(c.colors.background):c.background==='studio'?new THREE.Color('#f8fafc'):null;
+  this.scene.background=c.background==='solid'?new THREE.Color(c.colors.background):c.background==='studio'?new THREE.Color('#f4f6fa'):null;
   this.fit(this.frame.width,this.frame.height);this.render(stillTime(c));
  }
  fit(width,height){
@@ -131,7 +105,8 @@ class RenderWorld{
    }
   }
   this.camera.left=-heightWorld*aspect/2;this.camera.right=heightWorld*aspect/2;this.camera.top=heightWorld/2;this.camera.bottom=-heightWorld/2;
-  this.camera.position.set(center.x,center.y+.12,8);this.camera.lookAt(center.x,center.y,0);this.camera.updateProjectionMatrix();
+  const elevation=c.action==='work'?2.8:c.action==='read'?1.65:.45;
+  this.camera.position.set(center.x,center.y+elevation,8);this.camera.lookAt(center.x,center.y,0);this.camera.updateProjectionMatrix();
  }
  render(time=0){
   if(!this.avatar)return;const a=this.avatar,c=this.config,rest=a.root.userData;
@@ -156,6 +131,7 @@ export class CharacterPreview{
  constructor(container,{onError=()=>{},onReady=()=>{}}={}){
   this.container=container;this.onError=onError;this.onReady=onReady;this.canvas=document.createElement('canvas');this.canvas.className='character-canvas';this.canvas.setAttribute('role','img');this.canvas.setAttribute('aria-label','当前配置的实时三维角色');container.append(this.canvas);
   this.world=new RenderWorld(this.canvas);this.start=performance.now();this.playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;this.visible=true;this.lastFrame=0;this.revision=0;
+  if(this.world.renderer.isSoftwareRenderer)this.world.renderer.staticPreview=!this.playing;
   this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);
   this.intersection=new IntersectionObserver(([entry])=>{this.visible=entry.isIntersecting;});this.intersection.observe(container);
   this.contextLost=e=>{e.preventDefault();this.onError('实时预览暂时无法继续，请刷新页面恢复。你的配置仍然保留。');};this.canvas.addEventListener('webglcontextlost',this.contextLost);
@@ -166,7 +142,7 @@ export class CharacterPreview{
   this.updateFrame=requestAnimationFrame(()=>{this.updateFrame=0;try{this.world.update(this.pending);this.revision++;this.canvas.dataset.revision=String(this.revision);this.canvas.dataset.shape=this.pending.shape;this.canvas.dataset.material=this.pending.material;this.canvas.dataset.action=this.pending.action;this.resize();this.onReady();}catch(e){console.error('Character preview:',e);this.onError('这个角色暂时未能显示，请切换角色后重试。');}});
  }
  resize(){const c=this.pending||this.world.config;if(!c)return;const [aw,ah]=c.aspect.split(':').map(Number),rect=this.container.getBoundingClientRect(),ratio=aw/ah;let width=Math.max(1,rect.width),height=width/ratio;if(height>rect.height){height=rect.height;width=height*ratio;}this.canvas.style.width=width+'px';this.canvas.style.height=height+'px';this.world.fit(Math.round(width),Math.round(height));this.world.render(stillTime(this.world.config));}
- setPlaying(value){this.playing=value;if(!value&&this.world.config)this.world.render(stillTime(this.world.config));}
+ setPlaying(value){this.playing=value;if(this.world.renderer.isSoftwareRenderer)this.world.renderer.staticPreview=!value;if(!value&&this.world.config)this.world.render(stillTime(this.world.config));}
  capture(size=1400,config=this.pending||this.world.config){
   // An independent canvas renders the configuration at click time. Live edits,
   // resize events and switching views cannot alter a pending PNG export.
