@@ -56,13 +56,13 @@
     if(s.body==='snake'){top=-88;bottom=108;half=102;faceY=-15;}
     if(isAnimal||isHuman){top=-85;bottom=86;half=82;faceY=-1;}
     if(isRobot){top=-84;bottom=88;half=82;faceY=-7;}
-    const garmentY=tall?25:quad?25:bottom*.40,baseY=tall?103:quad?94:bottom+5;
+    const garmentY=tall?25:quad?25:bottom*.40,baseY=tall?103:quad?94:bottom-6;
     const headTop=headY+top*headScale,headHalf=half*headScale;
     const anim=options.animated!==false,playing=options.playing!==false,action=s.action;
     const duration=n=>(n/s.tempo).toFixed(3)+'s';
     const defs=`<defs><radialGradient id="${id}body" cx="29%" cy="18%" r="90%"><stop offset="0" stop-color="${shade(s.color,43)}"/><stop offset=".45" stop-color="${shade(s.color,13)}"/><stop offset=".8" stop-color="${s.color}"/><stop offset="1" stop-color="${dark}"/></radialGradient><radialGradient id="${id}skin" cx="32%" cy="20%" r="85%"><stop stop-color="${shade(s.skinColor,24)}"/><stop offset="1" stop-color="${s.skinColor}"/></radialGradient><linearGradient id="${id}scene" x2="1" y2="1"><stop stop-color="#EEF4FF"/><stop offset="1" stop-color="#F1EAFE"/></linearGradient><linearGradient id="${id}night" x2="0" y2="1"><stop stop-color="#273458"/><stop offset="1" stop-color="#52668D"/></linearGradient><linearGradient id="${id}water" x2="0" y2="1"><stop stop-color="#CDF5F4"/><stop offset="1" stop-color="#69B6CD"/></linearGradient><linearGradient id="${id}glass" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".4"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".06"/></linearGradient><radialGradient id="${id}glow"><stop stop-color="#D6C8FF" stop-opacity=".45"/><stop offset="1" stop-color="#D6C8FF" stop-opacity="0"/></radialGradient></defs>`;
     const motion=anim?`<style>
-      #${id}stage [data-motion]{animation-play-state:${playing?'running':'paused'} !important;transform-box:view-box;transform-origin:0px 45px}
+      #${id}stage [data-motion]{animation-play-state:${playing?'running':'paused'};transform-box:view-box;transform-origin:0px 45px}
       @keyframes ${id}breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
       @keyframes ${id}bounce{0%,100%{transform:translateY(0)}45%,55%{transform:translateY(-25px)}}
       @keyframes ${id}sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
@@ -82,6 +82,7 @@
       #${id}stage .${id}wave{${s.pose==='wave'?`animation:${id}wave ${duration(1.4)} ease-in-out infinite;`:''}transform-origin:0px 0px}
       #${id}stage .${id}spark{animation:${id}twinkle ${duration(2.4)} ease-in-out infinite}
       #${id}stage .${id}mist{animation:${id}mist ${duration(5)} ease-in-out infinite}
+      #${id}stage [data-motion]{animation-play-state:${playing?'running':'paused'}}
       @media(prefers-reduced-motion:reduce){#${id}stage [data-motion]{animation:none!important}}
     </style>`:'';
 
@@ -224,7 +225,7 @@
       if(s.pose==='fold')return group('arms',line(`M${-x} ${yy}Q-44 ${yy+32} 25 ${yy+30}`,isHuman?s.color:dark,20)+line(`M${x} ${yy}Q43 ${yy+40}-27 ${yy+23}`,isHuman?s.color:bodyFill,20)+e(-27,yy+23,12,10,ac)+e(25,yy+30,12,10,ac));
       left=e(-x-5,yy+L*.45,13,L*.7,ac,'transform="rotate(-15 '+(-x-5)+' '+(yy+L*.45)+')"');
       if(s.pose==='chin')right=line(`M${x} ${yy+18}Q${x+16} ${yy} ${headX+headHalf*.57} ${headY+18}`,isHuman?s.color:s.color,19)+e(headX+headHalf*.57,headY+17,13,12,ac);
-      else if(s.pose==='wave'||s.pose==='magic')right=group('raised-arm',line(`M0 0Q${L*.45} -5 ${L*.3} ${-L}`,s.color,22)+e(L*.3,-L,14,16,ac),`class="${id}wave" data-motion="hand" transform="translate(${x} ${yy})"`);
+      else if(s.pose==='wave'||s.pose==='magic')right=group('raised-arm',group('wave-hand',line(`M0 0Q${L*.45} -5 ${L*.3} ${-L}`,s.color,22)+e(L*.3,-L,14,16,ac),`class="${id}wave" data-motion="hand"`),`transform="translate(${x} ${yy})"`);
       else right=e(x+5,yy+L*.45,13,L*.7,ac,'transform="rotate(15 '+(x+5)+' '+(yy+L*.45)+')"');
       return group('arms',group('left-hand',left,`class="${id}workhand" data-motion="hand"`)+group('right-hand',right,`class="${id}workhand" data-motion="hand" style="animation-delay:-.3s"`));
     }
@@ -237,7 +238,7 @@
       if(s.clothing==='dress')result=f(`M${-w*.58} ${y}Q0 ${y+8} ${w*.58} ${y}L${w+10} ${base+16}Q0 ${base+32} ${-w-10} ${base+16}Z`,shade(s.color,-22))+line(`M${-w*.65} ${y+28}Q0 ${y+37} ${w*.65} ${y+28}`,light,5);
       if(s.clothing==='sweater')result+=line(`M${-w+4} ${base-5}Q0 ${base+12} ${w-4} ${base-5}`,light,5,'opacity=".4"')+line(`M-17 ${y+5}Q0 ${y+23} 17 ${y+5}`,light,5);
       if(s.clothing==='suit')result+=path(`M-27 ${y+5}L0 ${base-14}L27 ${y+5}L17 ${base+1}H-17Z`,'#EDF0F4')+path(`M-5 ${y+28}H5L9 ${base-8}L0 ${base}L-9 ${base-8}Z`,'#7E8CAA')+path(`M-27 ${y+4}L-12 ${y+30}L-23 ${y+38}L-6 ${base}M27 ${y+4}L12 ${y+30}L23 ${y+38}L6 ${base}`,'none',`stroke="${light}" stroke-width="2"`);
-      if(s.clothing==='hoodie')result+=line(`M-25 ${y+4}Q-33 ${y+24}-17 ${y+32}M25 ${y+4}Q33 ${y+24}17 ${y+32}`,light,9)+line(`M-15 ${y+29}V${y+48}M15 ${y+29}V${y+48}`,'#F2F3F8',2.5)+path(`M-24 ${base-23}Q0 ${base-32}24 ${base-23}L20 ${base-7}H-20Z`,dark);
+      if(s.clothing==='hoodie')result+=line(`M-25 ${y+4}Q-33 ${y+24}-17 ${y+32}M25 ${y+4}Q33 ${y+24} 17 ${y+32}`,light,9)+line(`M-15 ${y+29}V${y+48}M15 ${y+29}V${y+48}`,'#F2F3F8',2.5)+path(`M-24 ${base-23}Q0 ${base-32} 24 ${base-23}L20 ${base-7}H-20Z`,dark);
       if(s.accessories.includes('pajamas'))result+=circle(0,y+28,2.7,'#FFFFFF')+circle(0,y+43,2.7,'#FFFFFF')+star(w*.55,y+30,6,'#F8F0CE');
       return group('clothing',result);
     }
@@ -246,22 +247,22 @@
       if(s.hair==='none'||s.hair==='bald')return {back:'',front:''};
       const h=s.hairColor,t=top,w=Math.min(half,89),y=t+14;
       let back='',front='';
-      if(s.hair==='long')back=f(`M${-w-4} ${y+55}Q${-w-12} ${t-15}0 ${t-15}Q${w+13} ${t-15}${w+4} ${y+55}L${w+12} ${bottom+4}Q0 ${bottom+25}${-w-12} ${bottom+4}Z`,h);
-      if(s.hair==='bob')back=f(`M${-w-3} ${y+46}Q${-w-10} ${t-16}0 ${t-16}Q${w+10} ${t-16}${w+3} ${y+46}L${w+5} 44Q${w-12} 57 ${w-28} 38L${-w+28} 38Q${-w+12} 57 ${-w-5}44Z`,h);
-      if(s.hair==='short'||s.hair==='long'||s.hair==='bob')front=f(`M${-w+1} ${y+42}Q${-w-14} ${t-12}0 ${t-13}Q${w+11} ${t-13}${w} ${y+43}L${w-17} ${y+25}L${w-27} ${y+44}Q17 ${y+30}13 ${y+8}Q-12 ${y+38}${-w+13} ${y+26}Z`,h);
+      if(s.hair==='long')back=f(`M${-w-4} ${y+55}Q${-w-12} ${t-15} 0 ${t-15}Q${w+13} ${t-15} ${w+4} ${y+55}L${w+12} ${bottom+4}Q0 ${bottom+25} ${-w-12} ${bottom+4}Z`,h);
+      if(s.hair==='bob')back=f(`M${-w-3} ${y+46}Q${-w-10} ${t-16} 0 ${t-16}Q${w+10} ${t-16} ${w+3} ${y+46}L${w+5} 44Q${w-12} 57 ${w-28} 38L${-w+28} 38Q${-w+12} 57 ${-w-5} 44Z`,h);
+      if(s.hair==='short'||s.hair==='long'||s.hair==='bob')front=f(`M${-w+1} ${y+42}Q${-w-14} ${t-12} 0 ${t-13}Q${w+11} ${t-13} ${w} ${y+43}L${w-17} ${y+25}L${w-27} ${y+44}Q17 ${y+30} 13 ${y+8}Q-12 ${y+38} ${-w+13} ${y+26}Z`,h);
       if(s.hair==='curly'){for(let i=0;i<7;i++)front+=e(-w+13+i*(w*2-26)/6,t+17-19*Math.sin(i/6*Math.PI),22,23,h);front+=e(-w+5,y+33,14,23,h)+e(w-5,y+33,14,23,h);}
-      if(s.hair==='quiff')front=f(`M${-w} ${y+35}Q${-w-4} ${t+4}-22 ${t-2}Q-46 ${t-37}-6 ${t-36}Q18 ${t-40}44 ${t-63}Q64 ${t-20}36 ${t-7}Q${w+9} ${t+2}${w-3} ${y+40}L${w-20} ${y+21}Q18 ${y+32}9 ${y+4}Q-14 ${y+30}${-w} ${y+35}Z`,h);
+      if(s.hair==='quiff')front=f(`M${-w} ${y+35}Q${-w-4} ${t+4}-22 ${t-2}Q-46 ${t-37}-6 ${t-36}Q18 ${t-40} 44 ${t-63}Q64 ${t-20} 36 ${t-7}Q${w+9} ${t+2} ${w-3} ${y+40}L${w-20} ${y+21}Q18 ${y+32} 9 ${y+4}Q-14 ${y+30} ${-w} ${y+35}Z`,h);
       return {back:group('hair-back',back),front:group('hair',front)};
     }
 
     function hat(){
       const y=top+7,w=Math.min(half,86),hat=s.hat;
       let result='';
-      if(hat==='beanie')result=f(`M${-w} ${y}Q${-w+1} ${y-72}0 ${y-72}Q${w-1} ${y-72}${w} ${y}Z`,'#A6B8D6')+r(-w-3,y-14,w*2+6,28,11,'#BBC9E2')+circle(0,y-75,14,'#D2DEF0')+line(`M-50 ${y-39}v13M-25 ${y-49}v22M0 ${y-51}v24M25 ${y-49}v22M50 ${y-39}v13`,'#CFD9E9',2);
-      if(hat==='cap')result=f(`M${-w} ${y}Q${-w+1} ${y-64}0 ${y-64}Q${w-1} ${y-64}${w} ${y}Z`,'#EAC9A1')+f(`M-19 ${y-1}Q34 ${y-10}${w+23} ${y+7}Q${w+36} ${y+22}${w+8} ${y+22}Q29 ${y+25}-19 ${y+8}Z`,'#D8B68C')+line(`M0 ${y-59}Q19 ${y-31}16 ${y-5}`,'#D8B68C',2);
-      if(hat==='beret')result=f(`M${-w} ${y-1}Q${-w-34} ${y-42}-23 ${y-59}Q${w+29} ${y-80}${w+8} ${y-18}Q${w-14} ${y+13}${-w} ${y-1}Z`,'#A695C6')+r(-w+6,y-7,w*2-12,17,7,'#8E7DB0')+line(`M9 ${y-60}L15 ${y-72}`,'#8E7DB0',6);
-      if(hat==='magichat')result=f(`M${-w+9} ${y}L-24 ${y-115}Q-17 ${y-136}3 ${y-125}L${w-6} ${y}Z`,'#7465AA')+path(`M-44 ${y-31}Q0 ${y-22}52 ${y-33}L64 ${y-11}H-53Z`,'#D5BC83')+e(0,y+5,w+20,15,'#8B7CBD')+star(-15,y-82,10,'#F2DFA3');
-      if(hat==='mushroomhat')result=f(`M${-w-14} ${y-2}Q${-w-14} ${y-85}0 ${y-85}Q${w+14} ${y-85}${w+14} ${y-2}Z`,'#DB9599')+e(0,y,w+15,14,'#F0DCC4')+circle(-42,y-37,14,'#FAE9D7')+circle(17,y-61,17,'#FAE9D7')+circle(64,y-20,10,'#FAE9D7');
+      if(hat==='beanie')result=f(`M${-w} ${y}Q${-w+1} ${y-72} 0 ${y-72}Q${w-1} ${y-72} ${w} ${y}Z`,'#A6B8D6')+r(-w-3,y-14,w*2+6,28,11,'#BBC9E2')+circle(0,y-75,14,'#D2DEF0')+line(`M-50 ${y-39}v13M-25 ${y-49}v22M0 ${y-51}v24M25 ${y-49}v22M50 ${y-39}v13`,'#CFD9E9',2);
+      if(hat==='cap')result=f(`M${-w} ${y}Q${-w+1} ${y-64} 0 ${y-64}Q${w-1} ${y-64} ${w} ${y}Z`,'#EAC9A1')+f(`M-19 ${y-1}Q34 ${y-10} ${w+23} ${y+7}Q${w+36} ${y+22} ${w+8} ${y+22}Q29 ${y+25}-19 ${y+8}Z`,'#D8B68C')+line(`M0 ${y-59}Q19 ${y-31} 16 ${y-5}`,'#D8B68C',2);
+      if(hat==='beret')result=f(`M${-w} ${y-1}Q${-w-34} ${y-42}-23 ${y-59}Q${w+29} ${y-80} ${w+8} ${y-18}Q${w-14} ${y+13} ${-w} ${y-1}Z`,'#A695C6')+r(-w+6,y-7,w*2-12,17,7,'#8E7DB0')+line(`M9 ${y-60}L15 ${y-72}`,'#8E7DB0',6);
+      if(hat==='magichat')result=f(`M${-w+9} ${y}L-24 ${y-115}Q-17 ${y-136} 3 ${y-125}L${w-6} ${y}Z`,'#7465AA')+path(`M-44 ${y-31}Q0 ${y-22} 52 ${y-33}L64 ${y-11}H-53Z`,'#D5BC83')+e(0,y+5,w+20,15,'#8B7CBD')+star(-15,y-82,10,'#F2DFA3');
+      if(hat==='mushroomhat')result=f(`M${-w-14} ${y-2}Q${-w-14} ${y-85} 0 ${y-85}Q${w+14} ${y-85} ${w+14} ${y-2}Z`,'#DB9599')+e(0,y,w+15,14,'#F0DCC4')+circle(-42,y-37,14,'#FAE9D7')+circle(17,y-61,17,'#FAE9D7')+circle(64,y-20,10,'#FAE9D7');
       if(hat==='crown')result=f(`M-60 ${y+3}L-70 ${y-50}L-30 ${y-28}L0 ${y-68}L30 ${y-28}L70 ${y-50}L60 ${y+3}Z`,'#EFC86D')+r(-61,y-5,122,18,7,'#DDB558')+circle(0,y-14,7,'#C28EAA')+circle(-70,y-53,6,'#F6DA91')+circle(0,y-69,6,'#F6DA91')+circle(70,y-53,6,'#F6DA91');
       return group('hat',result);
     }
@@ -275,7 +276,7 @@
       for(const sign of [-1,1]){
         const x=sign*gap,y=action==='puzzled'&&sign===1?-4:s.expression==='curious'&&sign===1?-3:0;
         let item='';
-        if(closed)item=line(`M-8 1Q0 ${happy?-10:7}8 1`,eye,4.5);
+        if(closed)item=line(`M-8 1Q0 ${happy?-10:7} 8 1`,eye,4.5);
         else if(s.eyes==='dot')item=circle(0,0,6.5,eye);
         else if(s.eyes==='capsule')item=rect(-6.5,-13,13,sleepy?17:focus?23:26,6.5,eye);
         else if(s.eyes==='sparkle')item=ellipse(0,0,10.5,sleepy?10:14,eye)+circle(-3,-5,3.4,eye.toUpperCase()==='#FFFFFF'?shade(s.color,85):'#FFFFFF','opacity=".94"')+circle(4,5,1.6,'#FFFFFF','opacity=".65"');
@@ -289,9 +290,9 @@
       const noseY=ring?25:mush?25:23,mouthY=ring?38:mush?42:43;
       if(s.nose==='dot')nose=circle(0,noseY,3.4,ink);
       if(s.nose==='button')nose=ellipse(0,noseY,7,5.5,isHuman?shade(s.skinColor,-20):ink)+ellipse(-1,noseY-2,2,1,light,'opacity=".5"');
-      if(s.nose==='triangle')nose=path(`M-7 ${noseY-3}Q0 ${noseY-7}7 ${noseY-3}L0 ${noseY+5}Z`,ink);
-      if(s.nose==='long')nose=path(`M-2 ${noseY-8}Q-8 ${noseY+6}0 ${noseY+7}L7 ${noseY+5}`,'none',`stroke="${isHuman?shade(s.skinColor,-35):ink}" stroke-width="3" stroke-linecap="round"`);
-      if(s.mouth==='smile')mouth=line(`M-10 ${mouthY}Q0 ${mouthY+9}10 ${mouthY}`,ink,2.8);
+      if(s.nose==='triangle')nose=path(`M-7 ${noseY-3}Q0 ${noseY-7} 7 ${noseY-3}L0 ${noseY+5}Z`,ink);
+      if(s.nose==='long')nose=path(`M-2 ${noseY-8}Q-8 ${noseY+6} 0 ${noseY+7}L7 ${noseY+5}`,'none',`stroke="${isHuman?shade(s.skinColor,-35):ink}" stroke-width="3" stroke-linecap="round"`);
+      if(s.mouth==='smile')mouth=line(`M-10 ${mouthY}Q0 ${mouthY+9} 10 ${mouthY}`,ink,2.8);
       if(s.mouth==='tiny')mouth=line(`M-4 ${mouthY}H4`,ink,2.8);
       if(s.mouth==='open')mouth=ellipse(0,mouthY,6,8,ink)+ellipse(0,mouthY+4,3.5,2,pink);
       const gr=16,gy=-1,gc='#48536F';
@@ -300,7 +301,7 @@
         for(const sign of [-1,1]){
           const x=sign*gap,lens=s.glasses==='sunglasses'?'#303D59':`url(#${id}glass)`;
           if(s.glasses==='round')glasses+=circle(x,gy,gr,lens,`stroke="${gc}" stroke-width="3"`);
-          else if(s.glasses==='heart')glasses+=path(`M${x} 16C${x-31}-5 ${x-12}-26 ${x}-11C${x+12}-26 ${x+31}-5 ${x}16Z`,'#EFBDC8',`fill-opacity=".35" stroke="#B97792" stroke-width="3"`);
+          else if(s.glasses==='heart')glasses+=path(`M${x} 16C${x-31}-5 ${x-12}-26 ${x}-11C${x+12}-26 ${x+31}-5 ${x} 16Z`,'#EFBDC8',`fill-opacity=".35" stroke="#B97792" stroke-width="3"`);
           else glasses+=rect(x-gw/2,gy-gh/2,gw,gh,s.glasses==='sunglasses'?7:5,lens,`stroke="${gc}" stroke-width="3"`);
         }
         glasses+=line(`M${-gap+gr} -3Q0-10 ${gap-gr}-3`,gc,3)+line(`M${-gap-gr} -7l-9-3M${gap+gr}-7l9-3`,gc,3);
@@ -311,13 +312,13 @@
     function accessories(){
       let front='',back='';
       const y=tall?20:Math.max(faceY+50,bottom*.58),w=tall?39:half*.7;
-      if(s.accessories.includes('cloak'))back=f(`M${-w} ${y-16}L${-w-34} ${baseY+17}Q0 ${baseY+35}${w+34} ${baseY+17}L${w} ${y-16}Z`,'#9381BA');
-      if(s.accessories.includes('scarf'))front+=f(`M${-w} ${y-7}Q0 ${y+6}${w} ${y-7}L${w} ${y+11}Q0 ${y+27}${-w} ${y+11}Z`,'#E5B59C')+r(15,y+13,20,43,6,'#D79F86')+line(`M19 ${y+47}H30`,'#F3D4C1',3);
-      if(s.accessories.includes('collar'))front+=line(`M${-w} ${y+3}Q0 ${y+18}${w} ${y+3}`,'#BCA8CF',10)+circle(0,y+16,9,'#E5CB88')+circle(0,y+16,3,'#F5E5B5');
-      if(s.accessories.includes('bow'))front+=path(`M0 ${y+9}Q-39 ${y-13}-35 ${y+7}Q-39 ${y+31}0 ${y+14}Q39 ${y+31}35 ${y+7}Q39 ${y-13}0 ${y+9}Z`,'#D9A5BA')+circle(0,y+12,8,'#C88AA7');
+      if(s.accessories.includes('cloak'))back=f(`M${-w} ${y-16}L${-w-34} ${baseY+17}Q0 ${baseY+35} ${w+34} ${baseY+17}L${w} ${y-16}Z`,'#9381BA');
+      if(s.accessories.includes('scarf'))front+=f(`M${-w} ${y-7}Q0 ${y+6} ${w} ${y-7}L${w} ${y+11}Q0 ${y+27} ${-w} ${y+11}Z`,'#E5B59C')+r(15,y+13,20,43,6,'#D79F86')+line(`M19 ${y+47}H30`,'#F3D4C1',3);
+      if(s.accessories.includes('collar'))front+=line(`M${-w} ${y+3}Q0 ${y+18} ${w} ${y+3}`,'#BCA8CF',10)+circle(0,y+16,9,'#E5CB88')+circle(0,y+16,3,'#F5E5B5');
+      if(s.accessories.includes('bow'))front+=path(`M0 ${y+9}Q-39 ${y-13}-35 ${y+7}Q-39 ${y+31} 0 ${y+14}Q39 ${y+31} 35 ${y+7}Q39 ${y-13} 0 ${y+9}Z`,'#D9A5BA')+circle(0,y+12,8,'#C88AA7');
       if(s.accessories.includes('headphones')){
         const yy=headY,hh=Math.min(headHalf,92);
-        front+=line(`M${headX-hh-5} ${yy+8}V${yy-22}C${headX-hh-5} ${headTop-27} ${headX+hh+5} ${headTop-27} ${headX+hh+5} ${yy-22}V${yy+8}`,'#465371',9)+rect(headX-hh-15,yy-19,23,47,10,'#8191B4')+rect(headX+hh-8,yy-19,23,47,10,'#8191B4')+line(`M${headX+hh+8} ${yy+24}Q${headX+hh+6} ${yy+42}${headX+hh-9} ${yy+42}`,'#465371',3);
+        front+=line(`M${headX-hh-5} ${yy+8}V${yy-22}C${headX-hh-5} ${headTop-27} ${headX+hh+5} ${headTop-27} ${headX+hh+5} ${yy-22}V${yy+8}`,'#465371',9)+rect(headX-hh-15,yy-19,23,47,10,'#8191B4')+rect(headX+hh-8,yy-19,23,47,10,'#8191B4')+line(`M${headX+hh+8} ${yy+24}Q${headX+hh+6} ${yy+42} ${headX+hh-9} ${yy+42}`,'#465371',3);
       }
       const props=s.accessories.filter(a=>['phone','tea','book','wand'].includes(a));
       props.forEach((a,i)=>{

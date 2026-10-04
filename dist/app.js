@@ -119,7 +119,7 @@ function result(){
  const pet=state.output==='pet';
  $('purposeControls').innerHTML=`<button data-purpose="avatar" class="${!pet?'selected':''}" aria-pressed="${!pet}">角色图</button><button data-purpose="pet" class="${pet?'selected':''}" aria-pressed="${pet}">ChatGPT Pet</button>`;
  $('purposeHelp').textContent=pet?'先确认全身角色，再制作动画、注视方向并校验。':`${label('style',state.style)} · ${label('material',state.material)} · ${label('output',state.output)}，按当前五官、穿搭和动作生成。`;
- $('copyPrompt').textContent=pet?'复制 Pet 创作说明':'复制创作说明';
+ $('copyPrompt').textContent=pet?'复制 Pet 创作说明':'复制创作说明';$('previewCopy').textContent=pet?'复制 Pet 创作说明':'复制创作说明';
  $('promptPreview').textContent=buildPrompt(state);
 }
 function render(){normalize(state);controls();gallery();result()}
@@ -152,7 +152,7 @@ function buildPrompt(input){
  const clothes=desc('clothing',s.clothing);
  const hair=desc('hair',s.hair);
  const bodyplan=desc('bodyplan',s.bodyplan);
- let identity=`${ref}创作名为「${s.name.trim()||'Dot'}」的单个原创角色。主体：${desc('body',s.body)}。身体结构：${bodyplan}。主体主色 ${s.color}，${s.body==='human'?'肤色 '+s.skinColor+'，':''}保留主体应有的辨识特征。\n脸型：${desc('faceShape',s.faceShape)}。宽度 ${Math.round(s.bodyWidth*100)}%，高度 ${Math.round(s.bodyHeight*100)}%，头部比例 ${Math.round(s.headSize*100)}%，相对于该主体的标准轮廓。${limbs}；手脚长度 ${Math.round(s.limbLength*100)}%。`;
+ let identity=`${ref}创作名为「${s.name.trim()||'Dot'}」的单个原创角色。主体：${desc('body',s.body)}。身体结构：${bodyplan}。主体主色 ${s.color}，${s.body==='human'?'肤色 '+s.skinColor+'，':''}保留主体应有的辨识特征。\n脸型：${desc('faceShape',s.faceShape)}。宽度 ${Math.round(s.bodyWidth*100)}%，高度 ${Math.round(s.bodyHeight*100)}%，${isGeometry(s)?'五官比例':'头部比例'} ${Math.round(s.headSize*100)}%，相对于该主体的标准轮廓。${limbs}；手脚长度 ${Math.round(s.limbLength*100)}%。`;
  if(isAnimal(s))identity+='保留物种应有的耳朵、尾巴和花纹，手脚数量严格按所选身体结构；不额外添加肢体。';
  if(s.body==='cat')identity+=desc('pattern',s.pattern)+'。';
  const face=`眼睛：${desc('eyes',s.eyes)}，眼睛/瞳孔颜色 ${s.eyeColor}，相对大小 ${Math.round(s.eyeSize*100)}%，以 440 单位设计画布计双眼中心距 ${s.eyeSpacing} 单位。\n鼻子：${desc('nose',s.nose)}。嘴巴：${desc('mouth',s.mouth)}。基础表情：${desc('expression',s.expression)}。\n${hair}，发色 ${s.hairColor}。${desc('glasses',s.glasses)}；${desc('hat',s.hat)}。帽子覆盖头发顶层但保留侧发，眼镜位于眼睛外层，不遮挡鼻子。所有五官随脸型与头部比例对齐；环形角色的五官位于上方实体区域，保留中央孔洞。`;
@@ -160,7 +160,7 @@ function buildPrompt(input){
  if(isAnimal(s)&&s.material==='plush')style+='毛发：'+desc('fur',s.fur)+'。';
  if(s.body==='human')for(const [part,key]of [['皮肤','skinMaterial'],['头发','hairMaterial'],['服装','clothMaterial']])if(s[key]!=='inherit')style+=`${part}局部覆盖：${desc(key,s[key])}。`;
  const outfit=`服装：${clothes}。配饰与道具：${s.accessories.length?s.accessories.map(k=>desc('accessories',k)).join('、'):'无额外配饰'}。每手最多拿一件道具，没有手时道具放在身旁，不增加肢体。穿戴物适配主体体型，不遮住五官。\n特效：${desc('effect',s.effect)}。不添加未选物品。`;
- const motion=`性格：${desc('personality',s.personality)}。以下手动/最终配置优先于性格概括：表情 ${label('expression',s.expression)}，姿态 ${desc('pose',s.pose)}，动作节奏为标准的 ${Math.round(s.tempo*100)}%。\n${multi?'按顺序独立呈现各动作，每步约 4 秒：':'本次静态成图取主要动作的代表瞬间：'}\n${chain.map((a,i)=>`${i+1}. ${label('action',a)}：${desc('action',a).replace(/不添加眉毛、嘴巴或问号文字/g,'保留选定五官，不新增文字').replace(/不添加嘴巴/g,'保留选定嘴巴')}`).join('\n')}\n睡觉使用闭眼，专注工作双眼睁开且稳定；眨眼仅在明确选择眨眼动作时发生。动作结束后恢复基础表情。弹跳保持体积、宽高与所有身体比例，不挤压、不拉伸、不融化；动作不新增手脚。`;
+ const motion=`性格：${desc('personality',s.personality)}。以下手动/最终配置优先于性格概括：表情 ${label('expression',s.expression)}，姿态 ${desc('pose',s.pose)}，动作节奏为标准的 ${Math.round(s.tempo*100)}%。\n${multi?'按顺序独立呈现各动作，每步约 4 秒：':'本次静态成图取主要动作的代表瞬间：'}\n${chain.map((a,i)=>`${i+1}. ${label('action',a)}：${(a==='skate'&&!['feet','both'].includes(s.limbs)?'无脚角色贴近地面平滑悬浮滑行，不增加脚或鞋':desc('action',a)).replace(/不添加眉毛、嘴巴或问号文字/g,'保留选定五官，不新增文字').replace(/不添加嘴巴/g,'保留选定嘴巴')}`).join('\n')}\n睡觉使用闭眼，专注工作双眼睁开且稳定；眨眼仅在明确选择眨眼动作时发生。动作结束后恢复基础表情。弹跳保持体积、宽高与所有身体比例，不挤压、不拉伸、不融化；动作不新增手脚。`;
  const scene=pet||s.output==='sticker'?desc('scene','transparent'):s.output==='sheet'?'干净浅色背景':desc('scene',s.scene);
  const composition=s.body==='human'?`${s.proportion==='two'?'2':'3'} 头身成图；${pet?'完整全身':({head:'头像特写到肩部',bust:'半身自然裁切',full:'完整全身'}[s.framing])}。`:'';
  const petBrief=pet?'【ChatGPT Pet 创作流程】\n先创作单个完整全身、透明背景的角色图，预留安全边距，确认后再制作动画。v2 图集为 1536×2288，8 列×11 行，每格 192×208。前 9 行依次为 idle、running-right、running-left、waving、jumping、failed、waiting、running、review；后两行为从正上方开始、顺时针排列的 16 个注视方向。所有素材必须保持角色、比例、锚点、花纹与配饰一致，展示动画预览并通过技术和视觉校验后才可创建或启用。SVG、PNG、GIF 或参考图本身不是已验证 Pet；若当前对话没有制作工具，提供角色图和制作说明，不要声称已经创建或安装。\n\n':'';
@@ -216,6 +216,7 @@ function wire(){
  $('loadConfig').onclick=()=>$('configFile').click();
  $('configFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>50000)throw Error('配置文件过大');state=validateConfig(JSON.parse(await f.text()));stopSequence();render();toast('已还原 '+(state.name||'未命名角色'))}catch(err){toast(err instanceof SyntaxError?'无法读取 JSON，请检查文件格式':err.message)}e.target.value=''};
  $('resetConfig').onclick=()=>{stopSequence();state=structuredClone(BASE);playing=true;render();toast('已重置为蓝色 Dot')};
+ $('previewCopy').onclick=()=>$('copyPrompt').onclick();$('previewOpen').onclick=()=>$('copyOpen').onclick();
  $('exportSVG').onclick=()=>{download(new Blob([draw(state,{id:'dot-export',animated:false})],{type:'image/svg+xml'}),filename()+'.svg');toast('已导出当前实时造型 SVG')};
  $('exportAnimated').onclick=()=>{download(new Blob([draw(state,{id:'dot-animated',animated:true,playing:true})],{type:'image/svg+xml'}),filename()+'-'+state.action+'.svg');toast('已导出主要动作 SVG；不是 Pet 图集')};
  $('exportPNG').onclick=()=>{const source=draw(state,{id:'dot-png',animated:false}),im=new Image(),url=URL.createObjectURL(new Blob([source],{type:'image/svg+xml'}));im.onload=()=>{const c=document.createElement('canvas');c.width=1320;c.height=1260;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,1320,1260);c.toBlob(b=>{if(b){download(b,filename()+'.png');toast('已导出当前静态造型 PNG')}else toast('PNG 导出失败，请先导出 SVG')},'image/png');URL.revokeObjectURL(url)};im.onerror=()=>{URL.revokeObjectURL(url);toast('PNG 导出失败，请先导出 SVG')};im.src=url};
