@@ -27,7 +27,7 @@ const BASE={...structuredClone(DEFAULT),...NEW_DEFAULT};
 const RANGES={bodyWidth:[.8,1.2],bodyHeight:[.8,1.2],headSize:[.85,1.2],eyeSpacing:[24,68],eyeSize:[.65,1.35],limbLength:[.7,1.4],tempo:[.65,1.6],earSize:[.7,1.3],tailSize:[.7,1.3],faceY:[-16,16],eyeY:[-12,12],eyeTilt:[-18,18],pupilSize:[.5,1.3],blush:[0,1],noseSize:[.6,1.4],noseY:[-10,10],mouthSize:[.6,1.4],mouthY:[-10,10],motionIntensity:[.2,1.4]};
 const PLAIN_ENUMS={framing:['head','bust','full'],proportion:['balanced','two','three'],interaction:['off','gaze','touch']};
 const LIVE_ACCESSORIES=Object.keys(DATA.accessories).filter(k=>!['magichat','mushroomhat','glasses','sunglasses'].includes(k));
-let history=[],future=[],historyKey='',focusedPart='',interactionTimer,pressStart=0;
+let openedDetails=new Set(),history=[],future=[],historyKey='',focusedPart='',interactionTimer,pressStart=0;
 let state=structuredClone(BASE),tab='body',playing=true,toastTimer,copyTimer,sequenceTimer,sequenceStep=-1;
 const $=id=>document.getElementById(id);
 const html=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -76,6 +76,7 @@ function heading(title,note='选择即刻变化'){return `<div class="panel-head
 const SLOTS={neck:['scarf','bow','collar'],back:['cloak'],head:['headphones'],held:['phone','macbook','tea','book','wand','console','sign'],feet:['skates'],body:['pajamas']};
 function slot(key,title){const choices=SLOTS[key],selected=state.accessories.find(v=>choices.includes(v))||'none';return `<div class="field"><label class="field-title" for="slot-${key}">${title}</label><select id="slot-${key}" data-setting="slot-${key}"><option value="none">无</option>${choices.map(v=>`<option value="${v}" ${selected===v?'selected':''}>${label('accessories',v)}</option>`).join('')}</select></div>`}
 function controls(){
+ for(const d of $('controls').querySelectorAll('details')){const key=d.querySelector('summary')?.textContent;if(key){if(d.open)openedDetails.add(key);else openedDetails.delete(key)}}
  $('sectionTabs').innerHTML=[['body','造型'],['face','五官'],['hair','头发'],['outfit','穿搭'],['personality','性格'],['action','动作'],['ai','AI 成图']].map(([key,title])=>`<button data-tab="${key}" class="${tab===key?'active':''}" aria-pressed="${tab===key}">${title}</button>`).join('');
  let v='';
  if(tab==='body'){
@@ -117,7 +118,7 @@ function controls(){
  if(state.body==='human')v+=`<div class="pair">${selectField('framing','成图构图',{head:'头像特写',bust:'半身人物',full:'全身人物'})}${selectField('proportion','成图头身比',{balanced:'协调比例',two:'2 头身',three:'3 头身'})}</div>`+selectField('skinMaterial','皮肤材质')+selectField('hairMaterial','头发材质')+selectField('clothMaterial','服装材质');
  v+=`<label class="reference-label"><input type="checkbox" id="referenceMode" ${state.reference?'checked':''}>沿用我的参考图</label><p class="helper">这里不上传图片。打开 ChatGPT 后先附上参考图，再粘贴创作说明。</p><div class="notice">Pet 需要先确认完整角色，再制作 9 种动画与 16 个注视方向，并通过技术与视觉校验。本页导出的 SVG / PNG 不能直接作为已验证 Pet 使用。</div>`;
  }
- $('controls').innerHTML=v;
+ $('controls').innerHTML=v;for(const d of $('controls').querySelectorAll('details'))if(openedDetails.has(d.querySelector('summary')?.textContent))d.open=true;
 }
 function sampleStyle(art){const g={'gallery-dot':['300% 200%','0% 0%'],'gallery-bean':['320% 213.333%','50% 0%'],'gallery-shiba':['300% 200%','100% 0%'],'gallery-tiger':['300% 200%','0% 100%'],'gallery-human':['279.273% 186.182%','50% 100%'],'gallery-robot':['300% 200%','100% 100%']};if(g[art])return `background-image:url('./assets/collection.webp');background-size:${g[art][0]};background-position:${g[art][1]}`;return typeof art==='number'?`background-image:url('./assets/avatar-atlas.webp');background-size:300% 200%;background-position:${art%3*50}% ${Math.floor(art/3)*100}%`:`background-image:url('./assets/${art}.webp');background-size:contain;background-position:center`}
 function gallery(){
@@ -286,7 +287,7 @@ function wireExtras(){
  });
  $('showcase').addEventListener('pointerleave',resetGaze);
  $('showcase').addEventListener('pointerup',e=>{if(e.pointerType!=='mouse'&&Date.now()-pressStart<400)reactToTouch(false)});
- $('showcase').addEventListener('click',e=>{if(state.interaction==='touch')return;const part=e.target.closest('[data-part]')?.dataset.part;if(['eyes','nose','mouth','brows','glasses'].includes(part)){focusedPart=part;tab='face';controls();interactionStatus('已选中'+({eyes:'眼睛',nose:'鼻子',mouth:'嘴巴',brows:'眉毛',glasses:'眼镜'}[part])+'，在五官面板调整')}});
+ $('showcase').addEventListener('click',e=>{if(state.interaction==='touch')return;const part=e.target.closest('[data-part="eyes"],[data-part="nose"],[data-part="mouth"],[data-part="brows"],[data-part="glasses"]')?.dataset.part;if(['eyes','nose','mouth','brows','glasses'].includes(part)){focusedPart=part;tab='face';controls();interactionStatus('已选中'+({eyes:'眼睛',nose:'鼻子',mouth:'嘴巴',brows:'眉毛',glasses:'眼镜'}[part])+'，在五官面板调整')}});
  document.addEventListener('focusout',()=>{historyKey=''});
  document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo(e.shiftKey)}});
 }

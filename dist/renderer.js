@@ -177,8 +177,9 @@
         }
         if(s.body==='penguin')detail+=path('M0-51C-23-89-66-54-63-1C-76 91 74 97 64 1C67-56 21-88 0-51Z',cream)+path('M-13 19L13 19L0 31Z','#EDB75E');
         if(s.marking==='auto'&&s.body==='tiger')detail+=path('M-21-79L-12-53L-5-81M5-82L13-52L22-79M-79-27L-54-17L-78-7M79-27L54-17L78-7M-76 26L-57 31L-67 40M76 26L57 31L67 40Z',ink,'opacity=".7"');
-        if(s.marking==='auto'&&s.body==='cat')detail+=path('M-18-81L-12-57L-5-82M7-82L14-59L23-79Z',dark)+line('M-51 26L-66 20M-50 35L-66 35M51 26L66 20M50 35L66 35',dark,2.5);
+        if(s.marking==='auto'&&s.body==='cat'&&!['calico','tuxedo'].includes(s.pattern))detail+=path('M-18-81L-12-57L-5-82M7-82L14-59L23-79Z',dark)+line('M-51 26L-66 20M-50 35L-66 35M51 26L66 20M50 35L66 35',dark,2.5);
       }
+      if(s.body==='cat'&&s.marking==='auto'){if(s.pattern==='calico')detail+=path('M-66-48Q-28-83-15-38Q-20-5-64-8Z','#E9BA83')+path('M24-68Q75-60 72-13Q35-3 24-68Z','#665965');if(s.pattern==='tuxedo')detail+=path('M0-54Q-9-6-30 15Q-36 53 0 64Q36 53 30 15Q9-6 0-54Z','#FFF5E1');if(s.pattern==='tabby')detail+=path('M-60-44L-35-25L-67-24M60-44L35-25L67-24Z',ink);}
       if(isHuman){
         back=s.ears==='auto'?e(-70,4,13,20,skinFill)+e(70,4,13,20,skinFill):'';
         const faces={round:()=>e(0,0,72,77,skinFill),oval:()=>e(0,0,66,84,skinFill),square:()=>r(-70,-76,140,148,35,skinFill),pear:()=>f('M0-80C-73-80-70-27-75 14C-80 90 81 94 75 14C70-27 73-80 0-80Z',skinFill)};
