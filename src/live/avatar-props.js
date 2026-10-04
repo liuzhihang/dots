@@ -79,7 +79,7 @@ function contactSurface(avatar) {
     list.push(o);
   });
   collect(avatar.head || root, headMeshes); collect(avatar.torso, trunkMeshes);
-  const headCoreMeshes = headMeshes.filter(o => !/ear|gill|muzzle|beak|facial-disc/.test(o.name) && o.geometry.type !== 'TubeGeometry');
+  const headCoreMeshes = headMeshes.filter(o => !/ear|gill|muzzle|beak|facial-disc|twin-top-lobe/.test(o.name) && o.geometry.type !== 'TubeGeometry');
   const inverse = root.matrixWorld.clone().invert(), normalMatrix = new THREE.Matrix3();
   const ray = new THREE.Raycaster(), reach = (avatar.height || 3) + (avatar.width || 3) + 4;
   function cast(origin, direction, objects = headMeshes) {

@@ -277,7 +277,7 @@ export function buildAvatarBody(input={}) {
   return {root,head,torso,face,eyeGroups,arms,legs,tail,anchors,height:extent.max.y,width:extent.max.x-extent.min.x,surfaces};
 
   function buildBlob(shape) {
-    const sizes={dumpling:[1.0,.94,1],cloud:[1.0,.97,1.07],capsule:[1.0,.91,1.05],pill:[1.04,1.01,1.11],sphere:[1.00,1.00,.96],roundedcube:[1.03,1.00,1.13],triangle:[1.08,1.08,1.22],star:[1.07,1.07,1.08],heart:[1.10,1.08,1.17],sprout:[.95,.95,1],frog:[1.04,.97,1.10],twin:[.88,.98,1.01],puff:[1.03,1.03,1.14],clover:[1.10,1.12,1.16],scallop:[1.04,1.04,1.12],pebble:[1.02,1.02,1.15],diamond:[1.04,1.04,1.20]};
+    const sizes={dumpling:[1.0,.94,1],cloud:[1.0,.97,1.07],capsule:[1.0,.91,1.05],pill:[1.04,1.01,1.11],sphere:[1.00,1.00,.96],roundedcube:[1.03,1.00,1.13],triangle:[1.08,1.08,1.22],star:[1.07,1.07,1.08],heart:[1.10,1.08,1.17],sprout:[.95,.95,1],frog:[1.04,.97,1.10],twin:[.96,.98,1.01],puff:[1.03,1.03,1.14],clover:[1.10,1.12,1.16],scallop:[1.04,1.04,1.12],pebble:[1.02,1.02,1.15],diamond:[1.04,1.04,1.20]};
     const sz=sizes[shape]||[1.05,1.03,1];sz[0]*=w;
     let mesh;
     if(shape==='dumpling') {
