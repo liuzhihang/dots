@@ -8,7 +8,7 @@ const DATA={
  output:{avatar:['头像','◎','单个角色头像，1:1 构图，角色居中，留足边距，清晰适合小尺寸显示'],sticker:['贴纸','◇','单枚角色贴纸，完整轮廓，均匀白色外描边，透明背景，1:1 构图'],sheet:['角色设定图','▤','一张角色设定图，前视、侧视、后视与眼睛表情分区排布；各视角身份、比例、配色、配饰严格一致，干净浅色背景'],storyboard:['动作分镜','▥','动作分镜排版，依动作顺序每步一格；若只有一个动作，分为起始、过程、结束三格。所有格子保持相同机位、比例、身份和配色，不附无关动作'],keyframes:['动画关键帧','▦','静态动画关键帧方案，按动作阶段拆分起始、过渡、结束帧，逐帧描述；保持相同画布、锚点、机位、体积、五官间距与配饰位置，方便后续制作循环动画'],pet:['Pet 创作简报','✦','用于 Codex / ChatGPT Pet 的角色与动作创作简报，包含角色特征、待机与所选动作的视觉描述。当前只是创意简报，不是可直接导入的宠物文件；后续需按目标版本规范制作素材、导出并通过技术校验']},
  limbs:{none:['无手无脚','没有手、脚、手臂或腿'],feet:['短脚','仅两只短脚，没有手或手臂'],arms:['短手','仅两只短手，没有脚或腿'],both:['短手短脚','两只短手和两只短脚，比例克制'],hover:['悬浮底座','无手无脚，用独立悬浮底座移动']}
 };
-Object.assign(DATA.body,{spirit:['黑豆精灵','●','原创豆形小精灵，饱满柔软的豆形身体，小巧象牙白椭圆眼睛配黑色瞳孔、短小圆手，不添加动物条纹或夸张大头'],shiba:['柴犬','🐕','茶色与奶油白相间的原创柴犬玩偶，竖起的三角耳朵、白色脸颊与胸腹、清晰卷尾'],bear:['小熊','🐻','圆耳朵、短吻与厚实圆润四肢的小熊'],lion:['小狮子','🦁','圆耳朵、蓬松圆形鬃毛、尾端毛球的小狮子'],cloudspirit:['云朵精灵','☁','原创云朵精灵，圆润云团身体、柔和起伏轮廓与清晰双眼']});
+Object.assign(DATA.body,{spirit:['团子精灵','●','原创豆形小精灵，饱满柔软的豆形身体，小巧象牙白椭圆眼睛配黑色瞳孔、短小圆手，不添加动物条纹或夸张大头'],shiba:['柴犬','🐕','茶色与奶油白相间的原创柴犬玩偶，竖起的三角耳朵、白色脸颊与胸腹、清晰卷尾'],bear:['小熊','🐻','圆耳朵、短吻与厚实圆润四肢的小熊'],lion:['小狮子','🦁','圆耳朵、蓬松圆形鬃毛、尾端毛球的小狮子'],cloudspirit:['云朵精灵','☁','原创云朵精灵，圆润云团身体、柔和起伏轮廓与清晰双眼']});
 DATA.body.cat=['小猫','🐱','原创小猫玩偶，保留三角耳朵、短吻、小鼻子、可辨识毛色花纹与完整尾巴'];DATA.body.tiger=['小老虎','🐯','原创小老虎玩偶，橙色底色与清晰深色条纹、圆耳朵、奶油色口鼻与完整条纹尾巴'];
 DATA.body.goat=['小羊','🐑','小羊，保留小耳朵、圆润短吻、清晰羊蹄与卷曲羊毛，角可短小圆润'];
 DATA.style.smooth[2]='柔滑哑光的高品质 3D 表面，柔和棚拍光与克制高光';
@@ -30,7 +30,7 @@ DATA.material={smooth:['哑光光滑','细腻光滑的哑光表面，无毛发�
 DATA.eyes={capsule:['胶囊眼','两只简洁竖向胶囊眼'],dot:['圆点眼','两只小圆点眼，间距稳定'],oval:['椭圆瞳孔眼','两只象牙白椭圆眼白，内有小巧瞳孔'],sparkle:['高光眼','两只圆润眼睛与单个克制高光'],visor:['电子屏眼','两只简洁电子屏发光眼，不添加文字或数字'],natural:['自然简化眼','符合主体的自然简化双眼，避免写实细节']};
 DATA.body.circle=['圆形','●','简洁正圆轮廓的角色身体'];
 DATA.body.roundedsquare=['圆角方形','▢','大圆角正方形轮廓的角色身体'];
-DATA.body.spirit[2]='原创饱满豆形小精灵，圆润豆形轮廓，不添加动物条纹';
+DATA.body.spirit[2]='原创 Q 版团子精灵，头身连成一个低矮圆润的软团子轮廓，两只简洁椭圆眼，不添加动物条纹';
 DATA.body.shiba[2]='原创柴犬角色，三角立耳、对比色脸颊与胸腹、清晰卷尾';
 DATA.body.tiger[2]='原创小老虎角色，圆耳朵、清晰深色条纹、对比色口鼻与完整条纹尾巴';
 DATA.body.cat[2]='原创小猫角色，保留三角耳朵、短吻、小鼻子、可辨识毛色花纹与完整尾巴';
@@ -43,11 +43,11 @@ const isGeometry=s=>GEOMETRY.includes(s.body),isAnimal=s=>!isGeometry(s)&&!['hum
 const naturalPlan=body=>GEOMETRY.includes(body)?'blob':body==='human'?'chibi':['robot','penguin','monkey','rooster','dragon','monster'].includes(body)?'biped':'quad';
 const hands=s=>isGeometry(s)?['arms','both'].includes(s.limbs):s.body==='human'||s.bodyplan==='biped'||s.body==='robot';
 const hasFeet=s=>isGeometry(s)?['feet','both'].includes(s.limbs):s.body!=='snake';
-const DEFAULT={version:3,material:'smooth',eyes:'capsule',category:'classic',design:'minimal',bodyplan:'blob',fur:'short',pose:'neutral',expression:'calm',effect:'none',pattern:'orange',skinMaterial:'inherit',hairMaterial:'inherit',clothMaterial:'inherit',hair:'short',hairColor:'#3A3438',skinColor:'#E7BFA6',clothing:'sweater',framing:'bust',proportion:'three',name:'Dot',body:'sphere',style:'smooth',color:'#3064ED',eyeColor:'#FFFFFF',limbs:'none',accessories:[],action:'breathe',sequence:[],scene:'transparent',output:'avatar',reference:false};
-const preset=(name,category,values,art)=>{const s={...DEFAULT,name,category,...values};if(['plush','clay','glass'].includes(s.style)){s.material=s.style;s.style='smooth'}if(s.body==='spirit')s.eyes='oval';else if(s.body==='human'||!GEOMETRY.includes(s.body)&&s.body!=='robot')s.eyes='natural';return {name,category,state:s,art}};
+const DEFAULT={version:3,material:'smooth',eyes:'capsule',category:'classic',design:'minimal',bodyplan:'blob',fur:'short',pose:'neutral',expression:'calm',effect:'none',pattern:'orange',skinMaterial:'inherit',hairMaterial:'inherit',clothMaterial:'inherit',hair:'short',hairColor:'#3A3438',skinColor:'#E7BFA6',clothing:'sweater',framing:'bust',proportion:'three',name:'Dot',body:'spirit',style:'smooth',color:'#36A9EC',eyeColor:'#182536',limbs:'arms',accessories:[],action:'breathe',sequence:[],scene:'transparent',output:'avatar',reference:false};
+const preset=(name,category,values,art)=>{const s={...DEFAULT,name,category,...values};if(['plush','clay','glass'].includes(s.style)){s.material=s.style;s.style='smooth'}if(s.body==='spirit'&&!values.eyes)s.eyes='capsule';else if(s.body==='human'||!GEOMETRY.includes(s.body)&&s.body!=='robot')s.eyes='natural';return {name,category,state:s,art}};
 const PRESETS=[
- preset('蓝色 Dot','classic',{name:'Dot'},'gallery-dot'),
- preset('黑豆精灵','classic',{body:'spirit',bodyplan:'blob',design:'toy',style:'plush',color:'#29262B',eyeColor:'#243247',limbs:'both'},'gallery-bean'),
+ preset('蓝色 Dot','classic',{name:'Dot',eyes:'capsule'},'gallery-dot'),
+ preset('黑豆精灵','classic',{body:'spirit',bodyplan:'blob',design:'toy',style:'plush',color:'#29262B',eyeColor:'#F8F4EC',eyes:'capsule',limbs:'arms'},'gallery-bean'),
  preset('柴犬团子','pets',{body:'shiba',bodyplan:'quad',design:'toy',style:'plush',color:'#DCA56D',eyeColor:'#243247',pose:'sit'},'gallery-shiba'),
  preset('条纹小虎','pets',{body:'tiger',bodyplan:'quad',design:'toy',style:'plush',color:'#F0AC61',eyeColor:'#243247',pose:'sit'},'gallery-tiger'),
  preset('针织小人','human',{body:'human',bodyplan:'chibi',design:'toy',skinMaterial:'smooth',hairMaterial:'layered',clothMaterial:'knit',style:'smooth',color:'#4167B5',eyeColor:'#243247',limbs:'both',pose:'neutral',framing:'full'},'gallery-human'),
@@ -55,7 +55,7 @@ const PRESETS=[
  preset('粉色小兔','pets',{body:'rabbit',bodyplan:'quad',design:'toy',style:'plush',color:'#F19BC0',eyeColor:'#243247',pose:'sit'},5),
  preset('瞌睡小猫','pets',{body:'cat',bodyplan:'quad',design:'toy',style:'plush',color:'#F0B578',eyeColor:'#243247',pose:'sit',action:'sleep',expression:'sleepy'},4),
  preset('毛绒小龙','fantasy',{body:'dragon',bodyplan:'biped',design:'anime',style:'plush',color:'#90BD9C',eyeColor:'#243247',limbs:'both',pose:'sit'},3),
- preset('魔法方块','fantasy',{body:'roundedcube',bodyplan:'blob',design:'anime',style:'plush',color:'#9475E7',accessories:['magichat','wand'],action:'magic',pose:'magic',effect:'none'},2)
+ preset('魔法方块','fantasy',{body:'roundedcube',bodyplan:'blob',design:'anime',style:'plush',color:'#9475E7',accessories:['magichat'],action:'magic',pose:'magic',effect:'none'},2)
 ];
 // Historical category keys remain valid for version-2 configuration imports.
 const CATEGORIES={classic:['几何与精灵'],pets:['动物'],human:['人物'],robot:['机器人'],fantasy:['奇幻生物'],soft:['几何与精灵']};
