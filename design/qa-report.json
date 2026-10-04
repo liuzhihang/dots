@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-04",
+  "scope": "Dot Studio redesign, reference-Prompt flow, character art",
+  "source_site_version": 19,
+  "art": {
+    "independent_hero_images": 8,
+    "hero_dimensions": [
+      1254,
+      1254
+    ],
+    "action_atlases": 4,
+    "atlas_cell_dimensions": [
+      362,
+      362
+    ],
+    "new_atlases": 3,
+    "display_and_download_registry": "studio-art.js"
+  },
+  "verified": [
+    "All four families and two primary material variants have visual samples.",
+    "Reference workflow has no image input, decoding, local palette extraction, image upload or automatic ChatGPT image transfer.",
+    "Chinese Prompt clipboard content matches the displayed reference brief without conflicting preset hair/clothing colors.",
+    "Reference inheritance and manual overrides use the same configuration in controls, summary and generated Prompt.",
+    "Per-family reference overrides remain attached to the values for that family.",
+    "Work plus headphones stays work; sleep plus no held prop stays sleep.",
+    "Material comparison updates selected controls for both primary and translated materials.",
+    "48 configuration round trips, 48 JSON Blob round trips and 96 bilingual TXT Blob round trips passed.",
+    "390px and 320px iframe layout checks show no horizontal document overflow; mobile customize scrolls to the inspector.",
+    "No application-origin JavaScript errors observed; browser-extension metadata errors excluded.",
+    "TXT export click invokes the download action and displays completion status."
+  ],
+  "limits": [
+    "Browser download-event bridge timed out; actual filesystem completion for downloaded TXT/JSON/PNG was not verified.",
+    "Small-screen checks use iframes at fixed widths in desktop Chromium, not physical mobile hardware.",
+    "Curated samples are not real-time renders of custom settings. Additional six actions, micro velvet and clay are Prompt translations.",
+    "ChatGPT opening is implemented as plain navigation after copying; no automatic paste, attachment or model generation is implemented.",
+    "Legacy structural editor remains a separate configuration flow."
+  ]
+}

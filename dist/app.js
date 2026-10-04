@@ -181,7 +181,7 @@ function change(key,value){
 function applyPersona(key,reset=false){checkpoint();stopSequence();state.personality=key;if(reset)state.manualOverrides=[];for(const [k,v]of Object.entries(PERSONAS[key]))if(!state.manualOverrides.includes(k))state[k]=v;normalize(state);render();if(state.manualOverrides.length)toast('已应用性格，保留手动调整的项目')}
 function buildPrompt(input){
  const s=normalize(structuredClone(input)),pet=s.output==='pet',multi=['storyboard','keyframes','pet'].includes(s.output),chain=multi?[s.action,...s.sequence]:[s.action];
- const ref=s.reference?'请先等待我附上参考图，以图中角色为身份基准；当前尚未附图，不要声称已读取。以下选择作为改造方向；若会改变其核心身份，请先确认。\n':'';
+ const ref=s.reference?'请先等待我附上参考图，以图中角色为身份基准；若本次对话已附图则直接读取；仅在尚未附图时要求附图，不要声称已读取。以下选择作为改造方向；若会改变其核心身份，请先确认。\n':'';
  const limbs=s.body==='snake'?'天然无肢体盘曲蛇身':desc('limbs',s.limbs);
  const clothes=desc('clothing',s.clothing);
  const hair=desc('hair',s.hair);
