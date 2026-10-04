@@ -24,20 +24,33 @@ DATA.skinMaterial={smooth:['柔滑肤感','皮肤使用细腻柔滑哑光材质'
 DATA.hairMaterial={layered:['分层发丝','头发使用清晰分层的简化发丝与发束'],plush:['毛绒头发','头发使用细密毛绒，保持发型轮廓']};
 DATA.clothMaterial={knit:['针织','衣服使用可读的细致针织纹理'],fabric:['布料','衣服使用柔软平整的布料质感'],plush:['毛绒','衣服使用柔软短绒材质']};
 DATA.action.magic[2]='保持专注，以很小的身体或手势变化表达施法；只有选择特效时才显示相应效果';
-const GEOMETRY=['spirit','sphere','ring','roundedcube','cuboid','capsule','drop','cloud','mushroom','star','cloudspirit'];
+// Rendering, surface, silhouette and expression are independent dimensions.
+DATA.style={flat:['经典 2D','◒','简洁平面矢量画法，清晰轮廓与克制色块，不使用三维透视或写实光照'],outline:['线稿插画','○','干净的等粗轮廓线插画，少量平涂色块，轮廓轻盈清晰'],smooth:['柔滑 3D','●','圆润的高品质 3D 画法，柔和棚拍光、克制高光与清晰轮廓'],pixel:['像素艺术','▦','统一像素网格、有限色板的像素艺术，用像素概括表面特征，不混入平滑矢量线'],watercolor:['水彩插画','◔','轻盈水彩插画，柔和透明色层和清晰主体轮廓，细节简洁']};
+DATA.material={smooth:['哑光光滑','细腻光滑的哑光表面，无毛发或粗糙纹理'],plush:['柔软毛绒','柔软玩偶短绒与克制缝线，轮廓和眼睛清晰'],clay:['手工黏土','手工黏土表面，哑光、轻微压痕，不要脏污'],glass:['磨砂玻璃','半透明彩色磨砂玻璃，柔和折射与边缘高光'],rubber:['软胶','柔软硅胶玩具表面，柔和弹性与低光泽'],ceramic:['陶瓷','温润釉面陶瓷，克制釉光、完整无裂纹'],metal:['拉丝金属','细腻拉丝金属表面，克制反射与柔和高光'],paper:['纸艺','彩色纸艺表面，细微纸纤维与简洁折叠细节']};
+DATA.eyes={capsule:['胶囊眼','两只简洁竖向胶囊眼'],dot:['圆点眼','两只小圆点眼，间距稳定'],oval:['椭圆瞳孔眼','两只象牙白椭圆眼白，内有小巧瞳孔'],sparkle:['高光眼','两只圆润眼睛与单个克制高光'],visor:['电子屏眼','两只简洁电子屏发光眼，不添加文字或数字'],natural:['自然简化眼','符合主体的自然简化双眼，避免写实细节']};
+DATA.body.circle=['圆形','●','简洁正圆轮廓的角色身体'];
+DATA.body.roundedsquare=['圆角方形','▢','大圆角正方形轮廓的角色身体'];
+DATA.body.spirit[2]='原创饱满豆形小精灵，圆润豆形轮廓，不添加动物条纹';
+DATA.body.shiba[2]='原创柴犬角色，三角立耳、对比色脸颊与胸腹、清晰卷尾';
+DATA.body.tiger[2]='原创小老虎角色，圆耳朵、清晰深色条纹、对比色口鼻与完整条纹尾巴';
+DATA.body.cat[2]='原创小猫角色，保留三角耳朵、短吻、小鼻子、可辨识毛色花纹与完整尾巴';
+for(const type of ['skinMaterial','hairMaterial','clothMaterial'])DATA[type]={inherit:['沿用整体材质','沿用所选整体材质'],...DATA[type]};
+const BASE_FORMS=['circle','sphere','ring','roundedsquare','roundedcube','cuboid','capsule','drop','cloud','star','mushroom'];
+const GEOMETRY=['circle','roundedsquare','spirit','sphere','ring','roundedcube','cuboid','capsule','drop','cloud','mushroom','star','cloudspirit'];
 const ZODIAC=['rat','ox','tiger','rabbit','dragon','snake','horse','goat','monkey','rooster','dog','pig'];
 const PETS=['cat','shiba','tiger','dog','rabbit','bear','goat','lion','penguin'];
 const isGeometry=s=>GEOMETRY.includes(s.body),isAnimal=s=>!isGeometry(s)&&!['human','robot'].includes(s.body);
 const naturalPlan=body=>GEOMETRY.includes(body)?'blob':body==='human'?'chibi':['robot','penguin','monkey','rooster','dragon','monster'].includes(body)?'biped':'quad';
-const hands=s=>s.body==='human'||['biped'].includes(s.bodyplan)||s.bodyplan==='chibi'&&!isAnimal(s)||isGeometry(s)&&['arms','both'].includes(s.limbs);
-const DEFAULT={version:2,category:'classic',design:'minimal',bodyplan:'blob',fur:'short',pose:'neutral',expression:'calm',effect:'none',pattern:'orange',skinMaterial:'smooth',hairMaterial:'layered',clothMaterial:'knit',hair:'short',hairColor:'#3A3438',skinColor:'#E7BFA6',clothing:'sweater',framing:'bust',proportion:'three',name:'Dot',body:'sphere',style:'smooth',color:'#3064ED',eyeColor:'#FFFFFF',limbs:'none',accessories:[],action:'breathe',sequence:[],scene:'transparent',output:'avatar',reference:false};
-const preset=(name,category,values,art)=>({name,category,state:{...DEFAULT,name,category,...values},art});
+const hands=s=>isGeometry(s)?['arms','both'].includes(s.limbs):s.body==='human'||s.bodyplan==='biped'||s.body==='robot';
+const hasFeet=s=>isGeometry(s)?['feet','both'].includes(s.limbs):s.body!=='snake';
+const DEFAULT={version:3,material:'smooth',eyes:'capsule',category:'classic',design:'minimal',bodyplan:'blob',fur:'short',pose:'neutral',expression:'calm',effect:'none',pattern:'orange',skinMaterial:'inherit',hairMaterial:'inherit',clothMaterial:'inherit',hair:'short',hairColor:'#3A3438',skinColor:'#E7BFA6',clothing:'sweater',framing:'bust',proportion:'three',name:'Dot',body:'sphere',style:'smooth',color:'#3064ED',eyeColor:'#FFFFFF',limbs:'none',accessories:[],action:'breathe',sequence:[],scene:'transparent',output:'avatar',reference:false};
+const preset=(name,category,values,art)=>{const s={...DEFAULT,name,category,...values};if(['plush','clay','glass'].includes(s.style)){s.material=s.style;s.style='smooth'}if(s.body==='spirit')s.eyes='oval';else if(s.body==='human'||!GEOMETRY.includes(s.body)&&s.body!=='robot')s.eyes='natural';return {name,category,state:s,art}};
 const PRESETS=[
  preset('蓝色 Dot','classic',{name:'Dot'},'gallery-dot'),
- preset('黑豆精灵','classic',{body:'spirit',bodyplan:'blob',design:'toy',style:'plush',color:'#29262B',eyeColor:'#FFFFFF',limbs:'both'},'gallery-bean'),
+ preset('黑豆精灵','classic',{body:'spirit',bodyplan:'blob',design:'toy',style:'plush',color:'#29262B',eyeColor:'#243247',limbs:'both'},'gallery-bean'),
  preset('柴犬团子','pets',{body:'shiba',bodyplan:'quad',design:'toy',style:'plush',color:'#DCA56D',eyeColor:'#243247',pose:'sit'},'gallery-shiba'),
  preset('条纹小虎','pets',{body:'tiger',bodyplan:'quad',design:'toy',style:'plush',color:'#F0AC61',eyeColor:'#243247',pose:'sit'},'gallery-tiger'),
- preset('针织小人','human',{body:'human',bodyplan:'chibi',design:'toy',style:'smooth',color:'#4167B5',eyeColor:'#243247',limbs:'both',pose:'neutral',framing:'full'},'gallery-human'),
+ preset('针织小人','human',{body:'human',bodyplan:'chibi',design:'toy',skinMaterial:'smooth',hairMaterial:'layered',clothMaterial:'knit',style:'smooth',color:'#4167B5',eyeColor:'#243247',limbs:'both',pose:'neutral',framing:'full'},'gallery-human'),
  preset('机器人伙伴','robot',{body:'robot',bodyplan:'biped',design:'robot',color:'#E1E5EC',eyeColor:'#5698F5',limbs:'both',pose:'neutral'},'gallery-robot'),
  preset('粉色小兔','pets',{body:'rabbit',bodyplan:'quad',design:'toy',style:'plush',color:'#F19BC0',eyeColor:'#243247',pose:'sit'},5),
  preset('瞌睡小猫','pets',{body:'cat',bodyplan:'quad',design:'toy',style:'plush',color:'#F0B578',eyeColor:'#243247',pose:'sit',action:'sleep',expression:'sleepy'},4),
@@ -56,25 +69,26 @@ const chip=(type,key,selected=state[type]===key)=>`<button class="chip ${selecte
 const chips=(type,keys=Object.keys(DATA[type]))=>`<div class="chips">${keys.map(k=>chip(type,k)).join('')}</div>`;
 const pick=(key,title,choices)=>`<label class="field-title" for="${key}">${title}</label><select id="${key}" data-setting="${key}">${Object.entries(choices).map(([k,v])=>`<option value="${k}" ${state[key]===k?'selected':''}>${Array.isArray(v)?v[0]:v}</option>`).join('')}</select>`;
 function notify(s){$('toast').textContent=s;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),3500)}
-function availableAccessories(s){return Object.keys(DATA.accessories).filter(k=>hands(s)||['magichat','mushroomhat','glasses','sunglasses','collar','scarf','bow'].includes(k)||isGeometry(s)&&!['collar'].includes(k));}
-function availablePoses(s){return Object.keys(DATA.pose).filter(k=>!['crossleg','fold','chin','wave'].includes(k)||hands(s));}
+function availableAccessories(s){return Object.keys(DATA.accessories).filter(k=>k!=='skates'||hasFeet(s));}
+function availablePoses(s){return Object.keys(DATA.pose).filter(k=>!['fold','chin','wave'].includes(k)||hands(s)).filter(k=>k!=='crossleg'||hasFeet(s)&&(hands(s)||isGeometry(s)));}
 function normalize(s){
+ if(!s.material)s.material='smooth';if(!s.eyes)s.eyes='capsule';
  if(isGeometry(s)&&s.bodyplan==='quad')s.bodyplan='blob';
- if(isGeometry(s)&&s.bodyplan==='biped')s.limbs='both';
+ if(isGeometry(s)&&s.bodyplan==='biped'&&s.limbs!=='both')s.bodyplan='blob';
  if(s.body==='human'){s.limbs='both';if(!['chibi','biped'].includes(s.bodyplan))s.bodyplan='chibi'}
  if(s.body==='snake'){s.limbs='none';s.bodyplan='blob'}
  if(!isGeometry(s)&&s.body!=='snake')s.limbs='both';
  s.accessories=s.accessories.filter(k=>availableAccessories(s).includes(k));
- let prop=false;s.accessories=s.accessories.filter(k=>{if(!['phone','macbook','tea','book','wand'].includes(k))return true;if(prop)return false;prop=true;return true});
- if(!availablePoses(s).includes(s.pose))s.pose='sit';
+ if(!availablePoses(s).includes(s.pose))s.pose='neutral';
  return s;
 }
+function subjectOptions(){return Object.entries(SUBJECT_GROUPS).map(([group,keys])=>`<optgroup label="${group}">${keys.map(k=>`<option value="${k}" ${state.body===k?'selected':''}>${label('body',k)}</option>`).join('')}</optgroup>`).join('')}
 function controls(){
  quickControls();
  $('sectionTabs').innerHTML=[['body','身体与造型'],['style','局部材质'],['accessories','配饰'],['action','动作'],['scene','场景'],['output','输出']].map(([k,v])=>`<button data-tab="${k}" class="${tab===k?'active':''}" aria-pressed="${tab===k}">${v}</button>`).join('');
  let v='';
  if(tab==='body'){
- v=`<label class="field-title" for="subjectSelect">主体形象</label><select id="subjectSelect">${Object.entries(SUBJECT_GROUPS).map(([group,keys])=>`<optgroup label="${group}">${keys.map(k=>`<option value="${k}" ${state.body===k?'selected':''}>${label('body',k)}</option>`).join('')}</optgroup>`).join('')}</select><div class="field-title">身体结构 <small>与材质分别选择</small></div>${chips('bodyplan',state.body==='human'?['chibi','biped']:state.body==='snake'?['blob']:isGeometry(state)?['blob','chibi','biped']:Object.keys(DATA.bodyplan))}`;
+ v=`<label class="field-title" for="nameInput">角色名字</label><input id="nameInput" class="text-input" maxlength="24" value="${html(state.name)}"><div class="field-title">身体结构 <small>与材质分别选择</small></div>${chips('bodyplan',state.body==='human'?['chibi','biped']:state.body==='snake'?['blob']:isGeometry(state)?['blob','chibi','biped']:Object.keys(DATA.bodyplan))}`;
  if(isGeometry(state))v+=`<div class="field-title">手脚设置 <small>仅几何角色适用</small></div>${chips('limbs')}`;
  if(state.body==='cat')v+=`<div class="field-title">猫咪毛色</div>${chips('pattern')}`;
  if(state.body==='human')v+=pick('framing','人物构图',{head:'头像特写',bust:'半身人物',full:'全身人物'})+pick('proportion','Q 版比例',{two:'2 头身 · 玩偶感',three:'3 头身 · 小人物'})+pick('hair','发型',{short:'短发',long:'长发',curly:'卷发',bald:'光头 / 极短发'})+pick('clothing','服装',{sweater:'针织上衣',suit:'西装',hoodie:'连帽衫',dress:'连衣裙'})+`<div class="field-title">肤色与发色</div><div class="color-custom"><input type="color" data-setting="skinColor" value="${state.skinColor}" aria-label="人物肤色"><span class="color-description">肤色</span><input type="color" data-setting="hairColor" value="${state.hairColor}" aria-label="人物发色"><span class="color-description">发色</span></div>`;
@@ -82,17 +96,17 @@ function controls(){
  }
  if(tab==='style'){
  v='<p class="helper">整体材质和主色在上方调整；这里设置局部细节。</p>';
- if(isAnimal(state))v+=`<div class="field-title">毛发细节 <small>毛绒材质时生效</small></div>${chips('fur')}`;
+ if(isAnimal(state))v+=`<div class="field-title">毛发细节 <small>整体材质为毛绒时生效</small></div>${chips('fur')}`;
  if(state.body==='human')v+=`<div class="field-title">人物分区材质</div>${pick('skinMaterial','脸与皮肤',DATA.skinMaterial)}${pick('hairMaterial','头发',DATA.hairMaterial)}${pick('clothMaterial','衣服',DATA.clothMaterial)}<p class="helper">分区材质优先于整体材质；平面和像素模式只保留纹理提示。</p>`;
- if(isGeometry(state)||state.body==='robot')v+=`<div class="field-title">眼睛颜色</div><div class="chips">${['#FFFFFF','#243247','#5698F5'].map(c=>`<button class="chip ${state.eyeColor===c?'selected':''}" data-eye="${c}" aria-pressed="${state.eyeColor===c}">${c==='#FFFFFF'?'白色':c==='#243247'?'深色':'蓝色'}</button>`).join('')}</div>`;
+ v+=`<div class="field-title">眼睛颜色</div><div class="chips">${['#FFFFFF','#243247','#5698F5','#8B5CF6'].map(c=>`<button class="chip ${state.eyeColor===c?'selected':''}" data-eye="${c}" aria-pressed="${state.eyeColor===c}">${c==='#FFFFFF'?'白色':c==='#243247'?'深色':c==='#5698F5'?'蓝色':'紫色'}</button>`).join('')}</div><div class="color-custom eye-custom"><input type="color" data-setting="eyeColor" value="${state.eyeColor}" aria-label="自定义眼睛颜色"><span class="color-description">自定义眼睛颜色</span></div>`;
  }
- if(tab==='accessories')v=`<div class="field-title">配饰 <small>${state.accessories.length} / 3 件</small></div><div class="chips">${availableAccessories(state).map(k=>chip('accessories',k,state.accessories.includes(k))).join('')}</div><p class="helper">${state.bodyplan==='quad'?'四足动物优先项圈、围巾和帽子；切换为双足拟人后可搭配服装与手持物。':'最多搭配 3 件；同类帽子和眼镜会自动替换。手持物最多一件。'}</p><button class="outline" data-clear-accessories>清空配饰</button><div class="field-title">轻量特效 <small>最多一种 · 默认关闭</small></div>${chips('effect')}<p class="helper">特效不遮挡五官，也不扩大到角色主体之外。</p>`;
+ if(tab==='accessories')v=`<div class="field-title">配饰 <small>已选 ${state.accessories.length} 件</small></div><div class="chips">${availableAccessories(state).map(k=>chip('accessories',k,state.accessories.includes(k))).join('')}</div><p class="helper">帽子、眼镜各选一种；没有手时，道具放在身旁。无脚角色不提供溜冰鞋，滑冰动作仍可用悬浮滑行表达。</p><button class="outline" data-clear-accessories>清空配饰</button><div class="field-title">轻量特效 <small>最多一种 · 默认关闭</small></div>${chips('effect')}<p class="helper">特效不遮挡五官，也不扩大到角色主体之外。</p>`;
  if(tab==='action')v=`<div class="field-title">姿态</div>${chips('pose',availablePoses(state))}<div class="field-title">主要动作</div><div class="option-grid">${Object.keys(DATA.action).filter(k=>!['happy','puzzled'].includes(k)).map(k=>option('action',k)).join('')}</div><div class="field-title">动作顺序 <small>可再添加 4 步</small></div><div class="sequence-add"><select id="nextAction" aria-label="选择下一步动作">${Object.keys(DATA.action).map(k=>`<option value="${k}">${label('action',k)}</option>`).join('')}</select><button class="outline" id="addSequence" ${state.sequence.length>=4?'disabled':''}>添加</button></div><div class="sequence-list">1. ${label('action',state.action)}${state.sequence.map((k,i)=>`<div>${i+2}. ${label('action',k)} <button class="quiet tiny" data-remove-step="${i}" aria-label="移除第 ${i+2} 步">×</button></div>`).join('')}</div><p class="helper">姿态决定身体结构，表情控制脸部；睡觉、眨眼、工作等明确动作优先。工作时不自动眨眼。静态图只取主动作的一瞬间。</p>`;
  if(tab==='scene')v=`<div class="field-title">角色在哪里</div>${chips('scene')}<div class="note-card">${state.output==='pet'?'ChatGPT Pet 固定透明背景；场景选择会保留供其他用途使用。':state.output==='sticker'?'贴纸固定透明背景。':state.output==='sheet'?'设定图使用干净浅色背景。':'场景为可选项，会写入提示词；样例画面不会实时变更场景。'}</div>`;
  if(tab==='output')v=`<div class="field-title">准备创作什么</div><div class="option-grid two format-options">${Object.keys(DATA.output).map(k=>option('output',k)).join('')}</div><div class="note-card">${DATA.output[state.output][2]}</div><div class="field-title">怎样使用</div><p class="helper">1. 搭配角色、材质和动作<br>2. 复制提示词并打开 ChatGPT<br>3. 在 ChatGPT 粘贴后开始创作<br>4. 沿用参考角色时，先在 ChatGPT 附图</p><p class="helper">这里只组合提示词，不上传参考图，也不实时生成图片。</p>`;
  $('controls').innerHTML=v;
  $('controls').querySelectorAll('[data-setting]').forEach(el=>el.addEventListener('change',e=>{state[e.target.dataset.setting]=e.target.value;showExample=false;renderResult()}));
- $('subjectSelect')?.addEventListener('change',e=>select('body',e.target.value));
+ $('nameInput')?.addEventListener('input',e=>{state.name=e.target.value;showExample=false;renderResult()});
  $('bodyColor')?.addEventListener('input',e=>{state.color=e.target.value.toUpperCase();showExample=false;$('colorHex').value=state.color;renderResult()});
  $('colorHex')?.addEventListener('change',e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){state.color=e.target.value.toUpperCase();showExample=false;render()}else{e.target.value=state.color;notify('请输入 # 开头的 6 位颜色值')}});
  $('addSequence')?.addEventListener('click',()=>{if(state.sequence.length<4){state.sequence.push($('nextAction').value);render()}});
@@ -101,11 +115,9 @@ function controls(){
 function quickControls(){
  const pet=state.output==='pet';
  $('purposeControls').innerHTML=`<div class="purpose-options"><button data-purpose="avatar" class="${!pet?'selected':''}" aria-pressed="${!pet}">角色图</button><button data-purpose="pet" class="${pet?'selected':''}" aria-pressed="${pet}">ChatGPT Pet</button></div>`;
- $('quickControls').innerHTML=`<div class="panel-heading"><h2>调整你的版本</h2><span>写入创作说明</span></div><div class="quick-pair"><div><label class="field-title" for="quickName">角色名字</label><input id="quickName" class="text-input" maxlength="24" value="${html(state.name)}"></div><div><label class="field-title" for="quickMaterial">材质与画法</label><select id="quickMaterial">${Object.entries(DATA.style).map(([k,v])=>`<option value="${k}" ${state.style===k?'selected':''}>${v[0]}</option>`).join('')}</select></div></div><div class="quick-pair"><div><label class="field-title" for="quickColor">${state.body==='human'?'服装主色':'主色'}</label><div class="color-well"><input type="color" id="quickColor" value="${state.color}"><input id="colorHex" class="text-input" maxlength="7" value="${state.color}" aria-label="主色十六进制"></div></div><div>${pick('quickMood','表情',DATA.expression)}</div></div>`;
- $('quickMood').value=state.expression;
- $('quickName').oninput=e=>{state.name=e.target.value;showExample=false;renderResult()};
- $('quickMaterial').onchange=e=>select('style',e.target.value);
- $('quickMood').onchange=e=>select('expression',e.target.value);
+ const q=(id,title,type,value=state[type])=>`<div><label class="field-title" for="${id}">${title}</label><select id="${id}" data-quick="${type}">${Object.entries(DATA[type]).map(([k,v])=>`<option value="${k}" ${value===k?'selected':''}>${v[0]}</option>`).join('')}</select></div>`;
+ $('quickControls').innerHTML=`<div class="panel-heading"><h2>自由组合你的 Dot</h2><span>每一项都写入提示词</span></div><div class="quick-pair"><div><label class="field-title" for="quickBody">基础造型 / 主体</label><select id="quickBody" data-quick="body">${subjectOptions()}</select></div>${q('quickStyle','画法','style')}</div><div class="quick-pair">${q('quickMaterial','材质','material')}${q('quickEyes','眼睛','eyes')}</div><div class="quick-pair"><div><label class="field-title" for="quickColor">${state.body==='human'?'服装主色':'主色'}</label><div class="color-well"><input type="color" id="quickColor" value="${state.color}" aria-label="主色"><input id="colorHex" class="text-input" maxlength="7" value="${state.color}" aria-label="主色十六进制"></div></div>${q('quickMood','表情','expression')}</div>`;
+ $('quickControls').querySelectorAll('[data-quick]').forEach(el=>el.onchange=e=>select(e.target.dataset.quick,e.target.value));
  $('quickColor').oninput=e=>{state.color=e.target.value.toUpperCase();showExample=false;$('colorHex').value=state.color;renderResult()};
  $('colorHex').onchange=e=>{if(/^#[0-9a-f]{6}$/i.test(e.target.value)){state.color=e.target.value.toUpperCase();showExample=false;render()}else{e.target.value=state.color;notify('请输入 # 开头的 6 位颜色值')}};
 }
@@ -114,28 +126,33 @@ $('quickControls').addEventListener('click',e=>{const b=e.target.closest('button
 
 function compatible(s){const notes=[];if(isAnimal(s))notes.push('保留耳朵、花纹与尾巴');if(s.body==='human')notes.push('人物分区材质与自然五官');if([s.action,...s.sequence].includes('work'))notes.push('工作时不自动眨眼');if(s.output==='sticker')notes.push('贴纸使用透明背景');if(s.output==='sheet')notes.push('设定图使用浅色背景');if(isGeometry(s)&&s.limbs==='none')notes.push('仅几何角色无手无脚');if(!notes.length)notes.push('身份、比例与配色保持一致');return notes}
 function buildPrompt(input,short=false){
- const s=structuredClone(input);
+ const s=normalize(structuredClone(input));
  const pet=s.output==='pet';
  if(pet){s.scene='transparent';s.framing='full';}
 
  const multi=['storyboard','keyframes','pet'].includes(s.output),chain=multi?[s.action,...s.sequence]:[s.action];
- const identity=s.reference?'请先等待我在本对话上传参考图，再以图中的角色为身份基准。保留其可辨识的脸型、主体轮廓、配色、发型或耳朵、花纹、尾巴和五官间距；当前尚未上传参考图，不要声称已经读取。以下参数用于改变材质、姿态与配饰，如与参考图身份冲突，优先保留身份。':`创作名为「${s.name.trim()||'小伙伴'}」的单个原创角色：${DATA.body[s.body][2]}。主色 ${s.color}，标志性色块不被主色覆盖。`;
- let body=`${DATA.bodyplan[s.bodyplan][1]}。`;
- if(isGeometry(s))body+=`${DATA.limbs[s.limbs][1]}。${s.body==='spirit'?'两只象牙白椭圆眼睛配黑色瞳孔':`两只${s.eyeColor}胶囊眼`}，无嘴巴，眼睛位置和间距稳定。`;
- else if(s.body==='human')body+=`${s.proportion==='two'?'2':'3'} 头身，${{head:'头像特写，裁切到肩部',bust:'半身人物，自然裁切',full:'完整全身人物，手脚完整可见'}[s.framing]}。自然简化的人物五官，正常手脚数量。${{short:'短发',long:'长发',curly:'卷发',bald:'光头或极短发'}[s.hair]}，发色 ${s.hairColor}，肤色 ${s.skinColor}，身穿${{sweater:'针织上衣',suit:'西装',hoodie:'连帽衫',dress:'连衣裙'}[s.clothing]}。`;
- else if(s.body==='robot')body+='保留原创机器人面罩与两只清晰胶囊眼，面罩内不添加人物五官。';
- else body+=`保留物种的耳朵、口鼻、鼻子、爪子、标志性花纹与完整尾巴，不套用几何 Dot 的无嘴巴或无手无脚设定。${s.body==='cat'?DATA.pattern[s.pattern][1]+'。':''}${s.body==='snake'?'蛇保留天然无肢体的盘曲结构，不添加四肢。':''}`;
- let material=`${DATA.design[s.design][2]}。${DATA.style[s.style][2]}。`;
- if(isAnimal(s)&&s.style==='plush')material+=DATA.fur[s.fur][1]+'。';
- if(s.body==='human')material+=`分区材质优先于整体材质：${DATA.skinMaterial[s.skinMaterial][1]}；${DATA.hairMaterial[s.hairMaterial][1]}；${DATA.clothMaterial[s.clothMaterial][1]}。平面或像素画法用相应色块纹理概括，不能混入写实表面。`;
+ const identity=s.reference?'请先等待我在本对话上传参考图，再以图中的角色为身份基准。保留其可辨识的脸型、主体轮廓、配色、发型或耳朵、花纹、尾巴和五官间距；当前尚未上传参考图，不要声称已经读取。'+`将角色命名为「${s.name.trim()||'小伙伴'}」。`:`创作名为「${s.name.trim()||'小伙伴'}」的单个原创角色：${DATA.body[s.body][2]}。${s.body==='human'?'服装主色':'主色'} ${s.color}，标志性色块不被主色覆盖。`;
+ let body=`主体选择：${DATA.body[s.body][2]}。身体结构：${s.body==='snake'?'天然无肢体的盘曲蛇身':isGeometry(s)&&s.bodyplan==='chibi'?'紧凑玩偶比例，肢体完全按手脚设置':DATA.bodyplan[s.bodyplan][1]}。`;
+ if(s.reference)body+=`所选主色 ${s.color}。以上主体与配色作为参考图的改造方向；如会改变参考身份，请先与我确认，再创作。`;
+ const eyes=`${DATA.eyes[s.eyes][1]}；${s.eyes==='oval'?'瞳孔颜色':'眼睛颜色'} ${s.eyeColor}。眼睛位置和间距稳定。`;
+ if(isGeometry(s))body+=`${DATA.limbs[s.limbs][1]}。${eyes}不添加嘴巴。`;
+ else if(s.body==='human')body+=`${s.proportion==='two'?'2':'3'} 头身，${{head:'头像特写，裁切到肩部',bust:'半身人物，自然裁切',full:'完整全身人物，手脚完整可见'}[s.framing]}。自然简化的人物鼻子与嘴巴，${eyes}正常手脚数量。${{short:'短发',long:'长发',curly:'卷发',bald:'光头或极短发'}[s.hair]}，发色 ${s.hairColor}，肤色 ${s.skinColor}，身穿${{sweater:'针织上衣',suit:'西装',hoodie:'连帽衫',dress:'连衣裙'}[s.clothing]}。`;
+ else if(s.body==='robot')body+=`保留原创机器人面罩，${eyes}面罩内不添加鼻子或嘴巴。`;
+ else body+=`${eyes}保留该物种应有的耳朵、口鼻、鼻子、爪子、标志性花纹与完整尾巴，不套用几何 Dot 的无嘴巴或无手无脚设定。${s.body==='cat'?DATA.pattern[s.pattern][1]+'。':''}${s.body==='snake'?'蛇保留天然无肢体的盘曲结构，不添加四肢。':''}`;
+ let material=`造型语言：${DATA.design[s.design][2]}，仅影响设计语言，不覆盖已选主体的物种和身体结构。画法：${DATA.style[s.style][2]}。材质：${DATA.material[s.material][1]}。`;
+ if(s.style!=='smooth')material+='画法优先：将所选材质转译成相应的色块、线条、像素或水彩纹理，不混入写实三维渲染。';
+ if(isAnimal(s)&&s.material==='plush')material+=DATA.fur[s.fur][1]+'。';
+ if(s.body==='human'){const parts=[['脸与皮肤',s.skinMaterial,'skinMaterial'],['头发',s.hairMaterial,'hairMaterial'],['衣服',s.clothMaterial,'clothMaterial']].filter(([,value])=>value!=='inherit');if(parts.length)material+='局部覆盖整体材质：'+parts.map(([name,value,type])=>name+'：'+DATA[type][value][1]).join('；')+'。其余部位沿用整体材质；局部材质也必须服从所选画法。';}
  const accessories=s.accessories.length?s.accessories.map(a=>DATA.accessories[a][1]).join('、'):'无额外配饰';
- const bodyProps=hands(s)?'手持道具最多一件，其余放在身旁或支撑面上。':isGeometry(s)?'没有手时，道具独立悬浮或放在身旁，不凭空添加肢体。':'四足动物不把前爪画成人手，不使用人类服装或手持道具。';
+ const bodyProps=hands(s)?'每只手最多拿一件道具，其余道具放在身旁或支撑面上，不增加手臂。':'道具独立悬浮或放在身旁，不凭空添加手或把前爪画成人手。';
+ const apparel='服装与穿戴物适配主体结构，几何角色不凭空长出身体或肢体。';
  const scene=pet?DATA.scene.transparent[1]:s.output==='sticker'?DATA.scene.transparent[1]:s.output==='sheet'?'干净浅色背景':DATA.scene[s.scene][1];
- const action=(multi?'各动作按顺序独立呈现，不同时发生：\n':'静态图仅表现主动作的代表瞬间：\n')+chain.map((a,i)=>`${i+1}. ${label('action',a)}：${DATA.action[a][2].replace('不添加眉毛、嘴巴或问号文字',isGeometry(s)?'不添加眉毛、嘴巴或问号文字':'用原有自然五官表达，不添加问号文字').replace('不添加嘴巴',isGeometry(s)?'不添加嘴巴':'保留原有自然五官')}`).join('\n');
+ const actionText=a=>{let t=DATA.action[a][2].replace('不添加眉毛、嘴巴或问号文字',isGeometry(s)?'不添加眉毛、嘴巴或问号文字':'用原有自然五官表达，不添加问号文字').replace('不添加嘴巴',isGeometry(s)?'不添加嘴巴':'保留原有自然五官');if(a==='skate'&&!hasFeet(s))t='无脚角色以贴近冰面的悬浮滑行表达滑冰，不新增脚或鞋';if(a==='rotate'&&s.style!=='smooth')t='以所选画法表现角色转身一圈，各角度保持同一轮廓和身份，不混入三维渲染';return t};
+ const action=(multi?'各动作按顺序独立呈现，不同时发生：\n':'静态图仅表现主动作的代表瞬间：\n')+chain.map((a,i)=>`${i+1}. ${label('action',a)}：${actionText(a)}`).join('\n');
  const focus=chain.includes('work')?'工作阶段双眼保持睁开、稳定专注，不自动眨眼或转眼；显式眨眼只在单独选择的眨眼阶段发生。':'除明确选择眨眼外，不自动添加频繁眨眼。';
- const pose=`姿态：${DATA.pose[s.pose][1]}。表情：${DATA.expression[s.expression][1]}。表情不改变身体姿态；睡觉、眨眼、工作等明确动作优先于基础表情。`;
+ const pose=`姿态：${s.pose==='neutral'?(isGeometry(s)&&!hasFeet(s)?'自然悬浮或静置，保持所选肢体结构':'自然放松姿态，不增加肢体'):DATA.pose[s.pose][1]}。表情：${DATA.expression[s.expression][1]}。表情不改变身体姿态；睡觉、眨眼、工作等明确动作优先于基础表情。`;
  const petBrief=pet?'【ChatGPT Pet 创作流程】\n请先创作单个完整全身、透明背景的角色定稿，轮廓清楚，四肢和尾巴不裁切，保持稳定比例。先让我确认形象，再按当前 ChatGPT Pets 创作工具的规范制作动画；如果当前对话没有宠物制作工具，请先提供角色图和制作说明，不要声称已经创建或安装宠物。后续 v2 图集为 1536×2288，8 列×11 行，每格 192×208；前九行分别为 idle、running-right、running-left、waving、jumping、failed、waiting、running、review，后两行为按顺时针排列的十六个注视方向（从向上开始）。动作素材须来自同一角色，统一比例、锚点和花纹，展示动态预览并通过技术与视觉校验后才可创建。参考图、单张图片、GIF 或 SVG 示意都不等于可直接导入的已验证 Pet。\n\n':'';
- return petBrief+`【角色身份】\n${identity}\n${body}\n\n【风格与材质】\n${material}\n\n【配饰与特效】\n${accessories}。${bodyProps}配饰比例克制，不遮挡眼睛、耳朵或关键花纹；不添加未选物品。\n${DATA.effect[s.effect][1]}。特效最多一种、低强度、不遮挡主体。\n\n【姿态、表情与动作】\n${pose}\n${action}\n${focus}\n\n【场景与输出】\n${scene}。${DATA.output[s.output][2]}。\n\n【一致性与安全构图】\n每幅或每格只有同一个角色。主体居中，预留安全边距，不裁切耳朵、头顶、尾巴或所选全身构图中的手脚；${pet?'Pet 始终完整全身，不允许半身或头像裁切。':'头像特写与半身可按所选构图自然裁切。'}保持同一脸型、身体比例、五官间距、耳朵形状、花纹位置、尾巴、配色和配饰。运动不改变身份、不新增肢体，不拉伸或融化。避免多角色、杂乱道具、文字、水印和品牌标志；风格名称仅作方向参考，不复制官方角色资产。`;
+ return petBrief+`【角色身份】\n${identity}\n${body}\n\n【风格与材质】\n${material}\n\n【配饰与特效】\n${accessories}。${bodyProps}${apparel}配饰比例克制，不遮挡眼睛、耳朵或关键花纹；不添加未选物品。\n${DATA.effect[s.effect][1]}。特效最多一种、低强度、不遮挡主体。\n\n【姿态、表情与动作】\n${pose}\n${action}\n${focus}\n\n【场景与输出】\n${scene}。${DATA.output[s.output][2]}。\n\n【一致性与安全构图】\n每幅或每格只有同一个角色。主体居中，预留安全边距，不裁切耳朵、头顶、尾巴或所选全身构图中的手脚；${pet?'Pet 始终完整全身，不允许半身或头像裁切。':'头像特写与半身可按所选构图自然裁切。'}保持同一脸型、身体比例、五官间距、耳朵形状、花纹位置、尾巴、配色和配饰。运动不改变身份、不新增肢体，不拉伸或融化。避免多角色、杂乱道具、文字、水印和品牌标志；风格名称仅作方向参考，不复制官方角色资产。`;
 }
 function shade(hex,amount){return '#'+[1,3,5].map(i=>Math.max(0,Math.min(255,parseInt(hex.slice(i,i+2),16)+amount)).toString(16).padStart(2,'0')).join('')}
 let svgSerial=0;
@@ -206,9 +223,11 @@ function sampleStyle(art){
  return typeof art==='number'?`background-image:url('./assets/avatar-atlas.webp');background-size:300% 200%;background-position:${(art%3)*50}% ${Math.floor(art/3)*100}%`:`background-image:url('./assets/${art}.webp');background-size:contain;background-position:center`;
 }
 function renderGallery(){
- const card=(p,i)=>`<button class="preset ${exampleIndex===i?'active':''}" data-preset="${i}" aria-label="使用${p.name}预设" aria-pressed="${exampleIndex===i}"><span class="preset-art" style="${sampleStyle(p.art)}"></span><span>${p.name}</span></button>`;
+ const card=(p,i)=>`<button class="preset ${exampleIndex===i&&showExample?'active':''}" data-preset="${i}" aria-label="使用${p.name}预设" aria-pressed="${exampleIndex===i&&showExample}"><span class="preset-art" style="${sampleStyle(p.art)}"></span><span>${p.name}</span></button>`;
  $('presetGrid').innerHTML=PRESETS.slice(0,6).map(card).join('');
  $('morePresets').innerHTML=PRESETS.slice(6).map((p,i)=>card(p,i+6)).join('');
+ $('baseForms').innerHTML=BASE_FORMS.map(k=>chip('body',k)).join('');
+ $('allSubjects').innerHTML=Object.entries(SUBJECT_GROUPS).filter(([g])=>g!=='几何与精灵').map(([g,keys])=>`<div class="collection-group"><strong>${g}</strong><div class="chips">${keys.map(k=>chip('body',k)).join('')}</div></div>`).join('');
 }
 function copyLabel(){return state.output==='pet'?'复制 Pet 创作说明':'复制创作说明'}
 function renderResult(){
@@ -216,14 +235,14 @@ function renderResult(){
  $('purposeHelp').textContent=pet?'先确认完整角色，再继续制作动画。':'复制说明，在 ChatGPT 生成你的专属角色。';
  $('petStages').hidden=!pet;
  $('showcase').style.cssText=sampleStyle(p.art);
- $('showcase').setAttribute('aria-label',p.name+'，'+label('style',p.state.style)+'原创静态样例');
+ $('showcase').setAttribute('aria-label',p.name+'，'+label('style',p.state.style)+' · '+label('material',p.state.material)+'原创静态样例');
  $('characterTitle').textContent=p.name;
  $('canvasLabel').textContent='原创样例';$('sampleNumber').textContent='DOT COLLECTION / '+String(exampleIndex+1).padStart(2,'0');
- $('styleBadge').textContent=label('style',p.state.style);
+ $('styleBadge').textContent=label('style',p.state.style)+' · '+label('material',p.state.material);
  $('motionBadge').textContent=p.state.body==='human'?'3 头身 · 全身':label('body',p.state.body);
  $('previewNote').textContent=state.body!==p.state.body?'样例供外观参考；当前主体为'+label('body',state.body):'样例固定展示，调整会写入创作说明';
  $('outputBadge').textContent='静态样例';
- $('configSummary').innerHTML=`<div class="summary-label">${showExample?'当前设定':'已调整的设定'}</div><div class="summary-values">${[label('body',state.body),label('bodyplan',state.bodyplan),label('style',state.style),label('expression',state.expression)].map(x=>`<span>${html(x)}</span>`).join('')}</div>`;
+ $('configSummary').innerHTML=`<div class="summary-label">${showExample?'当前设定':'已调整的设定'}</div><div class="summary-values">${[label('body',state.body),label('style',state.style),label('material',state.material),label('eyes',state.eyes)].map(x=>`<span>${html(x)}</span>`).join('')}</div>`;
  const importantNotes=compatible(state).filter(x=>x.includes('工作')||x.includes('背景'));$('compatibility').textContent=importantNotes.join(' · ');$('compatibility').hidden=!importantNotes.length;
  $('referenceMode').checked=state.reference;$('referenceHelp').hidden=!state.reference;
  $('copyPrompt').textContent=copyLabel();
@@ -232,16 +251,26 @@ function renderResult(){
 function render(){normalize(state);renderGallery();controls();renderResult()}
 function select(type,value){
  if(!DATA[type]||!DATA[type][value])return;showExample=false;
+ const before=structuredClone(state);let notice='';
  if(type==='accessories'){
  if(!availableAccessories(state).includes(value))return;
  if(state.accessories.includes(value))state.accessories=state.accessories.filter(k=>k!==value);
- else{let items=[...state.accessories];for(const group of [['magichat','mushroomhat'],['glasses','sunglasses']])if(group.includes(value))items=items.filter(k=>!group.includes(k));if(['phone','macbook','tea','book','wand'].includes(value))items=items.filter(k=>!['phone','macbook','tea','book','wand'].includes(k));if(items.length>=3){notify('最多搭配 3 件，请先取消一件');return}state.accessories=[...items,value]}
- }else{state[type]=value;if(type==='body'){state.name=label('body',value);state.bodyplan=naturalPlan(value);state.limbs=isGeometry(state)||value==='snake'?'none':'both';state.pose=isGeometry(state)?'neutral':'sit';if(value==='human'){state.pose='neutral';state.design='toy'}if(value==='goat')state.fur='curly';const i=PRESETS.findIndex(p=>p.state.body===value);if(i>=0)exampleIndex=i;}}
- normalize(state);render();
+ else{let items=[...state.accessories];for(const group of [['magichat','mushroomhat'],['glasses','sunglasses']])if(group.includes(value)){if(items.some(k=>group.includes(k)))notice='同类配饰已替换';items=items.filter(k=>!group.includes(k))}state.accessories=[...items,value]}
+ }else{state[type]=value;if(type==='body'){
+ if(isGeometry(state)){if(!GEOMETRY.includes(before.body)){state.bodyplan='blob';state.limbs='none'}}else if(value==='snake'){state.bodyplan='blob';state.limbs='none'}else if(GEOMETRY.includes(before.body)||before.body==='snake'||value==='human')state.bodyplan=naturalPlan(value);
+ const i=PRESETS.findIndex(p=>p.state.body===value);if(i>=0)exampleIndex=i;
+ }if(type==='bodyplan'&&value==='biped'&&isGeometry(state))state.limbs='both';}
+ normalize(state);
+ const removed=before.accessories.filter(k=>!state.accessories.includes(k));
+ if(type!=='accessories'&&removed.length)notice='已移除不适用的'+removed.map(k=>label('accessories',k)).join('、');
+ if(before.pose!==state.pose&&type!=='pose')notice+=(notice?'；':'')+'姿态已调整为自然姿态';
+ if(type==='limbs'&&before.bodyplan!==state.bodyplan)notice+=(notice?'；':'')+'已按手脚设置调整为圆团结构';
+ render();if(notice)notify(notice);
 }
 function loadPreset(i){const output=state.output,reference=state.reference;exampleIndex=i;state=structuredClone(PRESETS[i].state);state.output=output;state.reference=reference;showExample=true;render()}
 $('sectionTabs').addEventListener('click',e=>{const b=e.target.closest('[data-tab]');if(b){tab=b.dataset.tab;controls()}});
 $('controls').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.type)select(b.dataset.type,b.dataset.value);if(b.dataset.color){showExample=false;state.color=b.dataset.color;render()}if(b.dataset.eye){showExample=false;state.eyeColor=b.dataset.eye;render()}if(b.hasAttribute('data-clear-accessories')){state.accessories=[];render()}if(b.hasAttribute('data-remove-step')){state.sequence.splice(Number(b.dataset.removeStep),1);render()}});
+for(const id of ['baseForms','allSubjects'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-type]');if(b)select(b.dataset.type,b.dataset.value)});
 for(const id of ['presetGrid','morePresets'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-preset]');if(b){loadPreset(Number(b.dataset.preset));notify('已载入 '+state.name)}});
 
 $('referenceMode').addEventListener('change',e=>{state.reference=e.target.checked;showExample=false;renderResult()});
@@ -254,14 +283,15 @@ $('saveConfig').onclick=()=>{download(new Blob([JSON.stringify(state,null,2)],{t
 $('loadConfig').onclick=()=>$('configFile').click();
 function validateConfig(raw){
  if(!raw||typeof raw!=='object'||Array.isArray(raw))throw Error('配置必须是 JSON 对象');
- if(![1,2].includes(raw.version))throw Error('暂不支持这个配置版本');
+ if(![1,2,3].includes(raw.version))throw Error('暂不支持这个配置版本');
+ raw=structuredClone(raw);if(raw.version<3){if(['plush','clay','glass'].includes(raw.style)){raw.material=raw.style;raw.style='smooth'}else raw.material=raw.material||'smooth';raw.eyes=raw.eyes||(raw.body==='spirit'?'oval':!GEOMETRY.includes(raw.body)&&raw.body!=='robot'?'natural':'capsule')}
  const r=structuredClone(DEFAULT);
  for(const k of ['body','style','limbs','action','scene','output']){if(typeof raw[k]!=='string'||!Object.hasOwn(DATA[k],raw[k]))throw Error('配置中的 '+k+' 无效');r[k]=raw[k]}
- for(const k of ['design','bodyplan','fur','pose','expression','effect','pattern','skinMaterial','hairMaterial','clothMaterial'])if(raw[k]!==undefined){if(!Object.hasOwn(DATA[k],raw[k]))throw Error('配置中的 '+k+' 无效');r[k]=raw[k]}
+ for(const k of ['material','eyes','design','bodyplan','fur','pose','expression','effect','pattern','skinMaterial','hairMaterial','clothMaterial'])if(raw[k]!==undefined){if(!Object.hasOwn(DATA[k],raw[k]))throw Error('配置中的 '+k+' 无效');r[k]=raw[k]}
  for(const k of ['color','eyeColor','skinColor','hairColor'])if(raw[k]!==undefined){if(typeof raw[k]!=='string'||!/^#[0-9a-f]{6}$/i.test(raw[k]))throw Error('配置颜色无效');r[k]=raw[k].toUpperCase()}
  if(typeof raw.name!=='string'||raw.name.length>24)throw Error('角色名称需在 24 字以内');r.name=raw.name;
  if(typeof raw.reference!=='boolean')throw Error('参考图设置无效');r.reference=raw.reference;
- if(!Array.isArray(raw.accessories)||raw.accessories.length>3||new Set(raw.accessories).size!==raw.accessories.length||raw.accessories.some(x=>typeof x!=='string'||!Object.hasOwn(DATA.accessories,x)))throw Error('配饰配置无效，最多 3 件');
+ if(!Array.isArray(raw.accessories)||raw.accessories.length>Object.keys(DATA.accessories).length||new Set(raw.accessories).size!==raw.accessories.length||raw.accessories.some(x=>typeof x!=='string'||!Object.hasOwn(DATA.accessories,x)))throw Error('配饰配置无效');
  for(const group of [['magichat','mushroomhat'],['glasses','sunglasses']])if(group.every(x=>raw.accessories.includes(x)))throw Error('配置包含冲突配饰');r.accessories=[...raw.accessories];
  if(!Array.isArray(raw.sequence)||raw.sequence.length>4||raw.sequence.some(x=>typeof x!=='string'||!Object.hasOwn(DATA.action,x)))throw Error('动作顺序无效');r.sequence=[...raw.sequence];
  for(const [k,valid] of Object.entries({hair:['short','long','curly','bald'],clothing:['sweater','suit','hoodie','dress'],framing:['head','bust','full'],proportion:['two','three']}))if(raw[k]!==undefined){if(!valid.includes(raw[k]))throw Error('人物配置无效');r[k]=raw[k]}
@@ -271,10 +301,10 @@ function validateConfig(raw){
 }
 $('configFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>50000)throw Error('配置文件过大');state=validateConfig(JSON.parse(await f.text()));exampleIndex=Math.max(0,PRESETS.findIndex(p=>p.state.body===state.body));showExample=false;render();notify('配置已载入：'+(state.name||'未命名角色'))}catch(err){notify(err instanceof SyntaxError?'无法读取 JSON，请检查格式':err.message)}e.target.value=''};
 $('resetConfig').onclick=()=>{state.output='avatar';state.reference=false;loadPreset(0);notify('已重置为蓝色 Dot')};
-const schematic=()=>{const s=structuredClone(state);if(['spirit','shiba','bear','lion','cloudspirit'].includes(s.body)){notify('这个角色暂不提供 SVG 示意，请复制提示词创作');return null}return s};
+const schematic=()=>{const s=structuredClone(state);if(['circle','roundedsquare','spirit','shiba','bear','lion','cloudspirit'].includes(s.body)){notify('这个角色暂不提供 SVG 示意，请复制提示词创作');return null}return s};
 $('exportSVG').onclick=()=>{const s=schematic();if(s)download(new Blob([svg(s,false)],{type:'image/svg+xml'}),filename()+'-schematic.svg')};
 $('exportAnimated').onclick=()=>{const s=schematic();if(s)download(new Blob([svg(s,true)],{type:'image/svg+xml'}),filename()+'-animated-schematic.svg')};
 $('exportPNG').onclick=()=>{const s=schematic();if(!s)return;const im=new Image(),url=URL.createObjectURL(new Blob([svg(s,false)],{type:'image/svg+xml'}));im.onload=()=>{const c=document.createElement('canvas');c.width=1200;c.height=1170;const ctx=c.getContext('2d');ctx.drawImage(im,0,0,1200,1170);c.toBlob(b=>{if(b)download(b,filename()+'-schematic.png');else notify('PNG 导出失败')},'image/png');URL.revokeObjectURL(url)};im.onerror=()=>{URL.revokeObjectURL(url);notify('PNG 导出失败')};im.src=url};
 render();
 const mc=document.modelContext;
-if(mc?.registerTool){const ac=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the current character configuration and generated prompt without changing it.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:input=>{if(input&&Object.keys(input).length)throw Error('No parameters accepted');return{configuration:structuredClone(state),prompt:buildPrompt(state)}}},{name:'configure_character',title:'配置角色',description:'Replace the character with a valid version-1 or version-2 configuration. Does not generate images, upload or copy data.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{if(!input||Object.keys(input).some(k=>k!=='configuration'))throw Error('Expected configuration');state=validateConfig(input.configuration);showExample=false;render();return{configuration:structuredClone(state),prompt:buildPrompt(state)}}}];for(const def of definitions)try{Promise.resolve(mc.registerTool(def,{signal:ac.signal})).catch(()=>{})}catch(e){}window.addEventListener('pagehide',()=>ac.abort(),{once:true})}
+if(mc?.registerTool){const ac=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the current character configuration and generated prompt without changing it.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:input=>{if(input&&Object.keys(input).length)throw Error('No parameters accepted');return{configuration:structuredClone(state),prompt:buildPrompt(state)}}},{name:'configure_character',title:'配置角色',description:'Replace the character with a valid version-1, version-2 or version-3 configuration. Does not generate images, upload or copy data.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{if(!input||Object.keys(input).some(k=>k!=='configuration'))throw Error('Expected configuration');state=validateConfig(input.configuration);showExample=false;render();return{configuration:structuredClone(state),prompt:buildPrompt(state)}}}];for(const def of definitions)try{Promise.resolve(mc.registerTool(def,{signal:ac.signal})).catch(()=>{})}catch(e){}window.addEventListener('pagehide',()=>ac.abort(),{once:true})}

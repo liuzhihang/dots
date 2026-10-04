@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Dot Icon Studio · 角色提示词工作台</title><meta name="description" content="从一个原创角色开始，调整颜色、材质和表情，再把创作说明带去 ChatGPT。"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%234563ef'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="./style.css?v=10"><script src="./app.js?v=10" defer></script></head>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Dot Icon Studio · 角色提示词工作台</title><meta name="description" content="自由组合基础造型、画法、材质、眼睛与动作，生成专属 Dot 创作提示词。"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%234563ef'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E"><link rel="stylesheet" href="./style.css?v=11"><script src="./app.js?v=11" defer></script></head>
 <body>
 <header class="topbar"><a class="brand" href="./" aria-label="Dot Icon Studio 首页"><span class="brand-dot"></span><strong>dot</strong><span class="brand-slash">/</span><span>icon studio</span></a><div class="header-actions"><button class="quiet" id="loadConfig">导入</button><button class="outline" id="saveConfig">保存配置</button><button class="icon-button" id="resetConfig" aria-label="重置为蓝色 Dot" title="重置为蓝色 Dot">↺</button></div><input type="file" id="configFile" accept=".json,application/json" hidden></header>
-<div class="intro"><div><h1>从一个小伙伴开始。</h1><p>挑一个起点，带上你的想法。</p></div><section id="purposeControls" aria-label="选择用途"></section></div>
+<div class="intro"><div><h1>组合一个你的 Dot。</h1><p>基础造型 × 画法 × 材质，自由搭配。</p></div><section id="purposeControls" aria-label="选择用途"></section></div>
 <main>
 <div class="workspace">
-<section class="preview-panel" aria-label="角色样例与起点">
+<section class="preview-panel" aria-label="角色样例与基础造型">
 <div class="canvas" id="canvas"><div id="showcase" class="showcase" role="img" aria-label="蓝色 Dot 原创静态样例"></div><div class="canvas-toolbar"><strong id="characterTitle">蓝色 Dot</strong><span id="canvasLabel">原创样例</span></div><div class="canvas-caption"><span id="styleBadge">柔滑 3D</span><span id="motionBadge">圆球</span></div><span class="sample-number" id="sampleNumber">DOT COLLECTION / 01</span></div>
 <div class="preview-notes"><span id="previewNote">样例固定展示，调整会写入创作说明</span><span id="outputBadge">静态样例</span></div>
-<section class="presets" aria-label="选择角色起点"><div id="presetGrid" class="preset-grid"></div></section>
-<details class="more-presets"><summary>更多起点</summary><div id="morePresets" class="preset-grid"></div></details>
+<section class="presets" aria-label="完整角色搭配"><div id="presetGrid" class="preset-grid"></div></section>
+<section class="base-collection" aria-label="基础造型"><div class="collection-title"><strong>基础造型</strong><span>只换造型，保留其他搭配</span></div><div id="baseForms" class="chips"></div></section><details class="more-presets"><summary>更多 Dot <span>动物、人物、机器人与奇幻角色</span></summary><div id="allSubjects"></div><p class="collection-note">完整搭配样例 · 点击会载入整套设定</p><div id="morePresets" class="preset-grid"></div></details>
 </section>
 <aside class="config-panel" aria-label="角色控制">
 <div id="quickControls" class="quick-controls"></div>
@@ -18,7 +18,7 @@
 </aside>
 </div>
 <section class="details-area" aria-label="更多角色细节">
-<details id="advanced" class="advanced"><summary><span>更多细节</span><span>身体、配饰、动作与场景</span></summary><nav class="section-tabs" id="sectionTabs" aria-label="角色设置"></nav><div id="controls" class="controls"></div></details>
+<details id="advanced" class="advanced"><summary><span>手脚、配饰与更多</span><span>身体结构、动作、场景与局部材质</span></summary><nav class="section-tabs" id="sectionTabs" aria-label="角色设置"></nav><div id="controls" class="controls"></div></details>
 <details class="prompt-details"><summary>查看创作说明</summary><pre id="promptPreview" tabindex="0"></pre></details>
 <details class="export-bar"><summary>其他工具：SVG 轮廓示意</summary><p class="helper">参数化轮廓示意，不包含上方样例的材质细节，也不是 Pet 文件。</p><div><button class="export-button" id="exportSVG">导出 SVG</button><button class="export-button" id="exportPNG">导出 PNG</button><button class="export-button" id="exportAnimated">导出动态 SVG</button></div></details>
 </section>
