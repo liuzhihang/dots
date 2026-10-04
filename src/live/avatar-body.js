@@ -286,6 +286,9 @@ export function buildAvatarBody(input={}) {
       mesh=ell(head,[0,0,0],sz,bodyMat,true,'blob-sphere');
     } else if(shape==='frog') {
       mesh=add(head,geometry('blob-frog-sculpted',()=>sculptedGeometry('frog-v4',[[0,-.15,0,1.075,.785,.77],[-.43,.62,.02,.295,.345,.40],[.43,.62,.02,.295,.345,.40]],.255)),bodyMat,[0,0,0],sz,true,'blob-frog');
+    } else if(shape==='puff') {
+      const lobes=[[0,0,0,.78,.79,.77],...Array.from({length:6},(_,i)=>{const a=i/6*TAU+.20;return[Math.sin(a)*.68,Math.cos(a)*.68,0,.40,.40,.60];})];
+      mesh=add(head,geometry('blob-puff-sculpted',()=>sculptedGeometry('puff-v5',lobes,.19)),bodyMat,[0,0,0],sz,true,'blob-puff');
     } else if(shape==='cloud') {
       mesh=add(head,geometry('blob-cloud-sculpted',()=>sculptedGeometry('cloud-v3',[[0,.26,0,.72,.66,.68],[-.62,-.18,0,.64,.57,.63],[.64,-.18,-.015,.66,.565,.64],[0,-.35,.015,.81,.43,.63]],.24)),bodyMat,[0,0,0],sz,true,'blob-cloud');
     } else if(shape==='sprout') {
@@ -296,12 +299,12 @@ export function buildAvatarBody(input={}) {
     faceTargets=[mesh];
     mesh.geometry.computeBoundingBox();const bottom=mesh.geometry.boundingBox.min.y*sz[1];
     const feet=['feet','both'].includes(c.limbs);head.position.y=-bottom*h+(feet?.22:.035);
-    faceLayout={eyeX:(shape==='triangle'?.265:shape==='heart'?.29:shape==='pebble'?.27:shape==='scallop'?.25:shape==='twin'?.25:shape==='pill'?.26:c.family==='dots'?.20:.275)*w,eyeY:shape==='dumpling'?.015:shape==='cloud'?.10:shape==='triangle'?.18:shape==='sprout'?.13:.23,mouthY:shape==='dumpling'?-.22:-.23,size:shape==='triangle'?.91:shape==='dumpling'?.95:1,neckY:bottom*.72};
+    faceLayout={eyeX:(shape==='triangle'?.265:shape==='diamond'?.33:shape==='heart'?.29:shape==='pebble'?.27:shape==='scallop'?.25:shape==='twin'?.25:shape==='pill'?.26:c.family==='dots'?.20:.275)*w,eyeY:shape==='dumpling'?.015:shape==='cloud'?.10:shape==='triangle'?.18:shape==='sprout'?.13:.23,mouthY:shape==='dumpling'?-.22:-.23,size:shape==='triangle'?.91:shape==='dumpling'?.95:1,neckY:bottom*.72};
     const hands=['hands','both'].includes(c.limbs)||c.accessories?.prop&&c.accessories.prop!=='none'||['work','flowers','magic','camera','drink','read','wave'].includes(c.action);
     if(hands)for(const side of [-1,1])arm(side,[side*1.03*w,head.position.y-.10,.10],.40,.15,bodyMat,bodyMat,'mitten');
     if(feet)for(const side of [-1,1])paw(side,side*.46*w,.13,.12,[.21,.13,.28]);
     if(shape==='frog') {
-      faceLayout={eyeX:.43*w,eyeY:.66,mouthY:-.12,size:.87,neckY:bottom*.74};
+      faceLayout={eyeX:.43*w,eyeY:.66,mouthY:-.12,size:1.30,neckY:bottom*.74};
     }
     if(shape==='twin')for(const side of [-1,1]) {
       const lobe=ell(head,[side*.16,1.075,-.045],[.225,.285,.22],bodyMat,true,'twin-top-lobe');lobe.rotation.z=-side*.30;

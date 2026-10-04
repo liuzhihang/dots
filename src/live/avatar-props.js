@@ -254,8 +254,8 @@ export function decorateAvatar(avatar, c) {
         hat.position.set(head[0],head[1]-.025*s,head[2]);
         for(const [i,x] of [-.16,0,.16].entries()){const petal=ball(hat,[.095*s,(i===1?.22:.17)*s,.105*s],felt,[x*s,.08*s,0]);petal.rotation.z=(1-i)*.40;petal.name='tuft-lobe';petal.userData.surfaceMaterial='plush';avatar.surfaces?.push(petal);}
       } else if (headStyle === 'pom') {
-        hat.position.set(head[0], head[1] + .17 * s, head[2]);
-        const pom = ball(hat, [.20 * s, .205 * s, .20 * s], felt); pom.name = 'hat-pom';
+        hat.position.set(head[0], head[1] + .23 * s, head[2]);
+        const pom = ball(hat, [.255 * s, .26 * s, .255 * s], felt); pom.name = 'hat-pom';
         pom.userData.surfaceMaterial = 'micro'; avatar.surfaces?.push(pom);
       } else if (['beanie', 'cap'].includes(headStyle)) {
         const cap = headStyle === 'cap', dome = mesh(hat,
@@ -373,8 +373,8 @@ export function decorateAvatar(avatar, c) {
     eyePoses.forEach(({center, quaternion, bounds}, i) => {
       if (monocle && i === 0) return;
       const sign = i ? 1 : -1, eyeWidth = bounds.max.x - bounds.min.x, eyeHeight = bounds.max.y - bounds.min.y;
-      const rx = Math.max(clamp(spacing * (a.face==='roundSun'?.43:.41), .11 * s, .27 * s), eyeWidth * .5 + .024 * s);
-      const ry = Math.max(rx * (a.face === 'square' || a.face === 'sunglasses' ? .81 : 1.04), eyeHeight * .5 + .021 * s);
+      const rx = Math.max(c.shape==='triangle'&&a.face==='round'?.25*s:c.shape==='diamond'&&a.face==='sunglasses'?.34*s:0,clamp(spacing * (a.face==='roundSun'?.43:.41), .11 * s, .27 * s), eyeWidth * .5 + .024 * s);
+      const ry = Math.max(c.shape==='triangle'&&a.face==='round'?.31*s:0,rx * (a.face === 'square' || a.face === 'sunglasses' ? .81 : 1.04), eyeHeight * .5 + .021 * s);
       const offset = Math.max(.025 * s, bounds.max.z + .022 * s);
       const g = group(glasses, 'lens-' + i, center.clone().addScaledVector(V([0, 0, 1]).applyQuaternion(quaternion), offset).toArray());
       g.quaternion.copy(quaternion);
@@ -430,9 +430,9 @@ export function decorateAvatar(avatar, c) {
         shape.bezierCurveTo(.15 * s, -.10 * s, .052 * s, -.03 * s, 0, 0);
         const geometry = new THREE.ExtrudeGeometry(shape, {depth: .032 * s, bevelEnabled: true,
           bevelSize: .014 * s, bevelThickness: .022 * s, bevelSegments: 4, curveSegments: 16});
-        const wing = mesh(g, geometry, accent, [sign * .005 * s, 0, rz + .019 * s]); wing.scale.x = sign; wing.rotation.z = sign * -.04;
+        const wing = mesh(g, geometry, accent, [sign * .005 * s, 0, rz + .019 * s]); wing.scale.set(sign*(c.family==='dots'?1.85:1),c.family==='dots'?1.65:1,1); wing.rotation.z = sign * -.04;
       }
-      ball(g, [.052 * s, .065 * s, .059 * s], accent, [0, 0, rz + .040 * s]);
+      ball(g, [(c.family==='dots'?.075:.052) * s, (c.family==='dots'?.090:.065) * s, .059 * s], accent, [0, 0, rz + .040 * s]);
     } else {
       const ring = Array.from({length: 24}, (_, i) => {
         const angle = i / 24 * Math.PI * 2, direction = [Math.cos(angle), 0, Math.sin(angle)];
