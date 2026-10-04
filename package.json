@@ -2,6 +2,15 @@
   "name": "dot-icon-studio",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "vite --config vite.config.mjs" },
-  "devDependencies": { "vite": "8.3.2" }
+  "scripts": {
+    "dev": "vite --config vite.config.mjs",
+    "build": "esbuild src/live/live-preview.js --bundle --format=esm --minify --target=es2022 --outfile=dist/live-runtime.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "vite": "8.3.2"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  }
 }

@@ -1,5 +1,7 @@
 import {getArtSample} from './studio-art.js';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,COMPOSITION,PRESERVE,createCharacter,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference} from './studio-model.js';
+import {PRESETS,familyPresets,STYLE_SOURCES} from './studio-catalog.js';
+import {CharacterPreview,characterThumbnail} from './live-runtime.js';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference} from './studio-model.js';
 
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 // Lucide-compatible functional icons; character artwork is raster imagery.
@@ -40,17 +42,18 @@ function art(family,material,action='idle',className='',label=''){
  return '<span class="art '+cls+' '+className+'" role="img" aria-label="'+desc+'" data-art-src="'+sample.src+'" style="background-image:url('+sample.src+');background-position:'+pos+'"></span>';
 }
 
-let state=createCharacter(),activeTab='appearance',stageView='single',promptLanguage='zh',toastTimer,modalType='',lastTrigger=null,referenceDraft=null,draftFamily='';
-const history=[],future=[],familyDrafts=new Map();let grouping='';
-try{const saved=(sessionStorage.getItem('dot-studio-v7')||sessionStorage.getItem('dot-studio-v6'));if(saved)state=validateConfig(JSON.parse(saved));}catch{}
-const val=path=>path.split('.').reduce((o,k)=>o?.[k],state);
-function remember(){try{sessionStorage.setItem('dot-studio-v7',JSON.stringify(state));}catch{}familyDrafts.set(state.family,structuredClone(state));}
+let state=createCharacter(),activeTab='appearance',stageView='live',promptLanguage='zh',toastTimer,modalType='',lastTrigger=null,referenceDraft=null,draftFamily='';
+const history=[],future=[],familyDrafts=new Map();let grouping='',previewFailure='',livePreview=null,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,thumbTimer,renderFrame;
+const thumbNodes=new WeakMap();
+try{const saved=(sessionStorage.getItem('dot-studio-v8')||sessionStorage.getItem('dot-studio-v7')||sessionStorage.getItem('dot-studio-v6'));if(saved)state=validateConfig(JSON.parse(saved));}catch{}
+const val=path=>path.split('.').reduce((o,k)=>o?.[k],resolveCharacter(state).config);
+function remember(){try{sessionStorage.setItem('dot-studio-v8',JSON.stringify(state));}catch{}familyDrafts.set(state.family,structuredClone(state));}
 function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),3600);}
-function commit(next,key='',paint=true){const clean=validateConfig(next);if(JSON.stringify(clean)===JSON.stringify(state))return;if(!key||grouping!==key){history.push(structuredClone(state));if(history.length>60)history.shift();}future.length=0;grouping=key;state=clean;remember();if(paint)render();else renderResult();}
-function change(path,value,paint=true){const next=setCharacterValue(state,path,value);commit(next,paint?'':path,paint);}
+function commit(next,key='',paint=true){const clean=validateConfig(next);if(JSON.stringify(clean)===JSON.stringify(state))return;if(!key||grouping!==key){history.push(structuredClone(state));if(history.length>60)history.shift();}future.length=0;grouping=key;state=clean;remember();if(paint)render();else{cancelAnimationFrame(renderFrame);renderFrame=requestAnimationFrame(renderResult);}}
+function change(path,value,paint=true){const wasReference=stageView!=='live';if(!['name','notes','randomSeed'].includes(path))stageView='live';const next=setCharacterValue(state,path,value);commit(next,paint?'':path,paint);if(wasReference&&stageView==='live')render();}
 function switchFamily(id){if(id===state.family)return;familyDrafts.set(state.family,structuredClone(state));const next=structuredClone(familyDrafts.get(id)||createCharacter(id));const overrides=[...next.reference.overrides];next.reference={...structuredClone(state.reference),overrides};next.notes=state.notes;next.output=state.output;commit(next);}
 function undo(redo=false){const from=redo?future:history,to=redo?history:future;if(!from.length)return;to.push(structuredClone(state));state=from.pop();grouping='';remember();render();toast(redo?'已重做':'已撤销');}
-function chips(path,entries,extra=''){return `<div class="chips ${extra}">${Object.entries(entries).map(([k,v])=>`<button class="choice ${(!inheritsReference(state,path)&&val(path)===k)?'selected':''}" data-path="${path}" data-value="${k}" aria-pressed="${(!inheritsReference(state,path)&&val(path)===k)}">${esc(v.label||v)}</button>`).join('')}</div>`;}
+function chips(path,entries,extra=''){if(path==='expression')return `<div class="expression-grid">${Object.entries(entries).map(([id,v])=>`<button class="choice expression-choice ${val(path)===id?'selected':''}" data-path="expression" data-value="${id}" aria-pressed="${val(path)===id}"><span class="emote-icon emote-${id}" aria-hidden="true"><i></i><i></i></span><span>${v.label}</span></button>`).join('')}</div>`;return `<div class="chips ${extra}">${Object.entries(entries).map(([k,v])=>`<button class="choice ${(!inheritsReference(state,path)&&val(path)===k)?'selected':''}" data-path="${path}" data-value="${k}" aria-pressed="${(!inheritsReference(state,path)&&val(path)===k)}">${esc(v.label||v)}</button>`).join('')}</div>`;}
 function field(title,content,note='',id=''){return `<div class="field"${id?` id="${id}"`:''}><div class="field-title">${title}${note?`<small>${note}</small>`:''}</div>${content}</div>`;}
 function select(path,label,entries){
  const inherit=inheritsReference(state,path);
@@ -61,60 +64,101 @@ function select(path,label,entries){
 function range(path,title,min,max,step=.05){return field(`<label for="range-${path}">${title}</label>`,`<div class="range-row"><input id="range-${path}" type="range" data-range="${path}" min="${min}" max="${max}" step="${step}" value="${val(path)}"><output id="out-${path}" for="range-${path}">${path==='scale'?val(path):Math.round(val(path)*100)}%</output></div>`);}
 function colorControl(k,name){return `<label class="color-detail"><input type="color" data-setting="colors.${k}" value="${state.colors[k]}" aria-label="${name}"><span>${name}</span></label>`;}
 function renderFamilies(){
- $('families').innerHTML=Object.entries(FAMILIES).map(([id,f])=>`<button class="family-card ${state.family===id?'selected':''}" data-family="${id}" aria-pressed="${state.family===id}" aria-label="选择 ${f.name}">${art(id,f.material,'idle','mini-art')}<span class="card-copy"><b><span class="family-long-name">${f.name}</span><span class="family-short-name">${f.short}</span></b><small>${f.subtitle}</small></span></button>`).join('');
+ $('families').innerHTML=Object.entries(FAMILIES).map(([id,f])=>`<button class="family-card ${state.family===id?'selected':''}" data-family="${id}" aria-pressed="${state.family===id}" aria-label="选择 ${f.name}">${art(id,f.material,'idle','mini-art')}<span class="card-copy"><b><span class="family-long-name">${f.name}</span><span class="family-short-name">${f.short}</span></b><small>${familyPresets(id).length} 个角色 · ${f.subtitle}</small></span></button>`).join('');
 }
 function renderSettings(){
  const el=$('settings'),scroll=el.scrollTop,opened=[...el.querySelectorAll('details[open]')].map(x=>x.id);let out=state.reference.enabled?'<div class="rule-note reference-priority">'+icon('info')+'<span>保留项沿用参考图。手动改动会作为明确覆盖写入 Prompt。</span></div>':'';
  if(activeTab==='appearance'){
-  out+=field('想要什么触感？',`<div class="material-grid">${['plush','rubber'].map(m=>`<button class="material-card ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}" aria-label="${MATERIALS[m].label}">${art(state.family,m)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'软乎乎，有纤维':'圆润，低光泽'}</small></button>`).join('')}</div><div class="secondary-materials">${['micro','clay'].map(m=>`<button class="choice ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}">${MATERIALS[m].label}<small>Prompt 转译</small></button>`).join('')}</div>`);
+  out+=`<button class="preset-entry" data-command="catalog"><span><b>浏览 ${familyPresets(state.family).length} 个${state.family==='pets'?'动物':state.family==='muse'?'人物':'角色'}</b><small>先选一个，再自由定制</small></span>${icon('grid')}</button>`;
+  out+=field('想要什么触感？',`<div class="material-grid">${['plush','rubber'].map(m=>`<button class="material-card ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}" aria-label="${MATERIALS[m].label}">${art(state.family,m)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'软乎乎，有纤维':'圆润，低光泽'}</small></button>`).join('')}</div><div class="secondary-materials">${['micro','clay'].map(m=>`<button class="choice ${state.material===m?'selected':''}" data-path="material" data-value="${m}" aria-pressed="${state.material===m}">${MATERIALS[m].label}<small>实时材质</small></button>`).join('')}</div>`);
   out+=field('一组喜欢的颜色',`<div class="palette-row">${PALETTES.filter(p=>!['shiba','teal'].includes(p.id)||state.family==='pets'&&p.id==='shiba'||state.family==='muse'&&p.id==='teal').map(p=>`<button class="swatch ${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())?'selected':''}" style="--color:${p.body}" data-palette="${p.id}" aria-label="${p.name}" title="${p.name}" aria-pressed="${(!inheritsReference(state,'colors.body')&&state.colors.body.toLowerCase()===p.body.toLowerCase())}"></button>`).join('')}<input class="color-input" type="color" data-setting="colors.body" value="${state.colors.body}" aria-label="自定义主体颜色" title="自定义主体颜色"></div><div class="color-detail-row">${colorControl('secondary','辅助色')}${colorControl('eyes','眼睛')}${colorControl('accessory','配饰')}</div><p class="section-helper">${inheritsReference(state,'colors.body')?'当前配色沿用参考图；点击色板或色块可明确覆盖对应颜色。':'深色主体自动搭配浅眼睛，手动选过的眼色会保留。'}</p>`);
-  out+=field('轮廓',chips('shape',Object.fromEntries(FAMILY_SHAPES[state.family].map(k=>[k,SHAPES[k]]))),state.family==='muse'?'保留人物比例':'写入 Prompt');
-  out+=`<details class="advanced" id="shape-advanced"><summary>外观细调</summary>${field('<label for="character-name">角色名字</label>',`<input id="character-name" class="name-input" type="text" data-setting="name" value="${esc(state.name)}" maxlength="40">`)}${range('headScale','头部比例',.85,1.12,.01)}${range('bodyWidth','主体宽度',.85,1.15,.01)}${state.shape==='human'?`<div class="input-pair">${select('hair','发型',{'short-curly':'短卷发',short:'自然短发',bob:'齐颈短发',long:'自然长发'})}${select('skinMaterial','面部材质',{auto:'跟随整体',fabric:'细腻织物',matte:'柔和肤感'})}</div><div class="color-detail-row">${colorControl('skin','肤色')}${colorControl('hair','发色')}${colorControl('clothing','衣服')}</div><div class="input-pair" style="margin-top:14px">${select('hairMaterial','头发材质',{auto:'跟随整体',fiber:'卷曲纤维',layered:'分层发束'})}${select('clothMaterial','服装材质',{knit:'细致针织',fabricCloth:'柔软布料'})}</div>`:state.family==='pets'?'<p class="section-helper">四足角色保持 4 只爪、0 只人手。动作只改变爪的姿态。</p>':field('手脚',chips('limbs',{auto:'跟随动作',none:'无手脚',hands:'小圆手',feet:'短脚',both:'短手短脚'}))}<p class="section-helper">精调只改变创作设定，样张不会实时重绘。</p></details>`;
+  out+=field('轮廓',chips('shape',Object.fromEntries(FAMILY_SHAPES[state.family].map(k=>[k,SHAPES[k]]))),state.family==='muse'?'通过发型、脸型区分':'实时切换');
+  out+=`<details class="advanced" id="shape-advanced"><summary>外观细调</summary>${field('<label for="character-name">角色名字</label>',`<input id="character-name" class="name-input" type="text" data-setting="name" value="${esc(state.name)}" maxlength="40">`)}${range('headScale',state.shape==='human'||state.family==='pets'?'头部比例':'轮廓高度',.85,1.12,.01)}${range('bodyWidth','主体宽度',.85,1.15,.01)}${state.shape==='human'?`<div class="input-pair">${select('hair','发型',HAIRS)}${select('faceShape','脸型',FACE_SHAPES)}</div><div class="input-pair" style="margin-top:14px">${select('outfit','服装',OUTFITS)}${select('skinMaterial','面部材质',{auto:'跟随整体',fabric:'细腻织物',matte:'柔和肤感'})}</div><div class="color-detail-row">${colorControl('skin','肤色')}${colorControl('hair','发色')}${colorControl('clothing','衣服')}</div><div class="input-pair" style="margin-top:14px">${select('hairMaterial','头发材质',{auto:'跟随整体',fiber:'卷曲纤维',layered:'分层发束'})}${select('clothMaterial','服装材质',{knit:'细致针织',fabricCloth:'柔软布料'})}</div>`:state.family==='pets'?'<p class="section-helper">动物保持对应物种的耳朵、口鼻、尾巴和肢体。企鹅与猫头鹰使用双翼。</p>':field('手脚',chips('limbs',{auto:'跟随动作',none:'无手脚',hands:'小圆手',feet:'短脚',both:'短手短脚'}))}<p class="section-helper">外形、比例和五官会同步到实时角色与 Prompt。</p></details>`;
  }else if(activeTab==='face'){
-  out+=field('眼睛的样子',`<div class="face-choices">${Object.entries(EYES).map(([id,e])=>`<button class="choice ${(!inheritsReference(state,'eyes')&&state.eyes===id)?'selected':''}" data-path="eyes" data-value="${id}" aria-pressed="${(!inheritsReference(state,'eyes')&&state.eyes===id)}">${icon('eye')}<span>${e.label}</span></button>`).join('')}</div>`);
-  out+=field('此刻的表情',chips('expression',EXPRESSIONS)+(['sleep','work','magic','camera','read','blink'].includes(state.action)?`<p class="face-lock">${icon('info')} ${ACTIONS[state.action].label}使用${EXPRESSIONS[ACTIONS[state.action].expression].label}表情；换到“发会儿呆”后可自由选择。</p>`:''));
+  out+=field('眼睛的样子',`<div class="face-choices">${Object.entries(EYES).map(([id,e])=>`<button class="choice ${(!inheritsReference(state,'eyes')&&val('eyes')===id)?'selected':''}" data-path="eyes" data-value="${id}" aria-pressed="${(!inheritsReference(state,'eyes')&&val('eyes')===id)}">${icon('eye')}<span>${e.label}</span></button>`).join('')}</div>`);
+  out+=field('此刻的表情',chips('expression',EXPRESSIONS)+(['sleep','work','magic','camera','read','blink'].includes(state.action)?`<p class="face-lock">${icon('info')} ${ACTIONS[state.action].label}正在使用${EXPRESSIONS[ACTIONS[state.action].expression].label}表情；选择其他表情会回到待机展示。</p>`:''));
   out+=field('眉毛',chips('brows',BROWS));out+=field('嘴巴',chips('mouth',MOUTHS));
   out+=`<details class="advanced" id="face-advanced"><summary>五官比例</summary>${range('eyeScale','眼睛大小',.65,1.35)}${range('eyeSpacing','眼睛间距',.75,1.3)}<p class="section-helper">Dots / Grok Bot 默认克制五官。新增眉毛与嘴巴属于你的扩展设计。</p></details>`;
  }else if(activeTab==='accessories'){
-  for(const [slot,title,ic]of [['head','头顶的小心思','hat'],['face','眼镜','glasses'],['neck','颈部配饰','neck'],['prop','拿在手里的','wand']])out+=field(`<span class="slot-title">${icon(ic)}${title}</span>`,`<div class="slot-grid">${Object.entries(ACCESSORIES[slot]).map(([id,v])=>`<button class="choice ${(!inheritsReference(state,'accessories.'+slot)&&state.accessories[slot]===id)?'selected':''}" data-path="accessories.${slot}" data-value="${id}" aria-pressed="${(!inheritsReference(state,'accessories.'+slot)&&state.accessories[slot]===id)}">${v.label}</button>`).join('')}</div>`,'每类一件');
+  for(const [slot,title,ic]of [['head','头顶的小心思','hat'],['face','眼镜','glasses'],['neck','颈部配饰','neck'],['prop','拿在手里的','wand']])out+=field(`<span class="slot-title">${icon(ic)}${title}</span>`,`<div class="slot-grid">${Object.entries(ACCESSORIES[slot]).map(([id,v])=>`<button class="choice ${(!inheritsReference(state,'accessories.'+slot)&&val('accessories.'+slot)===id)?'selected':''}" data-path="accessories.${slot}" data-value="${id}" aria-pressed="${(!inheritsReference(state,'accessories.'+slot)&&val('accessories.'+slot)===id)}">${v.label}</button>`).join('')}</div>`,'每类一件');
   out+=`<div class="rule-note">${icon('info')}<span>道具会匹配对应动作。耳机与帽子共用头部位置；墨镜会自然遮挡眼睛。</span></div>`;
  }else{
   out+=field('怎么出镜',chips('framing',COMPOSITION.framing));
   out+=field('镜头角度',chips('camera',COMPOSITION.camera));
   out+=field('背景',chips('background',COMPOSITION.background)+(state.background==='solid'?`<div class="color-detail-row">${colorControl('background','背景色')}<small>${state.colors.background}</small></div>`:''));
   out+=field('画幅',chips('aspect',{'1:1':'1:1','4:5':'4:5','16:9':'16:9'}));
-  out+=range('scale','主体占画面宽度',55,85,1);
+  out+=range('scale','画面主体大小',55,85,1);
   out+=field('输出用途',chips('output',COMPOSITION.output));
   out+=`<details class="advanced" id="scene-advanced"><summary>姿态与补充要求</summary>${field('姿态',chips('pose',{auto:'跟随动作',sit:'坐姿',side:'侧身',chin:'托腮'}))}${field('<label for="extra-notes">补充要求</label>',`<textarea id="extra-notes" data-setting="notes" rows="3" maxlength="1600" placeholder="例如：整体留白多一些，花束小一点">${esc(state.notes)}</textarea>`)}${field('<label for="random-seed">随机种子</label>',`<div class="input-pair"><input id="random-seed" type="text" data-setting="randomSeed" value="${esc(state.randomSeed)}" maxlength="40"><button class="button outlined" data-command="seed-random">按种子搭配</button></div>`)}</details>`;
-  out+=`<div class="rule-note">${icon('info')}<span>背景、镜头和画幅用于最终生成。${state.output==='pet'?'Pet 还需按目标版本制作与校验动画，本页导出的是创作简报。':'预览样张保持原始构图与白底。'}</span></div>`;
+  out+=`<div class="rule-note">${icon('info')}<span>背景、镜头与画幅即时预览。${state.output==='pet'?'Pet 还需按目标版本制作与校验动画，本页导出的是创作简报。':'透明背景导出的 PNG 含真实透明通道。'}</span></div>`;
  }
  if(state.reference.enabled)out+=`<div class="ref-indicator">参考图 Prompt 模式 · 图片在 ChatGPT 添加<br><button data-command="reference">调整保留要求</button></div>`;
  out+=`<details class="advanced" id="legacy-access"><summary>需要更细的结构控制？</summary><p class="section-helper">结构草图编辑器保留五官位置、几何造型、角色设定、动作序列与 SVG / PNG 导出。它使用独立的结构草图配置。</p><a class="text-button" href="./editor.html">打开结构草图编辑器 ${icon('external')}</a></details>`;
  el.innerHTML=out;for(const id of opened){const d=$(id);if(d)d.open=true;}el.scrollTop=scroll;
 }
+function queueThumbnails(root=document){
+ clearTimeout(thumbTimer);thumbTimer=setTimeout(()=>{
+  const snapshot=structuredClone(state);
+  for(const node of root.querySelectorAll('[data-thumb-preset],[data-thumb-action]')){
+   const config=node.dataset.thumbPreset?createPreset(node.dataset.thumbPreset):setCharacterValue(snapshot,'action',node.dataset.thumbAction);
+   const clean=resolveCharacter(config).config,key=JSON.stringify(clean);
+   if(thumbNodes.get(node)===key)continue;thumbNodes.set(node,key);
+   characterThumbnail(clean,200).then(url=>{if(node.isConnected&&thumbNodes.get(node)===key){node.src=url;node.classList.add('loaded');}}).catch(()=>{node.classList.add('unavailable');node.alt='预览未能加载，点击查看角色';});
+  }
+ },180);
+}
+function previewError(message){previewFailure=message;$('previewTruth').innerHTML=icon('info')+'<span>'+esc(message)+' 可切换到美术参考继续查看。</span>';}
 function renderResult(){
  const r=resolveCharacter(state),c=r.config,f=FAMILIES[c.family];
  $('stageName').textContent=c.reference.enabled?'你的参考角色':(c.name||f.template);$('stageTag').textContent=`${f.short} / ${MATERIALS[c.material].label}`;
- const stageKey=[c.family,c.material,c.action,stageView].join(':');
- if($('stageArt').dataset.key!==stageKey){
-  $('stageArt').innerHTML=stageView==='compare'?`<div class="comparison">${['plush','rubber'].map(m=>`<div class="compare-half">${art(c.family,m,c.action)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'细密纤维 · 轻柔边缘':'柔和体积 · 克制高光'}</small><br><button class="use-material" data-path="material" data-value="${m}">${c.material===m?'已选中':'选择此材质'}</button></div>`).join('')}</div>`:art(c.family,r.sample.material,c.action,'hero-art');
-  $('stageArt').dataset.key=stageKey;
+ const stage=$('stageArt');
+ if(stage.dataset.view!==stageView){
+  livePreview?.dispose();livePreview=null;stage.dataset.view=stageView;
+  if(stageView==='live'){
+   stage.innerHTML='<div class="live-stage" id="liveStage"></div>';
+   try{previewFailure='';livePreview=new CharacterPreview($('liveStage'),{onError:previewError,onReady:()=>{if(previewFailure){previewFailure='';renderResult();}}});livePreview.setPlaying(playing);}catch(e){console.error(e);previewError('浏览器无法启用实时三维预览。');}
+  }else stage.innerHTML='';
  }
- $('sampleCaption').textContent=`${FAMILIES[c.family].template} · ${MATERIALS[r.sample.material].label} · ${ACTIONS[r.sample.action].label}`;
- $('previewTruth').classList.toggle('has-changes',r.pending.length>0);
- $('previewTruth').innerHTML=icon('info')+`<span>${r.pending.length?`已写入 Prompt：<b>${esc(r.pending.join('、'))}</b>。上方仍为风格／动作样张。`:'展示风格与动作参考，非当前配置的实时生图。'}</span>`;
- $('actionStrip').innerHTML=ART_KEYS.map(a=>`<button class="action-card ${c.action===a?'selected':''}" data-path="action" data-value="${a}" aria-pressed="${c.action===a}" aria-label="动作：${ACTIONS[a].label}">${art(c.family,r.sample.material,a)}<span>${ACTIONS[a].label}</span></button>`).join('');
+ if(stageView==='live'){
+  $('liveStage')?.classList.toggle('transparent-stage',c.background==='transparent');
+  livePreview?.update(c);
+ }else{
+  const artKey=[c.family,c.action].join(':');if(stage.dataset.artKey!==artKey||!stage.firstChild){
+   stage.innerHTML=`<div class="comparison">${['plush','rubber'].map(m=>`<div class="compare-half">${art(c.family,m,c.action)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'细密纤维 · 轻柔边缘':'柔和体积 · 克制高光'}</small><br><button class="use-material" data-path="material" data-value="${m}">在实时角色使用</button></div>`).join('')}</div>`;stage.dataset.artKey=artKey;
+  }
+ }
+ $('previewBadge').textContent=stageView==='live'?'实时 3D':'美术参考';
+ $('previewBadge').classList.toggle('live-badge',stageView==='live');
+ $('sampleCaption').textContent=stageView==='live'?SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:'精选样张 · 用于材质与最终生图参考';
+ $('playPreview').hidden=stageView!=='live';$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));
+ $('previewTruth').classList.remove('has-changes');
+ $('previewTruth').innerHTML=icon('info')+`<span>${stageView==='live'?(c.reference.enabled?'当前参数实时预览；参考图的特征在 ChatGPT 附图后处理。':'调整即刻呈现。实时角色预览外形与动作，最终图片可用 Prompt 在 ChatGPT 创作。'):'高清样张保持既有美术质量，不随自定义设置变化。'}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>`;
+ const presetKey=c.family;
+ if($('catalogBanner').dataset.family!==presetKey){
+  $('catalogBanner').dataset.family=presetKey;
+  $('catalogBanner').innerHTML=`<button class="catalog-preview" data-command="catalog"><span class="catalog-faces">${familyPresets(c.family).slice(1,4).map(p=>`<img data-thumb-preset="${p.id}" alt="${p.name}">`).join('')}</span><span><b>${f.short} 角色库 <em>${familyPresets(c.family).length}</em></b><small>${c.family==='pets'?'耳朵、口鼻、尾巴，各有自己的样子':c.family==='muse'?'发型、脸型与服装，找到你的角色':'从不同轮廓开始，继续加一点个性'}</small></span><span class="catalog-arrow">浏览全部 ${icon('grid')}</span></button>`;
+ }
+ const actionKey=JSON.stringify({...c,action:'idle',accessories:{...c.accessories,prop:'none'}});
+ if($('actionStrip').dataset.key!==actionKey){
+  $('actionStrip').dataset.key=actionKey;
+  $('actionStrip').innerHTML=ART_KEYS.map(a=>`<button class="action-card ${c.action===a?'selected':''}" data-path="action" data-value="${a}" aria-pressed="${c.action===a}" aria-label="动作：${ACTIONS[a].label}"><img class="live-thumb" data-thumb-action="${a}" alt="${ACTIONS[a].label}动作预览"><span>${ACTIONS[a].label}</span></button>`).join('');
+ }
+ $('actionStrip').querySelectorAll('[data-value]').forEach(b=>{b.classList.toggle('selected',b.dataset.value===c.action);b.setAttribute('aria-pressed',String(b.dataset.value===c.action));});
  const accessories=Object.entries(c.accessories).filter(([slot,value])=>value!=='none'&&!inheritsReference(c,'accessories.'+slot)).map(([slot,value])=>ACCESSORIES[slot][value].label);
- const shapeLabel=inheritsReference(c,'shape')?'轮廓沿用参考图':SHAPES[c.shape].label;
- const inheritedColors=inheritsReference(c,'colors.body');
- const inheritedAccessories=['head','face','neck'].some(slot=>inheritsReference(c,'accessories.'+slot));
- const summaryTags=[shapeLabel,MATERIALS[c.material].label,ACTIONS[c.action].label,...(inheritedColors?['配色沿用参考图']:[]),...(inheritedAccessories?['配饰沿用参考图']:[]),...accessories];
- $('currentConfig').innerHTML=`<span>当前设定</span>${summaryTags.map((x,i)=>`<span class="config-chip">${i===0&&!inheritedColors?`<i class="tiny-color" style="background:${c.colors.body}"></i>`:''}${esc(x)}</span>`).join('')}<span class="config-chip">${c.aspect}</span>`;
+ const summaryTags=[inheritsReference(c,'shape')?'轮廓沿用参考图':SHAPES[c.shape].label,MATERIALS[c.material].label,EXPRESSIONS[c.expression].label,ACTIONS[c.action].label,...accessories];
+ $('currentConfig').innerHTML='<span>当前设定</span>'+summaryTags.map((x,i)=>`<span class="config-chip">${i===0?`<i class="tiny-color" style="background:${c.colors.body}"></i>`:''}${esc(x)}</span>`).join('')+`<span class="config-chip">${c.aspect}</span>`;
  $('promptSummary').textContent=[f.name,...summaryTags,COMPOSITION.output[c.output].label].join(' · ');
- $('configCount').textContent=r.pending.length?`${r.pending.length} 项自定义`:'按你的喜好来';
- $('undo').disabled=!history.length;$('redo').disabled=!future.length;
+ $('configCount').textContent='实时联动';$('undo').disabled=!history.length;$('redo').disabled=!future.length;
+ if(previewFailure&&stageView==='live')previewError(previewFailure);
+ queueThumbnails();
 }
-function render(){renderFamilies();renderSettings();renderResult();document.querySelectorAll('[data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===stageView);b.setAttribute('aria-pressed',b.dataset.view===stageView);});}
+function showCatalog(){
+ const list=familyPresets(state.family);
+ showModal('catalog','挑一个喜欢的'+(state.family==='pets'?'动物':state.family==='muse'?'人物':'小角色'),'CHARACTER LIBRARY · '+list.length,
+ `<p class="modal-intro">${FAMILIES[state.family].name} 的 ${list.length} 个起点。选中后继续调整轮廓、配色、材质与表情。</p><div class="catalog-grid">${list.map(p=>`<button class="catalog-card ${state.presetId===p.id?'selected':''}" data-preset="${p.id}" aria-pressed="${state.presetId===p.id}"><img data-thumb-preset="${p.id}" alt="${p.name}的实时角色"><b>${esc(p.name)}</b><small>${esc(p.description)}</small></button>`).join('')}</div><p class="guide-footnote">Dot Studio 原创与灵感预设。公开来源见风格指南。</p>`);
+ queueThumbnails($('modalBody'));
+}
+function render(){renderFamilies();renderSettings();renderResult();document.querySelectorAll('.stage-views [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===stageView);b.setAttribute('aria-pressed',b.dataset.view===stageView);});}
 function showModal(type,title,eyebrow,content){
  modalType=type;if(!$('modal').open)lastTrigger=document.activeElement;
  $('modalTitle').textContent=title;$('modalEyebrow').textContent=eyebrow;$('modalBody').innerHTML=content;
@@ -124,16 +168,22 @@ function closeModal(){if(modalType==='reference')referenceDraft=null;$('modal').
 function showGuide(){
  const cards=Object.entries(FAMILIES).map(([id,f])=>'<article class="guide-card">'+art(id,f.material)+'<h3>'+f.name+'</h3><p>'+esc(f.about)+'</p><span class="sample-badge">本站风格预设</span></article>').join('');
  showModal('guide','四种角色，各有自己的样子','STYLE NOTES',
-  '<p class="modal-intro">角色体系、材质、动作与配饰独立组合。Dots 与 Grok Bot 的造型取自提供的参考方向；Muse 人物和动物伙伴是本站创作预设。</p><div class="guide-grid">'+cards+'</div>'+
+  '<p class="modal-intro">角色体系、材质、动作与配饰独立组合。共 48 个可定制起点。参考官方公开示例与独立项目，并加入本站原创扩展。每个预设都可以在实时舞台继续调整。</p><div class="guide-grid">'+cards+'</div>'+
+  '<div class="style-sources"><h3>设计来源</h3>'+STYLE_SOURCES.map(s=>'<a href="'+s.url+'" target="_blank" rel="noopener"><b>'+s.title+'</b><span>'+s.note+'</span>'+icon('external')+'</a>').join('')+'</div>'+
   '<p class="guide-footnote">毛绒顺着体积生长，非毛绒保留柔和光影。切换材质时，眼形、脸型、发型与角色比例保持一致。Pet 创作简报还需要后续制作与验证动画素材。</p>'+
   '<div class="modal-actions"><a class="button outlined" href="./editor.html">结构草图工具</a><button class="button primary" data-command="close">回到工作台</button></div>');
 }
 function showPrompt(){
  const prompt=buildPrompt(state,promptLanguage);
- showModal('prompt','把这个小角色带走','YOUR CHARACTER PROMPT',`<div class="prompt-toolbar"><div class="language-control" aria-label="Prompt 语言"><button class="${promptLanguage==='zh'?'selected':''}" data-language="zh" aria-pressed="${promptLanguage==='zh'}">中文</button><button class="${promptLanguage==='en'?'selected':''}" data-language="en" aria-pressed="${promptLanguage==='en'}">English</button></div><small>${prompt.length.toLocaleString()} 字符 · 随当前设定生成</small></div><pre id="fullPrompt" class="prompt-text" tabindex="0">${esc(prompt)}</pre><p class="guide-footnote">${state.reference.enabled?'生成前请另外附上参考图片；复制文本和 JSON 都不会携带图片。':'你也可以附上下载的样张作为风格参考，最终按此处的设定生成。'}</p><div class="modal-actions"><button class="button outlined" data-command="export-prompt">${icon('download')} 导出 TXT</button><button class="button outlined" data-command="copy-open">复制并打开 ChatGPT</button><button class="button primary" data-command="copy">${icon('copy')} 复制${promptLanguage==='en'?'英文':'中文'} Prompt</button></div>`);
+ showModal('prompt','把这个小角色带走','YOUR CHARACTER PROMPT',`<div class="prompt-toolbar"><div class="language-control" aria-label="Prompt 语言"><button class="${promptLanguage==='zh'?'selected':''}" data-language="zh" aria-pressed="${promptLanguage==='zh'}">中文</button><button class="${promptLanguage==='en'?'selected':''}" data-language="en" aria-pressed="${promptLanguage==='en'}">English</button></div><small>${prompt.length.toLocaleString()} 字符 · 随当前设定生成</small></div><pre id="fullPrompt" class="prompt-text" tabindex="0">${esc(prompt)}</pre><p class="guide-footnote">${state.reference.enabled?'生成前请另外附上参考图片；复制文本和 JSON 都不会携带图片。':'可附上导出的实时角色 PNG 作为造型参考，再按这里的完整设定生成精致角色图。'}</p><div class="modal-actions"><button class="button outlined" data-command="export-prompt">${icon('download')} 导出 TXT</button><button class="button outlined" data-command="copy-open">复制并打开 ChatGPT</button><button class="button primary" data-command="copy">${icon('copy')} 复制${promptLanguage==='en'?'英文':'中文'} Prompt</button></div>`);
 }
-function showActions(){const r=resolveCharacter(state);showModal('actions','挑一个自然的小动作','EXPRESSION IN MOTION',`<p class="modal-intro">先选姿态，再把视线、手部和道具一起处理。前六种提供双材质样张，其余动作生成完整制作指令。</p><div class="modal-action-grid">${Object.entries(ACTIONS).map(([id,a])=>`<button class="modal-action-card ${id===state.action?'selected':''}" data-modal-action="${id}" aria-pressed="${id===state.action}">${ART_KEYS.includes(id)?art(state.family,r.sample.material,id):`<span class="prompt-only">${icon(({camera:'camera',drink:'cup',read:'book',bounce:'jump',wave:'hand',blink:'eye'})[id])}</span>`}<b>${a.label}</b><small>${a.short}${ART_KEYS.includes(id)?'':' · Prompt 指令'}</small></button>`).join('')}</div>`);}
-function showExpanded(){const r=resolveCharacter(state);showModal('expand',`${FAMILIES[state.family].template} · ${ACTIONS[r.sample.action].label}`,'CURATED CHARACTER SAMPLE',`<div class="expanded-art">${art(state.family,r.sample.material,state.action)}</div><p class="expanded-note">${MATERIALS[r.sample.material].label}风格样张 · 白底 · ${r.sample.width} × ${r.sample.height}<br>下载的是此样张，不包含你的自定义改动。</p><div class="modal-actions"><button class="button outlined" data-command="download-sample">${icon('download')} 下载样张 PNG</button><button class="button primary" data-command="prompt">查看我的 Prompt</button></div>`);}
+function showActions(){showModal('actions','挑一个自然的小动作','EXPRESSION IN MOTION',`<p class="modal-intro">每个动作都使用你当前的角色。选中后在舞台播放，也可以暂停查看姿态。</p><div class="modal-action-grid">${Object.entries(ACTIONS).map(([id,a])=>`<button class="modal-action-card ${id===state.action?'selected':''}" data-modal-action="${id}" aria-pressed="${id===state.action}"><img class="live-thumb" data-thumb-action="${id}" alt="${a.label}动作预览"><b>${a.label}</b><small>${a.short}</small></button>`).join('')}</div>`);queueThumbnails($('modalBody'));}
+async function showExpanded(){
+ if(stageView==='live'&&livePreview){
+  try{const snapshot=resolveCharacter(state).config,blob=await livePreview.capture(1400,snapshot),url=URL.createObjectURL(blob);showModal('expand',snapshot.name||'我的角色','CURRENT CHARACTER PREVIEW',`<div class="expanded-live ${snapshot.background==='transparent'?'transparent-stage':''}"><img src="${url}" alt="当前角色配置的实时渲染"></div><p class="expanded-note">当前实时角色的 PNG 预览 · 包含你的外形、配色、表情与配饰</p><div class="modal-actions"><button class="button outlined" data-command="download-live">${icon('download')} 导出当前 PNG</button><button class="button primary" data-command="prompt">查看我的 Prompt</button></div>`);$('modal').addEventListener('close',()=>URL.revokeObjectURL(url),{once:true});}catch(e){toast('角色预览导出失败，请稍后重试。');}
+ }else{const r=resolveCharacter(state);showModal('expand','高清美术参考','CURATED ART REFERENCE',`<div class="expanded-art">${art(state.family,r.sample.material,state.action)}</div><p class="expanded-note">精选样张 · 不含自定义改动</p><div class="modal-actions"><button class="button outlined" data-command="download-sample">${icon('download')} 下载样张 PNG</button></div>`);}
+}
+async function downloadLive(){try{if(!livePreview)throw Error();const snapshot=resolveCharacter(state).config,name=filename()+'-preview.png';download(await livePreview.capture(1600,snapshot),name);toast('当前角色 PNG 已导出，包含所有可见定制。');}catch{toast('请切换到实时角色后再导出 PNG。');}}
 function referenceContents(){
  const options=Object.entries(FAMILIES).map(([id,f])=>'<option value="'+id+'" '+(draftFamily===id?'selected':'')+'>'+f.name+'</option>').join('');
  const preserve=Object.entries(PRESERVE).map(([id,[name]])=>'<label><input type="checkbox" data-preserve="'+id+'" '+(referenceDraft.preserve.includes(id)?'checked':'')+'>'+name+'</label>').join('');
@@ -187,10 +237,10 @@ async function downloadSample(){
 async function importConfig(file){if(!file)return;try{if(!/\.json$/i.test(file.name))throw new Error('这里只接受 JSON 配置；参考图片请在 ChatGPT 添加。');if(file.size>100000)throw new Error('配置文件不能超过 100 KB');const raw=JSON.parse(await file.text());if([1,2,3,4,5].includes(raw.version)){sessionStorage.setItem('dot-legacy-import',JSON.stringify(raw));window.location.assign('./editor.html');return;}const next=validateConfig(raw);commit(next);toast(next.reference.enabled?'配置已载入，请在 ChatGPT 添加参考图片。':'配置已完整载入。');}catch(e){toast(e instanceof SyntaxError?'这不是有效的 JSON 配置文件。':e.message);}$('configFile').value='';}
 const commands={
  customize:()=>document.querySelector('.inspector').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}),
- guide:showGuide,reference:showReference,prompt:showPrompt,'all-actions':showActions,expand:showExpanded,close:closeModal,copy:copyPrompt,'copy-open':copyAndOpen,'export-prompt':exportPrompt,'download-sample':downloadSample,
+ guide:showGuide,catalog:showCatalog,'download-live':downloadLive,'toggle-play':()=>{playing=!playing;livePreview?.setPlaying(playing);$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));},reference:showReference,prompt:showPrompt,'all-actions':showActions,expand:showExpanded,close:closeModal,copy:copyPrompt,'copy-open':copyAndOpen,'export-prompt':exportPrompt,'download-sample':downloadSample,
  'save-config':()=>{download(new Blob([exportConfiguration(state)],{type:'application/json'}),filename()+'-dot.json');toast('配置已保存，可随时重新导入；配置仅包含设定与文字，不包含图片。');},
  'import-config':()=>$('configFile').click(),
- reset:()=>{const next=createCharacter(state.family);next.reference=structuredClone(state.reference);next.reference.overrides=[];next.notes=state.notes;next.output=state.output;commit(next);toast('已恢复当前角色的视觉预设，可撤销。');},
+ reset:()=>{const next=state.presetId!=='custom'?createPreset(state.presetId):createCharacter(state.family);next.reference=structuredClone(state.reference);next.reference.overrides=[];next.notes=state.notes;next.output=state.output;commit(next);toast('已恢复当前角色的视觉预设，可撤销。');},
  random:()=>{const seed='dot-'+Math.floor(Math.random()*100000);commit(randomizeCharacter(state,seed));toast('换了一套搭配；名称、参考特征与补充要求已保留。');},
  'seed-random':()=>{commit(randomizeCharacter(state,state.randomSeed));toast('已按种子 '+state.randomSeed+' 搭配。');},
  'apply-reference':applyReference,
@@ -202,8 +252,9 @@ document.addEventListener('click',e=>{
   if(b.id==='undo'){undo();return;}if(b.id==='redo'){undo(true);return;}if(b.id==='closeModal'){closeModal();return;}
   if(b.dataset.command){commands[b.dataset.command]?.();return;}
   if(b.dataset.family){switchFamily(b.dataset.family);return;}
-  if(b.dataset.path){const p=b.dataset.path,v=b.dataset.value;const locked=p==='expression'&&['sleep','work','magic','camera','read','blink'].includes(state.action);change(p,v);if(locked&&state.expression!==v)toast('这个动作需要'+EXPRESSIONS[state.expression].label+'表情；切换到发会儿呆后可自由修改。');return;}
-  if(b.dataset.palette){commit(applyPalette(state,b.dataset.palette));return;}
+  if(b.dataset.preset){const changedView=stageView!=='live';stageView='live';commit(createPreset(b.dataset.preset,state));if(changedView)render();closeModal();return;}
+  if(b.dataset.path){const p=b.dataset.path,v=b.dataset.value,oldAction=state.action;change(p,v);if(oldAction!==state.action&&p==='expression')toast('已回到待机，展示你选择的表情。');return;}
+  if(b.dataset.palette){const changedView=stageView!=='live';stageView='live';commit(applyPalette(state,b.dataset.palette));if(changedView)render();return;}
   if(b.dataset.view){stageView=b.dataset.view;render();return;}
   if(b.dataset.tab){setTab(b.dataset.tab);return;}
   if(b.dataset.language){promptLanguage=b.dataset.language;showPrompt();return;}
@@ -232,4 +283,4 @@ $('modal').addEventListener('cancel',e=>{e.preventDefault();closeModal();});
 $('modal').addEventListener('click',e=>{if(e.target===$('modal')){const r=$('modal').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeModal();}});
 icons();$('undo').innerHTML=icon('undo');$('redo').innerHTML=icon('redo');render();remember();
 const mc=document.modelContext;
-if(mc?.registerTool){const controller=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the selected character, resolved anatomy, curated sample metadata, pending visual differences and Chinese/English prompts. No image generation.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:()=>({configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state),englishPrompt:buildPrompt(state,'en')})},{name:'configure_character',title:'配置角色',description:'Replace the current Studio character with a validated v7 configuration. Does not generate images, upload references, copy data or create a Pet.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{const next=validateConfig(input.configuration);commit(next);return {configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state)};}}];for(const def of definitions){try{Promise.resolve(mc.registerTool(def,{signal:controller.signal})).catch(()=>{});}catch{}}window.addEventListener('pagehide',()=>controller.abort(),{once:true});}
+if(mc?.registerTool){const controller=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the selected character, resolved anatomy, real-time preview metadata and Chinese/English prompts. Does not call an image generation model.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:()=>({configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state),englishPrompt:buildPrompt(state,'en')})},{name:'configure_character',title:'配置角色',description:'Replace the current Studio character with a validated v8 configuration. Does not generate images, upload references, copy data or create a Pet.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{const next=validateConfig(input.configuration);commit(next);return {configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state)};}}];for(const def of definitions){try{Promise.resolve(mc.registerTool(def,{signal:controller.signal})).catch(()=>{});}catch{}}window.addEventListener('pagehide',()=>controller.abort(),{once:true});}

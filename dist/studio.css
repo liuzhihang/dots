@@ -9,6 +9,43 @@ dialog{padding:0;border:1px solid #DFE6EF;border-radius:22px;width:min(850px,cal
 
 /* Studio refinements: readable controls, reference-only handoff, mobile access. */
 :root{--blue:#2164e8;--ink:#273245;--muted:#65748b;background:#f5f7fb}
+/* Live Studio: the character remains the main visual, with a compact catalog. */
+.catalog-banner{margin:-5px 0 15px}
+.catalog-preview{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1px solid #e1e7ef;border-radius:13px;padding:9px 13px;background:#fff;min-height:70px}
+.catalog-faces{display:flex;align-items:center;flex-shrink:0;padding-left:5px}
+.catalog-faces img{width:47px;height:47px;object-fit:contain;border-radius:50%;background:#f2f5f9;border:2px solid white;margin-left:-6px}
+.catalog-preview b{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600}
+.catalog-preview em{font-size:11px;font-style:normal;color:#4671af;background:#edf3fe;border-radius:5px;padding:1px 5px}
+.catalog-preview small{display:block;font-size:12px;margin-top:3px}
+.catalog-arrow{margin-left:auto;color:#6480a8;font-size:12px;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.catalog-arrow .icon{width:15px;height:15px}
+.live-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.character-canvas{display:block;max-width:100%;max-height:100%;outline:none}
+.stage-art-area:has(.live-stage){margin-top:0;height:425px;background:#f8fafc}
+.stage-card:has(.live-stage){background:#f8fafc}
+.stage-card:has(.live-stage) .stage-caption{padding-top:6px;background:#f8fafc}
+.transparent-stage{background-color:#fbfcfe;background-image:linear-gradient(45deg,#e9edf2 25%,transparent 25%),linear-gradient(-45deg,#e9edf2 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e9edf2 75%),linear-gradient(-45deg,transparent 75%,#e9edf2 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+.live-badge{color:#447963;background:#eef6f0;border-color:#d9e9df;gap:5px}
+.live-badge:before{content:'';width:5px;height:5px;background:#73a78a;border-radius:50%}
+.preview-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.preview-actions .text-button{font-size:12px;min-height:32px}
+.preset-entry{display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;padding:11px 12px;margin:0 0 21px;border-radius:10px;background:#f0f5ff;border:1px solid #dce7f8;color:#406da7}
+.preset-entry b{display:block;font-size:14px;font-weight:550}.preset-entry small{display:block;font-size:12px;margin-top:2px}
+.catalog-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.catalog-card{display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e1e7ef;background:#f8fafc;border-radius:14px;padding:10px 10px 14px;min-width:0;transition:background .2s,border-color .2s}
+.catalog-card:hover,.catalog-card.selected{border-color:#81a9ed;background:#f1f6ff}
+.catalog-card img{width:100%;aspect-ratio:1;object-fit:contain;max-width:180px;display:block}
+.catalog-card b{font-size:14px;font-weight:600;margin-top:4px}.catalog-card small{font-size:12px;line-height:1.7;margin-top:4px}
+.live-thumb{display:block;width:100%;aspect-ratio:1;object-fit:contain;margin:0 auto 3px;pointer-events:none}
+img[data-thumb-preset],img[data-thumb-action]{font-size:0;color:transparent}
+img[data-thumb-preset]:not(.loaded),img[data-thumb-action]:not(.loaded){background:radial-gradient(ellipse at center,#e7ecf4 0%,#f5f7fa 50%,transparent 70%);border-radius:12px}
+.action-card .live-thumb{max-width:116px}.modal-action-card .live-thumb{max-width:160px}
+.expanded-live{display:flex;align-items:center;justify-content:center;border-radius:16px;overflow:hidden;background-color:#f8fafc}.expanded-live img{display:block;max-width:100%;max-height:62vh;object-fit:contain}
+.style-sources{border-top:1px solid #e5eaf1;margin-top:25px;padding-top:23px}.style-sources h3{font-size:16px;margin-bottom:12px}
+.style-sources a{display:grid;grid-template-columns:1fr 18px;gap:5px 12px;padding:13px 0;border-bottom:1px solid #edf0f4}.style-sources a b{font-size:14px;font-weight:550;color:#45658f}.style-sources a span{grid-column:1;font-size:13px;color:#748093;line-height:1.7}.style-sources a .icon{grid-column:2;grid-row:1/3;align-self:center;color:#8a99af}
+@media(min-width:1181px){.workspace-heading{margin-bottom:15px}.settings{max-height:635px}.stage-art-area:has(.live-stage){height:420px}}
+@media(min-width:741px) and (max-width:1180px){.catalog-faces img{width:38px;height:38px}.catalog-preview{gap:9px;padding:8px}.catalog-preview small{display:none}.catalog-arrow{font-size:0}.stage-art-area:has(.live-stage){height:320px}.action-card .live-thumb{width:74px}}
+@media(max-width:740px){.catalog-banner{margin:-2px 0 12px}.catalog-preview{min-height:62px;padding:8px 10px;gap:10px}.catalog-faces img{width:38px;height:38px}.catalog-preview b{font-size:13px}.catalog-preview small{font-size:11px}.catalog-arrow{font-size:0}.catalog-arrow .icon{width:17px;height:17px}.stage-art-area:has(.live-stage){height:auto;aspect-ratio:1.10/1;margin:0}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.catalog-card{padding:7px 7px 12px}.catalog-card b{font-size:14px}.catalog-card small{font-size:12px}.action-card .live-thumb{width:80px}.preview-actions{gap:2px}.preview-actions .text-button{font-size:11px}.preset-entry{min-height:60px}.stage-caption #sampleCaption{font-size:11px}.expanded-live img{max-height:60vh}}
 .chatgpt-open{width:100%;margin-top:9px;min-height:42px}
 .field-title,.choice,.slot-grid .choice,.input-pair label,.input-pair select,.text-button,.advanced summary{font-size:.875rem}
 .section-helper,.preview-truth,.rule-note,.ref-note,.guide-footnote,.ref-indicator,.check-grid label,.color-detail{font-size:.875rem;line-height:1.75}
@@ -116,3 +153,5 @@ dialog{padding:0;border:1px solid #DFE6EF;border-radius:22px;width:min(850px,cal
 
 .family-short-name{display:none}
 @media(max-width:960px){.family-long-name{display:none}.family-short-name{display:inline}}
+
+.expression-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.expression-choice{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 4px 7px;font-size:12px}.emote-icon{display:flex;align-items:center;justify-content:center;gap:8px;height:23px;transform-origin:center}.emote-icon i{display:block;width:5px;height:13px;background:#47586f;border-radius:50%}.emote-sleepy i,.emote-proud i{height:7px}.emote-closed i,.emote-delighted i{width:9px;height:5px;background:none;border-bottom:2px solid #47586f;border-radius:0 0 8px 8px}.emote-delighted{transform:rotate(180deg)}.emote-wink i:last-child{width:8px;height:3px}.emote-excited i,.emote-surprised i{height:16px;width:7px}.emote-curious,.emote-skeptical{transform:rotate(-8deg)}.emote-skeptical i:last-child{height:6px}.emote-angry i:first-child{transform:rotate(-22deg)}.emote-angry i:last-child{transform:rotate(22deg)}.emote-sad i:first-child,.emote-worried i:first-child{transform:rotate(13deg)}.emote-sad i:last-child,.emote-worried i:last-child{transform:rotate(-13deg)}.emote-shy{transform:translateY(3px) rotate(6deg)}.emote-happy i{height:10px;transform:rotate(-8deg)}
