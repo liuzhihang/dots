@@ -13,6 +13,7 @@ import {
   makeProject,
   parseProject,
   resolveCreation,
+  getRegisteredArtworks,
   selectCompositionLayers,
   setCreationMode,
   setProjectCharacter
@@ -67,6 +68,53 @@ const baselineByFamily={
   'meta-muse':createPreset('baseline-meta-muse'),humans:createPreset('baseline-humans'),
   animals:createPreset('baseline-animals')
 };
+const withdrawnHuman={
+  format:PROJECT_FORMAT,version:PROJECT_VERSION,
+  character:baselineByFamily.humans,
+  creation:{mode:'artwork',artworkId:'historical-human-reading-v2'}
+};
+const withdrawnRoundTrip=parseProject(exportProject(withdrawnHuman));
+assert.deepEqual(withdrawnRoundTrip,withdrawnHuman,'legacy human settings and withdrawn artwork ID remain intact');
+const withdrawn=resolveCreation(withdrawnRoundTrip);
+assert.equal(withdrawn.availability,'missing');
+assert.equal(withdrawn.reason,'这张历史人物形象已撤下');
+assert.equal(withdrawn.artwork.status,'retired');
+assert.equal(withdrawn.artwork.kind,'retired-tombstone');
+assert.equal(Object.hasOwn(withdrawn.artwork,'src'),false,'the retired tombstone must not expose a downloadable source');
+assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-human-reading-v2'),false,'withdrawn art is excluded from the optional artwork catalog');
+assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-human-reading-v2'),false,'registered optional artworks contain active entries only');
+assert.equal((await import('../dist/studio-creation-assets.js?v=59')).getCreationArtwork('historical-human-reading-v2').status,'retired','legacy imports may still resolve the retired tombstone');
+assert(buildCreationPrompt(withdrawnRoundTrip).includes('这张历史人物形象已撤下'));
+assert.match(buildCreationPrompt(withdrawnRoundTrip,'en'),/withdrawn/);
+await assert.rejects(readFile(path.join(root,'dist/assets/atelier/muse-fabric-reading-v2.png')),/ENOENT/,'the rejected human PNG must not remain in the public dist directory');
+await readFile(path.join(root,'openspec/changes/refresh-studio-visual-design/references/retired-assets/muse-fabric-reading-v2.png'));
+const legacyGrokConfig=JSON.parse(await readFile(path.join(root,'openspec/changes/rebuild-character-system/baseline/schema-9-grok-arch.json'),'utf8'));
+const withdrawnGrokSource={
+  format:PROJECT_FORMAT,version:PROJECT_VERSION,
+  character:legacyGrokConfig,
+  creation:{mode:'artwork',artworkId:'historical-grok-matte-work-v2'}
+};
+const withdrawnGrok=parseProject(exportProject(withdrawnGrokSource));
+assert.equal(withdrawnGrok.character.family,'grok');
+assert.equal(withdrawnGrok.character.presetId,'grok-arch');
+assert.equal(withdrawnGrok.character.shape,'arch','an imported Grok project retains its original silhouette');
+assert.equal(withdrawnGrok.creation.artworkId,'historical-grok-matte-work-v2','the retired artwork ID remains intact');
+assert.deepEqual(parseProject(exportProject(withdrawnGrok)),withdrawnGrok,'legacy Grok config and retired ID survive project JSON round-trip');
+const editedLegacyGrok=setProjectCharacter(withdrawnGrok,{...withdrawnGrok.character,notes:'Keep my archived Grok setup'});
+assert.equal(editedLegacyGrok.creation.artworkId,'historical-grok-matte-work-v2','same-family edits do not replace the retired artwork ID');
+assert.equal(editedLegacyGrok.character.shape,'arch','same-family edits do not replace the legacy Grok shape');
+const retiredGrok=resolveCreation(withdrawnGrok);
+assert.equal(retiredGrok.availability,'missing');
+assert.equal(retiredGrok.reason,'这张历史 Grok 形象已撤下');
+assert.equal(retiredGrok.artwork.status,'retired');
+assert.equal(retiredGrok.artwork.kind,'retired-tombstone');
+assert.equal(Object.hasOwn(retiredGrok.artwork,'src'),false,'the retired Grok tombstone has no downloadable source');
+assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-grok-matte-work-v2'),false,'withdrawn Grok art is excluded from the optional catalog');
+assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-grok-matte-work-v2'),false,'registered optional artworks contain active entries only');
+assert.equal((await import('../dist/studio-creation-assets.js?v=59')).getCreationArtwork('historical-grok-matte-work-v2').status,'retired','legacy Grok imports may resolve the tombstone');
+assert(buildCreationPrompt(withdrawnGrok).includes('这张历史 Grok 形象已撤下'));
+await assert.rejects(readFile(path.join(root,'dist/assets/atelier/grok-matte-work-v2.png')),/ENOENT/,'the rejected Grok PNG must not remain in the public dist directory');
+await readFile(path.join(root,'openspec/changes/refresh-studio-visual-design/references/retired-assets/grok-matte-work-v2.png'));
 for(const [family,character]of Object.entries(baselineByFamily)){
   const candidate=setProjectCharacter(project,character);
   const expected=family===project.character.family?project.creation.artworkId:CREATION_ARTWORKS.find(item=>item.family===family)?.id??null;

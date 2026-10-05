@@ -27,3 +27,7 @@
 ## Impact
 
 影响原生 HTML、CSS、JavaScript 静态站点中首页和创作工作台的布局、组件样式及浏览器交互；沿用 Vite、Three.js 与现有状态/创作模块，不引入前端框架或认证服务。参考依据为 [已确认的 R01](../rebuild-character-system/references/r01-confirmed-direction.jpg) 和现有 `dist/` 实现。
+
+## Feedback correction · 2026-10-05
+
+用户手机截图仍呈现历史人物/Grok，且 Meta Muse 缺图。源码和保存版本已有五组新候选；旧素材目录被稳定子模块 URL 缓存复用是强推测，尚未在用户手机抓到响应。修复须使整个本地 ES module 依赖图使用同一发布版本，同时撤下用户明确否决的卷发阅读人物及其公开 PNG。旧项目保留人物配置并明确提示已撤下原图，不能静默替换为另一个角色。Muse 保持一只待确认基准，本轮不扩充角色，也不将统一组合流程建议视为已确认设计。

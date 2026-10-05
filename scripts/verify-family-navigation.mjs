@@ -10,7 +10,7 @@ import {exportProject, makeProject, parseProject, setProjectCharacter} from '../
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const familyIds = ['dots', 'grok', 'meta-muse', 'humans', 'animals'];
 const entries = [
-  ['Dots', '圆球', '耳机', 'dots'],
+  ['Dots', '团子', '耳机', 'dots'],
   ['Grok Bot', '几何', '磨砂', 'grok'],
   ['Meta Muse', '奶油', '毛绒', 'meta-muse'],
   ['Humans', '人物', '栗发', 'humans'],
@@ -26,6 +26,7 @@ for (const [english, chinese, keyword, id] of entries) {
 }
 assert.deepEqual(matchingFamilies('gRoK bOt').map(item => item.id), ['grok'], 'matching is case-insensitive across multiple words');
 assert.deepEqual(matchingFamilies('Ｄｏｔｓ').map(item => item.id), ['dots'], 'full-width search text is normalized');
+assert.deepEqual(matchingFamilies('圆球').map(item => item.id), ['dots', 'grok'], 'shared spherical geometry is searchable in both families');
 assert.deepEqual(matchingFamilies('圆球 耳机').map(item => item.id), ['dots'], 'all search terms must match the same family');
 assert.deepEqual(matchingFamilies('耳机', 'grok'), [], 'search and family filter intersect');
 assert.deepEqual(matchingFamilies('unregistered-material'), [], 'unknown search terms produce no results');

@@ -2,11 +2,9 @@
 export const ART_ACTIONS = ['idle','work','sleep','listen','flowers','magic'];
 export const LEGACY_ART = {
  dots:{file:'dot-plush-headphones-v2.png',name:'蓝蓝听歌'},
- grok:{file:'grok-matte-work-v2.png',name:'专注小白'},
- humans:{file:'muse-fabric-reading-v2.png',name:'历史织物小沐'},
  animals:{file:'pet-shiba-scarf-v2.png',name:'历史柴犬茶茶'}
 };
-const BASELINES={dots:['蓝色 Dots','micro','listen'],grok:['淡紫 Grok Bot','rubber','work'],'meta-muse':['米白 Meta Muse','micro','idle'],humans:['栗色短发人物','micro','read'],animals:['柴犬伙伴','micro','work']};
+const BASELINES={dots:['蓝色 Dots','micro','listen'],grok:['紫色 Grok Bot','rubber','idle'],'meta-muse':['米白 Meta Muse','micro','idle'],humans:['栗色短发人物','micro','read'],animals:['柴犬伙伴','micro','work']};
 export function getArtSample(family){
  const id=family==='muse'?'humans':family==='pets'?'animals':family;
  const a=BASELINES[id];if(!a)throw Error('未知角色分组');

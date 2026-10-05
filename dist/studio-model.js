@@ -1,10 +1,10 @@
-import {getArtSample} from './studio-art.js';
-import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js';
+import {getArtSample} from './studio-art.js?v=59';
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=59';
 export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
   dots: {name:'ChatGPT Dots',short:'Dots',subtitle:'明亮几何 · 细密短绒',template:'蓝色 Dots',color:'#3264FA',secondary:'#F5F8FF',shape:'sphere',eyes:'softOval',mouth:'none',material:'micro',framing:'full',anatomy:'blob',about:'保留原版 Dots 的蓝色圆润主体与简洁成对眼睛。基准采用细密短绒和连续贴合的黑色头戴耳机；不把生成概念图新增的鼻口或四肢当成原版结构。',en:'Preserve the original Dots identity: a rounded blue body and restrained paired eyes. The baseline uses fine short plush and continuous fitted black headphones; do not treat extra nose, mouth or limbs from generated concepts as original features.'},
-  grok: {name:'Grok Bot',short:'Grok Bot',subtitle:'淡紫软拱 · 哑光软胶',template:'淡紫 Grok Bot',color:'#DCCDF2',secondary:'#F6F0FC',shape:'arch',eyes:'capsule',mouth:'none',material:'rubber',framing:'full',anatomy:'blob',about:'保留 Grok Bot 的软几何拱形、等宽胶囊眼与无头发轮廓。基准使用淡紫哑光软胶，可配透明眼镜与工作电脑；不加入机械面板、天线或屏幕脸。',en:'Preserve the Grok Bot identity: a soft geometric arch, equal capsule eyes and no hair. The baseline uses pale-lilac matte rubber with clear glasses and a work laptop; no mechanical panels, antennae or screen face.'},
+  grok: {name:'Grok Bot',short:'Grok Bot',subtitle:'紫色圆形 · 斜胶囊眼 · 哑光软胶',template:'紫色 Grok Bot',color:'#A77BEA',secondary:'#F6F0FC',shape:'sphere',eyes:'capsule',mouth:'none',material:'rubber',framing:'full',anatomy:'blob',about:'按用户提供的 Grok 身份图保留鲜明几何与成对胶囊眼。基准为紫色圆形、同向斜置的白色胶囊眼与哑光软胶裸形。云、方、三角、水滴和六边形属于后续同语言方向；不以眼镜电脑定义身份，不加毛绒、机械面板或屏幕脸。',en:'Follow the supplied Grok identity references: distinct geometry and paired capsule eyes. The baseline is a bare purple circle with parallel tilted white capsule eyes and smooth matte rubber. Cloud, square, triangle, drop and hexagon are later directions in the same visual language. Glasses and laptops do not define the identity; no fur, mechanical panels or screen face.'},
   'meta-muse': {name:'Meta Muse',short:'Meta Muse',subtitle:'米白包覆式 · 温暖内嵌脸面',template:'米白 Meta Muse',color:'#F3F0E8',secondary:'#F8E9D8',shape:'meta-hood',eyes:'softOval',mouth:'smile',material:'micro',framing:'full',anatomy:'meta-muse',about:'与人物分组完全独立的包覆式角色：米白圆润头罩、暖色内嵌脸面、短臂双脚。外壳为细腻哑光布面/短纤维；耳机与围巾不能挤压脸面开口，也不使用旧 Muse 人物头发。',en:'A distinct wrapped character, separate from the human family: an ivory rounded hood, a warm inset face panel, short arms and two feet. Use a fine matte fabric/short-fiber shell; headphones and scarf must not pinch the face opening. Never reuse the legacy human Muse hair.'},
   humans: {name:'人物',short:'人物',subtitle:'原创人物 · 分区材质',template:'栗色短发人物',color:'#789A92',secondary:'#D8A985',shape:'human',eyes:'sparkle',mouth:'smile',material:'micro',framing:'full',anatomy:'human',about:'新设计的原创人物基准：栗色自然短发、可辨脸型、柔和皮肤和分区衣物。可配耳机与书；人物外形不完整复制任何动漫截图或旧 Muse 人物。',en:'A newly designed original human baseline: natural short chestnut hair, a readable face shape, soft skin and separated clothing materials. Headphones and a book are editable. Do not reproduce an anime reference or reuse legacy Muse characters as the new baseline.'},
   animals: {name:'动物',short:'动物',subtitle:'原创动物 · 物种结构清楚',template:'柴犬伙伴',color:'#D3934D',secondary:'#FFF0D5',shape:'shiba',eyes:'sparkle',mouth:'smile',material:'micro',framing:'full',anatomy:'quadruped',about:'新设计的原创动物基准为柴犬：立耳、口鼻、前后爪、卷尾与清楚茶白色区。短绒顺结构生长；蓝围巾与电脑可编辑，不长出人手或多余肢体。',en:'The original animal baseline is a Shiba with upright ears, a clear muzzle, front and hind paws, a curled tail and tan-and-cream markings. Short plush follows the anatomy. A blue scarf and laptop are editable; never add human hands or extra limbs.'}
@@ -60,7 +60,7 @@ export const ANIMALS=['shiba','cat','rabbit','fox','panda','bear','otter','capyb
 export const DOT_CORE_SHAPES=['sphere','triangle','pill','frog','puff','heart','clover','sprout','scallop','pebble','diamond'];
 export const FAMILY_BASELINES={
  dots:{presetId:'baseline-dots',shape:'sphere'},
- grok:{presetId:'baseline-grok',shape:'arch'},
+ grok:{presetId:'baseline-grok',shape:'sphere'},
  'meta-muse':{presetId:'baseline-meta-muse',shape:'meta-hood'},
  humans:{presetId:'baseline-humans',shape:'human'},
  animals:{presetId:'baseline-animals',shape:'shiba'}
@@ -71,7 +71,7 @@ export const FAMILY_HAIRS={dots:['short'],grok:['short'],'meta-muse':['short'],h
 export const FAMILY_MATERIALS={dots:['micro','plush'],grok:['rubber'],'meta-muse':['micro'],humans:['micro'],animals:['micro','plush']};
 const familyOf=config=>normalizeFamilyId(typeof config==='string'?config:config?.family);
 const legacyTier=config=>config?.catalogTier==='legacy'||config?.isLegacy===true;
-export function availableShapes(config){const family=familyOf(config);if(!FAMILY_SHAPES[family])return [];return legacyTier(config)?FAMILY_SHAPES[family]:[FAMILY_BASELINES[family].shape];}
+export function availableShapes(config){const family=familyOf(config);if(!FAMILY_SHAPES[family])return [];if(!legacyTier(config)&&family==='grok'&&config?.shape==='arch')return ['arch'];return legacyTier(config)?FAMILY_SHAPES[family]:[FAMILY_BASELINES[family].shape];}
 export function availableHairs(config){const family=familyOf(config);if(!FAMILY_HAIRS[family])return [];if(legacyTier(config))return Object.keys(HAIRS);return FAMILY_HAIRS[family];}
 export function availableMaterials(config){const family=familyOf(config);if(!FAMILY_MATERIALS[family])return [];return legacyTier(config)?Object.keys(MATERIALS):FAMILY_MATERIALS[family];}
 export const FACE_SHAPES={round:'圆脸',oval:'柔和椭圆', 'soft-square':'圆角方脸'};
@@ -283,7 +283,7 @@ export function buildPrompt(input,lang='zh'){
  const add=(zh,enTitle,value)=>{if(value)lines.push((en?enTitle+': ':'【'+zh+'】')+value);};
  const familyRules={
   dots:say('Dots 灵感的几何伙伴：饱满、圆润而有辨识度的整体轮廓，克制的小眼睛和少量配饰。轮廓、配色与五官以下方设定为准；形状、眼睛与配饰保持相互独立。','A Dots-inspired geometric companion: a full, rounded and distinctive silhouette, restrained small eyes and a few accessories. Follow the silhouette, colors and features specified below. Keep silhouette, eye design and accessories independently configurable.'),
-  grok:say('Grok Bot 灵感伙伴：软拱或圆角几何体与竖向胶囊眼建立辨识度；非机械机器人，无金属面板、天线或屏幕脸。按下文选择的轮廓与五官表达。','A Grok Bot-inspired companion: a soft arch or rounded geometric form, identified by simple vertical capsule eyes. No mechanical panels, antennae or screen face. Follow the selected silhouette and facial design below.'),
+  grok:say('Grok Bot 灵感伙伴：按用户提供的身份图，用鲜明的圆形、云形、圆角方形、软三角、水滴或六边形等几何轮廓与两枚胶囊眼建立辨识度；胶囊眼可平行同向倾斜，保持无瞳孔的简洁设计。不是机械机器人，不添加金属面板、天线、屏幕脸或毛绒。当前裸形不默认携带眼镜与电脑；按下文明确选定的轮廓、配色和配饰表达。','A Grok Bot-inspired companion grounded in the supplied identity references: a distinct circle, cloud, rounded square, soft triangle, drop or hexagon with two solid capsule eyes that can tilt together in parallel. No pupils, mechanical panels, antennae, screen face or fur. The bare baseline has no default glasses or laptop. Follow the selected silhouette, colors and accessories below.'),
   'meta-muse':say('Meta Muse 是包覆式头罩角色：米白外壳、可读的厚边和内缘、暖色椭圆内嵌脸面、短臂双脚。保持与人物分组不同，不添加人物发型、发际线或长肢体。','Meta Muse is a wrapped hood character: ivory shell, readable rim and inset, warm oval face panel, short arms and two feet. Keep it distinct from the human family, without human hairstyles, hairlines or long limbs.'),
   humans:say('原创人物玩偶：人物脸型、短栗色发束、眉眼表情、肩部与服装分区清楚。头发、皮肤和衣服分别处理；不可把参考人物原样复刻。','Original human doll: readable human face, short chestnut hair, expressive brows and eyes, shoulders and separate clothing regions. Treat hair, skin and clothing independently; do not reproduce a reference person.'),
   animals:say('原创动物伙伴：保留物种的耳朵、口鼻、自然爪形、躯干与尾巴，头身比例均衡，四足动物不长出人手。','Original animal companion: retain species-specific ears, muzzle, natural paws, torso and tail. Balanced head and body; a quadruped must not grow human hands.')
@@ -351,7 +351,7 @@ export function buildPrompt(input,lang='zh'){
  const face=[],opaqueGlasses=!inherited('accessories.face')&&obscuresEyes(c.accessories.face);
  if(opaqueGlasses)face.push(say('双眼由深色镜片自然遮挡，眼形与眼色保留在镜片后，不在镜片上或旁边重复画眼睛、瞳孔或睫毛','Dark lenses naturally occlude both eyes. Keep the selected eye design and color behind the lenses, without duplicated eyes, pupils or lashes on or beside them'));
  else if(c.expression==='closed')face.push(say('双眼完全闭合为自然眼线，无睁开的眼形、瞳孔或高光','Both eyes fully closed as natural eyelid curves, with no open eye shapes, pupils or catchlights'));
- else if(!inherited('eyes'))face.push(text(EYES[c.eyes]));
+ else if(!inherited('eyes'))face.push(c.family==='grok'&&c.eyes==='capsule'?say('两枚相互平行、同向斜置的实心胶囊眼，无瞳孔、描边或高光；保持 Grok 身份图的简洁识别特征','Two parallel solid capsule eyes tilted together in the same direction, without pupils, outlines or highlights; preserve the simple identity in the Grok references'):text(EYES[c.eyes]));
  else face.push(say('眼形从参考特征简化，适配目标风格，避免写实大眼球','Simplify the reference eye design for the target style; avoid large realistic eyeballs'));
  if(!inherited('brows'))face.push(text(BROWS[c.brows]));
  if(!inherited('mouth'))face.push(text(MOUTHS[c.mouth]));
@@ -426,7 +426,8 @@ export function validateConfig(raw){
  if(oldVersion<8){raw.faceShape=raw.faceShape??'round';raw.outfit=raw.outfit??'sweater';}
  c.faceShape=enumValue(raw.faceShape,Object.keys(FACE_SHAPES),'脸型');c.outfit=enumValue(raw.outfit,Object.keys(OUTFITS),'服装');
  c.motionStyle=enumValue(raw.motionStyle??'auto',Object.keys(MOTION_STYLES),'状态表现');c.motionSpeed=numValue(raw.motionSpeed??1,.5,1.8,'动作速度');
- const enumFields={shape:availableShapes(c),material:availableMaterials(c),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:availableHairs(c),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),background:Object.keys(COMPOSITION.background),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
+ // Previously saved Grok arch baselines remain importable after the visual correction.
+ const enumFields={shape:availableShapes(family==='grok'?{...c,shape:raw.shape}:c),material:availableMaterials(c),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:availableHairs(c),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),background:Object.keys(COMPOSITION.background),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
  for(const [k,v]of Object.entries(enumFields))c[k]=enumValue(raw[k],v,k);
  for(const [k,min,max]of [['eyeScale',.65,1.35],['eyeSpacing',.75,1.3],['headScale',.85,1.12],['bodyWidth',.85,1.15],['scale',55,85]])c[k]=numValue(raw[k],min,max,k);
  c.name=textValue(raw.name,40,'名称');c.notes=textValue(raw.notes,1600,'补充要求');c.randomSeed=textValue(raw.randomSeed,40,'随机种子');

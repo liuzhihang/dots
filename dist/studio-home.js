@@ -1,8 +1,8 @@
-import {getFamilyArtwork} from './studio-creation-assets.js';
+import {getFamilyArtwork} from './studio-creation-assets.js?v=59';
 
 export const FAMILY_PRESENTATION=Object.freeze([
  {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple\nBut Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
- {id:'grok',name:'Grok Bot',description:'有点几何，有点好奇\n一起迎接新想法',foot:'Different Shapes\nSame Friends',terms:'grok bot 几何 胶囊 软拱 磨砂 紫色'},
+ {id:'grok',name:'Grok Bot',description:'有点几何，有点好奇\n一起迎接新想法',foot:'Different Shapes\nSame Friends',terms:'grok bot 几何 圆球 胶囊 软拱 磨砂 紫色'},
  {id:'meta-muse',name:'Meta Muse',description:'温柔治愈的小伙伴\n给你一点小小力量',foot:'A Softer\nBrighter You',terms:'meta muse 缪斯 奶油 毛绒 玩偶 白色 连帽'},
  {id:'humans',name:'人物',description:'把个性装进小角色\n记录真实的每一种情绪',foot:'Real People\nMore Stories',terms:'humans human people 人物 人类 男孩 女孩 栗发 针织 原创'},
  {id:'animals',name:'动物',description:'可爱的小小动物\n永远在你身边',foot:'More Friends\nA Kinder World',terms:'animals animal pet 动物 宠物 狗 柴犬 暖橙 原创'}

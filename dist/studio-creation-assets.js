@@ -1,4 +1,4 @@
-import {createCharacter} from './studio-model.js';
+import {createCharacter} from './studio-model.js?v=59';
 
 const historicalArtwork = (artwork) => Object.freeze({
   ...artwork,
@@ -8,11 +8,11 @@ const historicalArtwork = (artwork) => Object.freeze({
 export const CREATION_ARTWORKS = Object.freeze([
   ...[
     ['dots','dots-blue-plush-orb-headphones-candidate-v2.png','蓝色 Dots · 耳机基准候选','短绒蓝球、克制黑眼与贴合耳机；同一基准的裸形/耳机配方可在组合模式切换。'],
-    ['grok','grok-bot-lilac-arch-candidate-v1.png','淡紫 Grok Bot · 基准候选','独立软几何拱形、哑光软胶与白色胶囊眼；不是机械机器人。'],
+    ['grok','grok-bot-purple-orb-candidate-v2.png','紫色 Grok Bot · 基准候选','按新提供的 Grok 身份图修正为紫色圆形与同向斜白胶囊眼；哑光软胶裸形，眼镜电脑不是默认身份。'],
     ['meta-muse','meta-muse-cream-hooded-candidate-v1.png','奶油 Meta Muse · 基准候选','连续奶油头罩、暖色脸窗和短肢体；身份依据用户提供的 Meta Muse 参考。'],
     ['humans','humans-chestnut-chibi-teal-knit-candidate-v1.png','栗发青绿 · 人物基准候选','新设计的栗发人物与青绿织物服装；没有使用动漫截图像素或完整动漫角色复刻。'],
     ['animals','animals-original-shiba-candidate-v1.png','暖橙柴犬 · 动物基准候选','新设计的柴犬，保持物种耳、口鼻、四肢和卷尾；没有使用动漫截图像素。']
-  ].map(([family,file,name,description])=>historicalArtwork({id:`candidate-${family}-20261005`,family,name,src:`./assets/characters/${file}`,width:family==='grok'?1325:family==='meta-muse'?1235:1254,height:family==='grok'?1187:family==='meta-muse'?1274:1254,kind:'baseline-candidate',status:'unreviewed',description,provenance:{origin:'imagegen-20261005',official:false,detail:'按已确认 R01 风格生成的独立基准候选；未通过用户真实网页美术验收。Dots/Grok/Meta 保留许可参考身份，人物/动物重新原创。'}})),
+  ].map(([family,file,name,description])=>historicalArtwork({id:`candidate-${family}-20261005`,family,name,src:`./assets/characters/${file}`,width:family==='meta-muse'?1235:1254,height:family==='meta-muse'?1274:1254,kind:'baseline-candidate',status:'unreviewed',description,provenance:{origin:'imagegen-20261005',official:false,detail:'按已确认 R01 风格及用户身份图生成的独立基准候选；未通过用户真实网页美术验收。Dots/Grok/Meta 保留许可参考身份，人物/动物重新原创。'}})),
   historicalArtwork({
     id: 'historical-dots-plush-headphones-v2',
     family: 'dots',
@@ -30,38 +30,6 @@ export const CREATION_ARTWORKS = Object.freeze([
     description: '旧版蓝色绒面圆角色与耳机的固定整图示例；不代表官方 Dots 身份，不是当前基准，也不是可编辑组合结果。'
   }),
   historicalArtwork({
-    id: 'historical-grok-matte-work-v2',
-    family: 'grok',
-    name: '浅色眼镜工作角色（历史作品）',
-    src: './assets/atelier/grok-matte-work-v2.png',
-    width: 1254,
-    height: 1254,
-    kind: 'historical-example',
-    status: 'unreviewed',
-    provenance: {
-      origin: 'imported-sites-v27',
-      official: false,
-      detail: '原站历史作品；作者与生成来源未记录'
-    },
-    description: '旧版浅色软形角色、眼镜与电脑的固定整图示例；不代表官方 Grok Bot 身份，不是当前基准，也不是可编辑组合结果。'
-  }),
-  historicalArtwork({
-    id: 'historical-human-reading-v2',
-    family: 'humans',
-    name: '卷发阅读人物（历史作品）',
-    src: './assets/atelier/muse-fabric-reading-v2.png',
-    width: 1254,
-    height: 1254,
-    kind: 'historical-example',
-    status: 'unreviewed',
-    provenance: {
-      origin: 'imported-sites-v27',
-      official: false,
-      detail: '原站历史作品；作者与生成来源未记录'
-    },
-    description: '旧版卷发针织人物与阅读造型的固定整图示例；归入人物历史作品，不是 Meta Muse，不是当前人物基准，也不是可编辑组合结果。'
-  }),
-  historicalArtwork({
     id: 'historical-animal-shiba-scarf-v2',
     family: 'animals',
     name: '围巾柴犬（历史作品）',
@@ -76,6 +44,39 @@ export const CREATION_ARTWORKS = Object.freeze([
       detail: '原站历史作品；作者与生成来源未记录'
     },
     description: '旧版戴蓝色围巾的柴犬固定整图示例；不是当前动物基准，也不是可编辑组合结果。'
+  })
+]);
+
+// Keep the withdrawn legacy ID importable without making its former image an
+// active artwork or exposing a downloadable source URL.
+export const RETIRED_ARTWORKS = Object.freeze([
+  historicalArtwork({
+    id: 'historical-human-reading-v2',
+    family: 'humans',
+    name: '卷发阅读人物（已撤下）',
+    kind: 'retired-tombstone',
+    status: 'retired',
+    retirementReason: '这张历史人物形象已撤下',
+    provenance: {
+      origin: 'imported-sites-v27',
+      official: false,
+      detail: '用户明确否决的历史人物形象；仅保留 ID 兼容记录，不再提供原图'
+    },
+    description: '该历史人物形象已撤下；项目角色配置和 artworkId 保留，不会替换为其他人物图片。'
+  }),
+  historicalArtwork({
+    id: 'historical-grok-matte-work-v2',
+    family: 'grok',
+    name: '浅色眼镜工作角色（已撤下）',
+    kind: 'retired-tombstone',
+    status: 'retired',
+    retirementReason: '这张历史 Grok 形象已撤下',
+    provenance: {
+      origin: 'imported-sites-v27',
+      official: false,
+      detail: '用户明确要求改正 Grok 身份；仅保留 ID 兼容记录，不再提供原图'
+    },
+    description: '该历史 Grok 形象已撤下；项目角色配置和 artworkId 保留，不会替换为新基准角色。'
   })
 ]);
 
@@ -108,7 +109,9 @@ export const COMPOSITION_PACKS = Object.freeze([
 ]);
 
 export function getCreationArtwork(id) {
-  return CREATION_ARTWORKS.find((artwork) => artwork.id === id) ?? null;
+  return CREATION_ARTWORKS.find((artwork) => artwork.id === id)
+    ?? RETIRED_ARTWORKS.find((artwork) => artwork.id === id)
+    ?? null;
 }
 
 export function getFamilyArtwork(family) {

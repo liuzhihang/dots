@@ -1,4 +1,4 @@
-import {FAMILIES, SHAPES, MATERIALS, ACTIONS, ACCESSORIES, availableMaterials, createCharacter, validateConfig, applyPalette, inheritsReference, resolveCharacter} from './studio-model.js';
+import {FAMILIES, SHAPES, MATERIALS, ACTIONS, ACCESSORIES, availableMaterials, createCharacter, validateConfig, applyPalette, inheritsReference, resolveCharacter} from './studio-model.js?v=59';
 
 const clone = value => structuredClone(value);
 export const RANDOM_SLOTS = ['type', 'look', 'accessories', 'action'];

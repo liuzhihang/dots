@@ -4,14 +4,14 @@ import {
   buildPrompt,
   resolveCharacter,
   validateConfig
-} from './studio-model.js';
+} from './studio-model.js?v=59';
 import {
   COMPOSITION_PACKS,
   CREATION_ARTWORKS,
   getCompositionPack,
   getCreationArtwork,
   getFamilyArtwork
-} from './studio-creation-assets.js';
+} from './studio-creation-assets.js?v=59';
 
 export const PROJECT_FORMAT = 'dot-studio-project';
 export const PROJECT_VERSION = 1;
@@ -59,6 +59,9 @@ function normalizeArtworkId(artworkId, family, defaultArtwork) {
   const artwork = getCreationArtwork(artworkId);
   if (!artwork) throw new Error('完整图作品不存在；项目文件不能导入图片 URL');
   if (artwork.family !== family) throw new Error('完整图作品不属于当前角色分组');
+  if (artwork.status === 'retired' && artwork.kind === 'retired-tombstone' && !own(artwork, 'src')) {
+    return artwork.id;
+  }
   if (!localAssetPath(artwork.src)) throw new Error('完整图只能来自本站登记的本地作品');
   return artwork.id;
 }
@@ -257,6 +260,10 @@ export function resolveCreation(project) {
   const artwork = current.creation.artworkId ? clone(getCreationArtwork(current.creation.artworkId)) : null;
   const pack = getCompositionPack(config.family);
   if (current.creation.mode === 'artwork') {
+    if (artwork?.status === 'retired') return {
+      mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
+      availability: 'missing', reason: artwork.retirementReason || '历史形象已撤下。'
+    };
     if (!artwork) return {
       mode: 'artwork', config, resolved, artwork: null, pack: pack ? clone(pack) : null,
       availability: 'missing', reason: '当前分组没有登记完整图作品。'
@@ -284,7 +291,11 @@ export function buildCreationPrompt(project, lang = 'zh') {
   let prompt = buildPrompt(current.character, lang);
   let note;
   if (current.creation.mode === 'artwork') {
-    if (artwork) {
+    if (artwork?.status === 'retired') {
+      note = en
+        ? `\n\n[Studio output] This historical character image has been withdrawn. The character settings and legacy artwork ID remain in this project for compatibility. No image is available to display or download; this prompt describes the saved character configuration only.`
+        : `\n\n【工作台输出说明】${artwork.retirementReason || '历史形象已撤下'}。为兼容旧项目，当前角色设定与旧作品编号仍予保留；没有可展示或下载的原图，本 Prompt 仅描述已保存的角色设定。`;
+    } else if (artwork) {
       note = en
         ? `\n\n[Studio output] The displayed artwork “${artwork.name}” is a ${artwork.kind==='baseline-candidate'?'fixed baseline candidate awaiting visual review':'fixed historical example'}. Changing character settings changes this prompt only; it does not alter the artwork. To use that example as a visual reference, attach its downloaded original yourself in ChatGPT. The site does not attach images or generate artwork.`
         : `\n\n【工作台输出说明】当前展示的“${artwork.name}”是${artwork.kind==='baseline-candidate'?'固定基准候选，尚待网页美术验收':'固定历史示例'}。修改角色设定只更新本 Prompt，不会改变这张图。若要把示例作为视觉参考，请自行下载原图并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
