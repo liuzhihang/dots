@@ -1,0 +1,48 @@
+{
+  "source_commit": "47595d624318cc081986d46263552b8f51506f91",
+  "baseline": "c763bf52b3545a70a121d8154cf7847615d62b8f",
+  "manifest_sha256": "404c269d5d911b3f3ce220fe00a5c3fc880f325cab72f3b5c42822f10ad3bfbc",
+  "archive_sha256": "a2c101ae6d9609712ceb0ff9b82707657a90d9829adfa75b5f64d286f15a5510",
+  "changed_count": 72,
+  "static_count": 67,
+  "static_bytes": 29001875,
+  "github_readback": "47595d624318cc081986d46263552b8f51506f91",
+  "site_source_workflow_readback": "47595d624318cc081986d46263552b8f51506f91",
+  "version": 31,
+  "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_006b800220e48191855f15dc5f6f44ce",
+  "deployment_id": "appgdep_6ac353ed46248191a979e0c33960893e",
+  "deployment_status": "succeeded",
+  "deployment_updated_at": "2026-10-05T07:38:32.589177+00:00",
+  "url": "https://dot.liuzhihang.chatgpt.site",
+  "native_archive": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_00000000d9fc81fbbbedf371340c785b",
+    "content_hash": "sha256:ad2b6cfb57c9123b6984dba6c6a4058500f11335554dabdf4750583246a3ac1e",
+    "size_bytes": 29061120,
+    "file_count": 68
+  },
+  "access": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "status": "active",
+    "role": "owner",
+    "url": "https://dot.liuzhihang.chatgpt.site",
+    "version": 31,
+    "access_mode": "custom",
+    "allowed_users": 1,
+    "owner_count": 1,
+    "external_visitors": 0,
+    "groups": 0,
+    "revision": 1,
+    "automations": 0
+  },
+  "archive_review": {
+    "ordinary_files": 68,
+    "directories": 8,
+    "file_bytes": 29001981,
+    "static_matched": 67,
+    "generated_manifest": "dist/.openai/hosting.json",
+    "conclusion": "passed"
+  },
+  "art_acceptance": "pending user real-page review",
+  "physical_phone_acceptance": "pending"
+}
