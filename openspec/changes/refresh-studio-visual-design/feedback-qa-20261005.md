@@ -40,3 +40,7 @@ IAB 加载本机 Vite 页面 `http://127.0.0.1:5173/`，实际操作家族/目�
 最终实现通过 `npm run build`、`verify-creation`、`verify-creation-ui`、`verify-module-cache`（14 个版本化模块、五组独立资源）、`verify-character-system`（57 个冻结预设、24 个迁移、200 次单基准随机）及两个 change 的严格校验。其余相关目录、导航和随机回归结果随最终发布记录补充。
 
 最终相关回归全部通过：`verify-studio` 62 项、`verify-recreations` 468 项、`verify-atelier` 7 项、`verify-family-navigation` 和 `verify-fullscreen-random`。导航回归原先把“圆球”当作 Dots 独占关键词；Grok 改为圆形后该假设不成立，改用既有独有词“团子”，并新增“圆球”返回 Dots 与 Grok 的共享检索断言，未修改搜索实现或删除筛选/多词检查。
+
+## 修复发布回读
+
+原站现为 v30，部署 `succeeded`，源提交 `ed450f1fe8f4b03c009521fb33df427690b50f38`；Native version 回读与推送的 Site source 相符。访问策略保持 owner-only，revision=1，未新增自动化。源提交、冻结包和独立审核见 `release-20261005.md`。本次未再次抓取原站页面作为发布核验，先前正常 owner 登录的阻塞与真实手机待验收边界仍保留。
