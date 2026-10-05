@@ -5,12 +5,13 @@
   <title>Dot Studio · 角色与 Prompt 工作台</title>
   <meta name="description" content="从 Dots、Grok Bot、Muse 与宠物开始，探索柔软材质、自然动作与小配饰，带走属于你的角色 Prompt。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%232166E8'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./studio.css?v=44"><link rel="stylesheet" href="./studio-layout.css?v=44"><script type="module" src="./studio.js?v=44"></script>
+  <link rel="stylesheet" href="./studio.css?v=47"><link rel="stylesheet" href="./studio-layout.css?v=47"><link rel="stylesheet" href="./atelier.css?v=47"><script type="module" src="./studio.js?v=47"></script>
 </head>
-<body class="studio-r4">
+<body class="studio-r4 atelier">
 <a class="skip-link" href="#workspace">跳到角色工作台</a>
 <header class="topbar">
   <a class="brand" href="./" aria-label="Dot Studio 首页"><span class="brand-symbol" aria-hidden="true"><i></i><i></i></span><b>Dot <span>Studio</span></b></a>
+  <nav class="studio-nav" aria-label="工作台导航"><span class="current">角色工作台</span><button data-command="inspiration">美术灵感</button></nav>
   <div class="header-tools">
     <button class="icon-btn" id="undo" aria-label="撤销" title="撤销"></button><button class="icon-btn" id="redo" aria-label="重做" title="重做"></button>
     <button class="text-button desktop-guide" data-command="guide">风格指南</button>
@@ -26,18 +27,27 @@
 <main id="workspace" class="studio-layout">
   <section class="creative-area" aria-label="角色展示">
     <div class="preview-panel">
-      <div class="workspace-heading"><div><h1 id="stageName">蓝色团子</h1><span id="stageTag">Dots / 细密短绒</span></div></div>
+      <div class="workspace-heading"><div><span class="studio-kicker">YOUR LITTLE CHARACTER</span><h1 id="stageName">蓝色团子</h1><span id="stageTag">Dots / 细密短绒</span></div><button class="stage-inspire" data-command="inspiration" aria-label="查看美术灵感"><span data-icon="sparkles"></span><span>找点灵感</span></button></div>
       <div class="stage-card" id="stageCard">
-        <div class="stage-top"><a class="renderer-switch" href="./editor.html">查看 2D 结构</a><span id="sourceBadge" class="source-badge"></span><span class="sample-badge live-badge" id="previewBadge">实时 3D</span></div>
+        <div class="stage-top"><span id="sourceBadge" class="source-badge"></span><span class="sample-badge live-badge" id="previewBadge">实时 3D</span><div class="stage-camera" aria-label="快速切换视角"><button data-path="camera" data-value="front" aria-label="正面视角">正面</button><button data-path="camera" data-value="threeQuarter" aria-label="轻侧身视角">3/4</button></div></div>
         <div id="stageArt" class="stage-art-area"></div>
         <div class="stage-caption"><span id="sampleCaption"></span><div class="preview-actions"><button id="playPreview" class="text-button" data-command="toggle-play" aria-pressed="true">暂停动作</button><button class="icon-btn" data-command="expand" title="放大或导出当前预览" aria-label="放大或导出当前预览"><span data-icon="maximize"></span></button></div></div>
       </div>
       <div class="preview-truth" id="previewTruth" aria-live="polite"></div>
+      <section class="recipe-machine" id="recipeMachine" aria-label="随机角色组装台">
+        <div class="recipe-heading"><div><b>让灵感碰个面</b><span role="status" id="randomMessage">锁住喜欢的部分，再随机一款。</span></div><button class="random-button" data-command="random"><span data-icon="dice"></span><span>随机一款</span><kbd>R</kbd></button></div>
+        <div class="recipe-reels">
+          <div class="recipe-reel" data-reel="type"><div class="reel-top"><span><span class="reel-index">01 / </span>类型</span><button data-lock="type" aria-label="锁定类型" aria-pressed="false"><span data-icon="lock"></span></button></div><div class="reel-window"><span class="reel-value">Dots · 小圆球</span></div></div>
+          <div class="recipe-reel" data-reel="look"><div class="reel-top"><span><span class="reel-index">02 / </span>质感</span><button data-lock="look" aria-label="锁定质感" aria-pressed="false"><span data-icon="lock"></span></button></div><div class="reel-window"><i class="reel-swatch" aria-hidden="true"></i><span class="reel-value">细密短绒</span></div></div>
+          <div class="recipe-reel" data-reel="accessories"><div class="reel-top"><span><span class="reel-index">03 / </span>组件</span><button data-lock="accessories" aria-label="锁定组件" aria-pressed="false"><span data-icon="lock"></span></button></div><div class="reel-window"><span class="reel-value">耳机</span></div></div>
+          <div class="recipe-reel" data-reel="action"><div class="reel-top"><span><span class="reel-index">04 / </span>动作</span><button data-lock="action" aria-label="锁定动作" aria-pressed="false"><span data-icon="lock"></span></button></div><div class="reel-window"><span class="reel-value">发会儿呆</span></div></div>
+        </div>
+      </section>
     </div>
   </section>
   <aside class="inspector" aria-label="角色定制">
     <nav id="families" class="family-tabs" aria-label="选择角色体系"></nav>
-    <div class="character-picker"><button class="current-preset" data-command="catalog" aria-label="打开当前体系的角色库"><span data-icon="grid"></span><span><b id="presetName">蓝色团子</b><small><span id="presetCount">12</span> 个角色起点</small></span><span class="picker-arrow" aria-hidden="true">⌄</span></button><button class="icon-btn" data-command="random" aria-label="随机搭配" title="随机搭配"><span data-icon="shuffle"></span></button><button class="icon-btn" data-command="reset" aria-label="重置当前角色" title="重置当前角色"><span data-icon="reset"></span></button></div>
+    <div class="character-picker"><button class="current-preset" data-command="catalog" aria-label="打开当前体系的角色库"><span data-icon="grid"></span><span><b id="presetName">蓝色团子</b><small><span id="presetCount">12</span> 个角色起点</small></span><span class="picker-arrow" aria-hidden="true">⌄</span></button><button class="icon-btn" data-command="reset" aria-label="重置当前角色" title="重置当前角色"><span data-icon="reset"></span></button></div>
     <nav class="setting-tabs" aria-label="定制选项" role="tablist"><button role="tab" aria-selected="true" aria-controls="settings" id="tab-appearance" data-tab="appearance">外形</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-face" data-tab="face" tabindex="-1">五官</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-accessories" data-tab="accessories" tabindex="-1">配件</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-motion" data-tab="motion" tabindex="-1">动作</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-scene" data-tab="scene" tabindex="-1">画面</button></nav>
     <div id="settings" class="settings" role="tabpanel" aria-labelledby="tab-appearance"></div>
     <footer class="prompt-dock" aria-label="生成与导出 Prompt"><div class="prompt-dock-heading"><button class="prompt-summary-button" data-command="prompt"><b>Prompt</b><span>查看全文 <span aria-hidden="true">↗</span></span></button><span id="configCount">实时联动</span></div><span id="promptSummary" class="prompt-summary-text"></span><div class="prompt-dock-actions"><button class="button outlined export-text" data-command="export-prompt" aria-label="导出 Prompt TXT" title="导出 Prompt TXT"><span data-icon="download"></span></button><button class="button primary" data-command="copy"><span data-icon="copy"></span>复制 Prompt</button><button class="button outlined chatgpt-open" data-command="copy-open" aria-label="复制并打开 ChatGPT" title="复制并打开 ChatGPT"><span data-icon="external"></span><span>ChatGPT</span></button></div><button class="reference-shortcut" data-command="reference">用自己的参考图创作 <span aria-hidden="true">↗</span></button></footer>

@@ -37,18 +37,18 @@ export function addFur(avatar,c,quality=1) {
   const surfaces=targets.filter(mesh=>{
     const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material;
     let visible=true;for(let p=mesh;p;p=p.parent)if(!p.visible)visible=false;
-    return ['plush','micro','fabric','knit'].includes(kind)&&visible;
+    return ['plush','micro','fabric','knit','fiber'].includes(kind)&&visible;
   });
   const areas=surfaces.map(mesh=>{mesh.geometry.computeBoundingBox();const s=mesh.geometry.boundingBox.getSize(new THREE.Vector3()).multiply(mesh.scale);return Math.max(.012,2*(s.x*s.y+s.x*s.z+s.y*s.z));});
   const total=areas.reduce((a,b)=>a+b,0)||1,eyes=avatar.eyeGroups.map(g=>g.getWorldPosition(new THREE.Vector3()));
   surfaces.forEach((mesh,i)=>{
-    const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material,textile=kind==='knit'||kind==='fabric',micro=kind==='micro';
+    const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material,textile=kind==='knit'||kind==='fabric'||kind==='fiber',micro=kind==='micro';
     if(!textile&&mesh.material.bumpMap)mesh.material.bumpScale=Math.min(mesh.material.bumpScale,micro?.0013:.0015);
     const count=Math.max(80,Math.round((textile?30000:micro?100000:190000)*quality*areas[i]/total));
     // Plush needs visible, combed pile above a fine undercoat. Tiny surface
     // noise alone reads as painted plastic at the actual workbench scale.
     // Keep a separate much shorter profile for velvet and woven cloth.
-    const length=textile?.0050:micro?.0090:.023,radius=textile?.00050:micro?.00064:.00088;
+    const length=textile?(kind==='fiber'?.018:.0050):micro?.0100:.031,radius=textile?.00048:micro?.00062:.0011;
     const geometry=pileGeometry(length,radius),material=new THREE.MeshStandardMaterial({color:mesh.material.color,roughness:1,metalness:0,side:THREE.DoubleSide});
     material.name='fine-pile';const fur=new THREE.InstancedMesh(geometry,material,count);fur.name='surface-fibers';fur.castShadow=false;fur.receiveShadow=true;
     fur.userData.surfaceMaterial=kind;fur.userData.fiberProfile=geometry.userData.fiberProfile;fur.userData.fiberRadius=radius;fur.userData.fiberTones=new Float32Array(count);
@@ -66,7 +66,7 @@ export function addFur(avatar,c,quality=1) {
       worldPoint.copy(p).applyMatrix4(mesh.matrixWorld);
       for(const eye of eyes){const d=worldPoint.distanceToSquared(eye);if(d<.035)localLength*=.36+.64*Math.min(1,d/.035);}
       const girth=.76+random()*.35;o.scale.set(girth,localLength,girth);o.updateMatrix();fur.setMatrixAt(j,o.matrix);
-      const tone=textile?.91+random()*.13:micro?.91+random()*.15:.91+random()*.17;
+      const tone=textile?.91+random()*.13:micro?.91+random()*.15:.82+random()*.36;
       fur.userData.fiberTones[j]=tone;color.copy(surfaceColor).multiplyScalar(tone);fur.setColorAt(j,color);
     }
     fur.instanceMatrix.needsUpdate=true;fur.instanceColor.needsUpdate=true;fur.frustumCulled=false;mesh.add(fur);

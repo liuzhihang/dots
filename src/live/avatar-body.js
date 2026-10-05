@@ -169,7 +169,7 @@ function surfaceTexture(kind) {
     bytes[i]=bytes[i+1]=bytes[i+2]=value; bytes[i+3]=255;
   }
   const t=new THREE.DataTexture(bytes,n,n,THREE.RGBAFormat);t.needsUpdate=true;
-  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.magFilter=THREE.LinearFilter;t.minFilter=THREE.LinearMipmapLinearFilter;t.generateMipmaps=true;t.repeat.set(kind==='knit'?3:5,kind==='knit'?3:5);return t;
+  t.wrapS=t.wrapT=THREE.RepeatWrapping;t.magFilter=THREE.LinearFilter;t.minFilter=THREE.LinearMipmapLinearFilter;t.generateMipmaps=true;const repeat=kind==='fabric'?1.7:kind==='knit'?2.2:5;t.repeat.set(repeat,repeat);return t;
 }
 
 export function buildAvatarBody(input={}) {
@@ -185,11 +185,11 @@ export function buildAvatarBody(input={}) {
   function material(color,kind=c.material) {
     const hex=new THREE.Color(color).getHexString(),key=hex+':'+kind;
     if(materialCache.has(key))return materialCache.get(key);
-    const roughness={rubber:.71,plush:.97,micro:.93,clay:.89,skin:.80,hair:.71,fiber:.90,knit:.99,fabric:.95,eye:.35,matteEye:.60,nose:.52};
+    const roughness={rubber:.64,plush:.98,micro:.94,clay:.92,skin:.77,hair:.67,fiber:.93,knit:.99,fabric:.95,eye:.35,matteEye:.60,nose:.52};
     const m=new THREE.MeshStandardMaterial({color,roughness:roughness[kind]??.88,metalness:0});m.name=kind;
     if(!['eye','matteEye','nose','hair'].includes(kind)) {
       if(!textureCache.has(kind))textureCache.set(kind,surfaceTexture(kind));
-      m.bumpMap=textureCache.get(kind);m.bumpScale={rubber:.0015,skin:.001,micro:.0015,plush:.0022,clay:.002,knit:.0045,fabric:.004,fiber:.002}[kind]??.002;
+      m.bumpMap=textureCache.get(kind);m.bumpScale={rubber:.00045,skin:.0006,micro:.0010,plush:.0014,clay:.0018,knit:.0036,fabric:.0030,fiber:.0012}[kind]??.002;
     }
     materialCache.set(key,m);return m;
   }
@@ -376,13 +376,36 @@ export function buildAvatarBody(input={}) {
       if(j<=rows&&i<cols){const a=j*(cols+1)+i,b=a+cols+1;capIdx.push(a,b,a+1,a+1,b,b+1);}
     }
     const cap=new THREE.BufferGeometry();cap.setAttribute('position',new THREE.Float32BufferAttribute(capPos,3));cap.setAttribute('uv',new THREE.Float32BufferAttribute(capUv,2));cap.setIndex(capIdx);cap.computeVertexNormals();
-    add(head,cap,mats[0],[0,0,0],[1,1,1],false,'hair-foundation');
+    add(head,cap,mats[0],[0,0,0],[1,1,1],fiber,'hair-foundation');
     const strands=[[],[],[]],volumes=[[],[],[]];let serial=0;
     const strand=(points,r=.002,tone=null)=>{
       const path=new THREE.CatmullRomCurve3(points,false,'centripetal');
-      strands[tone??serial++%3].push(new THREE.TubeGeometry(path,Math.max(12,points.length),r,3,false));
+      const geometry=new THREE.TubeGeometry(path,Math.max(12,points.length),r,3,false);
+      if(curly){const p=geometry.attributes.position,n=geometry.attributes.normal;for(let i=0;i<p.count;i++){const normal=normalAt(new THREE.Vector3(p.getX(i),p.getY(i),p.getZ(i)));n.setXYZ(i,normal.x,normal.y,normal.z);}}
+      strands[tone??serial++%3].push(geometry);
     };
-    if(curly) {
+    if(curly && fiber) {
+      // Looped yarn has its own silhouette and rounded cross section. A small
+      // number of open ringlets reads as wool even at workbench scale.
+      const makeCurl=(theta,phi,seed,fringe=false)=>{
+        const center=scalp(theta,phi,.035),normal=normalAt(center);
+        const tangent=new THREE.Vector3().crossVectors(UP,normal).normalize();
+        if(tangent.lengthSq()<.01)tangent.set(1,0,0);
+        const vertical=new THREE.Vector3().crossVectors(normal,tangent).normalize();
+        const radius=(fringe?.051:.062)+rand(seed+7)*.016,points=[];
+        for(let i=0;i<=36;i++){
+          const t=i/36,a=t*TAU*(1.20+rand(seed+9)*.22)+seed*.7,r=radius*(1-.38*t);
+          points.push(center.clone().addScaledVector(tangent,Math.cos(a)*r).addScaledVector(vertical,Math.sin(a)*r).addScaledVector(normal,.012+.028*Math.sin(t*Math.PI)));
+        }
+        const curl=new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),42,.013+rand(seed+3)*.004,6,false);
+        volumes[seed%7===0?2:seed%5===0?0:1].push(curl);
+      };
+      let seed=1;
+      for(const [theta,count,shift]of [[.13,3,0],[.38,9,.20],[.65,13,0],[.91,17,.13],[1.17,20,0],[1.47,19,.12],[1.77,16,0],[2.02,13,.12]]){
+        for(let i=0;i<count;i++){const phi=i/count*TAU+shift;if(theta>limit(phi)+.01)continue;makeCurl(theta+(rand(seed+20)-.5)*.07,phi,seed++);}
+      }
+      for(let i=0;i<10;i++)makeCurl(1.09+(rand(i+82)-.5)*.12,(i-4.5)*.19,120+i,true);
+    } else if(curly) {
       // Broad, shallow swept locks replace the old round rope curls. Each lock
       // grows out of the closed scalp, overlaps its neighbour, and tapers back
       // into the hair mass. Fine strands follow its entire curved surface.
@@ -434,8 +457,8 @@ export function buildAvatarBody(input={}) {
           makeLock(theta+(rand(seed+18)-.5)*.05,phi,seed++);
         }
       }
-      for(let i=0;i<11;i++) {
-        const phi=(i-5)*.173,theta=1.03;
+      for(let i=0;i<9;i++) {
+        const phi=(i-4)*.21+(rand(i+54)-.5)*.065,theta=1.015+(rand(i+88)-.5)*.09;
         makeLock(theta,phi,70+i,true);
       }
       // A few quiet grain lines cover the visible roots. Their small radius and
@@ -493,12 +516,12 @@ export function buildAvatarBody(input={}) {
       }
       ell(head,[side*.49,-.902,.055],[.071,.027,.062],material(mix(c.colors.clothing,'#C8B390',.25),'fabric'),false,'braid-tie');
     }
-    volumes.forEach((batch,i)=>{if(batch.length)add(head,mergeGeometries(batch),mats[i],[0,0,0],[1,1,1],false,'hair-curl-volume');});
+    volumes.forEach((batch,i)=>{if(batch.length)add(head,mergeGeometries(batch),mats[i],[0,0,0],[1,1,1],fiber,'hair-curl-volume');});
     strands.forEach((batch,i)=>{if(batch.length){
       // Sub-pixel strands describe the grain; the underlying lock carries the
       // light and shadow. Lighting every three-sided filament independently
       // turns a fine hairstyle into dark stippling in software previews.
-      const detailMat=new THREE.MeshBasicMaterial({color:mix(mats[i].color,c.colors.hair,.55)});
+      const detailMat=new THREE.MeshStandardMaterial({color:mix(mats[i].color,c.colors.hair,.70),roughness:fiber?.96:.76});detailMat.name=fiber?'fiber-detail':'hair-detail';
       const strandMesh=add(head,mergeGeometries(batch),detailMat,[0,0,0],[1,1,1],false,'hair-strands');strandMesh.castShadow=false;strandMesh.receiveShadow=false;
     }});
   }
@@ -616,6 +639,7 @@ export function buildAvatarBody(input={}) {
       if(eyeClosed)tube(group,[[-ew*scale,0,0],[0,(expression==='laughing'?.070:expression==='delighted'?.043:-.021)*scale,.010],[ew*scale,0,0]],.013*scale,eyeMat,18,false,['delighted','laughing'].includes(expression)?'delighted-lid':'closed-lid');
       else {
         const smallWhite=material('#FCFCF5','eye'),reflection=material('#FFFFFF','eye');
+        if(c.shape==='human'&&['sparkle','glossy'].includes(c.eyes))ell(group,[0,0,-.008],[ew*scale*1.15,eh*scale*eyeHeight*1.09,.013],material('#E8D9BE','rubber'),false,'doll-eye-rim');
         if(c.shape==='frog'&&!['oval','side'].includes(c.eyes))ell(group,[0,0,-.073],[ew*scale*2.35,eh*scale*1.47,.098],material('#F8FFE8','rubber'),false,'frog-eye-white');
         if((c.eyes==='sleepy'||expression==='deadpan')&&!['focused','surprised','excited'].includes(expression)&&!['work','read','camera'].includes(c.action)) {
           ell(group,[0,-eh*.29*scale,.003],[ew*.44*scale,eh*.57*scale,.023],eyeMat,false,'eye');
@@ -644,6 +668,7 @@ export function buildAvatarBody(input={}) {
           const dot=add(group,geometry('star-reflection-dot',()=>new THREE.CircleGeometry(1,12)),reflection,[ew*.36*scale,-eh*.37*scale*eyeHeight,.026],[.010*scale,.010*scale,1],false,'catchlight-dot');dot.castShadow=false;dot.receiveShadow=false;
         } else if(['sparkle','glossy','oval'].includes(c.eyes)) {
           const shine=ell(group,[-ew*.29*scale,eh*.35*scale*eyeHeight,.027],[.018*scale,.020*scale,.006],reflection,false,'catchlight');
+          shine.castShadow=false;shine.receiveShadow=false;
           if(c.eyes==='sparkle')shine.scale.multiplyScalar(.76);
           if(c.eyes==='glossy')ell(group,[ew*.35*scale,-eh*.34*scale*eyeHeight,.025],[.008*scale,.008*scale,.004],reflection,false,'catchlight-small');
         }

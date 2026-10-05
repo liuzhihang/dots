@@ -1,14 +1,18 @@
+import {RecipeMachine} from './studio-random.js';
+import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js';
 import {Shared2DPreview,schematicSupport} from './shared-2d.js';
 import {getArtSample} from './studio-art.js';
 import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js';
 import {CharacterPreview,characterThumbnail} from './live-runtime.js';
 import {pickerIllustration} from './studio-pickers.js';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,buildPrompt,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js';
 
 const isSchematic=document.body.dataset.renderer==='schematic';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
 // Lucide-compatible functional icons; character artwork is raster imagery.
 const paths={
+ dice:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M7.5 7.5h.01M16.5 7.5h.01M12 12h.01M7.5 16.5h.01M16.5 16.5h.01" stroke-width="3.3"/>',
+ lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',
  copy:'<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
  download:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
  upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 8l5-5 5 5M12 3v12"/>',
@@ -38,15 +42,15 @@ const icon=n=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[
 function icons(root=document){root.querySelectorAll('[data-icon]').forEach(el=>{el.innerHTML=icon(el.dataset.icon);});}
 function art(family,material,action='idle',className='',label=''){
  const sample=getArtSample(family,material,action);
- const desc=esc(label||FAMILIES[family].name+' · '+MATERIALS[sample.material].label+' · '+ACTIONS[sample.action].label+'样张');
+ const desc=esc(label||sample.name+' · 原创美术成片');
  const pos=sample.layout==='single'?'center':(sample.index%3*50)+'% '+(Math.floor(sample.index/3)*100/3)+'%';
  const cls=sample.layout==='single'?'hero-image':'action-sample';
- return '<span class="art '+cls+' '+className+'" role="img" aria-label="'+desc+'" data-art-src="'+sample.src+'" style="background-image:url('+sample.src+');background-position:'+pos+'"></span>';
+ return '<span class="art atelier-art '+cls+' '+className+'" role="img" aria-label="'+desc+'" data-art-src="'+sample.src+'" style="--art-size:'+sample.size+'%;background-image:url('+sample.src+');background-position:'+pos+'"></span>';
 }
 
 let sourceFilter='all';
 let state=createPreset('app-blue'),activeTab='appearance',activeAccessory='face',stageView='live',promptLanguage='zh',toastTimer,modalType='',lastTrigger=null,referenceDraft=null,draftFamily='';
-const history=[],future=[],familyDrafts=new Map();let grouping='',previewFailure='',livePreview=null,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,thumbTimer,renderFrame;
+const history=[],future=[],familyDrafts=new Map();let grouping='',previewFailure='',livePreview=null,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,thumbTimer,renderFrame;let recipeMachine=null;
 const thumbNodes=new WeakMap();
 let storageRecovery='';
 for(const key of ['dot-studio-v9','dot-studio-v8','dot-studio-v7','dot-studio-v6']){
@@ -56,10 +60,10 @@ for(const key of ['dot-studio-v9','dot-studio-v8','dot-studio-v7','dot-studio-v6
 const val=path=>path.split('.').reduce((o,k)=>o?.[k],resolveCharacter(state).config);
 function remember(){try{sessionStorage.setItem('dot-studio-v9',JSON.stringify(state));}catch{}familyDrafts.set(state.family,structuredClone(state));}
 function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),3600);}
-function commit(next,key='',paint=true){const clean=validateConfig(next);if(JSON.stringify(clean)===JSON.stringify(state))return;if(!key||grouping!==key){history.push(structuredClone(state));if(history.length>60)history.shift();}future.length=0;grouping=key;state=clean;remember();if(paint)render();else{cancelAnimationFrame(renderFrame);renderFrame=requestAnimationFrame(renderResult);}}
-function change(path,value,paint=true){const wasReference=stageView!=='live';if(!['name','notes','randomSeed'].includes(path))stageView='live';const next=setCharacterValue(state,path,value);commit(next,paint?'':path,paint);if(wasReference&&stageView==='live')render();}
+function commit(next,key='',paint=true,origin='edit'){if(origin!=='random')recipeMachine?.cancel();const clean=validateConfig(next);if(JSON.stringify(clean)===JSON.stringify(state))return;if(!key||grouping!==key){history.push(structuredClone(state));if(history.length>60)history.shift();}future.length=0;grouping=key;state=clean;remember();if(paint)render();else{cancelAnimationFrame(renderFrame);renderFrame=requestAnimationFrame(renderResult);}}
+function change(path,value,paint=true){recipeMachine?.cancel();const wasReference=stageView!=='live';if(!['name','notes','randomSeed'].includes(path))stageView='live';const next=setCharacterValue(state,path,value);commit(next,paint?'':path,paint);if(wasReference&&stageView==='live')render();}
 function switchFamily(id){if(id===state.family)return;familyDrafts.set(state.family,structuredClone(state));const next=structuredClone(familyDrafts.get(id)||createCharacter(id));const overrides=[...next.reference.overrides];next.reference={...structuredClone(state.reference),overrides};next.notes=state.notes;next.output=state.output;commit(next);}
-function undo(redo=false){const from=redo?future:history,to=redo?history:future;if(!from.length)return;to.push(structuredClone(state));state=from.pop();grouping='';remember();render();toast(redo?'已重做':'已撤销');}
+function undo(redo=false){recipeMachine?.cancel();const from=redo?future:history,to=redo?history:future;if(!from.length)return;to.push(structuredClone(state));state=from.pop();grouping='';remember();render();toast(redo?'已重做':'已撤销');}
 function chips(path,entries,extra=''){if(path==='expression')return `<div class="expression-grid">${Object.entries(entries).map(([id,v])=>`<button class="choice expression-choice ${val(path)===id?'selected':''}" data-path="expression" data-value="${id}" aria-pressed="${val(path)===id}"><span class="emote-icon emote-${id}" aria-hidden="true"><i></i><i></i></span><span>${v.label}</span></button>`).join('')}</div>`;return `<div class="chips ${extra}">${Object.entries(entries).map(([k,v])=>`<button class="choice ${(!inheritsReference(state,path)&&val(path)===k)?'selected':''}" data-path="${path}" data-value="${k}" aria-pressed="${(!inheritsReference(state,path)&&val(path)===k)}">${esc(v.label||v)}</button>`).join('')}</div>`;}
 function field(title,content,note='',id=''){return `<div class="field"${id?` id="${id}"`:''}><div class="field-title">${title}${note?`<small>${note}</small>`:''}</div>${content}</div>`;}
 function select(path,label,entries){
@@ -105,7 +109,9 @@ function renderSettings(){
   out+=`<div class="accessory-color">${colorControl(activeAccessory==='head'?'headAccessory':'accessory',activeAccessory==='head'?'头饰颜色':'配件颜色')}</div>`;
   out+=`<div class="rule-note">${icon('info')}<span>道具会匹配对应动作。耳机与帽子共用头部位置；墨镜会自然遮挡眼睛。</span></div>`;
  }else if(activeTab==='motion'){
-  out+=field('挑一个小动作',`<div class="motion-grid">${Object.entries(ACTIONS).map(([id,a])=>`<button class="motion-choice ${val('action')===id?'selected':''}" data-path="action" data-value="${id}" aria-pressed="${val('action')===id}"><span class="thumb-shell"><span class="thumb-loading">载入中</span><img data-thumb-action="${id}" alt="${a.label}动作预览"></span><b>${a.label}</b></button>`).join('')}</div>`);
+  out+=field('Agent 状态',`<div class="agent-states">${['idle',...AGENT_ACTIONS].map(id=>`<button class="agent-state ${val('action')===id?'selected':''}" data-path="action" data-value="${id}" aria-pressed="${val('action')===id}"><span class="state-mark ${id}" aria-hidden="true"><i></i><i></i><i></i></span><span>${id==='idle'?'安静待机':ACTIONS[id].label}</span></button>`).join('')}</div>`);
+  if(['thinking','processing'].includes(state.action))out+=field('状态的表现形式',`<div class="motion-style">${Object.entries(MOTION_STYLES).map(([id,m])=>`<button class="choice ${state.motionStyle===id?'selected':''}" data-path="motionStyle" data-value="${id}" aria-pressed="${state.motionStyle===id}">${m.label}</button>`).join('')}</div>`);
+  out+=field('日常小动作',`<div class="motion-grid">${Object.entries(ACTIONS).filter(([id])=>!AGENT_ACTIONS.includes(id)).map(([id,a])=>`<button class="motion-choice ${val('action')===id?'selected':''}" data-path="action" data-value="${id}" aria-pressed="${val('action')===id}"><span class="thumb-shell"><span class="thumb-loading">载入中</span><img data-thumb-action="${id}" alt="${a.label}动作预览"></span><b>${a.label}</b></button>`).join('')}</div>`);
   out+=field('姿态',chips('pose',{auto:'跟随动作',sit:'坐姿',side:'侧身',chin:'托腮'}));
   out+=`<p class="section-helper">动作同步视线、手部和道具，保留你选的眼型与表情。</p>`;
  }else{
@@ -137,7 +143,9 @@ function queueThumbnails(root=document){
 function previewError(message){previewFailure=message;$('previewTruth').innerHTML=icon('info')+'<span>'+esc(message)+' 可切换到美术参考继续查看。</span>';}
 function renderResult(){
  const r=resolveCharacter(state),c=r.config,f=FAMILIES[c.family];
- $('stageName').textContent=c.reference.enabled?'你的参考角色':(c.name||f.template);$('stageTag').textContent=`${f.short} / ${MATERIALS[c.material].label}`;
+ recipeMachine?.render(c);
+ document.querySelectorAll('.stage-camera [data-value]').forEach(b=>{b.classList.toggle('selected',b.dataset.value===c.camera);b.setAttribute('aria-pressed',String(b.dataset.value===c.camera));});
+ $('stageName').textContent=c.reference.enabled?'你的参考角色':(c.name||f.template);$('stageTag').textContent=`${f.short} / ${c.family==='muse'&&c.skinMaterial==='fabric'?'分层织物':MATERIALS[c.material].label}`;
  const stage=$('stageArt');
  if(stage.dataset.view!==stageView){
   livePreview?.dispose();livePreview=null;stage.dataset.view=stageView;
@@ -150,16 +158,17 @@ function renderResult(){
   $('liveStage')?.classList.toggle('transparent-stage',c.background==='transparent');
   livePreview?.update(c);
  }else{
-  const artKey=[c.family,c.action].join(':');if(stage.dataset.artKey!==artKey||!stage.firstChild){
-   stage.innerHTML=`<div class="comparison">${['plush','rubber'].map(m=>`<div class="compare-half">${art(c.family,m,c.action)}<b>${MATERIALS[m].label}</b><small>${m==='plush'?'细密纤维 · 轻柔边缘':'柔和体积 · 克制高光'}</small><br><button class="use-material" data-path="material" data-value="${m}">在实时角色使用</button></div>`).join('')}</div>`;stage.dataset.artKey=artKey;
+  const artKey=c.family;if(stage.dataset.artKey!==artKey||!stage.firstChild){
+   const item=INSPIRATIONS.find(item=>item.family===c.family);
+   stage.innerHTML=`<div class="studio-original">${art(c.family,c.material,c.action,'hero-art')}<div><b>${item.name}</b><p>${item.description}</p><button class="use-material" data-inspiration="${item.id}">用这套设定开始</button></div></div>`;stage.dataset.artKey=artKey;
   }
  }
  $('previewBadge').textContent=stageView==='live'?(isSchematic?'2D 结构示意':'实时 3D'):'美术参考';
  $('previewBadge').classList.toggle('live-badge',stageView==='live');
- $('sampleCaption').textContent=stageView==='live'?SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:'精选样张 · 用于材质与最终生图参考';
+ $('sampleCaption').textContent=stageView==='live'?SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:'原创成片 · 固定搭配的美术参考';
  $('playPreview').hidden=stageView!=='live'||isSchematic;$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));
  $('previewTruth').classList.remove('has-changes');
- $('previewTruth').innerHTML=icon('info')+`<span>${stageView==='live'?(c.reference.enabled?'当前参数实时预览；参考图的特征在 ChatGPT 附图后处理。':(isSchematic?'2D / 3D 共用配置，示意不表现材质和动画。':'外形与动作实时预览 · 用 Prompt 在 ChatGPT 创作最终图片。')):'高清样张保持既有美术质量，不随自定义设置变化。'}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>`;
+ $('previewTruth').innerHTML=icon('info')+`<span>${stageView==='live'?(c.reference.enabled?'当前参数实时预览；参考图的特征在 ChatGPT 附图后处理。':(isSchematic?'2D / 3D 共用配置，示意不表现材质和动画。':'外形与动作实时预览 · 用 Prompt 在 ChatGPT 创作最终图片。')):'原创成片展示固定搭配；选择实时角色继续调整外形、材质和配件。'}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>`;
  $('presetName').textContent=c.name||f.template;
  $('presetCount').textContent=familyPresets(c.family).length;
  $('sourceBadge').textContent=sourceLabel(state);$('sourceBadge').dataset.source=deriveProvenance(state).source;
@@ -185,11 +194,14 @@ function showCatalog(){
 }
 function render(){renderFamilies();renderSettings();renderResult();document.querySelectorAll('.stage-views [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===stageView);b.setAttribute('aria-pressed',b.dataset.view===stageView);});}
 function showModal(type,title,eyebrow,content){
- modalType=type;if(!$('modal').open)lastTrigger=document.activeElement;
+ modalType=type;$('modal').dataset.type=type;if(!$('modal').open)lastTrigger=document.activeElement;
  $('modalTitle').textContent=title;$('modalEyebrow').textContent=eyebrow;$('modalBody').innerHTML=content;
  if(!$('modal').open)$('modal').showModal();$('modal').scrollTop=0;
 }
 function closeModal(){if(modalType==='reference')referenceDraft=null;$('modal').close();modalType='';if(lastTrigger?.isConnected)lastTrigger.focus();}
+function showInspiration(){
+ showModal('inspiration','每一种，都有自己的触感','STUDIO ORIGINALS',`<p class="modal-intro">四套原创美术成片。选择一套，带着它的配色、材质和配饰回到实时工作台继续创作。</p><div class="inspiration-grid">${INSPIRATIONS.map(item=>`<article class="inspiration-card"><span class="art-family">${item.tag}</span><div class="inspiration-image" style="--art-size:${item.size}%"><img src="./assets/atelier/${item.file}" alt="${item.name}原创美术成片" loading="lazy" width="1254" height="1254"></div><h3>${item.name}</h3><p>${item.description}</p><button class="button outlined" data-inspiration="${item.id}">用这套设定开始</button></article>`).join('')}</div><p class="guide-footnote">美术成片是独立生成的材质参考；实时角色可自由编辑，细节精度与成片不同。</p>`);
+}
 function showGuide(){
  const cards=Object.entries(FAMILIES).map(([id,f])=>'<article class="guide-card">'+art(id,f.material)+'<h3>'+f.name+'</h3><p>'+esc(f.about)+'</p><span class="sample-badge">本站风格预设</span></article>').join('');
  showModal('guide','四种角色，各有自己的样子','STYLE NOTES',
@@ -205,10 +217,11 @@ function showPrompt(){
 function showActions(){showModal('actions','挑一个自然的小动作','EXPRESSION IN MOTION',`<p class="modal-intro">每个动作都使用你当前的角色。选中后在舞台播放，也可以暂停查看姿态。</p><div class="modal-action-grid">${Object.entries(ACTIONS).map(([id,a])=>`<button class="modal-action-card ${id===state.action?'selected':''}" data-modal-action="${id}" aria-pressed="${id===state.action}"><span class="thumb-shell"><span class="thumb-loading">载入中</span><img class="live-thumb" data-thumb-action="${id}" alt="${a.label}动作预览"></span><b>${a.label}</b><small>${a.short}</small></button>`).join('')}</div>`);queueThumbnails($('modalBody'));}
 async function showExpanded(){
  if(stageView==='live'&&livePreview){
-  try{const snapshot=resolveCharacter(state).config,blob=await livePreview.capture(1400,snapshot),url=URL.createObjectURL(blob);showModal('expand',snapshot.name||'我的角色','CURRENT CHARACTER PREVIEW',`<div class="expanded-live ${snapshot.background==='transparent'?'transparent-stage':''}"><img src="${url}" alt="当前角色配置的实时渲染"></div><p class="expanded-note">${isSchematic?'2D 结构示意 PNG · 材质、动画与3D细节未包含':'当前实时角色的 PNG 预览 · 包含你的外形、配色、表情与配饰'}</p><div class="modal-actions"><button class="button outlined" data-command="download-live">${icon('download')} 导出当前 PNG</button><button class="button primary" data-command="prompt">查看我的 Prompt</button></div>`);$('modal').addEventListener('close',()=>URL.revokeObjectURL(url),{once:true});}catch(e){toast(e.message||'角色预览导出失败，请稍后重试。');}
+  try{const snapshot=resolveCharacter(state).config,blob=await livePreview.capture(1400,snapshot),url=URL.createObjectURL(blob);showModal('expand',snapshot.name||'我的角色','CURRENT CHARACTER PREVIEW',`<div class="expanded-live ${snapshot.background==='transparent'?'transparent-stage':''}"><img src="${url}" alt="当前角色配置的实时渲染"></div><p class="expanded-note">${isSchematic?'2D 结构示意 PNG · 材质、动画与3D细节未包含':'当前实时角色的 PNG 预览 · 包含你的外形、配色、表情与配饰'}</p><div class="modal-actions"><a class="button outlined" href="${url}" download="${esc(filename(snapshot.name))}-preview.png">${icon('download')} 导出当前 PNG</a><button class="button primary" data-command="prompt">查看我的 Prompt</button></div>`);$('modal').addEventListener('close',()=>URL.revokeObjectURL(url),{once:true});}catch(e){toast(e.message||'角色预览导出失败，请稍后重试。');}
  }else{const r=resolveCharacter(state);showModal('expand','高清美术参考','CURATED ART REFERENCE',`<div class="expanded-art">${art(state.family,r.sample.material,state.action)}</div><p class="expanded-note">精选样张 · 不含自定义改动</p><div class="modal-actions"><button class="button outlined" data-command="download-sample">${icon('download')} 下载样张 PNG</button></div>`);}
 }
-async function downloadLive(){try{if(!livePreview)throw Error();const snapshot=resolveCharacter(state).config,name=filename()+'-preview.png';download(await livePreview.capture(1600,snapshot),name);toast(isSchematic?'2D 示意 PNG 已导出，未包含材质、动作或3D专属细节。':'当前角色 PNG 已导出，包含所有可见定制。');}catch(e){toast(e.message||'请切换到实时角色后再导出 PNG。');}}
+let liveExportBusy=false;
+async function downloadLive(){if(liveExportBusy)return;liveExportBusy=true;toast('正在准备当前角色 PNG…');try{if(!livePreview)throw Error();const snapshot=resolveCharacter(state).config,name=filename()+'-preview.png';download(await livePreview.capture(1600,snapshot),name);toast(isSchematic?'2D 示意 PNG 已导出，未包含材质、动作或3D专属细节。':'当前角色 PNG 已导出，包含所有可见定制。');}catch(e){toast(e.message||'请切换到实时角色后再导出 PNG。');}finally{liveExportBusy=false;}}
 function referenceContents(){
  const options=Object.entries(FAMILIES).map(([id,f])=>'<option value="'+id+'" '+(draftFamily===id?'selected':'')+'>'+f.name+'</option>').join('');
  const preserve=Object.entries(PRESERVE).map(([id,[name]])=>'<label><input type="checkbox" data-preserve="'+id+'" '+(referenceDraft.preserve.includes(id)?'checked':'')+'>'+name+'</label>').join('');
@@ -243,7 +256,7 @@ async function copyAndOpen(){
  toast(opened?(state.reference.enabled?'已复制。在 ChatGPT 添加参考图，再粘贴 Prompt。':'已复制。在 ChatGPT 粘贴 Prompt 即可。'):'已复制，请手动打开 ChatGPT 后粘贴。');
 }
 async function copyPrompt(){const success=await copyText(buildPrompt(state,promptLanguage));if(success)toast(`已复制${promptLanguage==='en'?'英文':'中文'} Prompt${state.reference.enabled?'，记得另外附上参考图。':'。'}`);else{showPrompt();toast('无法访问剪贴板，请选中全文复制，或导出 TXT。');}}
-function filename(){return(state.name||'dot').replace(/[^\p{L}\p{N}_-]/gu,'-').slice(0,40)||'dot';}
+function filename(name=state.name){return(name||'dot').replace(/[^\p{L}\p{N}_-]/gu,'-').slice(0,40)||'dot';}
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function exportPrompt(){download(new Blob([buildPrompt(state,promptLanguage)],{type:'text/plain;charset=utf-8'}),`${filename()}-prompt-${promptLanguage}.txt`);toast('完整 Prompt 已导出。');}
 async function downloadSample(){
@@ -262,18 +275,20 @@ async function downloadSample(){
 async function importConfig(file){if(!file)return;try{if(!/\.json$/i.test(file.name))throw new Error('这里只接受 JSON 配置；参考图片请在 ChatGPT 添加。');if(file.size>100000)throw new Error('配置文件不能超过 100 KB');const raw=JSON.parse(await file.text());if([1,2,3,4,5].includes(raw.version)){sessionStorage.setItem('dot-legacy-import',JSON.stringify(raw));window.location.assign('./legacy-editor.html');return;}const next=validateConfig(raw);commit(next);toast(next.reference.enabled?'配置已载入，请在 ChatGPT 添加参考图片。':'配置已完整载入。');}catch(e){toast(e instanceof SyntaxError?'这不是有效的 JSON 配置文件。':e.message);}$('configFile').value='';}
 const commands={
  customize:()=>document.querySelector('.inspector').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}),
- guide:showGuide,catalog:showCatalog,'download-live':downloadLive,'toggle-play':()=>{playing=!playing;livePreview?.setPlaying(playing);$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));},reference:showReference,prompt:showPrompt,'all-actions':showActions,expand:showExpanded,close:closeModal,copy:copyPrompt,'copy-open':copyAndOpen,'export-prompt':exportPrompt,'download-sample':downloadSample,
+ guide:showGuide,inspiration:showInspiration,catalog:showCatalog,'download-live':downloadLive,'toggle-play':()=>{playing=!playing;livePreview?.setPlaying(playing);$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));},reference:showReference,prompt:showPrompt,'all-actions':showActions,expand:showExpanded,close:closeModal,copy:copyPrompt,'copy-open':copyAndOpen,'export-prompt':exportPrompt,'download-sample':downloadSample,
  'save-config':()=>{download(new Blob([exportConfiguration(state)],{type:'application/json'}),filename()+'-dot.json');toast('配置已保存，可随时重新导入；配置仅包含设定与文字，不包含图片。');},
  'import-config':()=>$('configFile').click(),
  reset:()=>{const next=state.presetId!=='custom'?createPreset(state.presetId):createCharacter(state.family);next.reference=structuredClone(state.reference);next.reference.overrides=[];next.notes=state.notes;next.output=state.output;commit(next);toast('已恢复当前角色的视觉预设，可撤销。');},
- random:()=>{const seed='dot-'+Math.floor(Math.random()*100000);commit(randomizeCharacter(state,seed));toast('换了一套搭配；名称、参考特征与补充要求已保留。');},
- 'seed-random':()=>{commit(randomizeCharacter(state,state.randomSeed));toast('已按种子 '+state.randomSeed+' 搭配。');},
+ random:()=>{if(recipeMachine)recipeMachine.spin();else commit(randomizeCharacter(state,'mix-'+Math.random().toString(36).slice(2,9)));},
+ 'seed-random':()=>{if(recipeMachine)recipeMachine.spin(state.randomSeed);else commit(randomizeCharacter(state,state.randomSeed));},
  'apply-reference':applyReference,
  'remove-reference':()=>{const next=structuredClone(state);next.reference=createCharacter().reference;commit(next);closeModal();toast('已关闭参考图模式。');}
 };
 document.addEventListener('click',e=>{
  const b=e.target.closest('button');if(!b||b.disabled)return;
  try{
+  if(recipeMachine?.busy&&!b.dataset.lock&&b.dataset.command!=='random')recipeMachine.cancel();
+  if(b.dataset.inspiration){stageView='live';commit(inspirationCharacter(b.dataset.inspiration,state));closeModal();livePreview?.assemble();return;}
   if(b.id==='undo'){undo();return;}if(b.id==='redo'){undo(true);return;}if(b.id==='closeModal'){closeModal();return;}
   if(b.dataset.command){document.querySelector('.project-menu')?.removeAttribute('open');commands[b.dataset.command]?.();return;}
   if(b.dataset.accessoryTab){activeAccessory=b.dataset.accessoryTab;$('settings').scrollTop=0;renderSettings();return;}
@@ -306,10 +321,11 @@ document.addEventListener('change',e=>{
 document.addEventListener('dragover',e=>{if(e.dataTransfer?.types.includes('Files'))e.preventDefault();});
 document.addEventListener('drop',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();toast('参考图片请在 ChatGPT 中添加。这里只导入 JSON 配置。');}});
 document.addEventListener('focusout',()=>{grouping='';});
-document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();undo(e.shiftKey);}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&recipeMachine?.busy){recipeMachine.cancel();return;}if(e.key.toLowerCase()==='r'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)&&!$('modal').open){e.preventDefault();commands.random();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();undo(e.shiftKey);}});
 $('modal').addEventListener('cancel',e=>{e.preventDefault();closeModal();});
 $('modal').addEventListener('click',e=>{if(e.target===$('modal')){const r=$('modal').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeModal();}});
 window.addEventListener('pageshow',event=>{if(!event.persisted)return;try{const saved=sessionStorage.getItem('dot-studio-v9');if(saved){const next=validateConfig(JSON.parse(saved));if(JSON.stringify(next)!==JSON.stringify(state)){state=next;history.length=0;future.length=0;grouping='';render();}}}catch{toast('保存的配置暂时无法读取，当前角色已保留。');}});
+if($('recipeMachine'))recipeMachine=new RecipeMachine($('recipeMachine'),{getConfig:()=>state,commit:next=>{stageView='live';commit(next,'',true,'random');},assemble:()=>livePreview?.assemble(),notify:toast});
 icons();$('undo').innerHTML=icon('undo');$('redo').innerHTML=icon('redo');render();remember();if(storageRecovery)toast(storageRecovery);
 const mc=document.modelContext;
 if(mc?.registerTool){const controller=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the selected character, resolved anatomy, real-time preview metadata and Chinese/English prompts. Does not call an image generation model.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:()=>({configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state),englishPrompt:buildPrompt(state,'en')})},{name:'configure_character',title:'配置角色',description:'Replace the current Studio character with a validated v9 configuration. Does not generate images, upload references, copy data or create a Pet.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{const next=validateConfig(input.configuration);commit(next);return {configuration:structuredClone(state),resolved:resolveCharacter(state),prompt:buildPrompt(state)};}}];for(const def of definitions){try{Promise.resolve(mc.registerTool(def,{signal:controller.signal})).catch(()=>{});}catch{}}window.addEventListener('pagehide',()=>controller.abort(),{once:true});}

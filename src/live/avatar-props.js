@@ -228,7 +228,9 @@ export function decorateAvatar(avatar, c) {
       }
       // The band bridges grooves between curls and lobes instead of copying
       // every dent into a wavy wire. Ears remain in front of the headband.
-      tube(hat, upperEnvelope(pts), .035 * s, headAccent);
+      headAccent.roughness=.52;
+      tube(hat, upperEnvelope(pts), .048 * s, headAccent);
+      const seam=material(new THREE.Color(colors.headAccessory||colors.accessory||'#292A2D').lerp(new THREE.Color('#a2a7ad'),.16),{roughness:.86});
       for (const sign of [-1, 1]) {
         const hit = contact.side(sign, earY, z), normal = hit?.normal || V([sign, 0, 0]);
         if (normal.x * sign < .2) normal.set(sign, .15, 0).normalize();
@@ -237,6 +239,8 @@ export function decorateAvatar(avatar, c) {
         cup.quaternion.setFromUnitVectors(V([1, 0, 0]), normal);
         ball(cup, [.14 * s, .270 * s, .198 * s], dark, [-.006 * s, 0, 0]);
         ball(cup, [.135 * s, .286 * s, .220 * s], headAccent, [.090 * s, 0, 0]);
+        const seamPoints=Array.from({length:40},(_,i)=>{const a=i/40*Math.PI*2;return[.162*s,Math.cos(a)*.226*s,Math.sin(a)*.179*s];});
+        tube(cup,seamPoints,.005*s,seam,true);
         cup.userData.contactFit = {kind: 'side', point: surface.toArray(), normal: normal.toArray()};
       }
     } else {
@@ -472,7 +476,7 @@ export function decorateAvatar(avatar, c) {
     for (let row = 0; row < 3; row++) box(lid, [(row ? .38 : .63) * s, .012 * s, .004 * s], ui,
       [-.11 * s, sh * .67 - row * .05 * s, -.028 * s], .003 * s);
     ball(lid, [.009 * s, .009 * s, .004 * s], dark, [0, sh - .018 * s, -.025 * s]);
-    g.updateMatrix(); targets = [[-.28 * s, .060 * s, -.055 * s], [.28 * s, .060 * s, -.055 * s]].map(p => point(g, p));
+    g.updateMatrix(); targets = [[-.28 * s, .098 * s, -.055 * s], [.28 * s, .098 * s, -.055 * s]].map(p => point(g, p));
   } else if (prop === 'flowers') {
     const y = Math.min(h * .33, face[1] - .60 * s), g = part('prop-flowers', [0, y, front + .03 * s]);
     g.rotation.z = -.08;
@@ -536,7 +540,7 @@ export function decorateAvatar(avatar, c) {
 
   // Preserve sculpted resting limbs. Rebuild a pair only when a gesture or a
   // prop requires new contact targets; hind paws remain part of the body.
-  const gestures = ['wave', 'thinking', 'dance', 'celebrate', 'love'];
+  const gestures = ['wave', 'dance', 'celebrate', 'love'];
   const needsArms = human || animal || prop !== 'none' || gestures.includes(action) || c.pose === 'chin' || ['hands', 'both'].includes(c.limbs);
   const preserveRest = (human || animal) && prop === 'none' && !gestures.includes(action) && c.pose !== 'chin';
   const arms = preserveRest ? [...(avatar.arms || [])] : [], palms = [];
@@ -548,7 +552,7 @@ export function decorateAvatar(avatar, c) {
     if (targets) targets.forEach((p, i) => {if (p) ends[i] = p;});
     if (!targets) {
       if (action === 'wave') ends[1] = [w * .57, face[1] + .27 * s, face[2] * .67];
-      if (action === 'thinking' || c.pose === 'chin') ends[1] = [w * .20, face[1] - .25 * s, face[2] + .07 * s];
+      if (c.pose === 'chin') ends[1] = [w * .20, face[1] - .25 * s, face[2] + .07 * s];
       if (action === 'dance') {
         ends[0] = [-w * .58, h * .44, face[2] * .60]; ends[1] = [w * .56, h * .64, face[2] * .67];
       }
@@ -604,13 +608,14 @@ export function decorateAvatar(avatar, c) {
       limb.userData.surfaceMaterial = human ? armMat.name || 'knit' : c.material || 'plush';
       limb.userData.furLength = c.material === 'micro' ? .011 : .024;
       const palm = group(arm, (bird ? 'wing-tip-' : 'hand-') + i, d.toArray()), rr = (human ? .102 : animal ? .128 : .115) * s;
-      const palmMesh = ball(palm, [rr, rr * (bird ? 1.10 : human ? 1.05 : .83), rr * (bird ? .40 : .82)], handMat);
+      const palmMesh = ball(palm, [rr, rr * (bird ? 1.10 : human ? 1.05 : .83), rr * (bird ? .40 : prop==='macbook' ? .57 : .82)], handMat);
       palmMesh.userData.region = human ? 'skin' : 'body';
       palmMesh.userData.surfaceMaterial = human ? handMat.name || 'skin' : c.material || 'plush';
       palmMesh.userData.furLength = c.material === 'micro' ? .011 : .024;
       if (human) {
         // Four short rounded fingertips and a separate thumb read as a doll hand.
-        palm.rotation.x = prop === 'macbook' ? Math.PI * .4 : -.22;
+        palm.rotation.x = prop === 'macbook' ? Math.PI * .49 : prop === 'book' ? .65 : -.22;
+        if(prop==='macbook')palm.rotation.y=-.64;
         for (let j = 0; j < 4; j++) ball(palm, [.023 * s, (.065 - Math.abs(j - 1.5) * .008) * s, .025 * s], handMat,
           [(j - 1.5) * .043 * s, .067 * s, .018 * s]);
         const thumb = ball(palm, [.055 * s, .059 * s, .035 * s], handMat, [-sign * .09 * s, .006 * s, .035 * s]);
@@ -635,5 +640,5 @@ export function decorateAvatar(avatar, c) {
       avatar.torso.attach(attachment);
   }
   root.updateMatrixWorld(true);
-  return {parts, constraintNotes: [], tick(t) {for (const update of animated) update(Number.isFinite(t) ? t : 0);}};
+  return {parts, prop, constraintNotes: [], tick(t) {for (const update of animated) update(Number.isFinite(t) ? t : 0);}};
 }

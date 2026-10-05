@@ -194,19 +194,20 @@ function createRasterKernel() {
             const wc=1-wa-wb;if(wa<-.000001||wb<-.000001||wc<-.000001)continue;
             const z=wa*az+wb*bz+wc*cz;if(z<-1||z>1||(m.depthTest&&z>=depth[at]-.0000002))continue;
             let alpha=m.opacity,r=base[0],gg=base[1],bb=base[2],u=0,v=0;
-            if(map||bump){const denom=wa*tr[a+3]+wb*tr[b+3]+wc*tr[c+3];u=(wa*tr[a+7]+wb*tr[b+7]+wc*tr[c+7])/denom;v=(wa*tr[a+8]+wb*tr[b+8]+wc*tr[c+8])/denom;}
+            if(map||bump||m.shadowFade){const denom=wa*tr[a+3]+wb*tr[b+3]+wc*tr[c+3];u=(wa*tr[a+7]+wb*tr[b+7]+wc*tr[c+7])/denom;v=(wa*tr[a+8]+wb*tr[b+8]+wc*tr[c+8])/denom;}
             if(map){textureSample(map,u,v,sample);r*=sample[0];gg*=sample[1];bb*=sample[2];alpha*=sample[3];}
             if(alpha<=Math.max(.002,m.alphaTest||0))continue;
             let nx=wa*tr[a+4]+wb*tr[b+4]+wc*tr[c+4],ny=wa*tr[a+5]+wb*tr[b+5]+wc*tr[c+5],nz=wa*tr[a+6]+wb*tr[b+6]+wc*tr[c+6];
             const ns=normalSign/Math.max(1e-9,Math.sqrt(nx*nx+ny*ny+nz*nz));nx*=ns;ny*=ns;nz*=ns;
             const shadowNx=nx,shadowNy=ny,shadowNz=nz;
             if(bump){heightGradient(bump,u,v,bumpLod,gradient);let gx=(tx*gradient[0]+btx*gradient[1])*m.bumpScale,gy=(ty*gradient[0]+bty*gradient[1])*m.bumpScale,gz=(tz*gradient[0]+btz*gradient[1])*m.bumpScale;const dot=gx*nx+gy*ny+gz*nz;gx-=dot*nx;gy-=dot*ny;gz-=dot*nz;const scale=Math.min(1,bumpLimit/Math.max(.001,Math.hypot(gx,gy,gz)));nx-=gx*scale;ny-=gy*scale;nz-=gz*scale;const s=1/Math.max(1e-9,Math.hypot(nx,ny,nz));nx*=s;ny*=s;nz*=s;}
+            if(g.colors&&m.vertexColors){r*=wa*g.colors[ia*3]+wb*g.colors[ib*3]+wc*g.colors[ic*3];gg*=wa*g.colors[ia*3+1]+wb*g.colors[ib*3+1]+wc*g.colors[ic*3+1];bb*=wa*g.colors[ia*3+2]+wb*g.colors[ib*3+2]+wc*g.colors[ic*3+2];}
+            if(m.shadowOnly){alpha*=1-shadowVisibility(x,y,z,1,0);if(m.shadowFade){const f=m.shadowFade,r=Math.hypot((u-f[0])/f[2],(v-f[1])/f[3]),t=clamp((r-.28)/.72,0,1);alpha*=1-t*t*(3-2*t);}if(alpha<.002)continue;}
             if(!m.unlit) {
               const hemi=ny*.5+.5;let lr=ambient[0]+ground[0]+(sky[0]-ground[0])*hemi,lg=ambient[1]+ground[1]+(sky[1]-ground[1])*hemi,lb=ambient[2]+ground[2]+(sky[2]-ground[2])*hemi,sr=0,sg=0,sb=0;
               for(let li=0;li<lights.length;li++){const light=lights[li],dir=light.direction,dot=nx*dir[0]+ny*dir[1]+nz*dir[2],visibility=li===0&&mesh.receiveShadow?shadowVisibility(x,y,z,shadowNx*dir[0]+shadowNy*dir[1]+shadowNz*dir[2],scatter):1,nd=Math.max(0,(dot+.055)/1.055)*light.intensity*visibility,half=light.half,sp=shine*Math.pow(Math.max(0,nx*half[0]+ny*half[1]+nz*half[2]),power)*light.intensity*visibility;lr+=light.color[0]*nd;lg+=light.color[1]*nd;lb+=light.color[2]*nd;sr+=light.color[0]*sp;sg+=light.color[1]*sp;sb+=light.color[2]*sp;}
-              const metal=m.metalness||0;r=r*lr+sr*(1-metal+metal*r);gg=gg*lg+sg*(1-metal+metal*gg);bb=bb*lb+sb*(1-metal+metal*bb);
+              const metal=m.metalness||0;r=r*lr*(1-metal*.48)+sr*(1-metal+metal*r)*(1+metal*3);gg=gg*lg*(1-metal*.48)+sg*(1-metal+metal*gg)*(1+metal*3);bb=bb*lb*(1-metal*.48)+sb*(1-metal+metal*bb)*(1+metal*3);
             }
-            if(g.colors&&m.vertexColors){r*=wa*g.colors[ia*3]+wb*g.colors[ib*3]+wc*g.colors[ic*3];gg*=wa*g.colors[ia*3+1]+wb*g.colors[ib*3+1]+wc*g.colors[ic*3+1];bb*=wa*g.colors[ia*3+2]+wb*g.colors[ib*3+2]+wc*g.colors[ic*3+2];}
             r+=emit[0];gg+=emit[1];bb+=emit[2];
             if(m.toneMapped&&!m.unlit){if(frame.neutral){neutralTone(r,gg,bb,exposure,mapped);r=mapped[0];gg=mapped[1];bb=mapped[2];}else{r=tone[clamp(Math.round(r*512),0,4096)];gg=tone[clamp(Math.round(gg*512),0,4096)];bb=tone[clamp(Math.round(bb*512),0,4096)];}}
             const out=at*4;
@@ -266,7 +267,7 @@ function createRasterKernel() {
           // and noisier on white coats.
           const plush=fiber.kind==='plush',key=lights[0]?.direction||view;
           const directional=n[0]*key[0]+n[1]*key[1]+n[2]*key[2];
-          const ratio=clamp(1+(s[i+19]-.965)*(plush?.94:.42)+(directional-.65)*(plush?.10:.035),plush?.82:.94,plush?1.16:1.07);
+          const ratio=clamp(1+(s[i+19]-(plush?1:.965))*(plush?1.35:.42)+(directional-.65)*(plush?.14:.035),plush?.72:.94,plush?1.32:1.07);
           r=rr/weight*ratio;g=rg/weight*ratio;b=rb/weight*ratio;
         } else {
           let lr=ambient[0]+ground[0]+(sky[0]-ground[0])*hemi,lg=ambient[1]+ground[1]+(sky[1]-ground[1])*hemi,lb=ambient[2]+ground[2]+(sky[2]-ground[2])*hemi;
@@ -368,8 +369,8 @@ export class SoftwareRenderer {
       const groups=Array.isArray(object.material)?geo.groups:[{start:geo.drawRange?.start||0,count:geo.drawRange?.count??Infinity,materialIndex:0}];
       for(let gi=0;gi<groups.length;gi++) {
         const group=groups[gi],m=Array.isArray(object.material)?object.material[group.materialIndex]:object.material;
-        if(!m||m.visible===false||m.isShadowMaterial||(m.opacity??1)<.002)continue;
-        frame.meshes.push({id:object.uuid+suffix+':'+gi,geometry:key,matrix:Array.from(matrix),start:group.start,count:group.count,order:object.renderOrder||0,castShadow:object.castShadow!==false,receiveShadow:object.receiveShadow!==false,material:{color:colorArray(m.color),emissive:colorArray(m.emissive,[0,0,0]).map(x=>x*(m.emissiveIntensity??1)),opacity:m.opacity??1,transparent:!!m.transparent,side:m.side??0,roughness:m.roughness??.75,metalness:m.metalness||0,depthTest:m.depthTest!==false,depthWrite:m.depthWrite!==false,alphaTest:m.alphaTest||0,unlit:!!m.isMeshBasicMaterial,toneMapped:m.toneMapped!==false,map:textureData(m.map),bump:textureData(m.bumpMap),bumpScale:m.bumpScale||0,surfaceKind:object.userData.surfaceMaterial||m.name,vertexColors:!!m.vertexColors}});
+        if(!m||m.visible===false||(m.opacity??1)<.002)continue;
+        frame.meshes.push({id:object.uuid+suffix+':'+gi,geometry:key,matrix:Array.from(matrix),start:group.start,count:group.count,order:object.renderOrder||0,castShadow:object.castShadow!==false,receiveShadow:object.receiveShadow!==false,material:{color:colorArray(m.color),emissive:colorArray(m.emissive,[0,0,0]).map(x=>x*(m.emissiveIntensity??1)),opacity:m.opacity??1,transparent:!!m.transparent,side:m.side??0,roughness:m.roughness??.75,metalness:m.metalness||0,depthTest:m.depthTest!==false,depthWrite:m.depthWrite!==false,alphaTest:m.alphaTest||0,unlit:!!(m.isMeshBasicMaterial||m.isShadowMaterial),shadowOnly:!!m.isShadowMaterial,shadowFade:m.userData?.shadowFade,toneMapped:m.toneMapped!==false,map:textureData(m.map),bump:textureData(m.bumpMap),bumpScale:m.bumpScale||0,surfaceKind:object.userData.surfaceMaterial||m.name,vertexColors:!!m.vertexColors}});
       }
     };
     const walk=object=> {
@@ -387,7 +388,7 @@ export class SoftwareRenderer {
             for(let i=0;i<object.count;i+=fiberStride){const j=i*16;for(const [x,y,z]of profile){segments[at++]=data[j]*x+data[j+4]*y+data[j+8]*z+data[j+12];segments[at++]=data[j+1]*x+data[j+5]*y+data[j+9]*z+data[j+13];segments[at++]=data[j+2]*x+data[j+6]*y+data[j+10]*z+data[j+14];}segments[at++]=colors?colors[i*3]:1;segments[at++]=colors?colors[i*3+1]:1;segments[at++]=colors?colors[i*3+2]:1;segments[at++]=radius*Math.hypot(data[j],data[j+1],data[j+2]);segments[at++]=object.userData.fiberTones?.[i]??1;}
             const kind=object.userData.surfaceMaterial||object.parent?.userData.surfaceMaterial||object.parent?.material?.name;frame.fibers.push({ownerId:object.parent?.uuid+':0',matrix:Array.from(object.matrixWorld.elements),segments,color:colorArray(object.material.color),kind,sampleWeight:Math.min(2.3,Math.sqrt(fiberStride)),opacity:['fabric','knit'].includes(kind)?.90:1});
           } else if(object.name!=='surface-fibers'&&object.count<=256)for(let i=0;i<object.count;i++)addMesh(object,multiply4(object.matrixWorld.elements,object.instanceMatrix.array.subarray(i*16,i*16+16)),':'+i);
-        } else if(!object.material?.isShadowMaterial)addMesh(object,object.matrixWorld.elements);
+        } else addMesh(object,object.matrixWorld.elements);
       }
       for(const child of object.children||[])walk(child);
     };

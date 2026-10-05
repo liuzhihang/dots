@@ -40,11 +40,12 @@ Reference mode stores only text instructions and preservation choices. No refere
 
 ```sh
 node scripts/verify-studio.mjs
+node scripts/verify-atelier.mjs
 ```
 
 The checks cover intentional state preservation, current versus temporary accessories, species anatomy, Prompt/JSON consistency, and construction of all catalog presets. Browser QA separately verifies visible changes, material quality, real exports and responsive layout.
 
-The workspace is checked against the supplied App references and the requested two-column structure: a large open character stage on the left, family and preset selection inside one right inspector, graphical appearance controls, an action gallery and Prompt output inside that inspector. Phone (390 × 844) and tablet (768 × 844) checks cover horizontal overflow and whether scrolling the settings leaves the character visible. Clipboard and PNG journeys are checked through the actual interface. The main stage uses editable geometry, whose fur and hair detail remains below the generated art examples.
+The workspace is checked against the supplied App references and the requested two-column structure: a large open character stage on the left, family and preset selection inside one right inspector, graphical appearance controls, an action gallery and Prompt output inside that inspector. Phone (390 × 844) and tablet (768 × 844) checks cover horizontal overflow and whether scrolling the settings leaves the character visible. Clipboard and PNG journeys require separate verification through the actual interface. The main stage uses editable geometry, whose fur and hair detail remains below the generated art examples.
 
 ## Art direction and scope
 
@@ -59,3 +60,23 @@ Schema 9 derives provenance from registered preset identities and visual configu
 `editor.html` shares schema 9 and the same session state with the 3D route. It renders a labeled 2D geometric schematic with explicit material/action/camera omissions. Unsupported people and animals keep their full configuration and show an unavailable message rather than a substitute character. Back/Forward cache restoration rehydrates the canonical saved state. The original full schema 1–5 tool and its advanced controls remain at `legacy-editor.html`, independent of the main session state.
 
 Additional checks: `node scripts/verify-recreations.mjs`.
+
+## Atelier revision (2026-10-05)
+
+The inspiration collection contains four independent, full-image PNG originals in `dist/assets/atelier/`, registered in `dist/studio-art.js`:
+
+| Family | Art direction | PNG |
+| --- | --- | --- |
+| Dots | Blue short-plush orb with fitted headphones | `dot-plush-headphones-v2.png` |
+| Grok Bot | Pale matte soft arch, small glasses and a low laptop | `grok-matte-work-v2.png` |
+| Muse | Human fabric doll, curly fiber hair, knitted scarf and a book | `muse-fabric-reading-v2.png` |
+| Pets | Seated Shiba with connected paws, curled tail and a blue scarf | `pet-shiba-scarf-v2.png` |
+
+These are Studio originals. **用这套设定开始** loads editable starting parameters from `dist/studio-inspiration.js`. The art PNG remains a fixed material and composition reference; live controls update the procedural character. The editable renderer has lower fiber, hair and fabric fidelity than the generated artwork. Current-preview PNG export captures that renderer, while art-sample export selects the independent source PNG.
+
+- **Agent activity:** Six states are available: idle, thinking, processing, waiting, blocked and done. Thinking and processing offer automatic selection, three matching silhouette forms for blob characters (three small overhead dots for people and animals), flowing tapered droplets, or orbiting particles. `src/live/activity-system.js` implements these Studio interpretations with coordinated character and accessory motion.
+- **Random combinations:** Four slots cover type, look, accessories and action, with individual locks and reproducible seeds. Component locks preserve currently visible action props; reference mode keeps the family fixed. Results enter undo history. Escape cancels a pending spin, and editing or undo cancels its delayed commit. Reduced motion removes reel transitions and assembly motion, and starts the live preview paused.
+- **Reference workflow:** The site saves preservation choices, text notes and explicit overrides. Users copy the Prompt, open ChatGPT and attach their reference image there. The local preview remains the configured Studio model; Prompt text and JSON carry no reference image.
+- **Regression checks:** `verify-atelier.mjs` covers seeded locks, resolved component labels, reference-neck preservation, motion speed, framing and missing motion-field defaults in older v9 files. The build, 57-preset regression suite, 467 recreation assertions and six Atelier cases pass. Browser QA checked 320/390/768 px layouts, random locks and undo, character/prop rendering, and generation of the 1400 px PNG preview. Download-completion events timed out in the cloud browser. The copy action reported success, but the harness clipboard read was empty; download and clipboard delivery are not marked as end-to-end verified.
+
+Public design references: [ChatGPT Dots](https://chatgpt.com/features/dots/), [Grok Bot design and motion](https://x.ai/news/designing-grok-bot#what-are-they-doing), [Muse design and the personal Veda example](https://introducing.muse.ai/), and [ChatGPT Pets](https://learn.chatgpt.com/docs/pets). These sources inform the distinct character families; the Studio assets and procedural effects are independently authored.
