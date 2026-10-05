@@ -1,0 +1,632 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-05",
+  "scope": "Asset-only improvement of Muse for the user's selected R01 homepage. Family card generated/reviewed before hero-right generation.",
+  "generation": {
+    "tool": "built-in image_gen",
+    "backend_model": "not reported by tool",
+    "art_direction": "Current delegated art director; backend is not claimed to be astra."
+  },
+  "direction_reference": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5080AD6F-8BFE-4F73-9B12-764236E7C654/1-Photo-1.jpg",
+  "direction_use": "Inspected for layout, plush refinement and warm lighting; no R01 UI or character pixels copied.",
+  "identity_reference": "/Users/liuzhihang/workspace/dots/openspec/changes/rebuild-character-system/references/a02.jpg",
+  "image_processing": "Final generated PNGs copied byte-for-byte with original alpha; Python used only to read image metadata/alpha and write manifest JSON.",
+  "review_boundary": "Image-level identity/composition/alpha review only; root owns real webpage art acceptance.",
+  "assets": [
+    {
+      "file": "design/reference-home-20261005/assets/muse-family-v1.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-d5f1e885-000a-45e7-aa05-28b5c0e6dfa9.png",
+      "member_count": 2,
+      "props": [
+        "small warm five-point star",
+        "faceless sage leaf-cushion prop"
+      ],
+      "references": [
+        {
+          "path": "openspec/changes/rebuild-character-system/references/a02.jpg",
+          "role": "primary Muse identity"
+        },
+        {
+          "path": "design/scene-refinement-20261005/assets/meta-muse-scene-v2.png",
+          "role": "existing family pose/material reference"
+        }
+      ],
+      "generation_attempts": [
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-f644929b-8738-4c32-9897-55ff86f36210.png",
+          "prompt": "Use case: stylized-concept.\nAsset type: square transparent Meta Muse family-card illustration.\nImage 1 is the PRIMARY IDENTITY: the A02 cream hooded Muse. Image 2 is only a prior pose/material reference to improve, not a mandate to preserve oversized faces or flowers.\nCreate TWO softly detailed Meta Muse companions in a loving seated cuddle, with the primary cream figure and a smaller dusty-blush pink friend. Main Muse must follow A02: a continuous rounded creamy hood wrapping the small head and flowing into a plump body, distinctly inset warm-peach face surrounded by a thick cream plush rim, tiny simple black eyes, tiny gentle curved smile, short mitten-like arms, and two stubby feet. The face must be clearly enclosed by a hood, not a bare egg-shaped head or a fluffy cloud. No ears, human hair, curls, long arms, fingers or animal features.\nMain cream Muse sits on left, about 1.45 times the smaller pink companion's size. Cream Muse cradles a SMALL five-point pale-gold star between its TWO short hands in its lap; hands really touch the sides/bottom of the star. The star emits a restrained warm glow ONLY onto nearby hands, belly and cheeks, never a background halo. Small pink Muse leans shoulder and head against the cream friend from right, looks down toward the star, and rests a short arm near it. Different gentle head angles, tender contact, slightly overlapping rounded feet, nonparallel organic posture. Both faces completely visible and hood rims thick and distinct.\nBehind-right, one small pale-sage soft fabric cushion/pod with two small leaf sprouts serves as a PROP, without face, eyes, arms or character identity. No flower bouquet and no book.\nVisual quality: exquisitely fine dense soft short fur, delicate fiber direction, creamy warm-white and apricot light, subtle plush contact compression, natural cloth microtexture and sculpted rounded volume. Improve toward polished premium 3D collectible illustration; no long shaggy fur, no plastic face glare, no coarse clay, no harsh shadows or dark shadow clump.\nA single compact balanced square group, clear main/secondary hierarchy. Complete contour and all feet/leaf tips, with at least 3% genuinely clear transparent margin on EVERY edge. Approximately 90% canvas occupation. No cropping.\nOutput genuine RGBA transparency. Outside silhouettes alpha 0. NO background, floor, pedestal, detached cast shadow, drop shadow, backdrop, text, UI, logo or watermark. Star light stays on character surfaces; empty space stays transparent.",
+          "selected": false,
+          "quality_limitation": "Right leaf prop left only 0.64% visible-alpha safety border; replaced by one framing correction.",
+          "metadata": {
+            "bytes": 1677691,
+            "sha256": "c69d9799ac44f49cac94c0b171dd9e42f324441b90f62a58823b46866763abcb",
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.4488386763632294,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  0,
+                  57,
+                  1254,
+                  1184
+                ],
+                "visible_ratio": 1.1126885536823425,
+                "width_occupancy": 1.0,
+                "height_occupancy": 0.8987240829346093,
+                "margins_ltrb": [
+                  0.0,
+                  0.045454545454545456,
+                  0.0,
+                  0.05582137161084529
+                ]
+              },
+              "16": {
+                "bbox": [
+                  47,
+                  137,
+                  1246,
+                  1127
+                ],
+                "visible_ratio": 1.211111111111111,
+                "width_occupancy": 0.956140350877193,
+                "height_occupancy": 0.7894736842105263,
+                "margins_ltrb": [
+                  0.037480063795853266,
+                  0.10925039872408293,
+                  0.006379585326953748,
+                  0.10127591706539076
+                ]
+              },
+              "64": {
+                "bbox": [
+                  47,
+                  138,
+                  1245,
+                  1126
+                ],
+                "visible_ratio": 1.2125506072874495,
+                "width_occupancy": 0.9553429027113237,
+                "height_occupancy": 0.7878787878787878,
+                "margins_ltrb": [
+                  0.037480063795853266,
+                  0.11004784688995216,
+                  0.007177033492822967,
+                  0.10207336523125997
+                ]
+              },
+              "128": {
+                "bbox": [
+                  48,
+                  139,
+                  1245,
+                  1126
+                ],
+                "visible_ratio": 1.2127659574468086,
+                "width_occupancy": 0.9545454545454546,
+                "height_occupancy": 0.7870813397129187,
+                "margins_ltrb": [
+                  0.03827751196172249,
+                  0.11084529505582137,
+                  0.007177033492822967,
+                  0.10207336523125997
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-d5f1e885-000a-45e7-aa05-28b5c0e6dfa9.png",
+          "prompt": "Edit this exact transparent two-Muse star illustration. Keep the full design, two characters, cream and pink hooded identities, faces, plush texture, hand/star contact, gentle local star light and leaf-cushion prop unchanged.\nOnly fix framing: move the small sage leaf prop gently inward so all leaf tips are complete and at least 4% of the SQUARE canvas width away from the right edge. Uniformly fit and center the whole original illustration with at least 4% completely clear transparent safety margin on ALL four sides. Do not crop anything, do not add anything, do not change proportions or enlarge faces. Keep square canvas and true RGBA alpha transparency outside the silhouettes. No background, external glow, floor, shadow, text or watermark.",
+          "reference_images": [
+            "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-f644929b-8738-4c32-9897-55ff86f36210.png"
+          ],
+          "selected": true,
+          "metadata": {
+            "bytes": 1470813,
+            "sha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c",
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.494237260542977,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  31,
+                  144,
+                  1220,
+                  1131
+                ],
+                "visible_ratio": 1.204660587639311,
+                "width_occupancy": 0.9481658692185008,
+                "height_occupancy": 0.7870813397129187,
+                "margins_ltrb": [
+                  0.024720893141945772,
+                  0.11483253588516747,
+                  0.02711323763955343,
+                  0.09808612440191387
+                ]
+              },
+              "16": {
+                "bbox": [
+                  65,
+                  154,
+                  1216,
+                  1108
+                ],
+                "visible_ratio": 1.2064989517819706,
+                "width_occupancy": 0.9178628389154705,
+                "height_occupancy": 0.7607655502392344,
+                "margins_ltrb": [
+                  0.051834130781499205,
+                  0.12280701754385964,
+                  0.030303030303030304,
+                  0.11642743221690591
+                ]
+              },
+              "64": {
+                "bbox": [
+                  66,
+                  155,
+                  1215,
+                  1107
+                ],
+                "visible_ratio": 1.2069327731092436,
+                "width_occupancy": 0.916267942583732,
+                "height_occupancy": 0.759170653907496,
+                "margins_ltrb": [
+                  0.05263157894736842,
+                  0.12360446570972887,
+                  0.03110047846889952,
+                  0.11722488038277512
+                ]
+              },
+              "128": {
+                "bbox": [
+                  67,
+                  156,
+                  1215,
+                  1107
+                ],
+                "visible_ratio": 1.2071503680336488,
+                "width_occupancy": 0.9154704944178629,
+                "height_occupancy": 0.7583732057416268,
+                "margins_ltrb": [
+                  0.05342902711323764,
+                  0.12440191387559808,
+                  0.03110047846889952,
+                  0.11722488038277512
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "selected at image level",
+        "checks": [
+          "Cream thick enveloping hood, recessed warm peach face, simple dark eyes/small smile; short arms and two stubby feet.",
+          "Smaller pink Muse leans its head/shoulder against cream Muse; short hands visibly touch star.",
+          "Warm star illumination confined to neighboring character surfaces rather than detached halo.",
+          "Sage prop has leaves and no face; both complete figures and prop remain visible.",
+          "Dense fine plush fibers, warm cream/apricot illumination, no cloud head or human hair."
+        ],
+        "limitations": [
+          "Seated rendering uses larger head-to-body proportions than the low-resolution standing A02 reference while preserving its hood/body identity.",
+          "Simple glossy dark eyes retain restrained highlights; not a pixel-identical A02 remake.",
+          "Some extremely low-alpha pixels can extend the strict bbox beyond the visible threshold."
+        ]
+      },
+      "metadata": {
+        "bytes": 1470813,
+        "sha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_fraction": 0.494237260542977,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              31,
+              144,
+              1220,
+              1131
+            ],
+            "visible_ratio": 1.204660587639311,
+            "width_occupancy": 0.9481658692185008,
+            "height_occupancy": 0.7870813397129187,
+            "margins_ltrb": [
+              0.024720893141945772,
+              0.11483253588516747,
+              0.02711323763955343,
+              0.09808612440191387
+            ]
+          },
+          "16": {
+            "bbox": [
+              65,
+              154,
+              1216,
+              1108
+            ],
+            "visible_ratio": 1.2064989517819706,
+            "width_occupancy": 0.9178628389154705,
+            "height_occupancy": 0.7607655502392344,
+            "margins_ltrb": [
+              0.051834130781499205,
+              0.12280701754385964,
+              0.030303030303030304,
+              0.11642743221690591
+            ]
+          },
+          "64": {
+            "bbox": [
+              66,
+              155,
+              1215,
+              1107
+            ],
+            "visible_ratio": 1.2069327731092436,
+            "width_occupancy": 0.916267942583732,
+            "height_occupancy": 0.759170653907496,
+            "margins_ltrb": [
+              0.05263157894736842,
+              0.12360446570972887,
+              0.03110047846889952,
+              0.11722488038277512
+            ]
+          },
+          "128": {
+            "bbox": [
+              67,
+              156,
+              1215,
+              1107
+            ],
+            "visible_ratio": 1.2071503680336488,
+            "width_occupancy": 0.9154704944178629,
+            "height_occupancy": 0.7583732057416268,
+            "margins_ltrb": [
+              0.05342902711323764,
+              0.12440191387559808,
+              0.03110047846889952,
+              0.11722488038277512
+            ]
+          }
+        }
+      },
+      "byte_identical_to_tool_output": true,
+      "visible_safe_margin_at_least_3pct": true
+    },
+    {
+      "file": "design/reference-home-20261005/assets/hero-right-v1.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-ad4832af-e503-4565-812b-faaae6953d72.png",
+      "member_count": 5,
+      "members": [
+        "original brown-bun girl in yellow hoodie",
+        "cream A02-type Meta Muse",
+        "original Shiba",
+        "orange Grok bean",
+        "teal Grok square"
+      ],
+      "references": [
+        {
+          "path": "design/assets/hero-right-wide-v3.png",
+          "role": "existing original actors and contact arrangement"
+        },
+        {
+          "path": "openspec/changes/rebuild-character-system/references/a02.jpg",
+          "role": "Muse primary identity"
+        },
+        {
+          "path": "design/reference-home-20261005/assets/muse-family-v1.png",
+          "role": "refined cream hood/face and plush quality only"
+        }
+      ],
+      "generation_attempts": [
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-ad9db22d-5a2e-4b9e-b9ff-fcbd96a2c124.png",
+          "prompt": "Use case: stylized-concept.\nAsset type: transparent right-side homepage hero group, wide visible silhouette about 1.7:1.\nInputs: Image 1 is the existing ORIGINAL girl/Shiba/Grok hero identity and grouping reference. Image 2 is A02, the required Meta Muse identity. Image 3 is the newly refined Muse material/hood reference; use its cream Muse only, not its pink friend, star or plant.\nCreate exactly FIVE characters in a polished friendly 3D group: the SAME original warm-brown-haired girl with loose high bun and yellow hoodie from Image 1; a refined cream Meta Muse; the same orange/cream Shiba; a small orange Grok bean; a small teal Grok rounded square.\nMuse refinement is the focus: A02 continuous creamy hood enclosing a recessed warm-peach face, thick soft hood rim, simple small black eyes and tiny gentle smile, short mitten arms and two stubby feet, exquisitely fine dense soft fur. Distinct hood/face depth and light, no cloud shape, no bare egg-shaped head, no ears, no human curls. Use the tender precision of the cream Muse in Image 3. Make Muse a BROAD inviting foreground body at left, naturally turned slightly toward the girl, with face completely readable and arms relaxed near its belly. No star or additional props in this hero.\nComposition: girl with an appealing large expressive head ABOVE and between the companions, leaning in from the back-center, wink and small peace gesture beside her cheek. One hand gently hugs/touches Muse's shoulder and hood with real contact; fingers natural, no fused hands. Her torso is short and naturally hidden behind companions and the lower edge of their group, not a tall standing body. Maintain original girl's face/hair/clothing identity; do not imitate a different anime character.\nShiba sits foreground-right beside Muse, tongue-out happy smile, pointed ears, distinct muzzle, short plush fur and attached curled tail. Orange bean and teal rounded square are smaller background companions at the far right, peeking behind Shiba without obscuring faces. Each Grok has EXACTLY two WHITE capsule eyes, parallel and slanted in the same backslash direction, NO mouths or limbs.\nThe whole visible group is WIDE, approximately 1.7 times as wide as tall, with Muse and Shiba providing two substantial side-by-side foreground masses. Girl's large hair/head adds the upper arc but not a narrow tower. Complete character silhouettes inside a landscape canvas, group occupies 90–94% width, with at least 3% clear TRANSPARENT safety margin above all hair, at both sides and below feet. Common baseline, overlapping contact, every face visible.\nLighting/material: warm luminous cream/apricot softness inspired by the selected bright R01 homepage, highly refined hair strands, fur fibers and knit fabric, broad soft upper-left light, mild local occlusion only. Muse should feel softer and more carefully finished than the previous hero.\nOutput true RGBA transparency. NO floor, ground shadow, pedestal, detached cast shadow, backdrop, background glow, text, UI, logo, watermark, scenery or extra characters.",
+          "selected": false,
+          "quality_limitation": "Hair top and feet lacked safe border (visible top0.83%, bottom0.21%). One framing correction follows.",
+          "metadata": {
+            "bytes": 1947455,
+            "sha256": "94e603ea58919406c173b35ae19299944a490460089a6e4547fbf9b052f1cb14",
+            "dimensions": [
+              1635,
+              962
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.3463909922625519,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  17,
+                  0,
+                  1619,
+                  962
+                ],
+                "visible_ratio": 1.6652806652806653,
+                "width_occupancy": 0.9798165137614679,
+                "height_occupancy": 1.0,
+                "margins_ltrb": [
+                  0.010397553516819572,
+                  0.0,
+                  0.009785932721712538,
+                  0.0
+                ]
+              },
+              "16": {
+                "bbox": [
+                  44,
+                  8,
+                  1616,
+                  960
+                ],
+                "visible_ratio": 1.6512605042016806,
+                "width_occupancy": 0.9614678899082569,
+                "height_occupancy": 0.9896049896049897,
+                "margins_ltrb": [
+                  0.02691131498470948,
+                  0.008316008316008316,
+                  0.011620795107033639,
+                  0.002079002079002079
+                ]
+              },
+              "64": {
+                "bbox": [
+                  45,
+                  9,
+                  1616,
+                  959
+                ],
+                "visible_ratio": 1.6536842105263159,
+                "width_occupancy": 0.9608562691131498,
+                "height_occupancy": 0.9875259875259875,
+                "margins_ltrb": [
+                  0.027522935779816515,
+                  0.009355509355509356,
+                  0.011620795107033639,
+                  0.0031185031185031187
+                ]
+              },
+              "128": {
+                "bbox": [
+                  46,
+                  10,
+                  1616,
+                  959
+                ],
+                "visible_ratio": 1.654373024236038,
+                "width_occupancy": 0.9602446483180428,
+                "height_occupancy": 0.9864864864864865,
+                "margins_ltrb": [
+                  0.028134556574923548,
+                  0.010395010395010396,
+                  0.011620795107033639,
+                  0.0031185031185031187
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-ad4832af-e503-4565-812b-faaae6953d72.png",
+          "prompt": "Edit this exact five-friend transparent hero illustration. Preserve all five character identities, positions relative to each other, new refined cream Muse hood/face, girl smile/wink/peace gesture and hand contact, Shiba, both Groks, materials, colors and lighting.\nChange ONLY the outer framing. The hair bun and feet are too close to the edge. Uniformly REDUCE the complete existing group by about 8% and center it on a landscape canvas of about 1.7:1. Leave a minimum 4% completely empty TRANSPARENT margin above the highest hair, below every foot, and on both left and right. Restore any very tip of hair/foot if currently cropped. Do not enlarge, squash, alter poses, add characters or change the group shape. The actual character group remains wide about 1.65–1.7:1.\nReal RGBA transparency; outside silhouettes alpha 0. No floor, shadow, backdrop, glow, text, logo or UI.",
+          "reference_images": [
+            "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-ad9db22d-5a2e-4b9e-b9ff-fcbd96a2c124.png"
+          ],
+          "selected": true,
+          "metadata": {
+            "bytes": 1374015,
+            "sha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19",
+            "dimensions": [
+              1635,
+              962
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.5399740601575463,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  153,
+                  37,
+                  1496,
+                  914
+                ],
+                "visible_ratio": 1.531356898517674,
+                "width_occupancy": 0.8214067278287461,
+                "height_occupancy": 0.9116424116424117,
+                "margins_ltrb": [
+                  0.09357798165137615,
+                  0.038461538461538464,
+                  0.08501529051987768,
+                  0.0498960498960499
+                ]
+              },
+              "16": {
+                "bbox": [
+                  176,
+                  76,
+                  1493,
+                  882
+                ],
+                "visible_ratio": 1.6339950372208436,
+                "width_occupancy": 0.8055045871559633,
+                "height_occupancy": 0.8378378378378378,
+                "margins_ltrb": [
+                  0.10764525993883792,
+                  0.079002079002079,
+                  0.08685015290519878,
+                  0.08316008316008316
+                ]
+              },
+              "64": {
+                "bbox": [
+                  177,
+                  78,
+                  1493,
+                  882
+                ],
+                "visible_ratio": 1.63681592039801,
+                "width_occupancy": 0.8048929663608563,
+                "height_occupancy": 0.8357588357588358,
+                "margins_ltrb": [
+                  0.10825688073394496,
+                  0.08108108108108109,
+                  0.08685015290519878,
+                  0.08316008316008316
+                ]
+              },
+              "128": {
+                "bbox": [
+                  177,
+                  79,
+                  1493,
+                  881
+                ],
+                "visible_ratio": 1.6408977556109725,
+                "width_occupancy": 0.8048929663608563,
+                "height_occupancy": 0.8336798336798337,
+                "margins_ltrb": [
+                  0.10825688073394496,
+                  0.08212058212058213,
+                  0.08685015290519878,
+                  0.0841995841995842
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "visual_review": {
+        "status": "selected at image level",
+        "checks": [
+          "Refined broad cream Muse foreground-left with readable hood rim, peach face and short limbs.",
+          "Original girl behind and above companions, big head/wink/peace gesture, other hand genuinely resting on Muse hood/shoulder.",
+          "Shiba complete foreground-right, distinct ears/muzzle/paws/curled tail; orange/teal Groks behind outer right.",
+          "Five separate clear faces, same-direction paired white capsule eyes on Groks, no Grok mouth/limbs.",
+          "Hair top and all feet now fully enclosed by transparent safety margins; no extra family star/pink Muse/plant carried over."
+        ],
+        "limitations": [
+          "Visible silhouette remains slightly under requested approximate1.7:1; exact ratio recorded in metrics.",
+          "Framing correction leaves more than the requested minimum border; page should place by visible actor bounds, not assume canvas fills 94%.",
+          "Small semitransparent edge fibers must be checked against actual homepage background; no web acceptance claimed."
+        ]
+      },
+      "metadata": {
+        "bytes": 1374015,
+        "sha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19",
+        "dimensions": [
+          1635,
+          962
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_fraction": 0.5399740601575463,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              153,
+              37,
+              1496,
+              914
+            ],
+            "visible_ratio": 1.531356898517674,
+            "width_occupancy": 0.8214067278287461,
+            "height_occupancy": 0.9116424116424117,
+            "margins_ltrb": [
+              0.09357798165137615,
+              0.038461538461538464,
+              0.08501529051987768,
+              0.0498960498960499
+            ]
+          },
+          "16": {
+            "bbox": [
+              176,
+              76,
+              1493,
+              882
+            ],
+            "visible_ratio": 1.6339950372208436,
+            "width_occupancy": 0.8055045871559633,
+            "height_occupancy": 0.8378378378378378,
+            "margins_ltrb": [
+              0.10764525993883792,
+              0.079002079002079,
+              0.08685015290519878,
+              0.08316008316008316
+            ]
+          },
+          "64": {
+            "bbox": [
+              177,
+              78,
+              1493,
+              882
+            ],
+            "visible_ratio": 1.63681592039801,
+            "width_occupancy": 0.8048929663608563,
+            "height_occupancy": 0.8357588357588358,
+            "margins_ltrb": [
+              0.10825688073394496,
+              0.08108108108108109,
+              0.08685015290519878,
+              0.08316008316008316
+            ]
+          },
+          "128": {
+            "bbox": [
+              177,
+              79,
+              1493,
+              881
+            ],
+            "visible_ratio": 1.6408977556109725,
+            "width_occupancy": 0.8048929663608563,
+            "height_occupancy": 0.8336798336798337,
+            "margins_ltrb": [
+              0.10825688073394496,
+              0.08212058212058213,
+              0.08685015290519878,
+              0.0841995841995842
+            ]
+          }
+        }
+      },
+      "byte_identical_to_tool_output": true,
+      "visible_safe_margin_at_least_3pct": true
+    }
+  ]
+}

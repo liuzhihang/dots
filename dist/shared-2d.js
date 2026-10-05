@@ -1,5 +1,5 @@
-import {schematicShapes} from './studio-pickers.js?v=70';
-import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=70';
+import {schematicShapes} from './studio-pickers.js?v=81';
+import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=81';
 const safe=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 export function schematicSupport(c){const unavailable=!schematicShapes[c.shape];return {unavailable,notes:[unavailable?'此人物 / 动物结构尚无对应 2D 示意；原角色完整保留，请返回 3D 查看。':'2D 结构示意使用同一份配置；材质、光照与景深请在 3D 查看。',...((c.action!=='idle'||c.accessories.prop!=='none'||c.limbs!=='none'&&c.limbs!=='auto')?['动作、道具与肢体接触仅在 3D 演示，设定已保留。']:[]),...(!['none','headphones','beret','pom','tuft'].includes(c.accessories.head)?['所选头饰仅在3D完整展示。']:[]),...(!['none','bow'].includes(c.accessories.neck)?['颈饰以简线示意，完整造型请在3D查看。']:[]),...(c.camera!=='front'?['2D 仅展示正面；保存的镜头未改变。']:[])]};}
 export function schematicSVG(c){

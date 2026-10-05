@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-05",
+  "scope": "Selected R01 faithful homepage art; Meta Muse is the only identity adjustment. Not user art approval.",
+  "tool": "built-in image_gen",
+  "imageGenBackend": "not exposed",
+  "files": [
+    {
+      "source": "design/reference-home-20261005/assets/hero-left-exact-v2.png",
+      "runtime": "dist/assets/scenes/hero-left-v4.png",
+      "generatedPath": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-19036e42-a491-46b5-b9f4-c1645517ca0e.png",
+      "prompt": "Use case: background-extraction, production transparent homepage hero art. Image1 is the USER'S EXACT SELECTED DESIGN. This is faithful extraction/reconstruction of the indicated hero ensemble, NOT an alternative design or a creative remix. Match its original character scale, relative positions, palette, materials, expressions, gestures, clothes and accessories closely. No UI, no city background, no text, no title, no button, no ground plane, no other characters. Genuine transparent alpha background. Complete compact wide ensemble roughly 1.6:1 visible bounds, in wide canvas with only 5% transparent safe frame, preserve all visible edges. Keep the original premium soft 3D toy lighting. People and animal identity must be original stylized characters, do not use any anime screenshot pixels or recreate a named anime identity; preserve the reference's layout, clothing and pose. Extract only the TOP LEFT hero group (not any card). Main violet satin glossy smooth spherical Dots at lower left with silver-violet over-ear headphones physically touching sphere and TWO WHITE DIAGONAL capsule eyes, tilted slightly like the source. Behind center, big-headed cheerful wavy chestnut-haired chibi boy in ivory hoodie/light jacket with black trim/straps, left hand raised waving at upper left, open happy smile and sparkling dark eyes, leaning toward center. Tiny HOT PINK white-capsule-eyes Grok rounded triangle peeking bottom center-left beside purple ball; bright GREEN cloud-shaped Grok lower right with paired white vertical capsule eyes; smaller BLUE teardrop Grok above green farther behind at upper right with paired diagonal white capsule eyes. EXACTLY these five, same hierarchy as reference. Do not use black eyes on Dots, blue plush main Dot, pink eyeglass sphere, extra hands touching earphones, hat or glasses. The boy must reproduce the waving hand side/pose of source, not wave on right.",
+      "width": 1586,
+      "height": 992,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleBounds": [
+        73,
+        42,
+        1483,
+        942
+      ],
+      "sha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507",
+      "runtimeCopyExact": true
+    },
+    {
+      "source": "design/reference-home-20261005/assets/hero-right-exact-v2.png",
+      "runtime": "dist/assets/scenes/hero-right-v4.png",
+      "generatedPath": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-255b6e4e-6e20-4472-b9db-f9b547be6fe3.png",
+      "prompts": [
+        "Use case: background-extraction, production transparent homepage hero art. Image1 is the USER'S EXACT SELECTED DESIGN. This is faithful extraction/reconstruction of the indicated hero ensemble, NOT an alternative design or a creative remix. Match its original character scale, relative positions, palette, materials, expressions, gestures, clothes and accessories closely. No UI, no city background, no text, no title, no button, no ground plane, no other characters. Genuine transparent alpha background. Complete compact wide ensemble roughly 1.6:1 visible bounds, in wide canvas with only 5% transparent safe frame, preserve all visible edges. Keep the original premium soft 3D toy lighting. People and animal identity must be original stylized characters, do not use any anime screenshot pixels or recreate a named anime identity; preserve the reference's layout, clothing and pose. Extract only the TOP RIGHT hero group (not any card). Keep the design's big-headed brown messy bun young girl behind center with yellow sweatshirt, happy wink and right-side hand making peace sign, leaning into Muse, SAME original pose, scale and silhouette. Keep happy plump orange white Shiba foreground RIGHT with mouth open small pink tongue, upright ears and paws, same pose and identity style. Keep small orange round bean-shaped Grok behind upper right and teal rounded-square Grok bottom far-right, both with paired white diagonal capsule eyes, same reference layout/material. ONLY EDIT the CREAM MUSE in foreground LEFT: replace the reference's cloud-shaped cream plush with cream Meta Muse based on Image2 A02, thick continuous enveloping hood, recessed warm peach round face opening, simple tiny dark oval eyes and tiny smile, very short rounded hands and feet, subtle cream fine plush, chubby seated body. It should remain roughly the SAME silhouette footprint/location/height as reference's original cream character, nestled against girl's left side. No held star or plant in hero (card-only), no pink Muse, no big brown shiny eyes. Girl hand lightly rests near Muse shoulder/hood, no penetration. Preserve ALL other characters, poses and colors without reimagining.",
+        "Precise-object-edit of the provided transparent homepage RIGHT hero PNG. Only remove the Shiba dog's red collar and bone-shaped gold tag, replacing those exact neck pixels with its natural ivory/orange plush fur. Preserve EVERYTHING ELSE without changes: the girl, her eyes/hair/bun/yellow outfit/wink/peace pose/hand contact, the cream hooded Muse, dog ears/face/closed-eyes/tongue/paws and body position, orange and teal white-capsule-eyed Grok shapes, relative scales, contours, lighting, transparent background and overall complete framing. Do not add any accessory. No other alterations."
+      ],
+      "width": 1585,
+      "height": 992,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleBounds": [
+        147,
+        39,
+        1533,
+        955
+      ],
+      "sha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281",
+      "runtimeCopyExact": true
+    },
+    {
+      "source": "design/reference-home-20261005/assets/cards/muse-card-v2.png",
+      "runtime": "dist/assets/scenes/family-meta-muse-v4.png",
+      "generatedPath": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-4f726d2d-a931-4415-aece-f8bc023e865a.png",
+      "prompts": [
+        "Use case: precise-object-edit. Asset: actual transparent Meta Muse family-card illustration for the selected homepage.\nInput 1 is the existing two-Muse illustration to edit. Input 2 is the chosen homepage, used only for composition and single-primary-Muse/star/plant balance; do not reproduce its UI or any people or animals. Input 3 A02 defines the permitted Meta Muse identity.\nEdit the existing illustration into ONE cream Muse only. Remove the pink second Muse entirely. Keep the thick continuous cream hood and recessed warm peach face, short soft body, very short arms, rounded feet, and fine short ivory plush fabric. The cream Muse sits front-facing slightly 3/4, nearly fills the height, holding one clearly readable gently glowing warm yellow five-pointed star at its chest with BOTH short hands visibly supporting the star's lower sides. The star is prominent enough to remain visible when the art is 150px high. Happy tiny black oval eyes, tiny warm smile, subtle cheeks; avoid big sparkling anime eyes. Face opening has distinct inner rim and thickness, don't turn it into a cloud, animal or human child. Retain a small sage-green padded sprouting plant behind its RIGHT shoulder/side, subtle lower to upper height about 75% of Muse; it is a prop without face, separate from the hood, no detached leaves.\nComposition closely follows the Meta Muse card of Input2: single main cream character center-left foreground, sage prop behind right, mild leaning toward companion plant. Compact complete silhouette filling about 88% of a SQUARE image height and 85% width with 5% transparent safety margin around all edges. All parts intact. Soft warm studio light, gentle shadows, rich fine plush detail, calming. Entire background genuinely transparent alpha, no ground blob, no backdrop, no text, no frame, no additional characters.",
+        "Use case precise-object-edit. Edit only the facial eyes of this single Meta Muse card PNG. Keep the entire cream hood, its inner rim and warm peach face, body proportions, star held by both short hands, feet, sage sprouting plant, composition, fine plush material, lights and exact transparent alpha framing unchanged. Make BOTH eyes 55% smaller than current, simple BLACK upright short ovals, with only a very tiny restrained light glint. Do NOT use big round chocolate glass eyes, do not add eyelashes or brows. Tiny smile unchanged. Retain genuinely transparent background. No other changes."
+      ],
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "visibleBounds": [
+        119,
+        65,
+        1217,
+        1201
+      ],
+      "sha256": "07749dcad0c8f71f8e0aa77f2600ecc6d1f3e9544738cf5f831d1eb03bab460f",
+      "runtimeCopyExact": true
+    }
+  ],
+  "referencePaths": [
+    "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+    "openspec/changes/rebuild-character-system/references/a02.jpg"
+  ],
+  "limitations": [
+    "Reference layout, colors, gestures and relative scale are followed; bitmap is regenerated, not an identical screenshot pixel extraction.",
+    "People and animals use original generated chibi appearances. No anime screenshot pixels, cutouts or textures used.",
+    "Display scenes do not expand or replace the existing 15 registered editable gallery identities.",
+    "Source PNG copied whole, without cropping, segmentation or Python image editing.",
+    "Generated raster or program checks never grant user art acceptance."
+  ],
+  "references": [
+    {
+      "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f"
+    },
+    {
+      "path": "openspec/changes/rebuild-character-system/references/a02.jpg",
+      "sha256": "0c9865911877bdba13f0f9c08e4e11c0ff588cc1079129277ff15fd0bc240cde"
+    }
+  ]
+}

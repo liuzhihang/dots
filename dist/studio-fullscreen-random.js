@@ -1,6 +1,6 @@
-import {FAMILIES, SHAPES, createCharacter, resolveCharacter} from './studio-model.js?v=70';
-import {setProjectCharacter} from './studio-creation.js?v=70';
-import {RANDOM_SLOTS, SLOT_NAMES, describeRecipe, randomRecipe} from './studio-random.js?v=70';
+import {FAMILIES, SHAPES, createCharacter, resolveCharacter} from './studio-model.js?v=81';
+import {setProjectCharacter} from './studio-creation.js?v=81';
+import {RANDOM_SLOTS, SLOT_NAMES, describeRecipe, randomRecipe} from './studio-random.js?v=81';
 
 const FAMILY_IDS = Object.keys(FAMILIES);
 const clone = value => structuredClone(value);

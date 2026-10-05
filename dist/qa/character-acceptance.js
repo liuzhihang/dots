@@ -1,6 +1,6 @@
-import {CharacterPreview} from '../live-runtime.js?v=70';
-import {buildPrompt,resolveCharacter} from '../studio-model.js?v=70';
-import {acceptanceCases} from './character-cases.js?v=70';
+import {CharacterPreview} from '../live-runtime.js?v=81';
+import {buildPrompt,resolveCharacter} from '../studio-model.js?v=81';
+import {acceptanceCases} from './character-cases.js?v=81';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const sourceSnapshot=await fetch('./character-source.json',{cache:'no-store'}).then(response=>{if(!response.ok)throw Error('尚未冻结源码版本');return response.json();});
 if(sourceSnapshot.frozen!==true)document.querySelector('.notice').append(' 当前为未冻结的修复预览，仅逐项看图；完整矩阵记录暂不可运行。');

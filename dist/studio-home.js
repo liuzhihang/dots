@@ -1,13 +1,13 @@
-import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=70';
-import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=70';
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=70';
+import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=81';
+import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=81';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=81';
 
 export const FAMILY_PRESENTATION=Object.freeze([
- {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple · But Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
- {id:'grok',name:'Grok Bot',description:'多种形态的创意伙伴\n一起迎接新想法',foot:'Different Shapes · Same Friends',terms:'grok bot 几何 圆球 胶囊 软拱 磨砂 紫色 云 方块'},
- {id:'meta-muse',name:'Meta Muse',description:'温柔治愈的陪伴\n给你一点小小力量',foot:'A Softer · Brighter You',terms:'meta muse 缪斯 奶油 毛绒 玩偶 白色 连帽 花束 书'},
- {id:'humans',name:'人物',description:'鲜活的个性小角色\n记录真实的每一种情绪',foot:'Real People · More Stories',terms:'humans human people 人物 人类 男孩 女孩 栗发 金发'},
- {id:'animals',name:'动物',description:'可爱的动物伙伴\n永远在你身边',foot:'More Friends · A Kinder World',terms:'animals animal pet 动物 宠物 狗 柴犬 猫 哈士奇'}
+ {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple\nBut Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
+ {id:'grok',name:'Grok Bot',description:'多形态的创意伙伴\n一起更有趣',foot:'Different Shapes\nSame Friends',terms:'grok bot 几何 圆球 胶囊 软拱 磨砂 紫色 云 方块'},
+ {id:'meta-muse',name:'Meta Muse',description:'温柔治愈的陪伴\n给你小小的力量',foot:'A Softer\nBrighter You',terms:'meta muse 缪斯 奶油 毛绒 玩偶 白色 连帽 花束 书'},
+ {id:'humans',name:'人物',cardTitle:'Humans',description:'鲜活的个性角色\n记录真实的每一种情绪',foot:'Real People\nMore Stories',terms:'humans human people 人物 人类 男孩 女孩 栗发 金发'},
+ {id:'animals',name:'动物',cardTitle:'Animals',description:'可爱的动物伙伴\n永远在你身边',foot:'More Friends\nA Kinder World',terms:'animals animal pet 动物 宠物 狗 柴犬 猫 哈士奇'}
 ]);
 
 export function matchingFamilies(query='',filter='all'){
@@ -19,21 +19,20 @@ const lines=value=>esc(value).replaceAll('\n','<br>');
 const byId=id=>getCreationArtwork(id);
 const familyLooks=id=>(FAMILY_LOOK_IDS[id]||[]).map(byId).filter(Boolean);
 
-export function createHomePortal({openWorkspace,openGallery,onStartLook,onViewLook,onCopyLook,onDownloadLook,onReference}){
+export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLook,onViewLook,onCopyLook,onDownloadLook,onReference}){
  const nav=document.getElementById('homeFamilies'),gallery=document.getElementById('familyCards'),looks=document.getElementById('looksPortal');
  if(!nav||!gallery||!looks)return null;
  const search=document.getElementById('familySearch'),clear=document.getElementById('clearSearch'),filters=document.getElementById('lookFilters'),cards=document.getElementById('lookCards');
- let filter='all',current='dots',activeFamily='all',page='home';
+ let filter='all',current='dots',activeFamily='all',page='home',introLook='candidate-dots-20261005';
  function renderFamilyNav(){
-  nav.innerHTML=[{id:'all',name:'全部家族'},...FAMILY_PRESENTATION].map(f=>`<button class="family-filter ${filter===f.id?'selected':''}" data-home-filter="${f.id}" aria-pressed="${filter===f.id}">${f.id==='all'?'<span aria-hidden="true">⌂</span>':`<span class="family-filter-mark ${f.id}" aria-hidden="true"></span>`}${f.name}</button>`).join('');
+  nav.innerHTML=[{id:'all',name:'全部家族'},...FAMILY_PRESENTATION].map(f=>`<button class="family-filter ${filter===f.id?'selected':''}" data-home-filter="${f.id}" aria-pressed="${filter===f.id}">${f.id==='all'?'<img src="assets/characters/brand-mark.png" alt="">':f.id==='dots'||f.id==='meta-muse'?`<span class="family-nav-dot ${f.id}" aria-hidden="true"></span>`:`<img src="${byId(f.id==='grok'?'grok-green-cloud':FAMILY_LOOK_IDS[f.id][0]).src}" alt="" decoding="async">`}${f.name}</button>`).join('');
  }
  function renderFamilies(){
   renderFamilyNav();
   const found=matchingFamilies(search.value,filter);
   gallery.innerHTML=found.map(f=>{
-   const group=familyLooks(f.id);
    const scene=FAMILY_SCENES[f.id];
-   return `<button class="family-entry ${f.id}" data-family-gallery="${f.id}" aria-current="${current===f.id?'true':'false'}" aria-label="浏览 ${f.name} 内置形象"><b>${f.name}</b><span class="family-arrow" aria-hidden="true">›</span><span class="family-desc">${lines(f.description)}</span><span class="family-stack" aria-hidden="true"><img class="family-scene-image" src="${scene.src}" alt="" decoding="async" loading="lazy"></span><span class="family-scene-caption">${esc(scene.caption)}</span><span class="family-foot">${esc(f.foot)}</span><span class="family-count">${group.length} 款候选</span></button>`;
+   return `<button class="family-entry ${f.id}" data-family-gallery="${f.id}" aria-current="${current===f.id?'true':'false'}" aria-label="浏览 ${f.name} 内置形象"><b>${f.cardTitle||f.name}</b><span class="family-arrow" aria-hidden="true">›</span><span class="family-desc">${lines(f.description)}</span><span class="family-stack" aria-hidden="true"><img class="family-scene-image" src="${scene.src}" alt="" decoding="async" loading="eager"></span><span class="family-scene-caption">${esc(scene.caption)}</span><span class="family-foot">${lines(f.foot)}</span></button>`;
   }).join('');
   document.getElementById('familyEmpty').hidden=found.length!==0;
   document.getElementById('familyResults').textContent=`找到 ${found.length} 个角色家族`;
@@ -57,7 +56,7 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onViewLo
   const banner=document.getElementById('galleryScene');
   const scene=FAMILY_SCENES[activeFamily];
   banner.hidden=!scene||!found.length;
-  banner.innerHTML=scene?`<div class="gallery-scene-copy"><span>${esc(FAMILY_PRESENTATION.find(f=>f.id===activeFamily).name)}</span><h2>${scene.caption.split('，').map((part,i,parts)=>`<span>${esc(part)}${i<parts.length-1?'，':''}</span>`).join('')}</h2><p>从一个喜欢的伙伴开始，做出自己的小小角色。</p><button class="text-button" data-start-look="${esc(scene.members[0])}">创作一位伙伴 <span aria-hidden="true">→</span></button></div><img src="${scene.src}" alt="${esc(scene.caption)}" decoding="async">`:'';
+  banner.innerHTML=scene?`<div class="gallery-scene-copy"><span>${esc(FAMILY_PRESENTATION.find(f=>f.id===activeFamily).name)}</span><h2>${scene.caption.split('，').map((part,i,parts)=>`<span>${esc(part)}${i<parts.length-1?'，':''}</span>`).join('')}</h2><p>从一个喜欢的伙伴开始，做出自己的小小角色。</p><button class="text-button" data-start-look="${esc(scene.startLookId)}">创作一位伙伴 <span aria-hidden="true">→</span></button></div><img src="${scene.src}" alt="${esc(scene.caption)}" decoding="async">`:'';
   banner.dataset.family=activeFamily;
   cards.innerHTML=found.map(a=>{const look=getLookDefinition(a.id),name=look?.name||a.name,description=look?.description||a.description,source=look?.source==='official-recreation'?'品牌形象再创作 · 非官方':'原创角色';return `<article class="look-card" data-asset-state="loading" data-look-card="${esc(a.id)}">
    <button class="look-art-button" data-view-look="${esc(a.id)}" aria-label="放大查看${esc(name)}"><img src="${a.src}" alt="${esc(name)}" decoding="async" loading="lazy"><span>放大查看</span></button>
@@ -77,7 +76,11 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onViewLo
  }
  function renderHero(){
   document.getElementById('heroScene').innerHTML=HERO_SCENES.map(scene=>`<button class="hero-scene-button ${scene.id}" data-greet-scene="${scene.id}" aria-label="和${scene.id==='hero-left'?'灵感':'陪伴'}伙伴打个招呼" aria-pressed="false"><img src="${scene.src}" alt="" decoding="async" fetchpriority="high"><span class="scene-greeting" aria-hidden="true">${esc(scene.greeting)}</span><span class="scene-invitation"><span aria-hidden="true">✦</span> 打个招呼</span><span class="scene-sparkles" aria-hidden="true">✧ <i>♡</i> ✦</span></button>`).join('');
-  document.getElementById('introPreview').innerHTML=`<img class="intro-scene-image" src="${FAMILY_SCENES.dots.src}" alt="三个 Dots 伙伴挤在一起" loading="lazy"><div class="intro-preview-copy"><b>经典，或是调皮一点</b><span>选形象 · 换表情 · 加一点你的灵感</span></div>`;
+  renderIntro();
+ }
+ function renderIntro(){
+  const looks=familyLooks('dots'),selected=byId(introLook);
+  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="async"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色'],['background','背景']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="async"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
  }
  function showHome(){page='home';document.body.dataset.screen='home';document.getElementById('homePortal').hidden=false;looks.hidden=true;document.getElementById('workspaceShell').hidden=true;renderFamilies();}
  function showGallery(family='all'){page='looks';activeFamily=family||'all';document.body.dataset.screen='looks';document.getElementById('homePortal').hidden=true;looks.hidden=false;document.getElementById('workspaceShell').hidden=true;renderLooks();document.getElementById('looksTitle')?.focus({preventScroll:true});}
@@ -92,6 +95,13 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onViewLo
   else if(b.dataset.startLook)onStartLook(b.dataset.startLook);
  });
  document.getElementById('galleryScene').addEventListener('click',e=>{const b=e.target.closest('[data-start-look]');if(b)onStartLook(b.dataset.startLook);});
+ document.getElementById('introPreview').addEventListener('click',e=>{
+  const button=e.target.closest('button');if(!button)return;
+  if(button.dataset.introLook){introLook=button.dataset.introLook;renderIntro();document.querySelector(`[data-intro-look="${introLook}"]`)?.focus({preventScroll:true});}
+  else if(button.dataset.introTool)onEditLook(introLook,button.dataset.introTool);
+  else if(button.hasAttribute('data-intro-start'))onStartLook(introLook);
+ });
+ document.getElementById('introStart').addEventListener('click',()=>onStartLook(introLook));
  document.getElementById('heroScene').addEventListener('click',e=>{
   const button=e.target.closest('[data-greet-scene]');if(!button)return;
   const selected=button.getAttribute('aria-pressed')!=='true';

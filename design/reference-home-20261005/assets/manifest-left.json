@@ -1,0 +1,83 @@
+{
+  "recorded_at": "2026-10-05",
+  "status": "candidate_pending_real_webpage_user_acceptance",
+  "tool": "Codex built-in image_gen.imagegen; no CLI or API fallback",
+  "references": [
+    {
+      "role": "edit target; Image 1 in initial generation",
+      "path": "design/scene-refinement-20261005/assets/hero-left-wide-v3.png",
+      "sha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+      "dimensions": "1585x992 PNG",
+      "notes": "Existing purple Dots, pink Dots, green cloud Grok Bot, blue teardrop Grok Bot, and silver-lilac headphones."
+    },
+    {
+      "role": "composition reference; Image 2 in initial generation",
+      "path": "openspec/changes/rebuild-character-system/references/r01-confirmed-direction.jpg",
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+      "dimensions": "1280x720 JPEG",
+      "notes": "Used for the left-side group hierarchy only. No text, site UI, exact art, or human identity was requested."
+    },
+    {
+      "role": "user-selected homepage design attachment; byte-identical to the R01 image above",
+      "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5080AD6F-8BFE-4F73-9B12-764236E7C654/1-Photo-1.jpg",
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+      "dimensions": "1280x720 JPEG",
+      "notes": "Viewed directly. The project R01 copy, with the same SHA-256, was passed as Image 2; this duplicate attachment was not passed a second time."
+    }
+  ],
+  "operations": [
+    {
+      "stage": "initial image edit",
+      "tool_output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-63bba944-e19b-4c8c-bda3-2f7f7c630c10.png",
+      "transparent_background": true,
+      "referenced_image_paths_order": [
+        "design/scene-refinement-20261005/assets/hero-left-wide-v3.png",
+        "openspec/changes/rebuild-character-system/references/r01-confirmed-direction.jpg"
+      ],
+      "prompt": "Use case: stylized-concept\nAsset type: transparent isolated left-side hero character cluster for the Dot Icon Studio homepage\nInput images: Image 1 is the edit target and source of the existing purple Dots, pink Dots, green cloud Grok Bot, blue teardrop Grok Bot, and existing silver-lilac headphones. Preserve and refine these identities. Image 2 is a composition reference only for the homepage left cluster: a large purple Dots orb in front, an original chestnut-haired child behind it, and colorful simple companion mascots arranged in a cheerful connected group. Do not copy the page layout, typography, UI, background, exact character artwork, or human likeness from Image 2.\nScene/backdrop: genuine transparent alpha background; no room, ground plane, floor, or exterior cast shadow.\nSubject and composition: create one cohesive, friendly toy-character group with an approximately 1.7:1 wide overall visual envelope. Put a large original chibi boy behind and above the mascots; his head and chestnut brown softly tousled curls should occupy about 70% of the cluster's height. Give him an original, warm, joyful face with his own facial proportions and features, not a recognizable person or copied character. Dress him in a clean ivory-white jacket with a simple dark shoulder strap. Show only his upper body, mostly hidden behind the mascots. One hand reaches from behind the purple orb and gently rests beside the orb's headphone ear cup; his other hand waves happily toward the open center side of the composition. Keep both hands anatomically plausible and clearly separate from the face and mascot eyes.\nCharacter geometry and placement: in front-left, the large Dots is a complete near-perfect circular plush orb, approximately 60% of cluster height, rich lavender-purple, covered in very fine short soft plush fibers, wearing a complete tasteful silver-and-lilac over-ear headphone set that follows the sphere. Keep the headphone arch and both ear cups intact and readable. Dots has exactly two small black oval eyes on its front, no white pill eyes and no mouth. At lower center, include one smaller round soft-pink Dots companion with two small black oval eyes and no mouth. To the right of Dots, include one mint-green cloud-shaped Grok Bot and one bright-blue water-drop-shaped Grok Bot, both complete with exactly two white rounded capsule eyes, each pair leaning in the same backslash direction (upper-left to lower-right), no mouth and no limbs. Arrange all five elements in a tight but readable stepped cluster with gentle contact or overlap: the boy sits behind, the big purple orb anchors the front-left, the pink Dot nestles below, and the green cloud and blue drop balance the right side. Do not cover the key silhouettes, eyes, hands, or headphones. Leave about 3% clear transparent safety margin; keep every curl, hand, mascot edge, and headphone fully inside the canvas.\nStyle/medium: premium cohesive 3D collectible-toy illustration with precise sculpted forms and fine soft materials. Keep Dots plush short-pile rather than long fur; keep Grok characters smooth soft-matte colored shapes. A warm, bright studio finish, with careful clean detail and no synthetic plastic glare.\nLighting/mood: soft bright warm key light, balanced fill, subtle rim separation; happy welcoming mood; shadows only as internal contact shading between touching figures, fully within the cutout.\nConstraints: preserve Dots identity as a violet circular plush orb with silver-lilac headphones and small black oval eyes. Preserve Grok Bot identity as simple green cloud and blue droplet shapes with matching-direction white capsule eyes. The boy must be an original, non-recognizable design; use no source anime pixels or copied identity. Transparent background with alpha.\nAvoid: white capsule eyes on Dots; white eye shapes on the boy; Grok mouths, limbs, accessories, or robot panels; animal figures; copied anime likeness; exact copied faces or hair silhouette; extra characters; cropped hair or cut-off headphones/orbs/hands; unsupported fingers; detached objects; floating group; floor, ground shadow, backdrop, gradients, text, letters, logo, watermark, UI, poster, border, square/cube Dots, noisy fur, heavy gloss, or dramatic shadows."
+    },
+    {
+      "stage": "one targeted framing correction",
+      "tool_output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-ae7a0ad2-5bee-4829-b63f-d141c49fe365.png",
+      "transparent_background": true,
+      "num_last_images_to_include": 1,
+      "prompt": "Make one precise framing correction to the provided image. Preserve the exact character artwork, identities, face, clothing, expressions, colors, materials, accessories, hand poses, and relative arrangement. Uniformly scale the entire five-character cluster down slightly as one intact group and center it on the same square-ish transparent canvas, so every hair curl, headphone edge, hand, and mascot has at least 4 percent fully transparent safety margin on all four canvas edges. Do not stretch the figures or change their spacing, overlap, or pose. Keep the cluster wide and stepped at approximately 1.7:1. Preserve genuine transparent alpha background; add no background, text, shadow, props, or new features."
+    }
+  ],
+  "final_asset": {
+    "path": "design/reference-home-20261005/assets/hero-left-v1.png",
+    "source_tool_output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-ae7a0ad2-5bee-4829-b63f-d141c49fe365.png",
+    "sha256": "7ebf2f43ba686f2d4fbedddd6bc4bf3b0117a93d0990d83f58c9c5e728a4a810",
+    "dimensions": "1616x973",
+    "format": "PNG",
+    "bit_depth": 8,
+    "color_type": "RGBA",
+    "alpha": {
+      "min": 0,
+      "max": 255,
+      "visible_bbox_threshold": 16,
+      "visible_bbox_xyxy": [175, 102, 1435, 877],
+      "visible_group_ratio": 1.625,
+      "transparent_margin_approx_percent": {
+        "left": 10.8,
+        "top": 10.5,
+        "right": 11.1,
+        "bottom": 9.8
+      }
+    },
+    "copy_verification": "Project asset SHA-256 matches the final ImageGen tool output bytes."
+  },
+  "visual_review": {
+    "observed": [
+      "All five requested subjects are visible: original boy, large purple Dots, small pink Dots, green cloud Grok Bot, and blue drop Grok Bot.",
+      "Purple Dots has a round plush orb, silver-lilac headphones, and black oval eyes. Grok figures use white capsule eyes with matching diagonal direction and have no mouths or limbs.",
+      "The boy has chestnut hair, an ivory jacket and dark shoulder strap; one hand rests by the headphone arch and the other waves."
+    ],
+    "limitations": [
+      "The visible cluster ratio is 1.625:1, close to but below the approximate 1.7:1 prompt target.",
+      "The result is a generated isolated asset only. No browser integration or real webpage visual acceptance was performed.",
+      "The boy is an independent generated chibi character without anime source pixels. Human review should still confirm that the broad curls-and-large-eyes look is sufficiently distinct from any protected character reference."
+    ],
+    "webpage_art_acceptance": "pending_user_review"
+  }
+}

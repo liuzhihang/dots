@@ -2,11 +2,15 @@
 
 让用户创建并带走形象的工作台：先浏览五大家族的内置形象，再在一个创作工作台中选模板、换背景、编辑 Prompt，并可导出项目 JSON、复制完整 Prompt 或打开 ChatGPT。只有当前受支持设置被真实 Canvas 合成时才能导出当前角色 PNG；自己的图片在 ChatGPT 另附。无需登录，不建设用户空间。源码来自现有 Dot Icon Studio Sites 项目 v27，保留原站 Git 历史；现在由这个私有 GitHub 仓库管理源码。
 
-本次 `rebuild-character-system` 改造保留五个独立分组：**Dots、Grok Bot、Meta Muse、人物、动物**。当前目录每组含一只 canonical 基准和两只已登记的内置形象候选。页面展示、原图下载、Prompt、构建或程序检查均不代表美术验收通过；实现、程序验证、网页美术验收、用户确认和发布状态分别记录。
+本次 `rebuild-character-system` 改造保留五个独立分组：**Dots、Grok Bot、Meta Muse、人物、动物**。当前内置形象画廊每组有一只 canonical 基准和两只已登记候选，共 15 个图库身份样例；这是当前图库范围，不决定首页或家族卡插画的群像人数。页面展示、原图下载、Prompt、构建或程序检查均不代表美术验收通过；实现、程序验证、网页美术验收、用户确认和发布状态分别记录。
 
 ## 当前页面与创作路径
 
-首页主视觉使用两张专门绘制的透明关系场景，复用 12 个既有身份；五张家族卡各显示本组三成员的互动插画。递花、接物、靠肩、蹭脸与几何轮廓接触在场景素材内真实画出，不再把独立站姿 PNG 按同一个模板旋转堆叠。首页问候按钮支持点击、触控和键盘；场景反馈尊重 reduced-motion，不冒充肢体动画。独立的“内置形象”页面提供 15 张完整搭配图，支持按家族筛选、搜索、放大查看、复制对应 Prompt、下载原图，以及用单一“用这个形象定制”入口把角色带入工作台。首页家族卡进入对应家族筛选后的画廊；顶部主导航分别通往首页、内置形象和工作台。
+本轮首页及五张家族卡以 R01 为单一视觉目标：卡片按参考图的主体大小/位置、前后层级、底色、材质、道具与标题/说明/插画/英文双行短句排布；非 Muse 场景忠实复原原型，只有 Meta Muse 做 A02 身份微调。顶部左侧按 R01 呈现紫色耳机 Dot、挥手栗发白衣男孩、小粉三角、绿云和蓝水滴；右侧呈现棕发丸子头、黄色衣着、眨眼作 V 手势的女孩、单只奶油 Muse、橙柴犬、橙豆形与青绿方形。Hero Muse 不持星、不带植物；星星与 sage 植物仅用于单只 Muse 家族卡。Humans 卡三人依次为左侧黑发深色 hoodie 男孩、中间棕发丸子头黄色衣着眨眼 V 手势女孩、右侧金发圆框眼镜灰外套白上衣角色。家族卡当前素材数为 Dots 4、Grok Bot 6、Meta Muse 1、人物 3、动物 5；这是本轮场景计数，不是未来图库/插画人数限制。首页卡片不显示“3 款候选”，画廊仍准确保留五组各三只、共 15 个已登记图库身份。Humans/Animals 卡标题按 R01 用英文，导航仍为中文“人物/动物”；Grok 文案保持有趣的 R01 语气。详情由 [refine-family-scene-composition](openspec/changes/refine-family-scene-composition/proposal.md) 跟踪。
+
+R01 图片可作为 ImageGen 构图/服装/材质风格参考，但最终网页必须使用单独制作的场景图，不直接使用整页截图、截图裁片或像素；人物和动物要保持原创，不能复制用户的动漫截图或可辨认的完整动漫角色。Scene-only 展示与 Gallery/工作台身份分离；R01 紫色缎面 Dot 的白色斜胶囊眼不代表替换现有 15 个可编辑 Gallery 素材。之前的 v72 记录只作历史本地基线，早于本轮内容范围。当前真实页面检查绑定 v81 cache/source `0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，123 个路径；视口截图见 [reference-home 索引](design/reference-home-20261005/README.md)。v81 独立页面视觉复核已通过内部复核，未发现 P0/P1/P2，P3 观察见 [报告](design/reference-home-20261005/visual-review-v81.md)。用户艺术确认和实体手机测试未完成。实现和文件检查不等于角色美术通过。
+
+独立的“内置形象”页面提供 15 张完整搭配图，支持按家族筛选、搜索、放大查看、复制对应 Prompt、下载原图，以及用单一“用这个形象定制”入口把角色带入工作台。首页家族卡进入对应家族筛选后的画廊；顶部主导航分别通往首页、内置形象和工作台。
 
 创作工作台是一个统一界面，不向用户显示 Artwork / Composer 技术模式页签。五组共登记 15 个受信任的完整形象模板，画布可真实合成模板 PNG 与所选背景。Dots 基准另有明确的完整配方：裸形与耳机素材互斥切换，并支持已登记的聆听状态；不会把两个图层简单叠放。五组基准另各登记一套真实的表情或姿态完整 PNG：Dots/Grok 眨眼，Muse/人物挥手，柴犬坐姿抬前爪。工作台以经典/问好状态选择对应完整图片，同步现有 expression/action/pose 字段；其余十张完整搭配的姿态和图中配饰固定。它不是任意三维捏形、自由换装或通用图片生成。
 
@@ -71,7 +75,7 @@ openspec validate --archived --strict
 
 程序检查验证状态、迁移、Prompt、项目模式兼容、五组 15 项画廊素材与候选约束、可信 Canvas 配方及几何。真实页面另行检查五组身份、材质、配饰接触、动作关键帧、桌面及 320/390/768 px 视口、画廊原图下载、工作台 Canvas/alpha/导出文件、Prompt 剪贴板回读与结构诊断。组合资产缺失项明确记录为不可验收。构建成功、逻辑脚本通过、任务勾选和固定生成图都不代表网页美术通过。
 
-当前改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)。用户提供的 R01 是整体设计方向，Meta Muse 以 A02 包覆式形象校准。人物和动物仅提炼动漫截图的通用比例、材质、发束与表情语言，重新设计；截图、抠图和截图纹理不能用于最终角色资产。Dots、Grok Bot、Meta Muse 保留用户允许的身份参考，并以非官方的独立再创作标记素材来源。
+当前角色资产改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)，首页与家族卡场景见 [`refine-family-scene-composition`](openspec/changes/refine-family-scene-composition/)。Meta Muse 以 A02 包覆式身份校准；本轮人物与动物保持原创，不使用动漫截图像素、裁片、贴图或完整可辨认角色。用户允许 R01 作为 ImageGen 的构图/服装风格参考，页面最终使用单独的新插画；Dots、Grok Bot 和 Meta Muse 的软件内置身份可按允许范围保留并记录来源。
 
 2026-10-05 历史记录：v30 阶段曾将 R01 首页与工作台上线，并为五组登记各一只新的透明底基准候选；当时记录的单角色家族卡、旧工作台路径和“每组一只”状态是该版本快照，不代表当前页面限制。v31 曾扩展为 12 张独立角色组成的首页、五张三角色家族卡、15 项画廊与统一工作台。本轮进一步改为有共同视线和接触的关系场景，以及五组基准的真实表情/姿态切换；内置图库仍为 15 个身份。Grok 紫色圆形与同向斜胶囊眼仍是当前基准身份方向，Meta Muse 保留包覆式形象。所有 15 张新候选仍待真实页面逐组美术验收；状态见[角色资产来源记录](openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/asset-provenance.md)与[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。旧程序化角色与已撤下素材的拒绝记录仍保留，不代表当前新候选已通过验收。
 
@@ -81,7 +85,7 @@ openspec validate --archived --strict
 
 2026-10-05 早期 v64 本地快照：修复减少动态偏好、实际帧冻结导出/关闭取消及高级设定布局，缓存统一 v64；证据与五组待确认清单见[本轮 QA](design/followup-qa-20261005.md)。导航和随机按已验证行为同步主 specs 后归档；当时视觉 change 保留待反馈，角色 change 仍 15/36。此轮未提交、推送或发布，旧线上版本未在此轮回读。
 
-2026-10-05 最终 v70：缓存模块统一 v70，构建与 12 项回归检查通过；五组 10 份 WebGL/CPU 矩阵共 3798 条实际记录，主预览及结构诊断在 320/390/768 px 共 30 张重新捕获的页面无横向溢出。30 份实际 PNG 下载通过尺寸、alpha、SHA-256 与对应完整 Prompt 回读检查。来源和逐项结果见[最终 v70 验收记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/README.md)。角色 change 的五项矩阵执行任务完成，当前 **20/36、16 项未完成**；人物发丝和衣物、短绒质感及部分配饰自然性仍有美术失败项，五组用户确认和实体手机验收仍待反馈。此次准备向既有私有 Git 仓库及原 Site 发布当前候选，实际提交与部署以发布 receipt 为准。
+2026-10-05 v70 中间版：缓存模块统一 v70，构建与 12 项回归检查通过；五组 10 份 WebGL/CPU 矩阵共 3798 条实际记录，主预览及结构诊断在 320/390/768 px 共 30 张重新捕获的页面无横向溢出。30 份实际 PNG 下载通过尺寸、alpha、SHA-256 与对应完整 Prompt 回读检查。来源和逐项结果见[v70 冻结矩阵与页面记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/README.md)。其发布 receipt 记录 v70 已部署到 Site version 33（source commit `0cd69c96ebd02e5c61c6c9b35aab8958120256ad`、sourceId `9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826`）；这是已发布的中间版本，不代表新反馈已解决。3798 条矩阵和旧响应式截图只绑定该冻结 v70 来源，不计为后续场景变更或任一更新 runtime/source 的整体验收。角色 change 仍为 **20/36、16 项未完成**；五组都未通过美术确认，人物发丝和衣物、短绒质感及部分配饰自然性仍有美术失败项，逐组用户确认和实体手机验收仍待完成。v71 与 v72 的本地冻结证据和未完成门槛见[场景构图与验收边界](design/scene-refinement-20261005/README.md)、[v71 中间记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v71/README.md)及[本地 v72 记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v72/README.md)。
 
 ## Git 与发布
 

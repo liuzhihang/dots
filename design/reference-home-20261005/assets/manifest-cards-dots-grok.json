@@ -1,0 +1,150 @@
+{
+  "recorded_at": "2026-10-06",
+  "status": "dots_candidate_selected_for_parent_review; grok_candidate_rejected_pending_root_asset_pass; neither_has_real_webpage_art_acceptance",
+  "tool": "Codex built-in image_gen.imagegen; transparent_background=true; no CLI/API fallback",
+  "references": [
+    {
+      "role": "user-selected R01 homepage/card composition reference; viewed before generation",
+      "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+      "dimensions": "1280x720 JPEG",
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+      "passed_as_image_input": false,
+      "notes": "Used as a visual reference while writing the prompts. These new assets were generated from text prompts, not by cropping or editing the screenshot."
+    },
+    {
+      "role": "existing Dots family scene examined for differences only",
+      "path": "dist/assets/scenes/family-dots-v2.png",
+      "dimensions": "1402x1122 PNG",
+      "sha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+      "passed_as_image_input": false,
+      "notes": "The old blue-dominant character, yellow hat, and extra mint/peach members are intentionally absent from the new four-member Dots card."
+    },
+    {
+      "role": "existing Grok Bot family scene examined for differences only",
+      "path": "dist/assets/scenes/family-grok-v2.png",
+      "dimensions": "1402x1122 PNG",
+      "sha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+      "passed_as_image_input": false,
+      "notes": "The existing large purple oval and small far-right green cloud are not retained. The new scene uses the specified six geometric roles and order."
+    }
+  ],
+  "assets": [
+    {
+      "family": "Dots",
+      "selected": false,
+      "path": "design/reference-home-20261005/assets/cards/dots-family-card-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-bff3b59b-bcde-46d2-b064-b1a5ea183b01.png",
+      "sha256": "6f76562acdb283e85315cb0c9f705e2665c04ca969983b3118b34ff54dd9303a",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "bit_depth": 8,
+      "color_type": "RGBA",
+      "file_bytes": 1171185,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "visible_bbox_alpha_gte_16_xyxy": [
+          88,
+          136,
+          1185,
+          1112
+        ],
+        "visible_group_ratio": 1.124,
+        "visible_height_percent": 77.9,
+        "transparent_margin_approx_percent": {
+          "left": 7,
+          "top": 10.8,
+          "right": 5.5,
+          "bottom": 11.3
+        }
+      },
+      "generation_prompt": "Use case: stylized-concept\nAsset type: isolated transparent square mascot-family card artwork for the Dot Icon Studio homepage\nPrimary request: create one compact 3D toy group containing exactly four Dots family mascots, in the specific arrangement and palette below.\nScene/backdrop: genuinely transparent alpha background; no environment, floor, plate, border, or cast shadow outside the figures.\nSubject and composition: a large glossy-satin purple sphere is the dominant main Dots, slightly left of center, wearing a complete silver-and-lilac over-ear headphone set. The headphone arch curves over and touches the sphere; both ear cups are physically seated against the sphere's left and right sides, with contact shading and no floating parts. The main purple sphere has exactly two bright white rounded capsule eyes, slightly tilted in the same diagonal direction, facing forward. In the front-left foreground place one smaller smooth soft-blue round Dots with the same two white inclined capsule eyes. In the front-right foreground place one smaller smooth soft-pink round Dots, wearing thin black circular glasses that sit flush against its curved face; inside the glasses show two matching white inclined capsule eyes. At the upper-right, place one smallest sunny-yellow spherical Dots lightly hovering as a playful accent, with two small white inclined capsule eyes. Exactly four characters total.\nPlacement: tight family-card cluster inspired by the selected R01 Dots card: purple headphone sphere anchors the center-left, small blue Dot is forward-left, pink glasses Dot is forward-right, and tiny yellow Dot floats upper-right. Distinct foreground/middle/background planes, natural overlap and contact, clearly visible faces, complete round silhouettes. Keep the central purple sphere clearly purple and largest; blue remains a small companion. Keep all four characters together occupying about 85 percent of the square canvas height, with about 5 percent clear transparent safety margin around the full group.\nIdentity: this design follows the R01 Dots family visual, where the purple orb and companions use simple white slanted capsule eyes. Do not use Grok's current-v2 colors or family arrangement.\nStyle/medium: polished refined 3D vinyl collectible toys, luminous satin-gloss soft silicone, clean soft sculpting and premium studio craft, consistent scale and a friendly simple character language.\nMaterials/textures: purple main Dots has refined fine short-pile plush, soft and even, never long or shaggy. Other Dots use matching smooth soft-touch silicone with a restrained satin sheen and subtle soft surface response. All four share tasteful toy proportions and surface finish.\nLighting/mood: bright soft warm studio key light, balanced fill, subtle highlights on the satin surfaces, gentle contact shading only where accessories and characters touch.\nConstraints: exactly four and only four Dots characters: one dominant purple spherical headphone Dot, one small blue sphere lower-left, one pink sphere with directly seated black round eyeglasses lower-right, and one tiny yellow sphere upper-right. White pill eyes on each, including two clearly visible white pill eyes behind the glasses. Headphones physically contact the purple sphere, and glasses physically contact the pink sphere.\nAvoid: black eyes, vertical black ovals, black pupil eyes, blue dominant main sphere, blue plush main, yellow hat, a fifth mint-green or peach character, extra character, extra orb, extra detached accessory, hovering headphone, hovering glasses, separated earcups, open band, pink triangular character, Grok cloud/drop/square/triangle shapes, mouth, eyebrows, nose, limbs, hands, animals, text, lettering, labels, logos, borders, panels, backdrop, floor, ground plane, cast shadow outside the figures, noise, long fur, harsh glare, cropped characters, or cut-off accessories.",
+      "visual_difference_from_old_scene": "Replaces the blue-dominant main character with the purple satin-gloss sphere from R01; removes the hat, mint/peach extras, and black eyes; adds four specified characters and attached silver-lilac headphones plus directly seated pink glasses.",
+      "limitations": [
+        "The generated visible group is 77.9 percent of canvas height, below the approximate 85 percent prompt target; the transparent PNG remains uncropped and may be sized in the family card.",
+        "No runtime integration, browser rendering, or webpage art acceptance was performed."
+      ],
+      "selected_at_generation": true,
+      "runtimeSelected": false,
+      "superseded_by": "cards/manifest-dots-root-v2.json"
+    },
+    {
+      "family": "Grok Bot",
+      "selected": false,
+      "path": "design/reference-home-20261005/assets/cards/grok-family-card-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-fc84e978-e2a7-4356-9927-270466f86b9d.png",
+      "sha256": "d7c1d469cc6ed409a0aac6296dcffd889b6a0cb0459428a6ace84196bd669bb8",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "format": "PNG",
+      "bit_depth": 8,
+      "color_type": "RGBA",
+      "file_bytes": 1356547,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "visible_bbox_alpha_gte_16_xyxy": [
+          29,
+          72,
+          1230,
+          1133
+        ],
+        "visible_group_ratio": 1.132,
+        "visible_height_percent": 84.7,
+        "visible_width_percent": 95.9,
+        "transparent_margin_approx_percent": {
+          "left": 2.3,
+          "top": 5.7,
+          "right": 1.8,
+          "bottom": 9.6
+        }
+      },
+      "selected_generation_prompt": "Use case: stylized-concept\nAsset type: isolated transparent square Grok Bot family-card artwork, deliberately tightly framed like a close-up collectible-toy group portrait\nPrimary request: one compact six-character Grok family cluster that fills almost the whole square canvas. Do not leave the usual large empty margin around an icon. The overall visible silhouettes must extend from 5 percent to 95 percent of canvas height, and from about 5 percent to 95 percent of width; roughly 90 percent fill. Keep all shapes complete.\nExact roster of six, one each only: orange rounded bean, mint-green cloud, bright-blue teardrop, teal rounded square, modest lavender-purple rounded triangle, and berry-red rounded hexagon.\nPrecise square layout with strong overlap: rear/top tier has orange bean upper-left, large green cloud upper-middle-right, and modest purple rounded triangle behind at rear-right. Foreground/bottom tier has blue teardrop lower-left, teal rounded square lower-center, and berry-red rounded hexagon lower-right. Keep the green cloud large and prominent. Do not create any large purple oval or purple sphere.\nRelative proportions and placement guide on the square canvas: orange bean spans about 31 percent of canvas width and 40 percent height, centered near x=22 percent and y=34 percent. Green cloud spans about 48 percent width and 54 percent height, centered near x=56 percent and y=32 percent, so its highest lobe reaches near the 5 percent top margin. Purple triangle spans about 27 percent width and 40 percent height, centered near x=81 percent and y=44 percent. Blue teardrop spans about 35 percent width and 50 percent height, centered near x=23 percent and y=70 percent, reaching near the 5 percent bottom margin. Teal rounded square spans about 36 percent width and 50 percent height, centered near x=50 percent and y=70 percent. Berry-red rounded hexagon spans about 34 percent width and 50 percent height, centered near x=77 percent and y=70 percent. Overlap these shapes enough to connect all six without hiding any face or changing the specified silhouette order.\nShapes: orange is a soft rounded bean, not a sphere; green is a clearly multi-lobed cloud; blue has a round base and tapered top; teal is a broad softly bevelled square; purple is a small distinct three-corner rounded triangle behind the front row; berry-red is a distinct six-sided rounded hexagon in the front-right. The red hexagon must not become any kind of triangle.\nFaces: every character has exactly two pure-white short capsule eyes, each pair sharing the same slight backslash tilt from upper-left to lower-right. Place the pair on the forward-facing surface and keep all twelve capsule eyes visible.\nMaterial and render: smooth molded soft-silicone figures with soft-matte finish and restrained satin sheen, precise gentle bevels, crisp readable silhouettes, refined 3D family-card craft. No plush or fuzzy textures.\nLighting: bright soft studio key, gentle fill, precise dimensional shading and subtle contact occlusion only between touching figures.\nCanvas and safety: transparent alpha square background. Keep the complete group close to the frame edges with a clear but narrow 5 percent transparent border on all four edges; the group's top-to-bottom size should be approximately 1150 pixels on a 1280-pixel canvas. Fill the square; do not scale the whole composition down after arranging it.\nStrict exclusions: no purple oval, sphere, large blob or upper-center purple main character; no small green cloud pushed far-right; no pink triangle or red triangle; no seventh character; no additional colors/shapes/mascots; no black eyes, no mouth, no nose, no eyebrows, no limbs, hands, accessories, robot panels, plush, wool, fuzzy texture, text, logo, label, frame, UI, background, gradient, floor, external shadow, detached features, cropped silhouettes, or cropped eyes.",
+      "generation_history": [
+        {
+          "selected": false,
+          "output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-d70b507a-d6b8-404d-94c2-fb03aacb195d.png",
+          "difference": "Correct six shapes, color families, eyes, and general order. The group occupied about 70 percent of canvas height; discarded in favor of the closer crop below.",
+          "prompt": "Use case: stylized-concept\nAsset type: isolated transparent square Grok Bot family-card artwork for the Dot Icon Studio homepage\nPrimary request: render exactly six Grok Bot family characters in one compact, carefully staged group, with the six specified distinct shapes, colors, and positions. This card uses six members; it does not set a permanent family limit.\nScene/backdrop: genuine transparent alpha background; no environment, floor, plate, border, or cast shadow outside the characters.\nExact six-character roster and placement: (1) rear-left, one orange rounded bean shape. (2) upper middle-right, one mint-green multi-lobed cloud shape, clearly visible and prominent in the upper half. (3) front-left, one bright-blue teardrop with a rounded base and tapered top. (4) center-front, one teal-green rounded square with broad curved corners. (5) rear-right, one modest lavender-purple rounded triangle, with a clear three-corner triangle silhouette. (6) front-right, one berry-red rounded hexagon, with six broad rounded sides and a clearly readable hexagon silhouette. The green cloud is not reduced to a tiny right-edge figure. The purple triangle is smaller and behind the foreground group. The blue drop, teal square, and berry-red hexagon make a clear front row.\nFace design: each of the six and only six Grok figures has exactly two pure-white short rounded capsule eyes on its own surface. Each pair has the same slight backslash tilt, upper-left to lower-right, and the eyes follow the surface perspective. Keep both eyes visible and similarly sized within each character. No other face details.\nComposition: compact overlapping arrangement with clearly different front/middle/back depth and complete distinct silhouettes: orange bean peeks from the back-left, green cloud rises at upper middle-right, purple rounded triangle sits in the back-right, blue drop anchors the front-left, teal rounded square anchors the center-front, and berry-red rounded hexagon anchors the front-right. Group fills about 85 percent of canvas height, leaving about 5 percent clear transparent outer safety. Keep every complete silhouette and eye inside the canvas.\nStyle/medium: polished high-quality 3D soft-silicone toy illustration, smooth molded surfaces and controlled soft matte finish with only a faint satin sheen. Refined round bevels, clean geometry and unified R01 studio craft. No plush or furry texture.\nLighting/mood: bright even soft studio illumination, crisp but gentle form shading, small controlled highlights and subtle internal contact shading only, cheerful and thoughtful character-card mood.\nConstraints: exactly one each of the six specified members, no other characters. Keep the green cloud upper middle-right, orange bean rear-left, blue drop front-left, teal rounded square center-front, purple rounded triangle rear-right, berry-red rounded hexagon front-right. All eye pairs are white capsules with the same backslash slant. Keep the geometry and color coding explicit and instantly distinguishable.\nAvoid: oversized purple oval or purple sphere anywhere; purple blob at upper-center; tiny green cloud pushed to far-right; pink triangle; red triangle; berry-red hexagon that reads as a triangle; rounded square that reads as a sphere; orange circle instead of bean; any extra orb, cloud, character, color variant, outline, black eyes, vertical black oval eyes, mouth, limbs, hands, accessories, robot panels, plush fur, fuzzy pile, text, labels, logo, frame, UI, background, floor, external shadow, detached body parts, hidden eyes, or cropped silhouettes."
+        },
+        {
+          "selected": false,
+          "output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-95296f87-80a7-415a-ba28-d284193e54ee.png",
+          "difference": "One image-to-image vertical spacing edit; it preserved characters but did not materially increase the visible group height, so it was not selected.",
+          "prompt": "Make one precise composition correction to the provided six-character Grok Bot image. Preserve the exact six characters, their colors, molded silicone material, all six silhouettes and geometry, every pair of white capsule eyes and their matching diagonal direction, and all current front/back relations. Repack the same group into a compact taller square-card composition: move the rear orange bean, prominent upper-middle-right green cloud, and rear-right purple rounded triangle upward; move the front-left blue drop, center-front teal rounded square, and front-right berry-red rounded hexagon slightly downward; bring the figures a little closer with readable occlusion so the full group fills about 85 percent of the square canvas height while keeping at least 5 percent fully transparent safety margin on every side. Keep each face and both eyes visible. The green cloud remains prominent in the upper middle-right, and the purple triangle remains a modest rear-right figure. Do not add, remove, recolor, reshape, stretch, or duplicate any character. Keep genuine transparent alpha and do not add a background or external shadow."
+        },
+        {
+          "selected": false,
+          "output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-3081f008-3f25-49df-8a3f-f09ae0764b4d.png",
+          "difference": "Fresh generation with specific character centers and sizes; good geometry and order but still around 70 percent height, so not selected.",
+          "prompt": "Use case: stylized-concept\nAsset type: isolated transparent square Grok Bot family-card artwork for the Dot Icon Studio homepage\nPrimary request: create exactly six original Grok Bot characters arranged as a compact, nearly square 3D toy cluster. The visible character group must be tall and large: topmost silhouette about 5 percent below the canvas top and lowest silhouette about 5 percent above the bottom, filling about 90 percent of canvas height. Leave at least 5 percent transparent safety on all four edges.\nExact six characters, no more and no less:\n1. Rear-left orange rounded bean, placed high on the left, partially behind the blue drop.\n2. Prominent mint-green cloud in the upper-middle-right, its highest lobe near the top edge; keep it large, not tiny or pushed to the far right.\n3. Bright-blue teardrop in the front-left, with a broad rounded base and tapered top.\n4. Teal-green rounded square in the center-front.\n5. Modest lavender-purple rounded triangle in the rear-right; clearly three rounded corners, only a supporting rear character.\n6. Berry-red rounded hexagon in the front-right; clearly six broad rounded sides. Never substitute a pink triangle.\nCompact square layout: arrange three rear/top characters from left to right as orange bean, green cloud, purple triangle; arrange three foreground characters from left to right as blue drop, teal rounded square, berry-red hexagon. Give the rear row centers around 25%, 54%, and 79% of canvas width and 27%, 25%, and 39% of canvas height. Give the foreground row centers around 23%, 50%, and 77% of canvas width and 69%, 70%, and 70% of canvas height. Let forms overlap in depth so the six silhouettes connect into a compact group. Preserve a 5 to 8 percent side margin and about 90 percent height fill.\nFaces: every one of the six characters has exactly two pure-white, short rounded capsule eyes, each pair sharing the same slight backslash slant, upper-left to lower-right. Keep all twelve eye marks visible and clearly attached to their respective surfaces. No other face details.\nMaterials and style: polished 3D soft-silicone collectible forms, smooth soft-matte surfaces with a faint satin sheen, precise gentle bevels, clean geometry and unified R01 studio craft. No furry or plush texture.\nLighting: bright soft studio key, gentle fill, precise dimensional shading and subtle internal contact shading only between touching figures.\nGeometry and identity constraints: exactly one each of the six color-and-shape roles listed above. Make the green cloud the largest upper shape. Keep the purple character only as a modest rounded triangle at rear-right; no purple circle, sphere, oval, pill, or blob. Keep the red foreground character a berry-red rounded hexagon. Maintain a square transparent canvas and a compact tall card composition.\nAvoid: large purple oval at upper-center, oversized purple sphere, tiny green cloud at far-right, pink triangle, red triangle, wrong shape/color pairing, extra seventh character, duplicated character, hidden faces, black eyes, mouth, limbs, accessories, robot armor, plush, wool, fuzzy texture, text, logo, label, frame, UI, background, floor, external shadow, cut-off shape, or cropped eyes."
+        },
+        {
+          "selected": false,
+          "output_path": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-acd4e8b1-f6e1-4c7f-a6ee-9c7eddaf2fd5.png",
+          "difference": "A second image-to-image layout edit with explicit pixel bounds; it still produced a wide and relatively short group, so it was not selected.",
+          "prompt": "Make one precise layout correction to the provided six-character Grok Bot family artwork. Preserve each of the same six characters exactly: same geometry, color, material, scale, eye pairs, and front/back identity. Do not redraw or simplify them. Reposition the existing figures into a tighter near-square card cluster with these target outer bounds on the 1280-by-1280 transparent square canvas: the visible group should extend from approximately x=64 to x=1216 and y=64 to y=1216, so it fills about 90 percent of the canvas height and width and leaves at least 5 percent clear transparent margin on every edge. The upper green cloud stays prominent near the upper middle-right; the orange bean stays upper-left behind the blue drop; the modest purple triangle stays rear-right. Move the blue teardrop to lower-left, teal rounded square to lower-center, and berry-red hexagon to lower-right. Bring the lower figures inward enough to keep the group within the side margins, and use overlapping high/low placement so the six shapes remain connected. Keep all twelve white capsule eyes visible and retain their same matching backslash tilt. Do not add, delete, recolor, resize, stretch, duplicate, or reshape any member. Transparent alpha only, no background or shadow."
+        }
+      ],
+      "visual_difference_from_old_scene": "Removes the oversized purple oval from the upper center and the undersized far-right cloud. Uses exactly the specified orange bean, large upper-middle-right green cloud, blue front-left drop, center-front teal rounded square, modest rear-right purple rounded triangle, and front-right berry-red rounded hexagon. All twelve white capsule eyes retain one shared diagonal direction.",
+      "limitations": [
+        "This generated candidate is not selected for the R01 Grok Bot family card and must not be treated as the approved default.",
+        "The cloud reads too pale mint and occupies too much of the upper group; the orange bean is also oversized; the six characters feel crowded versus the R01 reference.",
+        "The root reviewer will adjust relative proportions, color, and spacing in a later asset pass.",
+        "No runtime integration, browser rendering, or webpage art acceptance was performed."
+      ],
+      "selection_status": "not_selected_for_R01_root_review_required",
+      "root_review_decision": "Root visual review rejected this generated version as the family-card default: its pale mint cloud and orange bean dominate too much, and the six-character cluster is crowded compared with R01. Keep this file only as a generated review candidate/provenance record; do not wire it as the runtime/default family art. Root will correct proportions, color, and spacing in a later asset pass."
+    }
+  ],
+  "discarded_pre_direction_attempt": {
+    "status": "cancelled_after_user_direction_changed",
+    "notes": "A pre-clarification Dots generation call requested black oval eyes, contrary to the later user-approved R01 design. It was interrupted before a tool output path was captured and no such asset was selected. The final Dots asset uses white capsule eyes."
+  },
+  "acceptance_boundary": "These are independent generated reference assets only. Their PNG metadata and visible character counts were inspected. They have not been placed on a live webpage and are not accepted webpage art."
+}

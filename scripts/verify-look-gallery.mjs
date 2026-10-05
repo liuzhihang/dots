@@ -25,12 +25,17 @@ for(const pose of BASELINE_POSE_VARIANTS){
 }
 assert.equal(looks.length, 15, 'the built-in gallery contains five baselines and ten additional candidates');
 assert.equal(new Set(looks.map(look => look.id)).size, 15, 'gallery candidates have unique IDs');
-const heroMembers=HERO_SCENES.flatMap(scene=>scene.members);
-assert.equal(heroMembers.length,12,'two relationship scenes depict twelve existing identities');
-assert.equal(new Set(heroMembers).size,12,'hero identities are distinct across the two scenes');
-for (const id of heroMembers) assert(looks.some(look=>look.id===id),`${id} is an existing gallery identity`);
+const heroLookIds=HERO_SCENES.flatMap(scene=>scene.associatedLookIds);
+for (const id of heroLookIds) assert(looks.some(look=>look.id===id),`${id} is an associated existing gallery identity`);
 for (const scene of [...HERO_SCENES,...Object.values(FAMILY_SCENES)]) {
  assert.equal(getCreationArtwork(scene.id),null,`${scene.id} cannot become a downloadable individual avatar`);
+ assert.equal(getCreationArtwork(scene.src),null,`${scene.src} cannot masquerade as a downloadable avatar`);
+ assert.equal(scene.displayCount,scene.displayMembers.length,'display count describes this illustration only');
+ for(const member of scene.displayMembers) {
+  assert.equal(getLookDefinition(member),null,'display descriptions are never registered look IDs');
+  assert.equal(getCreationArtwork(member),null,'display descriptions cannot become composition assets');
+ }
+ for(const id of scene.associatedLookIds) assert(getLookDefinition(id),'related identities must already exist');
  assert.equal(scene.status,'unreviewed','a generated scene never grants art acceptance');
  const png=await readFile(path.join(root,'dist',scene.src));
  assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a',`${scene.id} is a PNG`);
@@ -41,7 +46,9 @@ for (const family of families) {
   const familyLooks = looks.filter(look => look.family === family);
   assert.equal(familyLooks.length, 3, `${family} exposes one baseline and two added looks`);
   assert.deepEqual(FAMILY_LOOK_IDS[family], familyLooks.map(look => look.id), `${family} home card shows its own three looks`);
-  assert.deepEqual(FAMILY_SCENES[family].members,FAMILY_LOOK_IDS[family],`${family} scene depicts exactly its three trusted members`);
+  const scene=FAMILY_SCENES[family];
+  assert(FAMILY_LOOK_IDS[family].includes(scene.startLookId),`${family} scene CTA explicitly resolves to a trusted own-family look`);
+  assert(scene.associatedLookIds.every(id=>FAMILY_LOOK_IDS[family].includes(id)),`${family} scene associations stay within registered identities`);
   assert.equal(familyLooks.filter(look => look.kind === 'baseline-candidate').length, 1, `${family} keeps exactly one baseline candidate`);
   assert(familyLooks.every(look => look.status === 'unreviewed'), `${family} looks remain unreviewed until real-page art acceptance`);
   assert.equal(getFamilyArtwork(family).id, familyLooks[0].id, `${family} defaults to its own baseline image`);

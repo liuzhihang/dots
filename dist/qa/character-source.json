@@ -2,12 +2,12 @@
   "format": "dots-local-source-snapshot",
   "version": 1,
   "frozen": true,
-  "createdAt": "2026-10-05T13:11:14.789Z",
-  "gitHead": "6040ab200836697768160283b9e37cf794fe4048",
+  "createdAt": "2026-10-05T16:33:20.404Z",
+  "gitHead": "0cd69c96ebd02e5c61c6c9b35aab8958120256ad",
   "gitHeadScope": "baseline-commit-only; gitHead does not include dirty or untracked working-tree changes",
-  "sourceId": "9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826",
+  "sourceId": "0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60",
   "sourceIdScope": "SHA-256 over the listed working-tree file paths and contents",
-  "cacheRevision": "70",
+  "cacheRevision": "81",
   "characterSchema": 10,
   "rendererVersion": "atelier-4",
   "files": [
@@ -222,9 +222,29 @@
       "sha256": "2bb9c14c1ea62a8f66f3714fe2a49eff0a3547879f0f6987c659ab5a74f7847e"
     },
     {
+      "path": "dist/assets/scenes/family-animals-v2.png",
+      "bytes": 1756332,
+      "sha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db"
+    },
+    {
+      "path": "dist/assets/scenes/family-animals-v3.png",
+      "bytes": 1554858,
+      "sha256": "bf9a99ce408aa1e77e0418287539f131a710718ebb0ac5912b7aa0bb462428da"
+    },
+    {
       "path": "dist/assets/scenes/family-dots-v1.png",
       "bytes": 1987704,
       "sha256": "9a4c4b56a28e05850c865267e379c367168254ab3644b3ad060bbd4d7dcaf400"
+    },
+    {
+      "path": "dist/assets/scenes/family-dots-v2.png",
+      "bytes": 1988199,
+      "sha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4"
+    },
+    {
+      "path": "dist/assets/scenes/family-dots-v3.png",
+      "bytes": 1221551,
+      "sha256": "4122d76f2e600546ad190ce0548f0bb28bbcbb9457ee8171f0793d18437082e5"
     },
     {
       "path": "dist/assets/scenes/family-grok-v1.png",
@@ -232,9 +252,29 @@
       "sha256": "1df48ab7ed1b2425595af6e60192cc32090e1b2deb1d3b4e946ecb9edac66685"
     },
     {
+      "path": "dist/assets/scenes/family-grok-v2.png",
+      "bytes": 1232920,
+      "sha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668"
+    },
+    {
+      "path": "dist/assets/scenes/family-grok-v3.png",
+      "bytes": 884467,
+      "sha256": "5e430b88e7de180b931e9b10cdfa6f049ee68b327b5c7600e03cccef6ece1471"
+    },
+    {
       "path": "dist/assets/scenes/family-humans-v1.png",
       "bytes": 1851765,
       "sha256": "760c64926715fcd3f0665967daf923fd9baa0b439ac5a441d12655b6415c777d"
+    },
+    {
+      "path": "dist/assets/scenes/family-humans-v2.png",
+      "bytes": 1237392,
+      "sha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0"
+    },
+    {
+      "path": "dist/assets/scenes/family-humans-v3.png",
+      "bytes": 1973072,
+      "sha256": "b3bf539597c0420ed27eaaa9973e5dc18b8d3ba7bcff4a539ac77a2f2790eeb0"
     },
     {
       "path": "dist/assets/scenes/family-meta-muse-v1.png",
@@ -242,14 +282,59 @@
       "sha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d"
     },
     {
+      "path": "dist/assets/scenes/family-meta-muse-v2.png",
+      "bytes": 1567435,
+      "sha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027"
+    },
+    {
+      "path": "dist/assets/scenes/family-meta-muse-v3.png",
+      "bytes": 1470813,
+      "sha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c"
+    },
+    {
+      "path": "dist/assets/scenes/family-meta-muse-v4.png",
+      "bytes": 1553070,
+      "sha256": "07749dcad0c8f71f8e0aa77f2600ecc6d1f3e9544738cf5f831d1eb03bab460f"
+    },
+    {
       "path": "dist/assets/scenes/hero-left-v1.png",
       "bytes": 1951237,
       "sha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06"
     },
     {
+      "path": "dist/assets/scenes/hero-left-v2.png",
+      "bytes": 1815246,
+      "sha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda"
+    },
+    {
+      "path": "dist/assets/scenes/hero-left-v3.png",
+      "bytes": 1333576,
+      "sha256": "7ebf2f43ba686f2d4fbedddd6bc4bf3b0117a93d0990d83f58c9c5e728a4a810"
+    },
+    {
+      "path": "dist/assets/scenes/hero-left-v4.png",
+      "bytes": 1342332,
+      "sha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507"
+    },
+    {
       "path": "dist/assets/scenes/hero-right-v1.png",
       "bytes": 1660214,
       "sha256": "db278c83628b0b59ead4943b5b9d4c4b8f91eb1a396efd8ed121a955b9e435ca"
+    },
+    {
+      "path": "dist/assets/scenes/hero-right-v2.png",
+      "bytes": 1973055,
+      "sha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a"
+    },
+    {
+      "path": "dist/assets/scenes/hero-right-v3.png",
+      "bytes": 1374015,
+      "sha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19"
+    },
+    {
+      "path": "dist/assets/scenes/hero-right-v4.png",
+      "bytes": 1424753,
+      "sha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281"
     },
     {
       "path": "dist/assets/shiba.webp",
@@ -274,12 +359,12 @@
     {
       "path": "dist/editor.html",
       "bytes": 7158,
-      "sha256": "3ee8b05df6058f315b3e5fcf6a06b3dad406626dfb42adec34eff9c1de86d8cb"
+      "sha256": "a7b7c1dc9c22aa7ff92ec8fd1680531afdbd29c4219dd7ddabcae684070f5b24"
     },
     {
       "path": "dist/index.html",
-      "bytes": 13639,
-      "sha256": "cbd75de26d6b752e7f239e3ded260819fd7255c252d32ba25a68b44cd9dcb8ac"
+      "bytes": 13439,
+      "sha256": "c24352ca68eca28c657d2f87463b78256a142c72c78bfa947b5d5837f447597a"
     },
     {
       "path": "dist/legacy-bridge.js",
@@ -289,7 +374,7 @@
     {
       "path": "dist/legacy-editor.html",
       "bytes": 5205,
-      "sha256": "f8b2f9dd077ccfc1cb94f09609a65f30f1e930200fcc775c873f3089782d0e68"
+      "sha256": "26414853f6b3fce7854eb68dfc37b512a99b5bcadf867bf494501d161ac25eb3"
     },
     {
       "path": "dist/live-runtime.js",
@@ -299,22 +384,22 @@
     {
       "path": "dist/qa/character-acceptance.html",
       "bytes": 5632,
-      "sha256": "9e9e7944dd05d28d0963311446e0c6602bced4c7dab01e1f2f9cb5d0fe00df18"
+      "sha256": "a70a8d035dc3ab209eecb00288350935544225d334bd2d10aee78f8ad289e487"
     },
     {
       "path": "dist/qa/character-acceptance.js",
       "bytes": 9542,
-      "sha256": "25938967fb8574f631ed32ac95bad559dd171eac0f278d3a88290606a49c10f8"
+      "sha256": "6265089cfe9c3d6f1fc2eb1058b25ccd7ecd84a947702569ffddf91f832497bc"
     },
     {
       "path": "dist/qa/character-cases.js",
       "bytes": 3713,
-      "sha256": "f3f157bd0707e92adb24c87db317d984223a207e8500a1ff0b5c556d62f47c2a"
+      "sha256": "47e84571055fdfe73ad88e79d46ac11a7481a1d07c7fa238c4538b67ee7cfd14"
     },
     {
       "path": "dist/qa/creation-composer.html",
       "bytes": 7430,
-      "sha256": "e09d261b7b862b824f0eaf772f27f90e1ee857e1e33a0e31879c63761f16e709"
+      "sha256": "987f69f8f089f9a8a6bfe79a372a430aed15a852ddd796239549282ff59c108f"
     },
     {
       "path": "dist/renderer.js",
@@ -324,7 +409,7 @@
     {
       "path": "dist/shared-2d.js",
       "bytes": 8630,
-      "sha256": "35e0cf43ed115a8ba1c2734d222d09476487be21ec61d8bc5a97d13cd0dc5e71"
+      "sha256": "4eabaf9c5e320a2d5d045a531e30d20f9e4d355395a3b01d136652b228c3f89a"
     },
     {
       "path": "dist/studio-art.js",
@@ -339,12 +424,12 @@
     {
       "path": "dist/studio-composer.js",
       "bytes": 9755,
-      "sha256": "2c613df190e48207f950e0e01bb57281cd34c285216be46f3d41027d4f5a0c99"
+      "sha256": "93765ba011beb6170548e4de19dcd97787ae6ec97fe34e297777711afbd5e5de"
     },
     {
       "path": "dist/studio-creation-assets.js",
       "bytes": 21739,
-      "sha256": "253d8a19142c291daf38e914d37ad180bcc2f193fe921f40341876decf6c4ea6"
+      "sha256": "7de1a45b58a1a4236287765033f924b4a6066c5485db64a897ee0a9a6be2a8d6"
     },
     {
       "path": "dist/studio-creation.css",
@@ -354,7 +439,7 @@
     {
       "path": "dist/studio-creation.js",
       "bytes": 23445,
-      "sha256": "6dea0cac93d340b6652f40ee288d8d38146812be9f0cf67b3cf3800fb1dfcb50"
+      "sha256": "c0784d32a8d7dd9112a412d7855f30f4cba92eeecfc3a7a2ff64c3317fb65318"
     },
     {
       "path": "dist/studio-fullscreen-random.css",
@@ -364,17 +449,17 @@
     {
       "path": "dist/studio-fullscreen-random.js",
       "bytes": 24937,
-      "sha256": "ed30a7ef51683013d8fd00a7cdf15b1299031c32279c4694820a646001b3dd2c"
+      "sha256": "400e2e45ef5c6c83da1d11e4a5fb0daedaa4ce31032bac1eda0db7a354c9f6c3"
     },
     {
       "path": "dist/studio-home.js",
-      "bytes": 11393,
-      "sha256": "a9c32f6b9c23ac040275718097b46094f0d309b8a28e55e089c5334940f07aa6"
+      "bytes": 13084,
+      "sha256": "953b90dc030de226794f351d63301eda7a62faac1082b9a36881c95051789d99"
     },
     {
       "path": "dist/studio-inspiration.js",
       "bytes": 1559,
-      "sha256": "4dbbdf3d0e5bd045acf3e370af9e896dd94155abc4df77801daae981bdeb10d8"
+      "sha256": "4f25b8ee7ad4eb5e7450526f47b2dd524abee620762b6fd87f5c5553c2b196c7"
     },
     {
       "path": "dist/studio-layout.css",
@@ -389,7 +474,7 @@
     {
       "path": "dist/studio-model.js",
       "bytes": 96049,
-      "sha256": "ea47b38cb3311e9a9e0ffd03435ea16c71650d0f39c11105f393a8d0619f3935"
+      "sha256": "675ea9304694b0838356ccd9f493085044ca2efdf9b73a3c109569931f807679"
     },
     {
       "path": "dist/studio-pickers.js",
@@ -399,17 +484,17 @@
     {
       "path": "dist/studio-random.js",
       "bytes": 9302,
-      "sha256": "f5fce5ea587f444e659f8a1c87a37ee01029be1754c124c8a00ae2686b636ee1"
+      "sha256": "cac79c7658aad4bdc744d8d6ff488ef5f8853c31b3cd17faf75e2ce95165f974"
     },
     {
       "path": "dist/studio-refresh.css",
-      "bytes": 64947,
-      "sha256": "e709e51805914d0c2b8328993000fe9cb687835d99bd2472ba163742463a8271"
+      "bytes": 79324,
+      "sha256": "4649f102e735d19ee3f12c47dfba961c442ce54592972aca4ea3781d50c9d356"
     },
     {
       "path": "dist/studio-scenes.js",
-      "bytes": 1556,
-      "sha256": "9777dc2507bd5bdb679f7196ee9a9963036c7106aa5f23444ee8d2107a7e1e91"
+      "bytes": 2340,
+      "sha256": "7929ba525b81a43f3a681900af43c6aaa5f836ee77690d5597f4a3b492e8496b"
     },
     {
       "path": "dist/studio.css",
@@ -418,8 +503,8 @@
     },
     {
       "path": "dist/studio.js",
-      "bytes": 74386,
-      "sha256": "e811ff7faa65ec8fadb79666c209fef033523c8800b81de2558251ab4c373a34"
+      "bytes": 74898,
+      "sha256": "6ec3db7020881364032b2fba4b7eb84232a1d3264cbf751b4adb81f5d44b6278"
     },
     {
       "path": "dist/style.css",
@@ -483,8 +568,8 @@
     },
     {
       "path": "scripts/verify-look-gallery.mjs",
-      "bytes": 14655,
-      "sha256": "a24611cd043be9821ec6bfa2d469f0c6c48bfbae9ce0a5989bac75fc98cfae16"
+      "bytes": 15254,
+      "sha256": "b16629d20d19c56238030518fbe64a8bf691bdeb928960b772e700afc0d6bdd2"
     },
     {
       "path": "scripts/verify-module-cache.mjs",

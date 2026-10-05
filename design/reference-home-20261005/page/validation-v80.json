@@ -1,0 +1,57 @@
+{
+  "cacheRevision80": "80",
+  "sourceId80": "29e9a319a0b9f7da86c4497c26b144aa6ee228e075c6b98b32282161678d1fb1",
+  "checksAt77": [
+    {
+      "name": "verify-module-cache",
+      "chunk_id": "46bdae",
+      "wall_time_seconds": 0.000009416,
+      "exit_code": 0,
+      "original_token_count": 20,
+      "output": "Module cache graph passed: 16 versioned modules and five own-family candidates.\n"
+    },
+    {
+      "name": "verify-look-gallery",
+      "chunk_id": "86416f",
+      "wall_time_seconds": 0.051801292,
+      "exit_code": 0,
+      "original_token_count": 32,
+      "output": "Fifteen per-family look templates, alpha PNG dimensions, real pack guards, source details and exact prompt signatures passed.\n"
+    },
+    {
+      "name": "verify-family-navigation",
+      "chunk_id": "751963",
+      "wall_time_seconds": 0.000006208,
+      "exit_code": 0,
+      "original_token_count": 24,
+      "output": "Family search, family-draft navigation, safe hashes and gallery URL replacement checks passed.\n"
+    },
+    {
+      "name": "verify-creation-ui",
+      "chunk_id": "2f6d5e",
+      "wall_time_seconds": 0.000006333,
+      "exit_code": 0,
+      "original_token_count": 33,
+      "output": "Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus.\n"
+    },
+    {
+      "name": "verify-fullscreen-random",
+      "chunk_id": "d53ed9",
+      "wall_time_seconds": 0.059911084,
+      "exit_code": 0,
+      "original_token_count": 45,
+      "output": "Fullscreen random lifecycle checks passed: Apply-only commits, cancellation/dispose clear timers, reference family and lock rules, safe local artwork, focus and shortcut cleanup.\n"
+    },
+    {
+      "name": "verify-preview-capture",
+      "chunk_id": "7f7281",
+      "wall_time_seconds": 0.000007291,
+      "exit_code": 0,
+      "original_token_count": 31,
+      "output": "Preview capture lifecycle passed: painted frame/time, assembly, queue, update/dispose, PNG encoding and 2D snapshot guards.\n"
+    }
+  ],
+  "scope": "Six semantic checks and unchanged live-runtime build passed at v77. v78-80 only style, mini hint and cache URL changes; v80 module cache and studio-home syntax passed, strict OpenSpec validation and whitespace checked. No old matrix or PNG download relabeled.",
+  "specMergeNote": "Initial main-spec block matcher retained only headings and failed validation; repaired using explicit requirement heading indices. All eight main requirements preserved, four updated from full delta. Final strict validation passed.",
+  "strictPassed": true
+}

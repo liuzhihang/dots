@@ -1,6 +1,6 @@
-import {getArtSample} from './studio-art.js?v=70';
-import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=70';
-import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=70';
+import {getArtSample} from './studio-art.js?v=81';
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=81';
+import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=81';
 export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {

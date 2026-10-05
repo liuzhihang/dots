@@ -1,0 +1,42 @@
+{
+  "sourceId": "54d843f1f5ebdff1d53d452fa88e94805fd4f8c32f50ea37cb65726adeecdca0",
+  "cacheRevision": 71,
+  "scope": "Scene/display metadata, navigation, current PNG guards, app reduced-motion UI; no new character mesh changes",
+  "build": {
+    "exitCode": 0,
+    "liveRuntimeByteIdenticalToV70": true
+  },
+  "checks": [
+    {
+      "name": "verify-module-cache",
+      "exitCode": 0,
+      "output": "Module cache graph passed: 16 versioned modules and five own-family candidates."
+    },
+    {
+      "name": "verify-look-gallery",
+      "exitCode": 0,
+      "output": "Fifteen per-family look templates, alpha PNG dimensions, real pack guards, source details and exact prompt signatures passed."
+    },
+    {
+      "name": "verify-family-navigation",
+      "exitCode": 0,
+      "output": "Family search, family-draft navigation, safe hashes and gallery URL replacement checks passed."
+    },
+    {
+      "name": "verify-creation-ui",
+      "exitCode": 0,
+      "output": "Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus."
+    },
+    {
+      "name": "verify-fullscreen-random",
+      "exitCode": 0,
+      "output": "Fullscreen random lifecycle checks passed: Apply-only commits, cancellation/dispose clear timers, reference family and lock rules, safe local artwork, focus and shortcut cleanup."
+    },
+    {
+      "name": "verify-preview-capture",
+      "exitCode": 0,
+      "output": "Preview capture lifecycle passed: painted frame/time, assembly, queue, update/dispose, PNG encoding and 2D snapshot guards."
+    }
+  ],
+  "userArtApproved": false
+}

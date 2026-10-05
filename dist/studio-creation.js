@@ -4,14 +4,14 @@ import {
   buildPrompt,
   resolveCharacter,
   validateConfig
-} from './studio-model.js?v=70';
+} from './studio-model.js?v=81';
 import {
   COMPOSITION_PACKS,
   CREATION_ARTWORKS,
   getCompositionPack,
   getCreationArtwork,
   getFamilyArtwork
-} from './studio-creation-assets.js?v=70';
+} from './studio-creation-assets.js?v=81';
 
 export const PROJECT_FORMAT = 'dot-studio-project';
 export const PROJECT_VERSION = 1;

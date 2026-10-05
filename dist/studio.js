@@ -1,17 +1,17 @@
-import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=70';
-import {createHomePortal} from './studio-home.js?v=70';
-import {createFullscreenRandomizer} from './studio-fullscreen-random.js?v=70';
-import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks,getBaselinePoseControls,getBaselinePoseValues} from './studio-creation-assets.js?v=70';
-import {LayeredComposer} from './studio-composer.js?v=70';
-import {RecipeMachine} from './studio-random.js?v=70';
-import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=70';
-import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=70';
-import {getArtSample} from './studio-art.js?v=70';
-import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=70';
-import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=70';
-import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=70';
-import {pickerIllustration} from './studio-pickers.js?v=70';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=70';
+import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=81';
+import {createHomePortal} from './studio-home.js?v=81';
+import {createFullscreenRandomizer} from './studio-fullscreen-random.js?v=81';
+import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks,getBaselinePoseControls,getBaselinePoseValues} from './studio-creation-assets.js?v=81';
+import {LayeredComposer} from './studio-composer.js?v=81';
+import {RecipeMachine} from './studio-random.js?v=81';
+import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=81';
+import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=81';
+import {getArtSample} from './studio-art.js?v=81';
+import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=81';
+import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=81';
+import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=81';
+import {pickerIllustration} from './studio-pickers.js?v=81';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=81';
 
 const isSchematic=document.body.dataset.renderer==='schematic';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
@@ -463,7 +463,7 @@ document.addEventListener('input',e=>{
 });
 document.addEventListener('change',e=>{
  const el=e.target;if(el.id==='configFile'){importConfig(el.files?.[0]);return;}
- if(el.hasAttribute('data-reduce-motion')){reduceMotion=el.checked;if(reduceMotion)playing=false;livePreview?.setReducedMotion?.(reduceMotion);renderResult();return;}
+ if(el.hasAttribute('data-reduce-motion')){reduceMotion=el.checked;document.body.dataset.reducedMotion=String(reduceMotion);if(reduceMotion)playing=false;livePreview?.setReducedMotion?.(reduceMotion);renderResult();return;}
  if(el.hasAttribute('data-expression-accents')){change('expressionAccents',el.checked);return;}
  if(el.dataset.setting&&el.tagName==='SELECT')change(el.dataset.setting,el.value);
  if(el.dataset.setting&&el.type==='color')renderSettings();
@@ -479,7 +479,7 @@ $('modal').addEventListener('click',e=>{if(e.target===$('modal')){const r=$('mod
 window.addEventListener('pageshow',event=>{if(!event.persisted)return;try{const saved=sessionStorage.getItem('dot-studio-project-v1')||sessionStorage.getItem('dot-studio-v10');if(saved){const next=parseProject(JSON.parse(saved));if(JSON.stringify(next)!==JSON.stringify(project)){project=next;state=project.character;previewRevision++;history.length=0;future.length=0;grouping='';render();}}}catch{toast('保存的配置暂时无法读取，当前角色已保留。');}});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',event=>{if(event.matches){playing=false;livePreview?.setPlaying(false);renderResult();}});
 if($('recipeMachine'))recipeMachine=new RecipeMachine($('recipeMachine'),{getConfig:()=>state,commit:next=>{commit(next,'',true,'random');},assemble:()=>livePreview?.assemble(),notify:toast});
-if($('homePortal')){homePortal=createHomePortal({openWorkspace,openGallery,onStartLook:startLook,onViewLook:viewLook,onCopyLook:async id=>{const ok=await copyText(buildCreationPrompt(lookProject(id),promptLanguage));toast(ok?'已复制这张形象的 Prompt。':'无法复制；请点开这张形象后重试。');},onDownloadLook:async id=>{try{const a=getCreationArtwork(id);if(!a)throw new Error('形象不存在');const r=await fetch(a.src);if(!r.ok)throw new Error('原图载入失败');const blob=await r.blob();if(blob.type!=='image/png')throw new Error('原图格式无效');download(blob,a.id+'-original.png');toast('已下载透明背景原图；工作台导出会按选定背景合成。');}catch(error){toast(error.message||'原图下载失败');}},onReference:()=>{openWorkspace();showReference();}});fullscreenRandomizer=createFullscreenRandomizer({getConfig:()=>state,getProject:()=>project,getReducedMotion:()=>reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches,getArtwork:family=>{const a=getFamilyArtwork(family);return a?{src:a.src,alt:a.name,label:'基准候选 · 待网页验收'}:null;},commit:next=>{commit(next,'',true,'random');openWorkspace();return $('stageName');},notify:toast});}
+if($('homePortal')){homePortal=createHomePortal({openWorkspace,openGallery,onStartLook:startLook,onEditLook:(id,tab)=>{startLook(id);if(tab==='background'){const target=$('workbenchControls').querySelector('[aria-labelledby=backgroundControlTitle]');target.scrollIntoView({block:'nearest',behavior:'instant'});target.querySelector('button')?.focus({preventScroll:true});}else{setTab(tab);$('advancedPromptSettings').open=true;$('advancedPromptSettings').scrollIntoView({block:'nearest',behavior:'instant'});$('tab-'+tab).focus({preventScroll:true});}},onViewLook:viewLook,onCopyLook:async id=>{const ok=await copyText(buildCreationPrompt(lookProject(id),promptLanguage));toast(ok?'已复制这张形象的 Prompt。':'无法复制；请点开这张形象后重试。');},onDownloadLook:async id=>{try{const a=getCreationArtwork(id);if(!a)throw new Error('形象不存在');const r=await fetch(a.src);if(!r.ok)throw new Error('原图载入失败');const blob=await r.blob();if(blob.type!=='image/png')throw new Error('原图格式无效');download(blob,a.id+'-original.png');toast('已下载透明背景原图；工作台导出会按选定背景合成。');}catch(error){toast(error.message||'原图下载失败');}},onReference:()=>{openWorkspace();showReference();}});fullscreenRandomizer=createFullscreenRandomizer({getConfig:()=>state,getProject:()=>project,getReducedMotion:()=>reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches,getArtwork:family=>{const a=getFamilyArtwork(family);return a?{src:a.src,alt:a.name,label:'基准候选 · 待网页验收'}:null;},commit:next=>{commit(next,'',true,'random');openWorkspace();return $('stageName');},notify:toast});}
 window.addEventListener('popstate',()=>applyRoute(routeFromHash()));
 icons();$('undo').innerHTML=icon('undo');$('redo').innerHTML=icon('redo');render();remember();applyRoute(routeFromHash(),{focus:false});if(storageRecovery)toast(storageRecovery);
 const mc=document.modelContext;

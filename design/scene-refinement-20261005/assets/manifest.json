@@ -1,0 +1,614 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-05",
+  "scope": "Five display-only family illustrations. Image generation and image QA do not establish webpage art acceptance or user approval.",
+  "generator": {
+    "tool": "built-in image_gen",
+    "mode": "reference-guided generation plus targeted edits",
+    "generation_backend_model": "not reported by tool",
+    "requested_art_direction_model": "gpt-6-astra",
+    "requested_reasoning": "high"
+  },
+  "direction_reference": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/BFE8BF1A-2B02-48A6-AEB9-B31DE4F82635/1-Photo-1.jpg",
+  "direction_reference_usage": "Inspected for varying family size, hierarchy and harmonious family-card composition; not passed as a generation input.",
+  "identity_contract": "openspec/changes/rebuild-character-system/design.md",
+  "count_policy": "Counts are this illustration's art direction only, not permanent product limits or gallery additions.",
+  "image_processing": "Selected tool output PNGs copied byte-for-byte; original alpha preserved. No procedural image editing, compositing, resizing or postprocessing.",
+  "validation_limitations": [
+    "Image-level review only. Browser layout, mobile appearance and final user art approval remain with root task.",
+    "Very low-alpha stray generated pixels can extend strict nonzero bounding boxes toward edges; visible (alpha >=16) bounding boxes are recorded separately.",
+    "No alpha cleanup applied, to preserve tool output and comply with no Python image editing."
+  ],
+  "assets": [
+    {
+      "family": "dots",
+      "selected_file": "design/scene-refinement-20261005/assets/dots-scene-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-c79a78db-8f01-45da-ba64-7df713f46aa6.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: transparent family illustration for Dot Icon Studio website.\nCreate a fresh FIVE-member Dots family scene based on Image 1's identity, colors and beautiful short-plush texture. Recompose freely; do not simply preserve the three-member arrangement.\nExactly five round plush companions: (1) one large cornflower-blue sphere wearing proper black headphones with lilac ear cushions, the main anchor slightly left of center; (2) smaller rose-pink sphere with transparent pink round glasses nestled front-right; (3) smaller lilac sphere with a soft pale-yellow bucket hat peeking behind-right; (4) a tiny mint sphere nestled low-left against the big blue sphere; (5) a tiny pale peach sphere tucked near the lilac sphere at upper-right.\nEvery sphere has just TWO simple black oval eyes, fully visible and naturally directed toward a nearby friend. NO mouths, noses, brows, hands, arms, legs or feet anywhere. Headphone cups contact sphere sides, continuous headband follows sphere contour. Glasses sit naturally against pink sphere, no floating bridge. Hat fits lilac sphere while revealing both eyes.\nArt direction: tender energetic little huddle, big blue sphere about twice diameter of tiniest sphere; one dominant anchor plus companions of three genuinely varied sizes. Asymmetric diagonal rhythm, plausible soft contact and partial overlap, all five identities visible. Show 5 separately readable plush bodies, never duplicate one character. Not a lineup or equal-sized grid. Composition wider than tall about 1.25:1 with complete shapes, 8% clear side/top margins and 13% clear space below on canvas.\nRendering: exquisite dense fine short fibers that follow spherical curvature, soft pastel colors, subtle plush compression at contact, soft upper-left studio light unified across all five, gentle surface self-shading. Black eyes with tiny restrained catchlights, no glassy wet plastic bodies.\nTrue transparent RGBA PNG. No floor, ground plane, scene, detached cast shadow, background plate, text, logo, UI or watermark. One composed cutout group for a family card.",
+      "reference_images": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-dots-v1.png"
+      ],
+      "reference_role": "Existing project identity/material reference; generated new composition.",
+      "member_count": 5,
+      "members": [
+        "blue-headphones",
+        "rose-glasses",
+        "lilac-yellow-bucket",
+        "small-mint-bare",
+        "small-peach-bare"
+      ],
+      "qa": {
+        "status": "image-level selected; webpage acceptance pending",
+        "passed": [
+          "Five distinct colored plush spheres; black paired eyes; no mouth or limbs.",
+          "Large headphone anchor, two medium and two small companions; contact/overlap varied.",
+          "Hat brim and both headphone cups intact; glasses remain attached."
+        ],
+        "tradeoffs": [
+          "Tiny companion positions differ from prompt; all five remain visible.",
+          "Visible bottom breathing room is less than the requested 13%, recorded in alpha metrics."
+        ]
+      },
+      "generation_attempts": [
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-c79a78db-8f01-45da-ba64-7df713f46aa6.png",
+          "selected": true,
+          "file_metadata": {
+            "bytes": 1988199,
+            "sha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+            "dimensions": [
+              1402,
+              1122
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 675455,
+            "fully_transparent_fraction": 0.42939358339626865,
+            "nonzero_alpha_bbox": [
+              0,
+              37,
+              1374,
+              1065
+            ],
+            "visible_alpha16_bbox": [
+              88,
+              122,
+              1361,
+              1027
+            ],
+            "visible_bottom_clear_fraction": 0.08467023172905526,
+            "low_alpha_1_to_15_pixels": 12699
+          }
+        }
+      ],
+      "file_metadata": {
+        "bytes": 1988199,
+        "sha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+        "dimensions": [
+          1402,
+          1122
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_pixels": 675455,
+        "fully_transparent_fraction": 0.42939358339626865,
+        "nonzero_alpha_bbox": [
+          0,
+          37,
+          1374,
+          1065
+        ],
+        "visible_alpha16_bbox": [
+          88,
+          122,
+          1361,
+          1027
+        ],
+        "visible_bottom_clear_fraction": 0.08467023172905526,
+        "low_alpha_1_to_15_pixels": 12699,
+        "byte_identical_to_tool_output": true
+      }
+    },
+    {
+      "family": "grok",
+      "selected_file": "design/scene-refinement-20261005/assets/grok-scene-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-fe2ccb71-8ceb-41ba-96fe-c5f866ed0627.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: transparent family-card illustration for Dot Icon Studio.\nTransform the reference family scene into a NEW beautifully art-directed family group of SIX DISTINCT Grok geometric companions, not a collage, not duplicates, not three scaled characters. Preserve reference identity and premium softly lit matte silicone 3D rendering.\nMembers, exactly once each: a purple round orb (largest anchor at middle-back), a fresh green soft cloud at upper right (medium-small), a blue teardrop at lower left (medium), a turquoise rounded cube at lower middle-right (medium), a small tangerine-orange bean nestled upper-left behind the orb, and a small coral-pink rounded triangle nestled at far right. Each has exactly TWO solid white capsule eyes, parallel and slanted identically like backslash \\, no pupils. Each pair fully visible. NO mouths, arms, legs, hair, hands, feet, robot parts or accessories.\nComposition: playful asymmetric close companion cluster, gently leaning into one another with believable surface contact; subtle front/back overlap with every distinct silhouette and both eyes readable. Three sizes, an expressive arcing rhythm, not a line, grid or rigid pyramid. Purple orb dominates but occupies no more than 30% of cluster. Blue droplet and turquoise cube in front; orange bean and green cloud rise behind; tiny pink triangle peeks sideways. Total silhouette wide and compact, aspect about 1.25:1. Keep all six fully within square canvas, with 9% clear margin on sides/top and 13% clear breathing room beneath. Do not spread independent floating objects far apart.\nMaterials: smooth matte soft silicone, pastel-bright color, fine microtexture, broad soft highlights, no hard glossy plastic. Match existing reference material. Soft unified studio light from upper left; mild contact occlusion only where characters touch.\nOutput: true transparent RGBA PNG. NO background, floor, backdrop, pedestal, ground shadow, detached cast shadow, text, UI, label, logo or watermark. This is a single reusable cutout group, not a card mockup.",
+      "reference_images": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-grok-v1.png"
+      ],
+      "reference_role": "Existing project identity/material reference; generated new composition.",
+      "member_count": 6,
+      "members": [
+        "purple-orb",
+        "green-cloud",
+        "blue-droplet",
+        "teal-rounded-cube",
+        "orange-bean",
+        "coral-triangle"
+      ],
+      "qa": {
+        "status": "image-level selected; webpage acceptance pending",
+        "passed": [
+          "Six different geometric silhouettes, each with two parallel backslash white capsule eyes.",
+          "Matte silicone preserved, no mouth/limbs; all six faces visible.",
+          "Surface contact and depth establish a compact asymmetric group."
+        ],
+        "tradeoffs": [
+          "Purple orb and foreground cube remain visually substantial; real-card scaling is untested."
+        ]
+      },
+      "generation_attempts": [
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-fe2ccb71-8ceb-41ba-96fe-c5f866ed0627.png",
+          "selected": true,
+          "file_metadata": {
+            "bytes": 1232920,
+            "sha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+            "dimensions": [
+              1402,
+              1122
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 759371,
+            "fully_transparent_fraction": 0.48273983435936946,
+            "nonzero_alpha_bbox": [
+              0,
+              51,
+              1364,
+              1098
+            ],
+            "visible_alpha16_bbox": [
+              98,
+              158,
+              1331,
+              998
+            ],
+            "visible_bottom_clear_fraction": 0.11051693404634581,
+            "low_alpha_1_to_15_pixels": 8466
+          }
+        }
+      ],
+      "file_metadata": {
+        "bytes": 1232920,
+        "sha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+        "dimensions": [
+          1402,
+          1122
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_pixels": 759371,
+        "fully_transparent_fraction": 0.48273983435936946,
+        "nonzero_alpha_bbox": [
+          0,
+          51,
+          1364,
+          1098
+        ],
+        "visible_alpha16_bbox": [
+          98,
+          158,
+          1331,
+          998
+        ],
+        "visible_bottom_clear_fraction": 0.11051693404634581,
+        "low_alpha_1_to_15_pixels": 8466,
+        "byte_identical_to_tool_output": true
+      }
+    },
+    {
+      "family": "meta-muse",
+      "selected_file": "design/scene-refinement-20261005/assets/meta-muse-scene-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-e23f2706-3b50-4739-aa74-75aeee59a2cf.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: transparent family card illustration for Dot Icon Studio.\nReimagine the reference three-person standing scene as a warm, art-directed TWO-character Meta Muse vignette, with distinct sizes and seated cuddling interaction. Reference is for the specific hooded identity and premium fine-fiber cloth appearance, not for its lineup composition.\nExactly two hooded beings: a large creamy-ivory Meta Muse sitting slightly left of center, with rounded hood continuously flowing into its soft body, recessed warm peach oval face, simple dark eyes, tiny friendly curved smile, short mitten arms and two round feet; and one smaller dusty-rose Meta Muse leaning close against the cream figure's right shoulder/side, both faces fully visible. Cream figure's head is tilted tenderly toward pink figure; pink looks toward the small bouquet. Cream figure cradles three tiny white daisies in its lap with mitten hands beneath the stems; rose figure touches one flower with its short mitten hand. Natural intentional contact. Two separate feet per character, proportionate short arms, no human hair or fingers.\nA small sage-green fabric-covered pot with two fresh green leaves sits tucked behind them at right as an ordinary botanical PROP, no face, eyes, limbs or character identity. Plant smaller than pink character and secondary to the two faces.\nComposition: cream figure roughly 1.35 times the pink figure's height, compact asymmetric restful huddle, angled heads and diagonal shoulders; one clearly dominant subject with smaller friend. Seated feet visible near bottom; full silhouettes and complete plant leaves. No three equal-size standing figures. Balanced wide silhouette about 1.2:1, 9% side/top margin and 13% breathing space below. No clipping.\nRendering: exceptionally fine short plush fibers with cloth density and seam-free rounded forms, softly recessed facial opening with thick hood rim, warm gentle pastel palette, high-quality stylized 3D toy sculpture, unified soft upper-left studio lighting and restrained contact occlusion only.\nOutput true transparent RGBA PNG, no floor, pedestal, detached ground shadow, scenery, text, UI, letters, logo, watermark or background plate. Do not redesign as curled-hair dolls, bear ears or generic animals.",
+      "reference_images": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-meta-muse-v1.png"
+      ],
+      "reference_role": "Existing project identity/material reference; generated new composition.",
+      "member_count": 2,
+      "members": [
+        "cream-hooded-main",
+        "rose-hooded-companion"
+      ],
+      "qa": {
+        "status": "image-level selected; webpage acceptance pending",
+        "passed": [
+          "Two differently sized seated hooded beings lean together around daisies.",
+          "Cream and rose faces clear; short arms and feet; fine-fiber cloth.",
+          "Sage-green pot and leaves are faceless props, not a third character."
+        ],
+        "tradeoffs": [
+          "Plant sits near right edge; page layout should avoid excessive cropping.",
+          "Visible bottom breathing room is less than the requested 13%, recorded in alpha metrics."
+        ]
+      },
+      "generation_attempts": [
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-e23f2706-3b50-4739-aa74-75aeee59a2cf.png",
+          "selected": true,
+          "file_metadata": {
+            "bytes": 1567435,
+            "sha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027",
+            "dimensions": [
+              1374,
+              1145
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 758230,
+            "fully_transparent_fraction": 0.4819575014460695,
+            "nonzero_alpha_bbox": [
+              0,
+              20,
+              1347,
+              1145
+            ],
+            "visible_alpha16_bbox": [
+              117,
+              117,
+              1344,
+              1065
+            ],
+            "visible_bottom_clear_fraction": 0.06986899563318777,
+            "low_alpha_1_to_15_pixels": 14764
+          }
+        }
+      ],
+      "file_metadata": {
+        "bytes": 1567435,
+        "sha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027",
+        "dimensions": [
+          1374,
+          1145
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_pixels": 758230,
+        "fully_transparent_fraction": 0.4819575014460695,
+        "nonzero_alpha_bbox": [
+          0,
+          20,
+          1347,
+          1145
+        ],
+        "visible_alpha16_bbox": [
+          117,
+          117,
+          1344,
+          1065
+        ],
+        "visible_bottom_clear_fraction": 0.06986899563318777,
+        "low_alpha_1_to_15_pixels": 14764,
+        "byte_identical_to_tool_output": true
+      }
+    },
+    {
+      "family": "humans",
+      "selected_file": "design/scene-refinement-20261005/assets/humans-scene-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-2e3bda29-69c2-47bf-9caf-5f770e459865.png",
+      "prompt": "Use case: stylized-concept.\nAsset type: transparent family card illustration for Dot Icon Studio.\nCreate a NEW scene of the three original chibi humans from reference Image 1, with natural close friendship and gaze interaction instead of standing in a row posing for a photo. Preserve their distinctive identities and reference's lovely detailed 3D craftsmanship: chestnut-haired boy with teal knitted cardigan and cream shorts; warm-brown-haired girl with a loose high bun, sunny-yellow hoodie and cream shorts; light blond young person with clear round glasses, pale-blue collared shirt and cream cardigan.\nComposition and action: the brown-haired girl is the central slightly larger figure, sitting casually with one knee tucked, carefully holding a small yellow folded-paper star in her lap with BOTH hands. Teal-cardigan boy sits close at her left, leaning his head inward and looking warmly down at the paper star, his own hands rest naturally on his knees. Blond glasses friend crouches slightly behind at right, leaning toward the girl and looking fondly at the star; one visible hand rests gently on girl's shoulder, the other rests on their own knee. Real coherent eye lines toward shared object, varied gentle smiles, three different head tilts; eye whites and iris directions correct. Show all three complete bodies and footwear, compact front/back depth and distinct heights. Keep all faces readable and unoccluded. A candid shared moment of delight, not a front-facing class photo.\nHands: small but anatomically credible hands, no fused fingers, no extra arms, fingers separated naturally and only where necessary. Star held only by girl's two hands; no ambiguous shared or merged hand anatomy.\nMaterials: soft skin, delicately modeled layered hair locks with fine directional strands, finely stitched knitted cardigans and hoodie fabric, tiny seams and collar thickness, cream sneakers. Soft unified upper-left studio light; restrained glossy catchlights only in eyes. Original characters only, do not recreate any anime character or copied costume.\nFraming: compact asymmetric group aspect about 1.2:1, complete unclipped silhouettes within transparent canvas, 9% clear top/sides and 13% clear space below. No equal-size lineup, no grid, no portraits-only crop.\nTrue transparent RGBA PNG. No ground plane, floor, detached cast shadows, background, text, UI, logos or watermark.",
+      "reference_images": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-humans-v1.png"
+      ],
+      "reference_role": "Existing project identity/material reference; generated new composition.",
+      "member_count": 3,
+      "members": [
+        "chestnut-teal-knit",
+        "brown-bun-yellow-hoodie",
+        "blond-clear-glasses"
+      ],
+      "qa": {
+        "status": "image-level selected; webpage acceptance pending",
+        "passed": [
+          "Three original identities retained in varied seated/crouching positions.",
+          "Shared paper star held by girl only; separate hands and visible complete footwear.",
+          "Sideward eye lines toward companions and shared center; stronger relational composition than original lineup."
+        ],
+        "tradeoffs": [
+          "Gazes are generally toward companions/shared center rather than all precisely fixed on star.",
+          "Count 3 is intentional for this vignette, not a family product cap."
+        ]
+      },
+      "generation_attempts": [
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-9d30425e-1275-4bf4-9779-6b96fbc32f6c.png",
+          "selected": false,
+          "quality_failure": "Tight framing and insufficient breathing space below shoes; not copied into project.",
+          "file_metadata": {
+            "bytes": 2141975,
+            "sha256": "38175f9f76d7d97a8bdd06939a0579cbedfb387a59ae687cb00ddfff034c4dec",
+            "dimensions": [
+              1374,
+              1145
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 551682,
+            "fully_transparent_fraction": 0.3506683701683797,
+            "nonzero_alpha_bbox": [
+              38,
+              21,
+              1361,
+              1145
+            ],
+            "visible_alpha16_bbox": [
+              43,
+              40,
+              1358,
+              1112
+            ],
+            "visible_bottom_clear_fraction": 0.028820960698689956,
+            "low_alpha_1_to_15_pixels": 20875
+          }
+        },
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-2e3bda29-69c2-47bf-9caf-5f770e459865.png",
+          "selected": true,
+          "prompt": "Use case: compositing.\nEdit this exact three-friend seated transparent character illustration. Preserve all three character identities, faces, poses, fine hair, fabric texture, clothes, star, hands, colors and lighting. Change only FRAMING: uniformly reduce the complete existing group to fit comfortably inside a slightly landscape transparent canvas. Keep 10% clear transparent margin at left and right, 10% above the tallest hair and a full 14% of canvas height of completely clear transparency below the lowest sneaker. Do not crop shoes, hair or hands. Keep scene centered horizontally. No new elements and no pose or count changes. Keep real alpha transparency, no floor, shadow, backdrop, text or watermark.",
+          "reference_images": [
+            "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-9d30425e-1275-4bf4-9779-6b96fbc32f6c.png"
+          ],
+          "file_metadata": {
+            "bytes": 1237392,
+            "sha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0",
+            "dimensions": [
+              1374,
+              1145
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 984602,
+            "fully_transparent_fraction": 0.6258474603204871,
+            "nonzero_alpha_bbox": [
+              0,
+              53,
+              1342,
+              1145
+            ],
+            "visible_alpha16_bbox": [
+              202,
+              133,
+              1202,
+              948
+            ],
+            "visible_bottom_clear_fraction": 0.1720524017467249,
+            "low_alpha_1_to_15_pixels": 11805
+          }
+        }
+      ],
+      "file_metadata": {
+        "bytes": 1237392,
+        "sha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0",
+        "dimensions": [
+          1374,
+          1145
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_pixels": 984602,
+        "fully_transparent_fraction": 0.6258474603204871,
+        "nonzero_alpha_bbox": [
+          0,
+          53,
+          1342,
+          1145
+        ],
+        "visible_alpha16_bbox": [
+          202,
+          133,
+          1202,
+          948
+        ],
+        "visible_bottom_clear_fraction": 0.1720524017467249,
+        "low_alpha_1_to_15_pixels": 11805,
+        "byte_identical_to_tool_output": true
+      }
+    },
+    {
+      "family": "animals",
+      "selected_file": "design/scene-refinement-20261005/assets/animals-scene-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-9465e6a3-722b-49cd-b604-197abc1bb972.png",
+      "prompt": "Use case: stylized-concept.\nCreate ONE TRANSPARENT STICKER ASSET, actual RGBA transparency, inspired by the existing transparent three-animal image. Preserve its soft 3D short-fur toy craft.\nThe new cutout contains SIX DIFFERENT original baby animal friends, all closely cuddling: orange Shiba dog front-left, white kitten front-center, pink piglet with flat two-nostril snout front-right, gray-white husky taller behind-center, tiny dark-gray-and-white penguin with orange beak peeking behind-left, small brown monkey with large round ears peeking behind-right. Distinct varied sizes and forward/back depth. Every face visible; friendly tilted heads lean toward friends. Shiba and kitten touch cheeks; piglet nestles against kitten; husky towers softly from behind. Monkey's curved tail is attached at right. Six species exactly, no duplicates.\nRender original characters in premium pastel chibi short-fur style. Dog and cat have canine/feline noses; pig has cloven hooves; penguin has beak and flippers; monkey has animal paws and round ears. No human hands. Complete animals, no clipped ears, tails or paws. Three sizes, not an equal-size row. Full cozy group is centered in a square transparent canvas with ample EMPTY TRANSPARENT space at all edges and under paws.\nCRITICAL: ONLY the six animal silhouettes are visible. Between and around all animals is alpha 0. NO studio backdrop, NO brown/gray backdrop, NO colored haze, NO glow halo, NO fog, NO scene, NO floor, NO drop shadow, NO cast shadow, NO pedestal, NO bokeh. Character surfaces have soft self-shading only. This must look like the reference cutout against actual transparency, never a background picture. No text, watermark, logo, UI or accessories.",
+      "reference_images": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-animals-v1.png"
+      ],
+      "reference_role": "Existing original animal identity/material reference; new six-member composition.",
+      "member_count": 6,
+      "members": [
+        "shiba",
+        "white-kitten",
+        "pink-piglet",
+        "gray-white-husky",
+        "penguin-chick",
+        "brown-monkey"
+      ],
+      "qa": {
+        "status": "image-level selected; webpage acceptance pending",
+        "passed": [
+          "Six recognizable original animal species in three-size compact cuddle arrangement.",
+          "Shiba and kitten cheek contact; taller husky behind, smaller penguin and monkey as secondary companions.",
+          "Distinct ears, muzzles, pig snout/hooves, penguin beak/flipper and monkey tail; no visible independent background or floor shadow."
+        ],
+        "tradeoffs": [
+          "Back-row bodies are intentionally partly occluded by the foreground animals; every face remains readable.",
+          "Taller square composition than other families; root should inspect consistent apparent size on real cards.",
+          "Correction: the first two animal drafts were conservatively unselected based on inline preview appearance; saved-file alpha did not substantiate the originally stated background failure. The third selected draft remains unchanged."
+        ]
+      },
+      "generation_attempts": [
+        {
+          "prompt": "Use case: stylized-concept.\nAsset type: transparent animal-family illustration for Dot Icon Studio.\nCreate a NEW six-animal family group in the same exquisite softly furred 3D chibi toy style as Image 1. Retain the reference's original Shiba, husky and white kitten identities, and add three original clearly distinct species. Do not copy any existing anime, cartoon or branded character.\nExactly SIX friends: orange-and-cream Shiba dog (happy open smile, compact pointed ears, curled fluffy tail); a slightly larger gray-and-white husky (tall pointed ears, gray forehead mask, white muzzle); white kitten (small triangular ears with pale-gray tips, tiny pink nose, slender gray tail); a small blush-pink piglet (short soft bristles, floppy pig ears, unmistakable flat pink snout with two nostrils, four small cloven hooves); a tiny plump dark-gray-and-white penguin chick (soft down, tiny orange beak and two orange feet, two short flippers); small warm-brown monkey (round side ears, pale peach muzzle, gentle curled long tail, proper animal paws).\nComposition: an intimate varied-size animal cuddle group with clear depth and spontaneous affection. Shiba foreground-left leans cheek toward small white kitten seated front-middle. Larger husky sits behind-center and tilts its head toward Shiba, faces not obscured. Piglet nestles at foreground-right beside kitten. Monkey perches naturally behind piglet to right, one animal paw gently on husky's shoulder. Tiny penguin chick peeks from the narrow friendly gap behind Shiba and husky on left, visibly small and secondary. Six separate readable species; every face fully visible. Interlocking compact silhouette with varying heights and three sizes, not equal-sized standing row. Heads close but not fused. No floating detached animals. All bodies plausible, no human hands, extra limbs, merged paws or duplicated faces. Curled dog/monkey tails stay attached and readable where visible.\nRendering: refined fine short fur following anatomy, species-specific muzzle/nose/paw material, softly textured pig skin, fluffy chick down, warm bright pastel palette, unified soft upper-left studio lighting, gentle contact shading between friends only.\nFraming: complete six-character group in slightly landscape canvas, 9% clear top/sides and 13% breathing room below; all ears and feet uncropped. No foreground object hides faces.\nTrue transparent RGBA PNG. No floor, ground, backdrop, pedestal, detached cast shadow, text, UI, watermark, logos, accessories or extra animals.",
+          "reference_images": [
+            "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-animals-v1.png"
+          ],
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-80473838-fa35-4be3-89ef-3ac403f42cc0.png",
+          "selected": false,
+          "quality_failure": "Preview-only initial visual impression suggested gray/brown backdrop glow. Later saved-PNG alpha inspection did not establish a background transparency failure. Conservatively unselected and retained as evidence; not copied into project. This correction supersedes the earlier failure diagnosis.",
+          "file_metadata": {
+            "bytes": 2411811,
+            "sha256": "fd430f5c51faa0a0d52cce4ae23d93d9cd58d0f0c090150199cf09656b3d0523",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              254
+            ],
+            "fully_transparent_pixels": 684120,
+            "fully_transparent_fraction": 0.4349517822265625,
+            "nonzero_alpha_bbox": [
+              0,
+              27,
+              1488,
+              1020
+            ],
+            "visible_alpha16_bbox": [
+              140,
+              28,
+              1477,
+              977
+            ],
+            "visible_bottom_clear_fraction": 0.0458984375,
+            "low_alpha_1_to_15_pixels": 18037
+          }
+        },
+        {
+          "prompt": "Use case: background-extraction.\nRemove the ENTIRE background from this exact six-animal group. Preserve the Shiba, white kitten, gray husky, pink piglet, small penguin, brown monkey and every fur edge, tail, paw, eye, expression, position and contact exactly. Output a genuine transparent RGBA cutout. All pixels outside the animals must have alpha 0, including every gray/brown glow, backdrop, bokeh, haze, floor and ground shadow. Do not replace the background with white, black or checkerboard; transparency must be in the actual alpha channel. Remove independent floor shadow below paws. Refine soft fur edges naturally, do not leave a glow halo.\nReframe the complete preserved animal group with 8% clear transparent space above and on sides and 12% clear transparent space below the paws. Keep all six animals, no new props, text, logo, UI or watermark.",
+          "reference_images": [
+            "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-80473838-fa35-4be3-89ef-3ac403f42cc0.png"
+          ],
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-953419ce-ab00-4429-83c6-06f67a49b10d.png",
+          "selected": false,
+          "quality_failure": "Preview-only initial visual impression suggested gray/brown backdrop glow. Later saved-PNG alpha inspection did not establish a background transparency failure. Conservatively unselected and retained as evidence; not copied into project. This correction supersedes the earlier failure diagnosis.",
+          "file_metadata": {
+            "bytes": 2395607,
+            "sha256": "65484db0235d8aa35898a39b55be7aff87549e44294aeb50ebc55056b59a7c7b",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              254
+            ],
+            "fully_transparent_pixels": 679063,
+            "fully_transparent_fraction": 0.43173662821451825,
+            "nonzero_alpha_bbox": [
+              139,
+              21,
+              1487,
+              986
+            ],
+            "visible_alpha16_bbox": [
+              141,
+              24,
+              1479,
+              979
+            ],
+            "visible_bottom_clear_fraction": 0.0439453125,
+            "low_alpha_1_to_15_pixels": 17573
+          }
+        },
+        {
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-9465e6a3-722b-49cd-b604-197abc1bb972.png",
+          "selected": true,
+          "prompt": "Use case: stylized-concept.\nCreate ONE TRANSPARENT STICKER ASSET, actual RGBA transparency, inspired by the existing transparent three-animal image. Preserve its soft 3D short-fur toy craft.\nThe new cutout contains SIX DIFFERENT original baby animal friends, all closely cuddling: orange Shiba dog front-left, white kitten front-center, pink piglet with flat two-nostril snout front-right, gray-white husky taller behind-center, tiny dark-gray-and-white penguin with orange beak peeking behind-left, small brown monkey with large round ears peeking behind-right. Distinct varied sizes and forward/back depth. Every face visible; friendly tilted heads lean toward friends. Shiba and kitten touch cheeks; piglet nestles against kitten; husky towers softly from behind. Monkey's curved tail is attached at right. Six species exactly, no duplicates.\nRender original characters in premium pastel chibi short-fur style. Dog and cat have canine/feline noses; pig has cloven hooves; penguin has beak and flippers; monkey has animal paws and round ears. No human hands. Complete animals, no clipped ears, tails or paws. Three sizes, not an equal-size row. Full cozy group is centered in a square transparent canvas with ample EMPTY TRANSPARENT space at all edges and under paws.\nCRITICAL: ONLY the six animal silhouettes are visible. Between and around all animals is alpha 0. NO studio backdrop, NO brown/gray backdrop, NO colored haze, NO glow halo, NO fog, NO scene, NO floor, NO drop shadow, NO cast shadow, NO pedestal, NO bokeh. Character surfaces have soft self-shading only. This must look like the reference cutout against actual transparency, never a background picture. No text, watermark, logo, UI or accessories.",
+          "reference_images": [
+            "/Users/liuzhihang/workspace/dots/dist/assets/scenes/family-animals-v1.png"
+          ],
+          "file_metadata": {
+            "bytes": 1756332,
+            "sha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db",
+            "dimensions": [
+              1254,
+              1254
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_pixels": 710402,
+            "fully_transparent_fraction": 0.451761381124262,
+            "nonzero_alpha_bbox": [
+              0,
+              21,
+              1224,
+              1254
+            ],
+            "visible_alpha16_bbox": [
+              78,
+              86,
+              1222,
+              1161
+            ],
+            "visible_bottom_clear_fraction": 0.07416267942583732,
+            "low_alpha_1_to_15_pixels": 15041
+          }
+        }
+      ],
+      "file_metadata": {
+        "bytes": 1756332,
+        "sha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_pixels": 710402,
+        "fully_transparent_fraction": 0.451761381124262,
+        "nonzero_alpha_bbox": [
+          0,
+          21,
+          1224,
+          1254
+        ],
+        "visible_alpha16_bbox": [
+          78,
+          86,
+          1222,
+          1161
+        ],
+        "visible_bottom_clear_fraction": 0.07416267942583732,
+        "low_alpha_1_to_15_pixels": 15041,
+        "byte_identical_to_tool_output": true
+      }
+    }
+  ]
+}
