@@ -1,0 +1,56 @@
+[
+  {
+    "command": "npm run build",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "\n> build\n> esbuild src/live/live-preview.js --bundle --format=esm --minify --target=es2022 --outfile=dist/live-runtime.js\n\n\n  dist/live-runtime.js  663.1kb\n\n⚡ Done in 59ms\n"
+  },
+  {
+    "command": "node scripts/verify-studio.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "62 baseline and legacy presets and state/Prompt/anatomy regression journeys passed.\n"
+  },
+  {
+    "command": "node scripts/verify-recreations.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "468 recreation, provenance, migration, eye/expression and shared-schema assertions passed\n"
+  },
+  {
+    "command": "node scripts/verify-atelier.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "PASS type and look locks preserve custom proportions, colors and materials\nPASS component lock preserves the visible work prop and consistent reel labels\nPASS reference-preserved neck accessory survives action prop cleanup\nPASS action lock retains motion speed when type is randomized\nPASS random type retains the chosen framing and camera\nPASS look lock preserves the selected material and colors across random types\nPASS frozen v9 configurations default missing motion fields in each historical family\nAtelier verification passed: 7 checks.\n"
+  },
+  {
+    "command": "node scripts/verify-character-system.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "57 frozen preset defaults, 24 frozen migrations, five independent baseline identities, contact bounds and 200 single-baseline random results passed. Page art acceptance remains separate.\n"
+  },
+  {
+    "command": "node scripts/verify-creation.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "Creation project, immutable artwork, prompt, v6-v10 migration, pack capability and layered-capture readiness checks passed.\n"
+  },
+  {
+    "command": "node scripts/verify-creation-ui.mjs",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus.\n"
+  },
+  {
+    "command": "openspec validate rebuild-character-system --strict",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": "Change 'rebuild-character-system' is valid\n"
+  },
+  {
+    "command": "git diff --check",
+    "status": "fulfilled",
+    "exit": 0,
+    "output": ""
+  }
+]

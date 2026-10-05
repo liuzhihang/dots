@@ -1,0 +1,128 @@
+[
+  {
+    "badge": "固定历史示例",
+    "downloadDisabled": false,
+    "image": "./assets/atelier/dot-plush-headphones-v2.png",
+    "step": "dots-artwork"
+  },
+  {
+    "color": "#f4cc57",
+    "image": "./assets/atelier/dot-plush-headphones-v2.png",
+    "mode": "artwork",
+    "step": "edit-color-stays-artwork"
+  },
+  {
+    "canvasCount": 0,
+    "color": "#f4cc57",
+    "downloadDisabled": true,
+    "step": "composer-missing",
+    "truth": "本组尚无可用的精细组合素材，不提供当前形象 PNG。"
+  },
+  {
+    "color": "#f4cc57",
+    "mode": "composer",
+    "step": "undo-mode"
+  },
+  {
+    "canvas": 0,
+    "disabled": true,
+    "mode": "composer",
+    "step": "grok-composer-missing"
+  },
+  {
+    "image": "./assets/atelier/grok-matte-work-v2.png",
+    "naturalWidth": 1254,
+    "step": "grok-artwork"
+  },
+  {
+    "disabled": true,
+    "image": null,
+    "step": "meta-artwork-missing"
+  },
+  {
+    "canvas": 0,
+    "disabled": true,
+    "step": "meta-composer-missing"
+  },
+  {
+    "canvas": 0,
+    "disabled": true,
+    "step": "humans-composer-missing"
+  },
+  {
+    "image": "./assets/atelier/muse-fabric-reading-v2.png",
+    "naturalWidth": 1254,
+    "step": "humans-artwork"
+  },
+  {
+    "image": "./assets/atelier/pet-shiba-scarf-v2.png",
+    "naturalWidth": 1254,
+    "step": "animals-artwork"
+  },
+  {
+    "canvas": 0,
+    "disabled": true,
+    "step": "animals-composer-missing"
+  },
+  {
+    "disabled": true,
+    "family": "animals",
+    "mode": "composer",
+    "step": "project-import-restores-mode-and-family"
+  },
+  {
+    "family": "animals",
+    "mode": "composer",
+    "step": "session-reload-persists-project"
+  },
+  {
+    "step": "own-reference-text-only",
+    "hasNotes": true,
+    "hasAttachInstruction": true,
+    "hasNoConversionClaim": false
+  },
+  {
+    "height": 844,
+    "scrollWidth": 390,
+    "step": "viewport-390",
+    "truthVisible": true,
+    "width": 390
+  },
+  {
+    "height": 740,
+    "scrollWidth": 320,
+    "step": "viewport-320",
+    "truthVisible": true,
+    "width": 320
+  },
+  {
+    "height": 1024,
+    "scrollWidth": 768,
+    "step": "viewport-768",
+    "truthVisible": true,
+    "width": 768
+  },
+  {
+    "badge": "3D 结构诊断",
+    "canvasStatus": "ready",
+    "mode": "artwork",
+    "step": "explicit-3d-diagnostic",
+    "truth": "当前模型只供结构与动作诊断，未通过美术验收。"
+  },
+  {
+    "badge": "2D 结构诊断",
+    "hasSvg": true,
+    "mode": "artwork",
+    "step": "shared-2d-editor"
+  },
+  {
+    "step": "prompt-modal-tracks-undo",
+    "modeBehindModal": "composer",
+    "promptReflectsUndo": true
+  },
+  {
+    "step": "own-reference-text-only-final",
+    "hasAttachInstruction": true,
+    "hasNoConversionClaim": true
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "canvasStatus": "failed",
+  "fixtures": [
+    {
+      "height": 256,
+      "label": "transparent QA fixture PNG",
+      "loaded": true,
+      "width": 256
+    },
+    {
+      "height": 256,
+      "label": "opaque QA fixture PNG",
+      "loaded": true,
+      "width": 256
+    },
+    {
+      "height": 256,
+      "label": "recipe-replacement QA fixture PNG",
+      "loaded": true,
+      "width": 256
+    }
+  ],
+  "report": "加载测试图层后，这里显示 PNG 尺寸和 alpha / 颜色采样。\ntransparent: 256×256; alpha corner=0; center RGBA=174,56,191,255\nopaque: 256×256; alpha corner=255; center RGBA=174,56,191,255\nrecipe-replacement: 256×256; alpha corner=0; center RGBA=0,0,0,0\n失败后旧帧已失效：当前组合没有通过加载；请等待最新预览成功后再导出",
+  "status": "失败路径已拒绝：组合图层必须使用安全的本地图片路径并声明绘制顺序"
+}

@@ -6,7 +6,7 @@ Dot Icon Studio v27 的实时角色仍粗糙，配饰接触不自然；旧 Muse 
 
 ## What Changes
 
-- 核心是让用户创建并带走形象：编辑后的实时 PNG/JSON 导出、复制或下载完整 Prompt、复制并打开 ChatGPT，以及在 ChatGPT 另附自己的图片配合参考 Prompt 生成。不建设登录、账号、个人空间或云端角色库。
+- 核心是让用户创建并带走形象：整图＋Prompt 与组合编辑共享同一角色设定；整图模式下载明确标注的原样静态作品并复制对应设定 Prompt，组合模式只在本地精细分层资产包和声明范围内实际合成后导出 PNG。角色设定可保存为项目 JSON；两种模式都可复制完整 Prompt、下载 TXT 或打开 ChatGPT，用户可在 ChatGPT 另附自己的图片。不建设登录、账号、个人空间或云端角色库。
 - [bloub](https://bloub.vercel.app/) 和 [Grokbot Icon](https://grokbot-icon-studio.serio-ai.chatgpt.site/) 仅参考创作与输出思路，视觉仍按既定会话设计与 R01；不移植两站布局、配色或素材。
 
 - 以用户本轮确认的 [R01 整体方向图](references/r01-confirmed-direction.jpg) 为最终视觉方向：柔和明亮配色、精细角色材质、鲜活表情、角色与配饰自然结合。整体方向确认不替代各组原版身份校准或真实网页验收。
@@ -16,10 +16,10 @@ Dot Icon Studio v27 的实时角色仍粗糙，配饰接触不自然；旧 Muse 
 - 按用户明确的使用范围，Dots、Grok Bot、Meta Muse 及 Codex 等软件内置角色可沿用对应原版身份，保留来源说明，不必强制改成原创角色。本轮仍只保留五组，不因此新增 Codex 分组或批量增加基准。
 - 统一规范角色自身明暗与接触层次，取消所有角色脚底的椭圆阴影团。
 - 每组先实现一只可编辑的基准角色；记录真实页面美术验收并由用户确认后，才允许扩展该组。
-- 保留配置、撤销、JSON 导入导出、Prompt 与当前预览 PNG 等实际能力。原站 reference mode 仅提供文字保留选项，不将图片导入描述为已实现。
+- 保留配置、撤销、JSON 导入导出、Prompt 与实际输出能力。新项目 JSON 使用 `{format:"dot-studio-project", version:1, character, creation:{mode:"artwork"|"composer", artworkId}}` 外层文档；内嵌 `character` 沿用现有 VERSION 10，不升级角色 schema。旧版纯角色 JSON 继续导入。整图的设定变化只更新 Prompt，不伪称静态图随参数变化；组合只导出本地分层资产包真实合成的当前 Canvas。原站 reference mode 仅提供文字保留选项，不将图片导入描述为已实现。
 - 分类导航与全屏随机体验分别由后续独立 change `refactor-family-navigation`、`add-fullscreen-randomizer` 管理。本 change 仅完成五组角色的最小选择接入与现有随机逻辑兼容，不重做导航布局或全屏流程。
 
-最初阶段只生成 proposal、specs、design、tasks 与参考索引；之后用户明确授权进入 apply，并完成了程序化候选实现与程序验证。2026-10-05 用户审阅当前五组实际页面候选后明确否决其外观；五组均未通过网页美术验收，未解锁扩展，也未发布。没有申请破坏旧 JSON 的格式变更；必要的 schema 演进须保留旧状态的明确迁移语义。
+最初阶段只生成 proposal、specs、design、tasks 与参考索引；之后用户明确授权进入 apply，并完成了程序化候选实现与程序验证。2026-10-05 用户审阅当前五组实际页面候选后明确否决其外观；五组均未通过网页美术验收，未解锁扩展，也未发布。随后用户确认整图与组合两条创作路径并存。本 change 现在包含创作模式与输出逻辑；五组高质量整图/组合资产仍未通过网页美术验收。没有申请破坏旧 JSON 的格式变更；新项目包装层不升级 VERSION 10，旧角色 JSON 继续兼容。
 
 ## Capabilities
 
@@ -28,6 +28,7 @@ Dot Icon Studio v27 的实时角色仍粗糙，配饰接触不自然；旧 Muse 
 - `character-families`: 五组角色的身份、材质、基准样例、来源区分与旧配置迁移。
 - `character-contact-and-motion`: 配饰接触、物种肢体、状态运动、无脚底阴影团及实际导出一致性。
 - `character-visual-acceptance`: 基于真实页面的逐组验收、证据要求和扩展门槛。
+- `character-creation-modes`: 整图＋Prompt 与受本地精细分层资产包约束的组合模式、共享角色设定、新项目文档兼容和真实输出规则。
 
 ### Modified Capabilities
 
@@ -41,4 +42,4 @@ Dot Icon Studio v27 的实时角色仍粗糙，配饰接触不自然；旧 Muse 
 
 现已获 apply 与私有 Git 仓库管理授权，在本机实施、检查、提交源码；网页美术和用户逐组确认分别记录，不保存 Sites 新版本、不发布。
 
-2026-10-05 用户进一步询问完整图＋Prompt 与组合是否并存，并强调整体效果。推荐将两者建立在同一精细基准与角色设定上，具体见 [资产路线复审](asset-route-review.md)。这是针对当前候选被否决的方案修订，尚未替换现行多视角/动作合同，也未实现新图片资产路径。
+2026-10-05 用户确认整图＋Prompt 与组合编辑并存，优先保证整体效果。两条路径共用角色设定；本轮仅实现模式、Prompt、文档和输出逻辑，不宣称已有高质量新角色资产。完整合同见 [资产路线复审](asset-route-review.md) 与 `character-creation-modes`。
