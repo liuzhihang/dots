@@ -14,12 +14,13 @@ import {
   parseProject,
   resolveCreation,
   getRegisteredArtworks,
+  resolveCompositionConfig,
   selectCompositionLayers,
   setCreationMode,
   setProjectCharacter
 } from '../dist/studio-creation.js';
 import {COMPOSITION_PACKS,CREATION_ARTWORKS} from '../dist/studio-creation-assets.js';
-import {createPreset,setCharacterValue,buildPrompt,resolveCharacter} from '../dist/studio-model.js';
+import {createPreset,createLookCharacter,setCharacterValue,buildPrompt,resolveCharacter} from '../dist/studio-model.js';
 import {LayeredComposer} from '../dist/studio-composer.js';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -83,7 +84,7 @@ assert.equal(withdrawn.artwork.kind,'retired-tombstone');
 assert.equal(Object.hasOwn(withdrawn.artwork,'src'),false,'the retired tombstone must not expose a downloadable source');
 assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-human-reading-v2'),false,'withdrawn art is excluded from the optional artwork catalog');
 assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-human-reading-v2'),false,'registered optional artworks contain active entries only');
-assert.equal((await import('../dist/studio-creation-assets.js?v=59')).getCreationArtwork('historical-human-reading-v2').status,'retired','legacy imports may still resolve the retired tombstone');
+assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreationArtwork('historical-human-reading-v2').status,'retired','legacy imports may still resolve the retired tombstone');
 assert(buildCreationPrompt(withdrawnRoundTrip).includes('这张历史人物形象已撤下'));
 assert.match(buildCreationPrompt(withdrawnRoundTrip,'en'),/withdrawn/);
 await assert.rejects(readFile(path.join(root,'dist/assets/atelier/muse-fabric-reading-v2.png')),/ENOENT/,'the rejected human PNG must not remain in the public dist directory');
@@ -111,7 +112,7 @@ assert.equal(retiredGrok.artwork.kind,'retired-tombstone');
 assert.equal(Object.hasOwn(retiredGrok.artwork,'src'),false,'the retired Grok tombstone has no downloadable source');
 assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-grok-matte-work-v2'),false,'withdrawn Grok art is excluded from the optional catalog');
 assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-grok-matte-work-v2'),false,'registered optional artworks contain active entries only');
-assert.equal((await import('../dist/studio-creation-assets.js?v=59')).getCreationArtwork('historical-grok-matte-work-v2').status,'retired','legacy Grok imports may resolve the tombstone');
+assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreationArtwork('historical-grok-matte-work-v2').status,'retired','legacy Grok imports may resolve the tombstone');
 assert(buildCreationPrompt(withdrawnGrok).includes('这张历史 Grok 形象已撤下'));
 await assert.rejects(readFile(path.join(root,'dist/assets/atelier/grok-matte-work-v2.png')),/ENOENT/,'the rejected Grok PNG must not remain in the public dist directory');
 await readFile(path.join(root,'openspec/changes/refresh-studio-visual-design/references/retired-assets/grok-matte-work-v2.png'));
@@ -198,6 +199,9 @@ assert.equal(inspectCompositionPack(localPack,baselineDots).availability,'availa
 assert.equal(inspectCompositionPack(localPack,changedCharacter).availability,'available','declared tint path accepts a body color edit');
 const idleDots=setCharacterValue(baselineDots,'action','idle');
 assert.equal(inspectCompositionPack(localPack,idleDots).availability,'unsupported','undeclared action changes cannot claim a rendered pose');
+assert.throws(()=>resolveCompositionConfig(localPack,idleDots),/只会写入 Prompt|渲染配方/,'the default render-config API rejects unsupported settings');
+const idleTemplatePreview=resolveCompositionConfig(localPack,idleDots,{templatePreview:true});
+assert.equal(idleTemplatePreview.action,baselineDots.action,'explicit template preview sanitizes unsupported settings to the registered image signature');
 const unsupportedShape=structuredClone(baselineDots);unsupportedShape.presetId='dots-blue';unsupportedShape.catalogTier='legacy';unsupportedShape.isLegacy=true;unsupportedShape.shape='heart';
 assert.equal(inspectCompositionPack(localPack,unsupportedShape).availability,'unsupported','undeclared silhouette changes are rejected');
 assert.equal(inspectCompositionPack(localPack,setCharacterValue(baselineDots,'camera','threeQuarter')).availability,'unsupported','front packs reject other camera views');
@@ -233,12 +237,14 @@ const incompleteTint={...shapePack,layers:shapeLayers.map(layer=>layer.id==='hea
 assert.equal(inspectCompositionPack(incompleteTint,setCharacterValue(heartDots,'colors.body','#9944CC')).availability,'unsupported','an inactive tint layer cannot support an active recipe color edit');
 for(const path of ['camera','aspect','output','motionStyle','motionSpeed']) assert.equal(inspectCompositionPack({...localPack,editablePaths:[...localPack.editablePaths,path]},baselineDots).availability,'unsupported',path+' cannot be declared editable by this fixed-frame PNG engine');
 for(const family of ['dots','grok','meta-muse','humans','animals']){
-  if(!COMPOSITION_PACKS.some(pack=>pack.family===family)){
-    const noPack=setCreationMode(makeProject(baselineByFamily[family]),'composer');
-    assert.equal(resolveCreation(noPack).availability,'missing',family+' cannot fall back to a live 3D capture');
-    assert.match(buildCreationPrompt(noPack,'en'),/No composable layers are registered/);
-  }
+  const id=CREATION_ARTWORKS.find(item=>item.family===family&&item.kind==='baseline-candidate').id;
+  const pack=COMPOSITION_PACKS.find(item=>item.family===family)|| (await import('../dist/studio-creation-assets.js?v=62')).getCompositionPack(family,id);
+  assert(pack,`${family} baseline has an explicitly registered local render pack`);
+  assert.equal(pack.artworkId||id,id,`${family} pack is bound to its own selected artwork`);
+  const candidate=makeProject(createLookCharacter(id),{mode:'composer',artworkId:id});
+  assert.equal(resolveCreation(candidate).availability,'available',`${family} uses its registered template without a 3D fallback`);
 }
+assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCompositionPack('humans','historical-human-reading-v2'),null,'withdrawn human IDs never regain a render pack');
 
 // Minimal browser surface mocks validate capture readiness, tint alpha path,
 // same-size layers, stale async updates and failure invalidation.
@@ -271,6 +277,13 @@ try{
   assert(operations.some(operation=>operation[0]==='drawImage'),'composition draws decoded image layers');
   assert(operations.some(operation=>operation[0]==='fillRect'),'declared tint uses the source alpha mask path');
   assert.equal(composer.frame.context.fillStyle,'','the stored layer frame must not bake in a background; transparent export may override a solid preview');
+
+  assert.equal(await composer.update(localPack,idleDots,{templatePreview:true}),true);
+  assert.equal(composer.canvas.dataset.renderingMode,'selected-template-preview');
+  assert.equal(composer.canvas.attributes['aria-label'],'所选模板与背景参考预览；高级 Prompt 设定未渲染');
+  await assert.rejects(composer.capture(32),/只是已选模板/,'the renderer itself blocks export of an unsupported template-only preview');
+  assert.equal(await composer.update(localPack,baselineDots),true,'a supported full signature restores current-configuration rendering');
+  assert.equal(composer.canvas.attributes['aria-label'],'当前模板与背景合成预览');
 
   const beforeShapeRender=pendingImages.length;
   assert.equal(await composer.update(shapePack,heartDots),true);

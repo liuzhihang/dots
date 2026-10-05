@@ -4,8 +4,9 @@ import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {matchingFamilies} from '../dist/studio-home.js';
-import {createCharacter, FAMILIES} from '../dist/studio-model.js';
+import {createCharacter, createLookCharacter, FAMILIES} from '../dist/studio-model.js';
 import {exportProject, makeProject, parseProject, setProjectCharacter} from '../dist/studio-creation.js';
+import {getFamilyArtwork} from '../dist/studio-creation-assets.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const familyIds = ['dots', 'grok', 'meta-muse', 'humans', 'animals'];
@@ -35,10 +36,17 @@ for (const historic of ['baseline-dots', 'grok-arch', 'muse-mu', 'pet-shiba', 'p
 }
 
 const source = await readFile(path.join(root, 'dist/studio.js'), 'utf8');
+const homeSource = await readFile(path.join(root, 'dist/studio-home.js'), 'utf8');
 const productionRemember = source.match(/function remember\(\)\{[^]*?\}\n(?=function toast\()/)?.[0]?.trim();
 const productionSwitchFamily = source.match(/function switchFamily\(id\)\{[^]*?\}\n(?=function undo\()/)?.[0]?.trim();
+const productionRouteFromHash = source.match(/function routeFromHash\(\)\{[^]*?\}\n(?=function applyRoute\()/)?.[0]?.trim();
+const productionOpenGallery = source.match(/function openGallery\(family='all',options=\{\}\)\{[^]*?\}\n(?=function goHome\()/)?.[0]?.trim();
 assert(productionRemember, 'could not locate the production remember() function');
 assert(productionSwitchFamily, 'could not locate the production switchFamily() function');
+assert(productionRouteFromHash, 'could not locate the production routeFromHash() function');
+assert(productionOpenGallery, 'could not locate the production openGallery() function');
+assert.match(homeSource, /filters\.addEventListener\('click',[^]*?openGallery\(activeFamily,\{replace:true,focus:false\}\)/,
+  'changing a family filter replaces the current gallery URL with its selected family');
 
 function character(family, {name, notes, output, referenceEnabled, referenceNotes}) {
   const value = createCharacter(family);
@@ -72,6 +80,8 @@ const context = vm.createContext({
   setProjectCharacter,
   exportProject,
   createCharacter,
+  createLookCharacter,
+  getFamilyArtwork,
   sessionStorage: {setItem: (key, value) => storage.set(key, value)}
 });
 vm.runInContext(`
@@ -101,7 +111,9 @@ const review = context.review;
 review.remember();
 review.switchFamily('grok');
 assert.equal(review.state.family, 'grok', 'switchFamily selects a new valid family');
-assert.equal(review.project.creation.mode, 'artwork', 'an unseen family starts with its default artwork mode');
+assert.equal(review.project.creation.mode, 'composer', 'an unseen family starts in the workbench');
+assert.equal(review.project.creation.artworkId, getFamilyArtwork('grok').id, 'an unseen family selects its own real baseline look');
+assert.deepEqual(review.state, createLookCharacter(getFamilyArtwork('grok').id), 'an unseen family uses the actual baseline image configuration instead of legacy trial settings');
 assert.equal(review.state.reference.enabled, false, 'an unseen family starts without the previous family reference flag');
 assert.equal(review.state.notes, '', 'an unseen family starts without the previous family notes');
 
@@ -147,4 +159,12 @@ assert.equal(JSON.stringify(review.project), beforeInvalid, 'an invalid family i
 assert.equal(review.commitCount, commitsBeforeInvalid, 'an invalid family id does not call commit');
 assert.equal(FAMILIES[review.state.family] !== undefined, true, 'the active family remains valid after invalid input');
 
-console.log('Family search and production family-draft navigation checks passed.');
+const routeContext = vm.createContext({location:{hash:'#looks/meta-muse'},FAMILIES,navigated:null});
+vm.runInContext(`${productionRouteFromHash}\n${productionOpenGallery}\nglobalThis.routeFromHash=routeFromHash;globalThis.openGallery=openGallery;`,routeContext);
+assert.deepEqual(JSON.parse(JSON.stringify(routeContext.routeFromHash())),{page:'looks',family:'meta-muse'},'a valid family gallery hash restores its filter');
+routeContext.location.hash='#looks/%E0%A4%A';
+assert.deepEqual(JSON.parse(JSON.stringify(routeContext.routeFromHash())),{page:'home'},'a malformed percent escape safely falls back to the home page');
+routeContext.navigate=(route,options)=>{routeContext.navigated={route,options};};
+routeContext.openGallery('animals',{replace:true,focus:false});
+assert.deepEqual(JSON.parse(JSON.stringify(routeContext.navigated)),{route:{page:'looks',family:'animals'},options:{replace:true,focus:false}},'openGallery forwards replacement options to preserve filter URLs without extra history entries');
+console.log('Family search, family-draft navigation, safe hashes and gallery URL replacement checks passed.');

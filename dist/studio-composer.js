@@ -1,5 +1,5 @@
-import { resolveCharacter } from './studio-model.js?v=59';
-import { inspectCompositionPack, isLocalCreationAsset, selectCompositionLayers } from './studio-creation.js?v=59';
+import { resolveCharacter } from './studio-model.js?v=62';
+import { inspectCompositionPack, isLocalCreationAsset, resolveCompositionConfig, selectCompositionLayers } from './studio-creation.js?v=62';
 
 const clone = value => structuredClone(value);
 
@@ -113,7 +113,7 @@ export class LayeredComposer {
     this.disposed = false;
   }
 
-  async update(pack, config) {
+  async update(pack, config, { templatePreview = false } = {}) {
     if (this.disposed) throw new Error('组合预览已关闭');
     const revision = ++this.revision;
     this.ready = false;
@@ -126,8 +126,8 @@ export class LayeredComposer {
 
     try {
       const assessment = inspectCompositionPack(pack, config);
-      if (assessment.availability !== 'available') throw new Error(assessment.reason);
-      const current = resolveCharacter(config).config;
+      if (assessment.availability !== 'available' && !templatePreview) throw new Error(assessment.reason);
+      const current = resolveCompositionConfig(pack, config, {templatePreview});
       const width = pack.width, height = pack.height;
       const layers = selectCompositionLayers(pack, current).map(layer => safeLayer(layer, width, height)).sort((a, b) => a.z - b.z);
       const images = await Promise.all(layers.map(async layer => ({ layer, image: await loadImage(layer.src) })));
@@ -162,6 +162,10 @@ export class LayeredComposer {
       this.ready = true;
       this.canvas.dataset.family = current.family;
       this.canvas.dataset.view = 'front';
+      this.canvas.dataset.renderingMode = assessment.availability === 'available' ? 'current-configuration' : 'selected-template-preview';
+      this.canvas.setAttribute('aria-label', assessment.availability === 'available'
+        ? '当前模板与背景合成预览'
+        : '所选模板与背景参考预览；高级 Prompt 设定未渲染');
       this.canvas.dataset.previewStatus = 'ready';
       this.canvas.dataset.renderedRevision = String(revision);
       return true;
@@ -184,6 +188,9 @@ export class LayeredComposer {
   async capture(size, { transparent } = {}) {
     if (this.disposed || !this.ready || !this.frame || !this.pack || !this.config) {
       throw new Error('当前组合没有通过加载；请等待最新预览成功后再导出');
+    }
+    if (this.canvas.dataset.renderingMode !== 'current-configuration') {
+      throw new Error('当前画面只是已选模板的预览；高级设定没有被渲染，不能导出为已应用这些设定的 PNG。');
     }
     if (!Number.isFinite(size) || size < 1 || size > 8192) throw new Error('PNG 导出尺寸无效');
     const revision = this.revision, frame = this.frame, pack = this.pack, config = clone(this.config);

@@ -1,4 +1,5 @@
-import {createCharacter} from './studio-model.js?v=59';
+import {createCharacter,createLookCharacter} from './studio-model.js?v=62';
+import {BUILT_IN_LOOKS,LOOK_PRESETS} from './studio-looks.js?v=62';
 
 const historicalArtwork = (artwork) => Object.freeze({
   ...artwork,
@@ -13,6 +14,7 @@ export const CREATION_ARTWORKS = Object.freeze([
     ['humans','humans-chestnut-chibi-teal-knit-candidate-v1.png','栗发青绿 · 人物基准候选','新设计的栗发人物与青绿织物服装；没有使用动漫截图像素或完整动漫角色复刻。'],
     ['animals','animals-original-shiba-candidate-v1.png','暖橙柴犬 · 动物基准候选','新设计的柴犬，保持物种耳、口鼻、四肢和卷尾；没有使用动漫截图像素。']
   ].map(([family,file,name,description])=>historicalArtwork({id:`candidate-${family}-20261005`,family,name,src:`./assets/characters/${file}`,width:family==='meta-muse'?1235:1254,height:family==='meta-muse'?1274:1254,kind:'baseline-candidate',status:'unreviewed',description,provenance:{origin:'imagegen-20261005',official:false,detail:'按已确认 R01 风格及用户身份图生成的独立基准候选；未通过用户真实网页美术验收。Dots/Grok/Meta 保留许可参考身份，人物/动物重新原创。'}})),
+  ...LOOK_PRESETS.map(look=>historicalArtwork({id:look.artworkId,family:look.family,name:look.name,src:`./assets/looks/${look.artworkId}.png`,width:1254,height:1254,kind:'look-template',status:'unreviewed',description:look.description,provenance:{origin:'imagegen-20261005',official:false,detail:'内置完整搭配图候选；姿态和配饰为图中固定造型，尚待真实网页美术验收。'}})),
   historicalArtwork({
     id: 'historical-dots-plush-headphones-v2',
     family: 'dots',
@@ -118,6 +120,30 @@ export function getFamilyArtwork(family) {
   return CREATION_ARTWORKS.find((artwork) => artwork.family === family) ?? null;
 }
 
-export function getCompositionPack(family) {
-  return COMPOSITION_PACKS.find((pack) => pack.family === family) ?? null;
+export function getBuiltInLooks(family = null) {
+  return BUILT_IN_LOOKS.filter(look => !family || look.family === family)
+    .map(look => getCreationArtwork(look.artworkId)).filter(Boolean).map(artwork => structuredClone(artwork));
+}
+
+function fixedLookPack(artwork) {
+  const config=createLookCharacter(artwork.id);
+  return {
+    id:`${artwork.id}-background-composition`,family:artwork.family,artworkId:artwork.id,
+    kind:'fixed-image-2d',view:'front',status:'candidate',revision:1,
+    provenance:{origin:artwork.provenance?.origin||'imagegen-20261005',detail:'单张完整 PNG 固定造型；仅背景颜色/透明度在网页中实际合成，其他设定只更新 Prompt。'},
+    outputNotes:Object.freeze({
+      zh:`【工作台输出说明】当前画面以“${artwork.name}”这张完整 PNG 为固定造型，只把所选背景合成到 PNG；人物/角色姿态和图中配饰已烘焙，五官、材质、颜色、动作、镜头等高级设定只写入 Prompt，不会改变本画面。本内置搭配仍待真实网页美术验收；这不是自动生成图片或任意 3D 模型。需要使用参考图时，请在 ChatGPT 另行附加。`,
+      en:`[Studio output] The current preview uses the complete PNG “${artwork.name}” as a fixed look and composites only the selected background. Its pose and pictured accessories are baked into the image; advanced feature, material, color, action and camera settings update the prompt only and do not alter this preview. This built-in look is still pending real webpage art review. It is not generated artwork or a freely editable 3D model. Attach any reference image in ChatGPT when needed.`
+    }),
+    baseConfig:config,width:artwork.width,height:artwork.height,
+    editablePaths:['background','colors.background'],
+    layers:[{id:artwork.id,src:artwork.src,z:0}],variants:[]
+  };
+}
+
+export function getCompositionPack(family, artworkId = null) {
+  const artwork=artworkId?getCreationArtwork(artworkId):getFamilyArtwork(family);
+  if(!artwork||artwork.family!==family||artwork.status==='retired')return null;
+  if(artwork.id==='candidate-dots-20261005')return COMPOSITION_PACKS.find(pack=>pack.family==='dots')??null;
+  return BUILT_IN_LOOKS.some(look=>look.artworkId===artwork.id)?fixedLookPack(artwork):null;
 }

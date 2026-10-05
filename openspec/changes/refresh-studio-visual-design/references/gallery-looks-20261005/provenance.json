@@ -1,0 +1,750 @@
+{
+  "title": "Dot Icon Studio built-in gallery image candidates",
+  "generated_date": "2026-10-05",
+  "scope": "Asset-only image generation. No project files were edited and no browser or Sites actions were run.",
+  "generation_method": "Built-in image_gen.imagegen; one separate tool call per requested character asset. Original outputs remain under CODEX_HOME/generated_images and were copied to the requested /tmp folder.",
+  "reference_images_viewed": [
+    "/Users/liuzhihang/workspace/dots/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+    "/Users/liuzhihang/workspace/dots/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+    "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+    "/Users/liuzhihang/workspace/dots/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+    "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+    "/Users/liuzhihang/workspace/dots/openspec/changes/rebuild-character-system/references/r01-confirmed-direction.jpg"
+  ],
+  "verification_method": "PNG IHDR and decoded RGBA scanlines checked with Python standard library; SHA-256 computed from copied PNG bytes. Each copied candidate was opened with view_image.",
+  "alpha_interpretation": "Each file has alpha=0 background pixels and alpha=255 pixels. Most fur/material pixels are high alpha but not exactly 255; exact counts are recorded. Bounds are recorded both for every alpha>0 fringe pixel and for the visible subject at alpha>=16.",
+  "framing_note": "ImageGen did not consistently achieve the requested approximately 10% margins. The measured alpha>=16 subject bounds and per-side margins are recorded for integration layout decisions.",
+  "acceptance_boundary": "All ten are unaccepted visual candidates. None has user webpage acceptance.",
+  "assets": [
+    {
+      "filename": "dots-rose-glasses.png",
+      "family": "Dots",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-9d953f2b-c611-4b94-a3bd-38dd5d260b8f.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/dots-rose-glasses.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the style and material reference: match its premium soft 3D collectible toy rendering, fine short plush fibers, gentle studio lighting, polished but warm finish, frontal centered presentation.\nCreate one complete floating character only: a perfectly round rose-pink plush orb, with two small glossy black oval eyes on the front and delicate transparent round eyeglasses fitted naturally against the plush surface. Keep both eyes visible through the lenses. No mouth, no arms, no legs, no headphones, no other accessories.\nComposition: square 1:1 canvas, single character fully in frame, centered, straight-on view, about 10% clear margin on every side.\nConstraints: true transparent alpha background, no floor, no backdrop, no scenery, no cast shadow beyond the character silhouette, no text, no letters, no logo, no watermark. Match Image 1's detailed soft 3D toy style while changing the body color and adding only the described glasses.",
+      "observed_after_view_image": "A centered rose-pink short-plush orb; both black eyes remain visible behind fitted clear round frames; no mouth or limbs.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "file_size_bytes": 1860436,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 731940,
+        "partial_alpha_pixels_1_to_254": 840550,
+        "near_opaque_pixels_alpha_250_to_255": 795505,
+        "fully_opaque_pixels_alpha_255": 26,
+        "transparent_pixel_percent": 46.546,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            57,
+            1214,
+            1254
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 57,
+            "right": 40,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 4.55,
+            "right": 3.19,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            107,
+            122,
+            1141,
+            1145
+          ],
+          "margins_px": {
+            "left": 107,
+            "top": 122,
+            "right": 113,
+            "bottom": 109
+          },
+          "margins_percent": {
+            "left": 8.53,
+            "top": 9.73,
+            "right": 9.01,
+            "bottom": 8.69
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/dots-rose-glasses.png"
+    },
+    {
+      "filename": "dots-lilac-bucket.png",
+      "family": "Dots",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-c61f83d9-9da8-4cf2-96c5-af97a697265c.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/dots-lilac-bucket.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the material and rendering reference: match its premium, finely detailed short-plush orb, soft studio light, gentle dimensional shading and polished collectible-toy finish.\nCreate one complete floating character only: a pale lilac plush sphere with two small glossy black oval eyes on the front, wearing a simple warm-yellow bucket hat fitted snugly over the top of the round head. The hat brim should gently follow the orb's curvature without covering either eye. No mouth, no arms, no legs, no headphones, no extra accessories.\nComposition: square 1:1 canvas, a single character fully in frame, centered and straight-on, with about 10% clear margin on every side.\nConstraints: genuine transparent alpha background; no ground or external floor, no environment, no background color, no text, letters, logo, or watermark. Keep the detailed soft 3D plush style from Image 1; only change the plush color and add the described hat.",
+      "observed_after_view_image": "A pale-lilac short-plush orb with both black eyes visible beneath a fitted warm-yellow bucket hat; no mouth or limbs.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "file_size_bytes": 1605008,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 808076,
+        "partial_alpha_pixels_1_to_254": 764374,
+        "near_opaque_pixels_alpha_250_to_255": 732054,
+        "fully_opaque_pixels_alpha_255": 66,
+        "transparent_pixel_percent": 51.387,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            79,
+            17,
+            1174,
+            1180
+          ],
+          "margins_px": {
+            "left": 79,
+            "top": 17,
+            "right": 80,
+            "bottom": 74
+          },
+          "margins_percent": {
+            "left": 6.3,
+            "top": 1.36,
+            "right": 6.38,
+            "bottom": 5.9
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            87,
+            147,
+            1167,
+            1132
+          ],
+          "margins_px": {
+            "left": 87,
+            "top": 147,
+            "right": 87,
+            "bottom": 122
+          },
+          "margins_percent": {
+            "left": 6.94,
+            "top": 11.72,
+            "right": 6.94,
+            "bottom": 9.73
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/dots-lilac-bucket.png"
+    },
+    {
+      "filename": "grok-green-cloud.png",
+      "family": "Grok Bot",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-5a54d930-3c88-4e0f-a92e-404f016bf82b.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/grok-green-cloud.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the project family rendering reference. Match its soft, premium 3D toy finish, smooth softly shaded material, gentle studio highlights, clean frontal display and simple expressive face.\nCreate one complete floating Grok-style geometric companion only: a vivid fresh-green cloud silhouette made from a compact cluster of softly rounded lobes, with two small solid white vertical capsule-shaped eyes on the front, both tilted slightly in the same direction. No mouth, no arms, no legs, no robot parts, no accessories; the cloud geometry itself must be the unmistakable identity.\nComposition: square 1:1 canvas, one full character centered, straight-on, about 10% clear margin on every side.\nConstraints: true transparent alpha background, no ground/floor, no environment, no background, no text, no letters, no logo, no watermark. Keep a polished soft 3D collectible-toy aesthetic guided by Image 1, while replacing the orb with a clear cloud silhouette.",
+      "observed_after_view_image": "A vivid-green smooth soft-gel cloud silhouette with two white capsule eyes, no robot details or limbs.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "file_size_bytes": 790009,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 949952,
+        "partial_alpha_pixels_1_to_254": 621608,
+        "near_opaque_pixels_alpha_250_to_255": 605727,
+        "fully_opaque_pixels_alpha_255": 956,
+        "transparent_pixel_percent": 60.41,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            49,
+            0,
+            1178,
+            1254
+          ],
+          "margins_px": {
+            "left": 49,
+            "top": 0,
+            "right": 76,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 3.91,
+            "top": 0.0,
+            "right": 6.06,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            86,
+            229,
+            1175,
+            1057
+          ],
+          "margins_px": {
+            "left": 86,
+            "top": 229,
+            "right": 79,
+            "bottom": 197
+          },
+          "margins_percent": {
+            "left": 6.86,
+            "top": 18.26,
+            "right": 6.3,
+            "bottom": 15.71
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/grok-green-cloud.png"
+    },
+    {
+      "filename": "grok-teal-square.png",
+      "family": "Grok Bot",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-617dfdf0-f372-44a9-adb6-97378436febe.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/grok-teal-square.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the project family rendering reference. Match its soft, premium 3D toy finish, smoothly rounded material, gentle studio highlights, clean frontal display and simple expressive face.\nCreate one complete floating geometric companion only: a saturated teal-green rounded square soft-gel shape, with generously softened corners and slightly pillowy convex surfaces, bearing two small solid white vertical capsule-shaped eyes on the front, both tilted slightly in the same direction. The silhouette must read immediately as a rounded square. No mouth, no arms, no legs, no robot parts, no accessories.\nComposition: square 1:1 canvas, one full character centered, straight-on, about 10% clear margin on every side.\nConstraints: genuine transparent alpha background; no ground/floor, environment, backdrop, text, letters, logo, or watermark. Use Image 1 only as the 3D character finish reference; keep this design purely geometric and simple.",
+      "observed_after_view_image": "A teal soft-gel rounded square with two white capsule eyes; square silhouette remains distinct.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "file_size_bytes": 828844,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 816693,
+        "partial_alpha_pixels_1_to_254": 755559,
+        "near_opaque_pixels_alpha_250_to_255": 739416,
+        "fully_opaque_pixels_alpha_255": 264,
+        "transparent_pixel_percent": 51.935,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            9,
+            1214,
+            1254
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 9,
+            "right": 40,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 0.72,
+            "right": 3.19,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            173,
+            195,
+            1082,
+            1081
+          ],
+          "margins_px": {
+            "left": 173,
+            "top": 195,
+            "right": 172,
+            "bottom": 173
+          },
+          "margins_percent": {
+            "left": 13.8,
+            "top": 15.55,
+            "right": 13.72,
+            "bottom": 13.8
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/grok-teal-square.png"
+    },
+    {
+      "filename": "muse-rose-flowers.png",
+      "family": "Meta Muse",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-9a3afbe3-80f9-4618-9d71-bed2df78bf84.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/muse-rose-flowers.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the family reference: a small cozy hooded plush companion with a warm open face window, gentle rounded body, fine short fur, delicate facial features and soft premium 3D studio lighting. Match that identity and finish.\nCreate one complete floating full-body character only: same hooded Muse silhouette, with a soft rose-pink plush outer hood and body surrounding a warm peach face window. Keep both dark eyes, small nose and gentle smile completely unobstructed. Add two short natural arms reaching forward and gently holding one small bouquet of white daisies with sunny yellow centers; the green stems visibly meet the hands and touch the body. Keep bouquet below the face so it never covers the face.\nComposition: square 1:1 canvas, full character and bouquet in frame, centered, front-facing, about 10% clear margin on every side.\nConstraints: true transparent alpha background; no external ground, floor or scene; no text, logo, watermark, extra props, or extra characters. Follow Image 1's warm plush toy style; change only the outer color and pose/prop as specified.",
+      "observed_after_view_image": "A rose-pink hooded plush with unobstructed warm face window and short arms holding a small daisy bouquet; stems meet the hands/body.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "file_size_bytes": 1185166,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 966879,
+        "partial_alpha_pixels_1_to_254": 605444,
+        "near_opaque_pixels_alpha_250_to_255": 575008,
+        "fully_opaque_pixels_alpha_255": 193,
+        "transparent_pixel_percent": 61.486,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            20,
+            1216,
+            1184
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 20,
+            "right": 38,
+            "bottom": 70
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 1.59,
+            "right": 3.03,
+            "bottom": 5.58
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            297,
+            93,
+            965,
+            1160
+          ],
+          "margins_px": {
+            "left": 297,
+            "top": 93,
+            "right": 289,
+            "bottom": 94
+          },
+          "margins_percent": {
+            "left": 23.68,
+            "top": 7.42,
+            "right": 23.05,
+            "bottom": 7.5
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/muse-rose-flowers.png"
+    },
+    {
+      "filename": "muse-sage-reading.png",
+      "family": "Meta Muse",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-c42489b2-c7e5-4a10-8649-102cc23075ff.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/muse-sage-reading.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the family reference: a small cozy hooded plush companion with a warm open face window, gentle rounded body, fine short fur, delicate facial features and soft premium 3D studio lighting. Match that identity and finish.\nCreate one complete floating full-body character only: same hooded Muse silhouette with a pale sage-green plush outer hood and body surrounding a warm peach face window. Keep both dark eyes, small nose and gentle smile fully unobstructed. Add two short natural arms supporting a little closed book in front of the torso, held below the face; both hands must visibly touch the book, and the book must not obscure any part of the face.\nComposition: square 1:1 canvas, full character and book in frame, centered, front-facing, about 10% clear margin on every side.\nConstraints: genuine transparent alpha background; no external floor, ground, or scene; no text, letters, logo, watermark, extra props, or extra characters. Follow Image 1's warm plush toy style; change only the outer color and pose/prop as specified.",
+      "observed_after_view_image": "A sage hooded plush with unobstructed face and both short arms holding a closed little book against the torso; no open pages are shown.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "file_size_bytes": 1142481,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 1009482,
+        "partial_alpha_pixels_1_to_254": 563002,
+        "near_opaque_pixels_alpha_250_to_255": 531616,
+        "fully_opaque_pixels_alpha_255": 32,
+        "transparent_pixel_percent": 64.195,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            33,
+            20,
+            1226,
+            1230
+          ],
+          "margins_px": {
+            "left": 33,
+            "top": 20,
+            "right": 28,
+            "bottom": 24
+          },
+          "margins_percent": {
+            "left": 2.63,
+            "top": 1.59,
+            "right": 2.23,
+            "bottom": 1.91
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            293,
+            131,
+            970,
+            1140
+          ],
+          "margins_px": {
+            "left": 293,
+            "top": 131,
+            "right": 284,
+            "bottom": 114
+          },
+          "margins_percent": {
+            "left": 23.37,
+            "top": 10.45,
+            "right": 22.65,
+            "bottom": 9.09
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/muse-sage-reading.png"
+    },
+    {
+      "filename": "human-bun-yellow.png",
+      "family": "Humans",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-232803bd-7905-4624-b323-b86035ec3112.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/human-bun-yellow.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the human-family style reference: a charming original 3D collectible chibi child with a softly oversized head, large warm brown eyes, natural warm skin, detailed sculpted hair, knitted/clothing texture, delicate blush, gentle studio lighting and full small body.\nCreate one original little girl with medium chestnut-brown hair gathered into a clear high round bun, wearing a sunny yellow hooded sweatshirt, simple matching casual shorts or skirt, complete short legs and small shoes. She faces forward with a friendly, open expression. Raise one arm in a natural hello wave at about shoulder height, palm facing the viewer, with a clearly formed hand and five distinct naturally spaced fingers; keep the other arm relaxed at her side. Both eyes, both feet and the full hair bun must be visible.\nComposition: square 1:1 canvas, single full-body child centered, front-facing, with about 10% clear margin on every side.\nConstraints: genuine transparent alpha background; no floor, ground, scenery, text, logo, watermark or extra characters. Match Image 1's fine soft 3D toy craftsmanship, but make a new original human character; do not imitate any known cartoon, anime or copyrighted character.",
+      "observed_after_view_image": "A full-body chestnut-haired girl with a high bun, yellow hooded sweatshirt, visible shoes and a clear five-finger wave.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "file_size_bytes": 1086214,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 1087604,
+        "partial_alpha_pixels_1_to_254": 484584,
+        "near_opaque_pixels_alpha_250_to_255": 432923,
+        "fully_opaque_pixels_alpha_255": 328,
+        "transparent_pixel_percent": 69.163,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            1,
+            1228,
+            1254
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 1,
+            "right": 26,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 0.08,
+            "right": 2.07,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            318,
+            11,
+            927,
+            1238
+          ],
+          "margins_px": {
+            "left": 318,
+            "top": 11,
+            "right": 327,
+            "bottom": 16
+          },
+          "margins_percent": {
+            "left": 25.36,
+            "top": 0.88,
+            "right": 26.08,
+            "bottom": 1.28
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/human-bun-yellow.png"
+    },
+    {
+      "filename": "human-blond-glasses.png",
+      "family": "Humans",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-a9f9d369-8b2d-4f6e-a78f-a07fec7d3e69.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/human-blond-glasses.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the human-family style reference: an original 3D collectible chibi child with a softly oversized head, large warm eyes, natural skin, detailed sculpted hair, tactile clothing, gentle studio lighting and a complete small body.\nCreate one original little boy with neat short pale-blond hair, clear transparent round eyeglasses that leave both eyes plainly visible, a warm friendly face and subtle blush. He wears a soft ivory cardigan over a pale shirt, light powder-blue trousers and complete small shoes. Front-facing, standing calmly, both hands naturally resting together in front of his torso without hiding the outfit; show the full head, arms, legs and both shoes.\nComposition: square 1:1 canvas, one full-body child centered, straight-on view, about 10% clear margin on every side.\nConstraints: true transparent alpha background; no floor, external shadow plane, scenery, text, lettering, logo, watermark or extra people. Follow Image 1's softly detailed premium 3D toy style while creating a new original child, not a known cartoon or anime character.",
+      "observed_after_view_image": "A full-body pale-blond boy with clear round glasses, ivory cardigan, light-blue clothing, shoes and hands resting together in front.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "file_size_bytes": 1058375,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 1099076,
+        "partial_alpha_pixels_1_to_254": 473030,
+        "near_opaque_pixels_alpha_250_to_255": 434585,
+        "fully_opaque_pixels_alpha_255": 410,
+        "transparent_pixel_percent": 69.893,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            19,
+            21,
+            1214,
+            1254
+          ],
+          "margins_px": {
+            "left": 19,
+            "top": 21,
+            "right": 40,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 1.52,
+            "top": 1.67,
+            "right": 3.19,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            315,
+            32,
+            923,
+            1224
+          ],
+          "margins_px": {
+            "left": 315,
+            "top": 32,
+            "right": 331,
+            "bottom": 30
+          },
+          "margins_percent": {
+            "left": 25.12,
+            "top": 2.55,
+            "right": 26.4,
+            "bottom": 2.39
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/human-blond-glasses.png"
+    },
+    {
+      "filename": "animal-white-cat.png",
+      "family": "Animals",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-51c10a1e-bf09-419a-8287-4352948d2b4a.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/animal-white-cat.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the animal-family reference: a charming original seated chibi companion with carefully groomed fine short fur, soft sculpted volume, bright expressive eyes, gentle studio highlights and premium 3D collectible-toy detail. Match its warmth and craftsmanship.\nCreate one original small white kitten seated upright and facing the viewer. The coat is mostly clean white, with only subtle gray tips on the ears and a small gray tail. Give it a clear feline face with pink nose, tiny curved mouth, visible short whiskers, soft cheek muzzle, two upright triangular cat ears, two bright eyes, and distinct front paws; show the seated haunches and curved tail clearly. Keep believable cat anatomy and fine short fur over the whole body.\nComposition: square 1:1 canvas, one complete seated kitten centered, near-frontal view, ears, paws and tail fully in frame, about 10% clear margin on every side.\nConstraints: genuine transparent alpha background; no floor, ground, scenery, props, text, logo, watermark or extra animals. Make a new original cat design; no recognizable existing character.",
+      "observed_after_view_image": "A seated white kitten with gray ear tips and tail, pink nose, clear feline muzzle/whiskers, both ears, front paws and curved tail visible.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "file_size_bytes": 1382027,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 790208,
+        "partial_alpha_pixels_1_to_254": 782292,
+        "near_opaque_pixels_alpha_250_to_255": 707879,
+        "fully_opaque_pixels_alpha_255": 16,
+        "transparent_pixel_percent": 50.251,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            23,
+            1238,
+            1254
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 23,
+            "right": 16,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 1.83,
+            "right": 1.28,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            192,
+            50,
+            1119,
+            1205
+          ],
+          "margins_px": {
+            "left": 192,
+            "top": 50,
+            "right": 135,
+            "bottom": 49
+          },
+          "margins_percent": {
+            "left": 15.31,
+            "top": 3.99,
+            "right": 10.77,
+            "bottom": 3.91
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/animal-white-cat.png"
+    },
+    {
+      "filename": "animal-gray-husky.png",
+      "family": "Animals",
+      "reference_image_path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "imagegen_output_path": "/Users/liuzhihang/.codex/generated_images/01a10abf-c6a3-77c1-a477-df1881a38249/exec-014a34d5-5a45-4c3b-9253-8f862e036be4.png",
+      "destination": "/tmp/dots-gallery-assets-20261005/animal-gray-husky.png",
+      "prompt": "Use case: Dot Icon Studio built-in character gallery asset.\nImage 1 is the animal-family reference: a charming original seated chibi companion with carefully groomed fine short fur, soft sculpted volume, bright expressive eyes, gentle studio highlights and premium 3D collectible-toy detail. Match its warmth and craftsmanship.\nCreate one original gray-and-white husky puppy sitting upright and facing the viewer. Give it unmistakably canine anatomy: a dog muzzle with a small dark nose and closed gentle mouth, two upright triangular husky ears, expressive warm eyes, a gray-and-white facial mask, four clearly visible paws, compact seated body and a fluffy curled tail visible beside the body. Render dense fine short puppy fur with subtle gray/white patterning.\nComposition: square 1:1 canvas, one complete seated puppy centered, near-frontal view, ears, all paws and tail fully in frame, about 10% clear margin on every side.\nConstraints: true transparent alpha background; no floor, ground, scene, props, text, logo, watermark or additional characters. Create an original husky design and match Image 1's gentle 3D collectible-toy finish.",
+      "observed_after_view_image": "A seated gray-and-white husky puppy with triangular ears, clear dog muzzle and facial mask, visible forepaws and curled tail.",
+      "generated_by": "built-in image_gen.imagegen",
+      "tool_calls_for_asset": 1,
+      "transparent_background_requested": true,
+      "candidate_only": true,
+      "webpage_acceptance": "not yet accepted by user",
+      "file_check": {
+        "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "file_size_bytes": 1623665,
+        "width": 1254,
+        "height": 1254,
+        "bit_depth": 8,
+        "png_color_type": 6,
+        "mode": "RGBA",
+        "alpha_channel": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_pixels_alpha_0": 790161,
+        "partial_alpha_pixels_1_to_254": 782331,
+        "near_opaque_pixels_alpha_250_to_255": 724839,
+        "fully_opaque_pixels_alpha_255": 24,
+        "transparent_pixel_percent": 50.248,
+        "bounds_alpha_gt_0": {
+          "xyxy_exclusive": [
+            0,
+            23,
+            1230,
+            1254
+          ],
+          "margins_px": {
+            "left": 0,
+            "top": 23,
+            "right": 24,
+            "bottom": 0
+          },
+          "margins_percent": {
+            "left": 0.0,
+            "top": 1.83,
+            "right": 1.91,
+            "bottom": 0.0
+          }
+        },
+        "body_bounds_alpha_ge_16": {
+          "xyxy_exclusive": [
+            219,
+            28,
+            1136,
+            1216
+          ],
+          "margins_px": {
+            "left": 219,
+            "top": 28,
+            "right": 118,
+            "bottom": 38
+          },
+          "margins_percent": {
+            "left": 17.46,
+            "top": 2.23,
+            "right": 9.41,
+            "bottom": 3.03
+          }
+        },
+        "view_image_inspected": true
+      },
+      "repository_path": "dist/assets/looks/animal-gray-husky.png"
+    }
+  ]
+}

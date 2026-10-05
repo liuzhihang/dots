@@ -4,14 +4,14 @@ import {
   buildPrompt,
   resolveCharacter,
   validateConfig
-} from './studio-model.js?v=59';
+} from './studio-model.js?v=62';
 import {
   COMPOSITION_PACKS,
   CREATION_ARTWORKS,
   getCompositionPack,
   getCreationArtwork,
   getFamilyArtwork
-} from './studio-creation-assets.js?v=59';
+} from './studio-creation-assets.js?v=62';
 
 export const PROJECT_FORMAT = 'dot-studio-project';
 export const PROJECT_VERSION = 1;
@@ -151,8 +151,8 @@ function validPack(pack) {
     throw new Error('组合素材身份无效');
   }
   if (!Number.isInteger(pack.revision) || pack.revision < 1 || !isRecord(pack.provenance) || typeof pack.provenance.origin !== 'string' || !pack.provenance.origin.trim() || typeof pack.provenance.detail !== 'string' || !pack.provenance.detail.trim()) throw new Error('组合素材必须登记版本与来源说明');
-  if (pack.kind !== 'layered-2d' || pack.view !== 'front' || pack.status !== 'candidate') {
-    throw new Error('组合素材必须是正面分层候选包');
+  if (!['layered-2d', 'fixed-image-2d'].includes(pack.kind) || pack.view !== 'front' || pack.status !== 'candidate') {
+    throw new Error('组合素材必须是正面候选包');
   }
   if (!Number.isInteger(pack.width) || !Number.isInteger(pack.height) || pack.width < 1 || pack.height < 1 || pack.width > 8192 || pack.height > 8192) {
     throw new Error('组合素材尺寸无效');
@@ -166,6 +166,11 @@ function validPack(pack) {
     throw new Error('组合素材声明了无效的可编辑字段');
   }
   if ([...editable].some(path => UNSUPPORTED_PACK_EDITS.has(path))) throw new Error('当前组合引擎不支持修改视角、画幅或输出动态格式');
+  if (pack.kind === 'fixed-image-2d') {
+    if (pack.layers.length !== 1 || (pack.variants?.length ?? 0) !== 0 || [...editable].some(path => !FRAME_PATHS.has(path)) || pack.layers[0]?.tintPath !== undefined) {
+      throw new Error('完整形象候选只能登记一张原图，并且只能编辑背景');
+    }
+  }
   const layerIds = new Set();
   for (const layer of pack.layers) {
     if (!isRecord(layer) || typeof layer.id !== 'string' || !layer.id || layerIds.has(layer.id)) throw new Error('组合图层编号无效或重复');
@@ -181,7 +186,9 @@ function validPack(pack) {
   const resolvedBase = resolveCharacter(base).config;
   const structural = [...editable].filter(path => !TINT_PATHS.has(path) && !FRAME_PATHS.has(path));
   const variants = pack.variants ?? [];
-  if (!Array.isArray(variants) || (structural.length && !variants.length)) throw new Error('造型修改必须登记完整图层配方');
+  if (!Array.isArray(variants)) throw new Error('组合配方列表无效');
+  if (pack.kind === 'fixed-image-2d' && variants.length) throw new Error('完整形象候选不能声明造型变体');
+  if (pack.kind === 'layered-2d' && structural.length && !variants.length) throw new Error('造型修改必须登记完整图层配方');
   const variantIds = new Set(), bindings = new Set();
   for (const variant of variants) {
     if (!isRecord(variant) || typeof variant.id !== 'string' || !variant.id || variantIds.has(variant.id)) throw new Error('组合配方编号无效或重复');
@@ -197,6 +204,36 @@ function validPack(pack) {
   return { base: resolvedBase, editable, structural, variants, layers: pack.layers };
 }
 
+function assignPath(config, path, value) {
+  const parts = path.split('.');
+  const key = parts.pop();
+  const parent = parts.reduce((node, part) => node[part], config);
+  parent[key] = value;
+}
+
+// Only copy values represented by a registered render recipe into the actual
+// Canvas configuration. Other character settings remain available to Prompt.
+export function resolveCompositionConfig(pack, inputConfig, {templatePreview = false} = {}) {
+  const info = validPack(pack);
+  const current = resolveCharacter(validateConfig(inputConfig)).config;
+  if (pack.family !== current.family) throw new Error('组合素材与当前角色分组不一致。');
+  if (!templatePreview) {
+    const assessment = inspectCompositionPack(pack, current);
+    if (assessment.availability !== 'available') throw new Error(assessment.reason);
+  }
+  const result = clone(info.base);
+  result.background = current.background;
+  result.colors.background = current.colors.background;
+  if (pack.kind === 'layered-2d' && info.variants.length) {
+    const matches = variant => info.structural.every(path => Object.is(variant.values[path], valueAt(current, path)));
+    const variant = info.variants.find(matches)
+      ?? info.variants.find(item => info.structural.every(path => Object.is(item.values[path], valueAt(info.base, path))))
+      ?? info.variants[0];
+    for (const path of info.structural) assignPath(result, path, variant.values[path]);
+  }
+  return validateConfig(result);
+}
+
 function selectedLayers(info, config) {
   if (!info.variants.length) return info.layers;
   const variant = info.variants.find(item => info.structural.every(path => Object.is(item.values[path], valueAt(config, path))));
@@ -209,7 +246,8 @@ function selectedLayers(info, config) {
 export function selectCompositionLayers(pack, inputConfig) {
   const assessment = inspectCompositionPack(pack, inputConfig);
   if (assessment.availability !== 'available') throw new Error(assessment.reason);
-  return selectedLayers(validPack(pack), resolveCharacter(inputConfig).config).map(clone);
+  const info = validPack(pack), rendered = resolveCompositionConfig(pack, inputConfig);
+  return selectedLayers(info, rendered).map(clone);
 }
 
 export function inspectCompositionPack(pack, inputConfig) {
@@ -218,20 +256,22 @@ export function inspectCompositionPack(pack, inputConfig) {
     const config = validateConfig(inputConfig);
     const info = validPack(pack);
     if (pack.family !== config.family) return { availability: 'unsupported', reason: '组合素材与当前角色分组不一致。' };
-    if (config.reference.enabled) return { availability: 'unsupported', reason: '参考图片只会由你在 ChatGPT 附加；网页组合尚未读取或转换参考图。' };
+    if (config.reference.enabled) return { availability: 'unsupported', reason: '参考图片只在 ChatGPT 中附加；当前预览仍是内置模板，不能导出为已按参考图生成的角色。' };
     const current = resolveCharacter(config).config;
-    if (current.camera !== 'front') return { availability: 'unsupported', reason: '此组合素材只支持正面视图。' };
-    if (current.output === 'storyboard' || current.output === 'pet') return { availability: 'unsupported', reason: '当前图层包只合成单张 PNG，不支持分镜或 Pet 文件。' };
+    if (current.camera !== 'front') return { availability: 'unsupported', reason: '所选内置形象是正面固定视图；当前角度只写入 Prompt。' };
+    if (current.output === 'storyboard' || current.output === 'pet') return { availability: 'unsupported', reason: '所选内置形象是单张 PNG；分镜或 Pet 输出需要在 ChatGPT 中继续制作。' };
     const activeLayers = selectedLayers(info, current);
     for (const path of VISUAL_PATHS) {
       const before = valueAt(info.base, path), after = valueAt(current, path);
       if (same(before, after)) continue;
-      if (!info.editable.has(path)) return { availability: 'unsupported', reason: `图层包不支持修改“${pathLabel(path)}”，无法准确合成当前设定。` };
-      if (TINT_PATHS.has(path) && !FRAME_PATHS.has(path) && !activeLayers.some(layer => layer.tintPath === path)) return { availability: 'unsupported', reason: `当前配方缺少“${pathLabel(path)}”对应的染色图层，无法合成当前设定。` };
+      if (!info.editable.has(path)) return { availability: 'unsupported', reason: `“${pathLabel(path)}”只会写入 Prompt；当前画面仍是所选模板，因此不能导出为已应用这些设定的 PNG。` };
+      if (TINT_PATHS.has(path) && !FRAME_PATHS.has(path) && !activeLayers.some(layer => layer.tintPath === path)) return { availability: 'unsupported', reason: `当前素材没有“${pathLabel(path)}”的完整渲染配方；画面仍显示所选模板，PNG 导出已停用。` };
     }
     return {
       availability: 'available',
-      reason: '当前设置可以由已登记图层合成；固定正面视角，候选效果仍需真实页面美术验收。'
+      reason: pack.kind === 'layered-2d'
+        ? '当前搭配、Dots 耳机状态和背景均有已登记的完整渲染配方。候选效果仍待真实页面美术验收。'
+        : '当前内置搭配与背景均按登记配置渲染。候选效果仍待真实页面美术验收。'
     };
   } catch (error) {
     return { availability: 'unsupported', reason: error?.message || '组合素材配置无效。' };
@@ -258,7 +298,7 @@ export function resolveCreation(project) {
   const config = clone(current.character);
   const resolved = resolveCharacter(config);
   const artwork = current.creation.artworkId ? clone(getCreationArtwork(current.creation.artworkId)) : null;
-  const pack = getCompositionPack(config.family);
+  const pack = getCompositionPack(config.family, current.creation.artworkId);
   if (current.creation.mode === 'artwork') {
     if (artwork?.status === 'retired') return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
@@ -271,7 +311,7 @@ export function resolveCreation(project) {
     return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
       availability: 'available',
-      reason: `当前显示的是${artwork.kind==='baseline-candidate'?'固定基准候选':'固定历史示例'}“${artwork.name}”；参数变化只更新 Prompt，下载始终是该作品原文件。`
+      reason: `当前显示的是${artwork.kind==='baseline-candidate'?'固定基准候选':artwork.kind==='look-template'?'内置搭配候选':'固定历史示例'}“${artwork.name}”；参数变化只更新 Prompt，下载始终是该作品原文件。`
     };
   }
   const assessment = inspectCompositionPack(pack, config);
@@ -285,7 +325,7 @@ export function resolveCreation(project) {
 export function buildCreationPrompt(project, lang = 'zh') {
   const current = parseProjectObject(project);
   const artwork = current.creation.artworkId ? getCreationArtwork(current.creation.artworkId) : null;
-  const pack = getCompositionPack(current.character.family);
+  const pack = getCompositionPack(current.character.family, current.creation.artworkId);
   const assessment = inspectCompositionPack(pack, current.character);
   const en = lang === 'en';
   let prompt = buildPrompt(current.character, lang);
@@ -296,9 +336,11 @@ export function buildCreationPrompt(project, lang = 'zh') {
         ? `\n\n[Studio output] This historical character image has been withdrawn. The character settings and legacy artwork ID remain in this project for compatibility. No image is available to display or download; this prompt describes the saved character configuration only.`
         : `\n\n【工作台输出说明】${artwork.retirementReason || '历史形象已撤下'}。为兼容旧项目，当前角色设定与旧作品编号仍予保留；没有可展示或下载的原图，本 Prompt 仅描述已保存的角色设定。`;
     } else if (artwork) {
+      const candidateKind = artwork.kind==='baseline-candidate'?'baseline candidate':artwork.kind==='look-template'?'built-in look candidate':'historical example';
+      const candidateKindZh = artwork.kind==='baseline-candidate'?'固定基准候选':artwork.kind==='look-template'?'内置搭配候选':'固定历史示例';
       note = en
-        ? `\n\n[Studio output] The displayed artwork “${artwork.name}” is a ${artwork.kind==='baseline-candidate'?'fixed baseline candidate awaiting visual review':'fixed historical example'}. Changing character settings changes this prompt only; it does not alter the artwork. To use that example as a visual reference, attach its downloaded original yourself in ChatGPT. The site does not attach images or generate artwork.`
-        : `\n\n【工作台输出说明】当前展示的“${artwork.name}”是${artwork.kind==='baseline-candidate'?'固定基准候选，尚待网页美术验收':'固定历史示例'}。修改角色设定只更新本 Prompt，不会改变这张图。若要把示例作为视觉参考，请自行下载原图并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
+        ? `\n\n[Studio output] “${artwork.name}” is a ${candidateKind} pending real-page visual review. This is a fixed original image; character settings update the Prompt only. Downloading keeps the original file. Attach it yourself in ChatGPT if you want to use it as a reference; the site does not attach images or generate artwork.`
+        : `\n\n【工作台输出说明】“${artwork.name}”是${candidateKindZh}，仍待真实网页美术验收。它是固定原图；修改角色设定只更新本 Prompt。下载保留原文件。若要把它作为参考，请自行下载并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
     } else {
       note = en
         ? '\n\n[Studio output] No complete artwork is registered for this family. This prompt describes the character settings only; the site has not generated or exported a matching image. You can attach your own reference in ChatGPT.'
