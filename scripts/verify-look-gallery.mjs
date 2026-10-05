@@ -1,27 +1,47 @@
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
-import {BUILT_IN_LOOKS, FAMILY_LOOK_IDS, HOME_HERO_LOOK_IDS, getLookDefinition} from '../dist/studio-looks.js';
+import {BUILT_IN_LOOKS, FAMILY_LOOK_IDS, getLookDefinition} from '../dist/studio-looks.js';
+import {HERO_SCENES,FAMILY_SCENES} from '../dist/studio-scenes.js';
 import {PRESETS} from '../dist/studio-catalog.js';
-import {getBuiltInLooks, getCompositionPack, getCreationArtwork, getFamilyArtwork} from '../dist/studio-creation-assets.js';
+import {getBuiltInLooks, getCompositionPack, getCreationArtwork, getFamilyArtwork, BASELINE_POSE_VARIANTS} from '../dist/studio-creation-assets.js';
 import {buildCreationPrompt, inspectCompositionPack, makeProject, resolveCreation} from '../dist/studio-creation.js';
 import {availableHairs, availableShapes, buildPrompt, createLookCharacter, createPreset, setCharacterValue, validateConfig, FAMILIES} from '../dist/studio-model.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const families = ['dots', 'grok', 'meta-muse', 'humans', 'animals'];
 const looks = getBuiltInLooks();
+assert.equal(BASELINE_POSE_VARIANTS.length,5,'each family has one additional real baseline pose');
+for(const pose of BASELINE_POSE_VARIANTS){
+ assert.equal(pose.assetStatus,'available',`${pose.family} pose file has been inspected before release`);
+ const png=await readFile(path.join(root,'dist',pose.assetPath));
+ assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a',`${pose.family} pose is a PNG`);
+ assert.equal(png[25],6,`${pose.family} pose has an alpha channel`);
+ assert.equal(createHash('sha256').update(png).digest('hex'),pose.sha256,`${pose.family} pose matches its registered source hash`);
+ assert.equal(getCreationArtwork(pose.assetPath),null,'a pose path cannot masquerade as an individual gallery identity');
+}
 assert.equal(looks.length, 15, 'the built-in gallery contains five baselines and ten additional candidates');
 assert.equal(new Set(looks.map(look => look.id)).size, 15, 'gallery candidates have unique IDs');
-assert.equal(HOME_HERO_LOOK_IDS.length, 12, 'the hero presents twelve registered character images');
-assert.equal(new Set(HOME_HERO_LOOK_IDS).size, 12, 'hero images are distinct');
-for (const id of HOME_HERO_LOOK_IDS) assert(looks.some(look => look.id === id), `${id} is registered for the hero`);
+const heroMembers=HERO_SCENES.flatMap(scene=>scene.members);
+assert.equal(heroMembers.length,12,'two relationship scenes depict twelve existing identities');
+assert.equal(new Set(heroMembers).size,12,'hero identities are distinct across the two scenes');
+for (const id of heroMembers) assert(looks.some(look=>look.id===id),`${id} is an existing gallery identity`);
+for (const scene of [...HERO_SCENES,...Object.values(FAMILY_SCENES)]) {
+ assert.equal(getCreationArtwork(scene.id),null,`${scene.id} cannot become a downloadable individual avatar`);
+ assert.equal(scene.status,'unreviewed','a generated scene never grants art acceptance');
+ const png=await readFile(path.join(root,'dist',scene.src));
+ assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a',`${scene.id} is a PNG`);
+ assert.equal(png[25],6,`${scene.id} has an alpha channel`);
+}
 
 for (const family of families) {
   const familyLooks = looks.filter(look => look.family === family);
   assert.equal(familyLooks.length, 3, `${family} exposes one baseline and two added looks`);
   assert.deepEqual(FAMILY_LOOK_IDS[family], familyLooks.map(look => look.id), `${family} home card shows its own three looks`);
+  assert.deepEqual(FAMILY_SCENES[family].members,FAMILY_LOOK_IDS[family],`${family} scene depicts exactly its three trusted members`);
   assert.equal(familyLooks.filter(look => look.kind === 'baseline-candidate').length, 1, `${family} keeps exactly one baseline candidate`);
   assert(familyLooks.every(look => look.status === 'unreviewed'), `${family} looks remain unreviewed until real-page art acceptance`);
   assert.equal(getFamilyArtwork(family).id, familyLooks[0].id, `${family} defaults to its own baseline image`);

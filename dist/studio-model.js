@@ -1,6 +1,6 @@
-import {getArtSample} from './studio-art.js?v=62';
-import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=62';
-import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=62';
+import {getArtSample} from './studio-art.js?v=63';
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=63';
+import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=63';
 export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
@@ -272,7 +272,8 @@ export function resolveCharacter(input){
  if(act.prop!==c.accessories.prop){c.accessories.prop=act.prop;adjustments.push('道具已与动作匹配');}
  if(c.action==='listen'&&c.accessories.head!=='headphones'){c.accessories.head='headphones';adjustments.push('听歌时使用耳机；原来的头饰已保留');}
  if(c.action==='sleep'&&obscuresEyes(c.accessories.face)){c.accessories.face='none';adjustments.push('睡觉时暂时收起墨镜；原来的选择已保留');}
- if(c.action!=='idle'&&c.pose!=='auto'){c.pose='auto';adjustments.push('姿态已跟随当前动作');}
+ const seatedShibaWave=c.family==='animals'&&c.shape==='shiba'&&c.action==='wave'&&c.pose==='sit';
+ if(c.action!=='idle'&&c.pose!=='auto'&&!seatedShibaWave){c.pose='auto';adjustments.push('姿态已跟随当前动作');}
  if(c.output==='sticker'||c.output==='pet')c.background='transparent';
  const activeHands=!!(act.prop!=='none'||c.action==='wave'||c.pose==='chin');
  if(animal||human)c.limbs='auto';
@@ -373,11 +374,20 @@ export function buildPrompt(input,lang='zh'){
  const face=[],opaqueGlasses=!inherited('accessories.face')&&obscuresEyes(c.accessories.face);
  if(opaqueGlasses)face.push(say('双眼由深色镜片自然遮挡，眼形与眼色保留在镜片后，不在镜片上或旁边重复画眼睛、瞳孔或睫毛','Dark lenses naturally occlude both eyes. Keep the selected eye design and color behind the lenses, without duplicated eyes, pupils or lashes on or beside them'));
  else if(c.expression==='closed')face.push(say('双眼完全闭合为自然眼线，无睁开的眼形、瞳孔或高光','Both eyes fully closed as natural eyelid curves, with no open eye shapes, pupils or catchlights'));
- else if(!inherited('eyes'))face.push(c.family==='grok'&&c.eyes==='capsule'?say('两枚相互平行、同向斜置的实心胶囊眼，无瞳孔、描边或高光；保持 Grok 身份图的简洁识别特征','Two parallel solid capsule eyes tilted together in the same direction, without pupils, outlines or highlights; preserve the simple identity in the Grok references'):text(EYES[c.eyes]));
+ else if(!inherited('eyes'))face.push(c.family==='grok'&&c.eyes==='capsule'
+  ?c.expression==='wink'
+   ?say('仅一枚眼收成短而简洁的闭眼弧；另一枚仍是原本同尺寸、同斜角的实心白色胶囊眼。保持 Grok 身份图的眼形语言，不添加瞳孔、嘴巴或描边','Close only one eye into a short, simple eyelid arc; keep the other as the original solid white capsule eye with the same size and tilt. Preserve the Grok eye language without pupils, a mouth or outlines')
+   :say('两枚相互平行、同向斜置的实心胶囊眼，无瞳孔、描边或高光；保持 Grok 身份图的简洁识别特征','Two parallel solid capsule eyes tilted together in the same direction, without pupils, outlines or highlights; preserve the simple identity in the Grok references')
+  :c.family==='dots'&&c.expression==='wink'
+   ?say('只闭合一只原有的小软椭圆眼；另一只保留同样克制的软椭圆眼形。不要增加睫毛、瞳孔或新嘴巴','Close only one of the original small soft-oval eyes; keep the other in the same restrained soft-oval design. Add no lashes, pupils or new mouth')
+   :text(EYES[c.eyes]));
  else face.push(say('眼形从参考特征简化，适配目标风格，避免写实大眼球','Simplify the reference eye design for the target style; avoid large realistic eyeballs'));
  if(!inherited('brows'))face.push(text(BROWS[c.brows]));
  if(!inherited('mouth'))face.push(text(MOUTHS[c.mouth]));
- face.push(opaqueGlasses?say('表情意图为“'+EXPRESSIONS[c.expression].label+'”，眼部变化发生在镜片后，露出的眉毛、嘴巴与头部姿态自然配合','The expression is '+EXPRESSIONS[c.expression].en.toLowerCase()+'. Eye changes occur behind the lenses; visible brows, the selected mouth and head posture respond naturally'):text(EXPRESSIONS[c.expression]));
+ face.push(opaqueGlasses?say('表情意图为“'+EXPRESSIONS[c.expression].label+'”，眼部变化发生在镜片后，露出的眉毛、嘴巴与头部姿态自然配合','The expression is '+EXPRESSIONS[c.expression].en.toLowerCase()+'. Eye changes occur behind the lenses; visible brows, the selected mouth and head posture respond naturally')
+  :c.expression==='wink'&&['dots','grok'].includes(c.family)
+   ?say('只自然闭合一只眼，另一只保持上述角色原有眼形；这是克制的静态眨眼表情，不改变主体轮廓、眼睛材质或配饰','Close just one eye naturally while the other keeps the character’s original eye design. This is a restrained still wink; do not alter the silhouette, eye material or accessories')
+   :text(EXPRESSIONS[c.expression]));
  if(!opaqueGlasses&&c.expression!=='closed')face.push(say('当前表情与动作决定眼睑开合和目光目标；闭合的眼睛不显示瞳孔、高光或星光，睁开的眼睛保留所选眼形','The expression and activity determine eyelid closure and gaze target. Closed eyes have no visible pupils, catchlights or stars; open eyes retain the selected design'));
  if(!opaqueGlasses&&!inherited('eyeScale'))face.push(say('眼睛相对大小 ','Relative eye size ')+Math.round(c.eyeScale*100)+'%');
  if(!opaqueGlasses&&!inherited('eyeSpacing'))face.push(say('相对眼距 ','Relative eye spacing ')+Math.round(c.eyeSpacing*100)+'%');
@@ -391,7 +401,17 @@ export function buildPrompt(input,lang='zh'){
   read:['双翼尖承托打开的小书，目光落在书页；书本保持小巧且低于面部。','Both wing tips support a small open book, gaze resting on its pages; keep the book compact and below the face.'],
   wave:['抬起一侧翅膀自然挥动，另一侧翅膀放松，两只脚保持重心。','Raise and wave one wing naturally, leaving the other relaxed and both feet supporting the body.']
  };
- add('动作、视线与接触','ACTION AND CONTACT',r.anatomy.plan==='bird'&&birdAction[c.action]?birdAction[c.action][en?1:0]:en?a.english:a.zh);
+ const seatedShibaWave=c.family==='animals'&&c.shape==='shiba'&&c.action==='wave'&&c.pose==='sit';
+ const staticWave=c.action==='wave'&&c.family==='animals'
+  ?seatedShibaWave
+   ?say('保持柴犬自然坐姿，只抬起一只前爪作友好问候；其他三爪自然接触地面并支撑身体。这是一张静态姿态，不是连续挥动，不增加人手或额外肢体。','Keep the Shiba in a natural seated pose. Raise only one front paw in a friendly greeting while the other three paws naturally support the body. This is one still pose, not continuous waving; add no human hands or extra limbs.')
+   :say('保持当前动物物种与适合其身体结构的稳定姿态，只抬起一只前爪作友好问候；其他三爪自然接触地面并支撑身体。这是一张静态姿态，不是连续挥动，不增加人手或额外肢体。','Keep the current animal species in a stable pose suited to its body. Raise only one front paw in a friendly greeting while the other three paws naturally support the body. This is one still pose, not continuous waving; add no human hands or extra limbs.')
+  :c.action==='wave'&&c.family==='meta-muse'
+   ?say('保持 Meta Muse 包覆式头罩、暖色内嵌脸面和短肢体；只抬起一侧短臂作问候，另一侧自然放松。这是一张静态姿态，不是连续挥动。','Keep the Meta Muse wrapped hood, warm inset face and short limbs. Raise only one short arm in greeting while the other rests naturally. This is one still pose, not continuous waving.')
+   :c.action==='wave'&&c.family==='humans'
+    ?say('保留当前原创人物身份与服装；只抬起一只手作友好问候，另一只手与双脚自然支撑。这是一张静态姿态，不是连续挥动。','Preserve the current original human and outfit. Raise one hand in a friendly greeting while the other hand and both feet remain naturally supported. This is one still pose, not continuous waving.')
+    :null;
+ add('动作、视线与接触','ACTION AND CONTACT',staticWave||(r.anatomy.plan==='bird'&&birdAction[c.action]?birdAction[c.action][en?1:0]:en?a.english:a.zh));
  if(c.pose!=='auto')add('姿态','POSE',({sit:[ '自然坐姿，重心稳定','Naturally balanced seated pose'],side:['身体轻微侧转','Gently turned body'],chin:['一只手或前爪轻托脸颊','One hand or front paw gently supporting the cheek']}[c.pose]||[])[en?1:0]);
  const accessoryLines=[];
  const slotNames={head:['头部','head'],face:['眼镜','eyewear'],neck:['颈部','neck'],prop:['手持道具','held prop']};

@@ -19,11 +19,16 @@ import {
   setCreationMode,
   setProjectCharacter
 } from '../dist/studio-creation.js';
-import {COMPOSITION_PACKS,CREATION_ARTWORKS} from '../dist/studio-creation-assets.js';
+import {BASELINE_POSE_VARIANTS,COMPOSITION_PACKS,CREATION_ARTWORKS,createBaselinePosePack,getBaselinePoseControls,getBaselinePoseValues,getCompositionPack} from '../dist/studio-creation-assets.js';
 import {createPreset,createLookCharacter,setCharacterValue,buildPrompt,resolveCharacter} from '../dist/studio-model.js';
 import {LayeredComposer} from '../dist/studio-composer.js';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+async function pngDimensions(assetPath){
+ const data=await readFile(path.join(root,'dist',assetPath.slice(2)));
+ assert.equal(data.subarray(0,8).toString('hex'),'89504e470d0a1a0a',`${assetPath} is a PNG`);
+ return {width:data.readUInt32BE(16),height:data.readUInt32BE(20)};
+}
 const baselineDots=createPreset('baseline-dots');
 const originalDots=structuredClone(baselineDots);
 const project=makeProject(baselineDots,{artworkId:'historical-dots-plush-headphones-v2'});
@@ -143,6 +148,8 @@ for(const [family,character] of Object.entries(baselineByFamily)){
 const dotsPack=COMPOSITION_PACKS.find(p=>p.family==='dots');
 assert.equal(inspectCompositionPack(dotsPack,baselineDots).availability,'available');
 const bareDots=setCharacterValue(baselineDots,'accessories.head','none');
+assert.equal(getBaselinePoseControls('candidate-dots-20261005',bareDots).find(item=>item.id==='classic').selected,true,'the Dots bare-image recipe is also a classic state');
+assert.deepEqual(getBaselinePoseValues('candidate-dots-20261005','classic',bareDots),{'accessories.head':'none',action:'idle',expression:'calm'},'Dots classic follows the current bare or headphone complete-image recipe');
 assert.deepEqual(selectCompositionLayers(dotsPack,bareDots).map(l=>l.id),['bare']);
 assert.deepEqual(selectCompositionLayers(dotsPack,baselineDots).map(l=>l.id),['headphones']);
 const listeningDots=setCharacterValue(baselineDots,'action','listen');
@@ -166,6 +173,94 @@ assert.equal(inspectCompositionPack(dotsPack,unsupportedWave).availability,'unsu
 const unsupportedWavePrompt=buildCreationPrompt(makeProject(unsupportedWave,{mode:'composer'}));
 assert.match(unsupportedWavePrompt,/一只手或前爪抬起自然挥动/,'unsupported composer states retain their generic prompt for ChatGPT');
 assert.doesNotMatch(unsupportedWavePrompt,/正面静态佩戴/,'pack-specific action language applies only when the composition is available');
+
+const expectedPoseStates=[
+ {id:'wink',artworkId:'candidate-dots-20261005',family:'dots',assetPath:'./assets/poses/dots-wink-v1.png',values:{'accessories.head':'headphones',action:'listen',expression:'wink'}},
+ {id:'wink',artworkId:'candidate-grok-20261005',family:'grok',assetPath:'./assets/poses/grok-wink-v1.png',values:{action:'idle',expression:'wink',pose:'auto'}},
+ {id:'wave',artworkId:'candidate-meta-muse-20261005',family:'meta-muse',assetPath:'./assets/poses/muse-wave-v1.png',values:{action:'wave',expression:'happy',pose:'auto'}},
+ {id:'wave',artworkId:'candidate-humans-20261005',family:'humans',assetPath:'./assets/poses/human-wave-v1.png',values:{action:'wave',expression:'happy',pose:'auto'}},
+ {id:'wave',artworkId:'candidate-animals-20261005',family:'animals',assetPath:'./assets/poses/shiba-wave-v1.png',values:{action:'wave',expression:'happy',pose:'sit'}}
+];
+assert.equal(BASELINE_POSE_VARIANTS.length,5,'pose states add no gallery identities');
+const applyPoseValues=(config,values)=>['pose','accessories.head','action','expression'].reduce((next,path)=>Object.hasOwn(values,path)?setCharacterValue(next,path,values[path]):next,config);
+for(const expected of expectedPoseStates){
+ const registered=BASELINE_POSE_VARIANTS.find(item=>item.artworkId===expected.artworkId);
+ assert(registered,`${expected.family} registers its one approved state`);
+ assert.deepEqual({id:registered.id,artworkId:registered.artworkId,family:registered.family,assetPath:registered.assetPath,values:{...registered.values}},expected,`${expected.family} keeps its exact trusted state tuple`);
+ assert.deepEqual(Object.keys(registered.values).sort(),Object.keys(expected.values).sort(),`${expected.family} state has no unapproved fields`);
+ const baseConfig=createLookCharacter(expected.artworkId);
+ const artwork=CREATION_ARTWORKS.find(item=>item.id===expected.artworkId);
+ const classicPack=getCompositionPack(expected.family,expected.artworkId,baseConfig);
+ assert.equal(classicPack.kind,'layered-2d',`${expected.family} baseline uses an exclusive complete-frame pack`);
+ assert.deepEqual({width:classicPack.width,height:classicPack.height},{width:artwork.width,height:artwork.height},`${expected.family} classic pack keeps the complete baseline PNG dimensions`);
+ if(expected.family==='meta-muse')assert.deepEqual({width:classicPack.width,height:classicPack.height},{width:1235,height:1274},'Meta Muse classic remains its original non-square frame');
+ const classicControl=getBaselinePoseControls(expected.artworkId,baseConfig).find(item=>item.id==='classic');
+ assert.equal(classicControl.available,true,`${expected.family} classic remains available`);
+ assert.equal(classicControl.selected,true,`${expected.family} opens in its registered classic state`);
+ assert.deepEqual(getBaselinePoseValues(expected.artworkId,'classic',baseConfig),classicControl.values,`${expected.family} Classic restores its complete registered fields`);
+ const intended=applyPoseValues(baseConfig,expected.values);
+ const pack=getCompositionPack(expected.family,expected.artworkId,intended);
+ assert.deepEqual({width:pack.width,height:pack.height},{width:registered.width,height:registered.height},`${expected.family} matched full state tuple selects its own exact frame dimensions`);
+ assert.deepEqual(await pngDimensions(expected.assetPath),{width:registered.width,height:registered.height},`${expected.family} registered state dimensions match its actual PNG`);
+ const stateProject=makeProject(intended,{mode:'composer',artworkId:expected.artworkId});
+ const resolvedState=resolveCreation(stateProject);
+ assert.deepEqual({width:resolvedState.pack.width,height:resolvedState.pack.height},{width:registered.width,height:registered.height},`${expected.family} resolveCreation passes the matched state's dimensions to the workbench`);
+ assert.deepEqual(parseProject(exportProject(stateProject)),stateProject,`${expected.family} state round-trips in project v1 / character schema v10`);
+ assert.equal(getBaselinePoseValues(expected.artworkId,expected.id,baseConfig)?.expression??null,registered.assetStatus==='available'?expected.values.expression:null,
+   `${expected.family} only returns an alternate state after its trusted asset is registered available`);
+ const assessment=inspectCompositionPack(pack,intended);
+ if(expected.values.action==='wave'){
+  const prompt=buildCreationPrompt(stateProject);
+  assert.match(prompt,/静态姿态，不是连续挥动/,`${expected.family} wave prompt describes a single still frame`);
+  assert.match(buildCreationPrompt(stateProject,'en'),/one still pose, not continuous waving/,`${expected.family} English wave prompt also describes a single frame`);
+ }
+ if(registered.assetStatus==='available'){
+  assert.equal(assessment.availability,'available',`${expected.family} exact state has a corresponding complete PNG recipe`);
+  const selected=selectCompositionLayers(pack,intended);
+  assert.deepEqual(selected.map(layer=>layer.src),[expected.assetPath],`${expected.family} state replaces the classic frame with its complete PNG`);
+  const variant=pack.variants.find(item=>item.id===expected.id);
+  assert(variant,`${expected.family} pack includes its approved alternate`);
+  assert.deepEqual(variant.values,expected.values,`${expected.family} render recipe binds its complete exact state tuple`);
+ }else{
+  assert.equal(registered.assetStatus,'pending',`${expected.family} missing image cannot be represented as accepted`);
+  assert.equal(assessment.availability,'unsupported',`${expected.family} pending state cannot render or export`);
+  assert.equal(getBaselinePoseValues(expected.artworkId,expected.id,baseConfig),null,`${expected.family} pending state cannot be selected`);
+  assert.equal(pack.variants.some(item=>item.id===expected.id),false,`${expected.family} pending state is absent from render recipes`);
+ }
+ const extraEdit=setCharacterValue(intended,'colors.body','#AA55CC');
+ assert.equal(inspectCompositionPack(pack,extraEdit).availability,'unsupported',`${expected.family} complete-frame match rejects extra unsupported edits`);
+ const unmatchedConfig=setCharacterValue(intended,'expression','curious');
+ const unmatchedPack=getCompositionPack(expected.family,expected.artworkId,unmatchedConfig);
+ assert.deepEqual({width:unmatchedPack.width,height:unmatchedPack.height},{width:artwork.width,height:artwork.height},`${expected.family} unmatched full tuple falls back to classic dimensions`);
+ assert.equal(inspectCompositionPack(unmatchedPack,unmatchedConfig).availability,'unsupported',`${expected.family} unmatched expression cannot claim the registered state image`);
+ const tampered={...registered,assetStatus:'available',sha256:registered.sha256||'a'.repeat(64),values:{...registered.values,unregistered:'surprise'}};
+ const safePack=createBaselinePosePack(expected.artworkId,[tampered]);
+ assert.equal(safePack.variants.some(item=>item.id===expected.id),false,`${expected.family} refuses an asset registration with extra untrusted state values`);
+ const tamperedDimensions=createBaselinePosePack(expected.artworkId,[{...registered,width:registered.width+1}]);
+ assert.equal(tamperedDimensions.variants.some(item=>item.id===expected.id),false,`${expected.family} refuses a trusted hash paired with unregistered frame dimensions`);
+}
+const grokWinkPrompt=buildCreationPrompt(makeProject(
+ applyPoseValues(baselineByFamily.grok,expectedPoseStates[1].values),
+ {mode:'composer',artworkId:'candidate-grok-20261005'}
+));
+assert.match(grokWinkPrompt,/另一枚仍是原本同尺寸、同斜角的实心白色胶囊眼/,'Grok wink keeps one open capsule eye and closes the other');
+assert.doesNotMatch(grokWinkPrompt,/两枚相互平行、同向斜置的实心胶囊眼/,'Grok wink Prompt does not simultaneously demand two open eyes');
+const dotsWinkPrompt=buildCreationPrompt(makeProject(
+ applyPoseValues(baselineByFamily.dots,expectedPoseStates[0].values),
+ {mode:'composer',artworkId:'candidate-dots-20261005'}
+));
+assert.match(dotsWinkPrompt,/只闭合一只原有的小软椭圆眼/,'Dots wink preserves one open original oval eye');
+assert.match(dotsWinkPrompt,/不添加嘴巴/,'Dots wink does not gain a mouth');
+const shibaBase=baselineByFamily.animals;
+const shibaWave=applyPoseValues(shibaBase,expectedPoseStates[4].values);
+assert.equal(resolveCharacter(shibaWave).config.pose,'sit','the registered Shiba wave keeps its seated pose');
+assert.match(buildPrompt(shibaWave),/静态姿态，不是连续挥动/,'the Shiba Prompt describes one still greeting pose');
+assert.match(buildPrompt(shibaWave),/保持柴犬自然坐姿/,'the Shiba still-wave Prompt preserves its registered seated pose');
+const otherAnimalWave=applyPoseValues(createPreset('pet-cat'),{action:'wave',expression:'happy',pose:'sit'});
+assert.equal(resolveCharacter(otherAnimalWave).config.pose,'auto','the pose exception does not change other animal actions');
+assert.doesNotMatch(buildPrompt(otherAnimalWave),/坐姿|坐下|seated pose|sitting/i,'a non-Shiba wave Prompt does not claim a seated pose after normalization to auto');
+const humanWave=setCharacterValue(setCharacterValue(baselineByFamily.humans,'pose','sit'),'action','wave');
+assert.equal(resolveCharacter(humanWave).config.pose,'auto','the pose exception does not change human wave normalization');
 const artworkListen=makeProject(listeningDots,{mode:'artwork'});
 assert.match(buildCreationPrompt(artworkListen),/轻轻侧头聆听/,'artwork mode keeps the existing generic action prompt');
 

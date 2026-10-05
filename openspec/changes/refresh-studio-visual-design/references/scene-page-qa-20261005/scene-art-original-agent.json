@@ -1,0 +1,455 @@
+{
+  "generated_at": "2026-10-05",
+  "project": "Dot Icon Studio",
+  "scope": "partial visual asset handoff; stop after corrected left hero per root instruction",
+  "stage_root": "/tmp/dots-scene-art-delivery-20261005",
+  "candidates": [
+    {
+      "slot": "family-meta-muse-v1.png",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-d59fdf79-bac2-425c-8a44-61fe0e4923c9.png",
+      "stage_path": "/tmp/dots-scene-art-delivery-20261005/assets/scenes/family-meta-muse-v1.png",
+      "sha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          0,
+          33,
+          1222,
+          1254
+        ],
+        "threshold_bboxes": {
+          "1": [
+            0,
+            33,
+            1222,
+            1254
+          ],
+          "16": [
+            60,
+            234,
+            1210,
+            1061
+          ],
+          "32": [
+            60,
+            235,
+            1209,
+            1061
+          ],
+          "128": [
+            62,
+            236,
+            1208,
+            1060
+          ],
+          "250": [
+            64,
+            239,
+            1206,
+            1059
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-rose-flowers.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png"
+      ],
+      "prompt_text": "Near-square transparent premium 3D character-family scene for the existing Dot Icon Studio. Use exactly the three supplied project-generated Meta Muse identities: cream continuous-hood Muse, dusty-rose Muse with daisies, and sage reading Muse with closed book. Preserve their distinct canonical face, hood, material, and accessories. Create one close, gentle interaction rather than a lineup: the rose Muse offers a daisy, the cream Muse receives/touches the stem and leans shoulder-to-shoulder toward the sage Muse, and the sage Muse leans into the group while holding its closed book. Keep all three full bodies/feet and faces readable, with clear height/depth variation and actual touch. Fine plush hood fabric, inset warm face, soft warm studio light, transparent background and safe margins. No limbs or human anatomy on the Muse mascots; no extra characters, text, logos, UI, webpage mockup, floor, shadow ellipse, anime source pixels, or cropped body parts.",
+      "prompt_record_status": "reconstructed_from_task_brief_not_verbatim",
+      "visual_qa": "三种Muse身份可辨；粉色Muse递花、奶油Muse接触花茎，sage Muse靠近共同托书，身体/脚掌完整、材质区分清楚。root已在图库页面看过并认可关系预审；实际页面未见彩色alpha碎点。仍须整页网页美术验收。"
+    },
+    {
+      "slot": "hero-left-v1.png",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-d5377408-5654-406a-afd9-250065d6a57e.png",
+      "stage_path": "/tmp/dots-scene-art-delivery-20261005/assets/scenes/hero-left-v1.png",
+      "sha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          16,
+          94,
+          1241,
+          1172
+        ],
+        "threshold_bboxes": {
+          "1": [
+            16,
+            94,
+            1241,
+            1172
+          ],
+          "16": [
+            21,
+            97,
+            1238,
+            1163
+          ],
+          "32": [
+            21,
+            97,
+            1238,
+            1163
+          ],
+          "128": [
+            22,
+            98,
+            1237,
+            1162
+          ],
+          "250": [
+            32,
+            99,
+            1236,
+            1161
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-b6404640-cde6-4319-9e82-257b172f6794.png"
+      ],
+      "prompt_text": "Make a very narrow corrective edit to this existing transparent character-group illustration. Preserve the approved composition, all identities, colors, materials, lighting, face expressions, scale, overlap, and the teal boy's pose exactly. Fix only the two mascot anatomy errors: the pink spherical Dots character must have NO arm, NO hand, NO paw, NO limb; erase the long pink arm currently reaching across the blue headphone Dots and restore a continuous round fuzzy pink sphere silhouette that directly touches the blue sphere. The lilac bucket-hat spherical Dots character must also have NO arm, NO hand, NO paw, NO limb; erase the tiny purple hand/paw protruding below its body and restore a continuous round plush sphere silhouette. Their contact is solely sphere-to-sphere surface contact, with no appendages. Keep the teal human boy's real hand resting on the blue headphone Dots unchanged. Dots are simple plush spheres with only their established oval eyes and approved accessories; absolutely no limbs, no hands, no paws, no mouth, no nose, no eyebrows. Keep the purple spherical Grok and green cloud Grok unchanged, both with no limbs or human facial features. Maintain a clean transparent background with complete characters and safe margins. Do not add anything.",
+      "prompt_record_status": "verbatim_from_generation_request",
+      "visual_qa": "自检图：粉色球恢复完整圆体，帽子球无小手/爪；两球直接接触。teal男孩真实手掌仍贴在蓝色耳机Dots上。保留紫Grok与绿云Grok，6身份齐。需root逐图页面复核，尚非网页验收。"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "muse-trio-v1",
+      "slot": "family-meta-muse-v1.png",
+      "status": "selected_candidate",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-d59fdf79-bac2-425c-8a44-61fe0e4923c9.png",
+      "sha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          0,
+          33,
+          1222,
+          1254
+        ],
+        "threshold_bboxes": {
+          "1": [
+            0,
+            33,
+            1222,
+            1254
+          ],
+          "16": [
+            60,
+            234,
+            1210,
+            1061
+          ],
+          "32": [
+            60,
+            235,
+            1209,
+            1061
+          ],
+          "128": [
+            62,
+            236,
+            1208,
+            1060
+          ],
+          "250": [
+            64,
+            239,
+            1206,
+            1059
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-rose-flowers.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png"
+      ],
+      "prompt_text": "Near-square transparent premium 3D character-family scene for the existing Dot Icon Studio. Use exactly the three supplied project-generated Meta Muse identities: cream continuous-hood Muse, dusty-rose Muse with daisies, and sage reading Muse with closed book. Preserve their distinct canonical face, hood, material, and accessories. Create one close, gentle interaction rather than a lineup: the rose Muse offers a daisy, the cream Muse receives/touches the stem and leans shoulder-to-shoulder toward the sage Muse, and the sage Muse leans into the group while holding its closed book. Keep all three full bodies/feet and faces readable, with clear height/depth variation and actual touch. Fine plush hood fabric, inset warm face, soft warm studio light, transparent background and safe margins. No limbs or human anatomy on the Muse mascots; no extra characters, text, logos, UI, webpage mockup, floor, shadow ellipse, anime source pixels, or cropped body parts.",
+      "prompt_record_status": "reconstructed_from_task_brief_not_verbatim",
+      "visual_qa": "三种Muse身份可辨；粉色Muse递花、奶油Muse接触花茎，sage Muse靠近共同托书，身体/脚掌完整、材质区分清楚。root已在图库页面看过并认可关系预审；实际页面未见彩色alpha碎点。仍须整页网页美术验收。"
+    },
+    {
+      "id": "muse-alpha-cleanup-v1",
+      "slot": "family-meta-muse-v1.png",
+      "status": "rejected",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-f9143e73-5986-403e-b7ff-f002fa4e5793.png",
+      "sha256": "cc525522fe8fc33158dec1b4b97332f0844850adf2740b960547b6802328b97a",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          0,
+          100,
+          1220,
+          1254
+        ],
+        "threshold_bboxes": {
+          "1": [
+            0,
+            100,
+            1220,
+            1254
+          ],
+          "16": [
+            61,
+            234,
+            1210,
+            1064
+          ],
+          "32": [
+            61,
+            234,
+            1210,
+            1063
+          ],
+          "128": [
+            62,
+            235,
+            1209,
+            1063
+          ],
+          "250": [
+            64,
+            236,
+            1207,
+            1061
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-d59fdf79-bac2-425c-8a44-61fe0e4923c9.png"
+      ],
+      "prompt_text": "Targeted alpha-edge cleanup attempt on the Muse trio PNG, preserving composition, identities, daisy hand-off, shoulder contact, body proportions, material and lighting while removing isolated low-alpha specks/fringe. This generated edit visibly changed the hood/fur surface texture, so it was discarded in favor of the first Muse image.",
+      "prompt_record_status": "summary_only_not_verbatim",
+      "visual_qa": "未采用：编辑使绒毛纹理更花/更颗粒；root确认使用首张原稿，无须继续重绘alpha。"
+    },
+    {
+      "id": "hero-left-v1",
+      "slot": "hero-left-v1.png",
+      "status": "rejected",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-b6404640-cde6-4319-9e82-257b172f6794.png",
+      "sha256": "7790e3951f8edf6f497e2e894399a80055bf7f4a3079b78b023351da12772c36",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          0,
+          21,
+          1248,
+          1200
+        ],
+        "threshold_bboxes": {
+          "1": [
+            0,
+            21,
+            1248,
+            1200
+          ],
+          "16": [
+            20,
+            98,
+            1236,
+            1160
+          ],
+          "32": [
+            20,
+            98,
+            1236,
+            1160
+          ],
+          "128": [
+            21,
+            99,
+            1235,
+            1159
+          ],
+          "250": [
+            31,
+            100,
+            1232,
+            1157
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/dots-rose-glasses.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/dots-lilac-bucket.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+      ],
+      "prompt_text": "Use case: stylized-concept\nAsset type: near-square, transparent hero-side character-group illustration for the existing Dot Icon Studio home page.\nPrimary request: create one large, lively, premium 3D ensemble of exactly six existing companions using the attached images as separate identity references. Do not add or duplicate characters.\nInput images: Image 1: blue plush Dots with fitted headphones. Image 2: rose plush Dots with clear round glasses. Image 3: lilac plush Dots with yellow bucket hat. Image 4: purple matte-rubber Grok orb. Image 5: original short chestnut-haired child in a teal knit outfit. Preserve each identity's colors, materials, eyes, head shape, and defining accessory/clothes. The sixth existing character is a bright green soft-rubber cloud-shaped Grok with the same pair of parallel slanted white capsule eyes as the purple Grok; no separate source image is attached for this one.\nSubject/action: the teal-clothed child crouches naturally at the side and gently places one open hand against the large blue headphone Dots; the pink glasses Dots softly presses against the blue orb's other side, and the lilac hat Dots peeks from behind, touching the pink orb. The purple Grok orb and green Grok cloud are close companions whose rounded surfaces gently touch the Dots group; all visible eyes look toward one another or the child. The scene reads as one connected playful group, not six separate portraits.\nStyle/medium: consistently polished, warm premium 3D collectible-toy lighting while preserving distinct materials: fine plush for Dots and teal knit/skin/hair for the child; smooth soft-matte rubber for Grok. Match relative finish and light direction without changing family identities.\nComposition/framing: near-square 1:1 transparent artboard, designed to render about 400×290 px desktop and 195×190 px mobile. Arrange six full, recognizable characters in a compact triangular cluster with strong foreground/background size variation, not a row or two rows. The blue Dots and child are the large foreground anchors, remaining companions are still individually large enough for eyes and silhouettes to read at card size. Keep every face and defining accessory visible. Use natural depth overlap only at actual body contact and preserve safe transparent margins on all four sides.\nLighting/mood: soft warm studio light, cheerful and welcoming.\nConstraints: exactly these six existing characters and their family identities. The person remains an original character based only on Image 5, not any anime or cartoon screenshot.\nAvoid: text, letters, logos, watermark, card border, UI, webpage mockup, environment, floor, shadow ellipse, tiny icons, repeated faces, extra characters, extra limbs, human limbs on Dots or Grok, mouths/noses/eyebrows on Dots or Grok, fur on Grok, props not listed, floating characters, row of tiny heads, cropped feet/hats/headphones.",
+      "prompt_record_status": "verbatim_from_generation_request",
+      "visual_qa": "root发现阻断：粉色Dots有长手臂，帽子Dots下方有紫色小手。其余构图及6个身份获认可；此稿不交付。"
+    },
+    {
+      "id": "hero-right-v1",
+      "slot": "hero-right-v1.png",
+      "status": "rejected",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-6e4139a3-02f6-46e9-a725-29e116962ca8.png",
+      "sha256": "864da699117446f81c9f943ed7a2bafe90516528358e8532ca4d29057a005dab",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          0,
+          49,
+          1254,
+          1228
+        ],
+        "threshold_bboxes": {
+          "1": [
+            0,
+            49,
+            1254,
+            1228
+          ],
+          "16": [
+            10,
+            151,
+            1254,
+            1114
+          ],
+          "32": [
+            10,
+            151,
+            1253,
+            1114
+          ],
+          "128": [
+            11,
+            152,
+            1252,
+            1113
+          ],
+          "250": [
+            14,
+            154,
+            1250,
+            1112
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/human-bun-yellow.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-rose-flowers.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "/Users/liuzhihang/workspace/dots/dist/assets/looks/animal-white-cat.png"
+      ],
+      "prompt_text": "Use case: stylized-concept\nAsset type: near-square, transparent hero-side character-group illustration for the existing Dot Icon Studio home page.\nPrimary request: create a premium 3D ensemble of exactly five existing companions, using the attached images as separate identity references. Do not add, duplicate, or merge identities.\nInput images: Image 1: original chestnut-bun-haired girl in a yellow hoodie and ivory shorts. Image 2: cream continuous-hood Meta Muse. Image 3: dusty-rose Meta Muse holding white daisies. Image 4: original seated orange Shiba. Image 5: original seated gray-eared white cat. Keep each identity's colors, face, outfit/body silhouette, material, and species traits.\nSubject/action: make the yellow-hoodie girl the warm focal character, crouching at the animals' level. The rose Muse offers one daisy from its bouquet; the girl gently touches the same flower stem with her fingertips. The cream Muse leans close beside the rose Muse, sharing its attention toward the girl and flower. At the girl's other side, the Shiba nuzzles her sleeve while the white cat presses its cheek against the Shiba's shoulder; their eyes and noses show friendly shared attention. Build one connected scene with real hand-to-stem and body-to-body contact rather than separate portraits.\nStyle/medium: refined premium 3D collectible-toy illustration, consistent camera and warm soft key light. Keep the human's sculpted hair and clothing separate, Meta Muse's fine plush hood and inset warm face, and the animals' fine fur and species markings distinct. Do not homogenize these materials.\nComposition/framing: near-square 1:1 transparent artboard, sized for an existing hero-side viewport around 400×290 px desktop and 195×190 px mobile. Compact triangular group with clear size/depth hierarchy; girl and Shiba are larger foreground anchors, both Muse characters and cat remain large and distinct in the back/sides. All five faces readable, props held, bodies and key animal features visible, no tiny heads or two-row lineup. Keep safe transparent margins around the complete group.\nLighting/mood: warm, gentle afternoon studio illumination; welcoming and affectionate.\nConstraints: use exactly the five attached existing identities; original human and animal designs only. The scene asset contains no UI or copy.\nAvoid: anime pixels or recognizable anime/cartoon character copies, text, letters, logos, watermark, border, card, webpage mockup, environment, floor, separate shadow ellipse, extra characters, extra accessories, floating props, merged faces, obscured eyes, malformed hands, extra fingers, human anatomy on animals or mascot limbs on Muse, cropped ears, tail, shoes or bun.",
+      "prompt_record_status": "verbatim_from_generation_request",
+      "visual_qa": "仅五个身份（黄衣女孩、2只Muse、柴犬、白猫），缺第三只Muse，不满足root锁定的6身份构图；此稿不交付。"
+    },
+    {
+      "id": "hero-left-v2-corrected",
+      "slot": "hero-left-v1.png",
+      "status": "selected_candidate",
+      "raw_path": "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-d5377408-5654-406a-afd9-250065d6a57e.png",
+      "sha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bbox_any": [
+          16,
+          94,
+          1241,
+          1172
+        ],
+        "threshold_bboxes": {
+          "1": [
+            16,
+            94,
+            1241,
+            1172
+          ],
+          "16": [
+            21,
+            97,
+            1238,
+            1163
+          ],
+          "32": [
+            21,
+            97,
+            1238,
+            1163
+          ],
+          "128": [
+            22,
+            98,
+            1237,
+            1162
+          ],
+          "250": [
+            32,
+            99,
+            1236,
+            1161
+          ]
+        }
+      },
+      "references": [
+        "/Users/liuzhihang/.codex/generated_images/01a10b0a-d22b-75c3-9cff-e1514464face/exec-b6404640-cde6-4319-9e82-257b172f6794.png"
+      ],
+      "prompt_text": "Make a very narrow corrective edit to this existing transparent character-group illustration. Preserve the approved composition, all identities, colors, materials, lighting, face expressions, scale, overlap, and the teal boy's pose exactly. Fix only the two mascot anatomy errors: the pink spherical Dots character must have NO arm, NO hand, NO paw, NO limb; erase the long pink arm currently reaching across the blue headphone Dots and restore a continuous round fuzzy pink sphere silhouette that directly touches the blue sphere. The lilac bucket-hat spherical Dots character must also have NO arm, NO hand, NO paw, NO limb; erase the tiny purple hand/paw protruding below its body and restore a continuous round plush sphere silhouette. Their contact is solely sphere-to-sphere surface contact, with no appendages. Keep the teal human boy's real hand resting on the blue headphone Dots unchanged. Dots are simple plush spheres with only their established oval eyes and approved accessories; absolutely no limbs, no hands, no paws, no mouth, no nose, no eyebrows. Keep the purple spherical Grok and green cloud Grok unchanged, both with no limbs or human facial features. Maintain a clean transparent background with complete characters and safe margins. Do not add anything.",
+      "prompt_record_status": "verbatim_from_generation_request",
+      "visual_qa": "自检图：粉色球恢复完整圆体，帽子球无小手/爪；两球直接接触。teal男孩真实手掌仍贴在蓝色耳机Dots上。保留紫Grok与绿云Grok，6身份齐。需root逐图页面复核，尚非网页验收。"
+    }
+  ],
+  "outstanding_slots": [
+    "hero-right-v1.png",
+    "family-dots-v1.png",
+    "family-grok-v1.png",
+    "family-humans-v1.png",
+    "family-animals-v1.png"
+  ],
+  "acceptance_boundary": "Generated candidates are not confirmation of full webpage art acceptance. Root previously previewed the Muse trio in the actual gallery. Corrected hero-left has not yet had root page-level review."
+}

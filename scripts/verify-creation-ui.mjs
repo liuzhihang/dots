@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import {makeProject,resolveCreation,setCreationMode,setProjectCharacter} from '../dist/studio-creation.js';
-import {getBuiltInLooks,getCompositionPack} from '../dist/studio-creation-assets.js';
+import {CREATION_ARTWORKS,getBaselinePoseControls,getBaselinePoseValues,getBuiltInLooks,getCompositionPack} from '../dist/studio-creation-assets.js';
 import {COMPOSITION,createLookCharacter,createPreset,resolveCharacter,setCharacterValue} from '../dist/studio-model.js';
 import {getLookDefinition} from '../dist/studio-looks.js';
 
@@ -56,7 +56,8 @@ clipboard=clipboardContext({open:false});assert.equal(await clipboard.context.co
 
 let dotsProject=makeProject(createLookCharacter('candidate-dots-20261005'),{mode:'composer',artworkId:'candidate-dots-20261005'});
 let dotsState=dotsProject.character,dotsCommits=0;
-const recipeContext=vm.createContext({state:dotsState,project:dotsProject,setCharacterValue,commit(next){dotsProject=setProjectCharacter(dotsProject,next);dotsState=dotsProject.character;recipeContext.state=dotsState;recipeContext.project=dotsProject;dotsCommits++;}});
+let lastRecipeToast='';
+const recipeContext=vm.createContext({state:dotsState,project:dotsProject,setCharacterValue,getBaselinePoseValues,toast(message){lastRecipeToast=message;},commit(next){dotsProject=setProjectCharacter(dotsProject,next);dotsState=dotsProject.character;recipeContext.state=dotsState;recipeContext.project=dotsProject;dotsCommits++;}});
 vm.runInContext(recipeSource+'\nglobalThis.selectDotsRecipe=selectDotsRecipe;',recipeContext);
 const originalNotes='keep notes',originalBackground=dotsState.background,originalEyeColor=dotsState.colors.eyes;
 dotsState.notes=originalNotes;recipeContext.state=dotsState;recipeContext.project=dotsProject;
@@ -71,6 +72,14 @@ recipeContext.selectDotsRecipe('headphones');
 assert.equal(dotsState.accessories.head,'headphones','the headphone recipe selects the matching registered head accessory');
 assert.equal(dotsState.action,'listen','the headphone recipe selects the matching registered action');
 assert.equal(resolveCreation(dotsProject).availability,'available','selecting the headphone recipe enables its real Canvas pack');
+const beforeWink=dotsCommits;
+recipeContext.selectBaselinePose('wink');
+assert.equal(dotsCommits,beforeWink+1,'a verified full-frame expression commits a new workbench state');
+assert.equal(dotsState.expression,'wink','the registered Dots wink selects its exact expression value');
+assert.equal(dotsState.accessories.head,'headphones','the Dots wink keeps its required headphone image recipe');
+assert.equal(dotsState.action,'listen','the Dots wink retains its headphone listening recipe');
+recipeContext.selectDotsRecipe('headphones');
+assert.equal(dotsState.expression,'wink','reselecting an already active headphone recipe preserves the supported wink state');
 const changedEyes=setCharacterValue(dotsState,'eyes',dotsState.eyes==='capsule'?'softOval':'capsule');
 dotsProject=setProjectCharacter(dotsProject,changedEyes);dotsState=dotsProject.character;recipeContext.state=dotsState;recipeContext.project=dotsProject;
 recipeContext.selectDotsRecipe('bare');
@@ -84,11 +93,29 @@ assert.equal(dotsCommits,beforeInvalid,'other families and unregistered recipe I
 const controlHost={innerHTML:''};
 const controlConfig=createLookCharacter('candidate-dots-20261005');
 const controlContext=vm.createContext({state:controlConfig,project:makeProject(controlConfig,{mode:'composer',artworkId:'candidate-dots-20261005'}),
-  getBuiltInLooks,getLookDefinition,resolveCharacter,resolveCreation,COMPOSITION,esc:value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;'),
+  CREATION_ARTWORKS,getBaselinePoseControls,getBuiltInLooks,getLookDefinition,resolveCharacter,resolveCreation,COMPOSITION,esc:value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;'),
   $:id=>id==='workbenchControls'?controlHost:null});
 vm.runInContext(controlsSource+'\nglobalThis.renderWorkbenchControls=renderWorkbenchControls;',controlContext);
 controlContext.renderWorkbenchControls();
 assert.match(controlHost.innerHTML,/莓粉圆框 Dots/,'workbench template cards show their short registered look names');
 assert.doesNotMatch(controlHost.innerHTML,/蓝色 Dots · 耳机基准候选/,'template cards avoid internal asset names that repeat the role title');
 assert.match(controlHost.innerHTML,/data-dot-recipe="headphones"[\s\S]*戴耳机[\s\S]*data-dot-recipe="bare"[\s\S]*不戴耳机/,'the baseline Dots workbench exposes both registered accessory recipes');
+assert.match(controlHost.innerHTML,/表情与姿态[\s\S]*data-baseline-pose="classic"[\s\S]*经典[\s\S]*data-baseline-pose="wink"[^>]*aria-pressed="false"[^>]*>眨眼/,'the Dots workbench exposes its verified wink state beside Classic');
+assert.doesNotMatch(controlHost.innerHTML,/data-baseline-pose="wink"[^>]*disabled/,'the Dots state control enables the registered PNG only after it is verified');
+assert.match(controlHost.innerHTML,/切换表情或问好姿态。当前为静态形象。/,'pose helper explains the static character state in plain language');
+assert.match(controlHost.innerHTML,/其他动作和表情可写进 Prompt，在 ChatGPT 继续创作。/,'secondary helper explains how unsupported actions continue in ChatGPT');
+assert.doesNotMatch(controlHost.innerHTML,/开放状态|单帧|不会假装/,'workbench helpers avoid technical or adversarial wording');
+const grokControlConfig=createLookCharacter('candidate-grok-20261005');
+controlContext.state=grokControlConfig;controlContext.project=makeProject(grokControlConfig,{mode:'composer',artworkId:'candidate-grok-20261005'});
+controlContext.renderWorkbenchControls();
+assert.match(controlHost.innerHTML,/data-baseline-pose="wink"[^>]*aria-pressed="false"[^>]*>眨眼/,'the corrected Grok wink becomes selectable beside Classic');
+assert.doesNotMatch(controlHost.innerHTML,/data-baseline-pose="wink"[^>]*disabled/,'the corrected Grok frame is enabled after its hash-checked registration');
+const grokRecipeProject=makeProject(grokControlConfig,{mode:'composer',artworkId:'candidate-grok-20261005'});
+let grokCommits=0,grokToast='';
+const grokRecipeContext=vm.createContext({state:grokRecipeProject.character,project:grokRecipeProject,setCharacterValue,getBaselinePoseValues,toast(message){grokToast=message;},commit(next){grokRecipeContext.state=next;grokCommits++;}});
+vm.runInContext(recipeSource+'\nglobalThis.selectBaselinePose=selectBaselinePose;',grokRecipeContext);
+grokRecipeContext.selectBaselinePose('wink');
+assert.equal(grokCommits,1,'the corrected Grok asset commits its real frame');
+assert.equal(grokRecipeContext.state.expression,'wink','the Grok wink applies its registered expression');
+assert.equal(grokRecipeContext.state.pose,'auto','the Grok wink preserves its registered default pose');
 console.log('Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus.');

@@ -1,0 +1,177 @@
+{
+  "title": "Dots character pose variants",
+  "generated_date": "2026-10-05",
+  "scope": {
+    "project": "/Users/liuzhihang/workspace/dots",
+    "delivery_directory": "/tmp/dots-pose-asset-delivery-20261005",
+    "project_code_git_sites_modified": false,
+    "final_assets_count": 5
+  },
+  "qa_method": {
+    "original_pngs": "Built-in ImageGen raw PNGs copied byte-identically; no Pillow or programmatic image editing was applied.",
+    "alpha_check": "sips reports hasAlpha=yes for all five final PNGs.",
+    "visual_preview": "Temporary white-matted JPEGs were made with sips for composition and expression review only; they are not deliverables. Low-alpha edge pixels can be magnified in a flattened preview.",
+    "browser_or_site_acceptance": "Not performed; this task was limited to temporary image assets."
+  },
+  "assets": [
+    {
+      "filename": "muse-wave-v1.png",
+      "pose_contract": {
+        "subject_type": "lifeform mascot",
+        "action": "wave",
+        "expression": "happy"
+      },
+      "reference_images": [
+        {
+          "path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+          "role": "identity, material, proportions"
+        },
+        {
+          "path": "/tmp/dots-pose-asset-delivery-20261005/muse-wave-v1-initial.png",
+          "role": "approved wave pose reference"
+        }
+      ],
+      "generation_mode": "built-in image_gen; transparent_background=true",
+      "raw_output": "/Users/liuzhihang/.codex/generated_images/01a10b12-aa1a-7dd2-afc5-034c9e9b3e4a/exec-54acaf4e-f496-43c0-b8dc-144341e0c87b.png",
+      "prompt": "Use case: clean character pose variant for a small web UI mascot asset.\nAsset type: one standalone transparent PNG of the existing Meta Muse mascot waving.\nInput images: Image 1 is the identity and material reference: cream short plush fur, integrated hooded rounded body, warm inset oval face, small dark bead eyes and original proportions. Image 2 is the pose reference only: preserve its friendly one-arm wave and happy curved smile.\nPrimary request: create a clean, polished rerender of the same Muse wave pose. Preserve the character identity from Image 1 and pose from Image 2. The raised arm must remain a short rounded plush arm beside the head, clearly connected to the body; the other arm hangs naturally.\nScene/backdrop: genuinely transparent, empty background.\nComposition/framing: centered single full-body character, both feet visible, square canvas. Scale the entire subject to occupy about 76% of canvas height and fit within a centered 76% safe box so there is at least 12% transparent margin around every side, including the top tuft/hood and feet. No cropping. Keep the same mostly front-facing view.\nStyle/medium: refined 3D plush collectible render, same fine cream fur and soft warm studio lighting as Image 1.\nConstraints: retain the warm peach oval inset face, bead eyes, cheerful simple curved smile, continuous cream hooded mascot body, and one raised short arm from Image 2. Keep no garment, no human-in-costume reading. Eliminate every detached pixel, colored fringe, stray mark, speckle, glow, outline, and background remnant outside the clean silhouette. Preserve actual transparent alpha; do not bake in a checkerboard.\nAvoid: extra characters, clothes or garment seams, props, human anatomy, long human arms or fingers, text, logo, watermark, background, floor, cast shadow, dramatic pose, changes to palette or body shape.",
+      "output": "/tmp/dots-pose-asset-delivery-20261005/muse-wave-v1.png",
+      "preview_jpeg_qa_only": "/tmp/dots-pose-asset-delivery-20261005/muse-wave-preview.jpg",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "PNG",
+        "has_alpha": true
+      },
+      "sha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+      "copied_byte_identical_to_raw_output": true,
+      "visual_qa": "White-matted preview: cream fine-plush hooded mascot remains a single integrated non-costumed body; warm inset oval face, bead eyes, happy smile, one short raised arm, both feet visible. No obvious detached colored pixels on the visual preview. Lower transparent margin is roughly 7.7%; root review accepted the approximately 7.6% Muse bottom margin as a visual suggestion rather than a hard rejection. PNG Alpha was confirmed; final asset is the untouched raw PNG."
+    },
+    {
+      "filename": "dots-wink-v1.png",
+      "pose_contract": {
+        "subject_type": "geometric",
+        "expression": "wink"
+      },
+      "reference_images": [
+        {
+          "path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+          "role": "identity, material, headphones"
+        },
+        {
+          "path": "/tmp/dots-pose-asset-delivery-20261005/dots-wink-v1-initial.png",
+          "role": "wink expression reference"
+        }
+      ],
+      "generation_mode": "built-in image_gen; transparent_background=true",
+      "raw_output": "/Users/liuzhihang/.codex/generated_images/01a10b12-aa1a-7dd2-afc5-034c9e9b3e4a/exec-4842abc6-b13b-4524-a920-0f5622a753aa.png",
+      "prompt": "Use case: clean full-character pose variant for a small web UI mascot asset.\nAsset type: one standalone transparent PNG of the blue Dots orb mascot.\nInput images: Image 1 is the exact character identity, spherical form, short blue plush fibers and headphone design. Image 2 is only the desired wink expression reference.\nPrimary request: create the same Dots orb mascot with exactly one eye winking and one open eye. Keep a slightly tilted, friendly front-facing head. The viewer-left eye is one simple closed curved dark eyelid; the viewer-right eye is one vertical black oval with a tiny white highlight. No mouth or nose.\nComposition/framing: camera pulled back. Show the entire round orb and the entire headphone headband and both cups, including the complete bottom arc of the orb and all outer headphone edges. Place the character centered within the middle 70% of a square canvas, leaving a broad empty transparent border on every side (target 15% margin each side). No part of the character may touch or cross a canvas edge. No crop, no close-up.\nScene/backdrop: empty actual transparent background.\nStyle/medium: high-quality realistic 3D plush render, dense very short blue fibers, same bright blue palette; headphones black with lavender ear cushions as Image 1.\nConstraints: maintain identity and materials from Image 1 and use only the wink facial change from Image 2. Single isolated head, no limbs. Clean transparent silhouette and true alpha, no stray pixels.\nAvoid: mouth, nose, muzzle, cropped orb, cropped headband, cropped ear cups, extra face parts, extra character, props, text, logo, watermark, environment, background, floor, cast shadow, dramatic rotation, altered headphone color.",
+      "output": "/tmp/dots-pose-asset-delivery-20261005/dots-wink-v1.png",
+      "preview_jpeg_qa_only": "/tmp/dots-pose-asset-delivery-20261005/dots-wink-preview.jpg",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "PNG",
+        "has_alpha": true
+      },
+      "sha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+      "copied_byte_identical_to_raw_output": true,
+      "visual_qa": "White-matted preview: complete blue plush orb, both headphone cups and full headband, complete lower orb arc; exactly one closed curved dark eye and one open black oval eye with highlight. No mouth, nose or limbs. Figure has clear margins on all edges and slight-friendly angle; tiny specks are not visibly prominent in the preview. Raw PNG has Alpha and was not modified."
+    },
+    {
+      "filename": "grok-wink-v1.png",
+      "pose_contract": {
+        "subject_type": "geometric",
+        "expression": "wink"
+      },
+      "reference_images": [
+        {
+          "path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+          "role": "identity, sphere material, capsule eye style"
+        },
+        {
+          "path": "/tmp/dots-pose-asset-delivery-20261005/grok-wink-v1-prior.png",
+          "role": "approved sphere and wink composition reference"
+        }
+      ],
+      "generation_mode": "built-in image_gen; transparent_background=true",
+      "raw_output": "/Users/liuzhihang/.codex/generated_images/01a10b12-aa1a-7dd2-afc5-034c9e9b3e4a/exec-60ff6e65-5632-4421-9116-291ebe5ed4c4.png",
+      "prompt": "Use case: narrow eye-mark edit on a web UI mascot PNG.\nAsset type: one standalone transparent PNG of the existing Grok purple orb mascot.\nInput images: Image 1 is the exact orb identity, matte purple material, sphere proportions and white capsule eye style. Image 2 is the approved wink pose and composition to preserve.\nPrimary request: change only the closed-eye mark in Image 2. Replace its raised purple arc with one simple short white curved closed-eyelid line, flat and flush on the sphere surface, matching the white color of the existing open capsule eye. Keep the same location and gentle arc shape. Do not add depth or a raised 3D piece to the closed line.\nConstraints: preserve everything else in Image 2 exactly: the smooth round matte purple orb, position, scale, lighting, one raised white capsule open eye, no mouth, no nose, no limbs. Keep the closed-eye line white. Maintain true transparent alpha and clean edges; no checkerboard or stray marks.\nComposition/framing: same centered full sphere and generous transparent margin as Image 2. No cropping.\nAvoid: changing sphere color, shape, material, scale, lighting or open eye; extra eyes, mouth, nose, limbs, gloss, props, text, logo, watermark, background or cast shadow.",
+      "output": "/tmp/dots-pose-asset-delivery-20261005/grok-wink-v1.png",
+      "preview_jpeg_qa_only": "/tmp/dots-pose-asset-delivery-20261005/grok-wink-preview.jpg",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "PNG",
+        "has_alpha": true
+      },
+      "sha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+      "copied_byte_identical_to_raw_output": true,
+      "visual_qa": "White-matted preview: complete smooth matte purple orb with generous margins; exactly one white capsule open eye and one short white curved closed-eye line; no mouth, nose or limbs. The closed line retains slight rounded 3D highlight from the render, but its color is white. Raw PNG has Alpha and was not modified; root re-review requested after this correction."
+    },
+    {
+      "filename": "human-wave-v1.png",
+      "pose_contract": {
+        "subject_type": "lifeform mascot",
+        "action": "wave",
+        "expression": "happy"
+      },
+      "reference_images": [
+        {
+          "path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+          "role": "identity, hair, clothing, shoes, proportions"
+        },
+        {
+          "path": "/tmp/dots-pose-asset-delivery-20261005/human-wave-v1-initial.png",
+          "role": "wave pose and happy expression reference"
+        }
+      ],
+      "generation_mode": "built-in image_gen; transparent_background=true",
+      "raw_output": "/Users/liuzhihang/.codex/generated_images/01a10b12-aa1a-7dd2-afc5-034c9e9b3e4a/exec-a5aa203f-8ace-44c0-8787-9b51f5c6183e.png",
+      "prompt": "Use case: full-body mascot action variant for a small web UI asset.\nAsset type: one standalone transparent PNG of the existing original chestnut-haired chibi boy.\nInput images: Image 1 defines the exact original boy identity, layered chestnut hair, face, teal knit clothes, cream shoes, proportions and materials. Image 2 defines only the cheerful wave pose and happy expression.\nPrimary request: show that same boy smiling happily and waving one raised short arm beside his head. Preserve the natural five-digit small open hand from Image 2 with clear separated fingers and a thumb. The other arm hangs relaxed.\nComposition/framing: a zoomed-out full-body product figure, not a close-up portrait. Scale the entire boy to about 72% of the square canvas height and center him. Leave a visibly broad 14% transparent border above the hair, below both shoe soles, and on both left and right sides. Keep every part inside the canvas. Both full shoes, shorts, hair, and raised fingers must all fit with margin.\nScene/backdrop: truly transparent empty background.\nStyle/medium: polished soft studio 3D chibi toy render with layered chestnut hair and detailed teal knitted sweater matching Image 1.\nConstraints: keep the exact boy identity, hair, face, original teal sweater with collar/button and cream pockets, pale shorts, legs and cream shoes. Expression=happy; action=wave. Single person, one raised arm. Actual alpha transparency and clean silhouette with no stray specks or checkerboard.\nAvoid: close-up, cropped hair, clipped fingers, clipped shoes, missing shoes, extra limbs/fingers, malformed hands, adult proportions, outfit redesign, other characters, prop, text, logo, watermark, floor, cast shadow, background, dramatic angle.",
+      "output": "/tmp/dots-pose-asset-delivery-20261005/human-wave-v1.png",
+      "preview_jpeg_qa_only": "/tmp/dots-pose-asset-delivery-20261005/human-wave-preview.jpg",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "PNG",
+        "has_alpha": true
+      },
+      "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+      "copied_byte_identical_to_raw_output": true,
+      "visual_qa": "White-matted preview: same chestnut layered hair, cheerful smiling face, teal knit sweater with button and cream pockets, shorts and both cream shoes; one raised arm with a readable small open five-digit waving hand, the other at the side. Full figure and margins visible; bottom margin is about 8%. Raw PNG has Alpha and was not modified."
+    },
+    {
+      "filename": "shiba-wave-v1.png",
+      "pose_contract": {
+        "subject_type": "lifeform mascot",
+        "pose": "sit",
+        "action": "wave",
+        "expression": "happy"
+      },
+      "reference_images": [
+        {
+          "path": "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+          "role": "identity, coat markings, fur, upright ears, tail and seated proportions"
+        },
+        {
+          "path": "/tmp/dots-pose-asset-delivery-20261005/shiba-wave-v1-revision1.png",
+          "role": "wave pose and expression reference"
+        }
+      ],
+      "generation_mode": "built-in image_gen; transparent_background=true",
+      "raw_output": "/Users/liuzhihang/.codex/generated_images/01a10b12-aa1a-7dd2-afc5-034c9e9b3e4a/exec-c6cf31a8-be54-4e55-ab78-98ab5d4a7a11.png",
+      "prompt": "Use case: small standalone web UI mascot with a seated greeting pose.\nAsset type: one transparent PNG with one complete seated Shiba Inu character.\nInput image 1 defines the exact Shiba identity and orange/cream plush fur. Input image 2 defines only the raised-front-paw wave and closed-mouth happy face.\nPrimary request: preserve the seated Shiba and its curled tail; raise one rounded canine front paw beside the cheek in a friendly wave. Keep the other paw planted. The dog smiles with mouth closed and no tongue.\nComposition is critical: zoom the camera well out and render the complete dog as a small centered figure occupying only about 68% of the square canvas height. The dog's visible top-to-bottom span must fit inside the middle 70% of the canvas. Leave visibly broad, empty transparent margins of about 15% above the tallest ear, below the lowest paw, and at left and right. The whole tail, both ears, all paws, and raised paw must be separated from all canvas edges. No close-up; no cropping.\nScene/backdrop: truly transparent and empty.\nStyle: high-quality soft-fur 3D Shiba toy, preserve the reference markings, proportions, upright ears and curled tail.\nConstraints: pose=sit, action=wave, expression=happy. One raised canine paw only. Clean true alpha.\nAvoid: cropped object, oversized dog, standing pose, tongue, open mouth, human hand/fingers, altered coat markings, clothing, collar, extra props, text, logo, watermark, floor, background, cast shadow, checkerboard.",
+      "output": "/tmp/dots-pose-asset-delivery-20261005/shiba-wave-v1.png",
+      "preview_jpeg_qa_only": "/tmp/dots-pose-asset-delivery-20261005/shiba-wave-preview.jpg",
+      "dimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "PNG",
+        "has_alpha": true
+      },
+      "sha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+      "copied_byte_identical_to_raw_output": true,
+      "visual_qa": "White-matted preview: seated orange-and-cream Shiba with upright ears, curled tail, closed happy smile and no tongue; exactly one rounded canine forepaw raised in a wave; all paws and tail fully visible with broad margins. Raw PNG has Alpha and was not modified."
+    }
+  ]
+}

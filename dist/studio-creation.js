@@ -4,14 +4,14 @@ import {
   buildPrompt,
   resolveCharacter,
   validateConfig
-} from './studio-model.js?v=62';
+} from './studio-model.js?v=63';
 import {
   COMPOSITION_PACKS,
   CREATION_ARTWORKS,
   getCompositionPack,
   getCreationArtwork,
   getFamilyArtwork
-} from './studio-creation-assets.js?v=62';
+} from './studio-creation-assets.js?v=63';
 
 export const PROJECT_FORMAT = 'dot-studio-project';
 export const PROJECT_VERSION = 1;
@@ -270,7 +270,7 @@ export function inspectCompositionPack(pack, inputConfig) {
     return {
       availability: 'available',
       reason: pack.kind === 'layered-2d'
-        ? '当前搭配、Dots 耳机状态和背景均有已登记的完整渲染配方。候选效果仍待真实页面美术验收。'
+        ? '当前表情、姿态、已登记配饰状态与背景均有对应的完整静态 PNG 配方。候选效果仍待真实页面美术验收。'
         : '当前内置搭配与背景均按登记配置渲染。候选效果仍待真实页面美术验收。'
     };
   } catch (error) {
@@ -298,7 +298,7 @@ export function resolveCreation(project) {
   const config = clone(current.character);
   const resolved = resolveCharacter(config);
   const artwork = current.creation.artworkId ? clone(getCreationArtwork(current.creation.artworkId)) : null;
-  const pack = getCompositionPack(config.family, current.creation.artworkId);
+  const pack = getCompositionPack(config.family, current.creation.artworkId, config);
   if (current.creation.mode === 'artwork') {
     if (artwork?.status === 'retired') return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
@@ -325,7 +325,7 @@ export function resolveCreation(project) {
 export function buildCreationPrompt(project, lang = 'zh') {
   const current = parseProjectObject(project);
   const artwork = current.creation.artworkId ? getCreationArtwork(current.creation.artworkId) : null;
-  const pack = getCompositionPack(current.character.family, current.creation.artworkId);
+  const pack = getCompositionPack(current.character.family, current.creation.artworkId, current.character);
   const assessment = inspectCompositionPack(pack, current.character);
   const en = lang === 'en';
   let prompt = buildPrompt(current.character, lang);

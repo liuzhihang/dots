@@ -1,17 +1,17 @@
-import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=62';
-import {createHomePortal} from './studio-home.js?v=62';
-import {createFullscreenRandomizer} from './studio-fullscreen-random.js?v=62';
-import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks} from './studio-creation-assets.js?v=62';
-import {LayeredComposer} from './studio-composer.js?v=62';
-import {RecipeMachine} from './studio-random.js?v=62';
-import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=62';
-import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=62';
-import {getArtSample} from './studio-art.js?v=62';
-import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=62';
-import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=62';
-import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=62';
-import {pickerIllustration} from './studio-pickers.js?v=62';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=62';
+import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=63';
+import {createHomePortal} from './studio-home.js?v=63';
+import {createFullscreenRandomizer} from './studio-fullscreen-random.js?v=63';
+import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks,getBaselinePoseControls,getBaselinePoseValues} from './studio-creation-assets.js?v=63';
+import {LayeredComposer} from './studio-composer.js?v=63';
+import {RecipeMachine} from './studio-random.js?v=63';
+import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=63';
+import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=63';
+import {getArtSample} from './studio-art.js?v=63';
+import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=63';
+import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=63';
+import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=63';
+import {pickerIllustration} from './studio-pickers.js?v=63';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=63';
 
 const isSchematic=document.body.dataset.renderer==='schematic';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
@@ -99,6 +99,15 @@ function selectDotsRecipe(recipe){
  if(state.family!=='dots'||project.creation.mode!=='composer'||project.creation.artworkId!=='candidate-dots-20261005'||!['bare','headphones'].includes(recipe))return;
  let next=setCharacterValue(state,'accessories.head',recipe==='headphones'?'headphones':'none');
  next=setCharacterValue(next,'action',recipe==='headphones'?'listen':'idle');
+ if(recipe==='bare'||state.accessories.head!=='headphones')next=setCharacterValue(next,'expression','calm');
+ commit(next);
+}
+function selectBaselinePose(stateId){
+ const artworkId=project.creation.mode==='composer'?project.creation.artworkId:null;
+ const values=getBaselinePoseValues(artworkId,stateId,state);
+ if(!values){toast('对应的完整静态图片尚未准备好，当前设定未更改。');return;}
+ let next=state;
+ for(const path of ['pose','accessories.head','action','expression'])if(Object.hasOwn(values,path))next=setCharacterValue(next,path,values[path]);
  commit(next);
 }
 function startLook(artworkId){
@@ -127,8 +136,10 @@ function renderWorkbenchControls(){
  const templateCards=available.map(item=>{const name=getLookDefinition(item.id)?.name||item.name;return `<button class="look-template ${active===item.id?'selected':''}" data-look-template="${esc(item.id)}" aria-pressed="${active===item.id}" aria-label="选择形象：${esc(name)}"><span class="look-template-image"><img src="${item.src}" alt="" loading="lazy"></span><span class="look-template-name">${esc(name)}</span></button>`;}).join('');
  const resolved=resolveCharacter(state).config,dotsBase=state.family==='dots'&&project.creation.mode==='composer'&&project.creation.artworkId==='candidate-dots-20261005';
  const dotsRecipes=dotsBase?`<section class="background-control dot-recipe-control" aria-labelledby="dotsRecipeTitle"><div class="workbench-control-heading"><div><h2 id="dotsRecipeTitle">Dots 耳机</h2><p>选择对应完整图片；其余未登记外观继续写入 Prompt。</p></div></div><div class="chips"><button class="choice ${resolved.accessories.head==='headphones'&&['idle','listen'].includes(resolved.action)?'selected':''}" data-dot-recipe="headphones" aria-pressed="${resolved.accessories.head==='headphones'&&['idle','listen'].includes(resolved.action)}">戴耳机</button><button class="choice ${resolved.accessories.head==='none'&&resolved.action==='idle'?'selected':''}" data-dot-recipe="bare" aria-pressed="${resolved.accessories.head==='none'&&resolved.action==='idle'}">不戴耳机</button></div></section>`:'';
+ const baselineStates=CREATION_ARTWORKS.find(item=>item.id===active)?.kind==='baseline-candidate'?getBaselinePoseControls(active,resolved):[];
+ const baselinePoseControl=baselineStates.length?`<section class="background-control pose-control" aria-labelledby="poseControlTitle"><div class="workbench-control-heading"><div><h2 id="poseControlTitle">表情与姿态</h2><p>切换表情或问好姿态。当前为静态形象。</p></div></div><div class="chips">${baselineStates.map(item=>`<button class="choice ${item.selected?'selected':''}" data-baseline-pose="${esc(item.id)}" aria-pressed="${item.selected}" ${item.available?'':'disabled title="完整静态图片尚未准备好"'}>${esc(item.label)}${item.available?'':' · 准备中'}</button>`).join('')}</div></section>`:'';
  const current=resolveCreation(project),oldState=project.creation.mode==='artwork'?`<div class="legacy-artwork-note"><span>正在查看旧项目中的固定形象：${esc(current.artwork?.name||'原图已撤下')}</span><button class="text-button" data-command="start-from-artwork">以此开始搭配</button></div>`:'';
- host.innerHTML=`${oldState}<section class="template-control" aria-labelledby="templateControlTitle"><div class="workbench-control-heading"><div><h2 id="templateControlTitle">选择搭配</h2><p>选好后，预览会立即切换到对应形象。</p></div><span>${available.length} 款</span></div><div class="look-template-grid">${templateCards||'<p class="section-helper">本组形象准备中。</p>'}</div></section>${dotsRecipes}<section class="background-control" aria-labelledby="backgroundControlTitle"><div class="workbench-control-heading"><div><h2 id="backgroundControlTitle">背景</h2><p>背景和透明度会实际更新图片。</p></div></div><div class="chips">${Object.entries(COMPOSITION.background).map(([id,item])=>`<button class="choice ${state.background===id?'selected':''}" data-path="background" data-value="${id}" aria-pressed="${state.background===id}">${esc(item.label)}</button>`).join('')}</div>${state.background==='solid'?`<label class="background-color-control"><span>自定义背景颜色</span><input type="color" data-setting="colors.background" value="${state.colors.background}" aria-label="自定义背景颜色"></label>`:''}</section><p class="look-control-note">更换搭配与背景会更新图片。五官、动作等高级设定用于 Prompt，在 ChatGPT 继续制作。</p>`;
+ host.innerHTML=`${oldState}<section class="template-control" aria-labelledby="templateControlTitle"><div class="workbench-control-heading"><div><h2 id="templateControlTitle">选择搭配</h2><p>选好后，预览会立即切换到对应形象。</p></div><span>${available.length} 款</span></div><div class="look-template-grid">${templateCards||'<p class="section-helper">本组形象准备中。</p>'}</div></section>${dotsRecipes}${baselinePoseControl}<section class="background-control" aria-labelledby="backgroundControlTitle"><div class="workbench-control-heading"><div><h2 id="backgroundControlTitle">背景</h2><p>背景和透明度会实际更新图片。</p></div></div><div class="chips">${Object.entries(COMPOSITION.background).map(([id,item])=>`<button class="choice ${state.background===id?'selected':''}" data-path="background" data-value="${id}" aria-pressed="${state.background===id}">${esc(item.label)}</button>`).join('')}</div>${state.background==='solid'?`<label class="background-color-control"><span>自定义背景颜色</span><input type="color" data-setting="colors.background" value="${state.colors.background}" aria-label="自定义背景颜色"></label>`:''}</section><p class="look-control-note">其他动作和表情可写进 Prompt，在 ChatGPT 继续创作。</p>`;
 }
 function undo(redo=false){recipeMachine?.cancel();const from=redo?future:history,to=redo?history:future;if(!from.length)return;to.push(structuredClone(project));project=from.pop();state=project.character;previewRevision++;grouping='';remember();render();toast(redo?'已重做':'已撤销');}
 function chips(path,entries,extra=''){if(path==='expression')return `<div class="expression-grid">${Object.entries(entries).map(([id,v])=>`<button class="choice expression-choice ${val(path)===id?'selected':''}" data-path="expression" data-value="${id}" aria-pressed="${val(path)===id}"><span class="emote-icon emote-${id}" aria-hidden="true"><i></i><i></i></span><span>${v.label}</span></button>`).join('')}</div>`;return `<div class="chips ${extra}">${Object.entries(entries).map(([k,v])=>`<button class="choice ${(!inheritsReference(state,path)&&val(path)===k)?'selected':''}" data-path="${path}" data-value="${k}" aria-pressed="${(!inheritsReference(state,path)&&val(path)===k)}">${esc(v.label||v)}</button>`).join('')}</div>`;}
@@ -260,7 +271,7 @@ function renderResult(){
  $('exportImage').disabled=!ready;$('exportImage').textContent=diagnostic?'导出诊断 PNG':creation.mode==='artwork'?'下载形象原图':'导出 PNG';
  $('expandPreview').disabled=!ready;$('expandPreview').setAttribute('aria-label',diagnostic?'放大结构诊断':'放大当前预览');
  const oldArtworkAction=project.creation.mode==='artwork'&&!retired?'<button class="text-button start-from-artwork" data-command="start-from-artwork">以此开始搭配</button>':'';
- $('previewTruth').innerHTML=icon('info')+`<div class="preview-truth-copy"><span>${diagnostic?'当前结构模型只供造型诊断，尚未通过美术验收。':creation.mode==='artwork'?(retired?'原图已撤下；旧项目配置仍保留。':creation.artwork?(candidate?'当前是基准候选。改用后可在工作台选搭配与背景；下载保持原图。':creation.artwork.kind==='look-template'?'当前是内置搭配候选。画面保持原图；可以用它开始搭配。':'当前是旧版固定示例；画面保持原图。'):'当前项目没有可展示的完整形象。'):(ready?'更换搭配与背景会更新图片。其他细节只写入 Prompt；该候选仍待真实网页美术验收。':creation.availability==='unsupported'?'当前仍展示所选模板与背景预览；高级设定未被渲染，因此关闭当前角色 PNG 导出。':`形象正在准备。 ${esc(creation.reason)}`)}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>${oldArtworkAction}</div>`;
+ $('previewTruth').innerHTML=icon('info')+`<div class="preview-truth-copy"><span>${diagnostic?'当前结构模型只供造型诊断，尚未通过美术验收。':creation.mode==='artwork'?(retired?'原图已撤下；旧项目配置仍保留。':creation.artwork?(candidate?'当前是基准候选。改用后可在工作台选搭配与背景；下载保持原图。':creation.artwork.kind==='look-template'?'当前是内置搭配候选。画面保持原图；可以用它开始搭配。':'当前是旧版固定示例；画面保持原图。'):'当前项目没有可展示的完整形象。'):(ready?(getBaselinePoseControls(creation.artwork?.id,c).length?'搭配、已提供的表情姿态与背景会更新图片；该候选仍待真实网页美术验收。':'更换搭配与背景会更新图片。其他细节只写入 Prompt；该候选仍待真实网页美术验收。'):creation.availability==='unsupported'?'当前仍展示所选模板与背景预览；高级设定未被渲染，因此关闭当前角色 PNG 导出。':`形象正在准备。 ${esc(creation.reason)}`)}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>${oldArtworkAction}</div>`;
  $('presetName').textContent=c.name||lookDefinition?.name||f.template;$('presetCount').textContent=creation.mode==='composer'?(lookDefinition?'当前搭配':'选择一款内置搭配'):'旧项目中的固定形象';
  $('sourceBadge').textContent=!diagnostic&&creation.mode==='artwork'&&creation.artwork?(retired?'旧项目 · 原图已撤下':candidate?'新基准 · 待确认':creation.artwork.kind==='look-template'?'内置搭配 · 待确认':'旧版示例'):creation.mode==='composer'&&creation.artwork?'内置搭配 · 待确认':sourceLabel(state);$('sourceBadge').dataset.source=deriveProvenance(state).source;
  const accessories=Object.entries(c.accessories).filter(([slot,value])=>value!=='none'&&!inheritsReference(c,'accessories.'+slot)).map(([slot,value])=>ACCESSORIES[slot][value].label);
@@ -425,6 +436,7 @@ document.addEventListener('click',async e=>{
   if(recipeMachine?.busy&&!b.dataset.lock&&b.dataset.command!=='random')recipeMachine.cancel();
   if(b.dataset.route){navigate({page:b.dataset.route==='looks'?'looks':b.dataset.route==='workspace'?'workspace':'home'});return;}
   if(b.dataset.dotRecipe){selectDotsRecipe(b.dataset.dotRecipe);return;}
+  if(b.dataset.baselinePose){selectBaselinePose(b.dataset.baselinePose);return;}
  if(b.dataset.lookAction){if(b.dataset.lookAction==='copy'){const success=await copyText(buildCreationPrompt(lookProject(b.dataset.lookId),promptLanguage));if(success)toast('已复制这张形象的 Prompt。');else toast('剪贴板不可用，请重新打开这张形象后复制。');}else if(b.dataset.lookAction==='start'){closeModal();startLook(b.dataset.lookId);}return;}
   if(b.dataset.inspiration){commit(inspirationCharacter(b.dataset.inspiration,state));closeModal();livePreview?.assemble();return;}
   if(b.id==='undo'){undo();return;}if(b.id==='redo'){undo(true);return;}if(b.id==='closeModal'){closeModal();return;}
