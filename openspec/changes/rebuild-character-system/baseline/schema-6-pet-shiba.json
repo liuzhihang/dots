@@ -1,0 +1,63 @@
+{
+  "version": 6,
+  "rendererVersion": "atelier-3",
+  "family": "pets",
+  "name": "柴犬团子",
+  "shape": "shiba",
+  "material": "plush",
+  "fur": "short",
+  "palette": "shiba",
+  "colors": {
+    "body": "#ECAE57",
+    "secondary": "#FFF0D5",
+    "eyes": "#172131",
+    "accessory": "#303846",
+    "background": "#F3F6FA",
+    "skin": "#EBC4A6",
+    "hair": "#523729",
+    "clothing": "#ECAE57"
+  },
+  "eyeColorManual": false,
+  "eyes": "sparkle",
+  "eyeScale": 1,
+  "eyeSpacing": 1,
+  "brows": "none",
+  "mouth": "smile",
+  "expression": "calm",
+  "headScale": 1,
+  "bodyWidth": 1,
+  "hair": "short-curly",
+  "limbs": "auto",
+  "action": "work",
+  "pose": "auto",
+  "accessories": {
+    "head": "none",
+    "face": "none",
+    "neck": "none",
+    "prop": "tea"
+  },
+  "framing": "full",
+  "camera": "front",
+  "background": "studio",
+  "aspect": "1:1",
+  "scale": 72,
+  "output": "image",
+  "motionStyle": "auto",
+  "motionSpeed": 1,
+  "skinMaterial": "auto",
+  "hairMaterial": "auto",
+  "clothMaterial": "knit",
+  "reference": {
+    "enabled": false,
+    "notes": "",
+    "preserve": [
+      "hair",
+      "face",
+      "colors",
+      "clothing",
+      "accessories"
+    ]
+  },
+  "notes": "",
+  "randomSeed": "dot-01"
+}

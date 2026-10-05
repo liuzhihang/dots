@@ -1,3 +1,23 @@
+# Installed dependencies and local caches
 node_modules/
-.sites-runtime/
 .vite/
+.sites-runtime/
+.cache/
+coverage/
+playwright-report/
+test-results/
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local logs and operating system files
+*.log
+.DS_Store
+Thumbs.db
+
+# dist/ is checked-in application source and the Sites publication directory.
+# Keep .openai/hosting.json to retain the original Site identity.

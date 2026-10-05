@@ -1,12 +1,16 @@
-// Independent full-image originals. The UI and downloads share this registry.
+// Baseline cards use the real renderer. Historical generated PNGs remain references only.
 export const ART_ACTIONS = ['idle','work','sleep','listen','flowers','magic'];
-const ART = {
- dots:{file:'dot-plush-headphones-v2.png',material:'plush',action:'listen',name:'蓝蓝听歌',size:83},
- grok:{file:'grok-matte-work-v2.png',material:'rubber',action:'work',name:'专注小白',size:80},
- muse:{file:'muse-fabric-reading-v2.png',material:'micro',action:'read',name:'织物小沐',size:73},
- pets:{file:'pet-shiba-scarf-v2.png',material:'plush',action:'idle',name:'柴犬茶茶',size:76}
+export const LEGACY_ART = {
+ dots:{file:'dot-plush-headphones-v2.png',name:'蓝蓝听歌'},
+ grok:{file:'grok-matte-work-v2.png',name:'专注小白'},
+ humans:{file:'muse-fabric-reading-v2.png',name:'历史织物小沐'},
+ animals:{file:'pet-shiba-scarf-v2.png',name:'历史柴犬茶茶'}
 };
+const BASELINES={dots:['蓝色 Dots','micro','listen'],grok:['淡紫 Grok Bot','rubber','work'],'meta-muse':['米白 Meta Muse','micro','idle'],humans:['栗色短发人物','micro','read'],animals:['柴犬伙伴','micro','work']};
 export function getArtSample(family){
- const a=ART[family]||ART.dots;
- return {...a,family,src:'./assets/atelier/'+a.file,kind:'curated-sample',layout:'single',width:1254,height:1254,columns:1,rows:1,index:0};
+ const id=family==='muse'?'humans':family==='pets'?'animals':family;
+ const a=BASELINES[id];if(!a)throw Error('未知角色分组');
+ return {family:id,name:a[0],material:a[1],action:a[2],presetId:'baseline-'+id,src:null,file:null,kind:'baseline-reference',layout:'single',size:80,width:200,height:200,columns:1,rows:1,index:0};
 }
+
+export function getLegacyArtSample(family){const a=LEGACY_ART[family];return a?{...a,family,src:'./assets/atelier/'+a.file,width:1254,height:1254,columns:1,rows:1,index:0,material:'historical',action:'reference'}:null;}

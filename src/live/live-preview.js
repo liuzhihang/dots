@@ -8,9 +8,9 @@ import {createActivitySystem} from './activity-system.js';
 
 const UP=new THREE.Vector3(0,1,0);
 let graphicsMode=null;
-const stillTime=c=>c?.action==='bounce'?.45:c?.action==='blink'?.17:c?.action==='listen'?.4:c?.action==='wave'?.35:0;
+const stillTime=c=>c?.action==='done'?.42:c?.action==='blocked'?.12:c?.action==='processing'?.25:c?.action==='thinking'?.28:c?.action==='bounce'?.45:c?.action==='blink'?.17:c?.action==='listen'?.4:c?.action==='wave'?.35:0;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
-function visualKey(config){const c={...config};for(const k of ['name','notes','reference','presetId','version','rendererVersion','palette','output','eyeColorManual','provenance'])delete c[k];return JSON.stringify(c);}
+function visualKey(config){const c={...config};for(const k of ['name','notes','reference','palette','output','eyeColorManual','provenance'])delete c[k];return JSON.stringify(c);}
 const seedRandom=seed=>{let n=2166136261;for(const ch of String(seed))n=Math.imul(n^ch.charCodeAt(0),16777619);return()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;};};
 function disposeRoot(root){
  const geometries=new Set(),materials=new Set(),textures=new Set();
@@ -22,7 +22,7 @@ function disposeRoot(root){
 // and colors are seeded so a slider change does not make the fur swim or flicker.
 
 function setPose(avatar,c){
- const human=c.shape==='human',animal=avatar.root.userData.anatomy==='animal';
+ const human=avatar.root.userData.anatomy==='human',animal=avatar.root.userData.anatomy==='animal';
  if(c.action==='sleep'){
   // Articulated rest: fold the arms and legs, then settle the whole pose onto
   // the ground. Head and torso retain their relationship and no prop is added.
@@ -54,7 +54,7 @@ class RenderWorld{
  constructor(canvas,{thumbnail=false}={}){
   this.thumbnail=thumbnail;
   const options={alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'low-power'};
-  let context=null;if(graphicsMode!=='software'){try{context=canvas.getContext('webgl2',options);}catch{}}
+  let context=null;if(graphicsMode!=='software'&&new URLSearchParams(window.location.search).get('renderer')!=='software'){try{context=canvas.getContext('webgl2',options);}catch{}}
   if(context){graphicsMode='webgl';this.renderer=new THREE.WebGLRenderer({canvas,context,...options});}
   else{graphicsMode='software';this.renderer=new SoftwareRenderer(canvas);}
   canvas.dataset.renderMode=graphicsMode;
@@ -66,7 +66,7 @@ class RenderWorld{
   this.camera=new THREE.OrthographicCamera(-2,2,2,-2,.1,40);
   if(!this.renderer.isSoftwareRenderer){
    const pmrem=new THREE.PMREMGenerator(this.renderer),room=new RoomEnvironment();
-   this.environment=pmrem.fromScene(room,.055);this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.42;
+   this.environment=pmrem.fromScene(room,.035);this.scene.environment=this.environment.texture;this.scene.environmentIntensity=.42;
    room.dispose();pmrem.dispose();
   }
   this.scene.add(new THREE.HemisphereLight('#ffffff','#dce2ed',1.15));
@@ -75,21 +75,7 @@ class RenderWorld{
   const fill=new THREE.DirectionalLight('#eef3ff',.62);fill.position.set(4,2.8,2.4);this.scene.add(fill);
   const bounceLight=new THREE.DirectionalLight('#f4f7ff',.24);bounceLight.position.set(0,-2,4);this.scene.add(bounceLight);
   const rim=new THREE.DirectionalLight('#ffffff',.8);rim.position.set(2,4.2,-3.6);this.scene.add(rim);
-  this.floor=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({color:'#68718a',opacity:.11}));this.floor.rotation.x=-Math.PI/2;this.floor.position.y=-.016;this.floor.receiveShadow=true;this.scene.add(this.floor);
-  this.shadowFade={value:new THREE.Vector4(.5,.5,.008,.006)};
-  this.floor.material.onBeforeCompile=shader=>{
-   shader.uniforms.studioShadowFade=this.shadowFade;
-   shader.vertexShader='varying vec2 studioShadowUV;\n'+shader.vertexShader;
-   shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nstudioShadowUV=uv;');
-   shader.fragmentShader='varying vec2 studioShadowUV;\nuniform vec4 studioShadowFade;\n'+shader.fragmentShader;
-   shader.fragmentShader=shader.fragmentShader.replace('#include <tonemapping_fragment>','gl_FragColor.a *= 1.0-smoothstep(0.28,1.0,length((studioShadowUV-studioShadowFade.xy)/studioShadowFade.zw));\n#include <tonemapping_fragment>');
-  };
-  this.floor.material.customProgramCacheKey=()=> 'studio-contact-fade-v1';
-  // A very soft contact core remains stable under gentle idle motion.
-  const size=128,data=new Uint8Array(size*size*4);
-  for(let y=0;y<size;y++)for(let x=0;x<size;x++){const r=((x-size/2)/(size/2))**2+((y-size/2)/(size/2))**2;const i=(y*size+x)*4;data[i]=88;data[i+1]=103;data[i+2]=125;data[i+3]=Math.round(Math.exp(-r*4.2)*43);}
-  const map=new THREE.DataTexture(data,size,size);map.needsUpdate=true;
-  this.contact=new THREE.Mesh(new THREE.PlaneGeometry(3.3,2.2),new THREE.MeshBasicMaterial({map,transparent:true,depthWrite:false}));this.contact.rotation.x=-Math.PI/2;this.contact.position.y=.002;this.scene.add(this.contact);
+  // Character surfaces receive light and cast onto one another; no ground projection layer.
   this.turn=new THREE.Group();this.scene.add(this.turn);this.frame={width:512,height:512};
  }
  update(c){
@@ -102,11 +88,7 @@ class RenderWorld{
   this.turn.rotation.y=c.camera==='side'?Math.PI*.43:c.camera==='threeQuarter'?.33:c.pose==='side'?.30:0;
   this.turn.updateMatrixWorld(true);
   const bounds=new THREE.Box3().setFromObject(this.turn);this.center=bounds.getCenter(new THREE.Vector3());this.bounds=bounds.getSize(new THREE.Vector3());
-  this.floor.visible=this.contact.visible=c.background!=='transparent';
   this.scene.background=c.background==='solid'?new THREE.Color(c.colors.background):c.background==='studio'?new THREE.Color('#f8f9fc'):null;
-  this.contact.scale.set(Math.max(.58,this.bounds.x/2.5),Math.max(.55,this.bounds.z/1.9),1);this.contact.position.x=this.center.x;
-  const fade=[.5+this.center.x/200,.5-this.center.z/200,Math.max(.75,this.bounds.x*.72)/200,Math.max(.7,this.bounds.z*.8)/200];
-  this.shadowFade.value.fromArray(fade);this.floor.material.userData.shadowFade=fade;
   this.fit(this.frame.width,this.frame.height);this.render(stillTime(c));
  }
  fit(width,height){
@@ -125,7 +107,7 @@ class RenderWorld{
   const hasProp=!!this.props?.prop&&this.props.prop!=='none';
   if(c.framing!=='full'&&!hasProp&&c.action!=='sleep'&&!this.activity){
    const size=bounds.getSize(new THREE.Vector3());
-   if(c.shape==='human'||this.avatar.root.userData.anatomy==='animal')bounds.min.y=bounds.max.y-size.y*(c.framing==='portrait'?.55:.79);
+   if(['human','animal'].includes(this.avatar.root.userData.anatomy))bounds.min.y=bounds.max.y-size.y*(c.framing==='portrait'?.55:.79);
   }
   const center=bounds.getCenter(new THREE.Vector3());
   const elevation=c.action==='work'?1.85:c.action==='read'?1.30:.52;
@@ -138,6 +120,7 @@ class RenderWorld{
   this.camera.left=cx-heightWorld*aspect/2;this.camera.right=cx+heightWorld*aspect/2;this.camera.top=cy+heightWorld/2;this.camera.bottom=cy-heightWorld/2;this.camera.updateProjectionMatrix();
  }
  render(time=0,assembly=1){
+  if(this.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches)time=stillTime(this.config);
   this.lastTime=time;
   for(const part of this.assemblyParts||[]){part.object.position.copy(part.position);part.object.scale.copy(part.scale);}
   if(!this.avatar)return;const a=this.avatar,c=this.config,rest=a.root.userData;
@@ -165,13 +148,13 @@ class RenderWorld{
   }
   this.renderer.render(this.scene,this.camera);
  }
- dispose(){this.activity?.dispose();if(this.avatar)disposeRoot(this.avatar.root);disposeRoot(this.floor);disposeRoot(this.contact);this.environment?.dispose();this.scene.traverse(o=>{if(o.isLight)o.shadow?.dispose();});this.renderer.dispose();}
+ dispose(){this.activity?.dispose();if(this.avatar)disposeRoot(this.avatar.root);this.environment?.dispose();this.scene.traverse(o=>{if(o.isLight)o.shadow?.dispose();});this.renderer.dispose();}
 }
 
 export class CharacterPreview{
  constructor(container,{onError=()=>{},onReady=()=>{}}={}){
   this.container=container;this.onError=onError;this.onReady=onReady;this.canvas=document.createElement('canvas');this.canvas.className='character-canvas';this.canvas.setAttribute('role','img');this.canvas.setAttribute('aria-label','当前配置的实时三维角色');container.append(this.canvas);
-  this.world=new RenderWorld(this.canvas);this.elapsed=0;this.lastTick=performance.now();this.assemblyStart=null;this.playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;this.visible=true;this.lastFrame=0;this.revision=0;
+  this.motionPreference=matchMedia('(prefers-reduced-motion: reduce)');this.world=new RenderWorld(this.canvas);this.elapsed=0;this.lastTick=performance.now();this.assemblyStart=null;this.playing=!this.motionPreference.matches;this.visible=true;this.lastFrame=0;this.revision=0;
   if(this.world.renderer.isSoftwareRenderer)this.world.renderer.staticPreview=!this.playing;
   this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(container);
   this.intersection=new IntersectionObserver(([entry])=>{this.visible=entry.isIntersecting;});this.intersection.observe(container);
@@ -180,35 +163,52 @@ export class CharacterPreview{
    this.raf=requestAnimationFrame(this.loop);
    const dt=Math.min(.15,(now-this.lastTick)/1000);this.lastTick=now;
    if(!this.visible||document.hidden||this.capturing)return;
-   if(this.playing)this.elapsed+=dt;
+   if(this.playing&&!this.motionPreference.matches)this.elapsed+=dt;
    const assembling=this.assemblyStart!==null,assembly=assembling?clamp((now-this.assemblyStart)/920,0,1):1;
    if((!this.playing&&!assembling)||this.world.renderer._busy||now-this.lastFrame<(this.world.renderer.isSoftwareRenderer?95:25))return;
-   this.lastFrame=now;this.world.render(this.elapsed,assembly);this.canvas.dataset.animationTime=this.elapsed.toFixed(3);
+   this.lastFrame=now;this.world.render(this.elapsed,assembly);this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);
    if(assembly>=1&&assembling)this.assemblyStart=null;
   };this.raf=requestAnimationFrame(this.loop);
  }
  update(config){
+  if(this.disposed)return;
   const key=visualKey(config);if(this.updateKey===key)return;this.updateKey=key;this.pending=config;if(this.updateFrame)return;
-  this.updateFrame=requestAnimationFrame(()=>{this.updateFrame=0;try{const changedAction=this.world.config?.action!==this.pending.action;this.world.update(this.pending);if(changedAction)this.elapsed=stillTime(this.pending);this.revision++;this.canvas.dataset.revision=String(this.revision);this.canvas.dataset.shape=this.pending.shape;this.canvas.dataset.material=this.pending.material;this.canvas.dataset.action=this.pending.action;this.resize();if(this.wantsAssembly){this.wantsAssembly=false;this.assemblyStart=performance.now();}this.onReady();}catch(e){console.error('Character preview:',e);this.onError('这个角色暂时未能显示，请切换角色后重试。');}});
+  this.updateFrame=requestAnimationFrame(async()=>{
+   this.updateFrame=0;const revision=++this.revision;this.canvas.dataset.previewStatus='loading';
+   try{
+    const changedAction=['action','family','shape','presetId'].some(key=>this.world.config?.[key]!==this.pending[key]);
+    this.world.update(this.pending);if(changedAction)this.elapsed=stillTime(this.pending);
+    this.canvas.dataset.revision=String(revision);
+    for(const key of ['version','rendererVersion','family','shape','material','action','camera','framing','background','headScale','bodyWidth','motionStyle'])this.canvas.dataset[key]=String(this.pending[key]);
+    for(const key of ['head','face','neck','prop'])this.canvas.dataset[key+'Accessory']=this.pending.accessories[key];
+    this.resize();this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);
+    if(this.wantsAssembly&&!this.world.reducedMotion&&!this.motionPreference.matches){this.wantsAssembly=false;this.assemblyStart=performance.now();}
+    await this.world.renderer.flush?.();
+    if(revision!==this.revision)return;
+    this.canvas.dataset.renderedRevision=String(revision);this.canvas.dataset.previewStatus='ready';this.onReady();
+   }catch(e){if(this.disposed||revision!==this.revision)return;this.canvas.dataset.previewStatus='failed';console.error('Character preview:',e);this.onError('这个角色暂时未能显示，请切换角色后重试。');}
+  });
  }
  resize(){const c=this.pending||this.world.config;if(!c)return;const [aw,ah]=c.aspect.split(':').map(Number),rect=this.container.getBoundingClientRect(),ratio=aw/ah;let width=Math.max(1,rect.width),height=width/ratio;if(height>rect.height){height=rect.height;width=height*ratio;}this.canvas.style.width=width+'px';this.canvas.style.height=height+'px';this.world.fit(Math.round(width),Math.round(height));this.world.render(this.elapsed);}
  setPlaying(value){
-  this.playing=value;this.lastTick=performance.now();
-  if(this.world.renderer.isSoftwareRenderer){this.world.renderer.staticPreview=!value;this.world.renderer.previewLimit=value?800:960;}
-  if(this.world.config)this.world.render(this.elapsed);
+  this.playing=value&&!this.motionPreference.matches&&!this.world.reducedMotion;this.lastTick=performance.now();
+  if(this.world.renderer.isSoftwareRenderer){this.world.renderer.staticPreview=!this.playing;this.world.renderer.previewLimit=this.playing?800:960;}
+  if(this.world.config){this.world.render(this.elapsed);this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);}
  }
- assemble(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;this.wantsAssembly=true;if(!this.updateFrame){this.wantsAssembly=false;this.assemblyStart=performance.now();}}
+ setReducedMotion(value){this.world.reducedMotion=!!value;if(value){this.elapsed=stillTime(this.world.config);this.setPlaying(false);}else if(this.world.config)this.resize();}
+ assemble(){if(this.world.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches)return;this.wantsAssembly=true;if(!this.updateFrame){this.wantsAssembly=false;this.assemblyStart=performance.now();}}
 
  capture(size=1400,config=this.pending||this.world.config){
   // An independent canvas renders the configuration at click time. Live edits,
   // resize events and switching views cannot alter a pending PNG export.
-  const snapshot=structuredClone(config),captureTime=this.elapsed;
+  const snapshot=structuredClone(config),matchesPreview=snapshot&&['action','family','shape','presetId'].every(key=>this.world.config?.[key]===snapshot[key]);
+  const reducedMotion=this.world.reducedMotion||this.motionPreference.matches,captureTime=reducedMotion||!matchesPreview?stillTime(snapshot):this.elapsed;
   const request=(this.captureQueue||Promise.resolve()).catch(()=>{}).then(async()=>{
    let world;this.capturing=true;
    try{
     if(!snapshot)throw Error('角色尚未准备好');
     const [aw,ah]=snapshot.aspect.split(':').map(Number),width=aw>=ah?size:Math.round(size*aw/ah),height=ah>=aw?size:Math.round(size*ah/aw);
-    const canvas=document.createElement('canvas');world=new RenderWorld(canvas);
+    const canvas=document.createElement('canvas');world=new RenderWorld(canvas);world.reducedMotion=reducedMotion;
     world.renderer.highQuality=true;world.renderer.captureLimit=size;world.renderer.setPixelRatio(1);world.frame={width,height};world.update(snapshot);world.render(captureTime);
     await world.renderer.flush?.();
     const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('PNG 导出失败');return blob;
@@ -216,7 +216,7 @@ export class CharacterPreview{
   });
   this.captureQueue=request;return request;
  }
- dispose(){cancelAnimationFrame(this.raf);cancelAnimationFrame(this.updateFrame);this.resizeObserver.disconnect();this.intersection.disconnect();this.world.dispose();this.canvas.remove();}
+ dispose(){this.disposed=true;this.revision++;cancelAnimationFrame(this.raf);cancelAnimationFrame(this.updateFrame);this.resizeObserver.disconnect();this.intersection.disconnect();this.world.dispose();this.canvas.remove();}
 }
 
 // One shared thumbnail renderer, never one WebGL context per card.

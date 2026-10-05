@@ -5,8 +5,9 @@ import {createPreset,setCharacterValue,resolveCharacter,buildPrompt,validateConf
 import {buildAvatarBody} from '../src/live/avatar-body.js';
 import {decorateAvatar} from '../src/live/avatar-props.js';
 
-for(const family of ['dots','grok','muse','pets'])assert.equal(familyPresets(family).length,family==='dots'?21:12);
-assert.equal(new Set(PRESETS.map(p=>p.id)).size,57);
+for(const family of ['dots','grok','meta-muse','humans','animals'])assert.equal(familyPresets(family).length,1);
+for(const family of ['dots','grok','humans','animals'])assert.equal(familyPresets(family,{includeLegacy:true}).length,family==='dots'?22:13);
+assert.equal(new Set(PRESETS.map(p=>p.id)).size,62);
 for(const preset of PRESETS){
  const c=validateConfig(createPreset(preset.id));
  assert.deepEqual(validateConfig(JSON.parse(exportConfiguration(c))),c);
@@ -14,7 +15,7 @@ for(const preset of PRESETS){
  const avatar=buildAvatarBody(resolveCharacter(c).config);decorateAvatar(avatar,c);avatar.root.updateMatrixWorld(true);
  const bounds=new THREE.Box3().setFromObject(avatar.root);assert(!bounds.isEmpty());assert(bounds.min.toArray().concat(bounds.max.toArray()).every(Number.isFinite));
  assert.equal(avatar.eyeGroups.length,2);
- if(c.shape==='human'||c.family==='pets')assert.equal(avatar.arms.filter(a=>a.visible).length,2);
+ if(c.shape==='human'||c.family==='animals')assert.equal(avatar.arms.filter(a=>a.visible).length,2);
  assert.equal(SHAPES[c.shape].label.length>0,true);
 }
 
@@ -67,4 +68,4 @@ for(const shade of OPAQUE_EYEWEAR){
  selected=setCharacterValue(selected,'action','sleep');assert.equal(resolveCharacter(selected).config.accessories.face,'none');
  selected=setCharacterValue(selected,'action','idle');assert.equal(resolveCharacter(selected).config.accessories.face,shade);
 }
-console.log('57 catalog presets and state/Prompt/anatomy regression journeys passed.');
+console.log('62 baseline and legacy presets and state/Prompt/anatomy regression journeys passed.');

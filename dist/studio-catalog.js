@@ -1,6 +1,11 @@
 // Every entry is a Studio art direction, not an official downloadable avatar.
 // Sources inform the visual vocabulary; the real-time meshes are original work.
-const preset=(id,family,name,description,shape,color,extra={})=>({id,family,name,description,shape,color,...extra});
+const FAMILY_ALIASES={muse:'humans',pets:'animals'};
+export const normalizeFamilyId=family=>FAMILY_ALIASES[family]||family;
+const preset=(id,family,name,description,shape,color,extra={})=>{
+ const isLegacy=extra.isLegacy??!id.startsWith('baseline-');
+ return {id,family:normalizeFamilyId(family),name,description,shape,color,...extra,catalogTier:extra.catalogTier||(isLegacy?'legacy':'baseline'),isLegacy};
+};
 export const REFERENCE_INFO={date:'2026-10-04',basis:'用户提供的 App 设置截图',notice:'依据可见截图独立复刻；色值为视觉近似，不是官方素材、官方参数或官方背书。截图未展示完整眼镜、配饰与表情菜单。'};
 export const PRESETS=[
  preset('app-blue','dots','蓝球耳机','圆球 · 小椭圆眼 · 黑色耳机','sphere','#3264FA',{provenance:'official-recreation',head:'headphones',eyeColor:'#222326',accessory:'#292A2D'}),
@@ -59,14 +64,21 @@ export const PRESETS=[
  preset('pet-axolotl','pets','桃桃六角龙','外鳃 · 小爪 · 细长尾鳍','axolotl','#EABFCB',{secondary:'#D584A0',material:'rubber'}),
  preset('pet-penguin','pets','小企鹅','白肚皮 · 短喙 · 小翅膀','penguin','#455565',{secondary:'#F3F0E6'}),
  preset('pet-owl','pets','困困猫头鹰','面盘 · 短喙 · 羽翼','owl','#AFA089',{secondary:'#F1E6D0'}),
- preset('pet-hedgehog','pets','栗栗刺猬','小鼻子 · 层叠软刺','hedgehog','#8C715B',{secondary:'#DBBE98'})
+ preset('pet-hedgehog','pets','栗栗刺猬','小鼻子 · 层叠软刺','hedgehog','#8C715B',{secondary:'#DBBE98'}),
+ preset('baseline-dots','dots','蓝色 Dots','蓝色圆润主体 · 细短绒 · 贴合黑色耳机','sphere','#3264FA',{provenance:'official-recreation',referenceDate:REFERENCE_INFO.date,eyes:'softOval',mouth:'none',material:'micro',accessory:'#292A2D',head:'headphones',action:'listen'}),
+ preset('baseline-grok','grok','淡紫 Grok Bot','淡紫软拱 · 胶囊眼 · 透明圆框 · 工作电脑','arch','#DCCDF2',{provenance:'official-recreation',eyes:'capsule',mouth:'none',material:'rubber',secondary:'#F6F0FC',accessory:'#3C354A',face:'round',prop:'macbook',action:'work'}),
+ preset('baseline-meta-muse','meta-muse','米白 Meta Muse','包覆式米白头罩 · 暖色内嵌脸面 · 耳机与围巾','meta-hood','#F3F0E8',{provenance:'official-recreation',eyes:'softOval',mouth:'smile',material:'micro',secondary:'#F8E9D8',accessory:'#6B6572',head:'headphones',neck:'scarf',action:'idle',skinMaterial:'auto',hairMaterial:'auto',clothMaterial:'fabricCloth'}),
+ preset('baseline-humans','humans','栗色短发人物','原创人物 · 栗色自然短发 · 耳机与书本','human','#789A92',{provenance:'original',eyes:'sparkle',mouth:'smile',material:'micro',skin:'#D8A985',hairColor:'#56392E',hair:'short',faceShape:'oval',outfit:'sweater',brows:'soft',head:'headphones',prop:'book',action:'read',skinMaterial:'matte',hairMaterial:'layered',clothMaterial:'knit'}),
+ preset('baseline-animals','animals','柴犬伙伴','原创柴犬 · 立耳与卷尾 · 蓝围巾 · 工作电脑','shiba','#D3934D',{provenance:'original',eyes:'sparkle',mouth:'smile',material:'micro',secondary:'#FFF0D5',accessory:'#4B78A5',neck:'scarf',prop:'macbook',action:'work'})
 ];
-export const familyPresets=family=>PRESETS.filter(p=>p.family===family);
+export const familyPresets=(family,{includeLegacy=false}={})=>PRESETS.filter(p=>p.family===normalizeFamilyId(family)&&(includeLegacy||!p.isLegacy));
+export const allFamilyPresets=family=>familyPresets(family,{includeLegacy:true});
+export const getPreset=id=>PRESETS.find(p=>p.id===id)||null;
 export const STYLE_SOURCES=[
  {family:'dots',title:'ChatGPT Dots · 官方角色示例',url:'https://chatgpt.com/features/dots/',note:'公开介绍可辅助理解风格；本站的 9 个同款复刻以 2026-10-04 提供的 App 截图为依据，名称为本站描述性命名。'},
  {family:'grok',title:'xAI · Designing Grok Bot',url:'https://x.ai/news/designing-grok-bot',note:'简洁外形、富有表现力的眼睛与克制的变化。'},
  {family:'grok',title:'Bloub · 独立交互项目',url:'https://bloub.vercel.app',note:'8 种可切换几何外形、表情与配色参考；非 xAI 官方网站。'},
- {family:'muse',title:'Muse · How We Designed Muse',url:'https://introducing.muse.ai/',note:'个人化头像与身份；Veda 是文章作者自己的 Muse，不是统一默认形象。'},
- {family:'muse',title:'Meta AI · Bringing Your Muse to Life',url:'https://research.meta.ai/blog/bringing-your-muse-to-life',note:'展示不同头像的模型能力；文章样例不等于 App 可选预设全集。'},
- {family:'pets',title:'ChatGPT · Pets',url:'https://learn.chatgpt.com/docs/pets',note:'内置和自定义宠物。本站动物均为原创扩展，不冒充官方内置库。'}
+ {family:'humans',title:'Muse · How We Designed Muse',url:'https://introducing.muse.ai/',note:'个人化头像与身份；Veda 是文章作者自己的 Muse，不是统一默认形象。该来源解释旧 Muse 人物分支，不代表 Meta Muse 的包覆式造型。'},
+ {family:'meta-muse',title:'Meta AI · Bringing Your Muse to Life',url:'https://research.meta.ai/blog/bringing-your-muse-to-life',note:'Meta Muse 包覆式身份参考；文章样例不等于 App 可选预设全集。'},
+ {family:'animals',title:'ChatGPT · Pets',url:'https://learn.chatgpt.com/docs/pets',note:'内置和自定义宠物。本站动物均为原创扩展，不冒充官方内置库。'}
 ];

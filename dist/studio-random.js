@@ -1,46 +1,50 @@
-import {FAMILIES, SHAPES, MATERIALS, ACTIONS, ACCESSORIES, createCharacter, validateConfig, applyPalette, inheritsReference, resolveCharacter} from './studio-model.js';
+import {FAMILIES, SHAPES, MATERIALS, ACTIONS, ACCESSORIES, availableMaterials, createCharacter, validateConfig, applyPalette, inheritsReference, resolveCharacter} from './studio-model.js';
 
 const clone = value => structuredClone(value);
 export const RANDOM_SLOTS = ['type', 'look', 'accessories', 'action'];
 export const SLOT_NAMES = {type:'类型', look:'质感', accessories:'组件', action:'动作'};
-const looks = {dots:['sky','lime','butter','rose','lilac'],grok:['ivory','bean','lilac','sky'],muse:['teal','butter','rose','lilac'],pets:['shiba','ivory','butter','rose']};
-const shapes = {dots:['sphere','pill','heart','clover','triangle','sprout','pebble'],grok:['arch','roundedcube','sphere','pebble','capsule','drop'],muse:['human'],pets:['shiba','cat','rabbit','fox','bear','otter','penguin']};
-const kits = [
-  {head:'headphones',face:'none',neck:'none'},
-  {head:'none',face:'round',neck:'none'},
-  {head:'beret',face:'none',neck:'none'},
-  {head:'none',face:'none',neck:'scarf'},
-  {head:'none',face:'sunglasses',neck:'none'},
-  {head:'flower',face:'none',neck:'none'},
-  {head:'none',face:'none',neck:'none'}
-];
+const looks = {dots:['sky','lime','butter','rose','lilac'],grok:['ivory','bean','lilac','sky'],'meta-muse':['ivory','lilac','rose','sky'],humans:['teal','butter','rose','lilac'],animals:['shiba','ivory','butter','rose']};
+const kits = {
+  dots:[{head:'headphones',face:'none',neck:'none'},{head:'none',face:'round',neck:'none'},{head:'none',face:'none',neck:'scarf'},{head:'none',face:'none',neck:'bow'}],
+  grok:[{head:'none',face:'round',neck:'none'},{head:'none',face:'none',neck:'none'}],
+  'meta-muse':[{head:'headphones',face:'none',neck:'scarf'},{head:'headphones',face:'none',neck:'none'},{head:'none',face:'round',neck:'scarf'}],
+  humans:[{head:'headphones',face:'none',neck:'none'},{head:'none',face:'round',neck:'scarf'},{head:'beret',face:'none',neck:'none'},{head:'none',face:'none',neck:'bow'}],
+  animals:[{head:'none',face:'none',neck:'scarf'},{head:'none',face:'none',neck:'collar'},{head:'none',face:'none',neck:'none'}]
+};
+const actions = {
+  dots:['idle','listen','bounce','blink','sleep'],grok:['idle','thinking','processing','waiting','done','work'],
+  'meta-muse':['idle','listen','bounce','blink','work','read'],humans:['idle','listen','bounce','blink','work','read','flowers','magic'],
+  animals:['idle','work','read','flowers','sleep','bounce']
+};
 export function randomRecipe(input, seed, locks = {}) {
   let n = 2166136261;
   for (const ch of seed) n = Math.imul(n ^ ch.charCodeAt(0), 16777619);
   const random = () => { n ^= n << 13; n ^= n >>> 17; n ^= n << 5; return (n >>> 0) / 4294967296; };
   const pick = list => list[Math.floor(random() * list.length)];
   const effective = resolveCharacter(input).config;
-  const keepType = locks.type || input.reference.enabled;
-  const family = keepType ? input.family : pick(Object.keys(FAMILIES));
-  let c = keepType ? clone(input) : createCharacter(family);
+  const keepType = locks.type || effective.reference.enabled;
+  const compatibleFamilies = Object.keys(FAMILIES).filter(id => availableMaterials(createCharacter(id)).includes(effective.material));
+  const preserveLegacyType = !keepType && locks.look && compatibleFamilies.length === 0 && input.catalogTier === 'legacy';
+  const family = keepType || preserveLegacyType ? effective.family : pick(locks.look && compatibleFamilies.length ? compatibleFamilies : Object.keys(FAMILIES));
+  let c = keepType || preserveLegacyType ? clone(input) : createCharacter(family);
   c.name = input.name; c.reference = clone(input.reference); c.notes = input.notes;
   for (const key of ['output','aspect','background','framing','camera','scale','motionSpeed']) c[key] = input[key];
-  c.randomSeed = seed; c.presetId = 'custom';
-  if (!keepType) {c.shape = pick(shapes[family]); c.headScale = 1; c.bodyWidth = 1; c.limbs = 'auto';}
+  c.randomSeed = seed;
+  if (!keepType && !preserveLegacyType) {c.headScale = 1; c.bodyWidth = 1; c.limbs = 'auto';}
   if (!locks.look) {
     const colored = applyPalette(c, pick(looks[family]));
     for (const key of Object.keys(c.colors)) if (!inheritsReference(input,'colors.'+key) && !(key==='eyes' && input.eyeColorManual)) c.colors[key] = colored.colors[key];
     c.palette = colored.palette;
-    c.material = pick(family === 'grok' ? ['rubber','rubber','clay'] : family === 'muse' ? ['micro','plush'] : ['plush','plush','rubber']);
-    if (family === 'muse') {c.skinMaterial='fabric';c.hairMaterial='fiber';c.clothMaterial='knit';}
+    c.material = pick(availableMaterials(c));
   } else {
-    c.colors = clone(input.colors); c.material = input.material; c.palette = input.palette;
-    c.skinMaterial=input.skinMaterial;c.hairMaterial=input.hairMaterial;c.clothMaterial=input.clothMaterial;
+    c.colors = clone(input.colors); c.palette = input.palette;
+    const allowed=availableMaterials(c);c.material=allowed.includes(input.material)?input.material:FAMILIES[family].material;
+    if(effective.family===family){c.skinMaterial=input.skinMaterial;c.hairMaterial=input.hairMaterial;c.clothMaterial=input.clothMaterial;}
   }
   c.eyeColorManual = input.eyeColorManual;
   if (input.eyeColorManual) c.colors.eyes = input.colors.eyes;
   if (!locks.accessories) {
-    const kit = pick(kits);
+    const kit = pick(kits[family]);
     for (const slot of ['head','face','neck']) {
       const value = Object.hasOwn(ACCESSORIES[slot],kit[slot]) ? kit[slot] : 'none';
       if (!inheritsReference(input,'accessories.'+slot)) c.accessories[slot] = value;
@@ -48,10 +52,10 @@ export function randomRecipe(input, seed, locks = {}) {
   } else c.accessories = clone(input.accessories);
   if (!locks.action) {
     // A locked accessory is never silently replaced by a temporary action prop.
-    const candidates = family === 'grok' ? ['idle','thinking','processing','waiting','done','work'] : ['idle','bounce','blink','work','read','flowers','listen'];
+    const candidates = actions[family];
     const compatible = candidates.filter(action => !locks.accessories || JSON.stringify(resolveCharacter({...c,action}).config.accessories)===JSON.stringify(effective.accessories));
     c.action = pick(compatible.length ? compatible : [input.action]);
-    c.pose = 'auto'; c.motionStyle = pick(['dots','liquid','orbit']);
+    c.pose = c.action==='idle'?pick(['auto','sit','side','chin']):'auto'; c.motionStyle = pick(['dots','liquid','orbit']);
   } else {c.action=input.action;c.pose=input.pose;c.motionStyle=input.motionStyle;}
   if (!locks.accessories) {
     if(!inheritsReference(c,'accessories.prop'))c.accessories.prop = ACTIONS[c.action].prop;
@@ -94,7 +98,9 @@ export class RecipeMachine {
     this.element.querySelector('[data-command="random"]').disabled=true;
     const message=this.element.querySelector('[role="status"]');message.textContent='灵感转起来了…';
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const available={type:Object.values(FAMILIES).map(f=>f.short),look:Object.values(MATERIALS).map(m=>m.label),accessories:['圆框眼镜','小小耳机','针织围巾','贝雷帽'],action:['发会儿呆','安静读书','轻轻蹦跳','专注工作']};
+    const current=resolveCharacter(input).config,family=current.family;
+    const accessoryLabels=(kits[family]||[]).map(kit=>['head','face','neck'].filter(slot=>kit[slot]!=='none').map(slot=>ACCESSORIES[slot][kit[slot]].label).join(' + ')||'素颜小可爱');
+    const available={type:Object.values(FAMILIES).map(f=>f.short),look:availableMaterials(current).map(m=>MATERIALS[m].label),accessories:accessoryLabels,action:(actions[family]||[]).map(id=>ACTIONS[id].label)};
     RANDOM_SLOTS.forEach((slot,index)=>{
       const reel=this.element.querySelector('[data-reel="'+slot+'"]');if(!reel)return;
       if(this.locks[slot]||(slot==='type'&&input.reference.enabled))return;

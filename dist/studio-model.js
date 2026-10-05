@@ -1,12 +1,13 @@
 import {getArtSample} from './studio-art.js';
-import {PRESETS,familyPresets,REFERENCE_INFO} from './studio-catalog.js';
-export const VERSION = 9;
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js';
+export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
-  dots: {name:'ChatGPT Dots',short:'Dots',subtitle:'明亮几何 · 轻盈可爱',template:'蓝球耳机',color:'#3264FA',secondary:'#F5F8FF',shape:'sphere',eyes:'softOval',mouth:'none',material:'plush',framing:'full',anatomy:'blob',about:'鲜明的单色、饱满的几何轮廓、克制的五官。以 App 设置截图中的圆球、软三角、横胶囊等轮廓为参考，默认是戴着贴合耳机的蓝色圆团子。绒毛服从体积，眼睛与配饰自然贴合；叠团与云团保留为创作扩展。本站模型与比例为原创转译。',en:'A bright, minimal Dots-inspired geometric companion. A full rounded silhouette, restrained facial features, no default limbs, and a single clear primary color. The default is a blue orb with naturally fitted headphones. The original meshes and proportions interpret the supplied App references; they are not official assets or specifications.'},
-  grok: {name:'Grok Bot',short:'Grok Bot',subtitle:'软几何 · 胶囊眼',template:'白色软拱',color:'#F4F4F2',secondary:'#F8F6F1',shape:'arch',eyes:'capsule',mouth:'none',material:'rubber',framing:'full',anatomy:'blob',about:'以软几何和眼神建立辨识度。胶囊眼保持简洁、等宽；造型变化有节制。本站以参考图里的白色软拱为起点，提供软方块和短绒等延伸。',en:'An original Grok Bot-inspired soft geometric character. A softly rounded block silhouette and two identical solid dark capsule eyes. Controlled variation, clear small-scale identity, no mechanical robot parts or brand logo.'},
-  muse: {name:'Muse',short:'Muse',subtitle:'人物玩偶 · 分层织物',template:'针织小沐',color:'#2C8D82',secondary:'#EBC4A6',shape:'human',eyes:'sparkle',mouth:'smile',material:'micro',framing:'full',anatomy:'human',about:'本站的人物玩偶预设。脸、头发、衣服分别处理，保留脸型和发束层次。小沐是本站原创人物，不代表官方默认角色。',en:'An original Muse-inspired human doll portrait, with a distinct human face, layered short chestnut hair and a teal knitted sweater. Keep the face, hair and clothing as separate materials. Balanced head and upper-body proportions. Do not copy Veda or claim this is an official Muse avatar.'},
-  pets: {name:'ChatGPT 宠物',short:'Pets',subtitle:'动物伙伴 · 自然姿态',template:'柴犬团子',color:'#ECAE57',secondary:'#FFF0D5',shape:'shiba',eyes:'sparkle',mouth:'smile',material:'plush',framing:'full',anatomy:'quadruped',about:'保留物种的耳朵、口鼻、尾巴和身体。柴犬使用茶白配色与卷尾，猫咪保留猫爪与尾巴；可爱来自紧凑的整体比例。角色图与可安装的 Pet 动画文件是不同输出。',en:'An original animal companion suitable as a starting point for a ChatGPT pet. Preserve species-specific ears, muzzle, paws, tail and color markings. Compact balanced proportions with a visible torso. This prompt does not create an installable or validated pet.'}
+  dots: {name:'ChatGPT Dots',short:'Dots',subtitle:'明亮几何 · 细密短绒',template:'蓝色 Dots',color:'#3264FA',secondary:'#F5F8FF',shape:'sphere',eyes:'softOval',mouth:'none',material:'micro',framing:'full',anatomy:'blob',about:'保留原版 Dots 的蓝色圆润主体与简洁成对眼睛。基准采用细密短绒和连续贴合的黑色头戴耳机；不把生成概念图新增的鼻口或四肢当成原版结构。',en:'Preserve the original Dots identity: a rounded blue body and restrained paired eyes. The baseline uses fine short plush and continuous fitted black headphones; do not treat extra nose, mouth or limbs from generated concepts as original features.'},
+  grok: {name:'Grok Bot',short:'Grok Bot',subtitle:'淡紫软拱 · 哑光软胶',template:'淡紫 Grok Bot',color:'#DCCDF2',secondary:'#F6F0FC',shape:'arch',eyes:'capsule',mouth:'none',material:'rubber',framing:'full',anatomy:'blob',about:'保留 Grok Bot 的软几何拱形、等宽胶囊眼与无头发轮廓。基准使用淡紫哑光软胶，可配透明眼镜与工作电脑；不加入机械面板、天线或屏幕脸。',en:'Preserve the Grok Bot identity: a soft geometric arch, equal capsule eyes and no hair. The baseline uses pale-lilac matte rubber with clear glasses and a work laptop; no mechanical panels, antennae or screen face.'},
+  'meta-muse': {name:'Meta Muse',short:'Meta Muse',subtitle:'米白包覆式 · 温暖内嵌脸面',template:'米白 Meta Muse',color:'#F3F0E8',secondary:'#F8E9D8',shape:'meta-hood',eyes:'softOval',mouth:'smile',material:'micro',framing:'full',anatomy:'meta-muse',about:'与人物分组完全独立的包覆式角色：米白圆润头罩、暖色内嵌脸面、短臂双脚。外壳为细腻哑光布面/短纤维；耳机与围巾不能挤压脸面开口，也不使用旧 Muse 人物头发。',en:'A distinct wrapped character, separate from the human family: an ivory rounded hood, a warm inset face panel, short arms and two feet. Use a fine matte fabric/short-fiber shell; headphones and scarf must not pinch the face opening. Never reuse the legacy human Muse hair.'},
+  humans: {name:'人物',short:'人物',subtitle:'原创人物 · 分区材质',template:'栗色短发人物',color:'#789A92',secondary:'#D8A985',shape:'human',eyes:'sparkle',mouth:'smile',material:'micro',framing:'full',anatomy:'human',about:'新设计的原创人物基准：栗色自然短发、可辨脸型、柔和皮肤和分区衣物。可配耳机与书；人物外形不完整复制任何动漫截图或旧 Muse 人物。',en:'A newly designed original human baseline: natural short chestnut hair, a readable face shape, soft skin and separated clothing materials. Headphones and a book are editable. Do not reproduce an anime reference or reuse legacy Muse characters as the new baseline.'},
+  animals: {name:'动物',short:'动物',subtitle:'原创动物 · 物种结构清楚',template:'柴犬伙伴',color:'#D3934D',secondary:'#FFF0D5',shape:'shiba',eyes:'sparkle',mouth:'smile',material:'micro',framing:'full',anatomy:'quadruped',about:'新设计的原创动物基准为柴犬：立耳、口鼻、前后爪、卷尾与清楚茶白色区。短绒顺结构生长；蓝围巾与电脑可编辑，不长出人手或多余肢体。',en:'The original animal baseline is a Shiba with upright ears, a clear muzzle, front and hind paws, a curled tail and tan-and-cream markings. Short plush follows the anatomy. A blue scarf and laptop are editable; never add human hands or extra limbs.'}
 };
 export const MATERIALS = {
   plush:option('细密短绒','Fine plush','细密、柔软、有轻微方向感的短绒，毛流顺着体积；面部毛发收短，眼睛与外轮廓清楚。不要噪点贴图、杂乱长毛或廉价毡毯感。','Fine dense short pile with a subtle natural fur direction following the volume. Shorter fibers around the face, readable eyes and clean edges. No noisy fur overlay, tangled long hair or coarse felt.'),
@@ -28,6 +29,7 @@ export const SHAPES = {
   roundedcube:option('软方块','Soft block','大圆角软方体，不能改成正圆球','A softly rounded cube with a distinct block silhouette, not a sphere'),
   capsule:option('小胶囊','Capsule','纵向饱满胶囊，顶部和底部圆润','A full vertical capsule with rounded top and bottom'),
   human:option('人物玩偶','Human doll','保留人物脸型、分层发束与适量上半身；不把整个人简化成大头球','A human doll with a distinct face, layered hair and enough upper body; never reduce the person to an oversized ball head'),
+  'meta-hood':option('包覆式 Meta 头罩','Wrapped Meta hood','独立圆润头罩；暖色椭圆脸面内嵌在清楚的厚边与内缘中，脸部开口不变成人物发际线','A distinct rounded hood with a warm oval face panel inset behind a readable thick rim; the opening must not become a human hairline'),
   shiba:option('柴犬','Shiba','三角立耳、茶色与奶油白脸颊胸腹、清楚卷尾；头身比例均衡','A Shiba with upright triangular ears, tan and cream cheeks and chest, a clear curled tail and balanced head-to-body proportions'),
   cat:option('小猫','Cat','圆角三角猫耳、短吻、自然猫爪和完整长尾','A cat with softly triangular ears, a short muzzle, natural paws and a full long tail'),
   rabbit:option('小兔','Rabbit','圆润长耳、短吻、紧凑躯干和小圆尾','A rabbit with softly rounded long ears, a short muzzle, compact torso and small round tail')
@@ -56,8 +58,22 @@ Object.assign(SHAPES,{
 export const ANIMALS=['shiba','cat','rabbit','fox','panda','bear','otter','capybara','axolotl','penguin','owl','hedgehog'];
 // The first eleven choices follow the supplied App Shape panel; extensions follow.
 export const DOT_CORE_SHAPES=['sphere','triangle','pill','frog','puff','heart','clover','sprout','scallop','pebble','diamond'];
-export const FAMILY_SHAPES={dots:[...DOT_CORE_SHAPES,'dumpling','cloud','twin','bean','drop','star','roundedcube','capsule'],grok:['arch','sphere','pebble','roundedcube','capsule','triangle','hexagon','cloud','drop','ghost','diamond','bean','human'],muse:['human'],pets:ANIMALS};
+export const FAMILY_BASELINES={
+ dots:{presetId:'baseline-dots',shape:'sphere'},
+ grok:{presetId:'baseline-grok',shape:'arch'},
+ 'meta-muse':{presetId:'baseline-meta-muse',shape:'meta-hood'},
+ humans:{presetId:'baseline-humans',shape:'human'},
+ animals:{presetId:'baseline-animals',shape:'shiba'}
+};
+export const FAMILY_SHAPES={dots:[...DOT_CORE_SHAPES,'dumpling','cloud','twin','bean','drop','star','roundedcube','capsule'],grok:['arch','sphere','pebble','roundedcube','capsule','triangle','hexagon','cloud','drop','ghost','diamond','bean','human'],'meta-muse':['meta-hood'],humans:['human'],animals:ANIMALS};
 export const HAIRS={'short-curly':'自然短卷发',short:'利落短发',bob:'齐颈短发',long:'自然长发',ponytail:'利落马尾',braids:'双辫子',bun:'丸子头',wavy:'层次波浪'};
+export const FAMILY_HAIRS={dots:['short'],grok:['short'],'meta-muse':['short'],humans:['short'],animals:['short']};
+export const FAMILY_MATERIALS={dots:['micro','plush'],grok:['rubber'],'meta-muse':['micro'],humans:['micro'],animals:['micro','plush']};
+const familyOf=config=>normalizeFamilyId(typeof config==='string'?config:config?.family);
+const legacyTier=config=>config?.catalogTier==='legacy'||config?.isLegacy===true;
+export function availableShapes(config){const family=familyOf(config);if(!FAMILY_SHAPES[family])return [];return legacyTier(config)?FAMILY_SHAPES[family]:[FAMILY_BASELINES[family].shape];}
+export function availableHairs(config){const family=familyOf(config);if(!FAMILY_HAIRS[family])return [];if(legacyTier(config))return Object.keys(HAIRS);return FAMILY_HAIRS[family];}
+export function availableMaterials(config){const family=familyOf(config);if(!FAMILY_MATERIALS[family])return [];return legacyTier(config)?Object.keys(MATERIALS):FAMILY_MATERIALS[family];}
 export const FACE_SHAPES={round:'圆脸',oval:'柔和椭圆', 'soft-square':'圆角方脸'};
 export const OUTFITS={sweater:'针织毛衣',hoodie:'柔软卫衣',cardigan:'小开衫',shirt:'简洁衬衫'};
 export const APP_PALETTES=[
@@ -158,18 +174,25 @@ Object.assign(ACTIONS,{
 export const COMPOSITION={framing:{full:option('完整角色','Full character','完整主体，耳朵、尾巴与配饰不裁切','Full character with ears, tail and accessories uncropped'),bust:option('头像与上半身','Head & shoulders','头像与适量上半身，手与道具需要时可进入画面','Head and shoulders with enough upper body; hands and props may enter where needed'),portrait:option('近景头像','Close portrait','近景头像；持物动作需略微放宽构图，确保手与道具关系可读','Close portrait; widen enough for a prop action to keep hand–prop contact legible')},camera:{front:option('正面','Front','正面视角，轻微自然透视；工作或阅读时镜头略微抬高，让手与道具的接触清楚可见','Front view with gentle natural perspective; slightly elevate the camera for working or reading to reveal natural hand–prop contact'),threeQuarter:option('轻侧身','Three-quarter','自然四分之三视角，双眼可读','A natural three-quarter view with readable eyes'),side:option('侧面','Side','明确的侧面视角，保持身份轮廓','A clear side view preserving the identity silhouette')},background:{studio:option('浅色棚拍','Light studio','安静的浅色棚拍背景，柔和接触阴影','Quiet light studio background with soft contact shadows'),solid:option('自定义纯色','Solid color','干净的纯色背景','A clean solid-color background'),transparent:option('透明背景','Transparent','真正透明的 alpha 背景，不画棋盘格、不画白底、不画地板','True transparent alpha background; no checkerboard, white backdrop or floor')},output:{image:option('角色图','Character image','输出一张高完成度角色图片','Produce one finished character image'),sticker:option('贴纸','Sticker','输出完整轮廓的单枚透明贴纸，保留安全边距','Produce one transparent sticker with a full silhouette and safe margins'),storyboard:option('动作分镜','Storyboard','输出动作的起始、过程、结束三个静态分镜，固定身份、机位、比例与配饰位置','Produce three static frames: start, action and end. Keep identity, camera, proportions and accessories consistent'),pet:option('Pet 创作简报','Pet brief','输出角色与动作制作说明，后续按 ChatGPT Pet 目标版本的当前规范制作并验证素材。本次输出不是已安装、可直接导入或已验证的宠物文件','Produce a character and animation production brief. Create and validate assets against the current requirements of the target ChatGPT Pet version later. This output is not an installed, importable or validated pet file')}};
 export const PRESERVE={silhouette:['轮廓与物种','silhouette and species'],hair:['发型与发色','hairstyle and hair color'],face:['脸型与可见五官','face shape and visible features'],colors:['主体配色','primary color palette'],clothing:['服装特征','clothing details'],accessories:['已有配饰','existing accessories']};
 function baseCharacter(family='dots'){
- const f=FAMILIES[family]||FAMILIES.dots,p=PALETTES.find(x=>x.body===f.color)||PALETTES[0];
- return {version:VERSION,rendererVersion:'atelier-3',provenance:{source:family==='dots'?'official-recreation':'original',basePresetId:familyPresets(family)[0]?.id||null,modified:false,referenceDate:family==='dots'?REFERENCE_INFO.date:null},presetId:familyPresets(family)[0]?.id||'custom',faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',expressionAccents:false,palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:family==='dots'?'#222326':p.eyes,accessory:family==='dots'?'#292A2D':p.accessory,headAccessory:family==='dots'?'#292A2D':p.accessory,background:'#F3F6FA',skin:'#EBC4A6',hair:'#523729',clothing:f.color},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='muse'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short-curly',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'headphones':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'studio',aspect:'1:1',scale:72,output:'image',motionStyle:'auto',motionSpeed:1,skinMaterial:family==='muse'?'fabric':'auto',hairMaterial:family==='muse'?'fiber':'auto',clothMaterial:'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
+ family=normalizeFamilyId(family);if(!FAMILIES[family])family='dots';
+ const f=FAMILIES[family],p=PALETTES.find(x=>x.body===f.color)||PALETTES[0],presetId=FAMILY_BASELINES[family].presetId;
+ return {version:VERSION,rendererVersion:'atelier-4',catalogTier:'baseline',isLegacy:false,legacy:null,provenance:{source:getPreset(presetId)?.provenance||'original',basePresetId:presetId,modified:false,referenceDate:getPreset(presetId)?.referenceDate||null},presetId,faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',expressionAccents:false,palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:family==='dots'?'#222326':p.eyes,accessory:family==='dots'?'#292A2D':p.accessory,headAccessory:family==='dots'?'#292A2D':p.accessory,background:'#F3F6FA',skin:'#D8A985',hair:'#56392E',clothing:f.color},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='humans'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'headphones':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'studio',aspect:'1:1',scale:72,output:'image',motionStyle:'auto',motionSpeed:1,skinMaterial:family==='humans'?'matte':'auto',hairMaterial:family==='humans'?'fiber':'auto',clothMaterial:family==='humans'?'knit':family==='meta-muse'?'fabricCloth':'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
 }
-export function createCharacter(family='dots'){return createPreset(familyPresets(family)[0]?.id||'app-blue');}
+export function createCharacter(family='dots'){family=normalizeFamilyId(family);return createPreset(FAMILY_BASELINES[family]?.presetId||FAMILY_BASELINES.dots.presetId);}
 export function createPreset(id,previous=null){
- const p=PRESETS.find(x=>x.id===id);if(!p)throw new Error('角色预设不存在');
- const c=baseCharacter(p.family);c.presetId=p.id;c.provenance={source:p.provenance||'original',basePresetId:p.id,modified:false,referenceDate:p.provenance?REFERENCE_INFO.date:null};c.name=p.name;c.shape=p.shape;c.colors.body=p.color;c.colors.clothing=p.color;
+ const p=getPreset(id);if(!p)throw new Error('角色预设不存在');
+ const c=baseCharacter(p.family);
+ if(p.isLegacy){
+  const legacyDefaults={dots:{color:'#3264FA',secondary:'#F5F8FF',material:'plush'},grok:{color:'#F4F4F2',secondary:'#F8F6F1',material:'rubber'},humans:{color:'#2C8D82',secondary:'#EBC4A6',material:'micro'},animals:{color:'#ECAE57',secondary:'#FFF0D5',material:'plush'}}[p.family];
+  const legacyPalette=PALETTES.find(x=>x.body===legacyDefaults.color)||PALETTES[0];
+  c.rendererVersion='atelier-3';c.palette=legacyPalette.id;c.colors.body=legacyDefaults.color;c.colors.clothing=legacyDefaults.color;c.colors.secondary=legacyDefaults.secondary;c.colors.skin='#EBC4A6';c.colors.hair='#523729';c.material=legacyDefaults.material;c.hair='short-curly';c.brows=p.family==='humans'?'soft':'none';c.skinMaterial=p.family==='humans'?'fabric':'auto';c.hairMaterial=p.family==='humans'?'fiber':'auto';c.clothMaterial='knit';
+ }
+ c.presetId=p.id;c.catalogTier=p.catalogTier;c.isLegacy=!!p.isLegacy;c.legacy=null;c.provenance={source:p.provenance||'original',basePresetId:p.id,modified:false,referenceDate:p.referenceDate||(p.provenance==='official-recreation'&&p.family==='dots'?REFERENCE_INFO.date:null)};c.name=p.name;c.shape=p.shape;c.colors.body=p.color;c.colors.clothing=p.color;
  c.colors.secondary=p.secondary||c.colors.secondary;c.colors.eyes=p.eyeColor||eyeColorFor(p.color);
  c.colors.accessory=p.accessory||'#303846';c.colors.headAccessory=p.headColor||c.colors.accessory;c.eyeColorManual=false;
- for(const key of ['hair','faceShape','outfit','eyes','mouth','expression','material'])if(p[key])c[key]=p[key];
+ for(const key of ['hair','faceShape','outfit','eyes','brows','mouth','expression','material','action','skinMaterial','hairMaterial','clothMaterial'])if(p[key])c[key]=p[key];
  if(p.skin)c.colors.skin=p.skin;if(p.hairColor)c.colors.hair=p.hairColor;
- for(const key of ['head','face','neck'])c.accessories[key]=p[key]||'none';
+ for(const key of ['head','face','neck','prop'])c.accessories[key]=p[key]||'none';
  if(previous){c.reference=structuredClone(previous.reference);c.reference.overrides=[];c.notes=previous.notes;c.output=previous.output;c.aspect=previous.aspect;c.provenance.modified=!!c.reference.enabled;}
  return c;
 }
@@ -180,7 +203,7 @@ export const REFERENCE_DOMAINS = {
  eyes:['face'],brows:['face'],mouth:['face'],eyeScale:['face'],eyeSpacing:['face'],'colors.eyes':['face','colors'],
  'colors.headAccessory':['accessories'],'colors.body':['colors'],'colors.secondary':['colors'],'colors.accessory':['colors'],
  'colors.clothing':['clothing','colors'],clothMaterial:['clothing'],
- 'accessories.head':['accessories'],'accessories.face':['accessories'],'accessories.neck':['accessories']
+ 'accessories.head':['accessories'],'accessories.face':['accessories'],'accessories.neck':['accessories'],'accessories.prop':['accessories']
 };
 export function inheritsReference(c,path){
  if(!c.reference.enabled || c.reference.overrides.includes(path))return false;
@@ -222,7 +245,7 @@ export function applyPalette(c,id){const p=PALETTES.find(x=>x.id===id);if(!p)ret
 export function eyeColorFor(hex){const rgb=hex.slice(1).match(/../g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722<.14?'#FFF7E9':'#172131';}
 export function resolveCharacter(input){
  const c=copy(input),adjustments=[];const act=ACTIONS[c.action];
- const animal=ANIMALS.includes(c.shape),human=c.shape==='human',bird=['penguin','owl'].includes(c.shape);
+ const animal=ANIMALS.includes(c.shape),human=c.shape==='human',metaMuse=c.family==='meta-muse'&&c.shape==='meta-hood',bird=['penguin','owl'].includes(c.shape);
  if(c.action==='sleep'&&c.expression!=='closed'){c.expression='closed';adjustments.push('睡眠时暂时闭眼；原表情已保留');}
  if(act.prop!==c.accessories.prop){c.accessories.prop=act.prop;adjustments.push('道具已与动作匹配');}
  if(c.action==='listen'&&c.accessories.head!=='headphones'){c.accessories.head='headphones';adjustments.push('听歌时使用耳机；原来的头饰已保留');}
@@ -232,7 +255,7 @@ export function resolveCharacter(input){
  const activeHands=!!(act.prop!=='none'||c.action==='wave'||c.pose==='chin');
  if(animal||human)c.limbs='auto';
  if(!animal&&!human&&activeHands&&!['auto','hands','both'].includes(c.limbs)){c.limbs=c.limbs==='feet'?'both':'hands';adjustments.push('该动作需要双手，已更新肢体配置');}
- const anatomy=animal?{plan:bird?'bird':'quadruped',hands:0,paws:bird?0:4,feet:bird?2:0,wings:bird?2:0}:human?{plan:'human',hands:2,paws:0,feet:2}:{plan:'blob',hands:activeHands||['hands','both'].includes(c.limbs)?2:0,paws:0,feet:['feet','both'].includes(c.limbs)?2:0};
+ const anatomy=animal?{plan:bird?'bird':'quadruped',hands:0,paws:bird?0:4,feet:bird?2:0,wings:bird?2:0}:human?{plan:'human',hands:2,paws:0,feet:2}:metaMuse?{plan:'meta-muse',hands:2,paws:0,feet:2}:{plan:'blob',hands:activeHands||['hands','both'].includes(c.limbs)?2:0,paws:0,feet:['feet','both'].includes(c.limbs)?2:0};
  const sampleMaterial=['plush','micro'].includes(c.material)?'plush':'rubber';
  const artAction=Object.entries(ACTIONS).find(([,v])=>v.art===act.art)?.[0]||'idle';
  const sample={...getArtSample(c.family,sampleMaterial,artAction),shape:FAMILIES[c.family].shape};
@@ -261,8 +284,9 @@ export function buildPrompt(input,lang='zh'){
  const familyRules={
   dots:say('Dots 灵感的几何伙伴：饱满、圆润而有辨识度的整体轮廓，克制的小眼睛和少量配饰。轮廓、配色与五官以下方设定为准；形状、眼睛与配饰保持相互独立。','A Dots-inspired geometric companion: a full, rounded and distinctive silhouette, restrained small eyes and a few accessories. Follow the silhouette, colors and features specified below. Keep silhouette, eye design and accessories independently configurable.'),
   grok:say('Grok Bot 灵感伙伴：软拱或圆角几何体与竖向胶囊眼建立辨识度；非机械机器人，无金属面板、天线或屏幕脸。按下文选择的轮廓与五官表达。','A Grok Bot-inspired companion: a soft arch or rounded geometric form, identified by simple vertical capsule eyes. No mechanical panels, antennae or screen face. Follow the selected silhouette and facial design below.'),
-  muse:say('本站人物玩偶预设：脸、头发与衣服分部件处理，保留脸型、肩部和自然发丝层次。换材质时保留同一身份，头发不能变成粗绳条。','An original human doll preset: distinct face, hair and clothing regions, a readable face shape, shoulders and natural layered strands. Keep the same identity across materials; no thick rope-like hair.'),
-  pets:say('本站动物伙伴预设：保留物种的耳朵、口鼻、自然爪形、躯干与尾巴，头身比例均衡，四足动物不长出人手。','An original animal companion: retain species-specific ears, muzzle, natural paws, torso and tail. Balanced head and body; a quadruped must not grow human hands.')
+  'meta-muse':say('Meta Muse 是包覆式头罩角色：米白外壳、可读的厚边和内缘、暖色椭圆内嵌脸面、短臂双脚。保持与人物分组不同，不添加人物发型、发际线或长肢体。','Meta Muse is a wrapped hood character: ivory shell, readable rim and inset, warm oval face panel, short arms and two feet. Keep it distinct from the human family, without human hairstyles, hairlines or long limbs.'),
+  humans:say('原创人物玩偶：人物脸型、短栗色发束、眉眼表情、肩部与服装分区清楚。头发、皮肤和衣服分别处理；不可把参考人物原样复刻。','Original human doll: readable human face, short chestnut hair, expressive brows and eyes, shoulders and separate clothing regions. Treat hair, skin and clothing independently; do not reproduce a reference person.'),
+  animals:say('原创动物伙伴：保留物种的耳朵、口鼻、自然爪形、躯干与尾巴，头身比例均衡，四足动物不长出人手。','Original animal companion: retain species-specific ears, muzzle, natural paws, torso and tail. Balanced head and body; a quadruped must not grow human hands.')
  };
  if(c.reference.enabled){
   add('参考图流程','REFERENCE WORKFLOW',say('请使用我在这次 ChatGPT 对话中附上的图片。若已经附图，直接读取；仅当没有附图时才先要求附图。网站没有读取或上传原图，不要声称已从网站获得图片。','Use the image I attach in this ChatGPT conversation. If it is already attached, inspect it directly. Ask for it only when no image is attached. The website has not read or uploaded the source image; do not claim to have obtained it from the website.'));
@@ -271,11 +295,12 @@ export function buildPrompt(input,lang='zh'){
   if(c.reference.notes)add('参考补充说明','REFERENCE NOTES',c.reference.notes);
  }
  add('角色风格','CHARACTER STYLE',f.name+say('。 ','. ')+familyRules[c.family]+say(' 本站预设与比例为创作方案，不代表官方规范。',' The presets and proportions are original art directions, not official specifications.'));
- add('来源说明','PROVENANCE',say(sourceLabel(input)+(deriveProvenance(input).source==='official-recreation'?'。2026-10-04 截图视觉参考；本站独立创作，非官方素材或官方参数。':'。本站原创创作方案，不代表官方原始资源。'),deriveProvenance(input).source==='official-recreation'?'Independent recreation based on App screenshots checked 2026-10-04; modifications are user combinations, not official assets or official parameters.':'Original Studio extension or user combination, not an official asset.'));
+ const provenance=deriveProvenance(input),provenanceNote=provenance.source==='official-recreation'?(c.family==='dots'?say('。2026-10-04 App 截图仅作视觉来源；本站独立制作，非官方素材或官方参数。',' App screenshots checked 2026-10-04 inform the visual direction; this is independently made, not official art or parameters.'):say('。按用户指定的原版身份方向独立制作，不代表官方素材或官方参数。',' Independently made to preserve the user-specified original identity; not official art or parameters.')):provenance.source==='original'?say('。原创角色方向；具体来源记录按原配置保留。',' Original character direction; source records remain in the imported configuration.'):say('。来源记录沿用原配置，未据此自动宣称官方或原创来源已核验。',' Source metadata is retained from the original configuration and is not independently verified.');
+ add('来源说明','PROVENANCE',sourceLabel(input)+provenanceNote);
  if(!c.reference.enabled)add('角色称呼','CHARACTER NAME',c.name);
  add('轮廓与比例','SILHOUETTE',inherited('shape')?
   say('从附图保留主要轮廓和物种特征，并转译为目标风格；不要因几何化而抹去耳朵、发型或物种辨识点。','Preserve the reference silhouette and species cues, translated into the target style; do not erase distinctive ears, hairstyle or species identity while simplifying.'):
-  text(SHAPES[c.shape]));
+  c.catalogTier==='baseline'&&c.family==='grok'&&c.shape==='arch'?say('饱满软拱形，顶部弧面、底部平缓、边缘圆润，保留区别于正球和立方体的轮廓','A plump soft arch with a curved top, gently level base and rounded edges, distinct from a sphere or cube'):text(SHAPES[c.shape]));
  const proportions=[];
  if(!inherited('headScale')){const hasHead=c.shape==='human'||ANIMALS.includes(c.shape);proportions.push(say((hasHead?'头部相对均衡预设 ':'轮廓高度相对预设 ')+Math.round(c.headScale*100)+'%',(hasHead?'Head proportion ':'Silhouette height ')+Math.round(c.headScale*100)+'% of the balanced preset'));}
  if(!inherited('bodyWidth'))proportions.push(say('主体宽度相对预设 '+Math.round(c.bodyWidth*100)+'%','Body width '+Math.round(c.bodyWidth*100)+'% of the preset'));
@@ -290,6 +315,8 @@ export function buildPrompt(input,lang='zh'){
    say('鸟类结构：2 只翅膀与 2 只脚。使用翅尖与胸前自然承托道具，不能额外增加人手或四足动物前爪。','Bird anatomy: two wings and two feet. Support props naturally between wing tips and the chest, without adding human hands or quadruped forepaws.'):
    anatomy.plan==='human'?
    say('人物结构：一对自然手臂与双手，手指和道具接触合理。只展示构图所需的上半身或完整身体。','Human anatomy: one natural pair of arms and hands, with coherent fingers and prop contact. Show the upper body or full figure according to the framing.'):
+   anatomy.plan==='meta-muse'?
+   say('Meta Muse 头罩结构：外壳与内嵌脸面保持厚度层次；短臂双脚结构清楚，配饰贴合外壳且不挤压脸部开口。','Meta Muse hood anatomy: preserve the shell and inset face depth; keep its short arms and two feet clear, and fit accessories to the shell without pinching the face opening.'):
    say('一体化几何角色：'+anatomy.hands+' 只短小手部、'+anatomy.feet+' 只短脚。侧面柔软起伏属于主体形状，不凭空增加其他肢体。','A single geometric body: '+anatomy.hands+' short hands and '+anatomy.feet+' short feet. Soft side lobes belong to the body silhouette; no additional limbs.'));
  }
  add('材质','MATERIAL',text(MATERIALS[c.material]));
@@ -372,7 +399,7 @@ export function buildPrompt(input,lang='zh'){
  add('输出','OUTPUT',text(COMPOSITION.output[c.output])+
   ((c.output==='image'||c.output==='sticker')&&!AGENT_ACTIONS.includes(c.action)?say(' 单张图只表现一个最清楚的动作瞬间，不在画面里重复多个角色。',' For a single image, show one clear action moment rather than multiple copies of the character.'):''));
  if(c.notes)add('用户补充要求','ADDITIONAL USER DIRECTION',c.notes);
- add('质量约束','QUALITY',say('身份稳定、动作成立、手与道具接触自然。不要多余肢体、杂乱配件、文字、水印或界面元素。工作台的实时角色用于预览外形、颜色与动作关系，高清样张另作材质参考；最终图片请依据以上设定及本次对话的附图完成精致美术表现。','Keep identity stable, actions coherent and prop contact natural. No extra limbs, cluttered accessories, text, watermark or interface elements. The real-time Studio character previews shape, color and action relationships; separate art samples guide final material quality. Create the finished image from this specification and the references attached to this conversation.'));
+ add('质量约束','QUALITY',say('身份稳定、动作成立、手与道具接触自然。不要多余肢体、杂乱配件、文字、水印或界面元素。工作台的实时角色用于预览外形、颜色与动作关系；如本次对话实际提供美术参考，可用于补充材质方向，但不能把基准缩略图或历史样张当作网页验收。最终图片请依据以上设定及本次对话实际附上的参考完成。','Keep identity stable, actions coherent and prop contact natural. No extra limbs, cluttered accessories, text, watermark or interface elements. The real-time Studio character previews shape, color and action relationships. Use art references only when actually provided in this conversation; a baseline thumbnail or historical sample is not website acceptance evidence. Create the finished image from this specification and the references actually attached to this conversation.'));
  return lines.join('\n\n');
 }
 function object(x){return x&&typeof x==='object'&&!Array.isArray(x);}
@@ -380,17 +407,27 @@ function enumValue(x,allowed,name){if(typeof x!=='string'||!allowed.includes(x))
 function textValue(x,max,name){if(typeof x!=='string'||x.length>max)throw new Error(name+' 内容无效或过长');return x;}
 function numValue(x,min,max,name){if(!Number.isFinite(x)||x<min||x>max)throw new Error(name+' 超出范围');return x;}
 export function validateConfig(raw){
- if(!object(raw)||![6,7,8,VERSION].includes(raw.version))throw new Error('请导入 Dot Studio v9、v8、v7 或 v6 配置；更早配置可在结构编辑器中打开');
- const oldVersion=raw.version;
- raw=copy(raw);if(oldVersion<9)raw.expressionAccents=false;if(oldVersion<9)raw.colors={...raw.colors,headAccessory:raw.colors?.accessory};
- if(raw.version===6){raw=copy(raw);raw.version=VERSION;raw.reference={enabled:raw.reference?.enabled,notes:raw.reference?.notes,preserve:raw.reference?.preserve,overrides:[]};}
- const family=enumValue(raw.family,Object.keys(FAMILIES),'角色体系'),c=createCharacter(family);
- if(oldVersion<8)raw={...raw,presetId:'custom',faceShape:'round',outfit:'sweater'};
- c.presetId=enumValue(raw.presetId,['custom',...familyPresets(family).map(p=>p.id)],'预设');
+ if(!object(raw)||![6,7,8,9,VERSION].includes(raw.version))throw new Error('请导入 Dot Studio v10、v9、v8、v7 或 v6 配置；更早配置可在结构编辑器中打开');
+ const oldVersion=raw.version,originalSnapshot=copy(raw);
+ raw=copy(raw);if(oldVersion<9){raw.expressionAccents=false;raw.colors={...raw.colors,headAccessory:raw.colors?.accessory};}
+ if(oldVersion===6)raw.reference={enabled:raw.reference?.enabled??false,notes:raw.reference?.notes??'',preserve:raw.reference?.preserve??['hair','face','colors','clothing','accessories'],overrides:[]};
+ const familyInput=enumValue(raw.family,[...Object.keys(FAMILIES),'muse','pets'],'角色体系'),family=normalizeFamilyId(familyInput),presetId=oldVersion<8&&!raw.presetId?'custom':raw.presetId;
+ const record=getPreset(presetId),declaredTier=raw.catalogTier;
+ if(declaredTier!==undefined&&!['baseline','legacy'].includes(declaredTier))throw new Error('角色目录类型无效');
+ if(oldVersion===VERSION&&raw.isLegacy!==undefined&&typeof raw.isLegacy!=='boolean')throw new Error('历史角色标记无效');
+ const isLegacy=oldVersion<VERSION||familyInput!==family||raw.isLegacy===true||declaredTier==='legacy'||record?.isLegacy===true||(!declaredTier&&!record);
+ if(declaredTier==='baseline'&&record?.isLegacy)throw new Error('基准角色目录与预设 ID 不匹配');
+ if(declaredTier==='legacy'&&record?.catalogTier==='baseline')throw new Error('历史角色目录与预设 ID 不匹配');
+ const c=createCharacter(family);c.family=family;c.catalogTier=isLegacy?'legacy':'baseline';c.isLegacy=isLegacy;
+ if(typeof raw.rendererVersion==='string')c.rendererVersion=raw.rendererVersion;else if(isLegacy)c.rendererVersion='atelier-3';
+ const presetRecords=familyPresets(family,{includeLegacy:true}).filter(p=>p.isLegacy===isLegacy);
+ c.presetId=enumValue(presetId,['custom',...presetRecords.map(p=>p.id)],'预设');
+ const selectedPreset=getPreset(c.presetId);c.provenance=selectedPreset?{source:selectedPreset.provenance||'original',basePresetId:selectedPreset.id,modified:false,referenceDate:selectedPreset.referenceDate||(selectedPreset.provenance==='official-recreation'&&selectedPreset.family==='dots'?REFERENCE_INFO.date:null)}:{source:'custom',basePresetId:null,modified:true,referenceDate:null};
+ if(oldVersion<8){raw.faceShape=raw.faceShape??'round';raw.outfit=raw.outfit??'sweater';}
  c.faceShape=enumValue(raw.faceShape,Object.keys(FACE_SHAPES),'脸型');c.outfit=enumValue(raw.outfit,Object.keys(OUTFITS),'服装');
  c.motionStyle=enumValue(raw.motionStyle??'auto',Object.keys(MOTION_STYLES),'状态表现');c.motionSpeed=numValue(raw.motionSpeed??1,.5,1.8,'动作速度');
- const enums={shape:FAMILY_SHAPES[family],material:Object.keys(MATERIALS),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:Object.keys(HAIRS),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),background:Object.keys(COMPOSITION.background),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
- for(const [k,v]of Object.entries(enums))c[k]=enumValue(raw[k],v,k);
+ const enumFields={shape:availableShapes(c),material:availableMaterials(c),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:availableHairs(c),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),background:Object.keys(COMPOSITION.background),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
+ for(const [k,v]of Object.entries(enumFields))c[k]=enumValue(raw[k],v,k);
  for(const [k,min,max]of [['eyeScale',.65,1.35],['eyeSpacing',.75,1.3],['headScale',.85,1.12],['bodyWidth',.85,1.15],['scale',55,85]])c[k]=numValue(raw[k],min,max,k);
  c.name=textValue(raw.name,40,'名称');c.notes=textValue(raw.notes,1600,'补充要求');c.randomSeed=textValue(raw.randomSeed,40,'随机种子');
  if(typeof raw.eyeColorManual!=='boolean')throw new Error('眼色设置无效');c.eyeColorManual=raw.eyeColorManual;if(typeof raw.expressionAccents!=='boolean')throw new Error('表情点缀设置无效');c.expressionAccents=raw.expressionAccents;
@@ -399,18 +436,40 @@ export function validateConfig(raw){
  if(!object(raw.reference)||typeof raw.reference.enabled!=='boolean')throw new Error('参考图配置无效');const ref=raw.reference;
  if(!Array.isArray(ref.preserve)||ref.preserve.some(k=>typeof k!=='string'||!Object.hasOwn(PRESERVE,k))||ref.preserve.length>6)throw new Error('保留特征无效');
  if(!Array.isArray(ref.overrides)||ref.overrides.length>Object.keys(REFERENCE_DOMAINS).length||ref.overrides.some(x=>!Object.hasOwn(REFERENCE_DOMAINS,x)))throw new Error('参考覆盖字段无效');
- c.reference={enabled:ref.enabled,notes:textValue(ref.notes,1200,'参考说明'),preserve:[...new Set(ref.preserve)],overrides:[...new Set(ref.overrides)]};
- c.provenance=deriveProvenance(c);return c;
+ c.reference={enabled:ref.enabled,notes:textValue(ref.notes??'',1200,'参考说明'),preserve:[...new Set(ref.preserve)],overrides:[...new Set(ref.overrides)]};
+ c.version=VERSION;
+ const knownFields=new Set(Object.keys(createCharacter('dots'))),hasUnknownFields=Object.keys(originalSnapshot).some(key=>!knownFields.has(key));
+ const legacyMeta=object(raw.legacy)?copy(raw.legacy):{};
+ if(oldVersion<VERSION||familyInput!==family||hasUnknownFields||!object(legacyMeta.originalConfig)&&(isLegacy&&Object.keys(originalSnapshot).length))legacyMeta.originalConfig=originalSnapshot;
+ c.legacy=Object.keys(legacyMeta).length?legacyMeta:null;
+ if(object(raw.provenance))c.provenance={...c.provenance,...copy(raw.provenance)};
+ c.provenance=deriveProvenance(c);
+ return c;
 }
 const identityKeys=['motionStyle','motionSpeed','expressionAccents','name','shape','material','fur','eyes','eyeScale','eyeSpacing','brows','mouth','expression','headScale','bodyWidth','hair','faceShape','outfit','limbs','action','pose','skinMaterial','hairMaterial','clothMaterial'];
 const identitySignature=c=>JSON.stringify([identityKeys.map(k=>c[k]),['body','secondary','eyes','accessory','headAccessory','skin','hair','clothing'].map(k=>c.colors[k].toUpperCase()),Object.values(c.accessories),c.reference.enabled]);
 export function deriveProvenance(c){
- const p=PRESETS.find(p=>p.id===c.presetId&&p.family===c.family);
- if(!p)return {source:'custom',basePresetId:null,modified:true,referenceDate:null};
- const modified=identitySignature(c)!==identitySignature(createPreset(p.id));
- return {source:p.provenance||'original',basePresetId:p.id,modified,referenceDate:p.provenance?REFERENCE_INFO.date:null};
+ const p=getPreset(c.presetId),stored=object(c.provenance)?c.provenance:{};
+ const basePresetId=Object.hasOwn(stored,'basePresetId')?stored.basePresetId:(p?.id||null),basePreset=typeof basePresetId==='string'?getPreset(basePresetId):null;
+ const comparable=basePreset&&basePreset.family===c.family;
+ const modified=comparable?identitySignature(c)!==identitySignature(createPreset(basePreset.id)):(typeof stored.modified==='boolean'?stored.modified:true);
+ const source=typeof stored.source==='string'?stored.source:(p?.provenance||'original');
+ const referenceDate=Object.hasOwn(stored,'referenceDate')?stored.referenceDate:(basePreset?.referenceDate||(basePreset?.provenance==='official-recreation'&&basePreset.family==='dots'?REFERENCE_INFO.date:null));
+ return {...stored,source,basePresetId,modified,referenceDate};
 }
-export function sourceLabel(c){const p=deriveProvenance(c);return p.source==='official-recreation'?(p.modified?'基于官方同款':'官方同款 · 本站复刻'):p.modified||p.source==='custom'?'我的组合':'原创扩展';}
+export function sourceLabel(c){const p=deriveProvenance(c);if(c.catalogTier==='legacy'){if(p.source==='official-recreation')return p.modified?'历史兼容 · 已修改的身份复刻':'历史兼容 · 原版身份复刻';if(p.source==='custom'||p.modified)return '历史兼容 · 我的组合';if(p.source==='original')return '历史兼容 · 原创扩展';return '历史兼容 · 来源沿用原记录';}return p.source==='official-recreation'?(p.modified?'基于原版身份':'原版身份 · 独立设计'):p.source==='custom'||p.modified?'我的组合':p.source==='original'?'原创扩展':'已保存来源';}
+const RANDOM_ACCESSORIES={
+ dots:{head:['none','headphones'],face:['none','round'],neck:['none','bow','scarf']},
+ grok:{head:['none'],face:['none','round'],neck:['none']},
+ 'meta-muse':{head:['none','headphones'],face:['none','round'],neck:['none','scarf']},
+ humans:{head:['none','headphones','beret'],face:['none','round'],neck:['none','scarf','bow']},
+ animals:{head:['none'],face:['none'],neck:['none','scarf','collar']}
+};
+const RANDOM_ACTIONS={
+ dots:['idle','listen','bounce','blink','sleep'],grok:['idle','thinking','processing','waiting','done','work'],
+ 'meta-muse':['idle','listen','bounce','blink','work','read'],humans:['idle','listen','bounce','blink','work','read','flowers','magic'],
+ animals:['idle','work','read','flowers','sleep','bounce']
+};
 export function randomizeCharacter(input,seed){
  let n=2166136261;for(const k of seed)n=Math.imul(n^k.charCodeAt(0),16777619);
  const rand=()=>{n^=n<<13;n^=n>>>17;n^=n<<5;return(n>>>0)/4294967296;},pick=a=>a[Math.floor(rand()*a.length)];
@@ -424,17 +483,19 @@ export function randomizeCharacter(input,seed){
   if(c.colors[key]!==paletteResult.colors[key]){c.colors[key]=paletteResult.colors[key];markOverride(c,path);}
  }
  if(!inheritsReference(input,'colors.body'))c.palette=palette.id;
- c.material=pick(Object.keys(MATERIALS));
- if(!['human',...ANIMALS].includes(c.shape)&&!inheritsReference(c,'shape'))c=setCharacterValue(c,'shape',pick(FAMILY_SHAPES[c.family].filter(x=>x!=='human')));
- if(!inheritsReference(c,'eyes'))c=setCharacterValue(c,'eyes',pick(Object.keys(EYES)));
- if(!inheritsReference(c,'accessories.head'))c=setCharacterValue(c,'accessories.head',pick(['none','none',...Object.keys(ACCESSORIES.head)]));
- const action=pick(['idle','listen','flowers','work','sleep','magic']);
+ c.material=pick(availableMaterials(c));
+ const accessories=RANDOM_ACCESSORIES[c.family]||RANDOM_ACCESSORIES.dots;
+ if(!inheritsReference(c,'accessories.head'))c=setCharacterValue(c,'accessories.head',pick(accessories.head));
+ const action=pick(RANDOM_ACTIONS[c.family]||RANDOM_ACTIONS.dots);
  if(!inheritsReference(c,'accessories.face')){
   const hasHead=action==='listen'||c.accessories.head!=='none';
-  const glasses=c.accessories.neck!=='none'&&hasHead?['none']:Object.keys(ACCESSORIES.face).filter(x=>action!=='sleep'||!obscuresEyes(x));
-  c=setCharacterValue(c,'accessories.face',pick(['none','none',...glasses]));
+  const glasses=c.accessories.neck!=='none'&&hasHead?['none']:accessories.face.filter(x=>action!=='sleep'||!obscuresEyes(x));
+  c=setCharacterValue(c,'accessories.face',pick(glasses));
  }
+ if(!inheritsReference(c,'accessories.neck'))c=setCharacterValue(c,'accessories.neck',pick(accessories.neck));
  c=setCharacterValue(c,'action',action);
+ if(!inheritsReference(c,'accessories.prop'))c.accessories.prop=ACTIONS[action].prop;
+ if(action==='listen'&&!inheritsReference(c,'accessories.head'))c.accessories.head='headphones';
  return validateConfig(c);
 }
 export function exportConfiguration(input){return JSON.stringify(validateConfig(input),null,2);}

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {randomRecipe, describeRecipe} from '../dist/studio-random.js';
-import {createCharacter, setCharacterValue, resolveCharacter, validateConfig, inheritsReference} from '../dist/studio-model.js';
+import {createCharacter, createPreset, setCharacterValue, resolveCharacter, validateConfig, inheritsReference} from '../dist/studio-model.js';
 
 const visible = config => resolveCharacter(config).config;
 const fields = (config, keys) => Object.fromEntries(keys.map(key => [key, config[key]]));
@@ -12,7 +13,7 @@ function check(name, run) {
 }
 
 check('type and look locks preserve custom proportions, colors and materials', () => {
-  const input = createCharacter('grok');
+  const input = createPreset('grok-pebble');
   Object.assign(input, {shape:'pebble', headScale:1.08, bodyWidth:1.1, limbs:'both', material:'clay'});
   input.colors.body = '#809090';
   const before = structuredClone(input);
@@ -33,7 +34,7 @@ check('component lock preserves the visible work prop and consistent reel labels
 });
 
 check('reference-preserved neck accessory survives action prop cleanup', () => {
-  const input = createCharacter('muse');
+  const input = createCharacter('humans');
   input.reference.enabled = true;
   input.reference.preserve = ['accessories'];
   input.accessories = {head:'beret', face:'round', neck:'scarf', prop:'none'};
@@ -61,16 +62,34 @@ check('random type retains the chosen framing and camera', () => {
   assert.equal(result.camera, 'side');
 });
 
-check('older v9 configurations default missing motion fields in every family', () => {
-  for (const family of ['dots','grok','muse','pets']) {
-    const input = createCharacter(family);
+check('look lock preserves the selected material and colors across random types', () => {
+  for(const family of ['dots','grok','meta-muse','humans','animals']){
+    const input=createCharacter(family);
+    for(let i=0;i<20;i++){
+      const result=randomRecipe(input,'locked-look-'+family+'-'+i,{look:true});
+      assert.equal(result.material,input.material);
+      assert.deepEqual(result.colors,input.colors);
+      assert.equal(result.palette,input.palette);
+      assert.equal(result.catalogTier,'baseline');
+    }
+  }
+  const legacy=setCharacterValue(createPreset('grok-pebble'),'material','clay');
+  const result=randomRecipe(legacy,'legacy-look',{look:true});
+  assert.equal(result.material,'clay');
+  assert.equal(result.family,legacy.family);
+  assert.equal(result.shape,legacy.shape);
+});
+
+check('frozen v9 configurations default missing motion fields in each historical family', () => {
+  for (const id of ['app-blue','grok-arch','muse-mu','pet-shiba']) {
+    const input = JSON.parse(readFileSync(new URL(`../openspec/changes/rebuild-character-system/baseline/schema-9-${id}.json`,import.meta.url),'utf8'));
     delete input.motionStyle;
     delete input.motionSpeed;
     const before = structuredClone(input);
     const result = validateConfig(input);
-    assert.equal(result.version, 9);
-    assert.equal(result.motionStyle, 'auto', family);
-    assert.equal(result.motionSpeed, 1, family);
+    assert.equal(result.version, 10);
+    assert.equal(result.motionStyle, 'auto', id);
+    assert.equal(result.motionSpeed, 1, id);
     assert.deepEqual(input, before, 'validation must not mutate the old configuration');
   }
 });

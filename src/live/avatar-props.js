@@ -71,7 +71,7 @@ function flower(parent, r, petal, center, p = [0, 0, 0]) {
 // Headwear is fitted before decorations are added. Keeping a fixed mesh list
 // prevents later rays from accidentally seating glasses on a hat or an eye.
 function contactSurface(avatar) {
-  const root = avatar.root, headMeshes = [], trunkMeshes = [];
+  const root = avatar.root, headMeshes = [], trunkMeshes = [], facialMeshes = [];
   root.updateMatrixWorld(true);
   const collect = (parent, list) => parent?.traverse(o => {
     if (!o.isMesh || !o.geometry || !o.visible) return;
@@ -79,6 +79,17 @@ function contactSurface(avatar) {
     list.push(o);
   });
   collect(avatar.head || root, headMeshes); collect(avatar.torso, trunkMeshes);
+  avatar.face?.traverse(o => {
+    if (!o.isMesh || !o.geometry || !o.visible) return;
+    // Eyes, brows, mouths, and blush are decorative features, not a surface
+    // for eyewear to raycast against. The nose and other raised face pieces
+    // remain available so a bridge can clear them.
+    for (let p = o; p && p !== avatar.face; p = p.parent) {
+      if (/^(eye-|brow|mouth|lip|cheek|expression|tear|blush)/i.test(p.name)) return;
+    }
+    if (/^(eye|pupil|catchlight|closed-lid|delighted-lid|outer-lash|brow|mouth|smile|cheek|expression)/i.test(o.name)) return;
+    facialMeshes.push(o);
+  });
   const headCoreMeshes = headMeshes.filter(o => !/ear|gill|muzzle|beak|facial-disc|twin-top-lobe/.test(o.name) && o.geometry.type !== 'TubeGeometry');
   const inverse = root.matrixWorld.clone().invert(), normalMatrix = new THREE.Matrix3();
   const ray = new THREE.Raycaster(), reach = (avatar.height || 3) + (avatar.width || 3) + 4;
@@ -95,7 +106,13 @@ function contactSurface(avatar) {
     cast, reach,
     top(x, z, fallback) {return cast([x, reach, z], [0, -1, 0])?.point.y ?? fallback;},
     front(x, y, fallback, trunk = false) {return cast([x, y, reach], [0, 0, -1], trunk ? [...headMeshes, ...trunkMeshes] : headMeshes)?.point.z ?? fallback;},
-    side(sign, y, z) {return cast([sign * reach, y, z], [-sign, 0, 0]);},
+    side(sign, y, z, core = false) {return cast([sign * reach, y, z], [-sign, 0, 0], core ? headCoreMeshes : headMeshes);},
+    frontHit(x, y, trunk = false, features = false) {
+      const objects = trunk ? [...headMeshes, ...trunkMeshes, ...(features ? facialMeshes : [])]
+        : [...headCoreMeshes, ...(features ? facialMeshes : [])];
+      return cast([x, y, reach], [0, 0, -1], objects);
+    },
+    faceHit(x, y) {return cast([x, y, reach], [0, 0, -1], [...headCoreMeshes, ...facialMeshes]);},
     ornament(origin, direction) {return cast(origin, direction, headMeshes.filter(o => o.name !== 'hair-strands'));},
     around(origin, direction, trunk = false, core = false) {
       const d = V(direction).normalize(), start = V(origin).addScaledVector(d, reach);
@@ -183,7 +200,9 @@ function softBeret(parent, {rx, rz, s, contact, center}, felt) {
 export function decorateAvatar(avatar, c) {
   const root = avatar.root, anchors = avatar.anchors || {}, colors = c.colors || {};
   const animalShapes = ['shiba', 'cat', 'rabbit', 'fox', 'panda', 'bear', 'otter', 'capybara', 'axolotl', 'penguin', 'owl', 'hedgehog'];
-  const human = c.shape === 'human', animal = root.userData.anatomy === 'animal' || animalShapes.includes(c.shape);
+  const human = c.shape === 'human', metaMuse = c.shape === 'meta-hood' || c.family === 'meta-muse';
+  const humanoid = root.userData.anatomy === 'human' || human;
+  const animal = root.userData.anatomy === 'animal' || animalShapes.includes(c.shape);
   const bird = animal && ['penguin', 'owl'].includes(c.shape);
   const h = avatar.height || (human ? 2.8 : animal ? 2.5 : 2.1), w = avatar.width || 2.3;
   const s = clamp(Math.min(w / (human ? 1.5 : animal ? 1.8 : 2.3), h / (human ? 2.8 : animal ? 2.5 : 2.1)), .7, 1.3);
@@ -192,18 +211,45 @@ export function decorateAvatar(avatar, c) {
   const a = c.accessories || {}, action = c.action || 'idle', parts = [], animated = [];
   const accent = material(colors.accessory || '#33465a'), secondary = material(colors.secondary || '#f6ead9');
   const dark = material('#23272d', {roughness: .58}), gold = material('#e7bc72', {metalness: .24, roughness: .4});
-  const naturalHand = human ? root.getObjectByName('hand')?.material : bird ? root.getObjectByName('wing-tip')?.material : null;
+  const naturalHand = humanoid ? root.getObjectByName('hand')?.material : bird ? root.getObjectByName('wing-tip')?.material : null;
   const handMat = naturalHand || material(human ? colors.skin || '#e9bea2' : colors.body || '#319ceb');
-  const armMat = human || bird ? root.getObjectByName('upper-arm')?.material || material(colors.clothing || colors.body || '#338c81') : handMat;
+  const armMat = humanoid || bird ? root.getObjectByName('upper-arm')?.material || material(colors.clothing || colors.body || '#338c81') : handMat;
   const muted = material(new THREE.Color(colors.accessory || '#33465a').lerp(new THREE.Color('#ffffff'), .22));
   const part = (name, p) => {const g = group(root, name, p); parts.push(g); return g;};
   const point = (g, p) => V(p).applyMatrix4(g.matrix).toArray();
+  const targetRay = new THREE.Raycaster();
+  const fitHandTargets = (propGroup, hints, directions) => {
+    root.updateMatrixWorld(true); propGroup.updateWorldMatrix(true, true);
+    const inverse = root.matrixWorld.clone().invert(), pad = (human ? .075 : animal ? .095 : .082) * s;
+    const fits = hints.map((hint, i) => {
+      if (!hint) return null;
+      const direction = V(directions[i]).normalize(), reach = (avatar.height || 3) + (avatar.width || 3) + 2;
+      const origin = V(hint).addScaledVector(direction, reach).applyMatrix4(propGroup.matrixWorld);
+      const worldDirection = direction.transformDirection(propGroup.matrixWorld).negate();
+      targetRay.set(origin, worldDirection);
+      const hit = targetRay.intersectObject(propGroup, true)[0];
+      if (!hit?.face) return null;
+      const normalMatrix = new THREE.Matrix3().getNormalMatrix(inverse.clone().multiply(hit.object.matrixWorld));
+      const normal = hit.face.normal.clone().applyMatrix3(normalMatrix).normalize();
+      const surface = hit.point.clone().applyMatrix4(inverse);
+      const target = surface.clone().addScaledVector(normal, pad);
+      return {target: target.toArray(), surface: surface.toArray(), normal: normal.toArray(), object: hit.object.name};
+    });
+    propGroup.userData.handContactFits = fits;
+    return fits.map((fit, i) => fit?.target || (hints[i] ? point(propGroup, hints[i]) : null));
+  };
   let targets = null, prop = action === 'sleep' ? 'none' : (a.prop || 'none');
   const actionProp = {work: 'macbook', flowers: 'flowers', magic: 'wand', drink: 'tea', camera: 'camera', read: 'book'};
   if (actionProp[action]) prop = actionProp[action];
   const front = face[2] + .16 * s;
 
   const contact = contactSurface(avatar);
+  const facePoint = (x, y, offset = .045 * s) => {
+    const hit = contact.faceHit(x, y);
+    if (!hit) return [x, y, contact.front(x, y, face[2]) + offset];
+    const normal = hit.normal.z < .05 ? V([0, 0, 1]) : hit.normal;
+    return hit.point.addScaledVector(normal, offset).toArray();
+  };
   const sideAtFace = [-1, 1].map(sign => contact.side(sign, face[1], head[2]));
   const headHalfWidth = Math.max(.35 * s, ...sideAtFace.map(hit => hit ? Math.abs(hit.point.x - head[0]) : w * .36));
   const hatRadius = clamp(headHalfWidth * .77, .43 * s, .85 * s);
@@ -223,7 +269,7 @@ export function decorateAvatar(avatar, c) {
       for (let i = 0; i <= 24; i++) {
         const angle = .055 + i / 24 * (Math.PI - .110), direction = [Math.cos(angle), Math.sin(angle), 0];
         const hit = contact.around(center, direction, false, true);
-        const p = hit ? hit.point.addScaledVector(V(direction), .055 * s) : V(center).add(V([Math.cos(angle) * headHalfWidth, Math.sin(angle) * (head[1] - earY), 0]));
+        const p = hit ? hit.point.addScaledVector(hit.normal, .052 * s) : V(center).add(V([Math.cos(angle) * headHalfWidth, Math.sin(angle) * (head[1] - earY), 0]));
         pts.push(p.toArray());
       }
       // The band bridges grooves between curls and lobes instead of copying
@@ -232,7 +278,7 @@ export function decorateAvatar(avatar, c) {
       tube(hat, upperEnvelope(pts), .048 * s, headAccent);
       const seam=material(new THREE.Color(colors.headAccessory||colors.accessory||'#292A2D').lerp(new THREE.Color('#a2a7ad'),.16),{roughness:.86});
       for (const sign of [-1, 1]) {
-        const hit = contact.side(sign, earY, z), normal = hit?.normal || V([sign, 0, 0]);
+        const hit = contact.side(sign, earY, z, true), normal = hit?.normal || V([sign, 0, 0]);
         if (normal.x * sign < .2) normal.set(sign, .15, 0).normalize();
         const surface = hit?.point || V([head[0] + sign * headHalfWidth, earY, z]);
         const cup = group(hat, 'earcup-' + sign, surface.clone().addScaledVector(normal, .040 * s).toArray());
@@ -350,8 +396,8 @@ export function decorateAvatar(avatar, c) {
     }
   }
 
-  // Each lens follows its own eye's surface normal. The front of the eyeball
-  // determines lens depth; a rigid plane across both eyes cuts into curved heads.
+  // Fit every frame vertex against the current face surface. Each eye supplies
+  // its own tangent frame, while the lens itself bends between eye and cheek.
   if (a.face && a.face !== 'none') {
     root.updateMatrixWorld(true);
     const inverseRoot = root.matrixWorld.clone().invert(), rootQ = root.getWorldQuaternion(new THREE.Quaternion()).invert();
@@ -374,14 +420,30 @@ export function decorateAvatar(avatar, c) {
     const lenses = material(shade ? '#15202a' : '#d6eef5', {transparent: !shade, opacity: shade ? 1 : .065,
       roughness: shade ? .33 : .18, metalness: shade ? .06 : 0, depthWrite: shade, side: THREE.DoubleSide});
     const lensFrames = [];
+    const fitLensPoint = (center, quaternion, x, y, offset) => {
+      const plane = V([x, y, 0]).applyQuaternion(quaternion).add(center);
+      const hit = contact.faceHit(plane.x, plane.y);
+      if (!hit) return plane.addScaledVector(V([0, 0, 1]).applyQuaternion(quaternion), offset).toArray();
+      const normal = hit.normal.z < .05 ? V([0, 0, 1]).applyQuaternion(quaternion) : hit.normal;
+      return hit.point.addScaledVector(normal, offset).toArray();
+    };
+    const makeCurvedLens = (shape, center, quaternion, rx, ry, offset) => {
+      const geometry = new THREE.ShapeGeometry(shape, 48), positions = geometry.attributes.position;
+      for (let j = 0; j < positions.count; j++) {
+        const p = fitLensPoint(center, quaternion, positions.getX(j), positions.getY(j), offset);
+        positions.setXYZ(j, p[0], p[1], p[2]);
+      }
+      positions.needsUpdate = true; geometry.computeVertexNormals(); geometry.computeBoundingSphere();
+      const surface = mesh(glasses, geometry, lenses); surface.name = 'eyewear-lens';
+      surface.userData.contactFit = {kind: 'curved-lens', center: center.toArray(), radii: [rx, ry], offset};
+      return surface;
+    };
     eyePoses.forEach(({center, quaternion, bounds}, i) => {
       if (monocle && i === 0) return;
       const sign = i ? 1 : -1, eyeWidth = bounds.max.x - bounds.min.x, eyeHeight = bounds.max.y - bounds.min.y;
       const rx = Math.max(c.shape==='triangle'&&a.face==='round'?.25*s:c.shape==='diamond'&&a.face==='sunglasses'?.34*s:0,clamp(spacing * (a.face==='roundSun'?.43:.41), .11 * s, .27 * s), eyeWidth * .5 + .024 * s);
       const ry = Math.max(c.shape==='triangle'&&a.face==='round'?.31*s:0,rx * (a.face === 'square' || a.face === 'sunglasses' ? .81 : 1.04), eyeHeight * .5 + .021 * s);
       const offset = Math.max(.025 * s, bounds.max.z + .022 * s);
-      const g = group(glasses, 'lens-' + i, center.clone().addScaledVector(V([0, 0, 1]).applyQuaternion(quaternion), offset).toArray());
-      g.quaternion.copy(quaternion);
       let outline;
       if (a.face === 'catEye') {
         outline = closedOutline([[-.96, .48], [-.86, -.31], [-.35, -.64], [.34, -.62], [.83, -.29],
@@ -391,42 +453,63 @@ export function decorateAvatar(avatar, c) {
       } else if (a.face === 'square') {
         outline = roundShape(rx * 2.08, ry * 1.94, rx * .28).getPoints(12).slice(0, -1).map(p => V([p.x, p.y, 0]));
       } else outline = Array.from({length: 64}, (_, j) => {const t = j / 64 * Math.PI * 2; return V([Math.cos(t) * rx, Math.sin(t) * ry, 0]);});
-      tube(g, outline.map(p => p.toArray()), (shade ? .019 : .013) * s, accent, true);
       const shape = new THREE.Shape(outline.map(p => new THREE.Vector2(p.x, p.y)));
-      // Clear frames leave the eye color untouched in both renderers. Only
-      // opaque sunglasses need a filled lens surface in this stylized model.
-      if (shade) {const lens = mesh(g, new THREE.ShapeGeometry(shape, 48), lenses, [0, 0, .001 * s]); lens.name = 'eyewear-lens';}
-      g.updateMatrix();
-      g.userData.contactFit = {kind: 'eye', offset, eyeDepth: bounds.max.z, normal: V([0, 0, 1]).applyQuaternion(quaternion).toArray()};
-      lensFrames.push({i, sign, g, rx, ry, center, outer: point(g, [sign * rx, .03 * ry, 0]), inner: point(g, [-sign * rx, .03 * ry, 0])});
+      // Clear frames leave the eye color untouched. Dark frames use a curved,
+      // depth-writing patch in front of the eyes so the eyes cannot show twice.
+      if (shade) makeCurvedLens(shape, center, quaternion, rx, ry, offset + .002 * s);
+      const edge = outline.map(p => fitLensPoint(center, quaternion, p.x, p.y, offset + .010 * s));
+      tube(glasses, edge, (shade ? .019 : .013) * s, accent, true);
+      const outer = fitLensPoint(center, quaternion, sign * rx, .03 * ry, offset + .010 * s);
+      const inner = fitLensPoint(center, quaternion, -sign * rx, .03 * ry, offset + .010 * s);
+      lensFrames.push({i, sign, rx, ry, center, quaternion, offset, outer, inner,
+        contactFit: {kind: 'eye-surface', eyeDepth: bounds.max.z, normal: V([0, 0, 1]).applyQuaternion(quaternion).toArray()}});
       if (!monocle) {
-        const outer = point(g, [sign * rx, .03 * ry, 0]), endZ = head[2] + .015 * s;
-        const hit = contact.side(sign, center.y - .022 * s, endZ);
-        const end = hit ? hit.point.addScaledVector(hit.normal, -.025 * s).toArray()
-          : [head[0] + sign * headHalfWidth, center.y - .022 * s, endZ];
-        tube(glasses, [outer, [outer[0] + sign * .025 * s, outer[1], outer[2] - .042 * s],
-          [THREE.MathUtils.lerp(outer[0], end[0], .65), THREE.MathUtils.lerp(outer[1], end[1], .65), THREE.MathUtils.lerp(outer[2], end[2], .72)], end], .012 * s, accent);
+        const hit = contact.side(sign, center.y - .022 * s, head[2] + .015 * s, true);
+        const sideNormal = hit?.normal || V([sign, 0, 0]);
+        const end = hit ? hit.point.addScaledVector(sideNormal, .015 * s).toArray()
+          : [head[0] + sign * headHalfWidth, center.y - .022 * s, head[2] - .02 * s];
+        const temple = [outer,
+          [outer[0] + sign * .035 * s, outer[1] - .012 * s, outer[2] - .040 * s],
+          [THREE.MathUtils.lerp(outer[0], end[0], .68), THREE.MathUtils.lerp(outer[1], end[1], .68),
+            THREE.MathUtils.lerp(outer[2], end[2], .72)], end];
+        tube(glasses, temple, .012 * s, accent);
+        glasses.userData.temples ||= [];
+        glasses.userData.temples.push({eye: i, end, normal: sideNormal.toArray()});
       }
     });
     if (monocle) {
-      const lens = lensFrames[0], start = point(lens.g, [lens.rx * .72, -lens.ry * .72, 0]);
-      const tailX = start[0] + .15 * s, tailY = start[1] - .25 * s;
-      tube(glasses, [start, [start[0] + .025 * s, start[1] - .095 * s, start[2] - .015 * s],
-        [tailX, tailY, contact.front(tailX, tailY, start[2] - .065 * s) + .023 * s],
-        [tailX + .048 * s, tailY + .012 * s, contact.front(tailX + .048 * s, tailY + .012 * s, start[2] - .09 * s) + .023 * s]], .011 * s, accent);
+      const lens = lensFrames[0], start = fitLensPoint(lens.center, lens.quaternion, lens.sign * lens.rx * .72,
+        -.24 * lens.ry, lens.offset + .012 * s);
+      const tailX = start[0] + .105 * s, tailY = Math.max(neck[1] + .05 * s, start[1] - .37 * s), chain = [];
+      for (let j = 0; j <= 12; j++) {
+        const t = j / 12, x = THREE.MathUtils.lerp(start[0], tailX, t), y = THREE.MathUtils.lerp(start[1], tailY, t);
+        const surface = contact.frontHit(x, y, true, true), normal = surface?.normal || V([0, 0, 1]);
+        const p = surface ? surface.point.addScaledVector(normal.z < .05 ? V([0, 0, 1]) : normal, .022 * s).toArray()
+          : [x, y, contact.front(x, y, start[2] - .045 * s, true) + .022 * s];
+        if (j === 0) p.splice(0, 3, ...start);
+        chain.push(p);
+      }
+      tube(glasses, chain, .011 * s, accent);
     } else {
-      const left = lensFrames[0].inner, right = lensFrames[1].inner;
-      const middleX = (left[0] + right[0]) / 2, middleY = (left[1] + right[1]) / 2 + .033 * s;
-      const middleZ = Math.max((left[2] + right[2]) / 2, contact.front(middleX, middleY, face[2]) + .032 * s);
-      tube(glasses, [left, [middleX, middleY, middleZ], right], .013 * s, accent);
+      const left = lensFrames[0].inner, right = lensFrames[1].inner, bridge = [];
+      for (let j = 0; j <= 10; j++) {
+        const t = j / 10, x = THREE.MathUtils.lerp(left[0], right[0], t),
+          y = THREE.MathUtils.lerp(left[1], right[1], t) + Math.sin(t * Math.PI) * .028 * s;
+        bridge.push(j === 0 ? left : j === 10 ? right : facePoint(x, y, Math.max(lensFrames[0].offset, lensFrames[1].offset) + .012 * s));
+      }
+      tube(glasses, bridge, .013 * s, accent);
+      glasses.userData.bridgeFit = bridge.map((p, i) => ({point: p, sample: i}));
     }
   }
 
   if (a.neck && a.neck !== 'none') {
-    const neckY = neck[1];
+    // The Meta hood's inset face ends above its exposed hood/body junction.
+    // Set the wrap from that lower neck seam so its top edge clears the face.
+    const neckY = neck[1] - (metaMuse && a.neck === 'scarf' ? .08 * s : 0);
     const g = part('neck-' + a.neck, [0, neckY, 0]);
     const rx = human ? .32 * s : animal ? .46 * s : w * .46;
-    const rz = contact.front(0, neckY, anchors.neckFront?.[2] || face[2] * .86, true) + .018 * s;
+    const neckFront = contact.front(0, neckY, anchors.neckFront?.[2] || face[2] * .86, true);
+    const rz = neckFront + .018 * s;
     if (a.neck === 'bow') {
       for (const sign of [-1, 1]) {
         const shape = new THREE.Shape(); shape.moveTo(0, 0);
@@ -440,20 +523,89 @@ export function decorateAvatar(avatar, c) {
       }
       ball(g, [(c.family==='dots'?.075:.052) * s, (c.family==='dots'?.090:.065) * s, .059 * s], accent, [0, 0, rz + .040 * s]);
     } else {
-      const ring = Array.from({length: 24}, (_, i) => {
-        const angle = i / 24 * Math.PI * 2, direction = [Math.cos(angle), 0, Math.sin(angle)];
-        const hit = contact.around([0, neckY, 0], direction, true);
-        return hit ? hit.point.addScaledVector(V(direction), .008 * s).sub(V([0, neckY, 0])).toArray()
-          : [Math.cos(angle) * rx, 0, Math.sin(angle) * rz];
-      });
-      tube(g, ring, (a.neck === 'scarf' ? .070 : .034) * s, accent, true);
+      const scarf = a.neck === 'scarf', ringRadius = (scarf ? .062 : .030) * s, ring = [], ringContacts = [];
+      for (let i = 0; i < 64; i++) {
+        const angle = i / 64 * Math.PI * 2, direction = V([Math.cos(angle), 0, Math.sin(angle)]);
+        const hit = contact.around([0, neckY, 0], direction.toArray(), true);
+        if (hit) {
+          const normal = hit.normal.z < -.4 && direction.z > 0 ? V([0, 0, 1]) : hit.normal;
+          const center = hit.point.clone().addScaledVector(normal, ringRadius * .92);
+          ring.push(center.sub(V([0, neckY, 0])).toArray());
+          ringContacts.push({point: hit.point.toArray(), normal: normal.toArray()});
+        } else {
+          ring.push([direction.x * (rx + ringRadius), 0, direction.z * ((human ? .28 : animal ? .38 : w * .30) * s + ringRadius)]);
+          ringContacts.push(null);
+        }
+      }
+      const ringMat = accent.clone(); ringMat.side = THREE.DoubleSide;
+      tube(g, ring, ringRadius, ringMat, true);
+      g.userData.contactFit = {kind: scarf ? 'wrapped-scarf' : 'neckwear', points: ringContacts};
       if (a.neck === 'scarf') {
-        for (const [x, length, tilt] of [[-.12, .36, -.13], [.04, .27, .13]]) {
-          const end = group(g, 'scarf-end', [x * s, -.075 * s, rz + .02 * s]); end.rotation.z = tilt;
-          box(end, [.135 * s, length * s, .065 * s], accent, [0, -length * s / 2, 0], .04 * s);
-          for (let i = 0; i < 5; i++) box(end, [.105 * s, .006 * s, .005 * s], muted,
-            [0, (-length + .03 + i * .027) * s, .035 * s], .002 * s);
-          animated.push(t => {end.rotation.z = tilt + Math.sin(t * 1.3 + x) * .016;});
+        const makeDrape = (end, centerX, topY, width, length, tilt, topPoint) => {
+          const rows = 18, cols = 5, positions = [], indices = [], frontPoints = [];
+          const anchor = V(topPoint);
+          const samples = [];
+          for (let row = 0; row <= rows; row++) {
+            const t = row / rows, y = topY - length * s * t;
+            const rowSamples = [];
+            for (let col = 0; col <= cols; col++) {
+              const u = col / cols, x = centerX + (u - .5) * width * s + Math.sin(tilt) * length * s * t + Math.sin(t * Math.PI) * .018 * s;
+              const hit = contact.frontHit(x, y, true);
+              const normal = hit?.normal || V([0, 0, 1]);
+              rowSamples.push({
+                point: hit ? hit.point.clone() : V([x, y, neckFront + .02 * s]),
+                facing: (normal.z < .18 ? V([0, 0, 1]) : normal.clone()).normalize()
+              });
+            }
+            samples.push(rowSamples);
+          }
+          for (let layer = 0; layer < 2; layer++) {
+            for (const row of samples) {
+              for (const sample of row) {
+                const {point, facing} = sample;
+                const surfacePoint = point.clone();
+                surfacePoint.addScaledVector(facing, (layer ? -.020 : .014) * s);
+                if (!layer) frontPoints.push(surfacePoint.clone());
+                positions.push(surfacePoint.x - anchor.x, surfacePoint.y - anchor.y, surfacePoint.z - anchor.z);
+              }
+            }
+          }
+          const layerSize = (rows + 1) * (cols + 1);
+          for (let layer = 0; layer < 2; layer++) {
+            const base = layer * layerSize;
+            for (let row = 0; row < rows; row++) for (let col = 0; col < cols; col++) {
+              const q = base + row * (cols + 1) + col, next = q + cols + 1;
+              if (!layer) indices.push(q, next, q + 1, q + 1, next, next + 1);
+              else indices.push(q, q + 1, next, q + 1, next + 1, next);
+            }
+          }
+          const addQuad = (a, b, c, d) => indices.push(a, b, c, c, b, d);
+          for (let col = 0; col < cols; col++) {
+            addQuad(col, col + 1, layerSize + col, layerSize + col + 1);
+            const bottom = rows * (cols + 1) + col;
+            addQuad(bottom, layerSize + bottom, bottom + 1, layerSize + bottom + 1);
+          }
+          for (let row = 0; row < rows; row++) {
+            const left = row * (cols + 1), leftNext = left + cols + 1;
+            addQuad(left, layerSize + left, leftNext, layerSize + leftNext);
+            const right = left + cols, rightNext = leftNext + cols;
+            addQuad(right, rightNext, layerSize + right, layerSize + rightNext);
+          }
+          const geometry = new THREE.BufferGeometry();
+          geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+          geometry.setIndex(indices); geometry.computeVertexNormals(); geometry.computeBoundingSphere();
+          const panel = mesh(end, geometry, ringMat); panel.name = 'scarf-drape';
+          panel.userData.surfaceContactSamples = frontPoints.filter((_, i) => i % (cols + 1) === Math.floor(cols / 2)).map(p => p.toArray());
+          return panel;
+        };
+        for (const [x, length, tilt] of [[-.115, .36, -.10], [.055, .29, .105]]) {
+          const centerX = x * s, topY = neckY - .045 * s;
+          const topHit = contact.frontHit(centerX, topY, true), topNormal = topHit?.normal || V([0, 0, 1]);
+          const topPoint = topHit ? topHit.point.addScaledVector(topNormal.z < .18 ? V([0, 0, 1]) : topNormal, .026 * s).toArray()
+            : [centerX, topY, neckFront + .025 * s];
+          const end = group(g, 'scarf-end', [topPoint[0], topPoint[1] - neckY, topPoint[2]]);
+          makeDrape(end, centerX, topY, .132, length, tilt, topPoint);
+          end.userData.contactFit = {kind: 'front-drape', point: topPoint, normal: topNormal.toArray(), tilt};
         }
       } else ball(g, [.068 * s, .081 * s, .025 * s], gold, [0, -.085 * s, rz + .043 * s]);
     }
@@ -476,7 +628,8 @@ export function decorateAvatar(avatar, c) {
     for (let row = 0; row < 3; row++) box(lid, [(row ? .38 : .63) * s, .012 * s, .004 * s], ui,
       [-.11 * s, sh * .67 - row * .05 * s, -.028 * s], .003 * s);
     ball(lid, [.009 * s, .009 * s, .004 * s], dark, [0, sh - .018 * s, -.025 * s]);
-    g.updateMatrix(); targets = [[-.28 * s, .098 * s, -.055 * s], [.28 * s, .098 * s, -.055 * s]].map(p => point(g, p));
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.33 * s, .06 * s, .02 * s], [.33 * s, .06 * s, .02 * s]],
+      [[0, 1, 0], [0, 1, 0]]);
   } else if (prop === 'flowers') {
     const y = Math.min(h * .33, face[1] - .60 * s), g = part('prop-flowers', [0, y, front + .03 * s]);
     g.rotation.z = -.08;
@@ -490,7 +643,8 @@ export function decorateAvatar(avatar, c) {
     });
     const leaf = ball(g, [.065 * s, .16 * s, .027 * s], green, [.22 * s, .20 * s, -.02 * s]); leaf.rotation.z = -.7;
     ellipse(g, .077 * s, .075 * s, -.12 * s, .018 * s, accent);
-    g.updateMatrix(); targets = [[-.105 * s, -.11 * s, .025 * s], [.105 * s, -.07 * s, .025 * s]].map(p => point(g, p));
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.105 * s, -.035 * s, .09 * s], [.105 * s, -.035 * s, .09 * s]],
+      [[0, 0, 1], [0, 0, 1]]);
   } else if (prop === 'wand') {
     const g = part('prop-wand', [w * .48, h * .43, front]); g.rotation.z = -.12;
     rod(g, [0, -.20 * s, 0], [0, .48 * s, 0], .029 * s, gold);
@@ -498,7 +652,7 @@ export function decorateAvatar(avatar, c) {
     const sparkles = [[-.19, .65, 0], [.21, .48, .015], [.15, .78, -.02]].map((p, i) =>
       star(g, (.03 + i * .008) * s, gold, p.map(n => n * s), .009 * s));
     animated.push(t => sparkles.forEach((o, i) => {o.rotation.z = Math.sin(t * .8 + i) * .2; o.scale.setScalar(.84 + Math.sin(t * 1.4 + i) * .16);}));
-    g.updateMatrix(); targets = [null, point(g, [0, 0, 0])];
+    g.updateMatrix(); targets = fitHandTargets(g, [null, [0, -.045 * s, 0]], [[0, 0, 1], [0, 0, 1]]);
   } else if (prop === 'tea') {
     const drinking = c.mouth !== 'none' && action === 'drink';
     const y = Math.min(h * (drinking ? .49 : .34), face[1] - (drinking ? .58 : .53) * s);
@@ -512,7 +666,8 @@ export function decorateAvatar(avatar, c) {
     for (let i = 0; i < 6; i++) {
       const ang = i * 1.83; ball(g, [.019 * s, .019 * s, .013 * s], dark, [Math.sin(ang) * .08 * s, (-.125 + i % 2 * .03) * s, .121 * s]);
     }
-    g.updateMatrix(); targets = [[-.095 * s, -.17 * s, 0], [.16 * s, .0, 0]].map(p => point(g, p));
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.105 * s, -.025 * s, 0], [.105 * s, -.025 * s, 0]],
+      [[-1, 0, 0], [1, 0, 0]]);
   } else if (prop === 'camera') {
     const g = part('prop-camera', [0, Math.min(face[1] - .28 * s, h * .61), front + .04 * s]);
     box(g, [.65 * s, .36 * s, .25 * s], accent, [0, 0, 0], .06 * s);
@@ -523,7 +678,8 @@ export function decorateAvatar(avatar, c) {
     ball(g, [.12 * s, .12 * s, .018 * s], lens, [.03 * s, 0, .287 * s]);
     box(g, [.115 * s, .061 * s, .015 * s], secondary, [-.20 * s, .105 * s, .135 * s], .014 * s);
     ball(g, [.045 * s, .02 * s, .04 * s], dark, [.22 * s, .194 * s, .015 * s]);
-    g.updateMatrix(); targets = [[-.31 * s, -.045 * s, .015 * s], [.31 * s, .015 * s, .015 * s]].map(p => point(g, p));
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.27 * s, 0, 0], [.27 * s, 0, 0]],
+      [[-1, 0, 0], [1, 0, 0]]);
   } else if (prop === 'book') {
     const g = part('prop-book', [0, Math.min(h * .34, face[1] - .47 * s), front + .07 * s]);
     const pages = material('#f5eddd'), ink = material('#bcc0b1'); g.rotation.x = .12;
@@ -535,18 +691,19 @@ export function decorateAvatar(avatar, c) {
       for (let i = 0; i < 5; i++) box(half, [(.25 - i % 2 * .04) * s, .003 * s, .007 * s], ink,
         [sign * .245 * s, .059 * s, (i - 2) * .068 * s], .002 * s);
     }
-    g.updateMatrix(); targets = [[-.39 * s, .03 * s, .035 * s], [.39 * s, .03 * s, .035 * s]].map(p => point(g, p));
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.42 * s, -.020 * s, .10 * s], [.42 * s, -.020 * s, .10 * s]],
+      [[0, -1, 0], [0, -1, 0]]);
   }
 
   // Preserve sculpted resting limbs. Rebuild a pair only when a gesture or a
   // prop requires new contact targets; hind paws remain part of the body.
   const gestures = ['wave', 'dance', 'celebrate', 'love'];
-  const needsArms = human || animal || prop !== 'none' || gestures.includes(action) || c.pose === 'chin' || ['hands', 'both'].includes(c.limbs);
-  const preserveRest = (human || animal) && prop === 'none' && !gestures.includes(action) && c.pose !== 'chin';
+  const needsArms = humanoid || animal || prop !== 'none' || gestures.includes(action) || c.pose === 'chin' || ['hands', 'both'].includes(c.limbs);
+  const preserveRest = (humanoid || animal) && prop === 'none' && !gestures.includes(action) && c.pose !== 'chin';
   const arms = preserveRest ? [...(avatar.arms || [])] : [], palms = [];
   if (!preserveRest) (avatar.arms || []).forEach(o => {o.visible = false;});
   if (needsArms && !preserveRest) {
-    const restY = human ? h * .22 : animal && !bird ? .13 : animal ? h * .17 : h * .32;
+    const restY = humanoid ? h * .22 : animal && !bird ? .13 : animal ? h * .17 : h * .32;
     const starts = [anchors.shoulderL || [-w * .4, h * .46, 0], anchors.shoulderR || [w * .4, h * .46, 0]];
     const ends = starts.map((p,i)=>[animal&&!bird?p[0]*.84:(i?1:-1)*w*(animal?.30:.39),restY,animal&&!bird?Math.max(.48,face[2]*.78):face[2]*.73]);
     if (targets) targets.forEach((p, i) => {if (p) ends[i] = p;});
@@ -561,7 +718,7 @@ export function decorateAvatar(avatar, c) {
     }
     for (let i = 0; i < 2; i++) {
       const sign = i ? 1 : -1, end = V(ends[i]);
-      if (!human && !animal) {
+      if (!humanoid && !animal) {
         // A plush symbol grows a short mitten arm out of its visible side,
         // instead of stretching a long hose from an invisible rear shoulder.
         const x = sign * (targets ? Math.min(w * .32, Math.abs(end.x) + .15 * s) : w * .40);
@@ -612,14 +769,16 @@ export function decorateAvatar(avatar, c) {
       palmMesh.userData.region = human ? 'skin' : 'body';
       palmMesh.userData.surfaceMaterial = human ? handMat.name || 'skin' : c.material || 'plush';
       palmMesh.userData.furLength = c.material === 'micro' ? .011 : .024;
-      if (human) {
-        // Four short rounded fingertips and a separate thumb read as a doll hand.
+      if (humanoid) {
         palm.rotation.x = prop === 'macbook' ? Math.PI * .49 : prop === 'book' ? .65 : -.22;
         if(prop==='macbook')palm.rotation.y=-.64;
-        for (let j = 0; j < 4; j++) ball(palm, [.023 * s, (.065 - Math.abs(j - 1.5) * .008) * s, .025 * s], handMat,
-          [(j - 1.5) * .043 * s, .067 * s, .018 * s]);
-        const thumb = ball(palm, [.055 * s, .059 * s, .035 * s], handMat, [-sign * .09 * s, .006 * s, .035 * s]);
-        thumb.rotation.z = sign * .42;
+        if (human) {
+          // Four short rounded fingertips and a separate thumb read as a doll hand.
+          for (let j = 0; j < 4; j++) ball(palm, [.023 * s, (.065 - Math.abs(j - 1.5) * .008) * s, .025 * s], handMat,
+            [(j - 1.5) * .043 * s, .067 * s, .018 * s]);
+          const thumb = ball(palm, [.055 * s, .059 * s, .035 * s], handMat, [-sign * .09 * s, .006 * s, .035 * s]);
+          thumb.rotation.z = sign * .42;
+        }
       }
       arms.push(arm); palms.push(palm);
       if (Array.isArray(avatar.surfaces)) avatar.surfaces.push(limb, palmMesh);
@@ -636,7 +795,7 @@ export function decorateAvatar(avatar, c) {
   for (const attachment of parts) {
     if (avatar.head && (attachment.name.startsWith('head-') || attachment.name.startsWith('face-')))
       avatar.head.attach(attachment);
-    else if (human && avatar.torso && attachment.name.startsWith('neck-'))
+    else if (avatar.torso && attachment.name.startsWith('neck-'))
       avatar.torso.attach(attachment);
   }
   root.updateMatrixWorld(true);

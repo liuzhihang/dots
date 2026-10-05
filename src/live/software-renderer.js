@@ -369,7 +369,7 @@ export class SoftwareRenderer {
       const groups=Array.isArray(object.material)?geo.groups:[{start:geo.drawRange?.start||0,count:geo.drawRange?.count??Infinity,materialIndex:0}];
       for(let gi=0;gi<groups.length;gi++) {
         const group=groups[gi],m=Array.isArray(object.material)?object.material[group.materialIndex]:object.material;
-        if(!m||m.visible===false||(m.opacity??1)<.002)continue;
+        if(!m||m.isShadowMaterial||m.visible===false||(m.opacity??1)<.002)continue;
         frame.meshes.push({id:object.uuid+suffix+':'+gi,geometry:key,matrix:Array.from(matrix),start:group.start,count:group.count,order:object.renderOrder||0,castShadow:object.castShadow!==false,receiveShadow:object.receiveShadow!==false,material:{color:colorArray(m.color),emissive:colorArray(m.emissive,[0,0,0]).map(x=>x*(m.emissiveIntensity??1)),opacity:m.opacity??1,transparent:!!m.transparent,side:m.side??0,roughness:m.roughness??.75,metalness:m.metalness||0,depthTest:m.depthTest!==false,depthWrite:m.depthWrite!==false,alphaTest:m.alphaTest||0,unlit:!!(m.isMeshBasicMaterial||m.isShadowMaterial),shadowOnly:!!m.isShadowMaterial,shadowFade:m.userData?.shadowFade,toneMapped:m.toneMapped!==false,map:textureData(m.map),bump:textureData(m.bumpMap),bumpScale:m.bumpScale||0,surfaceKind:object.userData.surfaceMaterial||m.name,vertexColors:!!m.vertexColors}});
       }
     };

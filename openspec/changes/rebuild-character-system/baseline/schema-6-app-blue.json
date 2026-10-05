@@ -1,0 +1,63 @@
+{
+  "version": 6,
+  "rendererVersion": "atelier-3",
+  "family": "dots",
+  "name": "蓝球耳机",
+  "shape": "sphere",
+  "material": "plush",
+  "fur": "short",
+  "palette": "app-pink",
+  "colors": {
+    "body": "#3264FA",
+    "secondary": "#F5F8FF",
+    "eyes": "#222326",
+    "accessory": "#292A2D",
+    "background": "#F3F6FA",
+    "skin": "#EBC4A6",
+    "hair": "#523729",
+    "clothing": "#3264FA"
+  },
+  "eyeColorManual": false,
+  "eyes": "softOval",
+  "eyeScale": 1,
+  "eyeSpacing": 1,
+  "brows": "none",
+  "mouth": "none",
+  "expression": "calm",
+  "headScale": 1,
+  "bodyWidth": 1,
+  "hair": "short-curly",
+  "limbs": "auto",
+  "action": "idle",
+  "pose": "auto",
+  "accessories": {
+    "head": "headphones",
+    "face": "none",
+    "neck": "none",
+    "prop": "none"
+  },
+  "framing": "full",
+  "camera": "front",
+  "background": "studio",
+  "aspect": "1:1",
+  "scale": 72,
+  "output": "image",
+  "motionStyle": "auto",
+  "motionSpeed": 1,
+  "skinMaterial": "auto",
+  "hairMaterial": "auto",
+  "clothMaterial": "knit",
+  "reference": {
+    "enabled": false,
+    "notes": "",
+    "preserve": [
+      "hair",
+      "face",
+      "colors",
+      "clothing",
+      "accessories"
+    ]
+  },
+  "notes": "",
+  "randomSeed": "dot-01"
+}

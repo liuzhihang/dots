@@ -138,6 +138,7 @@
 .atelier .studio-kicker,.atelier .reel-top{font-family:ui-monospace,"SFMono-Regular",monospace}
 .atelier dialog[data-type="inspiration"]{width:min(860px,92vw)}
 .atelier .comparison .compare-half .art{max-height:36vh}
+@media(max-width:360px){.atelier .family-tabs{gap:2px}.atelier .family-tab{font-size:11px!important;padding-inline:2px!important}}
 .atelier .toast{left:calc((100vw - clamp(380px,32vw,440px))/2);font-size:13px;bottom:26px}
 @media(min-width:1500px){.atelier .preview-panel{padding:30px 52px 28px}.atelier .recipe-machine{padding:20px 22px}.atelier .reel-value{font-size:14px}.atelier .reel-top{font-size:11px}}
 @media(max-width:1100px) and (min-width:761px){.atelier .studio-layout{grid-template-columns:minmax(0,1fr) 360px}.atelier .preview-panel{padding:20px 22px}.atelier .studio-nav{gap:18px;margin-left:10px}.atelier .workspace-heading h1{font-size:22px;max-width:210px}.atelier .workspace-heading>div{display:block}.atelier #stageTag{display:block;margin-top:2px}.atelier .studio-kicker{font-size:10px}.atelier .stage-inspire span:last-child{display:none}.atelier .recipe-heading [role="status"]{max-width:170px}.atelier .recipe-machine{padding:14px 12px}.atelier .recipe-reels{gap:5px}.atelier .recipe-reel{padding-inline:6px}.atelier .reel-top{font-size:9px}.atelier .reel-value{font-size:12px}.atelier .reel-swatch{display:none}.atelier .random-button{padding:10px 12px}.atelier .random-button kbd{display:none}.atelier .toast{left:calc((100vw - 360px)/2)}}
@@ -161,3 +162,8 @@
  .atelier .stage-card{position:relative}.atelier .stage-top{position:absolute;top:0;left:0;right:0;z-index:2}.atelier .stage-caption,.atelier .stage-card:has(.live-stage) .stage-caption{position:absolute;bottom:0;left:0;right:0;z-index:2}.atelier .stage-art-area{padding:0}.atelier .project-menu{flex-shrink:0}.atelier .project-menu summary{white-space:nowrap;gap:8px;padding-inline:9px}.atelier .reel-index{display:none}.atelier .reel-top button{width:28px;min-height:30px}.atelier .reel-top{font-size:10px}.atelier .reel-value{font-size:11px}.atelier .reel-window{height:20px}.atelier .reel-swatch{display:none}
 }
 @media(max-width:360px){.atelier .brand b,.atelier .brand b span{font-size:17px}.atelier .topbar{gap:4px;padding-inline:14px}.atelier .header-tools .icon-btn{width:27px}.atelier .recipe-heading [role=status]{max-width:155px;font-size:9px}.atelier .recipe-reel{padding-inline:4px}.atelier .reel-top{gap:0}.atelier .reel-top button{width:25px}.atelier .recipe-reels{gap:4px}}
+
+/* Keep the photo + Prompt workflow visible on the compact creation dock. */
+@media(max-width:900px){
+ .studio-r4 .reference-shortcut{display:block;min-height:28px;font-size:11px;margin-top:0}
+}

@@ -1,19 +1,14 @@
-import {createCharacter, validateConfig} from './studio-model.js';
-
+import {createCharacter,validateConfig} from './studio-model.js';
 export const INSPIRATIONS = [
- {id:'blue-listen',family:'dots',name:'蓝蓝听歌',tag:'DOTS / FINE PLUSH',file:'dot-plush-headphones-v2.png',size:83,description:'顺着体积生长的短绒，贴合的皮革耳罩。'},
- {id:'white-work',family:'grok',name:'专注小白',tag:'GROK / SOFT RUBBER',file:'grok-matte-work-v2.png',size:80,description:'克制的胶囊眼与软胶体积，电脑安放在低位。'},
- {id:'woven-muse',family:'muse',name:'织物小沐',tag:'MUSE / WOVEN DOLL',file:'muse-fabric-reading-v2.png',size:73,description:'布面、卷曲纤维、玻璃眼与针织围巾，各有触感。'},
- {id:'shiba-tea',family:'pets',name:'柴犬茶茶',tag:'PETS / ANIMAL COMPANION',file:'pet-shiba-scarf-v2.png',size:76,description:'自然坐姿、完整卷尾，蓝围巾轻轻压住短绒。'}
+ {id:'blue-listen',family:'dots',name:'蓝色 Dots',tag:'DOTS / 原版身份',description:'蓝色圆润主体、细短绒、简洁双眼与黑色连续耳机。身份依据 Dots 原版；网页成品待逐组确认。'},
+ {id:'white-work',family:'grok',name:'淡紫 Grok Bot',tag:'GROK BOT / 原版身份',description:'哑光软拱、胶囊眼，透明镜与工作电脑。身份依据 Grok Bot 原版；网页成品待逐组确认。'},
+ {id:'hood-muse',family:'meta-muse',name:'米白 Meta Muse',tag:'META MUSE / A02 身份',description:'米白头罩、暖色内嵌脸面、短臂双脚。按 A02 保留包覆式身份，不使用旧人物 Muse。'},
+ {id:'woven-muse',family:'humans',name:'栗色短发人物',tag:'人物 / 新设计',description:'提炼 R01 的比例、发束与表情语言，重新设计脸型、发型和服装；未使用动漫原图或贴图。'},
+ {id:'shiba-tea',family:'animals',name:'柴犬伙伴',tag:'动物 / 新设计',description:'独立柴犬设计：耳口爪卷尾、短绒色区、蓝围巾与电脑。参考仅提炼材质与动物比例。'}
 ];
-export function inspirationCharacter(id, previous) {
- const item=INSPIRATIONS.find(item=>item.id===id);if(!item)throw Error('这套角色不存在');
- const c=createCharacter(item.family);c.name=item.name;c.presetId='custom';c.framing='full';c.aspect='1:1';c.scale=72;
- c.accessories={head:'none',face:'none',neck:'none',prop:'none'};c.material=item.family==='grok'?'rubber':item.family==='muse'?'micro':'plush';
- if(item.family==='dots'){c.shape='sphere';c.colors.body='#3264FA';c.colors.headAccessory='#292B31';c.accessories.head='headphones';c.action='listen';}
- if(item.family==='grok'){c.shape='arch';c.colors.body='#E5EAE5';c.colors.accessory='#5A6268';c.accessories.face='round';c.accessories.prop='macbook';c.action='work';c.camera='threeQuarter';}
- if(item.family==='muse'){c.colors.skin='#B47D52';c.colors.hair='#38271F';c.colors.body=c.colors.clothing='#D4A247';c.colors.accessory='#638298';c.accessories.neck='scarf';c.accessories.prop='book';c.action='read';c.skinMaterial='fabric';c.hairMaterial='fiber';c.clothMaterial='fabricCloth';}
- if(item.family==='pets'){c.shape='shiba';c.colors.body='#DFA45F';c.colors.secondary='#F9EDD8';c.colors.accessory='#5C7FA4';c.accessories.neck='scarf';c.action='idle';}
- if(previous){c.reference=structuredClone(previous.reference);c.reference.overrides=[];c.notes=previous.notes;c.output=previous.output;}
+export function inspirationCharacter(id,previous){
+ const item=INSPIRATIONS.find(x=>x.id===id);if(!item)throw Error('这套角色不存在');
+ const c=createCharacter(item.family);
+ if(previous){c.reference=structuredClone(previous.reference);c.reference.overrides=[];c.notes=previous.notes;c.output=previous.output;c.aspect=previous.aspect;}
  return validateConfig(c);
 }
