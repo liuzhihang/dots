@@ -24,7 +24,7 @@ import {LayeredComposer} from '../dist/studio-composer.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const baselineDots=createPreset('baseline-dots');
 const originalDots=structuredClone(baselineDots);
-const project=makeProject(baselineDots);
+const project=makeProject(baselineDots,{artworkId:'historical-dots-plush-headphones-v2'});
 assert.deepEqual(project,{format:PROJECT_FORMAT,version:PROJECT_VERSION,character:baselineDots,creation:{mode:'artwork',artworkId:'historical-dots-plush-headphones-v2'}});
 assert.deepEqual(baselineDots,originalDots,'makeProject must not mutate its character input');
 assert.deepEqual(parseProject(exportProject(project)),project,'project JSON must round-trip');
@@ -69,7 +69,7 @@ const baselineByFamily={
 };
 for(const [family,character]of Object.entries(baselineByFamily)){
   const candidate=setProjectCharacter(project,character);
-  const expected=CREATION_ARTWORKS.find(item=>item.family===family)?.id??null;
+  const expected=family===project.character.family?project.creation.artworkId:CREATION_ARTWORKS.find(item=>item.family===family)?.id??null;
   assert.equal(candidate.creation.artworkId,expected,`family change must select the first registered ${family} artwork`);
   assert.equal(candidate.creation.mode,project.creation.mode,'family changes preserve the selected creation mode');
 }
@@ -78,10 +78,47 @@ assert.equal(modeProject.creation.mode,'composer');
 assert.equal(modeProject.creation.artworkId,project.creation.artworkId);
 assert.equal(project.creation.mode,'artwork','mode changes must not mutate the source project');
 assert.throws(()=>setCreationMode(project,'generated-image'),/artwork 或 composer/);
-const metaProject=setProjectCharacter(project,baselineByFamily['meta-muse']);
-assert.equal(metaProject.creation.artworkId,null,'a group without a registered full artwork remains unselected');
+const metaProject=makeProject(baselineByFamily['meta-muse'],{artworkId:null});
+assert.equal(metaProject.creation.artworkId,null,'an explicitly unselected artwork remains unselected');
 assert.match(buildCreationPrompt(metaProject),/没有登记完整作品/);
 assert.match(buildCreationPrompt(metaProject,'en'),/No complete artwork is registered/);
+
+// The five new defaults are real fixed candidates; historical IDs remain importable.
+for(const [family,character] of Object.entries(baselineByFamily)){
+ const fresh=makeProject(character),entry=resolveCreation(fresh).artwork;
+ assert.equal(entry.kind,'baseline-candidate');assert.equal(entry.family,family);assert.equal(entry.status,'unreviewed');
+ assert.equal(CREATION_ARTWORKS.filter(a=>a.family===family&&a.kind==='baseline-candidate').length,1);
+ const bytes=await readFile(path.join(root,'dist',entry.src));assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a');
+ assert.equal(bytes.readUInt32BE(16),entry.width);assert.equal(bytes.readUInt32BE(20),entry.height);assert.equal(bytes[25],6,'candidate asset retains alpha');
+}
+const dotsPack=COMPOSITION_PACKS.find(p=>p.family==='dots');
+assert.equal(inspectCompositionPack(dotsPack,baselineDots).availability,'available');
+const bareDots=setCharacterValue(baselineDots,'accessories.head','none');
+assert.deepEqual(selectCompositionLayers(dotsPack,bareDots).map(l=>l.id),['bare']);
+assert.deepEqual(selectCompositionLayers(dotsPack,baselineDots).map(l=>l.id),['headphones']);
+const listeningDots=setCharacterValue(baselineDots,'action','listen');
+assert.equal(inspectCompositionPack(dotsPack,listeningDots).availability,'available','the registered headphones listening state remains available');
+assert.deepEqual(selectCompositionLayers(dotsPack,listeningDots).map(l=>l.id),['headphones'],'listen is a static headphones-wearing semantic using the complete headphones layer');
+assert.deepEqual([...new Set(dotsPack.variants.map(variant=>variant.layerIds.join(',')))].sort(),['bare','headphones'],'the pack exposes only two mutually exclusive complete appearance recipes');
+assert.equal(inspectCompositionPack(dotsPack,setCharacterValue(baselineDots,'background','transparent')).availability,'available');
+assert.equal(inspectCompositionPack(dotsPack,changedCharacter).availability,'unsupported');
+assert.equal(inspectCompositionPack(dotsPack,setCharacterValue(baselineDots,'action','wave')).availability,'unsupported');
+const listenComposer=makeProject(listeningDots,{mode:'composer'});
+const listenComposerPrompt=buildCreationPrompt(listenComposer);
+assert.match(listenComposerPrompt,/正面静态佩戴贴合头部的耳机/);
+assert.match(listenComposerPrompt,/保持正向且不倾斜/);
+assert.doesNotMatch(listenComposerPrompt,/轻轻侧头聆听/,'the static composer overrides the generic animated listening direction');
+assert.match(listenComposerPrompt,/基准候选，尚待真实网页美术验收/);
+assert.match(buildCreationPrompt(listenComposer,'en'),/static front-facing pose/);
+assert.doesNotMatch(buildCreationPrompt(listenComposer,'en'),/tilt gently while listening/);
+assert.match(buildCreationPrompt(listenComposer,'en'),/baseline candidate pending real webpage art review/);
+const unsupportedWave=setCharacterValue(baselineDots,'action','wave');
+assert.equal(inspectCompositionPack(dotsPack,unsupportedWave).availability,'unsupported');
+const unsupportedWavePrompt=buildCreationPrompt(makeProject(unsupportedWave,{mode:'composer'}));
+assert.match(unsupportedWavePrompt,/一只手或前爪抬起自然挥动/,'unsupported composer states retain their generic prompt for ChatGPT');
+assert.doesNotMatch(unsupportedWavePrompt,/正面静态佩戴/,'pack-specific action language applies only when the composition is available');
+const artworkListen=makeProject(listeningDots,{mode:'artwork'});
+assert.match(buildCreationPrompt(artworkListen),/轻轻侧头聆听/,'artwork mode keeps the existing generic action prompt');
 
 // Every frozen schema 6–9 fixture remains importable through the project wrapper.
 const legacyDir=path.join(root,'openspec/changes/rebuild-character-system/baseline');

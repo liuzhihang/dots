@@ -11,7 +11,7 @@ const section=(start,end)=>{const a=source.indexOf(start),b=source.indexOf(end,a
 const prepareSource=section('async function preparePreview(', 'async function showExpanded(');
 const copySource=section('async function copyText(', 'async function copyAndOpen(');
 const original=new Blob(['immutable original PNG bytes'],{type:'image/png'});
-const baseline=makeProject(createPreset('baseline-dots'));
+const baseline=makeProject(createPreset('baseline-dots'),{artworkId:'historical-dots-plush-headphones-v2'});
 const deferred=()=>{let resolve;const promise=new Promise(r=>{resolve=r;});return {promise,resolve};};
 function outputContext(extra={}){
  const context=vm.createContext({project:baseline,previewRevision:1,stageView:'creation',resolveCreation,structuredClone,artworkStatus:'ready',livePreview:null,composer:null,compositionReady:false,filename:()=> 'selected-character',fetch:async()=>({ok:true,blob:async()=>original}),...extra});
@@ -27,8 +27,8 @@ response.resolve({ok:true,blob:async()=>original});
 await assert.rejects(pending,/旧预览导出已取消/,'mode/config changes must reject the old artwork download');
 context=outputContext({fetch:async()=>({ok:false})});
 await assert.rejects(context.prepare(1600),/下载失败/,'missing artwork cannot fall back to a diagnostic capture');
-context=outputContext({project:setCreationMode(baseline,'composer'),composer:{capture:()=>{throw Error('must not run');}},compositionReady:true});
-await assert.rejects(context.prepare(1600),/没有可导出的组合结果/,'empty registry must never capture diagnostic or stale canvas as a composition');
+context=outputContext({project:setCreationMode({...baseline,character:{...baseline.character,colors:{...baseline.character.colors,body:'#9944CC'}}},'composer'),composer:{capture:()=>{throw Error('must not run');}},compositionReady:true});
+await assert.rejects(context.prepare(1600),/没有可导出的组合结果/,'unsupported composition must never capture diagnostic or stale canvas as a composition');
 const frame=deferred();context=outputContext({stageView:'live',livePreview:{capture:()=>frame.promise},previewFailure:''});
 pending=context.prepare(1400);context.stageView='creation';frame.resolve(original);
 await assert.rejects(pending,/旧预览导出已取消/,'leaving diagnostics while capturing must cancel its result');

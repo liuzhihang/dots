@@ -31,8 +31,8 @@ npm run dev -- --host 127.0.0.1
 
 项目 JSON 外层以 `format: "dot-studio-project"`、文档 `version: 1` 和 `creation` 保存模式与本地作品 ID；`character` 仍使用现有 VERSION 10，包装格式不升级角色 schema。以前的纯角色 JSON 仍可导入。JSON 不携带图片字节，也不把文字或旧配置恢复副本中的路径/URL 解释为图片资源。
 
-- **Artwork（整图）**：可以原样下载标记为历史示例的固定作品；修改角色设定只更新 Prompt，原图不随参数变化。Dots、Grok Bot、人物兼容组、动物有历史样图，来源信息不证明它们是官方资产；Meta Muse 当前无整图。这些历史图不是新基准，也不算美术验收通过。
-- **Composer（组合）**：只可用随站点发布、受信任清单登记的本地分层图真实合成当前 Canvas。包只开放声明的固定视角与参数。当前组合资产清单为空，所以暂时没有任何一组能导出新的组合角色 PNG；缺少资产或设定不受支持时仍可编辑、复制 Prompt 和保存 JSON。
+- **Artwork（整图）**：可原样预览并下载所选固定 PNG；修改角色设定只更新 Prompt，静态图不会随参数变化。五个分组现在各有一只含透明背景的 imagegen 基准候选，尚未通过真实页面美术确认，也未获用户逐组批准。原站历史作品及其 `artworkId` 保留兼容；历史图和新候选都不能冒充当前设定生成的图片。
+- **Composer（组合）**：只读取随站点发布、受信任清单登记的本地图层并真实合成 Canvas。当前只有 Dots 有限支持：固定正面视角、裸形/耳机的互斥整幅角色素材切换和背景合成，可导出当前 PNG；这不是通用生图或自由旋转 3D。Grok Bot、Meta Muse、人物、动物尚无可用组合包，仍可编辑设定、复制 Prompt 和保存 JSON。
 - **结构诊断**：旧 Three.js/WebGL、CPU、多视角和动作留在明确入口，用于检查程序化模型结构与接触。诊断图不是角色成品，也不能通过美术验收。以后若交付真实 3D 成品，仍须满足原有 WebGL/CPU、多视角、动作和接触合同。
 
 整图静态样张、空组合包和结构诊断均不计作当前配置的合成 PNG。完整 Prompt、复制、TXT 下载和打开 ChatGPT 使用同一冻结角色状态；ChatGPT 中由用户自行附图和发送，本站不上传、不代发。
@@ -46,6 +46,8 @@ node scripts/verify-atelier.mjs
 node scripts/verify-character-system.mjs
 node scripts/verify-creation.mjs
 node scripts/verify-creation-ui.mjs
+node scripts/verify-family-navigation.mjs
+node scripts/verify-fullscreen-random.mjs
 openspec validate rebuild-character-system --strict
 ```
 
@@ -53,7 +55,9 @@ openspec validate rebuild-character-system --strict
 
 当前改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)。用户提供的 R01 是整体设计方向，Meta Muse 以 A02 包覆式形象校准。人物和动物仅提炼动漫截图的通用比例、材质、发束与表情语言，重新设计；截图、抠图和截图纹理不能用于最终角色资产。Dots、Grok Bot、Meta Muse 保留用户允许的原版身份与来源说明。
 
-截至 2026-10-05，用户已否决当前五组页面候选的外观，五组均未通过美术验收；暂停美术微调与扩展。现已确认整图与组合两条创作路径并存，当前整图仅有历史示例，组合资产包仍为空。查看[双模式资产合同](openspec/changes/rebuild-character-system/asset-route-review.md)与[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。
+截至 2026-10-05，用户否决的旧程序化角色外观仍未通过美术验收。已将 R01 的首页与创作工作台落到真实页面，并为五组各登记一只新的透明底基准候选；这些候选仍待真实页面美术检查和用户逐组确认。确认前不得扩展对应分组。页面仍保留五组的独立身份、无需登录的创作与导出路径；整图、组合、程序检查和美术确认的状态分别记录。来源见[角色资产来源记录](openspec/changes/refresh-studio-visual-design/references/asset-provenance.md)，验收边界见[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。
+
+三个独立后续 change 分别记录 R01 首页/工作台视觉、五家族导航和全屏随机流程：[refresh-studio-visual-design](openspec/changes/refresh-studio-visual-design/proposal.md)、[refactor-family-navigation](openspec/changes/refactor-family-navigation/proposal.md)、[add-fullscreen-randomizer](openspec/changes/add-fullscreen-randomizer/proposal.md)。五组角色和创作资产仍由[rebuild-character-system](openspec/changes/rebuild-character-system/proposal.md)管理。
 
 参考模式只保存文字要求与保留选项；本站没有图片上传、识别或图片生成 API。用户在 ChatGPT 中另行附图。组合 PNG 捕获实际 Canvas 合成结果；整图下载登记文件原样字节并标明历史状态；结构诊断取帧有独立标签。三者不得互相冒充。
 
@@ -66,6 +70,4 @@ git status --short
 
 `origin` 指向 `https://github.com/liuzhihang/dots.git`。提交时只 stage 本次明确文件，保留无关改动。`.gitignore` 排除依赖、缓存、环境变量、密钥、日志与系统文件；`dist/` 和原站 `.openai/hosting.json` 必须保留。
 
-原站地址：`https://dot.liuzhihang.chatgpt.site`。Sites 静态发布目录仍为 `dist`，原 Site identity 保存在 `.openai/hosting.json`。**Git commit/push 不会自动发布站点。** 发布需要单独明确指令，使用原 Site 保存候选版本、部署并回读真实线上页面。本次没有部署。
-
-分类导航与全屏随机交互分别由后续独立 change `refactor-family-navigation`、`add-fullscreen-randomizer` 管理，不并入本次角色基准改造。
+原站地址：`https://dot.liuzhihang.chatgpt.site`。Sites 静态发布目录仍为 `dist`，原 Site identity 保存在 `.openai/hosting.json`。**Git commit/push 与 Sites 保存版本/部署是两条独立操作**；Git push 不会自动发布站点。部署状态以原 Site 的版本与线上回读为准。

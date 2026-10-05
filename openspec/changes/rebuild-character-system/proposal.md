@@ -40,6 +40,6 @@ Dot Icon Studio v27 的实时角色仍粗糙，配饰接触不自然；旧 Muse 
 
 本 change 涉及 `dist/studio-model.js`、`dist/studio-catalog.js`、`dist/studio-art.js`、`dist/studio-inspiration.js`，以及 `src/live/avatar-body.js`、`avatar-props.js`、`surface-fur.js`、`activity-system.js`、`live-preview.js`、`software-renderer.js`。`dist/studio.js` 和 `dist/studio-random.js` 当前直接枚举同一 FAMILIES，必须避免角色注册引起无关交互改造。延续现有 Three.js、原生 JS、Vite、esbuild 与静态 `dist` 发布方式；不预先升级依赖或引入新渲染框架。
 
-现已获 apply 与私有 Git 仓库管理授权，在本机实施、检查、提交源码；网页美术和用户逐组确认分别记录，不保存 Sites 新版本、不发布。
+实施、检查、源码提交和私有 Git 推送已获授权。用户随后明确要求把完成的页面推送到原站远程查看，因此当前阶段也授权在原有 Site 保存并部署候选版本，供用户远程检查；沿用原 Site 与其现有访问策略，不创建新站。发布授权不等于网页美术验收，也不代替用户逐组确认。
 
-2026-10-05 用户确认整图＋Prompt 与组合编辑并存，优先保证整体效果。两条路径共用角色设定；本轮仅实现模式、Prompt、文档和输出逻辑，不宣称已有高质量新角色资产。完整合同见 [资产路线复审](asset-route-review.md) 与 `character-creation-modes`。
+2026-10-05 用户再次指出页面样式、交互和设计仍未完成，并授权继续实现。整体首页与工作台视觉由独立 change `refresh-studio-visual-design` 管理；五家族导航和全屏随机仍分别使用独立 change `refactor-family-navigation`、`add-fullscreen-randomizer`。这些页面和交互工作不改变五组角色基准门槛、原图来源禁用范围、逐组真实网页美术验收及明确用户确认要求。完整双模式合同见 [资产路线复审](asset-route-review.md) 与 `character-creation-modes`。

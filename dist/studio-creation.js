@@ -1,4 +1,5 @@
 import {
+  ACTIONS,
   FAMILIES,
   buildPrompt,
   resolveCharacter,
@@ -263,7 +264,7 @@ export function resolveCreation(project) {
     return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
       availability: 'available',
-      reason: `当前显示的是固定历史示例“${artwork.name}”；参数变化只更新 Prompt，下载始终是该作品原文件。`
+      reason: `当前显示的是${artwork.kind==='baseline-candidate'?'固定基准候选':'固定历史示例'}“${artwork.name}”；参数变化只更新 Prompt，下载始终是该作品原文件。`
     };
   }
   const assessment = inspectCompositionPack(pack, config);
@@ -276,25 +277,31 @@ export function resolveCreation(project) {
 
 export function buildCreationPrompt(project, lang = 'zh') {
   const current = parseProjectObject(project);
-  const prompt = buildPrompt(current.character, lang);
   const artwork = current.creation.artworkId ? getCreationArtwork(current.creation.artworkId) : null;
-  const assessment = inspectCompositionPack(getCompositionPack(current.character.family), current.character);
+  const pack = getCompositionPack(current.character.family);
+  const assessment = inspectCompositionPack(pack, current.character);
   const en = lang === 'en';
+  let prompt = buildPrompt(current.character, lang);
   let note;
   if (current.creation.mode === 'artwork') {
     if (artwork) {
       note = en
-        ? `\n\n[Studio output] The displayed artwork “${artwork.name}” is a fixed historical example. Changing character settings changes this prompt only; it does not alter the artwork. To use that example as a visual reference, attach its downloaded original yourself in ChatGPT. The site does not attach images or generate artwork.`
-        : `\n\n【工作台输出说明】当前展示的“${artwork.name}”是固定历史示例。修改角色设定只更新本 Prompt，不会改变这张图。若要把示例作为视觉参考，请自行下载原图并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
+        ? `\n\n[Studio output] The displayed artwork “${artwork.name}” is a ${artwork.kind==='baseline-candidate'?'fixed baseline candidate awaiting visual review':'fixed historical example'}. Changing character settings changes this prompt only; it does not alter the artwork. To use that example as a visual reference, attach its downloaded original yourself in ChatGPT. The site does not attach images or generate artwork.`
+        : `\n\n【工作台输出说明】当前展示的“${artwork.name}”是${artwork.kind==='baseline-candidate'?'固定基准候选，尚待网页美术验收':'固定历史示例'}。修改角色设定只更新本 Prompt，不会改变这张图。若要把示例作为视觉参考，请自行下载原图并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
     } else {
       note = en
         ? '\n\n[Studio output] No complete artwork is registered for this family. This prompt describes the character settings only; the site has not generated or exported a matching image. You can attach your own reference in ChatGPT.'
         : '\n\n【工作台输出说明】当前分组没有登记完整作品；本 Prompt 只描述角色设定，网站尚未生成或导出对应图片。需要使用自己的参考图时，请在 ChatGPT 另行附加。';
     }
   } else if (assessment.availability === 'available') {
-    note = en
-      ? '\n\n[Studio output] The supported front-view layers can be composited into a PNG from the current settings. This is a local 2D composition, not a generated image or a freely rotatable 3D model. Attach your own reference image in ChatGPT when needed.'
-      : '\n\n【工作台输出说明】当前设置可由已支持的正面分层素材合成为 PNG。这是本地 2D 合成，不是自动生成图片，也不支持自由旋转三维视角。需要参考自己的图片时，请在 ChatGPT 另行附加。';
+    const actionOverride = pack?.actionPromptOverrides?.[current.character.action]?.[en ? 'en' : 'zh'];
+    const genericAction = ACTIONS[current.character.action]?.[en ? 'english' : 'zh'];
+    if (actionOverride && genericAction && prompt.includes(genericAction)) {
+      prompt = prompt.replace(genericAction, actionOverride);
+    }
+    note = '\n\n' + (pack?.outputNotes?.[en ? 'en' : 'zh'] || (en
+      ? '[Studio output] This is a supported local 2D composition from a baseline candidate pending real webpage art review. It is not a generated image or a freely rotatable 3D model; this note does not indicate art acceptance. Attach your own reference image in ChatGPT when needed.'
+      : '【工作台输出说明】当前为由基准候选图层生成的本地 2D 合成，尚待真实网页美术验收；本说明不表示验收通过。它不是自动生成图片，也不支持自由旋转三维视角。需要参考自己的图片时，请在 ChatGPT 另行附加。'));
   } else {
     const reason = en
       ? current.character.reference.enabled
