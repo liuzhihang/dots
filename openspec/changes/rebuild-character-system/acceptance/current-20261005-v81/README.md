@@ -12,6 +12,12 @@
 
 v81 的实际交互烟测见 [smoke-v81.json](../../../../../design/reference-home-20261005/page/smoke-v81.json)：本版本执行了粉色 mini look 到工作台、PNG 控件 enabled、键盘问候和零控制台错误检查。更广的 [interactions-v80.json](../../../../../design/reference-home-20261005/page/interactions-v80.json) 仍明确绑定 v80 sourceId；v81 只统一缓存查询版本，不伪装成另一轮完整交互回归或 PNG 下载。该记录涵盖 15 项 Gallery、显式 `startLookId` 入口、减少动态、创作引导选择等未改逻辑。PNG 导出控件已启用；实际 PNG 字节只引用 v75 已验证结果，本轮没有声称 v80 或 v81 重新下载验证。
 
+## 发布记录
+
+2026-10-06 已发布到原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site)，Site version **34**，部署状态 `succeeded`，保存版本回读的源码提交为 `7cbf99ce001e2a613b661d5ed5fee141c9a9f414`。原 owner-only 访问范围保持不变。详见 [site-release.json](site-release.json) 和 [独立发布包检查](package-review.json)：101 个运行时文件与提交逐字节一致，另有官方生成的 staging manifest，共 102 个文件。上传 gzip 与服务保存的规范化 tar 分别记录哈希。
+
+发布记录在部署后单独提交，属于文档补充，不是上述站点源码提交的一部分。发布成功不替代美术确认或实体手机验收。
+
 ## 美术与用户验收边界
 
 独立 v81 页面报告 [visual-review-v81.md](../../../../../design/reference-home-20261005/visual-review-v81.md) 对当前真实页面评为 passed，未发现 P0/P1/P2；P3 观察项保留在报告中。报告逐视口查看了首页、卡片、创作区并明确了素材和导出边界；代码缓存复核见 [code-review-v81.md](../../../../../design/reference-home-20261005/code-review-v81.md)。因此任务 3.2 的内部真实页面独立评审已完成。用户对五组角色美术的明确确认尚未取得，实体手机未测试；任务 3.3 继续未完成。

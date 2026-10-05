@@ -87,6 +87,8 @@ openspec validate --archived --strict
 
 2026-10-05 v70 中间版：缓存模块统一 v70，构建与 12 项回归检查通过；五组 10 份 WebGL/CPU 矩阵共 3798 条实际记录，主预览及结构诊断在 320/390/768 px 共 30 张重新捕获的页面无横向溢出。30 份实际 PNG 下载通过尺寸、alpha、SHA-256 与对应完整 Prompt 回读检查。来源和逐项结果见[v70 冻结矩阵与页面记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/README.md)。其发布 receipt 记录 v70 已部署到 Site version 33（source commit `0cd69c96ebd02e5c61c6c9b35aab8958120256ad`、sourceId `9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826`）；这是已发布的中间版本，不代表新反馈已解决。3798 条矩阵和旧响应式截图只绑定该冻结 v70 来源，不计为后续场景变更或任一更新 runtime/source 的整体验收。角色 change 仍为 **20/36、16 项未完成**；五组都未通过美术确认，人物发丝和衣物、短绒质感及部分配饰自然性仍有美术失败项，逐组用户确认和实体手机验收仍待完成。v71 与 v72 的本地冻结证据和未完成门槛见[场景构图与验收边界](design/scene-refinement-20261005/README.md)、[v71 中间记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v71/README.md)及[本地 v72 记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v72/README.md)。
 
+2026-10-06 R01 首页版本：顶部群像和五张家族卡按设计稿制作，Muse 统一为 A02 包覆式身份；四种宽度的真实页面、内部视觉复核及代码检查已记录。cache v81 / source commit `7cbf99c` 已发布到原 Site **version 34**；完整来源、截图、发布包和部署回读见 [v81 证据与发布记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v81/README.md)。用户美术确认仍待完成。
+
 ## Git 与发布
 
 ```sh

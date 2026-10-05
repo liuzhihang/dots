@@ -1,0 +1,31 @@
+{
+  "kind": "reference-homepage-candidate-release",
+  "siteVersion": 34,
+  "sourceCommit": "7cbf99ce001e2a613b661d5ed5fee141c9a9f414",
+  "sourceId": "0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60",
+  "cacheRevision": "81",
+  "sourceInventoryFiles": 123,
+  "sourceGitManifestFiles": 181,
+  "sourceGitManifestSha256": "e71b5f9b013d9cd468cae6b02df3bb40678b8f43aad06bb21c79964ad15bf3fe",
+  "excludedUnrelatedUntrackedFiles": 606,
+  "archiveSha256": "f622617deb5e37a198566f1b02b8ae92fa7a6920ac49c72eba2cf7c3929d6287",
+  "uploadedArchiveFormat": "tar.gz",
+  "uploadedArchiveBytes": 68581472,
+  "savedNormalizedTarSha256": "62f2a3c4aa887acbe0d57f4aa6dfc934a0a0fdedda7ea468e3cc0af2d576ab34",
+  "savedNormalizedTarBytes": 70471680,
+  "savedRegularFiles": 102,
+  "versionId": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_c18c9dcce11c8191a27e3e05d5037589",
+  "deploymentId": "appgdep_6ac3d5257e4c819189055dd317b0d628",
+  "deploymentStatus": "succeeded",
+  "url": "https://dot.liuzhihang.chatgpt.site",
+  "access": {
+    "mode": "custom",
+    "owners": 1,
+    "externalVisitors": 0,
+    "groups": 0,
+    "revision": 1
+  },
+  "userArtApproved": false,
+  "physicalDeviceTested": false,
+  "note": "发布 R01 首页构图及 Muse 身份微调。内部实际页面 QA 和代码检查不代替用户角色美术确认。PNG 字节来自 v75 实测；v80 扩展交互和 v81 实际页面/烟测分别保留其真实源版本，不将旧矩阵重报为当前验收。该 receipt 在部署后单独提交，仅为文档记录，不属于上述 Site source commit。"
+}

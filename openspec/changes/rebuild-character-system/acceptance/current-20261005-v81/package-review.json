@@ -1,0 +1,94 @@
+{
+  "archive": "/tmp/dots-release-v81-site.tar.gz",
+  "archiveSha256": "f622617deb5e37a198566f1b02b8ae92fa7a6920ac49c72eba2cf7c3929d6287",
+  "compressedBytes": 68581472,
+  "sourceCommit": "7cbf99ce001e2a613b661d5ed5fee141c9a9f414",
+  "sourceId": "0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60",
+  "packageFileCount": 102,
+  "uncompressedRegularFileBytes": 70389057,
+  "regularFilesOnlyUnderDist": true,
+  "directoryEntries": 10,
+  "specialTarEntries": [],
+  "duplicatePaths": [],
+  "unsafePaths": [],
+  "distRuntimeFileCount": 101,
+  "committedDistFileCount": 101,
+  "runtimeFilesByteMatchCommittedDist": true,
+  "missingCommittedDistPaths": [],
+  "runtimeFileMismatches": [],
+  "onlyPackagePathBeyondCommittedDist": "dist/.openai/hosting.json",
+  "generatedHostingManifest": {
+    "path": "dist/.openai/hosting.json",
+    "present": true,
+    "matchesCommittedRootManifestByteForByte": true,
+    "matchesCommittedRootManifestSemantically": true,
+    "committedRootManifestKeys": [
+      "project_id",
+      "static"
+    ],
+    "classification": "official Sites packager generated staging manifest; required inside dist archive"
+  },
+  "appleDoublePaths": [],
+  "sensitiveFilenameCandidates": [],
+  "credentialPatternTextFilesScanned": 36,
+  "credentialPatternHits": [],
+  "qaSnapshot": {
+    "matchesCommittedSnapshot": true,
+    "snapshotPath": "openspec/changes/rebuild-character-system/acceptance/current-20261005-v81/source-snapshot.json",
+    "sourceId": "0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60",
+    "expectedSourceId": "0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60",
+    "cacheRevision": "81",
+    "frozen": true,
+    "userArtApproved": false
+  },
+  "finalScenes": {
+    "mappingSource": "dist/studio-scenes.js src template plus each scene id/revision",
+    "assetTemplatePresent": true,
+    "mappings": [
+      {
+        "id": "hero-left",
+        "revision": 4,
+        "path": "assets/scenes/hero-left-v4.png"
+      },
+      {
+        "id": "hero-right",
+        "revision": 4,
+        "path": "assets/scenes/hero-right-v4.png"
+      },
+      {
+        "id": "family-dots",
+        "revision": 3,
+        "path": "assets/scenes/family-dots-v3.png"
+      },
+      {
+        "id": "family-grok",
+        "revision": 3,
+        "path": "assets/scenes/family-grok-v3.png"
+      },
+      {
+        "id": "family-meta-muse",
+        "revision": 4,
+        "path": "assets/scenes/family-meta-muse-v4.png"
+      },
+      {
+        "id": "family-humans",
+        "revision": 3,
+        "path": "assets/scenes/family-humans-v3.png"
+      },
+      {
+        "id": "family-animals",
+        "revision": 3,
+        "path": "assets/scenes/family-animals-v3.png"
+      }
+    ],
+    "allPngsPresent": true,
+    "count": 7
+  },
+  "retiredHumanAsset": {
+    "tombstoneId": "historical-human-reading-v2",
+    "tombstoneHasNoImageReference": true,
+    "archivedRetiredHumanImagePaths": []
+  },
+  "blockers": [],
+  "result": "passed"
+}
