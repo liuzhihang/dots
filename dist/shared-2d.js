@@ -1,5 +1,5 @@
-import {schematicShapes} from './studio-pickers.js?v=63';
-import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=63';
+import {schematicShapes} from './studio-pickers.js?v=70';
+import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=70';
 const safe=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 export function schematicSupport(c){const unavailable=!schematicShapes[c.shape];return {unavailable,notes:[unavailable?'此人物 / 动物结构尚无对应 2D 示意；原角色完整保留，请返回 3D 查看。':'2D 结构示意使用同一份配置；材质、光照与景深请在 3D 查看。',...((c.action!=='idle'||c.accessories.prop!=='none'||c.limbs!=='none'&&c.limbs!=='auto')?['动作、道具与肢体接触仅在 3D 演示，设定已保留。']:[]),...(!['none','headphones','beret','pom','tuft'].includes(c.accessories.head)?['所选头饰仅在3D完整展示。']:[]),...(!['none','bow'].includes(c.accessories.neck)?['颈饰以简线示意，完整造型请在3D查看。']:[]),...(c.camera!=='front'?['2D 仅展示正面；保存的镜头未改变。']:[])]};}
 export function schematicSVG(c){
@@ -45,9 +45,25 @@ export function schematicSVG(c){
  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${hg}" role="img" aria-label="${safe(c.name)}的2D结构示意"><title>${safe(c.name)} · ${safe(SHAPES[c.shape].label)} · ${safe(EXPRESSIONS[c.expression].label)}</title>${bg}<g transform="translate(${w/2} ${hg/2}) scale(${size*c.bodyWidth} ${size*c.headScale}) translate(-40 -32)"><g fill="${fill}">${schematicShapes[c.shape]}</g><g>${face}${glasses}${hat}${neck}</g></g></svg>`;
 }
 export class Shared2DPreview{
- constructor(container,{onReady=()=>{}}={}){this.container=container;this.onReady=onReady;this.playing=false;}
- update(config){this.config=structuredClone(config);const support=schematicSupport(config),svg=schematicSVG(config);this.container.innerHTML=svg?`<div class="shared-schematic" data-shape="${config.shape}" data-expression="${config.expression}">${svg}</div><p class="schematic-notice">${support.notes.map(safe).join('<br>')}</p>`:`<div class="schematic-unavailable"><b>${safe(config.name)}</b><p>${support.notes.map(safe).join('<br>')}</p><a class="button primary" href="./">返回同一角色的 3D 预览</a></div>`;this.onReady();}
+ constructor(container,{onReady=()=>{}}={}){this.container=container;this.onReady=onReady;this.playing=false;this.revision=0;this.disposed=false;}
+ update(config){if(this.disposed)return;this.revision++;this.config=structuredClone(config);const support=schematicSupport(config),svg=schematicSVG(config);this.container.innerHTML=svg?`<div class="shared-schematic" data-shape="${config.shape}" data-expression="${config.expression}">${svg}</div><p class="schematic-notice">${support.notes.map(safe).join('<br>')}</p>`:`<div class="schematic-unavailable"><b>${safe(config.name)}</b><p>${support.notes.map(safe).join('<br>')}</p><a class="button primary" href="./">返回同一角色的 3D 预览</a></div>`;this.onReady();}
  setPlaying(){}
- async capture(size=1600,config=this.config){const svg=schematicSVG(config);if(!svg)throw Error('此结构暂不支持 2D 导出，请返回 3D 导出同一角色。');const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));try{const image=new Image();image.src=url;await image.decode();const [aw,ah]=config.aspect.split(':').map(Number),canvas=document.createElement('canvas');canvas.width=aw>=ah?size:Math.round(size*aw/ah);canvas.height=ah>=aw?size:Math.round(size*ah/aw);canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);return await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));}finally{URL.revokeObjectURL(url);}}
- dispose(){this.container.replaceChildren();}
+ async capture(size=1600,config=this.config){
+  if(this.disposed)throw Error('2D 预览已关闭，无法导出');
+  if(!Number.isFinite(size)||size<1||size>8192)throw Error('PNG 导出尺寸无效');
+  const snapshot=structuredClone(config),revision=this.revision;
+  const assertCurrent=()=>{if(this.disposed||revision!==this.revision)throw Error('2D 预览已更新或关闭；已取消旧版本 PNG 导出');};
+  if(!snapshot)throw Error('2D 预览尚未准备好');
+  const svg=schematicSVG(snapshot);if(!svg)throw Error('此结构暂不支持 2D 导出，请返回 3D 导出同一角色。');
+  const url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));
+  try{
+   const image=new Image();image.src=url;await image.decode();assertCurrent();
+   const [aw,ah]=snapshot.aspect.split(':').map(Number),canvas=document.createElement('canvas');canvas.width=aw>=ah?size:Math.round(size*aw/ah);canvas.height=ah>=aw?size:Math.round(size*ah/aw);
+   const context=canvas.getContext('2d');if(!context)throw Error('浏览器无法创建 PNG 导出画布');
+   context.drawImage(image,0,0,canvas.width,canvas.height);
+   const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));assertCurrent();if(!blob)throw Error('PNG 导出失败');return blob;
+  }finally{URL.revokeObjectURL(url);}
+ }
+
+ dispose(){if(this.disposed)return;this.disposed=true;this.revision++;this.container.replaceChildren();}
 }

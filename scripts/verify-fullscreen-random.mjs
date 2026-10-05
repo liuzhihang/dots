@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import vm from 'node:vm';
 import {createCharacter, FAMILIES} from '../dist/studio-model.js';
 import {makeProject} from '../dist/studio-creation.js';
 import {createFullscreenRandomizer, isSafeArtworkSource} from '../dist/studio-fullscreen-random.js';
@@ -200,7 +202,11 @@ const document = new FakeDocument();
 const oldGlobals = {document: globalThis.document, HTMLElement: globalThis.HTMLElement, matchMedia: globalThis.matchMedia};
 globalThis.document = document;
 globalThis.HTMLElement = FakeElement;
-globalThis.matchMedia = () => ({matches: true});
+let systemReducedMotion = true;
+const motionListeners = new Set();
+const mediaPreference = {get matches(){return systemReducedMotion;},addEventListener(type,listener){if(type==='change')motionListeners.add(listener);},removeEventListener(type,listener){if(type==='change')motionListeners.delete(listener);}};
+globalThis.matchMedia = () => mediaPreference;
+const changeSystemMotion = value => {systemReducedMotion=value;for(const listener of [...motionListeners])listener({matches:value});};
 const tick = () => new Promise(resolve => setTimeout(resolve, 5));
 const makeHarness = ({reference = false, randomRecipeFn, getArtwork, getReducedMotion, onCommit, randomSeed} = {}) => {
   const trigger = document.createElement('button');
@@ -337,21 +343,80 @@ try {
   assert.equal(referenced.commits.length, 0);
   referenced.randomizer.close();
 
-  let reduceMotion = false;
-  const motion = makeHarness({getReducedMotion: () => reduceMotion});
+  let appReducedMotion = false;
+  const production = await readFile(new URL('../dist/studio.js', import.meta.url), 'utf8');
+  const motionCallback = production.match(/getReducedMotion:(\(\)=>[^,]+),getArtwork:/)?.[1];
+  assert.ok(motionCallback, 'the production randomizer supplies a motion preference callback');
+  const productionGetReducedMotion = vm.runInNewContext(motionCallback, {
+    get reduceMotion() { return appReducedMotion; },
+    matchMedia: globalThis.matchMedia
+  });
+  const motion = makeHarness({getReducedMotion: () => appReducedMotion});
+  const originalMotionProject = structuredClone(motion.read().project);
   motion.randomizer.open();
-  assert.equal(motion.randomizer.dialog.classList.contains('fr-reduce-motion'), false);
+  const motionDialog = motion.randomizer.dialog;
+  assert.equal(motionDialog.classList.contains('fr-reduce-motion'), true,
+    'an app callback returning false must never override the enabled OS preference');
+  // Change OS and app preferences while the same modal remains open. Each draw
+  // must use their current values, including returning to normal motion.
+  for (const [os, app] of [[true,false],[false,false],[false,true],[true,true],[false,false],[true,false]]) {
+    systemReducedMotion = os;
+    appReducedMotion = app;
+    const reduced = os || app;
+    assert.equal(productionGetReducedMotion(), reduced,
+      `production callback respects current preferences: OS=${os}, app=${app}`);
+    motion.randomizer.spin();
+    assert.equal(motionDialog.classList.contains('fr-reduce-motion'), reduced);
+    await tick();
+    if (reduced) {
+      assert.ok(motion.randomizer.candidate, `OS=${os}, app=${app} resolves without the rolling delay`);
+      assert.equal(motion.randomizer.phase, 'ready');
+      assert.equal(motion.randomizer.timers.size, 0);
+      for (const slot of ['type', 'look', 'accessories', 'action']) {
+        assert.equal(motionDialog.querySelector(`[data-slot="${slot}"]`).classList.contains('rolling'), false);
+      }
+    } else {
+      assert.equal(motion.randomizer.candidate, null, 'normal motion retains the cancellable rolling interval');
+      motion.randomizer.cancelSpin();
+      assert.equal(motion.randomizer.phase, 'idle');
+      assert.equal(motion.randomizer.timers.size, 0, 'cancellation removes the pending normal-motion timer');
+    }
+    assert.equal(motion.randomizer.dialog, motionDialog, 'preference changes reuse the active dialog');
+    assert.equal(motion.commits.length, 0, 'preference changes and draws never commit a candidate');
+    assert.deepEqual(motion.read().project, originalMotionProject);
+  }
   motion.randomizer.spin();
-  await tick();
-  assert.equal(motion.randomizer.candidate, null, 'normal motion waits for the rolling interval');
   motion.randomizer.close();
-  motion.randomizer.open();
-  reduceMotion = true;
-  motion.randomizer.spin();
-  assert.equal(motion.randomizer.dialog.classList.contains('fr-reduce-motion'), true, 'a changed workspace preference updates the modal before spinning');
   await tick();
-  assert.ok(motion.randomizer.candidate, 'reduced motion resolves the candidate immediately');
+  assert.equal(motion.randomizer.candidate, null, 'closing before an immediate draw completes discards its candidate');
+  assert.equal(motion.randomizer.timers.size, 0);
+  assert.equal(motion.commits.length, 0);
+  motion.randomizer.open();
+  motion.randomizer.spin();
   motion.randomizer.dispose();
+  await tick();
+  assert.equal(motion.randomizer.candidate, null, 'dispose cancels an immediate reduced-motion draw');
+  assert.equal(motion.randomizer.timers.size, 0);
+  assert.equal(motion.commits.length, 0);
+
+  systemReducedMotion=false;
+  const changing = makeHarness({getReducedMotion:()=>false});
+  changing.randomizer.open();changing.randomizer.spin();
+  assert.equal(changing.randomizer.phase,'spinning');
+  assert.equal(changing.randomizer.timers.size,1);
+  changeSystemMotion(true);
+  assert.equal(changing.randomizer.phase,'ready','enabling OS reduced motion during a draw ends its delay immediately');
+  assert.equal(changing.randomizer.timers.size,0,'the old delay is cancelled');
+  assert(changing.randomizer.candidate);
+  assert.equal(changing.commits.length,0,'a preference change never applies the candidate');
+  changeSystemMotion(false);
+  changing.randomizer.spin();
+  assert.equal(changing.randomizer.phase,'spinning','normal motion can be restored for the next draw');
+  changing.randomizer.close();changeSystemMotion(true);await tick();
+  assert.equal(changing.randomizer.candidate,null,'a closed dialog cannot receive a late preference candidate');
+  const listenerCount=motionListeners.size;
+  changing.randomizer.dispose();
+  assert.equal(motionListeners.size,listenerCount-1,'dispose removes the media-query listener');
 
   const repeated = makeHarness();
   repeated.randomizer.open();

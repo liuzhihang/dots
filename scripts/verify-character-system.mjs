@@ -70,6 +70,20 @@ for(const family of families){
   assert.equal(random.shape,createCharacter(random.family).shape);
   assert.equal(random.hair,createCharacter(random.family).hair);
  }
+ const held=setCharacterValue(saved,'accessories.prop','closedBook');
+ assert.equal(held.action,'holdClosedBook','choosing a closed book must select its distinct action');
+ const requested={...saved,action:'holdClosedBook',accessories:{...saved.accessories,prop:'none'}},beforeRequested=structuredClone(requested);
+ const resolvedHeld=resolveCharacter(requested).config,heldAvatar=buildAvatarBody(resolvedHeld),heldProps=decorateAvatar(heldAvatar,resolvedHeld);
+ assert.deepEqual(requested,beforeRequested,'temporary action props never overwrite saved intent');
+ assert.equal(heldProps.prop,'closedBook');assert(heldAvatar.root.getObjectByName('prop-closed-book'),'a declared closed-book action must render an actual book');
+ assert.equal(heldAvatar.root.children.filter(part=>part.name.startsWith('posed-arm-')&&part.visible).length,2,'held book uses a single visible pair of arms/paws');
+ const bucketConfig=resolveCharacter({...saved,action:'idle',accessories:{...saved.accessories,head:'bucket',prop:'none'}}).config;
+ const bucketAvatar=buildAvatarBody(bucketConfig);decorateAvatar(bucketAvatar,bucketConfig);bucketAvatar.root.updateMatrixWorld(true);
+ const bucket=bucketAvatar.root.getObjectByName('head-bucket');
+ assert(bucket,'a supported bucket hat must create its accessory group');
+ const bucketBounds=new THREE.Box3().setFromObject(bucket);
+ assert(!bucketBounds.isEmpty(),family+' bucket hat must contain visible geometry, not an empty group');
+ assert(bucket.getObjectByName('bucket-soft-crown')&&bucket.getObjectByName('bucket-soft-brim'),family+' bucket hat must render both crown and brim');
 }
 const meta=buildAvatarBody(resolveCharacter(createCharacter('meta-muse')).config);
 assert.equal(meta.root.userData.anatomy,'human');

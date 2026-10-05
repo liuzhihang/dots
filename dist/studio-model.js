@@ -1,6 +1,6 @@
-import {getArtSample} from './studio-art.js?v=63';
-import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=63';
-import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=63';
+import {getArtSample} from './studio-art.js?v=70';
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=70';
+import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=70';
 export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
@@ -245,7 +245,7 @@ export function setCharacterValue(input,path,value){
  // Eye design, emotion and temporal action are independently saved. Sleep only closes eyes in the resolved pose.
  if(path==='pose'&&value!=='auto')c.action='idle';
  if(path==='accessories.prop'){
-  const match={macbook:'work',flowers:'flowers',wand:'magic',tea:'drink',camera:'camera',book:'read'};
+  const match={macbook:'work',flowers:'flowers',wand:'magic',tea:'drink',camera:'camera',book:'read',closedBook:'holdClosedBook'};
   c.action=match[value]||'idle';
  }
  if(path==='accessories.head'&&value!=='headphones'&&c.action==='listen')c.action='idle';

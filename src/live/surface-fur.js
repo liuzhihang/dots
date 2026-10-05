@@ -47,17 +47,22 @@ export function addFur(avatar,c,quality=1) {
     const kind=mesh.userData.surfaceMaterial||mesh.material.name||c.material,textile=kind==='knit'||kind==='fabric'||kind==='fiber',micro=kind==='micro';
     const baselineMicro=c.catalogTier==='baseline'&&micro;
     const baselineDots=c.catalogTier==='baseline'&&c.family==='dots';
-    if(!textile&&mesh.material.bumpMap)mesh.material.bumpScale=Math.min(mesh.material.bumpScale,baselineDots?.00035:micro?.0013:.0015);
-    const density=baselineDots?28000:textile?30000:micro?100000:190000;
+    if(!textile&&mesh.material.bumpMap)mesh.material.bumpScale=Math.min(mesh.material.bumpScale,baselineDots?.00008:micro?.0013:.0015);
+    // The Dots coat is fine short plush, so coverage should come from many
+    // near-subpixel fibers rather than a smaller set of long visible bristles.
+    const density=baselineDots?56000:textile?30000:micro?100000:190000;
     const count=Math.max(80,Math.round(density*quality*areas[i]/total));
     // Plush needs visible, combed pile above a fine undercoat. Tiny surface
     // noise alone reads as painted plastic at the actual workbench scale.
     // Keep a separate much shorter profile for velvet and woven cloth.
     let length=textile?(kind==='fiber'?.018:.0050):micro?.0100:.031;
-    if(baselineMicro)length=c.family==='meta-muse'?.0065:baselineDots?.036:.0080;
-    const radius=textile?.00048:micro?(baselineDots?.0016:.00062):.0011;
+    if(baselineMicro)length=c.family==='meta-muse'?.0065:baselineDots?.011:.0080;
+    const radius=textile?.00048:micro?(baselineDots?.00055:.00062):.0011;
     const geometry=pileGeometry(length,radius,baselineDots?5:3),pileColor=mesh.material.color.clone();
-    const material=new THREE.MeshStandardMaterial({color:pileColor,roughness:baselineDots?.96:1,metalness:0,side:THREE.DoubleSide});
+    // Velvet scatters along the combed pile, rather than exposing every tiny
+    // cylinder facet as a contrasting dot. Keep physical strands/silhouette.
+    if(baselineDots){const normals=geometry.attributes.normal;for(let j=0;j<normals.count;j++)normals.setXYZ(j,0,1,0);normals.needsUpdate=true;}
+    const material=new THREE.MeshStandardMaterial({color:pileColor,roughness:baselineDots?.96:1,metalness:0,side:THREE.DoubleSide,transparent:baselineDots,opacity:baselineDots?.58:1,depthWrite:!baselineDots});
     if(baselineDots){material.emissive.copy(pileColor);material.emissiveIntensity=.12;}
     material.name='fine-pile';const fur=new THREE.InstancedMesh(geometry,material,count);fur.name='surface-fibers';fur.castShadow=false;fur.receiveShadow=!baselineDots;
     fur.userData.surfaceMaterial=kind;fur.userData.fiberProfile=geometry.userData.fiberProfile;fur.userData.fiberRadius=radius;fur.userData.fiberTones=new Float32Array(count);
@@ -69,7 +74,7 @@ export function addFur(avatar,c,quality=1) {
       flow.copy(DOWN).addScaledVector(n,-DOWN.dot(n));if(flow.lengthSq()<.005)flow.set(1,0,0).addScaledVector(n,-n.x);flow.normalize();side.crossVectors(n,flow).normalize();
       const comb=Math.sin(p.x*6.7+p.y*3.1)*.16+Math.cos(p.z*5.4-p.y*2.2)*.09;
       flow.multiplyScalar(.94).addScaledVector(side,comb+(random()-.5)*(baselineDots?.30:.48)).normalize();
-      if(baselineDots)axis.copy(n).multiplyScalar(.50).addScaledVector(flow,.86).normalize();
+      if(baselineDots)axis.copy(n).multiplyScalar(.78).addScaledVector(flow,.63).normalize();
       else axis.copy(n).multiplyScalar(.63).addScaledVector(flow,.77).normalize();
       o.position.copy(p).addScaledVector(n,-length*.055);o.quaternion.setFromUnitVectors(UP,axis);spin.setFromAxisAngle(UP,random()*Math.PI*2);o.quaternion.multiply(spin);
       let localLength=baselineDots?.78+random()*.50:.64+random()*.52;

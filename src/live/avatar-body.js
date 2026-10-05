@@ -357,8 +357,11 @@ export function buildAvatarBody(input={}) {
       [0,.03,0,.55,.70,.46],
       [0,-.37,0,.43,.51,.42],
     ];
-    const hoodGeometry=geometry('meta-hood-shell-v4-recessed-port',()=>sculptedGeometry('meta-hood-shell-v4-recessed-port',hoodLobes,.20,{
-      resolution:96,ellipticalOpening:{cx:0,cy:.005,cz:.8,rx:.34,ry:.42,halfDepth:.58,edge:.022},
+    const hoodGeometry=geometry('meta-hood-shell-v5-recessed-port',()=>sculptedGeometry('meta-hood-shell-v5-recessed-port',hoodLobes,.20,{
+      // The lower-resolution contour produced visible voxel steps around this
+      // small opening at workbench scale; a denser field keeps the shell edge
+      // continuous while the face panel and fitted rim remain independent.
+      resolution:160,ellipticalOpening:{cx:0,cy:.005,cz:.8,rx:.34,ry:.42,halfDepth:.58,edge:.022},
     }));
     add(head,hoodGeometry,bodyMat,[0,0,0],[1,1,1],true,'meta-hood-shell');
 
@@ -784,7 +787,11 @@ export function buildAvatarBody(input={}) {
       }
       const group=new THREE.Group();group.name=side<0?'eye-left':'eye-right';group.position.set(x,y,surfaceZ+clearance);face.add(group);eyeGroups.push(group);group.userData.restScaleY=1;
       group.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),normal);
-      group.rotateZ(['sad','shy','worried','tearful'].includes(expression)?side*.15:expression==='angry'?-side*.24:expression==='happy'?side*.06:expression==='focused'?-side*.09:expression==='proud'?side*.09:c.eyes==='softOval'&&c.family==='dots'?.13:0);
+      const baselineGrokCapsule=baselineGrok&&c.shape==='sphere'&&c.eyes==='capsule';
+      const expressionTilt=['sad','shy','worried','tearful'].includes(expression)?side*.15:expression==='angry'?-side*.24:expression==='happy'?side*.06:expression==='focused'?-side*.09:expression==='proud'?side*.09:c.eyes==='softOval'&&c.family==='dots'?.13:0;
+      // The canonical Grok eyes share a restrained diagonal; imported arches,
+      // custom eye shapes and all legacy configurations keep their old roll.
+      group.rotateZ(baselineGrokCapsule ? .42 : expressionTilt);
       if(eyeClosed)tube(group,[[-ew*scale,0,0],[0,(expression==='laughing'?.070:expression==='delighted'?.043:-.021)*scale,.010],[ew*scale,0,0]],.013*scale,eyeMat,18,false,['delighted','laughing'].includes(expression)?'delighted-lid':'closed-lid');
       else {
         const smallWhite=material('#FCFCF5','eye'),reflection=material('#FFFFFF','eye');

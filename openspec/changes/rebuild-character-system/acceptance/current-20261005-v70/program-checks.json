@@ -1,0 +1,67 @@
+{
+  "sourceId": "9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826",
+  "build": "npm run build completed; dist/live-runtime.js frozen in source snapshot",
+  "checks": [
+    {
+      "name": "verify-studio",
+      "exitCode": 0,
+      "output": "62 baseline and legacy presets and state/Prompt/anatomy regression journeys passed."
+    },
+    {
+      "name": "verify-recreations",
+      "exitCode": 0,
+      "output": "468 recreation, provenance, migration, eye/expression and shared-schema assertions passed"
+    },
+    {
+      "name": "verify-atelier",
+      "exitCode": 0,
+      "output": "PASS type and look locks preserve custom proportions, colors and materials\nPASS component lock preserves the visible work prop and consistent reel labels\nPASS reference-preserved neck accessory survives action prop cleanup\nPASS action lock retains motion speed when type is randomized\nPASS random type retains the chosen framing and camera\nPASS look lock preserves the selected material and colors across random types\nPASS frozen v9 configurations default missing motion fields in each historical family\nAtelier verification passed: 7 checks."
+    },
+    {
+      "name": "verify-character-system",
+      "exitCode": 0,
+      "output": "57 frozen preset defaults, 24 frozen migrations, five independent baseline identities, contact bounds and 200 single-baseline random results passed. Page art acceptance remains separate."
+    },
+    {
+      "name": "verify-creation",
+      "exitCode": 0,
+      "output": "Creation project, immutable artwork, prompt, v6-v10 migration, pack capability and layered-capture readiness checks passed."
+    },
+    {
+      "name": "verify-creation-ui",
+      "exitCode": 0,
+      "output": "Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus."
+    },
+    {
+      "name": "verify-module-cache",
+      "exitCode": 0,
+      "output": "Module cache graph passed: 16 versioned modules and five own-family candidates."
+    },
+    {
+      "name": "verify-look-gallery",
+      "exitCode": 0,
+      "output": "Fifteen per-family look templates, alpha PNG dimensions, real pack guards, source details and exact prompt signatures passed."
+    },
+    {
+      "name": "verify-family-navigation",
+      "exitCode": 0,
+      "output": "Family search, family-draft navigation, safe hashes and gallery URL replacement checks passed."
+    },
+    {
+      "name": "verify-fullscreen-random",
+      "exitCode": 0,
+      "output": "Fullscreen random lifecycle checks passed: Apply-only commits, cancellation/dispose clear timers, reference family and lock rules, safe local artwork, focus and shortcut cleanup."
+    },
+    {
+      "name": "verify-preview-capture",
+      "exitCode": 0,
+      "output": "Preview capture lifecycle passed: painted frame/time, assembly, queue, update/dispose, PNG encoding and 2D snapshot guards."
+    },
+    {
+      "name": "verify-assembly-contact",
+      "exitCode": 0,
+      "output": "Production assembly geometry passed: 90 five-family held/gesture/activity frames preserve relative transforms. Pixels and art acceptance remain separate."
+    }
+  ],
+  "userArtApproved": false
+}

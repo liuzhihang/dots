@@ -36,6 +36,25 @@ function tube(parent, points, radius, mat, closed = false) {
   const path = new THREE.CatmullRomCurve3(points.map(V), closed, 'centripetal');
   return mesh(parent, new THREE.TubeGeometry(path, Math.max(20, points.length * 4), radius, 8, closed), mat);
 }
+function polylineTube(parent, points, radius, mat) {
+  const path = new THREE.CurvePath();
+  for (let i = 1; i < points.length; i++) path.add(new THREE.LineCurve3(V(points[i - 1]), V(points[i])));
+  return mesh(parent, new THREE.TubeGeometry(path, Math.max(32, points.length * 8), radius, 8, false), mat);
+}
+function ringGrid(rows, orientation = 'shell') {
+  const count = rows[0].length, position = [], index = [];
+  for (const row of rows) for (const point of row) position.push(point.x, point.y, point.z);
+  for (let row = 0; row < rows.length - 1; row++) for (let i = 0; i < count; i++) {
+    const next = (i + 1) % count, a = row * count + i, b = row * count + next,
+      c = (row + 1) * count + i, d = (row + 1) * count + next;
+    if (orientation === 'shell') index.push(a, c, b, b, c, d);
+    else index.push(a, b, c, b, d, c);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(position, 3));
+  geometry.setIndex(index); geometry.computeVertexNormals(); geometry.computeBoundingSphere();
+  return geometry;
+}
 function rod(parent, a, b, radius, mat) {
   const start = V(a), end = V(b), delta = end.clone().sub(start);
   const o = mesh(parent, new THREE.CylinderGeometry(radius, radius, delta.length(), 16), mat);
@@ -100,7 +119,7 @@ function contactSurface(avatar) {
     const point = hit.point.clone().applyMatrix4(inverse);
     normalMatrix.getNormalMatrix(inverse.clone().multiply(hit.object.matrixWorld));
     const normal = hit.face.normal.clone().applyMatrix3(normalMatrix).normalize();
-    return {point, normal};
+    return {point, normal, objectName: hit.object.name};
   }
   return {
     cast, reach,
@@ -239,7 +258,7 @@ export function decorateAvatar(avatar, c) {
     return fits.map((fit, i) => fit?.target || (hints[i] ? point(propGroup, hints[i]) : null));
   };
   let targets = null, prop = action === 'sleep' ? 'none' : (a.prop || 'none');
-  const actionProp = {work: 'macbook', flowers: 'flowers', magic: 'wand', drink: 'tea', camera: 'camera', read: 'book'};
+  const actionProp = {work: 'macbook', flowers: 'flowers', magic: 'wand', drink: 'tea', camera: 'camera', read: 'book', holdClosedBook: 'closedBook'};
   if (actionProp[action]) prop = actionProp[action];
   const front = face[2] + .16 * s;
 
@@ -307,6 +326,82 @@ export function decorateAvatar(avatar, c) {
         hat.position.set(head[0], head[1] + .23 * s, head[2]);
         const pom = ball(hat, [.255 * s, .26 * s, .255 * s], felt); pom.name = 'hat-pom';
         pom.userData.surfaceMaterial = 'micro'; avatar.surfaces?.push(pom);
+      } else if (headStyle === 'bucket') {
+        root.updateMatrixWorld(true);
+        const inverseRoot = root.matrixWorld.clone().invert(), rootQ = root.getWorldQuaternion(new THREE.Quaternion()).invert();
+        const headCenter = avatar.head.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot);
+        const headQ = rootQ.clone().multiply(avatar.head.getWorldQuaternion(new THREE.Quaternion())), inverseHeadQ = headQ.clone().invert();
+        const crownTop = V(head).sub(headCenter).applyQuaternion(inverseHeadQ).y, seatY = crownTop - .17 * s;
+        const count = 48, angles = Array.from({length: count}, (_, i) => i / count * Math.PI * 2);
+        const shellOffset = .014 * s, seatSamples = [], lastRadius = Array(count).fill(0);
+        hat.position.copy(headCenter); hat.quaternion.copy(headQ);
+        const sampleRing = localY => angles.map((angle, i) => {
+          const direction = V([Math.cos(angle), 0, Math.sin(angle)]).applyQuaternion(headQ);
+          const origin = V([0, localY, 0]).applyQuaternion(headQ).add(headCenter);
+          const hit = localY <= crownTop + .025 * s
+            ? contact.around(origin.toArray(), direction.toArray(), false, true) : null;
+          if (hit) {
+            const localSurface = hit.point.clone().sub(headCenter).applyQuaternion(inverseHeadQ);
+            const normal = hit.normal.clone().applyQuaternion(inverseHeadQ).normalize();
+            const surfacePoint = localSurface.clone(), seated = localSurface.addScaledVector(normal, shellOffset), radius = Math.hypot(seated.x, seated.z);
+            lastRadius[i] = radius;
+            if (Math.abs(localY - seatY) < .0001)
+              seatSamples.push({angle, point: surfacePoint.toArray(), normal: normal.toArray(), radius,
+                surfaceObject: hit.objectName, offset: shellOffset});
+            return seated;
+          }
+          const topFade = clamp((crownTop + .075 * s - localY) / (.13 * s), .025, 1);
+          const radius = lastRadius[i] ? lastRadius[i] * topFade : hatRadius * .72 * topFade;
+          return V([Math.cos(angle) * radius, localY, Math.sin(angle) * radius]);
+        });
+        const seat = sampleRing(seatY);
+        // A bucket hat keeps a near-vertical fabric wall above the measured
+        // head seat; only the upper crown tapers gently, never to a point.
+        const crownProfile = [[0, 1], [.035, 1], [.10, 1], [.17, .99], [.23, .94], [.27, .90]];
+        const crownRows = crownProfile.map(([height, scale], row) => row === 0 ? seat : seat.map((base, i) => {
+          const radial = Math.hypot(base.x, base.z), unit = radial > .001
+            ? [base.x / radial, base.z / radial] : [Math.cos(angles[i]), Math.sin(angles[i])];
+          return V([unit[0] * radial * scale, base.y + height * s, unit[1] * radial * scale]);
+        }));
+        const cloth = felt.clone(); cloth.side = THREE.DoubleSide; cloth.roughness = 1; cloth.metalness = 0;
+        const crown = mesh(hat, ringGrid(crownRows), cloth); crown.name = 'bucket-soft-crown';
+        crown.userData.surfaceMaterial = 'fabric';
+        crown.userData.contactFit = {kind: 'near-cylinder-cloth-crown', seatY, shellOffset,
+          height: .27 * s, topRadiusRatio: .90, samples: seatSamples};
+        // Close the broad crown with a flat fabric panel. A raised center fan
+        // reads as a knob at this scale, so every cap vertex shares one plane.
+        const topRing = crownRows.at(-1), capPositions = [], capIndices = [];
+        const topY = topRing.reduce((sum, point) => sum + point.y, 0) / count;
+        for (const point of topRing) capPositions.push(point.x, topY, point.z);
+        capPositions.push(0, topY, 0);
+        for (let i = 0; i < count; i++) capIndices.push(i, count, (i + 1) % count);
+        const capGeometry = new THREE.BufferGeometry();
+        capGeometry.setAttribute('position', new THREE.Float32BufferAttribute(capPositions, 3));
+        capGeometry.setIndex(capIndices); capGeometry.computeVertexNormals(); capGeometry.computeBoundingSphere();
+        const cap = mesh(hat, capGeometry, cloth); cap.name = 'bucket-crown-cap';
+        cap.userData.surfaceMaterial = 'fabric'; cap.userData.contactFit = {kind: 'flat-fabric-cap', radiusRatio: .90, rise: 0};
+
+        const meanSeatRadius = seat.reduce((sum, p) => sum + Math.hypot(p.x, p.z), 0) / count;
+        const brimWidth = clamp(meanSeatRadius * .40, .13 * s, .22 * s);
+        const brimRows = [0, .34, .72, 1].map((ratio, row) => seat.map((base, i) => {
+          const radial = Math.hypot(base.x, base.z), unit = radial > .001
+            ? [base.x / radial, base.z / radial] : [Math.cos(angles[i]), Math.sin(angles[i])];
+          const ripple = Math.sin(angles[i] * 5 + .35) * .009 * s * ratio ** 1.5;
+          const drop = [-.004, -.008, -.025, -.066][row] * s + ripple;
+          const r = radial + brimWidth * ratio;
+          return V([unit[0] * r, base.y + drop, unit[1] * r]);
+        }));
+        const brimMat = cloth.clone(); brimMat.color.copy(new THREE.Color(colors.headAccessory || colors.accessory || '#292A2D').lerp(new THREE.Color('#ffffff'), .055));
+        const brim = mesh(hat, ringGrid(brimRows, 'brim'), brimMat); brim.name = 'bucket-soft-brim';
+        brim.userData.surfaceMaterial = 'fabric';
+        brim.userData.contactFit = {kind: 'drooping-brim', samples: count, width: brimWidth, edgeDrop: .066 * s};
+        const undersideRows = brimRows.map(row => row.map(point => point.clone().add(V([0, -.012 * s, 0]))));
+        const underside = mesh(hat, ringGrid(undersideRows, 'brim'), brimMat); underside.name = 'bucket-brim-underside';
+        underside.userData.surfaceMaterial = 'fabric';
+        const edge = mesh(hat, ringGrid([brimRows.at(-1), undersideRows.at(-1)], 'shell'), brimMat);
+        edge.name = 'bucket-brim-edge'; edge.userData.surfaceMaterial = 'fabric';
+        hat.userData.contactFit = {kind: 'oriented-crown-seat', seatY, shellOffset,
+          orientation: headQ.toArray(), brimWidth, samples: seatSamples};
       } else if (['beanie', 'cap'].includes(headStyle)) {
         const cap = headStyle === 'cap', dome = mesh(hat,
           new THREE.SphereGeometry(radius, 36, 24, 0, Math.PI * 2, 0, Math.PI / 2), felt);
@@ -466,15 +561,65 @@ export function decorateAvatar(avatar, c) {
       if (!monocle) {
         const hit = contact.side(sign, center.y - .022 * s, head[2] + .015 * s, true);
         const sideNormal = hit?.normal || V([sign, 0, 0]);
-        const end = hit ? hit.point.addScaledVector(sideNormal, .015 * s).toArray()
+        const end = hit ? hit.point.clone().addScaledVector(sideNormal, .015 * s).toArray()
           : [head[0] + sign * headHalfWidth, center.y - .022 * s, head[2] - .02 * s];
-        const temple = [outer,
-          [outer[0] + sign * .035 * s, outer[1] - .012 * s, outer[2] - .040 * s],
-          [THREE.MathUtils.lerp(outer[0], end[0], .68), THREE.MathUtils.lerp(outer[1], end[1], .68),
-            THREE.MathUtils.lerp(outer[2], end[2], .72)], end];
-        tube(glasses, temple, .012 * s, accent);
-        glasses.userData.temples ||= [];
-        glasses.userData.temples.push({eye: i, end, normal: sideNormal.toArray()});
+        if (metaMuse && hit) {
+          const headCenter = avatar.head.getWorldPosition(new THREE.Vector3()).applyMatrix4(inverseRoot);
+          const outward = surfaceHit => {
+            const normal = surfaceHit.normal.clone();
+            const radial = V([surfaceHit.point.x - headCenter.x, 0, surfaceHit.point.z - headCenter.z]).normalize();
+            if (normal.dot(radial) < 0) normal.negate();
+            if (Math.abs(normal.dot(radial)) < .28) normal.copy(radial);
+            return normal.normalize();
+          };
+          const templeRadius = .012 * s;
+          const hoodShell = avatar.head.getObjectByName('meta-hood-shell');
+          const furLength = Number(hoodShell?.userData?.furLength) || .011;
+          const shellGap = furLength + .005 * s, centerOffset = templeRadius + shellGap;
+          const thetaStart = Math.atan2(sign * (outer[0] - headCenter.x), outer[2] - headCenter.z);
+          const thetaEnd = 116 * Math.PI / 180, wrapY = outer[1] - .018 * s, hookDepth = .070 * s;
+          const sampleAt = (theta, y) => contact.around([headCenter.x, y, headCenter.z],
+            [sign * Math.sin(theta), 0, Math.cos(theta)], false, true);
+          const points = [outer], samples = [], sampleCount = 32;
+          for (let j = 1; j <= sampleCount; j++) {
+            const t = j / sampleCount, y = THREE.MathUtils.lerp(outer[1], wrapY, t);
+            const theta = THREE.MathUtils.lerp(thetaStart, thetaEnd, t), surface = sampleAt(theta, y);
+            if (!surface) continue;
+            const normal = outward(surface), fitted = surface.point.clone().addScaledVector(normal, centerOffset);
+            points.push(fitted.toArray());
+            samples.push({section: 'wrap', t, theta, point: fitted.toArray(), surface: surface.point.toArray(), normal: normal.toArray(),
+              surfaceObject: surface.objectName, offset: centerOffset});
+          }
+          let landing = null;
+          for (let j = 1; j <= 7; j++) {
+            const t = j / 7, y = wrapY - hookDepth * t, surface = sampleAt(thetaEnd, y);
+            if (!surface) continue;
+            const normal = outward(surface), fitted = surface.point.clone().addScaledVector(normal, centerOffset);
+            points.push(fitted.toArray());
+            samples.push({section: 'hook', t, theta: thetaEnd, point: fitted.toArray(), surface: surface.point.toArray(), normal: normal.toArray(),
+              surfaceObject: surface.objectName, offset: centerOffset});
+            landing = {surface, normal, point: fitted};
+          }
+          const seatedEnd = landing?.point || V(points.at(-1)), endSurface = landing?.surface.point || hit.point, endNormal = landing?.normal || outward(hit);
+          const temple = polylineTube(glasses, points, templeRadius, accent); temple.name = 'eyewear-temple';
+          temple.userData.contactFit = {kind: 'meta-hood-side-wrap-hook', radius: templeRadius, furLength, centerOffset, scale: s,
+            shellGap, targetAngleDegrees: 116, hookDepth, wrapSampleCount: samples.filter(sample => sample.section === 'wrap').length,
+            hookSampleCount: samples.filter(sample => sample.section === 'hook').length,
+            missingSamples: sampleCount + 7 - samples.length,
+            samples: [{t: 0, point: outer, source: 'frame-outer'}, ...samples,
+              {t: 1, point: seatedEnd.toArray(), surface: endSurface.toArray(), normal: endNormal.toArray(),
+                surfaceObject: landing?.surface.objectName || hit.objectName, offset: centerOffset}]};
+          glasses.userData.temples ||= [];
+          glasses.userData.temples.push({eye: i, end: seatedEnd.toArray(), normal: endNormal.toArray(), contactFit: temple.userData.contactFit});
+        } else {
+          const temple = [outer,
+            [outer[0] + sign * .035 * s, outer[1] - .012 * s, outer[2] - .040 * s],
+            [THREE.MathUtils.lerp(outer[0], end[0], .68), THREE.MathUtils.lerp(outer[1], end[1], .68),
+              THREE.MathUtils.lerp(outer[2], end[2], .72)], end];
+          tube(glasses, temple, .012 * s, accent);
+          glasses.userData.temples ||= [];
+          glasses.userData.temples.push({eye: i, end, normal: sideNormal.toArray()});
+        }
       }
     });
     if (monocle) {
@@ -628,7 +773,8 @@ export function decorateAvatar(avatar, c) {
     for (let row = 0; row < 3; row++) box(lid, [(row ? .38 : .63) * s, .012 * s, .004 * s], ui,
       [-.11 * s, sh * .67 - row * .05 * s, -.028 * s], .003 * s);
     ball(lid, [.009 * s, .009 * s, .004 * s], dark, [0, sh - .018 * s, -.025 * s]);
-    g.updateMatrix(); targets = fitHandTargets(g, [[-.33 * s, .06 * s, .02 * s], [.33 * s, .06 * s, .02 * s]],
+    const supportX = c.family === 'grok' && c.presetId === 'baseline-grok' ? ww * .48 : .33 * s;
+    g.updateMatrix(); targets = fitHandTargets(g, [[-supportX, .06 * s, .02 * s], [supportX, .06 * s, .02 * s]],
       [[0, 1, 0], [0, 1, 0]]);
   } else if (prop === 'flowers') {
     const y = Math.min(h * .33, face[1] - .60 * s), g = part('prop-flowers', [0, y, front + .03 * s]);
@@ -643,6 +789,14 @@ export function decorateAvatar(avatar, c) {
     });
     const leaf = ball(g, [.065 * s, .16 * s, .027 * s], green, [.22 * s, .20 * s, -.02 * s]); leaf.rotation.z = -.7;
     ellipse(g, .077 * s, .075 * s, -.12 * s, .018 * s, accent);
+    // Keep every bloom below the actual eye silhouettes at the selected head
+    // and body proportions, rather than relying on a family-wide face guess.
+    root.updateMatrixWorld(true);
+    const flowerBounds = new THREE.Box3().setFromObject(g);
+    const eyeFloor = avatar.eyeGroups?.length
+      ? Math.min(...avatar.eyeGroups.map(eye => new THREE.Box3().setFromObject(eye).min.y))
+      : face[1] - .10 * s;
+    g.position.y -= Math.max(0, flowerBounds.max.y - (eyeFloor - .12 * s));
     g.updateMatrix(); targets = fitHandTargets(g, [[-.105 * s, -.035 * s, .09 * s], [.105 * s, -.035 * s, .09 * s]],
       [[0, 0, 1], [0, 0, 1]]);
   } else if (prop === 'wand') {
@@ -669,7 +823,8 @@ export function decorateAvatar(avatar, c) {
     g.updateMatrix(); targets = fitHandTargets(g, [[-.105 * s, -.025 * s, 0], [.105 * s, -.025 * s, 0]],
       [[-1, 0, 0], [1, 0, 0]]);
   } else if (prop === 'camera') {
-    const g = part('prop-camera', [0, Math.min(face[1] - .28 * s, h * .61), front + .04 * s]);
+    const desiredY = Math.min(face[1] - .28 * s, h * .61), cameraScale = .85;
+    const g = part('prop-camera', [0, desiredY, front + .04 * s]); g.scale.setScalar(cameraScale);
     box(g, [.65 * s, .36 * s, .25 * s], accent, [0, 0, 0], .06 * s);
     box(g, [.15 * s, .09 * s, .18 * s], dark, [0, .205 * s, -.015 * s], .025 * s);
     const barrel = mesh(g, new THREE.CylinderGeometry(.148 * s, .153 * s, .19 * s, 40), dark, [.03 * s, 0, .19 * s]); barrel.rotation.x = Math.PI / 2;
@@ -678,6 +833,42 @@ export function decorateAvatar(avatar, c) {
     ball(g, [.12 * s, .12 * s, .018 * s], lens, [.03 * s, 0, .287 * s]);
     box(g, [.115 * s, .061 * s, .015 * s], secondary, [-.20 * s, .105 * s, .135 * s], .014 * s);
     ball(g, [.045 * s, .02 * s, .04 * s], dark, [.22 * s, .194 * s, .015 * s]);
+    root.updateMatrixWorld(true); g.updateMatrix();
+    const boundsInRoot = object => {
+      const world = new THREE.Box3().setFromObject(object);
+      if (world.isEmpty()) return null;
+      const local = new THREE.Box3(), inverse = root.matrixWorld.clone().invert();
+      for (const x of [world.min.x, world.max.x]) for (const y of [world.min.y, world.max.y]) for (const z of [world.min.z, world.max.z])
+        local.expandByPoint(V([x, y, z]).applyMatrix4(inverse));
+      return local;
+    };
+    const mouthBounds = new THREE.Box3(), eyeBounds = new THREE.Box3(), windowBounds = new THREE.Box3();
+    root.traverse(object => {
+      if (!object.isMesh || !object.visible || !object.geometry) return;
+      const bounds = boundsInRoot(object);
+      if (!bounds) return;
+      if (/^(mouth|smile|frown|pout|tongue)$/i.test(object.name)) mouthBounds.union(bounds);
+      if (metaMuse && /^meta-face-(panel|inner-rim)$/i.test(object.name)) windowBounds.union(bounds);
+    });
+    for (const eye of avatar.eyeGroups || []) {const bounds = boundsInRoot(eye); if (bounds) eyeBounds.union(bounds);}
+    const faceFloors = [];
+    if (!mouthBounds.isEmpty()) faceFloors.push({source: 'mouth', y: mouthBounds.min.y});
+    if (!eyeBounds.isEmpty()) faceFloors.push({source: 'eyes', y: eyeBounds.min.y});
+    if (!windowBounds.isEmpty()) faceFloors.push({source: 'face-window', y: windowBounds.min.y});
+    if (!faceFloors.length && anchors.mouth) faceFloors.push({source: 'mouth-anchor', y: anchors.mouth[1] - .025 * s});
+    if (!faceFloors.length) faceFloors.push({source: 'face-anchor', y: face[1] - .16 * s});
+    // The camera action pitches the head slightly after this prop is fitted;
+    // reserve extra room for that real pose so lips and inset face windows stay clear.
+    const faceFloorY = Math.min(...faceFloors.map(item => item.y)), requiredGap = .10 * s;
+    const preFitBounds = boundsInRoot(g), topOffset = preFitBounds.max.y - g.position.y;
+    g.position.y = Math.min(g.position.y, faceFloorY - requiredGap - topOffset);
+    g.updateMatrix(); root.updateMatrixWorld(true);
+    const cameraBounds = boundsInRoot(g), cameraTop = cameraBounds.max.y;
+    g.userData.faceClearance = {cameraScale, faceFloorY, faceSources: faceFloors,
+      cameraTop, gap: faceFloorY - cameraTop, requiredGap, topOffset,
+      mouthBottomY: mouthBounds.isEmpty() ? null : mouthBounds.min.y,
+      eyeBottomY: eyeBounds.isEmpty() ? null : eyeBounds.min.y,
+      windowBottomY: windowBounds.isEmpty() ? null : windowBounds.min.y};
     g.updateMatrix(); targets = fitHandTargets(g, [[-.27 * s, 0, 0], [.27 * s, 0, 0]],
       [[-1, 0, 0], [1, 0, 0]]);
   } else if (prop === 'book') {
@@ -693,6 +884,21 @@ export function decorateAvatar(avatar, c) {
     }
     g.updateMatrix(); targets = fitHandTargets(g, [[-.42 * s, -.020 * s, .10 * s], [.42 * s, -.020 * s, .10 * s]],
       [[0, -1, 0], [0, -1, 0]]);
+  } else if (prop === 'closedBook') {
+    const g = part('prop-closed-book', [0, Math.min(h * .34, face[1] - .43 * s), front + .07 * s]);
+    const pages = material('#f5eddd'), cover = accent;
+    const coverW = .56 * s, coverH = .72 * s, pageW = .49 * s, pageH = .64 * s;
+    // One continuous page block sits between front and back covers; the small
+    // side reveal reads as page edges without suggesting an open book.
+    box(g, [pageW, pageH, .034 * s], pages, [0, 0, 0], .012 * s);
+    box(g, [coverW, coverH, .020 * s], cover, [0, 0, .027 * s], .018 * s);
+    box(g, [coverW, coverH, .020 * s], cover, [0, 0, -.027 * s], .018 * s);
+    box(g, [.046 * s, coverH, .078 * s], dark, [-.257 * s, 0, 0], .012 * s);
+    // A quiet embossed mark faces the viewer; the cover remains a single
+    // closed plane with no hinge or page-splitting geometry.
+    box(g, [.18 * s, .012 * s, .003 * s], gold, [.025 * s, .095 * s, .039 * s], .004 * s);
+    g.updateMatrix(); targets = fitHandTargets(g, [[-.27 * s, -.015 * s, 0], [.27 * s, -.015 * s, 0]],
+      [[-1, 0, 0], [1, 0, 0]]);
   }
 
   // Preserve sculpted resting limbs. Rebuild a pair only when a gesture or a
@@ -770,8 +976,9 @@ export function decorateAvatar(avatar, c) {
       palmMesh.userData.surfaceMaterial = human ? handMat.name || 'skin' : c.material || 'plush';
       palmMesh.userData.furLength = c.material === 'micro' ? .011 : .024;
       if (humanoid) {
-        palm.rotation.x = prop === 'macbook' ? Math.PI * .49 : prop === 'book' ? .65 : -.22;
+        palm.rotation.x = prop === 'macbook' ? Math.PI * .49 : prop === 'book' ? .65 : prop === 'closedBook' ? -.10 : -.22;
         if(prop==='macbook')palm.rotation.y=-.64;
+        if(prop==='closedBook')palm.rotation.y=sign<0?Math.PI/2:-Math.PI/2;
         if (human) {
           // Four short rounded fingertips and a separate thumb read as a doll hand.
           for (let j = 0; j < 4; j++) ball(palm, [.023 * s, (.065 - Math.abs(j - 1.5) * .008) * s, .025 * s], handMat,

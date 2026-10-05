@@ -58,6 +58,7 @@ class RenderWorld{
   if(context){graphicsMode='webgl';this.renderer=new THREE.WebGLRenderer({canvas,context,...options});}
   else{graphicsMode='software';this.renderer=new SoftwareRenderer(canvas);}
   canvas.dataset.renderMode=graphicsMode;
+  this.renderer.onFramePainted=frame=>{this.renderedTime=frame.animationTime;this.renderedAssembly=frame.assembly;canvas.dataset.animationTime=Number(frame.animationTime).toFixed(3);};
   this.renderer.setPixelRatio(thumbnail?1:Math.min(window.devicePixelRatio||1,1.7));
   if(this.renderer.isSoftwareRenderer){this.renderer.previewLimit=thumbnail?240:800;this.renderer.minPreviewScale=thumbnail?.62:.86;}
   this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.NeutralToneMapping;this.renderer.toneMappingExposure=1.12;
@@ -85,7 +86,7 @@ class RenderWorld{
   addFur(this.avatar,c,this.thumbnail?.23:1);this.turn.add(this.avatar.root);
   this.activity=createActivitySystem(this.avatar,c);if(this.activity)this.turn.add(this.activity.group);
   this.assemblyParts=[this.avatar.torso,this.avatar.head,...this.avatar.legs,...this.avatar.arms,...this.props.parts].filter((x,i,a)=>x&&a.indexOf(x)===i).map((object,i)=>({object,position:object.position.clone(),scale:object.scale.clone(),delay:Math.min(.38,i*.048)}));
-  this.turn.rotation.y=c.camera==='side'?Math.PI*.43:c.camera==='threeQuarter'?.33:c.pose==='side'?.30:0;
+  this.turn.rotation.y=c.camera==='side'?Math.PI/2:c.camera==='threeQuarter'?Math.PI/4:c.pose==='side'?.30:0;
   this.turn.updateMatrixWorld(true);
   const bounds=new THREE.Box3().setFromObject(this.turn);this.center=bounds.getCenter(new THREE.Vector3());this.bounds=bounds.getSize(new THREE.Vector3());
   this.scene.background=c.background==='solid'?new THREE.Color(c.colors.background):c.background==='studio'?new THREE.Color('#f8f9fc'):null;
@@ -95,6 +96,7 @@ class RenderWorld{
   if(!width||!height)return;this.frame={width,height};this.renderer.setSize(width,height,false);
   if(!this.avatar)return;
   const c=this.config,aspect=width/height,bounds=new THREE.Box3();
+  this.turn.scale.setScalar(1);this.turn.position.y=0;
   const rest=this.avatar.root.userData;this.avatar.root.position.y=rest.restY;this.avatar.root.scale.copy(rest.restScale);this.avatar.root.rotation.copy(rest.restRotation);
   for(const p of this.assemblyParts||[]){p.object.position.copy(p.position);p.object.scale.copy(p.scale);}
   this.turn.updateMatrixWorld(true);
@@ -122,6 +124,7 @@ class RenderWorld{
  render(time=0,assembly=1){
   if(this.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches)time=stillTime(this.config);
   this.lastTime=time;
+  this.turn.scale.setScalar(1);this.turn.position.y=0;
   for(const part of this.assemblyParts||[]){part.object.position.copy(part.position);part.object.scale.copy(part.scale);}
   if(!this.avatar)return;const a=this.avatar,c=this.config,rest=a.root.userData;
   a.root.position.y=rest.restY;a.root.scale.copy(rest.restScale);a.root.rotation.copy(rest.restRotation);
@@ -141,12 +144,14 @@ class RenderWorld{
   for(const eye of a.eyeGroups)eye.scale.y=(c.expression==='closed'||c.expression==='wink'||['delighted','laughing'].includes(c.expression)||c.action==='sleep'||c.action==='work')?1:blink;
   if(a.tail&&c.action!=='sleep')a.tail.rotation.y=Math.sin(time*2.5)*.035;
   this.props?.tick(time);this.activity?.tick(time);
-  if(assembly<1)for(const [i,part] of this.assemblyParts.entries()){
-   const t=clamp((assembly-part.delay)/(1-part.delay),0,1),ease=1-Math.pow(1-t,3),overshoot=Math.sin(t*Math.PI)*.045;
-   part.object.scale.multiplyScalar(Math.max(.001,ease+overshoot));
-   part.object.position.x+=(i%2?1:-1)*(1-ease)*.8;part.object.position.y+=(1-ease)*(.28+(i%3)*.12);
+  if(assembly<1){
+   // The character enters as one fitted assembly. Moving accessories and
+   // hands independently tears headbands and breaks held-object contacts.
+   const t=clamp(assembly,0,1),ease=1-Math.pow(1-t,3),overshoot=Math.sin(t*Math.PI)*.045;
+   this.turn.scale.setScalar(Math.max(.001,ease+overshoot));this.turn.position.y=(1-ease)*.16;
   }
-  this.renderer.render(this.scene,this.camera);
+  this.renderer.render(this.scene,this.camera,{animationTime:time,assembly});
+  if(!this.renderer.isSoftwareRenderer){this.renderedTime=time;this.renderedAssembly=assembly;}
  }
  dispose(){this.activity?.dispose();if(this.avatar)disposeRoot(this.avatar.root);this.environment?.dispose();this.scene.traverse(o=>{if(o.isLight)o.shadow?.dispose();});this.renderer.dispose();}
 }
@@ -160,63 +165,81 @@ export class CharacterPreview{
   this.intersection=new IntersectionObserver(([entry])=>{this.visible=entry.isIntersecting;});this.intersection.observe(container);
   this.contextLost=e=>{e.preventDefault();this.onError('实时预览暂时无法继续，请刷新页面恢复。你的配置仍然保留。');};this.canvas.addEventListener('webglcontextlost',this.contextLost);
   this.loop=now=>{
-   this.raf=requestAnimationFrame(this.loop);
+   if(this.disposed)return;this.raf=requestAnimationFrame(this.loop);
    const dt=Math.min(.15,(now-this.lastTick)/1000);this.lastTick=now;
    if(!this.visible||document.hidden||this.capturing)return;
    if(this.playing&&!this.motionPreference.matches)this.elapsed+=dt;
    const assembling=this.assemblyStart!==null,assembly=assembling?clamp((now-this.assemblyStart)/920,0,1):1;
    if((!this.playing&&!assembling)||this.world.renderer._busy||now-this.lastFrame<(this.world.renderer.isSoftwareRenderer?95:25))return;
-   this.lastFrame=now;this.world.render(this.elapsed,assembly);this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);
+   this.lastFrame=now;this.world.render(this.elapsed,assembly);this.canvas.dataset.animationTime=Number(this.world.renderedTime??0).toFixed(3);
    if(assembly>=1&&assembling)this.assemblyStart=null;
   };this.raf=requestAnimationFrame(this.loop);
  }
  update(config){
   if(this.disposed)return;
-  const key=visualKey(config);if(this.updateKey===key)return;this.updateKey=key;this.pending=config;if(this.updateFrame)return;
+  const key=visualKey(config);if(this.updateKey===key)return;this.updateKey=key;this.pending=structuredClone(config);this.revision++;if(this.updateFrame)return;
   this.updateFrame=requestAnimationFrame(async()=>{
-   this.updateFrame=0;const revision=++this.revision;this.canvas.dataset.previewStatus='loading';
+   this.updateFrame=0;if(this.disposed)return;const revision=this.revision;this.canvas.dataset.previewStatus='loading';
    try{
     const changedAction=['action','family','shape','presetId'].some(key=>this.world.config?.[key]!==this.pending[key]);
     this.world.update(this.pending);if(changedAction)this.elapsed=stillTime(this.pending);
     this.canvas.dataset.revision=String(revision);
     for(const key of ['version','rendererVersion','family','shape','material','action','camera','framing','background','headScale','bodyWidth','motionStyle'])this.canvas.dataset[key]=String(this.pending[key]);
     for(const key of ['head','face','neck','prop'])this.canvas.dataset[key+'Accessory']=this.pending.accessories[key];
-    this.resize();this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);
+    this.resize();this.canvas.dataset.animationTime=Number(this.world.renderedTime??0).toFixed(3);
     if(this.wantsAssembly&&!this.world.reducedMotion&&!this.motionPreference.matches){this.wantsAssembly=false;this.assemblyStart=performance.now();}
     await this.world.renderer.flush?.();
-    if(revision!==this.revision)return;
+    if(this.disposed||revision!==this.revision)return;
     this.canvas.dataset.renderedRevision=String(revision);this.canvas.dataset.previewStatus='ready';this.onReady();
    }catch(e){if(this.disposed||revision!==this.revision)return;this.canvas.dataset.previewStatus='failed';console.error('Character preview:',e);this.onError('这个角色暂时未能显示，请切换角色后重试。');}
   });
  }
- resize(){const c=this.pending||this.world.config;if(!c)return;const [aw,ah]=c.aspect.split(':').map(Number),rect=this.container.getBoundingClientRect(),ratio=aw/ah;let width=Math.max(1,rect.width),height=width/ratio;if(height>rect.height){height=rect.height;width=height*ratio;}this.canvas.style.width=width+'px';this.canvas.style.height=height+'px';this.world.fit(Math.round(width),Math.round(height));this.world.render(this.elapsed);}
+ resize(){if(this.disposed)return;const c=this.pending||this.world.config;if(!c)return;const [aw,ah]=c.aspect.split(':').map(Number),rect=this.container.getBoundingClientRect(),ratio=aw/ah;let width=Math.max(1,rect.width),height=width/ratio;if(height>rect.height){height=rect.height;width=height*ratio;}this.canvas.style.width=width+'px';this.canvas.style.height=height+'px';this.world.fit(Math.round(width),Math.round(height));this.world.render(this.elapsed);}
  setPlaying(value){
   this.playing=value&&!this.motionPreference.matches&&!this.world.reducedMotion;this.lastTick=performance.now();
   if(this.world.renderer.isSoftwareRenderer){this.world.renderer.staticPreview=!this.playing;this.world.renderer.previewLimit=this.playing?800:960;}
-  if(this.world.config){this.world.render(this.elapsed);this.canvas.dataset.animationTime=this.world.lastTime.toFixed(3);}
+  if(this.world.config){this.world.render(this.elapsed);this.canvas.dataset.animationTime=Number(this.world.renderedTime??0).toFixed(3);}
  }
  setReducedMotion(value){this.world.reducedMotion=!!value;if(value){this.elapsed=stillTime(this.world.config);this.setPlaying(false);}else if(this.world.config)this.resize();}
+ // Explicit frame control for the local acceptance inspector. It uses the
+ // same production scene and painted-frame contract as pause and capture.
+ async seek(time,assembly=1){
+  if(this.disposed)throw Error('预览已关闭');
+  if(!Number.isFinite(time)||time<0||!Number.isFinite(assembly)||assembly<0||assembly>1)throw Error('帧位置无效');
+  if(this.updateFrame||this.canvas.dataset.previewStatus!=='ready')throw Error('当前角色仍在载入');
+  const revision=this.revision;this.setPlaying(false);this.assemblyStart=null;this.wantsAssembly=false;
+  this.elapsed=time;this.world.render(time,assembly);await this.world.renderer.flush?.();
+  if(this.disposed||revision!==this.revision)throw Error('预览已更新或关闭');
+  this.canvas.dataset.animationTime=Number(this.world.renderedTime).toFixed(3);
+  return {time:this.world.renderedTime,assembly:this.world.renderedAssembly??1};
+ }
  assemble(){if(this.world.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches)return;this.wantsAssembly=true;if(!this.updateFrame){this.wantsAssembly=false;this.assemblyStart=performance.now();}}
 
  capture(size=1400,config=this.pending||this.world.config){
-  // An independent canvas renders the configuration at click time. Live edits,
-  // resize events and switching views cannot alter a pending PNG export.
-  const snapshot=structuredClone(config),matchesPreview=snapshot&&['action','family','shape','presetId'].every(key=>this.world.config?.[key]===snapshot[key]);
-  const reducedMotion=this.world.reducedMotion||this.motionPreference.matches,captureTime=reducedMotion||!matchesPreview?stillTime(snapshot):this.elapsed;
+  const snapshot=structuredClone(config),revision=this.revision;
+  const assertCurrent=()=>{if(this.disposed||revision!==this.revision)throw Error('预览已更新或关闭；已取消旧版本 PNG 导出');};
+  if(this.disposed)return Promise.reject(Error('预览已关闭，无法导出 PNG'));
+  if(!Number.isFinite(size)||size<1||size>8192)return Promise.reject(Error('PNG 导出尺寸无效'));
+  if(!snapshot||this.canvas.dataset.previewStatus!=='ready'||this.updateFrame||visualKey(snapshot)!==visualKey(this.world.config)||!Number.isFinite(this.world.renderedTime))return Promise.reject(Error('角色预览尚未准备好，请等待当前帧完成'));
+  // Capture the frame actually painted at click time, including assembly state.
+  // CPU elapsed time may advance while an earlier frame is still in flight.
+  const reducedMotion=this.world.reducedMotion||this.motionPreference.matches;
+  const captureTime=this.world.renderedTime,captureAssembly=this.world.renderedAssembly??1;
   const request=(this.captureQueue||Promise.resolve()).catch(()=>{}).then(async()=>{
-   let world;this.capturing=true;
+   let world;assertCurrent();this.capturing=true;
    try{
-    if(!snapshot)throw Error('角色尚未准备好');
     const [aw,ah]=snapshot.aspect.split(':').map(Number),width=aw>=ah?size:Math.round(size*aw/ah),height=ah>=aw?size:Math.round(size*ah/aw);
     const canvas=document.createElement('canvas');world=new RenderWorld(canvas);world.reducedMotion=reducedMotion;
-    world.renderer.highQuality=true;world.renderer.captureLimit=size;world.renderer.setPixelRatio(1);world.frame={width,height};world.update(snapshot);world.render(captureTime);
-    await world.renderer.flush?.();
-    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('PNG 导出失败');return blob;
+    world.renderer.highQuality=true;world.renderer.captureLimit=size;world.renderer.setPixelRatio(1);world.frame={width,height};world.update(snapshot);world.render(captureTime,captureAssembly);
+    await world.renderer.flush?.();assertCurrent();
+    const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));assertCurrent();
+    if(!blob)throw Error('PNG 导出失败');return blob;
    }finally{world?.dispose();this.capturing=false;}
   });
   this.captureQueue=request;return request;
  }
- dispose(){this.disposed=true;this.revision++;cancelAnimationFrame(this.raf);cancelAnimationFrame(this.updateFrame);this.resizeObserver.disconnect();this.intersection.disconnect();this.world.dispose();this.canvas.remove();}
+
+ dispose(){if(this.disposed)return;this.disposed=true;this.revision++;cancelAnimationFrame(this.raf);cancelAnimationFrame(this.updateFrame);this.resizeObserver.disconnect();this.intersection.disconnect();this.world.dispose();this.canvas.remove();}
 }
 
 // One shared thumbnail renderer, never one WebGL context per card.

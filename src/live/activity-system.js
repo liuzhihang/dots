@@ -53,12 +53,12 @@ export function createActivitySystem(avatar, config) {
       for (const p of particles) p.visible = false;
       for (const c of companions) c.wrapper.visible = false;
       if (active && blob && effect === 'dots' && body) {
-        const wave = Math.sin(cycle * 3.4), size = .30;
+        const wave = Math.sin(cycle * 3.4), size = .68;
         avatar.root.scale.copy(rest.restScale).multiplyScalar(size);
         avatar.root.position.y = centerY - height * size * .50 + wave * .10;
         for (const {wrapper, side} of companions) {
-          wrapper.visible = true; wrapper.scale.setScalar(size);
-          wrapper.position.set(side * .86, centerY + Math.sin(cycle * 3.4 - side * .72) * .10, 0);
+          wrapper.visible = true; wrapper.scale.setScalar(.15);
+          wrapper.position.set(side * 1.04, centerY + Math.sin(cycle * 3.4 - side * .72) * .10, 0);
           wrapper.rotation.z = Math.sin(cycle * 2.1 - side) * .05;
         }
       } else if (active && effect === 'dots') {
@@ -68,7 +68,7 @@ export function createActivitySystem(avatar, config) {
       } else if (active) {
         const orbit = effect === 'orbit', count = orbit ? 12 : 30;
         if (blob) {
-          const scale = orbit ? .57 : .47;
+          const scale = orbit ? .78 : .72;
           avatar.root.scale.copy(rest.restScale).multiplyScalar(scale);
           avatar.root.position.y = centerY - height * scale * .50;
           avatar.root.rotation.z = Math.sin(cycle * 1.7) * .035;

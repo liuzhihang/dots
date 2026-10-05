@@ -14,7 +14,7 @@ final result: passed
 
 浏览器实际运行 `http://127.0.0.1:5173/`；默认展示精细 PNG，结构诊断仍是独立入口。证据目录：
 
-`openspec/changes/refresh-studio-visual-design/references/browser-qa-20261005/`
+`openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/browser-qa-20261005/`
 
 | 页面 | 桌面证据 | 移动/平板证据 |
 | --- | --- | --- |

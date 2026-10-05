@@ -292,7 +292,7 @@ function createRasterKernel() {
       const alpha=clamp(linear[i+3],0,1),s=alpha>1e-5?1/alpha:0;
       rgba[i]=srgb[clamp(Math.round(linear[i]*s*4096),0,4096)];rgba[i+1]=srgb[clamp(Math.round(linear[i+1]*s*4096),0,4096)];rgba[i+2]=srgb[clamp(Math.round(linear[i+2]*s*4096),0,4096)];rgba[i+3]=Math.round(alpha*255);
     }
-    return {id:frame.id,version:frame.version,width,height,pixels:rgba.buffer,stats:{ms:performance.now()-start,triangles,pixels,fibers:fiberCount,calls:opaque.length+transparent.length}};
+    return {id:frame.id,version:frame.version,animationTime:frame.animationTime,assembly:frame.assembly,width,height,pixels:rgba.buffer,stats:{ms:performance.now()-start,triangles,pixels,fibers:fiberCount,calls:opaque.length+transparent.length}};
   }
   return {draw};
 }
@@ -325,9 +325,9 @@ export class SoftwareRenderer {
   setClearColor(color,alpha=1){this._clear=colorArray(color,[0,0,0]).concat(alpha);return this;}
   setClearAlpha(alpha){this._clear=this._clear||[0,0,0,0];this._clear[3]=alpha;return this;}
   clear(){this._ctx.clearRect(0,0,this.domElement.width,this.domElement.height);}
-  render(scene,camera) {
+  render(scene,camera,{animationTime,assembly=1}={}) {
     if(this._disposed)return;
-    this._pending={scene,camera,id:++this._sequence};this._lastRequest=this._pending;this._schedule();
+    this._pending={scene,camera,animationTime,assembly,id:++this._sequence};this._lastRequest=this._pending;this._schedule();
   }
   flush() {
     if(this._disposed)return Promise.reject(new Error('Renderer disposed.'));
@@ -346,10 +346,10 @@ export class SoftwareRenderer {
       else setTimeout(()=>{try{this._receive(this._kernel.draw(frame));}catch(error){this._busy=false;for(const w of this._waiters.splice(0))w.reject(error);}},0);
     } catch(error){this._busy=false;for(const w of this._waiters.splice(0))w.reject(error);console.error('SoftwareRenderer:',error);}
   }
-  _collect({scene,camera,id}) {
+  _collect({scene,camera,id,animationTime,assembly}) {
     scene.updateMatrixWorld(true);camera.updateMatrixWorld(true);
     const high=this.highQuality||Math.max(this._width,this._height)>=1000,limit=this.highQuality?1600:high?this.captureLimit:Math.round(this.previewLimit*(this.staticPreview?1:this._adaptive)),scale=Math.min(1,limit/Math.max(this.domElement.width,this.domElement.height));
-    const frame={id,version:this._version,width:Math.max(1,Math.round(this.domElement.width*scale)),height:Math.max(1,Math.round(this.domElement.height*scale)),viewProjection:multiply4(camera.projectionMatrix.elements,camera.matrixWorldInverse.elements),cameraWorld:Array.from(camera.matrixWorld.elements),background:scene.background?.isColor?colorArray(scene.background).concat(1):this._clear||[0,0,0,0],toneMapping:this.toneMapping!==0,neutral:this.toneMapping===NeutralToneMapping,exposure:this.toneMappingExposure,ambientOcclusion:this.ambientOcclusion,geometries:[],textures:[],geometryIds:[],textureIds:[],meshes:[],fibers:[],lights:[],ambient:[.022,.022,.022],sky:[.026,.026,.026],ground:[.020,.022,.025]};
+    const frame={id,animationTime,assembly,version:this._version,width:Math.max(1,Math.round(this.domElement.width*scale)),height:Math.max(1,Math.round(this.domElement.height*scale)),viewProjection:multiply4(camera.projectionMatrix.elements,camera.matrixWorldInverse.elements),cameraWorld:Array.from(camera.matrixWorld.elements),background:scene.background?.isColor?colorArray(scene.background).concat(1):this._clear||[0,0,0,0],toneMapping:this.toneMapping!==0,neutral:this.toneMapping===NeutralToneMapping,exposure:this.toneMappingExposure,ambientOcclusion:this.ambientOcclusion,geometries:[],textures:[],geometryIds:[],textureIds:[],meshes:[],fibers:[],lights:[],ambient:[.022,.022,.022],sky:[.026,.026,.026],ground:[.020,.022,.025]};
     const geometryIds=new Set(),textureIds=new Set();
     let totalFibers=0;scene.traverseVisible?.(o=>{if(o.isInstancedMesh&&o.name==='surface-fibers')totalFibers+=o.count;});
     const fiberBudget=high?Math.min(126000,frame.width*frame.height*.40):Math.min(72000,frame.width*frame.height*.26);
@@ -386,7 +386,7 @@ export class SoftwareRenderer {
           if(object.name==='surface-fibers'&&this.renderFibers) {
             object.geometry.computeBoundingBox();const length=object.geometry.boundingBox.max.y,data=object.instanceMatrix.array,colors=object.instanceColor?.array,profile=object.userData.fiberProfile||object.geometry.userData.fiberProfile||Array.from({length:5},(_,i)=>[0,length*i/4,0]),radius=object.userData.fiberRadius||object.geometry.userData.fiberRadius||.0010,segments=new Float32Array(Math.ceil(object.count/fiberStride)*20);let at=0;
             for(let i=0;i<object.count;i+=fiberStride){const j=i*16;for(const [x,y,z]of profile){segments[at++]=data[j]*x+data[j+4]*y+data[j+8]*z+data[j+12];segments[at++]=data[j+1]*x+data[j+5]*y+data[j+9]*z+data[j+13];segments[at++]=data[j+2]*x+data[j+6]*y+data[j+10]*z+data[j+14];}segments[at++]=colors?colors[i*3]:1;segments[at++]=colors?colors[i*3+1]:1;segments[at++]=colors?colors[i*3+2]:1;segments[at++]=radius*Math.hypot(data[j],data[j+1],data[j+2]);segments[at++]=object.userData.fiberTones?.[i]??1;}
-            const kind=object.userData.surfaceMaterial||object.parent?.userData.surfaceMaterial||object.parent?.material?.name;frame.fibers.push({ownerId:object.parent?.uuid+':0',matrix:Array.from(object.matrixWorld.elements),segments,color:colorArray(object.material.color),kind,sampleWeight:Math.min(2.3,Math.sqrt(fiberStride)),opacity:['fabric','knit'].includes(kind)?.90:1});
+            const kind=object.userData.surfaceMaterial||object.parent?.userData.surfaceMaterial||object.parent?.material?.name;frame.fibers.push({ownerId:object.parent?.uuid+':0',matrix:Array.from(object.matrixWorld.elements),segments,color:colorArray(object.material.color),kind,sampleWeight:Math.min(2.3,Math.sqrt(fiberStride)),opacity:(object.material.opacity??1)*(['fabric','knit'].includes(kind)?.90:1)});
           } else if(object.name!=='surface-fibers'&&object.count<=256)for(let i=0;i<object.count;i++)addMesh(object,multiply4(object.matrixWorld.elements,object.instanceMatrix.array.subarray(i*16,i*16+16)),':'+i);
         } else addMesh(object,object.matrixWorld.elements);
       }
@@ -405,6 +405,7 @@ export class SoftwareRenderer {
         const canvas=this._bufferCanvas;if(canvas.width!==result.width)canvas.width=result.width;if(canvas.height!==result.height)canvas.height=result.height;
         canvas.getContext('2d').putImageData(image,0,0);this._ctx.clearRect(0,0,this.domElement.width,this.domElement.height);this._ctx.imageSmoothingEnabled=true;this._ctx.imageSmoothingQuality='high';this._ctx.drawImage(canvas,0,0,this.domElement.width,this.domElement.height);
       }
+      this.onFramePainted?.(result);
       this._painted=Math.max(this._painted,result.id);this.info.render={...result.stats,frame:(this.info.render.frame||0)+1};
       if(this.domElement.dataset){this.domElement.dataset.renderedFrame=String(result.id);this.domElement.dataset.renderMs=result.stats.ms.toFixed(1);this.domElement.dataset.renderedWidth=String(result.width);this.domElement.dataset.renderedHeight=String(result.height);this.domElement.dataset.renderedFibers=String(result.stats.fibers||0);this.domElement.dataset.renderer='software';}
       if(Math.max(this._width,this._height)<1000){if(result.stats.ms>155)this._adaptive=Math.max(this.minPreviewScale,this._adaptive*.88);else if(result.stats.ms<65)this._adaptive=Math.min(1,this._adaptive+.025);}

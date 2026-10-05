@@ -1,6 +1,6 @@
-import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=63';
-import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=63';
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=63';
+import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=70';
+import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=70';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=70';
 
 export const FAMILY_PRESENTATION=Object.freeze([
  {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple · But Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},

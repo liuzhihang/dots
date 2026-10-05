@@ -62,21 +62,26 @@ node scripts/verify-module-cache.mjs
 node scripts/verify-look-gallery.mjs
 node scripts/verify-family-navigation.mjs
 node scripts/verify-fullscreen-random.mjs
+node scripts/verify-preview-capture.mjs
+node scripts/verify-assembly-contact.mjs
 openspec validate rebuild-character-system --strict
-openspec validate refresh-studio-visual-design --strict
-openspec validate refactor-family-navigation --strict
-openspec validate add-fullscreen-randomizer --strict
+openspec validate --all --strict
+openspec validate --archived --strict
 ```
 
 程序检查验证状态、迁移、Prompt、项目模式兼容、五组 15 项画廊素材与候选约束、可信 Canvas 配方及几何。真实页面另行检查五组身份、材质、配饰接触、动作关键帧、桌面及 320/390/768 px 视口、画廊原图下载、工作台 Canvas/alpha/导出文件、Prompt 剪贴板回读与结构诊断。组合资产缺失项明确记录为不可验收。构建成功、逻辑脚本通过、任务勾选和固定生成图都不代表网页美术通过。
 
 当前改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)。用户提供的 R01 是整体设计方向，Meta Muse 以 A02 包覆式形象校准。人物和动物仅提炼动漫截图的通用比例、材质、发束与表情语言，重新设计；截图、抠图和截图纹理不能用于最终角色资产。Dots、Grok Bot、Meta Muse 保留用户允许的身份参考，并以非官方的独立再创作标记素材来源。
 
-2026-10-05 历史记录：v30 阶段曾将 R01 首页与工作台上线，并为五组登记各一只新的透明底基准候选；当时记录的单角色家族卡、旧工作台路径和“每组一只”状态是该版本快照，不代表当前页面限制。v31 曾扩展为 12 张独立角色组成的首页、五张三角色家族卡、15 项画廊与统一工作台。本轮进一步改为有共同视线和接触的关系场景，以及五组基准的真实表情/姿态切换；内置图库仍为 15 个身份。Grok 紫色圆形与同向斜胶囊眼仍是当前基准身份方向，Meta Muse 保留包覆式形象。所有 15 张新候选仍待真实页面逐组美术验收；状态见[角色资产来源记录](openspec/changes/refresh-studio-visual-design/references/asset-provenance.md)与[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。旧程序化角色与已撤下素材的拒绝记录仍保留，不代表当前新候选已通过验收。
+2026-10-05 历史记录：v30 阶段曾将 R01 首页与工作台上线，并为五组登记各一只新的透明底基准候选；当时记录的单角色家族卡、旧工作台路径和“每组一只”状态是该版本快照，不代表当前页面限制。v31 曾扩展为 12 张独立角色组成的首页、五张三角色家族卡、15 项画廊与统一工作台。本轮进一步改为有共同视线和接触的关系场景，以及五组基准的真实表情/姿态切换；内置图库仍为 15 个身份。Grok 紫色圆形与同向斜胶囊眼仍是当前基准身份方向，Meta Muse 保留包覆式形象。所有 15 张新候选仍待真实页面逐组美术验收；状态见[角色资产来源记录](openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/asset-provenance.md)与[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。旧程序化角色与已撤下素材的拒绝记录仍保留，不代表当前新候选已通过验收。
 
-三个独立后续 change 分别记录 R01 首页/工作台视觉、五家族导航和全屏随机流程：[refresh-studio-visual-design](openspec/changes/refresh-studio-visual-design/proposal.md)、[refactor-family-navigation](openspec/changes/refactor-family-navigation/proposal.md)、[add-fullscreen-randomizer](openspec/changes/add-fullscreen-randomizer/proposal.md)。五组角色和创作资产仍由[rebuild-character-system](openspec/changes/rebuild-character-system/proposal.md)管理。
+三个独立后续 change 分别记录 R01 首页/工作台视觉、五家族导航和全屏随机流程：[refresh-studio-visual-design](openspec/changes/archive/2026-10-05-refresh-studio-visual-design/proposal.md)、[refactor-family-navigation](openspec/changes/archive/2026-10-05-refactor-family-navigation/proposal.md)、[add-fullscreen-randomizer](openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/proposal.md)。五组角色和创作资产仍由[rebuild-character-system](openspec/changes/rebuild-character-system/proposal.md)管理。
 
 参考模式只保存文字要求与保留选项；本站没有图片上传、识别或图片生成 API。用户在 ChatGPT 中另行附图。工作台 PNG 捕获实际 Canvas 合成结果；画廊下载登记文件原样字节；结构诊断取帧有独立标签。三者不得互相冒充。
+
+2026-10-05 早期 v64 本地快照：修复减少动态偏好、实际帧冻结导出/关闭取消及高级设定布局，缓存统一 v64；证据与五组待确认清单见[本轮 QA](design/followup-qa-20261005.md)。导航和随机按已验证行为同步主 specs 后归档；当时视觉 change 保留待反馈，角色 change 仍 15/36。此轮未提交、推送或发布，旧线上版本未在此轮回读。
+
+2026-10-05 最终 v70：缓存模块统一 v70，构建与 12 项回归检查通过；五组 10 份 WebGL/CPU 矩阵共 3798 条实际记录，主预览及结构诊断在 320/390/768 px 共 30 张重新捕获的页面无横向溢出。30 份实际 PNG 下载通过尺寸、alpha、SHA-256 与对应完整 Prompt 回读检查。来源和逐项结果见[最终 v70 验收记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/README.md)。角色 change 的五项矩阵执行任务完成，当前 **20/36、16 项未完成**；人物发丝和衣物、短绒质感及部分配饰自然性仍有美术失败项，五组用户确认和实体手机验收仍待反馈。此次准备向既有私有 Git 仓库及原 Site 发布当前候选，实际提交与部署以发布 receipt 为准。
 
 ## Git 与发布
 

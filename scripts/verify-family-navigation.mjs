@@ -3,10 +3,12 @@ import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {matchingFamilies} from '../dist/studio-home.js';
+import {createHomePortal, matchingFamilies} from '../dist/studio-home.js';
 import {createCharacter, createLookCharacter, FAMILIES} from '../dist/studio-model.js';
+import {BUILT_IN_LOOKS, getLookDefinition} from '../dist/studio-looks.js';
+import {PRESETS} from '../dist/studio-catalog.js';
 import {exportProject, makeProject, parseProject, setProjectCharacter} from '../dist/studio-creation.js';
-import {getFamilyArtwork} from '../dist/studio-creation-assets.js';
+import {getBuiltInLooks, getCreationArtwork, getFamilyArtwork} from '../dist/studio-creation-assets.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const familyIds = ['dots', 'grok', 'meta-muse', 'humans', 'animals'];
@@ -167,4 +169,55 @@ assert.deepEqual(JSON.parse(JSON.stringify(routeContext.routeFromHash())),{page:
 routeContext.navigate=(route,options)=>{routeContext.navigated={route,options};};
 routeContext.openGallery('animals',{replace:true,focus:false});
 assert.deepEqual(JSON.parse(JSON.stringify(routeContext.navigated)),{route:{page:'looks',family:'animals'},options:{replace:true,focus:false}},'openGallery forwards replacement options to preserve filter URLs without extra history entries');
+// Exercise actual home/gallery event listeners, then the production explicit
+// customization helper. Browsing is not a selection or a project commit.
+class PortalNode {
+ constructor(id=''){this.id=id;this.dataset={};this.attributes={};this.listeners={};this.hidden=false;this.value='';this.textContent='';this.nodes=[];this.scrollLeft=0;}
+ set innerHTML(value){this.html=value;this.nodes=[...value.matchAll(/<(button|article)\b([^>]*)>/g)].map(match=>{const node=new PortalNode();node.tag=match[1];for(const attr of match[2].matchAll(/([\w-]+)="([^"]*)"/g)){node.attributes[attr[1]]=attr[2];if(attr[1].startsWith('data-'))node.dataset[attr[1].slice(5).replace(/-([a-z])/g,(_,v)=>v.toUpperCase())]=attr[2];}return node;});}
+ get innerHTML(){return this.html;}
+ matches(selector){if(selector==='button')return this.tag==='button';const a=selector.match(/^\[([\w-]+)(?:="([^"]*)")?\]$/);return a&&Object.hasOwn(this.attributes,a[1])&&(a[2]===undefined||this.attributes[a[1]]===a[2]);}
+ closest(selector){return this.matches(selector)?this:null;}
+ querySelectorAll(selector){return this.nodes.filter(node=>node.matches(selector));}
+ querySelector(selector){if(selector==='img')return {complete:true,naturalWidth:16,addEventListener(){}};return this.querySelectorAll(selector)[0]||null;}
+ addEventListener(type,fn){this.listeners[type]=fn;}
+ emit(type,target=this){this.listeners[type]?.({target});}
+ setAttribute(key,value){this.attributes[key]=String(value);}
+ getAttribute(key){return this.attributes[key]??null;}
+ getBoundingClientRect(){return {left:0,right:100};}
+ scrollTo({left}){this.scrollLeft=left;}
+ focus(){portalDocument.activeElement=this;}
+}
+const portalNodes=new Map(),portalDocument={body:{dataset:{}},getElementById(id){if(!portalNodes.has(id))portalNodes.set(id,new PortalNode(id));return portalNodes.get(id);},querySelectorAll(selector){return [...portalNodes.values()].flatMap(node=>node.querySelectorAll(selector));}};
+const savedPortalGlobals={document:globalThis.document,window:globalThis.window};globalThis.document=portalDocument;globalThis.window={addEventListener(){}};
+try{
+ const selected=structuredClone(initialProject);selected.character.background='solid';selected.character.colors.background='#242036';
+ const navState={project:selected,state:selected.character,history:[],drafts:new Map([['dots',structuredClone(selected)]]),route:{page:'home'},commits:0};
+ let portal;
+ const navigate=(route)=>{navState.route=route;if(route.page==='looks')portal.showGallery(route.family);else if(route.page==='workspace')portal.setPageWorkspace();else portal.showHome();};
+ const selectContext=vm.createContext({state:navState.state,project:navState.project,getCreationArtwork,getBuiltInLooks,getLookDefinition,BUILT_IN_LOOKS,PRESETS,FAMILIES,createLookCharacter,makeProject,structuredClone,navigate,toast(){},commit(next){navState.history.push(structuredClone(navState.project));navState.project=parseProject(next);navState.state=navState.project.character;selectContext.project=navState.project;selectContext.state=navState.state;navState.drafts.set(navState.state.family,structuredClone(navState.project));navState.commits++;}});
+ const workbenchSource=source.slice(source.indexOf('function createWorkbenchLook('),source.indexOf('function selectDotsRecipe('));
+ const startSource=source.slice(source.indexOf('function startLook('),source.indexOf('function startFromCurrentArtwork('));
+ vm.runInContext(workbenchSource+startSource+'\nglobalThis.startLook=startLook;',selectContext);
+ portal=createHomePortal({openWorkspace:()=>navigate({page:'workspace'}),openGallery:(family)=>navigate({page:'looks',family}),onStartLook:selectContext.startLook,onViewLook(){},onCopyLook(){},onDownloadLook(){},onReference(){}});
+ const original=JSON.stringify(navState.project),originalDraft=JSON.stringify(navState.drafts.get('dots'));
+ const assertBrowse=()=>{assert.equal(navState.commits,0);assert.equal(navState.history.length,0);assert.equal(JSON.stringify(navState.project),original);assert.equal(JSON.stringify(navState.drafts.get('dots')),originalDraft);};
+ const familyCards=portalDocument.getElementById('familyCards'),search=portalDocument.getElementById('familySearch'),cards=portalDocument.getElementById('lookCards'),filters=portalDocument.getElementById('lookFilters');
+ for(const family of familyIds){
+  portal.showHome();familyCards.emit('click',familyCards.querySelector(`[data-family-gallery="${family}"]`));
+  assert.deepEqual(navState.route,{page:'looks',family});assert.equal(cards.querySelectorAll('[data-look-card]').length,3);assertBrowse();
+ }
+ portal.showGallery('meta-muse');
+ const museCandidate=getBuiltInLooks('meta-muse').find(item=>item.kind!=='baseline-candidate');assert(museCandidate);
+ search.value=museCandidate.id;search.emit('input');assert.equal(cards.querySelectorAll('[data-look-card]').length,1,'gallery-only candidates are searchable');assertBrowse();
+ search.value='unregistered-material';search.emit('input');assert.equal(portalDocument.getElementById('lookEmpty').hidden,false);assertBrowse();
+ portalDocument.getElementById('clearSearch').emit('click');assert.equal(cards.querySelectorAll('[data-look-card]').length,3,'clearing retains the active Muse family');assert.equal(filters.querySelector('[aria-pressed="true"]').dataset.lookFilter,'meta-muse');assertBrowse();
+ filters.emit('click',filters.querySelector('[data-look-filter="grok"]'));assert.equal(cards.querySelectorAll('[data-look-card]').length,3);assert.equal(navState.route.family,'grok');assert.equal(portalDocument.activeElement.dataset.lookFilter,'grok','filter rerender retains keyboard focus');assertBrowse();
+ portal.showGallery('all');assert.equal(cards.querySelectorAll('[data-look-card]').length,15,'only the bounded 15 registered looks are browsable');
+ search.value='historical-human-reading-v2';search.emit('input');assert.equal(cards.querySelectorAll('[data-look-card]').length,0);assertBrowse();
+ portalDocument.getElementById('clearSearch').emit('click');portal.showGallery('meta-muse');
+ cards.emit('click',cards.querySelector(`[data-start-look="${museCandidate.id}"]`));
+ assert.equal(navState.commits,1,'only explicit customization creates a project commit');assert.equal(navState.route.page,'workspace');assert.equal(navState.state.family,'meta-muse');assert.equal(navState.project.creation.artworkId,museCandidate.id);assert.equal(navState.project.creation.mode,'composer');
+ assert.equal(navState.state.name,selected.character.name);assert.equal(navState.state.notes,selected.character.notes);assert.deepEqual(navState.state.reference,selected.character.reference);assert.equal(navState.state.background,'solid');assert.equal(navState.state.colors.background,'#242036');assert.equal(navState.state.version,10);assert.equal(navState.project.version,1);assert.equal(JSON.stringify(navState.drafts.get('dots')),originalDraft);
+ assert.equal(JSON.stringify(navState.history[0]),original,'explicit selection is undoable to the full original project');
+}finally{for(const [key,value]of Object.entries(savedPortalGlobals))if(value===undefined)delete globalThis[key];else globalThis[key]=value;}
 console.log('Family search, family-draft navigation, safe hashes and gallery URL replacement checks passed.');

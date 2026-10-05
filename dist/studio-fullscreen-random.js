@@ -1,6 +1,6 @@
-import {FAMILIES, SHAPES, createCharacter, resolveCharacter} from './studio-model.js?v=63';
-import {setProjectCharacter} from './studio-creation.js?v=63';
-import {RANDOM_SLOTS, SLOT_NAMES, describeRecipe, randomRecipe} from './studio-random.js?v=63';
+import {FAMILIES, SHAPES, createCharacter, resolveCharacter} from './studio-model.js?v=70';
+import {setProjectCharacter} from './studio-creation.js?v=70';
+import {RANDOM_SLOTS, SLOT_NAMES, describeRecipe, randomRecipe} from './studio-random.js?v=70';
 
 const FAMILY_IDS = Object.keys(FAMILIES);
 const clone = value => structuredClone(value);
@@ -106,6 +106,14 @@ class FullscreenRandomizer {
     this.artworkTurn = 0;
     this.opened = false;
     this.disposed = false;
+    this.motionPreference = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');
+    this.onMotionChange = () => {
+      if (this.dialog?.open && this.syncReducedMotion() && this.phase === 'spinning') {
+        this.clearTimers();
+        this.finishSpin?.();
+      }
+    };
+    this.motionPreference?.addEventListener?.('change', this.onMotionChange);
     this.onClick = event => this.handleClick(event);
     this.onKeydown = event => this.handleKeydown(event);
     this.shortcutsAttached = false;
@@ -300,6 +308,8 @@ class FullscreenRandomizer {
     this.candidate = null;
     this.phase = 'idle';
     this.disposed = true;
+    this.motionPreference?.removeEventListener?.('change', this.onMotionChange);
+    this.finishSpin = null;
     this.returnFocus = null;
     if (this.dialog) {
       this.dialog.removeEventListener('click', this.onClick);
@@ -412,7 +422,7 @@ class FullscreenRandomizer {
 
   syncReducedMotion() {
     let reduce = false;
-    try { reduce = Boolean(this.getReducedMotion()); }
+    try { reduce = osPrefersReducedMotion() || Boolean(this.getReducedMotion()); }
     catch { reduce = osPrefersReducedMotion(); }
     this.dialog.classList.toggle('fr-reduce-motion', reduce);
     return reduce;
@@ -495,8 +505,9 @@ class FullscreenRandomizer {
       return;
     }
     const duration = this.syncReducedMotion() ? 0 : 760;
-    this.schedule(() => {
-      if (!this.dialog.open || token !== this.turn || this.phase !== 'spinning') return;
+    this.finishSpin = () => {
+      if (!this.dialog?.open || token !== this.turn || this.phase !== 'spinning') return;
+      this.finishSpin = null;
       this.candidate = {config: clone(recipe)};
       this.phase = 'ready';
       this.updateSlotState(this.candidate.config);
@@ -504,12 +515,14 @@ class FullscreenRandomizer {
       const family = resolveCharacter(recipe).config.family;
       this.setStatus(`${FAMILIES[family].short} 的配方已准备好。喜欢的话，应用后就能复制 Prompt 创作。`);
       this.updateArtwork(family);
-    }, duration);
+    };
+    this.schedule(this.finishSpin, duration);
   }
 
   cancelSpin(showMessage = true) {
     if (this.phase !== 'spinning') return;
     this.turn++;
+    this.finishSpin = null;
     this.clearTimers();
     this.phase = 'idle';
     this.candidate = null;
