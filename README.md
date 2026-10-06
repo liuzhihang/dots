@@ -6,9 +6,9 @@
 
 ## 当前页面与创作路径
 
-本轮首页及五张家族卡以 R01 为单一视觉目标：卡片按参考图的主体大小/位置、前后层级、底色、材质、道具与标题/说明/插画/英文双行短句排布；非 Muse 场景忠实复原原型，只有 Meta Muse 做 A02 身份微调。顶部左侧按 R01 呈现紫色耳机 Dot、挥手栗发白衣男孩、小粉三角、绿云和蓝水滴；右侧呈现棕发丸子头、黄色衣着、眨眼作 V 手势的女孩、单只奶油 Muse、橙柴犬、橙豆形与青绿方形。Hero Muse 不持星、不带植物；星星与 sage 植物仅用于单只 Muse 家族卡。Humans 卡三人依次为左侧黑发深色 hoodie 男孩、中间棕发丸子头黄色衣着眨眼 V 手势女孩、右侧金发圆框眼镜灰外套白上衣角色。家族卡当前素材数为 Dots 4、Grok Bot 6、Meta Muse 1、人物 3、动物 5；这是本轮场景计数，不是未来图库/插画人数限制。首页卡片不显示“3 款候选”，画廊仍准确保留五组各三只、共 15 个已登记图库身份。Humans/Animals 卡标题按 R01 用英文，导航仍为中文“人物/动物”；Grok 文案保持有趣的 R01 语气。详情由 [refine-family-scene-composition](openspec/changes/refine-family-scene-composition/proposal.md) 跟踪。
+本轮首页及五张家族卡以 R01 为单一视觉目标：卡片按参考图的主体大小/位置、前后层级、底色、材质、道具与标题/说明/插画/英文双行短句排布；非 Muse 场景忠实复原原型，只有 Meta Muse 做 A02 身份微调。顶部左侧按 R01 呈现紫色耳机 Dot、挥手栗发白衣男孩、小粉三角、绿云和蓝水滴；右侧呈现棕发丸子头、黄色衣着、眨眼作 V 手势的女孩、单只奶油 Muse、橙柴犬、橙豆形与青绿方形。Hero Muse 不持星、不带植物；星星与 sage 植物仅用于单只 Muse 家族卡。Humans 卡三人依次为左侧黑发深色 hoodie 男孩、中间棕发丸子头黄色衣着眨眼 V 手势女孩、右侧金发圆框眼镜灰外套白上衣角色。家族卡当前素材数为 Dots 4、Grok Bot 6、Meta Muse 1、人物 3、动物 5；这是本轮场景计数，不是未来图库/插画人数限制。首页卡片不显示“3 款候选”，画廊仍准确保留五组各三只、共 15 个已登记图库身份。Humans/Animals 卡标题按 R01 用英文，导航仍为中文“人物/动物”；Grok 文案保持有趣的 R01 语气。详情由 [refine-family-scene-composition](openspec/changes/archive/2026-10-06-refine-family-scene-composition/proposal.md) 跟踪。
 
-R01 图片可作为 ImageGen 构图/服装/材质风格参考，但最终网页必须使用单独制作的场景图，不直接使用整页截图，也不从网页或动漫截图裁切、抠图或提取像素；独立新插画可按 R01 构图在页面中做有意艺术裁切。人物和动物要保持原创，不能复制用户的动漫截图或可辨认的完整动漫角色。Scene-only 展示与 Gallery/工作台身份分离；R01 紫色缎面 Dot 的白色斜胶囊眼不代表替换现有 15 个可编辑 Gallery 素材。v72 与 v81 页面截图和 review 都是历史证据；v81 家族卡已被用户明确否定。新的本地 v83 冻结来源 `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451` 绑定 128 个路径，四种首页视口和三种卡片视口的内部独立复核通过；这不等于用户美术确认。本轮仅一张莓粉眼镜 Dots PNG 候选完成字节检查，不代表五组 PNG 全量验证。当前证据与边界见 [v83 纠偏记录](design/reference-home-correction-20261006/README.md)、[v83 页面验收](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md) 和 [当前设计 QA](design-qa.md)。本轮已发布到原 Site version 35；用户艺术确认和实体手机验收仍 pending。
+R01 图片可作为 ImageGen 构图/服装/材质风格参考，但最终网页必须使用单独制作的场景图，不直接使用整页截图，也不从网页或动漫截图裁切、抠图或提取像素；独立新插画可按 R01 构图在页面中做有意艺术裁切。人物和动物要保持原创，不能复制用户的动漫截图或可辨认的完整动漫角色。Scene-only 展示与 Gallery/工作台身份分离；R01 紫色缎面 Dot 的白色斜胶囊眼不代表替换现有 15 个可编辑 Gallery 素材。v72 与 v81 页面截图和 review 都是历史证据；v81 家族卡已被用户明确否定。新的本地 v83 冻结来源 `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451` 绑定 128 个路径，四种首页视口和三种卡片视口的内部独立复核通过；这不等于用户美术确认。本轮仅一张莓粉眼镜 Dots PNG 候选完成字节检查，不代表五组 PNG 全量验证。当前证据与边界见 [v83 纠偏记录](design/reference-home-correction-20261006/README.md)、[v83 页面验收](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md) 和 [当前设计 QA](design-qa.md)。本轮已发布到原 Site version 35；2026-10-06 用户明确完成当前首页顶部与五组家族场景的人工美术确认，见 [确认记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。实体手机验收及原 3D 角色工程仍未完成。
 
 独立的“内置形象”页面提供 15 张完整搭配图，支持按家族筛选、搜索、放大查看、复制对应 Prompt、下载原图，以及用单一“用这个形象定制”入口把角色带入工作台。首页家族卡进入对应家族筛选后的画廊；顶部主导航分别通往首页、内置形象和工作台。
 
@@ -75,7 +75,9 @@ openspec validate --archived --strict
 
 程序检查验证状态、迁移、Prompt、项目模式兼容、五组 15 项画廊素材与候选约束、可信 Canvas 配方及几何。真实页面另行检查五组身份、材质、配饰接触、动作关键帧、桌面及 320/390/768 px 视口、画廊原图下载、工作台 Canvas/alpha/导出文件、Prompt 剪贴板回读与结构诊断。组合资产缺失项明确记录为不可验收。构建成功、逻辑脚本通过、任务勾选和固定生成图都不代表网页美术通过。
 
-当前角色资产改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)，首页与家族卡场景见 [`refine-family-scene-composition`](openspec/changes/refine-family-scene-composition/)。Meta Muse 以 A02 包覆式身份校准；本轮人物与动物保持原创，不使用动漫截图像素、裁片、贴图或完整可辨认角色。用户允许 R01 作为 ImageGen 的构图/服装风格参考，页面最终使用单独的新插画；Dots、Grok Bot 和 Meta Muse 的软件内置身份可按允许范围保留并记录来源。
+项目协作约定见 [AGENTS.md](AGENTS.md)，产品设计合同见 [DESIGN.md](DESIGN.md)，逐项设计检查见 [design rules](.agents/rules/design.md)。
+
+当前角色资产改造见 [`rebuild-character-system`](openspec/changes/rebuild-character-system/)，首页与家族卡场景见 [`refine-family-scene-composition`](openspec/changes/archive/2026-10-06-refine-family-scene-composition/)。Meta Muse 以 A02 包覆式身份校准；本轮人物与动物保持原创，不使用动漫截图像素、裁片、贴图或完整可辨认角色。用户允许 R01 作为 ImageGen 的构图/服装风格参考，页面最终使用单独的新插画；Dots、Grok Bot 和 Meta Muse 的软件内置身份可按允许范围保留并记录来源。
 
 2026-10-05 历史记录：v30 阶段曾将 R01 首页与工作台上线，并为五组登记各一只新的透明底基准候选；当时记录的单角色家族卡、旧工作台路径和“每组一只”状态是该版本快照，不代表当前页面限制。v31 曾扩展为 12 张独立角色组成的首页、五张三角色家族卡、15 项画廊与统一工作台。本轮进一步改为有共同视线和接触的关系场景，以及五组基准的真实表情/姿态切换；内置图库仍为 15 个身份。Grok 紫色圆形与同向斜胶囊眼仍是当前基准身份方向，Meta Muse 保留包覆式形象。所有 15 张新候选仍待真实页面逐组美术验收；状态见[角色资产来源记录](openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/asset-provenance.md)与[逐组验收记录](openspec/changes/rebuild-character-system/acceptance/README.md)。旧程序化角色与已撤下素材的拒绝记录仍保留，不代表当前新候选已通过验收。
 
@@ -89,7 +91,7 @@ openspec validate --archived --strict
 
 2026-10-06 的 v81 曾作为中间版本发布到原 Site **version 34**（source commit `7cbf99c`）；用户随后明确否定其家族卡构图，因此该发布、截图、内部 review 和代码检查均只作历史记录，不代表当前实现或验收通过。版本来源与部署回读见 [v81 历史记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v81/README.md)，否定原因见 [基线审查](design/reference-home-correction-20261006/baseline-review.md) 和 [当前设计 QA](design-qa.md)。
 
-当前 v83 已冻结并完成 source 绑定的内部页面复核，单张莓粉眼镜 Dots PNG 已核验真实字节；已部署到原 Site version 35（source commit `0411719`）。详见 [v83 页面验收](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md)。
+当前 v83 已冻结并完成 source 绑定的内部页面复核，单张莓粉眼镜 Dots PNG 已核验真实字节；已部署到原 Site version 35（source commit `0411719`）。详见 [v83 页面验收](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md)。2026-10-06 用户随后确认了该版本首页场景美术，`refine-family-scene-composition` 已完成 15/15 并归档；`rebuild-character-system` 的原 3D 接触、三视角精细基准与对应逐组确认仍为 20/36，保留活动。
 
 ## Git 与发布
 
@@ -102,4 +104,4 @@ git status --short
 
 原站地址：`https://dot.liuzhihang.chatgpt.site`。Sites 静态发布目录仍为 `dist`，原 Site identity 保存在 `.openai/hosting.json`。**Git commit/push 与 Sites 保存版本/部署是两条独立操作**；Git push 不会自动发布站点。部署状态以原 Site 的版本与线上回读为准。
 
-2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读，不声称线上浏览器、实体手机或用户美术验收通过。
+2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读；用户随后对当前首页场景的明确美术确认独立记录在 [确认记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json) 中，实体手机仍没有验收证据。

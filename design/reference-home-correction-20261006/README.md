@@ -2,9 +2,9 @@
 
 ## 当前状态
 
-本地 v83 候选已冻结并通过 source 绑定的内部页面视觉复核；用户艺术确认未取得，实体手机没有验收证据，同一 runtime 已发布到原 Site version 35，回执见下。内部页面通过不代表任何角色组获得用户美术批准。
+v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到原 Site version 35。2026-10-06 用户明确确认当前首页顶部与五组家族场景美术，见 [确认记录](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。该确认关闭 refine change 3.3，不覆盖原 3D 模型三视角、全部 Gallery/PNG 或实体手机验收。
 
-本轮针对用户否定的 v81 家族卡比例、全身目录式站位和独立字幕行进行纠偏：在 1280px 视口将五卡还原到 R01 约 212px 高的横向画面，保留近景/贴叠群像、底部共享字幕和有意艺术裁切。脸部、组别特征与道具接触不得被意外裁断。R01 网页图只作为构图/风格参考，禁止直接复用其中像素或从网页/动漫截图裁片；独立新插画可按设计稿做视口艺术裁切。详细身份与比例见 [change design](../../openspec/changes/refine-family-scene-composition/design.md) 和 [spec delta](../../openspec/changes/refine-family-scene-composition/specs/studio-visual-experience/spec.md)。
+本轮针对用户否定的 v81 家族卡比例、全身目录式站位和独立字幕行进行纠偏：在 1280px 视口将五卡还原到 R01 约 212px 高的横向画面，保留近景/贴叠群像、底部共享字幕和有意艺术裁切。脸部、组别特征与道具接触不得被意外裁断。R01 网页图只作为构图/风格参考，禁止直接复用其中像素或从网页/动漫截图裁片；独立新插画可按设计稿做视口艺术裁切。详细身份与比例见 [change design](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md) 和 [spec delta](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md)。
 
 ## 版本与独立评审
 
@@ -26,10 +26,10 @@
 
 ## 未完成事项
 
-- `refine-family-scene-composition` 3.3 与 `rebuild-character-system` 用户确认仍 pending，`userArtApproved` 为 false。
+- `refine-family-scene-composition` 已由用户确认完成并归档；`rebuild-character-system` 原 3D 接触、三视角精细基准及对应逐组确认仍有 16 项未完成。原始记录中的 `userArtApproved: false` 保留为当时状态，后续确认单独追加。
 - v83 莓粉眼镜 Dots 单张 PNG 的字节已验证；其它角色/家族导出的 PNG 字节未在此轮验证。v75 历史检查不作为 v83 证据。
 - 实体手机测试尚未完成；v83 Site 发布已按成功原生结果、保存版本及访问配置回读确认。
 
 验收索引见 [current-v83 README](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md)，总体页面 QA 见 [design-qa.md](../../design-qa.md)。
 
-2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读，不声称线上浏览器、实体手机或用户美术验收通过。
+2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读；用户随后对当前首页场景的明确美术确认独立记录在 [确认记录](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json) 中，实体手机仍没有验收证据。

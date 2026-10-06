@@ -1,8 +1,8 @@
 # 当前页面设计 QA · 2026-10-06
 
-final result: internal-pass
+final result: homepage-user-art-approved; original-3d-incomplete
 
-当前本地候选为 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个冻结路径。source 绑定的独立真实页面复核未发现 P0/P1/P2，内部评审通过；`userArtApproved: false`。这只表示本轮截图中的布局、角色组合和响应式表现通过内部评审，用户逐组美术确认仍由 `rebuild-character-system` §3.3 承担，保持 pending。
+当前本地候选为 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个冻结路径。source 绑定的独立真实页面复核未发现 P0/P1/P2，内部评审通过。2026-10-06 用户明确完成当前首页顶部与五组家族场景的人工美术确认，见 [版本绑定的确认记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。原冻结、独立报告与发布回执的 `userArtApproved: false` 是用户确认之前的历史状态，保持原值。当前首页确认不覆盖旧 3D 基准三视角、全部 Gallery 身份或全部 PNG。
 
 ## v83 页面与实现证据
 
@@ -15,6 +15,6 @@ final result: internal-pass
 
 [v83 交互记录](design/reference-home-correction-20261006/page/interaction-v83.json) 绑定相同 source ID：Muse 家族卡进入 3 项筛选，全部家族进入 15 项 Gallery；莓粉眼镜 Dots 从 intro 进入 Composer 工作台，标题和导出控件状态正确；问候交互保持项目与 Prompt 不变，console errors 为空。PNG 按钮可用，点击后显示候选导出 toast。Cua 下载事件虽超时，之后从 Downloads 以当前点击时间戳恢复唯一对应文件，并完成字节与 RGBA/尺寸检查：[v83 导出 PNG](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png)，1600×1600、2,922,405 bytes、SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`。这是单张莓粉眼镜 Dots 候选的实测，不代表五组 PNG 全量验证。
 
-v81 是用户明确否定的历史版本，其当时的 `passed` 不作为 v83 依据；v82 是用于诊断首次人物/动物异步画面空白的中间版本，不作为发布或验收依据。v83 只调整首页卡片与 intro 的同步解码显示路径，Gallery lazy loading 未改。实体手机与用户美术确认仍未完成，不得推断为通过；Site 版本、源码与访问配置已按本次发布原生结果回读。`rebuild-character-system` §3.3 与 refinement 3.3 仍 pending。
+v81 是用户明确否定的历史版本，其当时的 `passed` 不作为 v83 依据；v82 是用于诊断首次人物/动物异步画面空白的中间版本，不作为发布或验收依据。v83 只调整首页卡片与 intro 的同步解码显示路径，Gallery lazy loading 未改。Site 版本、源码与访问配置已按本次发布原生结果回读。refinement 3.3 已由本次用户明确确认完成；`rebuild-character-system` 的原 3D 工程及逐组基准确认仍未完成，实体手机也没有验收证据。
 
-2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读，不声称线上浏览器、实体手机或用户美术验收通过。
+2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读；用户随后对当前首页场景的明确美术确认独立记录在 [确认记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json) 中，实体手机仍没有验收证据。

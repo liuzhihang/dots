@@ -16,4 +16,4 @@ v71 实际捕获四种首页视口：1280、768、390、320 CSS px；首页 JSON
 
 v71 还记录了实际 UI 下的 app-level 减少动态检查：`body[data-reduced-motion="true"]` 状态下，主视觉/家族图变换为 `none`、transition 为 0、闪光效果不播放，同时保留问候提示。该检查只覆盖应用界面反馈，没有改动角色 renderer 或 3D 动作逻辑。
 
-v71 没有新建 3798 条角色矩阵；旧 v70 矩阵仍只绑定其 v70 冻结源。用户已选择 R01 首页布局，并将 Meta Muse 指为下一步重点；此反馈由 [场景构图 change](../../../refine-family-scene-composition/proposal.md) 跟踪，v71/v72 都早于这次 Muse 定向迭代。v71 页面图不代表新群像构图已经通过用户确认或五组美术验收。实体手机、独立最终评审和用户 art confirmation 均未完成。
+v71 没有新建 3798 条角色矩阵；旧 v70 矩阵仍只绑定其 v70 冻结源。用户已选择 R01 首页布局，并将 Meta Muse 指为下一步重点；此反馈由 [场景构图 change](../../../archive/2026-10-06-refine-family-scene-composition/proposal.md) 跟踪，v71/v72 都早于这次 Muse 定向迭代。v71 页面图不代表新群像构图已经通过用户确认或五组美术验收。实体手机、独立最终评审和用户 art confirmation 均未完成。

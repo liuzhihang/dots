@@ -2,7 +2,7 @@
 
 ## 背景
 
-需求见 [proposal.md](proposal.md)，行为合同见 [studio-visual-experience spec delta](specs/studio-visual-experience/spec.md)。用户已选 [R01 首页设计](../rebuild-character-system/references/r01-confirmed-direction.jpg) 为唯一首页与家族卡视觉目标。首页、两幅 hero 和五张卡都应忠实实现图中的角色比例/位置、配色、材质、道具关系与文字层级；四张已有非 Muse v2 家族卡的视觉偏离必须替换。用户强调只有 Meta Muse 需要身份微调，不得另创第二套卡片设计。
+需求见 [proposal.md](proposal.md)，行为合同见 [studio-visual-experience spec delta](specs/studio-visual-experience/spec.md)。用户已选 [R01 首页设计](../../rebuild-character-system/references/r01-confirmed-direction.jpg) 为唯一首页与家族卡视觉目标。首页、两幅 hero 和五张卡都应忠实实现图中的角色比例/位置、配色、材质、道具关系与文字层级；四张已有非 Muse v2 家族卡的视觉偏离必须替换。用户强调只有 Meta Muse 需要身份微调，不得另创第二套卡片设计。
 
 R01 可以提供给 ImageGen 作为构图、服装风格、材质和配色参考。页面最终使用新制作的单独角色场景图；不得直接嵌入整张网页截图，也不得从网页或动漫截图裁切、抠图或提取像素。独立新插画可以按 R01 在页面中做有意艺术裁切。人物与动物须原创，不可使用用户从动漫截取的像素、裁片/贴图或可辨认完整角色；R01 中人物/动物的服装和构图可用于视觉参考，但不能把该场景误称为动漫资产的复制授权。
 
@@ -89,7 +89,7 @@ Dots 4、Grok 6、Muse 1、人物 3、动物 5 是本轮场景绘制中的计数
 - **Muse 变成两只或泛化毛绒动物** → 首页右侧与 Meta Muse 卡各呈现同一 A02 身份的单只奶油 hood Muse；只有卡片抱星并使用 sage 植物，hero 不带这些道具；不保留粉色第二只。
 - **文案把图库计数暴露在不合适位置或被烘焙到图片** → 首页删除候选数量，Gallery 保留真实数量；所有标题、导航及中英文句均由 HTML 渲染。
 - **R01/动漫参考被直接作为角色原图** → R01 可作 ImageGen 的风格输入，网页仅展示新绘资产；人物动物要原创身份，动漫截图像素/裁片/完整角色禁止使用。
-- **页面/脚本结果被误报成美术通过** → task 3.2、3.3 与 task 4 全部保持未勾，等待真实实现后按相应边界评审。
+- **页面/脚本结果被误报成美术通过** → task 3.2、3.3 与 task 4 只能依据各自的真实实现、独立评审及用户明确确认更新，保留版本与范围证据。
 
 ## 迁移计划
 
@@ -101,7 +101,7 @@ Dots 4、Grok 6、Muse 1、人物 3、动物 5 是本轮场景绘制中的计数
 
 ## 未决问题
 
-R01 页面和五张卡的视觉目标、当前人数及 Muse 唯一替换方向均已确定。实现与源版本绑定、真实页面核验、独立美术评审和用户确认仍待执行；未来构图人数可调整，不受本轮当前素材数限制。
+R01 页面和五张卡的视觉目标、当前人数及 Muse 唯一替换方向均已确定。当前 v83 的实现、source 绑定页面核验、独立评审与用户明确确认均已完成，见下文及人工确认记录；未来构图人数可调整，不受本轮当前素材数限制。旧 3D 模型的工程验收仍由 rebuild-character-system 独立跟踪。
 
 ## v81 用户否定后的修正（2026-10-06）
 
@@ -115,10 +115,10 @@ R01 页面和五张卡的视觉目标、当前人数及 Muse 唯一替换方向�
 
 ## v83 本地实现与内部评审（2026-10-06）
 
-本轮冻结 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个路径；冻结清单见 [rebuild acceptance v83](../rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json)。source ID 是该快照所列工作树路径与内容的 SHA-256，`gitHead` 只表示 baseline commit，不包含 dirty/untracked 源码。
+本轮冻结 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个路径；冻结清单见 [rebuild acceptance v83](../../rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json)。source ID 是该快照所列工作树路径与内容的 SHA-256，`gitHead` 只表示 baseline commit，不包含 dirty/untracked 源码。
 
-R01 桌面卡片几何和有意艺术裁切已落到实际页面截图：1280px 五卡约 232.2px 宽、212px 高，入口约从 y=582 开始；768/390/320 的首页与卡片截图均绑定 v83 source。7 张页面图无水平溢出且 image ready。独立评审 [visual-review-v83](../../../design/reference-home-correction-20261006/visual-review-v83.md) 为内部 `passed`、无 P0/P1/P2，保留 768px 第二排留白、320px Meta Muse 标题换行和 Dots 蓝色小球靠近脚注但仍可读等 P3 观察。
+R01 桌面卡片几何和有意艺术裁切已落到实际页面截图：1280px 五卡约 232.2px 宽、212px 高，入口约从 y=582 开始；768/390/320 的首页与卡片截图均绑定 v83 source。7 张页面图无水平溢出且 image ready。独立评审 [visual-review-v83](../../../../design/reference-home-correction-20261006/visual-review-v83.md) 为内部 `passed`、无 P0/P1/P2，保留 768px 第二排留白、320px Meta Muse 标题换行和 Dots 蓝色小球靠近脚注但仍可读等 P3 观察。
 
-真实交互见 [interaction-v83](../../../design/reference-home-correction-20261006/page/interaction-v83.json)：Muse 卡进入 3 项筛选、全部家族进入 15 项 Gallery、莓粉眼镜 Dots 进入工作台；问候时 project/Prompt 不变，console errors 为空。PNG 按钮 enabled 且点击 toast 显示候选已导出。Cua 下载事件超时后，依据本次点击时间戳从 Downloads 找回准确文件，并目视及校验 1600×1600 RGBA、2,922,405 bytes、SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`；证据见 [PNG 文件](../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png) 与 [回收记录](../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.json)。这仅验证单张莓粉眼镜 Dots PNG，不代表五组 PNG 全量验证。15 项图库、模块 cache、family navigation 与 strict checks 结果见 [checks-v83](../../../design/reference-home-correction-20261006/checks-v83.json)。
+真实交互见 [interaction-v83](../../../../design/reference-home-correction-20261006/page/interaction-v83.json)：Muse 卡进入 3 项筛选、全部家族进入 15 项 Gallery、莓粉眼镜 Dots 进入工作台；问候时 project/Prompt 不变，console errors 为空。PNG 按钮 enabled 且点击 toast 显示候选已导出。Cua 下载事件超时后，依据本次点击时间戳从 Downloads 找回准确文件，并目视及校验 1600×1600 RGBA、2,922,405 bytes、SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`；证据见 [PNG 文件](../../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png) 与 [回收记录](../../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.json)。这仅验证单张莓粉眼镜 Dots PNG，不代表五组 PNG 全量验证。15 项图库、模块 cache、family navigation 与 strict checks 结果见 [checks-v83](../../../../design/reference-home-correction-20261006/checks-v83.json)。
 
-该内部评审不替代用户确认：source snapshot 的 `userArtApproved` 为 false，task 3.3 保持 unchecked。v83 当前没有新的 Site 发布回执；实体手机验收也没有证据。v81 user-rejected 与 v82 首次异步人物/动物空白诊断保留为不同历史版本，不拼接到 v83 的通过范围。
+该内部评审完成时，source snapshot 与评审记录中的 `userArtApproved` 为 false；这些历史字段保持原值。相同 runtime 已发布到原 Site version 35，见 [发布回执](../../rebuild-character-system/acceptance/current-20261005-v83/site-release.json)。2026-10-06 用户明确回复“美术人工确认完毕”，当前首页顶部与五组家族场景的人工确认另存 [user-art-approval.json](../../rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)，据此完成 task 3.3。全部 15 项任务与四条 delta requirement 已完成并同步，可归档本 change。此确认不覆盖原 3D 基准工程、全部 Gallery/PNG 或实体手机验收。v81 user-rejected 与 v82 首次异步人物/动物空白诊断保留为不同历史版本，不拼接到 v83 的通过范围。

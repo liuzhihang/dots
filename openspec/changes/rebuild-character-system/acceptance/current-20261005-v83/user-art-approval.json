@@ -1,0 +1,37 @@
+{
+  "format": "dots-user-art-approval",
+  "version": 1,
+  "recordedAt": "2026-10-06T00:49:17Z",
+  "date": "2026-10-06",
+  "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+  "sourceCommit": "041171998469a568e8647db9a66dedd84bfb469c",
+  "cacheRevision": "83",
+  "siteVersion": 35,
+  "siteUrl": "https://dot.liuzhihang.chatgpt.site",
+  "userArtApproved": true,
+  "scope": {
+    "change": "refine-family-scene-composition",
+    "task": "3.3",
+    "approved": [
+      "当前 R01 首页的顶部左右场景",
+      "Dots、Grok Bot、Meta Muse、Humans、Animals 五张家族卡的场景美术",
+      "顶部右侧与家族卡中 A02 Meta Muse 的身份微调"
+    ],
+    "notEstablishedByThisConfirmation": [
+      "rebuild-character-system 原程序化 3D 基准的三视角、比例与动作矩阵验收",
+      "尚未完成的 3D 配饰接触、材质、渲染与取帧工程任务",
+      "15 项 Gallery 身份和所有 PNG 输出的逐项美术验收",
+      "实体手机测试"
+    ]
+  },
+  "evidence": {
+    "type": "explicit-user-message",
+    "questionContext": "用户回复 refine-family-scene-composition 仅剩任务 3.3 人工美术确认的归档问题。",
+    "verbatim": "美术人工确认完毕，归档所有change，并初始化AGENTS.md和rule design等 如果其他change也都完成了，也归档",
+    "sourceSnapshot": "source-snapshot.json",
+    "siteRelease": "site-release.json",
+    "pageIndex": "../../../../../design/reference-home-correction-20261006/page/native-pages-v83.json",
+    "independentReview": "../../../../../design/reference-home-correction-20261006/visual-review-v83.md"
+  },
+  "historicalRecordPolicy": "原 source snapshot、截图索引、独立报告和发布回执中的 userArtApproved=false 保留为记录当时的状态。本记录追加用户随后对上述版本及范围的明确确认，不追改历史证据。"
+}

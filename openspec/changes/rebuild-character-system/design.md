@@ -167,4 +167,7 @@ WebGL 与 CPU 在结构诊断路径共用配置、几何、动作与背景语义
 
 本轮修复诊断 PNG 捕获 painted 动作时间/组装状态、异步更新/dispose 取消和失败恢复，同时修复高级设定被 flex 压缩及系统/应用减少动态合并。Grok 的 WebGL/CPU 实际下载与五组静态画布、Prompt 回读为部分工程证据，未完成原五组多视角/比例/动作/接触矩阵。详见 [本轮回归](../../../design/followup-qa-20261005.md)。任务 2.5/2.6 和各组美术任务继续未完成，五组仍未获用户确认，不增加第 4 项或新身份。
 
-2026-10-05 后续群像范围澄清：本节中的 15 项是现有图库身份样例数量，继续作为 `rebuild-character-system` 本阶段实施范围的历史事实；它不约束首页或家族卡展示群像的实际成员人数。场景构图及其页面验收由 [refine-family-scene-composition](../refine-family-scene-composition/proposal.md) 单独规划。现有图库身份不扩充，新绘制的场景成员不会成为角色目录、可编辑工作台、单体 PNG 或 Prompt 对象。各组人数区间只是艺术起稿参考，不是产品硬限制；本说明不改变角色基准和逐组确认门槛。
+2026-10-05 后续群像范围澄清：本节中的 15 项是现有图库身份样例数量，继续作为 `rebuild-character-system` 本阶段实施范围的历史事实；它不约束首页或家族卡展示群像的实际成员人数。场景构图及其页面验收由 [refine-family-scene-composition](../archive/2026-10-06-refine-family-scene-composition/proposal.md) 单独规划。现有图库身份不扩充，新绘制的场景成员不会成为角色目录、可编辑工作台、单体 PNG 或 Prompt 对象。各组人数区间只是艺术起稿参考，不是产品硬限制；本说明不改变角色基准和逐组确认门槛。
+
+
+2026-10-06 首页人工确认与归档：用户已明确确认 Site version 35 / cache 83 的首页顶部与五组家族场景，见 [版本绑定的人工确认](acceptance/current-20261005-v83/user-art-approval.json)。独立场景 change `refine-family-scene-composition` 已完成 15/15 并归档。该首页确认不覆盖本 change 第 2–7 节原程序化 3D 模型的三视角、配饰接触、材质与动作要求，也不授予所有 Gallery 身份或 PNG 的验收。本 change 仍为 20/36，16 项原工程/基准确认任务保持未勾；不因场景 change 归档而开放后续图库扩展。
