@@ -19,5 +19,5 @@
 <section class="panel"><div id="stage" class="checker" aria-label="实际三维角色预览"></div><p id="status" role="status">载入中</p><progress id="progress" value="0" max="1"></progress><div class="controls"><label>动作秒数<input id="time" type="number" min="0" max="60" step=".05" value="0"></label><button id="seek">定位并暂停</button><button id="play">播放</button><button id="pause">暂停</button><label><input id="reduce" type="checkbox">减少动态</label></div><div class="controls"><label>PNG 背景<select id="background" aria-label="PNG 背景"><option value="transparent">真实透明</option><option value="studio">浅色棚拍</option></select></label><button id="export">下载当前 1600 PNG</button></div></section>
 <section class="panel"><h2>当前真实配置 / 取帧</h2><pre id="report"></pre><h2>同一配置的 Prompt</h2><textarea id="prompt" readonly aria-label="当前配置的完整 Prompt"></textarea><button id="copy">复制当前 Prompt</button><p id="copy-status" role="status"></p></section>
 </div><h2>矩阵实际画面</h2><p>每个动作按主节奏记录起始、特征峰值及回稳/一周期样本（blocked 另含第二次轻推）；不是完整连续动画录像。运行期间自动记录实际 painted 帧，不代表检查通过。每张可单独回到同一配置；下载包保留完整配置、时间、实际 Canvas 截图与 alpha / 边界采样。低分辨率矩阵帧与 1600 PNG 导出是分别测试的路径。</p><div id="results"></div>
-</main><script type="module" src="character-acceptance.js?v=81"></script>
+</main><script type="module" src="character-acceptance.js?v=83"></script>
 </html>

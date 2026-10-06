@@ -1,0 +1,10 @@
+{
+  "reference": "R01 confirmed homepage; only Muse identity may change",
+  "input": "design/reference-home-correction-20261006/assets/grok-family-r01-v2.png",
+  "prompt": "Precise position-and-scale edit of ONLY the two RIGHTMOST shapes in this transparent 1536x1024 six-member Grok family illustration. Preserve the four shapes at left and middle (green cloud at top, orange bean behind-left, blue drop lower-left, teal rounded square lower-center) EXACTLY as they are: same size, position, material, eyes, color. On the right, make the RED rounded hexagonal character 85% of its current size and move its center DOWN by 70 pixels. Its top should start lower than the teal square's top; its bottom should end slightly lower than the teal square's bottom. This is essential to restore the reference staggered front row: blue at left, teal center, red lower-right, not three equal-baseline large figures. Make the PURPLE rounded triangular character 90% of its current size and move its center DOWN by 30 pixels, still behind the red hexagon and above it, with eyes fully visible. Preserve purple/red colors, glossy soft plastic material, same slanted white capsule eyes, and all six distinct silhouettes. Keep the full canvas 1536x1024 and transparent alpha; do not resize the overall canvas, do not invent extra props/characters/words/UI or background. Change ONLY those two rightmost character sizes and heights; keep every other shape unchanged.",
+  "generatedSource": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-73d8a2de-5347-436f-952d-07d0ac9e3758.png",
+  "output": "design/reference-home-correction-20261006/assets/grok-family-r01-v3.png",
+  "runtime": "dist/assets/scenes/family-grok-v4.png",
+  "operation": "Whole generated PNG byte copy; no crop or R01 screenshot pixels used as assets",
+  "userArtApproved": false
+}

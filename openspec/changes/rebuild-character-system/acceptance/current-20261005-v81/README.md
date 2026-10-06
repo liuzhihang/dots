@@ -1,5 +1,7 @@
 # v81 冻结页面实现证据
 
+> 历史证据说明（2026-10-06）：以下来源、截图、交互/发布记录及当时的视觉结论只描述 v81。用户随后明确否定了 v81 家族卡构图，因此本目录不表示当前设计达标，也不能作为重开的 `refine-family-scene-composition` 任务 3.2/4.5 的通过依据。当前差异见 [v81 基线审查](../../../../../design/reference-home-correction-20261006/baseline-review.md) 和 [设计 QA](../../../../../design-qa.md)。
+
 本目录的 [source-snapshot.json](source-snapshot.json) 冻结 cache revision 81，sourceId 为 `0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，包含 123 个路径。v81 统一了 `dist/` 下产品入口与可直接访问的 QA HTML/JavaScript/CSS 查询版本；完整静态运行入口不再遗留 v70/v80 cache 引用。独立 [code-review-v81.md](../../../../../design/reference-home-20261005/code-review-v81.md) 验证了 123 个文件哈希、source ID 重算和运行时边界，未发现阻断项。
 
 ## 实际页面捕获

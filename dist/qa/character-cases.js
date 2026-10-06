@@ -1,4 +1,4 @@
-import {createCharacter,validateConfig,resolveCharacter,ACCESSORIES,ACTIONS,EXPRESSIONS} from '../studio-model.js?v=81';
+import {createCharacter,validateConfig,resolveCharacter,ACCESSORIES,ACTIONS,EXPRESSIONS} from '../studio-model.js?v=83';
 
 export const FAMILIES=['dots','grok','meta-muse','humans','animals'];
 export const VIEWS=['front','threeQuarter','side'];

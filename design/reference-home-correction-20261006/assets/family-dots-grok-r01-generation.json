@@ -1,0 +1,149 @@
+{
+  "recorded_at": "2026-10-06",
+  "purpose": "R01-derived original Dots and Grok family-card raster candidates for design review",
+  "status": "asset_candidates_only_no_real_webpage_art_acceptance",
+  "tool": "Codex built-in image_gen.imagegen; transparent_background=true; no CLI/API fallback",
+  "scope": "Raster assets and provenance only. No runtime code, CSS, browser preview, deployment, or source image pixels edited.",
+  "references": [
+    {
+      "role": "User-selected R01 homepage/card screenshot; inspected and passed to ImageGen as the visual reference for every final candidate generation/edit",
+      "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+      "dimensions": "1280x720 JPEG",
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+      "notes": "ImageGen created independent raster interpretations; no screenshot pixels were cropped, copied, or edited into the new art."
+    },
+    {
+      "role": "Existing Dots v3 scene visually inspected for contrast only; not passed to ImageGen",
+      "path": "dist/assets/scenes/family-dots-v3.png",
+      "dimensions": "1254x1254 PNG RGBA",
+      "sha256": "4122d76f2e600546ad190ce0548f0bb28bbcbb9457ee8171f0793d18437082e5"
+    },
+    {
+      "role": "Existing Grok v3 scene visually inspected for contrast only; not passed to ImageGen",
+      "path": "dist/assets/scenes/family-grok-v3.png",
+      "dimensions": "1254x1254 PNG RGBA",
+      "sha256": "5e430b88e7de180b931e9b10cdfa6f049ee68b327b5c7600e03cccef6ece1471"
+    }
+  ],
+  "assets": [
+    {
+      "family": "Dots",
+      "path": "design/reference-home-correction-20261006/assets/dots-family-r01-v1.png",
+      "source_imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-1f099e81-6c3f-424d-ac0d-ecf694258c3b.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "bit_depth": 8,
+      "color_type": "RGBA",
+      "has_alpha": true,
+      "sha256": "0015d99359f85a4fa91a938a11c77ef645043086009b4bf1075fed7f80ce4cb8",
+      "alpha_bbox_gte_16_xyxy_exclusive": [
+        290,
+        185,
+        1305,
+        859
+      ],
+      "visible_fraction": {
+        "width_percent": 66.1,
+        "height_percent": 65.8,
+        "bbox_ratio": 1.51
+      },
+      "status": "pre_root_final_directional_edit_candidate; not_page_art_accepted",
+      "visual_review": "This is the closest of the generated Dots candidates to R01 in the purple/headphone versus pink/blue/yellow hierarchy and lower-left/lower-right/top-right positions. Root review found the purple core still about 10% large, blue and yellow large, and yellow too low relative to the headphone band; root is taking the final directional edit. Do not describe this pre-edit copy as final or as webpage acceptance.",
+      "generation_chain": [
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-2ffb6b1f-7d0d-4bc2-bdcd-b1a5ea183b01.png",
+          "sha256": "a3404fd765956994a4a4ae6c50303ee4c7806de99da2e4cd239db01f845c8dba",
+          "inputs": [
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "Use case: stylized-concept\nAsset type: isolated transparent square mascot-family card artwork for the Dot Icon Studio homepage\nPrimary request: create one compact 3D toy group containing exactly four Dots family mascots, in the specific arrangement and palette below.\nScene/backdrop: genuinely transparent alpha background; no environment, floor, plate, border, or cast shadow outside the figures.\nSubject and composition: a large glossy-satin purple sphere is the dominant main Dots, slightly left of center, wearing a complete silver-and-lilac over-ear headphone set. The headphone arch curves over and touches the sphere; both ear cups are physically seated against the sphere's left and right sides, with contact shading and no floating parts. The main purple sphere has exactly two bright white rounded capsule eyes, slightly tilted in the same diagonal direction, facing forward. In the front-left foreground place one smaller smooth soft-blue round Dots with the same two white inclined capsule eyes. In the front-right foreground place one smaller smooth soft-pink round Dots, wearing thin black circular glasses that sit flush against its curved face; inside the glasses show two matching white inclined capsule eyes. At the upper-right, place one smallest sunny-yellow spherical Dots lightly hovering as a playful accent, with two small white inclined capsule eyes. Exactly four characters total.\nPlacement: tight family-card cluster inspired by the selected R01 Dots card: purple headphone sphere anchors the center-left, small blue Dot is forward-left, pink glasses Dot is forward-right, and tiny yellow Dot floats upper-right. Distinct foreground/middle/background planes, natural overlap and contact, clearly visible faces, complete round silhouettes. Keep the central purple sphere clearly purple and largest; blue remains a small companion. Keep all four characters together occupying about 85 percent of the square canvas height, with about 5 percent clear transparent safety margin around the full group.\nIdentity: this design follows the R01 Dots family visual, where the purple orb and companions use simple white slanted capsule eyes. Do not use Grok's current-v2 colors or family arrangement.\nStyle/medium: polished refined 3D vinyl collectible toys, luminous satin-gloss soft silicone, clean soft sculpting and premium studio craft, consistent scale and a friendly simple character language.\nMaterials/textures: purple main Dots has refined fine short-pile plush, soft and even, never long or shaggy. Other Dots use matching smooth soft-touch silicone with a restrained satin sheen and subtle soft surface response. All four share tasteful toy proportions and surface finish.\nLighting/mood: bright soft warm studio key light, balanced fill, subtle highlights on the satin surfaces, gentle contact shading only where accessories and characters touch.\nConstraints: exactly four and only four Dots characters: one dominant purple spherical headphone Dot, one small blue sphere lower-left, one pink sphere with directly seated black round eyeglasses lower-right, and one tiny yellow sphere upper-right. White pill eyes on each, including two clearly visible white pill eyes behind the glasses. Headphones physically contact the purple sphere, and glasses physically contact the pink sphere.\nAvoid: black eyes, vertical black ovals, black pupil eyes, blue dominant main sphere, blue plush main, yellow hat, a fifth mint-green or peach character, extra character, extra orb, extra detached accessory, hovering headphone, hovering glasses, separated earcups, open band, pink triangular character, Grok cloud/drop/square/triangle shapes, mouth, eyebrows, nose, limbs, hands, animals, text, lettering, labels, logos, borders, panels, backdrop, floor, ground plane, cast shadow outside the figures, noise, long fur, harsh glare, cropped characters, or cut-off accessories."
+        },
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-48c14ebb-9508-4111-9e0d-a95935b47f6d.png",
+          "sha256": "552ed413d7fb3d720e5170380172551d57c406983a6c36a85dcc96300fad16b3",
+          "inputs": [
+            "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-2ffb6b1f-7d0d-4bc2-bdcd-b1a5ea183b01.png",
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "EDIT the generated Dots family image, using the R01 screenshot as the exact scale-and-arrangement reference. Keep it a new independent illustration; do not copy screenshot pixels, text, people, or site elements. Preserve the strong purple glossy sphere and silver-lilac headphones, but make the relative character sizes much closer to the R01 Dots card.\n\nCRITICAL RELATIVE SCALE: treat the main orb plus its headphone assembly as the 170-unit hero. The pink glasses sphere must be only 64 units in diameter (about 38% of the hero's 170-unit width); the blue orb only 36 units (about 21%); the yellow orb only 28 units (about 16%). The current generated pink, blue, and yellow figures are much too large: shrink only the three companions substantially while retaining their correct colors and personalities. The purple orb stays clearly dominant and large. Avoid equal-sized characters.\n\nCOMPOSITION: wide horizontal family-card cluster on a transparent 3:2 canvas. Keep the purple headphone Dots at center-left as the dominant anchor. Put the truly tiny blue sphere at the front lower-left, partially nestled against the headphone/orb cluster. Put the 64-unit pink glasses Dots at the lower-right, touching/overlapping the purple orb only slightly; it should look like a small companion, never a co-star. Place the 28-unit yellow sphere as a tiny playful accent floating above-right, visibly smaller than pink. Arrange characters in lively staggered positions like R01 rather than four icons in a row. The group extends across most of the canvas width, with only around 3% clear transparent side safety.\n\nFACE AND ACCESSORY IDENTITY: all four characters have exactly two white rounded capsule eyes, parallel pairs tilted the same slight clockwise angle. Thin delicate circular black wire-frame glasses sit flush on pink and keep its two white eyes clearly visible; much smaller lenses proportional to its small face, no large heavy black circles. Smooth silver-lilac over-ear headphones fit the purple ball; padded ear cups physically touch both sides and the curved headband hugs the orb without gaps.\n\nSTYLE: refine the current polished 3D vinyl collectible look into the R01 bright, playful family-card finish: saturated vivid purple, clear blue, lively pink, golden yellow; smooth soft-touch silicone with tasteful satin highlights; bright, clean studio light. Keep dimensional form with modest highlights. Remove the broad dramatic glow/halo visible around the current image; no colored atmospheric glow outside the forms.\n\nOUTPUT: transparent PNG, isolated characters only, no backdrop or floor. Preserve complete silhouettes and all four characters. Do not leave a square icon's large empty margin.\n\nNEVER add characters or alter count. Strictly no human, animal, mouth, nose, eyebrows, limbs, hands, hats, text, logo, card or website UI, screenshot background, backdrop, floor, ground plane, external cast shadow, thick glasses, dark lenses, detached or floating accessories, or cropped part."
+        },
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-1f099e81-6c3f-424d-ac0d-ecf694258c3b.png",
+          "sha256": "0015d99359f85a4fa91a938a11c77ef645043086009b4bf1075fed7f80ce4cb8",
+          "inputs": [
+            "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-48c14ebb-9508-4111-9e0d-a95935b47f6d.png",
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "Make one precise, proportional edit to the Dots family group. The R01 screenshot is the authoritative visual guide for relative dimensions and placement. Retain this generated illustration's polished purple orb, silver/lilac headphones, four colors, facing direction and staggered cluster; do not copy any screenshot pixels.\n\nMEASURED CARD TARGETS: when the full artwork group is displayed 235 px wide, target the purple orb core at 120–130 px diameter and the outer headphone assembly at about 155 px wide; blue sphere 36 px diameter; pink glasses sphere 64 px diameter; yellow sphere 28 px diameter. The generated version's purple core is too big; shrink it modestly to the 120–130 px target. Shrink the blue companion significantly to exactly the petite 36 px appearance, and the yellow companion to a tiny 28 px accent. Keep the pink companion near 64 px. The purple-with-headphones stays the unmistakable hero; pink, blue and yellow must read as small companions in the clear R01 size hierarchy.\n\nLAYOUT: transparent wide 3:2 canvas. At the final 235 px group width: headset spans roughly 155 px; blue nests at lower-left foreground, 36 px; pink sits lower-right and overlaps the purple orb only a little, 64 px; tiny yellow floats at upper-right, 28 px. The entire group spans about 235 px width and around 145–155 px height, with only ~3% side safety. Maintain irregular, lively vertical staggering and breathe between silhouettes; don't line up the four centers.\n\nDETAILS: purple is a saturated vivid purple sphere, smooth, with exactly two matching small white capsule eyes inclined diagonally in the same direction. Silver-lilac over-ear headphones hug and touch the purple sphere; both cups are attached to the sides. Blue sphere is bright blue, smooth, two tiny matching white capsule eyes. Pink sphere has thin delicate black circular eyeglasses in direct face contact, two tiny white slanted capsule eyes visible inside. Glasses rims need to be fine wire-like lines, not bold black rings or dark lenses. Yellow sphere is golden yellow, two tiny white capsule eyes. All four pairs share the same subtle diagonal slant.\n\nFINISH: cheerful, premium, glossy-soft 3D collectible-toy render with smooth satin-vinyl surfaces and controlled small studio highlights. Keep the background pixels truly transparent and clean. Remove all exterior colored fog, halo, glow, vignette, colored spill, cast shadow, or atmosphere from the previous version; let zero-alpha transparency surround the forms. Contact shading may exist only at the points where forms/accessories touch.\n\nNo size equalization, no fifth character, no extra accessories, no mouth, nose, eyebrows, limbs, hands, human, animal, text, lettering, logos, card UI, backdrop, floor, ground, external shadow, dramatic halo, thick glasses, dark lenses, floating accessory, or cropped shape."
+        }
+      ],
+      "nonselected_latest_attempt": {
+        "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-0d86157f-d873-4a24-ab7b-9b0d84de53e4.png",
+        "sha256": "1b93a44d8aa36c4d45da72ef47216718dd379c1f5688bbd3af6c2ff277f93e2c",
+        "reason": "Direct R01 generation was not chosen; visual review found the hero and companions larger relative to the family-card composition."
+      }
+    },
+    {
+      "family": "Grok Bot",
+      "path": "design/reference-home-correction-20261006/assets/grok-family-r01-v2.png",
+      "source_imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-192ce977-0200-4153-83df-ece1958da823.png",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "format": "PNG",
+      "bit_depth": 8,
+      "color_type": "RGBA",
+      "has_alpha": true,
+      "sha256": "d1595c071a6c047c079662d1fee230248191638c24030fd67a1def365af9d49a",
+      "alpha_bbox_gte_16_xyxy_exclusive": [
+        326,
+        218,
+        1253,
+        799
+      ],
+      "visible_fraction": {
+        "width_percent": 60.4,
+        "height_percent": 56.7,
+        "bbox_ratio": 1.6
+      },
+      "status": "final_generation_candidate_for_root_real_page_review_not_art_accepted",
+      "visual_review": "Final targeted edit moved the blue drop left and red hexagon right and reduced cloud/blue/triangle/red/square/orange individually while retaining the broad cluster. The six shapes, vivid colors, capsule-eye identity, and intended depth order remain visible. Root visual review still found character silhouettes somewhat larger/crowded relative to the intended measured ratios; treat this only as a candidate for actual-page comparison, not as art acceptance.",
+      "generation_chain": [
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-417d387e-09f5-4305-93e0-b063a04d6523.png",
+          "sha256": "a914b2f36b9f5739bf455e28655624138ec90719aac834b6e414a4361e99824f",
+          "inputs": [
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "Create a new standalone 3D toy illustration of the six-character Grok Bot family for a family card. Use the supplied R01 screenshot as the exact guide for the separate character silhouettes, colors, relative size hierarchy, order, lively overlap, and shared face design. Do not reproduce/crop any pixels, text, web interface, or human figures from it.\n\nCANVAS: landscape transparent PNG, 3:2 ratio, 1536x1024. Isolated group only. The actual character cluster should be compact, approximately 205 design pixels wide when displayed at 235px card width, and around 135–150 design pixels high. Place the silhouettes in an organically interlocking, lively stagger, with a clean transparent border around the group. Do not put the figures into a neat row or a regular triangle formation.\n\nEXACT six distinct characters, one of each, with the specified order, shape, and size (sizes are character bounding-box widths relative to the group's 205-unit displayed width):\n1. Upper-center: fresh vivid emerald-green multi-lobed cloud, about 70 design px wide. It is the crown of the cluster, but remains a small cloud-shaped character, not a giant dominant blob. Make the contour clearly cloud-like with several round lobes and a narrower lower edge.\n2. Behind-left: warm orange soft rounded bean, about 70 px wide. Place it below-left of the green cloud and partially behind the front row.\n3. Front-left: bright-blue teardrop, about 55 px wide; clear round base and tapered top; overlaps the orange bean slightly.\n4. Front-center: saturated teal rounded square, about 70 px wide; broad softly curved corners, wider than the front-left drop; prominent but not oversized.\n5. Behind-right: lavender-purple rounded triangle, about 45 px wide; clearly triangular with three soft corners; partly behind the red character.\n6. Front-right: lively berry-red rounded hexagon, about 60 px wide; unmistakably six broad sides and not a triangle.\n\nPOSITION AND OVERLAP guide: green cloud floats at top-center; orange bean sits behind-left, with its face still visible; blue teardrop sits at the front-left and lower than the bean; teal square anchors the front-center; purple triangle peeks from behind at upper-right of the front row; red hexagon sits lower-right in front. These six forms must touch or overlap in a playful connected cluster with visible depth. Preserve breathing gaps only where the reference does; avoid a compressed, cramped blob. All six faces remain readable, all silhouettes are distinct. Relative front/back order is essential: orange behind blue, blue in front-left, teal in front-center, purple behind red, red in front-right, green cloud floating above/behind center.\n\nFACE IDENTITY: every character has exactly two simple white rounded capsule eyes, parallel and tilted the same slight diagonal direction. Eye pairs are small and embedded on each front surface. Do not add any other facial feature.\n\nMATERIAL: smooth, glossy-soft silicone/vinyl collectible toys, warm friendly dimensional studio render, saturated clean colors matching R01. Green must be vivid emerald green (not pale mint or cyan); orange bean warm orange; blue drop clear bright blue; center square teal/turquoise; rear triangle purple; front-right hexagon berry red. Restrained glossy highlights, soft smooth shading, gentle contact occlusion only where characters touch; no fuzzy or plush texture.\n\nSTRICT EXCLUSIONS: no extra or missing character, no purple oval/sphere/main blob, no giant cloud or giant orange bean, no tiny cloud shoved to the right, no blue ball instead of a drop, no generic square replacing the center teal square, no pink triangle or red triangle, no red hex changing into another polygon, no black eyes, no mouth, nose, brows, limbs, hands, headphones, glasses, tools, hat, robot panels, logo, lettering, text, UI, background, floor, external shadow, glow/halo, gradient, noise, camera frame, or cropped figure."
+        },
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-ad77952c-f521-4e0f-9877-0db77f30074c.png",
+          "sha256": "05ae99b6f2b42f939ea8cb0e9800094b46b6d07ce996b4e944702b41e935b4fd",
+          "inputs": [
+            "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-417d387e-09f5-4305-93e0-b063a04d6523.png",
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "Edit the Grok family image using the provided R01 reference for relative sizes and layout. Keep exactly the same six toy characters, colors, face style, direction, and 3D soft-gloss material. Make a single measured adjustment: the members are too large and crowded relative to the full visible group. Reduce the character sizes relative to one another and leave breathing space while preserving a tight, connected cluster. Do not form a row or a regular triangle.\n\nLet the full visible group width equal 205 design units. Target each character's horizontal width as a percentage of that full group width:\n- green cloud 34% (about 70 units), smaller than in this image; top-center, floating.\n- orange bean 34% (about 70 units), behind-left.\n- blue teardrop 27% (about 55 units), front-left.\n- teal rounded square 34% (about 70 units), front-center.\n- purple rounded triangle 22% (about 45 units), behind-right.\n- berry-red rounded hexagon 29% (about 60 units), front-right.\nThese dimensions refer to each actual character silhouette, not its transparent image margin. Keep the cloud a clear crown but reduce it so it does not dominate or hide the orange bean. Keep the orange bean visible enough behind-left. Keep the blue drop noticeably smaller than the teal square. Keep the purple triangle noticeably smaller than the red hex and peeking from behind. Keep the red hex front-right, clearly six-sided.\n\nPreserve the successful R01-inspired placements: green cloud upper-center, orange bean upper-left/back, blue drop lower-left/front, teal square lower-center/front, purple triangle upper-right/back, berry-red hexagon lower-right/front. Make adjacent shapes gently touch/overlap, faces readable, with a little breathing space between group contours. Do not change the whole group's size uniformly. Preserve a broad, horizontal interlocked family-card silhouette.\n\nR01 color/shape accuracy: vivid emerald-green multi-lobed cloud (not mint/cyan); warm orange bean; bright-blue teardrop; saturated teal rounded square; purple rounded three-corner triangle; berry-red rounded six-sided hexagon. Keep all six pairs of exactly two white capsule eyes, equal slight diagonal slant, no other facial marks. Smooth saturated glossy-soft 3D silicone/vinyl with controlled highlights, no plush or fuzzy texture.\n\nMaintain transparent background and complete silhouettes. No background, floor, vignette, glow/halo, external shadow, text, logo, UI, seventh character, purple oval, giant green cloud, giant orange bean, pink/red triangle, black eyes, mouth, nose, brows, limbs, hands, accessories, or cropped part."
+        },
+        {
+          "imagegen_output": "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-192ce977-0200-4153-83df-ece1958da823.png",
+          "sha256": "d1595c071a6c047c079662d1fee230248191638c24030fd67a1def365af9d49a",
+          "inputs": [
+            "/Users/liuzhihang/.codex/generated_images/01a10aa7-c743-7532-b2e5-782fb8383985/exec-ad77952c-f521-4e0f-9877-0db77f30074c.png",
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "prompt": "Perform the final measured edit to the current six-character Grok Bot family group, using R01 as the source of proportions, arrangement and character order. Preserve the same six identities, vivid colors, polished material, capsule eyes, and forward-facing view. Keep the broad group width essentially unchanged while independently reducing the oversized figures.\n\nSCALE THESE CURRENT CHARACTERS ABOUT THIS MUCH:\n- green cloud: 80% of its current width and height;\n- blue teardrop: 85%;\n- purple rounded triangle: 80%;\n- red rounded hexagon: 85%;\n- teal rounded square: 90%;\n- orange bean: 90%.\nScale each individual character around its own center. Do not scale the whole group uniformly. Preserve each distinct geometric silhouette.\n\nPOSITION CORRECTIONS on the 1536px-wide native image:\n- move the blue teardrop's center about 20 native pixels toward the left;\n- move the red hexagon's center about 20 native pixels toward the right;\n- retain the current overall group width after the size reductions by leaving the small figures distributed across the same broad horizontal span;\n- keep cloud upper-center, orange bean behind-left, blue drop front-left, teal square front-center, purple triangle behind-right, red hex front-right.\n- Make more of the orange bean visible between the cloud and front row; keep both orange eyes clear.\n- Make the purple triangle clearly a smaller rear-right accent peeking above/behind the red hexagon.\n- The cloud stays near the top-center and remains visibly cloud-shaped; it must no longer dominate the group.\n- Keep the red hex and the teal square distinct, adjacent, and not covered.\n\nMaintain a close, playful R01-style interlock with visible depth and slightly breathable contours. Avoid both a tightly crushed single blob and a neat straight row. Keep all six faces fully readable. Use the exact six R01 color/shape roles: vivid green multi-lobed cloud, warm orange bean, bright blue drop, teal rounded square, purple rounded triangle, berry-red rounded hexagon.\n\nEvery figure has exactly two white capsule eyes with the same slight diagonal slant. No other facial features. Smooth glossy-soft silicone/vinyl, controlled bright studio highlights, refined saturation, no plush or fuzzy material. Keep transparent background and full silhouettes, no external color glow, no halo, no background, floor, UI, labels, or text. Do not add or remove a character."
+        }
+      ]
+    }
+  ],
+  "webpage_art_acceptance": {
+    "status": "not_performed",
+    "note": "The user explicitly distinguishes generation/build/task completion from real webpage art acceptance. These are raster candidates pending root integration and a real rendered-page review."
+  }
+}

@@ -403,13 +403,23 @@
 .studio-r4.studio-refresh .family-filter img{width:20px;height:20px;object-fit:contain}
 .family-nav-dot{display:block;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#d7b5ff,#ab68eb 70%,#a759e1);box-shadow:inset 0 0 0 1px #ffffff70;flex-shrink:0}
 .family-nav-dot.meta-muse{background:radial-gradient(circle at 35% 25%,#fff8ef,#e9d5bb)}
-.studio-r4.studio-refresh .family-entry{min-height:220px;grid-template-rows:auto auto 118px auto;padding:12px 15px 9px;border-radius:14px}
+.studio-r4.studio-refresh .family-gallery{gap:12px}
+.studio-r4.studio-refresh .family-entry{display:flex;min-height:212px;height:212px;padding:12px 18px 10px;border-radius:14px}
 .studio-r4.studio-refresh .family-entry>b{font-size:18px}
 .studio-r4.studio-refresh .family-entry .family-desc{font-size:11px;line-height:1.45}
-.studio-r4.studio-refresh .family-entry .family-stack{height:118px;min-height:118px;margin-top:2px}
+.studio-r4.studio-refresh .family-entry .family-stack{position:absolute;inset:auto 0 14px;display:block;height:158px;min-height:0;margin:0}
+.studio-r4.studio-refresh .family-entry .family-scene-image{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+/* The Dots PNG has an intentionally generous alpha frame; place its unedited group by the recorded visible bounds. */
+.studio-r4.studio-refresh .family-entry.dots .family-scene-image{position:absolute;left:-19%;bottom:-28px;width:132%;height:auto}
+.studio-r4.studio-refresh .family-entry.grok .family-scene-image{position:absolute;left:-20%;bottom:-30px;width:140%;height:auto}
+.studio-r4.studio-refresh .family-entry.humans .family-stack{bottom:0;height:158px}
+.studio-r4.studio-refresh .family-entry.animals .family-stack{bottom:0;height:158px}
+.studio-r4.studio-refresh .family-entry .family-arrow{top:12px;right:18px;z-index:4}
+.studio-r4.studio-refresh .family-entry .family-desc{margin-top:4px}
+.studio-r4.studio-refresh .family-entry.meta-muse::after,.studio-r4.studio-refresh .family-entry.humans::after,.studio-r4.studio-refresh .family-entry.animals::after{content:"";position:absolute;inset:auto 0 0;height:44px;z-index:1;background:linear-gradient(0deg,var(--family-surface),transparent);pointer-events:none}
 .studio-r4.studio-refresh .family-scene-caption{display:none}
 .studio-r4.studio-refresh .family-entry .family-foot,.studio-r4.studio-refresh .family-entry .family-count{grid-row:4}
-.studio-r4.studio-refresh .family-entry .family-foot{max-width:91px;font-size:8px}
+.studio-r4.studio-refresh .family-entry .family-foot{position:absolute;left:18px;bottom:10px;max-width:91px;font-size:9px;line-height:1.3;color:#86818d}
 .studio-r4.studio-refresh .family-entry .family-count{font-size:8px}
 .studio-r4.studio-refresh .creation-intro{height:164px;min-height:164px;margin-top:12px;grid-template-columns:minmax(0,1.16fr) minmax(0,1.65fr) minmax(0,.8fr);gap:14px;border-radius:16px}
 .studio-r4.studio-refresh .intro-copy{padding:16px 24px}
@@ -437,8 +447,8 @@
 @media(min-width:1441px){
  .studio-r4.studio-refresh .home-hero{height:280px}
  .studio-r4.studio-refresh .hero-copy{padding-top:32px}
- .studio-r4.studio-refresh .family-entry{min-height:245px;grid-template-rows:auto auto 140px auto}
- .studio-r4.studio-refresh .family-entry .family-stack{height:140px;min-height:140px}
+ .studio-r4.studio-refresh .family-entry{min-height:245px;height:245px}
+ .studio-r4.studio-refresh .family-entry .family-stack{height:190px}
 }
 @media(min-width:801px) and (max-width:1100px){
  .studio-r4.studio-refresh .home-hero{height:260px}
@@ -461,8 +471,8 @@
  .studio-r4.studio-refresh .hero-copy p{font-size:13px}
  .studio-r4.studio-refresh .hero-random{min-height:43px;font-size:13px;min-width:185px}
  .studio-r4.studio-refresh .hero-scene-button{width:50%;height:185px}
- .studio-r4.studio-refresh .family-entry{min-height:228px;grid-template-rows:auto auto 128px auto}
- .studio-r4.studio-refresh .family-entry .family-stack{height:128px;min-height:128px}
+ .studio-r4.studio-refresh .family-entry{min-height:212px;height:212px}
+ .studio-r4.studio-refresh .family-entry .family-stack{height:154px}
  .studio-r4.studio-refresh .creation-intro{height:auto;min-height:180px;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
  .studio-r4.studio-refresh .intro-preview{height:180px;margin:6px 10px 6px 0}
  .studio-r4.studio-refresh .intro-note{display:none}
@@ -475,12 +485,12 @@
  .studio-r4.studio-refresh .hero-scene-button>img{left:7px;width:calc(100% - 14px)}
  .studio-r4.studio-refresh .family-browser{padding:11px 0;gap:0}
  .studio-r4.studio-refresh .family-filter{min-height:40px;padding-block:7px}
- .studio-r4.studio-refresh .family-entry{min-height:227px;padding:12px;grid-template-rows:auto auto 123px auto}
- .studio-r4.studio-refresh .family-entry .family-stack{height:123px;min-height:123px}
+ .studio-r4.studio-refresh .family-entry{min-height:190px;height:190px;padding:12px}
+ .studio-r4.studio-refresh .family-entry .family-stack{height:139px;bottom:20px}
  .studio-r4.studio-refresh .family-entry .family-foot{font-size:8px}
  .studio-r4.studio-refresh .family-entry .family-count{font-size:7px}
- .studio-r4.studio-refresh .family-entry.animals{grid-template-rows:auto auto 1fr auto;min-height:175px}
- .studio-r4.studio-refresh .family-entry.animals .family-stack{grid-row:1/4;height:135px;min-height:135px}
+ .studio-r4.studio-refresh .family-entry.animals{min-height:175px;height:175px}
+ .studio-r4.studio-refresh .family-entry.animals .family-stack{inset:auto 0 0 auto;width:57%;height:148px;min-height:0}
  .studio-r4.studio-refresh .creation-intro{grid-template-columns:1fr;gap:0}
  .studio-r4.studio-refresh .intro-copy{padding:20px 21px 13px}
  .studio-r4.studio-refresh .intro-preview{height:195px;min-height:195px;margin:0 10px 10px;padding:10px;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);border-radius:14px}
@@ -499,17 +509,13 @@
  .studio-r4.studio-refresh .hero-copy h1{font-size:27px}
  .studio-r4.studio-refresh .hero-scene-button{height:158px}
  .studio-r4.studio-refresh .home-hero{height:345px}
- .studio-r4.studio-refresh .family-entry{min-height:215px;padding:11px 10px;grid-template-rows:auto auto 112px auto}
- .studio-r4.studio-refresh .family-entry .family-stack{height:112px;min-height:112px}
+ .studio-r4.studio-refresh .family-entry{min-height:184px;height:184px;padding:11px 10px}
+ .studio-r4.studio-refresh .family-entry .family-stack{height:127px;bottom:22px}
  .studio-r4.studio-refresh .family-entry>b{font-size:16px}
  .studio-r4.studio-refresh .intro-preview{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);padding:9px;gap:2px}
  .intro-handwritten{display:none}
 }
 
-@media(min-width:1101px) and (max-width:1440px){
- .studio-r4.studio-refresh .family-entry{min-height:246px;grid-template-rows:24px 28px 151px 22px}
- .studio-r4.studio-refresh .family-entry .family-stack{height:184px;min-height:0;margin-top:-26px}
-}
 
 /* Normalize the selected hero PNGs' transparent safety frame at page placement. */
 .studio-r4.studio-refresh .hero-scene-button>img{left:-5%;width:110%;height:calc(100% + 24px);bottom:-12px}

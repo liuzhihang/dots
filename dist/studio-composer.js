@@ -1,5 +1,5 @@
-import { resolveCharacter } from './studio-model.js?v=81';
-import { inspectCompositionPack, isLocalCreationAsset, resolveCompositionConfig, selectCompositionLayers } from './studio-creation.js?v=81';
+import { resolveCharacter } from './studio-model.js?v=83';
+import { inspectCompositionPack, isLocalCreationAsset, resolveCompositionConfig, selectCompositionLayers } from './studio-creation.js?v=83';
 
 const clone = value => structuredClone(value);
 

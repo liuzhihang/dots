@@ -1,4 +1,4 @@
-import {createCharacter,validateConfig} from './studio-model.js?v=81';
+import {createCharacter,validateConfig} from './studio-model.js?v=83';
 export const INSPIRATIONS = [
  {id:'blue-listen',family:'dots',name:'蓝色 Dots',tag:'DOTS / 原版身份',description:'蓝色圆润主体、细短绒、简洁双眼与黑色连续耳机。身份依据 Dots 原版；网页成品待逐组确认。'},
  {id:'white-work',family:'grok',name:'淡紫 Grok Bot',tag:'GROK BOT / 原版身份',description:'哑光软拱、胶囊眼，透明镜与工作电脑。身份依据 Grok Bot 原版；网页成品待逐组确认。'},

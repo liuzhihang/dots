@@ -4,7 +4,7 @@
 
 需求见 [proposal.md](proposal.md)，行为合同见 [studio-visual-experience spec delta](specs/studio-visual-experience/spec.md)。用户已选 [R01 首页设计](../rebuild-character-system/references/r01-confirmed-direction.jpg) 为唯一首页与家族卡视觉目标。首页、两幅 hero 和五张卡都应忠实实现图中的角色比例/位置、配色、材质、道具关系与文字层级；四张已有非 Muse v2 家族卡的视觉偏离必须替换。用户强调只有 Meta Muse 需要身份微调，不得另创第二套卡片设计。
 
-R01 可以提供给 ImageGen 作为构图、服装风格、材质和配色参考。页面最终使用新制作的单独角色场景图，而不是整张网页截图、裁切/抠图或截图像素。人物与动物须原创，不可使用用户从动漫截取的像素、裁片/贴图或可辨认完整角色；R01 中人物/动物的服装和构图可用于视觉参考，但不能把该场景误称为动漫资产的复制授权。
+R01 可以提供给 ImageGen 作为构图、服装风格、材质和配色参考。页面最终使用新制作的单独角色场景图；不得直接嵌入整张网页截图，也不得从网页或动漫截图裁切、抠图或提取像素。独立新插画可以按 R01 在页面中做有意艺术裁切。人物与动物须原创，不可使用用户从动漫截取的像素、裁片/贴图或可辨认完整角色；R01 中人物/动物的服装和构图可用于视觉参考，但不能把该场景误称为动漫资产的复制授权。
 
 页面用 `HERO_SCENES` 与 `FAMILY_SCENES` 加载纯展示图；图库身份由 `FAMILY_LOOK_IDS` 和 `getBuiltInLooks()` 管理。该 change 不修改既有五组 15 个可编辑图库 `lookId`、每组三只候选或其角色身份契约。首页插画和 hero 人物都只是对应身份的展示场景，不因画面精细就变成图库单体、可编辑图层、PNG 下载、Prompt 或已保存项目素材。
 
@@ -102,3 +102,23 @@ Dots 4、Grok 6、Muse 1、人物 3、动物 5 是本轮场景绘制中的计数
 ## 未决问题
 
 R01 页面和五张卡的视觉目标、当前人数及 Muse 唯一替换方向均已确定。实现与源版本绑定、真实页面核验、独立美术评审和用户确认仍待执行；未来构图人数可调整，不受本轮当前素材数限制。
+
+## v81 用户否定后的修正（2026-10-06）
+
+用户指出首页尤其家族卡没有按稿实现。v81 卡高约246px、完整全身居中排列与独立字幕行偏离 R01 约212px 的横向家族海报。旧内部评审不能覆盖用户否定。
+
+- 在1280px参考视口恢复约235px宽、212px高的五列卡片，间距约12px；下方创作引导回到约583px开始。
+- 插画铺满卡片横向主区域，与底部英文短句共享画面，取消为字幕额外保留的独立网格行。Dots/Grok按原图的大主角、小配角和贴叠层级；人物采用近景头脸/上身，动物采用高低前后叠压群像，不采用完整全身目录式站队。
+- 遵循 R01 原有艺术裁切和下缘渐隐；“关键轮廓清楚”指眼睛、脸、耳朵、组别识别及道具接触不能意外遮断，并不要求每只脚完整入画。禁止为了露出全身而缩小所有角色、加高卡片或改变群像主次。
+- 非 Muse 四组仅忠实修正参考稿的构图/比例/颜色和材质；人物/动物仍使用原创身份。Muse保留A02 hood/face，仅调整 seated比例、抱星接触和sage点缀，顶部 Muse仍不持星/带植物。
+- v83 已按该方向重拍并绑定本地冻结 source；后续内部评审状态和剩余边界见下节。无溢出或人数匹配不表示用户美术通过；用户明确确认前 3.3 维持 pending。
+
+## v83 本地实现与内部评审（2026-10-06）
+
+本轮冻结 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个路径；冻结清单见 [rebuild acceptance v83](../rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json)。source ID 是该快照所列工作树路径与内容的 SHA-256，`gitHead` 只表示 baseline commit，不包含 dirty/untracked 源码。
+
+R01 桌面卡片几何和有意艺术裁切已落到实际页面截图：1280px 五卡约 232.2px 宽、212px 高，入口约从 y=582 开始；768/390/320 的首页与卡片截图均绑定 v83 source。7 张页面图无水平溢出且 image ready。独立评审 [visual-review-v83](../../../design/reference-home-correction-20261006/visual-review-v83.md) 为内部 `passed`、无 P0/P1/P2，保留 768px 第二排留白、320px Meta Muse 标题换行和 Dots 蓝色小球靠近脚注但仍可读等 P3 观察。
+
+真实交互见 [interaction-v83](../../../design/reference-home-correction-20261006/page/interaction-v83.json)：Muse 卡进入 3 项筛选、全部家族进入 15 项 Gallery、莓粉眼镜 Dots 进入工作台；问候时 project/Prompt 不变，console errors 为空。PNG 按钮 enabled 且点击 toast 显示候选已导出。Cua 下载事件超时后，依据本次点击时间戳从 Downloads 找回准确文件，并目视及校验 1600×1600 RGBA、2,922,405 bytes、SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`；证据见 [PNG 文件](../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png) 与 [回收记录](../rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.json)。这仅验证单张莓粉眼镜 Dots PNG，不代表五组 PNG 全量验证。15 项图库、模块 cache、family navigation 与 strict checks 结果见 [checks-v83](../../../design/reference-home-correction-20261006/checks-v83.json)。
+
+该内部评审不替代用户确认：source snapshot 的 `userArtApproved` 为 false，task 3.3 保持 unchecked。v83 当前没有新的 Site 发布回执；实体手机验收也没有证据。v81 user-rejected 与 v82 首次异步人物/动物空白诊断保留为不同历史版本，不拼接到 v83 的通过范围。

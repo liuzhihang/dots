@@ -1,5 +1,5 @@
-import {createLookCharacter,resolveCharacter} from './studio-model.js?v=81';
-import {BASELINE_LOOKS,BUILT_IN_LOOKS,LOOK_PRESETS} from './studio-looks.js?v=81';
+import {createLookCharacter,resolveCharacter} from './studio-model.js?v=83';
+import {BASELINE_LOOKS,BUILT_IN_LOOKS,LOOK_PRESETS} from './studio-looks.js?v=83';
 
 const historicalArtwork = (artwork) => Object.freeze({
   ...artwork,

@@ -1,38 +1,18 @@
-# 页面设计与交互 QA · 2026-10-06 · v81
+# 当前页面设计 QA · 2026-10-06
 
-final result: passed
+final result: internal-pass
 
-本结论覆盖 v81 实际页面截图与对 R01 的视觉复核。首页交互证据仍来自实际执行的 v80，明确保留其原版本与 source ID；v81 仅更新静态资源 URL 查询版本，不把 v80 交互记录改名为 v81。此内部 QA 不替代用户对五组角色美术的验收：`rebuild-character-system` 的 3.3 逐组验收仍为 **pending**。
+当前本地候选为 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，128 个冻结路径。source 绑定的独立真实页面复核未发现 P0/P1/P2，内部评审通过；`userArtApproved: false`。这只表示本轮截图中的布局、角色组合和响应式表现通过内部评审，用户逐组美术确认仍由 `rebuild-character-system` §3.3 承担，保持 pending。
 
-## 设计依据与已确认差异
+## v83 页面与实现证据
 
-- 对照方向图 `openspec/changes/rebuild-character-system/references/r01-confirmed-direction.jpg`（R01，1280×720）。检查白色导航、浅色城市主视觉、两侧角色群像与居中标题、五张独立家族卡和下方创作入口。
-- 按已确认产品方向，导航不提供登录或用户空间。首页家族卡是群像展示，五组画面人数随构图变化；它与内置形象库的 15 个已登记候选数量不同。
-- 首页 scene Dots 为紫色光滑主体与白色倾斜胶囊眼；工作台说明卡展示的是 15 个 Dots 内置可编辑搭配中的三个示例，并注明“试选内置搭配，再进入工作台定制。”
-- Muse 卡按已授权方向展示厚米白 plush hood、暖色脸、短肢体、双臂托抱贴合星形及侧边植物；Hero 使用同一 hood 身份但不带星或植物。人物和动物使用原创角色，借鉴构图与服装色彩，没有复用动漫截图像素。
+- [v83 页面验收记录](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md) 链接冻结的 source snapshot、4 个首页宽度及 3 个卡片视图、实际交互记录和独立视觉报告。
+- [独立视觉报告](design/reference-home-correction-20261006/visual-review-v83.md) 将桌面卡片记录为 212px 高、约 232px 宽，创作入口约从 y=582 开始；768/390/320 的卡片主体保持可读，无水平溢出。P3 观察为 768 第二排右侧留白、320px 的 Meta Muse 标题换行，以及 Dots 蓝色小球靠近脚注但仍可读。
+- [页面索引](design/reference-home-correction-20261006/page/native-pages-v83.json) 中 7 张实际截图均 ready，记录的 `scrollWidth` 与 viewport 内容宽度一致。页面仍只是本地冻结候选，尚无新的站点发布回执。
+- [检查记录](design/reference-home-correction-20261006/checks-v83.json) 将首页解码、15 个 Gallery 模板、模块缓存、家族导航和 OpenSpec strict 记录为通过；这些检查不授予角色美术确认。
 
-## v81 实际页面视觉证据
+## 实际交互与边界
 
-来源 ID：`0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，cache revision 81。真实浏览器截图记录在 `design/reference-home-20261005/page/pages-v81.json`。四个视口均记录五张家族卡、两个 Hero 群像、三项内置搭配示例；所有记录图片均 ready，`scrollWidth` 与页面 body 宽度相等。初次 reload 遇到缓存中的坏 Human 图片后，记录改用新 tab 捕获；最终截图来自 fresh tab，且五种家族图、两张 Hero 和三个 mini 预览全部加载。
+[v83 交互记录](design/reference-home-correction-20261006/page/interaction-v83.json) 绑定相同 source ID：Muse 家族卡进入 3 项筛选，全部家族进入 15 项 Gallery；莓粉眼镜 Dots 从 intro 进入 Composer 工作台，标题和导出控件状态正确；问候交互保持项目与 Prompt 不变，console errors 为空。PNG 按钮可用，点击后显示候选导出 toast。Cua 下载事件虽超时，之后从 Downloads 以当前点击时间戳恢复唯一对应文件，并完成字节与 RGBA/尺寸检查：[v83 导出 PNG](openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png)，1600×1600、2,922,405 bytes、SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`。这是单张莓粉眼镜 Dots 候选的实测，不代表五组 PNG 全量验证。
 
-| 视口 | 实际截图 | 视觉结论 |
-| --- | --- | --- |
-| 1280×720 | `page/home-1280-v81.png` | 居中标题和随机 CTA 位于两组 Hero 角色之间，顶部导航、浅色城市背景、左右前景角色和五卡横排形成与 R01 一致的主次关系。五卡图像足够突出，字幕未压住角色；创作区从首屏下缘开始，向下滚动可看完整入口。 |
-| 768×1024 | `page/home-768-v81.png`、`page/cards-768-v81.png` | Hero 和卡片保持分离；家族卡为三张加两张的网格，角色和说明没有重叠，卡片图像保持完整。 |
-| 390×844 | `page/home-390-v81.png`、`page/cards-390-v81.png` | 搜索栏、Hero、两行分类和两列家族卡顺序清楚；Animals 跨整行，文字在左、群像在右。 |
-| 320×760 | `page/home-320-v81.png`、`page/cards-320-v81.png` | 标题、随机入口、分类和前两张卡仍清晰；“Meta Muse”分行但不遮挡正文。cards 截图底端只覆盖 Animals 卡的上部视口切片，不能据此判断其卡片下缘是否完整；没有看到卡片内部裁切证据。 |
-| 创作入口区 | `page/intro-1280-v81.png`、`page/intro-320-v81.png` | 实际滚动位置展示了开始创作 CTA、三项 Dots 预设、定制说明以及用自己的图片创作入口。桌面截图处于页面中段，顶端带有上一段 Hero 的裁切内容；入口面板本身可见。320px 下预览和按钮在窄列中纵向排列，文案和控件没有互相遮盖。 |
-
-逐卡对照 R01：Dots 保留大号紫色耳机球及蓝、粉、黄同伴；Grok 保留六种彩色几何角色和前后层次；Muse 是单只抱星的米白 plush 角色与植物；人物呈现深色男孩、黄衣女孩、金发眼镜灰衣男孩三人组合；动物呈现柴犬、哈士奇、粉猪、猴子和小鸟群像。与参考相比，当前卡片高度略大、留白更多，但组内主体、色彩角色、配饰和亲密层叠关系均清晰。
-
-未发现 P0、P1 或 P2 的页面视觉问题。剩余 P3 观察为：768px 三加二网格的第二排左对齐，右侧留白较多；1280×720 首屏只露出创作入口上部；320px 的 Meta Muse 标题换行；320px cards 截图未包含整张 Animals 卡的下缘；桌面 intro 截图从中段滚动位置开始，因此上缘带有 Hero 裁切。这些截图边界不等于页面容器裁切，入口仍能通过滚动到达。没有扩展为额外改版要求。
-
-## v81 静态代码复核与 v80 交互证据
-
-`design/reference-home-20261005/code-review-v81.md` 的只读复核未发现阻塞项：本轮 123 个文件路径与 v80 一致，没有新增或移除文件；HTML、JavaScript、CSS 及两个 QA harness 的缓存查询值统一为 `v=81`。场景与可编辑形象保持分离，五个首页群像成员数为 4、6、1、3、5，仍使用独立的 15 个可编辑 look。
-
-交互证据只引用 `page/interactions-v80.json`，source ID 为 `29e9a319a0b9f7da86c4497c26b144aa6ee228e075c6b98b32282161678d1fb1`、cache revision 80。该真实执行记录包含键盘问候、内置搭配试选不改变 Prompt、选择 Dots 后进入工作台、背景控件聚焦、Muse 三个候选、图库 15 项、减少动态设置以及空控制台警告/错误。v81 页面记录明确说明交互记录仍是 v80 的历史实测；本轮没有重跑交互，也没有在 v81 重新下载 PNG。PNG 字节验证来自 v75，且导出算法与 look 资产未变。
-
-## 验收边界
-
-本次 `passed` 只表示 v81 截图中的页面视觉符合内部 R01 方向审查，且缓存查询修正的只读代码复核无阻塞。它没有勾选或替代五组角色的用户美术验收；`rebuild-character-system` §3.3 仍为 pending。真实手机、v81 新交互执行、v81 PNG 下载和远程发布验收也未由本报告确认。
+v81 是用户明确否定的历史版本，其当时的 `passed` 不作为 v83 依据；v82 是用于诊断首次人物/动物异步画面空白的中间版本，不作为发布或验收依据。v83 只调整首页卡片与 intro 的同步解码显示路径，Gallery lazy loading 未改。实体手机、用户美术确认和 Site 发布回读均未完成或无证据，不得推断为通过。`rebuild-character-system` §3.3 与 refinement 3.3 仍 pending。

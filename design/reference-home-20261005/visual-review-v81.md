@@ -1,5 +1,7 @@
 # v81 实际页面视觉复核
 
+> 历史说明（2026-10-06）：下文 `passed` 是用户否定 v81 家族卡之前的内部复核结果，仅保留为当时观察记录，不代表当前视觉验收或用户美术确认通过。当前状态为 user-rejected；原因见 [v81 基线审查](../reference-home-correction-20261006/baseline-review.md) 与 [设计 QA](../../design-qa.md)。
+
 final result: passed
 
 这是基于真实页面截图对 R01 的内部视觉复核，不是用户美术验收。来源 ID：`0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，cache revision 81。我在同一次图像复核中查看了 R01 与 `page/home-1280-v81.png`，随后查看 768、390、320 首页和卡片截图、两张 intro 截图，以及 `page/pages-v81.json`。

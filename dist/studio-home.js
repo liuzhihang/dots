@@ -1,6 +1,6 @@
-import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=81';
-import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=81';
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=81';
+import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=83';
+import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=83';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=83';
 
 export const FAMILY_PRESENTATION=Object.freeze([
  {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple\nBut Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
@@ -32,7 +32,7 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
   const found=matchingFamilies(search.value,filter);
   gallery.innerHTML=found.map(f=>{
    const scene=FAMILY_SCENES[f.id];
-   return `<button class="family-entry ${f.id}" data-family-gallery="${f.id}" aria-current="${current===f.id?'true':'false'}" aria-label="浏览 ${f.name} 内置形象"><b>${f.cardTitle||f.name}</b><span class="family-arrow" aria-hidden="true">›</span><span class="family-desc">${lines(f.description)}</span><span class="family-stack" aria-hidden="true"><img class="family-scene-image" src="${scene.src}" alt="" decoding="async" loading="eager"></span><span class="family-scene-caption">${esc(scene.caption)}</span><span class="family-foot">${lines(f.foot)}</span></button>`;
+   return `<button class="family-entry ${f.id}" data-family-gallery="${f.id}" aria-current="${current===f.id?'true':'false'}" aria-label="浏览 ${f.name} 内置形象"><b>${f.cardTitle||f.name}</b><span class="family-arrow" aria-hidden="true">›</span><span class="family-desc">${lines(f.description)}</span><span class="family-stack" aria-hidden="true"><img class="family-scene-image" src="${scene.src}" alt="" decoding="sync" loading="eager"></span><span class="family-scene-caption">${esc(scene.caption)}</span><span class="family-foot">${lines(f.foot)}</span></button>`;
   }).join('');
   document.getElementById('familyEmpty').hidden=found.length!==0;
   document.getElementById('familyResults').textContent=`找到 ${found.length} 个角色家族`;
@@ -80,7 +80,7 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
  }
  function renderIntro(){
   const looks=familyLooks('dots'),selected=byId(introLook);
-  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="async"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色'],['background','背景']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="async"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
+  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="sync"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色'],['background','背景']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="sync"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
  }
  function showHome(){page='home';document.body.dataset.screen='home';document.getElementById('homePortal').hidden=false;looks.hidden=true;document.getElementById('workspaceShell').hidden=true;renderFamilies();}
  function showGallery(family='all'){page='looks';activeFamily=family||'all';document.body.dataset.screen='looks';document.getElementById('homePortal').hidden=true;looks.hidden=false;document.getElementById('workspaceShell').hidden=true;renderLooks();document.getElementById('looksTitle')?.focus({preventScroll:true});}

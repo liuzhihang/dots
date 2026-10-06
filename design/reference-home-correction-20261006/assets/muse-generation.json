@@ -1,0 +1,34 @@
+{
+  "tool": "built-in image_gen",
+  "generatedAt": "2026-10-06",
+  "image": "family-meta-muse-v5.png",
+  "prompt": "Use case: identity-preserve, stylized 3D illustration.\nCreate ONE production-ready transparent RGBA homepage Meta Muse family-card illustration, landscape 1536x1024. Image 1 is the approved R01 website design reference. Refer ONLY to the central Meta Muse family card illustration's composition, softness, palette and close-up scale; do not reproduce any UI or text or screenshot pixels. Image 2 is the current A02 Muse identity to preserve: cream plush continuous rounded hood and body, recessed peach oval face, two small upright black oval eyes, tiny gentle curved smile, short rounded limbs. Change only composition and proportions to match the R01 card scene while retaining this hood/face identity.\nThe cream Muse is seated near left center, facing slightly toward viewer, tenderly holding a small warm glowing yellow five-point star between both short arms at its chest. Star touches both palms/arms naturally. Its hood is soft and rounded, wide rather than tall, with clear thickness around the recessed peach face. The feet are small rounded seated feet, not huge horizontal soles. A sage fabric cushion with a tiny two-leaf plant sits immediately behind to the right, lower than the Muse's head. Cushion touches the character's seated side, plant emerges naturally from cushion top and never overlaps the face. ONE character only. Close up composition matches the reference card: Muse head/torso occupies about 66% of group width; cushion about 32%; seated group reaches 95% frame width and 90% frame height with only a 3% transparent safety margin. Warm cream matte plush fabric, delicate short fibers, soft studio lighting, subtle contact shadows, gentle warm star glow (restrained, not neon). No headset, no scarf, no second pink character, no extra animals or humans. Do not make Muse an amorphous cloud or a child's face. No text, UI, rectangular ground, card background, watermark or invented props. Actual transparent background. Independently render new illustration pixels.",
+  "inputs": [
+    {
+      "path": "openspec/changes/rebuild-character-system/references/r01-confirmed-direction.jpg",
+      "role": "composition and material reference, no screenshot pixel reuse"
+    },
+    {
+      "path": "dist/assets/scenes/family-meta-muse-v4.png",
+      "role": "A02 hood/face identity reference"
+    }
+  ],
+  "generatedSource": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-4870a9fc-085b-408c-94fe-d669931f0763.png",
+  "pixelTransform": "none; byte-for-byte copy",
+  "userArtApproved": false,
+  "sha256": "03f8225a11bdb5e8026b9c7312a6d0fd4deff83fdbbbde578703ea8cc1fc7462",
+  "bytes": 2243194,
+  "width": 1536,
+  "height": 1024,
+  "mode": "RGBA",
+  "alphaRange": [
+    0,
+    254
+  ],
+  "alphaBounds": [
+    0,
+    0,
+    1522,
+    1024
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-06",
+  "scope": "R01-directed correction of Humans/Animals family illustrations only. Human initial generation, root-owned human emblem cleanup, animal generation and one final targeted animal edit are recorded separately.",
+  "generator": {
+    "tool": "built-in image_gen",
+    "backend_model": "not reported by tool; do not conflate art-direction model with image backend"
+  },
+  "originality_constraints": [
+    "R01 full screenshot guides family-card composition/material only; no screenshot pixel cropping, texture extraction or copy-paste is used.",
+    "Prompts explicitly require newly rendered original human faces/hair and animal proportions and forbid copying recognizable complete anime/cartoon identities.",
+    "All project assets are whole PNG copies of tool outputs; no Python image editing, image resizing, compositing or alpha cleanup."
+  ],
+  "reference": {
+    "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+    "role": "Only generation input for both fresh initial group renders. Relevant card area described in prompt; no physical crop.",
+    "metadata": {
+      "bytes": 196613,
+      "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "mode": "RGB"
+    }
+  },
+  "audit_comparisons": [
+    "dist/assets/scenes/family-humans-v3.png",
+    "dist/assets/scenes/family-animals-v3.png"
+  ],
+  "assets": [
+    {
+      "family": "humans",
+      "agent_source_file": "design/reference-home-correction-20261006/assets/family-humans-r01-v1.png",
+      "agent_output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-4f44ba2c-ba35-4f84-987e-ced36a7b68f3.png",
+      "member_count": 3,
+      "initial_prompt": "Create ONE NEW transparent 3D chibi HUMAN FAMILY illustration for a website card. Use ONLY the Humans card (fourth family card, lower row) in the full reference image as the COMPOSITION AND MATERIAL guide. Do not use the hero people. This is NOT a screenshot crop: newly render original faces/hair details, never reuse reference pixels or recreate an identifiable complete anime character.\n\nMatch that card's staggered UPPER-BODY composition faithfully:\n- LEFT BACK: a smaller black-haired boy in a dark charcoal hoodie, seen from chest upward, head turned inward. His head is about 80% the central girl's head size. His torso/shoulder is partly hidden behind her. He is a supporting back-layer figure, not a full-body standing doll.\n- CENTER FRONT: the main warm-brown-haired girl with a loose high bun and sunny yellow hoodie. Larger face, playful wink, one small natural hand making a peace sign beside cheek. Her head is lower and forward relative to the side figures, hoodie upper torso visible. She glances toward the viewer/friends.\n- RIGHT BACK: blond boy with thin dark round glasses, light-gray jacket over white shirt, head slightly higher than both friends, about 85% of girl's head size. His shoulder leans toward her and his eye line turns inward. Back-layer upper torso only.\n\nThree heads are visibly different sizes and heights. Shoulder contact and restrained overlap connect them. Do not make all three equally giant-headed. No full legs, trousers, feet, shoes, seated pose, platform or paper star. This is an upper-body card vignette, NOT three full-body dolls in a row. End the visible clothing below chest/waist in a delicate transparent alpha dissolve over the lowest 5% so it can blend into the card, not a hard rectangular cutoff. Faces, hair, bun and gesture remain fully crisp and intact.\n\nUse the REFERENCE'S pleasing refined 3D collectible rendering, soft skin, airy fine directional hair locks, finely woven clothing, soft luminous studio light, yellow/charcoal/light-gray palette. Avoid hyperreal oversized shiny eyes or overly dense sculptural hair; keep the reference card's cute natural balance.\n\nWIDE LANDSCAPE PNG, about1536x1024. The actual subject silhouette should fit a 215px-wide by150px-high display footprint (ratio about1.43:1), fill about94% canvas width and90–94% height. Only about3% transparent safety border, not a big square canvas with empty space. Do not crop outer hair/hand outlines. Exactly THREE original humans.\n\nGenuine RGBA alpha transparency outside characters and under the gentle bottom dissolve. NO card rectangle, colored background, fog, white backdrop, floor, ground shadow, border, text, caption, UI, logo or watermark.",
+      "reference_images": [
+        "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+      ],
+      "status": "Agent v1 delivered for root review; root subsequently selected its own emblem-cleaned v2. Agent did not further edit humans.",
+      "root_followup_record": "design/reference-home-correction-20261006/assets/human-cleanup.json",
+      "root_selected_file": "design/reference-home-correction-20261006/assets/family-humans-r01-v2.png",
+      "visual_review": {
+        "changes_from_rejected_v3": [
+          "Upper-body group, no trousers/legs/feet; lower torso alpha dissolve enables card integration.",
+          "Black hoodie boy behind-left, yellow hoodie wink/peace girl front-lower, gray-jacket round-glasses blond behind-right.",
+          "Original newly rendered faces and hair; shoulder overlap and inward eye lines replace full-body standing row."
+        ],
+        "remaining_differences": [
+          "White inner shirt appears as a round-neck tee rather than clearly collared shirt.",
+          "Head-size hierarchy is less pronounced than prompt/reference request.",
+          "Initial tool added a cat-shaped mark on left hoodie and smile patch on girl's hoodie; root-owned followup removes the cat mark and preserves the smile patch.",
+          "Visible silhouette is broader than requested215:150 approximate footprint. Exact alpha metrics recorded; root owns placement."
+        ],
+        "acceptance": "No user art approval claimed; root performs actual card QA."
+      },
+      "agent_source_metadata": {
+        "bytes": 2529356,
+        "sha256": "25520347f5533f94c71a40854f122ba90ca7f3a5d5b3a83485b618cced24db0b",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "fully_transparent_fraction": 0.3336016337076823,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              0,
+              0,
+              1535,
+              1024
+            ],
+            "visible_ratio": 1.4990234375,
+            "width_occupancy": 0.9993489583333334,
+            "height_occupancy": 1.0,
+            "margins_ltrb": [
+              0.0,
+              0.0,
+              0.0006510416666666666,
+              0.0
+            ]
+          },
+          "16": {
+            "bbox": [
+              32,
+              99,
+              1508,
+              954
+            ],
+            "visible_ratio": 1.7263157894736842,
+            "width_occupancy": 0.9609375,
+            "height_occupancy": 0.8349609375,
+            "margins_ltrb": [
+              0.020833333333333332,
+              0.0966796875,
+              0.018229166666666668,
+              0.068359375
+            ]
+          },
+          "64": {
+            "bbox": [
+              34,
+              100,
+              1505,
+              942
+            ],
+            "visible_ratio": 1.7470308788598574,
+            "width_occupancy": 0.9576822916666666,
+            "height_occupancy": 0.822265625,
+            "margins_ltrb": [
+              0.022135416666666668,
+              0.09765625,
+              0.020182291666666668,
+              0.080078125
+            ]
+          },
+          "128": {
+            "bbox": [
+              37,
+              101,
+              1504,
+              932
+            ],
+            "visible_ratio": 1.7653429602888087,
+            "width_occupancy": 0.955078125,
+            "height_occupancy": 0.8115234375,
+            "margins_ltrb": [
+              0.024088541666666668,
+              0.0986328125,
+              0.020833333333333332,
+              0.08984375
+            ]
+          }
+        }
+      },
+      "agent_source_byte_identical": true,
+      "root_followup_details": {
+        "tool": "built-in image_gen",
+        "image": "family-humans-r01-v2.png",
+        "input": "family-humans-r01-v1.png",
+        "prompt": "Edit the supplied independent 3D human trio illustration. Change ONLY the small cat-head emblem on the left black-haired boy's dark charcoal hoodie: remove that cat symbol and restore plain uninterrupted charcoal hoodie fabric with the same knit texture and lighting. Preserve every other pixel/content feature as faithfully as possible: same three original characters, exact relative sizes and positions, original faces/hair, center brown-bun girl's wink and V hand gesture/yellow hoodie and its small round smiling patch, right blond boy's black round glasses/gray overshirt/white tee, shoulder overlaps, lighting, plush 3D material, lower alpha fade, wide 1536x1024 frame and existing transparent background. No other redesign, no extra badges/props/words, no legs or feet. This is a precise one-object cleanup, all other composition remains fixed.",
+        "generatedSource": "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-426b0229-d76a-45f4-8a03-709c3c15032a.png",
+        "pixelTransform": "none; byte-for-byte copy",
+        "userArtApproved": false
+      },
+      "root_selected_metadata": {
+        "bytes": 2390173,
+        "sha256": "01266e796dd3f3173c453d45931e3e82a54b076a5edfef4a159c07de624d2eae",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          253
+        ],
+        "fully_transparent_fraction": 0.1233367919921875,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              0,
+              0,
+              1536,
+              1024
+            ],
+            "visible_ratio": 1.5,
+            "width_occupancy": 1.0,
+            "height_occupancy": 1.0,
+            "margins_ltrb": [
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "16": {
+            "bbox": [
+              34,
+              98,
+              1507,
+              948
+            ],
+            "visible_ratio": 1.7329411764705882,
+            "width_occupancy": 0.958984375,
+            "height_occupancy": 0.830078125,
+            "margins_ltrb": [
+              0.022135416666666668,
+              0.095703125,
+              0.018880208333333332,
+              0.07421875
+            ]
+          },
+          "64": {
+            "bbox": [
+              39,
+              100,
+              1505,
+              941
+            ],
+            "visible_ratio": 1.7431629013079668,
+            "width_occupancy": 0.9544270833333334,
+            "height_occupancy": 0.8212890625,
+            "margins_ltrb": [
+              0.025390625,
+              0.09765625,
+              0.020182291666666668,
+              0.0810546875
+            ]
+          },
+          "128": {
+            "bbox": [
+              43,
+              101,
+              1503,
+              931
+            ],
+            "visible_ratio": 1.7590361445783131,
+            "width_occupancy": 0.9505208333333334,
+            "height_occupancy": 0.810546875,
+            "margins_ltrb": [
+              0.027994791666666668,
+              0.0986328125,
+              0.021484375,
+              0.0908203125
+            ]
+          }
+        }
+      },
+      "root_selected_byte_identical": true
+    },
+    {
+      "family": "animals",
+      "source_file": "design/reference-home-correction-20261006/assets/family-animals-r01-v2.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-97e7469d-1612-4656-822a-36c77c2abe8d.png",
+      "member_count": 5,
+      "members": [
+        "largest foreground-left winking Shiba",
+        "taller back-middle black-white husky",
+        "front-right gentle open-eyed pig",
+        "smaller back-right brown monkey",
+        "tiny upper white-blue-yellow bird"
+      ],
+      "generation_attempts": [
+        {
+          "file": "design/reference-home-correction-20261006/assets/family-animals-r01-v1.png",
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-53eab3cc-3c23-41f3-b6f8-9e22ba870ce4.png",
+          "prompt": "Generate ONE new transparent 3D animal-family card illustration, using ONLY the ANIMALS CARD (far-right family card in lower row) of the full reference as the exact composition, scale hierarchy, material and color guide. Not the hero. This is a NEW original render, never a pixel crop or copy of a recognizable complete cartoon/anime identity.\n\nExactly FIVE animals arranged like that card:\nFOREGROUND LEFT: the visually largest and nearest, a round orange-and-cream original Shiba. Big round head, short compact body, one playful WINK and open happy mouth with naturally curved small pink tongue. White muzzle/cheeks, pointed complete ears. Turn slightly inward toward friends. Its head is the main anchor, clearly larger than husky's face, not a tiny member.\nBACK CENTER: a taller BLACK-and-white husky, happy open-mouth expression, upright complete pointed ears, white muzzle and distinct dark mask. Behind Shiba/pig, slightly smaller head (about85% of Shiba's head), taller overall placement, body partly occluded. Lean naturally beside Shiba, not a vertical giant floating head.\nFOREGROUND RIGHT: a substantial pink pig with a round plump body, flat two-nostril snout, small floppy ears and short little hooves. Head/body scale about90% of Shiba's visual mass. Tilt gently inward toward the Shiba.\nBACK RIGHT: a considerably SMALLER brown monkey, round ears, peach muzzle, short limbs and curved attached tail; about60% of Shiba's head size. Peek from behind pig and touch pig's upper back with one animal paw. It is a supporting back-layer character, not as large as foreground dog/pig.\nTOP CENTER-RIGHT: a TINY white bird with blue wings, small yellow crest and yellow-orange beak, about30% of Shiba head size. Perch in the gap above husky/monkey as the highest little accent. Tiny feet touch a friend's back, not detached floating. Keep bird distinctly small.\n\nMatch the reference's broad low stepped composition, around215px wide and150px tall when displayed: large Shiba FRONT-LEFT, happy husky taller BACK-MIDDLE, pig FRONT-RIGHT, monkey SMALLER BACK-RIGHT, bird TINY TOP. Scale hierarchy must be obvious. Not equal heads, not a tall stacked pyramid, not five upright symmetrical toy soldiers. Overlapping sides, natural adjacent contact, slightly varied head angles and shared inward eye lines. Shiba is main focal subject, pig second. No white cat or penguin, no sixth animal.\n\nUse the reference card's refined dense short-plush/soft 3D texture, delicate directional fur, soft luminous studio lighting, bright warm orange/cream, deep black-white, soft pink and warm brown. Compact short bodies. No overly long limbs, overly shiny eyes or hyperreal portrait fur. Original animal proportions/features.\n\nWIDE LANDSCAPE RGBA PNG around1536x1024, subject silhouette about1.43–1.5:1, fills most canvas with about3% tight transparent border. Entire head/ear/bird/monkey-tail outlines intact. Lower paws may naturally partly overlap neighbors; do not stretch composition to reveal every hidden foot. No giant square empty margins.\nAbsolutely no card background, floor, separate ground shadow, backdrop, colored glow, border, UI, title, text, logo or watermark. Genuine transparency alpha0 outside animals.",
+          "reference_images": [
+            "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg"
+          ],
+          "selected": false,
+          "review": "Wide low hierarchy improved over v3, but unrequested Shiba collar/bone charm, laughing closed-eye pig and oversized bird required one root-requested edit.",
+          "metadata": {
+            "bytes": 2392894,
+            "sha256": "5d2a43fa308da4785c7691c283b27371b51b07708b0089e587424ba74151b17e",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              254
+            ],
+            "fully_transparent_fraction": 0.3419818878173828,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  0,
+                  13,
+                  1536,
+                  1002
+                ],
+                "visible_ratio": 1.5530839231547018,
+                "width_occupancy": 1.0,
+                "height_occupancy": 0.9658203125,
+                "margins_ltrb": [
+                  0.0,
+                  0.0126953125,
+                  0.0,
+                  0.021484375
+                ]
+              },
+              "16": {
+                "bbox": [
+                  13,
+                  16,
+                  1525,
+                  995
+                ],
+                "visible_ratio": 1.5444330949948928,
+                "width_occupancy": 0.984375,
+                "height_occupancy": 0.9560546875,
+                "margins_ltrb": [
+                  0.008463541666666666,
+                  0.015625,
+                  0.007161458333333333,
+                  0.0283203125
+                ]
+              },
+              "64": {
+                "bbox": [
+                  16,
+                  16,
+                  1524,
+                  995
+                ],
+                "visible_ratio": 1.5403472931562818,
+                "width_occupancy": 0.9817708333333334,
+                "height_occupancy": 0.9560546875,
+                "margins_ltrb": [
+                  0.010416666666666666,
+                  0.015625,
+                  0.0078125,
+                  0.0283203125
+                ]
+              },
+              "128": {
+                "bbox": [
+                  18,
+                  17,
+                  1523,
+                  995
+                ],
+                "visible_ratio": 1.5388548057259714,
+                "width_occupancy": 0.9798177083333334,
+                "height_occupancy": 0.955078125,
+                "margins_ltrb": [
+                  0.01171875,
+                  0.0166015625,
+                  0.008463541666666666,
+                  0.0283203125
+                ]
+              }
+            }
+          },
+          "byte_identical_to_tool_output": true,
+          "reference_metadata": [
+            {
+              "path": "/tmp/codex-remote-attachments/01a109ad-a01d-7680-be6e-b7297f9f3684/5EA66244-3DBD-464D-B4E2-2A23EC908D51/1-Photo-1.jpg",
+              "bytes": 196613,
+              "sha256": "5b6248552c1fd294a4dc68a684eb57224df52a7b620888168ea9709465ee399f",
+              "dimensions": [
+                1280,
+                720
+              ],
+              "mode": "RGB"
+            }
+          ]
+        },
+        {
+          "file": "design/reference-home-correction-20261006/assets/family-animals-r01-v2.png",
+          "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-97e7469d-1612-4656-822a-36c77c2abe8d.png",
+          "prompt": "Precisely edit this exact five-animal transparent group. Preserve the composition, character identities, plush materials, lighting, transparency/framing, husky and monkey EXACTLY. Make only these three requested changes:\n\n1. SHIBA at front-left: completely REMOVE the red collar and gold bone pendant. Reconstruct continuous natural white/cream chest fur where collar and pendant were. Keep Shiba's same scale, wink, happy open mouth and visible pink tongue, same pose, paws, ears and curled tail. No replacement accessory.\n\n2. PINK PIG at front-right: reduce the complete pig to about85% of its current linear size, keeping it in the same front-right position with its hooves on the existing baseline. Keep a substantial plump foreground pig but let Shiba clearly dominate. Replace pig's closed-eye loud laughing face with a gentle calm expression: two SMALL OPEN BLACK EYES and a very tiny closed smile or no visible mouth. Keep its two-nostril pink snout. NO pig tongue, NO open mouth, NO eyelash decoration. Preserve pig ears, hooves and pink fur.\n\n3. SMALL BIRD at top: reduce the complete bird to80% of its current linear size, keeping it perched in its same upper position and keeping its feet in contact with the friend's back. Preserve its white/blue/yellow colors, happy expression and wings. Do not make it float.\n\nHusky's head, both complete ears, expression and body remain unchanged. Monkey's face, paws, position and tail remain unchanged. Maintain close natural neighboring contact and the original broad low five-member group. No extra characters, cat, penguin, props, clothing, text, logos, floor, shadow plane, backdrop or card UI.\nKeep actual RGBA transparency outside the five animal silhouettes. Do not zoom, crop, enlarge the canvas, replace the background or turn this into independent full-body standing toys.",
+          "reference_images": [
+            "/Users/liuzhihang/workspace/dots/design/reference-home-correction-20261006/assets/family-animals-r01-v1.png"
+          ],
+          "selected": true,
+          "review": "Final requested edit; no further generation loop.",
+          "metadata": {
+            "bytes": 2258979,
+            "sha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              254
+            ],
+            "fully_transparent_fraction": 0.3596019744873047,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  0,
+                  12,
+                  1536,
+                  1000
+                ],
+                "visible_ratio": 1.5546558704453441,
+                "width_occupancy": 1.0,
+                "height_occupancy": 0.96484375,
+                "margins_ltrb": [
+                  0.0,
+                  0.01171875,
+                  0.0,
+                  0.0234375
+                ]
+              },
+              "16": {
+                "bbox": [
+                  16,
+                  15,
+                  1525,
+                  996
+                ],
+                "visible_ratio": 1.5382262996941896,
+                "width_occupancy": 0.982421875,
+                "height_occupancy": 0.9580078125,
+                "margins_ltrb": [
+                  0.010416666666666666,
+                  0.0146484375,
+                  0.007161458333333333,
+                  0.02734375
+                ]
+              },
+              "64": {
+                "bbox": [
+                  18,
+                  16,
+                  1524,
+                  995
+                ],
+                "visible_ratio": 1.5383043922369766,
+                "width_occupancy": 0.98046875,
+                "height_occupancy": 0.9560546875,
+                "margins_ltrb": [
+                  0.01171875,
+                  0.015625,
+                  0.0078125,
+                  0.0283203125
+                ]
+              },
+              "128": {
+                "bbox": [
+                  19,
+                  17,
+                  1523,
+                  995
+                ],
+                "visible_ratio": 1.5378323108384457,
+                "width_occupancy": 0.9791666666666666,
+                "height_occupancy": 0.955078125,
+                "margins_ltrb": [
+                  0.012369791666666666,
+                  0.0166015625,
+                  0.008463541666666666,
+                  0.0283203125
+                ]
+              }
+            }
+          },
+          "byte_identical_to_tool_output": true,
+          "reference_metadata": [
+            {
+              "path": "/Users/liuzhihang/workspace/dots/design/reference-home-correction-20261006/assets/family-animals-r01-v1.png",
+              "bytes": 2392894,
+              "sha256": "5d2a43fa308da4785c7691c283b27371b51b07708b0089e587424ba74151b17e",
+              "dimensions": [
+                1536,
+                1024
+              ],
+              "mode": "RGBA"
+            }
+          ]
+        }
+      ],
+      "visual_review": {
+        "checks": [
+          "Five requested species only; no cat/penguin.",
+          "Shiba is dominant front-left, winking and tongue-out; collar and gold bone charm removed and white chest fur restored.",
+          "Husky back-middle with both complete ears and unchanged cheerful face; smaller monkey back-right with full face, round ears, paw/shoulder contact and attached visible tail.",
+          "Pig smaller than v1, calm small open black eyes and tiny mouth/no tongue; bird visibly smaller, upper position preserved.",
+          "Broad low layered group and nearby contact retained."
+        ],
+        "remaining_differences": [
+          "Requested85% pig and80% bird are prompt targets, not independently certified exact geometric scaling; generation is not a deterministic transform.",
+          "Monkey face size/position were preserved; shrinking pig reveals more monkey shoulder/body, but about40px card-face target remains unverified until real webpage review.",
+          "Bird retains blue crown/upper-head plumage in addition to blue wings; reference requested mostly white bird with blue feathers/yellow crest.",
+          "Tight border remains below3% on some sides; root explicitly prioritized composition and will normalize positioning in CSS.",
+          "Inline/view previews may show RGB outside alpha; alpha statistics alone are not blanket proof of zero halo on every background."
+        ],
+        "acceptance": "Candidate delivered for root webpage review; no user art approval claimed."
+      },
+      "metadata": {
+        "bytes": 2258979,
+        "sha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          254
+        ],
+        "fully_transparent_fraction": 0.3596019744873047,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              0,
+              12,
+              1536,
+              1000
+            ],
+            "visible_ratio": 1.5546558704453441,
+            "width_occupancy": 1.0,
+            "height_occupancy": 0.96484375,
+            "margins_ltrb": [
+              0.0,
+              0.01171875,
+              0.0,
+              0.0234375
+            ]
+          },
+          "16": {
+            "bbox": [
+              16,
+              15,
+              1525,
+              996
+            ],
+            "visible_ratio": 1.5382262996941896,
+            "width_occupancy": 0.982421875,
+            "height_occupancy": 0.9580078125,
+            "margins_ltrb": [
+              0.010416666666666666,
+              0.0146484375,
+              0.007161458333333333,
+              0.02734375
+            ]
+          },
+          "64": {
+            "bbox": [
+              18,
+              16,
+              1524,
+              995
+            ],
+            "visible_ratio": 1.5383043922369766,
+            "width_occupancy": 0.98046875,
+            "height_occupancy": 0.9560546875,
+            "margins_ltrb": [
+              0.01171875,
+              0.015625,
+              0.0078125,
+              0.0283203125
+            ]
+          },
+          "128": {
+            "bbox": [
+              19,
+              17,
+              1523,
+              995
+            ],
+            "visible_ratio": 1.5378323108384457,
+            "width_occupancy": 0.9791666666666666,
+            "height_occupancy": 0.955078125,
+            "margins_ltrb": [
+              0.012369791666666666,
+              0.0166015625,
+              0.008463541666666666,
+              0.0283203125
+            ]
+          }
+        }
+      },
+      "byte_identical_to_tool_output": true
+    }
+  ],
+  "audit_comparison_metadata": [
+    {
+      "path": "dist/assets/scenes/family-humans-v3.png",
+      "bytes": 1973072,
+      "sha256": "b3bf539597c0420ed27eaaa9973e5dc18b8d3ba7bcff4a539ac77a2f2790eeb0",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "dist/assets/scenes/family-animals-v3.png",
+      "bytes": 1554858,
+      "sha256": "bf9a99ce408aa1e77e0418287539f131a710718ebb0ac5912b7aa0bb462428da",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    }
+  ]
+}
