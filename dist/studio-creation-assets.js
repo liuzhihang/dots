@@ -1,5 +1,5 @@
-import {createLookCharacter,resolveCharacter} from './studio-model.js?v=83';
-import {BASELINE_LOOKS,BUILT_IN_LOOKS,LOOK_PRESETS} from './studio-looks.js?v=83';
+import {createLookCharacter,resolveCharacter} from './studio-model.js?v=86';
+import {BASELINE_LOOKS,BUILT_IN_LOOKS,LOOK_PRESETS} from './studio-looks.js?v=86';
 
 const historicalArtwork = (artwork) => Object.freeze({
   ...artwork,
@@ -49,8 +49,8 @@ export const CREATION_ARTWORKS = Object.freeze([
   })
 ]);
 
-// Keep the withdrawn legacy ID importable without making its former image an
-// active artwork or exposing a downloadable source URL.
+// Tombstones exist only to return a precise unsupported error. Project parsing
+// rejects these IDs and never migrates them to another artwork.
 export const RETIRED_ARTWORKS = Object.freeze([
   historicalArtwork({
     id: 'historical-human-reading-v2',
@@ -62,7 +62,7 @@ export const RETIRED_ARTWORKS = Object.freeze([
     provenance: {
       origin: 'imported-sites-v27',
       official: false,
-      detail: '用户明确否决的历史人物形象；仅保留 ID 兼容记录，不再提供原图'
+      detail: '用户明确否决的历史人物形象；仅保留停用记录用于明确拒绝，不提供原图或项目迁移'
     },
     description: '该历史人物形象已撤下；项目角色配置和 artworkId 保留，不会替换为其他人物图片。'
   }),
@@ -76,7 +76,7 @@ export const RETIRED_ARTWORKS = Object.freeze([
     provenance: {
       origin: 'imported-sites-v27',
       official: false,
-      detail: '用户明确要求改正 Grok 身份；仅保留 ID 兼容记录，不再提供原图'
+      detail: '用户明确要求改正 Grok 身份；仅保留停用记录用于明确拒绝，不提供原图或项目迁移'
     },
     description: '该历史 Grok 形象已撤下；项目角色配置和 artworkId 保留，不会替换为新基准角色。'
   })
@@ -85,10 +85,10 @@ export const RETIRED_ARTWORKS = Object.freeze([
 export const COMPOSITION_PACKS = Object.freeze([
   Object.freeze({
     id:'dots-front-headphones-candidate-20261005',family:'dots',kind:'layered-2d',view:'front',status:'candidate',revision:1,
-    provenance:{origin:'imagegen-20261005',detail:'同一 Dots 正面基准的裸形/贴合耳机完整造型层互斥替换，背景实际合成；不支持任意外观或动作生成。'},
+    provenance:{origin:'imagegen-20261005',detail:'同一 Dots 正面基准的裸形/贴合耳机完整造型层互斥替换，绘制在透明画布上；不支持任意外观或动作生成。'},
     outputNotes:Object.freeze({
-      zh:'【工作台输出说明】当前设置可由已支持的正面完整静态 PNG 配方合成为 PNG；眨眼是单帧表情，不是连续动画。这是本地 2D 静态合成，不是自动生成图片，也不支持自由旋转三维视角。此组合属于基准候选，尚待真实网页美术验收；本说明不表示验收通过。需要参考自己的图片时，请在 ChatGPT 另行附加。',
-      en:'[Studio output] The supported front-view complete still PNG recipes can be composited into a PNG; a wink is one still expression, not continuous animation. This is a static local 2D composition, not a generated image or a freely rotatable 3D model. This composition is a baseline candidate pending real webpage art review; this note does not indicate acceptance. Attach your own reference image in ChatGPT when needed.'
+      zh:'【工作台输出说明】当前设置可由已支持的正面完整静态 PNG 配方合成为透明背景 PNG；眨眼是单帧表情，不是连续动画。这是本地 2D 静态合成，不是自动生成图片，也不支持自由旋转三维视角。此组合属于基准候选，尚待真实网页美术验收；本说明不表示验收通过。需要参考自己的图片时，请在 ChatGPT 另行附加。',
+      en:'[Studio output] The supported front-view complete still PNG recipes are composited on a transparent canvas; a wink is one still expression, not continuous animation. This is a static local 2D composition, not a generated image or a freely rotatable 3D model. This composition is a baseline candidate pending real webpage art review; this note does not indicate acceptance. Attach your own reference image in ChatGPT when needed.'
     }),
     actionPromptOverrides:Object.freeze({
       listen:Object.freeze({
@@ -97,7 +97,7 @@ export const COMPOSITION_PACKS = Object.freeze([
       })
     }),
     baseConfig:createLookCharacter('candidate-dots-20261005'),width:1254,height:1254,
-    editablePaths:['accessories.head','action','expression','background','colors.background'],
+    editablePaths:['accessories.head','action','expression'],
     layers:[
       {id:'bare',src:'./assets/characters/dots-blue-plush-orb-front-candidate-v2.png',z:0},
       {id:'headphones',src:'./assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png',z:0}
@@ -167,15 +167,15 @@ export function getBuiltInLooks(family = null) {
 function fixedLookPack(artwork) {
   const config=createLookCharacter(artwork.id);
   return {
-    id:`${artwork.id}-background-composition`,family:artwork.family,artworkId:artwork.id,
+    id:`${artwork.id}-transparent-composition`,family:artwork.family,artworkId:artwork.id,
     kind:'fixed-image-2d',view:'front',status:'candidate',revision:1,
-    provenance:{origin:artwork.provenance?.origin||'imagegen-20261005',detail:'单张完整 PNG 固定造型；仅背景颜色/透明度在网页中实际合成，其他设定只更新 Prompt。'},
+    provenance:{origin:artwork.provenance?.origin||'imagegen-20261005',detail:'单张完整 PNG 固定造型；绘制在透明画布上，其他未支持设定只更新 Prompt。'},
     outputNotes:Object.freeze({
-      zh:`【工作台输出说明】当前画面以“${artwork.name}”这张完整 PNG 为固定造型，只把所选背景合成到 PNG；人物/角色姿态和图中配饰已烘焙，五官、材质、颜色、动作、镜头等高级设定只写入 Prompt，不会改变本画面。本内置搭配仍待真实网页美术验收；这不是自动生成图片或任意 3D 模型。需要使用参考图时，请在 ChatGPT 另行附加。`,
-      en:`[Studio output] The current preview uses the complete PNG “${artwork.name}” as a fixed look and composites only the selected background. Its pose and pictured accessories are baked into the image; advanced feature, material, color, action and camera settings update the prompt only and do not alter this preview. This built-in look is still pending real webpage art review. It is not generated artwork or a freely editable 3D model. Attach any reference image in ChatGPT when needed.`
+      zh:`【工作台输出说明】当前画面以“${artwork.name}”这张完整 PNG 为固定造型，原图绘制在透明画布上；人物/角色姿态和图中配饰已烘焙，五官、材质、颜色、动作、镜头等高级设定只写入 Prompt，不会改变本画面。本内置搭配仍待真实网页美术验收；这不是自动生成图片或任意 3D 模型。需要使用参考图时，请在 ChatGPT 另行附加。`,
+      en:`[Studio output] The current preview uses the complete PNG “${artwork.name}” as a fixed look on a transparent canvas. Its pose and pictured accessories are baked into the image; advanced feature, material, color, action and camera settings update the prompt only and do not alter this preview. This built-in look is still pending real webpage art review. It is not generated artwork or a freely editable 3D model. Attach any reference image in ChatGPT when needed.`
     }),
     baseConfig:config,width:artwork.width,height:artwork.height,
-    editablePaths:['background','colors.background'],
+    editablePaths:[],
     layers:[{id:artwork.id,src:artwork.src,z:0}],variants:[]
   };
 }
@@ -212,8 +212,8 @@ export function createBaselinePosePack(artworkId, poseAssets=BASELINE_POSE_VARIA
       kind:'layered-2d',view:'front',status:'candidate',revision:1,
       provenance:{origin:artwork.provenance?.origin||'imagegen-20261005',detail:'基准与每个已登记状态都是完整透明 PNG；只提供精确注册的静态状态配方。'},
       outputNotes:Object.freeze({
-        zh:'【工作台输出说明】经典、表情或姿态切换会选用各自完整 PNG 并合成背景。每个状态是单张静态图，不是连续动画；未登记的编辑只写入 Prompt。此候选仍待真实网页美术验收。',
-        en:'[Studio output] Classic, expression or pose changes select a complete registered PNG and composite its background. Each state is a single still image, not continuous animation; unregistered edits update the Prompt only. This candidate remains pending real webpage art review.'
+        zh:'【工作台输出说明】经典、表情或姿态切换会选用各自完整 PNG 并绘制在透明画布上。每个状态是单张静态图，不是连续动画；未登记的编辑只写入 Prompt。此候选仍待真实网页美术验收。',
+        en:'[Studio output] Classic, expression or pose changes select a complete registered PNG and draw it on a transparent canvas. Each state is a single still image, not continuous animation; unregistered edits update the Prompt only. This candidate remains pending real webpage art review.'
       }),
       actionPromptOverrides:{
         wave:Object.freeze({
@@ -222,7 +222,7 @@ export function createBaselinePosePack(artworkId, poseAssets=BASELINE_POSE_VARIA
         })
       },
       baseConfig,width:artwork.width,height:artwork.height,
-      editablePaths:[...paths,'background','colors.background'],
+      editablePaths:[...paths],
       layers:[{id:layerId,src:artwork.src,z:0}],
       variants:[{id:'classic',values:Object.fromEntries(paths.map(path=>[path,nestedValue(baseConfig,path)])),layerIds:[layerId]}]
     };

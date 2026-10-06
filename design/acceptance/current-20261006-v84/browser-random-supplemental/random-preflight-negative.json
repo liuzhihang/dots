@@ -1,0 +1,44 @@
+{
+  "schema": "dots-random-preflight-negative/v1",
+  "sourceBefore": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3",
+    "fileCount": 152,
+    "dirtyFileCount": 53
+  },
+  "cases": [
+    {
+      "mode": "decode-failure",
+      "result": "passed",
+      "status": "素材 artwork/candidate-grok-20261005/full 无法解码",
+      "resultVisible": false,
+      "canvasCount": 0,
+      "applyVisible": false,
+      "applyDisabled": true,
+      "projectUnchanged": true,
+      "undoStateUnchanged": true,
+      "faultInjection": "selected registered PNG reached the actual randomizer preloader; Image decoder reported the specified fault"
+    },
+    {
+      "mode": "wrong-dimensions",
+      "result": "passed",
+      "status": "素材 artwork/muse-sage-reading/full 尺寸与目录记录不一致",
+      "resultVisible": false,
+      "canvasCount": 0,
+      "applyVisible": false,
+      "applyDisabled": true,
+      "projectUnchanged": true,
+      "undoStateUnchanged": true,
+      "faultInjection": "selected registered PNG reached the actual randomizer preloader; Image decoder reported the specified fault"
+    }
+  ],
+  "sourceAfter": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3",
+    "fileCount": 152,
+    "dirtyFileCount": 53
+  },
+  "result": "passed",
+  "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+  "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3"
+}

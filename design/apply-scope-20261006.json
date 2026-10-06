@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-06",
+  "userDecision": "使用 openspec-apply-change 完成全部四个 change；旧版无需兼容；首页设计不变",
+  "baselineCommit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+  "remoteHead": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+  "changes": [
+    "evolve-catalog-tags",
+    "add-modular-2d-composition",
+    "upgrade-randomizer-to-rendered-recipes",
+    "add-composition-visual-regression"
+  ],
+  "publish": false,
+  "artApproval": "历史已批准模板保持；新组件逐适配待用户确认；实现授权不作为自动美术批准",
+  "unrelatedWork": "保留开始时 design/assets 和历史 acceptance 未跟踪文件",
+  "latestProductSteering": {
+    "userText": "所以组件应该是动态适配的",
+    "precedingFeedback": "需要考虑各个组件组装是否协调，比如这个就很不协调",
+    "requirement": "Trusted geometry profile + versioned component fit policy drive scale, orientation, contact and occlusion. Check coordinated real assemblies; no fixed placement presented as dynamic fit.",
+    "nonGoalsUnchanged": [
+      "homepage redesign",
+      "legacy format compatibility",
+      "full 3D rebuild",
+      "public upload/accounts",
+      "publishing"
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "dot-studio-homepage-visual-comparison/v1",
+  "results": [
+    {
+      "label": "before",
+      "url": "http://127.0.0.1:5180/index.html",
+      "sourceId": "git:4d952b907ef4823db7b5e9792726c80a4226eeb8",
+      "status": 200,
+      "captureMethod": "playwright-local-chrome",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "viewport": {
+        "width": 1920,
+        "height": 872
+      },
+      "bounded": {
+        "visibleImageCount": 7,
+        "images": [
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/hero-left-v4.png",
+            "complete": true,
+            "naturalWidth": 1586
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/hero-right-v4.png",
+            "complete": true,
+            "naturalWidth": 1585
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/family-dots-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/family-grok-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/family-meta-muse-v5.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/family-humans-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5180/assets/scenes/family-animals-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          }
+        ],
+        "imageWait": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fontWait": true
+      },
+      "pageState": {
+        "title": "Dot Icon Studio · 小小角色，大大的想象",
+        "heroTitle": "小小角色，\n让大大的想象发生",
+        "primaryNav": [
+          "首页",
+          "内置形象",
+          "工作台"
+        ],
+        "cardCount": 5,
+        "cardNames": [
+          "Dots",
+          "Grok Bot",
+          "Meta Muse",
+          "Humans",
+          "Animals"
+        ],
+        "familySearch": "搜索角色、风格、灵感…",
+        "randomButton": "随机一款\n→"
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "url": "http://127.0.0.1:5173/index.html?v=84",
+      "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+      "status": 200,
+      "captureMethod": "playwright-local-chrome",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "viewport": {
+        "width": 1920,
+        "height": 872
+      },
+      "bounded": {
+        "visibleImageCount": 7,
+        "images": [
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/hero-left-v4.png",
+            "complete": true,
+            "naturalWidth": 1586
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/hero-right-v4.png",
+            "complete": true,
+            "naturalWidth": 1585
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/family-dots-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/family-grok-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/family-meta-muse-v5.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/family-humans-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          },
+          {
+            "src": "http://127.0.0.1:5173/assets/scenes/family-animals-v4.png",
+            "complete": true,
+            "naturalWidth": 1536
+          }
+        ],
+        "imageWait": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "fontWait": true
+      },
+      "pageState": {
+        "title": "Dot Icon Studio · 小小角色，大大的想象",
+        "heroTitle": "小小角色，\n让大大的想象发生",
+        "primaryNav": [
+          "首页",
+          "内置形象",
+          "工作台"
+        ],
+        "cardCount": 5,
+        "cardNames": [
+          "Dots",
+          "Grok Bot",
+          "Meta Muse",
+          "Humans",
+          "Animals"
+        ],
+        "familySearch": "搜索角色、风格、灵感…",
+        "randomButton": "随机一款\n→"
+      },
+      "errors": []
+    }
+  ]
+}

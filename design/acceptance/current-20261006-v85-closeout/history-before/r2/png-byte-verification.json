@@ -1,0 +1,3683 @@
+{
+  "evidenceType": "historical-v83-png-byte-verification",
+  "verifiedAt": "2026-10-06T09:24:45.122953+00:00",
+  "captureManifest": "capture-v83.json",
+  "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+  "sourceSnapshot": "../source-snapshot.v83.json",
+  "counts": {
+    "recipeStates": 22,
+    "backgroundModesPerState": 3,
+    "canvasPngOutputs": 66,
+    "uniqueOriginalSourcePngs": 21,
+    "verifiedPngBytes": 87,
+    "baselineCanvasCases": 36,
+    "fixedLookCanvasCases": 30
+  },
+  "checks": {
+    "sha256AndByteCountMatchedCaptureManifest": true,
+    "sourcePngsMatchedFrozen128PathManifest": true,
+    "canvasPngDimensionsMatchedResolvedPack": true,
+    "studioBackgroundOpaqueAndExpectedCorner": true,
+    "solidBackgroundOpaqueAndExpectedCorner": true,
+    "transparentBackgroundHadAlphaZeroAtCorners": true,
+    "canvasPreviewAndExportCornerPixelsMatched": true,
+    "allStatesCoveredAllThreeModes": true
+  },
+  "files": [
+    {
+      "path": "canvas/baseline-dots-bare-classic--studio.png",
+      "bytes": 1989809,
+      "sha256": "654a17f904825cc67267d6c71d7046b4fbd392b40b4f90240beaf6baf7b03e00",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          247,
+          248,
+          251,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-bare-classic--solid.png",
+      "bytes": 1988025,
+      "sha256": "8d06a9a897e2cf1c482f2c673295dbc0ca950af2306338167cf805cff14083a9",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          232,
+          225,
+          249,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-bare-classic--transparent.png",
+      "bytes": 2042571,
+      "sha256": "3482ff2098f7ceb3f7e4df7e58d215f772d0d0b1209805d524c96714bfffd66c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 750053,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-idle--studio.png",
+      "bytes": 1978007,
+      "sha256": "adb001ab04c2d205bfb58a18ac9bf77c6ee7722cc894bf8b8f0e9f95f64c2212",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-idle--solid.png",
+      "bytes": 1976982,
+      "sha256": "8f1cfaabee83cd98b380b3320e053c3fb06756d61651cf24ea162c1820f115cd",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-idle--transparent.png",
+      "bytes": 2000964,
+      "sha256": "c54660abc4dbaaced16a8757a18108aa8159fd36254680bfe5914dfded817af6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 742591,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-classic--studio.png",
+      "bytes": 1978007,
+      "sha256": "adb001ab04c2d205bfb58a18ac9bf77c6ee7722cc894bf8b8f0e9f95f64c2212",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-classic--solid.png",
+      "bytes": 1976982,
+      "sha256": "8f1cfaabee83cd98b380b3320e053c3fb06756d61651cf24ea162c1820f115cd",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-headphones-classic--transparent.png",
+      "bytes": 2000964,
+      "sha256": "c54660abc4dbaaced16a8757a18108aa8159fd36254680bfe5914dfded817af6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 742591,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-wink--studio.png",
+      "bytes": 1338586,
+      "sha256": "06b1f89fc8864d9004fd86e83b3ced947ed9c9395a3d8600338c586f8f169664",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-wink--solid.png",
+      "bytes": 1338144,
+      "sha256": "31e4bc49a6153fce0b482412d790c4bcb1cc2bba501ad0283d5678c5d164ac33",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-dots-wink--transparent.png",
+      "bytes": 1356107,
+      "sha256": "c975418e1f650bb7aba4d18d0f227b0dd232159c1ae5e4fff2b53f36a56b6359",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 987842,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-classic--studio.png",
+      "bytes": 1275346,
+      "sha256": "b6883fffd5e4ab20b8421fa05ab5c65448c6be6b22e572398fdbbf4410b8f364",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-classic--solid.png",
+      "bytes": 1273835,
+      "sha256": "f0d2deb357527d738731185f510828225e24ed32831ac55a92f92f98142ae3ff",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-classic--transparent.png",
+      "bytes": 1299150,
+      "sha256": "d04ea3bb1245d17840a4e8c1ef8423fb8d55e0744ac2db62518fbe2d0e4ffe81",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 780111,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-wink--studio.png",
+      "bytes": 978088,
+      "sha256": "a90dbcec9babafbd65f66cc36a21dcfe1b9d2720fda0a377a0df971255c2a40c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-wink--solid.png",
+      "bytes": 977298,
+      "sha256": "fa2edfcdf6974215b4ba923207bdf376dafecd137c4929e0363fafa846675f8f",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-grok-wink--transparent.png",
+      "bytes": 996503,
+      "sha256": "211d9951b6ebddad4e5d30206f9c3b19ba4c52f888d6e3db23e0e31576851fa9",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 929630,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-classic--studio.png",
+      "bytes": 1178546,
+      "sha256": "1984ff70dc2b9a1721d5396502098f758e9029f3f468f13a3667b570021176a4",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1235,
+      "height": 1274,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1573390
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-classic--solid.png",
+      "bytes": 1179158,
+      "sha256": "ad16bda75308153e6555673d5583d6262d44cc195cd17645343a87f3c47bd1cf",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1235,
+      "height": 1274,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1573390
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-classic--transparent.png",
+      "bytes": 1222756,
+      "sha256": "220fba8ccdcf1905ee23d10dabb229aaedd9801ff299628a2ee078b686f18c2d",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1235,
+      "height": 1274,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 985428,
+        "totalPixels": 1573390
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-wave--studio.png",
+      "bytes": 1274210,
+      "sha256": "37bad4e0664cfc03e921d744dc8123995d15ba571b9bc436c76f6d778402ce89",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-wave--solid.png",
+      "bytes": 1274744,
+      "sha256": "cfe27cd44c647ea90974e0bd0f4191781489c1660c7789ca991f14024d9d1b22",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-meta-muse-wave--transparent.png",
+      "bytes": 1321828,
+      "sha256": "2238c41f5180007c2340c6f067f31c9b1fecac091e89e8dba4e21067b141114b",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 933354,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-classic--studio.png",
+      "bytes": 1264464,
+      "sha256": "60225617de61c64ef896a3a40e6524a91bfbdc686b4e8acf3d5e058b73fcb51f",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-classic--solid.png",
+      "bytes": 1264062,
+      "sha256": "875eb691023e2d228f80c95b4626c7f0200f905fe30023ede2e623fa13d22032",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-classic--transparent.png",
+      "bytes": 1298599,
+      "sha256": "3495edf7775323e44baa793ca3c1655edf95ebaa89934574cace798f5b6746e2",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1069183,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-wave--studio.png",
+      "bytes": 866889,
+      "sha256": "3e825656b3068bf33706b1d7d5828dd0d1c13d4ba74f04ebbfbe6dab1d251665",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-wave--solid.png",
+      "bytes": 866181,
+      "sha256": "644821d9c43194a5e5e6d7df9d1e43f980b840bdfe3e3bef8c85a349ec312826",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-humans-wave--transparent.png",
+      "bytes": 897003,
+      "sha256": "1695fa5bdc4bb1fde06d76230726677ef8367dfcd8ffe56a3bfa034dd5fc6179",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1230684,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-classic--studio.png",
+      "bytes": 1610690,
+      "sha256": "cd6ed02e8a6d7b7711d9601a3cdbd52854c66ee431dec9d84d4a686871ee0b43",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-classic--solid.png",
+      "bytes": 1611293,
+      "sha256": "767ca164ce1bef69ff74aacee5bd932f2aeb1523973fca1a45f14ff9a7afc2ca",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-classic--transparent.png",
+      "bytes": 1667463,
+      "sha256": "32f17abaa1bbb6caf4309165ff71b64befc3c9a1375b231111730258f3817b6c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 832059,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-wave--studio.png",
+      "bytes": 799166,
+      "sha256": "8df33923ab9ad69925cea3c202503244bb52a5a7ed23d37ddc3cba844cc45c07",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-wave--solid.png",
+      "bytes": 798747,
+      "sha256": "cb84d74415f8ceda87556a674e175ca65637d901e088f9446f768b4c1725c8c0",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/baseline-animals-wave--transparent.png",
+      "bytes": 825903,
+      "sha256": "e429daa162d542260221048f4efb21281b147dcadcf590f3cefb5b15c45429a9",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1219688,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-rose-glasses--studio.png",
+      "bytes": 2025901,
+      "sha256": "320665bd4ed3dc359d44784fe2c3b2471ecef81bf622148263a0a046915b3085",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-rose-glasses--solid.png",
+      "bytes": 2024015,
+      "sha256": "0add95428026d220a7a6b20666303f24f66600d18fa9768f589c06d618138eda",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-rose-glasses--transparent.png",
+      "bytes": 2096191,
+      "sha256": "0509df19664a46106512e75c338e5eb2f731e08a811ebe6afb7d1e104bac7d03",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 731940,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-lilac-bucket--studio.png",
+      "bytes": 1808663,
+      "sha256": "52aff39cef3318f051ca73a176c99d646477ddc37a746f11882bd7e4bff0fd28",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-lilac-bucket--solid.png",
+      "bytes": 1808081,
+      "sha256": "5e3185eb473c258278e34bad5fadee55006291da9529e745dbbce4becc053aaa",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-dots-lilac-bucket--transparent.png",
+      "bytes": 1862593,
+      "sha256": "a366f6cc998d1e0dd02f4f1d132b05d89e511ad3b0d5812c74a8e872c941553c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 808076,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-green-cloud--studio.png",
+      "bytes": 1011921,
+      "sha256": "65fd8223c82bae44459e65d522856a3014ac693e009c39cb3896b6648a5f4fcf",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-green-cloud--solid.png",
+      "bytes": 1013085,
+      "sha256": "41aa175e4b9a443f5d967af88219e9de6f7da49b3d6d1a195a06efb4e722bfc6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-green-cloud--transparent.png",
+      "bytes": 1043368,
+      "sha256": "20777d496ee1c7287fb379749c64c1485f8c7e620ef01d1b48a8eef30fae1ddb",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 949952,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-teal-square--studio.png",
+      "bytes": 1127160,
+      "sha256": "e09e41e5c50172a2a9404c29fb5152b66f653789563a46e140c01de24ee2d721",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-teal-square--solid.png",
+      "bytes": 1126716,
+      "sha256": "46d6bc07e4ba7d000fba4f16e963a17370f5b5390ff64ec78183e89cbaa23494",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-grok-teal-square--transparent.png",
+      "bytes": 1150400,
+      "sha256": "dfc1087345b3f20815a743bfa2f6e1e1f3e6da5678385a0c0f4cc7362129cea9",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 816693,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-rose-flowers--studio.png",
+      "bytes": 1333798,
+      "sha256": "280fb2f5dcfa427cca742bcbecc5b836a32ede535ce3d5443947fa34e886c42e",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-rose-flowers--solid.png",
+      "bytes": 1334707,
+      "sha256": "aadb952142873d8cdac6b8708e6b513171ebca032a4e828339158b7d54ba95c6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-rose-flowers--transparent.png",
+      "bytes": 1379777,
+      "sha256": "cd324702200bd0a2385973c649d87a2c974c4cae6ba5810fccb707801603df24",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 966879,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-sage-reading--studio.png",
+      "bytes": 1293169,
+      "sha256": "b837b7872b78052c8e5a50e683a00def4323f04e6c68236fe3521fbfa4e6cbc0",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-sage-reading--solid.png",
+      "bytes": 1293523,
+      "sha256": "2ff9ed141a9dcf931d28de3ebd9da378baf420a441e4ffbc4ecbee88c101c7aa",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-muse-sage-reading--transparent.png",
+      "bytes": 1330073,
+      "sha256": "5b7e85f47a50db32a289bf1346519c8528831fa34113fbde386aa778ddcfa63c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1009482,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-bun-yellow--studio.png",
+      "bytes": 1187584,
+      "sha256": "88114fb3c7e17f89aed2a16fba9567bf55d0530005c7951d88d1fc3576a1a56a",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-bun-yellow--solid.png",
+      "bytes": 1186229,
+      "sha256": "d55c5d4492397f645bea9488a9962788c6d7b258d4475c54c2d2b6141a57c4c8",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-bun-yellow--transparent.png",
+      "bytes": 1225739,
+      "sha256": "998ed1598ebd1400b29b8e5c6851f7e52451869d75ae939f2399eda9815acea5",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1087604,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-blond-glasses--studio.png",
+      "bytes": 1168331,
+      "sha256": "b0a0bf809b9f782a4dfd248efe8b5568f3e1083b6c022cbb3b96256b60d7f2e8",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-blond-glasses--solid.png",
+      "bytes": 1167872,
+      "sha256": "e73cabd71d0541e99eecf33641d72ccda93e5649d9f404286353d9eaaafdaac5",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-human-blond-glasses--transparent.png",
+      "bytes": 1212954,
+      "sha256": "52adc720e115adc48cad3d6165a7bc8f9ed953bb49c8b55ec72724fb6769fff3",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1099076,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-white-cat--studio.png",
+      "bytes": 1559282,
+      "sha256": "d65040e0d8fd9cdbebf725e9f9a8727f25a86c5fb0d5de54ef436224356bb9bf",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-white-cat--solid.png",
+      "bytes": 1562827,
+      "sha256": "65db803a22c6f6815592adeeb6d4ada13b835a0b7342dbdba823181d7ab5c164",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-white-cat--transparent.png",
+      "bytes": 1661687,
+      "sha256": "55249dc57fa88c2d956ee93c7e971079e34fdda1d6b9ba0695bcc63627176fc9",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 790208,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-gray-husky--studio.png",
+      "bytes": 1806352,
+      "sha256": "3719b12cd8bbe9ae24f13183f46ed8a818dc54a0edc9cab00759892fbe032bfa",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ],
+        [
+          248,
+          249,
+          252,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-gray-husky--solid.png",
+      "bytes": 1806973,
+      "sha256": "441ae3926ab4a4b75082575a6bcb3d83873934b2be1f52c9ed2d6d8ac74dfe79",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroPixels": 0,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ],
+        [
+          233,
+          226,
+          250,
+          255
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "canvas/look-animal-gray-husky--transparent.png",
+      "bytes": 1870786,
+      "sha256": "81228a07a3b69030924ad92a97a6b6b5ad1a34ba461e1eaf5458bb8c7e9b36c0",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 790161,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+      "bytes": 1803333,
+      "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 750053,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "bytes": 1720054,
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 742591,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/poses/dots-wink-v1.png",
+      "bytes": 1136161,
+      "sha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 987842,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "bytes": 971168,
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 780111,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/poses/grok-wink-v1.png",
+      "bytes": 732939,
+      "sha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 929630,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "bytes": 1003955,
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1235,
+      "height": 1274,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 985428,
+        "totalPixels": 1573390
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/poses/muse-wave-v1.png",
+      "bytes": 1073265,
+      "sha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 933354,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "bytes": 1151483,
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1069183,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/poses/human-wave-v1.png",
+      "bytes": 786370,
+      "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1230684,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/characters/animals-original-shiba-candidate-v1.png",
+      "bytes": 1413426,
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 832059,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/poses/shiba-wave-v1.png",
+      "bytes": 697164,
+      "sha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1219688,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/dots-rose-glasses.png",
+      "bytes": 1860436,
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 731940,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/dots-lilac-bucket.png",
+      "bytes": 1605008,
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 808076,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/grok-green-cloud.png",
+      "bytes": 790009,
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 949952,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/grok-teal-square.png",
+      "bytes": 828844,
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 816693,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/muse-rose-flowers.png",
+      "bytes": 1185166,
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 966879,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/muse-sage-reading.png",
+      "bytes": 1142481,
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1009482,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/human-bun-yellow.png",
+      "bytes": 1086214,
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1087604,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/human-blond-glasses.png",
+      "bytes": 1058375,
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1099076,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/animal-white-cat.png",
+      "bytes": 1382027,
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 790208,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    },
+    {
+      "path": "resources/assets/looks/animal-gray-husky.png",
+      "bytes": 1623665,
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "format": "PNG",
+      "mode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 790161,
+        "totalPixels": 1572516
+      },
+      "cornerRgba": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "nonEmptyAlpha": true
+    }
+  ],
+  "failures": []
+}

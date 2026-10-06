@@ -1,6 +1,9 @@
-import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=83';
-import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=83';
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=83';
+import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=86';
+import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=86';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=86';
+import {queryLooks,queryForFamily,normalizeTagQuery,queryLabel} from './studio-tags.js?v=86';
+import {createTagBrowser} from './studio-tag-browser.js?v=86';
+import {getTemplateApproval} from './studio-composition-catalog.js?v=86';
 
 export const FAMILY_PRESENTATION=Object.freeze([
  {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple\nBut Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
@@ -19,11 +22,12 @@ const lines=value=>esc(value).replaceAll('\n','<br>');
 const byId=id=>getCreationArtwork(id);
 const familyLooks=id=>(FAMILY_LOOK_IDS[id]||[]).map(byId).filter(Boolean);
 
-export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLook,onViewLook,onCopyLook,onDownloadLook,onReference}){
+export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLook,onViewLook,onCopyLook,onDownloadLook,onReference,onQueryChange}){
  const nav=document.getElementById('homeFamilies'),gallery=document.getElementById('familyCards'),looks=document.getElementById('looksPortal');
  if(!nav||!gallery||!looks)return null;
  const search=document.getElementById('familySearch'),clear=document.getElementById('clearSearch'),filters=document.getElementById('lookFilters'),cards=document.getElementById('lookCards');
- let filter='all',current='dots',activeFamily='all',page='home',introLook='candidate-dots-20261005';
+ let filter='all',current='dots',activeFamily='all',page='home',introLook='candidate-dots-20261005',tagQuery=normalizeTagQuery();
+ const tagBrowser=createTagBrowser(filters,{getQuery:()=>tagQuery,onChange:q=>{tagQuery=normalizeTagQuery(q);activeFamily='all';renderLooks();onQueryChange?.(tagQuery);}});
  function renderFamilyNav(){
   nav.innerHTML=[{id:'all',name:'全部家族'},...FAMILY_PRESENTATION].map(f=>`<button class="family-filter ${filter===f.id?'selected':''}" data-home-filter="${f.id}" aria-pressed="${filter===f.id}">${f.id==='all'?'<img src="assets/characters/brand-mark.png" alt="">':f.id==='dots'||f.id==='meta-muse'?`<span class="family-nav-dot ${f.id}" aria-hidden="true"></span>`:`<img src="${byId(f.id==='grok'?'grok-green-cloud':FAMILY_LOOK_IDS[f.id][0]).src}" alt="" decoding="async">`}${f.name}</button>`).join('');
  }
@@ -39,8 +43,7 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
   clear.hidden=!search.value;
  }
  function renderLookFilters(){
-  filters.innerHTML=[{id:'all',name:'全部家族'},...FAMILY_PRESENTATION].map(f=>`<button class="look-filter ${activeFamily===f.id?'selected':''}" data-look-filter="${f.id}" aria-pressed="${activeFamily===f.id}">${f.name}</button>`).join('');
-  keepActiveFilterVisible();
+  tagBrowser.render();
  }
  function keepActiveFilterVisible(){
   const selected=filters.querySelector('[aria-pressed="true"]');if(!selected)return;
@@ -49,10 +52,9 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
   if(shift)filters.scrollTo({left:filters.scrollLeft+shift,behavior:'instant'});
  }
  function renderLooks(){
+  tagQuery=normalizeTagQuery({...tagQuery,text:search.value});
   renderLookFilters();
-  const words=String(search.value).trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
-  const all=activeFamily==='all'?getBuiltInLooks():getBuiltInLooks(activeFamily);
-  const found=all.filter(a=>words.every(word=>(a.name+' '+a.description+' '+a.family+' '+a.id).toLocaleLowerCase().includes(word)));
+  const found=queryLooks(tagQuery).map(look=>byId(look.artworkId)).filter(Boolean);
   const banner=document.getElementById('galleryScene');
   const scene=FAMILY_SCENES[activeFamily];
   banner.hidden=!scene||!found.length;
@@ -60,13 +62,13 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
   banner.dataset.family=activeFamily;
   cards.innerHTML=found.map(a=>{const look=getLookDefinition(a.id),name=look?.name||a.name,description=look?.description||a.description,source=look?.source==='official-recreation'?'品牌形象再创作 · 非官方':'原创角色';return `<article class="look-card" data-asset-state="loading" data-look-card="${esc(a.id)}">
    <button class="look-art-button" data-view-look="${esc(a.id)}" aria-label="放大查看${esc(name)}"><img src="${a.src}" alt="${esc(name)}" decoding="async" loading="lazy"><span>放大查看</span></button>
-   <div class="look-card-copy"><span class="look-family-label">${FAMILY_PRESENTATION.find(f=>f.id===a.family)?.name||a.family}</span><h2>${esc(name)}</h2><p>${esc(description)}</p><small>${source}<br>候选形象</small></div>
+   <div class="look-card-copy"><span class="look-family-label">${FAMILY_PRESENTATION.find(f=>f.id===a.family)?.name||a.family}</span><h2>${esc(name)}</h2><p>${esc(description)}</p><small>${source}<br>${getTemplateApproval(a.id).status==='approved'?'当前完整模板已确认':'美术确认范围待核定'}</small></div>
    <div class="look-card-actions"><button data-copy-look="${esc(a.id)}">复制 Prompt</button><button data-download-look="${esc(a.id)}">下载原图</button><button class="look-start" data-start-look="${esc(a.id)}">用这个形象定制 <span aria-hidden="true">→</span></button></div>
   </article>`;}).join('');
   cards.querySelectorAll('[data-look-card]').forEach(card=>{
    const img=card.querySelector('img');
    const ready=()=>{card.dataset.assetState='ready';};
-   const missing=()=>{card.remove();document.getElementById('lookResults').textContent=`找到 ${cards.querySelectorAll('[data-look-card]').length} 款可用内置形象`;};
+   const missing=()=>{card.dataset.assetState='failed';card.querySelector('.look-card-copy').insertAdjacentHTML('beforeend','<small role="status">图片载入失败，请重新载入。</small>');card.querySelectorAll('[data-download-look],[data-start-look]').forEach(b=>b.disabled=true);};
    img.addEventListener('load',ready,{once:true});img.addEventListener('error',missing,{once:true});
    if(img.complete&&img.naturalWidth)ready();
   });
@@ -80,13 +82,12 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
  }
  function renderIntro(){
   const looks=familyLooks('dots'),selected=byId(introLook);
-  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="sync"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色'],['background','背景']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="sync"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
+  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="sync"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="sync"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
  }
  function showHome(){page='home';document.body.dataset.screen='home';document.getElementById('homePortal').hidden=false;looks.hidden=true;document.getElementById('workspaceShell').hidden=true;renderFamilies();}
- function showGallery(family='all'){page='looks';activeFamily=family||'all';document.body.dataset.screen='looks';document.getElementById('homePortal').hidden=true;looks.hidden=false;document.getElementById('workspaceShell').hidden=true;renderLooks();document.getElementById('looksTitle')?.focus({preventScroll:true});}
+ function showGallery(family='all'){page='looks';activeFamily=family||'all';tagQuery={...queryForFamily(activeFamily),text:search.value};onQueryChange?.(tagQuery);document.body.dataset.screen='looks';document.getElementById('homePortal').hidden=true;looks.hidden=false;document.getElementById('workspaceShell').hidden=true;renderLooks();document.getElementById('looksTitle')?.focus({preventScroll:true});}
  nav.addEventListener('click',e=>{const b=e.target.closest('[data-home-filter]');if(!b)return;filter=b.dataset.homeFilter;renderFamilies();nav.querySelector(`[data-home-filter="${filter}"]`)?.focus({preventScroll:true});});
  gallery.addEventListener('click',e=>{const b=e.target.closest('[data-family-gallery]');if(b)openGallery(b.dataset.familyGallery);});
-  filters.addEventListener('click',e=>{const b=e.target.closest('[data-look-filter]');if(!b)return;activeFamily=b.dataset.lookFilter;openGallery(activeFamily,{replace:true,focus:false});filters.querySelector(`[data-look-filter="${activeFamily}"]`)?.focus({preventScroll:true});});
  cards.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.viewLook)onViewLook(b.dataset.viewLook);
@@ -108,13 +109,16 @@ export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLo
   document.querySelectorAll('[data-greet-scene]').forEach(b=>b.setAttribute('aria-pressed',String(selected&&b===button)));
   document.getElementById('sceneGreetingStatus').textContent=selected?HERO_SCENES.find(s=>s.id===button.dataset.greetScene).greeting:'伙伴们正在等你的下一个灵感。';
  });
- search.addEventListener('input',()=>{if(page==='looks')renderLooks();else{filter='all';renderFamilies();}});
- clear.addEventListener('click',()=>{search.value='';filter='all';renderFamilies();if(page==='looks')renderLooks();search.focus();});
+ search.addEventListener('input',()=>{if(page==='looks'){renderLooks();onQueryChange?.(tagQuery);}else if(page==='workspace'){tagQuery=normalizeTagQuery({...tagQuery,text:search.value});onQueryChange?.(tagQuery);clear.hidden=!search.value;}else{filter='all';renderFamilies();}});
+ clear.addEventListener('click',()=>{search.value='';filter='all';renderFamilies();if(page==='looks')renderLooks();else if(page==='workspace')tagQuery=normalizeTagQuery({...tagQuery,text:''});if(page!=='home')onQueryChange?.(tagQuery);search.focus();});
  window.addEventListener('resize',()=>{if(page==='looks')keepActiveFilterVisible();});
  renderHero();renderFamilies();
  return {
   showHome,showGallery,setPageWorkspace(){page='workspace';document.body.dataset.screen='workspace';document.getElementById('homePortal').hidden=true;looks.hidden=true;document.getElementById('workspaceShell').hidden=false;},
   setCurrent(id){current=id;for(const card of gallery.querySelectorAll('[data-family-gallery]'))card.setAttribute('aria-current',String(card.dataset.familyGallery===id));},
-  clear(){search.value='';filter='all';activeFamily='all';renderFamilies();renderLooks();showHome();}
+  getQuery(){return normalizeTagQuery(tagQuery);},setQuery(q){tagQuery=normalizeTagQuery(q);activeFamily='all';search.value=tagQuery.text;if(page==='looks')renderLooks();},
+  getRandomQuery(){if(page==='home'){const ids=matchingFamilies(search.value,filter).flatMap(f=>FAMILY_LOOK_IDS[f.id]||[]);return {...normalizeTagQuery(),lookIds:ids};}return normalizeTagQuery(tagQuery);},
+  getRandomScope(){return page==='home'?matchingFamilies(search.value,filter).map(f=>f.name).join(' · ')||'无匹配场景':queryLabel(tagQuery);},
+  clear(){search.value='';filter='all';activeFamily='all';tagQuery=normalizeTagQuery();onQueryChange?.(tagQuery);renderFamilies();renderLooks();showHome();}
  };
 }

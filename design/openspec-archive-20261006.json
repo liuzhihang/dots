@@ -1,0 +1,172 @@
+{
+  "schema": "dot-studio-openspec-archive/v1",
+  "archivedAt": "2026-10-06T14:50:58.825185+00:00",
+  "userInstruction": "归档所有的任务",
+  "scope": "全部五个活跃 change；保留未完成的美术任务，不视为美术批准",
+  "specSync": {
+    "strategy": "跳过再次同步，保留现行主规范",
+    "mainSpecsChanged": false,
+    "differences": [
+      "部分旧 delta 的背景编辑/背景组合/三背景覆盖已被后续透明合同取代",
+      "模块动态适配 delta 的显式遮挡验证/不足时 unsupported 说明尚未单独补入 main",
+      "composition-coverage main 的旧5配方库存数字未在本次修改；v86实际8配方以冻结报告为准"
+    ]
+  },
+  "changes": [
+    {
+      "name": "add-modular-2d-composition",
+      "schema": "spec-driven",
+      "archivePath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition",
+      "artifactsComplete": true,
+      "tasks": {
+        "complete": 22,
+        "total": 24,
+        "incompleteIds": [
+          "3.4",
+          "5.4"
+        ]
+      },
+      "warnings": [
+        "保留未完成美术任务"
+      ]
+    },
+    {
+      "name": "add-composition-visual-regression",
+      "schema": "spec-driven",
+      "archivePath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression",
+      "artifactsComplete": true,
+      "tasks": {
+        "complete": 21,
+        "total": 22,
+        "incompleteIds": [
+          "3.4"
+        ]
+      },
+      "warnings": [
+        "保留未完成美术任务"
+      ]
+    },
+    {
+      "name": "make-character-output-transparent",
+      "schema": "spec-driven",
+      "archivePath": "openspec/changes/archive/2026-10-06-make-character-output-transparent",
+      "artifactsComplete": true,
+      "tasks": {
+        "complete": 8,
+        "total": 8,
+        "incompleteIds": []
+      },
+      "warnings": []
+    },
+    {
+      "name": "evolve-catalog-tags",
+      "schema": "spec-driven",
+      "archivePath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags",
+      "artifactsComplete": true,
+      "tasks": {
+        "complete": 11,
+        "total": 12,
+        "incompleteIds": [
+          "3.4"
+        ]
+      },
+      "warnings": [
+        "保留未完成美术任务"
+      ]
+    },
+    {
+      "name": "upgrade-randomizer-to-rendered-recipes",
+      "schema": "spec-driven",
+      "archivePath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes",
+      "artifactsComplete": true,
+      "tasks": {
+        "complete": 16,
+        "total": 18,
+        "incompleteIds": [
+          "5.4",
+          "5.5"
+        ]
+      },
+      "warnings": [
+        "保留未完成美术任务"
+      ]
+    }
+  ],
+  "preservation": {
+    "existingSpecArchiveAndFrozenFilesChecked": 2399,
+    "unchanged": true,
+    "movedFiles": 39,
+    "unchangedMovedFileBytes": 34,
+    "metadataFilesPreserved": 5,
+    "relativeMarkdownLinksUpdated": 39,
+    "markdownLinksChecked": 41,
+    "brokenLinks": [],
+    "taskCheckboxesChanged": false,
+    "runtimeSourceId": "sha256:680012556b6a8723fee179f93bb9b98a853793fc729c368f4ef0ee7c2aec820f"
+  },
+  "gitCommitted": false,
+  "gitPushed": false,
+  "siteDeployed": false,
+  "validation": {
+    "activeChangeCount": 0,
+    "mainSpecValidation": {
+      "items": 11,
+      "passed": 11,
+      "failed": 0
+    },
+    "archiveTaskValidation": {
+      "exitCode": 1,
+      "items": 10,
+      "passed": 6,
+      "failed": 4,
+      "findings": [
+        {
+          "id": "2026-10-06-add-composition-visual-regression",
+          "issues": [
+            {
+              "level": "ERROR",
+              "path": "tasks.md",
+              "message": "1 incomplete task (21/22 completed)"
+            }
+          ]
+        },
+        {
+          "id": "2026-10-06-add-modular-2d-composition",
+          "issues": [
+            {
+              "level": "ERROR",
+              "path": "tasks.md",
+              "message": "2 incomplete tasks (22/24 completed)"
+            }
+          ]
+        },
+        {
+          "id": "2026-10-06-evolve-catalog-tags",
+          "issues": [
+            {
+              "level": "ERROR",
+              "path": "tasks.md",
+              "message": "1 incomplete task (11/12 completed)"
+            }
+          ]
+        },
+        {
+          "id": "2026-10-06-upgrade-randomizer-to-rendered-recipes",
+          "issues": [
+            {
+              "level": "ERROR",
+              "path": "tasks.md",
+              "message": "2 incomplete tasks (16/18 completed)"
+            }
+          ]
+        }
+      ]
+    },
+    "whitespaceExitCode": 0,
+    "runtimeSourceReadback": {
+      "before": "sha256:680012556b6a8723fee179f93bb9b98a853793fc729c368f4ef0ee7c2aec820f",
+      "after": "sha256:680012556b6a8723fee179f93bb9b98a853793fc729c368f4ef0ee7c2aec820f",
+      "matchesCache86Freeze": true
+    }
+  }
+}

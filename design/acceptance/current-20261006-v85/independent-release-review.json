@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "reviewer": "release_audit",
+  "sourceId": "sha256:9bcd516a91b2d366f1921073962909ee801b9bf75d765c83c2bdc1b200daa672",
+  "runtimeFileCount": 109,
+  "runtimeHashMatches": 109,
+  "entryPoints": [
+    "index.html",
+    "editor.html",
+    "qa/character-acceptance.html",
+    "qa/composition-atlas.html"
+  ],
+  "dependencyClosureFiles": 40,
+  "unresolvedReferences": 0,
+  "cacheVersion": 85,
+  "oldEditorAndHeadphonesDraftsExcluded": true,
+  "defaultEligibleModularRecipes": 0,
+  "unapprovedModularRecipes": 5,
+  "hostingIdentityPreserved": true,
+  "scope": "runtime and hosting only; main spec synchronization completed separately"
+}

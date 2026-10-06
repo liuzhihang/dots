@@ -1,0 +1,22 @@
+{
+  "evidenceType": "qa-browser-entry",
+  "capturedAtLocal": "2026-10-06T11:52:53+08:00",
+  "phase": "before-final-integration",
+  "serverCommand": "npm run dev -- --host 127.0.0.1",
+  "serverBaseUrl": "http://127.0.0.1:5173/",
+  "internalAtlasUrl": "http://127.0.0.1:5173/qa/composition-atlas.html",
+  "browser": "Chrome through CUA session 🧪 QA 图鉴",
+  "browserPluginStatus": "Browser plugin skill unavailable in this session; the internal page and canvas interactions were inspected through CUA-managed Chrome.",
+  "verified": [
+    "页面显示 15 个 look、22 个模板状态、66 个模板/背景用例。",
+    "当前分页能加载真实 LayeredComposer Canvas 缩略图。",
+    "单格详情展示完整配置、stable asset refs、版本/hash 和单独的确认范围待核定状态。",
+    "内部问题类型包括穿插、悬空、遮脸、比例、风格、画布和导出，不包含批准操作。"
+  ],
+  "notVerified": [
+    "全量 66 项捕获因活动源码的 Vite HMR 重载中断，没有形成可冻结包。",
+    "当前入口是本地内部工具，不是线上站点或实体设备验收。"
+  ],
+  "homepageModified": false,
+  "published": false
+}

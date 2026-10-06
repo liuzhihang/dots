@@ -1,0 +1,48 @@
+{
+  "mode": "built-in-imagegen",
+  "headphones": "Use case: stylized-concept. Asset type: independently rendered modular accessory PNG. Draw only one high quality blue and ivory over-ear headphone set, exact front orthographic view, NO character or head. A single continuous smoothly curved padded headband forms an arch across the top, with both ends physically connected to the left and right oval earcups via matching sturdy hinges. Earcups seen frontally on both sides, soft charcoal contact cushions face inward, rounded ivory shells and a restrained blue accent match a cobalt blue short-fur spherical character. The empty space under the arch and between earcups is completely alpha transparent. Symmetric geometry, no floating pieces, clean soft 3D toy materials, diffuse upper-left lighting, isolated with margins on a genuinely transparent background. No ground shadow, no logo, no text. This is a new separately made accessory layer, never a crop of a character.",
+  "glasses": "Use case: stylized-concept. Asset type: one independent transparent PNG accessory for a high-quality fixed-front-view 2D character composer. Generate only a pair of delicate round eyeglasses, no wearer, no head, no eyes, no body, no background. Exactly frontal orthographic view, symmetric round warm dark-brown acetate rims, a small curved nasal bridge, clear transparent lenses with very subtle studio highlights that do not obscure the character's eyes. Hinged temples curve slightly backward at the outer sides and remain visually continuous. Entire glasses fit inside image with generous transparent margins. Fine polished 3D toy-quality rendering matching refined chibi art, clean antialiased alpha edges, diffuse upper-left studio lighting. No ground shadow, no text, no watermark. This is a separately drawn component, not a crop of a complete character illustration. Save a truly transparent background.",
+  "scarf": "Use case: stylized-concept. Asset type: one newly made independent transparent PNG accessory layer for a seated chibi Shiba dog, fixed exact frontal view. Render only a soft teal knitted scarf, no animal, no neck, no person, no mannequin. A low horizontal rounded collar band wrapping around a small chubby neck, with visible stitched folds and a tied knot just right of center. Two short scarf tails hang down from that knot, leaving most of the chest empty and not reaching paws. The collar's upper edge makes a shallow U, not a tall neck tube. Refined small-scale knit fibers, warm gentle studio shading, toy-art-quality materials, generous clear margins. Fully alpha-transparent negative space and backdrop, clean edges, no ground shadow, no text, no watermark. Designed as one front collar layer; only declare use on a compatible seated dog, never a universal neck or garment.",
+  "edits": [
+    "glasses: transparent open apertures; preserve rims, bridge and hinges",
+    "headphones/scarf: preserve component; transparent outside silhouette and holes, no halo or cast ground shadow"
+  ],
+  "approval": "pending",
+  "headphonesRefinement": {
+    "file": "exec-978e210f-dd4a-4be2-99f3-f97931122bb0.png",
+    "mode": "builtin-imagegen-edit",
+    "prompt": "Preserve ivory and cobalt blue premium soft matte material and transparent background. Make ear cups slimmer, leave central face opening; continuous headband, slender supports, alpha-zero empty space. Independent front-view component, no character or limbs."
+  },
+  "dynamicHeadphoneKit": {
+    "generatedFile": "exec-e8f542f3-c482-4d95-b29f-6935f0111f70.png",
+    "src": "./assets/modular/20261006-pilot/pilot-headphones-kit-v4.png",
+    "version": "2.0.0",
+    "sha256": "752814b890c50f04d2e2884f5d4c976969bde1667bff18a1e2b6feced4ca7b02",
+    "mode": "builtin-imagegen-independent-sprite-kit",
+    "promptSummary": "New independent atlas with continuous charcoal band and separate mirrored purple-cushion cups, front view, no wearer or template pixels; each part is mounted by a versioned geometry fit policy.",
+    "partCount": 3,
+    "baseDesignCount": 1,
+    "approval": "pending",
+    "notDerivedByCuttingCompleteCharacter": true
+  },
+  "headphonesIntermediateWholeDraft": {
+    "generatedFile": "exec-02e4254f-2aee-4637-96c3-291c45663950.png",
+    "src": "./assets/modular/20261006-pilot/pilot-headphones-v3.png",
+    "sha256": "db05cdf8d4d5c5a461eb78ab99a497755f17a1893730f7cfd047bbeb6154c254",
+    "status": "engineering-draft-not-active-component",
+    "note": "Whole accessory reference for independently generated articulated kit, not a separate SKU and not approved."
+  },
+  "scarfAlphaAttempts": [
+    {
+      "generatedFile": "exec-d5e0dfce-2792-43c5-86cd-2171b275e934.png",
+      "operation": "remove outside halo preserving design",
+      "status": "failed-visual-review-not-registered"
+    },
+    {
+      "generatedFile": "exec-c2fed0d9-ae0b-4702-874d-62d99a470714.png",
+      "operation": "new independent scarf requesting crisp transparent exterior",
+      "status": "failed-visual-review-not-registered"
+    }
+  ],
+  "scarfAlphaIssue": "Current original scarf still has a broad outer halo. Keep pending; review actual Canvas and record materialLighting issue, never claim alpha repair completed."
+}

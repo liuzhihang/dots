@@ -1,0 +1,328 @@
+{
+  "schema": "dot-studio-approval-state-mapping-audit/v1",
+  "phase": "implementation-complete-before-final-acceptance",
+  "sourceId": "sha256:ab77790fab0f8f7ec932dd5a3e2237e38490ccaeaa743417fe8fbf51f553682e",
+  "cacheVersion": "83",
+  "approvalRecord": {
+    "path": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+    "sha256": "da18b7f59419304b23c5bb48fefc283f9a0bda5e353fd43fa9918fc3ae0a7241",
+    "identityCount": 15
+  },
+  "states": [
+    {
+      "id": "candidate-dots-20261005::bare-classic",
+      "lookId": "candidate-dots-20261005",
+      "recipeId": "bare-classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-dots-20261005/bare",
+          "version": "1.0.0",
+          "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-dots-20261005::headphones-idle",
+      "lookId": "candidate-dots-20261005",
+      "recipeId": "headphones-idle",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-dots-20261005/headphones",
+          "version": "1.0.0",
+          "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-dots-20261005::headphones-classic",
+      "lookId": "candidate-dots-20261005",
+      "recipeId": "headphones-classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-dots-20261005/headphones",
+          "version": "1.0.0",
+          "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-dots-20261005::wink",
+      "lookId": "candidate-dots-20261005",
+      "recipeId": "wink",
+      "assetRefs": [
+        {
+          "id": "state/candidate-dots-20261005/wink",
+          "version": "1.0.0",
+          "sha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-grok-20261005::classic",
+      "lookId": "candidate-grok-20261005",
+      "recipeId": "classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-grok-20261005/full",
+          "version": "1.0.0",
+          "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-grok-20261005::wink",
+      "lookId": "candidate-grok-20261005",
+      "recipeId": "wink",
+      "assetRefs": [
+        {
+          "id": "state/candidate-grok-20261005/wink",
+          "version": "1.0.0",
+          "sha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-meta-muse-20261005::classic",
+      "lookId": "candidate-meta-muse-20261005",
+      "recipeId": "classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-meta-muse-20261005/full",
+          "version": "1.0.0",
+          "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-meta-muse-20261005::wave",
+      "lookId": "candidate-meta-muse-20261005",
+      "recipeId": "wave",
+      "assetRefs": [
+        {
+          "id": "state/candidate-meta-muse-20261005/wave",
+          "version": "1.0.0",
+          "sha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-humans-20261005::classic",
+      "lookId": "candidate-humans-20261005",
+      "recipeId": "classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-humans-20261005/full",
+          "version": "1.0.0",
+          "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-humans-20261005::wave",
+      "lookId": "candidate-humans-20261005",
+      "recipeId": "wave",
+      "assetRefs": [
+        {
+          "id": "state/candidate-humans-20261005/wave",
+          "version": "1.0.0",
+          "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-animals-20261005::classic",
+      "lookId": "candidate-animals-20261005",
+      "recipeId": "classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-animals-20261005/full",
+          "version": "1.0.0",
+          "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "candidate-animals-20261005::wave",
+      "lookId": "candidate-animals-20261005",
+      "recipeId": "wave",
+      "assetRefs": [
+        {
+          "id": "state/candidate-animals-20261005/wave",
+          "version": "1.0.0",
+          "sha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c"
+        }
+      ],
+      "codeMappedStatus": "pendingScopeMapping",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "dots-rose-glasses::fixed",
+      "lookId": "dots-rose-glasses",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/dots-rose-glasses/full",
+          "version": "1.0.0",
+          "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "dots-lilac-bucket::fixed",
+      "lookId": "dots-lilac-bucket",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/dots-lilac-bucket/full",
+          "version": "1.0.0",
+          "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "grok-green-cloud::fixed",
+      "lookId": "grok-green-cloud",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/grok-green-cloud/full",
+          "version": "1.0.0",
+          "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "grok-teal-square::fixed",
+      "lookId": "grok-teal-square",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/grok-teal-square/full",
+          "version": "1.0.0",
+          "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "muse-rose-flowers::fixed",
+      "lookId": "muse-rose-flowers",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/muse-rose-flowers/full",
+          "version": "1.0.0",
+          "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "muse-sage-reading::fixed",
+      "lookId": "muse-sage-reading",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/muse-sage-reading/full",
+          "version": "1.0.0",
+          "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "human-bun-yellow::fixed",
+      "lookId": "human-bun-yellow",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/human-bun-yellow/full",
+          "version": "1.0.0",
+          "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "human-blond-glasses::fixed",
+      "lookId": "human-blond-glasses",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/human-blond-glasses/full",
+          "version": "1.0.0",
+          "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "animal-white-cat::fixed",
+      "lookId": "animal-white-cat",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/animal-white-cat/full",
+          "version": "1.0.0",
+          "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    },
+    {
+      "id": "animal-gray-husky::fixed",
+      "lookId": "animal-gray-husky",
+      "recipeId": "fixed",
+      "assetRefs": [
+        {
+          "id": "artwork/animal-gray-husky/full",
+          "version": "1.0.0",
+          "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+        }
+      ],
+      "codeMappedStatus": "approved",
+      "identityListedInRecord": true
+    }
+  ],
+  "summary": {
+    "lookIdentityCount": 15,
+    "stateCount": 22,
+    "codeMappedApprovedStates": 15,
+    "scopeMappingPendingStates": 7
+  },
+  "interpretation": "历史记录显式列出15个look身份，但不列逐姿态文件映射；代码将各look默认配方的登记素材映射为approved，其余7个状态显示确认范围待核定。这是当前代码门控映射的静态盘点，不构成逐文件美术批准，也不推断用户对其他状态的否决。"
+}

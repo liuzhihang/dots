@@ -1,0 +1,113 @@
+{
+  "schema": "dot-studio-human-adaptation-feedback/v1",
+  "recordedOn": "2026-10-06",
+  "scope": "current cache 85 human headphone adaptations only",
+  "source": {
+    "cacheVersion": 85,
+    "sourceId": "sha256:9bcd516a91b2d366f1921073962909ee801b9bf75d765c83c2bdc1b200daa672",
+    "commit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "dirtySnapshotHash": "4c37dad3da764723de9a6125b420ade4bfe93bcc12996d698e1ca53aab3c0be2"
+  },
+  "userAttachment": {
+    "projectCopy": "human-headphone-feedback-20261006.jpg",
+    "originalPath": "/tmp/codex-remote-attachments/01a10f13-222c-7882-856e-849940a33993/BF41C9BA-73E8-4F1C-ABF5-591C3988DC33/1-Photo-1.jpg",
+    "sha256": "c2f89c51bbce6052c61dc9f2674289328b74e5723669c10c16faa8a327cce674",
+    "scopeNote": "The screenshot shows the five cache 85 module recipes. Its attachment is evidence for the two explicit rejections below; it does not approve the other three recipes or the page."
+  },
+  "sharedBase": {
+    "baseId": "candidate-humans-20261005::classic",
+    "baseAssetRefs": [
+      {
+        "id": "artwork/candidate-humans-20261005/full",
+        "version": "1.0.0",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+      }
+    ],
+    "geometryProfile": {
+      "id": "geometry/human-classic-front-v1",
+      "version": "1.1.0",
+      "fingerprint": "993708b4c044f33b",
+      "poseId": "front-neutral",
+      "view": "front",
+      "layoutId": "human-chibi-front",
+      "styleId": "refined-chibi"
+    }
+  },
+  "explicitDecisions": [
+    {
+      "recipeId": "pilot-headphones-v1-on-candidate-humans-20261005-classic",
+      "recipeVersion": "2.0.0",
+      "recipeFingerprint": "8c738b0a4fe944c9",
+      "decision": "rejected",
+      "userStatement": "用户明确否决 cache 85 的人物＋耳机组合协调性。",
+      "componentRefs": [
+        {
+          "id": "pilot-headphones-v1",
+          "version": "2.0.0",
+          "sha256": "752814b890c50f04d2e2884f5d4c976969bde1667bff18a1e2b6feced4ca7b02",
+          "fitPolicy": {
+            "id": "fit/headphone-first-pilot",
+            "version": "1.0.0"
+          }
+        }
+      ],
+      "capturedOutput": {
+        "path": "../acceptance/current-20261006-v85/module-canvas/canvas/module-002.png",
+        "sha256": "bf0e8dc3c6acb1b419d62fd70f96a43e5fabfd066e603eb14bc63e907b63ba11"
+      },
+      "artApprovalAtCapture": "pending"
+    },
+    {
+      "recipeId": "pilot-headphones-and-round-glasses-on-candidate-humans-20261005-classic",
+      "recipeVersion": "1.0.0",
+      "recipeFingerprint": "e6cfae7c3acba4ab",
+      "decision": "rejected",
+      "userStatement": "用户明确否决 cache 85 的人物＋耳机＋眼镜组合协调性。",
+      "componentRefs": [
+        {
+          "id": "pilot-headphones-v1",
+          "version": "2.0.0",
+          "sha256": "752814b890c50f04d2e2884f5d4c976969bde1667bff18a1e2b6feced4ca7b02",
+          "fitPolicy": {
+            "id": "fit/headphone-first-pilot",
+            "version": "1.0.0"
+          }
+        },
+        {
+          "id": "pilot-round-glasses-v1",
+          "version": "1.0.0",
+          "sha256": "6f4c292afd88852e1c9ef2c476a40b0473c435bec48699d707233d63a40a4481",
+          "fitPolicy": {
+            "id": "fit/glasses-human-pupils",
+            "version": "1.0.0"
+          }
+        }
+      ],
+      "capturedOutput": {
+        "path": "../acceptance/current-20261006-v85/module-canvas/canvas/module-005.png",
+        "sha256": "c84ab158a00c7f0c428fa1096840decf0a051ef0e69160b8dcc728acce9062d9"
+      },
+      "artApprovalAtCapture": "pending"
+    }
+  ],
+  "notApproved": {
+    "page": "The cache 85 modular page/gallery remains unapproved.",
+    "otherRecipes": [
+      "pilot-headphones-v1-on-candidate-dots-20261005-bare-classic",
+      "pilot-round-glasses-v1-on-candidate-humans-20261005-classic",
+      "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic"
+    ],
+    "scopeNote": "The user did not approve these three recipes or the page. Preserve each as pending/unreviewed; do not infer approval or rejection from the two human headphone decisions."
+  },
+  "repairAcceptanceFocus": [
+    "Scale each earcup against the registered human ear and head geometry rather than relying only on the current fixed head-width ratio.",
+    "Make the continuous headband follow the crown and sit in visible contact with the head.",
+    "Register and verify hair/ear occlusion so the band and cups layer naturally around the hairstyle and ears; if the geometry or mask cannot support this, mark the adaptation unsupported.",
+    "Review headphone material, light, and contact shading against the human base so the assembled parts appear to belong to the same character."
+  ],
+  "preservation": {
+    "runtimeOrCacheChanged": false,
+    "previousEvidenceOverwritten": false,
+    "note": "This feedback is scoped to the exact cache 85 recipe, component, and geometry-profile identities above. Any revised drawing geometry or material requires a new version/fingerprint and fresh user review; it cannot inherit approval from these rejected outputs."
+  }
+}

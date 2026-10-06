@@ -1,0 +1,1102 @@
+{
+  "evidenceType": "v83-historical-source-replay-manifest",
+  "capturedAt": "2026-10-06T09:20:44.507168+00:00",
+  "executionMeaning": "Historical implementation is replayed during this session from its frozen v83 source; this is not a capture executed at implementation time.",
+  "historicalSource": {
+    "sourceSnapshotPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json",
+    "sourceSnapshotFileSha256": "0c21fa1663dfdc27c472b49da2de7e939bb08f8a37d678a151dfbfc23f75a3a0",
+    "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+    "sourceIdFormula": "SHA-256(JSON.stringify(files)) as used by scripts/freeze-character-acceptance.mjs",
+    "recomputedSourceIdFromRecords": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+    "sourceIdRecomputedMatches": true,
+    "sourceIdScope": "SHA-256 over the listed working-tree file paths and contents",
+    "cacheRevision": "83",
+    "characterSchema": 10,
+    "rendererVersion": "atelier-4",
+    "snapshotGitHead": "a70c73a7ce94350d49c1b82108e6be760ba4c29e",
+    "snapshotGitHeadScope": "baseline-commit-only; gitHead does not include dirty or untracked working-tree changes",
+    "sitesSourceCommit": "041171998469a568e8647db9a66dedd84bfb469c",
+    "sitesVersionNumber": 35,
+    "sitesVersionId": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_e718470ca89881919fcd0a86b8ed26b9",
+    "sitesDeploymentStatus": "succeeded",
+    "replayCheckoutOrigin": "/private/tmp/dot-site-canonical-20261005-local",
+    "replayCheckoutHead": "041171998469a568e8647db9a66dedd84bfb469c",
+    "replayRoot": "/tmp/dots-v83-history-replay.TMFfnV",
+    "replayMethod": "git archive HEAD from the exact-source canonical checkout, extracted into a new temporary directory; original checkout left read-only.",
+    "listedPathCount": 128,
+    "replayPathMatchCount": 128,
+    "allReplayPathsMatch": true,
+    "runtimeCharacterSourceManifestMatches": true,
+    "files": [
+      {
+        "path": "dist/app.js",
+        "expectedBytes": 56417,
+        "actualBytes": 56417,
+        "expectedSha256": "373b4b3444c8e2d0999da3849cc156ce93e25662ec880a22520bc86a6a57f9bb",
+        "actualSha256": "373b4b3444c8e2d0999da3849cc156ce93e25662ec880a22520bc86a6a57f9bb",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/atelier/dot-plush-headphones-v2.png",
+        "expectedBytes": 1897585,
+        "actualBytes": 1897585,
+        "expectedSha256": "b32a497c30a7b7973a00fb2e12b358e3899ceeab1e2ea02701577a7dbbb9e5d5",
+        "actualSha256": "b32a497c30a7b7973a00fb2e12b358e3899ceeab1e2ea02701577a7dbbb9e5d5",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/atelier/pet-shiba-scarf-v2.png",
+        "expectedBytes": 1497719,
+        "actualBytes": 1497719,
+        "expectedSha256": "3eb9864876ee26227083c16224669f9b0a8e9a014e15f31ea7279c415e03439a",
+        "actualSha256": "3eb9864876ee26227083c16224669f9b0a8e9a014e15f31ea7279c415e03439a",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/avatar-atlas.webp",
+        "expectedBytes": 140130,
+        "actualBytes": 140130,
+        "expectedSha256": "d9dcea5a9c6a3d7cbfec143271217f1345d41bd63e74f29f6b105a5b2e8cb844",
+        "actualSha256": "d9dcea5a9c6a3d7cbfec143271217f1345d41bd63e74f29f6b105a5b2e8cb844",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/black-bean.webp",
+        "expectedBytes": 184920,
+        "actualBytes": 184920,
+        "expectedSha256": "5fd4675cd65c5aee8fa6903bb9637452b4d60f261356af198b23361168ab20b6",
+        "actualSha256": "5fd4675cd65c5aee8fa6903bb9637452b4d60f261356af198b23361168ab20b6",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/cat.webp",
+        "expectedBytes": 106454,
+        "actualBytes": 106454,
+        "expectedSha256": "0ed99b5436fb0302ef92496354cc2ea3074068029a003c7e7ebfdcb091493e00",
+        "actualSha256": "0ed99b5436fb0302ef92496354cc2ea3074068029a003c7e7ebfdcb091493e00",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "expectedBytes": 1413426,
+        "actualBytes": 1413426,
+        "expectedSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+        "actualSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/brand-mark.png",
+        "expectedBytes": 574528,
+        "actualBytes": 574528,
+        "expectedSha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+        "actualSha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+        "expectedBytes": 1803333,
+        "actualBytes": 1803333,
+        "expectedSha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+        "actualSha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "expectedBytes": 1720054,
+        "actualBytes": 1720054,
+        "expectedSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "actualSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "expectedBytes": 971168,
+        "actualBytes": 971168,
+        "expectedSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "actualSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/hero-background.png",
+        "expectedBytes": 1301370,
+        "actualBytes": 1301370,
+        "expectedSha256": "0396d9bf704ab791b853b8b0926cb4630be78eb2ef3f68ab855dc462c1fb86da",
+        "actualSha256": "0396d9bf704ab791b853b8b0926cb4630be78eb2ef3f68ab855dc462c1fb86da",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "expectedBytes": 1151483,
+        "actualBytes": 1151483,
+        "expectedSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "actualSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "expectedBytes": 1003955,
+        "actualBytes": 1003955,
+        "expectedSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+        "actualSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/collection.webp",
+        "expectedBytes": 149444,
+        "actualBytes": 149444,
+        "expectedSha256": "f3677e733fa6bbd1f446a820d3db5c157920c45fea937cb43e080a46124565db",
+        "actualSha256": "f3677e733fa6bbd1f446a820d3db5c157920c45fea937cb43e080a46124565db",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/dots-actions.webp",
+        "expectedBytes": 222606,
+        "actualBytes": 222606,
+        "expectedSha256": "3a6bfe61019166c40a7cb8786741c114c3236c024a9c9405911a24036f82b005",
+        "actualSha256": "3a6bfe61019166c40a7cb8786741c114c3236c024a9c9405911a24036f82b005",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/dots-matte-hero.webp",
+        "expectedBytes": 121810,
+        "actualBytes": 121810,
+        "expectedSha256": "05c6339a93897a76c521263fc13c7a8707564633705f7516c05534f70afb7434",
+        "actualSha256": "05c6339a93897a76c521263fc13c7a8707564633705f7516c05534f70afb7434",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/dots-plush-hero.webp",
+        "expectedBytes": 164856,
+        "actualBytes": 164856,
+        "expectedSha256": "359a052f6374e2917f8fafc0c829dae0c22d551edb3dc4f7eddd69b07c9c11e0",
+        "actualSha256": "359a052f6374e2917f8fafc0c829dae0c22d551edb3dc4f7eddd69b07c9c11e0",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/dots-plush-work.webp",
+        "expectedBytes": 145570,
+        "actualBytes": 145570,
+        "expectedSha256": "a95a108da0d9a10c256814b44d7cb3f11aa987ba19aceebe838869ef6048f283",
+        "actualSha256": "a95a108da0d9a10c256814b44d7cb3f11aa987ba19aceebe838869ef6048f283",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/animal-gray-husky.png",
+        "expectedBytes": 1623665,
+        "actualBytes": 1623665,
+        "expectedSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "actualSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/animal-white-cat.png",
+        "expectedBytes": 1382027,
+        "actualBytes": 1382027,
+        "expectedSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "actualSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/dots-lilac-bucket.png",
+        "expectedBytes": 1605008,
+        "actualBytes": 1605008,
+        "expectedSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "actualSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/dots-rose-glasses.png",
+        "expectedBytes": 1860436,
+        "actualBytes": 1860436,
+        "expectedSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "actualSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/grok-green-cloud.png",
+        "expectedBytes": 790009,
+        "actualBytes": 790009,
+        "expectedSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "actualSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/grok-teal-square.png",
+        "expectedBytes": 828844,
+        "actualBytes": 828844,
+        "expectedSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "actualSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/human-blond-glasses.png",
+        "expectedBytes": 1058375,
+        "actualBytes": 1058375,
+        "expectedSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "actualSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/human-bun-yellow.png",
+        "expectedBytes": 1086214,
+        "actualBytes": 1086214,
+        "expectedSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "actualSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/muse-rose-flowers.png",
+        "expectedBytes": 1185166,
+        "actualBytes": 1185166,
+        "expectedSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "actualSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/looks/muse-sage-reading.png",
+        "expectedBytes": 1142481,
+        "actualBytes": 1142481,
+        "expectedSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "actualSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/material-plush.webp",
+        "expectedBytes": 121082,
+        "actualBytes": 121082,
+        "expectedSha256": "cccba94eae546896600a5be85ff8c51c57485ac2570300f03002c967396659e5",
+        "actualSha256": "cccba94eae546896600a5be85ff8c51c57485ac2570300f03002c967396659e5",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/material-rubber.webp",
+        "expectedBytes": 61830,
+        "actualBytes": 61830,
+        "expectedSha256": "85ada2e041c9446baccdd8c3d7c81030477cfb71d3041155014a432f8c6b9ac2",
+        "actualSha256": "85ada2e041c9446baccdd8c3d7c81030477cfb71d3041155014a432f8c6b9ac2",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/pets-actions.webp",
+        "expectedBytes": 147938,
+        "actualBytes": 147938,
+        "expectedSha256": "487548773ca7f6c4374f424b9565c32bb21ff4bed43efa48ce769eb6ac3bb9f9",
+        "actualSha256": "487548773ca7f6c4374f424b9565c32bb21ff4bed43efa48ce769eb6ac3bb9f9",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/poses/dots-wink-v1.png",
+        "expectedBytes": 1136161,
+        "actualBytes": 1136161,
+        "expectedSha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+        "actualSha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/poses/grok-wink-v1.png",
+        "expectedBytes": 732939,
+        "actualBytes": 732939,
+        "expectedSha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+        "actualSha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/poses/human-wave-v1.png",
+        "expectedBytes": 786370,
+        "actualBytes": 786370,
+        "expectedSha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+        "actualSha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/poses/muse-wave-v1.png",
+        "expectedBytes": 1073265,
+        "actualBytes": 1073265,
+        "expectedSha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+        "actualSha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/poses/shiba-wave-v1.png",
+        "expectedBytes": 697164,
+        "actualBytes": 697164,
+        "expectedSha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+        "actualSha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/qa/band-rear.png",
+        "expectedBytes": 320,
+        "actualBytes": 320,
+        "expectedSha256": "ba8ba58e6e90d53da39f00e33eb899396395b4aaf2722f2229bc5677585e0f77",
+        "actualSha256": "ba8ba58e6e90d53da39f00e33eb899396395b4aaf2722f2229bc5677585e0f77",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/qa/body-mask.png",
+        "expectedBytes": 1947,
+        "actualBytes": 1947,
+        "expectedSha256": "ec2463099c5f00f5468c4cb53dab7d0ba1dc40c25fe29adab6091dac18ce7219",
+        "actualSha256": "ec2463099c5f00f5468c4cb53dab7d0ba1dc40c25fe29adab6091dac18ce7219",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/qa/face-earcups-front.png",
+        "expectedBytes": 335,
+        "actualBytes": 335,
+        "expectedSha256": "9fb3135a4745b4078e05419f5e82cf03408b86f1bf7631f5e9a8bc18d3c09937",
+        "actualSha256": "9fb3135a4745b4078e05419f5e82cf03408b86f1bf7631f5e9a8bc18d3c09937",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/robot.webp",
+        "expectedBytes": 36692,
+        "actualBytes": 36692,
+        "expectedSha256": "83fbc5d9500c36eff434043b0f42c293c0d1535d3a135340dbc2e67bc5c3bbf2",
+        "actualSha256": "83fbc5d9500c36eff434043b0f42c293c0d1535d3a135340dbc2e67bc5c3bbf2",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-animals-v1.png",
+        "expectedBytes": 1237847,
+        "actualBytes": 1237847,
+        "expectedSha256": "2bb9c14c1ea62a8f66f3714fe2a49eff0a3547879f0f6987c659ab5a74f7847e",
+        "actualSha256": "2bb9c14c1ea62a8f66f3714fe2a49eff0a3547879f0f6987c659ab5a74f7847e",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-animals-v2.png",
+        "expectedBytes": 1756332,
+        "actualBytes": 1756332,
+        "expectedSha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db",
+        "actualSha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-animals-v3.png",
+        "expectedBytes": 1554858,
+        "actualBytes": 1554858,
+        "expectedSha256": "bf9a99ce408aa1e77e0418287539f131a710718ebb0ac5912b7aa0bb462428da",
+        "actualSha256": "bf9a99ce408aa1e77e0418287539f131a710718ebb0ac5912b7aa0bb462428da",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-animals-v4.png",
+        "expectedBytes": 2258979,
+        "actualBytes": 2258979,
+        "expectedSha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+        "actualSha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-dots-v1.png",
+        "expectedBytes": 1987704,
+        "actualBytes": 1987704,
+        "expectedSha256": "9a4c4b56a28e05850c865267e379c367168254ab3644b3ad060bbd4d7dcaf400",
+        "actualSha256": "9a4c4b56a28e05850c865267e379c367168254ab3644b3ad060bbd4d7dcaf400",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-dots-v2.png",
+        "expectedBytes": 1988199,
+        "actualBytes": 1988199,
+        "expectedSha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+        "actualSha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-dots-v3.png",
+        "expectedBytes": 1221551,
+        "actualBytes": 1221551,
+        "expectedSha256": "4122d76f2e600546ad190ce0548f0bb28bbcbb9457ee8171f0793d18437082e5",
+        "actualSha256": "4122d76f2e600546ad190ce0548f0bb28bbcbb9457ee8171f0793d18437082e5",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-dots-v4.png",
+        "expectedBytes": 1399861,
+        "actualBytes": 1399861,
+        "expectedSha256": "c921ffd8a9f5ed5ff16c3b415ba1b5b79cb8baaaa44377a13d7bf19c18232b21",
+        "actualSha256": "c921ffd8a9f5ed5ff16c3b415ba1b5b79cb8baaaa44377a13d7bf19c18232b21",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-grok-v1.png",
+        "expectedBytes": 974987,
+        "actualBytes": 974987,
+        "expectedSha256": "1df48ab7ed1b2425595af6e60192cc32090e1b2deb1d3b4e946ecb9edac66685",
+        "actualSha256": "1df48ab7ed1b2425595af6e60192cc32090e1b2deb1d3b4e946ecb9edac66685",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-grok-v2.png",
+        "expectedBytes": 1232920,
+        "actualBytes": 1232920,
+        "expectedSha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+        "actualSha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-grok-v3.png",
+        "expectedBytes": 884467,
+        "actualBytes": 884467,
+        "expectedSha256": "5e430b88e7de180b931e9b10cdfa6f049ee68b327b5c7600e03cccef6ece1471",
+        "actualSha256": "5e430b88e7de180b931e9b10cdfa6f049ee68b327b5c7600e03cccef6ece1471",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-grok-v4.png",
+        "expectedBytes": 1194674,
+        "actualBytes": 1194674,
+        "expectedSha256": "330b8767af297be5b046d2f423112cbf2e0f6321f1e09fd125371d01cae6de34",
+        "actualSha256": "330b8767af297be5b046d2f423112cbf2e0f6321f1e09fd125371d01cae6de34",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-humans-v1.png",
+        "expectedBytes": 1851765,
+        "actualBytes": 1851765,
+        "expectedSha256": "760c64926715fcd3f0665967daf923fd9baa0b439ac5a441d12655b6415c777d",
+        "actualSha256": "760c64926715fcd3f0665967daf923fd9baa0b439ac5a441d12655b6415c777d",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-humans-v2.png",
+        "expectedBytes": 1237392,
+        "actualBytes": 1237392,
+        "expectedSha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0",
+        "actualSha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-humans-v3.png",
+        "expectedBytes": 1973072,
+        "actualBytes": 1973072,
+        "expectedSha256": "b3bf539597c0420ed27eaaa9973e5dc18b8d3ba7bcff4a539ac77a2f2790eeb0",
+        "actualSha256": "b3bf539597c0420ed27eaaa9973e5dc18b8d3ba7bcff4a539ac77a2f2790eeb0",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-humans-v4.png",
+        "expectedBytes": 2390173,
+        "actualBytes": 2390173,
+        "expectedSha256": "01266e796dd3f3173c453d45931e3e82a54b076a5edfef4a159c07de624d2eae",
+        "actualSha256": "01266e796dd3f3173c453d45931e3e82a54b076a5edfef4a159c07de624d2eae",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-meta-muse-v1.png",
+        "expectedBytes": 1501838,
+        "actualBytes": 1501838,
+        "expectedSha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d",
+        "actualSha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-meta-muse-v2.png",
+        "expectedBytes": 1567435,
+        "actualBytes": 1567435,
+        "expectedSha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027",
+        "actualSha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-meta-muse-v3.png",
+        "expectedBytes": 1470813,
+        "actualBytes": 1470813,
+        "expectedSha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c",
+        "actualSha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-meta-muse-v4.png",
+        "expectedBytes": 1553070,
+        "actualBytes": 1553070,
+        "expectedSha256": "07749dcad0c8f71f8e0aa77f2600ecc6d1f3e9544738cf5f831d1eb03bab460f",
+        "actualSha256": "07749dcad0c8f71f8e0aa77f2600ecc6d1f3e9544738cf5f831d1eb03bab460f",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/family-meta-muse-v5.png",
+        "expectedBytes": 2243194,
+        "actualBytes": 2243194,
+        "expectedSha256": "03f8225a11bdb5e8026b9c7312a6d0fd4deff83fdbbbde578703ea8cc1fc7462",
+        "actualSha256": "03f8225a11bdb5e8026b9c7312a6d0fd4deff83fdbbbde578703ea8cc1fc7462",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-left-v1.png",
+        "expectedBytes": 1951237,
+        "actualBytes": 1951237,
+        "expectedSha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06",
+        "actualSha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-left-v2.png",
+        "expectedBytes": 1815246,
+        "actualBytes": 1815246,
+        "expectedSha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+        "actualSha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-left-v3.png",
+        "expectedBytes": 1333576,
+        "actualBytes": 1333576,
+        "expectedSha256": "7ebf2f43ba686f2d4fbedddd6bc4bf3b0117a93d0990d83f58c9c5e728a4a810",
+        "actualSha256": "7ebf2f43ba686f2d4fbedddd6bc4bf3b0117a93d0990d83f58c9c5e728a4a810",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-left-v4.png",
+        "expectedBytes": 1342332,
+        "actualBytes": 1342332,
+        "expectedSha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507",
+        "actualSha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-right-v1.png",
+        "expectedBytes": 1660214,
+        "actualBytes": 1660214,
+        "expectedSha256": "db278c83628b0b59ead4943b5b9d4c4b8f91eb1a396efd8ed121a955b9e435ca",
+        "actualSha256": "db278c83628b0b59ead4943b5b9d4c4b8f91eb1a396efd8ed121a955b9e435ca",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-right-v2.png",
+        "expectedBytes": 1973055,
+        "actualBytes": 1973055,
+        "expectedSha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a",
+        "actualSha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-right-v3.png",
+        "expectedBytes": 1374015,
+        "actualBytes": 1374015,
+        "expectedSha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19",
+        "actualSha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/scenes/hero-right-v4.png",
+        "expectedBytes": 1424753,
+        "actualBytes": 1424753,
+        "expectedSha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281",
+        "actualSha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/shiba.webp",
+        "expectedBytes": 82428,
+        "actualBytes": 82428,
+        "expectedSha256": "4ab74dac834b4a2e6ef6c5653b6afcf9206915ffb812d3d7eeb105c035b0c347",
+        "actualSha256": "4ab74dac834b4a2e6ef6c5653b6afcf9206915ffb812d3d7eeb105c035b0c347",
+        "matches": true
+      },
+      {
+        "path": "dist/assets/tiger.webp",
+        "expectedBytes": 108042,
+        "actualBytes": 108042,
+        "expectedSha256": "23def74bf09bc11c67a2ba45c643eab57af5e196630612e57d64f7dd2e1fc87d",
+        "actualSha256": "23def74bf09bc11c67a2ba45c643eab57af5e196630612e57d64f7dd2e1fc87d",
+        "matches": true
+      },
+      {
+        "path": "dist/atelier.css",
+        "expectedBytes": 20694,
+        "actualBytes": 20694,
+        "expectedSha256": "000a98d53a320be0fd5f3f434ada05e0dfcb4ef5c6f1ff1fae0916218cde25f9",
+        "actualSha256": "000a98d53a320be0fd5f3f434ada05e0dfcb4ef5c6f1ff1fae0916218cde25f9",
+        "matches": true
+      },
+      {
+        "path": "dist/data.js",
+        "expectedBytes": 17650,
+        "actualBytes": 17650,
+        "expectedSha256": "442e02374acd583a37cd1a874e56a97a99df607a0c8fbffb36397682bb560786",
+        "actualSha256": "442e02374acd583a37cd1a874e56a97a99df607a0c8fbffb36397682bb560786",
+        "matches": true
+      },
+      {
+        "path": "dist/editor.html",
+        "expectedBytes": 7158,
+        "actualBytes": 7158,
+        "expectedSha256": "809a27d60367ba4d320c6facd6c61197260594b664d1f9fc9208cd4445839419",
+        "actualSha256": "809a27d60367ba4d320c6facd6c61197260594b664d1f9fc9208cd4445839419",
+        "matches": true
+      },
+      {
+        "path": "dist/index.html",
+        "expectedBytes": 13439,
+        "actualBytes": 13439,
+        "expectedSha256": "d3ea3e26ce6d6074a9a4690079b020bb8b2694e3280ad628e04b8f4aa329a163",
+        "actualSha256": "d3ea3e26ce6d6074a9a4690079b020bb8b2694e3280ad628e04b8f4aa329a163",
+        "matches": true
+      },
+      {
+        "path": "dist/legacy-bridge.js",
+        "expectedBytes": 496,
+        "actualBytes": 496,
+        "expectedSha256": "9c1dc5f920ce7b76def90c485f6434aa99646a85c2353a35bd80f30320fc8f9c",
+        "actualSha256": "9c1dc5f920ce7b76def90c485f6434aa99646a85c2353a35bd80f30320fc8f9c",
+        "matches": true
+      },
+      {
+        "path": "dist/legacy-editor.html",
+        "expectedBytes": 5205,
+        "actualBytes": 5205,
+        "expectedSha256": "40d2b697a90a68468bba6dbe6625333b600e7a76521c20b435d6cddd2678d1c1",
+        "actualSha256": "40d2b697a90a68468bba6dbe6625333b600e7a76521c20b435d6cddd2678d1c1",
+        "matches": true
+      },
+      {
+        "path": "dist/live-runtime.js",
+        "expectedBytes": 688968,
+        "actualBytes": 688968,
+        "expectedSha256": "831bb8f523309c6cb8dd97576518ab4a33220fb131c399033745483d765632fb",
+        "actualSha256": "831bb8f523309c6cb8dd97576518ab4a33220fb131c399033745483d765632fb",
+        "matches": true
+      },
+      {
+        "path": "dist/qa/character-acceptance.html",
+        "expectedBytes": 5632,
+        "actualBytes": 5632,
+        "expectedSha256": "bf34dc7f68ccc97a0711b288a376b1ec5cd7dcc6b012ba16ec3ebceb33d04212",
+        "actualSha256": "bf34dc7f68ccc97a0711b288a376b1ec5cd7dcc6b012ba16ec3ebceb33d04212",
+        "matches": true
+      },
+      {
+        "path": "dist/qa/character-acceptance.js",
+        "expectedBytes": 9542,
+        "actualBytes": 9542,
+        "expectedSha256": "c1f3c65f9835593068773ee809eaab34d4a1245a3231fd8780ca065a1f70c94f",
+        "actualSha256": "c1f3c65f9835593068773ee809eaab34d4a1245a3231fd8780ca065a1f70c94f",
+        "matches": true
+      },
+      {
+        "path": "dist/qa/character-cases.js",
+        "expectedBytes": 3713,
+        "actualBytes": 3713,
+        "expectedSha256": "b87c6443c0c1af5afb37d813344507b6137667369974406864c0b4a32e9df41b",
+        "actualSha256": "b87c6443c0c1af5afb37d813344507b6137667369974406864c0b4a32e9df41b",
+        "matches": true
+      },
+      {
+        "path": "dist/qa/creation-composer.html",
+        "expectedBytes": 7430,
+        "actualBytes": 7430,
+        "expectedSha256": "3e18a77c9075f6fb471216b83dcd0ce16f500ac85a0aae04bf3786ddbaa07e99",
+        "actualSha256": "3e18a77c9075f6fb471216b83dcd0ce16f500ac85a0aae04bf3786ddbaa07e99",
+        "matches": true
+      },
+      {
+        "path": "dist/renderer.js",
+        "expectedBytes": 46464,
+        "actualBytes": 46464,
+        "expectedSha256": "3b0ab1246c3f8211f00f65f82b3217eef04d511e201b3ac98051a14bb7e999c6",
+        "actualSha256": "3b0ab1246c3f8211f00f65f82b3217eef04d511e201b3ac98051a14bb7e999c6",
+        "matches": true
+      },
+      {
+        "path": "dist/shared-2d.js",
+        "expectedBytes": 8630,
+        "actualBytes": 8630,
+        "expectedSha256": "29f7e51ed34bb1e5261522c4fa01d01567b4e45bd7b60da03a6934b5ec753c06",
+        "actualSha256": "29f7e51ed34bb1e5261522c4fa01d01567b4e45bd7b60da03a6934b5ec753c06",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-art.js",
+        "expectedBytes": 1153,
+        "actualBytes": 1153,
+        "expectedSha256": "5fdcb8a76be0703bc2a493836cd4ffac74e05a4390355ffbbfd382eabb227381",
+        "actualSha256": "5fdcb8a76be0703bc2a493836cd4ffac74e05a4390355ffbbfd382eabb227381",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-catalog.js",
+        "expectedBytes": 11841,
+        "actualBytes": 11841,
+        "expectedSha256": "5bd448dfd0c1067c0ff873fb7f880699c503d726b17a30fd44f95dfd7c04596b",
+        "actualSha256": "5bd448dfd0c1067c0ff873fb7f880699c503d726b17a30fd44f95dfd7c04596b",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-composer.js",
+        "expectedBytes": 9755,
+        "actualBytes": 9755,
+        "expectedSha256": "570508689a664b1eb7c3e2c98a4bfa5b3dc8eda010c75ee927810c3ce7109d69",
+        "actualSha256": "570508689a664b1eb7c3e2c98a4bfa5b3dc8eda010c75ee927810c3ce7109d69",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-creation-assets.js",
+        "expectedBytes": 21739,
+        "actualBytes": 21739,
+        "expectedSha256": "ca1cda7ccfdf78ad9d845de320f7997d03fe062af7328495d3f58fadc997259e",
+        "actualSha256": "ca1cda7ccfdf78ad9d845de320f7997d03fe062af7328495d3f58fadc997259e",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-creation.css",
+        "expectedBytes": 4185,
+        "actualBytes": 4185,
+        "expectedSha256": "15491e85ceafed0257feb628c49f1f16846f90b1bff402262a249adbf706978d",
+        "actualSha256": "15491e85ceafed0257feb628c49f1f16846f90b1bff402262a249adbf706978d",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-creation.js",
+        "expectedBytes": 23445,
+        "actualBytes": 23445,
+        "expectedSha256": "e99cd0ea3162ffe8a9f6cb452e4ac3842e4e5da279d7f6edd25643f28a231e47",
+        "actualSha256": "e99cd0ea3162ffe8a9f6cb452e4ac3842e4e5da279d7f6edd25643f28a231e47",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-fullscreen-random.css",
+        "expectedBytes": 13434,
+        "actualBytes": 13434,
+        "expectedSha256": "4767393f1532855b345ec57d5927f25fd2638f75d04f738ee8cd7ca963f3e830",
+        "actualSha256": "4767393f1532855b345ec57d5927f25fd2638f75d04f738ee8cd7ca963f3e830",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-fullscreen-random.js",
+        "expectedBytes": 24937,
+        "actualBytes": 24937,
+        "expectedSha256": "760d084ec46fadd7fdcdd73189c819b0086bd1912a5930321265720b51a58e7d",
+        "actualSha256": "760d084ec46fadd7fdcdd73189c819b0086bd1912a5930321265720b51a58e7d",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-home.js",
+        "expectedBytes": 13081,
+        "actualBytes": 13081,
+        "expectedSha256": "a6b6cb9b70e35532b36170d8453b4347b4b8a15a77397560f22cacf1fa01bae0",
+        "actualSha256": "a6b6cb9b70e35532b36170d8453b4347b4b8a15a77397560f22cacf1fa01bae0",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-inspiration.js",
+        "expectedBytes": 1559,
+        "actualBytes": 1559,
+        "expectedSha256": "fead9b63865fa53adf0173fcc0c1264804e0f9ce4358674401247dc2af5c6654",
+        "actualSha256": "fead9b63865fa53adf0173fcc0c1264804e0f9ce4358674401247dc2af5c6654",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-layout.css",
+        "expectedBytes": 24299,
+        "actualBytes": 24299,
+        "expectedSha256": "ecf0636998b0dbe32414039d03bcff358ffe1e80d44ceb4074cc05536ba98e29",
+        "actualSha256": "ecf0636998b0dbe32414039d03bcff358ffe1e80d44ceb4074cc05536ba98e29",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-looks.js",
+        "expectedBytes": 9915,
+        "actualBytes": 9915,
+        "expectedSha256": "76ece875948f5d2b60e3e51ac413cfb5483f53d11f1d807912fbc6dea73ff802",
+        "actualSha256": "76ece875948f5d2b60e3e51ac413cfb5483f53d11f1d807912fbc6dea73ff802",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-model.js",
+        "expectedBytes": 96049,
+        "actualBytes": 96049,
+        "expectedSha256": "f97a241f974572bfa9abcd58d071863ada5c96afee76dbc820731d34b1afc9d6",
+        "actualSha256": "f97a241f974572bfa9abcd58d071863ada5c96afee76dbc820731d34b1afc9d6",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-pickers.js",
+        "expectedBytes": 8741,
+        "actualBytes": 8741,
+        "expectedSha256": "7a292e602a620e512bd12b578322ed985b1f00e9b597daced3a1131f532142d8",
+        "actualSha256": "7a292e602a620e512bd12b578322ed985b1f00e9b597daced3a1131f532142d8",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-random.js",
+        "expectedBytes": 9302,
+        "actualBytes": 9302,
+        "expectedSha256": "cf93cb0e42f8f4a5323e12e7ad61bda3c3863dcd22e5de7762bd5232168cb20e",
+        "actualSha256": "cf93cb0e42f8f4a5323e12e7ad61bda3c3863dcd22e5de7762bd5232168cb20e",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-refresh.css",
+        "expectedBytes": 80215,
+        "actualBytes": 80215,
+        "expectedSha256": "c17037b0a1c5649c5a252c533337ec47c425b734009ae3707b15dacbfd0bad41",
+        "actualSha256": "c17037b0a1c5649c5a252c533337ec47c425b734009ae3707b15dacbfd0bad41",
+        "matches": true
+      },
+      {
+        "path": "dist/studio-scenes.js",
+        "expectedBytes": 2340,
+        "actualBytes": 2340,
+        "expectedSha256": "de940684e9204cd6515d24cdf6931a2098fea3515f336c886401584ee40f26de",
+        "actualSha256": "de940684e9204cd6515d24cdf6931a2098fea3515f336c886401584ee40f26de",
+        "matches": true
+      },
+      {
+        "path": "dist/studio.css",
+        "expectedBytes": 40930,
+        "actualBytes": 40930,
+        "expectedSha256": "b97f1ed1d4eba78d3eb0ff61363f22dec818f972132412a5d33916181f29b9bc",
+        "actualSha256": "b97f1ed1d4eba78d3eb0ff61363f22dec818f972132412a5d33916181f29b9bc",
+        "matches": true
+      },
+      {
+        "path": "dist/studio.js",
+        "expectedBytes": 74898,
+        "actualBytes": 74898,
+        "expectedSha256": "dc3bfcf1edbe6b1ceb6611ac4fea99cada732451bc3257ba9920fab56ca80759",
+        "actualSha256": "dc3bfcf1edbe6b1ceb6611ac4fea99cada732451bc3257ba9920fab56ca80759",
+        "matches": true
+      },
+      {
+        "path": "dist/style.css",
+        "expectedBytes": 17502,
+        "actualBytes": 17502,
+        "expectedSha256": "5878a2191d79ad94601af11769413c590e8e0233626510a10316005dff455814",
+        "actualSha256": "5878a2191d79ad94601af11769413c590e8e0233626510a10316005dff455814",
+        "matches": true
+      },
+      {
+        "path": "package-lock.json",
+        "expectedBytes": 39512,
+        "actualBytes": 39512,
+        "expectedSha256": "6b0fbe19d51ff18dc5f56e40cf4d2e522a9188bcb8cc66392a0b15088f9150a9",
+        "actualSha256": "6b0fbe19d51ff18dc5f56e40cf4d2e522a9188bcb8cc66392a0b15088f9150a9",
+        "matches": true
+      },
+      {
+        "path": "package.json",
+        "expectedBytes": 382,
+        "actualBytes": 382,
+        "expectedSha256": "29da6a682837db62b4de78a083d4f2b26a32785400da0e84c9b6ad67983613bd",
+        "actualSha256": "29da6a682837db62b4de78a083d4f2b26a32785400da0e84c9b6ad67983613bd",
+        "matches": true
+      },
+      {
+        "path": "scripts/extract-character-matrix.py",
+        "expectedBytes": 17831,
+        "actualBytes": 17831,
+        "expectedSha256": "3957ce5f65d4f814d43b932791ee4de4197efbd9fdee3308fd94d2a15661ec8d",
+        "actualSha256": "3957ce5f65d4f814d43b932791ee4de4197efbd9fdee3308fd94d2a15661ec8d",
+        "matches": true
+      },
+      {
+        "path": "scripts/freeze-character-acceptance.mjs",
+        "expectedBytes": 2311,
+        "actualBytes": 2311,
+        "expectedSha256": "6095c795e26f1df002a0d52840e87309cbf70057373aa92f3e3ed7f7367faff7",
+        "actualSha256": "6095c795e26f1df002a0d52840e87309cbf70057373aa92f3e3ed7f7367faff7",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-assembly-contact.mjs",
+        "expectedBytes": 2729,
+        "actualBytes": 2729,
+        "expectedSha256": "5e5e0a217cb3d5ac25d42b5e2f53d1429d945e3a57f05f0cb4a101576034a67d",
+        "actualSha256": "5e5e0a217cb3d5ac25d42b5e2f53d1429d945e3a57f05f0cb4a101576034a67d",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-atelier.mjs",
+        "expectedBytes": 4714,
+        "actualBytes": 4714,
+        "expectedSha256": "e80b40e5f51b4013632875d0e62f04ea05c54d69880a93c7ce0f726e593872dc",
+        "actualSha256": "e80b40e5f51b4013632875d0e62f04ea05c54d69880a93c7ce0f726e593872dc",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-character-system.mjs",
+        "expectedBytes": 6560,
+        "actualBytes": 6560,
+        "expectedSha256": "7b4b6bab039b3a501b731a6a34d20ff8e3622d707ffbed7039be746ef9e6a243",
+        "actualSha256": "7b4b6bab039b3a501b731a6a34d20ff8e3622d707ffbed7039be746ef9e6a243",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-creation-ui.mjs",
+        "expectedBytes": 12269,
+        "actualBytes": 12269,
+        "expectedSha256": "463c68a8b03609d34c9ee9c32af1b0fe09f86dbc78c3aa40893634d501922325",
+        "actualSha256": "463c68a8b03609d34c9ee9c32af1b0fe09f86dbc78c3aa40893634d501922325",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-creation.mjs",
+        "expectedBytes": 36123,
+        "actualBytes": 36123,
+        "expectedSha256": "35ad13538291a1c2b5eafb01d7c8b6d0e8b3fa7e5880390b23b1310b48741049",
+        "actualSha256": "35ad13538291a1c2b5eafb01d7c8b6d0e8b3fa7e5880390b23b1310b48741049",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-family-navigation.mjs",
+        "expectedBytes": 17073,
+        "actualBytes": 17073,
+        "expectedSha256": "97184684fd78d09a79082b059ae92208f9aadf3ae1ad64ea34287026a00ceeef",
+        "actualSha256": "97184684fd78d09a79082b059ae92208f9aadf3ae1ad64ea34287026a00ceeef",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-fullscreen-random.mjs",
+        "expectedBytes": 24946,
+        "actualBytes": 24946,
+        "expectedSha256": "2e00fbd5fcc7c51ec529b0c7366dddb579b3566cecceb771c726d84b85a5d88a",
+        "actualSha256": "2e00fbd5fcc7c51ec529b0c7366dddb579b3566cecceb771c726d84b85a5d88a",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-look-gallery.mjs",
+        "expectedBytes": 15254,
+        "actualBytes": 15254,
+        "expectedSha256": "b16629d20d19c56238030518fbe64a8bf691bdeb928960b772e700afc0d6bdd2",
+        "actualSha256": "b16629d20d19c56238030518fbe64a8bf691bdeb928960b772e700afc0d6bdd2",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-module-cache.mjs",
+        "expectedBytes": 2713,
+        "actualBytes": 2713,
+        "expectedSha256": "5b96e9ce52ce09ee199f971afd1787693a87f81d7f7cf7676af6d396f64a482a",
+        "actualSha256": "5b96e9ce52ce09ee199f971afd1787693a87f81d7f7cf7676af6d396f64a482a",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-preview-capture.mjs",
+        "expectedBytes": 8742,
+        "actualBytes": 8742,
+        "expectedSha256": "ca24fc1143492c6a9d616de278568f159dffcc32c26193202e167100cd468cc7",
+        "actualSha256": "ca24fc1143492c6a9d616de278568f159dffcc32c26193202e167100cd468cc7",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-recreations.mjs",
+        "expectedBytes": 5368,
+        "actualBytes": 5368,
+        "expectedSha256": "ffe597d90b5747fe6f3dd9c20221d5c34aaafebae2303866238ebd3c3a09e24a",
+        "actualSha256": "ffe597d90b5747fe6f3dd9c20221d5c34aaafebae2303866238ebd3c3a09e24a",
+        "matches": true
+      },
+      {
+        "path": "scripts/verify-studio.mjs",
+        "expectedBytes": 6132,
+        "actualBytes": 6132,
+        "expectedSha256": "4d59d13ab025128d639039f34efdca93d83be0575253e343d2581b8d6ea597a3",
+        "actualSha256": "4d59d13ab025128d639039f34efdca93d83be0575253e343d2581b8d6ea597a3",
+        "matches": true
+      },
+      {
+        "path": "src/live/activity-system.js",
+        "expectedBytes": 6043,
+        "actualBytes": 6043,
+        "expectedSha256": "320da7cf3145a0c0307ed359e4cb63c5b67abbbd74741e888b17fb6f1a12d4d4",
+        "actualSha256": "320da7cf3145a0c0307ed359e4cb63c5b67abbbd74741e888b17fb6f1a12d4d4",
+        "matches": true
+      },
+      {
+        "path": "src/live/avatar-body.js",
+        "expectedBytes": 67183,
+        "actualBytes": 67183,
+        "expectedSha256": "a553069ec1130ab4e141e5b35c6e513ca9723544cce21cdab3a2252f2a679082",
+        "actualSha256": "a553069ec1130ab4e141e5b35c6e513ca9723544cce21cdab3a2252f2a679082",
+        "matches": true
+      },
+      {
+        "path": "src/live/avatar-props.js",
+        "expectedBytes": 67566,
+        "actualBytes": 67566,
+        "expectedSha256": "89bf36d63defbe8f9f6deee89e5eb437b96b742c8bf91e6c3317a7d1265bc99f",
+        "actualSha256": "89bf36d63defbe8f9f6deee89e5eb437b96b742c8bf91e6c3317a7d1265bc99f",
+        "matches": true
+      },
+      {
+        "path": "src/live/live-preview.js",
+        "expectedBytes": 20957,
+        "actualBytes": 20957,
+        "expectedSha256": "df900645b4c34ad1c2257dcae4cb8efc5c02f70b1e8531336499cfe46a72c0fe",
+        "actualSha256": "df900645b4c34ad1c2257dcae4cb8efc5c02f70b1e8531336499cfe46a72c0fe",
+        "matches": true
+      },
+      {
+        "path": "src/live/software-renderer.js",
+        "expectedBytes": 41228,
+        "actualBytes": 41228,
+        "expectedSha256": "58b750bf5bb62a18555735e17bdd375efd4fe2494e52a17bcfad90c8b83eb601",
+        "actualSha256": "58b750bf5bb62a18555735e17bdd375efd4fe2494e52a17bcfad90c8b83eb601",
+        "matches": true
+      },
+      {
+        "path": "src/live/surface-fur.js",
+        "expectedBytes": 7668,
+        "actualBytes": 7668,
+        "expectedSha256": "c02a0ce0c939e97ad2b07fe25dac3996f5bbf54536f9dcd1232ac2a71b16833f",
+        "actualSha256": "c02a0ce0c939e97ad2b07fe25dac3996f5bbf54536f9dcd1232ac2a71b16833f",
+        "matches": true
+      },
+      {
+        "path": "vite.config.mjs",
+        "expectedBytes": 164,
+        "actualBytes": 164,
+        "expectedSha256": "7a18d4ce12a712ae88db3ecb414af543abe08be4f84f8479e56ca6e62fe607ae",
+        "actualSha256": "7a18d4ce12a712ae88db3ecb414af543abe08be4f84f8479e56ca6e62fe607ae",
+        "matches": true
+      }
+    ]
+  },
+  "currentMainHeadComparison": {
+    "head": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "snapshotPathCount": 128,
+    "matchingPathCount": 124,
+    "distPathCount": 105,
+    "matchingDistPathCount": 105,
+    "mismatches": [
+      {
+        "path": "scripts/freeze-character-acceptance.mjs",
+        "expectedSha256": "6095c795e26f1df002a0d52840e87309cbf70057373aa92f3e3ed7f7367faff7",
+        "actualSha256": "607b167740b900b74be43362c35532f8bb78b9c0ca40fa69416a1fa6554e3f31"
+      },
+      {
+        "path": "scripts/verify-atelier.mjs",
+        "expectedSha256": "e80b40e5f51b4013632875d0e62f04ea05c54d69880a93c7ce0f726e593872dc",
+        "actualSha256": "1fda98d408d68fc9b14f495f18051fe7f70a54436929fa454b582cc3d125ae79"
+      },
+      {
+        "path": "scripts/verify-character-system.mjs",
+        "expectedSha256": "7b4b6bab039b3a501b731a6a34d20ff8e3622d707ffbed7039be746ef9e6a243",
+        "actualSha256": "33850f156d811894a3eacac2d23f81b0f63ab020c7ab10887444ba05483a69ab"
+      },
+      {
+        "path": "scripts/verify-creation.mjs",
+        "expectedSha256": "35ad13538291a1c2b5eafb01d7c8b6d0e8b3fa7e5880390b23b1310b48741049",
+        "actualSha256": "f6ea61a1b3fc46735d762a9852f7bb877e26acc32a4b30f9036a78b7ceba403f"
+      }
+    ],
+    "interpretation": "The replay uses the exact v83 checkout. Current HEAD contains all v83 dist runtime paths at the frozen hashes; four non-runtime script paths differ and are not used to render this replay."
+  },
+  "separateLocalDirtyBeforeSnapshot": {
+    "path": "design/acceptance/current-20261006-v83/source-manifest.before.json",
+    "capturedAtLocal": "2026-10-06T11:36:12+0800",
+    "head": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "cacheRevision": "83",
+    "sourceId": "sha256:f74e8bf212b40048e397bd7b068fb7231832abc5b00c87a69a028d3440b48978",
+    "dirtySourceSnapshotSha256": "b8a922e650ea850a7a9a8ae7b5904e95a7a0922c754c2e045fd5256570f4d0d0",
+    "listedFileCount": 133,
+    "relation": "This is a separate current-main pre-implementation working-tree snapshot. It is not the v83 Site35 source and was not used to render the historical before outputs."
+  },
+  "dirtySnapshotAssessment": {
+    "standaloneV83DirtyHashPresent": false,
+    "v83ContentCoverage": "The frozen v83 sourceId is a recomputable SHA-256 over all 128 listed working-tree file path/size/hash records. Every listed path is restored and byte-verified in the replay. This binds the declared 128-file runtime/source scope, even though gitHead alone is baseline-only.",
+    "unlistedRepositoryFiles": "The v83 sourceId does not claim a hash over unrelated files outside its 128-file source manifest."
+  }
+}

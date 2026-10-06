@@ -1,17 +1,21 @@
-import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=83';
-import {createHomePortal} from './studio-home.js?v=83';
-import {createFullscreenRandomizer} from './studio-fullscreen-random.js?v=83';
-import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks,getBaselinePoseControls,getBaselinePoseValues} from './studio-creation-assets.js?v=83';
-import {LayeredComposer} from './studio-composer.js?v=83';
-import {RecipeMachine} from './studio-random.js?v=83';
-import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=83';
-import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=83';
-import {getArtSample} from './studio-art.js?v=83';
-import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=83';
-import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=83';
-import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=83';
-import {pickerIllustration} from './studio-pickers.js?v=83';
-import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=83';
+import {normalizeTagQuery,queryLooks,queryLabel} from './studio-tags.js?v=86';
+import {createTagBrowser} from './studio-tag-browser.js?v=86';
+import {getTemplateApproval,getTrustedModularCatalog,getModularRecipeApproval} from './studio-composition-catalog.js?v=86';
+import {resolveModularComposition} from './studio-composition-resolver.js?v=86';
+import {makeProject,parseProject,exportProject,setProjectCharacter,setCreationMode,setModularProject,resolveCreation,buildCreationPrompt} from './studio-creation.js?v=86';
+import {createHomePortal} from './studio-home.js?v=86';
+import {createFullscreenRandomizer,createResolvedRandomizerAdapters} from './studio-fullscreen-random.js?v=86';
+import {CREATION_ARTWORKS,getFamilyArtwork,getCompositionPack,getCreationArtwork,getBuiltInLooks,getBaselinePoseControls,getBaselinePoseValues} from './studio-creation-assets.js?v=86';
+import {LayeredComposer} from './studio-composer.js?v=86';
+import {RecipeMachine} from './studio-random.js?v=86';
+import {INSPIRATIONS,inspirationCharacter} from './studio-inspiration.js?v=86';
+import {Shared2DPreview,schematicSupport} from './shared-2d.js?v=86';
+import {getArtSample} from './studio-art.js?v=86';
+import {BUILT_IN_LOOKS,getLookDefinition} from './studio-looks.js?v=86';
+import {PRESETS,familyPresets,STYLE_SOURCES,REFERENCE_INFO} from './studio-catalog.js?v=86';
+import {CharacterPreview,characterThumbnail} from './live-runtime.js?v=86';
+import {pickerIllustration} from './studio-pickers.js?v=86';
+import {VERSION,FAMILIES,MATERIALS,SHAPES,FAMILY_SHAPES,DOT_CORE_SHAPES,DOT_CORE_EYES,APP_PALETTES,PALETTES,EYES,EXPRESSIONS,BROWS,MOUTHS,ACCESSORIES,ACTIONS,AGENT_ACTIONS,MOTION_STYLES,COMPOSITION,PRESERVE,HAIRS,FACE_SHAPES,OUTFITS,createCharacter,createLookCharacter,createPreset,setCharacterValue,applyPalette,resolveCharacter,validateConfig,randomizeCharacter,exportConfiguration,inheritsReference,sourceLabel,deriveProvenance} from './studio-model.js?v=86';
 
 const isSchematic=document.body.dataset.renderer==='schematic';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));
@@ -62,13 +66,10 @@ let state=createLookCharacter(getFamilyArtwork('dots').id),activeTab='appearance
 let project=makeProject(state,{mode:'composer'}),previewRevision=0,composer=null,compositionReady=false,compositionKey='',artworkStatus='';
 const history=[],future=[],familyDrafts=new Map();let grouping='',previewFailure='',livePreview=null,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches,thumbTimer,renderFrame;let recipeMachine=null,fullscreenRandomizer=null,homePortal=null;
 const thumbNodes=new WeakMap();
-let storageRecovery='';
-for(const key of ['dot-studio-project-v1','dot-studio-v10','dot-studio-v9','dot-studio-v8','dot-studio-v7','dot-studio-v6']){
- try{const saved=sessionStorage.getItem(key);if(!saved)continue;project=parseProject(JSON.parse(saved));state=project.character;if(storageRecovery)storageRecovery='已恢复上一份可读取配置；未读取的原文件保留在本次会话备份中。';break;}
- catch{storageRecovery='保存的配置无法读取，已展示默认角色；原记录保留在本次会话备份中。';try{sessionStorage.setItem('dot-studio-recovery-'+key,sessionStorage.getItem(key));}catch{}}
-}
+let storageRecovery='',catalogQuery=normalizeTagQuery(),workbenchTagBrowser=null;
+try{const saved=sessionStorage.getItem('dot-studio-project-v2');if(saved){project=parseProject(JSON.parse(saved));state=project.character;}else if(['dot-studio-project-v1','dot-studio-v10','dot-studio-v9','dot-studio-v8','dot-studio-v7','dot-studio-v6'].some(key=>sessionStorage.getItem(key))){storageRecovery='旧格式已停止支持，当前显示默认作品；原存储记录保留，未转换或覆盖。';}}catch{storageRecovery='保存的项目无法读取，当前显示默认作品；原记录保留，未覆盖。';}
 const val=path=>path.split('.').reduce((o,k)=>o?.[k],resolveCharacter(state).config);
-function remember(){try{sessionStorage.setItem('dot-studio-project-v1',exportProject(project));sessionStorage.setItem('dot-studio-v10',JSON.stringify(state));}catch{}familyDrafts.set(state.family,structuredClone(project));}
+function remember(){try{sessionStorage.setItem('dot-studio-project-v2',exportProject(project));}catch{}familyDrafts.set(state.family,structuredClone(project));}
 function toast(message){$('toast').textContent=message;$('toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('visible'),3600);}
 function commit(next,key='',paint=true,origin='edit'){
  if(origin!=='random')recipeMachine?.cancel();
@@ -113,7 +114,7 @@ function selectBaselinePose(stateId){
 function startLook(artworkId){
  const artwork=getCreationArtwork(artworkId);if(!artwork||artwork.status==='retired'||!getBuiltInLooks().some(item=>item.id===artworkId))throw new Error('这张内置形象暂不可用');
  const next=createWorkbenchLook(artworkId,state);
- commit(makeProject(next,{mode:'composer',artworkId}));navigate({page:'workspace'});toast('已载入这张形象；可更换搭配、调整背景或继续写 Prompt。');
+ commit(makeProject(next,{mode:'composer',artworkId}));navigate({page:'workspace'});toast('已载入这张形象；可更换搭配或继续写 Prompt。角色图片统一透明。');
 }
 function startFromCurrentArtwork(){
  const current=resolveCreation(project),id=getBuiltInLooks(state.family).some(item=>item.id===current.artwork?.id)?current.artwork.id:getFamilyArtwork(state.family)?.id;
@@ -121,25 +122,36 @@ function startFromCurrentArtwork(){
 }
 function lookProject(artworkId){
  const artwork=getCreationArtwork(artworkId);if(!artwork||artwork.status==='retired'||!getBuiltInLooks().some(item=>item.id===artworkId))throw new Error('这张内置形象暂不可用');
- const config=setCharacterValue(createLookCharacter(artworkId),'background','transparent');
+ const config=createLookCharacter(artworkId);
  return makeProject(config,{mode:'artwork',artworkId});
 }
 function viewLook(artworkId){
  const artwork=getCreationArtwork(artworkId);if(!artwork)throw new Error('这张内置形象不存在');
  const look=getLookDefinition(artwork.id),name=look?.name||artwork.name,description=look?.description||artwork.description;
  const source=look?.source==='official-recreation'?'依据品牌身份独立再现；不是官方文件。':'人物和动物为原创角色设计，不采用动漫截图像素。';
- showModal('look-detail',name,'内置形象 · 候选形象',`<div class="look-detail-view"><img src="${esc(artwork.src)}" alt="${esc(name)} 透明背景原图"><div><p>${esc(description)}</p><span>尚待真实网页美术验收。</span><details class="look-source-details"><summary>来源说明</summary><p>${source}本图由 ImageGen 生成；下载保留透明原图，工作台导出才合成所选背景。</p></details></div></div><div class="modal-actions"><a class="button outlined" href="${esc(artwork.src)}" download="${esc(artwork.id)}-original.png">${icon('download')} 下载透明原图</a><button class="button outlined" data-look-action="copy" data-look-id="${esc(artwork.id)}">${icon('copy')} 复制 Prompt</button><button class="button primary" data-look-action="start" data-look-id="${esc(artwork.id)}">用这个形象定制</button></div>`);
+ showModal('look-detail',name,'内置形象',`<div class="look-detail-view"><img src="${esc(artwork.src)}" alt="${esc(name)} 透明背景原图"><div><p>${esc(description)}</p><span>${getTemplateApproval(artwork.id).status==='approved'?'当前完整模板美术已确认；导出与新增适配分别验证。':'当前素材的美术确认范围待核定。'}</span><details class="look-source-details"><summary>来源说明</summary><p>${source}本图由 ImageGen 生成；下载与工作台导出均保留透明背景。</p></details></div></div><div class="modal-actions"><a class="button outlined" href="${esc(artwork.src)}" download="${esc(artwork.id)}-original.png">${icon('download')} 下载透明原图</a><button class="button outlined" data-look-action="copy" data-look-id="${esc(artwork.id)}">${icon('copy')} 复制 Prompt</button><button class="button primary" data-look-action="start" data-look-id="${esc(artwork.id)}">用这个形象定制</button></div>`);
+}
+function renderModularControls(artworkId){
+ const catalog=getTrustedModularCatalog(),labels={headphones:'耳机',eyewear:'眼镜',neckwear:'颈饰'};
+ const recipes=catalog.recipes.filter(recipe=>catalog.baseStates.find(base=>base.id===recipe.baseId)?.artworkId===artworkId);
+ if(!recipes.length)return '';
+ const selected=project.creation.composition?.kind==='modular'?project.creation.composition.recipeId:null;
+ const cards=recipes.map(recipe=>{const asset=catalog.assets.find(item=>item.id===recipe.assetIds[0]),category=recipe.assetIds.map(id=>{const item=catalog.assets.find(item=>item.id===id);return labels[item.category]||item.category;}).join(' + '),poseLabel=recipe.poseId.includes('wave')?'挥手':'经典',approved=getModularRecipeApproval(recipe,catalog).status==='approved';
+  const base=catalog.baseStates.find(item=>item.id===recipe.baseId),resolution=resolveModularComposition({character:base.config,baseId:recipe.baseId,recipeId:recipe.id,assetIds:recipe.assetIds,poseId:recipe.poseId},{catalog}),available=resolution.availability==='available';
+  return `<button class="look-template modular-template ${selected===recipe.id?'selected':''}" data-modular-recipe="${esc(recipe.id)}" aria-pressed="${selected===recipe.id}" aria-label="试用${esc(category)} · ${poseLabel}" ${available?'':`disabled title="${esc(resolution.reason)}"`}><span class="look-template-image"><img src="${esc(asset.src)}" alt="" loading="lazy"></span><span class="look-template-name">${esc(category)} · ${poseLabel}</span><small>${available?(approved?'本适配美术已确认':'待美术确认'):`不可组合：${esc(resolution.reason)}`}</small></button>`;
+ }).join('');
+ return `<section class="template-control modular-control" aria-labelledby="modularControlTitle"><div class="workbench-control-heading"><div><h2 id="modularControlTitle">独立组件试点</h2><p>组件按当前形象与姿态动态贴合，输出固定视角的静态图片。试用会载入对应姿态；返回整图可选择上方搭配。</p></div></div><div class="look-template-grid">${cards}</div><p class="look-control-note">组件使用真实组合，每个适配版本分别确认；未批准组合不进入默认随机。</p></section>`;
 }
 function renderWorkbenchControls(){
  const host=$('workbenchControls');if(!host)return;
  const available=getBuiltInLooks(state.family),active=project.creation.mode==='composer'?project.creation.artworkId:null;
  const templateCards=available.map(item=>{const name=getLookDefinition(item.id)?.name||item.name;return `<button class="look-template ${active===item.id?'selected':''}" data-look-template="${esc(item.id)}" aria-pressed="${active===item.id}" aria-label="选择形象：${esc(name)}"><span class="look-template-image"><img src="${item.src}" alt="" loading="lazy"></span><span class="look-template-name">${esc(name)}</span></button>`;}).join('');
- const resolved=resolveCharacter(state).config,dotsBase=state.family==='dots'&&project.creation.mode==='composer'&&project.creation.artworkId==='candidate-dots-20261005';
+ const modular=project.creation.composition?.kind==='modular',resolved=resolveCharacter(state).config,dotsBase=!modular&&state.family==='dots'&&project.creation.mode==='composer'&&project.creation.artworkId==='candidate-dots-20261005';
  const dotsRecipes=dotsBase?`<section class="background-control dot-recipe-control" aria-labelledby="dotsRecipeTitle"><div class="workbench-control-heading"><div><h2 id="dotsRecipeTitle">Dots 耳机</h2><p>选择对应完整图片；其余未登记外观继续写入 Prompt。</p></div></div><div class="chips"><button class="choice ${resolved.accessories.head==='headphones'&&['idle','listen'].includes(resolved.action)?'selected':''}" data-dot-recipe="headphones" aria-pressed="${resolved.accessories.head==='headphones'&&['idle','listen'].includes(resolved.action)}">戴耳机</button><button class="choice ${resolved.accessories.head==='none'&&resolved.action==='idle'?'selected':''}" data-dot-recipe="bare" aria-pressed="${resolved.accessories.head==='none'&&resolved.action==='idle'}">不戴耳机</button></div></section>`:'';
- const baselineStates=CREATION_ARTWORKS.find(item=>item.id===active)?.kind==='baseline-candidate'?getBaselinePoseControls(active,resolved):[];
+ const baselineStates=!modular&&CREATION_ARTWORKS.find(item=>item.id===active)?.kind==='baseline-candidate'?getBaselinePoseControls(active,resolved):[];
  const baselinePoseControl=baselineStates.length?`<section class="background-control pose-control" aria-labelledby="poseControlTitle"><div class="workbench-control-heading"><div><h2 id="poseControlTitle">表情与姿态</h2><p>切换表情或问好姿态。当前为静态形象。</p></div></div><div class="chips">${baselineStates.map(item=>`<button class="choice ${item.selected?'selected':''}" data-baseline-pose="${esc(item.id)}" aria-pressed="${item.selected}" ${item.available?'':'disabled title="完整静态图片尚未准备好"'}>${esc(item.label)}${item.available?'':' · 准备中'}</button>`).join('')}</div></section>`:'';
- const current=resolveCreation(project),oldState=project.creation.mode==='artwork'?`<div class="legacy-artwork-note"><span>正在查看旧项目中的固定形象：${esc(current.artwork?.name||'原图已撤下')}</span><button class="text-button" data-command="start-from-artwork">以此开始搭配</button></div>`:'';
- host.innerHTML=`${oldState}<section class="template-control" aria-labelledby="templateControlTitle"><div class="workbench-control-heading"><div><h2 id="templateControlTitle">选择搭配</h2><p>选好后，预览会立即切换到对应形象。</p></div><span>${available.length} 款</span></div><div class="look-template-grid">${templateCards||'<p class="section-helper">本组形象准备中。</p>'}</div></section>${dotsRecipes}${baselinePoseControl}<section class="background-control" aria-labelledby="backgroundControlTitle"><div class="workbench-control-heading"><div><h2 id="backgroundControlTitle">背景</h2><p>背景和透明度会实际更新图片。</p></div></div><div class="chips">${Object.entries(COMPOSITION.background).map(([id,item])=>`<button class="choice ${state.background===id?'selected':''}" data-path="background" data-value="${id}" aria-pressed="${state.background===id}">${esc(item.label)}</button>`).join('')}</div>${state.background==='solid'?`<label class="background-color-control"><span>自定义背景颜色</span><input type="color" data-setting="colors.background" value="${state.colors.background}" aria-label="自定义背景颜色"></label>`:''}</section><p class="look-control-note">其他动作和表情可写进 Prompt，在 ChatGPT 继续创作。</p>`;
+ const current=resolveCreation(project),oldState=project.creation.mode==='artwork'?`<div class="legacy-artwork-note"><span>正在查看登记原图：${esc(current.artwork?.name||'原图已撤下')}</span><button class="text-button" data-command="start-from-artwork">以此开始搭配</button></div>`:'';
+ host.innerHTML=`${oldState}<section class="template-control" aria-labelledby="templateControlTitle"><div class="workbench-control-heading"><div><h2 id="templateControlTitle">选择搭配</h2><p>选好后，预览会立即切换到对应形象。</p></div><span>${available.length} 款</span></div><div class="look-template-grid">${templateCards||'<p class="section-helper">本组形象准备中。</p>'}</div></section>${dotsRecipes}${baselinePoseControl}${renderModularControls(active)}<p class="look-control-note">其他动作和表情可写进 Prompt，在 ChatGPT 继续创作。</p>`;
 }
 function undo(redo=false){recipeMachine?.cancel();const from=redo?future:history,to=redo?history:future;if(!from.length)return;to.push(structuredClone(project));project=from.pop();state=project.character;previewRevision++;grouping='';remember();render();toast(redo?'已重做':'已撤销');}
 function chips(path,entries,extra=''){if(path==='expression')return `<div class="expression-grid">${Object.entries(entries).map(([id,v])=>`<button class="choice expression-choice ${val(path)===id?'selected':''}" data-path="expression" data-value="${id}" aria-pressed="${val(path)===id}"><span class="emote-icon emote-${id}" aria-hidden="true"><i></i><i></i></span><span>${v.label}</span></button>`).join('')}</div>`;return `<div class="chips ${extra}">${Object.entries(entries).map(([k,v])=>`<button class="choice ${(!inheritsReference(state,path)&&val(path)===k)?'selected':''}" data-path="${path}" data-value="${k}" aria-pressed="${(!inheritsReference(state,path)&&val(path)===k)}">${esc(v.label||v)}</button>`).join('')}</div>`;}
@@ -203,7 +215,7 @@ function renderSettings(){
   out+=range('scale','画面主体大小',55,85,1);
   out+=field('输出用途',chips('output',COMPOSITION.output));
   out+=`<details class="advanced" id="scene-advanced"><summary>姿态与补充要求</summary>${field('姿态',chips('pose',{auto:'跟随动作',sit:'坐姿',side:'侧身',chin:'托腮'}))}${field('<label for="extra-notes">补充要求</label>',`<textarea id="extra-notes" data-setting="notes" rows="3" maxlength="1600" placeholder="例如：整体留白多一些，花束小一点">${esc(state.notes)}</textarea>`)}${field('<label for="random-seed">随机种子</label>',`<div class="input-pair"><input id="random-seed" type="text" data-setting="randomSeed" value="${esc(state.randomSeed)}" maxlength="40"><button class="button outlined" data-command="seed-random">按种子搭配</button></div>`)}</details>`;
-  out+=`<div class="rule-note">${icon('info')}<span>背景、镜头与画幅写入共享设定。${state.output==='pet'?'Pet 还需后续制作与校验动画。':'历史整图下载保持原文件；组合只开放素材支持的画面。'}</span></div>`;
+  out+=`<div class="rule-note">${icon('info')}<span>角色图片统一透明；镜头与画幅写入共享设定。${state.output==='pet'?'Pet 还需后续制作与校验动画。':'历史整图下载保持原文件；组合只开放素材支持的画面。'}</span></div>`;
  }
  if(state.reference.enabled)out+=`<div class="ref-indicator">参考图 Prompt 模式 · 图片在 ChatGPT 添加<br><button data-command="reference">调整保留要求</button></div>`;
  el.innerHTML=out;for(const id of opened){const d=$(id);if(d)d.open=true;}el.scrollTop=scroll;if(focused){const target=[...el.querySelectorAll('button')].find(b=>Object.keys(focused).every(k=>b.dataset[k]===focused[k]));target?.focus({preventScroll:true});}queueThumbnails(el);
@@ -226,11 +238,14 @@ function emptyCreation(title,description){return `<div class="creation-empty"><s
 function renderResult(){
  const r=resolveCharacter(state),c=r.config,f=FAMILIES[c.family],creation=resolveCreation(project),diagnostic=stageView==='live',candidate=creation.artwork?.kind==='baseline-candidate',retired=creation.artwork?.status==='retired';
  const lookDefinition=creation.mode==='composer'&&creation.artwork?getLookDefinition(creation.artwork.id):null;
+ const actual=creation.compositionResolution,modular=actual?.composition?.kind==='modular';
+ const approval=modular?actual.approvalStatus:creation.composition?getTemplateApproval(creation.artwork?.id,{recipeId:creation.composition.recipeId,sha256:creation.composition.assetRefs[0]?.sha256}).status:'unresolved';
+ const approvalText=approval==='approved'?(modular?'适配美术已确认':'模板美术已确认'):approval==='pendingScopeMapping'?'确认范围待核定':modular?'试点适配 · 待美术确认':'Prompt 编辑 · 图片仅供参考';
  recipeMachine?.render(c);
  $('diagnosticToggle').dataset.view=diagnostic?'creation':'live';$('diagnosticToggle').textContent=diagnostic?'返回作品预览':'结构诊断';$('diagnosticToggle').setAttribute('aria-pressed',String(diagnostic));
  const cameraControls=document.querySelector('.stage-camera');if(cameraControls)cameraControls.hidden=!diagnostic;
  document.querySelectorAll('.stage-camera [data-value]').forEach(b=>{b.classList.toggle('selected',b.dataset.value===c.camera);b.setAttribute('aria-pressed',String(b.dataset.value===c.camera));});
- $('stageName').textContent=c.reference.enabled?'你的参考角色':(c.name||lookDefinition?.name||f.template);$('stageTag').textContent=creation.mode==='composer'&&creation.artwork?`${f.short} · ${candidate?'基准候选':'内置形象候选'}`:project.creation.mode==='artwork'?'旧项目固定形象 · 可转为搭配':`${f.short} / ${c.family==='humans'&&c.skinMaterial==='fabric'?'分层织物':MATERIALS[c.material].label}`;
+ $('stageName').textContent=c.reference.enabled?'你的参考角色':(c.name||lookDefinition?.name||f.template);$('stageTag').textContent=creation.mode==='composer'&&creation.artwork?`${f.short} · ${modular?'组件搭配':'内置形象'}`:project.creation.mode==='artwork'?'登记原图 · 可开始搭配':`${f.short} / ${c.family==='humans'&&c.skinMaterial==='fabric'?'分层织物':MATERIALS[c.material].label}`;
  const stage=$('stageArt'),viewKey=diagnostic?'diagnostic':creation.mode==='artwork'?'artwork:'+String(creation.artwork?.id):'composer:'+String(creation.pack?.id);
  if(stage.dataset.view!==viewKey){
   livePreview?.dispose();livePreview=null;composer?.dispose();composer=null;compositionKey='';compositionReady=false;artworkStatus='';stage.dataset.view=viewKey;stage.innerHTML='';
@@ -246,7 +261,7 @@ function renderResult(){
    img.src=artwork.src;
   }
  }
- if(diagnostic){$('liveStage')?.classList.toggle('transparent-stage',c.background==='transparent');livePreview?.update(c);}
+ if(diagnostic){$('liveStage')?.classList.add('transparent-stage');livePreview?.update(c);}
  else if(creation.mode==='artwork'&&retired)stage.innerHTML=emptyCreation(creation.reason,'项目设定已保留。可以使用 Prompt，或从角色库另选当前基准。');
  else if(creation.mode==='artwork'&&!creation.artwork)stage.innerHTML=emptyCreation('这一组的完整形象待制作','保留当前身份与设定，先用 Prompt 创作；不会借用其他分组的图片。');
  else if(creation.mode==='composer'){
@@ -254,26 +269,28 @@ function renderResult(){
    composer?.dispose();composer=null;compositionReady=false;compositionKey='';stage.innerHTML=emptyCreation('这一组还没有完整形象','Prompt 与项目可以继续使用；等本组内置形象准备好后再预览。');
   }else{
    if(!composer){stage.innerHTML='<div class="composite-stage" id="compositeStage"></div>';composer=new LayeredComposer($('compositeStage'));}
-   const key=JSON.stringify([creation.pack.id,c]);
+   let renderResolution=actual;
+   if(creation.availability!=='available'){const reference=createLookCharacter(creation.artwork.id);for(const field of ['background','aspect','scale','output'])reference[field]=c[field];reference.colors.background=c.colors.background;renderResolution=resolveCreation(makeProject(reference,{mode:'composer',artworkId:creation.artwork.id})).compositionResolution;}
+   const key=JSON.stringify([renderResolution?.composition,renderResolution?.renderPlan?.config]);
    if(compositionKey!==key){
     compositionKey=key;compositionReady=false;const current=composer;
     $('compositeStage')?.querySelector('.composition-error')?.remove();
-    current.update(creation.pack,c,{templatePreview:true}).then(success=>{if(success&&composer===current&&compositionKey===key){compositionReady=true;renderResult();}}).catch(e=>{if(composer===current&&compositionKey===key){compositionReady=false;$('compositeStage')?.insertAdjacentHTML('beforeend',`<div class="composition-error">${emptyCreation('形象无法载入',e.message||'设定已保留，可继续导出 Prompt。')}</div>`);renderResult();}});
+    current.updateResolved(renderResolution).then(success=>{if(success&&composer===current&&compositionKey===key){compositionReady=true;renderResult();}}).catch(e=>{if(composer===current&&compositionKey===key){compositionReady=false;$('compositeStage')?.insertAdjacentHTML('beforeend',`<div class="composition-error">${emptyCreation('形象无法载入',e.message||'设定已保留，可继续导出 Prompt。')}</div>`);renderResult();}});
    }
   }
  }
  const compositionFailed=composer?.canvas?.dataset.previewStatus==='failed';
  const ready=diagnostic?Boolean(livePreview)&&!previewFailure:creation.mode==='artwork'?artworkStatus==='ready':compositionReady&&creation.availability==='available';
- $('previewBadge').textContent=diagnostic?(isSchematic?'2D 结构诊断':'3D 结构诊断'):creation.mode==='artwork'?(retired?'历史形象已撤下':creation.artwork?(candidate?'基准候选 · 待确认':creation.artwork.kind==='look-template'?'内置搭配候选 · 待确认':'固定历史示例'):'整图待制作'):(ready?'搭配预览 · 待验收':compositionFailed?'形象载入失败':creation.availability==='available'?'形象载入中':'模板预览 · 不可导出');
+ $('previewBadge').textContent=diagnostic?(isSchematic?'2D 结构诊断':'3D 结构诊断'):creation.mode==='artwork'?(creation.artwork?'登记原图 · '+approvalText:'整图待制作'):(ready?'搭配预览 · '+approvalText:compositionFailed?'形象载入失败':creation.availability==='available'?'形象载入中':'参考预览 · 不可导出');
  $('previewBadge').classList.toggle('live-badge',diagnostic);
- $('sampleCaption').textContent=diagnostic?'未通过美术验收 · '+SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:creation.mode==='artwork'?(creation.artwork?.name||'旧项目固定形象'):(lookDefinition?'候选形象 · 待网页美术验收':'选择一组内置搭配');
+ $('sampleCaption').textContent=diagnostic?'未通过美术验收 · '+SHAPES[c.shape].label+' · '+ACTIONS[c.action].label:creation.mode==='artwork'?(creation.artwork?.name||'登记原图'):(modular?'独立组件试点 · 固定视角静态搭配':approvalText);
  $('playPreview').hidden=!diagnostic||isSchematic;$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));
  $('exportImage').disabled=!ready;$('exportImage').textContent=diagnostic?'导出诊断 PNG':creation.mode==='artwork'?'下载形象原图':'导出 PNG';
  $('expandPreview').disabled=!ready;$('expandPreview').setAttribute('aria-label',diagnostic?'放大结构诊断':'放大当前预览');
  const oldArtworkAction=project.creation.mode==='artwork'&&!retired?'<button class="text-button start-from-artwork" data-command="start-from-artwork">以此开始搭配</button>':'';
- $('previewTruth').innerHTML=icon('info')+`<div class="preview-truth-copy"><span>${diagnostic?'当前结构模型只供造型诊断，尚未通过美术验收。':creation.mode==='artwork'?(retired?'原图已撤下；旧项目配置仍保留。':creation.artwork?(candidate?'当前是基准候选。改用后可在工作台选搭配与背景；下载保持原图。':creation.artwork.kind==='look-template'?'当前是内置搭配候选。画面保持原图；可以用它开始搭配。':'当前是旧版固定示例；画面保持原图。'):'当前项目没有可展示的完整形象。'):(ready?(getBaselinePoseControls(creation.artwork?.id,c).length?'搭配、已提供的表情姿态与背景会更新图片；该候选仍待真实网页美术验收。':'更换搭配与背景会更新图片。其他细节只写入 Prompt；该候选仍待真实网页美术验收。'):creation.availability==='unsupported'?'当前仍展示所选模板与背景预览；高级设定未被渲染，因此关闭当前角色 PNG 导出。':`形象正在准备。 ${esc(creation.reason)}`)}${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>${oldArtworkAction}</div>`;
- $('presetName').textContent=c.name||lookDefinition?.name||f.template;$('presetCount').textContent=creation.mode==='composer'?(lookDefinition?'当前搭配':'选择一款内置搭配'):'旧项目中的固定形象';
- $('sourceBadge').textContent=!diagnostic&&creation.mode==='artwork'&&creation.artwork?(retired?'旧项目 · 原图已撤下':candidate?'新基准 · 待确认':creation.artwork.kind==='look-template'?'内置搭配 · 待确认':'旧版示例'):creation.mode==='composer'&&creation.artwork?'内置搭配 · 待确认':sourceLabel(state);$('sourceBadge').dataset.source=deriveProvenance(state).source;
+ $('previewTruth').innerHTML=icon('info')+`<div class="preview-truth-copy"><span>${diagnostic?'当前结构模型只供造型诊断，尚未通过美术验收。':creation.mode==='artwork'?'下载保持登记透明原图；开始搭配后可选择受支持的组件。':ready?(modular?(approval==='approved'?'当前显示本适配已确认的真实组合；批准只覆盖登记版本、基底和姿态。':'当前显示独立组件与声明基底的实际组合；待本适配美术确认，暂不进入默认随机。'):getBaselinePoseControls(creation.artwork?.id,c).length?'已登记搭配与静态表情姿态会更新透明图片；美术状态按具体版本与配方记录。':'更换搭配会更新透明图片；其他细节只写入 Prompt。'):creation.availability==='unsupported'?'当前图片仅供参考；未支持设定只写入 Prompt，当前角色 PNG 不可导出。':`形象正在准备。 ${esc(creation.reason)}`} ${esc(approvalText)}。${r.adjustments.length?' '+esc(r.adjustments.join('；'))+'。':''}</span>${oldArtworkAction}</div>`;
+ $('presetName').textContent=c.name||lookDefinition?.name||f.template;$('presetCount').textContent=creation.mode==='composer'?(lookDefinition?'当前搭配':'选择一款内置搭配'):'登记原图';
+ $('sourceBadge').textContent=diagnostic?sourceLabel(state):`${modular?'独立组件':'登记形象'} · ${approvalText}`;$('sourceBadge').dataset.source=deriveProvenance(state).source;
  const accessories=Object.entries(c.accessories).filter(([slot,value])=>value!=='none'&&!inheritsReference(c,'accessories.'+slot)).map(([slot,value])=>ACCESSORIES[slot][value].label);
  const summaryTags=[inheritsReference(c,'shape')?'轮廓沿用参考图':SHAPES[c.shape].label,MATERIALS[c.material].label,inheritsReference(c,'eyes')?'眼型沿用参考图':EYES[c.eyes].label,EXPRESSIONS[c.expression].label,ACTIONS[c.action].label,...accessories];
  $('currentConfig').innerHTML='<span>当前设定</span>'+summaryTags.map((x,i)=>`<span class="config-chip">${i===0?`<i class="tiny-color" style="background:${c.colors.body}"></i>`:''}${esc(x)}</span>`).join('')+`<span class="config-chip">${c.aspect}</span>`;
@@ -284,13 +301,13 @@ function renderResult(){
 }
 function thumb(p){if(stageView==='creation'&&p.id.startsWith('baseline-')&&getFamilyArtwork(p.family))return `<img src="${getFamilyArtwork(p.family).src}" alt="${esc(p.name)}基准候选">`;return `<span class="thumb-shell"><span class="thumb-loading" aria-hidden="true">预览载入中</span><img data-thumb-preset="${p.id}" alt="${esc(p.name)}的结构诊断角色"></span>`;}
 function showCatalog(){
- const all=PRESETS.filter(p=>p.family===state.family),list=all.filter(p=>sourceFilter==='legacy'?p.catalogTier==='legacy'||p.isLegacy:sourceFilter==='all'?p.catalogTier==='baseline'||p.id.startsWith('baseline-'):sourceFilter==='official'?p.id.startsWith('baseline-')&&['dots','grok','meta-muse'].includes(p.family):sourceFilter==='original'?p.id.startsWith('baseline-')&&['humans','animals'].includes(p.family):false);
+ const all=PRESETS.filter(p=>p.family===state.family),list=all.filter(p=>sourceFilter==='all'?p.catalogTier==='baseline'||p.id.startsWith('baseline-'):sourceFilter==='official'?p.id.startsWith('baseline-')&&['dots','grok','meta-muse'].includes(p.family):sourceFilter==='original'?p.id.startsWith('baseline-')&&['humans','animals'].includes(p.family):false);
  const own=sourceFilter==='mine';
- showModal('catalog','挑一个喜欢的'+(state.family==='animals'?'动物':state.family==='humans'?'人物':'小角色'),'CHARACTER LIBRARY · '+(sourceFilter==='legacy'?list.length:1),
- `<div class="source-filters" aria-label="角色来源">${[['all','本组基准'],['official','原版身份'],['original','新设计'],['legacy','旧版兼容'],['mine','当前项目']].map(([id,label])=>`<button data-source-filter="${id}" class="${sourceFilter===id?'selected':''}" aria-pressed="${sourceFilter===id}">${label}</button>`).join('')}</div>
- <p class="modal-intro">${own?'当前角色设定与创作模式可保存为项目 JSON，重新导入继续创作。':'每组先一只新基准。旧版兼容预设可恢复，保持旧身份；它们不计为重制成果。'}</p>
+ showModal('catalog','挑一个喜欢的'+(state.family==='animals'?'动物':state.family==='humans'?'人物':'小角色'),'CHARACTER LIBRARY · '+list.length,
+ `<div class="source-filters" aria-label="角色来源">${[['all','本组基准'],['official','原版身份'],['original','新设计'],['mine','当前项目']].map(([id,label])=>`<button data-source-filter="${id}" class="${sourceFilter===id?'selected':''}" aria-pressed="${sourceFilter===id}">${label}</button>`).join('')}</div>
+ <p class="modal-intro">${own?'当前角色设定与创作模式可保存为项目 JSON，重新导入继续创作。':'当前登记模板保留独立身份；来源、渲染能力和美术确认范围分别记录。'}</p>
  ${own?`<div class="my-combination"><b>${esc(state.name)}</b><span class="source-badge">${sourceLabel(state)}</span><p>${SHAPES[state.shape].label} · ${MATERIALS[state.material].label} · ${EXPRESSIONS[state.expression].label}</p><button class="button primary" data-command="save-config">保存我的 JSON</button><button class="button outlined" data-command="close">继续编辑</button></div>`:
- `<div class="catalog-grid">${list.map(p=>`<button class="catalog-card ${state.presetId===p.id?'selected':''}" data-preset="${p.id}" aria-pressed="${state.presetId===p.id}">${thumb(p)}<b>${esc(p.name)}</b><small>${esc(p.description)}</small><span class="source-badge" data-source="${p.provenance||'original'}">${p.id.startsWith('baseline-')?(['dots','grok','meta-muse'].includes(p.family)?'原版身份 · 待确认':'新设计 · 待确认'):'旧版兼容'}</span></button>`).join('')}</div>${!list.length?'<p class="empty-catalog">这个筛选下没有角色。</p>':''}`}
+ `<div class="catalog-grid">${list.map(p=>`<button class="catalog-card ${state.presetId===p.id?'selected':''}" data-preset="${p.id}" aria-pressed="${state.presetId===p.id}">${thumb(p)}<b>${esc(p.name)}</b><small>${esc(p.description)}</small><span class="source-badge" data-source="${p.provenance||'original'}">${p.id.startsWith('baseline-')?(getTemplateApproval(getFamilyArtwork(p.family)?.id).status==='approved'?'当前模板已确认':'确认范围待核定'):'结构诊断设定'}</span></button>`).join('')}</div>${!list.length?'<p class="empty-catalog">这个筛选下没有角色。</p>':''}`}
  <p class="guide-footnote">${REFERENCE_INFO.date} · ${REFERENCE_INFO.notice} Pets 列表可能包含用户自定义形象，本站不把它们统一标记为官方角色。</p>`);
  queueThumbnails($('modalBody'));
 }
@@ -306,15 +323,15 @@ function showInspiration(){
   const artwork=CREATION_ARTWORKS.find(a=>a.family===family),item=INSPIRATIONS.find(i=>i.family===family);
   return `<article class="inspiration-card"><span class="art-family">${esc(f.name)}</span><div class="inspiration-image">${artwork?`<img class="historical-inspiration" src="${artwork.src}" alt="${esc(artwork.name)}，固定展示的基准候选">`:`<span class="configuration-placeholder"><b>待制作</b><small>本组暂无完整图</small></span>`}</div><h3>${esc(artwork?.name||item.name)}</h3><p>${esc(artwork?.description||'保留独立的包覆式身份，不借用人物图片。精细完整图与组合资产待制作。')}</p><button class="button outlined" data-inspiration="${item.id}">选择这一组设定</button></article>`;
  }).join('');
- showModal('inspiration','五个家族，五种灵感','FIVE LITTLE CHARACTER FAMILIES',`<p class="modal-intro">从五组基准候选开始，把喜欢的颜色、配饰和想法写进 Prompt。展示图是创作起点，不会随设定即时变化；每组美术效果仍待确认。</p><div class="inspiration-grid">${cards}</div><p class="guide-footnote">历史素材来自原站，作者与生成来源未记录，不标作官方资产。人物和动物的新基准禁止使用动漫截图原像素或完整复刻。</p>`);
+ showModal('inspiration','内置形象的创作灵感','BUILT-IN CHARACTER INSPIRATION',`<p class="modal-intro">从已登记形象开始，把想法写入 Prompt。透明图片只随受支持配方改变；未制作的设置只进入 Prompt，新增组件按适配单独确认。</p><div class="inspiration-grid">${cards}</div><p class="guide-footnote">历史素材来自原站，作者与生成来源未记录，不标作官方资产。人物和动物的新基准禁止使用动漫截图原像素或完整复刻。</p>`);
 }
 function showGuide(){
- const cards=Object.entries(FAMILIES).map(([id,f])=>'<article class="guide-card">'+art(id,f.material)+'<h3>'+f.name+'</h3><p>'+esc(f.about)+'</p><span class="sample-badge">基准候选 · 待确认</span></article>').join('');
+ const cards=Object.entries(FAMILIES).map(([id,f])=>'<article class="guide-card">'+art(id,f.material)+'<h3>'+f.name+'</h3><p>'+esc(f.about)+'</p><span class="sample-badge">'+(getTemplateApproval(getFamilyArtwork(id)?.id).status==='approved'?'当前模板已确认':'确认范围待核定')+'</span></article>').join('');
  showModal('guide','五组角色，各有自己的样子','STYLE NOTES',
   '<p class="modal-intro">角色体系、材质、动作与配饰独立组合。五组各一只新基准，真实页面检查与用户逐组确认分别记录。旧预设保留兼容，不计为重制成果。</p><div class="guide-grid">'+cards+'</div>'+
   '<div class="style-sources"><h3>设计来源</h3><p>2026-10-04 App 设置截图 · 独立视觉复刻，非官方素材或官方色值。截图未展示完整的眼镜、配饰与表情列表。</p>'+STYLE_SOURCES.map(s=>'<a href="'+s.url+'" target="_blank" rel="noopener"><b>'+s.title+'</b><span>'+s.note+'</span>'+icon('external')+'</a>').join('')+'</div>'+
   '<p class="guide-footnote">毛绒顺着体积生长，非毛绒保留柔和光影。切换材质时，眼形、脸型、发型与角色比例保持一致。Pet 创作简报还需要后续制作与验证动画素材。</p>'+
-  '<div class="modal-actions"><a class="button outlined" href="./editor.html">同配置 2D 结构图</a><a class="button outlined" href="./legacy-editor.html">旧版细调工具</a><button class="button primary" data-command="close">回到工作台</button></div>');
+  '<div class="modal-actions"><a class="button outlined" href="./editor.html">同配置 2D 结构图</a><button class="button primary" data-command="close">回到工作台</button></div>');
  queueThumbnails($('modalBody'));
 }
 function showPrompt(){
@@ -336,7 +353,7 @@ async function preparePreview(size){
   name=artwork.id+'-original.png';description=artwork.description+' 下载保持原文件。';
  }else{
   const preview=composer;if(creation.availability!=='available'||!compositionReady||!preview)throw Error('没有可导出的组合结果；请先使用 Prompt。');
-  blob=await preview.capture(size,{transparent:creation.config.background==='transparent'});name=filename(creation.config.name)+'-character.png';description='形象 PNG · 固定正面视角，尚待网页美术确认。';
+  blob=await preview.capture(size,{transparent:true});name=filename(creation.config.name)+'-character.png';description=creation.composition?.kind==='modular'?'独立组件 PNG · 试点适配待美术确认。':'形象 PNG · 固定视角；批准状态绑定登记配方。';
  }
  if(revision!==previewRevision||view!==stageView)throw Error('设定或模式已改变，本次旧预览导出已取消。');
  return {blob,name,description,snapshot,diagnostic};
@@ -347,7 +364,7 @@ async function showExpanded(){
 }
 async function downloadLive(){
  if(liveExportBusy)return;liveExportBusy=true;
- try{const result=await preparePreview(1600);download(result.blob,result.name);toast(result.diagnostic?'已导出结构诊断；不代表美术验收通过。':result.snapshot.creation.mode==='artwork'?'已下载展示原图；修改设定不会改变此图。':'已导出当前形象 PNG 候选；尚待美术确认。');}catch(e){toast(e.message||'预览暂时无法导出。');}finally{liveExportBusy=false;}
+ try{const result=await preparePreview(1600);download(result.blob,result.name);toast(result.diagnostic?'已导出结构诊断；不代表美术验收通过。':result.snapshot.creation.mode==='artwork'?'已下载展示原图；修改设定不会改变此图。':'已导出当前实际搭配 PNG。美术批准状态按具体适配记录。');}catch(e){toast(e.message||'预览暂时无法导出。');}finally{liveExportBusy=false;}
 }
 function referenceContents(){
  const options=Object.entries(FAMILIES).map(([id,f])=>'<option value="'+id+'" '+(draftFamily===id?'selected':'')+'>'+f.name+'</option>').join('');
@@ -392,7 +409,15 @@ async function copyPrompt(){const snapshot=structuredClone(project),language=pro
 function filename(name=state.name){return(name||'dot').replace(/[^\p{L}\p{N}_-]/gu,'-').slice(0,40)||'dot';}
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function exportPrompt(){download(new Blob([buildCreationPrompt(project,promptLanguage)],{type:'text/plain;charset=utf-8'}),`${filename()}-prompt-${promptLanguage}.txt`);toast('完整 Prompt 已导出。');}
-async function importConfig(file){if(!file)return;try{if(!/\.json$/i.test(file.name))throw new Error('这里只接受 JSON 配置；参考图片请在 ChatGPT 添加。');if(file.size>100000)throw new Error('配置文件不能超过 100 KB');const raw=JSON.parse(await file.text());if(!raw.format&&[1,2,3,4,5].includes(raw.version)){sessionStorage.setItem('dot-legacy-import',JSON.stringify(raw));window.location.assign('./legacy-editor.html');return;}const next=parseProject(raw);stageView='creation';commit(next);openWorkspace();render();toast(next.character.reference.enabled?'配置已载入，请在 ChatGPT 添加参考图片。':'配置已完整载入。');}catch(e){toast(e instanceof SyntaxError?'这不是有效的 JSON 配置文件。':e.message);}$('configFile').value='';}
+async function importConfig(file){if(!file)return;try{if(!/\.json$/i.test(file.name))throw new Error('这里只接受 JSON 配置；参考图片请在 ChatGPT 添加。');if(file.size>100000)throw new Error('配置文件不能超过 100 KB');const raw=JSON.parse(await file.text());const next=parseProject(raw);stageView='creation';commit(next);openWorkspace();render();toast(next.character.reference.enabled?'配置已载入，请在 ChatGPT 添加参考图片。':'配置已完整载入。');}catch(e){toast(e instanceof SyntaxError?'这不是有效的 JSON 配置文件。':e.message);}$('configFile').value='';}
+function renderTagResults(){
+ workbenchTagBrowser?.render();const root=$('workbenchTagResults');if(!root)return;
+ const found=queryLooks(catalogQuery);root.innerHTML=found.map(look=>{const art=getCreationArtwork(look.artworkId);return `<button data-tag-look="${esc(look.artworkId)}" aria-label="用${esc(look.name)}定制"><img src="${esc(art.src)}" alt="" loading="lazy"><span>${esc(look.name)}</span></button>`;}).join('')||'<p role="status">没有匹配形象。可清除标签或搜索。</p>';
+}
+function openRenderedRandom(){
+ recipeMachine?.cancel();const home=document.body.dataset.screen==='home';
+ fullscreenRandomizer?.open({query:home?homePortal.getRandomQuery():catalogQuery,scopeLabel:home?homePortal.getRandomScope():queryLabel(catalogQuery),source:document.body.dataset.screen});
+}
 function routePath(route){return route.page==='looks'?(route.family&&route.family!=='all'?`looks/${route.family}`:'looks'):route.page==='workspace'?'workspace':'home';}
 function routeFromHash(){let decoded;try{decoded=decodeURIComponent(location.hash.replace(/^#\/?/, ''));}catch{return{page:'home'};}const parts=decoded.split('/').filter(Boolean);if(parts[0]==='workspace')return{page:'workspace'};if(parts[0]==='looks')return{page:'looks',family:FAMILIES[parts[1]]?parts[1]:'all'};return{page:'home'};}
 function applyRoute(route,{focus=false}={}){
@@ -415,15 +440,14 @@ function openGallery(family='all',options={}){navigate({page:'looks',family},opt
 function goHome(){if(!homePortal)return;navigate({page:'home'});}
 const commands={
  'prepare-composition':()=>startFromCurrentArtwork(),
- 'open-workspace':()=>openWorkspace(),home:goHome,'clear-search':()=>homePortal?.clear(),'fullscreen-random':()=>fullscreenRandomizer?.open(),
+ 'open-workspace':()=>openWorkspace(),home:goHome,'clear-search':()=>homePortal?.clear(),'fullscreen-random':()=>openRenderedRandom(),
  customize:()=>document.querySelector('.inspector').scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'}),
  guide:showGuide,inspiration:showInspiration,catalog:showCatalog,'download-live':downloadLive,'toggle-play':()=>{playing=!playing&&!reduceMotion&&!matchMedia('(prefers-reduced-motion: reduce)').matches;livePreview?.setPlaying(playing);$('playPreview').textContent=playing?'暂停动作':'播放动作';$('playPreview').setAttribute('aria-pressed',String(playing));},reference:()=>{openWorkspace();showReference();},prompt:showPrompt,'all-actions':showActions,expand:showExpanded,close:closeModal,copy:copyPrompt,'copy-open':copyAndOpen,'export-prompt':exportPrompt,'download-sample':downloadLive,'retry-preview':()=>{$('stageArt').dataset.view='';renderResult();},
  'save-config':()=>{download(new Blob([exportProject(project)],{type:'application/json'}),filename()+'-studio-project.json');toast('项目配置已保存，包含设定与创作模式，不包含图片。');},
- 'save-character':()=>{download(new Blob([exportConfiguration(state)],{type:'application/json'}),filename()+'-dot.json');toast('已导出兼容 v10 角色配置，不含创作模式与图片。');},
  'import-config':()=>$('configFile').click(),
  'start-from-artwork':startFromCurrentArtwork,
  reset:()=>{const hasLook=project.creation.mode==='composer'&&getBuiltInLooks(state.family).some(a=>a.id===project.creation.artworkId),next=hasLook?createWorkbenchLook(project.creation.artworkId,state):state.presetId!=='custom'?createPreset(state.presetId):createCharacter(state.family);next.reference=structuredClone(state.reference);next.reference.overrides=[];next.notes=state.notes;if(!hasLook)next.output=state.output;commit(next);toast('已恢复当前形象的基础 Prompt 设定；图片保持所选模板。');},
- random:()=>{if(fullscreenRandomizer){recipeMachine?.cancel();fullscreenRandomizer.open();return;}if(recipeMachine)recipeMachine.spin();else commit(randomizeCharacter(state,'mix-'+Math.random().toString(36).slice(2,9)));},
+ random:()=>{if(fullscreenRandomizer){recipeMachine?.cancel();openRenderedRandom();return;}if(recipeMachine)recipeMachine.spin();else commit(randomizeCharacter(state,'mix-'+Math.random().toString(36).slice(2,9)));},
  'seed-random':()=>{if(recipeMachine)recipeMachine.spin(state.randomSeed);else commit(randomizeCharacter(state,state.randomSeed));},
  'apply-reference':applyReference,
  'remove-reference':()=>{const next=structuredClone(state);next.reference=createCharacter().reference;commit(next);closeModal();toast('已关闭参考图模式。');}
@@ -441,6 +465,8 @@ document.addEventListener('click',async e=>{
   if(b.dataset.inspiration){commit(inspirationCharacter(b.dataset.inspiration,state));closeModal();livePreview?.assemble();return;}
   if(b.id==='undo'){undo();return;}if(b.id==='redo'){undo(true);return;}if(b.id==='closeModal'){closeModal();return;}
   if(b.dataset.command){document.querySelector('.project-menu')?.removeAttribute('open');commands[b.dataset.command]?.();return;}
+  if(b.dataset.tagLook){startLook(b.dataset.tagLook);return;}
+  if(b.dataset.modularRecipe){const next=setModularProject(project,b.dataset.modularRecipe);commit(next);if(!next.creation.composition)toast('此设定超出适配范围；已保留 Prompt，可恢复静态默认设置后再试。');else toast('已应用独立组件静态适配，待美术确认。');return;}
   if(b.dataset.lookTemplate){startLook(b.dataset.lookTemplate);return;}
   if(b.dataset.accessoryTab){activeAccessory=b.dataset.accessoryTab;$('settings').scrollTop=0;renderSettings();return;}
   if(b.dataset.family){sourceFilter='all';switchFamily(b.dataset.family);return;}
@@ -473,14 +499,15 @@ document.addEventListener('change',e=>{
 document.addEventListener('dragover',e=>{if(e.dataTransfer?.types.includes('Files'))e.preventDefault();});
 document.addEventListener('drop',e=>{if(e.dataTransfer?.types.includes('Files')){e.preventDefault();toast('参考图片请在 ChatGPT 中添加。这里只导入 JSON 配置。');}});
 document.addEventListener('focusout',()=>{grouping='';});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&recipeMachine?.busy){recipeMachine.cancel();return;}if(!fullscreenRandomizer?.dialog?.open&&e.key.toLowerCase()==='r'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)&&!$('modal').open){e.preventDefault();commands.random();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();undo(e.shiftKey);}});
+document.addEventListener('keydown',e=>{if(document.querySelector('dialog[open]'))return;if(e.key==='Escape'&&recipeMachine?.busy){recipeMachine.cancel();return;}if(e.key.toLowerCase()==='r'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();commands.random();return;}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){e.preventDefault();undo(e.shiftKey);}});
 $('modal').addEventListener('cancel',e=>{e.preventDefault();closeModal();});
 $('modal').addEventListener('click',e=>{if(e.target===$('modal')){const r=$('modal').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeModal();}});
-window.addEventListener('pageshow',event=>{if(!event.persisted)return;try{const saved=sessionStorage.getItem('dot-studio-project-v1')||sessionStorage.getItem('dot-studio-v10');if(saved){const next=parseProject(JSON.parse(saved));if(JSON.stringify(next)!==JSON.stringify(project)){project=next;state=project.character;previewRevision++;history.length=0;future.length=0;grouping='';render();}}}catch{toast('保存的配置暂时无法读取，当前角色已保留。');}});
+window.addEventListener('pageshow',event=>{if(!event.persisted)return;try{const saved=sessionStorage.getItem('dot-studio-project-v2');if(saved){const next=parseProject(JSON.parse(saved));if(JSON.stringify(next)!==JSON.stringify(project)){project=next;state=project.character;previewRevision++;history.length=0;future.length=0;grouping='';render();}}}catch{toast('保存的配置暂时无法读取，当前角色已保留。');}});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',event=>{if(event.matches){playing=false;livePreview?.setPlaying(false);renderResult();}});
 if($('recipeMachine'))recipeMachine=new RecipeMachine($('recipeMachine'),{getConfig:()=>state,commit:next=>{commit(next,'',true,'random');},assemble:()=>livePreview?.assemble(),notify:toast});
-if($('homePortal')){homePortal=createHomePortal({openWorkspace,openGallery,onStartLook:startLook,onEditLook:(id,tab)=>{startLook(id);if(tab==='background'){const target=$('workbenchControls').querySelector('[aria-labelledby=backgroundControlTitle]');target.scrollIntoView({block:'nearest',behavior:'instant'});target.querySelector('button')?.focus({preventScroll:true});}else{setTab(tab);$('advancedPromptSettings').open=true;$('advancedPromptSettings').scrollIntoView({block:'nearest',behavior:'instant'});$('tab-'+tab).focus({preventScroll:true});}},onViewLook:viewLook,onCopyLook:async id=>{const ok=await copyText(buildCreationPrompt(lookProject(id),promptLanguage));toast(ok?'已复制这张形象的 Prompt。':'无法复制；请点开这张形象后重试。');},onDownloadLook:async id=>{try{const a=getCreationArtwork(id);if(!a)throw new Error('形象不存在');const r=await fetch(a.src);if(!r.ok)throw new Error('原图载入失败');const blob=await r.blob();if(blob.type!=='image/png')throw new Error('原图格式无效');download(blob,a.id+'-original.png');toast('已下载透明背景原图；工作台导出会按选定背景合成。');}catch(error){toast(error.message||'原图下载失败');}},onReference:()=>{openWorkspace();showReference();}});fullscreenRandomizer=createFullscreenRandomizer({getConfig:()=>state,getProject:()=>project,getReducedMotion:()=>reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches,getArtwork:family=>{const a=getFamilyArtwork(family);return a?{src:a.src,alt:a.name,label:'基准候选 · 待网页验收'}:null;},commit:next=>{commit(next,'',true,'random');openWorkspace();return $('stageName');},notify:toast});}
+if($('homePortal')){homePortal=createHomePortal({openWorkspace,openGallery,onStartLook:startLook,onQueryChange:q=>{catalogQuery=normalizeTagQuery(q);renderTagResults();},onEditLook:(id,tab)=>{startLook(id);setTab(tab);$('advancedPromptSettings').open=true;$('advancedPromptSettings').scrollIntoView({block:'nearest',behavior:'instant'});$('tab-'+tab).focus({preventScroll:true});},onViewLook:viewLook,onCopyLook:async id=>{const ok=await copyText(buildCreationPrompt(lookProject(id),promptLanguage));toast(ok?'已复制这张形象的 Prompt。':'无法复制；请点开这张形象后重试。');},onDownloadLook:async id=>{try{const a=getCreationArtwork(id);if(!a)throw new Error('形象不存在');const r=await fetch(a.src);if(!r.ok)throw new Error('原图载入失败');const blob=await r.blob();if(blob.type!=='image/png')throw new Error('原图格式无效');download(blob,a.id+'-original.png');toast('已下载透明原图；工作台导出也保留透明背景。');}catch(error){toast(error.message||'原图下载失败');}},onReference:()=>{openWorkspace();showReference();}});fullscreenRandomizer=createFullscreenRandomizer({getCurrentProject:()=>project,...createResolvedRandomizerAdapters({getCurrentProject:()=>project}),getReducedMotion:()=>reduceMotion||matchMedia('(prefers-reduced-motion: reduce)').matches,onPromptOnly:()=>{const c=randomizeCharacter(state,'prompt-'+Math.random().toString(36).slice(2,9));commit(makeProject(c,{mode:'composer',artworkId:getFamilyArtwork(c.family)?.id??null,composition:null}),'',true,'random');openWorkspace();toast('已随机 Prompt 设定；没有生成或应用新的角色图片。');},commitCandidate:next=>{commit(next,'',true,'random');openWorkspace();return $('stageName');},notify:toast});}
+if($('workbenchTags')){workbenchTagBrowser=createTagBrowser($('workbenchTags'),{getQuery:()=>catalogQuery,onChange:q=>{catalogQuery=normalizeTagQuery(q);homePortal?.setQuery(catalogQuery);renderTagResults();}});renderTagResults();}
 window.addEventListener('popstate',()=>applyRoute(routeFromHash()));
-icons();$('undo').innerHTML=icon('undo');$('redo').innerHTML=icon('redo');render();remember();applyRoute(routeFromHash(),{focus:false});if(storageRecovery)toast(storageRecovery);
+icons();$('undo').innerHTML=icon('undo');$('redo').innerHTML=icon('redo');render();if(!storageRecovery)remember();applyRoute(routeFromHash(),{focus:false});if(storageRecovery)toast(storageRecovery);
 const mc=document.modelContext;
 if(mc?.registerTool){const controller=new AbortController();const definitions=[{name:'read_character_prompt',title:'读取角色提示词',description:'Read the shared character, creation mode, real asset availability and Chinese/English prompts. Does not call an image generation model.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute:()=>({configuration:structuredClone(state),resolved:resolveCharacter(state),project:structuredClone(project),creation:resolveCreation(project),prompt:buildCreationPrompt(project),englishPrompt:buildCreationPrompt(project,'en')})},{name:'configure_character',title:'配置角色',description:'Replace the current Studio character with a validated v10 configuration. Does not generate images, upload references, copy data or create a Pet.',inputSchema:{type:'object',properties:{configuration:{type:'object'}},required:['configuration'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute:input=>{const next=validateConfig(input.configuration);commit(next);return {configuration:structuredClone(state),resolved:resolveCharacter(state),project:structuredClone(project),prompt:buildCreationPrompt(project)};}}];for(const def of definitions){try{Promise.resolve(mc.registerTool(def,{signal:controller.signal})).catch(()=>{});}catch{}}window.addEventListener('pagehide',()=>controller.abort(),{once:true});}

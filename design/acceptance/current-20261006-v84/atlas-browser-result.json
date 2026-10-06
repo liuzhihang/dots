@@ -1,0 +1,1058 @@
+{
+  "captureMethod": "playwright-local-chrome",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1920,
+    "height": 872
+  },
+  "atlasTemplate": {
+    "title": "Dot Icon Studio · 内部组合图鉴",
+    "lookCount": "15",
+    "stateCount": "22",
+    "outputCount": "66",
+    "initialStatus": "目录基线 15 look · 22 模板状态 · 66 个背景输出；模块试点不进入默认随机候选。"
+  },
+  "templateBundle": "/private/tmp/dots-atlas-v84-dynamic-final-b25/template-capture.tar.gz",
+  "templateBytes": 117600047,
+  "templateStatus": "捕获完成：66 项、87 个 PNG 文件；标注随附件导出，报告 pass，最终冻结需由本地脚本绑定 source manifest。",
+  "modules": {
+    "assetOptions": [
+      {
+        "value": "",
+        "label": "全部素材"
+      },
+      {
+        "value": "pilot-headphones-v1",
+        "label": "pilot-headphones-v1"
+      },
+      {
+        "value": "pilot-knit-scarf-v1",
+        "label": "pilot-knit-scarf-v1"
+      },
+      {
+        "value": "pilot-round-glasses-v1",
+        "label": "pilot-round-glasses-v1"
+      }
+    ],
+    "recipeCount": 5,
+    "moduleTotal": 15,
+    "scarfCards": [
+      {
+        "id": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1:background:studio",
+        "text": "pilot-knit-scarf-v1 · candidate-animals-20261005\nstudio\n1254×1254\n基底身份已确认\n模块待人工批准\n工程可解算\n协调性待复核\n打开配置与问题记录"
+      },
+      {
+        "id": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1:background:solid",
+        "text": "pilot-knit-scarf-v1 · candidate-animals-20261005\nsolid\n1254×1254\n基底身份已确认\n模块待人工批准\n工程可解算\n协调性待复核\n打开配置与问题记录"
+      },
+      {
+        "id": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1:background:transparent",
+        "text": "pilot-knit-scarf-v1 · candidate-animals-20261005\ntransparent\n1254×1254\n基底身份已确认\n模块待人工批准\n工程可解算\n协调性待复核\n打开配置与问题记录"
+      }
+    ],
+    "scarfDetailTitle": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1:background:studio",
+    "scarfRenderMetadata": {
+      "case": {
+        "coverageKind": "single-asset",
+        "baseId": "candidate-animals-20261005::classic",
+        "artworkId": "candidate-animals-20261005",
+        "poseId": "front-seated-neutral",
+        "assetIds": [
+          "pilot-knit-scarf-v1"
+        ],
+        "factors": {
+          "asset": "pilot-knit-scarf-v1",
+          "base": "candidate-animals-20261005::classic",
+          "pose": "front-seated-neutral"
+        },
+        "assetVersions": [
+          {
+            "id": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5"
+          }
+        ],
+        "id": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1:background:studio",
+        "declaredRequired": true,
+        "executionStatus": "blocked",
+        "resolvable": false,
+        "reason": "尚未执行真实解算/渲染",
+        "moduleCaseId": "module:single-asset:candidate-animals-20261005-classic:front-seated-neutral:pilot-knit-scarf-v1",
+        "moduleRecipeId": "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic",
+        "kind": "modular",
+        "lookId": "candidate-animals-20261005",
+        "stateId": "candidate-animals-20261005::classic",
+        "view": "front",
+        "background": "studio",
+        "width": 1254,
+        "height": 1254,
+        "approvalStatus": "pendingArtApproval",
+        "engineeringStatus": "available"
+      },
+      "state": {
+        "id": "candidate-animals-20261005::classic",
+        "lookId": "candidate-animals-20261005",
+        "artworkId": "candidate-animals-20261005",
+        "family": "animals",
+        "recipeId": "classic",
+        "stateId": "classic",
+        "layoutId": "species-animal-front",
+        "styleId": "species-specific-plush",
+        "poseId": "front-seated-neutral",
+        "view": "front",
+        "assetRefs": [
+          {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+          }
+        ],
+        "assets": [
+          {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+            "src": "./assets/characters/animals-original-shiba-candidate-v1.png",
+            "width": 1254,
+            "height": 1254
+          }
+        ],
+        "layerIds": [
+          "classic"
+        ],
+        "width": 1254,
+        "height": 1254,
+        "approvalStatus": "approved",
+        "engineeringStatus": "available",
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "baseline-animals",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-animals",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "animals",
+          "name": "暖橙柴犬",
+          "shape": "shiba",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#D3934D",
+            "secondary": "#FFF0D5",
+            "eyes": "#172131",
+            "accessory": "#4B78A5",
+            "headAccessory": "#4B78A5",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#D3934D"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "sit",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "studio",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        }
+      },
+      "composition": {
+        "kind": "modular",
+        "catalogVersion": 1,
+        "baseId": "candidate-animals-20261005::classic",
+        "recipeId": "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic",
+        "assetRefs": [
+          {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+          },
+          {
+            "id": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5"
+          }
+        ],
+        "inputs": {
+          "baseId": "candidate-animals-20261005::classic",
+          "assetIds": [
+            "pilot-knit-scarf-v1"
+          ],
+          "poseId": "front-seated-neutral",
+          "view": "front",
+          "recipeId": "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic",
+          "background": "studio",
+          "backgroundColor": "#F3F6FA",
+          "fitProfileRef": {
+            "id": "geometry/shiba-classic-front-v1",
+            "version": "1.0.0",
+            "fingerprint": "d69fa8e9497a786a"
+          },
+          "fitVersion": "1.0.0",
+          "fitFingerprint": "2107c8a327466c1f",
+          "fitRefs": [
+            {
+              "assetId": "pilot-knit-scarf-v1",
+              "fitVersion": "1.0.0",
+              "fitFingerprint": "04f8fdac77bce1a8",
+              "fitProfileRef": {
+                "id": "geometry/shiba-classic-front-v1",
+                "version": "1.0.0",
+                "fingerprint": "d69fa8e9497a786a"
+              }
+            }
+          ]
+        },
+        "inputFingerprint": "53a601c8b0f54bf3",
+        "resolvedFingerprint": "88b305231f9b7a57"
+      },
+      "renderMetadata": {
+        "kind": "modular",
+        "width": 1254,
+        "height": 1254,
+        "recipe": {
+          "id": "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic",
+          "version": "1.0.0",
+          "fitProfileRef": {
+            "id": "geometry/shiba-classic-front-v1",
+            "version": "1.0.0",
+            "fingerprint": "d69fa8e9497a786a"
+          },
+          "fitProfileRefs": null,
+          "geometryProfileRefs": null
+        },
+        "aggregateFitVersion": "1.0.0",
+        "aggregateFitFingerprint": "2107c8a327466c1f",
+        "resolvedFitVersion": "1.0.0",
+        "resolvedFitFingerprint": "2107c8a327466c1f",
+        "resolverFitRefs": [
+          {
+            "assetId": "pilot-knit-scarf-v1",
+            "fitVersion": "1.0.0",
+            "fitFingerprint": "04f8fdac77bce1a8",
+            "fitProfileRef": {
+              "id": "geometry/shiba-classic-front-v1",
+              "version": "1.0.0",
+              "fingerprint": "d69fa8e9497a786a"
+            }
+          }
+        ],
+        "resolvedFitFingerprints": [
+          {
+            "assetId": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "fitVersion": "1.0.0",
+            "fitFingerprint": "04f8fdac77bce1a8"
+          }
+        ],
+        "baseGeometryProfile": {
+          "id": "geometry/shiba-classic-front-v1",
+          "version": "1.0.0",
+          "baseId": "candidate-animals-20261005::classic",
+          "baseAssetRefs": [
+            {
+              "id": "artwork/candidate-animals-20261005/full",
+              "version": "1.0.0",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+            }
+          ],
+          "bodyId": "animal-shiba",
+          "view": "front",
+          "poseId": "front-seated-neutral",
+          "layoutId": "species-animal-front",
+          "styleId": "species-specific-plush",
+          "canvas": {
+            "width": 1254,
+            "height": 1254
+          },
+          "landmarks": {
+            "headBounds": {
+              "x": 0.162,
+              "y": 0.035,
+              "width": 0.6,
+              "height": 0.555
+            },
+            "anchorPairs": {
+              "neckContacts": {
+                "left": {
+                  "x": 0.322,
+                  "y": 0.555
+                },
+                "right": {
+                  "x": 0.673,
+                  "y": 0.555
+                }
+              }
+            }
+          },
+          "faceKeepout": {
+            "x": 0.285,
+            "y": 0.285,
+            "width": 0.34,
+            "height": 0.17
+          }
+        },
+        "baseGeometryProfiles": [
+          {
+            "ref": {
+              "id": "geometry/shiba-classic-front-v1",
+              "version": "1.0.0",
+              "fingerprint": "d69fa8e9497a786a"
+            },
+            "profile": {
+              "id": "geometry/shiba-classic-front-v1",
+              "version": "1.0.0",
+              "baseId": "candidate-animals-20261005::classic",
+              "baseAssetRefs": [
+                {
+                  "id": "artwork/candidate-animals-20261005/full",
+                  "version": "1.0.0",
+                  "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+                }
+              ],
+              "bodyId": "animal-shiba",
+              "view": "front",
+              "poseId": "front-seated-neutral",
+              "layoutId": "species-animal-front",
+              "styleId": "species-specific-plush",
+              "canvas": {
+                "width": 1254,
+                "height": 1254
+              },
+              "landmarks": {
+                "headBounds": {
+                  "x": 0.162,
+                  "y": 0.035,
+                  "width": 0.6,
+                  "height": 0.555
+                },
+                "anchorPairs": {
+                  "neckContacts": {
+                    "left": {
+                      "x": 0.322,
+                      "y": 0.555
+                    },
+                    "right": {
+                      "x": 0.673,
+                      "y": 0.555
+                    }
+                  }
+                }
+              },
+              "faceKeepout": {
+                "x": 0.285,
+                "y": 0.285,
+                "width": 0.34,
+                "height": 0.17
+              }
+            }
+          }
+        ],
+        "fitInputs": [
+          {
+            "assetId": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "fitPolicy": {
+              "id": "fit/scarf-shiba-neck",
+              "version": "1.0.0",
+              "kind": "anchor-pair-rigid-v1",
+              "anchorKind": "neckContacts",
+              "supports": {
+                "bodyIds": [
+                  "animal-shiba"
+                ],
+                "view": "front",
+                "poseIds": [
+                  "front-seated-neutral"
+                ],
+                "layoutIds": [
+                  "species-animal-front"
+                ],
+                "styleIds": [
+                  "species-specific-plush"
+                ]
+              },
+              "headBounds": {
+                "widthRatio": {
+                  "min": 0.5,
+                  "max": 0.7
+                },
+                "heightRatio": {
+                  "min": 0.45,
+                  "max": 0.65
+                },
+                "aspectRatio": {
+                  "min": 0.8,
+                  "max": 1.3
+                }
+              },
+              "scale": {
+                "min": 0.2,
+                "max": 0.7
+              },
+              "maxRotationDeg": 25,
+              "maxAnchorErrorPx": 1
+            },
+            "sourceParts": {
+              "asset": {
+                "id": "pilot-knit-scarf-v1",
+                "version": "1.0.0",
+                "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+                "width": 1536,
+                "height": 1024
+              },
+              "parts": [
+                {
+                  "id": "anchorPair",
+                  "sourceRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1536,
+                    "height": 1024
+                  },
+                  "anchors": {
+                    "left": {
+                      "x": 0.2,
+                      "y": 0.15
+                    },
+                    "right": {
+                      "x": 0.8,
+                      "y": 0.15
+                    }
+                  },
+                  "z": 30,
+                  "occlusion": {
+                    "mode": "above-base",
+                    "covers": [
+                      "candidate-animals-20261005::classic"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "fitResults": [
+          {
+            "assetId": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "fitPolicy": {
+              "id": "fit/scarf-shiba-neck",
+              "version": "1.0.0",
+              "kind": "anchor-pair-rigid-v1",
+              "anchorKind": "neckContacts",
+              "supports": {
+                "bodyIds": [
+                  "animal-shiba"
+                ],
+                "view": "front",
+                "poseIds": [
+                  "front-seated-neutral"
+                ],
+                "layoutIds": [
+                  "species-animal-front"
+                ],
+                "styleIds": [
+                  "species-specific-plush"
+                ]
+              },
+              "headBounds": {
+                "widthRatio": {
+                  "min": 0.5,
+                  "max": 0.7
+                },
+                "heightRatio": {
+                  "min": 0.45,
+                  "max": 0.65
+                },
+                "aspectRatio": {
+                  "min": 0.8,
+                  "max": 1.3
+                }
+              },
+              "scale": {
+                "min": 0.2,
+                "max": 0.7
+              },
+              "maxRotationDeg": 25,
+              "maxAnchorErrorPx": 1
+            },
+            "sourceParts": {
+              "asset": {
+                "id": "pilot-knit-scarf-v1",
+                "version": "1.0.0",
+                "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+                "width": 1536,
+                "height": 1024
+              },
+              "parts": [
+                {
+                  "id": "anchorPair",
+                  "sourceRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1536,
+                    "height": 1024
+                  },
+                  "anchors": {
+                    "left": {
+                      "x": 0.2,
+                      "y": 0.15
+                    },
+                    "right": {
+                      "x": 0.8,
+                      "y": 0.15
+                    }
+                  },
+                  "z": 30,
+                  "occlusion": {
+                    "mode": "above-base",
+                    "covers": [
+                      "candidate-animals-20261005::classic"
+                    ]
+                  }
+                }
+              ]
+            },
+            "fitProfileRefs": [
+              {
+                "id": "geometry/shiba-classic-front-v1",
+                "version": "1.0.0",
+                "fingerprint": "d69fa8e9497a786a"
+              }
+            ],
+            "fitVersion": "1.0.0",
+            "fitFingerprint": "04f8fdac77bce1a8",
+            "parts": [
+              {
+                "id": "anchorPair",
+                "assetId": "pilot-knit-scarf-v1",
+                "sourceRect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1536,
+                  "height": 1024
+                },
+                "transform": {
+                  "a": 0.00038085937499999996,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.00038085937499999996,
+                  "e": 0.20500000000000002,
+                  "f": 0.49650000000000005
+                },
+                "placement": {
+                  "x": 0.205,
+                  "y": 0.4965000000000001,
+                  "width": 0.5850000000000001,
+                  "height": 0.38999999999999996,
+                  "rotation": 0
+                },
+                "z": 30,
+                "occlusion": {
+                  "mode": "above-base",
+                  "covers": [
+                    "candidate-animals-20261005::classic"
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "resolvedFingerprint": "88b305231f9b7a57",
+        "layers": [
+          {
+            "id": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "z": 30,
+            "sourceRect": null,
+            "placement": null,
+            "rotation": null,
+            "anchors": {},
+            "fitPolicy": {
+              "id": "fit/scarf-shiba-neck",
+              "version": "1.0.0",
+              "kind": "anchor-pair-rigid-v1",
+              "anchorKind": "neckContacts",
+              "supports": {
+                "bodyIds": [
+                  "animal-shiba"
+                ],
+                "view": "front",
+                "poseIds": [
+                  "front-seated-neutral"
+                ],
+                "layoutIds": [
+                  "species-animal-front"
+                ],
+                "styleIds": [
+                  "species-specific-plush"
+                ]
+              },
+              "headBounds": {
+                "widthRatio": {
+                  "min": 0.5,
+                  "max": 0.7
+                },
+                "heightRatio": {
+                  "min": 0.45,
+                  "max": 0.65
+                },
+                "aspectRatio": {
+                  "min": 0.8,
+                  "max": 1.3
+                }
+              },
+              "scale": {
+                "min": 0.2,
+                "max": 0.7
+              },
+              "maxRotationDeg": 25,
+              "maxAnchorErrorPx": 1
+            },
+            "fitProfileRef": {
+              "id": "geometry/shiba-classic-front-v1",
+              "version": "1.0.0",
+              "fingerprint": "d69fa8e9497a786a"
+            },
+            "fitProfileRefs": null,
+            "sourceParts": {
+              "asset": {
+                "id": "pilot-knit-scarf-v1",
+                "version": "1.0.0",
+                "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+                "width": 1536,
+                "height": 1024
+              },
+              "parts": [
+                {
+                  "id": "anchorPair",
+                  "sourceRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1536,
+                    "height": 1024
+                  },
+                  "anchors": {
+                    "left": {
+                      "x": 0.2,
+                      "y": 0.15
+                    },
+                    "right": {
+                      "x": 0.8,
+                      "y": 0.15
+                    }
+                  },
+                  "z": 30,
+                  "occlusion": {
+                    "mode": "above-base",
+                    "covers": [
+                      "candidate-animals-20261005::classic"
+                    ]
+                  }
+                }
+              ]
+            },
+            "fitVersion": "1.0.0",
+            "fitFingerprint": "04f8fdac77bce1a8",
+            "parts": [
+              {
+                "id": "anchorPair",
+                "assetId": "pilot-knit-scarf-v1",
+                "sourceRect": {
+                  "x": 0,
+                  "y": 0,
+                  "width": 1536,
+                  "height": 1024
+                },
+                "transform": {
+                  "a": 0.00038085937499999996,
+                  "b": 0,
+                  "c": 0,
+                  "d": 0.00038085937499999996,
+                  "e": 0.20500000000000002,
+                  "f": 0.49650000000000005
+                },
+                "placement": {
+                  "x": 0.205,
+                  "y": 0.4965000000000001,
+                  "width": 0.5850000000000001,
+                  "height": 0.38999999999999996,
+                  "rotation": 0
+                },
+                "z": 30,
+                "occlusion": {
+                  "mode": "above-base",
+                  "covers": [
+                    "candidate-animals-20261005::classic"
+                  ]
+                }
+              }
+            ],
+            "occlusion": {
+              "mode": "above-base",
+              "covers": [
+                "base"
+              ]
+            }
+          }
+        ]
+      },
+      "stageMetadata": [
+        {
+          "stage": "角色",
+          "asset": {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+            "src": "./assets/characters/animals-original-shiba-candidate-v1.png",
+            "previewSrc": "./assets/characters/animals-original-shiba-candidate-v1.png",
+            "width": 1254,
+            "height": 1254
+          }
+        },
+        {
+          "stage": "neckwear",
+          "asset": {
+            "id": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "src": "./assets/modular/20261006-pilot/pilot-knit-scarf-v1.png",
+            "previewSrc": "./assets/modular/20261006-pilot/pilot-knit-scarf-v1.png",
+            "width": 1536,
+            "height": 1024
+          }
+        }
+      ],
+      "engineering": {
+        "availability": "available",
+        "reason": "模块配方通过工程硬约束；当前适配版本尚无对应美术批准，不进入默认随机池。"
+      },
+      "coordinationReview": {
+        "adaptationId": "78bc7dbf48f4e15485f2a805796b356b0af14c2f22cc313ac394c90891bc0ca6",
+        "disposition": "pending",
+        "checklist": {
+          "proportion": "unreviewed",
+          "contact": "unreviewed",
+          "occlusion": "unreviewed",
+          "materialLighting": "unreviewed",
+          "palette": "unreviewed"
+        }
+      },
+      "artApproval": {
+        "status": "pending",
+        "automaticApproval": false
+      }
+    },
+    "scarfReview": {
+      "schema": "dot-studio-coordination-review/v1",
+      "adaptationId": "78bc7dbf48f4e15485f2a805796b356b0af14c2f22cc313ac394c90891bc0ca6",
+      "subject": {
+        "catalogVersion": 1,
+        "baseId": "candidate-animals-20261005::classic",
+        "baseAssetRefs": [
+          {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+          }
+        ],
+        "baseGeometryProfile": {
+          "id": "geometry/shiba-classic-front-v1",
+          "version": "1.0.0",
+          "baseId": "candidate-animals-20261005::classic",
+          "baseAssetRefs": [
+            {
+              "id": "artwork/candidate-animals-20261005/full",
+              "version": "1.0.0",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+            }
+          ],
+          "bodyId": "animal-shiba",
+          "view": "front",
+          "poseId": "front-seated-neutral",
+          "layoutId": "species-animal-front",
+          "styleId": "species-specific-plush",
+          "canvas": {
+            "width": 1254,
+            "height": 1254
+          },
+          "landmarks": {
+            "headBounds": {
+              "x": 0.162,
+              "y": 0.035,
+              "width": 0.6,
+              "height": 0.555
+            },
+            "anchorPairs": {
+              "neckContacts": {
+                "left": {
+                  "x": 0.322,
+                  "y": 0.555
+                },
+                "right": {
+                  "x": 0.673,
+                  "y": 0.555
+                }
+              }
+            }
+          },
+          "faceKeepout": {
+            "x": 0.285,
+            "y": 0.285,
+            "width": 0.34,
+            "height": 0.17
+          }
+        },
+        "baseGeometryProfiles": [
+          {
+            "id": "geometry/shiba-classic-front-v1",
+            "version": "1.0.0",
+            "baseId": "candidate-animals-20261005::classic",
+            "baseAssetRefs": [
+              {
+                "id": "artwork/candidate-animals-20261005/full",
+                "version": "1.0.0",
+                "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+              }
+            ],
+            "bodyId": "animal-shiba",
+            "view": "front",
+            "poseId": "front-seated-neutral",
+            "layoutId": "species-animal-front",
+            "styleId": "species-specific-plush",
+            "canvas": {
+              "width": 1254,
+              "height": 1254
+            },
+            "landmarks": {
+              "headBounds": {
+                "x": 0.162,
+                "y": 0.035,
+                "width": 0.6,
+                "height": 0.555
+              },
+              "anchorPairs": {
+                "neckContacts": {
+                  "left": {
+                    "x": 0.322,
+                    "y": 0.555
+                  },
+                  "right": {
+                    "x": 0.673,
+                    "y": 0.555
+                  }
+                }
+              }
+            },
+            "faceKeepout": {
+              "x": 0.285,
+              "y": 0.285,
+              "width": 0.34,
+              "height": 0.17
+            }
+          }
+        ],
+        "componentRefs": [
+          {
+            "id": "pilot-knit-scarf-v1",
+            "version": "1.0.0",
+            "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+            "fitPolicy": {
+              "id": "fit/scarf-shiba-neck",
+              "version": "1.0.0",
+              "kind": "anchor-pair-rigid-v1",
+              "anchorKind": "neckContacts",
+              "supports": {
+                "bodyIds": [
+                  "animal-shiba"
+                ],
+                "view": "front",
+                "poseIds": [
+                  "front-seated-neutral"
+                ],
+                "layoutIds": [
+                  "species-animal-front"
+                ],
+                "styleIds": [
+                  "species-specific-plush"
+                ]
+              },
+              "headBounds": {
+                "widthRatio": {
+                  "min": 0.5,
+                  "max": 0.7
+                },
+                "heightRatio": {
+                  "min": 0.45,
+                  "max": 0.65
+                },
+                "aspectRatio": {
+                  "min": 0.8,
+                  "max": 1.3
+                }
+              },
+              "scale": {
+                "min": 0.2,
+                "max": 0.7
+              },
+              "maxRotationDeg": 25,
+              "maxAnchorErrorPx": 1
+            },
+            "sourceParts": {
+              "asset": {
+                "id": "pilot-knit-scarf-v1",
+                "version": "1.0.0",
+                "sha256": "316d23017372854f3b29a91a7435e5fecdf74baab34d2e14f77c17558bc036d5",
+                "width": 1536,
+                "height": 1024
+              },
+              "parts": [
+                {
+                  "id": "anchorPair",
+                  "sourceRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 1536,
+                    "height": 1024
+                  },
+                  "anchors": {
+                    "left": {
+                      "x": 0.2,
+                      "y": 0.15
+                    },
+                    "right": {
+                      "x": 0.8,
+                      "y": 0.15
+                    }
+                  },
+                  "z": 30,
+                  "occlusion": {
+                    "mode": "above-base",
+                    "covers": [
+                      "candidate-animals-20261005::classic"
+                    ]
+                  }
+                }
+              ]
+            },
+            "fitProfileRefs": [
+              {
+                "id": "geometry/shiba-classic-front-v1",
+                "version": "1.0.0",
+                "fingerprint": "d69fa8e9497a786a"
+              }
+            ]
+          }
+        ],
+        "poseId": "front-seated-neutral",
+        "view": "front",
+        "recipeId": "pilot-knit-scarf-v1-on-candidate-animals-20261005-classic",
+        "recipeVersion": "1.0.0",
+        "fitPolicy": null,
+        "fitProfileRef": {
+          "id": "geometry/shiba-classic-front-v1",
+          "version": "1.0.0",
+          "fingerprint": "d69fa8e9497a786a"
+        },
+        "fitProfileRefs": [
+          {
+            "id": "geometry/shiba-classic-front-v1",
+            "version": "1.0.0",
+            "fingerprint": "d69fa8e9497a786a"
+          }
+        ],
+        "geometryProfileRefs": null,
+        "sourceParts": null,
+        "recipeFingerprint": "4bd46d997f13144b"
+      },
+      "checklist": {
+        "proportion": "unreviewed",
+        "contact": "unreviewed",
+        "occlusion": "unreviewed",
+        "materialLighting": "issue",
+        "palette": "unreviewed"
+      },
+      "checklistNotes": {
+        "proportion": "",
+        "contact": "",
+        "occlusion": "",
+        "materialLighting": "实际Canvas复核：围巾外缘可见浅青绿色柔光晕/外溢，与柴犬毛面接触边界不够干净；仅记录该精确围巾×柴犬配方版本，待素材修正后重新检查。",
+        "palette": ""
+      },
+      "disposition": "pending",
+      "dispositionReason": "",
+      "updatedAt": "2026-10-06T06:00:26.694Z",
+      "decisionSource": "internal-atlas-review"
+    },
+    "scarfIssueAnnotation": {
+      "types": [
+        "风格"
+      ],
+      "note": "实际Canvas复核：围巾外缘可见浅青绿色柔光晕/外溢，与柴犬毛面接触边界不够干净；仅记录该精确围巾×柴犬配方版本，待素材修正后重新检查。",
+      "updatedAt": "2026-10-06T06:00:26.660Z",
+      "state": "internal-review"
+    },
+    "moduleBundle": "/private/tmp/dots-atlas-v84-dynamic-final-b25/module-capture.tar.gz",
+    "moduleBytes": 30023676,
+    "moduleStatus": "模块捕获完成：15 项、21 个源/Canvas PNG；工程报告 pass，协调性复核与美术批准分列。"
+  },
+  "errors": [
+    {
+      "kind": "console",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "badResponses": []
+}

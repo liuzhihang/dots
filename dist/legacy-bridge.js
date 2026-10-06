@@ -1,15 +1,21 @@
 'use strict';
-// Old configurations stay in their original editor, without lossy migration.
-try {
-  const raw = sessionStorage.getItem('dot-legacy-import');
-  if (raw) {
-    const clean = validateConfig(JSON.parse(raw));
-    state = clean;
-    render();
-    sessionStorage.removeItem('dot-legacy-import');
-    toast('旧版配置已完整载入精细编辑器。');
+(() => {
+  // The legacy editor can inspect a current project wrapper, but this bridge
+  // never migrates cached role JSON or assigns data to the old editor state.
+  const parseProject = async value => {
+    const {parseProject: parseCurrentProject} = await import('./studio-creation.js?v=86');
+    return parseCurrentProject(value);
+  };
+  Object.defineProperty(window, 'DotLegacyBridge', {
+    value: Object.freeze({parseProject}),
+    configurable: false,
+    enumerable: false,
+    writable: false
+  });
+
+  let hasUnsupportedImport = false;
+  try { hasUnsupportedImport = sessionStorage.getItem('dot-legacy-import') !== null; } catch {}
+  if (hasUnsupportedImport && typeof window.toast === 'function') {
+    window.toast('旧版角色 JSON 不再支持自动导入；原存储记录仍保留。');
   }
-} catch (error) {
-  sessionStorage.removeItem('dot-legacy-import');
-  toast('旧版配置未能载入：' + error.message);
-}
+})();

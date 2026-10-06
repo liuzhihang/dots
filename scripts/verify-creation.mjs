@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFile,readdir} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {
@@ -17,11 +17,14 @@ import {
   resolveCompositionConfig,
   selectCompositionLayers,
   setCreationMode,
-  setProjectCharacter
+  setProjectCharacter,
+  setProjectComposition
 } from '../dist/studio-creation.js';
 import {BASELINE_POSE_VARIANTS,COMPOSITION_PACKS,CREATION_ARTWORKS,createBaselinePosePack,getBaselinePoseControls,getBaselinePoseValues,getCompositionPack} from '../dist/studio-creation-assets.js';
-import {createPreset,createLookCharacter,setCharacterValue,buildPrompt,resolveCharacter} from '../dist/studio-model.js';
+import {createPreset,createLookCharacter,setCharacterValue,buildPrompt,resolveCharacter,validateConfig} from '../dist/studio-model.js';
 import {LayeredComposer} from '../dist/studio-composer.js';
+import {getResolvedTemplateCandidates,resolveProjectComposition,resolveTemplateComposition,getTemplateAssetStates} from '../dist/studio-composition-resolver.js';
+import {COMPOSITION_CATALOG_VERSION,TRUSTED_ASSETS,getTrustedModuleRecipes,listTemplateAssetStates} from '../dist/studio-composition-catalog.js';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 async function pngDimensions(assetPath){
@@ -32,11 +35,17 @@ async function pngDimensions(assetPath){
 const baselineDots=createPreset('baseline-dots');
 const originalDots=structuredClone(baselineDots);
 const project=makeProject(baselineDots,{artworkId:'historical-dots-plush-headphones-v2'});
-assert.deepEqual(project,{format:PROJECT_FORMAT,version:PROJECT_VERSION,character:baselineDots,creation:{mode:'artwork',artworkId:'historical-dots-plush-headphones-v2'}});
+assert.deepEqual(project,{format:PROJECT_FORMAT,version:PROJECT_VERSION,character:baselineDots,creation:{mode:'artwork',artworkId:'historical-dots-plush-headphones-v2',composition:null}});
 assert.deepEqual(baselineDots,originalDots,'makeProject must not mutate its character input');
 assert.deepEqual(parseProject(exportProject(project)),project,'project JSON must round-trip');
 assert.equal(JSON.parse(exportProject(project)).character.version,10,'project wrapper must preserve character schema v10');
 assert.deepEqual(CREATION_MODES,['artwork','composer']);
+assert.equal(PROJECT_VERSION,2,'all current project saves use the v2 wrapper');
+assert.equal(COMPOSITION_CATALOG_VERSION,1);
+const resolvedBaseline=makeProject(baselineDots);
+assert.equal(resolvedBaseline.creation.composition.kind,'template','registered complete PNG states persist a trusted template composition');
+assert.equal(resolveProjectComposition(resolvedBaseline).availability,'available');
+assert.equal(makeProject(setCharacterValue(baselineDots,'colors.body','#FF0000')).creation.composition,null,'unsupported Prompt-only role edits do not fabricate template references');
 
 const artwork=resolveCreation(project);
 assert.equal(artwork.availability,'available');
@@ -58,11 +67,14 @@ const preResolve=JSON.stringify(changedProject);
 resolveCreation(changedProject);buildCreationPrompt(changedProject);exportProject(changedProject);
 assert.equal(JSON.stringify(changedProject),preResolve,'read and export helpers must not mutate a project');
 
-assert.throws(()=>parseProject({...project,creation:{mode:'artwork',artworkId:'https://example.com/character.png'}}),/不存在|URL/);
-assert.throws(()=>parseProject({...project,creation:{mode:'artwork',artworkId:'historical-human-reading-v2'}}),/不属于/);
-assert.throws(()=>parseProject({...project,creation:{mode:'future',artworkId:null}}),/artwork 或 composer/);
-assert.throws(()=>parseProject({...project,creation:{mode:'artwork',artworkId:null,src:'./assets/evil.png'}}),/不支持的字段/);
-assert.throws(()=>parseProject({...project,version:2}),/版本/);
+assert.throws(()=>parseProject({...project,creation:{...project.creation,artworkId:'https://example.com/character.png'}}),/不存在|URL/);
+assert.throws(()=>parseProject({...project,creation:{...project.creation,artworkId:'historical-human-reading-v2'}}),/撤下|分组/);
+assert.throws(()=>parseProject({...project,creation:{...project.creation,mode:'future'}}),/artwork 或 composer/);
+assert.throws(()=>parseProject({...project,creation:{...project.creation,src:'./assets/evil.png'}}),/不支持的字段/);
+assert.throws(()=>parseProject({...project,version:1}),/版本/);
+assert.throws(()=>parseProject(baselineDots),/裸角色 JSON/,'bare character v10 JSON is rejected');
+assert.throws(()=>parseProject({...resolvedBaseline,creation:{mode:'artwork',artworkId:resolvedBaseline.creation.artworkId}}),/composition 状态/,'v2 import requires an explicit nullable composition field');
+assert.throws(()=>parseProject({...resolvedBaseline,creation:{...resolvedBaseline.creation,composition:{...resolvedBaseline.creation.composition,renderPlan:{layers:[]}}}}),/不受支持/,'project JSON cannot include trusted render paths or arbitrary layer plans');
 assert.equal(isLocalCreationAsset('./assets/atelier/example.png'),true);
 assert.equal(isLocalCreationAsset('/assets/atelier/example.png'),true);
 assert.equal(isLocalCreationAsset('https://example.com/asset.png'),false);
@@ -77,50 +89,18 @@ const baselineByFamily={
 const withdrawnHuman={
   format:PROJECT_FORMAT,version:PROJECT_VERSION,
   character:baselineByFamily.humans,
-  creation:{mode:'artwork',artworkId:'historical-human-reading-v2'}
+  creation:{mode:'artwork',artworkId:'historical-human-reading-v2',composition:null}
 };
-const withdrawnRoundTrip=parseProject(exportProject(withdrawnHuman));
-assert.deepEqual(withdrawnRoundTrip,withdrawnHuman,'legacy human settings and withdrawn artwork ID remain intact');
-const withdrawn=resolveCreation(withdrawnRoundTrip);
-assert.equal(withdrawn.availability,'missing');
-assert.equal(withdrawn.reason,'这张历史人物形象已撤下');
-assert.equal(withdrawn.artwork.status,'retired');
-assert.equal(withdrawn.artwork.kind,'retired-tombstone');
-assert.equal(Object.hasOwn(withdrawn.artwork,'src'),false,'the retired tombstone must not expose a downloadable source');
-assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-human-reading-v2'),false,'withdrawn art is excluded from the optional artwork catalog');
-assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-human-reading-v2'),false,'registered optional artworks contain active entries only');
-assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreationArtwork('historical-human-reading-v2').status,'retired','legacy imports may still resolve the retired tombstone');
-assert(buildCreationPrompt(withdrawnRoundTrip).includes('这张历史人物形象已撤下'));
-assert.match(buildCreationPrompt(withdrawnRoundTrip,'en'),/withdrawn/);
-await assert.rejects(readFile(path.join(root,'dist/assets/atelier/muse-fabric-reading-v2.png')),/ENOENT/,'the rejected human PNG must not remain in the public dist directory');
-await readFile(path.join(root,'openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/retired-assets/muse-fabric-reading-v2.png'));
-const legacyGrokConfig=JSON.parse(await readFile(path.join(root,'openspec/changes/archive/2026-10-06-rebuild-character-system/baseline/schema-9-grok-arch.json'),'utf8'));
-const withdrawnGrokSource={
-  format:PROJECT_FORMAT,version:PROJECT_VERSION,
-  character:legacyGrokConfig,
-  creation:{mode:'artwork',artworkId:'historical-grok-matte-work-v2'}
-};
-const withdrawnGrok=parseProject(exportProject(withdrawnGrokSource));
-assert.equal(withdrawnGrok.character.family,'grok');
-assert.equal(withdrawnGrok.character.presetId,'grok-arch');
-assert.equal(withdrawnGrok.character.shape,'arch','an imported Grok project retains its original silhouette');
-assert.equal(withdrawnGrok.creation.artworkId,'historical-grok-matte-work-v2','the retired artwork ID remains intact');
-assert.deepEqual(parseProject(exportProject(withdrawnGrok)),withdrawnGrok,'legacy Grok config and retired ID survive project JSON round-trip');
-const editedLegacyGrok=setProjectCharacter(withdrawnGrok,{...withdrawnGrok.character,notes:'Keep my archived Grok setup'});
-assert.equal(editedLegacyGrok.creation.artworkId,'historical-grok-matte-work-v2','same-family edits do not replace the retired artwork ID');
-assert.equal(editedLegacyGrok.character.shape,'arch','same-family edits do not replace the legacy Grok shape');
-const retiredGrok=resolveCreation(withdrawnGrok);
-assert.equal(retiredGrok.availability,'missing');
-assert.equal(retiredGrok.reason,'这张历史 Grok 形象已撤下');
-assert.equal(retiredGrok.artwork.status,'retired');
-assert.equal(retiredGrok.artwork.kind,'retired-tombstone');
-assert.equal(Object.hasOwn(retiredGrok.artwork,'src'),false,'the retired Grok tombstone has no downloadable source');
-assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-grok-matte-work-v2'),false,'withdrawn Grok art is excluded from the optional catalog');
-assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-grok-matte-work-v2'),false,'registered optional artworks contain active entries only');
-assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreationArtwork('historical-grok-matte-work-v2').status,'retired','legacy Grok imports may resolve the tombstone');
-assert(buildCreationPrompt(withdrawnGrok).includes('这张历史 Grok 形象已撤下'));
-await assert.rejects(readFile(path.join(root,'dist/assets/atelier/grok-matte-work-v2.png')),/ENOENT/,'the rejected Grok PNG must not remain in the public dist directory');
-await readFile(path.join(root,'openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/retired-assets/grok-matte-work-v2.png'));
+assert.throws(()=>parseProject(withdrawnHuman),/撤下|分组/,'withdrawn artwork IDs are rejected without importing or preserving an old project');
+for(const schema of [6,7,8,9]){
+ const oldRole={...baselineDots,version:schema};
+ assert.throws(()=>parseProject({format:PROJECT_FORMAT,version:PROJECT_VERSION,character:oldRole,creation:{mode:'artwork',artworkId:'candidate-dots-20261005',composition:null}}),/角色配置版本/,'schema '+schema+' is not migrated into the current project format');
+}
+for(const alias of ['muse','pets'])assert.throws(()=>parseProject({format:PROJECT_FORMAT,version:PROJECT_VERSION,character:{...baselineDots,family:alias},creation:{mode:'artwork',artworkId:'candidate-dots-20261005',composition:null}}),/选项无效/,'family alias '+alias+' is rejected');
+assert.throws(()=>parseProject({format:PROJECT_FORMAT,version:PROJECT_VERSION,character:{...baselineDots,legacy:{originalConfig:baselineDots}},creation:{mode:'artwork',artworkId:'candidate-dots-20261005',composition:null}}),/legacy\.originalConfig/,'a legacy recovery copy cannot bypass the current role schema');
+assert.throws(()=>parseProject(withdrawnHuman),/撤下|分组/,'a v2 wrapper carrying an unavailable old artwork receives an unsupported error instead of migration');
+assert.equal(CREATION_ARTWORKS.some(item=>item.id==='historical-human-reading-v2'),false,'withdrawn identities remain absent from the active artwork catalog');
+assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-human-reading-v2'),false,'only active artworks are exposed');
 for(const [family,character]of Object.entries(baselineByFamily)){
   const candidate=setProjectCharacter(project,character);
   const expected=family===project.character.family?project.creation.artworkId:CREATION_ARTWORKS.find(item=>item.family===family)?.id??null;
@@ -156,7 +136,7 @@ const listeningDots=setCharacterValue(baselineDots,'action','listen');
 assert.equal(inspectCompositionPack(dotsPack,listeningDots).availability,'available','the registered headphones listening state remains available');
 assert.deepEqual(selectCompositionLayers(dotsPack,listeningDots).map(l=>l.id),['headphones'],'listen is a static headphones-wearing semantic using the complete headphones layer');
 assert.deepEqual([...new Set(dotsPack.variants.map(variant=>variant.layerIds.join(',')))].sort(),['bare','headphones'],'the pack exposes only two mutually exclusive complete appearance recipes');
-assert.equal(inspectCompositionPack(dotsPack,setCharacterValue(baselineDots,'background','transparent')).availability,'available');
+assert.equal(inspectCompositionPack(dotsPack,{...baselineDots,background:'solid'}).availability,'available');
 assert.equal(inspectCompositionPack(dotsPack,changedCharacter).availability,'unsupported');
 assert.equal(inspectCompositionPack(dotsPack,setCharacterValue(baselineDots,'action','wave')).availability,'unsupported');
 const listenComposer=makeProject(listeningDots,{mode:'composer'});
@@ -164,10 +144,10 @@ const listenComposerPrompt=buildCreationPrompt(listenComposer);
 assert.match(listenComposerPrompt,/正面静态佩戴贴合头部的耳机/);
 assert.match(listenComposerPrompt,/保持正向且不倾斜/);
 assert.doesNotMatch(listenComposerPrompt,/轻轻侧头聆听/,'the static composer overrides the generic animated listening direction');
-assert.match(listenComposerPrompt,/基准候选，尚待真实网页美术验收/);
+assert.match(listenComposerPrompt,/已确认范围内的登记完整 PNG 配方/);
 assert.match(buildCreationPrompt(listenComposer,'en'),/static front-facing pose/);
 assert.doesNotMatch(buildCreationPrompt(listenComposer,'en'),/tilt gently while listening/);
-assert.match(buildCreationPrompt(listenComposer,'en'),/baseline candidate pending real webpage art review/);
+assert.match(buildCreationPrompt(listenComposer,'en'),/approved current template scope/);
 const unsupportedWave=setCharacterValue(baselineDots,'action','wave');
 assert.equal(inspectCompositionPack(dotsPack,unsupportedWave).availability,'unsupported');
 const unsupportedWavePrompt=buildCreationPrompt(makeProject(unsupportedWave,{mode:'composer'}));
@@ -264,23 +244,8 @@ assert.equal(resolveCharacter(humanWave).config.pose,'auto','the pose exception 
 const artworkListen=makeProject(listeningDots,{mode:'artwork'});
 assert.match(buildCreationPrompt(artworkListen),/轻轻侧头聆听/,'artwork mode keeps the existing generic action prompt');
 
-// Every frozen schema 6–9 fixture remains importable through the project wrapper.
-const legacyDir=path.join(root,'openspec/changes/archive/2026-10-06-rebuild-character-system/baseline');
-const fixtureFiles=(await readdir(legacyDir)).filter(file=>/^schema-[6-9]-.*\.json$/.test(file)).sort();
-assert.equal(fixtureFiles.length,24,'all four frozen legacy schema sets are present');
-for(const file of fixtureFiles){
-  const raw=JSON.parse(await readFile(path.join(legacyDir,file),'utf8'));
-  const loaded=parseProject(raw);
-  assert.equal(loaded.character.version,10,file+' migrates to character schema v10');
-  assert.equal(loaded.character.catalogTier,'legacy',file+' stays on the legacy compatibility path');
-  assert.equal(loaded.character.legacy.originalConfig.version,raw.version,file+' retains its original JSON snapshot');
-  assert.deepEqual(parseProject(exportProject(loaded)),loaded,file+' survives project export and re-import');
-}
-const v10Baseline=parseProject(baselineByFamily.dots);
-assert.equal(v10Baseline.character.catalogTier,'baseline','schema v10 baseline JSON remains baseline');
-const v10Legacy=parseProject(createPreset('muse-mu'));
-assert.equal(v10Legacy.character.family,'humans','schema v10 legacy Muse remains a human character');
-assert.equal(v10Legacy.character.catalogTier,'legacy','schema v10 legacy Muse remains legacy');
+assert.throws(()=>parseProject({format:PROJECT_FORMAT,version:1,character:baselineDots,creation:{mode:'artwork',artworkId:'candidate-dots-20261005',composition:null}}),/版本/,'the project wrapper accepts only version 2');
+for(const schema of [1,2,3,4,5])assert.throws(()=>parseProject({format:PROJECT_FORMAT,version:PROJECT_VERSION,character:{...baselineDots,version:schema},creation:{mode:'artwork',artworkId:'candidate-dots-20261005',composition:null}}),/角色配置版本/,'old role schema '+schema+' is not automatically restored');
 
 // A local pack fixture exercises capability checks without creating art assets.
 const localPack={
@@ -292,6 +257,7 @@ const localPack={
 };
 assert.equal(inspectCompositionPack(localPack,baselineDots).availability,'available');
 assert.equal(inspectCompositionPack(localPack,changedCharacter).availability,'available','declared tint path accepts a body color edit');
+assert.equal(resolveCompositionConfig(localPack,changedCharacter).colors.body,changedCharacter.colors.body,'a declared non-background tint value reaches the resolved Canvas config');
 const idleDots=setCharacterValue(baselineDots,'action','idle');
 assert.equal(inspectCompositionPack(localPack,idleDots).availability,'unsupported','undeclared action changes cannot claim a rendered pose');
 assert.throws(()=>resolveCompositionConfig(localPack,idleDots),/只会写入 Prompt|渲染配方/,'the default render-config API rejects unsupported settings');
@@ -371,14 +337,14 @@ try{
   assert.equal(png.type,'image/png');
   assert(operations.some(operation=>operation[0]==='drawImage'),'composition draws decoded image layers');
   assert(operations.some(operation=>operation[0]==='fillRect'),'declared tint uses the source alpha mask path');
-  assert.equal(composer.frame.context.fillStyle,'','the stored layer frame must not bake in a background; transparent export may override a solid preview');
+  assert.equal(composer.frame.context.fillStyle,'','the stored layer frame must not bake in a background; transparent export cannot fill an opaque backdrop');
 
   assert.equal(await composer.update(localPack,idleDots,{templatePreview:true}),true);
   assert.equal(composer.canvas.dataset.renderingMode,'selected-template-preview');
-  assert.equal(composer.canvas.attributes['aria-label'],'所选模板与背景参考预览；高级 Prompt 设定未渲染');
+  assert.equal(composer.canvas.attributes['aria-label'],'所选模板参考预览；高级 Prompt 设定未渲染');
   await assert.rejects(composer.capture(32),/只是已选模板/,'the renderer itself blocks export of an unsupported template-only preview');
   assert.equal(await composer.update(localPack,baselineDots),true,'a supported full signature restores current-configuration rendering');
-  assert.equal(composer.canvas.attributes['aria-label'],'当前模板与背景合成预览');
+  assert.equal(composer.canvas.attributes['aria-label'],'当前模板透明画布合成预览');
 
   const beforeShapeRender=pendingImages.length;
   assert.equal(await composer.update(shapePack,heartDots),true);
@@ -408,4 +374,4 @@ try{
   if(savedGlobals.Image===undefined)delete globalThis.Image;else globalThis.Image=savedGlobals.Image;
 }
 
-console.log('Creation project, immutable artwork, prompt, v6-v10 migration, pack capability and layered-capture readiness checks passed.');
+console.log('Creation v2 projects, strict current role format, immutable artwork, prompt, pack capability and layered-capture readiness checks passed.');

@@ -1,0 +1,298 @@
+{
+  "status": "authored-unapproved",
+  "title": "Additional human headphone geometry proposals",
+  "purpose": "Initial geometry and foreground-occlusion annotations for testing the existing pilot-headphones-v1 against three exact registered human PNG states. These proposals do not approve the headphone adaptation or authorize it for random/default recipes.",
+  "measurementMethod": {
+    "source": "Viewed the actual 1254x1254 registered PNGs at original size and manually estimated landmarks in normalized canvas coordinates.",
+    "coordinateSpace": "Top-left origin; x and y normalized to the bound 1254x1254 source canvas.",
+    "precision": "Coordinates are authored proposals for Canvas iteration, not pixel-segmented measurements or approved art annotations.",
+    "solverStatus": "No final fit or visual-coherence pass is claimed. In particular, foreground cutouts and headphone contact must be inspected in rendered output."
+  },
+  "headphoneAsset": {
+    "id": "pilot-headphones-v1",
+    "version": "2.1.0",
+    "sha256": "752814b890c50f04d2e2884f5d4c976969bde1667bff18a1e2b6feced4ca7b02",
+    "currentFitPolicy": {
+      "id": "fit/headphone-first-pilot",
+      "version": "1.1.0"
+    },
+    "proposedFitPolicyDelta": {
+      "id": "fit/headphone-first-pilot",
+      "version": "1.2.0-proposed",
+      "headBounds": {
+        "widthRatio": { "min": 0.4, "max": 0.9 },
+        "heightRatio": { "min": 0.35, "max": 0.88 },
+        "aspectRatio": { "min": 0.85, "max": 1.3 },
+        "mountSpanRatio": { "min": 0.68, "max": 0.9 }
+      },
+      "cup": {
+        "minScale": 0.22,
+        "maxScale": 0.7,
+        "contactTolerancePx": 1,
+        "maxRotationDeg": 40
+      },
+      "unchangedHardGates": [
+        "cup contact tolerance remains 1 px",
+        "faceClearancePx remains 8",
+        "band fit ranges and per-profile maxContourErrorPx remain unchanged",
+        "baseId, poseId, layoutId, styleId and source asset hashes remain exact allowlists"
+      ],
+      "reason": "The viewed human head silhouettes are narrower/shorter than the current minimums, and the wave pose needs a smaller cup. Recheck these proposed shared bounds against the already-supported human classic profile and the rendered kit before adopting this policy version."
+    }
+  },
+  "profiles": [
+    {
+      "id": "geometry-proposal/human-bun-yellow-fixed-headphones",
+      "version": "0.1.0-proposed",
+      "baseId": "human-bun-yellow::fixed",
+      "baseAssetRefs": [
+        {
+          "id": "artwork/human-bun-yellow/full",
+          "version": "1.0.0",
+          "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+        }
+      ],
+      "assetSrc": "./assets/looks/human-bun-yellow.png",
+      "canvas": { "width": 1254, "height": 1254 },
+      "bodyId": "human-chibi",
+      "view": "front",
+      "poseId": "front-wave-calm",
+      "layoutId": "human-chibi-front",
+      "styleId": "refined-chibi",
+      "landmarks": {
+        "headBounds": { "x": 0.285, "y": 0.005, "width": 0.443, "height": 0.520 },
+        "crown": { "x": 0.510, "y": 0.174 },
+        "earMounts": {
+          "left": {
+            "x": 0.314,
+            "y": 0.422,
+            "normal": { "x": -0.985, "y": 0.172 },
+            "cupSeat": { "height": 0.112, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          },
+          "right": {
+            "x": 0.691,
+            "y": 0.420,
+            "normal": { "x": 0.985, "y": 0.172 },
+            "cupSeat": { "height": 0.112, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          }
+        }
+      },
+      "bandSeat": {
+        "leftShoulder": { "x": 0.357, "y": 0.258 },
+        "rightShoulder": { "x": 0.663, "y": 0.255 },
+        "crown": { "x": 0.510, "y": 0.174 },
+        "maxContourErrorPx": 12
+      },
+      "faceKeepout": { "x": 0.365, "y": 0.337, "width": 0.286, "height": 0.191 },
+      "occlusionCutouts": {
+        "band": [
+          [
+            { "x": 0.289, "y": 0.315 }, { "x": 0.309, "y": 0.286 }, { "x": 0.334, "y": 0.296 },
+            { "x": 0.346, "y": 0.333 }, { "x": 0.341, "y": 0.390 }, { "x": 0.323, "y": 0.422 },
+            { "x": 0.302, "y": 0.395 }
+          ],
+          [
+            { "x": 0.665, "y": 0.295 }, { "x": 0.688, "y": 0.282 }, { "x": 0.714, "y": 0.310 },
+            { "x": 0.715, "y": 0.365 }, { "x": 0.698, "y": 0.414 }, { "x": 0.677, "y": 0.388 }
+          ]
+        ],
+        "leftCup": [
+          [
+            { "x": 0.289, "y": 0.315 }, { "x": 0.309, "y": 0.286 }, { "x": 0.334, "y": 0.296 },
+            { "x": 0.346, "y": 0.333 }, { "x": 0.341, "y": 0.390 }, { "x": 0.323, "y": 0.422 },
+            { "x": 0.302, "y": 0.395 }
+          ],
+          [
+            { "x": 0.260, "y": 0.474 }, { "x": 0.267, "y": 0.455 }, { "x": 0.282, "y": 0.451 },
+            { "x": 0.292, "y": 0.433 }, { "x": 0.308, "y": 0.440 }, { "x": 0.316, "y": 0.457 },
+            { "x": 0.337, "y": 0.459 }, { "x": 0.352, "y": 0.483 }, { "x": 0.344, "y": 0.511 },
+            { "x": 0.324, "y": 0.530 }, { "x": 0.293, "y": 0.511 }, { "x": 0.274, "y": 0.493 }
+          ]
+        ],
+        "rightCup": [
+          [
+            { "x": 0.665, "y": 0.295 }, { "x": 0.688, "y": 0.282 }, { "x": 0.714, "y": 0.310 },
+            { "x": 0.715, "y": 0.365 }, { "x": 0.698, "y": 0.414 }, { "x": 0.677, "y": 0.388 }
+          ]
+        ]
+      },
+      "visualNotes": [
+        "Place the headband crown on the front-lower side of the bun/hair junction (proposed y=0.174); do not route it around the bun top.",
+        "The left raised hand approaches the left earcup. Its polygon is a rough foreground mask proposal, not a pixel-accurate segmentation; inspect finger edges and do not let the cup cover the hand.",
+        "Temple-lock cutouts and headphone contact/fit require Canvas review."
+      ],
+      "confidence": "medium-low",
+      "approval": "unapproved"
+    },
+    {
+      "id": "geometry-proposal/human-blond-glasses-fixed-headphones",
+      "version": "0.1.0-proposed",
+      "baseId": "human-blond-glasses::fixed",
+      "baseAssetRefs": [
+        {
+          "id": "artwork/human-blond-glasses/full",
+          "version": "1.0.0",
+          "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+        }
+      ],
+      "assetSrc": "./assets/looks/human-blond-glasses.png",
+      "canvas": { "width": 1254, "height": 1254 },
+      "bodyId": "human-chibi",
+      "view": "front",
+      "poseId": "front-neutral",
+      "layoutId": "human-chibi-front",
+      "styleId": "refined-chibi",
+      "landmarks": {
+        "headBounds": { "x": 0.252, "y": 0.025, "width": 0.486, "height": 0.521 },
+        "crown": { "x": 0.505, "y": 0.047 },
+        "earMounts": {
+          "left": {
+            "x": 0.326,
+            "y": 0.421,
+            "normal": { "x": -0.990, "y": 0.141 },
+            "cupSeat": { "height": 0.122, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          },
+          "right": {
+            "x": 0.696,
+            "y": 0.420,
+            "normal": { "x": 0.990, "y": 0.141 },
+            "cupSeat": { "height": 0.122, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          }
+        }
+      },
+      "bandSeat": {
+        "leftShoulder": { "x": 0.358, "y": 0.183 },
+        "rightShoulder": { "x": 0.652, "y": 0.181 },
+        "crown": { "x": 0.505, "y": 0.047 },
+        "maxContourErrorPx": 12
+      },
+      "faceKeepout": { "x": 0.338, "y": 0.298, "width": 0.326, "height": 0.190 },
+      "occlusionCutouts": {
+        "band": [
+          [
+            { "x": 0.254, "y": 0.274 }, { "x": 0.272, "y": 0.225 }, { "x": 0.304, "y": 0.201 },
+            { "x": 0.338, "y": 0.222 }, { "x": 0.352, "y": 0.277 }, { "x": 0.340, "y": 0.341 },
+            { "x": 0.320, "y": 0.383 }, { "x": 0.287, "y": 0.360 }
+          ],
+          [
+            { "x": 0.657, "y": 0.221 }, { "x": 0.685, "y": 0.207 }, { "x": 0.720, "y": 0.235 },
+            { "x": 0.741, "y": 0.283 }, { "x": 0.719, "y": 0.349 }, { "x": 0.692, "y": 0.382 },
+            { "x": 0.671, "y": 0.335 }
+          ]
+        ],
+        "leftCup": [
+          [
+            { "x": 0.254, "y": 0.274 }, { "x": 0.272, "y": 0.225 }, { "x": 0.304, "y": 0.201 },
+            { "x": 0.338, "y": 0.222 }, { "x": 0.352, "y": 0.277 }, { "x": 0.340, "y": 0.341 },
+            { "x": 0.320, "y": 0.383 }, { "x": 0.287, "y": 0.360 }
+          ]
+        ],
+        "rightCup": [
+          [
+            { "x": 0.657, "y": 0.221 }, { "x": 0.685, "y": 0.207 }, { "x": 0.720, "y": 0.235 },
+            { "x": 0.741, "y": 0.283 }, { "x": 0.719, "y": 0.349 }, { "x": 0.692, "y": 0.382 },
+            { "x": 0.671, "y": 0.335 }
+          ]
+        ]
+      },
+      "visualNotes": [
+        "The original transparent round glasses and their temple arms are part of the immutable base PNG. Keep the entire frame/eye area within faceKeepout; do not cover or redraw it.",
+        "Cups sit close to the glasses' outer hinges. Verify that the resolved cups clear the frame and temple arms while retaining ear contact; if both cannot be met, keep this state unsupported.",
+        "The hair cutouts are initial masks only and must be checked at native output size."
+      ],
+      "confidence": "medium-low",
+      "approval": "unapproved"
+    },
+    {
+      "id": "geometry-proposal/candidate-humans-20261005-wave-headphones",
+      "version": "0.1.0-proposed",
+      "baseId": "candidate-humans-20261005::wave",
+      "baseAssetRefs": [
+        {
+          "id": "state/candidate-humans-20261005/wave",
+          "version": "1.0.0",
+          "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308"
+        }
+      ],
+      "assetSrc": "./assets/poses/human-wave-v1.png",
+      "canvas": { "width": 1254, "height": 1254 },
+      "bodyId": "human-chibi",
+      "view": "front",
+      "poseId": "front-wave-happy",
+      "layoutId": "human-chibi-front",
+      "styleId": "refined-chibi",
+      "landmarks": {
+        "headBounds": { "x": 0.295, "y": 0.164, "width": 0.414, "height": 0.398 },
+        "crown": { "x": 0.514, "y": 0.174 },
+        "earMounts": {
+          "left": {
+            "x": 0.315,
+            "y": 0.442,
+            "normal": { "x": -0.990, "y": 0.141 },
+            "cupSeat": { "height": 0.110, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          },
+          "right": {
+            "x": 0.690,
+            "y": 0.441,
+            "normal": { "x": 0.990, "y": 0.141 },
+            "cupSeat": { "height": 0.110, "minHeadWidthRatio": 0.14, "maxHeadWidthRatio": 0.18 }
+          }
+        }
+      },
+      "bandSeat": {
+        "leftShoulder": { "x": 0.365, "y": 0.291 },
+        "rightShoulder": { "x": 0.649, "y": 0.287 },
+        "crown": { "x": 0.514, "y": 0.174 },
+        "maxContourErrorPx": 12
+      },
+      "faceKeepout": { "x": 0.362, "y": 0.339, "width": 0.294, "height": 0.199 },
+      "occlusionCutouts": {
+        "band": [
+          [
+            { "x": 0.310, "y": 0.306 }, { "x": 0.326, "y": 0.267 }, { "x": 0.354, "y": 0.237 },
+            { "x": 0.390, "y": 0.219 }, { "x": 0.420, "y": 0.235 }, { "x": 0.409, "y": 0.286 },
+            { "x": 0.378, "y": 0.325 }, { "x": 0.344, "y": 0.354 }
+          ],
+          [
+            { "x": 0.629, "y": 0.243 }, { "x": 0.657, "y": 0.220 }, { "x": 0.690, "y": 0.233 },
+            { "x": 0.719, "y": 0.267 }, { "x": 0.708, "y": 0.318 }, { "x": 0.679, "y": 0.354 },
+            { "x": 0.650, "y": 0.328 }
+          ]
+        ],
+        "leftCup": [
+          [
+            { "x": 0.310, "y": 0.306 }, { "x": 0.326, "y": 0.267 }, { "x": 0.354, "y": 0.237 },
+            { "x": 0.390, "y": 0.219 }, { "x": 0.420, "y": 0.235 }, { "x": 0.409, "y": 0.286 },
+            { "x": 0.378, "y": 0.325 }, { "x": 0.344, "y": 0.354 }
+          ],
+          [
+            { "x": 0.282, "y": 0.469 }, { "x": 0.288, "y": 0.449 }, { "x": 0.300, "y": 0.445 },
+            { "x": 0.306, "y": 0.429 }, { "x": 0.319, "y": 0.434 }, { "x": 0.326, "y": 0.449 },
+            { "x": 0.341, "y": 0.456 }, { "x": 0.365, "y": 0.480 }, { "x": 0.358, "y": 0.503 },
+            { "x": 0.341, "y": 0.526 }, { "x": 0.316, "y": 0.538 }, { "x": 0.294, "y": 0.516 }
+          ]
+        ],
+        "rightCup": [
+          [
+            { "x": 0.629, "y": 0.243 }, { "x": 0.657, "y": 0.220 }, { "x": 0.690, "y": 0.233 },
+            { "x": 0.719, "y": 0.267 }, { "x": 0.708, "y": 0.318 }, { "x": 0.679, "y": 0.354 },
+            { "x": 0.650, "y": 0.328 }
+          ]
+        ]
+      },
+      "visualNotes": [
+        "This exact pose is smaller and lower on canvas than the classic human base; do not reuse classic coordinates by family inference.",
+        "The raised hand and fingers overlap the left earcup footprint. The proposed leftCup foreground polygon must be refined against actual pixels; if a clean hand-over-cup mask and ear contact cannot coexist, mark this pose unsupported.",
+        "Cup scale is proposed at 0.110 canvas height. Validate it against the declared fitPolicy minimum before treating this as a candidate recipe."
+      ],
+      "confidence": "low",
+      "approval": "unapproved"
+    }
+  ],
+  "acceptanceBoundary": [
+    "These annotations do not change the catalog, resolver, cache, component source, project format, default random pool, or current fitPolicy.",
+    "Each proposal is bound to the exact baseId, poseId, layoutId, styleId, canvas size, asset ID, asset version, and SHA-256 above.",
+    "A proposal becomes eligible only after policy hard checks pass and a separate human visual review approves contact, proportions, glasses/hair/hand occlusion, material and export appearance for this exact profile version.",
+    "The approval of the underlying complete PNG does not approve a new headphone adaptation."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "dot-studio-approval-scope-audit/v1",
+  "phase": "historical-approval-record-audit",
+  "capturedAt": "2026-10-06T03:49:39.904Z",
+  "sourceId": "sha256:f74e8bf212b40048e397bd7b068fb7231832abc5b00c87a69a028d3440b48978",
+  "approvalRecord": {
+    "path": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+    "sha256": "da18b7f59419304b23c5bb48fefc283f9a0bda5e353fd43fa9918fc3ae0a7241",
+    "recordedAt": "2026-10-06T00:56:24Z",
+    "siteVersion": 35,
+    "cacheRevision": "83",
+    "registeredLooks": [
+      {
+        "id": "candidate-dots-20261005",
+        "family": "dots",
+        "name": "蓝色 Dots · 耳机基准候选"
+      },
+      {
+        "id": "candidate-grok-20261005",
+        "family": "grok",
+        "name": "紫色 Grok Bot · 基准候选"
+      },
+      {
+        "id": "candidate-meta-muse-20261005",
+        "family": "meta-muse",
+        "name": "奶油 Meta Muse · 基准候选"
+      },
+      {
+        "id": "candidate-humans-20261005",
+        "family": "humans",
+        "name": "栗发青绿 · 人物基准候选"
+      },
+      {
+        "id": "candidate-animals-20261005",
+        "family": "animals",
+        "name": "暖橙柴犬 · 动物基准候选"
+      },
+      {
+        "id": "dots-rose-glasses",
+        "family": "dots",
+        "name": "莓粉圆框 Dots"
+      },
+      {
+        "id": "dots-lilac-bucket",
+        "family": "dots",
+        "name": "浅紫渔夫帽 Dots"
+      },
+      {
+        "id": "grok-green-cloud",
+        "family": "grok",
+        "name": "青绿云朵 Grok"
+      },
+      {
+        "id": "grok-teal-square",
+        "family": "grok",
+        "name": "青绿色方块 Grok"
+      },
+      {
+        "id": "muse-rose-flowers",
+        "family": "meta-muse",
+        "name": "玫粉花束 Meta Muse"
+      },
+      {
+        "id": "muse-sage-reading",
+        "family": "meta-muse",
+        "name": "鼠尾草捧书 Meta Muse"
+      },
+      {
+        "id": "human-bun-yellow",
+        "family": "humans",
+        "name": "黄衣丸子头女孩"
+      },
+      {
+        "id": "human-blond-glasses",
+        "family": "humans",
+        "name": "金发圆框伙伴"
+      },
+      {
+        "id": "animal-white-cat",
+        "family": "animals",
+        "name": "奶油白猫伙伴"
+      },
+      {
+        "id": "animal-gray-husky",
+        "family": "animals",
+        "name": "灰白哈士奇伙伴"
+      }
+    ],
+    "supportedStateBoundary": "当前工作台所提供的登记状态；未制作状态和未逐项回读的技术输出不推断通过"
+  },
+  "catalogMapping": {
+    "recordListsLookIdentities": true,
+    "recordListsPoseFiles": false,
+    "recordBindsPoseFilesToExactDisplayedState": false,
+    "knownPerStateBindings": [],
+    "status": "confirmation-scope-pending-file-to-state-mapping",
+    "interpretation": "本冻结只复述不可变历史审批记录。记录列出15个 look 身份与宽泛的工作台登记状态边界，但未列逐姿态 PNG 清单，也未提供可把这些文件映射回确认时具体页面状态的资料。不能由该记录推断 pose 获批或被否决。当前工程/批准状态应在最终同 source/resource manifest 的捕获中另行读取。"
+  }
+}

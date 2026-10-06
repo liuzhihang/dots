@@ -1,6 +1,6 @@
-import {getArtSample} from './studio-art.js?v=83';
-import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=83';
-import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=83';
+import {getArtSample} from './studio-art.js?v=86';
+import {familyPresets,getPreset,normalizeFamilyId,REFERENCE_INFO} from './studio-catalog.js?v=86';
+import {LOOK_PRESETS,getLookDefinition,getTrustedLookPreset} from './studio-looks.js?v=86';
 export const VERSION = 10;
 const option = (label,en,zh,english=zh) => ({label,en,zh,english});
 export const FAMILIES = {
@@ -174,12 +174,14 @@ Object.assign(ACTIONS,{
  done:{label:'完成啦',en:'Done',short:'轻跳 · 回归平静',prop:'none',expression:'happy',art:0,zh:'一次轻快的小跳与少量散开的小形体，随后回到平静，收尾有停顿。',english:'A small joyful bounce and a few scattered shapes, then settle calmly with a resting beat.'},
  holdClosedBook:{label:'抱着合拢的书',en:'Holding a closed book',short:'竖直抱住书本',prop:'closedBook',expression:'calm',art:0,zh:'双手把一本竖直合拢的书抱在胸前，封面朝外；书页始终合上，不做翻页或阅读动作。',english:'Hold one closed book upright against the chest with both hands and its cover facing outward. Keep the pages closed; do not open, turn or read the book.'}
 });
-export const COMPOSITION={framing:{full:option('完整角色','Full character','完整主体，耳朵、尾巴与配饰不裁切','Full character with ears, tail and accessories uncropped'),bust:option('头像与上半身','Head & shoulders','头像与适量上半身，手与道具需要时可进入画面','Head and shoulders with enough upper body; hands and props may enter where needed'),portrait:option('近景头像','Close portrait','近景头像；持物动作需略微放宽构图，确保手与道具关系可读','Close portrait; widen enough for a prop action to keep hand–prop contact legible')},camera:{front:option('正面','Front','正面视角，轻微自然透视；需要展示持物关系时可略微抬高镜头，让手与道具的接触清楚可见','Front view with gentle natural perspective; slightly elevate the camera when needed to reveal natural hand–prop contact'),threeQuarter:option('轻侧身','Three-quarter','自然四分之三视角，双眼可读','A natural three-quarter view with readable eyes'),side:option('侧面','Side','明确的侧面视角，保持身份轮廓','A clear side view preserving the identity silhouette')},background:{studio:option('浅色棚拍','Light studio','安静的浅色棚拍背景，柔和接触阴影','Quiet light studio background with soft contact shadows'),solid:option('自定义纯色','Solid color','干净的纯色背景','A clean solid-color background'),transparent:option('透明背景','Transparent','真正透明的 alpha 背景，不画棋盘格、不画白底、不画地板','True transparent alpha background; no checkerboard, white backdrop or floor')},output:{image:option('角色图','Character image','输出一张高完成度角色图片','Produce one finished character image'),sticker:option('贴纸','Sticker','输出完整轮廓的单枚透明贴纸，保留安全边距','Produce one transparent sticker with a full silhouette and safe margins'),storyboard:option('动作分镜','Storyboard','输出动作的起始、过程、结束三个静态分镜，固定身份、机位、比例与配饰位置','Produce three static frames: start, action and end. Keep identity, camera, proportions and accessories consistent'),pet:option('Pet 创作简报','Pet brief','输出角色与动作制作说明，后续按 ChatGPT Pet 目标版本的当前规范制作并验证素材。本次输出不是已安装、可直接导入或已验证的宠物文件','Produce a character and animation production brief. Create and validate assets against the current requirements of the target ChatGPT Pet version later. This output is not an installed, importable or validated pet file')}};
+export const COMPOSITION={framing:{full:option('完整角色','Full character','完整主体，耳朵、尾巴与配饰不裁切','Full character with ears, tail and accessories uncropped'),bust:option('头像与上半身','Head & shoulders','头像与适量上半身，手与道具需要时可进入画面','Head and shoulders with enough upper body; hands and props may enter where needed'),portrait:option('近景头像','Close portrait','近景头像；持物动作需略微放宽构图，确保手与道具关系可读','Close portrait; widen enough for a prop action to keep hand–prop contact legible')},camera:{front:option('正面','Front','正面视角，轻微自然透视；需要展示持物关系时可略微抬高镜头，让手与道具的接触清楚可见','Front view with gentle natural perspective; slightly elevate the camera when needed to reveal natural hand–prop contact'),threeQuarter:option('轻侧身','Three-quarter','自然四分之三视角，双眼可读','A natural three-quarter view with readable eyes'),side:option('侧面','Side','明确的侧面视角，保持身份轮廓','A clear side view preserving the identity silhouette')},background:{transparent:option('透明背景','Transparent','真正透明的 alpha 背景，不画棋盘格、不画白底、不画地板','True transparent alpha background; no checkerboard, white backdrop or floor')},output:{image:option('角色图','Character image','输出一张高完成度角色图片','Produce one finished character image'),sticker:option('贴纸','Sticker','输出完整轮廓的单枚透明贴纸，保留安全边距','Produce one transparent sticker with a full silhouette and safe margins'),storyboard:option('动作分镜','Storyboard','输出动作的起始、过程、结束三个静态分镜，固定身份、机位、比例与配饰位置','Produce three static frames: start, action and end. Keep identity, camera, proportions and accessories consistent'),pet:option('Pet 创作简报','Pet brief','输出角色与动作制作说明，后续按 ChatGPT Pet 目标版本的当前规范制作并验证素材。本次输出不是已安装、可直接导入或已验证的宠物文件','Produce a character and animation production brief. Create and validate assets against the current requirements of the target ChatGPT Pet version later. This output is not an installed, importable or validated pet file')}};
+// These are retained only as strict v2/VERSION 10 metadata. Current outputs do not consume them.
+const STORED_BACKGROUND_VALUES=['transparent','solid','studio'];
 export const PRESERVE={silhouette:['轮廓与物种','silhouette and species'],hair:['发型与发色','hairstyle and hair color'],face:['脸型与可见五官','face shape and visible features'],colors:['主体配色','primary color palette'],clothing:['服装特征','clothing details'],accessories:['已有配饰','existing accessories']};
 function baseCharacter(family='dots'){
  family=normalizeFamilyId(family);if(!FAMILIES[family])family='dots';
  const f=FAMILIES[family],p=PALETTES.find(x=>x.body===f.color)||PALETTES[0],presetId=FAMILY_BASELINES[family].presetId;
- return {version:VERSION,rendererVersion:'atelier-4',catalogTier:'baseline',isLegacy:false,legacy:null,provenance:{source:getPreset(presetId)?.provenance||'original',basePresetId:presetId,modified:false,referenceDate:getPreset(presetId)?.referenceDate||null},presetId,faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',expressionAccents:false,palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:family==='dots'?'#222326':p.eyes,accessory:family==='dots'?'#292A2D':p.accessory,headAccessory:family==='dots'?'#292A2D':p.accessory,background:'#F3F6FA',skin:'#D8A985',hair:'#56392E',clothing:f.color},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='humans'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'headphones':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'studio',aspect:'1:1',scale:72,output:'image',motionStyle:'auto',motionSpeed:1,skinMaterial:family==='humans'?'matte':'auto',hairMaterial:family==='humans'?'fiber':'auto',clothMaterial:family==='humans'?'knit':family==='meta-muse'?'fabricCloth':'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
+ return {version:VERSION,rendererVersion:'atelier-4',catalogTier:'baseline',isLegacy:false,legacy:null,provenance:{source:getPreset(presetId)?.provenance||'original',basePresetId:presetId,modified:false,referenceDate:getPreset(presetId)?.referenceDate||null},presetId,faceShape:'round',outfit:'sweater',family,name:f.template,shape:f.shape,material:f.material,fur:'short',expressionAccents:false,palette:p.id,colors:{body:f.color,secondary:f.secondary,eyes:family==='dots'?'#222326':p.eyes,accessory:family==='dots'?'#292A2D':p.accessory,headAccessory:family==='dots'?'#292A2D':p.accessory,background:'#F3F6FA',skin:'#D8A985',hair:'#56392E',clothing:f.color},eyeColorManual:false,eyes:f.eyes,eyeScale:1,eyeSpacing:1,brows:family==='humans'?'soft':'none',mouth:f.mouth,expression:'calm',headScale:1,bodyWidth:1,hair:'short',limbs:'auto',action:'idle',pose:'auto',accessories:{head:family==='dots'?'headphones':'none',face:'none',neck:'none',prop:'none'},framing:f.framing,camera:'front',background:'transparent',aspect:'1:1',scale:72,output:'image',motionStyle:'auto',motionSpeed:1,skinMaterial:family==='humans'?'matte':'auto',hairMaterial:family==='humans'?'fiber':'auto',clothMaterial:family==='humans'?'knit':family==='meta-muse'?'fabricCloth':'knit',reference:{enabled:false,notes:'',preserve:['hair','face','colors','clothing','accessories'],overrides:[]},notes:'',randomSeed:'dot-01'};
 }
 export function createCharacter(family='dots'){family=normalizeFamilyId(family);return createPreset(FAMILY_BASELINES[family]?.presetId||FAMILY_BASELINES.dots.presetId);}
 export function createPreset(id,previous=null){
@@ -240,6 +242,7 @@ function markOverride(c,path){
 export function setCharacterValue(input,path,value){
  const allowed=new Set([...Object.entries(input).filter(([,v])=>v===null||typeof v!=='object').map(([k])=>k),...Object.keys(createCharacter().colors).map(k=>'colors.'+k),...Object.keys(ACCESSORIES).map(k=>'accessories.'+k)]);
  if(typeof path!=='string'||!allowed.has(path)||path.split('.').some(p=>['__proto__','constructor','prototype'].includes(p)))throw new Error('不支持的配置字段');
+ if(path==='background'||path==='colors.background')throw new Error('角色背景设置已移除；角色输出始终使用透明背景');
  let c=copy(input);const bits=path.split('.');let at=c;for(const p of bits.slice(0,-1))at=at[p];at[bits.at(-1)]=value;markOverride(c,path);
  if(path==='action'&&!ACTIONS[value])throw new Error('动作无效');
  // Eye design, emotion and temporal action are independently saved. Sleep only closes eyes in the resolved pose.
@@ -274,7 +277,6 @@ export function resolveCharacter(input){
  if(c.action==='sleep'&&obscuresEyes(c.accessories.face)){c.accessories.face='none';adjustments.push('睡觉时暂时收起墨镜；原来的选择已保留');}
  const seatedShibaWave=c.family==='animals'&&c.shape==='shiba'&&c.action==='wave'&&c.pose==='sit';
  if(c.action!=='idle'&&c.pose!=='auto'&&!seatedShibaWave){c.pose='auto';adjustments.push('姿态已跟随当前动作');}
- if(c.output==='sticker'||c.output==='pet')c.background='transparent';
  const activeHands=!!(act.prop!=='none'||c.action==='wave'||c.pose==='chin');
  if(animal||human)c.limbs='auto';
  if(!animal&&!human&&activeHands&&!['auto','hands','both'].includes(c.limbs)){c.limbs=c.limbs==='feet'?'both':'hands';adjustments.push('该动作需要双手，已更新肢体配置');}
@@ -285,12 +287,12 @@ export function resolveCharacter(input){
  const changes=[];const base=createCharacter(c.family);
  if(c.shape!==base.shape)changes.push(SHAPES[c.shape].label);
  if(c.material!==sampleMaterial)changes.push(MATERIALS[c.material].label);
- if(['body','secondary','eyes','accessory'].some(k=>c.colors[k].toUpperCase()!==base.colors[k].toUpperCase())||c.background==='solid'&&c.colors.background!==base.colors.background)changes.push('自定义配色');
+ if(['body','secondary','eyes','accessory'].some(k=>c.colors[k].toUpperCase()!==base.colors[k].toUpperCase()))changes.push('自定义配色');
  if(c.eyes!==base.eyes||c.eyeScale!==1||c.eyeSpacing!==1||c.brows!==base.brows||c.mouth!==base.mouth||c.expression!==act.expression)changes.push('五官与表情');
  if(c.accessories.face!=='none'||c.accessories.neck!=='none'||c.accessories.head!==(c.action==='listen'?'headphones':base.accessories.head))changes.push('自选配饰');
  if(c.headScale!==1||c.bodyWidth!==1||c.limbs!=='auto')changes.push('外观比例');
  if(act.art===0&&c.action!=='idle')changes.push(act.label);
- if(c.camera!=='front'||c.framing!==base.framing||c.scale!==72||c.aspect!=='1:1'||c.background!=='studio')changes.push('构图与背景');
+ if(c.camera!=='front'||c.framing!==base.framing||c.scale!==72||c.aspect!=='1:1')changes.push('构图');
  if(c.reference.enabled)changes.push('参考图特征');
  if(c.pose!=='auto')changes.push('姿态');
  if(c.shape==='human'&&(c.faceShape!=='round'||c.outfit!=='sweater'||c.hair!=='short-curly'||c.skinMaterial!=='auto'||c.hairMaterial!=='auto'||c.clothMaterial!=='knit'||['skin','hair','clothing'].some(k=>c.colors[k]!==base.colors[k])))changes.push('人物与分部件材质');
@@ -437,9 +439,9 @@ export function buildPrompt(input,lang='zh'){
   });
   add('明确的手动覆盖','EXPLICIT MANUAL OVERRIDES',details.join('; ')+say('。这些是用户在参考模式中手动修改的项，仅覆盖对应特征。','. These fields were deliberately changed in reference mode; override only the corresponding reference features.'));
  }
- add('镜头与画面','COMPOSITION',[text(COMPOSITION.framing[c.framing]),text(COMPOSITION.camera[c.camera]),text(COMPOSITION.background[c.background])].join(en?'. ':'；')+
+ add('镜头与画面','COMPOSITION',[text(COMPOSITION.framing[c.framing]),text(COMPOSITION.camera[c.camera]),text(COMPOSITION.background.transparent)].join(en?'. ':'；')+
   say('。画幅 '+c.aspect+'，主体展示大小 '+c.scale+'%（72% 为均衡预设；更高值放大主体，减少留白）。为耳朵、帽子、手和道具留出完整安全边距。','. Aspect ratio '+c.aspect+', subject display size '+c.scale+'% (72% is the balanced preset; higher values enlarge the subject and reduce whitespace). Leave full safe margins for ears, hats, hands and props.')+
-  (c.background==='solid'?say(' 背景色 ',' Background color ')+c.colors.background+'. ':' ')+
+  say(' 背景始终为真实透明 Alpha，不画白底、棋盘格或地面。',' The background is always true transparent alpha, with no white fill, checkerboard or floor.')+
   say('柔和宽光源，明暗清楚，不用大面积霓虹。','Broad soft studio light, readable form, no large neon effects.'));
  add('输出','OUTPUT',text(COMPOSITION.output[c.output])+
   ((c.output==='image'||c.output==='sticker')&&!AGENT_ACTIONS.includes(c.action)?say(' 单张图只表现一个最清楚的动作瞬间，不在画面里重复多个角色。',' For a single image, show one clear action moment rather than multiple copies of the character.'):''));
@@ -452,29 +454,47 @@ function enumValue(x,allowed,name){if(typeof x!=='string'||!allowed.includes(x))
 function textValue(x,max,name){if(typeof x!=='string'||x.length>max)throw new Error(name+' 内容无效或过长');return x;}
 function numValue(x,min,max,name){if(!Number.isFinite(x)||x<min||x>max)throw new Error(name+' 超出范围');return x;}
 export function validateConfig(raw){
- if(!object(raw)||![6,7,8,9,VERSION].includes(raw.version))throw new Error('请导入 Dot Studio v10、v9、v8、v7 或 v6 配置；更早配置可在结构编辑器中打开');
- const oldVersion=raw.version,originalSnapshot=copy(raw);
- raw=copy(raw);if(oldVersion<9){raw.expressionAccents=false;raw.colors={...raw.colors,headAccessory:raw.colors?.accessory};}
- if(oldVersion===6)raw.reference={enabled:raw.reference?.enabled??false,notes:raw.reference?.notes??'',preserve:raw.reference?.preserve??['hair','face','colors','clothing','accessories'],overrides:[]};
- const familyInput=enumValue(raw.family,[...Object.keys(FAMILIES),'muse','pets'],'角色体系'),family=normalizeFamilyId(familyInput),presetId=oldVersion<8&&!raw.presetId?'custom':raw.presetId;
+ if(!object(raw)||raw.version!==VERSION)throw new Error('角色配置版本不受支持；请导入 Dot Studio 项目 v2');
+ raw=copy(raw);
+ const family=enumValue(raw.family,Object.keys(FAMILIES),'角色体系'),presetId=raw.presetId;
+ const knownFields=new Set(Object.keys(createCharacter(family)));
+ if(Object.keys(raw).some(key=>!knownFields.has(key)))throw new Error('角色配置包含不支持的字段');
+ if(raw.legacy!==undefined&&raw.legacy!==null)throw new Error('角色配置不接受 legacy.originalConfig 恢复副本');
+ if(raw.provenance!==undefined&&!object(raw.provenance))throw new Error('角色来源配置无效');
+ for(const [field,allowed] of [
+   ['colors',Object.keys(createCharacter(family).colors)],
+   ['accessories',Object.keys(createCharacter(family).accessories)],
+   ['reference',['enabled','notes','preserve','overrides']],
+   ['provenance',['source','basePresetId','modified','referenceDate']]
+ ]) if(object(raw[field])&&Object.keys(raw[field]).some(key=>!allowed.includes(key)))throw new Error(`${field} 包含不支持的字段`);
  const record=getPreset(presetId),lookPreset=getTrustedLookPreset(presetId),declaredTier=raw.catalogTier;
  if(lookPreset&&lookPreset.family!==family)throw new Error('内置搭配预设与角色分组不匹配');
  if(declaredTier!==undefined&&!['baseline','legacy'].includes(declaredTier))throw new Error('角色目录类型无效');
- if(oldVersion===VERSION&&raw.isLegacy!==undefined&&typeof raw.isLegacy!=='boolean')throw new Error('历史角色标记无效');
- const isLegacy=oldVersion<VERSION||familyInput!==family||raw.isLegacy===true||declaredTier==='legacy'||record?.isLegacy===true||(!declaredTier&&!record&&!lookPreset);
+ if(raw.isLegacy!==undefined&&typeof raw.isLegacy!=='boolean')throw new Error('历史角色标记无效');
+ const isLegacy=raw.isLegacy===true||declaredTier==='legacy'||record?.isLegacy===true||(!declaredTier&&!record&&!lookPreset);
  if(declaredTier==='baseline'&&record?.isLegacy)throw new Error('基准角色目录与预设 ID 不匹配');
  if(declaredTier==='legacy'&&record?.catalogTier==='baseline')throw new Error('历史角色目录与预设 ID 不匹配');
+ if(declaredTier==='baseline'&&raw.isLegacy===true)throw new Error('角色目录类型与历史角色标记不一致');
+ if(declaredTier==='legacy'&&raw.isLegacy===false)throw new Error('角色目录类型与历史角色标记不一致');
+ if(object(raw.provenance)){
+  if(raw.provenance.source!==undefined&&(typeof raw.provenance.source!=='string'||raw.provenance.source.length>80))throw new Error('角色来源说明无效');
+  if(raw.provenance.basePresetId!==undefined&&raw.provenance.basePresetId!==null&&(typeof raw.provenance.basePresetId!=='string'||raw.provenance.basePresetId.length>100))throw new Error('角色基准预设引用无效');
+  if(raw.provenance.modified!==undefined&&typeof raw.provenance.modified!=='boolean')throw new Error('角色修改状态无效');
+  if(raw.provenance.referenceDate!==undefined&&raw.provenance.referenceDate!==null&&(typeof raw.provenance.referenceDate!=='string'||raw.provenance.referenceDate.length>30))throw new Error('角色来源日期无效');
+ }
  const c=createCharacter(family);c.family=family;c.catalogTier=isLegacy?'legacy':'baseline';c.isLegacy=isLegacy;
- if(typeof raw.rendererVersion==='string')c.rendererVersion=raw.rendererVersion;else if(isLegacy)c.rendererVersion='atelier-3';
+ if(raw.rendererVersion!==undefined)c.rendererVersion=textValue(raw.rendererVersion,40,'渲染器版本');
  const presetRecords=familyPresets(family,{includeLegacy:true}).filter(p=>p.isLegacy===isLegacy);
  c.presetId=enumValue(presetId,['custom',...presetRecords.map(p=>p.id),...LOOK_PRESETS.filter(p=>p.family===family).map(p=>p.presetId)],'预设');
  const selectedPreset=getPreset(c.presetId)||getTrustedLookPreset(c.presetId);c.provenance=selectedPreset?{source:selectedPreset.provenance||selectedPreset.source||'original',basePresetId:selectedPreset.id||selectedPreset.presetId,modified:false,referenceDate:selectedPreset.referenceDate||(selectedPreset.provenance==='official-recreation'&&selectedPreset.family==='dots'?REFERENCE_INFO.date:null)}:{source:'custom',basePresetId:null,modified:true,referenceDate:null};
- if(oldVersion<8){raw.faceShape=raw.faceShape??'round';raw.outfit=raw.outfit??'sweater';}
  c.faceShape=enumValue(raw.faceShape,Object.keys(FACE_SHAPES),'脸型');c.outfit=enumValue(raw.outfit,Object.keys(OUTFITS),'服装');
- c.motionStyle=enumValue(raw.motionStyle??'auto',Object.keys(MOTION_STYLES),'状态表现');c.motionSpeed=numValue(raw.motionSpeed??1,.5,1.8,'动作速度');
- // Previously saved Grok arch baselines remain importable after the visual correction.
- const enumFields={shape:availableShapes(family==='grok'?{...c,shape:raw.shape}:c),material:availableMaterials(c),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:availableHairs(c),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),background:Object.keys(COMPOSITION.background),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
+ c.motionStyle=enumValue(raw.motionStyle,Object.keys(MOTION_STYLES),'状态表现');c.motionSpeed=numValue(raw.motionSpeed,.5,1.8,'动作速度');
+ // The current v10 role fields remain available to the structure diagnostic;
+ // old role schemas and family aliases are rejected before they reach it.
+ const enumFields={shape:availableShapes(family==='grok'?{...c,shape:raw.shape}:c),material:availableMaterials(c),fur:['short'],palette:PALETTES.map(p=>p.id),eyes:Object.keys(EYES),brows:Object.keys(BROWS),mouth:Object.keys(MOUTHS),expression:Object.keys(EXPRESSIONS),hair:availableHairs(c),limbs:['auto','none','hands','feet','both'],action:Object.keys(ACTIONS),pose:['auto','sit','side','chin'],framing:Object.keys(COMPOSITION.framing),camera:Object.keys(COMPOSITION.camera),aspect:['1:1','4:5','16:9'],output:Object.keys(COMPOSITION.output),skinMaterial:['auto','fabric','matte'],hairMaterial:['auto','fiber','layered'],clothMaterial:['knit','fabricCloth']};
  for(const [k,v]of Object.entries(enumFields))c[k]=enumValue(raw[k],v,k);
+ // Preserve only legal v2 metadata values; background is not an output option.
+ c.background=enumValue(raw.background,STORED_BACKGROUND_VALUES,'background');
  for(const [k,min,max]of [['eyeScale',.65,1.35],['eyeSpacing',.75,1.3],['headScale',.85,1.12],['bodyWidth',.85,1.15],['scale',55,85]])c[k]=numValue(raw[k],min,max,k);
  c.name=textValue(raw.name,40,'名称');c.notes=textValue(raw.notes,1600,'补充要求');c.randomSeed=textValue(raw.randomSeed,40,'随机种子');
  if(typeof raw.eyeColorManual!=='boolean')throw new Error('眼色设置无效');c.eyeColorManual=raw.eyeColorManual;if(typeof raw.expressionAccents!=='boolean')throw new Error('表情点缀设置无效');c.expressionAccents=raw.expressionAccents;
@@ -484,12 +504,13 @@ export function validateConfig(raw){
  if(!Array.isArray(ref.preserve)||ref.preserve.some(k=>typeof k!=='string'||!Object.hasOwn(PRESERVE,k))||ref.preserve.length>6)throw new Error('保留特征无效');
  if(!Array.isArray(ref.overrides)||ref.overrides.length>Object.keys(REFERENCE_DOMAINS).length||ref.overrides.some(x=>!Object.hasOwn(REFERENCE_DOMAINS,x)))throw new Error('参考覆盖字段无效');
  c.reference={enabled:ref.enabled,notes:textValue(ref.notes??'',1200,'参考说明'),preserve:[...new Set(ref.preserve)],overrides:[...new Set(ref.overrides)]};
- c.version=VERSION;
- const knownFields=new Set(Object.keys(createCharacter('dots'))),hasUnknownFields=Object.keys(originalSnapshot).some(key=>!knownFields.has(key));
- const legacyMeta=object(raw.legacy)?copy(raw.legacy):{};
- if(oldVersion<VERSION||familyInput!==family||hasUnknownFields||!object(legacyMeta.originalConfig)&&(isLegacy&&Object.keys(originalSnapshot).length))legacyMeta.originalConfig=originalSnapshot;
- c.legacy=Object.keys(legacyMeta).length?legacyMeta:null;
- if(object(raw.provenance))c.provenance={...c.provenance,...copy(raw.provenance)};
+ c.version=VERSION;c.legacy=null;
+ if(object(raw.provenance))c.provenance={
+  source:raw.provenance.source??c.provenance.source,
+  basePresetId:raw.provenance.basePresetId??c.provenance.basePresetId,
+  modified:raw.provenance.modified??c.provenance.modified,
+  referenceDate:raw.provenance.referenceDate??c.provenance.referenceDate
+ };
  c.provenance=deriveProvenance(c);
  return c;
 }
@@ -512,7 +533,7 @@ export function deriveProvenance(c){
  const referenceDate=Object.hasOwn(stored,'referenceDate')?stored.referenceDate:(basePreset?.referenceDate||(basePreset?.provenance==='official-recreation'&&basePreset.family==='dots'?REFERENCE_INFO.date:null));
  return {...stored,source,basePresetId,modified,referenceDate};
 }
-export function sourceLabel(c){const p=deriveProvenance(c);if(c.catalogTier==='legacy'){if(p.source==='official-recreation')return p.modified?'历史兼容 · 已修改的身份复刻':'历史兼容 · 原版身份复刻';if(p.source==='custom'||p.modified)return '历史兼容 · 我的组合';if(p.source==='original')return '历史兼容 · 原创扩展';return '历史兼容 · 来源沿用原记录';}return p.source==='official-recreation'?(p.modified?'基于原版身份':'原版身份 · 独立设计'):p.source==='custom'||p.modified?'我的组合':p.source==='original'?'原创扩展':'已保存来源';}
+export function sourceLabel(c){const p=deriveProvenance(c);if(c.catalogTier==='legacy'){if(p.source==='official-recreation')return p.modified?'结构诊断设定 · 基于原版身份':'已登记诊断预设 · 原版身份独立设计';if(p.source==='custom'||p.modified)return '结构诊断设定 · 我的组合';if(p.source==='original')return '结构诊断设定 · 原创扩展';return '结构诊断设定 · 来源沿用记录';}return p.source==='official-recreation'?(p.modified?'基于原版身份':'原版身份 · 独立设计'):p.source==='custom'||p.modified?'我的组合':p.source==='original'?'原创扩展':'已保存来源';}
 const RANDOM_ACCESSORIES={
  dots:{head:['none','headphones'],face:['none','round'],neck:['none','bow','scarf']},
  grok:{head:['none'],face:['none','round'],neck:['none']},

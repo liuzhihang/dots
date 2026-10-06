@@ -1,0 +1,80 @@
+{
+  "projectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+  "siteVersion": 37,
+  "cacheVersion": 85,
+  "sourceId": "sha256:9bcd516a91b2d366f1921073962909ee801b9bf75d765c83c2bdc1b200daa672",
+  "githubCheckout": {
+    "branch": "main",
+    "commit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "committedOrPushedThisTurn": false
+  },
+  "siteSource": {
+    "commit": "23221616616d2f41f6b2f0e3f90915d750662233",
+    "checkout": "/private/tmp/dots-site-transparent-20261006-3MUgUN"
+  },
+  "deployment": {
+    "id": "appgdep_6ac4af73592c8191b4f0a81153f91cec",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dot Icon Studio",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_c4ac3de2e95481919ca4a6c8f3e8dc21",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dot.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-06T08:21:24.571069+00:00"
+  },
+  "savedVersion": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_c4ac3de2e95481919ca4a6c8f3e8dc21",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 37,
+    "source": {
+      "commit_sha": "23221616616d2f41f6b2f0e3f90915d750662233"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000c29881f8860bcb842a5db16d",
+      "content_hash": "sha256:1486c520f04889a6108890617b088426cb50def2b7273284198c18cdc0898bab",
+      "size_bytes": 83159040,
+      "file_count": 110
+    },
+    "screenshot_url": null,
+    "deployment_id": "appgdep_6ac4af73592c8191b4f0a81153f91cec"
+  },
+  "audience": {
+    "ownerPrivate": true,
+    "policyRevision": 1,
+    "unchanged": true
+  },
+  "verification": {
+    "runtimeFiles": 109,
+    "archiveFiles": 110,
+    "independentDependencyClosureFiles": 40,
+    "unresolvedReferences": 0,
+    "compositionPngOutputs": 27,
+    "additionalBrowserExports": 8,
+    "viewports": [
+      1440,
+      320,
+      390,
+      768
+    ],
+    "nativeDeploymentSucceeded": true,
+    "remoteSourceCommitReadBack": true,
+    "remoteArchiveStorageReadBack": true,
+    "remoteArchiveContainerBytesRetrieved": false,
+    "liveBrowserQAThisTurn": false,
+    "physicalPhoneQAThisTurn": false
+  },
+  "engineeringEvidence": "design/acceptance/current-20261006-v85/",
+  "artApproval": {
+    "pilotAssets": "pending",
+    "approvedAdaptations": 0,
+    "defaultRandomPool": "15 previously approved templates"
+  },
+  "archiveContainerNote": "Local upload is tar.gz; Sites stores a normalized tar with independent hash and size. Remote archive bytes were not retrieved.",
+  "diagnosticEvidenceNote": "qa/character-source.json retains historical metadata; it does not require the excluded legacy fixtures at runtime."
+}

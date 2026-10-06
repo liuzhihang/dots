@@ -1,0 +1,4012 @@
+{
+  "bundlePath": "dots-v86-template-canvas.tar.gz",
+  "bundleSha256": "f75f9929244a2031203cb7ed7470625cc86f7d03f5df0d74c254746299e9fd81",
+  "bundleManifest": {
+    "schema": "dot-studio-template-capture-bundle/v1",
+    "capturedAt": "2026-10-06T10:32:14.419Z",
+    "cacheVersion": "86",
+    "catalogVersion": 1,
+    "source": {
+      "sourceId": "pending-node-freeze",
+      "note": "解包后由 Node freeze 脚本绑定当前 Git/source manifest"
+    },
+    "browser": {
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "viewport": {
+        "width": 1440,
+        "height": 1000,
+        "devicePixelRatio": 1
+      },
+      "captureTool": {
+        "method": "playwright-local-chrome",
+        "automation": "Playwright",
+        "browser": "Google Chrome (local)"
+      }
+    },
+    "inventory": {
+      "lookCount": 15,
+      "stateCount": 22,
+      "baselineStateCount": 12,
+      "fixedTemplateCount": 10,
+      "backgroundCount": 1,
+      "outputCount": 22
+    },
+    "integrity": [],
+    "coverage": {
+      "result": "pass",
+      "denominator": 22,
+      "hardConstraintExcluded": 0,
+      "resolvable": 22,
+      "executed": 22,
+      "counts": {
+        "pass": 22,
+        "fail": 0,
+        "blocked": 0
+      },
+      "issues": []
+    },
+    "annotationsArtifact": {
+      "filename": "atlas-annotations.json",
+      "bytes": 6299,
+      "sha256": "96f59db726cf6a24a311eec8ae2075004afce5866fe8164ed6bfddb59d6015f7"
+    },
+    "records": [
+      {
+        "id": "template:candidate-dots-20261005-bare-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-dots-20261005",
+        "artworkId": "candidate-dots-20261005",
+        "recipeId": "bare-classic",
+        "stateId": "bare-classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-dots",
+            "modified": false,
+            "referenceDate": "2026-10-04"
+          },
+          "presetId": "baseline-dots",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "蓝色 Dots",
+          "shape": "sphere",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#3264FA",
+            "secondary": "#F5F8FF",
+            "eyes": "#172131",
+            "accessory": "#292A2D",
+            "headAccessory": "#292A2D",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-dots-20261005",
+          "recipeId": "bare-classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-dots-20261005/bare",
+              "version": "1.0.0",
+              "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988"
+            }
+          ],
+          "inputs": {
+            "stateId": "bare-classic",
+            "values": {
+              "accessories.head": "none",
+              "action": "idle",
+              "expression": "calm"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "268f5953a9d4e029",
+          "resolvedFingerprint": "0a50cf191707b217"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-dots-20261005/bare",
+            "version": "1.0.0",
+            "expectedSha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+            "actualSha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+            "src": "./assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+            "filename": "source/asset-001.png",
+            "bytes": 1803333,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 750053,
+              "opaquePixels": 2,
+              "partialAlphaPixels": 822461,
+              "alphaBounds": {
+                "x": 0,
+                "y": 0,
+                "width": 1224,
+                "height": 1254
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-001.png",
+          "mimeType": "image/png",
+          "bytes": 2042571,
+          "sha256": "3482ff2098f7ceb3f7e4df7e58d215f772d0d0b1209805d524c96714bfffd66c",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 750053,
+          "opaquePixels": 2,
+          "partialAlphaPixels": 822461,
+          "alphaBounds": {
+            "x": 0,
+            "y": 0,
+            "width": 1224,
+            "height": 1254
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 750053,
+            "visiblePixels": 822463,
+            "alphaBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1224,
+              "height": 1254
+            }
+          },
+          "visiblePixelRatio": 0.5230236131142704
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-dots-20261005-headphones-idle:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-dots-20261005",
+        "artworkId": "candidate-dots-20261005",
+        "recipeId": "headphones-idle",
+        "stateId": "headphones-idle",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-dots",
+            "modified": false,
+            "referenceDate": "2026-10-04"
+          },
+          "presetId": "baseline-dots",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "蓝色 Dots",
+          "shape": "sphere",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#3264FA",
+            "secondary": "#F5F8FF",
+            "eyes": "#172131",
+            "accessory": "#292A2D",
+            "headAccessory": "#292A2D",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "headphones",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-dots-20261005",
+          "recipeId": "headphones-idle",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-dots-20261005/headphones",
+              "version": "1.0.0",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+            }
+          ],
+          "inputs": {
+            "stateId": "headphones-idle",
+            "values": {
+              "accessories.head": "headphones",
+              "action": "idle",
+              "expression": "calm"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "72ad4b1724ce1119",
+          "resolvedFingerprint": "ada62e44afe707cb"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-dots-20261005/headphones",
+            "version": "1.0.0",
+            "expectedSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+            "actualSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+            "src": "./assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+            "filename": "source/asset-002.png",
+            "bytes": 1720054,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 742591,
+              "opaquePixels": 478,
+              "partialAlphaPixels": 829447,
+              "alphaBounds": {
+                "x": 35,
+                "y": 21,
+                "width": 1187,
+                "height": 1169
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-002.png",
+          "mimeType": "image/png",
+          "bytes": 2000964,
+          "sha256": "c54660abc4dbaaced16a8757a18108aa8159fd36254680bfe5914dfded817af6",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 742591,
+          "opaquePixels": 478,
+          "partialAlphaPixels": 829447,
+          "alphaBounds": {
+            "x": 35,
+            "y": 21,
+            "width": 1187,
+            "height": 1169
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 742591,
+            "visiblePixels": 829925,
+            "alphaBounds": {
+              "x": 35,
+              "y": 21,
+              "width": 1187,
+              "height": 1169
+            }
+          },
+          "visiblePixelRatio": 0.5277688748476963
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-dots-20261005-headphones-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-dots-20261005",
+        "artworkId": "candidate-dots-20261005",
+        "recipeId": "headphones-classic",
+        "stateId": "headphones-classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-dots",
+            "modified": false,
+            "referenceDate": "2026-10-04"
+          },
+          "presetId": "baseline-dots",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "蓝色 Dots",
+          "shape": "sphere",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#3264FA",
+            "secondary": "#F5F8FF",
+            "eyes": "#172131",
+            "accessory": "#292A2D",
+            "headAccessory": "#292A2D",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "listen",
+          "pose": "auto",
+          "accessories": {
+            "head": "headphones",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-dots-20261005",
+          "recipeId": "headphones-classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-dots-20261005/headphones",
+              "version": "1.0.0",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+            }
+          ],
+          "inputs": {
+            "stateId": "headphones-classic",
+            "values": {
+              "accessories.head": "headphones",
+              "action": "listen",
+              "expression": "calm"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "abbd24cafc30fee1",
+          "resolvedFingerprint": "93ab3b5d879a4a66"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-dots-20261005/headphones",
+            "version": "1.0.0",
+            "expectedSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+            "actualSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+            "src": "./assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+            "filename": "source/asset-002.png",
+            "bytes": 1720054,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 742591,
+              "opaquePixels": 478,
+              "partialAlphaPixels": 829447,
+              "alphaBounds": {
+                "x": 35,
+                "y": 21,
+                "width": 1187,
+                "height": 1169
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-003.png",
+          "mimeType": "image/png",
+          "bytes": 2000964,
+          "sha256": "c54660abc4dbaaced16a8757a18108aa8159fd36254680bfe5914dfded817af6",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 742591,
+          "opaquePixels": 478,
+          "partialAlphaPixels": 829447,
+          "alphaBounds": {
+            "x": 35,
+            "y": 21,
+            "width": 1187,
+            "height": 1169
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 742591,
+            "visiblePixels": 829925,
+            "alphaBounds": {
+              "x": 35,
+              "y": 21,
+              "width": 1187,
+              "height": 1169
+            }
+          },
+          "visiblePixelRatio": 0.5277688748476963
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-dots-20261005-wink:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-dots-20261005",
+        "artworkId": "candidate-dots-20261005",
+        "recipeId": "wink",
+        "stateId": "wink",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-dots",
+            "modified": false,
+            "referenceDate": "2026-10-04"
+          },
+          "presetId": "baseline-dots",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "蓝色 Dots",
+          "shape": "sphere",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#3264FA",
+            "secondary": "#F5F8FF",
+            "eyes": "#172131",
+            "accessory": "#292A2D",
+            "headAccessory": "#292A2D",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "wink",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "listen",
+          "pose": "auto",
+          "accessories": {
+            "head": "headphones",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-dots-20261005",
+          "recipeId": "wink",
+          "assetRefs": [
+            {
+              "id": "state/candidate-dots-20261005/wink",
+              "version": "1.0.0",
+              "sha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1"
+            }
+          ],
+          "inputs": {
+            "stateId": "wink",
+            "values": {
+              "accessories.head": "headphones",
+              "action": "listen",
+              "expression": "wink"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "24adf0713f07515b",
+          "resolvedFingerprint": "4b2ef0cda2db4689"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "state/candidate-dots-20261005/wink",
+            "version": "1.0.0",
+            "expectedSha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+            "actualSha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+            "src": "./assets/poses/dots-wink-v1.png",
+            "filename": "source/asset-003.png",
+            "bytes": 1136161,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 987842,
+              "opaquePixels": 240,
+              "partialAlphaPixels": 584434,
+              "alphaBounds": {
+                "x": 0,
+                "y": 101,
+                "width": 1222,
+                "height": 1153
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-004.png",
+          "mimeType": "image/png",
+          "bytes": 1356107,
+          "sha256": "c975418e1f650bb7aba4d18d0f227b0dd232159c1ae5e4fff2b53f36a56b6359",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 987842,
+          "opaquePixels": 240,
+          "partialAlphaPixels": 584434,
+          "alphaBounds": {
+            "x": 0,
+            "y": 101,
+            "width": 1222,
+            "height": 1153
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 987842,
+            "visiblePixels": 584674,
+            "alphaBounds": {
+              "x": 0,
+              "y": 101,
+              "width": 1222,
+              "height": 1153
+            }
+          },
+          "visiblePixelRatio": 0.37180798160400275
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-grok-20261005-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-grok-20261005",
+        "artworkId": "candidate-grok-20261005",
+        "recipeId": "classic",
+        "stateId": "classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-grok",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-grok",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "grok",
+          "name": "紫色圆形 Grok",
+          "shape": "sphere",
+          "material": "rubber",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#A77BEA",
+            "secondary": "#F6F0FC",
+            "eyes": "#FFFFFF",
+            "accessory": "#3C354A",
+            "headAccessory": "#3C354A",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#A77BEA"
+          },
+          "eyeColorManual": false,
+          "eyes": "capsule",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-grok-20261005",
+          "recipeId": "classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-grok-20261005/full",
+              "version": "1.0.0",
+              "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+            }
+          ],
+          "inputs": {
+            "stateId": "classic",
+            "values": {
+              "action": "idle",
+              "expression": "calm",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "61e1b657283d480c",
+          "resolvedFingerprint": "1d45dca0f370403a"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-grok-20261005/full",
+            "version": "1.0.0",
+            "expectedSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+            "actualSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+            "src": "./assets/characters/grok-bot-purple-orb-candidate-v2.png",
+            "filename": "source/asset-004.png",
+            "bytes": 971168,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 780111,
+              "opaquePixels": 1168,
+              "partialAlphaPixels": 791237,
+              "alphaBounds": {
+                "x": 0,
+                "y": 81,
+                "width": 1192,
+                "height": 1173
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-005.png",
+          "mimeType": "image/png",
+          "bytes": 1299150,
+          "sha256": "d04ea3bb1245d17840a4e8c1ef8423fb8d55e0744ac2db62518fbe2d0e4ffe81",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 780111,
+          "opaquePixels": 1168,
+          "partialAlphaPixels": 791237,
+          "alphaBounds": {
+            "x": 0,
+            "y": 81,
+            "width": 1192,
+            "height": 1173
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 780111,
+            "visiblePixels": 792405,
+            "alphaBounds": {
+              "x": 0,
+              "y": 81,
+              "width": 1192,
+              "height": 1173
+            }
+          },
+          "visiblePixelRatio": 0.5039090222293445
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-grok-20261005-wink:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-grok-20261005",
+        "artworkId": "candidate-grok-20261005",
+        "recipeId": "wink",
+        "stateId": "wink",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-grok",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-grok",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "grok",
+          "name": "紫色圆形 Grok",
+          "shape": "sphere",
+          "material": "rubber",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#A77BEA",
+            "secondary": "#F6F0FC",
+            "eyes": "#FFFFFF",
+            "accessory": "#3C354A",
+            "headAccessory": "#3C354A",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#A77BEA"
+          },
+          "eyeColorManual": false,
+          "eyes": "capsule",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "wink",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-grok-20261005",
+          "recipeId": "wink",
+          "assetRefs": [
+            {
+              "id": "state/candidate-grok-20261005/wink",
+              "version": "1.0.0",
+              "sha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86"
+            }
+          ],
+          "inputs": {
+            "stateId": "wink",
+            "values": {
+              "action": "idle",
+              "expression": "wink",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "297a1ebc6a5331b2",
+          "resolvedFingerprint": "fc83c6836499e915"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "state/candidate-grok-20261005/wink",
+            "version": "1.0.0",
+            "expectedSha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+            "actualSha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+            "src": "./assets/poses/grok-wink-v1.png",
+            "filename": "source/asset-005.png",
+            "bytes": 732939,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 929630,
+              "opaquePixels": 993,
+              "partialAlphaPixels": 641893,
+              "alphaBounds": {
+                "x": 119,
+                "y": 53,
+                "width": 1079,
+                "height": 1161
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-006.png",
+          "mimeType": "image/png",
+          "bytes": 996503,
+          "sha256": "211d9951b6ebddad4e5d30206f9c3b19ba4c52f888d6e3db23e0e31576851fa9",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 929630,
+          "opaquePixels": 993,
+          "partialAlphaPixels": 641893,
+          "alphaBounds": {
+            "x": 119,
+            "y": 53,
+            "width": 1079,
+            "height": 1161
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 929630,
+            "visiblePixels": 642886,
+            "alphaBounds": {
+              "x": 119,
+              "y": 53,
+              "width": 1079,
+              "height": 1161
+            }
+          },
+          "visiblePixelRatio": 0.40882636488277385
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-meta-muse-20261005-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-meta-muse-20261005",
+        "artworkId": "candidate-meta-muse-20261005",
+        "recipeId": "classic",
+        "stateId": "classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1235,
+        "height": 1274,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-meta-muse",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-meta-muse",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "meta-muse",
+          "name": "奶油 Meta Muse",
+          "shape": "meta-hood",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#F3F0E8",
+            "secondary": "#F8E9D8",
+            "eyes": "#172131",
+            "accessory": "#6B6572",
+            "headAccessory": "#6B6572",
+            "background": "#F3F6FA",
+            "skin": "#E6B99D",
+            "hair": "#56392E",
+            "clothing": "#F3F0E8"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "fabricCloth",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-meta-muse-20261005",
+          "recipeId": "classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-meta-muse-20261005/full",
+              "version": "1.0.0",
+              "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+            }
+          ],
+          "inputs": {
+            "stateId": "classic",
+            "values": {
+              "action": "idle",
+              "expression": "calm",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "a882dc447f8bf8ea",
+          "resolvedFingerprint": "24843e7491ab840c"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-meta-muse-20261005/full",
+            "version": "1.0.0",
+            "expectedSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+            "actualSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+            "src": "./assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+            "filename": "source/asset-006.png",
+            "bytes": 1003955,
+            "width": 1235,
+            "height": 1274,
+            "alpha": {
+              "width": 1235,
+              "height": 1274,
+              "transparentPixels": 985428,
+              "opaquePixels": 21,
+              "partialAlphaPixels": 587941,
+              "alphaBounds": {
+                "x": 33,
+                "y": 20,
+                "width": 1188,
+                "height": 1182
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-007.png",
+          "mimeType": "image/png",
+          "bytes": 1222756,
+          "sha256": "220fba8ccdcf1905ee23d10dabb229aaedd9801ff299628a2ee078b686f18c2d",
+          "width": 1235,
+          "height": 1274,
+          "transparentPixels": 985428,
+          "opaquePixels": 21,
+          "partialAlphaPixels": 587941,
+          "alphaBounds": {
+            "x": 33,
+            "y": 20,
+            "width": 1188,
+            "height": 1182
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 985428,
+            "visiblePixels": 587962,
+            "alphaBounds": {
+              "x": 33,
+              "y": 20,
+              "width": 1188,
+              "height": 1182
+            }
+          },
+          "visiblePixelRatio": 0.37369120179993515
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-meta-muse-20261005-wave:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-meta-muse-20261005",
+        "artworkId": "candidate-meta-muse-20261005",
+        "recipeId": "wave",
+        "stateId": "wave",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "baseline-meta-muse",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-meta-muse",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "meta-muse",
+          "name": "奶油 Meta Muse",
+          "shape": "meta-hood",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#F3F0E8",
+            "secondary": "#F8E9D8",
+            "eyes": "#172131",
+            "accessory": "#6B6572",
+            "headAccessory": "#6B6572",
+            "background": "#F3F6FA",
+            "skin": "#E6B99D",
+            "hair": "#56392E",
+            "clothing": "#F3F0E8"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "happy",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "wave",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "fabricCloth",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-meta-muse-20261005",
+          "recipeId": "wave",
+          "assetRefs": [
+            {
+              "id": "state/candidate-meta-muse-20261005/wave",
+              "version": "1.0.0",
+              "sha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1"
+            }
+          ],
+          "inputs": {
+            "stateId": "wave",
+            "values": {
+              "action": "wave",
+              "expression": "happy",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "c5eda0b32ee0b79e",
+          "resolvedFingerprint": "559a3cc714657811"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "state/candidate-meta-muse-20261005/wave",
+            "version": "1.0.0",
+            "expectedSha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+            "actualSha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+            "src": "./assets/poses/muse-wave-v1.png",
+            "filename": "source/asset-007.png",
+            "bytes": 1073265,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 933354,
+              "opaquePixels": 136,
+              "partialAlphaPixels": 639026,
+              "alphaBounds": {
+                "x": 89,
+                "y": 21,
+                "width": 1121,
+                "height": 1161
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-008.png",
+          "mimeType": "image/png",
+          "bytes": 1321828,
+          "sha256": "2238c41f5180007c2340c6f067f31c9b1fecac091e89e8dba4e21067b141114b",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 933354,
+          "opaquePixels": 136,
+          "partialAlphaPixels": 639026,
+          "alphaBounds": {
+            "x": 89,
+            "y": 21,
+            "width": 1121,
+            "height": 1161
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 933354,
+            "visiblePixels": 639162,
+            "alphaBounds": {
+              "x": 89,
+              "y": 21,
+              "width": 1121,
+              "height": 1161
+            }
+          },
+          "visiblePixelRatio": 0.40645818548110163
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-humans-20261005-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-humans-20261005",
+        "artworkId": "candidate-humans-20261005",
+        "recipeId": "classic",
+        "stateId": "classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "baseline-humans",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-humans",
+          "faceShape": "oval",
+          "outfit": "sweater",
+          "family": "humans",
+          "name": "栗发青绿人物",
+          "shape": "human",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#789A92",
+            "secondary": "#D8A985",
+            "eyes": "#172131",
+            "accessory": "#303846",
+            "headAccessory": "#303846",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#789A92"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "soft",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "matte",
+          "hairMaterial": "layered",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-humans-20261005",
+          "recipeId": "classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-humans-20261005/full",
+              "version": "1.0.0",
+              "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+            }
+          ],
+          "inputs": {
+            "stateId": "classic",
+            "values": {
+              "action": "idle",
+              "expression": "calm",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "4fa0cfd2ce953634",
+          "resolvedFingerprint": "e933601932d6ae82"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-humans-20261005/full",
+            "version": "1.0.0",
+            "expectedSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+            "actualSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+            "src": "./assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+            "filename": "source/asset-008.png",
+            "bytes": 1151483,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1069183,
+              "opaquePixels": 514,
+              "partialAlphaPixels": 502819,
+              "alphaBounds": {
+                "x": 33,
+                "y": 21,
+                "width": 1193,
+                "height": 1217
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-009.png",
+          "mimeType": "image/png",
+          "bytes": 1298599,
+          "sha256": "3495edf7775323e44baa793ca3c1655edf95ebaa89934574cace798f5b6746e2",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1069183,
+          "opaquePixels": 514,
+          "partialAlphaPixels": 502819,
+          "alphaBounds": {
+            "x": 33,
+            "y": 21,
+            "width": 1193,
+            "height": 1217
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1069183,
+            "visiblePixels": 503333,
+            "alphaBounds": {
+              "x": 33,
+              "y": 21,
+              "width": 1193,
+              "height": 1217
+            }
+          },
+          "visiblePixelRatio": 0.3200813219070585
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-humans-20261005-wave:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-humans-20261005",
+        "artworkId": "candidate-humans-20261005",
+        "recipeId": "wave",
+        "stateId": "wave",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "baseline-humans",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-humans",
+          "faceShape": "oval",
+          "outfit": "sweater",
+          "family": "humans",
+          "name": "栗发青绿人物",
+          "shape": "human",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#789A92",
+            "secondary": "#D8A985",
+            "eyes": "#172131",
+            "accessory": "#303846",
+            "headAccessory": "#303846",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#789A92"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "soft",
+          "mouth": "smile",
+          "expression": "happy",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "wave",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "matte",
+          "hairMaterial": "layered",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-humans-20261005",
+          "recipeId": "wave",
+          "assetRefs": [
+            {
+              "id": "state/candidate-humans-20261005/wave",
+              "version": "1.0.0",
+              "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308"
+            }
+          ],
+          "inputs": {
+            "stateId": "wave",
+            "values": {
+              "action": "wave",
+              "expression": "happy",
+              "pose": "auto"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "64fd437544ce4e2a",
+          "resolvedFingerprint": "49ea68ea9c25e1dc"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "state/candidate-humans-20261005/wave",
+            "version": "1.0.0",
+            "expectedSha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+            "actualSha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+            "src": "./assets/poses/human-wave-v1.png",
+            "filename": "source/asset-009.png",
+            "bytes": 786370,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1230684,
+              "opaquePixels": 475,
+              "partialAlphaPixels": 341357,
+              "alphaBounds": {
+                "x": 65,
+                "y": 20,
+                "width": 1165,
+                "height": 1180
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-010.png",
+          "mimeType": "image/png",
+          "bytes": 897003,
+          "sha256": "1695fa5bdc4bb1fde06d76230726677ef8367dfcd8ffe56a3bfa034dd5fc6179",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1230684,
+          "opaquePixels": 475,
+          "partialAlphaPixels": 341357,
+          "alphaBounds": {
+            "x": 65,
+            "y": 20,
+            "width": 1165,
+            "height": 1180
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1230684,
+            "visiblePixels": 341832,
+            "alphaBounds": {
+              "x": 65,
+              "y": 20,
+              "width": 1165,
+              "height": 1180
+            }
+          },
+          "visiblePixelRatio": 0.2173790282579001
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-animals-20261005-classic:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-animals-20261005",
+        "artworkId": "candidate-animals-20261005",
+        "recipeId": "classic",
+        "stateId": "classic",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "baseline-animals",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-animals",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "animals",
+          "name": "暖橙柴犬",
+          "shape": "shiba",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#D3934D",
+            "secondary": "#FFF0D5",
+            "eyes": "#172131",
+            "accessory": "#4B78A5",
+            "headAccessory": "#4B78A5",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#D3934D"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "sit",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-animals-20261005",
+          "recipeId": "classic",
+          "assetRefs": [
+            {
+              "id": "artwork/candidate-animals-20261005/full",
+              "version": "1.0.0",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+            }
+          ],
+          "inputs": {
+            "stateId": "classic",
+            "values": {
+              "action": "idle",
+              "expression": "calm",
+              "pose": "sit"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "f53812e67b85e3b4",
+          "resolvedFingerprint": "82c88b04cd6a23aa"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/candidate-animals-20261005/full",
+            "version": "1.0.0",
+            "expectedSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+            "actualSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+            "src": "./assets/characters/animals-original-shiba-candidate-v1.png",
+            "filename": "source/asset-010.png",
+            "bytes": 1413426,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 832059,
+              "opaquePixels": 48,
+              "partialAlphaPixels": 740409,
+              "alphaBounds": {
+                "x": 0,
+                "y": 19,
+                "width": 1242,
+                "height": 1235
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-011.png",
+          "mimeType": "image/png",
+          "bytes": 1667463,
+          "sha256": "32f17abaa1bbb6caf4309165ff71b64befc3c9a1375b231111730258f3817b6c",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 832059,
+          "opaquePixels": 48,
+          "partialAlphaPixels": 740409,
+          "alphaBounds": {
+            "x": 0,
+            "y": 19,
+            "width": 1242,
+            "height": 1235
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 832059,
+            "visiblePixels": 740457,
+            "alphaBounds": {
+              "x": 0,
+              "y": 19,
+              "width": 1242,
+              "height": 1235
+            }
+          },
+          "visiblePixelRatio": 0.47087406423845607
+        },
+        "issue": null
+      },
+      {
+        "id": "template:candidate-animals-20261005-wave:transparent",
+        "coverageKind": "template-output",
+        "lookId": "candidate-animals-20261005",
+        "artworkId": "candidate-animals-20261005",
+        "recipeId": "wave",
+        "stateId": "wave",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "baseline-animals",
+            "modified": true,
+            "referenceDate": null
+          },
+          "presetId": "baseline-animals",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "animals",
+          "name": "暖橙柴犬",
+          "shape": "shiba",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#D3934D",
+            "secondary": "#FFF0D5",
+            "eyes": "#172131",
+            "accessory": "#4B78A5",
+            "headAccessory": "#4B78A5",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#D3934D"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "happy",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "wave",
+          "pose": "sit",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "candidate-animals-20261005",
+          "recipeId": "wave",
+          "assetRefs": [
+            {
+              "id": "state/candidate-animals-20261005/wave",
+              "version": "1.0.0",
+              "sha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c"
+            }
+          ],
+          "inputs": {
+            "stateId": "wave",
+            "values": {
+              "action": "wave",
+              "expression": "happy",
+              "pose": "sit"
+            },
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "87c03c4fbd9566ee",
+          "resolvedFingerprint": "d47c83cce5e5d575"
+        },
+        "approvalStatus": "pendingScopeMapping",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "state/candidate-animals-20261005/wave",
+            "version": "1.0.0",
+            "expectedSha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+            "actualSha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+            "src": "./assets/poses/shiba-wave-v1.png",
+            "filename": "source/asset-011.png",
+            "bytes": 697164,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1219688,
+              "opaquePixels": 37,
+              "partialAlphaPixels": 352791,
+              "alphaBounds": {
+                "x": 162,
+                "y": 39,
+                "width": 1048,
+                "height": 1215
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-012.png",
+          "mimeType": "image/png",
+          "bytes": 825903,
+          "sha256": "e429daa162d542260221048f4efb21281b147dcadcf590f3cefb5b15c45429a9",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1219688,
+          "opaquePixels": 37,
+          "partialAlphaPixels": 352791,
+          "alphaBounds": {
+            "x": 162,
+            "y": 39,
+            "width": 1048,
+            "height": 1215
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1219688,
+            "visiblePixels": 352828,
+            "alphaBounds": {
+              "x": 162,
+              "y": 39,
+              "width": 1048,
+              "height": 1215
+            }
+          },
+          "visiblePixelRatio": 0.22437164391332107
+        },
+        "issue": null
+      },
+      {
+        "id": "template:dots-rose-glasses-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "dots-rose-glasses",
+        "artworkId": "dots-rose-glasses",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "dots-rose-glasses",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "dots-rose-glasses",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "莓粉圆框 Dots",
+          "shape": "sphere",
+          "material": "plush",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#E88BB9",
+            "secondary": "#FCEBF2",
+            "eyes": "#332936",
+            "accessory": "#413A46",
+            "headAccessory": "#292A2D",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "round",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "dots-rose-glasses",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/dots-rose-glasses/full",
+              "version": "1.0.0",
+              "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "144c5d296eeae2e9",
+          "resolvedFingerprint": "79cced76a9e107dc"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/dots-rose-glasses/full",
+            "version": "1.0.0",
+            "expectedSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+            "actualSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+            "src": "./assets/looks/dots-rose-glasses.png",
+            "filename": "source/asset-012.png",
+            "bytes": 1860436,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 731940,
+              "opaquePixels": 26,
+              "partialAlphaPixels": 840550,
+              "alphaBounds": {
+                "x": 0,
+                "y": 57,
+                "width": 1214,
+                "height": 1197
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-013.png",
+          "mimeType": "image/png",
+          "bytes": 2096191,
+          "sha256": "0509df19664a46106512e75c338e5eb2f731e08a811ebe6afb7d1e104bac7d03",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 731940,
+          "opaquePixels": 26,
+          "partialAlphaPixels": 840550,
+          "alphaBounds": {
+            "x": 0,
+            "y": 57,
+            "width": 1214,
+            "height": 1197
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 731940,
+            "visiblePixels": 840576,
+            "alphaBounds": {
+              "x": 0,
+              "y": 57,
+              "width": 1214,
+              "height": 1197
+            }
+          },
+          "visiblePixelRatio": 0.5345420968689667
+        },
+        "issue": null
+      },
+      {
+        "id": "template:dots-lilac-bucket-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "dots-lilac-bucket",
+        "artworkId": "dots-lilac-bucket",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "dots-lilac-bucket",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "dots-lilac-bucket",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "dots",
+          "name": "浅紫渔夫帽 Dots",
+          "shape": "sphere",
+          "material": "plush",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#A793E6",
+            "secondary": "#F3EEFF",
+            "eyes": "#2E2942",
+            "accessory": "#E7BC48",
+            "headAccessory": "#E7BC48",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#3264FA"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "bucket",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "dots-lilac-bucket",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/dots-lilac-bucket/full",
+              "version": "1.0.0",
+              "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "144c5d296eeae2e9",
+          "resolvedFingerprint": "7290c79d6eecd091"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/dots-lilac-bucket/full",
+            "version": "1.0.0",
+            "expectedSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+            "actualSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+            "src": "./assets/looks/dots-lilac-bucket.png",
+            "filename": "source/asset-013.png",
+            "bytes": 1605008,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 808076,
+              "opaquePixels": 66,
+              "partialAlphaPixels": 764374,
+              "alphaBounds": {
+                "x": 79,
+                "y": 17,
+                "width": 1095,
+                "height": 1163
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-014.png",
+          "mimeType": "image/png",
+          "bytes": 1862593,
+          "sha256": "a366f6cc998d1e0dd02f4f1d132b05d89e511ad3b0d5812c74a8e872c941553c",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 808076,
+          "opaquePixels": 66,
+          "partialAlphaPixels": 764374,
+          "alphaBounds": {
+            "x": 79,
+            "y": 17,
+            "width": 1095,
+            "height": 1163
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 808076,
+            "visiblePixels": 764440,
+            "alphaBounds": {
+              "x": 79,
+              "y": 17,
+              "width": 1095,
+              "height": 1163
+            }
+          },
+          "visiblePixelRatio": 0.4861254193915992
+        },
+        "issue": null
+      },
+      {
+        "id": "template:grok-green-cloud-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "grok-green-cloud",
+        "artworkId": "grok-green-cloud",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "grok-green-cloud",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "grok-green-cloud",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "grok",
+          "name": "青绿云朵 Grok",
+          "shape": "cloud",
+          "material": "rubber",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#35C981",
+            "secondary": "#DDF7E9",
+            "eyes": "#FFFFFF",
+            "accessory": "#3C354A",
+            "headAccessory": "#3C354A",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#A77BEA"
+          },
+          "eyeColorManual": false,
+          "eyes": "capsule",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "grok-green-cloud",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/grok-green-cloud/full",
+              "version": "1.0.0",
+              "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "1a58846c2d53da50",
+          "resolvedFingerprint": "37951ae8d33572b6"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/grok-green-cloud/full",
+            "version": "1.0.0",
+            "expectedSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+            "actualSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+            "src": "./assets/looks/grok-green-cloud.png",
+            "filename": "source/asset-014.png",
+            "bytes": 790009,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 949952,
+              "opaquePixels": 956,
+              "partialAlphaPixels": 621608,
+              "alphaBounds": {
+                "x": 49,
+                "y": 0,
+                "width": 1129,
+                "height": 1254
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-015.png",
+          "mimeType": "image/png",
+          "bytes": 1043368,
+          "sha256": "20777d496ee1c7287fb379749c64c1485f8c7e620ef01d1b48a8eef30fae1ddb",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 949952,
+          "opaquePixels": 956,
+          "partialAlphaPixels": 621608,
+          "alphaBounds": {
+            "x": 49,
+            "y": 0,
+            "width": 1129,
+            "height": 1254
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 949952,
+            "visiblePixels": 622564,
+            "alphaBounds": {
+              "x": 49,
+              "y": 0,
+              "width": 1129,
+              "height": 1254
+            }
+          },
+          "visiblePixelRatio": 0.3959031259459363
+        },
+        "issue": null
+      },
+      {
+        "id": "template:grok-teal-square-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "grok-teal-square",
+        "artworkId": "grok-teal-square",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "grok-teal-square",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "grok-teal-square",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "grok",
+          "name": "青绿色方块 Grok",
+          "shape": "roundedcube",
+          "material": "rubber",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#39BFB4",
+            "secondary": "#DDF7F4",
+            "eyes": "#FFFFFF",
+            "accessory": "#3C354A",
+            "headAccessory": "#3C354A",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#A77BEA"
+          },
+          "eyeColorManual": false,
+          "eyes": "capsule",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "none",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "grok-teal-square",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/grok-teal-square/full",
+              "version": "1.0.0",
+              "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "1a58846c2d53da50",
+          "resolvedFingerprint": "15c73a6a34c4d4a0"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/grok-teal-square/full",
+            "version": "1.0.0",
+            "expectedSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+            "actualSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+            "src": "./assets/looks/grok-teal-square.png",
+            "filename": "source/asset-015.png",
+            "bytes": 828844,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 816693,
+              "opaquePixels": 264,
+              "partialAlphaPixels": 755559,
+              "alphaBounds": {
+                "x": 0,
+                "y": 9,
+                "width": 1214,
+                "height": 1245
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-016.png",
+          "mimeType": "image/png",
+          "bytes": 1150400,
+          "sha256": "dfc1087345b3f20815a743bfa2f6e1e1f3e6da5678385a0c0f4cc7362129cea9",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 816693,
+          "opaquePixels": 264,
+          "partialAlphaPixels": 755559,
+          "alphaBounds": {
+            "x": 0,
+            "y": 9,
+            "width": 1214,
+            "height": 1245
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 816693,
+            "visiblePixels": 755823,
+            "alphaBounds": {
+              "x": 0,
+              "y": 9,
+              "width": 1214,
+              "height": 1245
+            }
+          },
+          "visiblePixelRatio": 0.48064566592645164
+        },
+        "issue": null
+      },
+      {
+        "id": "template:muse-rose-flowers-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "muse-rose-flowers",
+        "artworkId": "muse-rose-flowers",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "muse-rose-flowers",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "muse-rose-flowers",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "meta-muse",
+          "name": "玫粉花束 Meta Muse",
+          "shape": "meta-hood",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#E5A7C2",
+            "secondary": "#F7DCE8",
+            "eyes": "#172131",
+            "accessory": "#D981A4",
+            "headAccessory": "#6B6572",
+            "background": "#F3F6FA",
+            "skin": "#E9B99E",
+            "hair": "#56392E",
+            "clothing": "#F3F0E8"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "flowers",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "flowers"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "fabricCloth",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "muse-rose-flowers",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/muse-rose-flowers/full",
+              "version": "1.0.0",
+              "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "df4b92a15491c225",
+          "resolvedFingerprint": "d6f3812dc8210743"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/muse-rose-flowers/full",
+            "version": "1.0.0",
+            "expectedSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+            "actualSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+            "src": "./assets/looks/muse-rose-flowers.png",
+            "filename": "source/asset-016.png",
+            "bytes": 1185166,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 966879,
+              "opaquePixels": 193,
+              "partialAlphaPixels": 605444,
+              "alphaBounds": {
+                "x": 0,
+                "y": 20,
+                "width": 1216,
+                "height": 1164
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-017.png",
+          "mimeType": "image/png",
+          "bytes": 1379777,
+          "sha256": "cd324702200bd0a2385973c649d87a2c974c4cae6ba5810fccb707801603df24",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 966879,
+          "opaquePixels": 193,
+          "partialAlphaPixels": 605444,
+          "alphaBounds": {
+            "x": 0,
+            "y": 20,
+            "width": 1216,
+            "height": 1164
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 966879,
+            "visiblePixels": 605637,
+            "alphaBounds": {
+              "x": 0,
+              "y": 20,
+              "width": 1216,
+              "height": 1164
+            }
+          },
+          "visiblePixelRatio": 0.38513884755385636
+        },
+        "issue": null
+      },
+      {
+        "id": "template:muse-sage-reading-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "muse-sage-reading",
+        "artworkId": "muse-sage-reading",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "official-recreation",
+            "basePresetId": "muse-sage-reading",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "muse-sage-reading",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "meta-muse",
+          "name": "鼠尾草捧书 Meta Muse",
+          "shape": "meta-hood",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#AFC2AA",
+            "secondary": "#E0E9DA",
+            "eyes": "#172131",
+            "accessory": "#866B56",
+            "headAccessory": "#6B6572",
+            "background": "#F3F6FA",
+            "skin": "#E9B99E",
+            "hair": "#56392E",
+            "clothing": "#F3F0E8"
+          },
+          "eyeColorManual": false,
+          "eyes": "softOval",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "holdClosedBook",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "closedBook"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "fabricCloth",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "muse-sage-reading",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/muse-sage-reading/full",
+              "version": "1.0.0",
+              "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "df4b92a15491c225",
+          "resolvedFingerprint": "f4e14748bf0c21f2"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/muse-sage-reading/full",
+            "version": "1.0.0",
+            "expectedSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+            "actualSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+            "src": "./assets/looks/muse-sage-reading.png",
+            "filename": "source/asset-017.png",
+            "bytes": 1142481,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1009482,
+              "opaquePixels": 32,
+              "partialAlphaPixels": 563002,
+              "alphaBounds": {
+                "x": 33,
+                "y": 20,
+                "width": 1193,
+                "height": 1210
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-018.png",
+          "mimeType": "image/png",
+          "bytes": 1330073,
+          "sha256": "5b7e85f47a50db32a289bf1346519c8528831fa34113fbde386aa778ddcfa63c",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1009482,
+          "opaquePixels": 32,
+          "partialAlphaPixels": 563002,
+          "alphaBounds": {
+            "x": 33,
+            "y": 20,
+            "width": 1193,
+            "height": 1210
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1009482,
+            "visiblePixels": 563034,
+            "alphaBounds": {
+              "x": 33,
+              "y": 20,
+              "width": 1193,
+              "height": 1210
+            }
+          },
+          "visiblePixelRatio": 0.3580465953923521
+        },
+        "issue": null
+      },
+      {
+        "id": "template:human-bun-yellow-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "human-bun-yellow",
+        "artworkId": "human-bun-yellow",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "human-bun-yellow",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "human-bun-yellow",
+          "faceShape": "oval",
+          "outfit": "hoodie",
+          "family": "humans",
+          "name": "黄衣丸子头女孩",
+          "shape": "human",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#E4B94F",
+            "secondary": "#FFF0C5",
+            "eyes": "#172131",
+            "accessory": "#303846",
+            "headAccessory": "#303846",
+            "background": "#F3F6FA",
+            "skin": "#D3A17D",
+            "hair": "#543729",
+            "clothing": "#E4B94F"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "soft",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "bun",
+          "limbs": "auto",
+          "action": "wave",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "matte",
+          "hairMaterial": "layered",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "human-bun-yellow",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/human-bun-yellow/full",
+              "version": "1.0.0",
+              "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "e3779d13daa7e12e",
+          "resolvedFingerprint": "009300854711e06b"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/human-bun-yellow/full",
+            "version": "1.0.0",
+            "expectedSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+            "actualSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+            "src": "./assets/looks/human-bun-yellow.png",
+            "filename": "source/asset-018.png",
+            "bytes": 1086214,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1087604,
+              "opaquePixels": 328,
+              "partialAlphaPixels": 484584,
+              "alphaBounds": {
+                "x": 0,
+                "y": 1,
+                "width": 1228,
+                "height": 1253
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-019.png",
+          "mimeType": "image/png",
+          "bytes": 1225739,
+          "sha256": "998ed1598ebd1400b29b8e5c6851f7e52451869d75ae939f2399eda9815acea5",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1087604,
+          "opaquePixels": 328,
+          "partialAlphaPixels": 484584,
+          "alphaBounds": {
+            "x": 0,
+            "y": 1,
+            "width": 1228,
+            "height": 1253
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1087604,
+            "visiblePixels": 484912,
+            "alphaBounds": {
+              "x": 0,
+              "y": 1,
+              "width": 1228,
+              "height": 1253
+            }
+          },
+          "visiblePixelRatio": 0.30836697369056976
+        },
+        "issue": null
+      },
+      {
+        "id": "template:human-blond-glasses-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "human-blond-glasses",
+        "artworkId": "human-blond-glasses",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "human-blond-glasses",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "human-blond-glasses",
+          "faceShape": "oval",
+          "outfit": "cardigan",
+          "family": "humans",
+          "name": "金发圆框伙伴",
+          "shape": "human",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#EEEAE0",
+            "secondary": "#B7D8EA",
+            "eyes": "#172131",
+            "accessory": "#453D35",
+            "headAccessory": "#303846",
+            "background": "#F3F6FA",
+            "skin": "#E6B99D",
+            "hair": "#D3A742",
+            "clothing": "#EEEAE0"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "soft",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "auto",
+          "accessories": {
+            "head": "none",
+            "face": "round",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "matte",
+          "hairMaterial": "layered",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "human-blond-glasses",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/human-blond-glasses/full",
+              "version": "1.0.0",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "e3779d13daa7e12e",
+          "resolvedFingerprint": "2514c0a41a4b64c2"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/human-blond-glasses/full",
+            "version": "1.0.0",
+            "expectedSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+            "actualSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+            "src": "./assets/looks/human-blond-glasses.png",
+            "filename": "source/asset-019.png",
+            "bytes": 1058375,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 1099076,
+              "opaquePixels": 410,
+              "partialAlphaPixels": 473030,
+              "alphaBounds": {
+                "x": 19,
+                "y": 21,
+                "width": 1195,
+                "height": 1233
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-020.png",
+          "mimeType": "image/png",
+          "bytes": 1212954,
+          "sha256": "52adc720e115adc48cad3d6165a7bc8f9ed953bb49c8b55ec72724fb6769fff3",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 1099076,
+          "opaquePixels": 410,
+          "partialAlphaPixels": 473030,
+          "alphaBounds": {
+            "x": 19,
+            "y": 21,
+            "width": 1195,
+            "height": 1233
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 1099076,
+            "visiblePixels": 473440,
+            "alphaBounds": {
+              "x": 19,
+              "y": 21,
+              "width": 1195,
+              "height": 1233
+            }
+          },
+          "visiblePixelRatio": 0.30107165841237865
+        },
+        "issue": null
+      },
+      {
+        "id": "template:animal-white-cat-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "animal-white-cat",
+        "artworkId": "animal-white-cat",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "animal-white-cat",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "animal-white-cat",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "animals",
+          "name": "奶油白猫伙伴",
+          "shape": "cat",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#E9E4D9",
+            "secondary": "#FFF9EC",
+            "eyes": "#172131",
+            "accessory": "#4B78A5",
+            "headAccessory": "#4B78A5",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#D3934D"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "sit",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "animal-white-cat",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/animal-white-cat/full",
+              "version": "1.0.0",
+              "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "eeead2287dce53af",
+          "resolvedFingerprint": "0b304f3ef5f23806"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/animal-white-cat/full",
+            "version": "1.0.0",
+            "expectedSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+            "actualSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+            "src": "./assets/looks/animal-white-cat.png",
+            "filename": "source/asset-020.png",
+            "bytes": 1382027,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 790208,
+              "opaquePixels": 16,
+              "partialAlphaPixels": 782292,
+              "alphaBounds": {
+                "x": 0,
+                "y": 23,
+                "width": 1238,
+                "height": 1231
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-021.png",
+          "mimeType": "image/png",
+          "bytes": 1661687,
+          "sha256": "55249dc57fa88c2d956ee93c7e971079e34fdda1d6b9ba0695bcc63627176fc9",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 790208,
+          "opaquePixels": 16,
+          "partialAlphaPixels": 782292,
+          "alphaBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1238,
+            "height": 1231
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 790208,
+            "visiblePixels": 782308,
+            "alphaBounds": {
+              "x": 0,
+              "y": 23,
+              "width": 1238,
+              "height": 1231
+            }
+          },
+          "visiblePixelRatio": 0.4974881018698697
+        },
+        "issue": null
+      },
+      {
+        "id": "template:animal-gray-husky-fixed:transparent",
+        "coverageKind": "template-output",
+        "lookId": "animal-gray-husky",
+        "artworkId": "animal-gray-husky",
+        "recipeId": "fixed",
+        "stateId": "fixed",
+        "background": "transparent",
+        "backgroundCount": 1,
+        "view": "front",
+        "width": 1254,
+        "height": 1254,
+        "config": {
+          "version": 10,
+          "rendererVersion": "atelier-4",
+          "catalogTier": "baseline",
+          "isLegacy": false,
+          "legacy": null,
+          "provenance": {
+            "source": "original",
+            "basePresetId": "animal-gray-husky",
+            "modified": false,
+            "referenceDate": null
+          },
+          "presetId": "animal-gray-husky",
+          "faceShape": "round",
+          "outfit": "sweater",
+          "family": "animals",
+          "name": "灰白哈士奇伙伴",
+          "shape": "husky",
+          "material": "micro",
+          "fur": "short",
+          "expressionAccents": false,
+          "palette": "app-pink",
+          "colors": {
+            "body": "#8994A4",
+            "secondary": "#F4F3EF",
+            "eyes": "#172131",
+            "accessory": "#4B78A5",
+            "headAccessory": "#4B78A5",
+            "background": "#F3F6FA",
+            "skin": "#D8A985",
+            "hair": "#56392E",
+            "clothing": "#D3934D"
+          },
+          "eyeColorManual": false,
+          "eyes": "sparkle",
+          "eyeScale": 1,
+          "eyeSpacing": 1,
+          "brows": "none",
+          "mouth": "smile",
+          "expression": "calm",
+          "headScale": 1,
+          "bodyWidth": 1,
+          "hair": "short",
+          "limbs": "auto",
+          "action": "idle",
+          "pose": "sit",
+          "accessories": {
+            "head": "none",
+            "face": "none",
+            "neck": "none",
+            "prop": "none"
+          },
+          "framing": "full",
+          "camera": "front",
+          "background": "transparent",
+          "aspect": "1:1",
+          "scale": 72,
+          "output": "image",
+          "motionStyle": "auto",
+          "motionSpeed": 1,
+          "skinMaterial": "auto",
+          "hairMaterial": "auto",
+          "clothMaterial": "knit",
+          "reference": {
+            "enabled": false,
+            "notes": "",
+            "preserve": [
+              "hair",
+              "face",
+              "colors",
+              "clothing",
+              "accessories"
+            ],
+            "overrides": []
+          },
+          "notes": "",
+          "randomSeed": "dot-01"
+        },
+        "composition": {
+          "kind": "template",
+          "catalogVersion": 1,
+          "baseId": "animal-gray-husky",
+          "recipeId": "fixed",
+          "assetRefs": [
+            {
+              "id": "artwork/animal-gray-husky/full",
+              "version": "1.0.0",
+              "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+            }
+          ],
+          "inputs": {
+            "stateId": "fixed",
+            "values": {},
+            "background": "transparent",
+            "backgroundColor": "#F3F6FA"
+          },
+          "inputFingerprint": "eeead2287dce53af",
+          "resolvedFingerprint": "a054d3c8e0cb6338"
+        },
+        "approvalStatus": "approved",
+        "atlasIssueAnnotation": {
+          "types": [],
+          "note": ""
+        },
+        "status": "pass",
+        "sourceAssets": [
+          {
+            "id": "artwork/animal-gray-husky/full",
+            "version": "1.0.0",
+            "expectedSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+            "actualSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+            "src": "./assets/looks/animal-gray-husky.png",
+            "filename": "source/asset-021.png",
+            "bytes": 1623665,
+            "width": 1254,
+            "height": 1254,
+            "alpha": {
+              "width": 1254,
+              "height": 1254,
+              "transparentPixels": 790161,
+              "opaquePixels": 24,
+              "partialAlphaPixels": 782331,
+              "alphaBounds": {
+                "x": 0,
+                "y": 23,
+                "width": 1230,
+                "height": 1231
+              }
+            },
+            "status": "pass",
+            "errors": []
+          }
+        ],
+        "canvas": {
+          "filename": "canvas/template-022.png",
+          "mimeType": "image/png",
+          "bytes": 1870786,
+          "sha256": "81228a07a3b69030924ad92a97a6b6b5ad1a34ba461e1eaf5458bb8c7e9b36c0",
+          "width": 1254,
+          "height": 1254,
+          "transparentPixels": 790161,
+          "opaquePixels": 24,
+          "partialAlphaPixels": 782331,
+          "alphaBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1230,
+            "height": 1231
+          },
+          "transparentOutputCheck": {
+            "valid": true,
+            "errors": [],
+            "transparentPixels": 790161,
+            "visiblePixels": 782355,
+            "alphaBounds": {
+              "x": 0,
+              "y": 23,
+              "width": 1230,
+              "height": 1231
+            }
+          },
+          "visiblePixelRatio": 0.49751799027800037
+        },
+        "issue": null
+      }
+    ],
+    "artApproval": {
+      "separateFromEngineering": true,
+      "registeredLookCount": 15,
+      "scopePendingStateIds": [
+        "candidate-dots-20261005::bare-classic",
+        "candidate-dots-20261005::headphones-idle",
+        "candidate-dots-20261005::wink",
+        "candidate-grok-20261005::wink",
+        "candidate-meta-muse-20261005::wave",
+        "candidate-humans-20261005::wave",
+        "candidate-animals-20261005::wave"
+      ],
+      "automaticApproval": false
+    }
+  }
+}

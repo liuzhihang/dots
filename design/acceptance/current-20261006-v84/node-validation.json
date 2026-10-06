@@ -1,0 +1,162 @@
+{
+  "sourceBefore": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "commit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "branch": "main",
+    "dirty": true,
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3"
+  },
+  "sourceAfter": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "commit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "branch": "main",
+    "dirty": true,
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3"
+  },
+  "sourceBound": true,
+  "checks": [
+    {
+      "name": "verify-studio",
+      "command": [
+        "node",
+        "scripts/verify-studio.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "62 baseline and diagnostic presets and state/Prompt/anatomy regression journeys passed.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-recreations",
+      "command": [
+        "node",
+        "scripts/verify-recreations.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "453 diagnostic preset, provenance, rejected-old-schema, eye/expression and shared-schema assertions passed\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-creation",
+      "command": [
+        "node",
+        "scripts/verify-creation.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Creation v2 projects, strict current role format, immutable artwork, prompt, pack capability and layered-capture readiness checks passed.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-creation-ui",
+      "command": [
+        "node",
+        "scripts/verify-creation-ui.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Production preview exports reject stale/missing outputs; modal clipboard fallback preserves exact text and rejects failed focus.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-catalog-tags",
+      "command": [
+        "node",
+        "scripts/verify-catalog-tags.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Typed tag catalogue passed: OR/AND semantics, aliases, empty/hidden results, multi-tag relations and unbounded tag counts.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-look-gallery",
+      "command": [
+        "node",
+        "scripts/verify-look-gallery.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Fifteen per-family look templates, alpha PNG dimensions, real pack guards, source details and exact prompt signatures passed.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-family-navigation",
+      "command": [
+        "node",
+        "scripts/verify-family-navigation.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Frozen homepage navigation, typed-tag scope, isolated v2 drafts, safe routes and explicit-only project commits passed.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-module-cache",
+      "command": [
+        "node",
+        "scripts/verify-module-cache.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Versioned module graph and v2/v10 project safety passed: 21 modules; resolver-backed candidates verified.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-fullscreen-random",
+      "command": [
+        "node",
+        "scripts/verify-fullscreen-random.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Rendered randomizer checks passed: six-stage category merging without asset loss, v2/VERSION 10 candidates, typed scope, verified resolver adapters, selected-only preload, exact locks, real Canvas/PNG gating, one-commit apply, and stale callback isolation.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-preview-capture",
+      "command": [
+        "node",
+        "scripts/verify-preview-capture.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Preview capture lifecycle passed: painted frame/time, assembly, queue, update/dispose, PNG encoding and 2D snapshot guards.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-composition-fit",
+      "command": [
+        "node",
+        "scripts/verify-composition-fit.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Composition fit checks passed: headphone span 0.914→1.054, rise 1.002→0.663; contact, face gates, human/Dots profiles, and exact glasses/scarf anchor fits verified.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-composition-resolver",
+      "command": [
+        "node",
+        "scripts/verify-composition-resolver.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "Trusted modular resolution, v2 round-trip/null behavior, exact adaptation approvals and approval invalidation passed.\n",
+      "stderr": ""
+    },
+    {
+      "name": "verify-composition-coverage",
+      "command": [
+        "node",
+        "scripts/verify-composition-coverage.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"result\": \"pass\",\n  \"template\": {\n    \"lookCount\": 15,\n    \"stateCount\": 22,\n    \"baselineStateCount\": 12,\n    \"fixedTemplateCount\": 10,\n    \"outputCount\": 66\n  },\n  \"rawPngByteChecks\": {\n    \"uniqueFiles\": 21,\n    \"result\": \"pass\"\n  },\n  \"module\": {\n    \"assetCount\": 4,\n    \"componentAssetIdCount\": 4,\n    \"baseCount\": 2,\n    \"recipeCount\": 2,\n    \"declaredRecipeCount\": 2,\n    \"registeredRecipeCount\": 2,\n    \"multiComponentRecipeCount\": 1,\n    \"singleAssetCases\": 10,\n    \"singleComponentAdaptationCount\": 10,\n    \"pairwiseCases\": 7,\n    \"highRiskCases\": 0,\n    \"approvedRecipeCases\": 1,\n    \"exhaustiveCases\": 1,\n    \"seededSamples\": 0,\n    \"seededSampleShortfalls\": 0,\n    \"seedPropertyCases\": 1,\n    \"parameterBoundaryCases\": 3\n  },\n  \"approval\": {\n    \"exactRecipeApprovals\": 0,\n    \"recipes\": 5,\n    \"genericStatusWithoutExactAdaptation\": \"pending\"\n  },\n  \"seededSampling\": {\n    \"deterministic\": true,\n    \"cases\": 8,\n    \"unresolvedRequiredCases\": 2\n  },\n  \"hardConstraintExclusions\": 3,\n  \"denominatorFailureGuard\": \"pass\",\n  \"faultInjection\": {\n    \"requiredCasesRetained\": 23,\n    \"failed\": 23,\n    \"excludedByExplicitConstraints\": 3\n  },\n  \"impactGraph\": \"pass\",\n  \"freezeGuard\": \"pass\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "openspec-strict",
+      "command": [
+        "openspec",
+        "validate",
+        "--all",
+        "--strict"
+      ],
+      "exitCode": 0,
+      "stdout": "✓ change/add-composition-visual-regression\n✓ change/add-modular-2d-composition\n✓ spec/catalog-tags\n✓ spec/character-contact-and-motion\n✓ spec/character-creation-modes\n✓ spec/character-families\n✓ spec/character-visual-acceptance\n✓ spec/composition-coverage\n✓ change/evolve-catalog-tags\n✓ spec/family-navigation\n✓ spec/fullscreen-randomizer\n✓ spec/modular-2d-composition\n✓ spec/studio-creation-experience\n✓ spec/studio-visual-experience\n✓ change/upgrade-randomizer-to-rendered-recipes\nTotals: 15 passed, 0 failed (15 items)\n",
+      "stderr": "- Validating...\n  ℹ [INFO] requirements[1]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[3]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[1]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[4]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[7]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[0]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[2]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[2]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[5]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[7]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[3]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[1]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[2]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[3]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[4]: Requirement text is very long (>500 characters). Consider breaking it down.\n  ℹ [INFO] requirements[5]: Requirement text is very long (>500 characters). Consider breaking it down.\n"
+    }
+  ],
+  "result": "pass"
+}

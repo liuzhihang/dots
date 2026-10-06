@@ -1,0 +1,316 @@
+{
+  "schema": "dots-randomizer-browser-qa/v1",
+  "target": "http://127.0.0.1:5173/",
+  "browserPlugin": "not available in this session; regular Playwright fallback used",
+  "browserVersion": "154.0.8037.98",
+  "viewportChecks": [
+    {
+      "width": 1440,
+      "entry": "home",
+      "modal": true,
+      "dialog": {
+        "left": 250,
+        "right": 1190,
+        "width": 940,
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "shell": {
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "main": {
+        "clientWidth": 820,
+        "scrollWidth": 820
+      },
+      "viewport": 1440,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "entry": "gallery",
+      "modal": true,
+      "dialog": {
+        "left": 250,
+        "right": 1190,
+        "width": 940,
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "shell": {
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "main": {
+        "clientWidth": 820,
+        "scrollWidth": 820
+      },
+      "viewport": 1440,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "entry": "workbench",
+      "modal": true,
+      "dialog": {
+        "left": 250,
+        "right": 1190,
+        "width": 940,
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "shell": {
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "main": {
+        "clientWidth": 820,
+        "scrollWidth": 820
+      },
+      "viewport": 1440,
+      "focusInside": true
+    },
+    {
+      "width": 320,
+      "entry": "home",
+      "modal": true,
+      "dialog": {
+        "left": 0,
+        "right": 320,
+        "width": 320,
+        "clientWidth": 320,
+        "scrollWidth": 320
+      },
+      "shell": {
+        "clientWidth": 320,
+        "scrollWidth": 320
+      },
+      "main": {
+        "clientWidth": 320,
+        "scrollWidth": 320
+      },
+      "viewport": 320,
+      "focusInside": true
+    },
+    {
+      "width": 390,
+      "entry": "home",
+      "modal": true,
+      "dialog": {
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      "shell": {
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      "main": {
+        "clientWidth": 390,
+        "scrollWidth": 390
+      },
+      "viewport": 390,
+      "focusInside": true
+    },
+    {
+      "width": 768,
+      "entry": "home",
+      "modal": true,
+      "dialog": {
+        "left": 16,
+        "right": 752,
+        "width": 736,
+        "clientWidth": 734,
+        "scrollWidth": 734
+      },
+      "shell": {
+        "clientWidth": 734,
+        "scrollWidth": 734
+      },
+      "main": {
+        "clientWidth": 734,
+        "scrollWidth": 734
+      },
+      "viewport": 768,
+      "focusInside": true
+    },
+    {
+      "width": 1440,
+      "entry": "home",
+      "modal": true,
+      "dialog": {
+        "left": 250,
+        "right": 1190,
+        "width": 940,
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "shell": {
+        "clientWidth": 938,
+        "scrollWidth": 938
+      },
+      "main": {
+        "clientWidth": 820,
+        "scrollWidth": 820
+      },
+      "viewport": 1440,
+      "focusInside": true
+    }
+  ],
+  "entryChecks": [
+    {
+      "entry": "home",
+      "opened": true,
+      "modal": true,
+      "focusedTitle": true,
+      "escapeRestoresFocus": true,
+      "projectUnchanged": true
+    },
+    {
+      "entry": "gallery",
+      "opened": true,
+      "modal": true,
+      "focusedTitle": true,
+      "escapeRestoresFocus": true,
+      "projectUnchanged": true
+    },
+    {
+      "entry": "workbench",
+      "opened": true,
+      "modal": true,
+      "focusedTitle": true,
+      "escapeRestoresFocus": true,
+      "projectUnchanged": true
+    }
+  ],
+  "interactionChecks": [
+    {
+      "flow": "modal background pointer isolation",
+      "result": "passed"
+    },
+    {
+      "flow": "gallery tag scope → real Canvas → exact artwork lock → clear all → locked reroll → Escape",
+      "result": "passed"
+    },
+    {
+      "flow": "workbench → random → skip animation → Canvas result → Escape",
+      "result": "passed"
+    },
+    {
+      "flow": "prefers-reduced-motion: reduce → static reveal → same real Canvas result",
+      "result": "passed"
+    },
+    {
+      "flow": "successful Canvas → fail selected asset hash preload on reroll → prior Canvas retained, no substitution → cancel",
+      "result": "passed",
+      "failedFetchCount": 1
+    },
+    {
+      "flow": "workbench → real Canvas → apply once → one Undo restores exact original v2 project",
+      "result": "passed",
+      "artworkId": "dots-lilac-bucket",
+      "compositionKind": "template",
+      "assetRefCount": 1
+    },
+    {
+      "flow": "real resolver result → exact artwork lock → forced scoped no-solution → clear all retains lock → resolver recovers exact locked artwork",
+      "result": "passed"
+    },
+    {
+      "flow": "start slow resolver → close/reopen → deliver prior callback → new dialog remains isolated",
+      "result": "passed",
+      "candidateId": "template:candidate-dots-20261005::headphones-classic"
+    }
+  ],
+  "screenshots": [
+    "home-desktop.png",
+    "random-home-intro.png",
+    "random-gallery-result-desktop.png",
+    "random-reduced-motion-result.png",
+    "random-reroll-resource-failure.png",
+    "random-responsive-320.png",
+    "random-responsive-390.png",
+    "random-responsive-768.png",
+    "random-responsive-1440.png",
+    "approved-fixture-modular-dialog.png",
+    "approved-fixture-modular-canvas.png"
+  ],
+  "runtimeErrors": [],
+  "expectedInjectedErrors": [
+    {
+      "kind": "console",
+      "message": "Failed to load resource: net::ERR_FAILED"
+    }
+  ],
+  "expectedSourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+  "sourceBefore": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3",
+    "fileCount": 152,
+    "dirtyFileCount": 53
+  },
+  "pageIdentity": {
+    "url": "http://127.0.0.1:5173/",
+    "title": "Dot Icon Studio · 小小角色，大大的想象",
+    "heading": "小小角色，\n让大大的想象发生"
+  },
+  "blankPage": false,
+  "modularFixture": {
+    "productionCandidateCount": 15,
+    "fixtureCandidateCount": 16,
+    "fixtureCompositionKind": "modular",
+    "approvalStatus": "approved",
+    "releaseStatus": "approved",
+    "assetRefCount": 2,
+    "stageMetadataCount": 2,
+    "componentAssetId": "pilot-headphones-v1",
+    "recipeId": "pilot-headphones-v1-on-candidate-dots-20261005-bare-classic",
+    "artworkId": "candidate-dots-20261005",
+    "rendered": {
+      "ready": "ready",
+      "width": 1254,
+      "height": 1254,
+      "coloredPixels": 1572516,
+      "bytes": 1310749,
+      "type": "image/png",
+      "sha256": "e3a28bd54e3e2e1c6f47eb78c12f6f32232773d7b552d4506d5ea7da212fbbf2"
+    },
+    "result": {
+      "phase": "result",
+      "compositionKind": "modular",
+      "refs": [
+        {
+          "id": "artwork/candidate-dots-20261005/bare",
+          "version": "1.0.0",
+          "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988"
+        },
+        {
+          "id": "pilot-headphones-v1",
+          "version": "2.0.0",
+          "sha256": "752814b890c50f04d2e2884f5d4c976969bde1667bff18a1e2b6feced4ca7b02"
+        }
+      ],
+      "stageLabels": [
+        "角色",
+        "配饰"
+      ],
+      "revealedCount": 2
+    },
+    "storageUnchanged": true
+  },
+  "keyboardModality": {
+    "modal": false,
+    "hiddenBackground": false
+  },
+  "sourceAfter": {
+    "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+    "dirtySnapshotHash": "f2e7549a98561c19441cbce897138affaf6af98f9f18d8456026ab22419877d3",
+    "fileCount": 152,
+    "dirtyFileCount": 53
+  },
+  "sourceMatchAfter": true,
+  "dirtyMatchAfter": true,
+  "consoleErrorCount": 0
+}

@@ -1,0 +1,37 @@
+{
+  "valid": true,
+  "captureKind": "modular",
+  "records": 15,
+  "counts": {
+    "pass": 15,
+    "fail": 0,
+    "blocked": 0
+  },
+  "hardConstraintExclusions": 0,
+  "sourceFiles": 6,
+  "canvasFiles": 15,
+  "annotationsArtifact": {
+    "schema": "dot-studio-atlas-annotations/v1",
+    "scope": "modular-cases",
+    "issueAnnotationCount": 15
+  },
+  "coordinationSummary": {
+    "adaptations": 5,
+    "disposition": {
+      "pending": 5,
+      "rejected": 0,
+      "readyForExplicitConfirmation": 0
+    },
+    "engineering": {
+      "available": 5,
+      "blocked": 0,
+      "unknown": 0
+    },
+    "artApproval": {
+      "pending": 5,
+      "rejected": 0,
+      "approved": 0,
+      "unknown": 0
+    }
+  }
+}

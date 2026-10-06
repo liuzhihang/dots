@@ -1,0 +1,10 @@
+{
+  "url": "http://127.0.0.1:5173/",
+  "browser": "154.0.8037.98",
+  "deviceAcceptance": false,
+  "method": "Playwright controlling real Chrome; Browser plugin unavailable",
+  "results": [],
+  "errors": [],
+  "status": "fail",
+  "failure": "AssertionError [ERR_ASSERTION]: the chestnut Classic card is explicitly labeled\n+ actual - expected\n\n+ '眼镜 · 经典'\n- '耳机 · 经典'\n\n    at file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:79:74"
+}

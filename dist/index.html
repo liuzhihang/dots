@@ -5,7 +5,7 @@
   <title>Dot Icon Studio · 小小角色，大大的想象</title>
   <meta name="description" content="从 Dots、Grok Bot、Meta Muse、人物与动物开始，探索柔软材质、自然动作与小配饰，带走属于你的角色 Prompt。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='11' fill='%232166E8'/%3E%3Crect x='9' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3Crect x='18' y='11' width='5' height='10' rx='2.5' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./studio.css?v=83"><link rel="stylesheet" href="./studio-layout.css?v=83"><link rel="stylesheet" href="./atelier.css?v=83"><link rel="stylesheet" href="./studio-creation.css?v=83"><link rel="stylesheet" href="./studio-refresh.css?v=83"><link rel="stylesheet" href="./studio-fullscreen-random.css?v=83"><script type="module" src="./studio.js?v=83"></script>
+  <link rel="stylesheet" href="./studio-tags.css?v=86"><link rel="stylesheet" href="./studio.css?v=86"><link rel="stylesheet" href="./studio-layout.css?v=86"><link rel="stylesheet" href="./atelier.css?v=86"><link rel="stylesheet" href="./studio-creation.css?v=86"><link rel="stylesheet" href="./studio-refresh.css?v=86"><link rel="stylesheet" href="./studio-fullscreen-random.css?v=86"><script type="module" src="./studio.js?v=86"></script>
 </head>
 <body class="studio-r4 atelier studio-refresh" data-screen="home">
 <a class="skip-link" href="#mainContent">跳到主要内容</a>
@@ -15,7 +15,7 @@
   <nav class="studio-nav" aria-label="主导航"><button data-route="home" aria-current="page">首页</button><button data-route="looks">内置形象</button><button data-route="workspace">工作台</button></nav>
   <div class="header-tools"><button class="icon-btn workspace-only" id="undo" aria-label="撤销" title="撤销"></button><button class="icon-btn workspace-only" id="redo" aria-label="重做" title="重做"></button>
     <details class="project-menu"><summary aria-label="项目"><span data-icon="save"></span><span>项目</span></summary><div class="project-menu-items">
-      <button data-command="save-config"><span data-icon="save"></span>保存项目 JSON</button><button data-command="save-character"><span data-icon="save"></span>导出兼容角色 JSON</button><button data-command="import-config"><span data-icon="upload"></span>导入项目 JSON</button><button data-command="reference"><span data-icon="image"></span>参考图 Prompt</button><button data-command="guide"><span data-icon="book"></span>风格与设计来源</button><a href="./editor.html"><span data-icon="external"></span>结构草图编辑器</a>
+      <button data-command="save-config"><span data-icon="save"></span>保存项目 JSON</button><button data-command="import-config"><span data-icon="upload"></span>导入项目 JSON</button><button data-command="reference"><span data-icon="image"></span>参考图 Prompt</button><button data-command="guide"><span data-icon="book"></span>风格与设计来源</button><a href="./editor.html"><span data-icon="external"></span>结构草图编辑器</a>
     </div></details>
   </div>
 </header>
@@ -27,7 +27,7 @@
   <footer class="site-footer"><span>小角色，大想象。</span><span>形象导出 · Prompt 创作 · 无需账号</span><button data-command="guide">关于角色与设计来源</button></footer>
 </section>
 <section id="looksPortal" class="looks-portal" aria-labelledby="looksTitle" hidden>
-  <header class="looks-heading"><span class="hero-eyebrow">BUILT-IN LOOKS · FIVE FAMILIES</span><h1 id="looksTitle" tabindex="-1">内置形象</h1><p>每一张卡都是完整搭配。先看喜欢的形象，再用它开始自己的创作。</p></header>
+  <header class="looks-heading"><span class="hero-eyebrow">BUILT-IN LOOKS</span><h1 id="looksTitle" tabindex="-1">内置形象</h1><p>每一张卡都是完整搭配。先看喜欢的形象，再用它开始自己的创作。</p><button class="button outlined" data-command="fullscreen-random">随机一款</button></header>
   <nav id="lookFilters" class="look-filters" aria-label="按家族筛选内置形象"></nav>
   <section id="galleryScene" class="gallery-scene" aria-label="家族伙伴互动" hidden></section>
   <p id="lookResults" class="sr-only" role="status" aria-live="polite"></p>
@@ -58,7 +58,7 @@
     </div>
   </section>
   <aside class="inspector" aria-label="角色定制">
-    <div id="workbenchControls" class="workbench-controls"></div>
+    <details class="workbench-tag-browse" id="workbenchTagBrowse"><summary>按标签浏览形象</summary><div id="workbenchTags"></div><div id="workbenchTagResults" class="workbench-tag-results"></div></details><div id="workbenchControls" class="workbench-controls"></div>
     <div class="character-picker"><span><b id="presetName">蓝色 Dots</b><small id="presetCount">当前搭配</small></span><button class="icon-btn" data-command="reset" aria-label="重置当前角色" title="恢复当前搭配"><span data-icon="reset"></span></button></div>
     <details class="advanced-prompt-settings" id="advancedPromptSettings"><summary>高级 Prompt 设定 <small>五官、材质、配件与动作只影响 Prompt</small></summary>
       <nav class="setting-tabs" aria-label="Prompt 定制选项" role="tablist"><button role="tab" aria-selected="true" aria-controls="settings" id="tab-appearance" data-tab="appearance">外形</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-face" data-tab="face" tabindex="-1">五官</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-accessories" data-tab="accessories" tabindex="-1">配件</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-motion" data-tab="motion" tabindex="-1">动作</button><button role="tab" aria-selected="false" aria-controls="settings" id="tab-scene" data-tab="scene" tabindex="-1">画面</button></nav>

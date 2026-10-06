@@ -1,0 +1,111 @@
+{
+  "format": "dot-studio-project",
+  "version": 2,
+  "character": {
+    "version": 10,
+    "rendererVersion": "atelier-4",
+    "catalogTier": "baseline",
+    "isLegacy": false,
+    "legacy": null,
+    "provenance": {
+      "source": "original",
+      "basePresetId": "baseline-animals",
+      "modified": true,
+      "referenceDate": null
+    },
+    "presetId": "baseline-animals",
+    "faceShape": "round",
+    "outfit": "sweater",
+    "family": "animals",
+    "name": "暖橙柴犬",
+    "shape": "shiba",
+    "material": "micro",
+    "fur": "short",
+    "expressionAccents": false,
+    "palette": "app-pink",
+    "colors": {
+      "body": "#D3934D",
+      "secondary": "#FFF0D5",
+      "eyes": "#172131",
+      "accessory": "#4B78A5",
+      "headAccessory": "#4B78A5",
+      "background": "#F3F6FA",
+      "skin": "#D8A985",
+      "hair": "#56392E",
+      "clothing": "#D3934D"
+    },
+    "eyeColorManual": false,
+    "eyes": "sparkle",
+    "eyeScale": 1,
+    "eyeSpacing": 1,
+    "brows": "none",
+    "mouth": "smile",
+    "expression": "calm",
+    "headScale": 1,
+    "bodyWidth": 1,
+    "hair": "short",
+    "limbs": "auto",
+    "action": "idle",
+    "pose": "sit",
+    "accessories": {
+      "head": "none",
+      "face": "none",
+      "neck": "none",
+      "prop": "none"
+    },
+    "framing": "full",
+    "camera": "front",
+    "background": "studio",
+    "aspect": "1:1",
+    "scale": 72,
+    "output": "image",
+    "motionStyle": "auto",
+    "motionSpeed": 1,
+    "skinMaterial": "auto",
+    "hairMaterial": "auto",
+    "clothMaterial": "knit",
+    "reference": {
+      "enabled": false,
+      "notes": "",
+      "preserve": [
+        "hair",
+        "face",
+        "colors",
+        "clothing",
+        "accessories"
+      ],
+      "overrides": []
+    },
+    "notes": "",
+    "randomSeed": "dot-01"
+  },
+  "creation": {
+    "mode": "composer",
+    "artworkId": "candidate-animals-20261005",
+    "composition": {
+      "kind": "template",
+      "catalogVersion": 1,
+      "baseId": "candidate-animals-20261005",
+      "recipeId": "classic",
+      "assetRefs": [
+        {
+          "id": "artwork/candidate-animals-20261005/full",
+          "version": "1.0.0",
+          "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+        }
+      ],
+      "inputs": {
+        "stateId": "classic",
+        "values": {
+          "action": "idle",
+          "expression": "calm",
+          "pose": "sit"
+        },
+        "background": "studio",
+        "backgroundColor": "#F3F6FA"
+      },
+      "inputFingerprint": "91dc01821d9fbe16",
+      "resolvedFingerprint": "f28e89b098db304c"
+    }
+  }
+}

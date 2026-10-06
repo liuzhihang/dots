@@ -1,5 +1,5 @@
-import {schematicShapes} from './studio-pickers.js?v=83';
-import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=83';
+import {schematicShapes} from './studio-pickers.js?v=86';
+import {SHAPES,EXPRESSIONS,ACCESSORIES} from './studio-model.js?v=86';
 const safe=s=>String(s).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 export function schematicSupport(c){const unavailable=!schematicShapes[c.shape];return {unavailable,notes:[unavailable?'此人物 / 动物结构尚无对应 2D 示意；原角色完整保留，请返回 3D 查看。':'2D 结构示意使用同一份配置；材质、光照与景深请在 3D 查看。',...((c.action!=='idle'||c.accessories.prop!=='none'||c.limbs!=='none'&&c.limbs!=='auto')?['动作、道具与肢体接触仅在 3D 演示，设定已保留。']:[]),...(!['none','headphones','beret','pom','tuft'].includes(c.accessories.head)?['所选头饰仅在3D完整展示。']:[]),...(!['none','bow'].includes(c.accessories.neck)?['颈饰以简线示意，完整造型请在3D查看。']:[]),...(c.camera!=='front'?['2D 仅展示正面；保存的镜头未改变。']:[])]};}
 export function schematicSVG(c){
@@ -41,8 +41,8 @@ export function schematicSVG(c){
  else if(h==='none'){}else hat=`<text x="40" y="0" text-anchor="middle" font-size="3.6" fill="#65758b">${safe(ACCESSORIES.head[h].label)}：3D 查看</text>`;
  let neck='';if(c.accessories.neck==='bow')neck=`<path d="M39 51L29 47Q27 51 29 55L39 53ZM41 51L51 47Q53 51 51 55L41 53Z" fill="${acc}"/><circle cx="40" cy="52" r="1.8" fill="${acc}"/>`;
  else if(c.accessories.neck!=='none')neck=`<path d="M25 49Q40 54 55 49" fill="none" stroke="${acc}" stroke-width="3"/>`;
- const [aw,ah]=c.aspect.split(':').map(Number),w=400,hg=400*ah/aw,bg=c.background==='transparent'?'':`<rect width="${w}" height="${hg}" fill="${c.background==='solid'?c.colors.background:'#f4f6fa'}"/>`,size=Math.min(w,hg)*.012*(c.scale/72);
- return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${hg}" role="img" aria-label="${safe(c.name)}的2D结构示意"><title>${safe(c.name)} · ${safe(SHAPES[c.shape].label)} · ${safe(EXPRESSIONS[c.expression].label)}</title>${bg}<g transform="translate(${w/2} ${hg/2}) scale(${size*c.bodyWidth} ${size*c.headScale}) translate(-40 -32)"><g fill="${fill}">${schematicShapes[c.shape]}</g><g>${face}${glasses}${hat}${neck}</g></g></svg>`;
+ const [aw,ah]=c.aspect.split(':').map(Number),w=400,hg=400*ah/aw,size=Math.min(w,hg)*.012*(c.scale/72);
+ return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${hg}" role="img" aria-label="${safe(c.name)}的2D结构示意"><title>${safe(c.name)} · ${safe(SHAPES[c.shape].label)} · ${safe(EXPRESSIONS[c.expression].label)}</title><g transform="translate(${w/2} ${hg/2}) scale(${size*c.bodyWidth} ${size*c.headScale}) translate(-40 -32)"><g fill="${fill}">${schematicShapes[c.shape]}</g><g>${face}${glasses}${hat}${neck}</g></g></svg>`;
 }
 export class Shared2DPreview{
  constructor(container,{onReady=()=>{}}={}){this.container=container;this.onReady=onReady;this.playing=false;this.revision=0;this.disposed=false;}

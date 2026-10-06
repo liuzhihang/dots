@@ -1,0 +1,78 @@
+{
+  "projectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+  "siteVersion": 36,
+  "cacheVersion": 84,
+  "sourceId": "sha256:b25be9f918395b4113d1ab11a3a3b84e60306d72352812ddca894612a4843f9f",
+  "githubCheckout": {
+    "branch": "main",
+    "commit": "4d952b907ef4823db7b5e9792726c80a4226eeb8",
+    "committedOrPushedThisTurn": false
+  },
+  "siteSource": {
+    "commit": "412ce3526a6eafe83f72dae1cfaf8c927828fc53",
+    "checkout": "/private/tmp/dots-site-release-20261006-b0N7Uy"
+  },
+  "deployment": {
+    "id": "appgdep_6ac4a47bf29c819190d430a6ed9baa47",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dot Icon Studio",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_18240118efc08191bf1c9c9206d539c4",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dot.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-06T07:34:30.479040+00:00"
+  },
+  "savedVersion": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_18240118efc08191bf1c9c9206d539c4",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 36,
+    "source": {
+      "commit_sha": "412ce3526a6eafe83f72dae1cfaf8c927828fc53"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000f65c81f5ae80dbbf2173a598",
+      "content_hash": "sha256:1f1fa005237c89b02a587b8f692422cdfe8beab36b16e390617f433ef67de709",
+      "size_bytes": 83159040,
+      "file_count": 110
+    },
+    "screenshot_url": null,
+    "deployment_id": "appgdep_6ac4a47bf29c819190d430a6ed9baa47"
+  },
+  "audience": {
+    "ownerPrivate": true,
+    "allowedAccountUsers": 1,
+    "policyRevision": 1,
+    "unchanged": true
+  },
+  "verification": {
+    "localArchiveFiles": 110,
+    "runtimeFiles": 109,
+    "independentDependencyClosure": {
+      "entries": 4,
+      "dependencyFiles": 40,
+      "localReferences": 88,
+      "unresolved": 0
+    },
+    "engineeringQAReusedFrom": "design/acceptance/current-20261006-v84/",
+    "nativeDeploymentSucceeded": true,
+    "remoteSourceCommitReadBack": true,
+    "remoteArchiveStorageReadBack": true,
+    "remoteArchiveContainerBytesRetrieved": false,
+    "liveBrowserQAThisTurn": false,
+    "physicalPhoneQAThisTurn": false
+  },
+  "artApproval": {
+    "pilotAssets": "pending",
+    "approvedAdaptations": 0,
+    "defaultRandomPool": "15 previously approved templates",
+    "openSpecTasks": "67/76; publication does not complete art approval tasks"
+  },
+  "archiveContainerNote": "Local upload is tar.gz; Sites reports a stored tar container with its own hash and size. Remote container bytes were not retrieved or compared directly.",
+  "diagnosticEvidenceNote": "qa/character-source.json retains historical source-file records; the online diagnostics reads metadata, not the listed legacy QA fixtures."
+}

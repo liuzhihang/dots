@@ -28,7 +28,7 @@ c=setCharacterValue(c,'action','idle');assert.equal(resolveCharacter(c).config.a
 c=setCharacterValue(c,'accessories.face','sunglasses');c=setCharacterValue(c,'action','sleep');assert.equal(c.accessories.face,'sunglasses');assert.equal(resolveCharacter(c).config.accessories.face,'none');
 c=setCharacterValue(c,'action','idle');assert.equal(resolveCharacter(c).config.accessories.face,'sunglasses');
 c=setCharacterValue(c,'action','work');c=setCharacterValue(c,'expression','wink');assert.equal(c.action,'work');assert.equal(resolveCharacter(c).config.expression,'wink');
-c=setCharacterValue(c,'background','solid');c=setCharacterValue(c,'output','sticker');assert.equal(resolveCharacter(c).config.background,'transparent');c=setCharacterValue(c,'output','image');assert.equal(resolveCharacter(c).config.background,'solid');
+assert.equal(c.background,'transparent');assert.throws(()=>setCharacterValue(c,'background','solid'),/背景|透明/);assert.throws(()=>setCharacterValue(c,'colors.background','#FFFFFF'),/背景|透明/);c=setCharacterValue(c,'output','sticker');assert.equal(resolveCharacter(c).config.background,'transparent');c=setCharacterValue(c,'output','image');assert.equal(resolveCharacter(c).config.background,'transparent');
 
 c=createPreset('pet-owl');c=setCharacterValue(c,'action','flowers');
 assert.deepEqual(resolveCharacter(c).anatomy,{plan:'bird',hands:0,paws:0,feet:2,wings:2});assert(buildPrompt(c).includes('两只翼尖与胸前共同托住小花束'));
@@ -68,4 +68,4 @@ for(const shade of OPAQUE_EYEWEAR){
  selected=setCharacterValue(selected,'action','sleep');assert.equal(resolveCharacter(selected).config.accessories.face,'none');
  selected=setCharacterValue(selected,'action','idle');assert.equal(resolveCharacter(selected).config.accessories.face,shade);
 }
-console.log('62 baseline and legacy presets and state/Prompt/anatomy regression journeys passed.');
+console.log('62 baseline and diagnostic presets and state/Prompt/anatomy regression journeys passed.');

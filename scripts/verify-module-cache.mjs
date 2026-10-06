@@ -21,23 +21,71 @@ while (queue.length) {
   }
 }
 assert(seen.size >= 10, 'the real editor dependency graph must be traversed');
-const {getFamilyArtwork} = await import(new URL(`studio-creation-assets.js?v=${revision}`, root));
+
+const {
+  createLookCharacter, buildPrompt, VERSION
+} = await import(new URL(`studio-model.js?v=${revision}`, root));
+const {
+  makeProject, parseProject, exportProject, PROJECT_VERSION
+} = await import(new URL(`studio-creation.js?v=${revision}`, root));
+const {getFamilyArtwork, getCreationArtwork} = await import(new URL(`studio-creation-assets.js?v=${revision}`, root));
+const {resolveProjectComposition, getResolvedTemplateCandidates} = await import(new URL(`studio-composition-resolver.js?v=${revision}`, root));
+assert.equal(PROJECT_VERSION, 2, 'the supported project contract is v2');
+assert.equal(VERSION, 10, 'the current role contract is v10');
+
+const currentIds = new Set(['candidate-dots-20261005','candidate-grok-20261005','candidate-meta-muse-20261005','candidate-humans-20261005','candidate-animals-20261005']);
 for (const family of ['dots', 'grok', 'meta-muse', 'humans', 'animals']) {
   const artwork = getFamilyArtwork(family);
-  assert(artwork?.kind === 'baseline-candidate', `${family} must resolve to its new candidate, not the historical registry`);
+  assert(artwork && currentIds.has(artwork.id), `${family} resolves to its explicitly registered current baseline`);
   await readFile(new URL(artwork.src, root));
+  assert.equal(getCreationArtwork(artwork.id).id, artwork.id);
 }
-const muse = getFamilyArtwork('meta-muse');
-assert(muse.src.includes('meta-muse-cream-hooded'), 'Meta Muse must have its own character image');
-const {createCharacter, validateConfig, exportConfiguration, buildPrompt} = await import(new URL(`studio-model.js?v=${revision}`, root));
-const grok = createCharacter('grok');
-assert.equal(grok.shape, 'sphere');
-assert.equal(grok.colors.eyes, '#FFFFFF');
-assert.equal(grok.accessories.face, 'none');
-assert.equal(grok.accessories.prop, 'none');
-assert(buildPrompt(grok).includes('同向斜置'));
-const previousGrok = {...grok, shape:'arch', name:'淡紫 Grok Bot', colors:{...grok.colors,body:'#DCCDF2'}, action:'work', accessories:{...grok.accessories,face:'round',prop:'macbook'}};
-const restoredGrok = validateConfig(JSON.parse(exportConfiguration(previousGrok)));
-assert.deepEqual(restoredGrok, {...previousGrok,provenance:{...previousGrok.provenance,modified:true}}, 'previous Grok baselines retain every saved field; provenance correctly reports a difference from the corrected default');
-assert.deepEqual(validateConfig(restoredGrok), restoredGrok, 'the compatible old baseline must stay stable on repeated imports');
-console.log(`Module cache graph passed: ${seen.size} versioned modules and five own-family candidates.`);
+assert(getFamilyArtwork('meta-muse').src.includes('meta-muse-cream-hooded'), 'Meta Muse retains its own registered template image');
+
+const character = createLookCharacter('candidate-grok-20261005');
+assert.equal(character.shape, 'sphere');
+assert.equal(character.colors.eyes, '#FFFFFF');
+assert.equal(character.accessories.face, 'none');
+assert.equal(character.accessories.prop, 'none');
+assert(buildPrompt(character).includes('同向斜置'));
+const project = makeProject(character, {mode:'composer',artworkId:'candidate-grok-20261005'});
+assert.equal(project.format, 'dot-studio-project');
+assert.equal(project.version, 2);
+assert.equal(project.character.version, 10);
+assert(project.creation.composition && ['template','modular'].includes(project.creation.composition.kind),
+  'a resolvable registered template project records v2 composition references');
+const exported = exportProject(project);
+const roundTrip = parseProject(JSON.parse(exported));
+assert.deepEqual(roundTrip, project, 'a v2 project round-trips with its resolved composition reference');
+const resolved = resolveProjectComposition(roundTrip);
+assert.equal(resolved.availability, 'available');
+assert.equal(resolved.composition.kind, 'template');
+assert.deepEqual(resolved.composition.assetRefs, project.creation.composition.assetRefs);
+
+const candidates = getResolvedTemplateCandidates({query:{tagsByDimension:{style:['grok']}}});
+assert.equal(candidates.availability, 'available');
+assert(candidates.candidates.some(item=>item.project.creation.artworkId==='candidate-grok-20261005'),
+  'typed style filtering reaches the shared resolver candidate pool');
+for (const candidate of candidates.candidates) {
+  assert(candidate.project.version===2&&candidate.project.character.version===10);
+  assert(candidate.composition&&candidate.resolution.availability==='available');
+}
+
+assert.throws(() => parseProject(character), /包装 v2|项目包装/,
+  'bare role JSON remains unsupported instead of restoring the old export mode');
+assert.throws(() => parseProject({...project,version:1}), /版本不受支持/,
+  'obsolete project versions are not migrated by the active importer');
+assert.throws(() => parseProject({...project,untrusted:'extra'}), /不支持的字段/,
+  'unknown top-level fields are rejected');
+assert.throws(() => parseProject({...project,creation:{...project.creation,artworkId:'https://example.invalid/character.png'}}), /不存在|本地|分组/,
+  'project data cannot inject a remote image URL');
+const injectedLayer = structuredClone(project);
+injectedLayer.creation.composition.layers = [{id:'remote',src:'https://example.invalid/asset.png',z:0}];
+assert.throws(() => parseProject(injectedLayer), /composition|引用|解析/,
+  'serialized project data cannot add arbitrary renderer layers or paths');
+const changedRef = structuredClone(project);
+changedRef.creation.composition.assetRefs[0].sha256 = '0'.repeat(64);
+assert.throws(() => parseProject(changedRef), /不一致|失效|composition|配方/,
+  'serialized asset references are recomputed from trusted catalog entries');
+
+console.log(`Versioned module graph and v2/v10 project safety passed: ${seen.size} modules; resolver-backed candidates verified.`);

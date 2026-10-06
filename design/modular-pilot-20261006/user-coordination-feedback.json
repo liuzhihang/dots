@@ -1,0 +1,59 @@
+{
+  "type": "user-coordination-feedback",
+  "date": "2026-10-06",
+  "status": "rejected-for-displayed-assembly",
+  "userText": "需要考虑各个组件组装是否协调，比如这个就很不协调",
+  "laterRequirement": "所以组件应该是动态适配的",
+  "evidence": {
+    "file": "user-rejected-headphones-v2.jpg",
+    "sha256": "9af801db7885ba21060e840da2e4a4572da8bcda55c85b2a9d86f6ce21b555a0",
+    "sourceManifest": null,
+    "sourceId": null,
+    "exactProjectConfigInUserPhoto": null,
+    "note": "用户截图未提供源码标识或项目JSON；不得把附带的工程配方推定为截图的精确配置。"
+  },
+  "identifiedComponent": {
+    "id": "pilot-headphones-v1",
+    "version": "1.1.0",
+    "sha256": "95da32e3e9da53851921f89871edb09c225121477419e26e1d95748a7e373aaa",
+    "identificationMethod": "visual comparison with registered blue/ivory component"
+  },
+  "engineerAssemblyForComparison": {
+    "kind": "modular",
+    "catalogVersion": 1,
+    "baseId": "candidate-dots-20261005::bare-classic",
+    "recipeId": "pilot-headphones-v1-on-candidate-dots-20261005-bare-classic",
+    "assetRefs": [
+      {
+        "id": "artwork/candidate-dots-20261005/bare",
+        "version": "1.0.0",
+        "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988"
+      },
+      {
+        "id": "pilot-headphones-v1",
+        "version": "1.1.0",
+        "sha256": "95da32e3e9da53851921f89871edb09c225121477419e26e1d95748a7e373aaa"
+      }
+    ],
+    "inputs": {
+      "baseId": "candidate-dots-20261005::bare-classic",
+      "assetIds": [
+        "pilot-headphones-v1"
+      ],
+      "poseId": "front-neutral",
+      "view": "front",
+      "recipeId": "pilot-headphones-v1-on-candidate-dots-20261005-bare-classic",
+      "background": "studio",
+      "backgroundColor": "#F3F6FA"
+    },
+    "inputFingerprint": "5c1ebaf58d9dbe41",
+    "resolvedFingerprint": "a4cbc6e96c919d7d"
+  },
+  "engineerObservations": [
+    "headband and earcups look too large for the Dots base",
+    "contact and front/back relationship need review",
+    "independent layers do not guarantee coordinated material and lighting"
+  ],
+  "userChecklistConclusions": null,
+  "effect": "This displayed assembly is rejected; do not inherit approval to new versions or globally reject all potential uses of the component identity."
+}

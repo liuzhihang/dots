@@ -4,17 +4,19 @@ import {
   buildPrompt,
   resolveCharacter,
   validateConfig
-} from './studio-model.js?v=83';
+} from './studio-model.js?v=86';
 import {
   COMPOSITION_PACKS,
   CREATION_ARTWORKS,
   getCompositionPack,
   getCreationArtwork,
   getFamilyArtwork
-} from './studio-creation-assets.js?v=83';
+} from './studio-creation-assets.js?v=86';
+import {resolveModularComposition,resolveProjectComposition,resolveTemplateComposition} from './studio-composition-resolver.js?v=86';
+import {getTemplateApproval,getTrustedModularCatalog} from './studio-composition-catalog.js?v=86';
 
 export const PROJECT_FORMAT = 'dot-studio-project';
-export const PROJECT_VERSION = 1;
+export const PROJECT_VERSION = 2;
 export const CREATION_MODES = Object.freeze(['artwork', 'composer']);
 
 const own = (value, key) => Object.prototype.hasOwnProperty.call(value, key);
@@ -26,18 +28,17 @@ const VISUAL_PATHS = new Set([
   'shape', 'material', 'fur', 'expressionAccents', 'faceShape', 'outfit', 'eyes',
   'eyeScale', 'eyeSpacing', 'brows', 'mouth', 'expression', 'headScale',
   'bodyWidth', 'hair', 'limbs', 'action', 'pose', 'framing', 'camera',
-  'background', 'aspect', 'scale', 'output', 'motionStyle', 'motionSpeed',
+  'aspect', 'scale', 'output', 'motionStyle', 'motionSpeed',
   'skinMaterial', 'hairMaterial', 'clothMaterial',
   'accessories.head', 'accessories.face', 'accessories.neck', 'accessories.prop',
   'colors.body', 'colors.secondary', 'colors.eyes', 'colors.accessory',
-  'colors.headAccessory', 'colors.background', 'colors.skin', 'colors.hair',
+  'colors.headAccessory', 'colors.skin', 'colors.hair',
   'colors.clothing'
 ]);
 const TINT_PATHS = new Set([
   'colors.body', 'colors.secondary', 'colors.eyes', 'colors.accessory',
-  'colors.headAccessory', 'colors.background', 'colors.skin', 'colors.hair', 'colors.clothing'
+  'colors.headAccessory', 'colors.skin', 'colors.hair', 'colors.clothing'
 ]);
-const FRAME_PATHS = new Set(['background', 'colors.background']);
 const UNSUPPORTED_PACK_EDITS = new Set(['camera', 'aspect', 'output', 'motionStyle', 'motionSpeed']);
 
 function localAssetPath(src) {
@@ -60,7 +61,7 @@ function normalizeArtworkId(artworkId, family, defaultArtwork) {
   if (!artwork) throw new Error('完整图作品不存在；项目文件不能导入图片 URL');
   if (artwork.family !== family) throw new Error('完整图作品不属于当前角色分组');
   if (artwork.status === 'retired' && artwork.kind === 'retired-tombstone' && !own(artwork, 'src')) {
-    return artwork.id;
+    throw new Error(artwork.retirementReason || '该完整图已撤下，当前项目格式不再接受此作品 ID');
   }
   if (!localAssetPath(artwork.src)) throw new Error('完整图只能来自本站登记的本地作品');
   return artwork.id;
@@ -69,65 +70,84 @@ function normalizeArtworkId(artworkId, family, defaultArtwork) {
 function normalizeCreation(creation, family, { defaultArtwork = true } = {}) {
   if (creation === undefined || creation === null) creation = {};
   if (!isRecord(creation)) throw new Error('创作模式配置无效');
-  if (Object.keys(creation).some(key => !['mode', 'artworkId'].includes(key))) {
+  if (Object.keys(creation).some(key => !['mode', 'artworkId','composition'].includes(key))) {
     throw new Error('创作模式配置包含不支持的字段');
   }
   const mode = creation.mode ?? 'artwork';
   if (!CREATION_MODES.includes(mode)) throw new Error('创作模式必须是 artwork 或 composer');
-  return {
+  const normalized={
     mode,
     artworkId: normalizeArtworkId(creation.artworkId, family, defaultArtwork)
   };
+  if (own(creation,'composition')) normalized.composition=creation.composition===null?null:clone(creation.composition);
+  return normalized;
 }
 
-function makeNormalizedProject(character, creation, { defaultArtwork = true } = {}) {
+function makeNormalizedProject(character, creation, { defaultArtwork = true, catalog = null } = {}) {
   const config = validateConfig(character);
-  return {
+  const normalized={
     format: PROJECT_FORMAT,
     version: PROJECT_VERSION,
     character: clone(config),
     creation: normalizeCreation(creation, config.family, { defaultArtwork })
   };
+  if (!own(normalized.creation,'composition')) {
+    const result=resolveTemplateComposition({character:config,artworkId:normalized.creation.artworkId});
+    normalized.creation.composition=result.availability==='available'?clone(result.composition):null;
+  } else if (normalized.creation.composition!==null) {
+    const result=resolveProjectComposition(normalized,{catalog});
+    normalized.creation.composition=clone(result.composition);
+  }
+  return normalized;
 }
 
-function parseProjectObject(raw) {
+function parseProjectObject(raw, {catalog = null} = {}) {
   if (!isRecord(raw)) throw new Error('项目文件必须是 JSON 对象');
-  if (raw.format !== PROJECT_FORMAT) {
-    if (own(raw, 'format')) throw new Error('项目文件格式不受支持');
-    return makeNormalizedProject(raw, {}, { defaultArtwork: true });
-  }
+  if (raw.format !== PROJECT_FORMAT) throw new Error('仅支持 Dot Studio 项目包装 v2；裸角色 JSON 不受支持');
   if (raw.version !== PROJECT_VERSION) throw new Error('Dot Studio 项目版本不受支持');
   if (Object.keys(raw).some(key => !['format', 'version', 'character', 'creation'].includes(key))) {
     throw new Error('项目文件包含不支持的字段');
   }
   if (!own(raw, 'character')) throw new Error('项目文件缺少角色配置');
-  return makeNormalizedProject(raw.character, raw.creation, { defaultArtwork: true });
+  if (!isRecord(raw.creation)||!own(raw.creation,'composition')) throw new Error('v2 项目缺少 composition 状态');
+  if (!own(raw.creation,'mode')||!own(raw.creation,'artworkId')) throw new Error('v2 项目缺少 mode 或 artworkId');
+  const project=makeNormalizedProject(raw.character,raw.creation,{defaultArtwork:true,catalog});
+  // Explicit null is the durable Prompt-only state. Its explanation is always
+  // recomputed from the current character and resolver rather than persisted.
+  if (raw.creation.composition===null) project.creation.composition=null;
+  return project;
 }
 
 export function makeProject(character, creation = {}) {
   return makeNormalizedProject(character, creation, { defaultArtwork: true });
 }
 
-export function parseProject(raw) {
+export function parseProject(raw, options = {}) {
   if (typeof raw === 'string') {
     try { raw = JSON.parse(raw); } catch { throw new Error('项目文件不是有效的 JSON'); }
   }
-  return parseProjectObject(raw);
+  return parseProjectObject(raw,options);
 }
 
-export function exportProject(project) {
-  return JSON.stringify(parseProjectObject(project), null, 2);
+export function exportProject(project, options = {}) {
+  return JSON.stringify(parseProjectObject(project,options), null, 2);
 }
 
-export function setProjectCharacter(project, nextCharacter) {
-  const current = parseProjectObject(project);
+export function setProjectCharacter(project, nextCharacter, {catalog=null}={}) {
+  const current = parseProjectObject(project,{catalog});
   const next = validateConfig(nextCharacter);
   const familyChanged = current.character.family !== next.family;
   const artworkId = familyChanged ? firstArtworkId(next.family) : current.creation.artworkId;
-  return makeNormalizedProject(next, {
+  const creation={
     mode: current.creation.mode,
     artworkId
-  }, { defaultArtwork: false });
+  };
+  if(!familyChanged&&current.creation.composition?.kind==='modular'){
+    const saved=current.creation.composition.inputs;
+    const resolved=resolveModularComposition({character:next,baseId:saved.baseId,recipeId:saved.recipeId,assetIds:saved.assetIds,poseId:saved.poseId},{catalog});
+    creation.composition=resolved.availability==='available'?resolved.composition:null;
+  }
+  return makeNormalizedProject(next,creation,{defaultArtwork:false,catalog});
 }
 
 export function setCreationMode(project, mode) {
@@ -135,8 +155,48 @@ export function setCreationMode(project, mode) {
   if (!CREATION_MODES.includes(mode)) throw new Error('创作模式必须是 artwork 或 composer');
   return makeNormalizedProject(current.character, {
     mode,
-    artworkId: current.creation.artworkId
+    artworkId: current.creation.artworkId,
+    ...(own(current.creation,'composition')?{composition:current.creation.composition}:{})
   }, { defaultArtwork: false });
+}
+
+export function setProjectComposition(project, composition, {catalog=null} = {}) {
+  const current=parseProjectObject(project);
+  if (composition!==null) {
+    const candidate={...current,creation:{...current.creation,composition:clone(composition)}};
+    const resolved=resolveProjectComposition(candidate,{catalog});
+    composition=resolved.composition;
+  }
+  return makeNormalizedProject(current.character,{...current.creation,composition:composition===null?null:clone(composition)},{defaultArtwork:false,catalog});
+}
+
+/** Apply one exact catalogued module recipe to the current v2 role and re-resolve it. */
+export function setModularProject(project,recipeOrId, {catalog=null}={}) {
+  const current=parseProjectObject(project,{catalog});
+  let character=current.character,input;
+  if(typeof recipeOrId==='string'){
+    const registry=catalog??getTrustedModularCatalog();
+    const recipe=registry.recipes.find(item=>item.id===recipeOrId);
+    if(!recipe)throw new Error('模块配方不在可信目录中');
+    const baseState=registry.baseStates.find(state=>state.id===recipe.baseId);
+    if(!baseState)throw new Error('模块配方缺少可信完整 PNG 基底状态');
+    character=clone(baseState.config);
+    for(const key of ['name','notes','randomSeed','scale','aspect','output','reference','framing','camera'])character[key]=clone(current.character[key]);
+    character.background=current.character.background;
+    character.colors.background=current.character.colors.background;
+    input={baseId:recipe.baseId,recipeId:recipe.id,assetIds:[...recipe.assetIds],poseId:recipe.poseId};
+  }else if(isRecord(recipeOrId)){
+    input=recipeOrId;
+  }else{
+    throw new Error('模块配方必须使用可信目录 ID 或规范化输入');
+  }
+  const resolution=resolveModularComposition({character,...input},{catalog});
+  const registry=catalog??getTrustedModularCatalog();
+  const baseState=registry.baseStates.find(state=>state.id===input.baseId);
+  const composition=resolution.availability==='available'&&resolution.composition?resolution.composition:null;
+  return makeNormalizedProject(character,{
+    mode:'composer',artworkId:baseState?.artworkId??current.creation.artworkId,composition
+  },{defaultArtwork:false,catalog});
 }
 
 function valueAt(config, path) {
@@ -167,8 +227,8 @@ function validPack(pack) {
   }
   if ([...editable].some(path => UNSUPPORTED_PACK_EDITS.has(path))) throw new Error('当前组合引擎不支持修改视角、画幅或输出动态格式');
   if (pack.kind === 'fixed-image-2d') {
-    if (pack.layers.length !== 1 || (pack.variants?.length ?? 0) !== 0 || [...editable].some(path => !FRAME_PATHS.has(path)) || pack.layers[0]?.tintPath !== undefined) {
-      throw new Error('完整形象候选只能登记一张原图，并且只能编辑背景');
+    if (pack.layers.length !== 1 || (pack.variants?.length ?? 0) !== 0 || editable.size !== 0 || pack.layers[0]?.tintPath !== undefined) {
+      throw new Error('完整形象候选只能登记一张固定原图，不能声明可编辑角色字段');
     }
   }
   const layerIds = new Set();
@@ -184,7 +244,7 @@ function validPack(pack) {
     }
   }
   const resolvedBase = resolveCharacter(base).config;
-  const structural = [...editable].filter(path => !TINT_PATHS.has(path) && !FRAME_PATHS.has(path));
+  const structural = [...editable].filter(path => !TINT_PATHS.has(path));
   const variants = pack.variants ?? [];
   if (!Array.isArray(variants)) throw new Error('组合配方列表无效');
   if (pack.kind === 'fixed-image-2d' && variants.length) throw new Error('完整形象候选不能声明造型变体');
@@ -231,6 +291,11 @@ export function resolveCompositionConfig(pack, inputConfig, {templatePreview = f
       ?? info.variants[0];
     for (const path of info.structural) assignPath(result, path, variant.values[path]);
   }
+  const resolvedLayers=selectedLayers(info,result);
+  for (const path of TINT_PATHS) {
+    if (!resolvedLayers.some(layer=>layer.tintPath===path)) continue;
+    assignPath(result,path,valueAt(current,path));
+  }
   return validateConfig(result);
 }
 
@@ -265,13 +330,13 @@ export function inspectCompositionPack(pack, inputConfig) {
       const before = valueAt(info.base, path), after = valueAt(current, path);
       if (same(before, after)) continue;
       if (!info.editable.has(path)) return { availability: 'unsupported', reason: `“${pathLabel(path)}”只会写入 Prompt；当前画面仍是所选模板，因此不能导出为已应用这些设定的 PNG。` };
-      if (TINT_PATHS.has(path) && !FRAME_PATHS.has(path) && !activeLayers.some(layer => layer.tintPath === path)) return { availability: 'unsupported', reason: `当前素材没有“${pathLabel(path)}”的完整渲染配方；画面仍显示所选模板，PNG 导出已停用。` };
+      if (TINT_PATHS.has(path) && !activeLayers.some(layer => layer.tintPath === path)) return { availability: 'unsupported', reason: `当前素材没有“${pathLabel(path)}”的完整渲染配方；画面仍显示所选模板，PNG 导出已停用。` };
     }
     return {
       availability: 'available',
       reason: pack.kind === 'layered-2d'
-        ? '当前表情、姿态、已登记配饰状态与背景均有对应的完整静态 PNG 配方。候选效果仍待真实页面美术验收。'
-        : '当前内置搭配与背景均按登记配置渲染。候选效果仍待真实页面美术验收。'
+        ? '当前表情、姿态与已登记配饰状态均有对应的完整静态 PNG 配方。候选效果仍待真实页面美术验收。'
+        : '当前内置搭配按登记 PNG 原样绘制在透明画布上。候选效果仍待真实页面美术验收。'
     };
   } catch (error) {
     return { availability: 'unsupported', reason: error?.message || '组合素材配置无效。' };
@@ -283,12 +348,12 @@ const FIELD_LABELS = {
   faceShape: '脸型', outfit: '服装', eyes: '眼形', eyeScale: '眼睛大小', eyeSpacing: '眼距',
   brows: '眉毛', mouth: '嘴形', expression: '表情', headScale: '头部比例', bodyWidth: '身体宽度',
   hair: '发型', limbs: '肢体', action: '动作', pose: '姿态', framing: '取景范围', camera: '视角',
-  background: '背景', aspect: '画面比例', scale: '角色画面尺寸', output: '输出类型',
+  aspect: '画面比例', scale: '角色画面尺寸', output: '输出类型',
   motionStyle: '动态样式', motionSpeed: '动态速度', skinMaterial: '皮肤材质', hairMaterial: '头发材质',
   clothMaterial: '服装材质', 'accessories.head': '头部配饰', 'accessories.face': '眼部配饰',
   'accessories.neck': '颈部配饰', 'accessories.prop': '手持道具', 'colors.body': '主体颜色',
   'colors.secondary': '辅助颜色', 'colors.eyes': '眼睛颜色', 'colors.accessory': '配饰颜色',
-  'colors.headAccessory': '头饰颜色', 'colors.background': '背景颜色', 'colors.skin': '肤色',
+  'colors.headAccessory': '头饰颜色', 'colors.skin': '肤色',
   'colors.hair': '发色', 'colors.clothing': '服装颜色'
 };
 function pathLabel(path) { return FIELD_LABELS[path] || '角色外观设置'; }
@@ -299,24 +364,31 @@ export function resolveCreation(project) {
   const resolved = resolveCharacter(config);
   const artwork = current.creation.artworkId ? clone(getCreationArtwork(current.creation.artworkId)) : null;
   const pack = getCompositionPack(config.family, current.creation.artworkId, config);
+  const compositionResolution=resolveProjectComposition(current);
   if (current.creation.mode === 'artwork') {
     if (artwork?.status === 'retired') return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
+      composition:clone(current.creation.composition),compositionResolution,
       availability: 'missing', reason: artwork.retirementReason || '历史形象已撤下。'
     };
     if (!artwork) return {
       mode: 'artwork', config, resolved, artwork: null, pack: pack ? clone(pack) : null,
+      composition:clone(current.creation.composition),compositionResolution,
       availability: 'missing', reason: '当前分组没有登记完整图作品。'
     };
     return {
       mode: 'artwork', config, resolved, artwork, pack: pack ? clone(pack) : null,
+      composition:clone(current.creation.composition),compositionResolution,
       availability: 'available',
       reason: `当前显示的是${artwork.kind==='baseline-candidate'?'固定基准候选':artwork.kind==='look-template'?'内置搭配候选':'固定历史示例'}“${artwork.name}”；参数变化只更新 Prompt，下载始终是该作品原文件。`
     };
   }
-  const assessment = inspectCompositionPack(pack, config);
+  const assessment = current.creation.composition
+    ? {availability:compositionResolution.availability,reason:compositionResolution.reason}
+    : {availability:'unsupported',reason:compositionResolution.reason||'当前项目为 Prompt-only 状态，尚无可信的实际渲染配方。'};
   return {
     mode: 'composer', config, resolved, artwork, pack: pack ? clone(pack) : null,
+    composition:clone(current.creation.composition),compositionResolution,
     availability: assessment.availability,
     reason: assessment.reason
   };
@@ -327,46 +399,61 @@ export function buildCreationPrompt(project, lang = 'zh') {
   const artwork = current.creation.artworkId ? getCreationArtwork(current.creation.artworkId) : null;
   const pack = getCompositionPack(current.character.family, current.creation.artworkId, current.character);
   const assessment = inspectCompositionPack(pack, current.character);
+  const compositionResolution=resolveProjectComposition(current);
+  const templateApproval=compositionResolution.composition?.kind==='template'
+    ?getTemplateApproval(compositionResolution.composition.baseId,{recipeId:compositionResolution.composition.recipeId,sha256:compositionResolution.composition.assetRefs[0]?.sha256})
+    :null;
   const en = lang === 'en';
   let prompt = buildPrompt(current.character, lang);
   let note;
   if (current.creation.mode === 'artwork') {
     if (artwork?.status === 'retired') {
       note = en
-        ? `\n\n[Studio output] This historical character image has been withdrawn. The character settings and legacy artwork ID remain in this project for compatibility. No image is available to display or download; this prompt describes the saved character configuration only.`
-        : `\n\n【工作台输出说明】${artwork.retirementReason || '历史形象已撤下'}。为兼容旧项目，当前角色设定与旧作品编号仍予保留；没有可展示或下载的原图，本 Prompt 仅描述已保存的角色设定。`;
+        ? `\n\n[Studio output] This retired artwork is not supported by current projects. No image is available to display or download, and older project data is not automatically migrated. This prompt describes only the current role settings.`
+        : `\n\n【工作台输出说明】${artwork.retirementReason || '历史形象已撤下'}；当前项目不支持此作品编号，也不会自动迁移旧项目数据。没有可展示或下载的原图，本 Prompt 仅描述当前角色设定。`;
     } else if (artwork) {
-      const candidateKind = artwork.kind==='baseline-candidate'?'baseline candidate':artwork.kind==='look-template'?'built-in look candidate':'historical example';
-      const candidateKindZh = artwork.kind==='baseline-candidate'?'固定基准候选':artwork.kind==='look-template'?'内置搭配候选':'固定历史示例';
+      const approved=getTemplateApproval(artwork.id).status==='approved';
+      const candidateKind = approved?'an approved built-in complete template':artwork.kind==='baseline-candidate'?'baseline candidate':artwork.kind==='look-template'?'built-in look candidate':'historical example';
+      const candidateKindZh = approved?'已确认范围内的内置完整模板':artwork.kind==='baseline-candidate'?'固定基准候选':artwork.kind==='look-template'?'内置搭配候选':'固定历史示例';
       note = en
-        ? `\n\n[Studio output] “${artwork.name}” is a ${candidateKind} pending real-page visual review. This is a fixed original image; character settings update the Prompt only. Downloading keeps the original file. Attach it yourself in ChatGPT if you want to use it as a reference; the site does not attach images or generate artwork.`
-        : `\n\n【工作台输出说明】“${artwork.name}”是${candidateKindZh}，仍待真实网页美术验收。它是固定原图；修改角色设定只更新本 Prompt。下载保留原文件。若要把它作为参考，请自行下载并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
+        ? `\n\n[Studio output] “${artwork.name}” is ${candidateKind}${approved?'':' whose art-approval scope is not confirmed'}. This is a fixed original image; character settings update the Prompt only. Downloading keeps the original file. Attach it yourself in ChatGPT if you want to use it as a reference; the site does not attach images or generate artwork.`
+        : `\n\n【工作台输出说明】“${artwork.name}”${approved?'属于已确认范围内的登记完整模板':'的美术确认范围尚未核定'}。它是固定原图；修改角色设定只更新本 Prompt。下载保留原文件。若要把它作为参考，请自行下载并在 ChatGPT 附加；网站不会自动附图或生成图片。`;
     } else {
       note = en
         ? '\n\n[Studio output] No complete artwork is registered for this family. This prompt describes the character settings only; the site has not generated or exported a matching image. You can attach your own reference in ChatGPT.'
         : '\n\n【工作台输出说明】当前分组没有登记完整作品；本 Prompt 只描述角色设定，网站尚未生成或导出对应图片。需要使用自己的参考图时，请在 ChatGPT 另行附加。';
     }
-  } else if (assessment.availability === 'available') {
+  } else if (compositionResolution.availability==='available'&&compositionResolution.composition?.kind==='modular') {
+    const approved=compositionResolution.approvalStatus==='approved';
+    note='\n\n'+(en
+      ? `[Studio output] This is a real local 2D modular composition resolved from registered base and component asset IDs. ${approved?'This recipe has a matching art-approval record.':'This component adaptation is engineering preview only and pending separate art approval.'} It uses one fixed front view; it is not generated artwork or a freely rotatable 3D model.`
+      : `【工作台输出说明】当前为由登记基底与独立组件 ID 解算出的本地 2D 组合。${approved?'此配方已有对应美术批准记录。':'当前组件适配仅供工程预览，仍待单独美术批准。'}它使用固定正面视角，不是自动生成图片，也不支持自由旋转三维视角。`);
+  } else if (compositionResolution.availability==='available'&&compositionResolution.composition?.kind==='template'&&assessment.availability === 'available') {
     const actionOverride = pack?.actionPromptOverrides?.[current.character.action]?.[en ? 'en' : 'zh'];
     const genericAction = ACTIONS[current.character.action]?.[en ? 'english' : 'zh'];
     if (actionOverride && genericAction && prompt.includes(genericAction)) {
       prompt = prompt.replace(genericAction, actionOverride);
     }
-    note = '\n\n' + (pack?.outputNotes?.[en ? 'en' : 'zh'] || (en
+    if(templateApproval?.status==='approved')note='\n\n'+(en
+      ? '[Studio output] This is a real local 2D composition from a complete PNG recipe in the approved current template scope. The approval covers this registered template state, not other poses, component adaptations, PNG byte-level export, or physical-device checks. It is not generated artwork or a freely rotatable 3D model; attach your own reference image in ChatGPT when needed.'
+      : '【工作台输出说明】当前为已确认范围内的登记完整 PNG 配方所生成的本地 2D 合成。该确认只覆盖此登记模板状态，不扩展到其他姿态、模块适配、PNG 字节级导出或实体设备检查。它不是自动生成图片，也不支持自由旋转三维视角；需要参考自己的图片时，请在 ChatGPT 另行附加。');
+    else note = '\n\n' + (pack?.outputNotes?.[en ? 'en' : 'zh'] || (en
       ? '[Studio output] This is a supported local 2D composition from a baseline candidate pending real webpage art review. It is not a generated image or a freely rotatable 3D model; this note does not indicate art acceptance. Attach your own reference image in ChatGPT when needed.'
       : '【工作台输出说明】当前为由基准候选图层生成的本地 2D 合成，尚待真实网页美术验收；本说明不表示验收通过。它不是自动生成图片，也不支持自由旋转三维视角。需要参考自己的图片时，请在 ChatGPT 另行附加。'));
   } else {
     const reason = en
       ? current.character.reference.enabled
         ? 'Reference images are only added by you in ChatGPT; this page has not read or transformed one.'
-        : assessment.availability === 'missing'
+        : compositionResolution.availability==='prompt-only'
+          ? 'This v2 project has no resolved image composition; the site saves the Prompt settings without fabricating asset references.'
+          : assessment.availability === 'missing'
           ? 'No composable layers are registered for this family.'
           : current.character.camera !== 'front'
             ? 'This layer pack supports the front view only.'
             : ['storyboard', 'pet'].includes(current.character.output)
               ? 'This layer pack exports a single PNG and does not support storyboards or Pet files.'
               : 'The layer pack does not cover one or more of the current character settings.'
-      : current.character.reference.enabled ? '网站未读取图片，未转换参考图；请在 ChatGPT 另附自己的图片。' : assessment.reason;
+      : current.character.reference.enabled ? '网站未读取图片，未转换参考图；请在 ChatGPT 另附自己的图片。' : compositionResolution.reason||assessment.reason;
     note = en
       ? `\n\n[Studio output] ${reason} This prompt describes the requested character settings; the site has not rendered a current composite image. Attach your own image in ChatGPT if needed.`
       : `\n\n【工作台输出说明】${reason} 本 Prompt 描述所选角色设定；网站尚未合成当前图片。需要使用自己的图片时，请在 ChatGPT 另行附加。`;

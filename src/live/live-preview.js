@@ -89,7 +89,8 @@ class RenderWorld{
   this.turn.rotation.y=c.camera==='side'?Math.PI/2:c.camera==='threeQuarter'?Math.PI/4:c.pose==='side'?.30:0;
   this.turn.updateMatrixWorld(true);
   const bounds=new THREE.Box3().setFromObject(this.turn);this.center=bounds.getCenter(new THREE.Vector3());this.bounds=bounds.getSize(new THREE.Vector3());
-  this.scene.background=c.background==='solid'?new THREE.Color(c.colors.background):c.background==='studio'?new THREE.Color('#f8f9fc'):null;
+  // Structure diagnostics share the transparent PNG contract; preview surfaces are UI only.
+  this.scene.background=null;
   this.fit(this.frame.width,this.frame.height);this.render(stillTime(c));
  }
  fit(width,height){
