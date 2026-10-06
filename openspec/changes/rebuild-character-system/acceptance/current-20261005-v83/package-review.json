@@ -1,0 +1,162 @@
+{
+  "result": "passed",
+  "blockers": [],
+  "archive": "/tmp/dots-release-v83-site.tar.gz",
+  "archiveSha256": "2636f686cdc3d8e2d43cdb418aab6ed993c3356a8dff67406e2c8a9a32d74bfc",
+  "compressedBytes": 78008411,
+  "sourceCommit": "041171998469a568e8647db9a66dedd84bfb469c",
+  "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+  "packageRegularFileCount": 107,
+  "uncompressedRegularFileBytes": 79877711,
+  "directoryEntryCount": 10,
+  "specialTarEntries": [],
+  "regularFilesOnlyUnderDist": true,
+  "duplicatePaths": [],
+  "unsafePaths": [],
+  "committedDistRuntimeFileCount": 106,
+  "archiveDistRuntimeFileCount": 106,
+  "allRuntimeFilesMatchCommit": true,
+  "missingRuntimePaths": [],
+  "mismatchedRuntimeFiles": [],
+  "generatedManifest": {
+    "path": "dist/.openai/hosting.json",
+    "matchesRootManifestByteForByte": true,
+    "matchesRootManifestSemantically": true,
+    "rootManifestKeys": [
+      "project_id",
+      "static"
+    ],
+    "classification": "official Sites staging manifest generated under dist; included by package-site workflow"
+  },
+  "sourceSnapshot": {
+    "matchesCommittedV83Snapshot": true,
+    "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+    "cacheRevision": "83",
+    "frozen": true,
+    "fileCount": 128,
+    "userArtApproved": false
+  },
+  "activeScenes": {
+    "count": 7,
+    "builderTemplateAndUnreviewedStatus": true,
+    "mappings": [
+      {
+        "id": "hero-left",
+        "revision": 4,
+        "assetPath": "assets/scenes/hero-left-v4.png"
+      },
+      {
+        "id": "hero-right",
+        "revision": 4,
+        "assetPath": "assets/scenes/hero-right-v4.png"
+      },
+      {
+        "id": "family-dots",
+        "revision": 4,
+        "assetPath": "assets/scenes/family-dots-v4.png"
+      },
+      {
+        "id": "family-grok",
+        "revision": 4,
+        "assetPath": "assets/scenes/family-grok-v4.png"
+      },
+      {
+        "id": "family-meta-muse",
+        "revision": 5,
+        "assetPath": "assets/scenes/family-meta-muse-v5.png"
+      },
+      {
+        "id": "family-humans",
+        "revision": 4,
+        "assetPath": "assets/scenes/family-humans-v4.png"
+      },
+      {
+        "id": "family-animals",
+        "revision": 4,
+        "assetPath": "assets/scenes/family-animals-v4.png"
+      }
+    ],
+    "allPngsPresent": true
+  },
+  "wholePngSelection": {
+    "manifest": "design/reference-home-correction-20261006/assets/selected-runtime.json",
+    "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+    "cacheRevision": "83",
+    "method": "Whole ImageGen PNG byte copies; no screenshot crop/texture/extraction; viewport composition applied by CSS only",
+    "sceneCount": 5,
+    "userArtApproved": false,
+    "allFiveWholeSourceByteCopiesMatch": true,
+    "checks": [
+      {
+        "runtime": "dist/assets/scenes/family-dots-v4.png",
+        "source": "design/reference-home-correction-20261006/assets/dots-family-r01-v3.png",
+        "runtimePresent": true,
+        "sourcePresentInCommit": true,
+        "byteCopyMatches": true,
+        "bytesMatchManifest": true,
+        "sha256MatchesManifest": true,
+        "dimensionsMatchManifest": true
+      },
+      {
+        "runtime": "dist/assets/scenes/family-grok-v4.png",
+        "source": "design/reference-home-correction-20261006/assets/grok-family-r01-v3.png",
+        "runtimePresent": true,
+        "sourcePresentInCommit": true,
+        "byteCopyMatches": true,
+        "bytesMatchManifest": true,
+        "sha256MatchesManifest": true,
+        "dimensionsMatchManifest": true
+      },
+      {
+        "runtime": "dist/assets/scenes/family-meta-muse-v5.png",
+        "source": "design/reference-home-correction-20261006/assets/family-meta-muse-v5.png",
+        "runtimePresent": true,
+        "sourcePresentInCommit": true,
+        "byteCopyMatches": true,
+        "bytesMatchManifest": true,
+        "sha256MatchesManifest": true,
+        "dimensionsMatchManifest": true
+      },
+      {
+        "runtime": "dist/assets/scenes/family-humans-v4.png",
+        "source": "design/reference-home-correction-20261006/assets/family-humans-r01-v2.png",
+        "runtimePresent": true,
+        "sourcePresentInCommit": true,
+        "byteCopyMatches": true,
+        "bytesMatchManifest": true,
+        "sha256MatchesManifest": true,
+        "dimensionsMatchManifest": true
+      },
+      {
+        "runtime": "dist/assets/scenes/family-animals-v4.png",
+        "source": "design/reference-home-correction-20261006/assets/family-animals-r01-v2.png",
+        "runtimePresent": true,
+        "sourcePresentInCommit": true,
+        "byteCopyMatches": true,
+        "bytesMatchManifest": true,
+        "sha256MatchesManifest": true,
+        "dimensionsMatchManifest": true
+      }
+    ]
+  },
+  "retiredArtwork": {
+    "tombstones": [
+      {
+        "id": "historical-human-reading-v2",
+        "status": "retired",
+        "hasImageSource": false
+      },
+      {
+        "id": "historical-grok-matte-work-v2",
+        "status": "retired",
+        "hasImageSource": false
+      }
+    ],
+    "matchingRetiredImagePaths": [],
+    "explicitAnimeScreenshotNamedPaths": []
+  },
+  "appleDoublePaths": [],
+  "sensitiveFilenameCandidates": [],
+  "credentialTextFilesScanned": 36,
+  "credentialPatternHits": []
+}

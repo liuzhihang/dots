@@ -4,7 +4,7 @@
 
 本地 cache revision 83 已冻结，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，共 128 个路径；source 清单为 [source-snapshot.json](source-snapshot.json)。`gitHead` 是 baseline commit，不代表 dirty/untracked 工作树提交；source ID 是对清单内路径与内容的 SHA-256。运行时的 `dist/qa/character-source.json` 与该冻结清单同 source ID。
 
-该版本为本地验收候选；本目录没有 v83 Site 发布回执。冻结记录与截图的 `userArtApproved` 均为 `false`。
+该版本已发布到原 Site version 35；[发布回执](site-release.json) 绑定相同 source 和源码提交。冻结记录与截图的 `userArtApproved` 均为 `false`。
 
 ## 实际页面截图
 
@@ -28,4 +28,6 @@
 
 ## 版本边界
 
-v81 是用户明确否定的历史家族卡页面；其旧内部 `passed` 不作为 v83 通过依据。v82 是人物/动物首次异步显示空白的中间诊断，不作为发布或验收证据。v83 只修正首页卡片与 intro 的同步解码显示，Gallery lazy loading 未改。当前内部页面评审通过，用户艺术确认仍由 refine change 3.3 明确完成；本候选尚无 Site 发布回执。
+v81 是用户明确否定的历史家族卡页面；其旧内部 `passed` 不作为 v83 通过依据。v82 是人物/动物首次异步显示空白的中间诊断，不作为发布或验收证据。v83 只修正首页卡片与 intro 的同步解码显示，Gallery lazy loading 未改。当前内部页面评审通过，用户艺术确认仍由 refine change 3.3 明确完成；该 runtime 的 Site version 35 发布已完成，见本目录回执。
+
+2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](site-release.json)；这是 Sites 原生部署与来源回读，不声称线上浏览器、实体手机或用户美术验收通过。
