@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到原 Site version 35。2026-10-06 用户明确确认当前首页顶部与五组家族场景美术，见 [确认记录](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。该确认关闭 refine change 3.3，不覆盖原 3D 模型三视角、全部 Gallery/PNG 或实体手机验收。
+v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到原 Site version 35。2026-10-06 用户明确确认当前首页顶部与五组家族场景美术，见 [确认记录](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。该确认关闭 refine change 3.3，不覆盖原 3D 模型三视角、全部 Gallery/PNG 或实体手机验收。
 
 本轮针对用户否定的 v81 家族卡比例、全身目录式站位和独立字幕行进行纠偏：在 1280px 视口将五卡还原到 R01 约 212px 高的横向画面，保留近景/贴叠群像、底部共享字幕和有意艺术裁切。脸部、组别特征与道具接触不得被意外裁断。R01 网页图只作为构图/风格参考，禁止直接复用其中像素或从网页/动漫截图裁片；独立新插画可按设计稿做视口艺术裁切。详细身份与比例见 [change design](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md) 和 [spec delta](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md)。
 
@@ -10,7 +10,7 @@ v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到�
 
 - v81 是已被用户明确否定的历史页面。差异分析保留在 [baseline review](baseline-review.md)；v81 之前的内部 `passed` 仅作历史记录。
 - v82 只用于诊断首次进入人物/动物时的异步显示空白，不作为当前版本、发布版本或验收结论。
-- v83 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，冻结 128 个路径。完整清单见 [v83 acceptance source snapshot](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json)。其中 `gitHead` 是 baseline commit；source ID 则计算快照列出的工作树路径与内容。
+- v83 cache revision 83，source ID `30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451`，冻结 128 个路径。完整清单见 [v83 acceptance source snapshot](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json)。其中 `gitHead` 是 baseline commit；source ID 则计算快照列出的工作树路径与内容。
 - [独立视觉报告](visual-review-v83.md) 只评估绑定 v83 source 的真实页面，结论为内部通过、无 P0/P1/P2；保留 768px 第二排留白、320px Meta Muse 标题换行、Dots 蓝球靠近脚注但仍可读等 P3 观察。
 
 ## 页面与交互证据
@@ -20,16 +20,16 @@ v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到�
 - 首页：[1280px](page/home-1280-v83.png)、[768px](page/home-768-v83.png)、[390px](page/home-390-v83.png)、[320px](page/home-320-v83.png)。
 - 家族卡：[768px](page/cards-768-v83.png)、[390px](page/cards-390-v83.png)、[320px](page/cards-320-v83.png)。
 
-[交互记录](page/interaction-v83.json) 显示：Meta Muse 卡进入 3 项筛选，全部家族进入 15 项 Gallery；intro 试选“莓粉圆框 Dots”进入工作台，模板可用且导出控件 enabled；问候反馈不改变 project 或 Prompt，console errors 为空。PNG 点击显示“已导出当前形象 PNG 候选” toast。Cua 下载事件虽超时，之后从 Downloads 依据精确文件名和当前点击时间戳恢复出本次文件；[v83 导出 PNG](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png) 已核验为 1600×1600 RGBA、2,922,405 bytes，SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`，目视为正确莓粉眼镜 Dots 角色。此证据仅覆盖这一张候选图，不代表五组 PNG 全量验证。
+[交互记录](page/interaction-v83.json) 显示：Meta Muse 卡进入 3 项筛选，全部家族进入 15 项 Gallery；intro 试选“莓粉圆框 Dots”进入工作台，模板可用且导出控件 enabled；问候反馈不改变 project 或 Prompt，console errors 为空。PNG 点击显示“已导出当前形象 PNG 候选” toast。Cua 下载事件虽超时，之后从 Downloads 依据精确文件名和当前点击时间戳恢复出本次文件；[v83 导出 PNG](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/dots-rose-glasses-export.png) 已核验为 1600×1600 RGBA、2,922,405 bytes，SHA-256 `41ba0c832711f5dfa10e8200464bddbb2c3675480d392b9e386e13ecd8efbc2c`，目视为正确莓粉眼镜 Dots 角色。此证据仅覆盖这一张候选图，不代表五组 PNG 全量验证。
 
 [检查记录](checks-v83.json) 绑定相同 source ID，记录首页解码、15 项 Gallery、模块缓存、家族导航与 OpenSpec strict 检查通过；程序检查不替代网页评审或用户确认。v83 只调整首页卡片和 intro 的同步解码显示路径，Gallery lazy loading 未修改。
 
 ## 未完成事项
 
-- `refine-family-scene-composition` 已由用户确认完成并归档；`rebuild-character-system` 原 3D 接触、三视角精细基准及对应逐组确认仍有 16 项未完成。原始记录中的 `userArtApproved: false` 保留为当时状态，后续确认单独追加。
+- `refine-family-scene-composition` 已由用户确认完成并归档；`rebuild-character-system` 已按用户明确选择收窄到模板合成与Prompt，五组模板美术获确认，11项旧3D成品要求取消并保留历史；该change现已归档。原始记录中的 `userArtApproved: false` 保留为当时状态，后续确认单独追加。
 - v83 莓粉眼镜 Dots 单张 PNG 的字节已验证；其它角色/家族导出的 PNG 字节未在此轮验证。v75 历史检查不作为 v83 证据。
 - 实体手机测试尚未完成；v83 Site 发布已按成功原生结果、保存版本及访问配置回读确认。
 
-验收索引见 [current-v83 README](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/README.md)，总体页面 QA 见 [design-qa.md](../../design-qa.md)。
+验收索引见 [current-v83 README](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/README.md)，总体页面 QA 见 [design-qa.md](../../design-qa.md)。
 
-2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读；用户随后对当前首页场景的明确美术确认独立记录在 [确认记录](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json) 中，实体手机仍没有验收证据。
+2026-10-06 发布回读：原站 [Dot Icon Studio](https://dot.liuzhihang.chatgpt.site) 的 **Site version 35** 已成功部署，source commit `041171998469a568e8647db9a66dedd84bfb469c`、cache 83。106 个运行文件经独立包审逐字节一致，原有 owner-only 访问配置 revision 1 保持不变。详见 [发布回执](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/site-release.json)；这是 Sites 原生部署与来源回读；用户随后对当前首页场景的明确美术确认独立记录在 [确认记录](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json) 中，实体手机仍没有验收证据。

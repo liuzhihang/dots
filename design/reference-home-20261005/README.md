@@ -38,7 +38,7 @@ R01 截图只可作为 ImageGen 的构图、服装风格、材质、配色和角
 
 ## v81 当前页面与程序证据
 
-当前真实页面捕获绑定 [v81 冻结源快照](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v81/source-snapshot.json)，sourceId `0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，共 123 个路径。四个首页视口的真实图索引见 [pages-v81.json](page/pages-v81.json)：[1280](page/home-1280-v81.png)、[768](page/home-768-v81.png)、[390](page/home-390-v81.png)、[320](page/home-320-v81.png)；卡片页图有 [768](page/cards-768-v81.png)、[390](page/cards-390-v81.png)、[320](page/cards-320-v81.png)，创作引导有 [1280](page/intro-1280-v81.png)、[320](page/intro-320-v81.png)。四个首页视口均记录五张卡、两幅 Hero、15 项图库、所有图片 ready，且 `bodyWidth === scrollWidth`。独立 [code-review-v81.md](code-review-v81.md) 校验快照和缓存查询引用，无阻断问题；独立 [visual-review-v81.md](visual-review-v81.md) 判为 passed，无 P0/P1/P2，P3 观察项见报告。
+当前真实页面捕获绑定 [v81 冻结源快照](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v81/source-snapshot.json)，sourceId `0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`，共 123 个路径。四个首页视口的真实图索引见 [pages-v81.json](page/pages-v81.json)：[1280](page/home-1280-v81.png)、[768](page/home-768-v81.png)、[390](page/home-390-v81.png)、[320](page/home-320-v81.png)；卡片页图有 [768](page/cards-768-v81.png)、[390](page/cards-390-v81.png)、[320](page/cards-320-v81.png)，创作引导有 [1280](page/intro-1280-v81.png)、[320](page/intro-320-v81.png)。四个首页视口均记录五张卡、两幅 Hero、15 项图库、所有图片 ready，且 `bodyWidth === scrollWidth`。独立 [code-review-v81.md](code-review-v81.md) 校验快照和缓存查询引用，无阻断问题；独立 [visual-review-v81.md](visual-review-v81.md) 判为 passed，无 P0/P1/P2，P3 观察项见报告。
 
 实际 v81 smoke 见 [smoke-v81.json](page/smoke-v81.json)：本版验证 mini look 到工作台、PNG 控件启用、键盘问候及零控制台警告/错误。较广的 [interactions-v80.json](page/interactions-v80.json) 仍只绑定 v80 sourceId，用来记录未变化交互；v81 不伪装成重复的完整交互或 PNG 下载验证。PNG 字节只引用 v75 既有验证。本轮没有 v80/v81 下载 PNG 的声明。
 
@@ -46,4 +46,4 @@ R01 截图只可作为 ImageGen 的构图、服装风格、材质、配色和角
 
 ## v80 历史页面证据
 
-v80 捕获绑定 sourceId `29e9a319a0b9f7da86c4497c26b144aa6ee228e075c6b98b32282161678d1fb1`，见 [v80 冻结快照](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v80/source-snapshot.json)。视觉评审与页面证据均保留为历史记录。独立 [v80 代码评审](code-review-v80.md) 发现 QA harness 仍引用 cache 70，该问题已在 v81 修复并由 [v81 代码评审](code-review-v81.md) 复核；v80 的页面图和报告不移充为 v81 证据。
+v80 捕获绑定 sourceId `29e9a319a0b9f7da86c4497c26b144aa6ee228e075c6b98b32282161678d1fb1`，见 [v80 冻结快照](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v80/source-snapshot.json)。视觉评审与页面证据均保留为历史记录。独立 [v80 代码评审](code-review-v80.md) 发现 QA harness 仍引用 cache 70，该问题已在 v81 修复并由 [v81 代码评审](code-review-v81.md) 复核；v80 的页面图和报告不移充为 v81 证据。

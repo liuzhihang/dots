@@ -93,8 +93,8 @@ assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreatio
 assert(buildCreationPrompt(withdrawnRoundTrip).includes('这张历史人物形象已撤下'));
 assert.match(buildCreationPrompt(withdrawnRoundTrip,'en'),/withdrawn/);
 await assert.rejects(readFile(path.join(root,'dist/assets/atelier/muse-fabric-reading-v2.png')),/ENOENT/,'the rejected human PNG must not remain in the public dist directory');
-await readFile(path.join(root,'openspec/changes/refresh-studio-visual-design/references/retired-assets/muse-fabric-reading-v2.png'));
-const legacyGrokConfig=JSON.parse(await readFile(path.join(root,'openspec/changes/rebuild-character-system/baseline/schema-9-grok-arch.json'),'utf8'));
+await readFile(path.join(root,'openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/retired-assets/muse-fabric-reading-v2.png'));
+const legacyGrokConfig=JSON.parse(await readFile(path.join(root,'openspec/changes/archive/2026-10-06-rebuild-character-system/baseline/schema-9-grok-arch.json'),'utf8'));
 const withdrawnGrokSource={
   format:PROJECT_FORMAT,version:PROJECT_VERSION,
   character:legacyGrokConfig,
@@ -120,7 +120,7 @@ assert.equal(getRegisteredArtworks().some(item=>item.id==='historical-grok-matte
 assert.equal((await import('../dist/studio-creation-assets.js?v=62')).getCreationArtwork('historical-grok-matte-work-v2').status,'retired','legacy Grok imports may resolve the tombstone');
 assert(buildCreationPrompt(withdrawnGrok).includes('这张历史 Grok 形象已撤下'));
 await assert.rejects(readFile(path.join(root,'dist/assets/atelier/grok-matte-work-v2.png')),/ENOENT/,'the rejected Grok PNG must not remain in the public dist directory');
-await readFile(path.join(root,'openspec/changes/refresh-studio-visual-design/references/retired-assets/grok-matte-work-v2.png'));
+await readFile(path.join(root,'openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/retired-assets/grok-matte-work-v2.png'));
 for(const [family,character]of Object.entries(baselineByFamily)){
   const candidate=setProjectCharacter(project,character);
   const expected=family===project.character.family?project.creation.artworkId:CREATION_ARTWORKS.find(item=>item.family===family)?.id??null;
@@ -265,7 +265,7 @@ const artworkListen=makeProject(listeningDots,{mode:'artwork'});
 assert.match(buildCreationPrompt(artworkListen),/轻轻侧头聆听/,'artwork mode keeps the existing generic action prompt');
 
 // Every frozen schema 6–9 fixture remains importable through the project wrapper.
-const legacyDir=path.join(root,'openspec/changes/rebuild-character-system/baseline');
+const legacyDir=path.join(root,'openspec/changes/archive/2026-10-06-rebuild-character-system/baseline');
 const fixtureFiles=(await readdir(legacyDir)).filter(file=>/^schema-[6-9]-.*\.json$/.test(file)).sort();
 assert.equal(fixtureFiles.length,24,'all four frozen legacy schema sets are present');
 for(const file of fixtureFiles){

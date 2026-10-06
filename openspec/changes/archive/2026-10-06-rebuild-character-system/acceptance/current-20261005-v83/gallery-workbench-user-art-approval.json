@@ -1,0 +1,118 @@
+{
+  "format": "dots-user-art-approval",
+  "version": 1,
+  "recordedAt": "2026-10-06T00:56:24Z",
+  "date": "2026-10-06",
+  "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+  "sourceCommit": "041171998469a568e8647db9a66dedd84bfb469c",
+  "cacheRevision": "83",
+  "siteVersion": 35,
+  "siteUrl": "https://dot.liuzhihang.chatgpt.site",
+  "userArtApproved": true,
+  "scope": {
+    "change": "rebuild-character-system",
+    "families": [
+      "dots",
+      "grok",
+      "meta-muse",
+      "humans",
+      "animals"
+    ],
+    "approved": "当前内置形象画廊和工作台的五组形象美术",
+    "registeredLooks": [
+      {
+        "id": "candidate-dots-20261005",
+        "family": "dots",
+        "name": "蓝色 Dots · 耳机基准候选"
+      },
+      {
+        "id": "candidate-grok-20261005",
+        "family": "grok",
+        "name": "紫色 Grok Bot · 基准候选"
+      },
+      {
+        "id": "candidate-meta-muse-20261005",
+        "family": "meta-muse",
+        "name": "奶油 Meta Muse · 基准候选"
+      },
+      {
+        "id": "candidate-humans-20261005",
+        "family": "humans",
+        "name": "栗发青绿 · 人物基准候选"
+      },
+      {
+        "id": "candidate-animals-20261005",
+        "family": "animals",
+        "name": "暖橙柴犬 · 动物基准候选"
+      },
+      {
+        "id": "dots-rose-glasses",
+        "family": "dots",
+        "name": "莓粉圆框 Dots"
+      },
+      {
+        "id": "dots-lilac-bucket",
+        "family": "dots",
+        "name": "浅紫渔夫帽 Dots"
+      },
+      {
+        "id": "grok-green-cloud",
+        "family": "grok",
+        "name": "青绿云朵 Grok"
+      },
+      {
+        "id": "grok-teal-square",
+        "family": "grok",
+        "name": "青绿色方块 Grok"
+      },
+      {
+        "id": "muse-rose-flowers",
+        "family": "meta-muse",
+        "name": "玫粉花束 Meta Muse"
+      },
+      {
+        "id": "muse-sage-reading",
+        "family": "meta-muse",
+        "name": "鼠尾草捧书 Meta Muse"
+      },
+      {
+        "id": "human-bun-yellow",
+        "family": "humans",
+        "name": "黄衣丸子头女孩"
+      },
+      {
+        "id": "human-blond-glasses",
+        "family": "humans",
+        "name": "金发圆框伙伴"
+      },
+      {
+        "id": "animal-white-cat",
+        "family": "animals",
+        "name": "奶油白猫伙伴"
+      },
+      {
+        "id": "animal-gray-husky",
+        "family": "animals",
+        "name": "灰白哈士奇伙伴"
+      }
+    ],
+    "excludes": [
+      "未制作的自由配饰/视角/动作",
+      "旧程序化3D成品工程与其历史失败",
+      "所有PNG下载字节及实体手机的技术验收"
+    ],
+    "supportedStateBoundary": "当前工作台所提供的登记状态；未制作状态和未逐项回读的技术输出不推断通过"
+  },
+  "evidence": {
+    "type": "explicit-user-question-reply",
+    "questionScope": "Site35/cache83的内置形象与工作台，五组当前形象是否通过人工美术确认",
+    "answer": "五组当前形象全部通过",
+    "deliveryQuestion": "本阶段以PNG模板、背景合成和Prompt交付，旧3D仅保留诊断退出本次成品目标；或继续原3D成品要求",
+    "deliveryAnswer": "以模板合成和 Prompt 为本阶段交付（推荐）",
+    "sourceSnapshot": "source-snapshot.json",
+    "siteRelease": "site-release.json",
+    "previousHomepageApproval": "user-art-approval.json",
+    "scopeDecision": "../../scope-decision-20261006.json"
+  },
+  "historicalRecordPolicy": "本记录追加用户后续确认。冻结页面、素材登记与发布回执的旧candidate标签和userArtApproved=false保留为当时状态，不追改原证据。"
+}

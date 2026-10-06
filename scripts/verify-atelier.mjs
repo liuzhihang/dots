@@ -82,7 +82,7 @@ check('look lock preserves the selected material and colors across random types'
 
 check('frozen v9 configurations default missing motion fields in each historical family', () => {
   for (const id of ['app-blue','grok-arch','muse-mu','pet-shiba']) {
-    const input = JSON.parse(readFileSync(new URL(`../openspec/changes/rebuild-character-system/baseline/schema-9-${id}.json`,import.meta.url),'utf8'));
+    const input = JSON.parse(readFileSync(new URL(`../openspec/changes/archive/2026-10-06-rebuild-character-system/baseline/schema-9-${id}.json`,import.meta.url),'utf8'));
     delete input.motionStyle;
     delete input.motionSpeed;
     const before = structuredClone(input);

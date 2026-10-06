@@ -72,4 +72,4 @@
 
 ## 最终 v70 当前状态
 
-此前 v64 本地状态是历史快照。最终源码缓存 v70 与 sourceId 9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826 已冻结；10 份五组双路径全矩阵共 3798 实际记录、30 份实际 PNG/Prompt 回读、30 张从页面顶部重新捕获的响应式页面已完成，结果见[最终 v70](../openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/README.md)。12 项回归检查和构建通过，五项矩阵执行任务已勾选，角色 change **20/36**。所有记录仍 userArtApproved:false；记录成功不等于角色美术通过，人物/绒毛/配饰自然性缺陷及实体手机、逐组用户批准仍未完成。界面实施 change 可按其已完成的合同归档，角色 change 保持 active。最终 Git 与 Site 发布另存 receipt。
+此前 v64 本地状态是历史快照。最终源码缓存 v70 与 sourceId 9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826 已冻结；10 份五组双路径全矩阵共 3798 实际记录、30 份实际 PNG/Prompt 回读、30 张从页面顶部重新捕获的响应式页面已完成，结果见[最终 v70](../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v70/README.md)。12 项回归检查和构建通过，五项矩阵执行任务已勾选，角色 change **20/36**。所有记录仍 userArtApproved:false；记录成功不等于角色美术通过，人物/绒毛/配饰自然性缺陷及实体手机、逐组用户批准仍未完成。界面实施 change 可按其已完成的合同归档，角色 change 保持 active。最终 Git 与 Site 发布另存 receipt。

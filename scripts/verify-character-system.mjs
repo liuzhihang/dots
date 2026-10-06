@@ -11,7 +11,7 @@ import {decorateAvatar} from '../src/live/avatar-props.js';
 const families=['dots','grok','meta-muse','humans','animals'];
 assert.deepEqual(Object.keys(FAMILIES),families);
 assert.equal(PRESETS.filter(p=>!p.isLegacy).length,5);
-const baselineDir=new URL('../openspec/changes/rebuild-character-system/baseline/',import.meta.url);
+const baselineDir=new URL('../openspec/changes/archive/2026-10-06-rebuild-character-system/baseline/',import.meta.url);
 const manifest=JSON.parse(fs.readFileSync(new URL('manifest.json',baselineDir)));
 const defaultBytes=fs.readFileSync(new URL(manifest.legacyPresetDefaults.file,baselineDir));
 assert.equal(crypto.createHash('sha256').update(defaultBytes).digest('hex'),manifest.legacyPresetDefaults.sha256);

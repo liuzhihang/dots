@@ -29,7 +29,7 @@ v30 已有 R01 封面与工作台，但当前封面每组只展示单只角色�
 
 ## Impact
 
-影响原生 HTML、CSS、JavaScript 静态站点中首页和创作工作台的布局、组件样式及浏览器交互；沿用 Vite、Three.js 与现有状态/创作模块，不引入前端框架或认证服务。参考依据为 [已确认的 R01](../../rebuild-character-system/references/r01-confirmed-direction.jpg) 和现有 `dist/` 实现。
+影响原生 HTML、CSS、JavaScript 静态站点中首页和创作工作台的布局、组件样式及浏览器交互；沿用 Vite、Three.js 与现有状态/创作模块，不引入前端框架或认证服务。参考依据为 [已确认的 R01](../2026-10-06-rebuild-character-system/references/r01-confirmed-direction.jpg) 和现有 `dist/` 实现。
 
 ## Feedback correction · 2026-10-05
 

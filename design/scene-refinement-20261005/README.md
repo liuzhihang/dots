@@ -31,9 +31,9 @@ Meta Muse 是唯一身份微调对象：卡片与右侧 hero 使用同一 A02 �
 
 ## 历史版本与页面证据边界
 
-v70 曾发布为 Site version 33，source commit `0cd69c96ebd02e5c61c6c9b35aab8958120256ad`、sourceId `9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826`，见 [v70 发布回执](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v70/site-release.json)。这是历史中间版，3798 条旧 WebGL/CPU 矩阵只绑定 v70 source。
+v70 曾发布为 Site version 33，source commit `0cd69c96ebd02e5c61c6c9b35aab8958120256ad`、sourceId `9181d019add9fe9892dc4af770d85650ee99bc52b9bcb3db755ad0979d961826`，见 [v70 发布回执](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v70/site-release.json)。这是历史中间版，3798 条旧 WebGL/CPU 矩阵只绑定 v70 source。
 
-v71/v72 是本地历史快照而非当前实现。fullPage 捕获曾显示的右缘异常与 native viewport 捕获不一致，不能记为真实 viewport 裁切缺陷；相关过程说明分别见 [v71](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v71/README.md) 和 [v72](../../openspec/changes/rebuild-character-system/acceptance/current-20261005-v72/README.md)。v72 的 native 页面索引 [native-viewport-pages-v72.json](page/native-viewport-pages-v72.json) 记录过 1280/768/390/320 首页基线无水平溢出，但它早于当前 R01 卡片内容选择，只作历史证据。
+v71/v72 是本地历史快照而非当前实现。fullPage 捕获曾显示的右缘异常与 native viewport 捕获不一致，不能记为真实 viewport 裁切缺陷；相关过程说明分别见 [v71](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v71/README.md) 和 [v72](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v72/README.md)。v72 的 native 页面索引 [native-viewport-pages-v72.json](page/native-viewport-pages-v72.json) 记录过 1280/768/390/320 首页基线无水平溢出，但它早于当前 R01 卡片内容选择，只作历史证据。
 
 v81 cache/source `0a2daefce6cc18094ac2e40749ec42750c3b80837fa58de5fc57b4090288cc60`（123 个路径）的页面图见 [历史 v81 页面索引](../reference-home-20261005/page/pages-v81.json)，其时的独立视觉复核 [报告](../reference-home-20261005/visual-review-v81.md) 也保留原始结论。用户随后明确否定 v81 家族卡构图，所以截图与报告只作历史材料，不代表当前实现或通过；本轮差异见 [v81 基线审查](../reference-home-correction-20261006/baseline-review.md) 和 [当前设计 QA](../../design-qa.md)。新 source 与真实页面评审待完成，实体手机未测试。
 
