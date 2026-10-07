@@ -5,7 +5,7 @@ import {
 import {
   createDrawEngine, FEATURE_CATEGORIES, REVEAL_SLOTS, revealFeaturesFor
 } from '../dist/studio-draw.js';
-import { FEATURE_VISUAL_REGISTRY, featureVisualFor } from '../dist/studio-feature-visuals.js?v=90';
+import { featureVisualFor } from '../dist/studio-feature-visuals.js?v=92';
 import { queryArtworks } from '../dist/studio-tags.js';
 
 assert.equal(ARTWORKS.length, 15);
@@ -21,7 +21,7 @@ assert.deepEqual(REVEAL_SLOTS.map(slot => slot.key), [
 
 const all = createDrawEngine({ rng: () => 0 }).select({});
 assert.equal(all.status, 'selected');
-assert.equal(all.pool.length, 15, 'All published works with registered source crops are available to the default draw pool.');
+assert.equal(all.pool.length, 15, 'All published works with complete independent reveal resources are available to the preview draw pool; visual approval remains separate.');
 assert.deepEqual(all.pool.map(artwork => artwork.id).sort(), ARTWORKS.map(artwork => artwork.id).sort());
 
 const dotsScope = { tagsByDimension: { style: ['style:dots'] } };
@@ -59,14 +59,21 @@ for (const [index, slot] of REVEAL_SLOTS.entries()) {
   const visual = featureVisualFor(revealed, slot.key, first.result.artwork);
   if (feature.state === 'known') {
     assert.equal(visual.state, 'known');
-    assert.equal(visual.assetRef, first.result.asset.id);
+    const displayAsset = getAsset(visual.assetRef);
+    assert(displayAsset);
     assert.equal(visual.source.artworkId, first.result.artworkId);
-    assert.equal(visual.source.assetId, first.result.asset.id);
-    assert.equal(visual.source.version, first.result.asset.version);
-    assert.equal(visual.source.sha256, first.result.asset.sha256);
-    assert.ok(Array.isArray(visual.sourceRect) && visual.sourceRect.length === 4);
-    if (slot.key === 'style') assert.equal(visual.kind, 'artwork-preview', 'The style slot may preview the registered full Artwork.');
-    else assert.equal(visual.kind, 'source-crop', `${slot.key} uses its registered source crop, never a full Artwork fallback.`);
+    assert.equal(visual.source.assetId, displayAsset.id);
+    assert.equal(visual.source.version, displayAsset.version);
+    assert.equal(visual.source.sha256, displayAsset.sha256);
+    assert.equal(visual.sourceRect, undefined, 'Production feature visuals never crop the final Artwork.');
+    assert.ok(feature.shortName && !feature.shortName.includes('…'));
+    if (slot.key === 'style') assert.equal(visual.kind, 'original', 'The style slot may preview the registered full Artwork.');
+    else {
+      assert.equal(visual.kind, 'dedicated-asset', `${slot.key} uses an independently registered illustration.`);
+      assert.notEqual(displayAsset.id, first.result.asset.id);
+      assert.equal(displayAsset.displayOnly, true);
+      assert.equal(visual.artApproval.status, 'pending', 'Engineering validation cannot approve new art.');
+    }
   } else {
     assert.equal(visual.kind, 'empty-value');
     assert.equal(visual.state, feature.state);
@@ -131,23 +138,17 @@ assert.deepEqual(unknownAppearance.value, []);
 assert.equal(unknownAppearance.label, '待核实');
 assert.equal(createDrawEngine({ catalog: [unknownFacts], rng: () => 0 }).select({}).status, 'empty', 'Unknown facts fail closed in draw eligibility.');
 
-// A registered full Artwork is allowed in the style slot; missing known-feature
-// crops remove only the draw candidate and do not remove it from gallery queries.
+// Missing known-feature display resources exclude a draw, while the approved
+// complete Artwork remains searchable. There is no crop or full-image fallback.
 {
-  const cropArtwork = ARTWORKS.find(artwork => FEATURE_VISUAL_REGISTRY[artwork.id]?.appearance);
-  const registry = FEATURE_VISUAL_REGISTRY[cropArtwork.id];
-  const savedAppearanceCrop = registry.appearance;
-  delete registry.appearance;
-  try {
-    const styleQuery = { tagsByDimension: { style: [`style:${cropArtwork.styleIdentity}`] } };
-    const galleryMatches = queryArtworks(styleQuery);
-    assert.ok(galleryMatches.some(artwork => artwork.id === cropArtwork.id), 'Gallery search remains based on published Artwork and tags, not reveal crops.');
-    const draw = createDrawEngine({ rng: () => 0 }).select({ query: styleQuery });
-    assert.equal(draw.status, 'selected');
-    assert.ok(!draw.pool.some(artwork => artwork.id === cropArtwork.id), 'A known slot without its registered source crop is excluded before drawing.');
-  } finally {
-    registry.appearance = savedAppearanceCrop;
-  }
+  const original = ARTWORKS[0];
+  const missing = {...original, revealVisuals: {...original.revealVisuals, appearance: undefined}};
+  const catalog = ARTWORKS.map(artwork => artwork.id === missing.id ? missing : artwork);
+  const styleQuery = { tagsByDimension: { style: [`style:${original.styleIdentity}`] } };
+  assert.ok(queryArtworks(styleQuery, catalog).some(artwork => artwork.id === missing.id), 'Gallery search is independent of reveal illustrations.');
+  const draw = createDrawEngine({ catalog, rng: () => 0 }).select({ query: styleQuery });
+  assert.equal(draw.status, 'selected');
+  assert.ok(!draw.pool.some(artwork => artwork.id === missing.id), 'Missing independent visual fails closed before drawing.');
 }
 
 const bagEngine = createDrawEngine({ rng: () => 0 });
@@ -180,7 +181,7 @@ assert.equal(single.result.artworkId, 'dots-lilac-bucket');
 
 const impossibleLocks = engine.select({ requiredFeatures: ['accessory:headphones', 'accessory:round-glasses'] });
 assert.equal(impossibleLocks.status, 'empty', 'Hard locks use AND semantics and are never relaxed.');
-assert.match(impossibleLocks.message, /全部条件/);
+assert.match(impossibleLocks.message, /没有找到.*条件.*调整筛选/, 'An empty pool explains the next step without technical resource terminology.');
 const zeroResult = engine.select({ query: { tagsByDimension: { style: ['style:animals'], shape: ['shape:sphere'] } } });
 assert.equal(zeroResult.status, 'empty');
 const invalidQuery = engine.select({ query: { tagsByDimension: { unknown: ['unknown:x'] } } });
@@ -209,4 +210,4 @@ assert.ok(getAsset(alternateApproval.assetRefs.original));
 const malformedRandom = createDrawEngine({ rng: () => Number.NaN }).select({});
 assert.equal(malformedRandom.status, 'error');
 
-console.log(`Artwork draw: ${ARTWORKS.length} works, 8 fact categories, 6 reveal slots, source-bound snapshots, crop eligibility, hard locks, repeat bag, and unavailable-resource handling verified.`);
+console.log(`Artwork draw: ${ARTWORKS.length} works, 8 fact categories, 6 reveal slots, source-bound snapshots, independent display eligibility, hard locks, repeat bag, and unavailable-resource handling verified.`);

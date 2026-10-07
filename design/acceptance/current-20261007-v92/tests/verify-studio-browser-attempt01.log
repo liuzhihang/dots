@@ -1,0 +1,18 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+18 !== 6
+
+    at assertSixCardReady (file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:166:120)
+    at async file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:169:2 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 18,
+  expected: 6,
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

@@ -1,10 +1,12 @@
+import { REVEAL_VISUAL_ASSETS } from './studio-reveal-visual-assets.js?v=92';
+
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
   for (const child of Object.values(value)) deepFreeze(child);
   return Object.freeze(value);
 };
 
-export const CATALOG_REVISION = 'artwork-catalog-20261007-v90';
+export const CATALOG_REVISION = 'artwork-catalog-20261007-v92';
 
 const SOURCE_SNAPSHOT = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
 const ART_APPROVAL_RECORD = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json';
@@ -79,7 +81,7 @@ const makeApproval = (artworkId, asset) => asset.resourceKind === 'transparent-c
       note: '姿态资源已存在且source hash匹配，但v83逐项批准名单未列该pose asset ID；保留待核，不自动批准或否决。'
     };
 
-export const ASSETS = deepFreeze(assetRows.map(([id, version, path, byteSize, sha256, width, height, alphaPixels, artworkId, kind, archivedSourcePath]) => {
+const artworkAssets = assetRows.map(([id, version, path, byteSize, sha256, width, height, alphaPixels, artworkId, kind, archivedSourcePath]) => {
   const resourceKind = kind === 'artwork' ? 'transparent-character-still' : 'still-variant-candidate';
   const [transparentPixels, opaquePixels, partialAlphaPixels] = alphaPixels;
   const sourcePath = archivedSourcePath || `dist/${path.slice(2)}`;
@@ -111,7 +113,8 @@ export const ASSETS = deepFreeze(assetRows.map(([id, version, path, byteSize, sh
     candidateOnly: kind !== 'artwork'
   };
   return asset;
-}));
+});
+export const ASSETS = deepFreeze([...artworkAssets, ...REVEAL_VISUAL_ASSETS]);
 
 const assetById = new Map(ASSETS.map(asset => [asset.id, asset]));
 const assetByPath = new Map(ASSETS.filter(asset => asset.path).map(asset => [asset.path, asset]));
@@ -254,6 +257,47 @@ const titles = {
   'animal-gray-husky': ['灰白哈士奇伙伴', '原创灰白哈士奇，三角立耳与清楚面罩色块，四爪坐姿和蓬松卷尾。', 'animals']
 };
 
+// Independent illustrations explain frozen facts; they never enter composition or export.
+const revealRows = {
+  'candidate-dots-20261005': ['dots-orb', 'blue-plush', null, 'headphones', null],
+  'candidate-grok-20261005': ['grok-orb', 'purple-matte', null, null, null],
+  'candidate-meta-muse-20261005': ['meta-muse-wrapped', 'cream-plush', null, null, null],
+  'candidate-humans-20261005': ['human-chestnut', 'teal-knit', 'teal-knit-outfit', null, null],
+  'candidate-animals-20261005': ['animal-shiba', 'orange-fur', null, null, null],
+  'dots-rose-glasses': ['dots-orb', 'pink-plush', null, 'glasses-rose', null],
+  'dots-lilac-bucket': ['dots-orb', 'lilac-plush', null, 'yellow-bucket-hat', null],
+  'grok-green-cloud': ['grok-cloud', 'green-matte', null, null, null],
+  'grok-teal-square': ['grok-rounded-square', 'teal-matte', null, null, null],
+  'muse-rose-flowers': ['meta-muse-wrapped', 'pink-plush', null, null, 'daisy-bouquet'],
+  'muse-sage-reading': ['meta-muse-wrapped', 'sage-plush', null, null, 'sage-closed-book'],
+  'human-bun-yellow': ['human-bun', 'yellow-fabric', 'yellow-hoodie-outfit', null, null],
+  'human-blond-glasses': ['human-blond', 'blond-knit', 'blue-knit-outfit', 'glasses-clear', null],
+  'animal-white-cat': ['animal-cat', 'white-fur', null, null, null],
+  'animal-gray-husky': ['animal-husky', 'gray-fur', null, null, null]
+};
+const revealSlots = [
+  ['appearance', 'appearance'], ['paletteMaterial', 'palette-material'],
+  ['clothing', 'clothing'], ['accessory', 'accessory'], ['prop', 'prop']
+];
+function buildRevealVisuals(id, original, styleIdentity) {
+  const bound = asset => ({ assetRef: asset.id, assetVersion: asset.version, assetSha256: asset.sha256,
+    sourceRef: asset.sourceRef, purpose: 'reveal-only-display', shortName: asset.shortName,
+    description: asset.description, artApproval: asset.artApproval });
+  const visuals = { style: { ...bound(original), kind: 'original', status: original.publicationStatus,
+    shortName: { dots: 'Dots', grok: 'Grok Bot', 'meta-muse': 'Meta Muse', humans: '人物', animals: '动物' }[styleIdentity] } };
+  for (const [index, [key, directory]] of revealSlots.entries()) {
+    const name = revealRows[id]?.[index];
+    if (!name) {
+      visuals[key] = { kind: 'empty-value', state: 'none', shortName: { clothing: '无衣物', accessory: '无配饰', prop: '无道具' }[key] || '未登记' };
+      continue;
+    }
+    const asset = assetById.get(`asset:reveal:${directory}:${name}`);
+    visuals[key] = asset ? { ...bound(asset), kind: 'dedicated-asset', status: asset.publicationStatus }
+      : { kind: 'unknown-value', status: 'missing', shortName: '未登记' };
+  }
+  return visuals;
+}
+
 const artworkAsset = new Map(ASSETS.filter(asset => asset.resourceKind === 'transparent-character-still').map(asset => [asset.ownerArtworkId, asset]));
 export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
   const [title, description, styleIdentity] = titles[id];
@@ -295,6 +339,7 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
     features,
     featureReview: { status: 'verified-visible-facts', method: 'current PNG visually inspected against registered source/hash' },
     assetRefs: { original: asset.id },
+    revealVisuals: buildRevealVisuals(id, asset, styleIdentity),
     promptRefs: {
       zhImage: `prompt:${id}:zh-image`,
       enImage: `prompt:${id}:en-image`

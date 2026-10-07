@@ -1,0 +1,1 @@
+First successful browser run. Its after-preload screenshot was captured before the feature image elements finished decoding; the test report and assertions passed, but this screenshot is retained as a trace of the first run and is not the final visual evidence. A refined run waits for actual image decode before saving that frame.

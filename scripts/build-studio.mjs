@@ -15,7 +15,7 @@ const allowedModules = new Set([
   'studio-tags.js', 'studio-tag-browser.js', 'studio-overlay.js', 'studio-artwork-catalog.js',
   'studio-prompt.js', 'studio-asset-loader.js', 'studio-draw.js', 'studio-actions.js',
   'studio-detail.js', 'studio-detail.css', 'studio-reference.js',
-  'studio-fullscreen-random.js', 'studio-fullscreen-random.css', 'studio-feature-visuals.js'
+  'studio-fullscreen-random.js', 'studio-fullscreen-random.css', 'studio-feature-visuals.js', 'studio-reveal-visual-assets.js'
 ]);
 const seenModules = new Set();
 const moduleHashes = [];
@@ -34,12 +34,12 @@ async function visitModule(name) {
     assert(!/\b(?:CharacterRecipe|FitProfile|makeProject|Three|buildCreationPrompt)\b/.test(source), `Retired dependency in ${name}`);
     const references = [...source.matchAll(/(?:from\s*|import\s*\()(['"])(\.\/[^'"]+)\1/g)].map(match => match[2]);
     for (const reference of references) {
-      assert(reference.endsWith('?v=90'), `Mixed module cache: ${name} -> ${reference}`);
+      assert(reference.endsWith('?v=92'), `Mixed module cache: ${name} -> ${reference}`);
       await visitModule(reference.slice(2).split('?')[0]);
     }
   }
   if (name === 'index.html') {
-    for (const match of source.matchAll(/(?:src|href)="(?:\.\/)?(studio[^"?]+)\?v=90"/g)) await visitModule(match[1]);
+    for (const match of source.matchAll(/(?:src|href)="(?:\.\/)?(studio[^"?]+)\?v=92"/g)) await visitModule(match[1]);
   }
 }
 
@@ -80,6 +80,7 @@ for (const match of html.matchAll(/(?:src|href)=["'](?:\.\/)?(assets\/[^"'?#]+)[
 const eligibleArtworks = ARTWORKS.filter(isEligible);
 assert(eligibleArtworks.length > 0, 'The published Artwork catalog cannot be empty.');
 const usedArtworkAssetIds = new Set();
+const usedRevealAssetIds = new Set();
 for (const artwork of eligibleArtworks) {
   const asset = getAsset(artwork.assetRefs?.original);
   assert(asset, `${artwork.id} must reference a registered original asset.`);
@@ -89,14 +90,35 @@ for (const artwork of eligibleArtworks) {
   addPublishedPath(expectedAssetPaths, `dist/${asset.path.slice(2)}`, `Artwork ${artwork.id}`);
 }
 
+const originalAssetPaths = new Set(expectedAssetPaths);
+for (const artwork of eligibleArtworks) {
+  for (const visual of Object.values(artwork.revealVisuals || {})) {
+    if (visual.kind !== 'dedicated-asset') continue;
+    const asset = getAsset(visual.assetRef);
+    assert(asset?.displayOnly && asset.resourceKind === 'reveal-illustration', `${artwork.id} independent reveal resource`);
+    assert.equal(visual.assetVersion, asset.version);
+    assert.equal(visual.assetSha256, asset.sha256);
+    usedRevealAssetIds.add(asset.id);
+    addPublishedPath(expectedAssetPaths, `dist/${asset.path.slice(2)}`, `Reveal ${asset.id}`);
+  }
+}
+
 const activeScenes = [...HERO_SCENES, ...Object.values(FAMILY_SCENES)];
 for (const scene of activeScenes) {
   assert.equal(typeof scene.src, 'string');
   assert(scene.src.startsWith('assets/'), `Scene ${scene.id} must reference a local asset.`);
   addPublishedPath(expectedAssetPaths, `dist/${scene.src}`, `Scene ${scene.id}`);
+  addPublishedPath(originalAssetPaths, `dist/${scene.src}`, `Scene ${scene.id}`);
 }
 
 for (const asset of ASSETS) {
+  if (asset.displayOnly) {
+    assert(usedRevealAssetIds.has(asset.id), `${asset.id} has no live reveal usage`);
+    assert(['candidate-preview', 'published'].includes(asset.publicationStatus));
+    if (asset.publicationStatus === 'candidate-preview') assert.equal(asset.artApproval.status, 'pending', 'Candidate preview cannot claim user art approval');
+    else assert(asset.artApproval.status === 'approved' && asset.artApproval.record && asset.artApproval.assetSha256 === asset.sha256, 'Published reveal visuals need approval tied to exact bytes');
+    continue;
+  }
   if (asset.publicationStatus === 'published') {
     assert.equal(typeof asset.path, 'string', `${asset.id} is published but has no runtime path.`);
     assert(usedArtworkAssetIds.has(asset.id), `${asset.id} is marked published but is not used by an eligible Artwork.`);
@@ -110,7 +132,7 @@ const snapshot = JSON.parse(await fs.readFile(path.join(root, snapshotRelativePa
 const snapshotFiles = new Map(snapshot.files.map(file => [file.path, file]));
 assert(snapshot.frozen === true, 'The source snapshot must remain frozen.');
 
-for (const asset of ASSETS) {
+for (const asset of ASSETS.filter(asset => !asset.displayOnly)) {
   assert.equal(asset.sourceSnapshotMatch, true, `${asset.id} is missing source snapshot verification.`);
   assert.equal(typeof asset.sourcePath, 'string');
   assert(!path.posix.isAbsolute(asset.sourcePath) && !asset.sourcePath.split('/').includes('..'), `${asset.id} has an unsafe source path.`);
@@ -131,7 +153,7 @@ assert.equal(retirement.retainedCount, retirement.retained.length);
 assert.equal(retirement.retiredCount, retirement.moved.length);
 const retainedByPath = new Map(retirement.retained.map(item => [item.path, item]));
 const movedByOriginalPath = new Map(retirement.moved.map(item => [item.originalPath, item]));
-assert.deepEqual([...retainedByPath.keys()].sort(), [...expectedAssetPaths].sort(), 'Retained asset evidence must match the live Artwork, current scenes, and HTML asset references exactly.');
+assert.deepEqual([...retainedByPath.keys()].sort(), [...originalAssetPaths].sort(), 'Retained asset evidence must match the live Artwork, current scenes, and HTML asset references exactly.');
 for (const [relativePath, item] of retainedByPath) {
   const bytes = await fs.readFile(path.join(root, relativePath));
   assert.equal(bytes.length, item.byteSize, `${relativePath} retained byte size`);
@@ -164,16 +186,38 @@ for (const artwork of eligibleArtworks) {
   assert.equal(bytes.readUInt32BE(20), asset.height, `${asset.path} PNG height`);
 }
 
+// New display-only resources have their own current provenance, never a fabricated v83 approval.
+for (const asset of ASSETS.filter(asset => asset.displayOnly)) {
+  assert(asset.sourceRef && asset.sourcePath === `dist/${asset.path.slice(2)}`);
+  const bytes = await fs.readFile(path.join(root, asset.sourcePath));
+  assert.equal(bytes.length, asset.byteSize, `${asset.id} byte size`);
+  assert.equal(hash(bytes), asset.sha256, `${asset.id} SHA-256`);
+  if (asset.mime === 'image/svg+xml') {
+    const svg = bytes.toString('utf8');
+    assert(svg.startsWith('<svg') && /<\/svg>\s*$/.test(svg), `${asset.id} standalone SVG`);
+    assert.equal(Number(svg.match(/\bwidth="(\d+)"/)?.[1]), asset.width);
+    assert.equal(Number(svg.match(/\bheight="(\d+)"/)?.[1]), asset.height);
+    assert(!/<(?:script|foreignObject|image|iframe|object|embed)\b|\bon\w+\s*=|<!DOCTYPE|<!ENTITY/i.test(svg));
+  } else {
+    assert.equal(asset.mime, 'image/png');
+    assert.equal(bytes.toString('hex', 0, 8), '89504e470d0a1a0a');
+    assert.equal(bytes.readUInt32BE(16), asset.width);
+    assert.equal(bytes.readUInt32BE(20), asset.height);
+  }
+}
+
 const packageData = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
 assert(!packageData.dependencies?.three);
 assert(!packageData.devDependencies?.esbuild);
 const report = {
   schema: 2,
-  cache: 90,
+  cache: 92,
   modules: moduleHashes.sort((a, b) => a.path.localeCompare(b.path)),
   publishedArtworks: eligibleArtworks.map(artwork => artwork.id),
   publishedAssetPaths: [...expectedAssetPaths].sort(),
-  retainedAssetCount: expectedAssetPaths.size,
+  retainedAssetCount: originalAssetPaths.size,
+  revealDisplayAssetCount: usedRevealAssetIds.size,
+  revealVisualArtApproval: 'pending-user-review',
   retiredAssetCount: retirement.moved.length,
   staticDirectory: 'dist',
   destructiveBuild: false

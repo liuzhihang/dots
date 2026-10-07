@@ -599,8 +599,8 @@
   }
 
   .artwork-detail__tags {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     max-width: 100%;
   }
 
@@ -649,6 +649,9 @@
     padding: 12px;
   }
 }
+
+.artwork-detail__feedback:empty { display: none; }
+.artwork-detail__target-details[open] > .artwork-detail__target-notice { margin-top: 12px; }
 
 @media (max-width: 360px) {
   .artwork-detail__actions,

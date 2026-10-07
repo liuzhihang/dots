@@ -1,4 +1,4 @@
-import { getAsset } from './studio-artwork-catalog.js?v=90';
+import { getAsset } from './studio-artwork-catalog.js?v=92';
 
 const PNG_SIGNATURE = [137, 80, 78, 71, 13, 10, 26, 10];
 const abortError = () => new DOMException('资源校验已取消。', 'AbortError');
@@ -19,6 +19,19 @@ function assetUrl(asset) {
 }
 
 function inspectBytes(bytes, asset) {
+  if (asset.mime === 'image/svg+xml' && asset.displayOnly === true && asset.resourceKind === 'reveal-illustration') {
+    const source = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
+    if (/<(?:script|foreignObject|image|iframe|object|embed)\b|\bon\w+\s*=|<!DOCTYPE|<!ENTITY|@import|(?:href|src)\s*=\s*["'](?!#)|url\(\s*["']?(?!#)/i.test(source)) {
+      throw new Error('特征示意 SVG 不能包含脚本、事件、嵌入图片或外部资源。');
+    }
+    const root = source.match(/<svg\b([^>]*)>/i)?.[1];
+    const width = Number(root?.match(/\bwidth=["']([\d.]+)["']/)?.[1]);
+    const height = Number(root?.match(/\bheight=["']([\d.]+)["']/)?.[1]);
+    if (!root || !source.includes('</svg>') || width !== asset.width || height !== asset.height || width <= 0 || height <= 0) {
+      throw new Error('特征示意 SVG 实际尺寸与目录登记不一致。');
+    }
+    return { mime: 'image/svg+xml', width, height };
+  }
   const isPng = bytes.length >= 33 && PNG_SIGNATURE.every((value, index) => bytes[index] === value)
     && String.fromCharCode(...bytes.subarray(12, 16)) === 'IHDR';
   if (isPng) {
@@ -54,7 +67,7 @@ async function digestSha256(blob) {
 
 async function decodeBlob(blob, signal) {
   throwIfAborted(signal);
-  if (typeof globalThis.createImageBitmap === 'function') {
+  if (blob.type !== 'image/svg+xml' && typeof globalThis.createImageBitmap === 'function') {
     let bitmap;
     try {
       bitmap = await globalThis.createImageBitmap(blob);
@@ -86,7 +99,10 @@ function registeredAsset(assetOrRef) {
   const asset = getAsset(assetOrRef);
   if (!asset) throw new Error('资源记录与 Artwork 目录中的 ID、版本、路径或 SHA-256 不匹配。');
   assetUrl(asset);
-  if (asset.mime !== 'image/png' || !asset.path.toLowerCase().endsWith('.png')) throw new Error('当前下载只接受登记的 PNG 原图。');
+  const png = asset.mime === 'image/png' && asset.path.toLowerCase().endsWith('.png');
+  const revealSvg = asset.mime === 'image/svg+xml' && asset.path.toLowerCase().endsWith('.svg')
+    && asset.displayOnly === true && asset.resourceKind === 'reveal-illustration';
+  if (!png && !revealSvg) throw new Error('只接受登记的 PNG 或独立特征示意 SVG。');
   return asset;
 }
 
@@ -128,7 +144,9 @@ export async function loadAsset(assetOrRef, { signal } = {}) {
 /** Download the verified original Blob without re-encoding or flattening alpha. */
 export async function downloadAsset(assetOrRef, { signal } = {}) {
   if (typeof document === 'undefined' || !document.body) throw new Error('当前环境无法启动浏览器原图下载。');
-  const loaded = await loadAsset(assetOrRef, { signal });
+  const original = registeredAsset(assetOrRef);
+  if (original.mime !== 'image/png' || original.displayOnly === true) throw new Error('特征示意仅供展示；下载必须使用作品 PNG 原图。');
+  const loaded = await loadAsset(original, { signal });
   try {
     throwIfAborted(signal);
     const anchor = document.createElement('a');

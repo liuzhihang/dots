@@ -1,0 +1,30 @@
+[
+  {
+    "attempt": "process-attempt01",
+    "outcome": "not final acceptance",
+    "reason": "Recorder timeline reset retained last signature and missed initial ready sample; corrected instrumentation.",
+    "debugArtifacts": ".tmp/cache91-qa-debug/process-attempt01",
+    "status": "preserved locally, ignored intermediate"
+  },
+  {
+    "attempt": "process-attempt02",
+    "outcome": "not final acceptance",
+    "reason": "Reroll button was initially within viewport and did not cause real scrolling; changed setup to scroll actual containers.",
+    "debugArtifacts": ".tmp/cache91-qa-debug/process-attempt02",
+    "status": "preserved locally, ignored intermediate"
+  },
+  {
+    "attempt": "process-attempt03",
+    "outcome": "not final acceptance",
+    "reason": "Deterministic RNG assertion ignored the existing repeat-bag candidate order; assert frozen active result and no late mutation instead.",
+    "debugArtifacts": ".tmp/cache91-qa-debug/process-attempt03",
+    "status": "preserved locally, ignored intermediate"
+  },
+  {
+    "attempt": "layout-attempt01",
+    "outcome": "not final acceptance",
+    "reason": "Old layout assertion required secondary detail in first screen; changed to short-scroll accessibility.",
+    "debugArtifacts": ".tmp/cache91-qa-debug/layout-attempt01",
+    "status": "preserved locally, ignored intermediate"
+  }
+]

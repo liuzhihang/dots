@@ -9,9 +9,15 @@
 ### Requirement: 完整作品必须拥有稳定的资源与提示词关联
 系统 SHALL 为每张实际完整作品提供稳定 ID、标题、描述、来源、发布状态、风格身份、标签、事实特征、尺寸/背景类型及资源和 Prompt 引用。原图、缩略图、Prompt、动作文件和目标资源 SHALL 各有独立版本及可靠关联，不能由当前项目、角色 schema、组合配方或组件解算临时派生身份。
 
+有限的颜色、外形、五官、衣物、配饰或道具搭配 MAY 作为随机内容，但每个可命中的搭配 MUST 已作为一张完整 Artwork 独立制作、登记，并具备适用的资源、Prompt、真实 Feature 和艺术批准。Artwork 目录中实际登记的作品集合 SHALL 是抽取可命中的组合清单；系统 MUST NOT 从单独 Feature 的笛卡尔积推导未登记结果、临时合成图像或把一件 Artwork 的部件适配到另一件作品。Artwork 的特征标签仅用于发现和描述，不自动赋予渲染或穿戴能力。
+
 #### Scenario: 查看一张发布作品
 - **WHEN** 用户从画廊或随机结果打开作品
 - **THEN** 名称、图片、标签、来源和 Prompt 来自同一作品的登记版本，操作无需应用到其他页面或工作台
+
+#### Scenario: 随机发现预先设计的有限变化
+- **WHEN** 候选 Artwork 含不同颜色、形状、五官、衣物或配饰的已完成设计
+- **THEN** 每个结果仍对应目录中实际登记的完整作品；未登记的跨维搭配不会被随机生成或假定存在
 
 ### Requirement: 事实特征不得与未来创作要求混淆
 作品 SHALL 只登记图像实际包含的配饰、道具、形状、动作、表情及背景类型。“无配饰”“无道具”“透明背景” SHALL 是明确核实值；未知/未标注 MUST NOT 被自动解释为没有。未来希望新增的元素 SHALL 仅出现在明确的创作要求中，不污染作品事实或抽取揭晓值。独立词条缩略图 SHALL 有来源及示意用途，不冒充新成品或可装备组件。
@@ -77,3 +83,14 @@
 #### Scenario: 下载期间开始下一次抽取
 - **WHEN** 用户对作品 A 发起下载后又抽取作品 B
 - **THEN** 已发起的下载仍校验并输出 A 的登记文件，B 的图片、标签或 Prompt 不混入 A 的结果
+
+### Requirement: Artwork 独立登记六类揭晓说明视觉
+每件 Artwork MAY 独立登记 `revealVisuals.style/appearance/paletteMaterial/clothing/accessory/prop`。每个有值资源 SHALL 记录稳定 Asset 引用、来源、版本/hash、尺寸、语义用途、工程状态和 `artApproval`；style 可引用该 Artwork 的完整原始识别图（`kind=original`），其他有值维度使用独立且准确的 `kind=dedicated-asset`，已核实 `none`/`notApplicable` 使用统一低强调的 `kind=empty-value`。这些视觉仅用于特征揭晓/说明，不得参与合成或赋予穿戴能力；原图 `sourceRect` 只用于内部制作辅助，不作为生产默认。用户要求复核的预览可展示 `candidate-preview`，但须保持 `artApproval=pending`，不能授予新 Artwork 发布资格或声明六类视觉通过；既有 15 张完整作品批准不因新增示意图而改变。缺失资源记录为真实素材缺口。
+
+#### Scenario: 完整作品与揭晓示意的审批边界
+- **WHEN** 一件已批准 Artwork 使用新制作但未获批准的揭晓示意图进入用户复核预览
+- **THEN** Artwork 原批准和候选图的 `artApproval=pending` 分别保留；候选图只作为预览，不因出现于已批准作品旁而获得美术批准，也不改变 Artwork 事实或发布资格
+
+#### Scenario: 新作品没有某类揭晓视觉
+- **WHEN** 维护者登记一件完整作品但缺少有值维度的独立揭晓视觉
+- **THEN** 保留作品事实和目录登记，明确记录 visual 缺口并保持对应视觉验收 pending，不用生产原图裁片补位

@@ -1,5 +1,5 @@
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=90';
-import {ARTWORKS,getAsset,isEligible} from './studio-artwork-catalog.js?v=90';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=92';
+import {ARTWORKS,getAsset,isEligible} from './studio-artwork-catalog.js?v=92';
 
 export const TOPICS=Object.freeze([
  {id:'dots',name:'Dots',description:'简洁、灵动的\n圆点伙伴',foot:'Simple\nBut Special',surface:'#f0ecfc'},

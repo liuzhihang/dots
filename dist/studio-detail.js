@@ -1,8 +1,8 @@
-import { copyText, copyAndOpen, downloadText, chatGPTUrlForPrompt, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=90';
-import { TARGET_PROFILES, STYLE_IDENTITIES, getArtwork, getAsset, getVariants, createSnapshot } from './studio-artwork-catalog.js?v=90';
-import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=90';
-import { promptFor } from './studio-prompt.js?v=90';
-import { loadAsset, downloadAsset } from './studio-asset-loader.js?v=90';
+import { copyText, copyAndOpen, downloadText, chatGPTUrlForPrompt, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=92';
+import { TARGET_PROFILES, STYLE_IDENTITIES, getArtwork, getAsset, getVariants, createSnapshot } from './studio-artwork-catalog.js?v=92';
+import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=92';
+import { promptFor } from './studio-prompt.js?v=92';
+import { loadAsset, downloadAsset } from './studio-asset-loader.js?v=92';
 
 const DEFAULT_DETAIL_API = { TARGET_PROFILES, STYLE_IDENTITIES, TAGS, TAG_DIMENSIONS, getArtwork, getAsset, getVariants, createSnapshot, promptFor, loadAsset, downloadAsset };
 
@@ -330,7 +330,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
   image.alt = `${text(snapshot.artwork.title) || '角色作品'}，作品原图`;
   image.decoding = 'async';
   image.hidden = true;
-  const imageStatus = node('p', 'artwork-detail__image-status', '正在载入已发布作品…');
+  const imageStatus = node('p', 'artwork-detail__image-status', '图片载入中…');
   imageStatus.setAttribute('role', 'status');
   media.append(image, imageStatus);
   const versionBar = node('div', 'artwork-detail__versions');
@@ -399,7 +399,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
   const targetDetails = node('details', 'artwork-detail__target-details');
   const targetSummary = node('summary', '', 'Dot / Pet 目标支持与验证');
   const targetNotice = node('p', 'artwork-detail__target-notice', '当前是静态透明 PNG，暂无已验证 Dot/Pet 安装包。');
-  targetDetails.append(targetSummary, targets);
+  targetDetails.append(targetSummary, targetNotice, targets);
   const assetDetails = node('details', 'artwork-detail__asset-details');
   const assetSummary = node('summary', '', '文件与来源记录');
   const assetRecord = node('dl', 'artwork-detail__asset-record');
@@ -412,7 +412,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
   const secondaryActions = node('div', 'artwork-detail__secondary-actions');
   actions.append(copyButton, downloadButton);
   secondaryActions.append(chatButton, referenceButton);
-  detailsColumn.append(title, description, factsHeading, tags, specification, actions, feedback, copyFallback, promptBlock, secondaryActions, manualChatLink, featureDetails, targetNotice, targetDetails, assetDetails);
+  detailsColumn.append(title, description, factsHeading, tags, specification, actions, feedback, copyFallback, promptBlock, secondaryActions, manualChatLink, featureDetails, targetDetails, assetDetails);
   mediaColumn.append(media, versionBar);
   root.append(mediaColumn, detailsColumn);
 
@@ -563,7 +563,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
     imageController = new AbortController();
     setBusy(true);
     imageStatus.hidden = false;
-    imageStatus.textContent = '正在载入这个已发布变体…';
+    imageStatus.textContent = '正在切换图片…';
     try {
       const nextSnapshot = normalizeSnapshot(await api.createSnapshot(id));
       if (disposed || token !== revision) return;
@@ -574,7 +574,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
       if (!loaded || disposed || token !== revision) return;
       renderArtwork(nextSnapshot, nextPrompt);
       onArtworkChange(nextSnapshot.artwork.id);
-      report('图片、标签、Prompt 与下载已切换到同一个已发布变体。');
+      report('已切换作品。');
     } catch (error) {
       if (!disposed && token === revision && error?.name !== 'AbortError') {
         imageStatus.hidden = true;
@@ -597,7 +597,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
       promptExcerpt.textContent = promptText;
       promptPreview.textContent = promptText;
       promptArea.value = promptText;
-      report('Prompt 已切换语言；仍对应当前作品。');
+      report('已切换 Prompt 语言。');
     } catch (error) {
       if (!disposed && token === revision) {
         languageSelect.value = promptLanguage === 'en' ? 'zh' : 'en';
@@ -643,7 +643,7 @@ export function createDetailView({ artworkId, snapshot, resumeState, api = DEFAU
     try {
       downloadLease = await api.downloadAsset(frozen.asset, { signal: downloadController.signal });
       if (!downloadLease?.blob) throw new Error('下载器没有返回目录绑定的图片字节。');
-      if (!disposed) report('已请求下载目录绑定的原始图片文件。');
+      if (!disposed) report('已开始下载原图。');
     } catch (error) {
       if (!disposed) report(`原图下载失败：${text(error?.message) || '请稍后重试。'}`, true);
     } finally {

@@ -1,15 +1,15 @@
 import assert from 'node:assert/strict';
 import {createRevealView} from '../dist/studio-fullscreen-random.js';
-import {REVEAL_SLOTS, revealFeaturesFor} from '../dist/studio-draw.js?v=90';
-import {chatGPTUrlForPrompt} from '../dist/studio-actions.js?v=90';
-import {ARTWORKS, getAsset as getCatalogAsset} from '../dist/studio-artwork-catalog.js?v=90';
-import {FEATURE_VISUAL_REVISION, featureVisualFor} from '../dist/studio-feature-visuals.js?v=90';
+import {REVEAL_SLOTS, revealFeaturesFor} from '../dist/studio-draw.js?v=92';
+import {chatGPTUrlForPrompt} from '../dist/studio-actions.js?v=92';
+import {ARTWORKS, getAsset as getCatalogAsset} from '../dist/studio-artwork-catalog.js?v=92';
+import {FEATURE_VISUAL_REVISION, featureVisualFor} from '../dist/studio-feature-visuals.js?v=92';
 
 assert.deepEqual(REVEAL_SLOTS.map(slot => slot.key), ['style', 'appearance', 'palette-material', 'clothing', 'accessory', 'prop']);
 assert.ok(REVEAL_SLOTS.every(slot => slot.kinds.length === 1 && slot.kinds[0] === slot.key));
 const missingFeature = {kind:'accessory',state:'known',value:['head-accessory:future-item'],label:'尚未登记的配饰'};
 const missingVisual = featureVisualFor([missingFeature], 'accessory', {id:'future-artwork',assetRefs:{original:'asset:future'}});
-assert.equal(missingVisual.kind, 'unknown-value', 'an unregistered feature crop stays explicit and never borrows another visual');
+assert.equal(missingVisual.kind, 'unknown-value', 'an unregistered reveal visual stays explicit and never borrows another visual');
 assert.equal(missingVisual.assetRef, undefined, 'an unknown feature crop has no fallback asset');
 
 const originalSetTimeout = globalThis.setTimeout;
@@ -60,6 +60,9 @@ class FakeElement {
     this.src = '';
     this.alt = '';
     this.download = '';
+    this.scrollTop = 0;
+    this.scrollLeft = 0;
+    this.scrollRequests = [];
   }
   set className(value) { this.classList.values = new Set(String(value).split(/\s+/).filter(Boolean)); }
   get className() { return [...this.classList.values].join(' '); }
@@ -99,6 +102,12 @@ class FakeElement {
   }
   focus() { this.ownerDocument.activeElement = this; }
   select() { this.selected = true; }
+  scrollTo(options = {}) {
+    this.scrollRequests.push(options);
+    if (typeof options === 'number') { this.scrollLeft = options; return; }
+    if (Number.isFinite(options.left)) this.scrollLeft = options.left;
+    if (Number.isFinite(options.top)) this.scrollTop = options.top;
+  }
   matches(selector) {
     if (selector.startsWith('.')) return this.classList.contains(selector.slice(1));
     if (selector.startsWith('#')) return this.id === selector.slice(1);
@@ -133,13 +142,21 @@ class FakeElement {
 }
 
 class FakeDocument {
-  constructor() { this.body = new FakeElement('body', this); this.downloads = []; this.textDownloads = []; }
+  constructor() { this.body = new FakeElement('body', this); this.scrollingElement = new FakeElement('html', this); this.downloads = []; this.textDownloads = []; }
   createElement(tagName) { return new FakeElement(tagName, this); }
+  querySelector(selector) { return this.body.querySelector(selector); }
 }
 
 const fakeDocument = new FakeDocument();
 globalThis.document = fakeDocument;
-Object.defineProperty(globalThis, 'window', {configurable: true, value: {setTimeout: originalSetTimeout}});
+let pageScrollY = 0;
+const pageScrollRequests = [];
+const fakeWindow = {
+  setTimeout: originalSetTimeout,
+  get scrollY() { return pageScrollY; },
+  scrollTo(options = {}) { pageScrollRequests.push(options); if (Number.isFinite(options.top)) pageScrollY = options.top; }
+};
+Object.defineProperty(globalThis, 'window', {configurable: true, value: fakeWindow});
 let prefersReducedMotion = false;
 const motionListeners = new Set();
 globalThis.matchMedia = () => ({
@@ -147,7 +164,8 @@ globalThis.matchMedia = () => ({
   addEventListener(_type, listener) { motionListeners.add(listener); },
   removeEventListener(_type, listener) { motionListeners.delete(listener); }
 });
-globalThis.setTimeout = (callback, milliseconds = 0, ...args) => originalSetTimeout(callback, Math.min(8, Math.max(0, Number(milliseconds) * 0.05)), ...args);
+globalThis.setTimeout = (callback, milliseconds = 0, ...args) => originalSetTimeout(callback,
+  milliseconds === 900 ? 80 : Math.min(8, Math.max(0, Number(milliseconds) * 0.05)), ...args);
 globalThis.clearTimeout = originalClearTimeout;
 globalThis.requestAnimationFrame = callback => originalSetTimeout(() => callback(Date.now()), 0);
 globalThis.cancelAnimationFrame = originalClearTimeout;
@@ -230,11 +248,36 @@ function waitUntil(predicate, message, timeout = 2500) {
 
 const immediateLoader = async asset => handleFor(asset);
 const createdViews = [];
-function viewFor({engine, loader = immediateLoader, downloadAsset = fakeDownloadAsset, openChatGPT = async text => {fakeDocument.openedPrompt=text;return {copied:true,opened:true};}, onDetail = () => {}, onResult = () => {}, notify = () => {}, getConditions = () => ({query: {tagsByDimension: {style: ['style:dots']}}, requiredFeatures: []})}) {
-  const view = createRevealView({engine, getConditions, onDetail, onResult, notify, getAsset, loadAsset: loader, downloadAsset, openChatGPT});
-  fakeDocument.body.append(view.element);
+function viewFor({engine, loader = immediateLoader, downloadAsset = fakeDownloadAsset, openChatGPT = async text => {fakeDocument.openedPrompt=text;return {copied:true,opened:true};}, onDetail = () => {}, onResult = () => {}, notify = () => {}, getConditions = () => ({query: {tagsByDimension: {style: ['style:dots']}}, requiredFeatures: []}), autoStart = false}) {
+  const view = createRevealView({engine, getConditions, onDetail, onResult, notify, autoStart, getAsset, loadAsset: loader, downloadAsset, openChatGPT});
+  const dialog = fakeDocument.createElement('dialog');
+  const overlayBody = fakeDocument.createElement('div');
+  overlayBody.id = 'overlayBody';
+  dialog.append(overlayBody);
+  fakeDocument.body.append(dialog);
+  overlayBody.append(view.element);
+  view.testSurfaces = {dialog, overlayBody};
   createdViews.push(view);
   return view;
+}
+function pageViewFor({engine}) {
+  const view = createRevealView({engine, getAsset, loadAsset: immediateLoader, downloadAsset: fakeDownloadAsset});
+  const main = fakeDocument.createElement('main');
+  main.append(view.element);
+  fakeDocument.body.append(main);
+  const documentTop = pageScrollY + 240;
+  view.element.getBoundingClientRect = () => ({top: documentTop - pageScrollY});
+  createdViews.push(view);
+  return view;
+}
+
+async function waitForResult(view, message = 'frozen result did not become visible') {
+  await waitUntil(() => ['result', 'awaiting-reveal', 'error', 'empty'].includes(view.getState().phase), message);
+  if (view.getState().phase === 'awaiting-reveal') {
+    const action = view.element.querySelector('[data-fr="reveal-partner"]');
+    if (!action.hidden) action.click();
+  }
+  await waitUntil(() => ['result', 'error', 'empty'].includes(view.getState().phase), message);
 }
 
 try {
@@ -249,21 +292,22 @@ try {
       const visual = featureVisualFor([feature], slot.key, artwork);
       assert.equal(visual.version, FEATURE_VISUAL_REVISION);
       if (slot.key === 'style') {
-        assert.equal(visual.kind, 'artwork-preview', `${artwork.id} uses the full approved Artwork for the style slot`);
-        assert.deepEqual(visual.sourceRect, [0, 0, 1, 1]);
+        assert.equal(visual.kind, 'original', `${artwork.id} uses its registered complete original in the style slot`);
+        assert.equal(visual.assetRef, getCatalogAsset(artwork.assetRefs.original).id);
       } else if (feature.state === 'none' || feature.state === 'not-applicable') {
         assert.equal(visual.kind, 'empty-value', `${artwork.id}/${slot.key} communicates its explicit empty state`);
         assert.equal(visual.assetRef, undefined, 'empty states do not borrow a character image');
       } else {
-        assert.equal(visual.kind, 'source-crop', `${artwork.id}/${slot.key} uses a registered local view into the same PNG`);
-        assert.ok(visual.assetRef);
-        assert.equal(visual.source.artworkId, artwork.id);
-        assert.equal(visual.source.sha256, getCatalogAsset(artwork.assetRefs.original).sha256);
-        assert.equal(visual.source.assetId, getCatalogAsset(artwork.assetRefs.original).id);
-        assert.equal(visual.source.version, getCatalogAsset(artwork.assetRefs.original).version);
-        assert.equal(visual.sourceRect.length, 4);
-        assert.ok(visual.sourceRect.every(value => value >= 0 && value <= 1));
-        assert.ok(visual.sourceRect[2] < 1 || visual.sourceRect[3] < 1, 'non-style features use a local source crop rather than a full-image fallback');
+        assert.ok(['dedicated-asset', 'unknown-value'].includes(visual.kind), `${artwork.id}/${slot.key} uses an independently registered display asset or stays an explicit gap`);
+        if (visual.kind === 'dedicated-asset') {
+          assert.ok(visual.assetRef, `${artwork.id}/${slot.key} resolves the dedicated display asset`);
+          const asset = getCatalogAsset(visual.assetRef);
+          assert.ok(asset, `${artwork.id}/${slot.key} references a catalogued asset`);
+          assert.ok((visual.visualStatus || visual.status) && visual.artApproval, `${artwork.id}/${slot.key} exposes material status and art approval`);
+          assert.equal(visual.purpose, 'reveal-only-display', 'feature assets are display-only and cannot become wearable components');
+        } else {
+          assert.equal(visual.assetRef, undefined, 'missing reveal art does not fall back to an Artwork crop');
+        }
       }
     }
   }
@@ -277,11 +321,65 @@ try {
     onDetail: result => { details = result; },
     onResult: result => completed.push(result)
   });
+  assert.equal(first.getState().phase, 'ready');
+  assert.equal(first.element.querySelector('.fr-result-card').hidden, true, 'the result begins hidden');
+  assert.equal(first.element.dataset.displayResult, 'false');
+  first.testSurfaces.overlayBody.scrollTop = 415;
+  first.testSurfaces.dialog.scrollTop = 230;
+  first.element.scrollTop = 180;
+  first.element.querySelector('.fr-reel-stage').scrollLeft = 38;
   prefersReducedMotion = true;
+  pageScrollY = 640;
+  const pageView = pageViewFor({engine: makeEngine([
+    selection(makeResult(pool[4], 101)),
+    selection(makeResult(pool[0], 102))
+  ])});
+  assert.equal(pageScrollY, 640, 'mounting the ready game view does not reposition the page');
+  assert.equal(await pageView.start(), true);
+  assert.equal(pageScrollY, 868, 'game reroll positions the document at the attached reveal view, leaving a 12px top gap');
+  assert.equal(pageScrollRequests.at(-1)?.behavior, 'instant', 'game reroll uses an instant page scroll');
+  assert.equal(pageView.getState().scrollTop.overlayBody, 0);
+  assert.equal(pageView.getState().scrollTop.dialog, 0);
+  assert.equal(pageView.getState().phase, 'awaiting-reveal', 'the game view uses the same reduced-motion feature-first flow');
+  pageView.element.querySelector('[data-fr="reveal-partner"]').click();
+  assert.equal(pageView.getState().phase, 'result');
+  pageScrollY = 1100;
+  assert.equal(await pageView.start(), true, 'rerolling from the game result resets the actual page scroller');
+  assert.equal(pageScrollY, 868, 'a deep game-page position returns to the top of the six-card stage');
+  assert.equal(pageView.getState().scrollTop.page, 868);
+  assert.equal(pageView.getState().resultHidden, true);
+  assert.equal(pageView.getState().displayResult, false);
+  pageScrollY = 910;
   assert.equal(await first.start(), true);
+  assert.equal(pageScrollY, 910, 'modal reroll does not move the background document');
+  assert.deepEqual(first.getState().scrollTop, {overlayBody: 0, dialog: 0, page: 910, view: 0, stage: 0}, 'modal reroll resets the overlay, dialog, view and card-stage scroll positions without moving the page');
   assert.deepEqual(firstEngine.calls[0], {query: {tagsByDimension: {style: ['style:dots']}}, requiredFeatures: []}, 'fresh query and hard requirements go to the single draw engine');
+  assert.equal(first.getState().phase, 'awaiting-reveal', 'reduced motion retains the feature-first confirmation state');
+  assert.equal(first.element.dataset.phase, 'awaiting-reveal');
+  assert.equal(first.getState().resultHidden, true);
+  assert.equal(first.getState().displayResult, false);
+  assert.equal(first.element.dataset.displayResult, 'false');
+  assert.equal(first.element.querySelector('.fr-result-card').hidden, true);
+  assert.deepEqual(first.getState().stoppedSlots, [0, 1, 2, 3, 4, 5]);
+  assert.equal(first.element.querySelector('[data-fr="reveal-partner"]').hidden, false, 'reduced motion asks for an explicit reveal confirmation');
+  assert.equal(first.element.querySelector('[data-fr="reveal-partner"]').textContent, '揭晓伙伴');
+  const revealChildren = first.element.querySelector('.fr-reveal').children;
+  assert.ok(revealChildren.indexOf(first.element.querySelector('.fr-reel-stage'))
+    < revealChildren.indexOf(first.element.querySelector('[data-fr="reveal-partner"]')),
+  'the reduced-motion confirmation follows the six feature cards');
+  assert.ok(revealChildren.indexOf(first.element.querySelector('[data-fr="reveal-partner"]'))
+    < revealChildren.indexOf(first.element.querySelector('.fr-result-card')),
+  'the complete Artwork remains after the explicit reduced-motion confirmation');
+  assert.deepEqual(completed, [], 'onResult waits until the user confirms the partner reveal');
+  first.element.querySelector('.fr-reel-stage').scrollLeft = 482;
+  first.element.querySelector('[data-fr="reveal-partner"]').click();
   assert.equal(first.getState().phase, 'result');
-  assert.equal(first.element.dataset.phase, 'result');
+  assert.equal(first.getState().resultVisible, true);
+  assert.equal(first.element.dataset.displayResult, 'true');
+  assert.equal(first.element.querySelector('.fr-result-card').hidden, false);
+  assert.equal(first.element.querySelector('.fr-reel-stage').scrollLeft, 0, 'the result summary rail returns to its first feature after the final Artwork appears');
+  assert.deepEqual(completed, [firstResult]);
+  assert.deepEqual(first.getState().stoppedSlots, [0, 1, 2, 3, 4, 5], 'completed state retains the six stopped cards after activeRun is cleared');
   assert.equal(first.element.dataset.artworkId, firstResult.artworkId, 'the DOM exposes the completed frozen Artwork id');
   assert.strictEqual(first.getResult(), firstResult, 'the selected frozen DrawResult is the view result');
   const reels = first.element.querySelectorAll('.fr-reel');
@@ -302,13 +400,25 @@ try {
   })), 'all displayed candidates carry versioned semantic visual records');
   for (const reel of reels) {
     const visuals = [...reel.querySelectorAll('.fr-reel-visual')];
-    assert.equal(visuals.every(visual => ['artwork-preview', 'source-crop', 'empty-value'].includes(visual.dataset.visualKind)), true, 'feature cards use either the same Artwork source, a source crop, or an explicit empty state');
+    assert.equal(visuals.every(visual => ['original', 'dedicated-asset', 'empty-value'].includes(visual.dataset.visualKind)), true, 'feature cards use the complete Artwork, an independent display asset, or an explicit empty state');
+    assert.equal(visuals.some(visual => visual.querySelector('.fr-feature-crop')), false, 'production feature cards never render source crops');
+    for (const visual of visuals.filter(item => ['original', 'dedicated-asset'].includes(item.dataset.visualKind))) {
+      assert.ok(visual.querySelector('img'), 'registered feature display assets render as uncropped images');
+      if (visual.dataset.visualKind === 'dedicated-asset') {
+        assert.equal(visual.dataset.visualPurpose, 'reveal-only-display', 'dedicated visuals remain display-only');
+        assert.ok(visual.dataset.artApproval && visual.dataset.artApproval !== '[object Object]', 'art approval metadata is rendered as its status rather than an object string');
+      }
+    }
     assert.equal(visuals.some(visual => visual.innerHTML.includes('<svg')), false, 'the reveal does not substitute generated SVG feature art');
   }
-  assert.ok(reels.every(reel => reel.dataset.stopped === 'true'), 'reduced motion atomically stops all cards');
+  assert.ok(reels.every(reel => reel.dataset.stopped === 'true' && !reel.classList.contains('is-rolling')), 'reduced motion statically resolves all cards without reel movement before result');
+  for (const feature of firstResult.revealFeatures) {
+    const reel = reels.find(item => item.dataset.slot === feature.kind);
+    const center = [...reel.querySelectorAll('.fr-reel-item')].find(card => card.classList.contains('is-centered'));
+    assert.equal(center.querySelector('.fr-reel-value').textContent, feature.shortName, `${feature.kind} displays its registered concise feature name`);
+  }
   assert.equal(first.element.querySelector('.fr-result-card').hidden, false, 'the complete Artwork appears after all cards stop');
   assert.equal(first.element.querySelector('.fr-result-image').src, `blob:${getCatalogAsset(pool[0].assetRefs.original).id}`);
-  assert.deepEqual(completed, [firstResult]);
   assert.equal(first.element.querySelector('.fr-result-title').textContent, firstResult.artwork.title);
   assert.equal(first.element.querySelector('.fr-result-traits').textContent,
     `透明 PNG · 静态 · ${firstResult.asset.width} × ${firstResult.asset.height}`,
@@ -324,8 +434,113 @@ try {
   assert.equal(fakeDocument.openedPrompt, firstResult.prompt.text, 'ChatGPT receives the same frozen result');
   assert.equal(new URL(chatGPTUrlForPrompt(firstResult.prompt.text)).searchParams.get('prompt'), firstResult.prompt.text);
   for (const removed of ['prompt-download','reference']) assert.equal(first.element.querySelector(`[data-fr="${removed}"]`), null, 'retired operations are absent from random view');
-  assert.deepEqual(first.element.querySelector('.fr-actions').children.filter(el=>!el.hidden).map(el=>el.dataset.fr), ['copy','download','random']);
-  assert.deepEqual(first.element.querySelector('.fr-extra-actions').children.filter(el=>!el.hidden).map(el=>el.dataset.fr), ['chatgpt'], 'ChatGPT remains available as an auxiliary action');
+  assert.deepEqual(first.element.querySelector('.fr-actions').children.filter(el=>!el.hidden).map(el=>el.dataset.fr), ['copy','download'], 'only prompt copy and image download are primary actions');
+  assert.deepEqual(first.element.querySelector('.fr-extra-actions').children.filter(el=>!el.hidden).map(el=>el.dataset.fr), ['random','detail','chatgpt'], 'reroll, detail and ChatGPT remain secondary actions');
+  assert.ok(first.element.children.indexOf(first.element.querySelector('.fr-reveal'))
+    < first.element.children.indexOf(first.element.querySelector('.fr-actions')),
+  'the feature summary and complete Artwork precede primary actions in document order');
+  assert.ok(first.element.children.indexOf(first.element.querySelector('.fr-actions'))
+    < first.element.children.indexOf(first.element.querySelector('.fr-extra-actions')),
+  'primary copy/download actions precede secondary actions in document order');
+
+  prefersReducedMotion = false;
+  let resolveSelecting;
+  let selectionWasRequested = false;
+  const selecting = viewFor({engine: {select() {
+    selectionWasRequested = true;
+    return new Promise(resolve => { resolveSelecting = resolve; });
+  }}});
+  const selectingStart = selecting.start();
+  await waitUntil(() => selectionWasRequested, 'draw selection did not begin');
+  assert.equal(selecting.getState().phase, 'selecting');
+  assert.equal(selecting.getState().resultHidden, true);
+  assert.equal(selecting.getState().displayResult, false);
+  assert.equal(selecting.element.dataset.displayResult, 'false');
+  assert.equal(selecting.element.dataset.feedback, 'shuffling', 'normal mode begins a visual response before selection resolves');
+  assert.equal(selecting.element.querySelector('.fr-reveal').classList.contains('is-preparing'), true);
+  assert.equal(selecting.element.querySelectorAll('.fr-card-back-face').length, 18, 'six waiting cards each contain a three-face branded shuffle track');
+  assert.equal(selecting.element.querySelector('[data-fr="random"]').hidden, true, 'the busy view hides the duplicate random action');
+  assert.equal(selecting.element.querySelector('[data-fr="random"]').disabled, true);
+  resolveSelecting({status: 'empty', pool: [], message: '测试空池'});
+  assert.equal(await selectingStart, false);
+  assert.equal(selecting.element.querySelector('.fr-reveal').classList.contains('is-preparing'), false, 'an empty pool stops the card-back shuffle without landing on invented facts');
+  assert.equal(selecting.element.querySelector('.fr-result-card').hidden, true);
+
+  let unblockAutoSelection;
+  let autoSelectionStarted = false;
+  let pendingAutoLoads = [];
+  const autoResult = makeResult(pool[1], 40);
+  const autoView = viewFor({
+    autoStart: true,
+    engine: {select() {
+      autoSelectionStarted = true;
+      return new Promise(resolve => { unblockAutoSelection = () => resolve(selection(autoResult)); });
+    }},
+    loader: asset => new Promise(resolve => pendingAutoLoads.push(() => resolve(handleFor(asset))))
+  });
+  await waitUntil(() => autoSelectionStarted, 'auto-start did not call the draw engine after mounting');
+  assert.equal(autoView.getState().phase, 'selecting');
+  assert.equal(autoView.element.dataset.feedback, 'shuffling', 'the one-click entry starts the branded card motion while choosing a result');
+  assert.equal(autoView.element.querySelector('.fr-result-card').hidden, true);
+  unblockAutoSelection();
+  await waitUntil(() => autoView.getState().phase === 'preloading' && pendingAutoLoads.length > 0, 'selected result did not enter delayed asset preparation');
+  assert.equal(autoView.element.dataset.feedback, 'shuffling', 'card backs continue moving while required sources load');
+  assert.equal(autoView.element.querySelector('.fr-result-card').hidden, true, 'a frozen selection remains hidden until every required asset verifies');
+  assert.equal(autoView.element.querySelectorAll('.fr-reel-track').length, 0, 'unverified feature previews do not appear as finished candidates');
+  for (const finishLoad of pendingAutoLoads.splice(0)) finishLoad();
+  await waitForResult(autoView, 'one-click auto-start did not reach its result');
+  assert.strictEqual(autoView.getResult(), autoResult, 'auto-start preserves the exact Artwork selected before preload');
+  assert.equal(autoView.element.dataset.feedback, 'idle', 'verified candidates replace the preparation track before reveal');
+  assert.equal(autoView.element.querySelector('.fr-result-image').src, `blob:${getCatalogAsset(autoResult.asset).id}`);
+
+  let unblockReduceSelection;
+  let reduceSelectionStarted = false;
+  let pendingReduceLoads = [];
+  const reduceResult = makeResult(pool[2], 41);
+  prefersReducedMotion = true;
+  const reduceAutoView = viewFor({
+    autoStart: true,
+    engine: {select() {
+      reduceSelectionStarted = true;
+      return new Promise(resolve => { unblockReduceSelection = () => resolve(selection(reduceResult)); });
+    }},
+    loader: asset => new Promise(resolve => pendingReduceLoads.push(() => resolve(handleFor(asset))))
+  });
+  await waitUntil(() => reduceSelectionStarted, 'reduced-motion auto-start did not begin selection');
+  assert.equal(reduceAutoView.element.dataset.feedback, 'static', 'reduced motion identifies the static preparation state');
+  assert.equal(reduceAutoView.element.querySelector('.fr-reveal').classList.contains('is-preparing'), false, 'reduced motion has no card-back movement class');
+  unblockReduceSelection();
+  await waitUntil(() => reduceAutoView.getState().phase === 'preloading' && pendingReduceLoads.length > 0, 'reduced-motion result did not enter asset preparation');
+  assert.equal(reduceAutoView.element.dataset.feedback, 'static');
+  for (const finishLoad of pendingReduceLoads.splice(0)) finishLoad();
+  await waitUntil(() => reduceAutoView.getState().phase === 'awaiting-reveal', 'reduced motion did not pause on the six static cards');
+  assert.equal(reduceAutoView.getState().resultHidden, true);
+  assert.equal(reduceAutoView.element.querySelector('.fr-result-card').hidden, true);
+  assert.equal(reduceAutoView.element.querySelectorAll('.fr-reel-track').length, 6);
+  assert.equal(reduceAutoView.element.querySelectorAll('.fr-card-back-face').length, 0, 'verified factual cards replace the static preparation backs');
+  reduceAutoView.element.querySelector('[data-fr="reveal-partner"]').click();
+  assert.strictEqual(reduceAutoView.getResult(), reduceResult, 'manual reduced-motion reveal keeps the selected Artwork');
+  assert.equal(reduceAutoView.element.dataset.feedback, 'static');
+
+  prefersReducedMotion = false;
+  let releaseClosedSelection;
+  let closedSelectionStarted = false;
+  let closedLoaderCalls = 0;
+  const closedAuto = viewFor({
+    autoStart: true,
+    engine: {select() {
+      closedSelectionStarted = true;
+      return new Promise(resolve => { releaseClosedSelection = () => resolve(selection(makeResult(pool[0], 42))); });
+    }},
+    loader: async asset => { closedLoaderCalls += 1; return handleFor(asset); }
+  });
+  await waitUntil(() => closedSelectionStarted, 'close-race auto-start did not reach selection');
+  assert.equal(closedAuto.element.dataset.feedback, 'shuffling');
+  closedAuto.dispose();
+  releaseClosedSelection();
+  await new Promise(resolve => originalSetTimeout(resolve, 4));
+  assert.equal(closedLoaderCalls, 0, 'closing during selection prevents stale result resources from loading');
+  assert.equal(closedAuto.getResult(), null, 'closing during selection cannot install a late result');
 
   const downloadA = makeResult(pool[2], 21);
   const downloadB = makeResult(pool[3], 22);
@@ -353,12 +568,14 @@ try {
   });
   const downloadView = viewFor({engine: makeEngine([selection(downloadA), selection(downloadB)]), downloadAsset: deferredDownload});
   assert.equal(await downloadView.start(), true);
+  await waitForResult(downloadView);
   downloadView.element.querySelector('[data-fr="download"]').click();
   await waitUntil(() => pendingDownloads.length === 1, 'Artwork A download did not start');
   assert.equal(pendingDownloads[0].asset.id, downloadAssetA.id, 'download freezes Artwork A asset before a later draw');
   assert.equal(downloadView.element.querySelector('[data-fr="download"]').disabled, true, 'the same in-flight download cannot be duplicated');
   const rerollDuringDownload = downloadView.start();
   assert.equal(await rerollDuringDownload, true, 'a new Artwork draw can finish while A download is pending');
+  await waitForResult(downloadView);
   assert.strictEqual(downloadView.getResult(), downloadB, 'the visible result advances to Artwork B');
   assert.equal(pendingDownloads[0].signal.aborted, false, 'starting B does not cancel the frozen A download');
   assert.equal(downloadView.element.querySelector('[data-fr="download"]').disabled, false, 'B can expose its own download action');
@@ -381,6 +598,7 @@ try {
   const fallbackResult = makeResult(pool[0], 15);
   const fallback = viewFor({engine: makeEngine([selection(fallbackResult)])});
   assert.equal(await fallback.start(), true);
+  await waitForResult(fallback);
   clipboardWriter = async () => { throw new Error('clipboard denied'); };
   fallback.element.querySelector('[data-fr="copy"]').click();
   await waitUntil(() => fallback.element.querySelector('.fr-prompt-fallback').hidden === false, 'copy failure did not show the manual fallback');
@@ -388,7 +606,7 @@ try {
   clipboardWriter = async text => { fakeDocument.copiedText = text; };
   const blockedResult=makeResult(pool[0],16);
   const blocked=viewFor({engine:makeEngine([selection(blockedResult)]),openChatGPT:async()=>({copied:false,opened:false})});
-  await blocked.start();blocked.element.querySelector('[data-fr="chatgpt"]').click();
+  await blocked.start();await waitForResult(blocked);blocked.element.querySelector('[data-fr="chatgpt"]').click();
   await waitUntil(()=>blocked.element.querySelector('.fr-manual-chat-link').hidden===false,'blocked open has no manual fallback');
   assert.equal(blocked.element.querySelector('.fr-prompt-fallback').value,blockedResult.prompt.text);
   assert.equal(new URL(blocked.element.querySelector('.fr-manual-chat-link').href).searchParams.get('prompt'),blockedResult.prompt.text);
@@ -401,15 +619,82 @@ try {
   assert.equal(second.getState().phase, 'revealing');
   assert.equal(second.element.dataset.phase, 'revealing');
   assert.equal(second.element.dataset.artworkId, secondResult.artworkId, 'the active reveal stays bound to its frozen Artwork');
+  assert.equal(second.element.dataset.activeSlot, '0', 'DOM exposes the zero-based first active slot for process recording');
+  assert.equal(second.getState().activeSlot, 0);
   assert.equal(second.element.querySelector('.fr-result-card').hidden, true, 'the full result remains hidden while any card is rolling');
+  assert.equal(second.element.dataset.displayResult, 'false');
   const rollingSlots = second.element.querySelectorAll('.fr-reel');
   assert.equal(rollingSlots.length, 6, 'the reveal keeps one fixed card for each registered slot');
   assert.equal(rollingSlots[0].classList.contains('is-rolling'), true, 'the first card starts rolling first');
   assert.equal(rollingSlots.slice(1).some(reel => reel.classList.contains('is-rolling')), false, 'later cards wait until the previous card stops');
-  await waitUntil(() => second.getState().phase === 'result', 'sequential card reveal did not finish');
+  await waitUntil(() => second.getState().phase === 'awaiting-reveal', 'sixth card did not enter the observable all-stopped boundary');
+  assert.deepEqual(second.getState().stoppedSlots, [0, 1, 2, 3, 4, 5], 'the boundary waits for all six factual cards');
+  assert.deepEqual(second.getState().stopOrder, [0, 1, 2, 3, 4, 5], 'no-preference cards stop in visible 1→6 order');
+  assert.equal(second.getState().resultHidden, true, 'the full result stays hidden after the sixth card stops');
+  assert.equal(second.getState().displayResult, false);
+  assert.equal(second.getState().activeSlot, -1, 'the stopped boundary has no active rolling slot');
+  assert.equal(second.element.dataset.displayResult, 'false');
+  assert.equal(second.element.querySelector('.fr-result-card').hidden, true);
+  assert.equal(second.element.querySelector('[data-fr="reveal-partner"]').hidden, true, 'normal motion keeps the confirmation button out of the automatic path');
+  await waitUntil(() => second.getState().phase === 'result', 'normal reveal did not continue after its all-stopped boundary');
   assert.deepEqual([...new Set(landOrder)], rollingSlots.map(reel => Number(reel.dataset.index)), 'cards stop in order');
+  assert.deepEqual(second.getState().stoppedSlots, [0, 1, 2, 3, 4, 5], 'completed state retains all six stopped slots');
+  assert.deepEqual(second.getState().stopOrder, [0, 1, 2, 3, 4, 5], 'completed state retains the observed 1→6 stop order');
   assert.strictEqual(second.getResult(), secondResult);
   assert.deepEqual(completed, [firstResult, secondResult], 'onResult fires only for completed frozen results');
+
+  const skipResult = makeResult(pool[4], 23);
+  const skipEngine = makeEngine([selection(skipResult)]);
+  const skipped = viewFor({engine: skipEngine});
+  assert.equal(await skipped.start(), true);
+  assert.equal(skipped.getState().phase, 'revealing');
+  const skippedArtworkId = skipped.getState().artworkId;
+  assert.equal(skipped.skip(), true, 'the user can skip only the active rolling sequence');
+  assert.equal(skipped.getState().phase, 'awaiting-reveal');
+  assert.deepEqual(skipped.getState().stoppedSlots, [0, 1, 2, 3, 4, 5], 'skip statically stops every card before result');
+  assert.equal(skipped.getState().resultHidden, true);
+  assert.equal(skipped.getState().displayResult, false);
+  assert.equal(skipped.getState().artworkId, skippedArtworkId, 'skip retains the already frozen Artwork');
+  assert.equal(skipEngine.calls.length, 1, 'skip does not redraw');
+  assert.equal(skipped.element.querySelector('.fr-reel-stage').scrollRequests.at(-1)?.behavior, 'instant', 'skip cancels any in-flight smooth card-track scroll');
+  await waitUntil(() => skipped.getState().phase === 'result', 'skipped frozen result did not appear after the boundary');
+  assert.strictEqual(skipped.getResult(), skipResult, 'skip reveals the same Artwork/Prompt result');
+  assert.equal(skipped.element.querySelector('.fr-result-image').src, `blob:${getCatalogAsset(skipResult.asset).id}`);
+
+  prefersReducedMotion = false;
+  const midMotionResult = makeResult(pool[3], 24);
+  const midMotionEngine = makeEngine([selection(midMotionResult)]);
+  const midMotion = viewFor({engine: midMotionEngine});
+  assert.equal(await midMotion.start(), true);
+  assert.equal(midMotion.getState().phase, 'revealing');
+  prefersReducedMotion = true;
+  for (const listener of [...motionListeners]) listener({matches: true});
+  assert.equal(midMotion.getState().phase, 'awaiting-reveal', 'enabling reduce during a roll stops motion and waits for confirmation');
+  assert.equal(midMotion.getState().resultHidden, true);
+  assert.equal(midMotion.getState().displayResult, false);
+  assert.equal(midMotion.element.querySelector('[data-fr="reveal-partner"]').hidden, false);
+  assert.equal(midMotion.element.querySelector('.fr-reel-stage').scrollRequests.at(-1)?.behavior, 'instant', 'enabling reduced motion cancels any in-flight smooth card-track scroll');
+  assert.deepEqual(midMotion.getState().stoppedSlots, [0, 1, 2, 3, 4, 5]);
+  assert.equal(midMotionEngine.calls.length, 1, 'motion preference change does not redraw');
+  midMotion.element.querySelector('[data-fr="reveal-partner"]').click();
+  assert.strictEqual(midMotion.getResult(), midMotionResult);
+  assert.equal(midMotion.getState().resultVisible, true);
+
+  prefersReducedMotion = false;
+  const staleAwaitingA = makeResult(pool[0], 25);
+  const freshAwaitingB = makeResult(pool[2], 26);
+  const staleAwaitingEngine = makeEngine([selection(staleAwaitingA), selection(freshAwaitingB)]);
+  const staleAwaiting = viewFor({engine: staleAwaitingEngine});
+  assert.equal(await staleAwaiting.start(), true);
+  await waitUntil(() => staleAwaiting.getState().phase === 'awaiting-reveal', 'old run never reached the all-stopped boundary');
+  assert.equal(staleAwaiting.cancel(), true, 'closing at the boundary cancels the pending reveal timer');
+  assert.equal(staleAwaiting.getState().resultHidden, true);
+  assert.equal(staleAwaiting.element.dataset.displayResult, 'false');
+  assert.equal(await staleAwaiting.start(), true, 'reopening starts a fresh frozen selection');
+  await waitForResult(staleAwaiting, 'reopened run did not reveal');
+  await new Promise(resolve => originalSetTimeout(resolve, 100));
+  assert.strictEqual(staleAwaiting.getResult(), freshAwaitingB, 'a canceled prior auto-reveal cannot contaminate the reopened result');
+  assert.equal(staleAwaitingEngine.calls.length, 2, 'reopen selects exactly once after cancel');
 
   const prior = makeResult(pool[1], 7);
   const failedSelection = makeResult(pool[2], 8);
@@ -424,13 +709,13 @@ try {
   });
   prefersReducedMotion = true;
   assert.equal(await failedRetry.start(), true);
+  await waitForResult(failedRetry);
   assert.strictEqual(failedRetry.getResult(), prior);
   failNextArtwork = true;
   assert.equal(await failedRetry.start(), false);
   assert.equal(failureEngine.calls.length, 2, 'resource failure never silently reselects a different work');
   assert.equal(failedRetry.getState().phase, 'error');
-  assert.match(failedRetry.element.querySelector('.fr-status').textContent, /没有更换成另一张作品/);
-  assert.match(failedRetry.element.querySelector('.fr-status').textContent, /\d+ 款图片暂不可用的作品移出后续抽取范围/);
+  assert.match(failedRetry.element.querySelector('.fr-status').textContent, /图片暂时无法载入/);
   assert.ok(failureEngine.unavailable.some(item => item.artworkId === failedSelection.artworkId), 'asset failures exclude their owning Artwork from future draws');
   assert.strictEqual(failedRetry.getResult(), prior, 'the previous result remains frozen and visible after a later resource failure');
   assert.equal(failedRetry.element.querySelector('.fr-result-badge').textContent, '上一款');
@@ -459,7 +744,7 @@ try {
   });
   assert.equal(await candidateFailure.start(), false, 'a required card candidate resource failure stops before animation');
   assert.ok(candidateFailureEngine.unavailable.some(item => item.artworkId === pool[1].id), 'candidate resource failure excludes its actual owning Artwork');
-  assert.match(candidateFailure.element.querySelector('.fr-status').textContent, /\d+ 款图片暂不可用的作品移出后续抽取范围/);
+  assert.match(candidateFailure.element.querySelector('.fr-status').textContent, /图片暂时无法载入/);
 
   let unblockStale;
   let staleLoadStarted = false;
@@ -483,11 +768,14 @@ try {
   const staleStart = rapid.start();
   await waitUntil(() => staleLoadStarted, 'slow selected result never entered preload');
   assert.equal(rapid.getState().phase, 'preloading');
+  assert.equal(rapid.getState().resultHidden, true);
+  assert.equal(rapid.getState().displayResult, false);
+  assert.equal(rapid.element.dataset.displayResult, 'false');
   assert.equal(rapid.skip(), false, 'skip cannot bypass the required asset preload');
   assert.equal(rapid.element.querySelector('.fr-result-card').hidden, true);
   assert.equal(rapid.cancel(), true);
   assert.equal(await rapid.start(), true, 'a fresh session can start immediately after cancel');
-  await waitUntil(() => rapid.getState().phase === 'result', 'new session did not finish');
+  await waitForResult(rapid, 'new session did not finish');
   unblockStale();
   await staleStart;
   await waitUntil(() => staleDisposed === 1, 'late stale asset handle was not disposed');
@@ -499,6 +787,7 @@ try {
   const raceView = viewFor({engine: makeEngine([selection(raceOld), selection(raceNew)]), notify: message => raceNotices.push(message)});
   prefersReducedMotion = true;
   assert.equal(await raceView.start(), true);
+  await waitForResult(raceView);
   let finishClipboard;
   clipboardWriter = text => new Promise(resolve => { finishClipboard = () => { fakeDocument.copiedText = text; resolve(); }; });
   raceView.element.querySelector('[data-fr="copy"]').click();
@@ -516,6 +805,7 @@ try {
   const disposedNotices = [];
   const disposedCopy = viewFor({engine: makeEngine([selection(disposedResult)]), notify: message => disposedNotices.push(message)});
   assert.equal(await disposedCopy.start(), true);
+  await waitForResult(disposedCopy);
   let finishDisposedClipboard;
   clipboardWriter = text => new Promise(resolve => { finishDisposedClipboard = () => { fakeDocument.copiedText = text; resolve(); }; });
   disposedCopy.element.querySelector('[data-fr="copy"]').click();
@@ -537,12 +827,13 @@ try {
   assert.ok(emptyReels.every(reel => !reel.querySelector('.fr-reel-track') && reel.dataset.stopped !== 'true'), 'empty pools never start a candidate animation or stop on invented facts');
   assert.equal(empty.element.querySelector('.fr-result-card').hidden, true, 'empty pools never reveal a result');
   assert.equal(empty.element.querySelector('[data-fr="retry-resources"]').hidden, true, 'resource recovery only appears after an Artwork is quarantined');
-  assert.match(empty.element.querySelector('.fr-status').textContent, /没有同时命中的已发布作品/);
+  assert.match(empty.element.querySelector('.fr-status').textContent, /没有找到符合条件的伙伴/);
 
   const one = pool[0];
   const single = viewFor({engine: makeEngine([selection(makeResult(one, 6), [one])])});
   assert.equal(await single.start(), true);
-  assert.match(single.element.querySelector('.fr-status').textContent, /只有一款符合条件/);
+  await waitForResult(single);
+  assert.equal(single.element.querySelector('.fr-result-badge').textContent, '当前范围仅此一款', 'a single candidate is clearly identified without implementation copy');
   assert.equal(single.element.querySelector('.fr-result-badge').textContent, '当前范围仅此一款');
 
   const retryArtwork = pool[0];
@@ -567,17 +858,16 @@ try {
   assert.deepEqual(retryEngine.unavailableArtworkIds(), [retryArtwork.id]);
   const retryButton = explicitRetry.element.querySelector('[data-fr="retry-resources"]');
   assert.equal(retryButton.hidden, false, 'resource quarantine exposes an explicit retry action');
-  assert.match(explicitRetry.element.querySelector('.fr-status').textContent, /重试资源并重新抽取/);
+  assert.equal(retryButton.textContent, '再试一次');
   resourceBroken = false;
   retryButton.click();
-  await waitUntil(() => explicitRetry.getState().phase === 'result', 'explicit retry did not recover the repaired single candidate');
+  await waitForResult(explicitRetry, 'explicit retry did not recover the repaired single candidate');
   assert.strictEqual(explicitRetry.getResult(), retrySecondResult, 'after the user retries, the repaired same Artwork can be selected again');
   assert.deepEqual(retryEngine.unavailableArtworkIds(), [], 'explicit retry clears the resource quarantine before selection');
   assert.equal(retryEngine.calls.length, 2, 'explicit retry performs a fresh selection');
   assert.deepEqual(retryEngine.calls[0], hardConditions, 'the failed attempt used the locked query and required features');
   assert.deepEqual(retryEngine.calls[1], hardConditions, 'retry preserves the same query and hard feature locks');
-  assert.match(explicitRetry.element.querySelector('.fr-status').textContent, /沿用本次作品范围重新抽取/);
-  assert.match(explicitRetry.element.querySelector('.fr-status').textContent, /结果可能是其他作品/);
+  assert.match(explicitRetry.element.querySelector('.fr-status').textContent, /为你找到这位伙伴/);
   assert.equal(retryButton.hidden, true, 'the recovery action hides after the quarantined Artwork is re-included');
 
   for (const view of createdViews) view.dispose();

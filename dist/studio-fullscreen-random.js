@@ -1,8 +1,8 @@
-import {getAsset} from './studio-artwork-catalog.js?v=90';
-import {revealFeaturesFor,REVEAL_SLOTS} from './studio-draw.js?v=90';
-import {loadAsset,downloadAsset} from './studio-asset-loader.js?v=90';
-import {copyAndOpen,chatGPTUrlForPrompt} from './studio-actions.js?v=90';
-import {featureVisualFor} from './studio-feature-visuals.js?v=90';
+import {getAsset} from './studio-artwork-catalog.js?v=92';
+import {revealFeaturesFor,REVEAL_SLOTS} from './studio-draw.js?v=92';
+import {loadAsset,downloadAsset} from './studio-asset-loader.js?v=92';
+import {copyAndOpen,chatGPTUrlForPrompt} from './studio-actions.js?v=92';
+import {featureVisualFor} from './studio-feature-visuals.js?v=92';
 
 const FALLBACK_CARD_HEIGHT = 126;
 const MAX_NEIGHBORS = 7;
@@ -65,7 +65,8 @@ function buildSlots(result, pool) {
     const chosenFeatures = selectedFeatures.filter(feature => definition.kinds.includes(feature?.kind));
     if (chosenFeatures.length !== 1 || chosenFeatures[0].state === 'unknown') throw new Error('这张作品缺少已核实的六类揭晓特征。');
     const chosenVisual = featureVisualFor(chosenFeatures, definition.key, result.artwork);
-    if (!['artwork-preview', 'source-crop', 'empty-value'].includes(chosenVisual.kind)) throw new Error('这张作品的特征示意尚未登记完整，没有开始动画。');
+    if (!['original', 'dedicated-asset', 'empty-value'].includes(chosenVisual.kind)) throw new Error('这张作品的特征示意尚未登记完整，没有开始动画。');
+    const shortName = String(chosenFeatures.map(feature => feature.shortName || '').filter(Boolean).join(' · ') || chosenVisual.shortName || '');
 
     const selectedItem = {
       key: featureSignature(chosenFeatures),
@@ -73,6 +74,7 @@ function buildSlots(result, pool) {
       artwork: result.artwork,
       artworkId: result.artworkId,
       label: chosenFeatures.map(getFeatureText).filter(Boolean).join(' · '),
+      shortName,
       visual: chosenVisual,
       assetRef: chosenVisual.assetRef || null,
       isFrozenSelection: true
@@ -84,13 +86,15 @@ function buildSlots(result, pool) {
       const key = featureSignature(features);
       if (choices.has(key)) continue;
       const visual = featureVisualFor(features, definition.key, row.artwork);
-      if (!['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind)) continue;
+      if (!['original', 'dedicated-asset', 'empty-value'].includes(visual.kind)) continue;
+      const shortName = String(features.map(feature => feature.shortName || '').filter(Boolean).join(' · ') || visual.shortName || '');
       choices.set(key, {
         key,
         features,
         artwork: row.artwork,
         artworkId: row.artwork.id,
         label: features.map(getFeatureText).filter(Boolean).join(' · '),
+        shortName,
         visual,
         assetRef: visual.assetRef || null,
         isFrozenSelection: false
@@ -116,13 +120,15 @@ function buildRestoredSlots(result) {
     const features = selectedFeatures.filter(feature => definition.kinds.includes(feature?.kind));
     if (features.length !== 1 || features[0].state === 'unknown') throw new Error('这张作品缺少已核实的六类揭晓特征。');
     const visual = featureVisualFor(features, definition.key, result.artwork);
-    if (!['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind)) throw new Error('这张作品的特征示意尚未登记完整。');
+    if (!['original', 'dedicated-asset', 'empty-value'].includes(visual.kind)) throw new Error('这张作品的特征示意尚未登记完整。');
+    const shortName = String(features.map(feature => feature.shortName || '').filter(Boolean).join(' · ') || visual.shortName || '');
     const item = {
       key: featureSignature(features),
       features,
       artwork: result.artwork,
       artworkId: result.artworkId,
       label: features.map(getFeatureText).filter(Boolean).join(' · '),
+      shortName,
       visual,
       assetRef: visual.assetRef || null,
       isFrozenSelection: true
@@ -140,6 +146,19 @@ function makeCardBack(label) {
   return back;
 }
 
+function makePreparingCard(label) {
+  const viewport = element('div', 'fr-preparing-window');
+  viewport.setAttribute('aria-hidden', 'true');
+  const track = element('div', 'fr-card-back-track');
+  for (let index = 0; index < 3; index += 1) {
+    const face = element('div', 'fr-card-back-face');
+    face.append(makeCardBack(label));
+    track.append(face);
+  }
+  viewport.append(track);
+  return viewport;
+}
+
 function createStructure() {
   const root = element('section', 'fr-view');
   root.setAttribute('aria-label', '随机发现已发布角色作品');
@@ -152,20 +171,22 @@ function createStructure() {
   heading.append(element('span', 'fr-eyebrow', '随机发现'));
   const hint = element('h2', 'fr-hint', '随机发现一位伙伴');
   heading.append(hint);
-  heading.append(element('p', 'fr-intro-subtitle', '转动六张卡，揭晓真实作品的独特线索'));
+  heading.append(element('p', 'fr-intro-subtitle', '每次相遇，都有一点惊喜'));
 
   const reveal = element('section', 'fr-reveal');
-  reveal.setAttribute('aria-label', '作品特征卡片揭晓');
+  reveal.setAttribute('aria-label', '随机发现卡片');
   reveal.hidden = true;
   const revealHeader = element('div', 'fr-reveal-heading');
   revealHeader.append(element('span', 'fr-reveal-kicker', '特征卡片'));
   const stageLabel = element('span', 'fr-stage-label', '等待开始');
   stageLabel.setAttribute('aria-live', 'polite');
   revealHeader.append(stageLabel);
+  const revealPartner = makeButton('reveal-partner', '揭晓伙伴', 'fr-button fr-primary fr-reveal-partner');
+  revealPartner.hidden = true;
   const reelHost = element('div', 'fr-reel-stage');
   reelHost.setAttribute('aria-live', 'off');
   reelHost.tabIndex = 0;
-  reelHost.setAttribute('aria-label', '六张特征卡轨道，可横向浏览');
+  reelHost.setAttribute('aria-label', '揭晓卡片轨道，可横向浏览');
   const progressHost = element('div', 'fr-reveal-progress');
   progressHost.setAttribute('role', 'group');
   progressHost.setAttribute('aria-label', '卡片停止进度');
@@ -187,10 +208,8 @@ function createStructure() {
   const resultTraits = element('p', 'fr-result-traits');
   const resultDescription = element('p', 'fr-result-description');
   const resultInfo = element('div', 'fr-result-info');
-  const resultFooter = element('div', 'fr-result-footer');
   const detail = makeButton('detail', '查看详情', 'fr-button fr-secondary fr-result-detail');
-  resultInfo.append(caption, resultDescription, resultTraits, resultFooter);
-  resultFooter.append(detail);
+  resultInfo.append(caption, resultDescription, resultTraits);
   const promptFallback = element('textarea', 'fr-prompt-fallback');
   promptFallback.setAttribute('aria-label', '供手动复制的作品 Prompt');
   promptFallback.readOnly = true;
@@ -212,21 +231,21 @@ function createStructure() {
   const download = makeButton('download', '下载图片', 'fr-button fr-primary-secondary');
   const chatgpt = makeButton('chatgpt', '在 ChatGPT 中创作 →', 'fr-button fr-quiet');
   const extraActions = element('div', 'fr-extra-actions');
-  extraActions.append(chatgpt);
-  const retryResources = makeButton('retry-resources', '重试资源并重新抽取', 'fr-button fr-secondary fr-retry');
+  const retryResources = makeButton('retry-resources', '再试一次', 'fr-button fr-secondary fr-retry');
   retryResources.hidden = true;
-  actions.append(copy, download, start, skip, retryResources);
+  actions.append(copy, download);
+  extraActions.append(start, detail, chatgpt, skip, retryResources);
   for (const button of [copy, download, chatgpt, detail]) button.hidden = true;
 
-  reveal.append(revealHeader, reelHost, progressHost, reelNote, result);
+  reveal.append(revealHeader, reelHost, progressHost, reelNote, revealPartner, result);
   const locks = element('details', 'fr-feature-locks');
   locks.hidden = true;
   locks.append(element('summary', '', '保留喜欢的特征'));
   const lockNote = element('p', 'fr-lock-note', '下一款须同时符合已选特征');
   const lockOptions = element('div', 'fr-lock-options');
   locks.append(lockNote, lockOptions);
-  root.append(heading, reveal, status, actions, extraActions, locks);
-  return {root, hint, locks, lockOptions, reveal, reelHost, progressHost, reelNote, stageLabel, result, resultImage, resultTitle, resultBadge, resultTraits, resultDescription, promptFallback, manualChatLink, status, start, skip, copy, download, chatgpt, retryResources, detail};
+  root.append(heading, reveal, actions, extraActions, status, locks);
+  return {root, hint, locks, lockOptions, reveal, reelHost, progressHost, reelNote, stageLabel, revealPartner, result, resultImage, resultTitle, resultBadge, resultTraits, resultDescription, promptFallback, manualChatLink, status, actions, extraActions, start, skip, copy, download, chatgpt, retryResources, detail};
 }
 
 function makeReelItem(item, handle, centered = false) {
@@ -237,6 +256,17 @@ function makeReelItem(item, handle, centered = false) {
   visual.dataset.visualId = item.visual.id;
   visual.dataset.visualKind = item.visual.kind;
   visual.dataset.visualVersion = item.visual.version;
+  const artApproval = typeof item.visual.artApproval === 'string'
+    ? item.visual.artApproval
+    : item.visual.artApproval?.status;
+  for (const [attribute, value] of [
+    ['visualStatus', item.visual.visualStatus || item.visual.status],
+    ['artApproval', artApproval],
+    ['visualPurpose', item.visual.purpose],
+    ['visualSourceRef', item.visual.sourceRef]
+  ]) {
+    if (value) visual.dataset[attribute] = String(value);
+  }
   if (item.visual.source) {
     visual.dataset.sourceArtwork = item.visual.source.artworkId;
     visual.dataset.sourceAsset = item.visual.source.assetId;
@@ -247,28 +277,13 @@ function makeReelItem(item, handle, centered = false) {
     image.src = handle.url;
     image.alt = '';
     image.decoding = 'async';
-    const rect = item.visual.sourceRect;
-    if (item.visual.kind === 'source-crop' && (!Array.isArray(rect) || rect.length !== 4 || rect.some(value => !Number.isFinite(value)) || rect[0] < 0 || rect[1] < 0 || rect[2] <= 0 || rect[3] <= 0 || rect[0]+rect[2] > 1 || rect[1]+rect[3] > 1)) throw new Error('特征局部图缺少有效登记范围。');
-    if (Array.isArray(rect) && rect.length === 4) {
-      const [x, y, width, height] = rect;
-      visual.classList.add('is-detail-crop');
-      const frame = element('span', 'fr-feature-crop');
-      frame.style.setProperty?.('--fr-crop-ratio', String(width * handle.asset.width / (height * handle.asset.height)));
-      frame.style.aspectRatio = `${width * handle.asset.width} / ${height * handle.asset.height}`;
-      image.style.width = `${100 / width}%`;
-      image.style.height = `${100 / height}%`;
-      image.style.left = `${-x * 100 / width}%`;
-      image.style.top = `${-y * 100 / height}%`;
-      frame.append(image);
-      visual.append(frame);
-      visual.dataset.sourceRect = JSON.stringify(rect);
-    } else visual.append(image);
+    visual.append(image);
   } else {
     const symbol = element('span', 'fr-reel-symbol', item.visual.kind === 'empty-value' ? '—' : '?');
     visual.append(symbol);
   }
   const copy = element('div', 'fr-reel-copy');
-  const value = element('b', 'fr-reel-value', label);
+  const value = element('b', 'fr-reel-value', item.shortName || label);
   value.setAttribute('aria-label', label);
   value.setAttribute('title', label);
   copy.append(value);
@@ -349,13 +364,78 @@ export function createRevealView({
   const locallyUnavailableArtworkIds = new Set();
   const motionQuery = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)') || null;
 
-  const isBusy = () => ['selecting', 'preloading', 'revealing'].includes(phase);
+  const isBusy = () => ['selecting', 'preloading', 'revealing', 'awaiting-reveal'].includes(phase);
   const currentRun = run => !disposed && activeRun === run && run.id === runSerial && !run.controller.signal.aborted;
+  function setFeedback(state = 'idle') {
+    const isShuffling = state === 'shuffling' && !reducedMotion();
+    ui.reveal.classList.toggle('is-preparing', isShuffling);
+    root.dataset.feedback = reducedMotion() ? 'static' : isShuffling ? 'shuffling' : 'idle';
+  }
+  function scrollSurfaces() {
+    const surfaces = {overlayBody: null, dialog: null};
+    for (let node = root; node; node = node.parentElement || node.parentNode) {
+      if (!surfaces.overlayBody && node.id === 'overlayBody') surfaces.overlayBody = node;
+      if (!surfaces.dialog && String(node.tagName || '').toLowerCase() === 'dialog') surfaces.dialog = node;
+    }
+    return surfaces;
+  }
+  function resetPageScrollToReveal() {
+    if (root.isConnected === false) return;
+    const document = globalThis.document;
+    const scroller = document?.scrollingElement || document?.documentElement || document?.body;
+    const rect = root.getBoundingClientRect?.();
+    if (!scroller || !rect) return;
+    let fixedHeaderInset = 0;
+    const header = document.querySelector?.('.topbar');
+    if (header) {
+      const position = globalThis.getComputedStyle?.(header)?.position || '';
+      if (position === 'fixed' || position === 'sticky') {
+        const bottom = Number(header.getBoundingClientRect?.().bottom);
+        fixedHeaderInset = Number.isFinite(bottom) && bottom > 0 ? bottom : Number(header.offsetHeight || 0);
+      }
+    }
+    const currentScroll = Number(globalThis.window?.scrollY ?? scroller.scrollTop ?? 0);
+    const top = Math.max(0, currentScroll + Number(rect.top || 0) - fixedHeaderInset - 12);
+    try {
+      if (typeof globalThis.window?.scrollTo === 'function') globalThis.window.scrollTo({top, behavior: 'instant'});
+      else scroller.scrollTop = top;
+    } catch {
+      scroller.scrollTop = top;
+    }
+  }
+  function resetRevealScroll({page = false} = {}) {
+    const {overlayBody, dialog} = scrollSurfaces();
+    if (overlayBody) overlayBody.scrollTop = 0;
+    if (dialog) dialog.scrollTop = 0;
+    if (!overlayBody && !dialog && page) resetPageScrollToReveal();
+    root.scrollTop = 0;
+    root.scrollLeft = 0;
+    ui.reelHost.scrollLeft = 0;
+  }
+  function stopStageScroll() {
+    const left = Number(ui.reelHost.scrollLeft || 0);
+    try { ui.reelHost.scrollTo?.({left, behavior: 'instant'}); } catch { /* Direct offset remains the no-motion fallback. */ }
+    ui.reelHost.scrollLeft = left;
+  }
+  function scrollState() {
+    const {overlayBody, dialog} = scrollSurfaces();
+    return Object.freeze({
+      overlayBody: Number(overlayBody?.scrollTop || 0),
+      dialog: Number(dialog?.scrollTop || 0),
+      page: Number(globalThis.window?.scrollY ?? globalThis.document?.scrollingElement?.scrollTop ?? 0),
+      view: Number(root.scrollTop || 0),
+      stage: Number(ui.reelHost.scrollLeft || 0)
+    });
+  }
   const syncState = () => {
     root.dataset.phase = phase;
+    root.dataset.activeSlot = String(activeSlot);
+    root.dataset.activeSlotOrdinal = activeSlot < 0 ? '' : String(activeSlot + 1);
+    root.dataset.reducedMotion = String(reducedMotion());
     const artworkId = activeRun ? activeRun.result?.artworkId : current?.result?.artworkId;
     if (artworkId) root.dataset.artworkId = String(artworkId);
     else delete root.dataset.artworkId;
+    root.dataset.displayResult = String(Boolean(current && !ui.result.hidden && !isBusy()));
   };
   const setPhase = next => { phase = next; ui.hint.textContent = next === 'result' ? '遇见新的伙伴' : '随机发现一位伙伴'; syncState(); };
   const status = message => { ui.status.textContent = String(message || ''); };
@@ -509,11 +589,13 @@ export function createRevealView({
   }
 
   function landSlot(slot) {
+    const wasStopped = slot.reel.dataset.stopped === 'true';
     renderNeighborhood(slot, slot.selectedIndex);
     slot.reel.classList.remove('is-rolling', 'is-waiting');
     slot.window.setAttribute('aria-hidden', 'false');
     slot.reel.classList.add('is-landed');
     slot.reel.dataset.stopped = 'true';
+    if (!wasStopped && Array.isArray(slot.run?.stopOrder)) slot.run.stopOrder.push(slot.index);
     slot.track.style.transition = 'none';
     setSlotProgress(slot, 'stopped');
   }
@@ -560,7 +642,7 @@ export function createRevealView({
       slot.stageState = stageState;
       slot.progress = progress;
       setSlotProgress(slot, restored ? 'stopped' : 'waiting');
-      const startIndex = restored ? slot.selectedIndex : slot.items.length > 1
+      const startIndex = restored || reducedMotion() ? slot.selectedIndex : slot.items.length > 1
         ? (slot.selectedIndex + 1) % slot.items.length
         : slot.selectedIndex;
       renderNeighborhood(slot, startIndex);
@@ -570,10 +652,10 @@ export function createRevealView({
     ui.reveal.hidden = false;
     ui.reelHost.hidden = run.slots.length === 0;
     ui.progressHost.hidden = run.slots.length === 0;
-    ui.reelNote.hidden = run.slots.length === 0;
+    ui.reelNote.hidden = true;
     ui.stageLabel.textContent = run.slots.length
-      ? (restored ? '已恢复停止的卡片' : '逐卡揭晓')
-      : '作品事实已核对';
+      ? (restored ? '作品详情' : '逐卡揭晓')
+      : '准备好了';
   }
 
   function renderLocks(result) {
@@ -603,7 +685,7 @@ export function createRevealView({
       reel.dataset.slot = definition.key; reel.dataset.index = String(index); reel.dataset.stopped = 'false';
       const heading = element('div', 'fr-reel-label-row');
       heading.append(element('span', 'fr-reel-number', String(index + 1)), element('span', 'fr-reel-label', definition.label));
-      reel.append(heading, makeCardBack(definition.label)); ui.reelHost.append(reel);
+      reel.append(heading, makePreparingCard(definition.label)); ui.reelHost.append(reel);
     }
     ui.reelHost.dataset.slotCount = '6'; ui.reveal.hidden = false;
     ui.progressHost.hidden = true; ui.reelNote.hidden = true;
@@ -645,16 +727,17 @@ export function createRevealView({
   }
 
   function showPriorResult({message, previous = true} = {}) {
+    setFeedback('idle');
     activeSlot = -1;
     displayIsPrevious = Boolean(previous && current);
     displayResult(current, {previous});
     if (current) {
       const loaded = new Map([...current.handles].map(handle => [getAssetKey(handle.asset), handle]));
       renderSlots({slots: buildRestoredSlots(current.result), loaded}, {restored: true});
-      ui.stageLabel.textContent = '上一款卡片已停止';
+      ui.stageLabel.textContent = '上一位伙伴';
     } else {
       renderReadyCards();
-      ui.stageLabel.textContent = '揭晓已结束';
+      ui.stageLabel.textContent = '准备再次发现';
     }
     status(message || (current ? '本次没有完成；上一款作品仍保留。' : '本次随机发现已结束。'));
     updateActions();
@@ -662,12 +745,15 @@ export function createRevealView({
 
   function updateActions() {
     const busy = isBusy();
-    root.dataset.displayResult = String(Boolean(current && !busy));
+    root.dataset.displayResult = String(Boolean(current && !ui.result.hidden && !busy));
+    ui.start.hidden = busy;
     ui.start.disabled = disposed || busy;
     ui.start.textContent = current ? '再来一款' : '随机一款';
     ui.skip.hidden = phase !== 'revealing';
+    ui.revealPartner.hidden = phase !== 'awaiting-reveal' || !activeRun?.requiresConfirmation;
+    ui.revealPartner.disabled = disposed || phase !== 'awaiting-reveal' || !activeRun;
     for (const button of [ui.copy, ui.download, ui.chatgpt, ui.detail]) {
-      button.hidden = !current || busy;
+      button.hidden = !current || busy || !['result', 'error', 'empty', 'cancelled'].includes(phase);
     }
     ui.locks.hidden = !current || busy;
     ui.start.classList.toggle('fr-reroll', Boolean(current));
@@ -679,6 +765,9 @@ export function createRevealView({
     const hasUnavailableArtworks = listUnavailableArtworks().length > 0;
     ui.retryResources.hidden = !hasUnavailableArtworks;
     ui.retryResources.disabled = disposed || busy || !hasUnavailableArtworks || typeof engine.clearUnavailable !== 'function';
+    ui.actions.hidden = ui.copy.hidden && ui.download.hidden;
+    ui.extraActions.hidden = [...ui.extraActions.children].every(button => button.hidden);
+    syncState();
   }
 
   function buildRun() {
@@ -693,7 +782,10 @@ export function createRevealView({
       mainHandle: null,
       poolSize: 0,
       unavailableArtworkIds: new Set(),
-      finalizing: false
+      stopOrder: [],
+      finalizing: false,
+      cardsStopped: false,
+      requiresConfirmation: false
     };
   }
 
@@ -706,14 +798,17 @@ export function createRevealView({
   }
 
   function installCompletedRun(run) {
-    if (!currentRun(run) || run.finalizing === false) return false;
+    if (!currentRun(run) || run.finalizing === false || !run.cardsStopped
+        || run.slots.some(slot => slot.reel?.dataset.stopped !== 'true')) return false;
     const previous = current;
     current = {
       result: run.result,
       mainHandle: run.mainHandle,
       handles: run.handles,
       poolSize: run.poolSize,
-      drawId: run.result.drawId
+      drawId: run.result.drawId,
+      stoppedSlots: run.slots.map(slot => slot.index),
+      stopOrder: [...run.stopOrder]
     };
     run.handles = new Set();
     run.loaded.clear();
@@ -727,15 +822,14 @@ export function createRevealView({
     updateActions();
     disposeHandles(previous?.handles);
     const promptReady = Boolean(getPromptText(run.result.prompt));
-    const notice = lastNotice ? `${lastNotice} ` : '';
-    status(`${notice}${promptReady ? '为你找到这位伙伴，带走图片或 Prompt 吧。' : '已找到作品；该作品当前没有可复制的 Prompt。'}`);
+    status(promptReady ? '为你找到这位伙伴，带走图片或 Prompt 吧。' : '已找到作品；这位伙伴暂时没有可复制的 Prompt。');
     invokeResultCallback(run.result, run.id);
     return true;
   }
 
   function reportCallbackError(error, label, snapshot, operationSerial) {
     if (disposed || current?.result !== snapshot || runSerial !== operationSerial || isBusy()) return;
-    const message = error?.message || `暂时无法${label}。`;
+    const message = `暂时无法${label}，请再试一次。`;
     status(message);
     try { notify(message); } catch { /* Keep the inline status as fallback. */ }
   }
@@ -751,32 +845,57 @@ export function createRevealView({
     }
   }
 
-  function finishRun(run, skipped = false) {
-    if (!currentRun(run) || run.finalizing) return false;
-    run.finalizing = true;
+  function enterAwaitingReveal(run, {skipped = false} = {}) {
+    if (!currentRun(run) || run.finalizing || run.cardsStopped) return false;
+    stopStageScroll();
     clearScheduled();
     for (const slot of run.slots) landSlot(slot);
-    ui.stageLabel.textContent = skipped ? '已跳过，结果一致' : '全部卡片已停止';
+    run.cardsStopped = true;
+    run.requiresConfirmation = reducedMotion();
+    activeSlot = -1;
+    setPhase('awaiting-reveal');
+    ui.stageLabel.textContent = run.requiresConfirmation
+      ? '准备好了'
+      : skipped ? '马上见面' : '即将揭晓';
+    status(run.requiresConfirmation
+      ? '准备好后，点击“揭晓伙伴”。'
+      : skipped ? '马上就能见到这位伙伴。' : '准备揭晓这位伙伴。');
+    updateActions();
+    if (!run.requiresConfirmation) {
+      const waitForReveal = delay(900, run);
+      waitForReveal.then(keepGoing => {
+        if (keepGoing && !run.requiresConfirmation && phase === 'awaiting-reveal') revealPartner(run);
+      });
+    }
+    return true;
+  }
+
+  function revealPartner(run = activeRun) {
+    if (!run || phase !== 'awaiting-reveal' || !currentRun(run) || run.finalizing || !run.cardsStopped
+        || run.slots.some(slot => slot.reel?.dataset.stopped !== 'true')) return false;
+    clearScheduled();
+    run.finalizing = true;
+    ui.revealPartner.hidden = true;
+    ui.revealPartner.disabled = true;
     return installCompletedRun(run);
   }
 
   async function revealNextSlot(run, index = 0) {
     if (!currentRun(run) || run.finalizing) return;
     if (index >= run.slots.length) {
-      ui.stageLabel.textContent = '六张卡片已停止，即将揭晓';
-      status('全部线索已确认，即将揭晓这位伙伴。');
-      if (await delay(240, run)) finishRun(run, false);
+      enterAwaitingReveal(run);
       return;
     }
     const slot = run.slots[index];
     activeSlot = index;
+    syncState();
     slot.reel.classList.remove('is-waiting');
     slot.window.setAttribute('aria-hidden', 'false');
     slot.reel.classList.add('is-active', 'is-rolling');
     followSlot(slot);
     setSlotProgress(slot, 'rolling');
     ui.stageLabel.textContent = `正在揭晓：${slot.label}`;
-    status(lastNotice || `正在逐卡揭晓第 ${index + 1} 张特征卡。`);
+    status(`正在揭晓第 ${index + 1} 张卡片。`);
 
     if (slot.items.length < 2 || slot.items[slot.selectedIndex].features.every(feature => ['none', 'not-applicable', 'notApplicable'].includes(feature.state))) {
       landSlot(slot);
@@ -809,28 +928,32 @@ export function createRevealView({
     if (keepGoing) revealNextSlot(run, index + 1);
   }
 
-  function notifyFailure(message, error) {
-    const detail = error?.message ? ` ${error.message}` : '';
-    showPriorResult({message: `${message}${detail}${current ? ' 上一款仍保留；没有更换成另一张作品。' : ' 没有开始卡片动画。'}`, previous: true});
+  function notifyFailure(message, _error) {
+    showPriorResult({message: `${message}${current ? ' 上一款作品仍保留。' : ''}`, previous: true});
   }
 
   async function start({retryNotice = ''} = {}) {
     if (disposed || isBusy()) return false;
     clearScheduled();
     if (activeRun) retireRun(activeRun);
+    resetRevealScroll({page: true});
     displayIsPrevious = Boolean(current);
     activeRun = buildRun();
     const run = activeRun;
     renderReadyCards();
+    setFeedback('shuffling');
     ui.result.hidden = true;
+    ui.revealPartner.hidden = true;
+    ui.revealPartner.disabled = true;
     ui.promptFallback.hidden = true;
     ui.manualChatLink.hidden = true;
+    resetRevealScroll();
     setPhase('selecting');
     activeSlot = -1;
     lastNotice = showNotice(retryNotice);
     updateActions();
-    const openingStatus = current ? '正在按新范围寻找下一款作品；上一款会保留到新结果完整就绪。' : '正在按当前范围寻找已发布作品。';
-    status(`${lastNotice ? `${lastNotice} ` : ''}${openingStatus}`);
+    const openingStatus = current ? '正在为你寻找下一位伙伴。' : '正在为你寻找一位伙伴。';
+    status(openingStatus);
 
     try {
       const conditions = await getConditions();
@@ -840,19 +963,19 @@ export function createRevealView({
       const selection = await engine.select({query, requiredFeatures});
       if (!currentRun(run)) return false;
       if (selection?.status === 'empty') {
+        setFeedback('idle');
         setPhase('empty');
         activeRun = null;
         retireRun(run);
-        const reason = showNotice(selection.message) || showNotice(selection.notice) || '当前筛选和必备特征没有匹配作品。请调整条件后重试。';
-        notifyFailure([lastNotice, reason].filter(Boolean).join(' '));
+        notifyFailure('暂时没有找到符合条件的伙伴，请返回画廊调整筛选。');
         return false;
       }
       if (selection?.status === 'error') {
+        setFeedback('idle');
         setPhase('error');
         activeRun = null;
         retireRun(run);
-        const reason = showNotice(selection.message) || showNotice(selection.notice) || '作品目录暂时无法完成抽取。';
-        notifyFailure([lastNotice, reason].filter(Boolean).join(' '));
+        notifyFailure('暂时无法找到伙伴，请再试一次。');
         return false;
       }
       if (selection?.status !== 'selected' || !selection.result?.artworkId || !selection.result?.asset) {
@@ -866,7 +989,7 @@ export function createRevealView({
       const slots = buildSlots(selection.result, selection.pool);
       run.slots = slots;
       setPhase('preloading');
-      status(`${lastNotice ? `${lastNotice} ` : ''}已选定完整作品，正在校验原图和卡片资源；预载完成前不会滚动。`);
+      status(current ? '正在准备下一次相遇…' : '正在准备这次相遇…');
       const requests = [ensureLoaded(run, mainAsset, selection.result.artworkId)];
       for (const slot of slots) {
         for (const item of slot.items) {
@@ -877,13 +1000,15 @@ export function createRevealView({
       if (!currentRun(run)) return false;
       run.mainHandle = handleFor(run, mainAsset);
       if (!run.mainHandle) throw new Error('完整作品原图未能通过资源校验。');
+      setFeedback('idle');
       renderSlots(run);
+      resetRevealScroll();
       setPhase('revealing');
       updateActions();
       if (run.poolSize === 1) {
         lastNotice = [lastNotice, '当前只有一款符合条件。'].filter(Boolean).join(' ');
       }
-      if (reducedMotion()) finishRun(run, true);
+      if (reducedMotion()) enterAwaitingReveal(run);
       else revealNextSlot(run, 0);
       return true;
     } catch (error) {
@@ -894,21 +1019,20 @@ export function createRevealView({
       setPhase('error');
       if (failedResult) {
         const excluded = [...run.unavailableArtworkIds];
-        const exclusionNote = excluded.length
-          ? `已将 ${excluded.length} 款图片暂不可用的作品移出后续抽取范围。`
-          : '';
-        notifyFailure(`本次作品或必要卡片资源加载失败。${exclusionNote} 可点击“重试资源并重新抽取”主动恢复资源后，再按当前条件抽取。`, error);
+        notifyFailure(excluded.length
+          ? '图片暂时无法载入，请点击“再试一次”。'
+          : '这次没有顺利打开作品，请点击“再试一次”。', error);
       } else {
-        notifyFailure('随机发现暂时失败。', error);
+        notifyFailure('暂时无法找到伙伴，请再试一次。', error);
       }
-      try { notify(`揭晓没有改用其他作品。${error?.message || ''}`.trim()); } catch { /* Notification is an optional side channel. */ }
+      try { notify(current ? '图片暂时无法载入，上一款作品仍保留。' : '暂时无法找到伙伴，请再试一次。'); } catch { /* Notification is an optional side channel. */ }
       return false;
     }
   }
 
   function skip() {
     if (phase !== 'revealing' || !activeRun) return false;
-    return finishRun(activeRun, true);
+    return enterAwaitingReveal(activeRun, {skipped: true});
   }
 
   async function retryResources() {
@@ -919,7 +1043,7 @@ export function createRevealView({
       return false;
     }
     if (typeof engine.clearUnavailable !== 'function') {
-      status('当前抽取引擎暂不支持恢复资源失败作品；请稍后重试。');
+      status('图片暂时无法载入，请稍后再试。');
       updateActions();
       return false;
     }
@@ -928,14 +1052,14 @@ export function createRevealView({
       for (const id of ids) engine.clearUnavailable(id);
       for (const id of ids) locallyUnavailableArtworkIds.delete(id);
     } catch (error) {
-      const message = `未能重新纳入先前资源失败的作品。${error?.message || ''}`.trim();
+      const message = '图片暂时无法载入，请稍后再试。';
       status(message);
       try { notify(message); } catch { /* The inline state is the recovery path. */ }
       updateActions();
       return false;
     }
 
-    const retryNotice = '已主动重新纳入先前资源失败的作品；沿用本次作品范围重新抽取，结果可能是其他作品。';
+      const retryNotice = '再试一次。';
     updateActions();
     return start({retryNotice});
   }
@@ -947,6 +1071,7 @@ export function createRevealView({
     activeRun = null;
     clearScheduled();
     retireRun(run);
+    setFeedback('idle');
     ui.reveal.hidden = true;
     setPhase(current ? 'result' : 'cancelled');
     showPriorResult({message: current ? '本次揭晓已取消；上一款作品仍保留。' : '本次揭晓已取消。', previous: Boolean(current)});
@@ -963,11 +1088,12 @@ export function createRevealView({
     run.result = result;
     run.poolSize = 0;
     run.slots = buildRestoredSlots(result);
+    setFeedback('idle');
     setPhase('preloading');
     ui.result.hidden = true;
     ui.reveal.hidden = true;
     updateActions();
-    status('正在恢复同一张作品的原图与 Prompt 快照。');
+    status('正在打开这位伙伴的作品…');
     try {
       const asset = resolveAsset(result.asset);
       const requests = [ensureLoaded(run, asset, result.artworkId)];
@@ -981,7 +1107,15 @@ export function createRevealView({
       run.mainHandle = handleFor(run, asset);
       if (!run.mainHandle) throw new Error('恢复结果没有通过原图校验。');
       const previous = current;
-      current = {result, mainHandle: run.mainHandle, handles: run.handles, poolSize: run.poolSize, drawId: result.drawId};
+      current = {
+        result,
+        mainHandle: run.mainHandle,
+        handles: run.handles,
+        poolSize: run.poolSize,
+        drawId: result.drawId,
+        stoppedSlots: run.slots.map(slot => slot.index),
+        stopOrder: [...run.stopOrder]
+      };
       run.handles = new Set();
       activeRun = null;
       setPhase('result');
@@ -990,7 +1124,7 @@ export function createRevealView({
       renderSlots(run, {restored: true});
       run.loaded.clear();
       updateActions();
-      status('已恢复同一张冻结作品；停止的特征卡与原图仍相互对应。');
+      status('已为你打开这位伙伴的作品。');
       disposeHandles(previous?.handles);
       invokeResultCallback(result, run.id);
       return true;
@@ -999,7 +1133,7 @@ export function createRevealView({
       activeRun = null;
       retireRun(run);
       setPhase('error');
-      notifyFailure('无法恢复这张冻结作品。', error);
+      notifyFailure('这位伙伴暂时无法打开。', error);
       return false;
     }
   }
@@ -1052,14 +1186,14 @@ export function createRevealView({
     const operation={snapshot,controller:new AbortController()};
     downloads.add(operation);updateActions();
     const stillCurrent=()=>!disposed&&current?.result===snapshot&&runSerial===operationSerial&&!isBusy();
-    if(stillCurrent())status('正在校验并下载这款伙伴的原图…');
+    if(stillCurrent())status('正在准备图片下载…');
     let downloaded;
     try {
       downloaded=await downloadOriginal(snapshot.asset,{signal:operation.controller.signal});
       if(stillCurrent())status('已开始下载这款伙伴的透明 PNG 原图。');
       return true;
     }catch(error){
-      if(stillCurrent()&&!isAbort(error))status(`图片下载失败：${error?.message||'请重试。'}`);
+      if(stillCurrent()&&!isAbort(error))status('图片下载失败，请再试一次。');
       return false;
     }finally{
       downloaded?.dispose?.();downloads.delete(operation);
@@ -1091,6 +1225,7 @@ export function createRevealView({
       case 'random': void start(); break;
       case 'retry-resources': void retryResources(); break;
       case 'skip': skip(); break;
+      case 'reveal-partner': revealPartner(); break;
       case 'copy': void copyPrompt(); break;
       case 'download': void downloadImage(); break;
       case 'chatgpt': void openChatGPT(); break;
@@ -1113,7 +1248,22 @@ export function createRevealView({
 
 
   const onMotionChange = event => {
-    if (event?.matches && phase === 'revealing') skip();
+    root.dataset.reducedMotion = String(Boolean(event?.matches));
+    setFeedback(['selecting', 'preloading'].includes(phase) ? 'shuffling' : 'idle');
+    if (!event?.matches) {
+      return;
+    }
+    if (phase === 'revealing' && activeRun) {
+      enterAwaitingReveal(activeRun);
+      return;
+    }
+    if (phase === 'awaiting-reveal' && activeRun && !activeRun.requiresConfirmation) {
+      clearScheduled();
+      activeRun.requiresConfirmation = true;
+      ui.stageLabel.textContent = '准备好了';
+      status('准备好后，点击“揭晓伙伴”。');
+      updateActions();
+    }
   };
   motionQuery?.addEventListener?.('change', onMotionChange);
 
@@ -1150,12 +1300,22 @@ export function createRevealView({
       previous: displayIsPrevious,
       activeSlot,
       slotCount: activeRun ? activeRun.slots.length : ui.reelHost.children.length,
+      stoppedSlots: Object.freeze(activeRun
+        ? activeRun.slots.filter(slot => slot.reel?.dataset.stopped === 'true').map(slot => slot.index)
+        : [...(current?.stoppedSlots || [])]),
+      stopOrder: Object.freeze([...(activeRun?.stopOrder || current?.stopOrder || [])]),
+      resultHidden: ui.result.hidden,
+      resultVisible: root.dataset.displayResult === 'true' && !ui.result.hidden,
+      displayResult: root.dataset.displayResult === 'true',
+      reducedMotion: reducedMotion(),
+      scrollTop: scrollState(),
       notice: lastNotice
     }),
     restore
   };
   syncState();
   renderReadyCards();
+  setFeedback('idle');
   updateActions();
   if (autoStart) queueMicrotask(() => { if (!disposed) void start(); });
   return api;

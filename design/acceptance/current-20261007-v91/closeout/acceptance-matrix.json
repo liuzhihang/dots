@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "current-20261007-v91",
+  "decision": "engineering-repair-passed; acceptance-open",
+  "source": {
+    "baseCommit": "de9a030d8353821b098210c1f6ca5feb2c26662f",
+    "baseSiteVersion": 41,
+    "cache": 91,
+    "sourceManifest": "../source-manifest.json",
+    "dirtySource": true,
+    "sourceFileCount": 78,
+    "browserViewportCssPx": [
+      390,
+      844
+    ],
+    "browserEngine": "Chromium",
+    "physicalIPhoneSafari": "not executed"
+  },
+  "engineeringRepairs": [
+    {
+      "id": "reduced-motion-result-boundary",
+      "status": "passed",
+      "evidence": [
+        "../tests/npm-test.log",
+        "../process/steps.json",
+        "../process/reduced-motion-390.mp4"
+      ],
+      "result": "Reduce renders static six-card features and keeps result hidden until explicit reveal."
+    },
+    {
+      "id": "normal-sequential-reveal-and-result-order",
+      "status": "passed",
+      "evidence": [
+        "../tests/npm-test.log",
+        "../browser/report.json",
+        "../process/steps.json",
+        "../process/normal-390.mp4"
+      ],
+      "result": "Normal mode visibly stops slots 0 through 5 in sequence; all six stop before awaiting-reveal and result visibility. Result actions remain after feature summary and final artwork."
+    },
+    {
+      "id": "skip-retains-frozen-draw",
+      "status": "passed",
+      "evidence": [
+        "../tests/npm-test.log",
+        "../process/steps.json",
+        "../process/skip-390.mp4"
+      ],
+      "result": "Skip ends motion without drawing a replacement; the same frozen Artwork, Prompt, feature visuals and original download remain bound."
+    },
+    {
+      "id": "reroll-resets-real-scroll-containers",
+      "status": "passed",
+      "evidence": [
+        "../layout/reroll-horizontal-report.json",
+        "../process/steps.json"
+      ],
+      "result": "390 CSS px: game stage scrollLeft 418→0; modal stage 384→0; modal overlayBody scrollTop 134→0; dialog and view scrollTop 0→0."
+    },
+    {
+      "id": "close-reopen-stale-work-isolation",
+      "status": "passed",
+      "evidence": [
+        "../tests/npm-test.log",
+        "../browser/report.json",
+        "../layout/reveal-layout-report.json"
+      ],
+      "result": "Disposed run does not write late state into the new dialog/run."
+    },
+    {
+      "id": "asset-loader-and-original-download-integrity",
+      "status": "passed-with-reported-test-scope",
+      "evidence": [
+        "../tests/npm-test.log",
+        "../browser/report.json",
+        "../tests/download-alpha-report.log",
+        "../process/steps.json"
+      ],
+      "result": "Catalog/hash and loader byte checks pass; actual browser downloads are checked against frozen Artwork originals; 15 PNG alpha checks are recorded. This is reported test coverage, not a separate security certification."
+    }
+  ],
+  "processEvidence": {
+    "viewportCssPx": [
+      390,
+      844
+    ],
+    "stateFields": [
+      "phase",
+      "activeSlot",
+      "data-display-result",
+      "result.hidden",
+      "computed display",
+      "overlayBody.scrollTop",
+      "dialog.scrollTop",
+      "view.scrollTop",
+      "prefers-reduced-motion"
+    ],
+    "screenshots": [
+      {
+        "step": "A",
+        "file": "../process/A-ready.png",
+        "phase": "ready",
+        "activeSlot": -1,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      },
+      {
+        "step": "B",
+        "file": "../process/B-first-revealing.png",
+        "phase": "revealing",
+        "activeSlot": 0,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      },
+      {
+        "step": "C",
+        "file": "../process/C-three-stopped-fourth-revealing.png",
+        "phase": "revealing",
+        "activeSlot": 3,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      },
+      {
+        "step": "D",
+        "file": "../process/D-six-stopped-result-hidden.png",
+        "phase": "awaiting-reveal",
+        "activeSlot": -1,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      },
+      {
+        "step": "E",
+        "file": "../process/E-partner-revealed.png",
+        "phase": "result",
+        "activeSlot": -1,
+        "dataDisplayResult": true,
+        "resultHidden": false,
+        "resultComputedDisplay": "flex",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      },
+      {
+        "step": "F",
+        "file": "../process/F-reduced-motion-static-six.png",
+        "phase": "awaiting-reveal",
+        "activeSlot": -1,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": true
+      },
+      {
+        "step": "G",
+        "file": "../process/G-reroll-stage.png",
+        "phase": "revealing",
+        "activeSlot": 0,
+        "dataDisplayResult": false,
+        "resultHidden": true,
+        "resultComputedDisplay": "none",
+        "overlayBodyScrollTop": 0,
+        "dialogScrollTop": 0,
+        "viewScrollTop": 0,
+        "reducedMotion": false
+      }
+    ],
+    "recordings": [
+      {
+        "file": "../process/normal-390.mp4",
+        "frames": 98,
+        "durationMs": 7821
+      },
+      {
+        "file": "../process/reduced-motion-390.mp4",
+        "frames": 21,
+        "durationMs": 1631
+      },
+      {
+        "file": "../process/skip-390.mp4",
+        "frames": 16,
+        "durationMs": 1264
+      }
+    ],
+    "reducedMotionExplicitReveal": "F2-reduced-confirmed-result.png shows result only after the reveal action; see ../process/steps.json"
+  },
+  "artworkAndVisualApproval": {
+    "existingPublishedArtworkCount": 15,
+    "existingArtworkOriginalsChanged": false,
+    "evidence": [
+      "../build/report.json",
+      "../source-manifest.json",
+      "../browser/report.json",
+      "../tests/download-alpha-report.log"
+    ],
+    "revealDisplayResourceCount": 34,
+    "revealDisplayArtApproval": "pending-user-review",
+    "candidateDisplayVisualsAreArtApproved": false,
+    "publishedVariantCount": 0,
+    "candidatePoseAssetsAwaitingIndividualApproval": 5,
+    "playableAnimationPackage": "not present",
+    "userVisualAcceptance": "pending"
+  },
+  "targetCompatibility": {
+    "ordinaryStaticPngDownload": "source-verified; not a Dot/Pet installation package",
+    "dotPetTargetImportOrInstall": "not performed",
+    "sourceReport": "../reference-detail/report.json",
+    "changeHasRealPetSpriteSheetOrPackage": false
+  },
+  "releaseAndChange": {
+    "siteDeployment": {
+      "status": "succeeded",
+      "baseSiteVersion": 41,
+      "cache": 91,
+      "targetSiteVersion": 42,
+      "receipt": "deployment.json",
+      "siteSourceCommit": "d04f68f23a6425a46c81329587aa9fa1d2359b70",
+      "originalAudienceUnchanged": true
+    },
+    "openSpecChange": "remains in acceptance; not archived",
+    "githubCommit": "none in this evidence update",
+    "failureAttempts": "retained under local ignored .tmp/cache91-qa-debug; reasons recorded in ../tests/failure-history.json"
+  },
+  "limitations": [
+    "Chromium CSS viewport evidence does not establish physical iPhone Safari behavior.",
+    "Screenshots, automated tests, build output and candidate resource registration do not constitute user art approval.",
+    "No Dot/Pet target upload or installation was performed.",
+    "No actual playable animation package is present; the five candidate pose assets have not been individually approved as published variants."
+  ],
+  "reports": {
+    "build": "../build/report.json",
+    "browser": "../browser/report.json",
+    "steps": "../process/steps.json",
+    "layout": "../layout/reveal-layout-report.json",
+    "rerollLayout": "../layout/reroll-horizontal-report.json",
+    "tests": "../tests/npm-test.log",
+    "failureHistory": "../tests/failure-history.json",
+    "siteAssembly": "site-assembly.json"
+  }
+}

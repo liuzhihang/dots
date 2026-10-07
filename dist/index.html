@@ -5,8 +5,8 @@
   <title>Dot Icon Studio · 小小角色，大大的想象</title>
   <meta name="description" content="探索高质量完整角色图：标签搜索、多卡片随机发现，直接带走对应 Prompt 与透明原图。">
   <link rel="icon" href="./assets/characters/brand-mark.png">
-  <link rel="stylesheet" href="./studio.css?v=90"><link rel="stylesheet" href="./studio-detail.css?v=90"><link rel="stylesheet" href="./studio-fullscreen-random.css?v=90">
-  <script type="module" src="./studio.js?v=90"></script>
+  <link rel="stylesheet" href="./studio.css?v=92"><link rel="stylesheet" href="./studio-detail.css?v=92"><link rel="stylesheet" href="./studio-fullscreen-random.css?v=92">
+  <script type="module" src="./studio.js?v=92"></script>
 </head>
 <body data-screen="home">
 <a class="skip-link" href="#mainContent">跳到主要内容</a>
@@ -23,16 +23,16 @@
   <section class="featured-section" aria-labelledby="featuredTitle"><div class="section-heading"><div><span class="eyebrow">SMALL IDEAS, BIG FRIENDS</span><h2 id="featuredTitle">找到一位灵感伙伴</h2><p>一张完整作品，一份对应 Prompt。把喜欢的角色带走，继续你的想象。</p></div><button class="button outlined" data-command="reference">用参考图继续创作</button></div><div id="featuredCards" class="featured-grid"></div></section>
 </section>
 <section id="galleryPortal" class="page-portal" aria-labelledby="galleryTitle" hidden>
-  <header class="page-heading"><div><span class="eyebrow">CHARACTER GALLERY</span><h1 id="galleryTitle" tabindex="-1">角色画廊</h1><p>每张都是完整作品。按喜欢的风格和真实特征，找到你的伙伴。</p></div><button class="button primary" data-command="random">当前范围随机 <span aria-hidden="true">→</span></button></header>
+  <header class="page-heading"><div><h1 id="galleryTitle" tabindex="-1">角色画廊</h1><p>发现喜欢的模样，带走图片与 Prompt。</p></div><button class="button primary" data-command="random">当前范围随机 <span aria-hidden="true">→</span></button></header>
   <div class="search-row"><label class="search-field"><span class="sr-only">搜索作品、标签或特征</span><input id="gallerySearch" type="search" maxlength="120" placeholder="搜索角色、风格、配饰、动作…" autocomplete="off"></label><button class="button outlined" id="clearFilters">清空筛选</button></div>
   <div id="galleryTags" class="tag-browser"></div><p id="queryError" class="error-note" role="alert" hidden></p>
-  <div class="results-heading"><p id="galleryCount" role="status" aria-live="polite"></p><span>完整静态图 · 透明原图</span></div>
+  <div class="results-heading"><p id="galleryCount" role="status" aria-live="polite"></p><span>透明 PNG · 静态角色</span></div>
   <div id="artworkGrid" class="artwork-grid"></div>
-  <div id="galleryEmpty" class="empty-state" hidden><h2>还没有符合条件的作品</h2><p>试着移除一个筛选条件，或清空筛选重新看看。我们不会自动放宽你的选择。</p><button class="button outlined" data-command="clear-filters">清空筛选</button></div>
+  <div id="galleryEmpty" class="empty-state" hidden><h2>还没有符合条件的作品</h2><p>试着减少一个筛选条件，或清空筛选重新看看。</p><button class="button outlined" data-command="clear-filters">清空筛选</button></div>
   <p id="resourceNotice" class="error-note" role="status" hidden></p>
 </section>
 <section id="gamePortal" class="page-portal" aria-labelledby="gameTitle" hidden>
-  <header class="page-heading"><div><span class="eyebrow">A LITTLE SURPRISE</span><h1 id="gameTitle" tabindex="-1">灵感游戏</h1><p>看卡片依次揭晓，发现一位灵感伙伴。</p></div><button class="button outlined" data-command="random">打开随机弹窗</button></header>
+  <header class="page-heading"><div><span class="eyebrow">A LITTLE SURPRISE</span><h1 id="gameTitle" tabindex="-1">灵感游戏</h1><p>转动灵感，遇见新的小伙伴。</p></div><a class="text-link" href="#gallery">逛逛画廊 →</a></header>
   <div id="gameReveal"></div>
 </section>
 </main>

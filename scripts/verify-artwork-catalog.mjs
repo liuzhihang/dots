@@ -69,7 +69,7 @@ assert.equal(getAsset({ ...ASSETS[0], path: './assets/elsewhere.png' }), null, '
 
 const sourceSnapshot = JSON.parse(await readFile(new URL('../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json', import.meta.url), 'utf8'));
 const frozenSources = new Map(sourceSnapshot.files.map(file => [file.path, file]));
-for (const asset of ASSETS) {
+for (const asset of ASSETS.filter(asset => !asset.displayOnly)) {
   assert.equal(asset.sourceSnapshotMatch, true);
   const snapshotPath = asset.sourceSnapshotRef.split('#')[1];
   const frozen = frozenSources.get(snapshotPath);
@@ -79,6 +79,19 @@ for (const asset of ASSETS) {
   assert.equal(createHash('sha256').update(sourceBytes).digest('hex'), asset.sha256, `${asset.id} source file SHA-256`);
   assert.equal(frozen.bytes, asset.byteSize, `${asset.id} frozen byte size`);
   assert.equal(frozen.sha256, asset.sha256, `${asset.id} frozen SHA-256`);
+}
+
+const revealAssets = ASSETS.filter(asset => asset.displayOnly);
+assert(revealAssets.length > 0, 'Independent reveal illustrations are registered separately from complete Artwork assets.');
+for (const asset of revealAssets) {
+  assert.equal(asset.resourceKind, 'reveal-illustration');
+  assert.equal(asset.publicationStatus, 'candidate-preview');
+  assert.equal(asset.artApproval?.status || asset.artApproval, 'pending');
+  assert.equal(asset.sourceSnapshotMatch === true, false, 'New illustrations cannot inherit a historical Artwork approval.');
+  const bytes = await readFile(new URL(`../${asset.sourcePath}`, import.meta.url));
+  assert.equal(bytes.length, asset.byteSize); assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256);
+  assert.ok(asset.sourceRef && asset.width > 0 && asset.height > 0);
+  assert.ok(!ARTWORKS.some(artwork => artwork.assetRefs.original === asset.id), 'Display-only assets are never full Artwork exports.');
 }
 
 // A pending asset must be rejected before any network read is attempted.
@@ -164,3 +177,29 @@ try {
 }
 
 console.log(`Artwork catalog: ${publishedArtworks.length} published works, ${poses.length} pending assets, archived/current hashes and loader byte checks verified.`);
+
+// SVG validation uses a deterministic Image decoder shim. Actual decoding and
+// painting are separately checked in the browser process/layout tests.
+{
+  const svgAsset = revealAssets.find(asset => asset.mime === 'image/svg+xml');
+  assert(svgAsset);
+  const savedFetch = globalThis.fetch, savedImage = globalThis.Image, savedDocument = Object.getOwnPropertyDescriptor(globalThis, 'document');
+  let bytes = await readFile(new URL(`../${svgAsset.sourcePath}`, import.meta.url));
+  const original = bytes;
+  globalThis.fetch = async () => new Response(bytes, {headers:{'content-type':'image/svg+xml'}});
+  globalThis.Image = class {naturalWidth=svgAsset.width;naturalHeight=svgAsset.height;async decode(){}};
+  globalThis.document = {baseURI:'https://studio.example/',body:{}};
+  try {
+    const loaded = await loadAsset(svgAsset);assert.equal(loaded.blob.type, 'image/svg+xml');loaded.dispose();
+    for (const unsafe of ['<script>alert(1)</script>', '<image href="https://outside.example/image.png"/>', '<g onload="alert(1)"/>']) {
+      bytes = Buffer.alloc(original.length, 32);
+      bytes.write(`<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">${unsafe}</svg>`);
+      await assert.rejects(loadAsset(svgAsset), /脚本、事件、嵌入图片或外部资源/);
+    }
+    bytes=original;
+    await assert.rejects(downloadAsset(svgAsset), /下载必须使用作品 PNG 原图/);
+  } finally {
+    globalThis.fetch=savedFetch;if(savedImage===undefined)delete globalThis.Image;else globalThis.Image=savedImage;
+    if(savedDocument)Object.defineProperty(globalThis,'document',savedDocument);else delete globalThis.document;
+  }
+}

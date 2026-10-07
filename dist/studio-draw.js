@@ -1,7 +1,7 @@
-import { ARTWORKS, CATALOG_REVISION, STYLE_IDENTITIES, getAsset, isEligible, isTransparentCharacter } from './studio-artwork-catalog.js?v=90';
-import { normalizeTagQuery, queryArtworks, TAGS } from './studio-tags.js?v=90';
-import { promptFor, promptRecordFor } from './studio-prompt.js?v=90';
-import { featureVisualFor } from './studio-feature-visuals.js?v=90';
+import { ARTWORKS, CATALOG_REVISION, STYLE_IDENTITIES, getAsset, isEligible, isTransparentCharacter } from './studio-artwork-catalog.js?v=92';
+import { normalizeTagQuery, queryArtworks, TAGS } from './studio-tags.js?v=92';
+import { promptFor, promptRecordFor } from './studio-prompt.js?v=92';
+import { featureVisualFor } from './studio-feature-visuals.js?v=92';
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -71,10 +71,15 @@ function toRevealFeature(kind, grouped, artwork) {
     : grouped.label;
   const value = Object.freeze([...grouped.value]);
   const state = grouped.state;
+  const visualKey = kind === 'palette-material' ? 'paletteMaterial' : kind;
+  const emptyName = state === 'not-applicable' ? '不适用'
+    : ({ clothing: '无衣物', accessory: '无配饰', prop: '无道具' }[kind] || '无');
+  const shortName = state === 'known' ? artwork.revealVisuals?.[visualKey]?.shortName || label : emptyName;
   return deepFreeze({
     id: `reveal:${kind}:${value.join('+') || state}`,
     kind,
     label: label || '待核实',
+    shortName,
     labelZh: label || '待核实',
     labelEn: slot?.labelEn || kind,
     value,
@@ -103,7 +108,7 @@ function hasCompleteRevealFacts(artwork) {
   return features.length === REVEAL_SLOTS.length && features.every(feature => {
     if (feature.state === 'unknown') return false;
     const visual = featureVisualFor([feature], feature.kind, artwork);
-    return ['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind);
+    return ['original', 'dedicated-asset', 'empty-value'].includes(visual.kind);
   });
 }
 
@@ -145,22 +150,22 @@ export function createDrawEngine({ catalog = ARTWORKS, rng = Math.random } = {})
 
   function select({ query = {}, requiredFeatures = [] } = {}) {
     const normalized = normalizeTagQuery(query);
-    if (!normalized.valid) return { status: 'error', message: `筛选条件无效：${normalized.errors.map(item => item.value || item.dimension || item.kind).join('、')}` };
+    if (!normalized.valid) return { status: 'error', message: '当前筛选无效，请调整条件后再试。' };
     if (!Array.isArray(requiredFeatures) || requiredFeatures.some(id => typeof id !== 'string')) {
-      return { status: 'error', message: '必备特征条件无效，请重新选择。' };
+      return { status: 'error', message: '无法应用当前筛选，请重新选择条件。' };
     }
     const locks = [...new Set(requiredFeatures)].sort();
     const knownFeatures = new Set(catalog.flatMap(artwork => artwork.featureIds || []));
     const unknown = locks.filter(id => !knownFeatures.has(id));
-    if (unknown.length) return { status: 'error', message: `未知必备特征：${unknown.join('、')}` };
+    if (unknown.length) return { status: 'error', message: '部分筛选条件已不可用，请重新选择。' };
 
     const pool = queryArtworks(normalized, catalog)
       .filter(artwork => isEligible(artwork) && isTransparentCharacter(artwork) && hasCompleteRevealFacts(artwork))
       .filter(artwork => !unavailable.has(artwork.id))
       .filter(artwork => locks.every(id => artwork.featureIds?.includes(id)));
     if (!pool.length) {
-      const resourceNote = unavailable.size ? '；部分图片资源曾校验失败，可重试后再抽取' : '';
-      return { status: 'empty', message: `当前范围没有符合全部条件、且六类揭晓事实完整的已发布透明角色作品${resourceNote}。调整筛选或必备条件后再试。` };
+      const unavailableNote = unavailable.size ? ' 部分图片暂时无法显示，请稍后再试。' : '';
+      return { status: 'empty', message: `没有找到符合当前条件的伙伴。调整筛选后再试。${unavailableNote}` };
     }
 
     const poolFingerprint = fingerprint(pool);
@@ -176,8 +181,8 @@ export function createDrawEngine({ catalog = ARTWORKS, rng = Math.random } = {})
       notice = '这组作品都已抽过一遍，重新开始随机。';
     }
     let randomValue;
-    try { randomValue = Number(rng()); } catch { return { status: 'error', message: '随机抽取暂时失败，请重试。' }; }
-    if (!Number.isFinite(randomValue)) return { status: 'error', message: '随机源未返回有效结果，请重试。' };
+    try { randomValue = Number(rng()); } catch { return { status: 'error', message: '暂时无法找到伙伴，请再试一次。' }; }
+    if (!Number.isFinite(randomValue)) return { status: 'error', message: '暂时无法找到伙伴，请再试一次。' };
     const avoidId = bag.remaining.length === pool.length && pool.length > 1 ? bag.lastId : null;
     const choices = avoidId ? bag.remaining.filter(id => id !== avoidId) : bag.remaining;
     const index = Math.min(choices.length - 1, Math.max(0, Math.floor(Math.max(0, Math.min(0.999999999999, randomValue)) * choices.length)));
@@ -186,7 +191,7 @@ export function createDrawEngine({ catalog = ARTWORKS, rng = Math.random } = {})
     bag.lastId = artworkId;
     const artwork = pool.find(candidate => candidate.id === artworkId);
     const snapshot = snapshotFor(artwork);
-    if (!snapshot) return { status: 'error', message: '作品缺少匹配的原图或 Prompt 记录，已停止抽取。' };
+    if (!snapshot) return { status: 'error', message: '这位伙伴暂时无法打开，请再试一次。' };
     drawSequence += 1;
     const result = deepFreeze({
       ...snapshot,

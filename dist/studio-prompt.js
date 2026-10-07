@@ -1,4 +1,4 @@
-import { PROMPTS, STYLE_IDENTITIES } from './studio-artwork-catalog.js?v=90';
+import { PROMPTS, STYLE_IDENTITIES } from './studio-artwork-catalog.js?v=92';
 
 const promptsById = new Map(PROMPTS.map(record => [record.id, record]));
 const stylesById = new Map(STYLE_IDENTITIES.map(style => [style.id, style]));

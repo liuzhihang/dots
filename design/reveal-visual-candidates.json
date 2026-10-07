@@ -1,0 +1,778 @@
+{
+  "schema": 1,
+  "status": "candidate-preview; all independently authored reveal illustrations await user visual approval",
+  "generatedBy": "scripts/generate-reveal-visual-candidates.mjs",
+  "referenceArt": "dist/assets/looks and dist/assets/characters; see per-entry ownerArtworkId and artworkFactReference",
+  "files": [
+    {
+      "id": "asset:reveal:appearance:dots-orb",
+      "path": "dist/assets/reveal/appearance/dots-orb.svg",
+      "version": "v1-candidate",
+      "byteSize": 2195,
+      "sha256": "2492dbb4cbcff20fef1739e6588dfc4b47d7da327fcc74c2e0a2c81de41e8cd5",
+      "ownerArtworkId": "candidate-dots-20261005",
+      "applicableArtworkIds": [
+        "candidate-dots-20261005",
+        "dots-rose-glasses",
+        "dots-lilac-bucket"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/dots-orb",
+      "slot": "appearance",
+      "shortName": "圆球双椭圆眼",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:sphere",
+        "facial-features:black-oval-eyes",
+        "facial-features:no-visible-mouth"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:grok-orb",
+      "path": "dist/assets/reveal/appearance/grok-orb.svg",
+      "version": "v1-candidate",
+      "byteSize": 2144,
+      "sha256": "12f9a8db83d87b704af9c7a2125353de44d9a3529f56bb947980741fe2a25415",
+      "ownerArtworkId": "candidate-grok-20261005",
+      "applicableArtworkIds": [
+        "candidate-grok-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/grok-orb",
+      "slot": "appearance",
+      "shortName": "圆球胶囊眼",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:sphere",
+        "facial-features:white-capsule-eyes",
+        "facial-features:no-visible-mouth"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:grok-cloud",
+      "path": "dist/assets/reveal/appearance/grok-cloud.svg",
+      "version": "v1-candidate",
+      "byteSize": 2265,
+      "sha256": "191f0bc901f6769669722714e366cb4c19e55ea5cb8a86c87c16f915546d6085",
+      "ownerArtworkId": "grok-green-cloud",
+      "applicableArtworkIds": [
+        "grok-green-cloud"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/grok-cloud",
+      "slot": "appearance",
+      "shortName": "云形胶囊眼",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:cloud",
+        "facial-features:white-capsule-eyes",
+        "facial-features:no-visible-mouth"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:grok-rounded-square",
+      "path": "dist/assets/reveal/appearance/grok-rounded-square.svg",
+      "version": "v1-candidate",
+      "byteSize": 2165,
+      "sha256": "84937489575d5e13332161ad9fc9bfd52f52549778fc7836cc65f2fe9c6a5d29",
+      "ownerArtworkId": "grok-teal-square",
+      "applicableArtworkIds": [
+        "grok-teal-square"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/grok-rounded-square",
+      "slot": "appearance",
+      "shortName": "圆角方形胶囊眼",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:rounded-square",
+        "facial-features:white-capsule-eyes",
+        "facial-features:no-visible-mouth"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:meta-muse-wrapped",
+      "path": "dist/assets/reveal/appearance/meta-muse-wrapped.svg",
+      "version": "v1-candidate",
+      "byteSize": 2507,
+      "sha256": "77c74819600d3ef663c1907b1206641c4d2a047af26f5868803609e10737134a",
+      "ownerArtworkId": "candidate-meta-muse-20261005",
+      "applicableArtworkIds": [
+        "candidate-meta-muse-20261005",
+        "muse-rose-flowers",
+        "muse-sage-reading"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/meta-muse-wrapped",
+      "slot": "appearance",
+      "shortName": "包覆内嵌脸面",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:hooded",
+        "facial-features:inset-peach-face",
+        "facial-features:dark-round-eyes",
+        "facial-features:soft-smile"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:human-chestnut",
+      "path": "dist/assets/reveal/appearance/human-chestnut.svg",
+      "version": "v1-candidate",
+      "byteSize": 2957,
+      "sha256": "fe2233dad07f2f9d6088a78401c07413eaa8595b193dd5167fea9285650ffa3b",
+      "ownerArtworkId": "candidate-humans-20261005",
+      "applicableArtworkIds": [
+        "candidate-humans-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/human-chestnut",
+      "slot": "appearance",
+      "shortName": "栗发精致Q版",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:chibi-person",
+        "facial-features:large-brown-eyes",
+        "facial-features:small-nose",
+        "facial-features:gentle-smile"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:human-bun",
+      "path": "dist/assets/reveal/appearance/human-bun.svg",
+      "version": "v1-candidate",
+      "byteSize": 3299,
+      "sha256": "c03b011fa9079ac1d953f6626f67965139ea49062d3886c3b87ae07253572d8d",
+      "ownerArtworkId": "human-bun-yellow",
+      "applicableArtworkIds": [
+        "human-bun-yellow"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/human-bun",
+      "slot": "appearance",
+      "shortName": "栗发丸子头Q版",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:chibi-person",
+        "facial-features:large-brown-eyes",
+        "facial-features:small-nose",
+        "facial-features:gentle-smile"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:human-blond",
+      "path": "dist/assets/reveal/appearance/human-blond.svg",
+      "version": "v1-candidate",
+      "byteSize": 2926,
+      "sha256": "52a0a2f56acdeea574d3a65d16f4277f6b87837eff219672fed1e623cb6d1596",
+      "ownerArtworkId": "human-blond-glasses",
+      "applicableArtworkIds": [
+        "human-blond-glasses"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/human-blond",
+      "slot": "appearance",
+      "shortName": "浅金短发Q版",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:chibi-person",
+        "facial-features:large-brown-eyes",
+        "facial-features:small-nose",
+        "facial-features:gentle-smile"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:animal-shiba",
+      "path": "dist/assets/reveal/appearance/animal-shiba.svg",
+      "version": "v1-candidate",
+      "byteSize": 2545,
+      "sha256": "fca28bdaabe5ccbfc1d11ecf075071397d6e8c4b5839f800bf42f5732eeff4f7",
+      "ownerArtworkId": "candidate-animals-20261005",
+      "applicableArtworkIds": [
+        "candidate-animals-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/animal-shiba",
+      "slot": "appearance",
+      "shortName": "柴犬立耳茶白口鼻",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:shiba",
+        "facial-features:brown-eyes",
+        "facial-features:black-nose",
+        "facial-features:cream-muzzle"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:animal-cat",
+      "path": "dist/assets/reveal/appearance/animal-cat.svg",
+      "version": "v1-candidate",
+      "byteSize": 2593,
+      "sha256": "1b749843bcfe3a2c1ae19f3e9c7c287f2951ae4ff0711c2996800e1a5e265abf",
+      "ownerArtworkId": "animal-white-cat",
+      "applicableArtworkIds": [
+        "animal-white-cat"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/animal-cat",
+      "slot": "appearance",
+      "shortName": "猫耳蓝眼细胡须",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:cat",
+        "facial-features:blue-eyes",
+        "facial-features:pink-nose",
+        "facial-features:feline-muzzle",
+        "facial-features:whiskers"
+      ]
+    },
+    {
+      "id": "asset:reveal:appearance:animal-husky",
+      "path": "dist/assets/reveal/appearance/animal-husky.svg",
+      "version": "v1-candidate",
+      "byteSize": 2582,
+      "sha256": "5afb7cc02318d1b6b7eefc4b9d532c05fe2ecc61cebce061e29265ae7d7f53cb",
+      "ownerArtworkId": "animal-gray-husky",
+      "applicableArtworkIds": [
+        "animal-gray-husky"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#appearance/animal-husky",
+      "slot": "appearance",
+      "shortName": "哈士奇立耳灰白面罩",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "shape:husky",
+        "facial-features:brown-eyes",
+        "facial-features:dark-nose",
+        "facial-features:husky-mask"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:blue-plush",
+      "path": "dist/assets/reveal/palette-material/blue-plush.svg",
+      "version": "v1-candidate",
+      "byteSize": 2803,
+      "sha256": "2c6eab23ef2584a8867203f3c0befc46724be7cf58ac8a0ebc27ba16641166d5",
+      "ownerArtworkId": "candidate-dots-20261005",
+      "applicableArtworkIds": [
+        "candidate-dots-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/blue-plush",
+      "slot": "paletteMaterial",
+      "shortName": "蓝色短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:blue",
+        "material:short-plush"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:purple-matte",
+      "path": "dist/assets/reveal/palette-material/purple-matte.svg",
+      "version": "v1-candidate",
+      "byteSize": 2765,
+      "sha256": "4a95f3693da3c88492b4d0d3fe66ac236cbfde8238279f5c1a944a91c0c620fa",
+      "ownerArtworkId": "candidate-grok-20261005",
+      "applicableArtworkIds": [
+        "candidate-grok-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/purple-matte",
+      "slot": "paletteMaterial",
+      "shortName": "紫色柔和哑光",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:purple",
+        "material:soft-matte"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:cream-plush",
+      "path": "dist/assets/reveal/palette-material/cream-plush.svg",
+      "version": "v1-candidate",
+      "byteSize": 2803,
+      "sha256": "59f6f698e8535d864532f80d7de9fe5641432715d5f1327de8fba50f77bc2ab9",
+      "ownerArtworkId": "candidate-meta-muse-20261005",
+      "applicableArtworkIds": [
+        "candidate-meta-muse-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/cream-plush",
+      "slot": "paletteMaterial",
+      "shortName": "奶油短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:cream",
+        "material:short-plush"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:teal-knit",
+      "path": "dist/assets/reveal/palette-material/teal-knit.svg",
+      "version": "v1-candidate",
+      "byteSize": 2782,
+      "sha256": "896dbae42c312613ddd797218aeea61fc1d94f53f73167549c703ac036263603",
+      "ownerArtworkId": "candidate-humans-20261005",
+      "applicableArtworkIds": [
+        "candidate-humans-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/teal-knit",
+      "slot": "paletteMaterial",
+      "shortName": "青绿针织",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:teal",
+        "material:knit-fabric"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:orange-fur",
+      "path": "dist/assets/reveal/palette-material/orange-fur.svg",
+      "version": "v1-candidate",
+      "byteSize": 2831,
+      "sha256": "93b8b3d9fe36402c26b1d7164a15fbd651a05aeda513c327bb5e82a8dda3e83e",
+      "ownerArtworkId": "candidate-animals-20261005",
+      "applicableArtworkIds": [
+        "candidate-animals-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/orange-fur",
+      "slot": "paletteMaterial",
+      "shortName": "暖橙短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:orange",
+        "material:short-fur"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:pink-plush",
+      "path": "dist/assets/reveal/palette-material/pink-plush.svg",
+      "version": "v1-candidate",
+      "byteSize": 2803,
+      "sha256": "78a33cf7abd92c2cd8aa1fee47add21e01d90d03d7603f4163c51f2e281af65c",
+      "ownerArtworkId": "dots-rose-glasses",
+      "applicableArtworkIds": [
+        "dots-rose-glasses",
+        "muse-rose-flowers"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/pink-plush",
+      "slot": "paletteMaterial",
+      "shortName": "莓粉短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:pink",
+        "material:short-plush"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:lilac-plush",
+      "path": "dist/assets/reveal/palette-material/lilac-plush.svg",
+      "version": "v1-candidate",
+      "byteSize": 2803,
+      "sha256": "a0d159d866bc15c0b00dc5f98dd9a9527a86347543047e77454f4bcf06a955b5",
+      "ownerArtworkId": "dots-lilac-bucket",
+      "applicableArtworkIds": [
+        "dots-lilac-bucket"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/lilac-plush",
+      "slot": "paletteMaterial",
+      "shortName": "浅紫短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:lilac",
+        "material:short-plush"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:green-matte",
+      "path": "dist/assets/reveal/palette-material/green-matte.svg",
+      "version": "v1-candidate",
+      "byteSize": 2765,
+      "sha256": "800785203903e5460f18d1254c0b86cedd06b7f8a8c7b1b94b6afa79e43d8e5a",
+      "ownerArtworkId": "grok-green-cloud",
+      "applicableArtworkIds": [
+        "grok-green-cloud"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/green-matte",
+      "slot": "paletteMaterial",
+      "shortName": "青绿柔和哑光",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:green",
+        "material:soft-matte"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:teal-matte",
+      "path": "dist/assets/reveal/palette-material/teal-matte.svg",
+      "version": "v1-candidate",
+      "byteSize": 2765,
+      "sha256": "abcfb649c08392e53f085cc90a52352fcb0d2d849e7b9c722e8fa4b9056a7028",
+      "ownerArtworkId": "grok-teal-square",
+      "applicableArtworkIds": [
+        "grok-teal-square"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/teal-matte",
+      "slot": "paletteMaterial",
+      "shortName": "蓝绿柔和哑光",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:teal",
+        "material:soft-matte"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:sage-plush",
+      "path": "dist/assets/reveal/palette-material/sage-plush.svg",
+      "version": "v1-candidate",
+      "byteSize": 2803,
+      "sha256": "d131a9302295f67c357aaca39aefe596131d49c8ed4ac2f2b2ad4368e79d3fa7",
+      "ownerArtworkId": "muse-sage-reading",
+      "applicableArtworkIds": [
+        "muse-sage-reading"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/sage-plush",
+      "slot": "paletteMaterial",
+      "shortName": "鼠尾草短绒",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:sage",
+        "material:short-plush"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:yellow-fabric",
+      "path": "dist/assets/reveal/palette-material/yellow-fabric.svg",
+      "version": "v1-candidate",
+      "byteSize": 2788,
+      "sha256": "d124dceb4cd22f27f435b5a94cba240f4784cb49f218c2cfcdbc355346d6d413",
+      "ownerArtworkId": "human-bun-yellow",
+      "applicableArtworkIds": [
+        "human-bun-yellow"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/yellow-fabric",
+      "slot": "paletteMaterial",
+      "shortName": "暖黄柔软衣料",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:yellow",
+        "material:soft-fabric"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:blond-knit",
+      "path": "dist/assets/reveal/palette-material/blond-knit.svg",
+      "version": "v1-candidate",
+      "byteSize": 2782,
+      "sha256": "c4505ead1e899e444212327d18505a446b52aa7eddfc89137e3b493657642cf5",
+      "ownerArtworkId": "human-blond-glasses",
+      "applicableArtworkIds": [
+        "human-blond-glasses"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/blond-knit",
+      "slot": "paletteMaterial",
+      "shortName": "浅金针织",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:blond",
+        "material:knit-fabric"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:white-fur",
+      "path": "dist/assets/reveal/palette-material/white-fur.svg",
+      "version": "v1-candidate",
+      "byteSize": 2831,
+      "sha256": "ef77861ee1b6d13714119c8d200cc6c8c5b5c4423bcb85c05cbcaff851d57731",
+      "ownerArtworkId": "animal-white-cat",
+      "applicableArtworkIds": [
+        "animal-white-cat"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/white-fur",
+      "slot": "paletteMaterial",
+      "shortName": "奶油白短毛",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:white",
+        "material:short-fur"
+      ]
+    },
+    {
+      "id": "asset:reveal:palette-material:gray-fur",
+      "path": "dist/assets/reveal/palette-material/gray-fur.svg",
+      "version": "v1-candidate",
+      "byteSize": 2831,
+      "sha256": "e5f3f8e7cf59605fa5696697cb99abb5602205f79195ed3ec0217b9277aa63b6",
+      "ownerArtworkId": "animal-gray-husky",
+      "applicableArtworkIds": [
+        "animal-gray-husky"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#palette-material/gray-fur",
+      "slot": "paletteMaterial",
+      "shortName": "灰白短毛",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "color:gray",
+        "material:short-fur"
+      ]
+    },
+    {
+      "id": "asset:reveal:clothing:teal-knit-outfit",
+      "path": "dist/assets/reveal/clothing/teal-knit-outfit.svg",
+      "version": "v1-candidate",
+      "byteSize": 2755,
+      "sha256": "1ceee6870470ee3a33eb501483169219c6f72aeb117c968d7517318033ee3011",
+      "ownerArtworkId": "candidate-humans-20261005",
+      "applicableArtworkIds": [
+        "candidate-humans-20261005"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#clothing/teal-knit-outfit",
+      "slot": "clothing",
+      "shortName": "青绿针织衣装",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "clothing:teal-knit-top",
+        "clothing:ivory-shorts",
+        "clothing:light-sneakers"
+      ]
+    },
+    {
+      "id": "asset:reveal:clothing:yellow-hoodie-outfit",
+      "path": "dist/assets/reveal/clothing/yellow-hoodie-outfit.svg",
+      "version": "v1-candidate",
+      "byteSize": 2627,
+      "sha256": "7b216b3e55ce75d7654c8cd6b65eb67d12ef101975213ac15e17129290c0e7ae",
+      "ownerArtworkId": "human-bun-yellow",
+      "applicableArtworkIds": [
+        "human-bun-yellow"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#clothing/yellow-hoodie-outfit",
+      "slot": "clothing",
+      "shortName": "暖黄连帽衣装",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "clothing:yellow-hoodie",
+        "clothing:ivory-shorts",
+        "clothing:yellow-white-sneakers"
+      ]
+    },
+    {
+      "id": "asset:reveal:clothing:blue-knit-outfit",
+      "path": "dist/assets/reveal/clothing/blue-knit-outfit.svg",
+      "version": "v1-candidate",
+      "byteSize": 2711,
+      "sha256": "989350cdb578049764618affeca5dd2fb83258f3f11583bb39457d0665144bee",
+      "ownerArtworkId": "human-blond-glasses",
+      "applicableArtworkIds": [
+        "human-blond-glasses"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#clothing/blue-knit-outfit",
+      "slot": "clothing",
+      "shortName": "浅蓝针织衣装",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "clothing:light-blue-shirt",
+        "clothing:ivory-knit-cardigan",
+        "clothing:light-blue-trousers",
+        "clothing:ivory-sneakers"
+      ]
+    },
+    {
+      "id": "asset:reveal:accessory:glasses-rose",
+      "path": "dist/assets/reveal/accessory/glasses-rose.svg",
+      "version": "v1-candidate",
+      "byteSize": 2263,
+      "sha256": "dbe7e38a5bea0a018d701393090ccba12877bffb5927463f4530dc992d9237ef",
+      "ownerArtworkId": "dots-rose-glasses",
+      "applicableArtworkIds": [
+        "dots-rose-glasses"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#accessory/glasses-rose",
+      "slot": "accessory",
+      "shortName": "玫粉圆框眼镜",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "head-accessory:round-glasses"
+      ]
+    },
+    {
+      "id": "asset:reveal:accessory:glasses-clear",
+      "path": "dist/assets/reveal/accessory/glasses-clear.svg",
+      "version": "v1-candidate",
+      "byteSize": 2263,
+      "sha256": "adff98b4d252a6ad2c977234a9575cd9ce937c63a4c9e2f52242b9f323218842",
+      "ownerArtworkId": "human-blond-glasses",
+      "applicableArtworkIds": [
+        "human-blond-glasses"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#accessory/glasses-clear",
+      "slot": "accessory",
+      "shortName": "透明圆框眼镜",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "head-accessory:round-glasses"
+      ]
+    },
+    {
+      "id": "asset:reveal:accessory:yellow-bucket-hat",
+      "path": "dist/assets/reveal/accessory/yellow-bucket-hat.svg",
+      "version": "v1-candidate",
+      "byteSize": 2314,
+      "sha256": "beba284912c2e879cbc1666161ba566ab7a6c38c86ba49f5fcf4f4c336eb721b",
+      "ownerArtworkId": "dots-lilac-bucket",
+      "applicableArtworkIds": [
+        "dots-lilac-bucket"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#accessory/yellow-bucket-hat",
+      "slot": "accessory",
+      "shortName": "黄色软布渔夫帽",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "head-accessory:yellow-bucket-hat"
+      ]
+    },
+    {
+      "id": "asset:reveal:prop:daisy-bouquet",
+      "path": "dist/assets/reveal/prop/daisy-bouquet.svg",
+      "version": "v1-candidate",
+      "byteSize": 3189,
+      "sha256": "6e1e25e6002aa4fb717719bcabb584e92c6c0feefd76718249a61eb4944e731e",
+      "ownerArtworkId": "muse-rose-flowers",
+      "applicableArtworkIds": [
+        "muse-rose-flowers"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#prop/daisy-bouquet",
+      "slot": "prop",
+      "shortName": "白色雏菊花束",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "prop:flowers"
+      ]
+    },
+    {
+      "id": "asset:reveal:prop:sage-closed-book",
+      "path": "dist/assets/reveal/prop/sage-closed-book.svg",
+      "version": "v1-candidate",
+      "byteSize": 2394,
+      "sha256": "d791c7b9949fa33cf4c7d854fd079c163c29f5dacee96bf435daa590b7e1bf59",
+      "ownerArtworkId": "muse-sage-reading",
+      "applicableArtworkIds": [
+        "muse-sage-reading"
+      ],
+      "sourceRef": "scripts/generate-reveal-visual-candidates.mjs#prop/sage-closed-book",
+      "slot": "prop",
+      "shortName": "鼠尾草绿合拢书",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "prop:closed-book"
+      ]
+    },
+    {
+      "id": "asset:reveal:accessory:headphones",
+      "path": "dist/assets/reveal/accessory/headphones.png",
+      "version": "v1-candidate",
+      "byteSize": 1232629,
+      "sha256": "5c132e0b0947666dd4dde4717b6922e6158e83482f651f0819ff038e5b3cbc41",
+      "ownerArtworkId": "candidate-dots-20261005",
+      "applicableArtworkIds": [
+        "candidate-dots-20261005"
+      ],
+      "sourceRef": "imagegen:01a11630-6f96-78f0-8cd8-d2b852712505; reference=asset:candidate-dots-20261005:original@v2#2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "slot": "accessory",
+      "shortName": "包耳式耳机",
+      "artApproval": {
+        "status": "pending",
+        "scope": "independent reveal-only candidate; user visual review required"
+      },
+      "factIds": [
+        "head-accessory:over-ear-headphones"
+      ]
+    }
+  ]
+}

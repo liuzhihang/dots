@@ -4,11 +4,11 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createServer} from 'vite';
-import {ARTWORKS, ASSETS, STYLE_IDENTITIES, TARGET_PROFILES, createSnapshot, getVariants} from '../dist/studio-artwork-catalog.js?v=90';
-import {TAGS} from '../dist/studio-tags.js?v=90';
+import {ARTWORKS, ASSETS, STYLE_IDENTITIES, TARGET_PROFILES, createSnapshot, getVariants} from '../dist/studio-artwork-catalog.js?v=92';
+import {TAGS} from '../dist/studio-tags.js?v=92';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261007-v90/reference-detail');
+const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261007-v92/reference-detail');
 const playwrightPath = process.env.DOTS_PLAYWRIGHT_MODULE || '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const {chromium} = await import(pathToFileURL(playwrightPath));
 const vite = await createServer({configFile: path.join(root, 'vite.config.mjs'), server: {host: '127.0.0.1', port: 0, strictPort: true, hmr: false}});
@@ -42,16 +42,16 @@ async function screenshot(name) {
 
 try {
   await page.goto(`${origin}/index.html`, {waitUntil: 'load'});
-  assert.equal(await page.locator('html').getAttribute('data-cache'), '90', 'reference/detail fixture uses the current cache 90 source');
+  assert.equal(await page.locator('html').getAttribute('data-cache'), '92', 'reference/detail fixture uses the current cache 92 source');
   await page.evaluate(async () => {
     const [detail, reference, catalog, tags, prompts, assets, actions] = await Promise.all([
-      import('/studio-detail.js?v=90'),
-      import('/studio-reference.js?v=90'),
-      import('/studio-artwork-catalog.js?v=90'),
-      import('/studio-tags.js?v=90'),
-      import('/studio-prompt.js?v=90'),
-      import('/studio-asset-loader.js?v=90'),
-      import('/studio-actions.js?v=90')
+      import('/studio-detail.js?v=92'),
+      import('/studio-reference.js?v=92'),
+      import('/studio-artwork-catalog.js?v=92'),
+      import('/studio-tags.js?v=92'),
+      import('/studio-prompt.js?v=92'),
+      import('/studio-asset-loader.js?v=92'),
+      import('/studio-actions.js?v=92')
     ]);
     document.body.replaceChildren();
     window.__componentModules = {detail, reference, catalog, tags, prompts, assets, actions};
@@ -150,9 +150,10 @@ try {
   assert.equal(detailLayout.backgroundImage, 'none', 'detail artwork surface does not draw a transparency checkerboard');
   assert.equal(await page.locator('.artwork-detail__empty-variants').count(), 0, 'empty variant placeholder is removed');
   assert.equal(await page.locator('.artwork-detail__versions button[data-artwork-id]').count(), 0);
-  assert.equal(await page.locator('.artwork-detail__target-notice').innerText(), '当前是静态透明 PNG，暂无已验证 Dot/Pet 安装包。');
+  assert.equal(await page.locator('.artwork-detail__target-notice').isVisible(), false, 'technical target status stays inside its collapsed support section');
   assert.equal(await page.locator('.artwork-detail__target-details').getAttribute('open'), null);
   await page.locator('.artwork-detail__target-details summary').click();
+  assert.equal(await page.locator('.artwork-detail__target-notice').innerText(), '当前是静态透明 PNG，暂无已验证 Dot/Pet 安装包。');
   assert((await page.locator('.artwork-detail__targets').innerText()).includes('本机工具格式合同，非 Web 通用要求'));
   assert.equal((await page.locator('.artwork-detail__targets').innerText()).includes('/Users/'), false);
   await page.locator('.artwork-detail__target-details summary').click();
@@ -523,7 +524,7 @@ try {
   check(true, 'no external request, reference image upload, or uncaught browser error');
 
   await fs.writeFile(path.join(output, 'report.json'), `${JSON.stringify({
-    sourceCache: 90,
+    sourceCache: 91,
     origin,
     checks,
     pageErrors,

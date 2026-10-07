@@ -1,13 +1,13 @@
-import {ARTWORKS,getArtwork,getAsset,isEligible,createSnapshot,CATALOG_REVISION} from './studio-artwork-catalog.js?v=90';
-import {normalizeTagQuery,queryArtworks,queryForTopic} from './studio-tags.js?v=90';
-import {loadAsset} from './studio-asset-loader.js?v=90';
-import {createDrawEngine} from './studio-draw.js?v=90';
-import {createRevealView} from './studio-fullscreen-random.js?v=90';
-import {createDetailView,detailSelectedTagsFor} from './studio-detail.js?v=90';
-import {createReferenceView} from './studio-reference.js?v=90';
-import {createOverlay} from './studio-overlay.js?v=90';
-import {createTagBrowser} from './studio-tag-browser.js?v=90';
-import {createHomePortal,TOPICS,escapeHTML as esc} from './studio-home.js?v=90';
+import {ARTWORKS,getArtwork,getAsset,isEligible,createSnapshot,CATALOG_REVISION} from './studio-artwork-catalog.js?v=92';
+import {normalizeTagQuery,queryArtworks,queryForTopic} from './studio-tags.js?v=92';
+import {loadAsset} from './studio-asset-loader.js?v=92';
+import {createDrawEngine} from './studio-draw.js?v=92';
+import {createRevealView} from './studio-fullscreen-random.js?v=92';
+import {createDetailView,detailSelectedTagsFor} from './studio-detail.js?v=92';
+import {createReferenceView} from './studio-reference.js?v=92';
+import {createOverlay} from './studio-overlay.js?v=92';
+import {createTagBrowser} from './studio-tag-browser.js?v=92';
+import {createHomePortal,TOPICS,escapeHTML as esc} from './studio-home.js?v=92';
 
 const byId=id=>document.getElementById(id),engine=createDrawEngine();
 const galleryState={query:normalizeTagQuery(),scroll:0};
@@ -25,7 +25,7 @@ function readRoute(){
   query=normalizeTagQuery({text:params.get('q')||'',tagsByDimension:groups});
  }return {page:next,query};
 }
-function writeState({push=false}={}){history[push?'pushState':'replaceState']({studio:90,page,overlayTrail:[]},'',routeHref(page));handledRouteUrl=location.href;}
+function writeState({push=false}={}){history[push?'pushState':'replaceState']({studio:92,page,overlayTrail:[]},'',routeHref(page));handledRouteUrl=location.href;}
 function showPage(next,{query,restore=false}={}){
  const changed=page!==next;pageScroll[page]=window.scrollY;page=next;
  if(query)galleryState.query=normalizeTagQuery(query);
@@ -51,10 +51,10 @@ function renderGallery(){
   const bounds=asset.alpha?.visibleBounds;
   const extent=bounds?Math.max(bounds.width,bounds.height):Math.max(asset.width,asset.height);
   const imageStyle=bounds?`width:${asset.width/extent*88}%;height:auto;max-width:none;max-height:none;position:absolute;left:50%;top:50%;transform:translate(${-100*(bounds.x+bounds.width/2)/asset.width}%,${-100*(bounds.y+bounds.height/2)/asset.height}%);`:'';
-  return `<article class="artwork-card" data-artwork-card="${esc(a.id)}" data-resource-state="${verified.has(a.id)?'ready':'checking'}"><button class="artwork-open" data-artwork="${esc(a.id)}" aria-label="查看${esc(a.title)}"><span class="artwork-image" style="--art-surface:${topic?.surface||'#f2f3fa'}"><img src="${esc(asset.path)}" alt="${esc(a.title)}" width="${asset.width}" height="${asset.height}" style="${esc(imageStyle)}" loading="lazy" decoding="async"></span><span class="artwork-caption"><b>${esc(a.title)}</b></span></button><div class="artwork-card-tags">${tags.map(tag=>`<button type="button" class="gallery-feature-tag" data-gallery-feature="${esc(tag.id)}" data-dimension="${esc(tag.dimension)}">${esc(tag.label)}</button>`).join('')}</div><small class="asset-status">${verified.has(a.id)?'透明 PNG · 查看 Prompt':'正在核对图片资源…'}</small></article>`;
+  return `<article class="artwork-card" data-artwork-card="${esc(a.id)}" data-resource-state="${verified.has(a.id)?'ready':'checking'}"><button class="artwork-open" data-artwork="${esc(a.id)}" aria-label="查看${esc(a.title)}"><span class="artwork-image" style="--art-surface:${topic?.surface||'#f2f3fa'}"><img src="${esc(asset.path)}" alt="${esc(a.title)}" width="${asset.width}" height="${asset.height}" style="${esc(imageStyle)}" loading="lazy" decoding="async"></span><span class="artwork-caption"><b>${esc(a.title)}</b></span></button><div class="artwork-card-tags">${tags.map(tag=>`<button type="button" class="gallery-feature-tag" data-gallery-feature="${esc(tag.id)}" data-dimension="${esc(tag.dimension)}">${esc(tag.label)}</button>`).join('')}</div><small class="asset-status">${verified.has(a.id)?'透明 PNG · 查看 Prompt':'图片载入中…'}</small></article>`;
  }).join('');
  byId('resourceNotice').hidden=!unavailable.size;byId('resourceNotice').replaceChildren();
- if(unavailable.size){byId('resourceNotice').append(document.createTextNode(`${unavailable.size} 款图片暂不可用，已从当前网格排除。`));const retry=document.createElement('button');retry.className='button quiet';retry.textContent='重试图片';retry.addEventListener('click',()=>{unavailable.clear();engine.clearUnavailable();assetChecks.clear();renderGallery();});byId('resourceNotice').append(retry);}
+ if(unavailable.size){byId('resourceNotice').append(document.createTextNode(`${unavailable.size} 张图片暂时无法显示。`));const retry=document.createElement('button');retry.className='button quiet';retry.textContent='再试一次';retry.addEventListener('click',()=>{unavailable.clear();engine.clearUnavailable();assetChecks.clear();renderGallery();});byId('resourceNotice').append(retry);}
  for(const a of found){checkAsset(a).then(ok=>{
   const card=[...byId('artworkGrid').querySelectorAll('[data-artwork-card]')].find(el=>el.dataset.artworkCard===a.id);if(!card)return;
   if(ok){card.dataset.resourceState='ready';card.querySelector('.asset-status').textContent='透明 PNG · 查看 Prompt';}
@@ -77,7 +77,7 @@ function openRandom(){
  activeReveal?.cancel();
  overlay.show({kind:'random',title:'随机发现一位伙伴',factory(){
   const container=document.createElement('section');container.className='random-container';
-  let view;view=createRevealView({engine,initialRequiredFeatures:savedLocks,onLocksChange:ids=>savedLocks=[...ids],getConditions(){activate(view);return scope;},onDetail:result=>openDetail(result.artworkId,result),onResult:result=>savedResult=result,notify});
+  let view;view=createRevealView({engine,autoStart:!savedResult,initialRequiredFeatures:savedLocks,onLocksChange:ids=>savedLocks=[...ids],getConditions(){activate(view);return scope;},onDetail:result=>openDetail(result.artworkId,result),onResult:result=>savedResult=result,notify});
   container.append(view.element);
   let ready;if(savedResult)ready=view.restore(savedResult);
   return {element:container,title:'随机发现一位伙伴',ready,dispose(){savedLocks=[...view.getState().requiredFeatures];view.dispose();},getResult:view.getResult,getState:view.getState};
@@ -102,4 +102,4 @@ window.addEventListener('popstate',e=>{handledRouteUrl=location.href;const route
 // just restored by popstate, or handle an event for a URL already left behind.
 window.addEventListener('hashchange',e=>{if(e.newURL!==location.href||handledRouteUrl===location.href)return;if(overlay.isOpen())overlay.reset();const route=readRoute();showPage(route.page,{query:route.query});writeState();});
 const initial=readRoute();showPage(initial.page,{query:initial.query});writeState();
-document.documentElement.dataset.cache='90';document.documentElement.dataset.catalogRevision=CATALOG_REVISION;
+document.documentElement.dataset.cache='92';document.documentElement.dataset.catalogRevision=CATALOG_REVISION;

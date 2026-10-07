@@ -52,7 +52,7 @@ function readPngAlphaStats(bytes, label) {
   return {width:header.width,height:header.height,transparentPixels,opaquePixels,partialAlphaPixels,alphaBounds:maxX<0?null:{x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1}};
 }
 
-const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v90/browser';
+const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v92/browser';
 const report=JSON.parse(await fs.readFile(folder+'/report.json'));
 assert.equal(report.downloads.length,ARTWORKS.length,'Every published original must have an actual browser download');
 const records=[];

@@ -11,14 +11,17 @@ const playwrightModule = process.env.DOTS_PLAYWRIGHT_MODULE
 const {chromium} = await import(pathToFileURL(playwrightModule));
 const baseUrl = process.env.DOTS_BASE_URL || 'http://127.0.0.1:5180/';
 const evidenceDirectory = process.env.DOTS_LAYOUT_EVIDENCE
-  || 'design/acceptance/current-20261007-v90/layout';
+  || 'design/acceptance/current-20261007-v92/layout';
+const reportPath = process.env.DOTS_LAYOUT_REPORT || path.join(evidenceDirectory, 'reveal-layout-report.json');
+const requestedViewports = new Set((process.env.DOTS_LAYOUT_VIEWPORTS || '').split(',').map(value => value.trim()).filter(Boolean).map(Number).filter(Number.isFinite));
 const viewportCases = [
   {width: 1440, height: 900},
   {width: 1280, height: 900},
   {width: 768, height: 844},
   {width: 390, height: 844},
   {width: 320, height: 700}
-];
+].filter(viewport => requestedViewports.size === 0 || requestedViewports.has(viewport.width));
+assert(viewportCases.length > 0, 'at least one configured layout viewport is selected');
 const expectedSlots = ['style', 'appearance', 'palette-material', 'clothing', 'accessory', 'prop'];
 const expectedIndices = expectedSlots.map((_, index) => String(index));
 const browser = await chromium.launch({
@@ -44,36 +47,76 @@ async function openSurface(surface, viewport, {watchStops = false} = {}) {
   if (surface === 'game') {
     if (watchStops) await installStopWatcher(surface);
     await assertNoScopeControls(surface);
-  } else {
-    if (watchStops) await installStopWatcher(surface);
-    await page.locator('.hero-actions [data-command="random"]').click();
-  }
+  } else if (watchStops) await installStopWatcher(surface);
+  if (surface === 'modal') await page.locator('.hero-actions [data-command="random"]').click();
   const selector = revealSelector(surface);
   await page.locator(selector).waitFor({state: 'visible'});
-  assert.equal(await page.locator(selector).getAttribute('data-phase'), 'ready', `${surface}: opening waits for an explicit start`);
-  assert.equal(await page.locator(`${selector} .fr-card-back`).count(), 6, `${surface}: six uniform card backs are visible before selection`);
+  if (surface === 'game') {
+    assert.equal(await page.locator(selector).getAttribute('data-phase'), 'ready', 'the separate game page still waits for its explicit start action');
+    assert.equal(await page.locator(`${selector} .fr-preparing-window`).count(), 6, 'the game page opens on six waiting-card windows');
+    assert.equal(await page.locator(`${selector} .fr-preparing-window .fr-card-back`).count(), 18, 'each game waiting card shows its three-position card-back track');
+  } else {
+    await page.waitForFunction(sel => ['selecting', 'preloading', 'revealing', 'awaiting-reveal', 'result', 'empty', 'error'].includes(document.querySelector(sel)?.dataset.phase), selector, {timeout: 10000});
+    assert(['selecting', 'preloading', 'revealing', 'awaiting-reveal', 'result', 'empty', 'error'].includes(await page.locator(selector).getAttribute('data-phase')), 'one home click immediately starts the random discovery flow');
+    if (await page.locator(selector).getAttribute('data-phase') === 'preloading') {
+      assert.equal(await page.locator(`${selector} .fr-preparing-window`).count(), 6, 'single-click modal presents six waiting-card windows during preload');
+      assert.equal(await page.locator(`${selector} .fr-preparing-window .fr-card-back`).count(), 18, 'each waiting card exposes a three-position card-back track');
+    }
+  }
   assert.equal(await page.locator(`${selector} .fr-result-card`).evaluate(card => card.hidden), true, `${surface}: opening does not expose a result`);
+  assert.equal(await page.locator(selector).getAttribute('data-display-result'), 'false', `${surface}: opening exposes no completed result`);
   const ready = await page.locator(selector).evaluate(root => ({
+    phase: root.dataset.phase || '',
     slots: [...root.querySelectorAll('.fr-reel')].map(slot => {const r=slot.getBoundingClientRect();return {key:slot.dataset.slot, x:r.x, width:r.width, height:r.height};}),
     stage: (()=>{const s=root.querySelector('.fr-reel-stage');const r=s.getBoundingClientRect();return {x:r.x,width:r.width};})(),
-    visibleActions: [...root.querySelectorAll('.fr-actions [data-fr]')].filter(button=>!button.hidden).map(button=>button.dataset.fr),
-    locksHidden: root.querySelector('.fr-feature-locks').hidden
+    visibleActions: [...root.querySelectorAll('[data-fr]')].filter(button=>!button.hidden && getComputedStyle(button).display !== 'none').map(button=>button.dataset.fr),
+    locksHidden: root.querySelector('.fr-feature-locks').hidden,
+    feedback: root.dataset.feedback || '',
+    preparing: root.querySelector('.fr-reveal')?.classList.contains('is-preparing') ?? false
   }));
-  assert.deepEqual(ready.visibleActions, ['random'], `${surface}: initial state has one primary start action`);
+  if (surface === 'game') assert.deepEqual(ready.visibleActions, ['random'], 'the game page has one explicit primary start action');
+  else if (ready.phase === 'preloading') {assert.equal(ready.feedback, 'shuffling');assert.equal(ready.preparing, true, 'home modal gives immediate waiting-card feedback while assets prepare');}
   assert.equal(ready.locksHidden, true, `${surface}: locks are absent before a result`);
   assert.deepEqual(ready.slots.map(slot=>slot.key), expectedSlots);
   for(const slot of ready.slots) assert(Math.abs(slot.width/slot.height-5/6)<0.015, `${surface}: ${slot.key} uses the agreed 5:6 card ratio`);
-  if(viewport.width<=600) assert(Math.abs(ready.slots[0].x+ready.slots[0].width/2-(ready.stage.x+ready.stage.width/2))<2, `${surface}: mobile starts with the first card centered`);
+  if(viewport.width<=600 && (surface==='game' || ready.phase==='preloading')) assert(Math.abs(ready.slots[0].x+ready.slots[0].width/2-(ready.stage.x+ready.stage.width/2))<2, `${surface}: mobile starts with the first card centered`);
   await page.waitForFunction(sel=>[...document.querySelectorAll(`${sel} .fr-card-back-mark`)].every(image=>image.complete&&image.naturalWidth>0),selector);
-  await saveEvidence(surface, viewport.width, 'ready');
-  await page.locator(`${selector} [data-fr="random"]`).click();
+  await saveEvidence(surface, viewport.width, surface === 'game' ? 'ready' : 'single-click-opening');
+  await installPhaseObserver(selector);
+  if (surface === 'game') await page.locator(`${selector} [data-fr="random"]`).click();
   await page.waitForFunction(sel => {
     const phase = document.querySelector(sel)?.dataset.phase;
-    return ['revealing', 'result', 'error', 'empty'].includes(phase);
+    return ['revealing', 'awaiting-reveal', 'result', 'error', 'empty'].includes(phase);
   }, selector, {timeout: 20000});
   await page.waitForFunction(sel => [...document.querySelectorAll(`${sel} .fr-reel-image`)].every(image => image.complete && image.naturalWidth > 0), selector, {timeout: 15000});
   if (surface === 'modal') await assertNoScopeControls(surface);
   return selector;
+}
+
+async function installPhaseObserver(selector) {
+  await page.locator(selector).evaluate(root => {
+    const sample = () => ({
+      at: performance.now(),
+      phase: root.dataset.phase || '',
+      activeSlot: root.dataset.activeSlot || '-1',
+      stopped: [...root.querySelectorAll('.fr-reel')].map(slot => slot.dataset.stopped || 'false'),
+      displayResult: root.dataset.displayResult === 'true',
+      resultHidden: root.querySelector('.fr-result-card')?.hidden ?? true,
+      resultDisplay: getComputedStyle(root.querySelector('.fr-result-card')).display,
+      reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches
+    });
+    window.__layoutPhaseTrace = [sample()];
+    const observer = new MutationObserver(() => window.__layoutPhaseTrace.push(sample()));
+    observer.observe(root, {attributes: true, attributeFilter: ['data-phase', 'data-display-result', 'data-active-slot'], subtree: true});
+    window.__layoutPhaseObserver = observer;
+  });
+}
+
+async function readPhaseTrace() {
+  return page.evaluate(() => {
+    window.__layoutPhaseObserver?.disconnect?.();
+    return window.__layoutPhaseTrace || [];
+  });
 }
 
 async function assertNoScopeControls(surface) {
@@ -137,7 +180,27 @@ async function inspectRow(selector, {checkDarkSurface = true} = {}) {
     };
     return {
       phase: root.dataset.phase,
+      activeSlot: root.dataset.activeSlot || '-1',
+      slotStopped: [...root.querySelectorAll('.fr-reel')].map(slot => ({slot: slot.dataset.index || '', stopped: slot.dataset.stopped || 'false'})),
       artworkId: root.dataset.artworkId || null,
+      dataDisplayResult: root.dataset.displayResult || 'false',
+      reducedMotion: {rootValue: root.dataset.reducedMotion || 'false', mediaMatches: matchMedia('(prefers-reduced-motion: reduce)').matches},
+      resultComputedDisplay: getComputedStyle(root.querySelector('.fr-result-card')).display,
+      resultCardHidden: root.querySelector('.fr-result-card')?.hidden ?? true,
+      domOrder: (() => {
+        const follows = (first, second) => Boolean(first && second && (first.compareDocumentPosition(second) & Node.DOCUMENT_POSITION_FOLLOWING));
+        const stage = root.querySelector('.fr-reel-stage');
+        const result = root.querySelector('.fr-result-card');
+        const actions = root.querySelector('.fr-actions');
+        const extra = root.querySelector('.fr-extra-actions');
+        const status = root.querySelector('.fr-status');
+        return {stageBeforeResult: follows(stage, result), revealBeforePrimary: follows(root.querySelector('.fr-reveal'), actions), primaryBeforeSecondary: follows(actions, extra), secondaryBeforeStatus: follows(extra, status)};
+      })(),
+      scrollTops: {
+        overlayBody: Number(root.closest('#overlayBody')?.scrollTop || 0),
+        dialog: Number(root.closest('dialog')?.scrollTop || 0),
+        view: Number(root.scrollTop || 0)
+      },
       view: {x: viewRect.x, right: viewRect.right, width: viewRect.width, height: viewRect.height, scrollWidth: root.scrollWidth, clientWidth: root.clientWidth},
       flowChildren: [...root.children].flatMap(child => getComputedStyle(child).display === 'contents' ? [...child.children] : [child]).filter(child => !child.hidden && child.getClientRects().length).map(child => ({
         class: String(child.className || child.tagName),
@@ -160,10 +223,20 @@ async function inspectRow(selector, {checkDarkSurface = true} = {}) {
           artworkImage: Boolean(visual.querySelector('.fr-reel-image')),
           src: visual.querySelector('.fr-reel-image')?.currentSrc || visual.querySelector('.fr-reel-image')?.src || '',
           inlineSvg: Boolean(visual.querySelector('svg')),
-          imageLoaded: Boolean(visual.querySelector('.fr-reel-image')?.complete && visual.querySelector('.fr-reel-image')?.naturalWidth > 0)
-          ,sourceArtwork:visual.dataset.sourceArtwork||'',sourceAsset:visual.dataset.sourceAsset||'',sourceHash:visual.dataset.sourceHash||''
+          imageLoaded: Boolean(visual.querySelector('.fr-reel-image')?.complete && visual.querySelector('.fr-reel-image')?.naturalWidth > 0),
+          visualStatus: visual.dataset.visualStatus || '',
+          artApproval: visual.dataset.artApproval || '',
+          sourceArtwork: visual.dataset.sourceArtwork || '',
+          sourceAsset: visual.dataset.sourceAsset || '',
+          sourceHash: visual.dataset.sourceHash || ''
         })),
-        label: slot.querySelector('.fr-reel-label')?.textContent?.trim() || ''
+        label: slot.querySelector('.fr-reel-label')?.textContent?.trim() || '',
+        summary: (() => {
+          const value = slot.querySelector('.fr-reel-item.is-centered .fr-reel-value') || slot.querySelector('.fr-reel-value');
+          if (!value) return null;
+          const style = getComputedStyle(value);
+          return {text: value.textContent.trim(), overflow: style.overflow, textOverflow: style.textOverflow, whiteSpace: style.whiteSpace, clientHeight: value.clientHeight, scrollHeight: value.scrollHeight};
+        })()
       })),
       progress: [...root.querySelectorAll('.fr-reveal-progress [data-slot-progress]')].map(step => ({
         index: step.dataset.slotProgress,
@@ -216,10 +289,11 @@ async function inspectRow(selector, {checkDarkSurface = true} = {}) {
     assert(slot.visuals.length > 0, `${selector}: ${slot.key} has visible semantic visuals`);
     assert(slot.visuals.every(visual => visual.id && visual.version), `${selector}: ${slot.key} visuals carry stable ids and versions`);
     if (slot.key === 'style') {
-      assert(slot.visuals.every(visual => visual.kind === 'artwork-preview' && visual.artworkImage && visual.src), `${selector}: style candidates use registered real Artwork previews`);
+      assert(slot.visuals.every(visual => visual.kind === 'original' && visual.artworkImage && visual.src), `${selector}: style candidates use the registered original Artwork identity visual`);
     } else {
-      assert(slot.visuals.every(visual => ['source-crop', 'empty-value'].includes(visual.kind) && !visual.inlineSvg), `${selector}: ${slot.key} uses registered original-image details or an accurate empty value`);
-      for(const visual of slot.visuals) if(visual.kind==='source-crop') assert(visual.artworkImage && visual.imageLoaded && visual.sourceArtwork && visual.sourceAsset && visual.sourceHash, `${selector}: crop has a decoded source and provenance`);
+      assert(slot.visuals.every(visual => ['dedicated-asset', 'empty-value'].includes(visual.kind) && !visual.inlineSvg), `${selector}: ${slot.key} uses an independent registered visual or accurate empty value`);
+      for(const visual of slot.visuals) if(visual.kind==='dedicated-asset') assert(visual.artworkImage && visual.imageLoaded && visual.sourceAsset && visual.sourceHash, `${selector}: independent visual is decoded and carries Asset provenance`);
+      for(const visual of slot.visuals) if(visual.visualStatus==='candidate-preview') assert.equal(visual.artApproval, 'pending', `${selector}: candidate visuals remain unapproved`);
     }
   }
   assert(row.slots.every(slot => slot.rect.width > 0 && slot.rect.height > 0), `${selector}: every slot has a visible box`);
@@ -261,7 +335,7 @@ async function inspectRow(selector, {checkDarkSurface = true} = {}) {
 async function assertResultAndActions(selector) {
   await page.waitForFunction(sel => {
     const root = document.querySelector(sel);
-    return root?.dataset.phase === 'result' && !root.querySelector('.fr-result-card')?.hidden;
+    return root?.dataset.phase === 'result' && root.dataset.displayResult === 'true' && !root.querySelector('.fr-result-card')?.hidden;
   }, selector, {timeout: 25000});
   await page.waitForFunction(sel => {
     const image = document.querySelector(`${sel} .fr-result-image`);
@@ -286,15 +360,23 @@ async function assertResultAndActions(selector) {
     if(expected.kind==='empty-value')assert.equal(center.artworkImage,false,`${selector}: none does not fabricate an object`);
   }
   assert.equal(row.resultHidden, false, `${selector}: complete result appears after card stops`);
+  assert.equal(row.dataDisplayResult, 'true', `${selector}: data-display-result becomes true only in result phase`);
+  assert.equal(row.resultComputedDisplay === 'none', false, `${selector}: result is visibly rendered after reveal`);
+  assert.deepEqual(row.domOrder, {stageBeforeResult: true, revealBeforePrimary: true, primaryBeforeSecondary: true, secondaryBeforeStatus: true}, `${selector}: DOM order is feature summary, result, primary actions, secondary actions, then status`);
+  if(page.viewportSize().width<=600) {
+    assert(row.slots.every(slot => slot.rect.width >= 110 && slot.rect.width <= 120), `${selector}: mobile result summaries are 110–120px wide`);
+    assert(row.slots.every(slot => slot.summary && slot.summary.text && slot.summary.textOverflow !== 'ellipsis' && slot.summary.whiteSpace !== 'nowrap' && slot.summary.clientHeight >= slot.summary.scrollHeight), `${selector}: category, visual, and short value are not truncated`);
+  }
   assert(row.progress.every(step => step.state === 'stopped' && step.landed), `${selector}: progress indicators land with their stopped cards`);
   const styleCenter = row.slots.find(slot => slot.key === 'style')?.visuals.find(visual => visual.centered);
   assert(styleCenter?.imageLoaded, `${selector}: selected style preview is decoded from its actual Artwork image`);
   assert(row.image.width >= 240 && row.image.height >= 240 && row.imageLoaded, `${selector}: complete artwork is prominent and loaded`);
   assert(row.image.x >= row.imageHost.x - 1 && row.image.y >= row.imageHost.y - 1 && row.image.right <= row.imageHost.right + 1 && row.image.bottom <= row.imageHost.bottom + 1, `${selector}: original image box stays wholly inside its result host`);
   const visibleActions = row.actionState.filter(action => !action.hidden);
-  assert.deepEqual(visibleActions.map(action=>action.action),['copy','download','random'],`${selector}: copy and download precede secondary reroll`);
-  assert.equal(visibleActions.length, 3, `${selector}: exactly three bottom actions remain`);
-  const repeat = visibleActions.find(action => /再来一款/.test(action.text));
+  assert.deepEqual(visibleActions.map(action=>action.action),['copy','download'],`${selector}: primary actions contain copy and download only`);
+  const visibleSecondary = row.extraActionState.filter(action => !action.hidden);
+  assert.deepEqual(visibleSecondary.map(action=>action.action),['random','detail','chatgpt'],`${selector}: reroll, detail, and ChatGPT remain secondary`);
+  const repeat = visibleSecondary.find(action => /再来一款/.test(action.text));
   const copy = visibleActions.find(action => /复制 Prompt/.test(action.text));
   const download = visibleActions.find(action => action.action === 'download' && /下载/.test(action.text));
   const chatgpt = row.extraActionState.find(action => action.action === 'chatgpt' && /ChatGPT/.test(action.text) && !action.hidden);
@@ -303,9 +385,8 @@ async function assertResultAndActions(selector) {
   assert(download && !download.disabled, `${selector}: raw image download is available`);
   assert(chatgpt && !chatgpt.disabled, `${selector}: ChatGPT continuation remains available as an auxiliary action`);
   for (const action of [repeat, copy, download, chatgpt]) assert(action.height >= 40, `${selector}: ${action.text} has a usable touch target`);
-  assert(row.detail.width >= 44 && row.detail.height >= 44, `${selector}: secondary detail stays visible with a usable touch target beside the result`);
-  assert(row.detail.x >= row.result.x - 1 && row.detail.right <= row.result.right + 1, `${selector}: detail action is inside the result area`);
-  assert.equal(await page.locator(`${selector} .fr-result-card`).locator('.fr-result-detail').count(), 1, `${selector}: one detail action is attached to the revealed artwork`);
+  assert(row.detail.width >= 44 && row.detail.height >= 44, `${selector}: secondary detail stays visible with a usable touch target`);
+  assert.equal(await page.locator(`${selector} .fr-extra-actions`).locator('[data-fr=detail]').count(), 1, `${selector}: one detail action is in the secondary action group`);
   const imageStyle = await page.locator(`${selector} .fr-result-image`).evaluate(image => getComputedStyle(image).objectFit);
   assert.equal(imageStyle, 'contain', `${selector}: complete artwork keeps its full image bounds`);
   return row;
@@ -347,18 +428,45 @@ async function saveEvidence(surface, width, state) {
 async function finishSurface(surface, viewport, {naturalStops = false, verifyChatGPT = false} = {}) {
   const selector = await openSurface(surface, viewport, {watchStops: naturalStops});
   const phase = await page.locator(selector).getAttribute('data-phase');
-  assert(['revealing', 'result'].includes(phase), `${surface} ${viewport.width}: expected an active reveal, got ${phase}`);
+  assert(['revealing', 'awaiting-reveal', 'result'].includes(phase), `${surface} ${viewport.width}: expected an active reveal, got ${phase}`);
   if (phase === 'revealing') {
     assert.equal(await page.locator(`${selector} .fr-result-card`).evaluate(card => card.hidden), true, `${surface}: finished artwork stays hidden while feature cards roll`);
   }
   const rollingLayout = await inspectRow(selector);
   const revealEvidence = await saveEvidence(surface, viewport.width, 'rolling');
 
-  if (phase === 'revealing' && !naturalStops) await page.locator(`${selector} [data-fr="skip"]`).click();
-  if (phase === 'revealing' && naturalStops) {
-    await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'result', selector, {timeout: 25000});
+  const frozenArtworkId = await page.locator(selector).getAttribute('data-artwork-id');
+  let awaitingEvidence = null;
+  let awaitingMetrics = null;
+  if (phase === 'revealing' && !naturalStops) {
+    await page.locator(`${selector} [data-fr="skip"]`).click();
+    await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'awaiting-reveal', selector, {timeout: 10000});
+    assert.equal(await page.locator(selector).getAttribute('data-artwork-id'), frozenArtworkId, `${surface}: skip retains the same frozen Artwork`);
+    assert.equal(await page.locator(`${selector} .fr-result-card`).evaluate(card => card.hidden), true, `${surface}: skip enters the hidden-result boundary`);
+    assert.equal(await page.locator(selector).getAttribute('data-display-result'), 'false', `${surface}: skip keeps data-display-result false`);
+    awaitingMetrics = await inspectRow(selector, {checkDarkSurface: false});
+    assert.equal(awaitingMetrics.reducedMotion.mediaMatches, false, `${surface}: skip path runs with no-preference`);
+    assert.equal(awaitingMetrics.dataDisplayResult, 'false', `${surface}: skip path holds result hidden during awaiting-reveal`);
+    awaitingEvidence = await saveEvidence(surface, viewport.width, 'skip-awaiting-reveal');
+  }
+  if ((phase === 'revealing' || phase === 'awaiting-reveal') && naturalStops) {
+    await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'awaiting-reveal', selector, {timeout: 25000});
+    assert.equal(await page.locator(selector).getAttribute('data-display-result'), 'false', `${surface}: all six cards stop before the result is revealed`);
+    assert.equal(await page.locator(`${selector} .fr-result-card`).evaluate(card => card.hidden), true, `${surface}: sixth-stop boundary keeps the result hidden`);
+    assert.deepEqual((await page.locator(selector).evaluate(root => [...root.querySelectorAll('.fr-reel')].map(slot => slot.dataset.stopped))), Array(6).fill('true'), `${surface}: every card is stopped at the awaiting boundary`);
+    awaitingMetrics = await inspectRow(selector, {checkDarkSurface: false});
+    assert.equal(awaitingMetrics.reducedMotion.mediaMatches, false, `${surface}: natural stop path runs with no-preference`);
+    assert.equal(awaitingMetrics.dataDisplayResult, 'false', `${surface}: natural stop path holds result hidden during awaiting-reveal`);
+    awaitingEvidence = await saveEvidence(surface, viewport.width, 'six-stopped-awaiting-reveal');
+    await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'result', selector, {timeout: 5000});
   }
   const resultLayout = await assertResultAndActions(selector);
+  const phaseTrace = await readPhaseTrace();
+  assert(phaseTrace.length > 0 && phaseTrace.some(event => event.phase === 'result'), `${surface}: phase trace records reveal completion`);
+  assert(phaseTrace.filter(event => event.phase !== 'result').every(event => !event.displayResult && event.resultHidden && event.resultDisplay === 'none'), `${surface}: result remains hidden in every pre-result phase`);
+  for (const requiredPhase of ['selecting', 'preloading', 'revealing', 'awaiting-reveal']) {
+    for (const event of phaseTrace.filter(item => item.phase === requiredPhase)) assert(!event.displayResult && event.resultHidden && event.resultDisplay === 'none', `${surface}: ${requiredPhase} keeps the result hidden`);
+  }
   const resultEvidence = await saveEvidence(surface, viewport.width, 'result');
   let stopSequence = null;
   if (naturalStops) {
@@ -386,7 +494,7 @@ async function finishSurface(surface, viewport, {naturalStops = false, verifyCha
       imageWithinFirstScreen: image.top < panel.top + height && image.bottom > panel.top,
       resultWithinOneScreenScroll: offset(result) <= height,
       actionsWithinShortScroll: offset(actions) <= height * 1.2,
-      detailWithinFirstScreen: offset(detail) <= height,
+      detailWithinShortScroll: offset(detail) <= height * 1.2,
       imageOffsetBottom: offset(image),
       actionOffsetBottom: offset(actions),
       detailOffsetBottom: offset(detail),
@@ -395,14 +503,42 @@ async function finishSurface(surface, viewport, {naturalStops = false, verifyCha
   }, visibleHeight);
   assert(reachability.imageWithinFirstScreen && reachability.resultWithinOneScreenScroll, `${surface} ${viewport.width}: complete result image stays in the first panel screen (${JSON.stringify(reachability)})`);
   assert(reachability.actionsWithinShortScroll, `${surface} ${viewport.width}: result actions stay within a small scroll of the panel top (${JSON.stringify(reachability)})`);
-  assert(reachability.detailWithinFirstScreen, `${surface} ${viewport.width}: primary detail action stays in the first panel screen (${JSON.stringify(reachability)})`);
+  assert(reachability.detailWithinShortScroll, `${surface} ${viewport.width}: secondary detail action stays within a short panel scroll (${JSON.stringify(reachability)})`);
   const chatgptPrefill = verifyChatGPT ? await assertChatGPTPrefill(selector, resultLayout.artworkId) : null;
+  let rerollScroll = null;
+  if (viewport.width === 390) {
+    rerollScroll = await page.locator(selector).evaluate(root => {
+      const surfaces = [root.closest('#overlayBody'), root.closest('dialog'), root].filter(Boolean);
+      const host = surfaces.find(element => element.scrollHeight > element.clientHeight + 2 && /auto|scroll/.test(getComputedStyle(element).overflowY)) || null;
+      if (host) host.scrollTop = host.scrollHeight;
+      const stage = root.querySelector('.fr-reel-stage');
+      if (stage) stage.scrollLeft = stage.scrollWidth;
+      const read = element => element ? {id: element.id || element.className || element.tagName.toLowerCase(), scrollTop: Number(element.scrollTop || 0), scrollHeight: element.scrollHeight, clientHeight: element.clientHeight} : null;
+      return {host: read(host), overlayBody: read(root.closest('#overlayBody')), dialog: read(root.closest('dialog')), view: read(root), stage: stage ? {scrollLeft: Number(stage.scrollLeft || 0), scrollWidth: stage.scrollWidth, clientWidth: stage.clientWidth} : null};
+    });
+    await page.locator(`${selector} [data-fr="random"]`).evaluate(button => button.click());
+    await page.waitForFunction(sel => ['selecting', 'preloading', 'revealing', 'awaiting-reveal', 'result'].includes(document.querySelector(sel)?.dataset.phase), selector, {timeout: 15000});
+    rerollScroll.after = await page.locator(selector).evaluate(root => ({
+      overlayBody: Number(root.closest('#overlayBody')?.scrollTop || 0),
+      dialog: Number(root.closest('dialog')?.scrollTop || 0),
+      view: Number(root.scrollTop || 0),
+      stage: Number(root.querySelector('.fr-reel-stage')?.scrollLeft || 0),
+      activeSlot: root.dataset.activeSlot || '-1',
+      phase: root.dataset.phase || ''
+    }));
+    if (rerollScroll.host) assert(rerollScroll.host.scrollTop > 0, `${surface}: test setup scrolled the actual reveal container before reroll`);
+    assert(rerollScroll.stage.scrollLeft > 0, `${surface}: test setup scrolled the horizontal six-card stage before reroll`);
+    assert([rerollScroll.after.overlayBody, rerollScroll.after.dialog, rerollScroll.after.view, rerollScroll.after.stage].every(value => value <= 1), `${surface}: reroll resets actual overlay/dialog/view and six-card stage scrolling (${JSON.stringify(rerollScroll)})`);
+    assert.notEqual(rerollScroll.after.phase, 'result', `${surface}: reroll does not leave the previous result visible`);
+    rerollScroll.screenshot = await saveEvidence(surface, 390, 'reroll-stage-reset');
+    await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'result', selector, {timeout: 15000});
+  }
 
   if (surface === 'modal') {
     await page.locator('#overlayClose').click();
     await page.waitForFunction(() => !document.querySelector('#studioOverlay')?.open);
   }
-  return {surface, viewport, phase, rollingLayout, resultLayout, stopSequence, chatgptPrefill, reachability, screenshots: [revealEvidence, resultEvidence]};
+  return {surface, viewport, phase, rollingLayout, awaitingMetrics, resultLayout, phaseTrace, stopSequence, chatgptPrefill, reachability, rerollScroll, screenshots: [revealEvidence, awaitingEvidence, resultEvidence, rerollScroll?.screenshot].filter(Boolean)};
 }
 
 try {
@@ -415,24 +551,43 @@ try {
   const gameKeys = runs.filter(run => run.surface === 'game').map(run => run.resultLayout.slots.map(slot => slot.key));
   const modalKeys = runs.filter(run => run.surface === 'modal').map(run => run.resultLayout.slots.map(slot => slot.key));
   for (const keys of [...gameKeys, ...modalKeys]) assert.deepEqual(keys, expectedSlots, 'game and modal share the same six slot definitions');
-  checks.push('game page and modal share six fixed slots, real source-image feature crops, accurate none cards, post-result locks, copy/download priority, and auxiliary ChatGPT continuation');
+  checks.push('game page and modal share six fixed slots, dedicated reveal visuals or accurate empty cards, post-result locks, copy/download priority, and auxiliary ChatGPT continuation');
   checks.push('ChatGPT action opens an intercepted official prefill URL for the frozen Artwork Prompt; no external page or message is sent');
 
   await page.emulateMedia({reducedMotion: 'reduce'});
   const reducedSelector = await openSurface('game', {width: 390, height: 844});
-  await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'result', reducedSelector, {timeout: 15000});
-  const reducedLayout = await assertResultAndActions(reducedSelector);
+  await page.waitForFunction(sel => document.querySelector(sel)?.dataset.phase === 'awaiting-reveal', reducedSelector, {timeout: 15000});
+  assert.equal(await page.locator(reducedSelector).getAttribute('data-display-result'), 'false', 'reduced motion keeps result hidden until user confirmation');
+  assert.equal(await page.locator(`${reducedSelector} .fr-result-card`).evaluate(card => card.hidden), true, 'reduced motion static card stage does not expose the final Artwork');
+  assert.equal(await page.locator(`${reducedSelector} [data-fr="reveal-partner"]`).isVisible(), true, 'reduced motion presents the explicit reveal action');
+  const reducedAwaiting = await inspectRow(reducedSelector, {checkDarkSurface: false});
+  await saveEvidence('game', 390, 'reduced-motion-awaiting-reveal');
   const reducedDurations = await page.locator(`${reducedSelector} .fr-reel-item`).first().evaluate(element => {
     const seconds = value => Math.max(...value.split(',').map(part => {
       const amount = Number.parseFloat(part);
       return part.trim().endsWith('ms') ? amount / 1000 : amount;
     }));
     const style = getComputedStyle(element);
-    return {animation: seconds(style.animationDuration), transition: seconds(style.transitionDuration)};
+    const track = element.closest('.fr-reel')?.querySelector('.fr-reel-track');
+    const stage = element.closest('.fr-view')?.querySelector('.fr-reel-stage');
+    return {
+      animation: seconds(style.animationDuration),
+      transition: seconds(style.transitionDuration),
+      trackAnimation: track ? seconds(getComputedStyle(track).animationDuration) : 0,
+      trackTransition: track ? seconds(getComputedStyle(track).transitionDuration) : 0,
+      stageScrollBehavior: stage ? getComputedStyle(stage).scrollBehavior : 'auto',
+      trackTransform: track ? getComputedStyle(track).transform : 'none'
+    };
   });
-  assert(reducedLayout.slots.every(slot => slot.stopped === 'true'), 'reduced motion lands all feature cards');
-  assert(reducedDurations.animation <= 0.001 && reducedDurations.transition <= 0.001, `reduced motion removes long card transitions: ${JSON.stringify(reducedDurations)}`);
-  checks.push('reduced-motion completes the same frozen result without long card animation');
+  assert(reducedAwaiting.slots.every(slot => slot.stopped === 'true'), 'reduced motion lands all feature cards');
+  assert.equal(reducedAwaiting.reducedMotion.mediaMatches, true, 'reduced motion browser media query is active');
+  assert.equal(reducedAwaiting.dataDisplayResult, 'false', 'reduced motion awaiting stage does not display the result');
+  assert.equal(reducedAwaiting.resultCardHidden, true, 'reduced motion keeps result DOM hidden before the explicit action');
+  await page.locator(`${reducedSelector} [data-fr="reveal-partner"]`).click();
+  const reducedLayout = await assertResultAndActions(reducedSelector);
+  assert(reducedDurations.animation <= 0.001 && reducedDurations.transition <= 0.001 && reducedDurations.trackAnimation <= 0.001 && reducedDurations.trackTransition <= 0.001 && reducedDurations.stageScrollBehavior === 'auto', `reduced motion removes motion and smooth scrolling: ${JSON.stringify(reducedDurations)}`);
+  assert.equal(await page.locator(`${reducedSelector} [data-fr="reveal-partner"]`).isVisible(), false, 'explicit reveal action is consumed after confirmation');
+  checks.push('reduced-motion presents six static cards, keeps the result hidden, and waits for explicit reveal confirmation');
   await page.emulateMedia({reducedMotion: 'no-preference'});
 
   await page.goto(`${baseUrl}#home`);
@@ -440,7 +595,6 @@ try {
   await page.setViewportSize({width: 390, height: 844});
   await page.locator('.hero-actions [data-command="random"]').click();
   await page.locator('#studioOverlay .fr-view').waitFor({state: 'visible'});
-  await page.locator('#studioOverlay [data-fr="random"]').click();
   await page.waitForFunction(() => document.querySelector('#studioOverlay .fr-view')?.dataset.phase === 'revealing');
   await page.evaluate(() => { window.__oldRevealRoot = document.querySelector('#studioOverlay .fr-view'); });
   const oldArtworkId = await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id');
@@ -449,8 +603,7 @@ try {
   await page.locator('.hero-actions [data-command="random"]').click();
   const reopenedSelector = '#studioOverlay .fr-view';
   await page.locator(reopenedSelector).waitFor({state: 'visible'});
-  assert.equal(await page.locator(reopenedSelector).getAttribute('data-phase'),'ready','reopening shows fresh card backs without an automatic draw');
-  await page.locator(`${reopenedSelector} [data-fr="random"]`).click();
+  await page.waitForFunction(sel => ['selecting','preloading','revealing','awaiting-reveal','result'].includes(document.querySelector(sel)?.dataset.phase), reopenedSelector);
   await page.waitForFunction(sel => ['revealing', 'result'].includes(document.querySelector(sel)?.dataset.phase), reopenedSelector);
   if (await page.locator(`${reopenedSelector}[data-phase="revealing"]`).count()) await page.locator(`${reopenedSelector} [data-fr="skip"]`).click();
   const reopened = await assertResultAndActions(reopenedSelector);
@@ -472,19 +625,21 @@ try {
   assert.equal(pageErrors.length, 0, pageErrors.join('\n'));
   const report = {
     baseUrl,
+    sourceCache: 92,
     generatedAt: new Date().toISOString(),
     viewports: viewportCases,
     expectedSlots,
     checks,
     runs,
-    reducedMotion: {durations: reducedDurations, artworkId: reducedLayout.artworkId},
+    reducedMotion: {awaiting: reducedAwaiting, durations: reducedDurations, artworkId: reducedLayout.artworkId},
     closeReopen: lifecycle,
     pageErrors,
     browser: 'Chromium CSS viewport through existing Playwright; no physical device verified',
     visualApproval: 'pending user review',
     published: false
   };
-  await fs.writeFile(path.join(evidenceDirectory, 'reveal-layout-report.json'), `${JSON.stringify(report, null, 2)}\n`);
+  await fs.mkdir(path.dirname(reportPath), {recursive: true});
+  await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);
   console.log(`Reveal layout checks passed: ${checks.length}, ${runs.length} surface/viewport runs.`);
 } finally {
   await browser.close();

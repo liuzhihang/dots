@@ -21,6 +21,32 @@
 .overlay-header .button{min-height:var(--button-height);padding-inline:var(--button-inline-space-compact);font-size:var(--button-type-compact)}
 #overlayTitle:focus,#galleryTitle:focus,#gameTitle:focus{outline:none}
 .overlay-header .icon-button{min-width:44px;min-height:44px}
+.studio-nav a{display:inline-flex;align-items:center;min-height:44px}
+.hero-actions .text-link{display:inline-flex;align-items:center;min-height:44px}
+/* Keep discovery controls compact; detailed dimensions remain available in the disclosure. */
+.tag-browser>.tag-group[data-dimension="style"]{flex-wrap:nowrap;overflow-x:auto;padding-block:3px 7px;scrollbar-width:thin;overscroll-behavior-x:contain}
+.tag-browser>.tag-group[data-dimension="style"]>.tag-group-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.tag-chip{flex-shrink:0;min-height:44px;padding:8px 13px;color:var(--muted)}
+.tag-chip[aria-pressed=true]{color:#4c468f;background:#e9e8fa}
+.tag-more{padding:0 14px;margin-top:4px}
+.tag-more>summary{min-height:44px;display:flex;align-items:center;gap:8px}
+.tag-more>summary::before{content:'＋';font-size:15px;line-height:1}
+.tag-more[open]>summary::before{content:'−'}
+.tag-more[open]{padding-bottom:12px}
+.tag-more>summary::-webkit-details-marker{display:none}
+.tag-more>summary::marker{content:''}
+.results-heading{margin-top:18px}
+.gallery-feature-tag{font-size:11px;padding-inline:7px}
+@media(max-width:600px){
+ .home-hero{height:320px}
+ .hero-group{height:178px;bottom:-3px}
+ .topic-card.dots,.topic-card.grok{height:190px}
+ #galleryPortal .page-heading{gap:12px;margin-bottom:18px}
+ #galleryPortal .page-heading p{margin-top:7px}
+ .tag-browser>.tag-group[data-dimension="style"]{margin-bottom:3px;gap:6px}
+ .tag-chip{font-size:12px}
+}
+@media(max-width:359px){.home-hero{height:307px}.hero-group{height:162px}}
 @media(max-width:800px){
  .topic-card .topic-foot{display:none}
  .hero-actions .button{min-height:var(--button-height);padding-inline:var(--button-inline-space);font-size:var(--button-type)}

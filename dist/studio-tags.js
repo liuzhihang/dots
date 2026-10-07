@@ -1,4 +1,4 @@
-import { ARTWORKS, isEligible, isTransparentCharacter } from './studio-artwork-catalog.js?v=90';
+import { ARTWORKS, isEligible, isTransparentCharacter } from './studio-artwork-catalog.js?v=92';
 
 const DIMENSION_LABELS = Object.freeze({
   style: '风格 / 角色',

@@ -3,7 +3,7 @@ export function createOverlay({dialog,title,body,backButton,closeButton,backgrou
  let frames=[],view=null,rootTrigger=null,rootScroll=0,oldOverflow='',oldPadding='',serial=0,pendingClose=false,queuedAction=null;
  const registry=new Map();
  const focusableSelector='button,a[href],input,select,textarea,summary,[tabindex="0"]';
- const pageState=()=>({studio:90,page:document.body.dataset.screen,overlayTrail:frames.map(f=>f.id)});
+ const pageState=()=>({studio:92,page:document.body.dataset.screen,overlayTrail:frames.map(f=>f.id)});
  function rememberCurrent(){
   const frame=frames.at(-1);if(!frame||!view)return;
   frame.resumeState=view.getResumeState?.();
@@ -46,7 +46,7 @@ export function createOverlay({dialog,title,body,backButton,closeButton,backgrou
  }
  function restoreTrail(state){
   if(pendingClose){pendingClose=false;const action=queuedAction;queuedAction=null;if(action)queueMicrotask(action);}
-  const ids=state?.studio===90&&Array.isArray(state.overlayTrail)?state.overlayTrail:[];
+  const ids=state?.studio===92&&Array.isArray(state.overlayTrail)?state.overlayTrail:[];
   const next=ids.map(id=>registry.get(id)).filter(Boolean);
   if(next.length!==ids.length){if(frames.length){frames=[];render();}return false;}
   const changed=next.map(f=>f.id).join('|')!==frames.map(f=>f.id).join('|');

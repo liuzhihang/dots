@@ -1,0 +1,127 @@
+[
+  {
+    "path": "openspec/specs/artwork-catalog/spec.md",
+    "changes": [
+      {
+        "operation": "add",
+        "name": "Artwork 独立登记六类揭晓说明视觉"
+      },
+      {
+        "operation": "modify",
+        "name": "完整作品必须拥有稳定的资源与提示词关联"
+      }
+    ],
+    "alreadyAbsentRemovals": 0
+  },
+  {
+    "path": "openspec/specs/catalog-tags/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 3
+  },
+  {
+    "path": "openspec/specs/character-contact-and-motion/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 8
+  },
+  {
+    "path": "openspec/specs/character-creation-modes/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 9
+  },
+  {
+    "path": "openspec/specs/character-families/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 9
+  },
+  {
+    "path": "openspec/specs/character-visual-acceptance/spec.md",
+    "changes": [
+      {
+        "operation": "modify",
+        "name": "特征卡视觉材料必须可追溯且达到展示质量"
+      }
+    ],
+    "alreadyAbsentRemovals": 8
+  },
+  {
+    "path": "openspec/specs/composition-coverage/spec.md",
+    "changes": [
+      {
+        "operation": "modify",
+        "name": "发布作品覆盖必须验证实际资源及其全部消费路径"
+      }
+    ],
+    "alreadyAbsentRemovals": 7
+  },
+  {
+    "path": "openspec/specs/family-navigation/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 4
+  },
+  {
+    "path": "openspec/specs/fullscreen-randomizer/spec.md",
+    "changes": [
+      {
+        "operation": "rename",
+        "from": "抽取必须从有效 Artwork 池选定一张完整作品",
+        "to": "抽取必须从有限设计的完整 Artwork 池选定一张作品"
+      },
+      {
+        "operation": "modify",
+        "name": "随机容器必须保持简洁操作并在结果后允许扩展条件"
+      },
+      {
+        "operation": "modify",
+        "name": "抽取必须从有限设计的完整 Artwork 池选定一张作品"
+      },
+      {
+        "operation": "modify",
+        "name": "抽取状态必须处理资源、取消、去重和重启"
+      },
+      {
+        "operation": "modify",
+        "name": "特征卡必须各自表达六个真实维度而非重复成品"
+      },
+      {
+        "operation": "modify",
+        "name": "卡片必须按顺序揭晓同一作品的真实特征"
+      }
+    ],
+    "alreadyAbsentRemovals": 6
+  },
+  {
+    "path": "openspec/specs/modular-2d-composition/spec.md",
+    "changes": [
+      {
+        "operation": "add",
+        "name": "有限设计组合必须以完整作品登记"
+      }
+    ],
+    "alreadyAbsentRemovals": 10
+  },
+  {
+    "path": "openspec/specs/reference-creation/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 0
+  },
+  {
+    "path": "openspec/specs/studio-creation-experience/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 5
+  },
+  {
+    "path": "openspec/specs/studio-visual-experience/spec.md",
+    "changes": [
+      {
+        "operation": "modify",
+        "name": "首页只能承诺真实存在的作品发现能力"
+      }
+    ],
+    "alreadyAbsentRemovals": 8
+  },
+  {
+    "path": "openspec/specs/target-resources/spec.md",
+    "changes": [],
+    "alreadyAbsentRemovals": 0
+  }
+]

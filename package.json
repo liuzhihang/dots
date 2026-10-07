@@ -7,6 +7,9 @@
     "build": "node scripts/build-studio.mjs",
     "test": "node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-artwork-draw.mjs && node scripts/verify-card-reveal.mjs && node scripts/verify-reference-detail.mjs",
     "test:browser": "node scripts/verify-studio-browser.mjs",
+    "test:reveal-process": "node scripts/verify-reveal-process.mjs",
+    "test:reveal-layout": "node scripts/verify-reveal-layout.mjs",
+    "test:instant-random": "node scripts/verify-instant-random.mjs",
     "test:downloads": "node scripts/verify-transparent-output.mjs"
   },
   "devDependencies": {

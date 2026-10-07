@@ -1,6 +1,6 @@
-import { copyText, copyAndOpen, chatGPTUrlForPrompt } from './studio-actions.js?v=90';
-import { STYLE_IDENTITIES } from './studio-artwork-catalog.js?v=90';
-import { buildReferencePrompt } from './studio-prompt.js?v=90';
+import { copyText, copyAndOpen, chatGPTUrlForPrompt } from './studio-actions.js?v=92';
+import { STYLE_IDENTITIES } from './studio-artwork-catalog.js?v=92';
+import { buildReferencePrompt } from './studio-prompt.js?v=92';
 
 const MAX_TEXT = 2000;
 const DEFAULT_REFERENCE_API = { STYLE_IDENTITIES, buildReferencePrompt };

@@ -1,0 +1,27 @@
+
+> test
+> node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-artwork-draw.mjs && node scripts/verify-card-reveal.mjs && node scripts/verify-reference-detail.mjs
+
+Artwork catalog: 15 published works, 5 pending assets, archived/current hashes and loader byte checks verified.
+Artwork query: 15 works indexed with 89 typed visible-fact tags.
+Artwork draw: 15 works, 8 fact categories, 6 reveal slots, source-bound snapshots, independent display eligibility, hard locks, repeat bag, and unavailable-resource handling verified.
+Card reveal verification passed: versioned semantic feature visuals, frozen Artwork/Prompt/download binding, sequential stops, skip/reduced motion, preload guard, restore cards, empty/single pools, stale async actions, cancellation, A-download/B-reroll isolation, dispose abort, and action hierarchy.
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ ''
+- '当前是静态透明 PNG，暂无已验证 Dot/Pet 安装包。'
+
+    at file:///Users/liuzhihang/workspace/dots/scripts/verify-reference-detail.mjs:153:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '',
+  expected: '当前是静态透明 PNG，暂无已验证 Dot/Pet 安装包。',
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

@@ -1,0 +1,98 @@
+{
+  "sourceCache": 92,
+  "baseUrl": "http://127.0.0.1:5180/",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "viewportKind": "simulated CSS viewport; physical phone not tested",
+  "checks": [
+    {
+      "oneClickHome": {
+        "opening": {
+          "phase": "preloading",
+          "feedback": "shuffling",
+          "preparing": true,
+          "cardBackFaces": 18,
+          "preparingWindows": 6,
+          "tracks": 6,
+          "animations": [
+            "fr-shuffle",
+            "fr-shuffle",
+            "fr-shuffle",
+            "fr-shuffle",
+            "fr-shuffle",
+            "fr-shuffle"
+          ],
+          "resultHidden": true,
+          "resultDisplay": "none",
+          "dataDisplayResult": "false",
+          "statusText": "正在准备这次相遇…",
+          "hiddenEngineeringCopy": false
+        },
+        "transformChanged": true,
+        "delayedAssetFetches": 6,
+        "firstPostPreloadState": {
+          "phase": "revealing",
+          "resultHidden": true,
+          "resultVisible": false
+        }
+      }
+    },
+    {
+      "galleryOneClickQueryBinding": {
+        "query": "style:dots",
+        "artworkId": "dots-lilac-bucket",
+        "resultBelongsToFrozenQuery": true
+      }
+    },
+    {
+      "detailReturn": {
+        "artworkId": "dots-lilac-bucket",
+        "sameResultAndCardsRestored": true
+      }
+    },
+    {
+      "reducedMotion": {
+        "phase": "awaiting-reveal",
+        "feedback": "static",
+        "preparing": false,
+        "mediaMatches": true,
+        "moving": 0,
+        "stopped": 6,
+        "backTrackAnimations": [],
+        "resultHidden": true,
+        "revealActionVisible": true
+      }
+    }
+  ],
+  "delayedAssetRequests": [
+    {
+      "url": "/assets/looks/muse-rose-flowers.png",
+      "startedAt": 1791378601564
+    },
+    {
+      "url": "/assets/characters/animals-original-shiba-candidate-v1.png",
+      "startedAt": 1791378601564
+    },
+    {
+      "url": "/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "startedAt": 1791378601564
+    },
+    {
+      "url": "/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "startedAt": 1791378601564
+    },
+    {
+      "url": "/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "startedAt": 1791378601564
+    },
+    {
+      "url": "/assets/reveal/accessory/headphones.png",
+      "startedAt": 1791378601568
+    }
+  ],
+  "errors": [],
+  "artApproval": "pending user review",
+  "generatedAt": "2026-10-07T13:10:14.309Z"
+}
