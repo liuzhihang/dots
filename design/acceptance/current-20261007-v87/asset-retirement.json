@@ -1,0 +1,532 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-07",
+  "operation": "Move unused/retired static assets to historical-runtime while preserving source bytes.",
+  "sourceSnapshot": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json",
+  "sourceSnapshotEdited": false,
+  "publicationRoots": {
+    "artworkIds": [
+      "candidate-dots-20261005",
+      "candidate-grok-20261005",
+      "candidate-meta-muse-20261005",
+      "candidate-humans-20261005",
+      "candidate-animals-20261005",
+      "dots-rose-glasses",
+      "dots-lilac-bucket",
+      "grok-green-cloud",
+      "grok-teal-square",
+      "muse-rose-flowers",
+      "muse-sage-reading",
+      "human-bun-yellow",
+      "human-blond-glasses",
+      "animal-white-cat",
+      "animal-gray-husky"
+    ],
+    "editorialSceneCount": 7,
+    "brandAsset": "dist/assets/characters/brand-mark.png"
+  },
+  "retainedCount": 23,
+  "retiredCount": 45,
+  "retained": [
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "byteSize": 1413426,
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "byteSize": 574528,
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+      "reason": "Current Dot Icon Studio brand asset referenced by index.html."
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "byteSize": 1720054,
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "byteSize": 971168,
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "byteSize": 1151483,
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "byteSize": 1003955,
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "byteSize": 1623665,
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "byteSize": 1382027,
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "byteSize": 1605008,
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "byteSize": 1860436,
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "byteSize": 790009,
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "byteSize": 828844,
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "byteSize": 1058375,
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "byteSize": 1086214,
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "byteSize": 1185166,
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "byteSize": 1142481,
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "reason": "Original bytes for a currently eligible Artwork."
+    },
+    {
+      "path": "dist/assets/scenes/family-animals-v4.png",
+      "byteSize": 2258979,
+      "sha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/family-dots-v4.png",
+      "byteSize": 1399861,
+      "sha256": "c921ffd8a9f5ed5ff16c3b415ba1b5b79cb8baaaa44377a13d7bf19c18232b21",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/family-grok-v4.png",
+      "byteSize": 1194674,
+      "sha256": "330b8767af297be5b046d2f423112cbf2e0f6321f1e09fd125371d01cae6de34",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/family-humans-v4.png",
+      "byteSize": 2390173,
+      "sha256": "01266e796dd3f3173c453d45931e3e82a54b076a5edfef4a159c07de624d2eae",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/family-meta-muse-v5.png",
+      "byteSize": 2243194,
+      "sha256": "03f8225a11bdb5e8026b9c7312a6d0fd4deff83fdbbbde578703ea8cc1fc7462",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/hero-left-v4.png",
+      "byteSize": 1342332,
+      "sha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    },
+    {
+      "path": "dist/assets/scenes/hero-right-v4.png",
+      "byteSize": 1424753,
+      "sha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281",
+      "reason": "Current approved HERO_SCENES/FAMILY_SCENES resource."
+    }
+  ],
+  "moved": [
+    {
+      "originalPath": "dist/assets/atelier/dot-plush-headphones-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/atelier/dot-plush-headphones-v2.png",
+      "byteSize": 1897585,
+      "sha256": "b32a497c30a7b7973a00fb2e12b358e3899ceeab1e2ea02701577a7dbbb9e5d5",
+      "sourceSnapshotMatch": true,
+      "reason": "Legacy atelier image not individually listed in v83 registeredLooks and not referenced by the active site."
+    },
+    {
+      "originalPath": "dist/assets/atelier/pet-shiba-scarf-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/atelier/pet-shiba-scarf-v2.png",
+      "byteSize": 1497719,
+      "sha256": "3eb9864876ee26227083c16224669f9b0a8e9a014e15f31ea7279c415e03439a",
+      "sourceSnapshotMatch": true,
+      "reason": "Legacy atelier image not individually listed in v83 registeredLooks and not referenced by the active site."
+    },
+    {
+      "originalPath": "dist/assets/avatar-atlas.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/avatar-atlas.webp",
+      "byteSize": 140130,
+      "sha256": "d9dcea5a9c6a3d7cbfec143271217f1345d41bd63e74f29f6b105a5b2e8cb844",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/black-bean.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/black-bean.webp",
+      "byteSize": 184920,
+      "sha256": "5fd4675cd65c5aee8fa6903bb9637452b4d60f261356af198b23361168ab20b6",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/cat.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/cat.webp",
+      "byteSize": 106454,
+      "sha256": "0ed99b5436fb0302ef92496354cc2ea3074068029a003c7e7ebfdcb091493e00",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+      "byteSize": 1803333,
+      "sha256": "7222064cfaef4897b78495b112e85e1cc65ec46aa79778094179d43658e04988",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved alternate Dots candidate; not individually listed in v83 registeredLooks and not referenced by active pages."
+    },
+    {
+      "originalPath": "dist/assets/characters/hero-background.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/characters/hero-background.png",
+      "byteSize": 1301370,
+      "sha256": "0396d9bf704ab791b853b8b0926cb4630be78eb2ef3f68ab855dc462c1fb86da",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical opaque background retained for a negative test; not used by the transparent Artwork runtime."
+    },
+    {
+      "originalPath": "dist/assets/collection.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/collection.webp",
+      "byteSize": 149444,
+      "sha256": "f3677e733fa6bbd1f446a820d3db5c157920c45fea937cb43e080a46124565db",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/dots-actions.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/dots-actions.webp",
+      "byteSize": 222606,
+      "sha256": "3a6bfe61019166c40a7cb8786741c114c3236c024a9c9405911a24036f82b005",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/dots-matte-hero.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/dots-matte-hero.webp",
+      "byteSize": 121810,
+      "sha256": "05c6339a93897a76c521263fc13c7a8707564633705f7516c05534f70afb7434",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/dots-plush-hero.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/dots-plush-hero.webp",
+      "byteSize": 164856,
+      "sha256": "359a052f6374e2917f8fafc0c829dae0c22d551edb3dc4f7eddd69b07c9c11e0",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/dots-plush-work.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/dots-plush-work.webp",
+      "byteSize": 145570,
+      "sha256": "a95a108da0d9a10c256814b44d7cb3f11aa987ba19aceebe838869ef6048f283",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/material-plush.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/material-plush.webp",
+      "byteSize": 121082,
+      "sha256": "cccba94eae546896600a5be85ff8c51c57485ac2570300f03002c967396659e5",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/material-rubber.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/material-rubber.webp",
+      "byteSize": 61830,
+      "sha256": "85ada2e041c9446baccdd8c3d7c81030477cfb71d3041155014a432f8c6b9ac2",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/pets-actions.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/pets-actions.webp",
+      "byteSize": 147938,
+      "sha256": "487548773ca7f6c4374f424b9565c32bb21ff4bed43efa48ce769eb6ac3bb9f9",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/poses/dots-wink-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/poses/dots-wink-v1.png",
+      "byteSize": 1136161,
+      "sha256": "4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved pose candidate. Kept pending in Artwork catalog with sourcePath only; not a published runtime resource."
+    },
+    {
+      "originalPath": "dist/assets/poses/grok-wink-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/poses/grok-wink-v1.png",
+      "byteSize": 732939,
+      "sha256": "0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved pose candidate. Kept pending in Artwork catalog with sourcePath only; not a published runtime resource."
+    },
+    {
+      "originalPath": "dist/assets/poses/human-wave-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/poses/human-wave-v1.png",
+      "byteSize": 786370,
+      "sha256": "a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved pose candidate. Kept pending in Artwork catalog with sourcePath only; not a published runtime resource."
+    },
+    {
+      "originalPath": "dist/assets/poses/muse-wave-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/poses/muse-wave-v1.png",
+      "byteSize": 1073265,
+      "sha256": "bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved pose candidate. Kept pending in Artwork catalog with sourcePath only; not a published runtime resource."
+    },
+    {
+      "originalPath": "dist/assets/poses/shiba-wave-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/poses/shiba-wave-v1.png",
+      "byteSize": 697164,
+      "sha256": "8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c",
+      "sourceSnapshotMatch": true,
+      "reason": "Unapproved pose candidate. Kept pending in Artwork catalog with sourcePath only; not a published runtime resource."
+    },
+    {
+      "originalPath": "dist/assets/robot.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/robot.webp",
+      "byteSize": 36692,
+      "sha256": "83fbc5d9500c36eff434043b0f42c293c0d1535d3a135340dbc2e67bc5c3bbf2",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-animals-v1.png",
+      "byteSize": 1237847,
+      "sha256": "2bb9c14c1ea62a8f66f3714fe2a49eff0a3547879f0f6987c659ab5a74f7847e",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-animals-v2.png",
+      "byteSize": 1756332,
+      "sha256": "bebff781c7e2279d92f40d0634452be17009304f782d5044294066f3e32f35db",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-animals-v3.png",
+      "byteSize": 1554858,
+      "sha256": "bf9a99ce408aa1e77e0418287539f131a710718ebb0ac5912b7aa0bb462428da",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-dots-v1.png",
+      "byteSize": 1987704,
+      "sha256": "9a4c4b56a28e05850c865267e379c367168254ab3644b3ad060bbd4d7dcaf400",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-dots-v2.png",
+      "byteSize": 1988199,
+      "sha256": "e9630316e3f3a2652228cf50a38ce8b1197716d16c7d6e3a3dfaaf1d909c98f4",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-dots-v3.png",
+      "byteSize": 1221551,
+      "sha256": "4122d76f2e600546ad190ce0548f0bb28bbcbb9457ee8171f0793d18437082e5",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-grok-v1.png",
+      "byteSize": 974987,
+      "sha256": "1df48ab7ed1b2425595af6e60192cc32090e1b2deb1d3b4e946ecb9edac66685",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-grok-v2.png",
+      "byteSize": 1232920,
+      "sha256": "8957b36efe564bcf923adb6cf1a672a0d1bd602ffeb71c798cf4cc03714a7668",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-grok-v3.png",
+      "byteSize": 884467,
+      "sha256": "5e430b88e7de180b931e9b10cdfa6f049ee68b327b5c7600e03cccef6ece1471",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-humans-v1.png",
+      "byteSize": 1851765,
+      "sha256": "760c64926715fcd3f0665967daf923fd9baa0b439ac5a441d12655b6415c777d",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-humans-v2.png",
+      "byteSize": 1237392,
+      "sha256": "dc763a9a15bd2f19bae1838a1ea11828b0a1c816e460a6c15d39feadffd3cba0",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-humans-v3.png",
+      "byteSize": 1973072,
+      "sha256": "b3bf539597c0420ed27eaaa9973e5dc18b8d3ba7bcff4a539ac77a2f2790eeb0",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-meta-muse-v1.png",
+      "byteSize": 1501838,
+      "sha256": "3027ee097ed4286564a5d08e98c5893944c01d74a7688578e5a74930db42a35d",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-meta-muse-v2.png",
+      "byteSize": 1567435,
+      "sha256": "f309e2b4a578fbe93a0483ee01adb43bf0901971b1694643e36b996b4a88a027",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-meta-muse-v3.png",
+      "byteSize": 1470813,
+      "sha256": "5c61c58c46a2c467bee58103ebd15c024ad91dc5326d0e3354e2aac9dcb0b36c",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v4.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/family-meta-muse-v4.png",
+      "byteSize": 1553070,
+      "sha256": "07749dcad0c8f71f8e0aa77f2600ecc6d1f3e9544738cf5f831d1eb03bab460f",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-left-v1.png",
+      "byteSize": 1951237,
+      "sha256": "2354b074d4a08255ce1069d8f565dc4aad9f7b1b1d42fe3238ceb25202ceba06",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-left-v2.png",
+      "byteSize": 1815246,
+      "sha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-left-v3.png",
+      "byteSize": 1333576,
+      "sha256": "7ebf2f43ba686f2d4fbedddd6bc4bf3b0117a93d0990d83f58c9c5e728a4a810",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v1.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-right-v1.png",
+      "byteSize": 1660214,
+      "sha256": "db278c83628b0b59ead4943b5b9d4c4b8f91eb1a396efd8ed121a955b9e435ca",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v2.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-right-v2.png",
+      "byteSize": 1973055,
+      "sha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v3.png",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/scenes/hero-right-v3.png",
+      "byteSize": 1374015,
+      "sha256": "31e59ca286bafaffdbd18a500fd71857258926662d3cb6b583ab917f105d6e19",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical scene revision not selected by the active HERO_SCENES or FAMILY_SCENES registry; preserved without current approval status."
+    },
+    {
+      "originalPath": "dist/assets/shiba.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/shiba.webp",
+      "byteSize": 82428,
+      "sha256": "4ab74dac834b4a2e6ef6c5653b6afcf9206915ffb812d3d7eeb105c035b0c347",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    },
+    {
+      "originalPath": "dist/assets/tiger.webp",
+      "sourcePath": "historical-runtime/retired-assets/dist/assets/tiger.webp",
+      "byteSize": 108042,
+      "sha256": "23def74bf09bc11c67a2ba45c643eab57af5e196630612e57d64f7dd2e1fc87d",
+      "sourceSnapshotMatch": true,
+      "reason": "Historical WebP/reference image not referenced by active HTML, CSS, or runtime; preserved outside the static publication tree."
+    }
+  ]
+}

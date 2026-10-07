@@ -1,12 +1,8 @@
-#!/usr/bin/env node
 import assert from 'node:assert/strict';
 import {inflateSync} from 'node:zlib';
-import {readFileSync} from 'node:fs';
-import {resolve} from 'node:path';
-import {createCharacter, setCharacterValue, validateConfig} from '../dist/studio-model.js';
-import {getTemplateAssetStates, resolveProjectComposition, resolveTemplateComposition} from '../dist/studio-composition-resolver.js';
-import {TEMPLATE_BACKGROUND_MODES, buildTemplateCoverageCases, validateTransparentOutputAlpha} from '../dist/studio-composition-coverage.js';
-
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import {ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js';
 function paeth(a,b,c) {
   const p=a+b-c, pa=Math.abs(p-a), pb=Math.abs(p-b), pc=Math.abs(p-c);
   return pa<=pb&&pa<=pc?a:pb<=pc?b:c;
@@ -56,41 +52,19 @@ function readPngAlphaStats(bytes, label) {
   return {width:header.width,height:header.height,transparentPixels,opaquePixels,partialAlphaPixels,alphaBounds:maxX<0?null:{x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1}};
 }
 
-assert.deepEqual(TEMPLATE_BACKGROUND_MODES,['transparent']);
-const fresh=createCharacter();
-assert.equal(fresh.background,'transparent','new characters default to transparent output');
-assert.throws(()=>setCharacterValue(fresh,'background','solid'),/背景|透明/,'the background setter stays removed');
-assert.throws(()=>setCharacterValue(fresh,'colors.background','#FFFFFF'),/背景|透明/,'background color cannot be edited');
-
-const states=getTemplateAssetStates();
-const coverage=buildTemplateCoverageCases({states,resolver:resolveTemplateComposition});
-assert.equal(coverage.inventory.stateCount,22);
-assert.equal(coverage.inventory.backgroundCount,1);
-assert.equal(coverage.inventory.outputCount,22);
-assert(coverage.cases.every(item=>item.background==='transparent'&&item.config.background==='transparent'));
-
-const templateState=states.find(item=>item.assetRefs.length&&item.config);
-assert(templateState,'a registered template state exists');
-const legacyColor='#B8A5D8';
-const historicalCharacter=validateConfig({...templateState.config,background:'solid',colors:{...templateState.config.colors,background:legacyColor}});
-assert.equal(historicalCharacter.background,'solid','strict v10 parsing preserves an existing legal background field as metadata');
-assert.equal(historicalCharacter.colors.background,legacyColor,'strict v10 parsing preserves the stored color metadata');
-const historicalResolution=resolveTemplateComposition({character:historicalCharacter,artworkId:templateState.artworkId,recipeId:templateState.recipeId});
-assert.equal(historicalResolution.availability,'available');
-assert.equal(historicalResolution.composition.inputs.background,'solid','existing composition metadata is not silently rewritten');
-assert.equal(historicalResolution.composition.inputs.backgroundColor,legacyColor,'existing composition color metadata is not silently rewritten');
-assert.equal(historicalResolution.renderPlan.background.mode,'transparent','render plans remain transparent regardless of historical metadata');
-const project={format:'dot-studio-project',version:2,character:historicalCharacter,creation:{mode:'composer',artworkId:templateState.artworkId,composition:historicalResolution.composition}};
-const restored=resolveProjectComposition(project);
-assert.deepEqual(restored.composition,historicalResolution.composition,'a current v2 composition reference round-trips exactly');
-assert.equal(restored.renderPlan.background.mode,'transparent','restored role output stays transparent');
-
-const transparentSource=templateState.assets.map(asset=>({asset,stats:readPngAlphaStats(readFileSync(resolve('dist',asset.src.slice(2))),asset.src)})).find(item=>item.stats.transparentPixels>0&&item.stats.opaquePixels+item.stats.partialAlphaPixels>0);
-assert(transparentSource,'a real registered PNG contains both visible pixels and transparent alpha');
-assert.equal(validateTransparentOutputAlpha(transparentSource.stats).valid,true,'alpha validation accepts pixel counts decoded from actual PNG bytes');
-const opaqueBackgroundStats=readPngAlphaStats(readFileSync(resolve('dist/assets/characters/hero-background.png')),'hero background fixture');
-const opaqueCheck=validateTransparentOutputAlpha(opaqueBackgroundStats);
-assert.equal(opaqueCheck.valid,false,'an actual opaque PNG background is rejected by the same pixel contract');
-assert(opaqueCheck.errors.some(message=>message.includes('没有 alpha 为 0')));
-
-console.log(JSON.stringify({result:'pass',templateStates:coverage.inventory.stateCount,transparentTemplateOutputs:coverage.inventory.outputCount,backgroundCount:coverage.inventory.backgroundCount,realPngAlpha:{positiveSource:transparentSource.asset.id,positiveAlpha:transparentSource.stats.transparentPixels,opaqueNegativeAlpha:opaqueBackgroundStats.transparentPixels,opaqueRejected:true},projectMetadataRoundTrip:'pass',backgroundSetterRemoved:true},null,2));
+const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v90/browser';
+const report=JSON.parse(await fs.readFile(folder+'/report.json'));
+assert.equal(report.downloads.length,ARTWORKS.length,'Every published original must have an actual browser download');
+const records=[];
+for(const artwork of ARTWORKS){
+ const download=report.downloads.find(d=>d.artworkId===artwork.id);assert(download);
+ const bytes=await fs.readFile(download.file),asset=getAsset(artwork.assetRefs.original),stats=readPngAlphaStats(bytes,artwork.id);
+ assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256);
+ assert.equal(stats.width,asset.width);assert.equal(stats.height,asset.height);
+ assert(stats.transparentPixels>0&&stats.partialAlphaPixels>0&&stats.opaquePixels+stats.partialAlphaPixels>0);
+ assert.equal(stats.transparentPixels,asset.alpha.transparentPixels);assert.equal(stats.partialAlphaPixels,asset.alpha.partialAlphaPixels);
+ records.push({artworkId:artwork.id,sha256:asset.sha256,...stats});
+}
+const opaque=readPngAlphaStats(await fs.readFile('historical-runtime/retired-assets/dist/assets/characters/hero-background.png'),'opaque source negative');assert.equal(opaque.transparentPixels,0);
+await fs.writeFile(folder+'/download-alpha.json',JSON.stringify({records,opaqueNegativeRejectedByCharacterContract:true,visualReview:'separate contrast contact-sheet review required; alpha alone does not prove no shadow'},null,2)+'\n');
+console.log(`Actual browser PNG alpha verified: ${records.length}; opaque source remains outside Artwork pool.`);

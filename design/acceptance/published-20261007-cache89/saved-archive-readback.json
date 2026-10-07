@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "checkedAt": "2026-10-07T10:08:20.872861+08:00",
+  "sourceId": "f5313846c101d5824d4c3deb06f05a5eecde7b8e6b827da96519dac17570e6d2",
+  "siteVersion": 40,
+  "siteSourceCommit": "4d8433bfe6a3e5e3d74be4e263c42347e913f841",
+  "nativeArchiveMetadata": {
+    "archive_format": "tar",
+    "sediment_file_id": "file_000000009fb481fb9d0d4688975659bb",
+    "content_hash": "sha256:0c48e2433f166d1600dd1de3d0ea6be26a09ed330abe5e5506f8774bcc9962ec",
+    "size_bytes": 31928320,
+    "file_count": 43
+  },
+  "localArchive": {
+    "compressedSha256": "c032e8e34b1151340e6b017cfe9e4fbf2b798c3c00e98e59e0086a419643324e",
+    "compressedBytes": 31336329,
+    "uncompressedTarSha256": "c06e0b508cced47f41139187bc173cc2df014459645fb789955f78329461ed6d",
+    "uncompressedTarBytes": 31974400,
+    "fileCount": 43
+  },
+  "nativeSourceCommitAndFileCountMatch": true,
+  "localArchiveFileBytesMatchFrozenSourceAndPushedCommit": true,
+  "nativeArchiveByteEqualityVerified": false,
+  "boundary": "Native saved tar metadata differs from local tar container size/hash; server archive bytes were not fetched, so no container-byte equality or cause is claimed. Deployment succeeded; saved version/source commit/file count were read back. The 43 local packaged file bytes independently match the frozen source and pushed Site commit.",
+  "rootHeadUnchanged": true,
+  "stagedPaths": [],
+  "frozenSourceHashesVerified": 83,
+  "frozenArtifactHashesVerified": 1526
+}

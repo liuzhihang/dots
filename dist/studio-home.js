@@ -1,124 +1,29 @@
-import {getBuiltInLooks,getCreationArtwork} from './studio-creation-assets.js?v=86';
-import {FAMILY_LOOK_IDS,getLookDefinition} from './studio-looks.js?v=86';
-import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=86';
-import {queryLooks,queryForFamily,normalizeTagQuery,queryLabel} from './studio-tags.js?v=86';
-import {createTagBrowser} from './studio-tag-browser.js?v=86';
-import {getTemplateApproval} from './studio-composition-catalog.js?v=86';
+import {HERO_SCENES,FAMILY_SCENES} from './studio-scenes.js?v=90';
+import {ARTWORKS,getAsset,isEligible} from './studio-artwork-catalog.js?v=90';
 
-export const FAMILY_PRESENTATION=Object.freeze([
- {id:'dots',name:'Dots',description:'简洁、灵动、百变的\n圆点伙伴',foot:'Simple\nBut Special',terms:'chatgpt openai 圆球 团子 蓝色 绒毛 短绒 耳机'},
- {id:'grok',name:'Grok Bot',description:'多形态的创意伙伴\n一起更有趣',foot:'Different Shapes\nSame Friends',terms:'grok bot 几何 圆球 胶囊 软拱 磨砂 紫色 云 方块'},
- {id:'meta-muse',name:'Meta Muse',description:'温柔治愈的陪伴\n给你小小的力量',foot:'A Softer\nBrighter You',terms:'meta muse 缪斯 奶油 毛绒 玩偶 白色 连帽 花束 书'},
- {id:'humans',name:'人物',cardTitle:'Humans',description:'鲜活的个性角色\n记录真实的每一种情绪',foot:'Real People\nMore Stories',terms:'humans human people 人物 人类 男孩 女孩 栗发 金发'},
- {id:'animals',name:'动物',cardTitle:'Animals',description:'可爱的动物伙伴\n永远在你身边',foot:'More Friends\nA Kinder World',terms:'animals animal pet 动物 宠物 狗 柴犬 猫 哈士奇'}
+export const TOPICS=Object.freeze([
+ {id:'dots',name:'Dots',description:'简洁、灵动的\n圆点伙伴',foot:'Simple\nBut Special',surface:'#f0ecfc'},
+ {id:'grok',name:'Grok Bot',description:'不同形状，\n一起想象',foot:'Different Shapes\nSame Friends',surface:'#eaf7ed'},
+ {id:'meta-muse',name:'Meta Muse',description:'温柔的包覆轮廓，\n小小的陪伴',foot:'A Softer\nBrighter You',surface:'#faf5e9'},
+ {id:'humans',name:'Humans',description:'原创个性角色，\n每一种表情都有故事',foot:'Real People\nMore Stories',surface:'#eef3fe'},
+ {id:'animals',name:'Animals',description:'物种各有模样，\n都是可爱的伙伴',foot:'More Friends\nA Kinder World',surface:'#fff0e7'}
 ]);
-
-export function matchingFamilies(query='',filter='all'){
- const words=String(query).trim().normalize('NFKC').toLocaleLowerCase().split(/\s+/).filter(Boolean);
- return FAMILY_PRESENTATION.filter(f=>(filter==='all'||f.id===filter)&&words.every(w=>(f.name+' '+f.id+' '+f.description+' '+f.terms).toLocaleLowerCase().includes(w)));
-}
-const esc=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const lines=value=>esc(value).replaceAll('\n','<br>');
-const byId=id=>getCreationArtwork(id);
-const familyLooks=id=>(FAMILY_LOOK_IDS[id]||[]).map(byId).filter(Boolean);
-
-export function createHomePortal({openWorkspace,openGallery,onStartLook,onEditLook,onViewLook,onCopyLook,onDownloadLook,onReference,onQueryChange}){
- const nav=document.getElementById('homeFamilies'),gallery=document.getElementById('familyCards'),looks=document.getElementById('looksPortal');
- if(!nav||!gallery||!looks)return null;
- const search=document.getElementById('familySearch'),clear=document.getElementById('clearSearch'),filters=document.getElementById('lookFilters'),cards=document.getElementById('lookCards');
- let filter='all',current='dots',activeFamily='all',page='home',introLook='candidate-dots-20261005',tagQuery=normalizeTagQuery();
- const tagBrowser=createTagBrowser(filters,{getQuery:()=>tagQuery,onChange:q=>{tagQuery=normalizeTagQuery(q);activeFamily='all';renderLooks();onQueryChange?.(tagQuery);}});
- function renderFamilyNav(){
-  nav.innerHTML=[{id:'all',name:'全部家族'},...FAMILY_PRESENTATION].map(f=>`<button class="family-filter ${filter===f.id?'selected':''}" data-home-filter="${f.id}" aria-pressed="${filter===f.id}">${f.id==='all'?'<img src="assets/characters/brand-mark.png" alt="">':f.id==='dots'||f.id==='meta-muse'?`<span class="family-nav-dot ${f.id}" aria-hidden="true"></span>`:`<img src="${byId(f.id==='grok'?'grok-green-cloud':FAMILY_LOOK_IDS[f.id][0]).src}" alt="" decoding="async">`}${f.name}</button>`).join('');
+export const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function createHomePortal({onTopic,onArtwork}){
+ document.getElementById('heroScene').innerHTML=HERO_SCENES.map((s,i)=>`<img class="hero-group ${i?'hero-right':'hero-left'}" src="${escapeHTML(s.src)}" alt="${escapeHTML(s.displayMembers.join('、'))}" decoding="sync" fetchpriority="high">`).join('');
+ const topicCards=document.getElementById('topicCards');
+ topicCards.innerHTML=TOPICS.map(t=>`<button class="topic-card ${t.id}" data-topic="${t.id}" style="--topic-surface:${t.surface}" aria-label="浏览 ${t.name} 作品"><span class="topic-copy"><b>${t.name}</b><span class="topic-description">${escapeHTML(t.description)}</span></span><span class="topic-arrow" aria-hidden="true">→</span><img src="${escapeHTML(FAMILY_SCENES[t.id].src)}" alt="" decoding="async"></button>`).join('');
+ topicCards.addEventListener('click',e=>{const b=e.target.closest('[data-topic]');if(b)onTopic(b.dataset.topic);});
+ const featured=document.getElementById('featuredCards');
+ const featuredHeader=document.querySelector('.featured-section .section-heading');
+ if(featuredHeader){
+  const heading=featuredHeader.querySelector('h2');if(heading)heading.textContent='精选作品';
+  featuredHeader.querySelector('.eyebrow')?.remove();
+  featuredHeader.querySelector('p')?.remove();
+  const referenceAction=featuredHeader.querySelector('[data-command="reference"]');
+  if(referenceAction){const link=document.createElement('a');link.className='text-link';link.href='#gallery';link.textContent='查看全部作品 →';referenceAction.replaceWith(link);}
  }
- function renderFamilies(){
-  renderFamilyNav();
-  const found=matchingFamilies(search.value,filter);
-  gallery.innerHTML=found.map(f=>{
-   const scene=FAMILY_SCENES[f.id];
-   return `<button class="family-entry ${f.id}" data-family-gallery="${f.id}" aria-current="${current===f.id?'true':'false'}" aria-label="浏览 ${f.name} 内置形象"><b>${f.cardTitle||f.name}</b><span class="family-arrow" aria-hidden="true">›</span><span class="family-desc">${lines(f.description)}</span><span class="family-stack" aria-hidden="true"><img class="family-scene-image" src="${scene.src}" alt="" decoding="sync" loading="eager"></span><span class="family-scene-caption">${esc(scene.caption)}</span><span class="family-foot">${lines(f.foot)}</span></button>`;
-  }).join('');
-  document.getElementById('familyEmpty').hidden=found.length!==0;
-  document.getElementById('familyResults').textContent=`找到 ${found.length} 个角色家族`;
-  clear.hidden=!search.value;
- }
- function renderLookFilters(){
-  tagBrowser.render();
- }
- function keepActiveFilterVisible(){
-  const selected=filters.querySelector('[aria-pressed="true"]');if(!selected)return;
-  const bounds=filters.getBoundingClientRect(),item=selected.getBoundingClientRect();
-  const shift=item.left<bounds.left?item.left-bounds.left-6:item.right>bounds.right?item.right-bounds.right+6:0;
-  if(shift)filters.scrollTo({left:filters.scrollLeft+shift,behavior:'instant'});
- }
- function renderLooks(){
-  tagQuery=normalizeTagQuery({...tagQuery,text:search.value});
-  renderLookFilters();
-  const found=queryLooks(tagQuery).map(look=>byId(look.artworkId)).filter(Boolean);
-  const banner=document.getElementById('galleryScene');
-  const scene=FAMILY_SCENES[activeFamily];
-  banner.hidden=!scene||!found.length;
-  banner.innerHTML=scene?`<div class="gallery-scene-copy"><span>${esc(FAMILY_PRESENTATION.find(f=>f.id===activeFamily).name)}</span><h2>${scene.caption.split('，').map((part,i,parts)=>`<span>${esc(part)}${i<parts.length-1?'，':''}</span>`).join('')}</h2><p>从一个喜欢的伙伴开始，做出自己的小小角色。</p><button class="text-button" data-start-look="${esc(scene.startLookId)}">创作一位伙伴 <span aria-hidden="true">→</span></button></div><img src="${scene.src}" alt="${esc(scene.caption)}" decoding="async">`:'';
-  banner.dataset.family=activeFamily;
-  cards.innerHTML=found.map(a=>{const look=getLookDefinition(a.id),name=look?.name||a.name,description=look?.description||a.description,source=look?.source==='official-recreation'?'品牌形象再创作 · 非官方':'原创角色';return `<article class="look-card" data-asset-state="loading" data-look-card="${esc(a.id)}">
-   <button class="look-art-button" data-view-look="${esc(a.id)}" aria-label="放大查看${esc(name)}"><img src="${a.src}" alt="${esc(name)}" decoding="async" loading="lazy"><span>放大查看</span></button>
-   <div class="look-card-copy"><span class="look-family-label">${FAMILY_PRESENTATION.find(f=>f.id===a.family)?.name||a.family}</span><h2>${esc(name)}</h2><p>${esc(description)}</p><small>${source}<br>${getTemplateApproval(a.id).status==='approved'?'当前完整模板已确认':'美术确认范围待核定'}</small></div>
-   <div class="look-card-actions"><button data-copy-look="${esc(a.id)}">复制 Prompt</button><button data-download-look="${esc(a.id)}">下载原图</button><button class="look-start" data-start-look="${esc(a.id)}">用这个形象定制 <span aria-hidden="true">→</span></button></div>
-  </article>`;}).join('');
-  cards.querySelectorAll('[data-look-card]').forEach(card=>{
-   const img=card.querySelector('img');
-   const ready=()=>{card.dataset.assetState='ready';};
-   const missing=()=>{card.dataset.assetState='failed';card.querySelector('.look-card-copy').insertAdjacentHTML('beforeend','<small role="status">图片载入失败，请重新载入。</small>');card.querySelectorAll('[data-download-look],[data-start-look]').forEach(b=>b.disabled=true);};
-   img.addEventListener('load',ready,{once:true});img.addEventListener('error',missing,{once:true});
-   if(img.complete&&img.naturalWidth)ready();
-  });
-  document.getElementById('lookEmpty').hidden=found.length!==0;
-  document.getElementById('lookResults').textContent=`找到 ${found.length} 款内置搭配`;
-  clear.hidden=!search.value;
- }
- function renderHero(){
-  document.getElementById('heroScene').innerHTML=HERO_SCENES.map(scene=>`<button class="hero-scene-button ${scene.id}" data-greet-scene="${scene.id}" aria-label="和${scene.id==='hero-left'?'灵感':'陪伴'}伙伴打个招呼" aria-pressed="false"><img src="${scene.src}" alt="" decoding="async" fetchpriority="high"><span class="scene-greeting" aria-hidden="true">${esc(scene.greeting)}</span><span class="scene-invitation"><span aria-hidden="true">✦</span> 打个招呼</span><span class="scene-sparkles" aria-hidden="true">✧ <i>♡</i> ✦</span></button>`).join('');
-  renderIntro();
- }
- function renderIntro(){
-  const looks=familyLooks('dots'),selected=byId(introLook);
-  document.getElementById('introPreview').innerHTML=`<div class="intro-character"><img src="${selected.src}" alt="${esc(getLookDefinition(introLook).name)}" decoding="sync"><span class="intro-handwritten" aria-hidden="true">Hello,<br>I'm Dots!</span></div><div class="intro-editor"><nav class="intro-editor-tools" aria-label="在工作台继续定制">${[['appearance','外观'],['accessories','配饰'],['face','表情'],['appearance','颜色']].map(([tab,label])=>`<button data-intro-tool="${tab}" aria-label="在工作台调整${label}">${label}</button>`).join('')}</nav><div class="intro-look-options" role="group" aria-label="试选 Dots 搭配">${looks.map(a=>`<button data-intro-look="${a.id}" aria-pressed="${a.id===introLook}" aria-label="预览${esc(getLookDefinition(a.id).name)}"><img src="${a.src}" alt="" decoding="sync"><span>${a.id==='candidate-dots-20261005'?'耳机':a.id==='dots-rose-glasses'?'眼镜':'渔夫帽'}</span></button>`).join('')}</div><p class="intro-editor-hint">试选内置搭配，再进入工作台定制。</p><button class="intro-continue" data-intro-start>用这款开始 <span aria-hidden="true">→</span></button></div>`;
- }
- function showHome(){page='home';document.body.dataset.screen='home';document.getElementById('homePortal').hidden=false;looks.hidden=true;document.getElementById('workspaceShell').hidden=true;renderFamilies();}
- function showGallery(family='all'){page='looks';activeFamily=family||'all';tagQuery={...queryForFamily(activeFamily),text:search.value};onQueryChange?.(tagQuery);document.body.dataset.screen='looks';document.getElementById('homePortal').hidden=true;looks.hidden=false;document.getElementById('workspaceShell').hidden=true;renderLooks();document.getElementById('looksTitle')?.focus({preventScroll:true});}
- nav.addEventListener('click',e=>{const b=e.target.closest('[data-home-filter]');if(!b)return;filter=b.dataset.homeFilter;renderFamilies();nav.querySelector(`[data-home-filter="${filter}"]`)?.focus({preventScroll:true});});
- gallery.addEventListener('click',e=>{const b=e.target.closest('[data-family-gallery]');if(b)openGallery(b.dataset.familyGallery);});
- cards.addEventListener('click',e=>{
-  const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.viewLook)onViewLook(b.dataset.viewLook);
-  else if(b.dataset.copyLook)onCopyLook(b.dataset.copyLook);
-  else if(b.dataset.downloadLook)onDownloadLook(b.dataset.downloadLook);
-  else if(b.dataset.startLook)onStartLook(b.dataset.startLook);
- });
- document.getElementById('galleryScene').addEventListener('click',e=>{const b=e.target.closest('[data-start-look]');if(b)onStartLook(b.dataset.startLook);});
- document.getElementById('introPreview').addEventListener('click',e=>{
-  const button=e.target.closest('button');if(!button)return;
-  if(button.dataset.introLook){introLook=button.dataset.introLook;renderIntro();document.querySelector(`[data-intro-look="${introLook}"]`)?.focus({preventScroll:true});}
-  else if(button.dataset.introTool)onEditLook(introLook,button.dataset.introTool);
-  else if(button.hasAttribute('data-intro-start'))onStartLook(introLook);
- });
- document.getElementById('introStart').addEventListener('click',()=>onStartLook(introLook));
- document.getElementById('heroScene').addEventListener('click',e=>{
-  const button=e.target.closest('[data-greet-scene]');if(!button)return;
-  const selected=button.getAttribute('aria-pressed')!=='true';
-  document.querySelectorAll('[data-greet-scene]').forEach(b=>b.setAttribute('aria-pressed',String(selected&&b===button)));
-  document.getElementById('sceneGreetingStatus').textContent=selected?HERO_SCENES.find(s=>s.id===button.dataset.greetScene).greeting:'伙伴们正在等你的下一个灵感。';
- });
- search.addEventListener('input',()=>{if(page==='looks'){renderLooks();onQueryChange?.(tagQuery);}else if(page==='workspace'){tagQuery=normalizeTagQuery({...tagQuery,text:search.value});onQueryChange?.(tagQuery);clear.hidden=!search.value;}else{filter='all';renderFamilies();}});
- clear.addEventListener('click',()=>{search.value='';filter='all';renderFamilies();if(page==='looks')renderLooks();else if(page==='workspace')tagQuery=normalizeTagQuery({...tagQuery,text:''});if(page!=='home')onQueryChange?.(tagQuery);search.focus();});
- window.addEventListener('resize',()=>{if(page==='looks')keepActiveFilterVisible();});
- renderHero();renderFamilies();
- return {
-  showHome,showGallery,setPageWorkspace(){page='workspace';document.body.dataset.screen='workspace';document.getElementById('homePortal').hidden=true;looks.hidden=true;document.getElementById('workspaceShell').hidden=false;},
-  setCurrent(id){current=id;for(const card of gallery.querySelectorAll('[data-family-gallery]'))card.setAttribute('aria-current',String(card.dataset.familyGallery===id));},
-  getQuery(){return normalizeTagQuery(tagQuery);},setQuery(q){tagQuery=normalizeTagQuery(q);activeFamily='all';search.value=tagQuery.text;if(page==='looks')renderLooks();},
-  getRandomQuery(){if(page==='home'){const ids=matchingFamilies(search.value,filter).flatMap(f=>FAMILY_LOOK_IDS[f.id]||[]);return {...normalizeTagQuery(),lookIds:ids};}return normalizeTagQuery(tagQuery);},
-  getRandomScope(){return page==='home'?matchingFamilies(search.value,filter).map(f=>f.name).join(' · ')||'无匹配场景':queryLabel(tagQuery);},
-  clear(){search.value='';filter='all';activeFamily='all';tagQuery=normalizeTagQuery();onQueryChange?.(tagQuery);renderFamilies();renderLooks();showHome();}
- };
+ const ids=['dots-rose-glasses','candidate-meta-muse-20261005','human-bun-yellow','animal-white-cat'];
+ featured.innerHTML=ids.map(id=>ARTWORKS.find(a=>a.id===id)).filter(a=>a&&isEligible(a)).map(a=>`<button class="featured-card" data-artwork="${escapeHTML(a.id)}" aria-label="查看${escapeHTML(a.title)}"><img src="${escapeHTML(getAsset(a.assetRefs.original).path)}" alt="" decoding="async" loading="lazy"><span><b>${escapeHTML(a.title)}</b><small>查看图片与 Prompt →</small></span></button>`).join('');
+ featured.addEventListener('click',e=>{const b=e.target.closest('[data-artwork]');if(b)onArtwork(b.dataset.artwork);});
 }

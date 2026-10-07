@@ -1,0 +1,14 @@
+Command: DOTS_QA=1 DOTS_BASE_URL=http://127.0.0.1:5180/ DOTS_EVIDENCE_DIR=design/acceptance/current-20261007-v90/browser node scripts/verify-studio-browser.mjs
+Source: dist/index.html script ./studio.js?v=90
+Exit code: 1
+Failure (test selector only): assertDetailContract selected all #studioOverlay h1/#studioOverlay h2, so it included both the shared overlay title "作品详情" and Artwork title "蓝色耳机 Dots". Narrowed the assertion to .artwork-detail__title; no application source change.
+
+Retry 1 after selector correction: the prior assertion expected object-fit: contain for all detail assets. Cache 90 intentionally uses registered alpha visibleBounds to optically scale images with object-fit: initial while preserving their natural PNG aspect ratio. Replaced the stale one-size assertion with a no-distortion check for optical images and retained contain validation for fallback images. No application source change.
+
+Retry 2 after optical-aspect correction: the typed style tag exists in both the four-chip default group and the expandable full feature index. Scoped the click to the visible default tag group; no source change.
+
+Retry 3: a later published human image reached the aspect-ratio assertion before the element's first painted frame had settled. Updated detail() to await the actual image decode plus two animation frames before geometry assertions; the aspect-ratio check remains strict.
+
+Retry 4: image decode and double-RAF did not remove the mismatch. Retaining the strict no-distortion assertion and adding actual ratios to the next failure message to determine whether this is geometry or a test-state issue.
+
+Retry 4 result: strict rendered-ratio assertion exposed a real 390px detail regression for candidate-meta-muse-20261005: source 0.9693877551, rendered 1.0648849367. At 1440px the same image preserves its ratio. The mobile max-height rule appears to override the optical image's max-height reset. Reported to root; held full suite pending source fix, without relaxing the assertion.

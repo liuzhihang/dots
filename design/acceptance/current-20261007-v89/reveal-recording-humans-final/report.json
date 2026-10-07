@@ -1,0 +1,1146 @@
+{
+  "cache": "89",
+  "base": "http://127.0.0.1:5174/",
+  "catalogue": {
+    "count": 15,
+    "selectedIds": [
+      "animal-white-cat",
+      "dots-rose-glasses",
+      "muse-rose-flowers",
+      "candidate-humans-20261005"
+    ],
+    "expectedIndices": [
+      13,
+      5,
+      9,
+      3
+    ]
+  },
+  "results": [
+    {
+      "stage": "cat-no-accessory",
+      "artworkId": "animal-white-cat",
+      "title": "奶油白猫伙伴",
+      "result": {
+        "artworkId": "animal-white-cat",
+        "title": "奶油白猫伙伴",
+        "resultImage": {
+          "src": "blob:http://127.0.0.1:5174/d4e9dfe0-2ad1-48a7-97a7-ad1db4afaa23",
+          "width": 1254,
+          "height": 1254,
+          "complete": true
+        },
+        "phase": "result",
+        "slotCount": 4,
+        "slots": [
+          {
+            "index": 0,
+            "key": "style",
+            "stopped": "true",
+            "artworkId": "animal-white-cat",
+            "value": "原创动物",
+            "visualKind": "artwork-preview",
+            "visualId": "artwork-preview:animal-white-cat",
+            "image": "blob:http://127.0.0.1:5174/d4e9dfe0-2ad1-48a7-97a7-ad1db4afaa23"
+          },
+          {
+            "index": 1,
+            "key": "shape",
+            "stopped": "true",
+            "artworkId": "animal-white-cat",
+            "value": "猫形",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:shape:cat",
+            "image": ""
+          },
+          {
+            "index": 2,
+            "key": "accessory-prop",
+            "stopped": "true",
+            "artworkId": "animal-white-cat",
+            "value": "无配饰 · 无道具",
+            "visualKind": "empty-value",
+            "visualId": "illustration:accessory:none+illustration:prop:none",
+            "image": ""
+          },
+          {
+            "index": 3,
+            "key": "action-expression",
+            "stopped": "true",
+            "artworkId": "animal-white-cat",
+            "value": "坐姿 · 温和表情",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:action:sitting",
+            "image": ""
+          }
+        ],
+        "actions": [
+          "random",
+          "copy",
+          "download"
+        ],
+        "extraActions": [
+          "chatgpt"
+        ]
+      },
+      "paintedImages": {
+        "result": {
+          "src": "blob:http://127.0.0.1:5174/d4e9dfe0-2ad1-48a7-97a7-ad1db4afaa23",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 1215,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 555,
+            "y": 348.578125,
+            "width": 330,
+            "height": 264
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "style": {
+          "src": "blob:http://127.0.0.1:5174/d4e9dfe0-2ad1-48a7-97a7-ad1db4afaa23",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 1215,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 412,
+            "y": 209.65625,
+            "width": 76,
+            "height": 76
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        }
+      },
+      "sourceAsset": {
+        "id": "asset:animal-white-cat:original",
+        "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "stage": "dots-with-glasses",
+      "artworkId": "dots-rose-glasses",
+      "title": "莓粉圆框 Dots",
+      "result": {
+        "artworkId": "dots-rose-glasses",
+        "title": "莓粉圆框 Dots",
+        "resultImage": {
+          "src": "blob:http://127.0.0.1:5174/a4cbacac-377a-4be1-94d9-219bbf718177",
+          "width": 1254,
+          "height": 1254,
+          "complete": true
+        },
+        "phase": "result",
+        "slotCount": 4,
+        "slots": [
+          {
+            "index": 0,
+            "key": "style",
+            "stopped": "true",
+            "artworkId": "dots-rose-glasses",
+            "value": "Dots",
+            "visualKind": "artwork-preview",
+            "visualId": "artwork-preview:dots-rose-glasses",
+            "image": "blob:http://127.0.0.1:5174/a4cbacac-377a-4be1-94d9-219bbf718177"
+          },
+          {
+            "index": 1,
+            "key": "shape",
+            "stopped": "true",
+            "artworkId": "dots-rose-glasses",
+            "value": "圆球形",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:shape:sphere",
+            "image": ""
+          },
+          {
+            "index": 2,
+            "key": "accessory-prop",
+            "stopped": "true",
+            "artworkId": "dots-rose-glasses",
+            "value": "透明圆框眼镜 · 无道具",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:accessory:round-glasses",
+            "image": ""
+          },
+          {
+            "index": 3,
+            "key": "action-expression",
+            "stopped": "true",
+            "artworkId": "dots-rose-glasses",
+            "value": "正面静态造型 · 平静",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:action:front-static",
+            "image": ""
+          }
+        ],
+        "actions": [
+          "random",
+          "copy",
+          "download"
+        ],
+        "extraActions": [
+          "chatgpt"
+        ]
+      },
+      "paintedImages": {
+        "result": {
+          "src": "blob:http://127.0.0.1:5174/a4cbacac-377a-4be1-94d9-219bbf718177",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 1309,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 555,
+            "y": 348.578125,
+            "width": 330,
+            "height": 264
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "style": {
+          "src": "blob:http://127.0.0.1:5174/a4cbacac-377a-4be1-94d9-219bbf718177",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 1309,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 412,
+            "y": 209.65625,
+            "width": 76,
+            "height": 76
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        }
+      },
+      "sourceAsset": {
+        "id": "asset:dots-rose-glasses:original",
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "stage": "muse-holding-flowers",
+      "artworkId": "muse-rose-flowers",
+      "title": "玫粉花束 Meta Muse",
+      "result": {
+        "artworkId": "muse-rose-flowers",
+        "title": "玫粉花束 Meta Muse",
+        "resultImage": {
+          "src": "blob:http://127.0.0.1:5174/9380ccf5-55a6-4f86-b8ce-4daec9546db3",
+          "width": 1254,
+          "height": 1254,
+          "complete": true
+        },
+        "phase": "result",
+        "slotCount": 4,
+        "slots": [
+          {
+            "index": 0,
+            "key": "style",
+            "stopped": "true",
+            "artworkId": "muse-rose-flowers",
+            "value": "Meta Muse",
+            "visualKind": "artwork-preview",
+            "visualId": "artwork-preview:muse-rose-flowers",
+            "image": "blob:http://127.0.0.1:5174/9380ccf5-55a6-4f86-b8ce-4daec9546db3"
+          },
+          {
+            "index": 1,
+            "key": "shape",
+            "stopped": "true",
+            "artworkId": "muse-rose-flowers",
+            "value": "包覆式轮廓",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:shape:hooded",
+            "image": ""
+          },
+          {
+            "index": 2,
+            "key": "accessory-prop",
+            "stopped": "true",
+            "artworkId": "muse-rose-flowers",
+            "value": "无配饰 · 白色雏菊花束",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:prop:flowers",
+            "image": ""
+          },
+          {
+            "index": 3,
+            "key": "action-expression",
+            "stopped": "true",
+            "artworkId": "muse-rose-flowers",
+            "value": "双手抱花 · 微笑",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:action:holding-flowers",
+            "image": ""
+          }
+        ],
+        "actions": [
+          "random",
+          "copy",
+          "download"
+        ],
+        "extraActions": [
+          "chatgpt"
+        ]
+      },
+      "paintedImages": {
+        "result": {
+          "src": "blob:http://127.0.0.1:5174/9380ccf5-55a6-4f86-b8ce-4daec9546db3",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 952,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 555,
+            "y": 348.578125,
+            "width": 330,
+            "height": 264
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "style": {
+          "src": "blob:http://127.0.0.1:5174/9380ccf5-55a6-4f86-b8ce-4daec9546db3",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 952,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 412,
+            "y": 209.65625,
+            "width": 76,
+            "height": 76
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        }
+      },
+      "sourceAsset": {
+        "id": "asset:muse-rose-flowers:original",
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "width": 1254,
+        "height": 1254
+      }
+    },
+    {
+      "stage": "candidate-humans-recaptured-1440",
+      "artworkId": "candidate-humans-20261005",
+      "title": "栗发青绿人物",
+      "result": {
+        "artworkId": "candidate-humans-20261005",
+        "title": "栗发青绿人物",
+        "resultImage": {
+          "src": "blob:http://127.0.0.1:5174/cec3255d-e721-4874-bc26-060c5d5d0c6c",
+          "width": 1254,
+          "height": 1254,
+          "complete": true
+        },
+        "phase": "result",
+        "slotCount": 4,
+        "slots": [
+          {
+            "index": 0,
+            "key": "style",
+            "stopped": "true",
+            "artworkId": "candidate-humans-20261005",
+            "value": "原创人物",
+            "visualKind": "artwork-preview",
+            "visualId": "artwork-preview:candidate-humans-20261005",
+            "image": "blob:http://127.0.0.1:5174/cec3255d-e721-4874-bc26-060c5d5d0c6c"
+          },
+          {
+            "index": 1,
+            "key": "shape",
+            "stopped": "true",
+            "artworkId": "candidate-humans-20261005",
+            "value": "精致 Q 版人物",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:shape:chibi-person",
+            "image": ""
+          },
+          {
+            "index": 2,
+            "key": "accessory-prop",
+            "stopped": "true",
+            "artworkId": "candidate-humans-20261005",
+            "value": "无配饰 · 无道具",
+            "visualKind": "empty-value",
+            "visualId": "illustration:accessory:none+illustration:prop:none",
+            "image": ""
+          },
+          {
+            "index": 3,
+            "key": "action-expression",
+            "stopped": "true",
+            "artworkId": "candidate-humans-20261005",
+            "value": "站立、双手交握 · 温和微笑",
+            "visualKind": "feature-illustration",
+            "visualId": "illustration:action:standing-hands-together",
+            "image": ""
+          }
+        ],
+        "actions": [
+          "random",
+          "copy",
+          "download"
+        ],
+        "extraActions": [
+          "chatgpt"
+        ]
+      },
+      "paintedImages": {
+        "result": {
+          "src": "blob:http://127.0.0.1:5174/cec3255d-e721-4874-bc26-060c5d5d0c6c",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 831,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 555,
+            "y": 348.578125,
+            "width": 330,
+            "height": 264
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "style": {
+          "src": "blob:http://127.0.0.1:5174/cec3255d-e721-4874-bc26-060c5d5d0c6c",
+          "naturalWidth": 1254,
+          "naturalHeight": 1254,
+          "complete": true,
+          "nonTransparentPixelCount": 831,
+          "maxAlpha": 253,
+          "rect": {
+            "x": 412,
+            "y": 209.65625,
+            "width": 76,
+            "height": 76
+          },
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1"
+        }
+      },
+      "sourceAsset": {
+        "id": "asset:candidate-humans-20261005:original",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "width": 1254,
+        "height": 1254
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "t": 158,
+      "phase": "ready",
+      "artworkId": "",
+      "stoppedSlots": [],
+      "activeSlot": null
+    },
+    {
+      "t": 192,
+      "phase": "selecting",
+      "artworkId": "",
+      "stoppedSlots": [],
+      "activeSlot": null
+    },
+    {
+      "t": 197,
+      "phase": "preloading",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [],
+      "activeSlot": null
+    },
+    {
+      "t": 236,
+      "phase": "revealing",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [],
+      "activeSlot": "0"
+    },
+    {
+      "t": 748,
+      "phase": "revealing",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [
+        0
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 1582,
+      "phase": "revealing",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [
+        0,
+        1
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 2570,
+      "phase": "revealing",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [
+        0,
+        1,
+        2
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 3770,
+      "phase": "revealing",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 3923,
+      "phase": "result",
+      "artworkId": "animal-white-cat",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 4219,
+      "phase": "selecting",
+      "artworkId": "",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 4220,
+      "phase": "preloading",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 4265,
+      "phase": "revealing",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [],
+      "activeSlot": "0"
+    },
+    {
+      "t": 4779,
+      "phase": "revealing",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 5616,
+      "phase": "revealing",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0,
+        1
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 6618,
+      "phase": "revealing",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0,
+        1,
+        2
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 7822,
+      "phase": "revealing",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 7980,
+      "phase": "result",
+      "artworkId": "dots-rose-glasses",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 8252,
+      "phase": "selecting",
+      "artworkId": "",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 8252,
+      "phase": "preloading",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 8295,
+      "phase": "revealing",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [],
+      "activeSlot": "0"
+    },
+    {
+      "t": 8797,
+      "phase": "revealing",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 9616,
+      "phase": "revealing",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0,
+        1
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 10601,
+      "phase": "revealing",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0,
+        1,
+        2
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 11804,
+      "phase": "revealing",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 11962,
+      "phase": "result",
+      "artworkId": "muse-rose-flowers",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 12252,
+      "phase": "selecting",
+      "artworkId": "",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 12252,
+      "phase": "preloading",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 12295,
+      "phase": "revealing",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [],
+      "activeSlot": "0"
+    },
+    {
+      "t": 12814,
+      "phase": "revealing",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 13633,
+      "phase": "revealing",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0,
+        1
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 14618,
+      "phase": "revealing",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0,
+        1,
+        2
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 15820,
+      "phase": "revealing",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": 15980,
+      "phase": "result",
+      "artworkId": "candidate-humans-20261005",
+      "stoppedSlots": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "activeSlot": "0"
+    },
+    {
+      "t": null,
+      "phase": "closed",
+      "artworkId": "",
+      "stoppedSlots": [],
+      "activeSlot": null
+    }
+  ],
+  "timing": {
+    "elapsedMs": 16245.560542106628,
+    "frameCount": 290,
+    "meanCaptureFps": 17.78947542320532,
+    "encodedDurationSeconds": 16.28,
+    "encodedAverageFrameRate": "7275/407",
+    "frameDurationsSeconds": [
+      0.07949212503433227,
+      0.0679242091178894,
+      0.06516766595840454,
+      0.04867741703987122,
+      0.052469124794006346,
+      0.047800875186920166,
+      0.051807207822799684,
+      0.05063508415222168,
+      0.049150207996368406,
+      0.04891308307647705,
+      0.05000666689872742,
+      0.05179487490653992,
+      0.04800379204750061,
+      0.0536626250743866,
+      0.047136040925979616,
+      0.04948170900344848,
+      0.05232954096794128,
+      0.059453209161758426,
+      0.054952624797821044,
+      0.05070408320426941,
+      0.05101049995422363,
+      0.05029270792007446,
+      0.04829970908164978,
+      0.05015691590309143,
+      0.0489225001335144,
+      0.051080999851226806,
+      0.05090812516212463,
+      0.04866799998283386,
+      0.05040874981880188,
+      0.05048316717147827,
+      0.04970479202270508,
+      0.04993716597557068,
+      0.049875916957855225,
+      0.049860167026519776,
+      0.04879908299446106,
+      0.05023554182052612,
+      0.049610291004180906,
+      0.050021959066390995,
+      0.05177583312988281,
+      0.04895191693305969,
+      0.049862207889556885,
+      0.05099879217147827,
+      0.049435249805450436,
+      0.04998708319664001,
+      0.05045891690254212,
+      0.05054962491989136,
+      0.05181037521362305,
+      0.04886995792388916,
+      0.05022650003433227,
+      0.0504476249217987,
+      0.0495022919178009,
+      0.04866287517547607,
+      0.049287333011627195,
+      0.04976895785331726,
+      0.051203125,
+      0.0488747501373291,
+      0.0504993748664856,
+      0.04882379198074341,
+      0.05147445797920227,
+      0.05102229213714599,
+      0.05009570789337158,
+      0.050111209154129026,
+      0.04939504098892212,
+      0.05014395880699158,
+      0.05033645820617676,
+      0.04959712481498718,
+      0.049719792127609255,
+      0.05097120785713196,
+      0.049531375169754026,
+      0.049506749868392944,
+      0.0509157919883728,
+      0.04897908306121826,
+      0.049423666954040525,
+      0.07025183296203613,
+      0.06187337517738342,
+      0.18388412499427795,
+      0.05005345797538757,
+      0.06874520897865295,
+      0.06498387503623962,
+      0.06555283284187317,
+      0.06730929207801818,
+      0.0682251660823822,
+      0.06477433395385743,
+      0.06920024991035462,
+      0.06561333298683167,
+      0.06657737517356872,
+      0.06710679197311402,
+      0.0658382909297943,
+      0.06746308398246766,
+      0.06674983310699463,
+      0.06728983283042908,
+      0.06608275008201599,
+      0.06656062507629394,
+      0.06669945883750915,
+      0.06610541605949402,
+      0.06750595903396607,
+      0.06682291603088379,
+      0.0656365418434143,
+      0.0670040831565857,
+      0.0672196249961853,
+      0.067126708984375,
+      0.06645983290672303,
+      0.06654641699790954,
+      0.06622262501716614,
+      0.06693700003623962,
+      0.06767237496376037,
+      0.06536675000190735,
+      0.06662783312797546,
+      0.06781208300590515,
+      0.06597599983215333,
+      0.06693345904350281,
+      0.06687533307075501,
+      0.06582687497138977,
+      0.06722737503051758,
+      0.06627787494659423,
+      0.06647187495231628,
+      0.06706925010681153,
+      0.06732158303260803,
+      0.06608458399772645,
+      0.06640495800971985,
+      0.06687191700935363,
+      0.06644974994659424,
+      0.0665002498626709,
+      0.06768716621398926,
+      0.06640312480926513,
+      0.06492258405685425,
+      0.06725595808029175,
+      0.0665486249923706,
+      0.0673998749256134,
+      0.06648049998283387,
+      0.06566804194450379,
+      0.06736212515830994,
+      0.06684929084777833,
+      0.06471629214286805,
+      0.18508262491226196,
+      0.0487963330745697,
+      0.05002420902252197,
+      0.050434332847595215,
+      0.05106541705131531,
+      0.048866915941238404,
+      0.04980958414077759,
+      0.05056558299064636,
+      0.050354249954223634,
+      0.04884875011444092,
+      0.049912957906723024,
+      0.05097995901107788,
+      0.049587707996368406,
+      0.05121041703224182,
+      0.049435832977294925,
+      0.04907599997520447,
+      0.05094216704368591,
+      0.04990220785140991,
+      0.04969162511825562,
+      0.05100591707229614,
+      0.049354874849319455,
+      0.0505631251335144,
+      0.04964491605758667,
+      0.048400624990463256,
+      0.06668845891952514,
+      0.050866374969482424,
+      0.05062516593933106,
+      0.049344125032424926,
+      0.05089166712760925,
+      0.05013924980163574,
+      0.049992958068847654,
+      0.04983062505722046,
+      0.05009795904159546,
+      0.04914158296585083,
+      0.050963500022888186,
+      0.048892791986465456,
+      0.05031266593933106,
+      0.0494916250705719,
+      0.052018249988555906,
+      0.04967050004005432,
+      0.048072875022888185,
+      0.05001245880126953,
+      0.049725625038146974,
+      0.05096141600608826,
+      0.05051187515258789,
+      0.04991979193687439,
+      0.05004949998855591,
+      0.049953791856765746,
+      0.051145916223526,
+      0.04984024977684021,
+      0.05014175009727478,
+      0.048127917051315305,
+      0.05087904191017151,
+      0.04937679100036621,
+      0.05009758400917053,
+      0.049676958084106444,
+      0.05010933303833008,
+      0.050554167032241824,
+      0.0492123749256134,
+      0.05015529203414917,
+      0.051863082885742186,
+      0.04902012515068054,
+      0.05011183285713196,
+      0.050064625024795535,
+      0.048895083904266355,
+      0.04973037505149841,
+      0.050574958086013796,
+      0.048962082862854,
+      0.05094825005531311,
+      0.05048137497901917,
+      0.049741042137145995,
+      0.05039858293533325,
+      0.04859116697311401,
+      0.05115262508392334,
+      0.04955733299255371,
+      0.06900708389282227,
+      0.21350575017929077,
+      0.049965665817260745,
+      0.05061462497711182,
+      0.049846209049224856,
+      0.05084137511253357,
+      0.049433332920074465,
+      0.05064362502098083,
+      0.048572166919708254,
+      0.050816540956497194,
+      0.051302709102630614,
+      0.04906329107284546,
+      0.05033645892143249,
+      0.04982633304595947,
+      0.04944437503814697,
+      0.050896124839782717,
+      0.05071775007247925,
+      0.04876600003242493,
+      0.05036999988555908,
+      0.05023758316040039,
+      0.05013995885848999,
+      0.05011883306503296,
+      0.048901708126068116,
+      0.049774624824523925,
+      0.05109070897102356,
+      0.04843108320236206,
+      0.0519076669216156,
+      0.049066165924072265,
+      0.04970191693305969,
+      0.05148516702651978,
+      0.04811966609954834,
+      0.0499765419960022,
+      0.050679666996002196,
+      0.05076008296012879,
+      0.04788191699981689,
+      0.05125904107093811,
+      0.05056845903396606,
+      0.04942545795440674,
+      0.04978608298301697,
+      0.050366667032241824,
+      0.049686457872390746,
+      0.04993287515640259,
+      0.04914908385276794,
+      0.05156862497329712,
+      0.049323500156402585,
+      0.049875540971755984,
+      0.05093612504005432,
+      0.04989783382415772,
+      0.04969758319854736,
+      0.0509386248588562,
+      0.04857474994659424,
+      0.05055029201507568,
+      0.05056412506103516,
+      0.049551415920257566,
+      0.04999804210662842,
+      0.05019825005531311,
+      0.05082570791244507,
+      0.04835479211807251,
+      0.04990816688537598,
+      0.04966199994087219,
+      0.04956412506103516,
+      0.05147345805168152,
+      0.05114549994468689,
+      0.04750533294677734,
+      0.05159870910644531,
+      0.04931508302688599,
+      0.0499366250038147,
+      0.05117016696929932,
+      0.04936100006103516,
+      0.05044570803642273,
+      0.04962179183959961,
+      0.04873304104804993,
+      0.050521167039871216,
+      0.05169841694831848,
+      0.049154000043869016,
+      0.049291499853134156,
+      0.0647784161567688,
+      0.06768683385848999,
+      0.1832822082042694,
+      0.15074924993515015
+    ]
+  },
+  "forcedDrawValues": [
+    0.88,
+    0.37142857142857144,
+    0.6307692307692307,
+    0.26666666666666666
+  ],
+  "consoleEntries": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting...",
+      "location": {
+        "url": "http://127.0.0.1:5174/@vite/client",
+        "line": 933,
+        "column": 8,
+        "lineNumber": 933,
+        "columnNumber": 8
+      }
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected.",
+      "location": {
+        "url": "http://127.0.0.1:5174/@vite/client",
+        "line": 1046,
+        "column": 11,
+        "lineNumber": 1046,
+        "columnNumber": 11
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "video": "design/acceptance/current-20261007-v89/reveal-recording-humans-final/video/reveal-flow.mp4",
+  "videoSource": "Continuous Chromium viewport screenshots (290 frames) encoded as variable frame rate with existing /opt/homebrew/bin/ffmpeg; Playwright packaged ffmpeg was unavailable, so no dependency was installed",
+  "screenshots": [
+    "design/acceptance/current-20261007-v89/reveal-recording-humans-final/screenshots/cat-no-accessory.png",
+    "design/acceptance/current-20261007-v89/reveal-recording-humans-final/screenshots/dots-with-glasses.png",
+    "design/acceptance/current-20261007-v89/reveal-recording-humans-final/screenshots/muse-holding-flowers.png",
+    "design/acceptance/current-20261007-v89/reveal-recording-humans-final/screenshots/candidate-humans-recaptured-1440.png",
+    "design/acceptance/current-20261007-v89/reveal-recording-humans-final/screenshots/closed-home.png"
+  ],
+  "simulation": "Playwright Chromium 1440 x 900 CSS viewport; no physical device was tested",
+  "artApproval": "not performed; recording and screenshots are engineering evidence only",
+  "published": false
+}

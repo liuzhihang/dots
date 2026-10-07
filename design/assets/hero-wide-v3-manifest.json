@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-05",
+  "scope": "Wide hero candidate pair only; no code, browser, Git or deployment changes.",
+  "art_direction": {
+    "requested_model": "gpt-6-astra",
+    "requested_reasoning": "high",
+    "generator_tool": "built-in image_gen",
+    "generator_backend_model": "not reported; do not equate art direction model with image backend"
+  },
+  "targets": {
+    "actor_count_each": 5,
+    "visible_silhouette_ratio": [
+      1.5,
+      1.65
+    ],
+    "min_width_occupancy": 0.85,
+    "min_height_occupancy": 0.8,
+    "alpha_safety_margin": [
+      0.03,
+      0.05
+    ]
+  },
+  "processing": "Selected output PNGs copied byte-for-byte with generated alpha preserved. No image editing in Python or other procedural tools.",
+  "qa_method": "Visual review of generated actor composition plus read-only Pillow inspection of saved PNG alpha. Visible silhouette measured at alpha>=16; strict nonzero bounds also retained.",
+  "qa_limitations": [
+    "These are image-level candidates; root must inspect real hero desktop/mobile placement.",
+    "Right selected PNG does not meet requested 3–5% safe alpha margin on all sides. No third blind generation attempted.",
+    "ImageGen inline previews can show RGB background glow even when saved PNG exterior pixels have alpha=0. Transparency is assessed from saved PNG, not preview alone."
+  ],
+  "assets": [
+    {
+      "side": "left",
+      "selected_file": "design/assets/hero-left-wide-v3.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-8c5f3b4b-0d00-457e-8a3c-b3ef54235794.png",
+      "member_count": 5,
+      "members": [
+        "purple-headphone-dots",
+        "chestnut-teal-knit-boy",
+        "green-cloud-grok",
+        "blue-droplet-grok",
+        "tiny-rose-dots"
+      ],
+      "reference_images": [
+        "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-8e7d9c35-4117-4963-bab6-4052b72639fc.png"
+      ],
+      "prompts": [
+        "Use case: stylized-concept.\nCreate a substantially WIDER horizontal version of this exact five-character transparent hero group. Preserve these five identities, material quality, faces and lighting. Do not merely add empty canvas. The ACTUAL VISIBLE CHARACTERS must together form a wide, low silhouette about 1.6 times as wide as tall. Render on a 3:2 LANDSCAPE transparent canvas with characters filling 90–94% of canvas width and 84–90% of its height, with only 3–5% clear alpha safety margin. NO empty half of the picture.\nRearrange and resize the five actors using this layout:\n1. Large PURPLE plush Dots sphere, black paired oval eyes and silver/lilac connected headphones, at foreground LEFT. Its diameter is 65–70% of the whole group's visible height. It dominates the left HALF. NO mouth, nose, hands, arms, legs.\n2. Same original chestnut-haired cheerful chibi boy in mint/teal knit cardigan, behind and immediately RIGHT of that large sphere, not sitting on top of it. The boy's huge head is 50–55% of total group height. Boy head top is only a little above headphone top; his face beside the upper-right quadrant of sphere, not a full head vertically above it. Boy's short torso is concealed behind sphere and companions. One hand naturally rests on the headphone edge, the other is a small friendly wave beside his cheek, all fingers plausible.\n3. Small green Grok cloud occupies lower INNER-RIGHT beside the boy and sphere, 30% of group height, smooth matte silicone.\n4. Small blue Grok teardrop peeks at the far INNER-RIGHT just behind cloud, 25% of group height. These two geometries extend the huddle to the RIGHT, not upward above boy.\n5. Tiny rose-pink plush Dots sphere at front edge between purple sphere and cloud, 20% of group height.\nBoth Groks have exactly two parallel WHITE capsule eyes tilted like backslash, no mouth and no limbs. Pink Dots has two BLACK oval eyes and no mouth or limbs.\nComposition: two strong side-by-side main masses (big purple sphere LEFT, big boy head RIGHT) at similar top levels, with three little companions completing the right side. A wide crescent-shaped tightly connected group. All faces readable. Gently overlapping, touching and sharing a common lower baseline. Entire visible silhouette close to 1.6:1; NOT the tall triangular tower of the reference. Do not make person body tall. Full group fully inside canvas including headphone cups and waving hand.\nPremium fine short plush fibers for Dots, detailed directional boy hair and knit fabric, matte silicone Groks; soft unified front-upper-left light. True transparent RGBA. No background, backdrop, haze, floor, pedestal, independent ground shadow, text, UI, watermark or logo.",
+        "Edit the supplied five-character transparent cutout. Preserve the exact characters, count, identities, gestures, fine hair, plush, silicone, materials, lighting and friendly expressions.\nMake only a framing/composition correction: move the blue teardrop and green cloud slightly closer inward toward the boy, narrowing the full character-group silhouette from about 1.72:1 to about 1.62:1. Keep all five faces clear. Do not deform or horizontally squash any character. The purple headphones sphere stays at left, boy beside it at right, tiny pink sphere front, cloud and droplet inner-right.\nScale and center the complete corrected cutout so every outside edge has 4% genuinely EMPTY transparent safety margin. Fill around 90–92% of canvas width and 88–92% of height; final canvas landscape about 1.6:1. Do not crop the headphone, blue droplet, hair, waving hand or sphere. No half-empty canvas.\nThis is a transparent sticker asset. Actual RGBA alpha 0 outside the character silhouettes, no backdrop, haze, glow, floor, cast shadow, text, logo, UI or watermark."
+      ],
+      "attempts": [
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-208f4f7c-a476-4c94-b7a5-868da030ee81.png",
+          "selected": false,
+          "reason": "Visible ratio 1.717 and right/left margins under target; retained as evidence, not copied.",
+          "file_metadata": {
+            "bytes": 1908489,
+            "sha256": "c45b0199d32557411f58a052f45c3016181c924ba804e5d1467de7df81f69752",
+            "dimensions": [
+              1586,
+              992
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.37558475369157546,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  18,
+                  46,
+                  1586,
+                  966
+                ],
+                "visible_ratio": 1.7043478260869565,
+                "width_occupancy": 0.9886506935687264,
+                "height_occupancy": 0.9274193548387096,
+                "margins_ltrb": [
+                  0.011349306431273645,
+                  0.046370967741935484,
+                  0.0,
+                  0.02620967741935484
+                ]
+              },
+              "16": {
+                "bbox": [
+                  21,
+                  48,
+                  1575,
+                  953
+                ],
+                "visible_ratio": 1.7171270718232043,
+                "width_occupancy": 0.9798234552332913,
+                "height_occupancy": 0.9122983870967742,
+                "margins_ltrb": [
+                  0.013240857503152586,
+                  0.04838709677419355,
+                  0.0069356872635561164,
+                  0.03931451612903226
+                ]
+              },
+              "64": {
+                "bbox": [
+                  22,
+                  49,
+                  1575,
+                  953
+                ],
+                "visible_ratio": 1.717920353982301,
+                "width_occupancy": 0.9791929382093316,
+                "height_occupancy": 0.9112903225806451,
+                "margins_ltrb": [
+                  0.013871374527112233,
+                  0.04939516129032258,
+                  0.0069356872635561164,
+                  0.03931451612903226
+                ]
+              },
+              "128": {
+                "bbox": [
+                  22,
+                  49,
+                  1574,
+                  952
+                ],
+                "visible_ratio": 1.7187153931339978,
+                "width_occupancy": 0.978562421185372,
+                "height_occupancy": 0.9102822580645161,
+                "margins_ltrb": [
+                  0.013871374527112233,
+                  0.04939516129032258,
+                  0.007566204287515763,
+                  0.04032258064516129
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-8c5f3b4b-0d00-457e-8a3c-b3ef54235794.png",
+          "selected": true,
+          "reason": "Visible ratio now 1.619; full outlines; soft material and actor identity/contact preserved.",
+          "file_metadata": {
+            "bytes": 1815246,
+            "sha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+            "dimensions": [
+              1585,
+              992
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.4042103388623181,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  41,
+                  40,
+                  1519,
+                  958
+                ],
+                "visible_ratio": 1.6100217864923747,
+                "width_occupancy": 0.9324921135646688,
+                "height_occupancy": 0.9254032258064516,
+                "margins_ltrb": [
+                  0.025867507886435333,
+                  0.04032258064516129,
+                  0.0416403785488959,
+                  0.034274193548387094
+                ]
+              },
+              "16": {
+                "bbox": [
+                  44,
+                  42,
+                  1516,
+                  951
+                ],
+                "visible_ratio": 1.6193619361936193,
+                "width_occupancy": 0.9287066246056782,
+                "height_occupancy": 0.9163306451612904,
+                "margins_ltrb": [
+                  0.0277602523659306,
+                  0.04233870967741935,
+                  0.043533123028391164,
+                  0.04133064516129032
+                ]
+              },
+              "64": {
+                "bbox": [
+                  45,
+                  43,
+                  1515,
+                  951
+                ],
+                "visible_ratio": 1.618942731277533,
+                "width_occupancy": 0.9274447949526814,
+                "height_occupancy": 0.9153225806451613,
+                "margins_ltrb": [
+                  0.028391167192429023,
+                  0.04334677419354839,
+                  0.04416403785488959,
+                  0.04133064516129032
+                ]
+              },
+              "128": {
+                "bbox": [
+                  45,
+                  44,
+                  1515,
+                  950
+                ],
+                "visible_ratio": 1.6225165562913908,
+                "width_occupancy": 0.9274447949526814,
+                "height_occupancy": 0.9133064516129032,
+                "margins_ltrb": [
+                  0.028391167192429023,
+                  0.04435483870967742,
+                  0.04416403785488959,
+                  0.04233870967741935
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "review": [
+        "Large purple Dots and boy are side-by-side masses, no longer a narrow tower.",
+        "Both Dots have black oval eyes and no limbs/mouth; Groks have parallel white capsule eyes and no mouth/limbs.",
+        "Boy still rises above headphone top by about a quarter of group height; width and contact improved.",
+        "Left margin 2.78% is slightly below strict 3%, other sides approximately 4%."
+      ],
+      "file_metadata": {
+        "bytes": 1815246,
+        "sha256": "50195f704b2a451e8447cf5895c7eea8b881da0a130cafae27d250eec1b37eda",
+        "dimensions": [
+          1585,
+          992
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_fraction": 0.4042103388623181,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              41,
+              40,
+              1519,
+              958
+            ],
+            "visible_ratio": 1.6100217864923747,
+            "width_occupancy": 0.9324921135646688,
+            "height_occupancy": 0.9254032258064516,
+            "margins_ltrb": [
+              0.025867507886435333,
+              0.04032258064516129,
+              0.0416403785488959,
+              0.034274193548387094
+            ]
+          },
+          "16": {
+            "bbox": [
+              44,
+              42,
+              1516,
+              951
+            ],
+            "visible_ratio": 1.6193619361936193,
+            "width_occupancy": 0.9287066246056782,
+            "height_occupancy": 0.9163306451612904,
+            "margins_ltrb": [
+              0.0277602523659306,
+              0.04233870967741935,
+              0.043533123028391164,
+              0.04133064516129032
+            ]
+          },
+          "64": {
+            "bbox": [
+              45,
+              43,
+              1515,
+              951
+            ],
+            "visible_ratio": 1.618942731277533,
+            "width_occupancy": 0.9274447949526814,
+            "height_occupancy": 0.9153225806451613,
+            "margins_ltrb": [
+              0.028391167192429023,
+              0.04334677419354839,
+              0.04416403785488959,
+              0.04133064516129032
+            ]
+          },
+          "128": {
+            "bbox": [
+              45,
+              44,
+              1515,
+              950
+            ],
+            "visible_ratio": 1.6225165562913908,
+            "width_occupancy": 0.9274447949526814,
+            "height_occupancy": 0.9133064516129032,
+            "margins_ltrb": [
+              0.028391167192429023,
+              0.04435483870967742,
+              0.04416403785488959,
+              0.04233870967741935
+            ]
+          }
+        }
+      },
+      "byte_identical_to_tool_output": true
+    },
+    {
+      "side": "right",
+      "selected_file": "design/assets/hero-right-wide-v3.png",
+      "output_original_path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-26e5307b-abd9-4310-92ec-38024a50e7e8.png",
+      "member_count": 5,
+      "members": [
+        "brown-bun-yellow-girl",
+        "cream-meta-muse",
+        "orange-shiba",
+        "orange-bean-grok",
+        "teal-square-grok"
+      ],
+      "reference_images": [
+        "/Users/liuzhihang/.codex/generated_images/01a109ad-a01d-7680-be6e-b7297f9f3684/exec-e5407f69-586f-49e1-a6f9-812b0a2ba161.png"
+      ],
+      "prompts": [
+        "Use case: stylized-concept.\nCreate a substantially WIDER horizontal version of this exact five-character transparent hero group. Preserve the same five canonical identities, high-quality fine fibers and soft lighting. Do not merely add transparent canvas. The ACTUAL VISIBLE CHARACTER GROUP must be 1.5–1.65 times as WIDE as it is tall. Use 3:2 LANDSCAPE transparent canvas, characters fill 90–94% canvas width and 84–90% height, only 3–5% clear alpha safety border. NO big blank half of image.\nRearrange into a wide huddle with two main side-by-side areas:\nLEFT / inner side: cream Meta Muse seated foreground-left, with continuous thick cream hood, warm peach face inset, simple dark eyes, tiny curved smile, short mitten arms and two short feet. Muse is 60–65% of the whole group's visible height. Behind and just RIGHT of Muse's head, the same original brown-bun-haired chibi girl in yellow hoodie leans across to hug it. Girl head is large, 50–55% of total group height, similar to the paired boy hero's head. Her head top is only a little above Muse hood top, NOT a whole head stacked above it. Her torso is short and mostly concealed. One hand rests visibly and naturally on Muse hood, other hand makes a small friendly peace sign beside her own cheek. Genuine hugging contact, no merged hands, familiar playful smile and wink.\nRIGHT / outer side: cheerful original orange-and-cream Shiba sits immediately beside Muse, head near girl-cheek level, body and paws complete, fluffy curled tail, distinct canine muzzle and ears. Shiba is 65–70% of group height, the second strong wide anchor.\nAt far outer RIGHT behind Shiba: small smooth orange Grok bean peeks beside the dog's upper shoulder; small teal Grok rounded square peeks beside dog's lower flank, both clearly visible, extending the overall group horizontally. Each 25–30% of group height. Exactly two WHITE parallel capsule eyes slanted backslash on each, NO mouths, arms, legs, hair or accessories.\nExactly FIVE actors: girl, cream Muse, Shiba, orange bean, teal rounded square. No extras or duplication. Every face fully visible; companions overlap gently with intentional contact. Common lower baseline. Full outline, dog ears/paws/tail, Muse feet and girl hair all included. Keep composition low and WIDE; avoid the reference's vertical tower. Bodies stay shortened and tucked behind friends. The group silhouette itself is about 1.6:1, not just the canvas.\nMaterials: exquisite fine plush/cloth fibers, sculpted directional girl hair, knit hoodie, dog short fur, matte soft silicone geometries. Unified soft upper-left studio illumination, friendly bright pastel tone. True transparent RGBA PNG. ONLY character silhouettes and their own surface shading; no background, glow halo, floor, cast shadow, pedestal, UI, text, watermark or logo.",
+        "Create a genuine TRANSPARENT STICKER CUTOUT of these SAME FIVE friends, but composed WIDE SIDE-BY-SIDE, not in a vertical tower.\nReference identities and materials: original brown-bun-haired girl in yellow hoodie; cream-hooded Meta Muse with peach inset face and short arms/feet; orange Shiba dog; orange silicone Grok bean; teal silicone Grok square. Exactly 5. Groks each have two parallel white slanted capsule eyes, NO mouth or limbs.\nHorizontal composition: cream Muse seated front LEFT, Shiba seated front RIGHT, girl's large smiling/winking head BETWEEN them leaning to hug Muse. Her hair top is only slightly higher than Shiba ears; her short torso hidden behind companions. One hand on Muse hood, one little peace sign by cheek. Small orange bean and teal square peek from behind dog's far-right flank, at different low heights; their eyes fully visible. Muse and Shiba together span most width. Shared low baseline, heads side by side, affectionate contact, complete paws, hair, tail and hands. Never stack girl wholly above Muse.\nThe ACTUAL animal/person/muse group silhouette is 1.6:1 width:height. Landscape canvas also about 1.6:1. Group occupies around 90% width and 90% height with 4–5% clear border, no empty left or right half.\nKeep exquisite fine fur, plush and knit fabric from reference. Matte silicone Groks, soft light only ON surfaces.\nCRITICAL TRANSPARENCY: Outside all five silhouettes is NOTHING and alpha 0. NO studio backdrop, NO brown/gray/yellow background, NO glow halo, NO color haze, NO floor, NO cast shadow, NO scenery, NO bokeh, NO vignette. Do not paint a background and do not add colored lighting into empty space. Output true RGBA transparency like the reference. No text, watermark, UI or logo."
+      ],
+      "attempts": [
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-2e9189ea-41da-42fa-8748-e867f2dd0419.png",
+          "selected": false,
+          "reason": "Inline preview showed backdrop glow and prompted a conservative regeneration. Saved-file inspection later found sampled exterior alpha=0 and interiors alpha253; NOT proven background-alpha failure. This correction supersedes the initial preview-only rejection diagnosis.",
+          "file_metadata": {
+            "bytes": 2336646,
+            "sha256": "65f8d5d4d70eb0d62e6d91f174ed4323fe96ba615e18c354cbcf791e7ae7f1aa",
+            "dimensions": [
+              1536,
+              1024
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              254
+            ],
+            "fully_transparent_fraction": 0.38890965779622394,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  0,
+                  32,
+                  1536,
+                  992
+                ],
+                "visible_ratio": 1.6,
+                "width_occupancy": 1.0,
+                "height_occupancy": 0.9375,
+                "margins_ltrb": [
+                  0.0,
+                  0.03125,
+                  0.0,
+                  0.03125
+                ]
+              },
+              "16": {
+                "bbox": [
+                  49,
+                  35,
+                  1525,
+                  982
+                ],
+                "visible_ratio": 1.5586061246040126,
+                "width_occupancy": 0.9609375,
+                "height_occupancy": 0.9248046875,
+                "margins_ltrb": [
+                  0.031901041666666664,
+                  0.0341796875,
+                  0.007161458333333333,
+                  0.041015625
+                ]
+              },
+              "64": {
+                "bbox": [
+                  49,
+                  36,
+                  1524,
+                  982
+                ],
+                "visible_ratio": 1.5591966173361522,
+                "width_occupancy": 0.9602864583333334,
+                "height_occupancy": 0.923828125,
+                "margins_ltrb": [
+                  0.031901041666666664,
+                  0.03515625,
+                  0.0078125,
+                  0.041015625
+                ]
+              },
+              "128": {
+                "bbox": [
+                  50,
+                  38,
+                  1524,
+                  982
+                ],
+                "visible_ratio": 1.5614406779661016,
+                "width_occupancy": 0.9596354166666666,
+                "height_occupancy": 0.921875,
+                "margins_ltrb": [
+                  0.032552083333333336,
+                  0.037109375,
+                  0.0078125,
+                  0.041015625
+                ]
+              }
+            }
+          }
+        },
+        {
+          "path": "/Users/liuzhihang/.codex/generated_images/01a10c6e-4f7d-7ec3-b3c5-4d1570c54d84/exec-26e5307b-abd9-4310-92ec-38024a50e7e8.png",
+          "selected": true,
+          "reason": "Visible actor silhouette 1.597 with full five faces and broad Muse/Shiba foreground. Saved alpha 0–255.",
+          "file_metadata": {
+            "bytes": 1973055,
+            "sha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a",
+            "dimensions": [
+              1586,
+              992
+            ],
+            "mode": "RGBA",
+            "alpha_extrema": [
+              0,
+              255
+            ],
+            "fully_transparent_fraction": 0.35121514359516737,
+            "bounds_by_alpha": {
+              "1": {
+                "bbox": [
+                  35,
+                  15,
+                  1576,
+                  978
+                ],
+                "visible_ratio": 1.6002076843198338,
+                "width_occupancy": 0.9716267339218159,
+                "height_occupancy": 0.9707661290322581,
+                "margins_ltrb": [
+                  0.022068095838587643,
+                  0.015120967741935484,
+                  0.006305170239596469,
+                  0.014112903225806451
+                ]
+              },
+              "16": {
+                "bbox": [
+                  43,
+                  18,
+                  1571,
+                  975
+                ],
+                "visible_ratio": 1.5966562173458725,
+                "width_occupancy": 0.9634300126103404,
+                "height_occupancy": 0.9647177419354839,
+                "margins_ltrb": [
+                  0.02711223203026482,
+                  0.018145161290322582,
+                  0.009457755359394703,
+                  0.017137096774193547
+                ]
+              },
+              "64": {
+                "bbox": [
+                  44,
+                  18,
+                  1571,
+                  974
+                ],
+                "visible_ratio": 1.5972803347280335,
+                "width_occupancy": 0.9627994955863808,
+                "height_occupancy": 0.9637096774193549,
+                "margins_ltrb": [
+                  0.027742749054224466,
+                  0.018145161290322582,
+                  0.009457755359394703,
+                  0.018145161290322582
+                ]
+              },
+              "128": {
+                "bbox": [
+                  44,
+                  20,
+                  1570,
+                  974
+                ],
+                "visible_ratio": 1.59958071278826,
+                "width_occupancy": 0.9621689785624212,
+                "height_occupancy": 0.9616935483870968,
+                "margins_ltrb": [
+                  0.027742749054224466,
+                  0.020161290322580645,
+                  0.01008827238335435,
+                  0.018145161290322582
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "review": [
+        "Girl hugs cream hooded Muse, with Shiba beside it and small Groks at outer right.",
+        "Cream Muse retains peach inset face/cream hood, short arms/feet; Shiba species features readable.",
+        "Full group has no intentionally detached ground shadow. All five visible faces separate.",
+        "Fails strict requested safety border: L2.71%, T1.81%, R0.95%, B1.71%; do not crop at page placement."
+      ],
+      "file_metadata": {
+        "bytes": 1973055,
+        "sha256": "6f7b48ab7747ace890c9aabc213e203c5c55bb56f2b715d675b906d811a20b6a",
+        "dimensions": [
+          1586,
+          992
+        ],
+        "mode": "RGBA",
+        "alpha_extrema": [
+          0,
+          255
+        ],
+        "fully_transparent_fraction": 0.35121514359516737,
+        "bounds_by_alpha": {
+          "1": {
+            "bbox": [
+              35,
+              15,
+              1576,
+              978
+            ],
+            "visible_ratio": 1.6002076843198338,
+            "width_occupancy": 0.9716267339218159,
+            "height_occupancy": 0.9707661290322581,
+            "margins_ltrb": [
+              0.022068095838587643,
+              0.015120967741935484,
+              0.006305170239596469,
+              0.014112903225806451
+            ]
+          },
+          "16": {
+            "bbox": [
+              43,
+              18,
+              1571,
+              975
+            ],
+            "visible_ratio": 1.5966562173458725,
+            "width_occupancy": 0.9634300126103404,
+            "height_occupancy": 0.9647177419354839,
+            "margins_ltrb": [
+              0.02711223203026482,
+              0.018145161290322582,
+              0.009457755359394703,
+              0.017137096774193547
+            ]
+          },
+          "64": {
+            "bbox": [
+              44,
+              18,
+              1571,
+              974
+            ],
+            "visible_ratio": 1.5972803347280335,
+            "width_occupancy": 0.9627994955863808,
+            "height_occupancy": 0.9637096774193549,
+            "margins_ltrb": [
+              0.027742749054224466,
+              0.018145161290322582,
+              0.009457755359394703,
+              0.018145161290322582
+            ]
+          },
+          "128": {
+            "bbox": [
+              44,
+              20,
+              1570,
+              974
+            ],
+            "visible_ratio": 1.59958071278826,
+            "width_occupancy": 0.9621689785624212,
+            "height_occupancy": 0.9616935483870968,
+            "margins_ltrb": [
+              0.027742749054224466,
+              0.020161290322580645,
+              0.01008827238335435,
+              0.018145161290322582
+            ]
+          }
+        }
+      },
+      "byte_identical_to_tool_output": true
+    }
+  ]
+}

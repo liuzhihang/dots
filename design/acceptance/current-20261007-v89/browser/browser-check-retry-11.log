@@ -1,0 +1,19 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '#workspace'
+- '#home'
+
+    at file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:172:329 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '#workspace',
+  expected: '#home',
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

@@ -4,13 +4,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.mjs",
-    "build": "esbuild src/live/live-preview.js --bundle --format=esm --minify --target=es2022 --outfile=dist/live-runtime.js"
+    "build": "node scripts/build-studio.mjs",
+    "test": "node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-artwork-draw.mjs && node scripts/verify-card-reveal.mjs && node scripts/verify-reference-detail.mjs",
+    "test:browser": "node scripts/verify-studio-browser.mjs",
+    "test:downloads": "node scripts/verify-transparent-output.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.28.2",
     "vite": "8.3.2"
-  },
-  "dependencies": {
-    "three": "0.180.0"
   }
 }

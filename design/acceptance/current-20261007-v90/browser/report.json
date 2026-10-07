@@ -1,0 +1,1368 @@
+{
+  "sourceCache": 90,
+  "baseUrl": "http://127.0.0.1:5180/",
+  "retirementEvidence": "design/acceptance/current-20261007-v87/asset-retirement.json",
+  "retiredTests": [
+    "random result TXT download action; direct PNG download remains verified"
+  ],
+  "checks": [
+    "eight typed feature categories map to six ordered reveal slots from actual Artwork facts",
+    "cache90 home DOM, two hero groups/five topics, no legacy topic footer/workbench/account",
+    "topic/search/clear/empty",
+    "browser same-dimension OR and cross-dimension AND",
+    {
+      "detailRestore": {
+        "before": 400,
+        "atOpen": 400,
+        "after": 400
+      },
+      "clipboard": "candidate-dots-20261005",
+      "detailContract": {
+        "title": "蓝色耳机 Dots",
+        "titleClass": "artwork-detail__title",
+        "titleVisible": true,
+        "naturalWidth": 1254,
+        "naturalHeight": 1254,
+        "complete": true,
+        "objectFit": "fill",
+        "optical": true,
+        "renderedAspect": 1,
+        "tags": [
+          {
+            "id": "style:dots",
+            "dimension": "style",
+            "label": "Dots",
+            "scrollWidth": 50,
+            "clientWidth": 50
+          },
+          {
+            "id": "accessory:headphones",
+            "dimension": "accessory",
+            "label": "包耳式耳机",
+            "scrollWidth": 87,
+            "clientWidth": 87
+          },
+          {
+            "id": "color:blue",
+            "dimension": "color",
+            "label": "蓝色",
+            "scrollWidth": 48,
+            "clientWidth": 48
+          },
+          {
+            "id": "material:short-plush",
+            "dimension": "material",
+            "label": "短绒质感",
+            "scrollWidth": 74,
+            "clientWidth": 74
+          }
+        ],
+        "moreOpen": false,
+        "specification": "透明 PNG · 静态 · 1254 × 1254 px",
+        "order": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          8,
+          9
+        ],
+        "actionButtons": [
+          "复制 Prompt",
+          "下载原图"
+        ],
+        "secondaryButtons": [
+          "在 ChatGPT 中创作",
+          "用参考图继续创作"
+        ],
+        "promptSummary": "展开完整 Prompt",
+        "promptCollapsed": true,
+        "languageBeforeDisclosure": true,
+        "excerptText": "蓝色短绒圆球形 Dots，正面有一对黑色椭圆眼睛，佩戴黑色头带和紫色耳罩的包耳式耳机；不加嘴、手脚或其它配饰。保持单体居中、透明背景。",
+        "excerptLineCount": 2,
+        "referenceOutsideAssetDetails": true,
+        "featureDetailsCollapsed": true,
+        "featureValues": [
+          "style:dots",
+          "object-type:orb-character",
+          "shape:sphere",
+          "accessory:headphones",
+          "prop:none",
+          "action:front-static",
+          "expression:neutral",
+          "background:transparent",
+          "color:blue",
+          "material:short-plush",
+          "usage:transparent-character",
+          "facial-features:black-oval-eyes",
+          "facial-features:no-visible-mouth",
+          "clothing:none",
+          "head-accessory:over-ear-headphones",
+          "body-accessory:none"
+        ],
+        "targetDetailsCollapsed": true,
+        "assetDetailsCollapsed": true,
+        "rows": [
+          362
+        ],
+        "viewportWidth": 1440,
+        "mediaRect": {
+          "left": 249,
+          "top": 252.828125,
+          "right": 721.15625,
+          "bottom": 724.984375
+        },
+        "contentRect": {
+          "left": 755.15625,
+          "top": 252.828125,
+          "right": 1190.984375,
+          "bottom": 818.171875
+        }
+      },
+      "keyboardFocus": {
+        "id": "overlayClose",
+        "visible": true,
+        "outline": "3px"
+      }
+    },
+    "clipboard success/failure fallback and disposed late rejection preserve focus without stale toast",
+    {
+      "detailTagRoute": {
+        "tag": "style:dots",
+        "newCount": 3,
+        "restoredQuery": "眼镜",
+        "requestedScroll": 420,
+        "atOpen": 1629,
+        "back": 1629,
+        "focusArtwork": "dots-rose-glasses"
+      },
+      "lateHashchange": {
+        "sameCard": true,
+        "sameFocus": true,
+        "focusArtwork": "dots-rose-glasses",
+        "scroll": 1629
+      }
+    },
+    {
+      "detailReferenceReturns": [
+        {
+          "closeBy": "close-button",
+          "language": "en",
+          "focus": "reference trigger",
+          "scroll": 569,
+          "pageScroll": 1978,
+          "referenceDescriptionRetainedWithinOverlay": true
+        },
+        {
+          "closeBy": "escape",
+          "language": "en",
+          "focus": "reference trigger",
+          "scroll": 569,
+          "pageScroll": 1978,
+          "referenceDescriptionRetainedWithinOverlay": true
+        },
+        {
+          "closeBy": "back-button",
+          "language": "en",
+          "focus": "reference trigger",
+          "scroll": 569,
+          "pageScroll": 1978,
+          "referenceDescriptionRetainedWithinOverlay": true
+        },
+        {
+          "closeBy": "browser-back",
+          "language": "en",
+          "focus": "reference trigger",
+          "scroll": 569,
+          "pageScroll": 1978,
+          "referenceDescriptionRetainedWithinOverlay": true
+        },
+        {
+          "closeBy": "backdrop",
+          "language": "en",
+          "focus": "reference trigger",
+          "scroll": 375,
+          "pageScroll": 952,
+          "referenceDescriptionRetainedWithinOverlay": true
+        }
+      ]
+    },
+    "15 actual native PNG downloads SHA/bytes",
+    "30 actual Chinese/English artwork clipboard reads",
+    {
+      "responsiveArtworkTags": [
+        {
+          "width": 390,
+          "artworkId": "candidate-dots-20261005",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "candidate-grok-20261005",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "candidate-meta-muse-20261005",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "candidate-humans-20261005",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "candidate-animals-20261005",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "dots-rose-glasses",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "dots-lilac-bucket",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "grok-green-cloud",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "grok-teal-square",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "muse-rose-flowers",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "muse-sage-reading",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "human-bun-yellow",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "human-blond-glasses",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "animal-white-cat",
+          "rows": 2
+        },
+        {
+          "width": 390,
+          "artworkId": "animal-gray-husky",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "candidate-dots-20261005",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "candidate-grok-20261005",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "candidate-meta-muse-20261005",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "candidate-humans-20261005",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "candidate-animals-20261005",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "dots-rose-glasses",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "dots-lilac-bucket",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "grok-green-cloud",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "grok-teal-square",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "muse-rose-flowers",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "muse-sage-reading",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "human-bun-yellow",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "human-blond-glasses",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "animal-white-cat",
+          "rows": 2
+        },
+        {
+          "width": 320,
+          "artworkId": "animal-gray-husky",
+          "rows": 2
+        }
+      ]
+    },
+    {
+      "sequentialSixCards": {
+        "order": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "result": "human-blond-glasses",
+        "reels": 6,
+        "prematureResult": false,
+        "slots": [
+          "style",
+          "appearance",
+          "palette-material",
+          "clothing",
+          "accessory",
+          "prop"
+        ],
+        "centers": [
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "原创人物",
+            "slot": "style",
+            "stopped": "true",
+            "visual": {
+              "kind": "artwork-preview",
+              "visualId": "artwork-preview:human-blond-glasses",
+              "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+              "hasSvg": false,
+              "images": 1,
+              "sourceArtwork": "human-blond-glasses",
+              "sourceAsset": "asset:human-blond-glasses:original",
+              "sourceHash": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRect": "[0,0,1,1]"
+            }
+          },
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "slot": "appearance",
+            "stopped": "true",
+            "visual": {
+              "kind": "source-crop",
+              "visualId": "source-crop:human-blond-glasses:appearance",
+              "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+              "hasSvg": false,
+              "images": 1,
+              "sourceArtwork": "human-blond-glasses",
+              "sourceAsset": "asset:human-blond-glasses:original",
+              "sourceHash": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRect": "[0.23,0.02,0.56,0.49]"
+            }
+          },
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "浅金色 · 针织衣料",
+            "slot": "palette-material",
+            "stopped": "true",
+            "visual": {
+              "kind": "source-crop",
+              "visualId": "source-crop:human-blond-glasses:palette-material",
+              "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+              "hasSvg": false,
+              "images": 1,
+              "sourceArtwork": "human-blond-glasses",
+              "sourceAsset": "asset:human-blond-glasses:original",
+              "sourceHash": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRect": "[0.23,0.08,0.56,0.72]"
+            }
+          },
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "浅蓝衬衣 · 米白针织开衫 · 浅蓝长裤 · 米白运动鞋",
+            "slot": "clothing",
+            "stopped": "true",
+            "visual": {
+              "kind": "source-crop",
+              "visualId": "source-crop:human-blond-glasses:clothing",
+              "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+              "hasSvg": false,
+              "images": 1,
+              "sourceArtwork": "human-blond-glasses",
+              "sourceAsset": "asset:human-blond-glasses:original",
+              "sourceHash": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRect": "[0.25,0.53,0.51,0.45]"
+            }
+          },
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "透明圆框眼镜",
+            "slot": "accessory",
+            "stopped": "true",
+            "visual": {
+              "kind": "source-crop",
+              "visualId": "source-crop:human-blond-glasses:accessory",
+              "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+              "hasSvg": false,
+              "images": 1,
+              "sourceArtwork": "human-blond-glasses",
+              "sourceAsset": "asset:human-blond-glasses:original",
+              "sourceHash": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRect": "[0.3,0.28,0.43,0.23]"
+            }
+          },
+          {
+            "artworkId": "human-blond-glasses",
+            "value": "无道具",
+            "slot": "prop",
+            "stopped": "true",
+            "visual": {
+              "kind": "empty-value",
+              "visualId": "empty:human-blond-glasses:prop:none",
+              "src": "",
+              "hasSvg": false,
+              "images": 0,
+              "sourceArtwork": "",
+              "sourceAsset": "",
+              "sourceHash": "",
+              "sourceRect": ""
+            }
+          }
+        ],
+        "operations": [
+          "copy",
+          "download",
+          "random"
+        ],
+        "extraActions": [
+          "chatgpt"
+        ],
+        "detail": true
+      }
+    },
+    {
+      "resultPaint": {
+        "src": "blob:http://127.0.0.1:5180/d53a9405-9ba1-4a7a-a7f7-682581cc1222",
+        "sourceSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "naturalWidth": 1254,
+        "naturalHeight": 1254,
+        "complete": true,
+        "rect": {
+          "width": 469.4375,
+          "height": 330
+        },
+        "display": "block",
+        "visibility": "visible",
+        "opacity": 1,
+        "visiblePixels": 473440
+      }
+    },
+    {
+      "featureLocks": {
+        "selected": [
+          "style:humans",
+          "shape:chibi-person",
+          "facial-features:large-brown-eyes",
+          "facial-features:small-nose",
+          "facial-features:gentle-smile"
+        ],
+        "resultArtwork": "human-blond-glasses",
+        "semantics": "AND"
+      }
+    },
+    "six sequential cards and primary image/Prompt operations; frozen clipboard, prefilled URL and detail raw download; plain image surface and tags below",
+    "modal opens with six backs and no draw; skip; frozen detail/back/Forward; single dialog and same result model",
+    "closing a random overlay cancels its in-flight download and does not write stale feedback",
+    "reference description/template only; conditional ChatGPT image upload",
+    "current gallery scope empty before animation without silent relaxing",
+    "single filtered candidate; real registered PNG 404 has no fake reveal and explicit retry",
+    "quick close/reopen starts one fresh run with no stale result writes",
+    "reduced motion same valid revealed state after explicit start",
+    "1440/768/390/320 CSS viewport six surfaces no horizontal overflow",
+    "manual hash navigation filters exactly the three published Grok artworks",
+    "unknown #workspace route safely falls back Home without legacy project migration",
+    "unknown query fails closed",
+    "all retired static asset URLs return 404",
+    "actual network has no retired modules; no pageerrors"
+  ],
+  "errors": [],
+  "moduleRequests": [
+    "http://127.0.0.1:5180/studio.js?v=90",
+    "http://127.0.0.1:5180/studio-artwork-catalog.js?v=90",
+    "http://127.0.0.1:5180/studio-tags.js?v=90",
+    "http://127.0.0.1:5180/studio-asset-loader.js?v=90",
+    "http://127.0.0.1:5180/studio-draw.js?v=90",
+    "http://127.0.0.1:5180/studio-fullscreen-random.js?v=90",
+    "http://127.0.0.1:5180/studio-detail.js?v=90",
+    "http://127.0.0.1:5180/studio-reference.js?v=90",
+    "http://127.0.0.1:5180/studio-overlay.js?v=90",
+    "http://127.0.0.1:5180/studio-tag-browser.js?v=90",
+    "http://127.0.0.1:5180/studio-home.js?v=90",
+    "http://127.0.0.1:5180/studio-prompt.js?v=90",
+    "http://127.0.0.1:5180/studio-feature-visuals.js?v=90",
+    "http://127.0.0.1:5180/studio-actions.js?v=90",
+    "http://127.0.0.1:5180/studio-scenes.js?v=90"
+  ],
+  "downloads": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "file": "design/acceptance/current-20261007-v90/browser/candidate-dots-20261005.png",
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1720054,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 742591,
+        "opaquePixels": 478,
+        "partialAlphaPixels": 829447
+      }
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "file": "design/acceptance/current-20261007-v90/browser/candidate-grok-20261005.png",
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 971168,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 780111,
+        "opaquePixels": 1168,
+        "partialAlphaPixels": 791237
+      }
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "file": "design/acceptance/current-20261007-v90/browser/candidate-meta-muse-20261005.png",
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "width": 1235,
+      "height": 1274,
+      "bytes": 1003955,
+      "alpha": {
+        "width": 1235,
+        "height": 1274,
+        "transparentPixels": 985428,
+        "opaquePixels": 21,
+        "partialAlphaPixels": 587941
+      }
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "file": "design/acceptance/current-20261007-v90/browser/candidate-humans-20261005.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1151483,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 1069183,
+        "opaquePixels": 514,
+        "partialAlphaPixels": 502819
+      }
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "file": "design/acceptance/current-20261007-v90/browser/candidate-animals-20261005.png",
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1413426,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 832059,
+        "opaquePixels": 48,
+        "partialAlphaPixels": 740409
+      }
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "file": "design/acceptance/current-20261007-v90/browser/dots-rose-glasses.png",
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1860436,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 731940,
+        "opaquePixels": 26,
+        "partialAlphaPixels": 840550
+      }
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "file": "design/acceptance/current-20261007-v90/browser/dots-lilac-bucket.png",
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1605008,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 808076,
+        "opaquePixels": 66,
+        "partialAlphaPixels": 764374
+      }
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "file": "design/acceptance/current-20261007-v90/browser/grok-green-cloud.png",
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 790009,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 949952,
+        "opaquePixels": 956,
+        "partialAlphaPixels": 621608
+      }
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "file": "design/acceptance/current-20261007-v90/browser/grok-teal-square.png",
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 828844,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 816693,
+        "opaquePixels": 264,
+        "partialAlphaPixels": 755559
+      }
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "file": "design/acceptance/current-20261007-v90/browser/muse-rose-flowers.png",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1185166,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 966879,
+        "opaquePixels": 193,
+        "partialAlphaPixels": 605444
+      }
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "file": "design/acceptance/current-20261007-v90/browser/muse-sage-reading.png",
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1142481,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 1009482,
+        "opaquePixels": 32,
+        "partialAlphaPixels": 563002
+      }
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "file": "design/acceptance/current-20261007-v90/browser/human-bun-yellow.png",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1086214,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 1087604,
+        "opaquePixels": 328,
+        "partialAlphaPixels": 484584
+      }
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "file": "design/acceptance/current-20261007-v90/browser/human-blond-glasses.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1058375,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 1099076,
+        "opaquePixels": 410,
+        "partialAlphaPixels": 473030
+      }
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "file": "design/acceptance/current-20261007-v90/browser/animal-white-cat.png",
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1382027,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 790208,
+        "opaquePixels": 16,
+        "partialAlphaPixels": 782292
+      }
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "file": "design/acceptance/current-20261007-v90/browser/animal-gray-husky.png",
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1623665,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "transparentPixels": 790161,
+        "opaquePixels": 24,
+        "partialAlphaPixels": 782331
+      }
+    }
+  ],
+  "detailPaints": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "src": "blob:http://127.0.0.1:5180/ced67a4b-3acf-416a-b26c-ae4b7918aa1b",
+      "sourceSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 447.015625,
+        "height": 447.015625
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 829925
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "src": "blob:http://127.0.0.1:5180/af8da44e-9e5a-4c95-8c44-cd734b85ea7a",
+      "sourceSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 445.140625,
+        "height": 445.140625
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 792405
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "src": "blob:http://127.0.0.1:5180/e5323a60-fe34-4c49-95be-1506732d4353",
+      "sourceSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "naturalWidth": 1235,
+      "naturalHeight": 1274,
+      "complete": true,
+      "rect": {
+        "width": 439.875,
+        "height": 453.7655944824219
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 587962
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "src": "blob:http://127.0.0.1:5180/3cdbd949-af5a-4a19-bbb7-8df222ec835c",
+      "sourceSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 436,
+        "height": 436
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 503333
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "src": "blob:http://127.0.0.1:5180/eb9afd2a-6cee-4955-b92a-2c3d622554fe",
+      "sourceSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 427.21875,
+        "height": 427.21875
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 740457
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "src": "blob:http://127.0.0.1:5180/a81ac6b2-b009-4daf-aaf4-04af5e70fb54",
+      "sourceSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 437.078125,
+        "height": 437.078125
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 840576
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "src": "blob:http://127.0.0.1:5180/5f56126f-56d0-44c2-9488-b0afb11f7fc8",
+      "sourceSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 456.2343444824219,
+        "height": 456.234375
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 764440
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "src": "blob:http://127.0.0.1:5180/da0c31ef-54e1-4335-a4b0-defbf5656fce",
+      "sourceSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 423.1405944824219,
+        "height": 423.140625
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 622564
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "src": "blob:http://127.0.0.1:5180/b267002f-0208-47d6-a1b3-b081d6559306",
+      "sourceSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 426.1874694824219,
+        "height": 426.1875
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 755823
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "src": "blob:http://127.0.0.1:5180/776d4e96-27ea-4d9b-8161-7f646610ecaf",
+      "sourceSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 436.359375,
+        "height": 436.359375
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 605637
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "src": "blob:http://127.0.0.1:5180/2c5d9932-e9b9-4f66-b3b0-6b64967b3408",
+      "sourceSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 438.5155944824219,
+        "height": 438.5155944824219
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 563034
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "src": "blob:http://127.0.0.1:5180/e32deac4-252b-4cb2-ae7b-0f17a9a844bd",
+      "sourceSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 423.46875,
+        "height": 423.4687805175781
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 484912
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "src": "blob:http://127.0.0.1:5180/79cadf86-7f36-4b3d-b694-700e81bac0d1",
+      "sourceSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 430.3437805175781,
+        "height": 430.3437194824219
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 473440
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "src": "blob:http://127.0.0.1:5180/f5c9bfaa-4761-46ec-a4ec-e4b3ae2deeee",
+      "sourceSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 428.59375,
+        "height": 428.59375
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 782308
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "src": "blob:http://127.0.0.1:5180/cc82bf9a-6bd0-4716-8343-3474b2b2092d",
+      "sourceSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "naturalWidth": 1254,
+      "naturalHeight": 1254,
+      "complete": true,
+      "rect": {
+        "width": 431.03125,
+        "height": 431.03125
+      },
+      "display": "block",
+      "visibility": "visible",
+      "opacity": 1,
+      "visiblePixels": 782355
+    }
+  ],
+  "drawDownloads": [
+    {
+      "artworkId": "human-blond-glasses",
+      "file": "design/acceptance/current-20261007-v90/browser/reroll-race-original-A.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "operation": "A download completed after B reroll"
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "file": "design/acceptance/current-20261007-v90/browser/draw-human-bun-yellow.png",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "prompt": "原创 Q 版人物，栗色高丸子头和自然垂落的发丝，穿暖黄色连帽衫、米白短裤与黄白运动鞋；微笑并抬起一只手挥手问好。保持完整人物和透明背景。"
+    }
+  ],
+  "promptCopies": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "language": "zh",
+      "text": "蓝色短绒圆球形 Dots，正面有一对黑色椭圆眼睛，佩戴黑色头带和紫色耳罩的包耳式耳机；不加嘴、手脚或其它配饰。保持单体居中、透明背景。"
+    },
+    {
+      "artworkId": "candidate-dots-20261005",
+      "language": "en",
+      "text": "A blue short-pile plush orb-shaped Dots character, front-facing with two black oval eyes and over-ear headphones with a black headband and violet ear cups. Add no mouth, limbs, or other accessories. Keep the single character centered on a transparent background."
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "language": "zh",
+      "text": "紫色柔和圆球形 Grok Bot，右上区域有两枚成对、平行倾斜的白色胶囊眼；无嘴、无肢体、无配饰。保持圆润软几何外形和透明背景。"
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "language": "en",
+      "text": "A purple soft geometric orb-shaped Grok Bot with a pair of parallel, slanted white capsule eyes toward the upper-right area. No mouth, limbs, or accessories. Preserve the rounded soft geometry on a transparent background."
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "language": "zh",
+      "text": "奶油色包覆式 Meta Muse，暖桃色内嵌脸面，深色圆眼和轻柔微笑，短圆手臂与双脚自然下垂。保持完整包覆轮廓、正面静态站姿和透明背景。"
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "language": "en",
+      "text": "A cream hooded Meta Muse with a warm peach inset face, dark round eyes, a gentle smile, short rounded arms, and small feet. Preserve the continuous wrapped silhouette in a front-facing still standing pose on a transparent background."
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "language": "zh",
+      "text": "原创栗发 Q 版人物，细致分层的栗色头发、青绿色针织上衣、米白短裤和浅色运动鞋；双手在身前自然交握，表情温和。保持完整人物、正面站姿和透明背景。"
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "language": "en",
+      "text": "An original chibi person with layered chestnut hair, a teal knit sweater, ivory shorts, and light sneakers. Rest both hands together naturally in front with a gentle expression. Show the complete person in a front-facing standing pose on a transparent background."
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "language": "zh",
+      "text": "原创暖橙柴犬，立起的三角耳、清楚的茶白口鼻与胸腹色块、四爪坐姿和卷起的尾巴；表情温和。保持物种结构和透明背景。"
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "language": "en",
+      "text": "An original warm-orange Shiba Inu with upright triangular ears, a distinct cream muzzle and chest, a seated four-paw pose, and a curled tail. Keep a gentle expression and clear canine features on a transparent background."
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "language": "zh",
+      "text": "莓粉色短绒圆球形 Dots，佩戴透明粉色圆框眼镜，眼镜后的黑色椭圆眼清晰可见；无嘴、无肢体和其它配饰。保持正面单体与透明背景。"
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "language": "en",
+      "text": "A berry-pink short-pile plush orb-shaped Dots wearing clear rose-pink round glasses, with black oval eyes visible behind the lenses. No mouth, limbs, or other accessories. Keep the front-facing single character on a transparent background."
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "language": "zh",
+      "text": "浅薰衣草紫短绒圆球形 Dots，戴一顶黄色软布渔夫帽，黑色椭圆眼睛外露；无嘴、无肢体和其它配饰。保持正面单体与透明背景。"
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "language": "en",
+      "text": "A light-lilac short-pile plush orb-shaped Dots wearing a yellow soft-fabric bucket hat, with black oval eyes visible below the brim. No mouth, limbs, or other accessories. Keep the front-facing single character on a transparent background."
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "language": "zh",
+      "text": "青绿色软云形 Grok Bot，表面平滑柔和，带一对平行倾斜的白色胶囊眼；无嘴、无肢体、无配饰。保持软几何轮廓与透明背景。"
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "language": "en",
+      "text": "A vivid green soft-cloud Grok Bot with a smooth, gentle surface and a pair of parallel slanted white capsule eyes. No mouth, limbs, or accessories. Preserve the soft geometric cloud outline on a transparent background."
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "language": "zh",
+      "text": "蓝绿色圆角方形 Grok Bot，带一对平行倾斜的白色胶囊眼；无嘴、无肢体、无配饰。保持柔和几何外形和透明背景。"
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "language": "en",
+      "text": "A teal rounded-square Grok Bot with a pair of parallel slanted white capsule eyes. No mouth, limbs, or accessories. Preserve the soft geometric silhouette on a transparent background."
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "language": "zh",
+      "text": "玫粉色绒面包覆式 Meta Muse，暖桃色内嵌脸面、深色圆眼和微笑；短圆手臂在胸前抱着一束白色雏菊和绿色花茎。不要把静态持花姿势描述为动画，背景透明。"
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "language": "en",
+      "text": "A rose-pink plush hooded Meta Muse with a warm peach inset face, dark round eyes, and a smile. Its short rounded arms hold white daisies with green stems at the chest. Treat this as a still pose, not animation, on a transparent background."
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "language": "zh",
+      "text": "浅鼠尾草绿绒面包覆式 Meta Muse，暖桃色内嵌脸面、深色圆眼和微笑；双臂抱着一本竖直的合拢绿色书。书本是闭合的，不描述为正在阅读；背景透明。"
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "language": "en",
+      "text": "A pale-sage plush hooded Meta Muse with a warm peach inset face, dark round eyes, and a smile. Both arms hold a closed green book upright. Keep the book closed and do not describe the character as reading; use a transparent background."
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "language": "zh",
+      "text": "原创 Q 版人物，栗色高丸子头和自然垂落的发丝，穿暖黄色连帽衫、米白短裤与黄白运动鞋；微笑并抬起一只手挥手问好。保持完整人物和透明背景。"
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "language": "en",
+      "text": "An original chibi person with a high chestnut bun and loose face-framing strands, wearing a warm-yellow hoodie, ivory shorts, and yellow-and-white sneakers. Smile and raise one hand in a greeting wave. Show the complete person on a transparent background."
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "language": "zh",
+      "text": "原创 Q 版金发人物，短而蓬松的浅金发，佩戴透明圆框眼镜；穿浅蓝衬衣、米白针织开衫和浅蓝长裤，双手在身前自然交握并微笑。保持正面完整人物和透明背景。"
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "language": "en",
+      "text": "An original chibi person with short fluffy blond hair and clear round glasses, wearing a light-blue shirt, an ivory knit cardigan, and light-blue trousers. Rest both hands together naturally in front and smile. Show the complete person on a transparent background."
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "language": "zh",
+      "text": "原创奶油白猫，灰色三角耳与灰色蓬松尾巴，保留蓝色眼睛、粉色鼻头、清楚口鼻和细胡须；以四爪自然坐姿呈现，不佩戴饰物。背景透明。"
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "language": "en",
+      "text": "An original cream-white cat with gray triangular ears and a fluffy gray tail. Keep blue eyes, a pink nose, a clear feline muzzle, and fine whiskers. Sit naturally on four paws with no accessories, on a transparent background."
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "language": "zh",
+      "text": "原创灰白哈士奇，三角立耳、灰白脸部面罩、深色鼻头和蓬松卷尾清楚可辨；以四爪自然坐姿呈现，不佩戴饰物。背景透明。"
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "language": "en",
+      "text": "An original gray-and-white Husky with triangular upright ears, a distinct gray-and-white facial mask, a dark nose, and a fluffy curled tail. Sit naturally on four paws with no accessories, on a transparent background."
+    }
+  ],
+  "retiredAssetResponses": [
+    {
+      "originalPath": "dist/assets/atelier/dot-plush-headphones-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/atelier/pet-shiba-scarf-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/avatar-atlas.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/black-bean.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/cat.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/characters/dots-blue-plush-orb-front-candidate-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/characters/hero-background.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/collection.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/dots-actions.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/dots-matte-hero.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/dots-plush-hero.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/dots-plush-work.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/material-plush.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/material-rubber.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/pets-actions.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/poses/dots-wink-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/poses/grok-wink-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/poses/human-wave-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/poses/muse-wave-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/poses/shiba-wave-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/robot.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-animals-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-dots-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-grok-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-humans-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/family-meta-muse-v4.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-left-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v1.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v2.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/scenes/hero-right-v3.png",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/shiba.webp",
+      "status": 404
+    },
+    {
+      "originalPath": "dist/assets/tiger.webp",
+      "status": 404
+    }
+  ],
+  "simulation": "Chromium CSS viewport; physical device not verified",
+  "browser": "Playwright controlling installed Chromium",
+  "artApproval": "pending user review",
+  "targetValidation": "not performed",
+  "published": false
+}

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-07T17:44:46.102666+08:00",
+  "check": {
+    "name": "verify-card-reveal.mjs",
+    "status": "passed",
+    "exitCode": 0,
+    "log": "verify-card-reveal.log",
+    "coverage": [
+      "Six fixed slots with real source-crop provenance and explicit none/NA; unregistered visuals have no image fallback",
+      "Independent candidate tracks, sequential stopping, skip and reduced-motion, all-stopped result gate",
+      "Selected/candidate preload failure, owner quarantine, explicit retry preserving all hard conditions",
+      "Empty pools retain static backs without animation or a fictitious result; single-candidate messaging",
+      "Frozen Artwork/Prompt/download parameters, A-download/B-reroll lease isolation and dispose abort",
+      "Cancelled late preload and clipboard completion cannot overwrite a newer result/status"
+    ],
+    "limitations": [
+      "Fake DOM and Blob prove lifecycle and parameter binding, not a rendered browser or PNG bytes. Real browser and raw-PNG checks are recorded separately."
+    ]
+  },
+  "readOnlyReview": "Core resource-failure, cancellation, download lease and clipboard-race assertions retained; root empty-pool patch reviewed without writes or execution."
+}

@@ -1,898 +1,1162 @@
-import {getResolvedTemplateCandidates} from './studio-composition-resolver.js?v=86';
-import {LayeredComposer} from './studio-composer.js?v=86';
+import {getAsset} from './studio-artwork-catalog.js?v=90';
+import {revealFeaturesFor,REVEAL_SLOTS} from './studio-draw.js?v=90';
+import {loadAsset,downloadAsset} from './studio-asset-loader.js?v=90';
+import {copyAndOpen,chatGPTUrlForPrompt} from './studio-actions.js?v=90';
+import {featureVisualFor} from './studio-feature-visuals.js?v=90';
 
-const clone = value => structuredClone(value);
-const osPrefersReducedMotion = () => Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
-const ASSET_LIMIT = 16 * 1024 * 1024;
-const REEL_ITEMS = 5;
-const MAX_STAGES = 6;
-const PNG_SIGNATURE = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+const FALLBACK_CARD_HEIGHT = 126;
+const MAX_NEIGHBORS = 7;
+const FEATURE_SLOTS = REVEAL_SLOTS;
 
-const REVEAL_STAGE_ALIASES = new Map([
-  ['角色', '角色'], ['角色基底', '角色'], ['基础角色', '角色'], ['character', '角色'], ['role', '角色'], ['base', '角色'], ['body', '角色'], ['avatar', '角色'], ['look', '角色'],
-  ['配色', '配色'], ['颜色', '配色'], ['色彩', '配色'], ['毛色', '配色'], ['染色', '配色'], ['材质', '配色'], ['color', '配色'], ['colour', '配色'], ['palette', '配色'], ['material', '配色'], ['finish', '配色'], ['colorway', '配色'], ['dye', '配色'], ['texture', '配色'],
-  ['穿搭', '穿搭'], ['服装', '穿搭'], ['衣服', '穿搭'], ['衣物', '穿搭'], ['内搭', '穿搭'], ['上装', '穿搭'], ['外套', '穿搭'], ['下装', '穿搭'], ['连体服', '穿搭'], ['鞋', '穿搭'], ['鞋子', '穿搭'], ['clothing', '穿搭'], ['clothes', '穿搭'], ['apparel', '穿搭'], ['outfit', '穿搭'], ['garment', '穿搭'], ['wardrobe', '穿搭'], ['shoe', '穿搭'], ['shoes', '穿搭'], ['footwear', '穿搭'],
-  ['配饰', '配饰'], ['帽子', '配饰'], ['头饰', '配饰'], ['发饰', '配饰'], ['发箍', '配饰'], ['发卡', '配饰'], ['耳机', '配饰'], ['眼镜', '配饰'], ['颈饰', '配饰'], ['腕饰', '配饰'], ['首饰', '配饰'], ['包袋', '配饰'], ['accessory', '配饰'], ['accessories', '配饰'], ['headwear', '配饰'], ['hat', '配饰'], ['hair-accessory', '配饰'], ['headphones', '配饰'], ['eyewear', '配饰'], ['glasses', '配饰'], ['neckwear', '配饰'], ['jewelry', '配饰'], ['jewellery', '配饰'], ['wristwear', '配饰'], ['bag', '配饰'], ['bags', '配饰'], ['watch', '配饰'], ['earring', '配饰'],
-  ['道具', '道具'], ['手持', '道具'], ['手持道具', '道具'], ['牌面', '道具'], ['物品', '道具'], ['工具', '道具'], ['prop', '道具'], ['props', '道具'], ['handheld', '道具'], ['item', '道具'], ['items', '道具'], ['sign', '道具'], ['book', '道具'], ['cup', '道具'], ['device', '道具'],
-  ['神态动作', '神态动作'], ['姿态', '神态动作'], ['表情', '神态动作'], ['动作', '神态动作'], ['手势', '神态动作'], ['抓握', '神态动作'], ['视线', '神态动作'], ['pose', '神态动作'], ['expression', '神态动作'], ['gesture', '神态动作'], ['grip', '神态动作'], ['action', '神态动作'], ['motion', '神态动作'], ['emote', '神态动作'], ['gaze', '神态动作'], ['agent-state', '神态动作']
-]);
-
-const ICONS = {
-  close: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
-  sparkle: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2Zm7 12 .9 3.1L23 18l-3.1.9L19 22l-.9-3.1L15 18l3.1-.9L19 14Z"/></svg>',
-  lock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
-  unlock: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 7.2-2.4"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>'
-};
-
-const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
-const stableJson = value => {
-  if (Array.isArray(value)) return `[${value.map(stableJson).join(',')}]`;
-  if (object(value)) return `{${Object.keys(value).sort().map(key => `${JSON.stringify(key)}:${stableJson(value[key])}`).join(',')}}`;
+const isRecord = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+const featureValueKey = value => {
+  if (typeof value === 'string') return value.normalize('NFKC').trim().toLocaleLowerCase();
+  if (value === null || value === undefined) return '';
   return JSON.stringify(value);
 };
-const assetKey = asset => `${asset.id}@${asset.version}`;
+const getPromptText = prompt => typeof prompt === 'string' ? prompt : String(prompt?.text || prompt?.zh || '');
+const getArtworkTitle = artwork => String(artwork?.title || artwork?.name || artwork?.id || '一位新伙伴');
+const getFeatureText = feature => String(feature?.label || feature?.labelZh || feature?.valueLabel || feature?.value || '');
+const getAssetKey = asset => asset?.id ? `${asset.id}@${asset.version ?? ''}` : String(asset?.path || asset?.src || '');
+const isAbort = error => error?.name === 'AbortError';
+const reducedMotion = () => Boolean(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
 
-async function isPngBlob(blob) {
-  if (!(blob instanceof Blob) || blob.type !== 'image/png' || blob.size < PNG_SIGNATURE.length) return false;
-  const signature = new Uint8Array(await blob.slice(0, PNG_SIGNATURE.length).arrayBuffer());
-  return PNG_SIGNATURE.every((byte, index) => signature[index] === byte);
+function element(tag, className = '', text = '') {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text) node.textContent = text;
+  return node;
 }
 
-export function isSafeArtworkSource(source) {
-  if (typeof source !== 'string' || !source || source.includes('\\') || source.includes('?') || source.includes('#')) return false;
-  try {
-    const decoded = decodeURIComponent(source);
-    if (decoded.includes('%') || decoded.includes('\\') || decoded.includes('\0')) return false;
-    const path = decoded.split(/[?#]/, 1)[0];
-    if (!path.startsWith('./assets/') && !path.startsWith('/assets/')) return false;
-    if (path.split('/').some((part, index) => part === '..' || (index > 0 && part === '.'))) return false;
-    const url = new URL(source, globalThis.location?.href || 'https://dot.invalid/');
-    const base = new URL(globalThis.location?.href || 'https://dot.invalid/');
-    return url.origin === base.origin && url.pathname.startsWith('/assets/');
-  } catch {
-    return false;
+function makeButton(action, label, className = '') {
+  const button = element('button', className, label);
+  button.type = 'button';
+  button.dataset.fr = action;
+  return button;
+}
+
+
+
+function featureSignature(features) {
+  return features.map(feature => `${feature.kind}:${featureValueKey(feature.value ?? feature.id)}`).join('|');
+}
+
+function evenlySample(items, maximum, preferredKey) {
+  if (items.length <= maximum) return items;
+  const preferredIndex = items.findIndex(item => item.key === preferredKey);
+  const center = preferredIndex < 0 ? Math.floor(items.length / 2) : preferredIndex;
+  const start = Math.max(0, Math.min(items.length - maximum, center - Math.floor(maximum / 2)));
+  const sample = items.slice(start, start + maximum);
+  if (preferredIndex >= start && preferredIndex < start + maximum) return sample;
+  return [...sample.slice(0, maximum - 1), items[preferredIndex]].sort((a, b) => a.sortKey.localeCompare(b.sortKey));
+}
+
+function buildSlots(result, pool) {
+  const selectedFeatures = Array.isArray(result?.revealFeatures) ? result.revealFeatures : [];
+  const artworks = (Array.isArray(pool) ? pool : []).filter(isRecord);
+  const indexed = artworks.map(artwork => {
+    let features = [];
+    try { features = revealFeaturesFor(artwork) || []; } catch { /* One malformed pool entry cannot replace the frozen selection. */ }
+    return {artwork, features: Array.isArray(features) ? features : []};
+  });
+
+  const slots = [];
+  for (const definition of FEATURE_SLOTS) {
+    const chosenFeatures = selectedFeatures.filter(feature => definition.kinds.includes(feature?.kind));
+    if (chosenFeatures.length !== 1 || chosenFeatures[0].state === 'unknown') throw new Error('这张作品缺少已核实的六类揭晓特征。');
+    const chosenVisual = featureVisualFor(chosenFeatures, definition.key, result.artwork);
+    if (!['artwork-preview', 'source-crop', 'empty-value'].includes(chosenVisual.kind)) throw new Error('这张作品的特征示意尚未登记完整，没有开始动画。');
+
+    const selectedItem = {
+      key: featureSignature(chosenFeatures),
+      features: chosenFeatures,
+      artwork: result.artwork,
+      artworkId: result.artworkId,
+      label: chosenFeatures.map(getFeatureText).filter(Boolean).join(' · '),
+      visual: chosenVisual,
+      assetRef: chosenVisual.assetRef || null,
+      isFrozenSelection: true
+    };
+    const choices = new Map();
+    for (const row of indexed) {
+      const features = row.features.filter(feature => definition.kinds.includes(feature?.kind));
+      if (!features.length) continue;
+      const key = featureSignature(features);
+      if (choices.has(key)) continue;
+      const visual = featureVisualFor(features, definition.key, row.artwork);
+      if (!['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind)) continue;
+      choices.set(key, {
+        key,
+        features,
+        artwork: row.artwork,
+        artworkId: row.artwork.id,
+        label: features.map(getFeatureText).filter(Boolean).join(' · '),
+        visual,
+        assetRef: visual.assetRef || null,
+        isFrozenSelection: false
+      });
+    }
+    choices.set(selectedItem.key, selectedItem);
+    const ordered = [...choices.values()].sort((a, b) => {
+      const left = `${a.artworkId || ''}:${a.key}`;
+      const right = `${b.artworkId || ''}:${b.key}`;
+      return left.localeCompare(right);
+    }).map(item => ({...item, sortKey: `${item.artworkId || ''}:${item.key}`}));
+    const sampled = evenlySample(ordered, MAX_NEIGHBORS, selectedItem.key);
+    const selectedIndex = sampled.findIndex(item => item.key === selectedItem.key);
+    const items = sampled.map((item, index) => ({...item, index}));
+    slots.push({...definition, items, selectedIndex: Math.max(0, selectedIndex)});
   }
+  return slots;
 }
 
-function validAsset(asset) {
-  return object(asset)
-    && typeof asset.id === 'string' && asset.id.length > 0
-    && (typeof asset.version === 'string' || Number.isInteger(asset.version))
-    && typeof asset.sha256 === 'string' && /^[a-f0-9]{64}$/i.test(asset.sha256)
-    && Number.isFinite(asset.width) && asset.width > 0
-    && Number.isFinite(asset.height) && asset.height > 0
-    && isSafeArtworkSource(asset.src)
-    && isSafeArtworkSource(asset.previewSrc || asset.src);
-}
-
-export function isResolvedRandomCandidate(candidate) {
-  if (!object(candidate) || typeof candidate.id !== 'string' || !object(candidate.project)) return false;
-  const project = candidate.project;
-  const composition = candidate.composition;
-  const resolution = candidate.resolution;
-  if (project.format !== 'dot-studio-project' || project.version !== 2 || !object(project.character) || project.character.version !== 10) return false;
-  if (!object(project.creation) || !object(composition) || !['template', 'modular'].includes(composition.kind)) return false;
-  if (!object(project.creation.composition) || stableJson(project.creation.composition) !== stableJson(composition)) return false;
-  if (!object(resolution) || resolution.availability !== 'available' || !object(resolution.composition) || !object(resolution.renderPlan)) return false;
-  if (stableJson(resolution.composition) !== stableJson(composition)) return false;
-  if (!Array.isArray(composition.assetRefs) || composition.assetRefs.length === 0) return false;
-  if (composition.assetRefs.some(ref => !object(ref) || typeof ref.id !== 'string' || !ref.id || !['string', 'number'].includes(typeof ref.version) || typeof ref.sha256 !== 'string' || !/^[a-f0-9]{64}$/i.test(ref.sha256))) return false;
-  if (new Set(composition.assetRefs.map(assetKey)).size !== composition.assetRefs.length) return false;
-  if (!Array.isArray(candidate.stageMetadata) || candidate.stageMetadata.length === 0) return false;
-  const stages = candidate.stageMetadata;
-  if (stages.length !== composition.assetRefs.length) return false;
-  if (stages.some(stage => !object(stage) || typeof stage.stage !== 'string' || !stage.stage.trim() || !validAsset(stage.asset))) return false;
-  const metadata = new Map();
-  for (const stage of stages) {
-    const key = assetKey(stage.asset);
-    if (metadata.has(key)) return false;
-    metadata.set(key, stage.asset);
-  }
-  return composition.assetRefs.every(ref => {
-    const asset = metadata.get(assetKey(ref));
-    return asset && asset.version === ref.version && asset.sha256.toLowerCase() === ref.sha256.toLowerCase();
+function buildRestoredSlots(result) {
+  const selectedFeatures = Array.isArray(result?.revealFeatures) ? result.revealFeatures : [];
+  return FEATURE_SLOTS.flatMap(definition => {
+    const features = selectedFeatures.filter(feature => definition.kinds.includes(feature?.kind));
+    if (features.length !== 1 || features[0].state === 'unknown') throw new Error('这张作品缺少已核实的六类揭晓特征。');
+    const visual = featureVisualFor(features, definition.key, result.artwork);
+    if (!['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind)) throw new Error('这张作品的特征示意尚未登记完整。');
+    const item = {
+      key: featureSignature(features),
+      features,
+      artwork: result.artwork,
+      artworkId: result.artworkId,
+      label: features.map(getFeatureText).filter(Boolean).join(' · '),
+      visual,
+      assetRef: visual.assetRef || null,
+      isFrozenSelection: true
+    };
+    return [{...definition, items: [item], selectedIndex: 0}];
   });
 }
 
-function stableHash(value) {
-  let hash = 2166136261;
-  for (const char of String(value)) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
-  return hash >>> 0;
+function makeCardBack(label) {
+  const back = element('div', 'fr-card-back');
+  back.setAttribute('aria-label', `${label}尚未揭晓`);
+  const mark = element('img', 'fr-card-back-mark');
+  mark.src = './assets/characters/brand-mark.png'; mark.alt = ''; mark.width = 52; mark.height = 52;
+  back.append(mark);
+  return back;
 }
 
-function randomSeed() {
-  const bytes = new Uint32Array(2);
-  if (globalThis.crypto?.getRandomValues) globalThis.crypto.getRandomValues(bytes);
-  else {
-    bytes[0] = Date.now() >>> 0;
-    bytes[1] = Math.floor(Math.random() * 0xffffffff) >>> 0;
+function createStructure() {
+  const root = element('section', 'fr-view');
+  root.setAttribute('aria-label', '随机发现已发布角色作品');
+
+  const brand = element('div', 'fr-stage-brand');
+  const mark = element('img'); mark.src = './assets/characters/brand-mark.png'; mark.alt = ''; mark.width = 22; mark.height = 22;
+  brand.append(mark, element('span', '', 'Dot Icon Studio'));
+  root.append(brand);
+  const heading = element('div', 'fr-intro');
+  heading.append(element('span', 'fr-eyebrow', '随机发现'));
+  const hint = element('h2', 'fr-hint', '随机发现一位伙伴');
+  heading.append(hint);
+  heading.append(element('p', 'fr-intro-subtitle', '转动六张卡，揭晓真实作品的独特线索'));
+
+  const reveal = element('section', 'fr-reveal');
+  reveal.setAttribute('aria-label', '作品特征卡片揭晓');
+  reveal.hidden = true;
+  const revealHeader = element('div', 'fr-reveal-heading');
+  revealHeader.append(element('span', 'fr-reveal-kicker', '特征卡片'));
+  const stageLabel = element('span', 'fr-stage-label', '等待开始');
+  stageLabel.setAttribute('aria-live', 'polite');
+  revealHeader.append(stageLabel);
+  const reelHost = element('div', 'fr-reel-stage');
+  reelHost.setAttribute('aria-live', 'off');
+  reelHost.tabIndex = 0;
+  reelHost.setAttribute('aria-label', '六张特征卡轨道，可横向浏览');
+  const progressHost = element('div', 'fr-reveal-progress');
+  progressHost.setAttribute('role', 'group');
+  progressHost.setAttribute('aria-label', '卡片停止进度');
+  progressHost.hidden = true;
+  const reelNote = element('p', 'fr-reel-stage-note', '角色风格 · 外形五官 · 配色材质 · 衣物 · 配饰 · 道具');
+  reelNote.hidden = true;
+
+  const result = element('article', 'fr-result-card');
+  result.setAttribute('aria-label', '已揭晓的完整角色作品');
+  result.hidden = true;
+  const resultImageHost = element('div', 'fr-result-image-host');
+  const resultImage = element('img', 'fr-result-image');
+  resultImage.decoding = 'async';
+  resultImageHost.append(resultImage);
+  const caption = element('div', 'fr-result-caption');
+  const resultTitle = element('h2', 'fr-result-title');
+  const resultBadge = element('span', 'fr-result-badge');
+  caption.append(resultTitle, resultBadge);
+  const resultTraits = element('p', 'fr-result-traits');
+  const resultDescription = element('p', 'fr-result-description');
+  const resultInfo = element('div', 'fr-result-info');
+  const resultFooter = element('div', 'fr-result-footer');
+  const detail = makeButton('detail', '查看详情', 'fr-button fr-secondary fr-result-detail');
+  resultInfo.append(caption, resultDescription, resultTraits, resultFooter);
+  resultFooter.append(detail);
+  const promptFallback = element('textarea', 'fr-prompt-fallback');
+  promptFallback.setAttribute('aria-label', '供手动复制的作品 Prompt');
+  promptFallback.readOnly = true;
+  promptFallback.hidden = true;
+  const manualChatLink=element('a','fr-manual-chat-link','手动打开 ChatGPT');
+  manualChatLink.target='_blank';manualChatLink.rel='noopener noreferrer';manualChatLink.hidden=true;
+  result.append(resultImageHost, resultInfo, promptFallback,manualChatLink);
+
+  const status = element('p', 'fr-status');
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('aria-atomic', 'true');
+
+  const actions = element('div', 'fr-actions');
+  const start = makeButton('random', '随机一款', 'fr-button fr-random');
+  const skip = makeButton('skip', '跳过动画', 'fr-button fr-skip');
+  skip.hidden = true;
+  const copy = makeButton('copy', '复制 Prompt', 'fr-button fr-primary');
+  const download = makeButton('download', '下载图片', 'fr-button fr-primary-secondary');
+  const chatgpt = makeButton('chatgpt', '在 ChatGPT 中创作 →', 'fr-button fr-quiet');
+  const extraActions = element('div', 'fr-extra-actions');
+  extraActions.append(chatgpt);
+  const retryResources = makeButton('retry-resources', '重试资源并重新抽取', 'fr-button fr-secondary fr-retry');
+  retryResources.hidden = true;
+  actions.append(copy, download, start, skip, retryResources);
+  for (const button of [copy, download, chatgpt, detail]) button.hidden = true;
+
+  reveal.append(revealHeader, reelHost, progressHost, reelNote, result);
+  const locks = element('details', 'fr-feature-locks');
+  locks.hidden = true;
+  locks.append(element('summary', '', '保留喜欢的特征'));
+  const lockNote = element('p', 'fr-lock-note', '下一款须同时符合已选特征');
+  const lockOptions = element('div', 'fr-lock-options');
+  locks.append(lockNote, lockOptions);
+  root.append(heading, reveal, status, actions, extraActions, locks);
+  return {root, hint, locks, lockOptions, reveal, reelHost, progressHost, reelNote, stageLabel, result, resultImage, resultTitle, resultBadge, resultTraits, resultDescription, promptFallback, manualChatLink, status, start, skip, copy, download, chatgpt, retryResources, detail};
+}
+
+function makeReelItem(item, handle, centered = false) {
+  const card = element('article', `fr-reel-item${centered ? ' is-centered' : ''}`);
+  const label = item.label || getArtworkTitle(item.artwork);
+  card.setAttribute('aria-label', label);
+  const visual = element('div', 'fr-reel-visual');
+  visual.dataset.visualId = item.visual.id;
+  visual.dataset.visualKind = item.visual.kind;
+  visual.dataset.visualVersion = item.visual.version;
+  if (item.visual.source) {
+    visual.dataset.sourceArtwork = item.visual.source.artworkId;
+    visual.dataset.sourceAsset = item.visual.source.assetId;
+    visual.dataset.sourceHash = item.visual.source.sha256;
   }
-  return `rendered-${bytes[0].toString(36)}-${bytes[1].toString(36)}`;
-}
-
-function seedCandidate(candidates, seed) {
-  const sorted = [...candidates].sort((a, b) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
-  return sorted[stableHash(seed) % sorted.length];
-}
-
-function revealStageFor(metadata) {
-  const raw = typeof metadata?.stage === 'string' ? metadata.stage.trim() : '';
-  const normalized = raw.normalize('NFKC').toLowerCase().replace(/[\s_]+/g, '-');
-  const direct = REVEAL_STAGE_ALIASES.get(normalized);
-  if (direct) return direct;
-  const tokens = normalized.split(/[^a-z0-9\u3400-\u9fff-]+/).filter(Boolean);
-  const matches = new Set(tokens.map(token => REVEAL_STAGE_ALIASES.get(token)).filter(Boolean));
-  if (matches.size === 1) return [...matches][0];
-  for (const [alias, stage] of REVEAL_STAGE_ALIASES) {
-    if (alias.length > 1 && /[^a-z0-9]/i.test(alias) && normalized.includes(alias)) matches.add(stage);
-  }
-  if (matches.size === 1) return [...matches][0];
-  const detail = matches.size > 1 ? `同时对应多个展示阶段：${[...matches].join('、')}` : '尚未登记到展示阶段';
-  throw new Error(`素材 ${metadata?.asset?.id || 'unknown'} 的原始阶段“${raw || '(空)'}”${detail}，无法安全揭晓。`);
-}
-
-function groupCandidateAssets(candidate) {
-  const grouped = new Map();
-  for (const metadata of candidate.stageMetadata) {
-    const stage = revealStageFor(metadata);
-    if (!grouped.has(stage)) grouped.set(stage, []);
-    grouped.get(stage).push(metadata.asset);
-  }
-  return grouped;
-}
-
-function sourceQuery(query) {
-  if (!object(query)) return {typedQuery: query ?? {}, lookIds: null};
-  const {lookIds, ...typedQuery} = query;
-  const normalized = Array.isArray(lookIds) ? lookIds : lookIds instanceof Set ? [...lookIds] : null;
-  const allowlist = lookIds === undefined || lookIds === null
-    ? null
-    : new Set((normalized || []).filter(id => typeof id === 'string'));
-  return {typedQuery, lookIds: allowlist};
-}
-
-function candidateArtworkId(candidate) {
-  return candidate.project?.creation?.artworkId || candidate.composition?.baseId || '';
-}
-
-function matchesLocks(candidate, locks) {
-  if (locks.artworkId && candidateArtworkId(candidate) !== locks.artworkId) return false;
-  if (locks.recipeId && candidate.composition?.recipeId !== locks.recipeId) return false;
-  return true;
-}
-
-function selectReelAssets(candidates, selected, seed) {
-  const stages = [];
-  const groupedCandidates = candidates.map(candidate => ({candidate, groups: groupCandidateAssets(candidate)}));
-  const selectedGroups = groupedCandidates.find(entry => entry.candidate === selected)?.groups;
-  if (!selectedGroups) throw new Error('冻结候选未能映射到素材揭晓阶段。');
-  const chosenGroups = [...selectedGroups];
-  if (chosenGroups.length > MAX_STAGES) throw new Error(`候选包含 ${chosenGroups.length} 个展示阶段，超过最多 ${MAX_STAGES} 阶段的界限。`);
-  for (const [stageName, chosenAssets] of chosenGroups) {
-    const available = groupedCandidates
-      .flatMap(({candidate, groups}) => (groups.get(stageName) || [])
-        .map(asset => ({candidateId: candidate.id, stage: stageName, asset})))
-      .sort((a, b) => (a.candidateId < b.candidateId ? -1 : a.candidateId > b.candidateId ? 1 : 0)
-        || (a.asset.id < b.asset.id ? -1 : a.asset.id > b.asset.id ? 1 : 0));
-    const deduped = [...new Map(available.map(item => [assetKey(item.asset), item])).values()];
-    const offset = deduped.length ? stableHash(`${seed}:${stageName}`) % deduped.length : 0;
-    const rotated = deduped.slice(offset).concat(deduped.slice(0, offset));
-    const chosenKeys = new Set(chosenAssets.map(assetKey));
-    const samples = rotated.filter(item => !chosenKeys.has(assetKey(item.asset))).slice(0, Math.max(0, REEL_ITEMS - chosenAssets.length));
-    const selectedItems = chosenAssets.map(asset => ({candidateId: selected.id, stage: stageName, asset}));
-    const reel = [...samples, ...selectedItems];
-    stages.push({stage: stageName, chosenAssets, items: reel});
-  }
-  return stages;
-}
-
-async function readVerifiedAsset(asset, signal, fetcher = globalThis.fetch) {
-  const source = asset.previewSrc || asset.src;
-  if (!isSafeArtworkSource(source)) throw new Error(`素材 ${asset.id} 使用了非登记本地路径`);
-  if (typeof fetcher !== 'function' || !globalThis.crypto?.subtle) throw new Error('浏览器无法校验登记素材哈希');
-  const response = await fetcher(source, {signal, credentials: 'same-origin', redirect: 'error'});
-  if (!response.ok) throw new Error(`素材 ${asset.id} 读取失败（${response.status}）`);
-  const finalUrl = response.url ? new URL(response.url, globalThis.location?.href || 'https://dot.invalid/') : new URL(source, globalThis.location?.href || 'https://dot.invalid/');
-  const baseUrl = new URL(globalThis.location?.href || 'https://dot.invalid/');
-  if (finalUrl.origin !== baseUrl.origin || !finalUrl.pathname.startsWith('/assets/')) throw new Error(`素材 ${asset.id} 重定向到了不受信任的位置`);
-  const blob = await response.blob();
-  if (!blob.type.startsWith('image/') || blob.size < 1 || blob.size > ASSET_LIMIT) throw new Error(`素材 ${asset.id} 的文件类型或大小无效`);
-  const bytes = await blob.arrayBuffer();
-  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes);
-  const actual = [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
-  const expected = (source === asset.src ? asset.sha256 : asset.previewSha256 || asset.sha256).toLowerCase();
-  if (actual !== expected) throw new Error(`素材 ${asset.id} 的 SHA-256 与目录记录不一致`);
-  const verifiedBlob = new Blob([bytes], {type: blob.type});
-  const objectUrl = URL.createObjectURL(verifiedBlob);
-  try {
-    const image = new Image();
+  if (handle?.url) {
+    const image = element('img', 'fr-reel-image');
+    image.src = handle.url;
+    image.alt = '';
     image.decoding = 'async';
-    const loaded = new Promise((resolve, reject) => {
-      image.onload = resolve;
-      image.onerror = () => reject(new Error(`素材 ${asset.id} 无法解码`));
-    });
-    image.src = objectUrl;
-    if (typeof image.decode === 'function') {
-      try { await image.decode(); }
-      catch { await loaded; }
-    } else await loaded;
-    if (!image.naturalWidth || !image.naturalHeight) throw new Error(`素材 ${asset.id} 解码后尺寸为空`);
-    if (image.naturalWidth !== asset.width || image.naturalHeight !== asset.height) throw new Error(`素材 ${asset.id} 尺寸与目录记录不一致`);
-    return {key: assetKey(asset), source, objectUrl, width: image.naturalWidth, height: image.naturalHeight};
-  } catch (error) {
-    URL.revokeObjectURL(objectUrl);
-    throw error;
+    const rect = item.visual.sourceRect;
+    if (item.visual.kind === 'source-crop' && (!Array.isArray(rect) || rect.length !== 4 || rect.some(value => !Number.isFinite(value)) || rect[0] < 0 || rect[1] < 0 || rect[2] <= 0 || rect[3] <= 0 || rect[0]+rect[2] > 1 || rect[1]+rect[3] > 1)) throw new Error('特征局部图缺少有效登记范围。');
+    if (Array.isArray(rect) && rect.length === 4) {
+      const [x, y, width, height] = rect;
+      visual.classList.add('is-detail-crop');
+      const frame = element('span', 'fr-feature-crop');
+      frame.style.setProperty?.('--fr-crop-ratio', String(width * handle.asset.width / (height * handle.asset.height)));
+      frame.style.aspectRatio = `${width * handle.asset.width} / ${height * handle.asset.height}`;
+      image.style.width = `${100 / width}%`;
+      image.style.height = `${100 / height}%`;
+      image.style.left = `${-x * 100 / width}%`;
+      image.style.top = `${-y * 100 / height}%`;
+      frame.append(image);
+      visual.append(frame);
+      visual.dataset.sourceRect = JSON.stringify(rect);
+    } else visual.append(image);
+  } else {
+    const symbol = element('span', 'fr-reel-symbol', item.visual.kind === 'empty-value' ? '—' : '?');
+    visual.append(symbol);
   }
+  const copy = element('div', 'fr-reel-copy');
+  const value = element('b', 'fr-reel-value', label);
+  value.setAttribute('aria-label', label);
+  value.setAttribute('title', label);
+  copy.append(value);
+  card.append(visual, copy);
+  return card;
+}
+
+function reelMeasurements(slot) {
+  let configuredHeight = 0;
+  try {
+    configuredHeight = Number.parseFloat(globalThis.getComputedStyle?.(slot.reel)?.getPropertyValue?.('--fr-card-height')) || 0;
+  } catch { /* A non-browser host uses the measured item or the deterministic fallback. */ }
+  const item = slot.track.children?.[0];
+  const measuredHeight = Number(item?.getBoundingClientRect?.().height || item?.offsetHeight || 0);
+  const cardHeight = configuredHeight > 0 ? configuredHeight : measuredHeight > 0 ? measuredHeight : FALLBACK_CARD_HEIGHT;
+  const windowHeight = Number(slot.window?.getBoundingClientRect?.().height || slot.window?.clientHeight || 0);
+  const inset = windowHeight > cardHeight ? (windowHeight - cardHeight) / 2 : 0;
+  return {cardHeight, centerOffset: Math.max(0, cardHeight - inset)};
+}
+
+function setSlotProgress(slot, state) {
+  const description = state === 'rolling' ? '正在滚动' : state === 'stopped' ? '已停止' : '等待揭晓';
+  slot.stageState.textContent = description;
+  slot.stageState.setAttribute('aria-label', `${slot.label}：${description}`);
+  if (!slot.progress) return;
+  slot.progress.dataset.state = state;
+  slot.progress.classList.toggle('is-active', state === 'rolling');
+  slot.progress.classList.toggle('is-landed', state === 'stopped');
+  slot.progress.setAttribute('aria-label', `第 ${slot.index + 1} 张卡片，${description}`);
+}
+
+function setFocusSafe(node) {
+  try { node?.focus?.({preventScroll: true}); } catch { /* Focus is owned by the containing overlay. */ }
 }
 
 /**
- * Build the production callbacks around the shared composition resolver and the
- * same LayeredComposer used by the workbench. The resolver supplies trusted local
- * paths; this adapter rechecks hashes before any thumbnail or result is revealed.
+ * A mountable result/reveal view shared by the global overlay and the game page.
+ * The Artwork is selected and frozen by the injected DrawEngine before any asset
+ * is loaded or animated. Rolling candidates keep their own sources; stopped
+ * cards and all result actions reveal facts from the frozen selection.
  */
-export function createResolvedRandomizerAdapters({
-  getCurrentProject,
-  getCandidates = getResolvedTemplateCandidates,
-  Composer = LayeredComposer,
-  fetcher = globalThis.fetch,
-  captureSize = 1024
-} = {}) {
-  if (typeof getCandidates !== 'function' || typeof Composer !== 'function') throw new TypeError('随机适配器需要共享候选 resolver 和 LayeredComposer。');
-  return {
-    async getCandidateSet({query, project, locks, seed, signal} = {}) {
-      if (typeof getCurrentProject !== 'function' && !project) throw new TypeError('随机适配器需要当前 v2 项目。');
-      const currentProject = project || getCurrentProject();
-      const {typedQuery, lookIds} = sourceQuery(query);
-      const resolved = await getCandidates({query: typedQuery, project: currentProject, locks, seed, signal});
-      const allowlist = lookIds;
-      const candidates = (resolved?.candidates || []).filter(candidate => {
-        if (!isResolvedRandomCandidate(candidate) || !matchesLocks(candidate, locks || {})) return false;
-        return !allowlist || allowlist.has(candidateArtworkId(candidate));
-      });
-      const availability = candidates.length ? 'available' : 'empty';
-      const reason = candidates.length
-        ? ''
-        : resolved?.candidates?.length && allowlist
-          ? '当前首页场景没有可用的真实模板组合。'
-          : resolved?.reason || '当前范围没有已批准且可真实渲染的候选。';
-      return {candidates, availability, reason, rejected: resolved?.rejected || []};
-    },
-    async preloadCandidate({candidate, reelStages = [], signal} = {}) {
-      if (!isResolvedRandomCandidate(candidate)) throw new Error('候选没有通过 v2 真实渲染合同校验');
-      const selectedAssets = candidate.stageMetadata.map(stage => stage.asset);
-      const references = candidate.composition.assetRefs;
-      const refMap = new Map(references.map(ref => [assetKey(ref), ref]));
-      for (const ref of references) {
-        const asset = selectedAssets.find(item => assetKey(item) === assetKey(ref));
-        if (!asset || asset.sha256.toLowerCase() !== ref.sha256.toLowerCase()) throw new Error(`候选缺少素材 ${ref.id} 的可信本地预载来源`);
-      }
-      const assets = [...selectedAssets, ...reelStages.flatMap(stage => stage.items.map(item => item.asset))];
-      const unique = [...new Map(assets.map(asset => [assetKey(asset), asset])).values()];
-      const loaded = new Map();
-      const objectUrls = new Set();
-      try {
-        for (const asset of unique) {
-          if (signal?.aborted) throw new DOMException('随机任务已取消', 'AbortError');
-          const ref = refMap.get(assetKey(asset));
-          if (ref && ref.sha256.toLowerCase() !== asset.sha256.toLowerCase()) throw new Error(`素材 ${asset.id} 与 composition 引用版本不一致`);
-          const value = await readVerifiedAsset(asset, signal, fetcher);
-          loaded.set(value.key, value);
-          objectUrls.add(value.objectUrl);
-        }
-      } catch (error) {
-        for (const url of objectUrls) URL.revokeObjectURL(url);
-        throw error;
-      }
-      let disposed = false;
-      return {
-        loaded,
-        getPreview(asset) {
-          const entry = loaded.get(assetKey(asset));
-          if (!entry) throw new Error(`缩略图素材 ${asset.id} 未通过预载`);
-          return entry.objectUrl;
-        },
-        dispose() {
-          if (disposed) return;
-          disposed = true;
-          for (const url of objectUrls) URL.revokeObjectURL(url);
-          objectUrls.clear();
-          loaded.clear();
-        }
-      };
-    },
-    async renderCandidate({candidate, container, signal} = {}) {
-      if (!isResolvedRandomCandidate(candidate)) throw new Error('候选没有通过 v2 真实渲染合同校验');
-      if (signal?.aborted) throw new DOMException('随机任务已取消', 'AbortError');
-      const staging = document.createElement('div');
-      staging.className = 'fr-render-staging';
-      const composer = new Composer(staging);
-      try {
-        const rendered = await composer.updateResolved(candidate.resolution, {signal});
-        if (!rendered || signal?.aborted || composer.canvas?.dataset?.previewStatus !== 'ready') throw new Error('真实组合画布未能就绪');
-        const blob = await composer.captureBlob(captureSize, {transparent: true});
-        if (signal?.aborted) throw new DOMException('随机任务已取消', 'AbortError');
-        if (!(await isPngBlob(blob))) throw new Error('真实组合 PNG 编码失败或文件签名无效');
-        if (container?.append) container.append(staging);
-        let disposed = false;
-        return {
-          canvas: composer.canvas,
-          blob,
-          composer,
-          dispose() {
-            if (disposed) return;
-            disposed = true;
-            composer.dispose();
-            staging.remove();
-          }
-        };
-      } catch (error) {
-        composer.dispose();
-        staging.remove();
-        throw error;
-      }
-    },
-    dispose() {}
-  };
-}
-
-export function createFullscreenRandomizer({
-  mount = document.body,
-  getCurrentProject,
-  getCandidateSet,
-  preloadCandidate,
-  renderCandidate,
-  commitCandidate,
-  onPromptOnly = null,
+export function createRevealView({
+  engine,
+  getConditions = () => ({}),
+  onDetail = () => {},
+  onResult = () => {},
   notify = () => {},
-  getSeed = randomSeed,
-  getReducedMotion = osPrefersReducedMotion,
-  onOpenChange = () => {}
+  autoStart = false,
+  initialRequiredFeatures = [],
+  onLocksChange = () => {},
+  getAsset: resolveRegisteredAsset = getAsset,
+  loadAsset: loadRegisteredAsset = loadAsset,
+  openChatGPT: openPrompt = copyAndOpen,
+  downloadAsset: downloadOriginal = downloadAsset
 } = {}) {
-  if (!mount?.append || typeof getCurrentProject !== 'function' || typeof getCandidateSet !== 'function'
-      || typeof preloadCandidate !== 'function' || typeof renderCandidate !== 'function' || typeof commitCandidate !== 'function') {
-    throw new TypeError('全局随机器需要当前项目、候选、预载、真实绘制和提交回调。');
+  if (!engine || typeof engine.select !== 'function') throw new TypeError('卡片揭晓视图需要共享 DrawEngine。');
+  if (typeof getConditions !== 'function') throw new TypeError('getConditions 必须是函数。');
+  if (typeof onDetail !== 'function' || typeof onResult !== 'function' || typeof notify !== 'function'
+      || typeof resolveRegisteredAsset !== 'function' || typeof loadRegisteredAsset !== 'function'
+      || typeof openPrompt !== 'function' || typeof downloadOriginal !== 'function') {
+    throw new TypeError('详情、创作、结果及提示回调必须是函数。');
   }
-  if (typeof getReducedMotion !== 'function' || typeof getSeed !== 'function') throw new TypeError('getReducedMotion and getSeed must be functions.');
-  return new FullscreenRandomizer({mount, getCurrentProject, getCandidateSet, preloadCandidate, renderCandidate, commitCandidate, onPromptOnly, notify, getSeed, getReducedMotion, onOpenChange});
-}
 
-class FullscreenRandomizer {
-  constructor(options) {
-    Object.assign(this, options);
-    this.dialog = null;
-    this.scope = {query: null, scopeLabel: '全部内容', source: ''};
-    this.locks = {artworkId: null, recipeId: null};
-    this.currentResult = null;
-    this.pendingCandidate = null;
-    this.pendingAssets = null;
-    this.pendingReels = [];
-    this.phase = 'closed';
-    this.timers = new Set();
-    this.session = 0;
-    this.turn = 0;
-    this.abortController = null;
-    this.returnFocus = null;
-    this.opened = false;
-    this.disposed = false;
-    this.motionPreference = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)');
-    this.onMotionChange = () => {
-      if (this.dialog?.open && this.syncReducedMotion() && this.phase === 'revealing') this.finishReveal(true);
+  const ui = createStructure();
+  const {root} = ui;
+  const lockedFeatures = new Set(initialRequiredFeatures.filter(id => typeof id === 'string'));
+  let phase = 'ready';
+  let runSerial = 0;
+  let activeRun = null;
+  let current = null;
+  let displayIsPrevious = false;
+  let disposed = false;
+  let lastNotice = '';
+  let activeSlot = -1;
+  const timers = new Map();
+  const frames = new Map();
+  const downloads = new Set();
+  const locallyUnavailableArtworkIds = new Set();
+  const motionQuery = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)') || null;
+
+  const isBusy = () => ['selecting', 'preloading', 'revealing'].includes(phase);
+  const currentRun = run => !disposed && activeRun === run && run.id === runSerial && !run.controller.signal.aborted;
+  const syncState = () => {
+    root.dataset.phase = phase;
+    const artworkId = activeRun ? activeRun.result?.artworkId : current?.result?.artworkId;
+    if (artworkId) root.dataset.artworkId = String(artworkId);
+    else delete root.dataset.artworkId;
+  };
+  const setPhase = next => { phase = next; ui.hint.textContent = next === 'result' ? '遇见新的伙伴' : '随机发现一位伙伴'; syncState(); };
+  const status = message => { ui.status.textContent = String(message || ''); };
+  const showNotice = message => {
+    const text = typeof message === 'string' ? message : message?.message || message?.label || '';
+    return String(text || '').trim();
+  };
+
+  function disposeHandles(handles) {
+    for (const handle of handles || []) {
+      try { handle?.dispose?.(); } catch { /* Releasing a stale URL must not block the next session. */ }
+    }
+    handles?.clear?.();
+  }
+
+  function clearScheduled() {
+    for (const [id, resolve] of timers) {
+      clearTimeout(id);
+      resolve(false);
+    }
+    timers.clear();
+    for (const [id, resolve] of frames) {
+      if (typeof globalThis.cancelAnimationFrame === 'function') globalThis.cancelAnimationFrame(id);
+      else clearTimeout(id);
+      resolve(false);
+    }
+    frames.clear();
+  }
+
+  function delay(ms, run) {
+    return new Promise(resolve => {
+      if (!currentRun(run)) { resolve(false); return; }
+      const id = setTimeout(() => {
+        timers.delete(id);
+        resolve(currentRun(run));
+      }, ms);
+      timers.set(id, resolve);
+    });
+  }
+
+  function nextFrame(run) {
+    return new Promise(resolve => {
+      if (!currentRun(run)) { resolve(false); return; }
+      const raf = globalThis.requestAnimationFrame;
+      let id;
+      const done = () => {
+        frames.delete(id);
+        resolve(currentRun(run));
+      };
+      if (typeof raf === 'function') id = raf(done);
+      else id = setTimeout(done, 16);
+      frames.set(id, resolve);
+    });
+  }
+
+  function resolveAsset(ref) {
+    if (!ref) return null;
+    const asset = resolveRegisteredAsset(ref);
+    if (!asset || !asset.path) throw new Error('有一项揭晓资源未登记到作品目录。');
+    return asset;
+  }
+
+  function markArtworkUnavailable(run, artworkId, error) {
+    if (!artworkId || typeof engine.markUnavailable !== 'function') return;
+    try {
+      engine.markUnavailable(artworkId, error?.message || 'Artwork resource verification failed');
+      run.unavailableArtworkIds.add(artworkId);
+      locallyUnavailableArtworkIds.add(artworkId);
+    } catch { /* Exclusion is optional for engines without resource health tracking. */ }
+  }
+
+  function listUnavailableArtworks() {
+    if (typeof engine.unavailableArtworkIds === 'function') {
+      try {
+        const ids = engine.unavailableArtworkIds();
+        if (Array.isArray(ids)) {
+          locallyUnavailableArtworkIds.clear();
+          for (const id of ids) if (typeof id === 'string' && id) locallyUnavailableArtworkIds.add(id);
+          return [...locallyUnavailableArtworkIds];
+        }
+      } catch { /* The local set still exposes this view's verified failures. */ }
+    }
+    return [...locallyUnavailableArtworkIds];
+  }
+
+  function ensureLoaded(run, assetRef, artworkId = '') {
+    let asset;
+    try { asset = resolveAsset(assetRef); }
+    catch (error) {
+      markArtworkUnavailable(run, artworkId, error);
+      return Promise.reject(error);
+    }
+    if (!asset) return Promise.resolve(null);
+    const key = getAssetKey(asset);
+    if (run.loaded.has(key)) return Promise.resolve(run.loaded.get(key));
+    if (run.pendingLoads.has(key)) return run.pendingLoads.get(key);
+    const pending = Promise.resolve().then(() => loadRegisteredAsset(asset, {signal: run.controller.signal})).then(handle => {
+      if (!handle?.blob || !handle?.url || !handle?.asset) {
+        handle?.dispose?.();
+        throw new Error(`作品资源 ${asset.id || asset.path} 未通过完整预载校验。`);
+      }
+      if (!currentRun(run)) {
+        handle.dispose?.();
+        throw new DOMException('抽取已取消', 'AbortError');
+      }
+      run.loaded.set(key, handle);
+      run.handles.add(handle);
+      return handle;
+    }).catch(error => {
+      if (!isAbort(error)) markArtworkUnavailable(run, asset.ownerArtworkId || artworkId, error);
+      throw error;
+    }).finally(() => run.pendingLoads.delete(key));
+    run.pendingLoads.set(key, pending);
+    return pending;
+  }
+
+  function handleFor(run, ref) {
+    const asset = ref ? resolveAsset(ref) : null;
+    return asset ? run.loaded.get(getAssetKey(asset)) || null : null;
+  }
+
+  function renderNeighborhood(slot, centerIndex) {
+    const track = slot.track;
+    const count = slot.items.length;
+    if (count < 2) {
+      const center = slot.items[centerIndex];
+      track.style.transition = 'none';
+      track.style.transform = 'none';
+      track.classList.add('is-static');
+      track.replaceChildren(makeReelItem(center, handleFor(slot.run, center.assetRef), true));
+      slot.centerIndex = centerIndex;
+      slot.reel.dataset.centerArtwork = String(center.artworkId || '');
+      slot.reel.dataset.centerValue = center.label;
+      return;
+    }
+    track.classList.remove('is-static');
+    const before = slot.items[(centerIndex - 1 + count) % count];
+    const center = slot.items[centerIndex];
+    const after = slot.items[(centerIndex + 1) % count];
+    track.style.transition = 'none';
+    const {centerOffset} = reelMeasurements(slot);
+    track.style.transform = `translateY(-${centerOffset}px)`;
+    track.replaceChildren(
+      makeReelItem(before, handleFor(slot.run, before.assetRef)),
+      makeReelItem(center, handleFor(slot.run, center.assetRef), true),
+      makeReelItem(after, handleFor(slot.run, after.assetRef))
+    );
+    slot.centerIndex = centerIndex;
+    slot.reel.dataset.centerArtwork = String(center.artworkId || '');
+    slot.reel.dataset.centerValue = center.label;
+  }
+
+  function landSlot(slot) {
+    renderNeighborhood(slot, slot.selectedIndex);
+    slot.reel.classList.remove('is-rolling', 'is-waiting');
+    slot.window.setAttribute('aria-hidden', 'false');
+    slot.reel.classList.add('is-landed');
+    slot.reel.dataset.stopped = 'true';
+    slot.track.style.transition = 'none';
+    setSlotProgress(slot, 'stopped');
+  }
+
+  function renderSlots(run, {restored = false} = {}) {
+    ui.reelHost.replaceChildren();
+    ui.progressHost.replaceChildren();
+    if (typeof ui.reelHost.style?.setProperty === 'function') {
+      ui.reelHost.style.setProperty('--fr-slot-count', String(Math.max(1, run.slots.length)));
+    } else {
+      ui.reelHost.style['--fr-slot-count'] = String(Math.max(1, run.slots.length));
+    }
+    ui.reelHost.dataset.slotCount = String(run.slots.length);
+    run.slots.forEach((slot, index) => {
+      const reel = element('article', `fr-reel${restored ? ' is-restored' : ' is-waiting'}`);
+      reel.dataset.slot = slot.key;
+      reel.dataset.index = String(index);
+      reel.dataset.stopped = restored ? 'true' : 'false';
+      reel.setAttribute('aria-label', `${slot.label}特征卡`);
+      const heading = element('div', 'fr-reel-label-row');
+      const number = element('span', 'fr-reel-number', String(index + 1));
+      const shortLabel = element('span', 'fr-reel-label', slot.shortLabel || slot.label);
+      shortLabel.setAttribute('aria-label', slot.label);
+      const stageState = element('span', 'fr-reel-state');
+      heading.append(number, shortLabel, stageState);
+      const viewport = element('div', 'fr-reel-window');
+      viewport.setAttribute('role', 'group');
+      viewport.setAttribute('aria-label', `${slot.label}候选卡片`);
+      viewport.setAttribute('aria-hidden', restored ? 'false' : 'true');
+      const track = element('div', 'fr-reel-track');
+      viewport.append(track);
+      reel.append(heading, viewport, makeCardBack(slot.shortLabel || slot.label));
+      ui.reelHost.append(reel);
+      const progress = element('span', 'fr-reveal-progress-step');
+      progress.dataset.slotProgress = String(index);
+      progress.dataset.index = String(index);
+      progress.setAttribute('role', 'img');
+      ui.progressHost.append(progress);
+      slot.run = run;
+      slot.reel = reel;
+      slot.track = track;
+      slot.window = viewport;
+      slot.index = index;
+      slot.stageState = stageState;
+      slot.progress = progress;
+      setSlotProgress(slot, restored ? 'stopped' : 'waiting');
+      const startIndex = restored ? slot.selectedIndex : slot.items.length > 1
+        ? (slot.selectedIndex + 1) % slot.items.length
+        : slot.selectedIndex;
+      renderNeighborhood(slot, startIndex);
+      if (restored) landSlot(slot);
+    });
+    ui.reelHost.scrollLeft = 0;
+    ui.reveal.hidden = false;
+    ui.reelHost.hidden = run.slots.length === 0;
+    ui.progressHost.hidden = run.slots.length === 0;
+    ui.reelNote.hidden = run.slots.length === 0;
+    ui.stageLabel.textContent = run.slots.length
+      ? (restored ? '已恢复停止的卡片' : '逐卡揭晓')
+      : '作品事实已核对';
+  }
+
+  function renderLocks(result) {
+    ui.lockOptions.replaceChildren();
+    for (const feature of result.revealFeatures || []) {
+      const ids = (Array.isArray(feature.value) ? feature.value : [feature.value]).filter(id => typeof id === 'string' && result.artwork.featureIds?.includes(id));
+      if (!ids.length) continue;
+      const label = element('label', 'fr-lock-option');
+      const input = element('input');
+      input.type = 'checkbox';
+      input.checked = ids.every(id => lockedFeatures.has(id));
+      input.dataset.featureIds = JSON.stringify(ids);
+      input.addEventListener('change', () => {
+        for (const id of ids) input.checked ? lockedFeatures.add(id) : lockedFeatures.delete(id);
+        onLocksChange(Object.freeze([...lockedFeatures]));
+        status(lockedFeatures.size ? '下一款将满足全部已锁定特征。' : '已解除特征锁定，仍使用原筛选范围。');
+      });
+      label.append(input, element('span', '', `${FEATURE_SLOTS.find(slot => slot.key === feature.kind)?.label || ''}：${getFeatureText(feature)}`));
+      ui.lockOptions.append(label);
+    }
+  }
+
+  function renderReadyCards() {
+    ui.reelHost.replaceChildren(); ui.progressHost.replaceChildren();
+    for (const [index, definition] of FEATURE_SLOTS.entries()) {
+      const reel = element('article', 'fr-reel is-waiting');
+      reel.dataset.slot = definition.key; reel.dataset.index = String(index); reel.dataset.stopped = 'false';
+      const heading = element('div', 'fr-reel-label-row');
+      heading.append(element('span', 'fr-reel-number', String(index + 1)), element('span', 'fr-reel-label', definition.label));
+      reel.append(heading, makeCardBack(definition.label)); ui.reelHost.append(reel);
+    }
+    ui.reelHost.dataset.slotCount = '6'; ui.reveal.hidden = false;
+    ui.progressHost.hidden = true; ui.reelNote.hidden = true;
+  }
+
+  function followSlot(slot) {
+    if (!slot.reel?.getBoundingClientRect || !ui.reelHost?.getBoundingClientRect) return;
+    const card = slot.reel.getBoundingClientRect(), host = ui.reelHost.getBoundingClientRect();
+    const left = Math.max(0, Math.min(ui.reelHost.scrollWidth - ui.reelHost.clientWidth,
+      ui.reelHost.scrollLeft + card.left - host.left - (host.width - card.width) / 2));
+    const fastConfirm = slot.items.length < 2 || slot.items[slot.selectedIndex].features.every(feature => ['none', 'not-applicable', 'notApplicable'].includes(feature.state));
+    ui.reelHost.scrollTo?.({left, behavior: reducedMotion() || fastConfirm ? 'instant' : 'smooth'});
+  }
+
+  function displayResult(record, {previous = false} = {}) {
+    if (!record) {
+      ui.result.hidden = true;
+      for (const button of [ui.copy, ui.download, ui.chatgpt, ui.detail]) button.hidden = true;
+      return;
+    }
+    const result = record.result;
+    ui.result.hidden = false;
+    ui.resultImage.src = record.mainHandle.url;
+    ui.resultImage.alt = getArtworkTitle(result.artwork);
+    ui.resultTitle.textContent = getArtworkTitle(result.artwork);
+    ui.resultBadge.textContent = previous ? '上一款' : (record.poolSize === 1 ? '当前范围仅此一款' : '');
+    ui.resultBadge.hidden = !ui.resultBadge.textContent;
+    ui.resultDescription.textContent = String(result.artwork.description || '');
+    ui.resultDescription.hidden = !ui.resultDescription.textContent;
+    const asset = result.asset;
+    ui.resultTraits.textContent = [asset?.alpha?.hasAlpha && asset?.alpha?.hasTransparency ? '透明 PNG' : 'PNG', '静态', Number.isFinite(asset?.width) && Number.isFinite(asset?.height) ? `${asset.width} × ${asset.height}` : ''].filter(Boolean).join(' · ');
+    ui.promptFallback.hidden = true;
+    ui.manualChatLink.hidden = true;
+    ui.promptFallback.value = '';
+    for (const button of [ui.copy, ui.download, ui.chatgpt, ui.detail]) button.hidden = false;
+    ui.copy.disabled = !getPromptText(result.prompt);
+    renderLocks(result);
+    ui.reelHost.scrollLeft = 0;
+  }
+
+  function showPriorResult({message, previous = true} = {}) {
+    activeSlot = -1;
+    displayIsPrevious = Boolean(previous && current);
+    displayResult(current, {previous});
+    if (current) {
+      const loaded = new Map([...current.handles].map(handle => [getAssetKey(handle.asset), handle]));
+      renderSlots({slots: buildRestoredSlots(current.result), loaded}, {restored: true});
+      ui.stageLabel.textContent = '上一款卡片已停止';
+    } else {
+      renderReadyCards();
+      ui.stageLabel.textContent = '揭晓已结束';
+    }
+    status(message || (current ? '本次没有完成；上一款作品仍保留。' : '本次随机发现已结束。'));
+    updateActions();
+  }
+
+  function updateActions() {
+    const busy = isBusy();
+    root.dataset.displayResult = String(Boolean(current && !busy));
+    ui.start.disabled = disposed || busy;
+    ui.start.textContent = current ? '再来一款' : '随机一款';
+    ui.skip.hidden = phase !== 'revealing';
+    for (const button of [ui.copy, ui.download, ui.chatgpt, ui.detail]) {
+      button.hidden = !current || busy;
+    }
+    ui.locks.hidden = !current || busy;
+    ui.start.classList.toggle('fr-reroll', Boolean(current));
+    const promptReady = Boolean(getPromptText(current?.result?.prompt));
+    ui.copy.disabled = disposed || busy || !promptReady;
+    ui.chatgpt.disabled = disposed || busy || !promptReady;
+    ui.detail.disabled = disposed || busy || !current;
+    ui.download.disabled = disposed || busy || !current || [...downloads].some(op=>op.snapshot===current.result);
+    const hasUnavailableArtworks = listUnavailableArtworks().length > 0;
+    ui.retryResources.hidden = !hasUnavailableArtworks;
+    ui.retryResources.disabled = disposed || busy || !hasUnavailableArtworks || typeof engine.clearUnavailable !== 'function';
+  }
+
+  function buildRun() {
+    return {
+      id: ++runSerial,
+      controller: new AbortController(),
+      handles: new Set(),
+      loaded: new Map(),
+      pendingLoads: new Map(),
+      slots: [],
+      result: null,
+      mainHandle: null,
+      poolSize: 0,
+      unavailableArtworkIds: new Set(),
+      finalizing: false
     };
-    this.motionPreference?.addEventListener?.('change', this.onMotionChange);
-    this.onClick = event => this.handleClick(event);
-    this.onKeydown = event => this.handleKeydown(event);
-    this.shortcutsAttached = false;
-    this.onCancel = event => { event.preventDefault(); this.close(); };
-    this.onNativeClose = () => { if (!this.dialog?.open) this.finishClose(); };
   }
 
-  build() {
-    if (this.dialog) return;
-    const dialog = document.createElement('dialog');
-    dialog.className = 'fullscreen-randomizer';
-    dialog.setAttribute('aria-labelledby', 'fr-title');
-    dialog.innerHTML = `
-      <div class="fr-shell">
-        <header class="fr-header">
-          <div class="fr-brand"><img class="fr-brand-mark" src="./assets/characters/brand-mark.png" alt=""><span>Dot Icon Studio</span></div>
-          <button class="fr-close" type="button" data-fr="close" aria-label="关闭随机灵感">${ICONS.close}</button>
-        </header>
-        <main class="fr-main">
-          <div class="fr-heading"><span class="fr-eyebrow">A LITTLE SPARK OF INSPIRATION</span><h1 id="fr-title" tabindex="-1">灵感随机器</h1>
-            <p class="fr-scope"><span class="fr-scope-label">全部内容</span><button type="button" data-fr="clear-scope" hidden>切回全部</button></p>
-          </div>
-          <section class="fr-result-card" aria-label="真实角色组合结果" hidden>
-            <div class="fr-canvas-host" aria-live="off"></div>
-            <div class="fr-result-caption"><b class="fr-result-name"></b><span class="fr-result-note">来自已登记的可渲染配方</span></div>
-          </section>
-          <section class="fr-reveal" aria-label="真实素材逐项揭晓" hidden>
-            <div class="fr-reveal-heading"><span class="fr-eyebrow">REAL ASSETS · ONE RESOLVED RESULT</span><b class="fr-reveal-title">正在揭晓组合</b></div>
-            <div class="fr-reel-stage" aria-live="polite"></div>
-          </section>
-          <section class="fr-locks" aria-label="锁定随机内容" hidden>
-            <button type="button" data-fr-lock="artworkId" aria-pressed="false">${ICONS.unlock}<span>锁定角色</span></button>
-            <button type="button" data-fr-lock="recipeId" aria-pressed="false">${ICONS.unlock}<span>锁定配方</span></button>
-          </section>
-          <details class="fr-advanced" hidden>
-            <summary>高级：Prompt-only 随机</summary>
-            <p>只更新创作 Prompt，不生成或应用可渲染组合。</p>
-            <button type="button" data-fr="prompt-only">在工作台生成 Prompt 配方</button>
-          </details>
-          <p class="fr-status" role="status" aria-live="polite">准备生成一款真实可预览的角色组合。</p>
-          <div class="fr-actions">
-            <button class="fr-button fr-random" type="button" data-fr="random">${ICONS.sparkle}<span>随机一款</span>${ICONS.arrow}</button>
-            <button class="fr-button fr-skip" type="button" data-fr="skip" hidden>跳过动画</button>
-            <button class="fr-button fr-apply" type="button" data-fr="apply" hidden disabled>用这个组合</button>
-          </div>
-          <p class="fr-footnote">随机候选先通过真实配方解算，再逐项揭晓并在画布中组装；应用前不会更改当前作品。</p>
-        </main>
-      </div>`;
-    this.mount.append(dialog);
-    dialog.addEventListener('click', this.onClick);
-    dialog.addEventListener('keydown', this.onKeydown);
-    dialog.addEventListener('cancel', this.onCancel);
-    dialog.addEventListener('close', this.onNativeClose);
-    this.dialog = dialog;
+  function retireRun(run) {
+    if (!run) return;
+    if (!run.controller.signal.aborted) run.controller.abort();
+    disposeHandles(run.handles);
+    run.loaded.clear();
+    run.pendingLoads.clear();
   }
 
-  open({query = null, scopeLabel = '全部内容', source = ''} = {}) {
-    if (this.disposed) return false;
-    this.build();
-    if (this.dialog.open) return false;
-    if (this.opened) this.finishClose();
-    this.returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    this.session++;
-    this.turn++;
-    this.abortController = null;
-    this.scope = {query: query ? clone(query) : null, scopeLabel: String(scopeLabel || '全部内容'), source: String(source || '')};
-    this.locks = {artworkId: null, recipeId: null};
-    this.currentResult = null;
-    this.pendingCandidate = null;
-    this.pendingAssets = null;
-    this.pendingReels = [];
-    this.phase = 'intro';
-    this.dialog.querySelector('.fr-main').scrollTop = 0;
-    this.renderIntro();
-    this.syncReducedMotion();
-    this.dialog.showModal();
-    this.opened = true;
-    document.addEventListener('keydown', this.onKeydown, true);
-    this.shortcutsAttached = true;
-    this.dialog.querySelector('#fr-title').focus({preventScroll: true});
-    this.onOpenChange(true);
+  function installCompletedRun(run) {
+    if (!currentRun(run) || run.finalizing === false) return false;
+    const previous = current;
+    current = {
+      result: run.result,
+      mainHandle: run.mainHandle,
+      handles: run.handles,
+      poolSize: run.poolSize,
+      drawId: run.result.drawId
+    };
+    run.handles = new Set();
+    run.loaded.clear();
+    activeRun = null;
+    displayIsPrevious = false;
+    setPhase('result');
+    activeSlot = -1;
+    ui.reveal.hidden = false;
+    ui.stageLabel.textContent = '全部卡片已停止';
+    displayResult(current);
+    updateActions();
+    disposeHandles(previous?.handles);
+    const promptReady = Boolean(getPromptText(run.result.prompt));
+    const notice = lastNotice ? `${lastNotice} ` : '';
+    status(`${notice}${promptReady ? '为你找到这位伙伴，带走图片或 Prompt 吧。' : '已找到作品；该作品当前没有可复制的 Prompt。'}`);
+    invokeResultCallback(run.result, run.id);
     return true;
   }
 
-  close() {
-    if (this.disposed || (!this.dialog?.open && !this.opened)) return;
-    this.session++;
-    this.turn++;
-    this.abortCurrent();
-    this.clearTimers();
-    this.clearPending();
-    this.clearCurrentResult();
-    this.phase = 'closed';
-    if (this.dialog?.open) this.dialog.close();
-    this.finishClose();
+  function reportCallbackError(error, label, snapshot, operationSerial) {
+    if (disposed || current?.result !== snapshot || runSerial !== operationSerial || isBusy()) return;
+    const message = error?.message || `暂时无法${label}。`;
+    status(message);
+    try { notify(message); } catch { /* Keep the inline status as fallback. */ }
   }
 
-  finishClose() {
-    if (!this.opened) return;
-    this.opened = false;
-    if (this.shortcutsAttached) {
-      document.removeEventListener('keydown', this.onKeydown, true);
-      this.shortcutsAttached = false;
+  function invokeResultCallback(snapshot, operationSerial) {
+    try {
+      const response = onResult(snapshot);
+      if (response && typeof response.then === 'function') {
+        Promise.resolve(response).catch(error => reportCallbackError(error, '更新结果状态', snapshot, operationSerial));
+      }
+    } catch (error) {
+      reportCallbackError(error, '更新结果状态', snapshot, operationSerial);
     }
-    this.clearTimers();
-    if (this.returnFocus?.isConnected) this.returnFocus.focus({preventScroll: true});
-    this.returnFocus = null;
-    this.onOpenChange(false);
   }
 
-  dispose() {
-    if (this.disposed) return;
-    const wasOpen = this.opened || !!this.dialog?.open;
-    this.session++;
-    this.turn++;
-    this.abortCurrent();
-    this.clearTimers();
-    this.clearPending();
-    this.clearCurrentResult();
-    this.phase = 'closed';
-    this.disposed = true;
-    this.motionPreference?.removeEventListener?.('change', this.onMotionChange);
-    if (this.dialog) {
-      this.dialog.removeEventListener('click', this.onClick);
-      this.dialog.removeEventListener('keydown', this.onKeydown);
-      this.dialog.removeEventListener('cancel', this.onCancel);
-      this.dialog.removeEventListener('close', this.onNativeClose);
-      if (this.dialog.open) this.dialog.close();
-      this.dialog.remove();
-      this.dialog = null;
-    }
-    if (this.shortcutsAttached) {
-      document.removeEventListener('keydown', this.onKeydown, true);
-      this.shortcutsAttached = false;
-    }
-    this.opened = false;
-    if (wasOpen) this.onOpenChange(false);
+  function finishRun(run, skipped = false) {
+    if (!currentRun(run) || run.finalizing) return false;
+    run.finalizing = true;
+    clearScheduled();
+    for (const slot of run.slots) landSlot(slot);
+    ui.stageLabel.textContent = skipped ? '已跳过，结果一致' : '全部卡片已停止';
+    return installCompletedRun(run);
   }
 
-  renderIntro() {
-    const $ = selector => this.dialog.querySelector(selector);
-    $('.fr-scope-label').textContent = this.scope.scopeLabel;
-    $('[data-fr="clear-scope"]').hidden = true;
-    $('.fr-result-card').hidden = true;
-    $('.fr-reveal').hidden = true;
-    $('.fr-locks').hidden = true;
-    $('.fr-advanced').open = false;
-    $('.fr-advanced').hidden = true;
-    $('[data-fr="random"]').querySelector('span').textContent = '随机一款';
-    $('[data-fr="random"]').disabled = false;
-    $('[data-fr="skip"]').hidden = true;
-    $('[data-fr="apply"]').hidden = true;
-    $('[data-fr="apply"]').disabled = true;
-    this.setStatus('准备生成一款真实可预览的角色组合。');
-  }
-
-  hasScope() {
-    if (!this.scope.query) return Boolean(this.scope.scopeLabel && this.scope.scopeLabel !== '全部内容');
-    if (this.scope.scopeLabel && this.scope.scopeLabel !== '全部内容') return true;
-    if (Array.isArray(this.scope.query.lookIds) && this.scope.query.lookIds.length) return true;
-    if (this.scope.query.lookIds instanceof Set && this.scope.query.lookIds.size) return true;
-    return Object.keys(this.scope.query).some(key => key !== 'lookIds' && this.scope.query[key] !== null && this.scope.query[key] !== ''
-      && (!Array.isArray(this.scope.query[key]) || this.scope.query[key].length > 0));
-  }
-
-  handleClick(event) {
-    const lock = event.target.closest('[data-fr-lock]');
-    if (lock && this.dialog.contains(lock)) {
-      this.toggleLock(lock.dataset.frLock);
+  async function revealNextSlot(run, index = 0) {
+    if (!currentRun(run) || run.finalizing) return;
+    if (index >= run.slots.length) {
+      ui.stageLabel.textContent = '六张卡片已停止，即将揭晓';
+      status('全部线索已确认，即将揭晓这位伙伴。');
+      if (await delay(240, run)) finishRun(run, false);
       return;
     }
-    const action = event.target.closest('[data-fr]')?.dataset.fr;
-    if (action === 'close') this.close();
-    else if (action === 'random') this.spin();
-    else if (action === 'skip') this.finishReveal(true);
-    else if (action === 'apply') this.applyCandidate();
-    else if (action === 'clear-scope') this.clearScope();
-    else if (action === 'prompt-only') this.openPromptOnly();
-  }
+    const slot = run.slots[index];
+    activeSlot = index;
+    slot.reel.classList.remove('is-waiting');
+    slot.window.setAttribute('aria-hidden', 'false');
+    slot.reel.classList.add('is-active', 'is-rolling');
+    followSlot(slot);
+    setSlotProgress(slot, 'rolling');
+    ui.stageLabel.textContent = `正在揭晓：${slot.label}`;
+    status(lastNotice || `正在逐卡揭晓第 ${index + 1} 张特征卡。`);
 
-  handleKeydown(event) {
-    const editable = event.target?.isContentEditable || /INPUT|TEXTAREA|SELECT/.test(event.target?.tagName || '');
-    if (!editable && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
-      event.preventDefault(); event.stopPropagation(); return;
-    }
-    if (!editable && event.key.toLowerCase() === 'r' && !event.ctrlKey && !event.metaKey && !event.altKey) {
-      event.preventDefault(); event.stopPropagation();
-    }
-  }
-
-  toggleLock(key) {
-    if (!this.currentResult || this.phase !== 'result' || !['artworkId', 'recipeId'].includes(key)) return;
-    const candidate = this.currentResult.candidate;
-    const currentValue = key === 'artworkId' ? candidateArtworkId(candidate) : candidate.composition.recipeId;
-    if (!currentValue) return;
-    this.locks[key] = this.locks[key] === currentValue ? null : currentValue;
-    this.renderLocks();
-    this.setStatus(this.locks[key] ? `已锁定${key === 'artworkId' ? '角色' : '配方'}；重抽时会保留其登记 ID。` : `已解除${key === 'artworkId' ? '角色' : '配方'}锁定。`);
-  }
-
-  renderLocks() {
-    const candidate = this.currentResult?.candidate;
-    const data = [
-      ['artworkId', candidate ? candidateArtworkId(candidate) : '', '锁定角色', '角色已锁定', '角色'],
-      ['recipeId', candidate?.composition?.recipeId || '', '锁定配方', '配方已锁定', '配方']
-    ];
-    for (const [key, value, idleLabel, lockedLabel] of data) {
-      const button = this.dialog.querySelector(`[data-fr-lock="${key}"]`);
-      const locked = Boolean(value && this.locks[key] === value);
-      button.disabled = !value;
-      button.setAttribute('aria-pressed', String(locked));
-      button.setAttribute('aria-label', locked ? `解除${key === 'artworkId' ? '角色' : '配方'}锁定` : idleLabel);
-      button.querySelector('span').textContent = locked ? lockedLabel : idleLabel;
-      button.querySelector('svg').outerHTML = locked ? ICONS.lock : ICONS.unlock;
-    }
-  }
-
-  clearScope() {
-    if (!this.hasScope()) return;
-    if (['resolving', 'preloading', 'revealing', 'assembling'].includes(this.phase)) {
-      this.turn++;
-      this.abortCurrent();
-      this.clearTimers();
-      this.clearPending();
-      this.phase = this.currentResult ? 'result' : 'intro';
-    }
-    this.scope = {...this.scope, query: null, scopeLabel: '全部内容'};
-    this.dialog.querySelector('.fr-scope-label').textContent = '全部内容';
-    this.dialog.querySelector('[data-fr="clear-scope"]').hidden = true;
-    this.dialog.querySelector('.fr-reveal').hidden = true;
-    this.setStatus('范围已切回全部；当前组合和锁定保持不变，下次重抽会从全部内容中选择。');
-    if (!this.currentResult && this.phase === 'failed') this.phase = 'intro';
-    this.updateActions();
-  }
-
-  openPromptOnly() {
-    if (typeof this.onPromptOnly !== 'function') {
-      this.setStatus('Prompt-only 高级随机入口尚未接入工作台。');
+    if (slot.items.length < 2 || slot.items[slot.selectedIndex].features.every(feature => ['none', 'not-applicable', 'notApplicable'].includes(feature.state))) {
+      landSlot(slot);
+      slot.reel.classList.add('is-active');
+      const keepGoing = await delay(90, run);
+      if (keepGoing) revealNextSlot(run, index + 1);
       return;
     }
-    const request = {query: this.scope.query ? clone(this.scope.query) : null, locks: {...this.locks}, source: this.scope.source};
-    this.resetCandidate();
-    try {
-      this.onPromptOnly(request);
-      this.setStatus('已请求工作台生成 Prompt-only 配方；它不会成为可渲染随机结果。');
-    } catch (error) {
-      this.setStatus(error?.message || '暂时无法生成 Prompt-only 配方。');
+
+    const steps = 5 + index;
+    let center = (slot.selectedIndex - (steps % slot.items.length) + slot.items.length) % slot.items.length;
+    renderNeighborhood(slot, center);
+    for (let step = 0; step < steps; step += 1) {
+      const frameReady = await nextFrame(run);
+      if (!frameReady || !currentRun(run)) return;
+      const duration = 52 + step * 19;
+      slot.track.style.transition = `transform ${duration}ms cubic-bezier(.18,.72,.28,1)`;
+      const {cardHeight, centerOffset} = reelMeasurements(slot);
+      slot.track.style.transform = `translateY(-${centerOffset + cardHeight}px)`;
+      const moved = await delay(duration, run);
+      if (!moved || !currentRun(run)) return;
+      center = (center + 1) % slot.items.length;
+      renderNeighborhood(slot, center);
     }
+    if (center !== slot.selectedIndex) renderNeighborhood(slot, slot.selectedIndex);
+    landSlot(slot);
+    slot.reel.classList.add('is-active');
+    slot.stageState.textContent = '已揭晓';
+    const keepGoing = await delay(150, run);
+    if (keepGoing) revealNextSlot(run, index + 1);
   }
 
-  resetCandidate() {
-    // Invalidate any reveal/render work from the candidate before leaving the rendered-result flow.
-    this.turn++;
-    this.abortCurrent();
-    this.clearTimers();
-    this.clearPending();
-    this.clearCurrentResult();
-    this.phase = 'intro';
-    this.dialog.querySelector('.fr-canvas-host').replaceChildren();
-    this.dialog.querySelector('.fr-result-name').textContent = '';
-    this.dialog.querySelector('.fr-reel-stage').replaceChildren();
-    this.dialog.querySelector('.fr-reveal-title').textContent = '正在揭晓组合';
-    this.renderIntro();
-    this.updateActions();
-    this.dialog.querySelector('[data-fr="random"]').focus({preventScroll: true});
+  function notifyFailure(message, error) {
+    const detail = error?.message ? ` ${error.message}` : '';
+    showPriorResult({message: `${message}${detail}${current ? ' 上一款仍保留；没有更换成另一张作品。' : ' 没有开始卡片动画。'}`, previous: true});
   }
 
-  syncReducedMotion() {
-    let reduce = false;
-    try { reduce = osPrefersReducedMotion() || Boolean(this.getReducedMotion()); }
-    catch { reduce = osPrefersReducedMotion(); }
-    this.dialog.classList.toggle('fr-reduce-motion', reduce);
-    return reduce;
-  }
+  async function start({retryNotice = ''} = {}) {
+    if (disposed || isBusy()) return false;
+    clearScheduled();
+    if (activeRun) retireRun(activeRun);
+    displayIsPrevious = Boolean(current);
+    activeRun = buildRun();
+    const run = activeRun;
+    renderReadyCards();
+    ui.result.hidden = true;
+    ui.promptFallback.hidden = true;
+    ui.manualChatLink.hidden = true;
+    setPhase('selecting');
+    activeSlot = -1;
+    lastNotice = showNotice(retryNotice);
+    updateActions();
+    const openingStatus = current ? '正在按新范围寻找下一款作品；上一款会保留到新结果完整就绪。' : '正在按当前范围寻找已发布作品。';
+    status(`${lastNotice ? `${lastNotice} ` : ''}${openingStatus}`);
 
-  async spin() {
-    if (!this.dialog?.open || ['resolving', 'preloading', 'revealing', 'assembling'].includes(this.phase)) return;
-    const session = this.session;
-    const turn = ++this.turn;
-    this.abortCurrent();
-    this.clearTimers();
-    this.clearPending();
-    const abortController = new AbortController();
-    this.abortController = abortController;
-    const signal = abortController.signal;
-    const seed = this.getSeed();
-    const project = clone(this.getCurrentProject());
-    const locks = {...this.locks};
-    this.phase = 'resolving';
-    this.updateActions();
-    this.setStatus('正在按当前范围与锁定项求解可渲染候选…');
     try {
-      const result = await this.getCandidateSet({query: this.scope.query ? clone(this.scope.query) : null, project, locks, seed, signal});
-      if (!this.isCurrent(session, turn)) return;
-      const candidates = (result?.candidates || []).filter(candidate => isResolvedRandomCandidate(candidate) && matchesLocks(candidate, locks));
-      if (!candidates.length) {
-        this.phase = this.currentResult ? 'result' : 'failed';
-        this.renderErrorState(result?.reason || '当前锁定和筛选范围下没有可用的真实组合。');
-        return;
+      const conditions = await getConditions();
+      if (!currentRun(run)) return false;
+      const query = conditions?.query ?? conditions ?? {};
+      const requiredFeatures = [...new Set([...(Array.isArray(conditions?.requiredFeatures) ? conditions.requiredFeatures : []), ...lockedFeatures])];
+      const selection = await engine.select({query, requiredFeatures});
+      if (!currentRun(run)) return false;
+      if (selection?.status === 'empty') {
+        setPhase('empty');
+        activeRun = null;
+        retireRun(run);
+        const reason = showNotice(selection.message) || showNotice(selection.notice) || '当前筛选和必备特征没有匹配作品。请调整条件后重试。';
+        notifyFailure([lastNotice, reason].filter(Boolean).join(' '));
+        return false;
       }
-      // Selection is frozen before any fetch, decode, reel or canvas work starts.
-      const selected = seedCandidate(candidates, seed);
-      this.pendingCandidate = selected;
-      this.pendingReels = selectReelAssets(candidates, selected, seed);
-      this.phase = 'preloading';
-      this.renderScopeControls();
-      this.updateActions();
-      this.setStatus('已锁定一个真实候选，正在校验登记素材并预载揭晓缩略图…');
-      this.pendingAssets = await this.preloadCandidate({candidate: selected, reelStages: this.pendingReels, signal, seed});
-      if (!this.isCurrent(session, turn)) { this.clearPending(); return; }
-      this.buildRevealStages();
-      this.phase = 'revealing';
-      this.updateActions();
-      if (this.syncReducedMotion()) this.finishReveal(true);
-      else this.revealStage(0, session, turn);
-    } catch (error) {
-      if (!this.isCurrent(session, turn) || error?.name === 'AbortError') return;
-      this.clearPending();
-      this.phase = this.currentResult ? 'result' : 'failed';
-      this.updateActions();
-      this.renderErrorState(error?.message || '候选预载或解算失败；没有替换为其他角色。');
-    }
-  }
-
-  buildRevealStages() {
-    const reveal = this.dialog.querySelector('.fr-reveal');
-    const host = this.dialog.querySelector('.fr-reel-stage');
-    host.replaceChildren();
-    this.pendingReels.forEach((stage, index) => {
-      const card = document.createElement('article');
-      card.className = 'fr-reel';
-      card.dataset.stage = stage.stage;
-      card.dataset.index = String(index);
-      const label = document.createElement('span');
-      label.className = 'fr-reel-label';
-      label.textContent = stage.stage;
-      const viewport = document.createElement('div');
-      viewport.className = 'fr-reel-window';
-      const image = document.createElement('img');
-      image.className = 'fr-reel-image';
-      image.alt = `${stage.stage} 素材揭晓`;
-      image.src = this.pendingAssets.getPreview(stage.items[0].asset);
-      const meta = document.createElement('span');
-      meta.className = 'fr-reel-count';
-      meta.textContent = `${index + 1} / ${this.pendingReels.length}`;
-      viewport.append(image, meta);
-      card.append(label, viewport);
-      host.append(card);
-    });
-    reveal.hidden = this.pendingReels.length === 0;
-    this.dialog.querySelector('.fr-result-card').hidden = !this.currentResult;
-    this.dialog.querySelector('.fr-locks').hidden = !this.currentResult;
-  }
-
-  revealStage(index, session, turn) {
-    if (!this.isCurrent(session, turn) || this.phase !== 'revealing') return;
-    if (index >= this.pendingReels.length) { this.finishReveal(false); return; }
-    const stages = this.dialog.querySelectorAll('.fr-reel');
-    const card = stages[index];
-    card.classList.add('is-active', 'is-rolling');
-    const image = card.querySelector('.fr-reel-image');
-    const items = this.pendingReels[index].items;
-    let frame = 0;
-    const started = Date.now();
-    const duration = 520 + index * 115;
-    const roll = () => {
-      if (!this.isCurrent(session, turn) || this.phase !== 'revealing') return;
-      const elapsed = Date.now() - started;
-      if (elapsed >= duration) {
-        this.markStageLanded(card, this.pendingReels[index]);
-        this.dialog.querySelector('.fr-reveal-title').textContent = `${this.pendingReels[index].stage} 已揭晓`;
-        this.schedule(() => this.revealStage(index + 1, session, turn), 190);
-        return;
+      if (selection?.status === 'error') {
+        setPhase('error');
+        activeRun = null;
+        retireRun(run);
+        const reason = showNotice(selection.message) || showNotice(selection.notice) || '作品目录暂时无法完成抽取。';
+        notifyFailure([lastNotice, reason].filter(Boolean).join(' '));
+        return false;
       }
-      image.src = this.pendingAssets.getPreview(items[frame++ % items.length].asset);
-      const progress = elapsed / duration;
-      const delay = Math.round(54 + Math.pow(progress, 3) * 205);
-      this.schedule(roll, delay);
-    };
-    roll();
-  }
-
-  finishReveal(skipped) {
-    if (this.phase !== 'revealing') return;
-    this.clearTimers();
-    for (const stage of this.dialog.querySelectorAll('.fr-reel')) {
-      const index = Number(stage.dataset.index);
-      const data = this.pendingReels[index];
-      this.markStageLanded(stage, data);
-    }
-    this.dialog.querySelector('.fr-reveal-title').textContent = skipped ? '静态揭晓完成' : '素材已揭晓';
-    this.assembleCandidate(this.session, this.turn);
-  }
-
-  markStageLanded(card, stage) {
-    const viewport = card.querySelector('.fr-reel-window');
-    const final = document.createElement('div');
-    final.className = 'fr-reel-final';
-    for (const asset of stage.chosenAssets) {
-      const image = document.createElement('img');
-      image.className = 'fr-reel-landed-image';
-      image.alt = `${stage.stage} · ${asset.id}`;
-      image.src = this.pendingAssets.getPreview(asset);
-      final.append(image);
-    }
-    const count = document.createElement('span');
-    count.className = 'fr-reel-count';
-    count.textContent = stage.chosenAssets.length > 1 ? `${stage.chosenAssets.length} 项` : '已选';
-    viewport.replaceChildren(final, count);
-    card.classList.remove('is-rolling');
-    card.classList.add('is-active', 'is-landed');
-  }
-
-  async assembleCandidate(session, turn) {
-    if (!this.pendingCandidate || !this.isCurrent(session, turn)) return;
-    this.phase = 'assembling';
-    this.updateActions();
-    this.setStatus('正在使用同一条已解算配方绘制真实组合并检查 PNG…');
-    let rendered;
-    try {
-      rendered = await this.renderCandidate({candidate: this.pendingCandidate, signal: this.abortController.signal});
-      if (!this.isCurrent(session, turn)) { rendered?.dispose?.(); return; }
-      if (!rendered?.canvas || !(await isPngBlob(rendered.blob))) {
-        throw new Error('真实组合画布或 PNG 编码没有就绪。');
+      if (selection?.status !== 'selected' || !selection.result?.artworkId || !selection.result?.asset) {
+        throw new Error('抽取引擎没有返回完整冻结作品。');
       }
-      const previous = this.currentResult;
-      const candidate = this.pendingCandidate;
-      const assets = this.pendingAssets;
-      this.currentResult = {candidate, rendered, assets};
-      this.pendingCandidate = null;
-      this.pendingAssets = null;
-      this.pendingReels = [];
-      this.phase = 'result';
-      const host = this.dialog.querySelector('.fr-canvas-host');
-      host.replaceChildren(rendered.canvas);
-      const resultCard = this.dialog.querySelector('.fr-result-card');
-      resultCard.hidden = false;
-      const name = candidate.project.character.name || candidate.project.creation.artworkId || '随机角色';
-      this.dialog.querySelector('.fr-result-name').textContent = name;
-      this.dialog.querySelector('.fr-locks').hidden = false;
-      this.dialog.querySelector('.fr-advanced').hidden = typeof this.onPromptOnly !== 'function';
-      this.dialog.querySelector('.fr-reveal').hidden = true;
-      this.renderLocks();
-      this.updateActions();
-      this.setStatus('真实组合已经就绪；应用后才会写入当前作品。');
-      previous?.rendered?.dispose?.();
-      previous?.assets?.dispose?.();
+
+      run.result = selection.result;
+      run.poolSize = Array.isArray(selection.pool) ? selection.pool.length : 0;
+      lastNotice = [lastNotice, showNotice(selection.notice)].filter(Boolean).join(' ');
+      const mainAsset = resolveAsset(selection.result.asset);
+      const slots = buildSlots(selection.result, selection.pool);
+      run.slots = slots;
+      setPhase('preloading');
+      status(`${lastNotice ? `${lastNotice} ` : ''}已选定完整作品，正在校验原图和卡片资源；预载完成前不会滚动。`);
+      const requests = [ensureLoaded(run, mainAsset, selection.result.artworkId)];
+      for (const slot of slots) {
+        for (const item of slot.items) {
+          if (item.assetRef) requests.push(ensureLoaded(run, item.assetRef, item.artworkId));
+        }
+      }
+      await Promise.all(requests);
+      if (!currentRun(run)) return false;
+      run.mainHandle = handleFor(run, mainAsset);
+      if (!run.mainHandle) throw new Error('完整作品原图未能通过资源校验。');
+      renderSlots(run);
+      setPhase('revealing');
+      updateActions();
+      if (run.poolSize === 1) {
+        lastNotice = [lastNotice, '当前只有一款符合条件。'].filter(Boolean).join(' ');
+      }
+      if (reducedMotion()) finishRun(run, true);
+      else revealNextSlot(run, 0);
+      return true;
     } catch (error) {
-      rendered?.dispose?.();
-      if (!this.isCurrent(session, turn) || error?.name === 'AbortError') return;
-      this.clearPending();
-      this.phase = this.currentResult ? 'result' : 'failed';
-      this.updateActions();
-      this.renderErrorState(error?.message || '真实组合绘制或 PNG 编码失败；没有暗中替换候选。');
+      if (!currentRun(run) || isAbort(error)) return false;
+      const failedResult = run.result;
+      activeRun = null;
+      retireRun(run);
+      setPhase('error');
+      if (failedResult) {
+        const excluded = [...run.unavailableArtworkIds];
+        const exclusionNote = excluded.length
+          ? `已将 ${excluded.length} 款图片暂不可用的作品移出后续抽取范围。`
+          : '';
+        notifyFailure(`本次作品或必要卡片资源加载失败。${exclusionNote} 可点击“重试资源并重新抽取”主动恢复资源后，再按当前条件抽取。`, error);
+      } else {
+        notifyFailure('随机发现暂时失败。', error);
+      }
+      try { notify(`揭晓没有改用其他作品。${error?.message || ''}`.trim()); } catch { /* Notification is an optional side channel. */ }
+      return false;
     }
   }
 
-  renderErrorState(message) {
-    this.setStatus(message);
-    this.dialog.querySelector('.fr-reveal').hidden = true;
-    this.dialog.querySelector('.fr-scope-label').textContent = this.scope.scopeLabel;
-    this.dialog.querySelector('[data-fr="clear-scope"]').hidden = !this.hasScope();
-    this.dialog.querySelector('.fr-result-card').hidden = !this.currentResult;
-    this.dialog.querySelector('.fr-locks').hidden = !this.currentResult;
+  function skip() {
+    if (phase !== 'revealing' || !activeRun) return false;
+    return finishRun(activeRun, true);
   }
 
-  renderScopeControls() {
-    this.dialog.querySelector('.fr-scope-label').textContent = this.scope.scopeLabel;
-    this.dialog.querySelector('[data-fr="clear-scope"]').hidden = !this.hasScope();
-  }
+  async function retryResources() {
+    if (disposed || isBusy()) return false;
+    const ids = listUnavailableArtworks();
+    if (!ids.length) {
+      updateActions();
+      return false;
+    }
+    if (typeof engine.clearUnavailable !== 'function') {
+      status('当前抽取引擎暂不支持恢复资源失败作品；请稍后重试。');
+      updateActions();
+      return false;
+    }
 
-  updateActions() {
-    if (!this.dialog) return;
-    const busy = ['resolving', 'preloading', 'revealing', 'assembling'].includes(this.phase);
-    const random = this.dialog.querySelector('[data-fr="random"]');
-    random.disabled = busy;
-    random.querySelector('span').textContent = this.currentResult ? '再随机一次' : '随机一款';
-    random.setAttribute('aria-label', this.currentResult ? '再随机一次' : '随机一款');
-    this.dialog.querySelector('[data-fr="skip"]').hidden = this.phase !== 'revealing';
-    const apply = this.dialog.querySelector('[data-fr="apply"]');
-    apply.hidden = !this.currentResult;
-    apply.disabled = !this.currentResult || busy;
-    if (this.phase === 'intro' || this.phase === 'failed') random.querySelector('span').textContent = this.currentResult ? '再随机一次' : '随机一款';
-  }
-
-  setStatus(message) { this.dialog.querySelector('.fr-status').textContent = message; }
-
-  isCurrent(session, turn) {
-    return !this.disposed && this.dialog?.open && this.opened && this.session === session && this.turn === turn && !this.abortController?.signal.aborted;
-  }
-
-  schedule(callback, delay) {
-    const timer = setTimeout(() => { this.timers.delete(timer); callback(); }, delay);
-    this.timers.add(timer);
-    return timer;
-  }
-
-  clearTimers() { for (const timer of this.timers) clearTimeout(timer); this.timers.clear(); }
-  abortCurrent() { this.abortController?.abort(); this.abortController = null; }
-  clearPending() { this.pendingAssets?.dispose?.(); this.pendingAssets = null; this.pendingCandidate = null; this.pendingReels = []; }
-  clearCurrentResult() { this.currentResult?.rendered?.dispose?.(); this.currentResult?.assets?.dispose?.(); this.currentResult = null; }
-
-  applyCandidate() {
-    if (!this.currentResult || this.phase !== 'result' || !this.currentResult.candidate.project.creation.composition) return;
     try {
-      const result = this.commitCandidate(clone(this.currentResult.candidate.project), {origin: 'random'});
-      if (result && typeof result.then === 'function') throw new Error('应用回调必须同步提交，以保证一次撤销记录。');
-      const focusTarget = result && typeof result.focus === 'function' ? result : result?.focus && typeof result.focus.focus === 'function' ? result.focus : null;
-      if (focusTarget?.isConnected) this.returnFocus = focusTarget;
-      this.close();
-      this.notify('真实组合已应用；需要时可撤销回到原作品。');
+      for (const id of ids) engine.clearUnavailable(id);
+      for (const id of ids) locallyUnavailableArtworkIds.delete(id);
     } catch (error) {
-      this.setStatus(error?.message || '暂时无法应用这个组合。');
+      const message = `未能重新纳入先前资源失败的作品。${error?.message || ''}`.trim();
+      status(message);
+      try { notify(message); } catch { /* The inline state is the recovery path. */ }
+      updateActions();
+      return false;
+    }
+
+    const retryNotice = '已主动重新纳入先前资源失败的作品；沿用本次作品范围重新抽取，结果可能是其他作品。';
+    updateActions();
+    return start({retryNotice});
+  }
+
+  function cancel() {
+    if (disposed || !activeRun) return false;
+    const run = activeRun;
+    runSerial += 1;
+    activeRun = null;
+    clearScheduled();
+    retireRun(run);
+    ui.reveal.hidden = true;
+    setPhase(current ? 'result' : 'cancelled');
+    showPriorResult({message: current ? '本次揭晓已取消；上一款作品仍保留。' : '本次揭晓已取消。', previous: Boolean(current)});
+    updateActions();
+    return true;
+  }
+
+  async function restore(result) {
+    if (disposed || !isRecord(result) || !result.artworkId || !result.asset) return false;
+    if (activeRun) cancel();
+    clearScheduled();
+    const run = buildRun();
+    activeRun = run;
+    run.result = result;
+    run.poolSize = 0;
+    run.slots = buildRestoredSlots(result);
+    setPhase('preloading');
+    ui.result.hidden = true;
+    ui.reveal.hidden = true;
+    updateActions();
+    status('正在恢复同一张作品的原图与 Prompt 快照。');
+    try {
+      const asset = resolveAsset(result.asset);
+      const requests = [ensureLoaded(run, asset, result.artworkId)];
+      for (const slot of run.slots) {
+        for (const item of slot.items) {
+          if (item.assetRef) requests.push(ensureLoaded(run, item.assetRef, item.artworkId));
+        }
+      }
+      await Promise.all(requests);
+      if (!currentRun(run)) return false;
+      run.mainHandle = handleFor(run, asset);
+      if (!run.mainHandle) throw new Error('恢复结果没有通过原图校验。');
+      const previous = current;
+      current = {result, mainHandle: run.mainHandle, handles: run.handles, poolSize: run.poolSize, drawId: result.drawId};
+      run.handles = new Set();
+      activeRun = null;
+      setPhase('result');
+      displayIsPrevious = false;
+      displayResult(current);
+      renderSlots(run, {restored: true});
+      run.loaded.clear();
+      updateActions();
+      status('已恢复同一张冻结作品；停止的特征卡与原图仍相互对应。');
+      disposeHandles(previous?.handles);
+      invokeResultCallback(result, run.id);
+      return true;
+    } catch (error) {
+      if (!currentRun(run) || isAbort(error)) return false;
+      activeRun = null;
+      retireRun(run);
+      setPhase('error');
+      notifyFailure('无法恢复这张冻结作品。', error);
+      return false;
     }
   }
+
+  async function copyPrompt() {
+    if (!current || disposed || isBusy()) return false;
+    const snapshot = current.result;
+    const operationSerial = runSerial;
+    const prompt = getPromptText(snapshot.prompt);
+    if (!prompt) { status('这张作品暂时没有已登记的 Prompt。'); return false; }
+    const stillCurrent = () => !disposed && current?.result === snapshot && runSerial === operationSerial && !isBusy();
+    try {
+      if (!globalThis.navigator?.clipboard?.writeText) throw new Error('当前浏览器没有可用的剪贴板接口。');
+      await globalThis.navigator.clipboard.writeText(prompt);
+      if (!stillCurrent()) return false;
+      status(`${displayIsPrevious ? '上一款' : '当前作品'}的 Prompt 已复制。`);
+      try { notify('Prompt 已复制。'); } catch { /* UI status remains available. */ }
+      return true;
+    } catch (error) {
+      if (!stillCurrent()) return false;
+      ui.promptFallback.value = prompt;
+      ui.promptFallback.hidden = false;
+      setFocusSafe(ui.promptFallback);
+      try { ui.promptFallback.select(); } catch { /* Text remains selectable with touch or keyboard. */ }
+      const message = '无法自动复制；已显示完整 Prompt，可手动选择复制。';
+      status(message);
+      try { notify(message); } catch { /* The inline prompt is the primary fallback. */ }
+      return false;
+    }
+  }
+
+  async function openChatGPT() {
+    if (!current || disposed || isBusy()) return false;
+    const snapshot = current.result, operationSerial = runSerial;
+    const prompt = getPromptText(snapshot.prompt);
+    if (!prompt) return false;
+    const stillCurrent = () => !disposed && current?.result === snapshot && runSerial === operationSerial && !isBusy();
+    const outcome = await openPrompt(prompt,{isCurrent:stillCurrent,notify:message=>{if(stillCurrent()){status(message);notify(message);}}});
+    if (!stillCurrent() || outcome?.cancelled) return false;
+    if (!outcome?.copied || !outcome?.opened) {
+      ui.promptFallback.value=prompt;ui.promptFallback.hidden=false;
+      ui.manualChatLink.href=chatGPTUrlForPrompt(prompt);ui.manualChatLink.hidden=false;
+    }
+    return Boolean(outcome?.opened);
+  }
+
+  async function downloadImage() {
+    if (!current || disposed || isBusy() || ui.download.disabled) return false;
+    const snapshot=current.result, operationSerial=runSerial;
+    const operation={snapshot,controller:new AbortController()};
+    downloads.add(operation);updateActions();
+    const stillCurrent=()=>!disposed&&current?.result===snapshot&&runSerial===operationSerial&&!isBusy();
+    if(stillCurrent())status('正在校验并下载这款伙伴的原图…');
+    let downloaded;
+    try {
+      downloaded=await downloadOriginal(snapshot.asset,{signal:operation.controller.signal});
+      if(stillCurrent())status('已开始下载这款伙伴的透明 PNG 原图。');
+      return true;
+    }catch(error){
+      if(stillCurrent()&&!isAbort(error))status(`图片下载失败：${error?.message||'请重试。'}`);
+      return false;
+    }finally{
+      downloaded?.dispose?.();downloads.delete(operation);
+      if(!disposed)updateActions();
+    }
+  }
+
+  function actOnResult(callback, label) {
+    if (!current || disposed || isBusy() || typeof callback !== 'function') return false;
+    const snapshot = current.result;
+    const operationSerial = runSerial;
+    try {
+      const response = callback(snapshot);
+      if (response && typeof response.then === 'function') response.catch(error => {
+        reportCallbackError(error, label, snapshot, operationSerial);
+      });
+      return true;
+    }
+    catch (error) {
+      reportCallbackError(error, label, snapshot, operationSerial);
+      return false;
+    }
+  }
+
+  const onClick = event => {
+    const button = event.target?.closest?.('[data-fr]');
+    if (!button || !root.contains(button)) return;
+    switch (button.dataset.fr) {
+      case 'random': void start(); break;
+      case 'retry-resources': void retryResources(); break;
+      case 'skip': skip(); break;
+      case 'copy': void copyPrompt(); break;
+      case 'download': void downloadImage(); break;
+      case 'chatgpt': void openChatGPT(); break;
+      case 'detail': actOnResult(onDetail, '打开作品详情'); break;
+      default: break;
+    }
+  };
+  root.addEventListener('click', onClick);
+  const onResize = () => {
+    if (disposed) return;
+    for (const reel of ui.reelHost.querySelectorAll('.fr-reel')) {
+      if (reel.dataset.stopped !== 'true') continue;
+      const track = reel.querySelector('.fr-reel-track'), viewport = reel.querySelector('.fr-reel-window');
+      if (!track || track.children.length < 2) continue;
+      track.style.transition = 'none';
+      track.style.transform = `translateY(-${reelMeasurements({reel,track,window:viewport}).centerOffset}px)`;
+    }
+  };
+  globalThis.addEventListener?.('resize', onResize);
+
+
+  const onMotionChange = event => {
+    if (event?.matches && phase === 'revealing') skip();
+  };
+  motionQuery?.addEventListener?.('change', onMotionChange);
+
+  function dispose() {
+    if (disposed) return;
+    cancel();
+    disposed = true;
+    for(const operation of downloads)operation.controller.abort();
+    runSerial += 1;
+    clearScheduled();
+    root.removeEventListener('click', onClick);
+    globalThis.removeEventListener?.('resize', onResize);
+    motionQuery?.removeEventListener?.('change', onMotionChange);
+    disposeHandles(current?.handles);
+    current = null;
+    setPhase('disposed');
+    ui.result.hidden = true;
+    ui.reveal.hidden = true;
+    root.remove();
+  }
+
+  const api = {
+    element: root,
+    start,
+    skip,
+    cancel,
+    dispose,
+    getResult: () => current?.result || null,
+    getState: () => Object.freeze({
+      phase,
+      requiredFeatures: Object.freeze([...lockedFeatures]),
+      drawId: activeRun ? activeRun.result?.drawId || null : current?.drawId || null,
+      artworkId: activeRun ? activeRun.result?.artworkId || null : current?.result?.artworkId || null,
+      previous: displayIsPrevious,
+      activeSlot,
+      slotCount: activeRun ? activeRun.slots.length : ui.reelHost.children.length,
+      notice: lastNotice
+    }),
+    restore
+  };
+  syncState();
+  renderReadyCards();
+  updateActions();
+  if (autoStart) queueMicrotask(() => { if (!disposed) void start(); });
+  return api;
 }

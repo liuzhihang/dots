@@ -1,0 +1,5536 @@
+{
+  "baseUrl": "http://127.0.0.1:5174/",
+  "generatedAt": "2026-10-07T00:48:56.688Z",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 768,
+      "height": 844
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 320,
+      "height": 700
+    }
+  ],
+  "expectedSlots": [
+    "style",
+    "shape",
+    "accessory-prop",
+    "action-expression"
+  ],
+  "checks": [
+    "game page and modal share the same four-slot row, have no scope/lock controls, and expose exactly repeat/copy/ChatGPT bottom actions",
+    "ChatGPT action opens an intercepted official prefill URL for the frozen Artwork Prompt; no external page or message is sent",
+    "reduced-motion completes the same frozen result without long card animation",
+    "quick close/reopen disposes stale work and keeps the new result bound to its cards"
+  ],
+  "runs": [
+    {
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "human-blond-glasses",
+        "view": {
+          "x": 340,
+          "right": 1100,
+          "width": 760,
+          "height": 492.796875,
+          "scrollWidth": 782,
+          "clientWidth": 758
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 365,
+              "y": 252.09375,
+              "right": 1075,
+              "bottom": 305.890625,
+              "width": 710,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 365,
+              "y": 319.890625,
+              "right": 1075,
+              "bottom": 608.890625,
+              "width": 710,
+              "height": 289
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 365,
+              "y": 622.890625,
+              "right": 1075,
+              "bottom": 639.890625,
+              "width": 710,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 365,
+              "y": 653.890625,
+              "right": 1075,
+              "bottom": 697.890625,
+              "width": 710,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 365,
+          "y": 319.890625,
+          "right": 1075,
+          "bottom": 555.890625,
+          "width": 710,
+          "height": 236,
+          "scrollWidth": 710,
+          "clientWidth": 710
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 365,
+              "y": 319.890625,
+              "right": 535,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 374,
+              "y": 358.890625,
+              "right": 526,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 545,
+              "y": 319.890625,
+              "right": 715,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 554,
+              "y": 358.890625,
+              "right": 706,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 725,
+              "y": 319.890625,
+              "right": 895,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 734,
+              "y": 358.890625,
+              "right": 886,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 905,
+              "y": 319.890625,
+              "right": 1075,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 914,
+              "y": 358.890625,
+              "right": 1066,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 443.75,
+              "y": 567.890625,
+              "right": 463.75,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 621.25,
+              "y": 567.890625,
+              "right": 641.25,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 798.75,
+              "y": 567.890625,
+              "right": 818.75,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 976.25,
+              "y": 567.890625,
+              "right": 996.25,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": false,
+        "actions": {
+          "x": 365,
+          "y": 653.890625,
+          "right": 1075,
+          "bottom": 697.890625,
+          "width": 710,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "随机一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 45,
+            "g": 48,
+            "b": 61,
+            "luminance": 0.1894149019607843
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 60,
+            "luminance": 0.17291058823529412
+          },
+          {
+            "r": 38,
+            "g": 47,
+            "b": 63,
+            "luminance": 0.18134039215686273
+          },
+          {
+            "r": 39,
+            "g": 45,
+            "b": 60,
+            "luminance": 0.17571529411764705
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "human-blond-glasses",
+        "view": {
+          "x": 340,
+          "right": 1100,
+          "width": 760,
+          "height": 837.4375,
+          "scrollWidth": 782,
+          "clientWidth": 758
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 365,
+              "y": 252.09375,
+              "right": 1075,
+              "bottom": 305.890625,
+              "width": 710,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 365,
+              "y": 319.890625,
+              "right": 1075,
+              "bottom": 953.53125,
+              "width": 710,
+              "height": 633.640625
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 365,
+              "y": 967.53125,
+              "right": 1075,
+              "bottom": 984.53125,
+              "width": 710,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 365,
+              "y": 998.53125,
+              "right": 1075,
+              "bottom": 1042.53125,
+              "width": 710,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 365,
+          "y": 319.890625,
+          "right": 1075,
+          "bottom": 555.890625,
+          "width": 710,
+          "height": 236,
+          "scrollWidth": 710,
+          "clientWidth": 710
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 365,
+              "y": 319.890625,
+              "right": 535,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 374,
+              "y": 358.890625,
+              "right": 526,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 545,
+              "y": 319.890625,
+              "right": 715,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 554,
+              "y": 358.890625,
+              "right": 706,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 725,
+              "y": 319.890625,
+              "right": 895,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 734,
+              "y": 358.890625,
+              "right": 886,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 905,
+              "y": 319.890625,
+              "right": 1075,
+              "bottom": 555.890625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 914,
+              "y": 358.890625,
+              "right": 1066,
+              "bottom": 546.890625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 443.75,
+              "y": 567.890625,
+              "right": 463.75,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 621.25,
+              "y": 567.890625,
+              "right": 641.25,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 798.75,
+              "y": 567.890625,
+              "right": 818.75,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 976.25,
+              "y": 567.890625,
+              "right": 996.25,
+              "bottom": 587.890625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 365,
+          "y": 616.890625,
+          "right": 1075,
+          "bottom": 953.53125,
+          "width": 710,
+          "height": 336.640625
+        },
+        "image": {
+          "x": 555,
+          "y": 616.890625,
+          "right": 885,
+          "bottom": 880.890625,
+          "width": 330,
+          "height": 264
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 365,
+          "y": 998.53125,
+          "right": 1075,
+          "bottom": 1042.53125,
+          "width": 710,
+          "height": 44
+        },
+        "detail": {
+          "x": 931,
+          "y": 899.203125,
+          "right": 1075,
+          "bottom": 943.203125,
+          "width": 144,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 654.796875,
+        "actionOffsetBottom": 816.4375,
+        "detailOffsetBottom": 717.109375,
+        "panelHeight": 837.4375
+      },
+      "screenshots": [
+        "game-1440-rolling.png",
+        "game-1440-result.png"
+      ]
+    },
+    {
+      "surface": "modal",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "grok-teal-square",
+        "view": {
+          "x": 341,
+          "right": 1099,
+          "width": 758,
+          "height": 490.796875,
+          "scrollWidth": 782,
+          "clientWidth": 758
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 365,
+              "y": 229.59375,
+              "right": 1075,
+              "bottom": 283.390625,
+              "width": 710,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 365,
+              "y": 297.390625,
+              "right": 1075,
+              "bottom": 586.390625,
+              "width": 710,
+              "height": 289
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 365,
+              "y": 600.390625,
+              "right": 1075,
+              "bottom": 617.390625,
+              "width": 710,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 365,
+              "y": 631.390625,
+              "right": 1075,
+              "bottom": 675.390625,
+              "width": 710,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 365,
+          "y": 297.390625,
+          "right": 1075,
+          "bottom": 533.390625,
+          "width": 710,
+          "height": 236,
+          "scrollWidth": 710,
+          "clientWidth": 710
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 365,
+              "y": 297.390625,
+              "right": 535,
+              "bottom": 533.390625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 374,
+              "y": 336.390625,
+              "right": 526,
+              "bottom": 524.390625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 545,
+              "y": 297.390625,
+              "right": 715,
+              "bottom": 533.390625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 554,
+              "y": 336.390625,
+              "right": 706,
+              "bottom": 524.390625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 725,
+              "y": 297.390625,
+              "right": 895,
+              "bottom": 533.390625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 734,
+              "y": 336.390625,
+              "right": 886,
+              "bottom": 524.390625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 905,
+              "y": 297.390625,
+              "right": 1075,
+              "bottom": 533.390625,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 914,
+              "y": 336.390625,
+              "right": 1066,
+              "bottom": 524.390625,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 443.75,
+              "y": 545.390625,
+              "right": 463.75,
+              "bottom": 565.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 621.25,
+              "y": 545.390625,
+              "right": 641.25,
+              "bottom": 565.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 798.75,
+              "y": 545.390625,
+              "right": 818.75,
+              "bottom": 565.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 976.25,
+              "y": 545.390625,
+              "right": 996.25,
+              "bottom": 565.390625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": false,
+        "actions": {
+          "x": 365,
+          "y": 631.390625,
+          "right": 1075,
+          "bottom": 675.390625,
+          "width": 710,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "随机一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 45,
+            "g": 48,
+            "b": 60,
+            "luminance": 0.18913176470588236
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 60,
+            "luminance": 0.17291058823529412
+          },
+          {
+            "r": 39,
+            "g": 47,
+            "b": 63,
+            "luminance": 0.18217411764705882
+          },
+          {
+            "r": 39,
+            "g": 45,
+            "b": 59,
+            "luminance": 0.1754321568627451
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "grok-teal-square",
+        "view": {
+          "x": 341,
+          "right": 1099,
+          "width": 758,
+          "height": 835.4375,
+          "scrollWidth": 782,
+          "clientWidth": 758
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 365,
+              "y": 57.28125,
+              "right": 1075,
+              "bottom": 111.078125,
+              "width": 710,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 365,
+              "y": 125.078125,
+              "right": 1075,
+              "bottom": 758.71875,
+              "width": 710,
+              "height": 633.640625
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 365,
+              "y": 772.71875,
+              "right": 1075,
+              "bottom": 789.71875,
+              "width": 710,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 365,
+              "y": 803.71875,
+              "right": 1075,
+              "bottom": 847.71875,
+              "width": 710,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 365,
+          "y": 125.078125,
+          "right": 1075,
+          "bottom": 361.078125,
+          "width": 710,
+          "height": 236,
+          "scrollWidth": 710,
+          "clientWidth": 710
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 365,
+              "y": 125.078125,
+              "right": 535,
+              "bottom": 361.078125,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 374,
+              "y": 164.078125,
+              "right": 526,
+              "bottom": 352.078125,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 545,
+              "y": 125.078125,
+              "right": 715,
+              "bottom": 361.078125,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 554,
+              "y": 164.078125,
+              "right": 706,
+              "bottom": 352.078125,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 725,
+              "y": 125.078125,
+              "right": 895,
+              "bottom": 361.078125,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 734,
+              "y": 164.078125,
+              "right": 886,
+              "bottom": 352.078125,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 905,
+              "y": 125.078125,
+              "right": 1075,
+              "bottom": 361.078125,
+              "width": 170,
+              "height": 236
+            },
+            "window": {
+              "x": 914,
+              "y": 164.078125,
+              "right": 1066,
+              "bottom": 352.078125,
+              "width": 152,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 443.75,
+              "y": 373.078125,
+              "right": 463.75,
+              "bottom": 393.078125,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 621.25,
+              "y": 373.078125,
+              "right": 641.25,
+              "bottom": 393.078125,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 798.75,
+              "y": 373.078125,
+              "right": 818.75,
+              "bottom": 393.078125,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 976.25,
+              "y": 373.078125,
+              "right": 996.25,
+              "bottom": 393.078125,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 365,
+          "y": 422.078125,
+          "right": 1075,
+          "bottom": 758.71875,
+          "width": 710,
+          "height": 336.640625
+        },
+        "image": {
+          "x": 555,
+          "y": 422.078125,
+          "right": 885,
+          "bottom": 686.078125,
+          "width": 330,
+          "height": 264
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 365,
+          "y": 803.71875,
+          "right": 1075,
+          "bottom": 847.71875,
+          "width": 710,
+          "height": 44
+        },
+        "detail": {
+          "x": 931,
+          "y": 704.390625,
+          "right": 1075,
+          "bottom": 748.390625,
+          "width": 144,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 653.796875,
+        "actionOffsetBottom": 815.4375,
+        "detailOffsetBottom": 716.109375,
+        "panelHeight": 835.4375
+      },
+      "screenshots": [
+        "modal-1440-rolling.png",
+        "modal-1440-result.png"
+      ]
+    },
+    {
+      "surface": "game",
+      "viewport": {
+        "width": 768,
+        "height": 844
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "dots-lilac-bucket",
+        "view": {
+          "x": 24,
+          "right": 744,
+          "width": 720,
+          "height": 478.796875,
+          "scrollWidth": 742,
+          "clientWidth": 718
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 43,
+              "y": 238.09375,
+              "right": 725,
+              "bottom": 291.890625,
+              "width": 682,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 43,
+              "y": 302.890625,
+              "right": 725,
+              "bottom": 591.890625,
+              "width": 682,
+              "height": 289
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 43,
+              "y": 602.890625,
+              "right": 725,
+              "bottom": 619.890625,
+              "width": 682,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 43,
+              "y": 630.890625,
+              "right": 725,
+              "bottom": 674.890625,
+              "width": 682,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 43,
+          "y": 302.890625,
+          "right": 725,
+          "bottom": 538.890625,
+          "width": 682,
+          "height": 236,
+          "scrollWidth": 682,
+          "clientWidth": 682
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 43,
+              "y": 302.890625,
+              "right": 207.5,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 52,
+              "y": 341.890625,
+              "right": 198.5,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 215.5,
+              "y": 302.890625,
+              "right": 380,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 224.5,
+              "y": 341.890625,
+              "right": 371,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 388,
+              "y": 302.890625,
+              "right": 552.5,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 397,
+              "y": 341.890625,
+              "right": 543.5,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 560.5,
+              "y": 302.890625,
+              "right": 725,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 569.5,
+              "y": 341.890625,
+              "right": 716,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 118.25,
+              "y": 550.890625,
+              "right": 138.25,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 288.75,
+              "y": 550.890625,
+              "right": 308.75,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 459.25,
+              "y": 550.890625,
+              "right": 479.25,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 629.75,
+              "y": 550.890625,
+              "right": 649.75,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 43,
+          "y": 630.890625,
+          "right": 725,
+          "bottom": 674.890625,
+          "width": 682,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 47,
+            "g": 48,
+            "b": 60,
+            "luminance": 0.1907992156862745
+          },
+          {
+            "r": 40,
+            "g": 45,
+            "b": 59,
+            "luminance": 0.1762658823529412
+          },
+          {
+            "r": 37,
+            "g": 47,
+            "b": 64,
+            "luminance": 0.18078980392156863
+          },
+          {
+            "r": 39,
+            "g": 46,
+            "b": 60,
+            "luminance": 0.17852
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "dots-lilac-bucket",
+        "view": {
+          "x": 24,
+          "right": 744,
+          "width": 720,
+          "height": 823.4375,
+          "scrollWidth": 742,
+          "clientWidth": 718
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 43,
+              "y": 238.09375,
+              "right": 725,
+              "bottom": 291.890625,
+              "width": 682,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 43,
+              "y": 302.890625,
+              "right": 725,
+              "bottom": 936.53125,
+              "width": 682,
+              "height": 633.640625
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 43,
+              "y": 947.53125,
+              "right": 725,
+              "bottom": 964.53125,
+              "width": 682,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 43,
+              "y": 975.53125,
+              "right": 725,
+              "bottom": 1019.53125,
+              "width": 682,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 43,
+          "y": 302.890625,
+          "right": 725,
+          "bottom": 538.890625,
+          "width": 682,
+          "height": 236,
+          "scrollWidth": 682,
+          "clientWidth": 682
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 43,
+              "y": 302.890625,
+              "right": 207.5,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 52,
+              "y": 341.890625,
+              "right": 198.5,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 215.5,
+              "y": 302.890625,
+              "right": 380,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 224.5,
+              "y": 341.890625,
+              "right": 371,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 388,
+              "y": 302.890625,
+              "right": 552.5,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 397,
+              "y": 341.890625,
+              "right": 543.5,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 560.5,
+              "y": 302.890625,
+              "right": 725,
+              "bottom": 538.890625,
+              "width": 164.5,
+              "height": 236
+            },
+            "window": {
+              "x": 569.5,
+              "y": 341.890625,
+              "right": 716,
+              "bottom": 529.890625,
+              "width": 146.5,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 118.25,
+              "y": 550.890625,
+              "right": 138.25,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 288.75,
+              "y": 550.890625,
+              "right": 308.75,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 459.25,
+              "y": 550.890625,
+              "right": 479.25,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 629.75,
+              "y": 550.890625,
+              "right": 649.75,
+              "bottom": 570.890625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 43,
+          "y": 599.890625,
+          "right": 725,
+          "bottom": 936.53125,
+          "width": 682,
+          "height": 336.640625
+        },
+        "image": {
+          "x": 219,
+          "y": 599.890625,
+          "right": 549,
+          "bottom": 863.890625,
+          "width": 330,
+          "height": 264
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 43,
+          "y": 975.53125,
+          "right": 725,
+          "bottom": 1019.53125,
+          "width": 682,
+          "height": 44
+        },
+        "detail": {
+          "x": 581,
+          "y": 882.203125,
+          "right": 725,
+          "bottom": 926.203125,
+          "width": 144,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 648.796875,
+        "actionOffsetBottom": 804.4375,
+        "detailOffsetBottom": 711.109375,
+        "panelHeight": 823.4375
+      },
+      "screenshots": [
+        "game-768-rolling.png",
+        "game-768-result.png"
+      ]
+    },
+    {
+      "surface": "modal",
+      "viewport": {
+        "width": 768,
+        "height": 844
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "candidate-meta-muse-20261005",
+        "view": {
+          "x": 21,
+          "right": 747,
+          "width": 726,
+          "height": 476.796875,
+          "scrollWidth": 750,
+          "clientWidth": 726
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 39,
+              "y": 205.59375,
+              "right": 729,
+              "bottom": 259.390625,
+              "width": 690,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 39,
+              "y": 270.390625,
+              "right": 729,
+              "bottom": 559.390625,
+              "width": 690,
+              "height": 289
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 39,
+              "y": 570.390625,
+              "right": 729,
+              "bottom": 587.390625,
+              "width": 690,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 39,
+              "y": 598.390625,
+              "right": 729,
+              "bottom": 642.390625,
+              "width": 690,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 39,
+          "y": 270.390625,
+          "right": 729,
+          "bottom": 506.390625,
+          "width": 690,
+          "height": 236,
+          "scrollWidth": 690,
+          "clientWidth": 690
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 39,
+              "y": 270.390625,
+              "right": 205.5,
+              "bottom": 506.390625,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 48,
+              "y": 309.390625,
+              "right": 196.5,
+              "bottom": 497.390625,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 213.5,
+              "y": 270.390625,
+              "right": 380,
+              "bottom": 506.390625,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 222.5,
+              "y": 309.390625,
+              "right": 371,
+              "bottom": 497.390625,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 388,
+              "y": 270.390625,
+              "right": 554.5,
+              "bottom": 506.390625,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 397,
+              "y": 309.390625,
+              "right": 545.5,
+              "bottom": 497.390625,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 562.5,
+              "y": 270.390625,
+              "right": 729,
+              "bottom": 506.390625,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 571.5,
+              "y": 309.390625,
+              "right": 720,
+              "bottom": 497.390625,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 115.25,
+              "y": 518.390625,
+              "right": 135.25,
+              "bottom": 538.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 287.75,
+              "y": 518.390625,
+              "right": 307.75,
+              "bottom": 538.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 460.25,
+              "y": 518.390625,
+              "right": 480.25,
+              "bottom": 538.390625,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 632.75,
+              "y": 518.390625,
+              "right": 652.75,
+              "bottom": 538.390625,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": false,
+        "actions": {
+          "x": 39,
+          "y": 598.390625,
+          "right": 729,
+          "bottom": 642.390625,
+          "width": 690,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "随机一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 40,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17346117647058823
+          },
+          {
+            "r": 46,
+            "g": 48,
+            "b": 60,
+            "luminance": 0.18996549019607845
+          },
+          {
+            "r": 39,
+            "g": 45,
+            "b": 59,
+            "luminance": 0.1754321568627451
+          },
+          {
+            "r": 38,
+            "g": 47,
+            "b": 63,
+            "luminance": 0.18134039215686273
+          },
+          {
+            "r": 39,
+            "g": 45,
+            "b": 60,
+            "luminance": 0.17571529411764705
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "candidate-meta-muse-20261005",
+        "view": {
+          "x": 21,
+          "right": 747,
+          "width": 726,
+          "height": 821.4375,
+          "scrollWidth": 750,
+          "clientWidth": 726
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 39,
+              "y": 47,
+              "right": 729,
+              "bottom": 100.796875,
+              "width": 690,
+              "height": 53.796875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 39,
+              "y": 111.796875,
+              "right": 729,
+              "bottom": 745.4375,
+              "width": 690,
+              "height": 633.640625
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 39,
+              "y": 756.4375,
+              "right": 729,
+              "bottom": 773.4375,
+              "width": 690,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 39,
+              "y": 784.4375,
+              "right": 729,
+              "bottom": 828.4375,
+              "width": 690,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 39,
+          "y": 111.796875,
+          "right": 729,
+          "bottom": 347.796875,
+          "width": 690,
+          "height": 236,
+          "scrollWidth": 690,
+          "clientWidth": 690
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 39,
+              "y": 111.796875,
+              "right": 205.5,
+              "bottom": 347.796875,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 48,
+              "y": 150.796875,
+              "right": 196.5,
+              "bottom": 338.796875,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 213.5,
+              "y": 111.796875,
+              "right": 380,
+              "bottom": 347.796875,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 222.5,
+              "y": 150.796875,
+              "right": 371,
+              "bottom": 338.796875,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 388,
+              "y": 111.796875,
+              "right": 554.5,
+              "bottom": 347.796875,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 397,
+              "y": 150.796875,
+              "right": 545.5,
+              "bottom": 338.796875,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 562.5,
+              "y": 111.796875,
+              "right": 729,
+              "bottom": 347.796875,
+              "width": 166.5,
+              "height": 236
+            },
+            "window": {
+              "x": 571.5,
+              "y": 150.796875,
+              "right": 720,
+              "bottom": 338.796875,
+              "width": 148.5,
+              "height": 188
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 115.25,
+              "y": 359.796875,
+              "right": 135.25,
+              "bottom": 379.796875,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 287.75,
+              "y": 359.796875,
+              "right": 307.75,
+              "bottom": 379.796875,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 460.25,
+              "y": 359.796875,
+              "right": 480.25,
+              "bottom": 379.796875,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 632.75,
+              "y": 359.796875,
+              "right": 652.75,
+              "bottom": 379.796875,
+              "width": 20,
+              "height": 20
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 39,
+          "y": 408.796875,
+          "right": 729,
+          "bottom": 745.4375,
+          "width": 690,
+          "height": 336.640625
+        },
+        "image": {
+          "x": 219,
+          "y": 408.796875,
+          "right": 549,
+          "bottom": 672.796875,
+          "width": 330,
+          "height": 264
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 39,
+          "y": 784.4375,
+          "right": 729,
+          "bottom": 828.4375,
+          "width": 690,
+          "height": 44
+        },
+        "detail": {
+          "x": 585,
+          "y": 691.109375,
+          "right": 729,
+          "bottom": 735.109375,
+          "width": 144,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 647.796875,
+        "actionOffsetBottom": 803.4375,
+        "detailOffsetBottom": 710.109375,
+        "panelHeight": 821.4375
+      },
+      "screenshots": [
+        "modal-768-rolling.png",
+        "modal-768-result.png"
+      ]
+    },
+    {
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "muse-sage-reading",
+        "view": {
+          "x": 16,
+          "right": 374,
+          "width": 358,
+          "height": 405.78125,
+          "scrollWidth": 380,
+          "clientWidth": 356
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 29,
+              "y": 307.390625,
+              "right": 361,
+              "bottom": 352.578125,
+              "width": 332,
+              "height": 45.1875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 29,
+              "y": 362.578125,
+              "right": 361,
+              "bottom": 589.171875,
+              "width": 332,
+              "height": 226.59375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 29,
+              "y": 599.171875,
+              "right": 361,
+              "bottom": 616.171875,
+              "width": 332,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 29,
+              "y": 626.171875,
+              "right": 361,
+              "bottom": 670.171875,
+              "width": 332,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 29,
+          "y": 362.578125,
+          "right": 361,
+          "bottom": 544.578125,
+          "width": 332,
+          "height": 182,
+          "scrollWidth": 332,
+          "clientWidth": 332
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 29,
+              "y": 362.578125,
+              "right": 107.5,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 35,
+              "y": 392.578125,
+              "right": 101.5,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 113.5,
+              "y": 362.578125,
+              "right": 192,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 119.5,
+              "y": 392.578125,
+              "right": 186,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 198,
+              "y": 362.578125,
+              "right": 276.5,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 204,
+              "y": 392.578125,
+              "right": 270.5,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 282.5,
+              "y": 362.578125,
+              "right": 361,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 288.5,
+              "y": 392.578125,
+              "right": 355,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 62,
+              "y": 553.578125,
+              "right": 79,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 145,
+              "y": 553.578125,
+              "right": 162,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 228,
+              "y": 553.578125,
+              "right": 245,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 311,
+              "y": 553.578125,
+              "right": 328,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 29,
+          "y": 626.171875,
+          "right": 361,
+          "bottom": 670.171875,
+          "width": 332,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 40,
+            "g": 45,
+            "b": 59,
+            "luminance": 0.1762658823529412
+          },
+          {
+            "r": 47,
+            "g": 46,
+            "b": 61,
+            "luminance": 0.18547294117647062
+          },
+          {
+            "r": 50,
+            "g": 47,
+            "b": 65,
+            "luminance": 0.1919113725490196
+          },
+          {
+            "r": 39,
+            "g": 38,
+            "b": 44,
+            "luminance": 0.1515521568627451
+          },
+          {
+            "r": 40,
+            "g": 43,
+            "b": 55,
+            "luminance": 0.16952392156862744
+          },
+          {
+            "r": 35,
+            "g": 51,
+            "b": 51,
+            "luminance": 0.18666039215686273
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "muse-sage-reading",
+        "view": {
+          "x": 16,
+          "right": 374,
+          "width": 358,
+          "height": 714.53125,
+          "scrollWidth": 380,
+          "clientWidth": 356
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 29,
+              "y": 307.390625,
+              "right": 361,
+              "bottom": 352.578125,
+              "width": 332,
+              "height": 45.1875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 29,
+              "y": 362.578125,
+              "right": 361,
+              "bottom": 884.921875,
+              "width": 332,
+              "height": 522.34375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 29,
+              "y": 894.921875,
+              "right": 361,
+              "bottom": 924.921875,
+              "width": 332,
+              "height": 30
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 29,
+              "y": 934.921875,
+              "right": 361,
+              "bottom": 978.921875,
+              "width": 332,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 29,
+          "y": 362.578125,
+          "right": 361,
+          "bottom": 544.578125,
+          "width": 332,
+          "height": 182,
+          "scrollWidth": 332,
+          "clientWidth": 332
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 29,
+              "y": 362.578125,
+              "right": 107.5,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 35,
+              "y": 392.578125,
+              "right": 101.5,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 113.5,
+              "y": 362.578125,
+              "right": 192,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 119.5,
+              "y": 392.578125,
+              "right": 186,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 198,
+              "y": 362.578125,
+              "right": 276.5,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 204,
+              "y": 392.578125,
+              "right": 270.5,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 282.5,
+              "y": 362.578125,
+              "right": 361,
+              "bottom": 544.578125,
+              "width": 78.5,
+              "height": 182
+            },
+            "window": {
+              "x": 288.5,
+              "y": 392.578125,
+              "right": 355,
+              "bottom": 538.578125,
+              "width": 66.5,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 62,
+              "y": 553.578125,
+              "right": 79,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 145,
+              "y": 553.578125,
+              "right": 162,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 228,
+              "y": 553.578125,
+              "right": 245,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 311,
+              "y": 553.578125,
+              "right": 328,
+              "bottom": 570.578125,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 29,
+          "y": 597.171875,
+          "right": 361,
+          "bottom": 884.921875,
+          "width": 332,
+          "height": 287.75
+        },
+        "image": {
+          "x": 65,
+          "y": 597.171875,
+          "right": 325,
+          "bottom": 807.171875,
+          "width": 260,
+          "height": 210
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 29,
+          "y": 934.921875,
+          "right": 361,
+          "bottom": 978.921875,
+          "width": 332,
+          "height": 44
+        },
+        "detail": {
+          "x": 243,
+          "y": 828.046875,
+          "right": 361,
+          "bottom": 872.046875,
+          "width": 118,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 527.78125,
+        "actionOffsetBottom": 699.53125,
+        "detailOffsetBottom": 592.65625,
+        "panelHeight": 714.53125
+      },
+      "screenshots": [
+        "game-390-rolling.png",
+        "game-390-result.png"
+      ]
+    },
+    {
+      "surface": "modal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "candidate-animals-20261005",
+        "view": {
+          "x": 0,
+          "right": 390,
+          "width": 390,
+          "height": 403.78125,
+          "scrollWidth": 414,
+          "clientWidth": 390
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 12,
+              "y": 27,
+              "right": 378,
+              "bottom": 72.1875,
+              "width": 366,
+              "height": 45.1875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 12,
+              "y": 82.1875,
+              "right": 378,
+              "bottom": 308.78125,
+              "width": 366,
+              "height": 226.59375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 12,
+              "y": 318.78125,
+              "right": 378,
+              "bottom": 335.78125,
+              "width": 366,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 12,
+              "y": 345.78125,
+              "right": 378,
+              "bottom": 389.78125,
+              "width": 366,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 12,
+          "y": 82.1875,
+          "right": 378,
+          "bottom": 264.1875,
+          "width": 366,
+          "height": 182,
+          "scrollWidth": 366,
+          "clientWidth": 366
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 12,
+              "y": 82.1875,
+              "right": 99,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 18,
+              "y": 112.1875,
+              "right": 93,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 105,
+              "y": 82.1875,
+              "right": 192,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 111,
+              "y": 112.1875,
+              "right": 186,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 198,
+              "y": 82.1875,
+              "right": 285,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 204,
+              "y": 112.1875,
+              "right": 279,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 291,
+              "y": 82.1875,
+              "right": 378,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 297,
+              "y": 112.1875,
+              "right": 372,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 49.25,
+              "y": 273.1875,
+              "right": 66.25,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 140.75,
+              "y": 273.1875,
+              "right": 157.75,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 232.25,
+              "y": 273.1875,
+              "right": 249.25,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 323.75,
+              "y": 273.1875,
+              "right": 340.75,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": false,
+        "actions": {
+          "x": 12,
+          "y": 345.78125,
+          "right": 378,
+          "bottom": 389.78125,
+          "width": 366,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "随机一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 39,
+            "g": 44,
+            "b": 59,
+            "luminance": 0.17262745098039214
+          },
+          {
+            "r": 47,
+            "g": 45,
+            "b": 61,
+            "luminance": 0.18266823529411763
+          },
+          {
+            "r": 47,
+            "g": 43,
+            "b": 64,
+            "luminance": 0.17790823529411767
+          },
+          {
+            "r": 41,
+            "g": 42,
+            "b": 51,
+            "luminance": 0.16642039215686275
+          },
+          {
+            "r": 39,
+            "g": 44,
+            "b": 58,
+            "luminance": 0.1723443137254902
+          },
+          {
+            "r": 36,
+            "g": 53,
+            "b": 52,
+            "luminance": 0.19338666666666668
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "candidate-animals-20261005",
+        "view": {
+          "x": 0,
+          "right": 390,
+          "width": 390,
+          "height": 699.53125,
+          "scrollWidth": 414,
+          "clientWidth": 390
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 12,
+              "y": 27,
+              "right": 378,
+              "bottom": 72.1875,
+              "width": 366,
+              "height": 45.1875
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 12,
+              "y": 82.1875,
+              "right": 378,
+              "bottom": 604.53125,
+              "width": 366,
+              "height": 522.34375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 12,
+              "y": 614.53125,
+              "right": 378,
+              "bottom": 631.53125,
+              "width": 366,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 12,
+              "y": 641.53125,
+              "right": 378,
+              "bottom": 685.53125,
+              "width": 366,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 12,
+          "y": 82.1875,
+          "right": 378,
+          "bottom": 264.1875,
+          "width": 366,
+          "height": 182,
+          "scrollWidth": 366,
+          "clientWidth": 366
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 12,
+              "y": 82.1875,
+              "right": 99,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 18,
+              "y": 112.1875,
+              "right": 93,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 105,
+              "y": 82.1875,
+              "right": 192,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 111,
+              "y": 112.1875,
+              "right": 186,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 198,
+              "y": 82.1875,
+              "right": 285,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 204,
+              "y": 112.1875,
+              "right": 279,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 291,
+              "y": 82.1875,
+              "right": 378,
+              "bottom": 264.1875,
+              "width": 87,
+              "height": 182
+            },
+            "window": {
+              "x": 297,
+              "y": 112.1875,
+              "right": 372,
+              "bottom": 258.1875,
+              "width": 75,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 49.25,
+              "y": 273.1875,
+              "right": 66.25,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 140.75,
+              "y": 273.1875,
+              "right": 157.75,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 232.25,
+              "y": 273.1875,
+              "right": 249.25,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 323.75,
+              "y": 273.1875,
+              "right": 340.75,
+              "bottom": 290.1875,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 12,
+          "y": 316.78125,
+          "right": 378,
+          "bottom": 604.53125,
+          "width": 366,
+          "height": 287.75
+        },
+        "image": {
+          "x": 65,
+          "y": 316.78125,
+          "right": 325,
+          "bottom": 526.78125,
+          "width": 260,
+          "height": 210
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 12,
+          "y": 641.53125,
+          "right": 378,
+          "bottom": 685.53125,
+          "width": 366,
+          "height": 44
+        },
+        "detail": {
+          "x": 260,
+          "y": 547.65625,
+          "right": 378,
+          "bottom": 591.65625,
+          "width": 118,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": {
+        "artworkId": "candidate-animals-20261005",
+        "target": "_blank",
+        "url": "https://chatgpt.com/?prompt=%E5%8E%9F%E5%88%9B%E6%9A%96%E6%A9%99%E6%9F%B4%E7%8A%AC%EF%BC%8C%E7%AB%8B%E8%B5%B7%E7%9A%84%E4%B8%89%E8%A7%92%E8%80%B3%E3%80%81%E6%B8%85%E6%A5%9A%E7%9A%84%E8%8C%B6%E7%99%BD%E5%8F%A3%E9%BC%BB%E4%B8%8E%E8%83%B8%E8%85%B9%E8%89%B2%E5%9D%97%E3%80%81%E5%9B%9B%E7%88%AA%E5%9D%90%E5%A7%BF%E5%92%8C%E5%8D%B7%E8%B5%B7%E7%9A%84%E5%B0%BE%E5%B7%B4%EF%BC%9B%E8%A1%A8%E6%83%85%E6%B8%A9%E5%92%8C%E3%80%82%E4%BF%9D%E6%8C%81%E7%89%A9%E7%A7%8D%E7%BB%93%E6%9E%84%E5%92%8C%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%E3%80%82",
+        "promptPrefillMatches": true,
+        "externalPageOpened": false
+      },
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 526.78125,
+        "actionOffsetBottom": 685.53125,
+        "detailOffsetBottom": 591.65625,
+        "panelHeight": 699.53125
+      },
+      "screenshots": [
+        "modal-390-rolling.png",
+        "modal-390-result.png"
+      ]
+    },
+    {
+      "surface": "game",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "animal-gray-husky",
+        "view": {
+          "x": 16,
+          "right": 304,
+          "width": 288,
+          "height": 400.984375,
+          "scrollWidth": 310,
+          "clientWidth": 286
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 27,
+              "y": 307.390625,
+              "right": 293,
+              "bottom": 349.78125,
+              "width": 266,
+              "height": 42.390625
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 27,
+              "y": 359.78125,
+              "right": 293,
+              "bottom": 584.375,
+              "width": 266,
+              "height": 224.59375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 27,
+              "y": 594.375,
+              "right": 293,
+              "bottom": 611.375,
+              "width": 266,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 27,
+              "y": 621.375,
+              "right": 293,
+              "bottom": 665.375,
+              "width": 266,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 27,
+          "y": 359.78125,
+          "right": 293,
+          "bottom": 539.78125,
+          "width": 266,
+          "height": 180,
+          "scrollWidth": 266,
+          "clientWidth": 266
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 27,
+              "y": 359.78125,
+              "right": 89.75,
+              "bottom": 539.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 32,
+              "y": 388.78125,
+              "right": 84.75,
+              "bottom": 534.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 94.75,
+              "y": 359.78125,
+              "right": 157.5,
+              "bottom": 539.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 99.75,
+              "y": 388.78125,
+              "right": 152.5,
+              "bottom": 534.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 162.5,
+              "y": 359.78125,
+              "right": 225.25,
+              "bottom": 539.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 167.5,
+              "y": 388.78125,
+              "right": 220.25,
+              "bottom": 534.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 230.25,
+              "y": 359.78125,
+              "right": 293,
+              "bottom": 539.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 235.25,
+              "y": 388.78125,
+              "right": 288,
+              "bottom": 534.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 51.75,
+              "y": 548.78125,
+              "right": 68.75,
+              "bottom": 565.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 118.25,
+              "y": 548.78125,
+              "right": 135.25,
+              "bottom": 565.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 184.75,
+              "y": 548.78125,
+              "right": 201.75,
+              "bottom": 565.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 251.25,
+              "y": 548.78125,
+              "right": 268.25,
+              "bottom": 565.78125,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 27,
+          "y": 621.375,
+          "right": 293,
+          "bottom": 665.375,
+          "width": 266,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 47,
+            "g": 47,
+            "b": 57,
+            "luminance": 0.1871450980392157
+          },
+          {
+            "r": 50,
+            "g": 49,
+            "b": 61,
+            "luminance": 0.19638823529411764
+          },
+          {
+            "r": 51,
+            "g": 48,
+            "b": 65,
+            "luminance": 0.19554980392156862
+          },
+          {
+            "r": 32,
+            "g": 31,
+            "b": 37,
+            "luminance": 0.12410117647058824
+          },
+          {
+            "r": 41,
+            "g": 40,
+            "b": 47,
+            "luminance": 0.159678431372549
+          },
+          {
+            "r": 40,
+            "g": 50,
+            "b": 52,
+            "luminance": 0.18830745098039212
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "animal-gray-husky",
+        "view": {
+          "x": 16,
+          "right": 304,
+          "width": 288,
+          "height": 703.234375,
+          "scrollWidth": 310,
+          "clientWidth": 286
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 27,
+              "y": 191.390625,
+              "right": 293,
+              "bottom": 233.78125,
+              "width": 266,
+              "height": 42.390625
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 27,
+              "y": 243.78125,
+              "right": 293,
+              "bottom": 757.625,
+              "width": 266,
+              "height": 513.84375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 27,
+              "y": 767.625,
+              "right": 293,
+              "bottom": 797.625,
+              "width": 266,
+              "height": 30
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 27,
+              "y": 807.625,
+              "right": 293,
+              "bottom": 851.625,
+              "width": 266,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 27,
+          "y": 243.78125,
+          "right": 293,
+          "bottom": 423.78125,
+          "width": 266,
+          "height": 180,
+          "scrollWidth": 266,
+          "clientWidth": 266
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 27,
+              "y": 243.78125,
+              "right": 89.75,
+              "bottom": 423.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 32,
+              "y": 272.78125,
+              "right": 84.75,
+              "bottom": 418.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 94.75,
+              "y": 243.78125,
+              "right": 157.5,
+              "bottom": 423.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 99.75,
+              "y": 272.78125,
+              "right": 152.5,
+              "bottom": 418.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 162.5,
+              "y": 243.78125,
+              "right": 225.25,
+              "bottom": 423.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 167.5,
+              "y": 272.78125,
+              "right": 220.25,
+              "bottom": 418.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 230.25,
+              "y": 243.78125,
+              "right": 293,
+              "bottom": 423.78125,
+              "width": 62.75,
+              "height": 180
+            },
+            "window": {
+              "x": 235.25,
+              "y": 272.78125,
+              "right": 288,
+              "bottom": 418.78125,
+              "width": 52.75,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 51.75,
+              "y": 432.78125,
+              "right": 68.75,
+              "bottom": 449.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 118.25,
+              "y": 432.78125,
+              "right": 135.25,
+              "bottom": 449.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 184.75,
+              "y": 432.78125,
+              "right": 201.75,
+              "bottom": 449.78125,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 251.25,
+              "y": 432.78125,
+              "right": 268.25,
+              "bottom": 449.78125,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 27,
+          "y": 476.375,
+          "right": 293,
+          "bottom": 757.625,
+          "width": 266,
+          "height": 281.25
+        },
+        "image": {
+          "x": 30,
+          "y": 476.375,
+          "right": 290,
+          "bottom": 666.375,
+          "width": 260,
+          "height": 190
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 27,
+          "y": 807.625,
+          "right": 293,
+          "bottom": 851.625,
+          "width": 266,
+          "height": 44
+        },
+        "detail": {
+          "x": 175,
+          "y": 694,
+          "right": 293,
+          "bottom": 738,
+          "width": 118,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 502.984375,
+        "actionOffsetBottom": 688.234375,
+        "detailOffsetBottom": 574.609375,
+        "panelHeight": 703.234375
+      },
+      "screenshots": [
+        "game-320-rolling.png",
+        "game-320-result.png"
+      ]
+    },
+    {
+      "surface": "modal",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "phase": "revealing",
+      "rollingLayout": {
+        "phase": "revealing",
+        "artworkId": "candidate-humans-20261005",
+        "view": {
+          "x": 0,
+          "right": 320,
+          "width": 320,
+          "height": 398.984375,
+          "scrollWidth": 344,
+          "clientWidth": 320
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 10,
+              "y": 27,
+              "right": 310,
+              "bottom": 69.390625,
+              "width": 300,
+              "height": 42.390625
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 10,
+              "y": 79.390625,
+              "right": 310,
+              "bottom": 303.984375,
+              "width": 300,
+              "height": 224.59375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 10,
+              "y": 313.984375,
+              "right": 310,
+              "bottom": 330.984375,
+              "width": 300,
+              "height": 17
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 10,
+              "y": 340.984375,
+              "right": 310,
+              "bottom": 384.984375,
+              "width": 300,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 10,
+          "y": 79.390625,
+          "right": 310,
+          "bottom": 259.390625,
+          "width": 300,
+          "height": 180,
+          "scrollWidth": 300,
+          "clientWidth": 300
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "false",
+            "rect": {
+              "x": 10,
+              "y": 79.390625,
+              "right": 81.25,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 15,
+              "y": 108.390625,
+              "right": 76.25,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "false",
+            "rect": {
+              "x": 86.25,
+              "y": 79.390625,
+              "right": 157.5,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 91.25,
+              "y": 108.390625,
+              "right": 152.5,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "false",
+            "rect": {
+              "x": 162.5,
+              "y": 79.390625,
+              "right": 233.75,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 167.5,
+              "y": 108.390625,
+              "right": 228.75,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "false",
+            "rect": {
+              "x": 238.75,
+              "y": 79.390625,
+              "right": 310,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 243.75,
+              "y": 108.390625,
+              "right": 305,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "rolling",
+            "landed": false,
+            "active": true,
+            "rect": {
+              "x": 39,
+              "y": 268.390625,
+              "right": 56,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 114,
+              "y": 268.390625,
+              "right": 131,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 189,
+              "y": 268.390625,
+              "right": 206,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "waiting",
+            "landed": false,
+            "active": false,
+            "rect": {
+              "x": 264,
+              "y": 268.390625,
+              "right": 281,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": true,
+        "result": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "image": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "imageLoaded": false,
+        "actions": {
+          "x": 10,
+          "y": 340.984375,
+          "right": 310,
+          "bottom": 384.984375,
+          "width": 300,
+          "height": 44
+        },
+        "detail": {
+          "x": 0,
+          "y": 0,
+          "right": 0,
+          "bottom": 0,
+          "width": 0,
+          "height": 0
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": true,
+            "text": "随机一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "darkSurfaceSamples": [
+          {
+            "r": 43,
+            "g": 45,
+            "b": 58,
+            "luminance": 0.17848392156862747
+          },
+          {
+            "r": 49,
+            "g": 48,
+            "b": 61,
+            "luminance": 0.19274980392156865
+          },
+          {
+            "r": 51,
+            "g": 48,
+            "b": 65,
+            "luminance": 0.19554980392156862
+          },
+          {
+            "r": 34,
+            "g": 33,
+            "b": 38,
+            "luminance": 0.13166117647058823
+          },
+          {
+            "r": 39,
+            "g": 41,
+            "b": 50,
+            "luminance": 0.16166509803921567
+          },
+          {
+            "r": 37,
+            "g": 51,
+            "b": 51,
+            "luminance": 0.18832784313725487
+          }
+        ],
+        "ySpread": 0
+      },
+      "resultLayout": {
+        "phase": "result",
+        "artworkId": "candidate-humans-20261005",
+        "view": {
+          "x": 0,
+          "right": 320,
+          "width": 320,
+          "height": 701.234375,
+          "scrollWidth": 344,
+          "clientWidth": 320
+        },
+        "flowChildren": [
+          {
+            "class": "fr-intro",
+            "rect": {
+              "x": 10,
+              "y": 27,
+              "right": 310,
+              "bottom": 69.390625,
+              "width": 300,
+              "height": 42.390625
+            }
+          },
+          {
+            "class": "fr-reveal",
+            "rect": {
+              "x": 10,
+              "y": 79.390625,
+              "right": 310,
+              "bottom": 593.234375,
+              "width": 300,
+              "height": 513.84375
+            }
+          },
+          {
+            "class": "fr-status",
+            "rect": {
+              "x": 10,
+              "y": 603.234375,
+              "right": 310,
+              "bottom": 633.234375,
+              "width": 300,
+              "height": 30
+            }
+          },
+          {
+            "class": "fr-actions",
+            "rect": {
+              "x": 10,
+              "y": 643.234375,
+              "right": 310,
+              "bottom": 687.234375,
+              "width": 300,
+              "height": 44
+            }
+          }
+        ],
+        "stage": {
+          "x": 10,
+          "y": 79.390625,
+          "right": 310,
+          "bottom": 259.390625,
+          "width": 300,
+          "height": 180,
+          "scrollWidth": 300,
+          "clientWidth": 300
+        },
+        "slots": [
+          {
+            "key": "style",
+            "index": "0",
+            "stopped": "true",
+            "rect": {
+              "x": 10,
+              "y": 79.390625,
+              "right": 81.25,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 15,
+              "y": 108.390625,
+              "right": 76.25,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 0,
+            "itemCount": 3,
+            "label": "风格"
+          },
+          {
+            "key": "shape",
+            "index": "1",
+            "stopped": "true",
+            "rect": {
+              "x": 86.25,
+              "y": 79.390625,
+              "right": 157.5,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 91.25,
+              "y": 108.390625,
+              "right": 152.5,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 1,
+            "itemCount": 3,
+            "label": "外形"
+          },
+          {
+            "key": "accessory-prop",
+            "index": "2",
+            "stopped": "true",
+            "rect": {
+              "x": 162.5,
+              "y": 79.390625,
+              "right": 233.75,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 167.5,
+              "y": 108.390625,
+              "right": 228.75,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 2,
+            "itemCount": 3,
+            "label": "配饰"
+          },
+          {
+            "key": "action-expression",
+            "index": "3",
+            "stopped": "true",
+            "rect": {
+              "x": 238.75,
+              "y": 79.390625,
+              "right": 310,
+              "bottom": 259.390625,
+              "width": 71.25,
+              "height": 180
+            },
+            "window": {
+              "x": 243.75,
+              "y": 108.390625,
+              "right": 305,
+              "bottom": 254.390625,
+              "width": 61.25,
+              "height": 146
+            },
+            "trackId": 3,
+            "itemCount": 3,
+            "label": "动作"
+          }
+        ],
+        "progress": [
+          {
+            "index": "0",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 39,
+              "y": 268.390625,
+              "right": 56,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "1",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 114,
+              "y": 268.390625,
+              "right": 131,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "2",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 189,
+              "y": 268.390625,
+              "right": 206,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          },
+          {
+            "index": "3",
+            "state": "stopped",
+            "landed": true,
+            "active": false,
+            "rect": {
+              "x": 264,
+              "y": 268.390625,
+              "right": 281,
+              "bottom": 285.390625,
+              "width": 17,
+              "height": 17
+            }
+          }
+        ],
+        "resultHidden": false,
+        "result": {
+          "x": 10,
+          "y": 311.984375,
+          "right": 310,
+          "bottom": 593.234375,
+          "width": 300,
+          "height": 281.25
+        },
+        "image": {
+          "x": 30,
+          "y": 311.984375,
+          "right": 290,
+          "bottom": 501.984375,
+          "width": 260,
+          "height": 190
+        },
+        "imageLoaded": true,
+        "actions": {
+          "x": 10,
+          "y": 643.234375,
+          "right": 310,
+          "bottom": 687.234375,
+          "width": 300,
+          "height": 44
+        },
+        "detail": {
+          "x": 192,
+          "y": 529.609375,
+          "right": 310,
+          "bottom": 573.609375,
+          "width": 118,
+          "height": 44
+        },
+        "outerOverflow": {
+          "document": 0,
+          "dialog": 0,
+          "overlayBody": 0
+        },
+        "actionState": [
+          {
+            "action": "random",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "再来一款",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "skip",
+            "tag": "button",
+            "hidden": true,
+            "disabled": false,
+            "text": "跳过动画",
+            "href": null,
+            "height": 0
+          },
+          {
+            "action": "copy",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "复制 Prompt",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "chatgpt",
+            "tag": "button",
+            "hidden": false,
+            "disabled": false,
+            "text": "在 ChatGPT 中创作",
+            "href": null,
+            "height": 44
+          },
+          {
+            "action": "retry-resources",
+            "tag": "button",
+            "hidden": true,
+            "disabled": true,
+            "text": "重试资源并重新抽取",
+            "href": null,
+            "height": 0
+          }
+        ],
+        "ySpread": 0
+      },
+      "stopSequence": null,
+      "chatgptPrefill": null,
+      "reachability": {
+        "imageWithinFirstScreen": true,
+        "resultWithinOneScreenScroll": true,
+        "actionsWithinShortScroll": true,
+        "detailWithinFirstScreen": true,
+        "imageOffsetBottom": 501.984375,
+        "actionOffsetBottom": 687.234375,
+        "detailOffsetBottom": 573.609375,
+        "panelHeight": 701.234375
+      },
+      "screenshots": [
+        "modal-320-rolling.png",
+        "modal-320-result.png"
+      ]
+    }
+  ],
+  "reducedMotion": {
+    "durations": {
+      "animation": 0.00001,
+      "transition": 0.00001
+    },
+    "artworkId": "animal-white-cat"
+  },
+  "closeReopen": {
+    "oldConnected": false,
+    "oldPhase": "disposed",
+    "dialogCount": 1,
+    "newArtworkId": "human-bun-yellow"
+  },
+  "pageErrors": [],
+  "browser": "Chromium CSS viewport through existing Playwright; no physical device verified",
+  "visualApproval": "pending user review",
+  "published": false
+}

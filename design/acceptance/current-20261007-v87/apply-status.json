@@ -1,0 +1,231 @@
+{
+  "changeName": "refocus-studio-on-gallery-and-card-reveal",
+  "changeDir": "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/proposal.md"
+    ],
+    "specs": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/artwork-catalog/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/catalog-tags/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-contact-and-motion/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-creation-modes/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-families/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-visual-acceptance/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/composition-coverage/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/family-navigation/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/fullscreen-randomizer/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/modular-2d-composition/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/reference-creation/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/studio-creation-experience/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/studio-visual-experience/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/target-resources/spec.md"
+    ],
+    "design": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/design.md"
+    ],
+    "tasks": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/refocus-studio-on-gallery-and-card-reveal/tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 37,
+    "complete": 35,
+    "remaining": 2
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 冻结实施基线与窄范围清理清单；验证：逐路径比对 HEAD、工作树、源文件 hash 和允许发布清单。",
+      "done": true
+    },
+    {
+      "id": "2",
+      "description": "1.2 完成实际作品与图片元信息盘点；验证：对全部拟发布文件回读 MIME、尺寸、字节量、hash 和 alpha。",
+      "done": true
+    },
+    {
+      "id": "3",
+      "description": "1.3 精确映射来源、身份关系和批准范围；验证：逐资源链接人工确认及匹配版本，未覆盖资源不发布。",
+      "done": true
+    },
+    {
+      "id": "4",
+      "description": "1.4 建立 Artwork、Asset、Prompt、变体和目标资料目录；验证：唯一 ID、引用、版本和发布资格校验通过。",
+      "done": true
+    },
+    {
+      "id": "5",
+      "description": "1.5 改造 typed tags 与事实查询；验证：同维 OR、跨维 AND、文本求交及明确无/未知值测试正确。",
+      "done": true
+    },
+    {
+      "id": "6",
+      "description": "1.6 提取统一资源读取、预载和原图下载工具；验证：可信路径、MIME/hash/尺寸/解码、失败和取消检查通过。",
+      "done": true
+    },
+    {
+      "id": "7",
+      "description": "1.7 解除入口、详情和 Prompt 对组合项目的依赖；验证：静态模块图中作品路径只引用新目录与轻量工具。",
+      "done": true
+    },
+    {
+      "id": "8",
+      "description": "1.8 窄范围退出旧产品、兼容与 3D 发布依赖；验证：精确文件差异、入口不可达及新构建不清空可编辑源码。",
+      "done": true
+    },
+    {
+      "id": "9",
+      "description": "2.1 按图 1 保留首页视觉并纠正语义；验证：逐项对照保留/调整/删除清单及真实入口。",
+      "done": true
+    },
+    {
+      "id": "10",
+      "description": "2.2 建立三页路由与专题查询入口；验证：home/gallery/game、查询参数及未知输入浏览器检查通过。",
+      "done": true
+    },
+    {
+      "id": "11",
+      "description": "2.3 实现作品网格、关键词与更多筛选；验证：真实目录结果、清空和空状态与查询模块一致。",
+      "done": true
+    },
+    {
+      "id": "12",
+      "description": "2.4 实现单 overlay、返回和焦点协调；验证：Esc/Tab、内容替换及浏览器 Back/Forward 无多层焦点竞争。",
+      "done": true
+    },
+    {
+      "id": "13",
+      "description": "2.5 实现作品详情与原子变体切换；验证：图/标签/Prompt/下载/目标标识始终绑定当前成功版本。",
+      "done": true
+    },
+    {
+      "id": "14",
+      "description": "2.6 完成关闭详情后的浏览状态恢复；验证：筛选、滚动、焦点及随机结果返回不丢失。",
+      "done": true
+    },
+    {
+      "id": "15",
+      "description": "2.7 完成三页与详情基础响应式布局；验证：桌面及 320/390/768 CSS px 核心操作无裁切溢出。",
+      "done": true
+    },
+    {
+      "id": "16",
+      "description": "3.1 实现共用作品抽取引擎；验证：有效池、软筛选 OR/AND 和多个必备 Feature 全部包含性质成立。",
+      "done": true
+    },
+    {
+      "id": "17",
+      "description": "3.2 定义空池、单候选和未核实特征行为；验证：无匹配动画前提示，唯一候选与真实 none 值如实呈现。",
+      "done": true
+    },
+    {
+      "id": "18",
+      "description": "3.3 实现候选池内的近期去重；验证：袋耗尽与条件变更均不放宽硬筛选。",
+      "done": true
+    },
+    {
+      "id": "19",
+      "description": "3.4 实现独立多卡滚动和顺序停止；验证：相邻候选可见，停止值来自冻结作品，成品在全部停止后出现。",
+      "done": true
+    },
+    {
+      "id": "20",
+      "description": "3.5 统一 DrawResult 的结果视图和带走操作；验证：停卡、成图、详情、复制与下载同一版本。",
+      "done": true
+    },
+    {
+      "id": "21",
+      "description": "3.6 完成预载、失败、取消与快速重开生命周期；验证：Abort/token/回收检查及故障注入无迟到更新。",
+      "done": true
+    },
+    {
+      "id": "22",
+      "description": "3.7 实现跳过、reduced-motion 与揭晓可访问性；验证：直达相同结果且资源校验、键盘与焦点规则保留。",
+      "done": true
+    },
+    {
+      "id": "23",
+      "description": "3.8 接入游戏页及全局弹窗并验证共用流程；验证：相同输入/随机源得到同模型结果，单活跃抽取和返回完整。",
+      "done": true
+    },
+    {
+      "id": "24",
+      "description": "4.1 完成作品 Prompt、语言和目标意图绑定；验证：文字/复制/TXT 与当前作品及真实特征一致。",
+      "done": true
+    },
+    {
+      "id": "25",
+      "description": "4.2 实现本地参考图片选择、预览与资源回收；验证：支持静态 PNG/JPEG/WebP，损坏/超限提示且无图片外发。",
+      "done": true
+    },
+    {
+      "id": "26",
+      "description": "4.3 实现 A 方案的描述、保留项和风格模板；验证：实际 Prompt 只来自用户声明与模板，不冒充视觉识别。",
+      "done": true
+    },
+    {
+      "id": "27",
+      "description": "4.4 完成复制并打开 ChatGPT 的可靠降级；验证：剪贴板拒绝、弹窗阻止和外部不可用均有可用手动路径。",
+      "done": true
+    },
+    {
+      "id": "28",
+      "description": "4.5 建立真实目标资料及支持状态；验证：每条平台/端/版本要求都有来源、查询时间及验证边界。",
+      "done": true
+    },
+    {
+      "id": "29",
+      "description": "4.6 按实际内容展示动作和资源缺口；验证：静态/动画/展板/场景分类与文件一致，缺失能力无假按钮。",
+      "done": true
+    },
+    {
+      "id": "30",
+      "description": "5.1 完成目录、查询和抽取的单元/性质测试；验证：可控随机源、多候选集合及负面用例全部符合新合同。",
+      "done": true
+    },
+    {
+      "id": "31",
+      "description": "5.2 完成新产品浏览器集成与响应式检查；验证：[18 项验收场景](planning/acceptance-map.md) 在实际本地页面逐项留证。",
+      "done": true
+    },
+    {
+      "id": "32",
+      "description": "5.3 完成图 1 与五种身份的人工视觉审查；验证：用户明确确认具体新候选版本与呈现范围。",
+      "done": false
+    },
+    {
+      "id": "33",
+      "description": "5.4 验证全部拟发布原图下载和 Prompt 实际产物；验证：浏览器下载字节、尺寸、alpha、hash、画面及剪贴板/TXT 回读一致。",
+      "done": true
+    },
+    {
+      "id": "34",
+      "description": "5.5 检查新产品运行与发布依赖清理；验证：模块图、实际网络及生产允许清单均无旧工作台/Fit/3D 链。",
+      "done": true
+    },
+    {
+      "id": "35",
+      "description": "5.6 替换旧验收门槛并运行适用工程检查；验证：新脚本/build 通过且仍适用的资源安全与错误真实性检查保留。",
+      "done": true
+    },
+    {
+      "id": "36",
+      "description": "5.7 调整现行协作/设计规则并准备主规范同步；验证：新用户合同与文档一致，增量同步预演无遗留旧要求或失效 Purpose。",
+      "done": true
+    },
+    {
+      "id": "37",
+      "description": "5.8 冻结完整候选与发布前门槛；验证：状态分列、证据可复现，用户预览确认与未执行项均明确。",
+      "done": false
+    }
+  ],
+  "state": "ready",
+  "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification.",
+  "context": "Language: zh-CN\nAll artifacts must be written in zh-CN.\nKeep OpenSpec structural headings and SHALL/MUST keywords in English.\n",
+  "root": {
+    "path": "/Users/liuzhihang/workspace/dots",
+    "source": "nearest"
+  }
+}

@@ -1,0 +1,20 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: displayed preview resolves to the frozen registered Artwork resource
++ actual - expected
+
++ 'http://127.0.0.1:5174/5b4ede52-fe14-486c-9b88-e591f69fe1f3'
+- '/assets/characters/meta-muse-cream-hooded-candidate-v1.png'
+
+    at inspectRenderedImage (file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:43:18)
+    at async file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:138:158 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'http://127.0.0.1:5174/5b4ede52-fe14-486c-9b88-e591f69fe1f3',
+  expected: '/assets/characters/meta-muse-cream-hooded-candidate-v1.png',
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

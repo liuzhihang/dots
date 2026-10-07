@@ -1,0 +1,534 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-07T17:44:55.338716+08:00",
+  "frozen": true,
+  "cache": 90,
+  "catalogRevision": "artwork-catalog-20261007-v90",
+  "sourceId": "f5434ed76afc177e748ac3d59bb71260a0186651115eb892db3934f48c564b3e",
+  "sourceIdScope": "SHA256 of sorted path/sha256/bytes rows serialized as compact sort_keys JSON",
+  "git": {
+    "head": "64db8f6cdfbda76f0f3851e63d5b4ec1c73e8592",
+    "branch": "main",
+    "dirtySource": true,
+    "stagedPaths": []
+  },
+  "files": [
+    {
+      "path": ".agents/rules/design.md",
+      "sha256": "32e7248d4c229f79462da2067b1371f0c15bc4a20b0b1a2dbba8007ac2ddae2c",
+      "bytes": 3803
+    },
+    {
+      "path": ".openai/hosting.json",
+      "sha256": "71a79bc0dbc7ca6e24de600a2d88dcb9eb798dafd5856b1050bed01f6c11386f",
+      "bytes": 106
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "1e44fcd85e6fb4e4a7e56275d6c44860d97cc648711c713f2f58adc041164f96",
+      "bytes": 4460
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "68f384e3e17b37da24bb4ad024e0f0b63091569eb623ff49f1f4d0f8af4868c1",
+      "bytes": 5891
+    },
+    {
+      "path": "README.md",
+      "sha256": "95996ecbeb7a68567a6c6484b854e9ab1ce8df2039651480f96864b8a18f76f9",
+      "bytes": 5810
+    },
+    {
+      "path": "design/studio-visual-interaction-system.md",
+      "sha256": "d6dd5ac5531240827865b57720db805abff4c70306da63c054735b3df0c807a3",
+      "bytes": 8435
+    },
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "bytes": 1413426
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+      "bytes": 574528
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "bytes": 1720054
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "bytes": 971168
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "bytes": 1151483
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "bytes": 1003955
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "bytes": 1623665
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "bytes": 1382027
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "bytes": 1605008
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "bytes": 1860436
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "bytes": 790009
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "bytes": 828844
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "bytes": 1058375
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "bytes": 1086214
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "bytes": 1185166
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "bytes": 1142481
+    },
+    {
+      "path": "dist/assets/scenes/family-animals-v4.png",
+      "sha256": "92b886dbe95b0030d6d0b5f42943a5babfb3b75719398d0b38207ab90b003e53",
+      "bytes": 2258979
+    },
+    {
+      "path": "dist/assets/scenes/family-dots-v4.png",
+      "sha256": "c921ffd8a9f5ed5ff16c3b415ba1b5b79cb8baaaa44377a13d7bf19c18232b21",
+      "bytes": 1399861
+    },
+    {
+      "path": "dist/assets/scenes/family-grok-v4.png",
+      "sha256": "330b8767af297be5b046d2f423112cbf2e0f6321f1e09fd125371d01cae6de34",
+      "bytes": 1194674
+    },
+    {
+      "path": "dist/assets/scenes/family-humans-v4.png",
+      "sha256": "01266e796dd3f3173c453d45931e3e82a54b076a5edfef4a159c07de624d2eae",
+      "bytes": 2390173
+    },
+    {
+      "path": "dist/assets/scenes/family-meta-muse-v5.png",
+      "sha256": "03f8225a11bdb5e8026b9c7312a6d0fd4deff83fdbbbde578703ea8cc1fc7462",
+      "bytes": 2243194
+    },
+    {
+      "path": "dist/assets/scenes/hero-left-v4.png",
+      "sha256": "f00970d358a18d554cefb9407af77603e9701985d868daf9eb4f318ea1fd1507",
+      "bytes": 1342332
+    },
+    {
+      "path": "dist/assets/scenes/hero-right-v4.png",
+      "sha256": "aa2614fb8b12d6f12d813f1a315435c41831d02ba57b727487dba5dad1c57281",
+      "bytes": 1424753
+    },
+    {
+      "path": "dist/index.html",
+      "sha256": "512858292eb36f6471a0590a34535b874f6fcc4faa5e174d5bb08d104b30358d",
+      "bytes": 5600
+    },
+    {
+      "path": "dist/studio-actions.js",
+      "sha256": "d76cc668e437dc9c8511f2876f75a8cdbfe37e2fb5b46cba369d176bd2768dd0",
+      "bytes": 4579
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "sha256": "b276c0a86b20a51d404b9ac1d5935975a0067f82766579c7e0f0898f9d624908",
+      "bytes": 47830
+    },
+    {
+      "path": "dist/studio-asset-loader.js",
+      "sha256": "e8687344686c4cd74de8687dbffb78ac59b8b8eadcde2e7f40b65ad0f86b8f74",
+      "bytes": 7190
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "sha256": "725a1122d03a82ecbeba8a7d31d4f6e1f7cf8c5a22d7b334e65d7caf5fcdf75a",
+      "bytes": 13411
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "sha256": "d6acebeaebdbff79cad965a54650b56e8e8a20434b0a722bc8fc8da51740bfb5",
+      "bytes": 36971
+    },
+    {
+      "path": "dist/studio-draw.js",
+      "sha256": "7c01eaba8d2995fa7c7b958fee78554fe1505c10632816919fc730588b280659",
+      "bytes": 12080
+    },
+    {
+      "path": "dist/studio-feature-visuals.js",
+      "sha256": "3a11308d381e826165359096a5c7b3cdd5e914a93287fdde6c451feabb14e390",
+      "bytes": 5264
+    },
+    {
+      "path": "dist/studio-fullscreen-random.css",
+      "sha256": "d30988906815e7976dcbf80cc7f10db2a5756aed37649fec5b11b32a8514826d",
+      "bytes": 15009
+    },
+    {
+      "path": "dist/studio-fullscreen-random.js",
+      "sha256": "4b757cb67f64df348616efd44a6f28660f59ee19fd2eabf282668fb550f1d22d",
+      "bytes": 51776
+    },
+    {
+      "path": "dist/studio-home.js",
+      "sha256": "54b236ac5d1c2d08ae1c6eeace7fa0a8cedc0a102e260e4557a046867f8e120b",
+      "bytes": 3189
+    },
+    {
+      "path": "dist/studio-overlay.js",
+      "sha256": "597b07ee379bd116cea81c1a9b9aea4a665456a16752887bda717625c2b6f47a",
+      "bytes": 5793
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "sha256": "be0f2d21f131e2683f193a520d660ba0b3cd48bdaa61312b958738f56dd83f4c",
+      "bytes": 3435
+    },
+    {
+      "path": "dist/studio-reference.js",
+      "sha256": "bfdfb2c06884c8c41dd3ce8e6e970cd32d5f2ff0458b2f3437f7cfd75a3a1b76",
+      "bytes": 10584
+    },
+    {
+      "path": "dist/studio-scenes.js",
+      "sha256": "de940684e9204cd6515d24cdf6931a2098fea3515f336c886401584ee40f26de",
+      "bytes": 2340
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "sha256": "e8acdd5ef717bf8983d803489b80d82163fe2719cfbf7f8aa8b9018cb35c7c9b",
+      "bytes": 1666
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "sha256": "0fb20e6fd94afbd0c5c8863e2cf2fb1be8dbc27e142b0666a95a17dd523b3459",
+      "bytes": 8362
+    },
+    {
+      "path": "dist/studio.css",
+      "sha256": "34b94569cde9cea4d2f60f610e97369f5fb028899c391b5bea8104a7c72ddb15",
+      "bytes": 16809
+    },
+    {
+      "path": "dist/studio.js",
+      "sha256": "d0fc190deb82df40c2918c7f78229e5846f8f7222718382646a7695cbbd6730c",
+      "bytes": 12135
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/.openspec.yaml",
+      "sha256": "720b3de6231f9647898feba395449b03234e0c4fa3bd4ce47fc3bb341b0f16d6",
+      "bytes": 40
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/design.md",
+      "sha256": "511b694002f471f256c6641d8209446020256c576074fa0f44fa48a9abda9b0f",
+      "bytes": 26505
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/acceptance-map.md",
+      "sha256": "785e005be001ce0e648924c7dede741c9b8ef8dda50ebbf3098ae6df0342313b",
+      "bytes": 9239
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/cleanup-and-spec-map.md",
+      "sha256": "fed347e0d39bae05dcec13f22737db48a3374d2c0fec25461e5e024a02c611c0",
+      "bytes": 9487
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/content-and-targets.md",
+      "sha256": "3faf5fcea12ae4b1e5e13d57617008e0ed9bbd5efe87fce62ff054412879ed46",
+      "bytes": 10589
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/evidence-and-prototype.md",
+      "sha256": "715306c8f878eac0805d661ffc27f6683f3d47fc7da166fae29761e05da1b2b5",
+      "bytes": 8492
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/spec-sync-cache90.md",
+      "sha256": "07c9486e68b0a33d40267e132ede2ca6d56f9c0b2c603157b1a7a95093b9fac8",
+      "bytes": 5772
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/validation.md",
+      "sha256": "915ce0d06564c4aabc8db43296bb3728003a90424436d5d6d767bcfff026c064",
+      "bytes": 6809
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/proposal.md",
+      "sha256": "57da4711d8ced21c654c0db04b469006820a5746657eaeceb5083270b1649b62",
+      "bytes": 6309
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/artwork-catalog/spec.md",
+      "sha256": "866fdb4a70e1855a44d67bb9258fba210f430ef9b397e4d2d4996b8f1ecead3a",
+      "bytes": 7037
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/catalog-tags/spec.md",
+      "sha256": "134b7ebd1325e3a1380a002d15c5c39fc97ce8abf988d5224f93dc731b677fbc",
+      "bytes": 7125
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-contact-and-motion/spec.md",
+      "sha256": "031894fb8bb4a3b8ced99d16ef174c7fdbe51001c500ec65a5c13d5e04622d8c",
+      "bytes": 5119
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-creation-modes/spec.md",
+      "sha256": "a8e6dbe7930fe8ddc2b6018e28472b729f313a64b2a3add66dfef166928ed245",
+      "bytes": 3849
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-families/spec.md",
+      "sha256": "c4d2a3a699bf56c50f7954da8dbfce903110c0bb2b7421d6b5738de18c68fda9",
+      "bytes": 6507
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/character-visual-acceptance/spec.md",
+      "sha256": "7efbf7c93a7bf6715be26a612d4a4f2d5101a4a2391039c6beb60febcc2bdbd9",
+      "bytes": 6411
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/composition-coverage/spec.md",
+      "sha256": "ba63eff0dbfe2d6b28bcc83bcb5a1d67be1f1ecc10d80c8b4ba765baef292043",
+      "bytes": 6806
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/family-navigation/spec.md",
+      "sha256": "f7c8d08c599d40cf44c184a57a0ceae7daeaf586ca3221f2c5ba5e391d7defdb",
+      "bytes": 5228
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/fullscreen-randomizer/spec.md",
+      "sha256": "8345da035dc9e99b845b6466ed2a8350961d27f6103cf20984a70a558a5d2a1e",
+      "bytes": 14090
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/modular-2d-composition/spec.md",
+      "sha256": "200948c1a55769bf5821487040b9acf8c775ae5d742ca789176e3bbcfdf3323a",
+      "bytes": 4091
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/reference-creation/spec.md",
+      "sha256": "bcb728fac0f75dd3b3925a00250a4c4a442b8030c37073b3a8a9cc503401b268",
+      "bytes": 3059
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/studio-creation-experience/spec.md",
+      "sha256": "4d4446a7c82a96209731625d0eaad348a76764f0a86b67175308eb2b2aade193",
+      "bytes": 4043
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/studio-visual-experience/spec.md",
+      "sha256": "1e4e5e118024b8dcb1ecd2ac0efeb5ea04a8debea97a9dc955c76a92825abe9b",
+      "bytes": 8237
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/specs/target-resources/spec.md",
+      "sha256": "ed27ff6f12d60d4d47fbc514cb48c26da28f864537a98af4463fa24aba824293",
+      "bytes": 3665
+    },
+    {
+      "path": "openspec/changes/refocus-studio-on-gallery-and-card-reveal/tasks.md",
+      "sha256": "eeb71e95ac59d316f613714c1abf7d1de386952050fb6054b5323d4e893a1330",
+      "bytes": 36846
+    },
+    {
+      "path": "openspec/config.yaml",
+      "sha256": "8d44efe0996b047dcf2bd5801350971222d2a258ac877e961ea885068fc98b90",
+      "bytes": 777
+    },
+    {
+      "path": "openspec/specs/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "openspec/specs/artwork-catalog/spec.md",
+      "sha256": "b14dc005a18565884717deeafdb5ec7bb8309dd8b72bc4c30c4d54fd3d4a9217",
+      "bytes": 7050
+    },
+    {
+      "path": "openspec/specs/catalog-tags/spec.md",
+      "sha256": "5d7c0f514e9715a6a7a0bef79833d646f066ab1685e7cc3ebc1e63b3a949064a",
+      "bytes": 6092
+    },
+    {
+      "path": "openspec/specs/character-contact-and-motion/spec.md",
+      "sha256": "1e92c04e919ae8310bdb4c17e3d720f8279d453ef27e93797ab5f7b238dd73aa",
+      "bytes": 2867
+    },
+    {
+      "path": "openspec/specs/character-creation-modes/spec.md",
+      "sha256": "cd8c855f4b75f8b6afae3ba3dd46ce2ba2fafe237ea2c2254efc21a57c0d255f",
+      "bytes": 1251
+    },
+    {
+      "path": "openspec/specs/character-families/spec.md",
+      "sha256": "96459b9d39701321c10259f7fad47be41298adf986466c1a3b89e338971d2e28",
+      "bytes": 3796
+    },
+    {
+      "path": "openspec/specs/character-visual-acceptance/spec.md",
+      "sha256": "affa9f132b0f7cb63301f847336d5302cf83e98f946d41400a09641d8900c802",
+      "bytes": 4238
+    },
+    {
+      "path": "openspec/specs/composition-coverage/spec.md",
+      "sha256": "bfc45ea20fd620250496e296549cf064345fa8fd58bcf3b0b483f29d7764b80c",
+      "bytes": 4918
+    },
+    {
+      "path": "openspec/specs/family-navigation/spec.md",
+      "sha256": "9a2f93fd8d92b7fe5e2e59795e457cea91b56f86fa00c5bea8751e238f5b8227",
+      "bytes": 4273
+    },
+    {
+      "path": "openspec/specs/fullscreen-randomizer/spec.md",
+      "sha256": "3428847096177e8a4f05c053988370fc148a4cf054c1762192f2e591c608a85a",
+      "bytes": 12375
+    },
+    {
+      "path": "openspec/specs/modular-2d-composition/spec.md",
+      "sha256": "32344dc3c4b74fc78d844f1c045d3c142c33a50bf3ca444f44fd10f3632e119b",
+      "bytes": 1565
+    },
+    {
+      "path": "openspec/specs/reference-creation/spec.md",
+      "sha256": "513e0319fe2dc4da477c5d34785f68258dbd7ba709cbecc1831c2197140c0749",
+      "bytes": 3075
+    },
+    {
+      "path": "openspec/specs/studio-creation-experience/spec.md",
+      "sha256": "e2cefbdc162324d41750db084398a56848a8ce33095922c1aef8713247484d40",
+      "bytes": 2589
+    },
+    {
+      "path": "openspec/specs/studio-visual-experience/spec.md",
+      "sha256": "62be4a1e04af2a39041b0be74e1f6711bf1f0be3bf338a048bb38a8e48667944",
+      "bytes": 5713
+    },
+    {
+      "path": "openspec/specs/target-resources/spec.md",
+      "sha256": "089aaa9b618b92a5797cf6c467dd7fed966da24aeeedf3663f4f3cec871a8087",
+      "bytes": 3679
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "6312ea610a1c056bc86b3e7287ff950a65749138a2fdb078f6a4ad753cf41c06",
+      "bytes": 39709
+    },
+    {
+      "path": "package.json",
+      "sha256": "4f04cd5aba1cc4ca6f823afb55636cf25883e1b2c109c3b0295adb2e32be975c",
+      "bytes": 577
+    },
+    {
+      "path": "scripts/build-studio.mjs",
+      "sha256": "e26c6cab45230f169649b9082980b1aa6d4bf5d8ce92a799f7a3b959114f6f3b",
+      "bytes": 10415
+    },
+    {
+      "path": "scripts/verify-artwork-catalog.mjs",
+      "sha256": "0f53ee17bb12d83f8e1c6de0a73f6f73da98e495406a4de89ecd4dd4e17b716f",
+      "bytes": 9785
+    },
+    {
+      "path": "scripts/verify-artwork-draw.mjs",
+      "sha256": "34d17aa4753e41072e3ad25b77ca28a818018eda8502997b015cb19542d95dae",
+      "bytes": 12709
+    },
+    {
+      "path": "scripts/verify-artwork-query.mjs",
+      "sha256": "d9bff7053d19b1d1de8bce895d77f4ed94d917ac6f12d30d3e21872bc2a21e39",
+      "bytes": 5047
+    },
+    {
+      "path": "scripts/verify-card-reveal-recording.mjs",
+      "sha256": "d3d8dcabfbce05b246d4769e5beeaa75b1c8500b01624a7c5d4b06fd7fb607b1",
+      "bytes": 20664
+    },
+    {
+      "path": "scripts/verify-card-reveal.mjs",
+      "sha256": "718713d8e85740cea1bc2934ec02d4556a705b3e4ffc3d1051e5ad17eb15801e",
+      "bytes": 36189
+    },
+    {
+      "path": "scripts/verify-reference-detail.mjs",
+      "sha256": "a162d013d9e5b8b3eaef80e60001b180a9438006f077ccb20b2aa50920f68a2a",
+      "bytes": 38340
+    },
+    {
+      "path": "scripts/verify-reveal-layout.mjs",
+      "sha256": "e54a208c7636171816cb90a02696cc1c28e96358e07d614270143bb15a0f8b09",
+      "bytes": 33371
+    },
+    {
+      "path": "scripts/verify-studio-browser.mjs",
+      "sha256": "e89ab4a4c6909b90a65305c6a097f5af441ca26867c3594b6c6f7b2bb0659d80",
+      "bytes": 58985
+    },
+    {
+      "path": "scripts/verify-transparent-output.mjs",
+      "sha256": "e383d08090b6672d37ca5ed86160d728c5e2ba8b80011b8ad205c2786e920a30",
+      "bytes": 4577
+    },
+    {
+      "path": "vite.config.mjs",
+      "sha256": "a2d881c40b071b1389e25e90aab92ce97fd12bcb25d4335852ba30c4f77ad2c4",
+      "bytes": 240
+    }
+  ],
+  "assetScope": "15 original Artwork PNGs and original Hero/topic scenes unchanged; source crops are UI details requiring page visual confirmation",
+  "status": {
+    "engineeringImplementation": "passed-current-source-checks",
+    "assetExists": true,
+    "resourceVerified": "actual-browser-downloads",
+    "artApproval": "pending-user-review; smooth Hero Dots material decision pending",
+    "targetValidation": "no target package or physical-device validation",
+    "published": false,
+    "mainSpecsSynced": true,
+    "archived": false,
+    "gitCommitted": false
+  }
+}

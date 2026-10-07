@@ -1,260 +1,231 @@
-#!/usr/bin/env node
 import assert from 'node:assert/strict';
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
-import {join,resolve} from 'node:path';
-import {createHash} from 'node:crypto';
-
-// Use an installed Playwright, or the workspace runtime supplied by Codex.
-// This script operates the actual app UI; no screenshots become approved baselines.
-const {chromium}=await import(process.env.DOTS_PLAYWRIGHT_MODULE||'playwright');
-const url=process.env.DOTS_PREVIEW_URL||'http://127.0.0.1:5173/';
-const out=resolve(process.argv[2]||'/tmp/dots-browser-'+Date.now());
-await mkdir(out,{recursive:false});
-const browser=await chromium.launch({headless:true,...(process.env.DOTS_CHROME_PATH?{executablePath:process.env.DOTS_CHROME_PATH}:{})});
-const report={url,browser:await browser.version(),deviceAcceptance:false,method:'Playwright controlling real Chrome; Browser plugin unavailable',results:[],errors:[]};
-const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-const project=page=>page.evaluate(()=>JSON.parse(sessionStorage.getItem('dot-studio-project-v2')));
-const settled=page=>page.waitForFunction(()=>document.querySelector('#compositeStage canvas')?.dataset.previewStatus==='ready');
-const noOverflow=async page=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'horizontal overflow');
-const canvasScreenshot=async(page,path)=>{
- const stage=page.locator('#compositeStage');
- // Freeze the capture scroll position explicitly. The app's smooth scrolling
- // otherwise keeps Playwright's element screenshot scroll-to-center in motion.
- await stage.evaluate(node=>node.scrollIntoView({behavior:'instant',block:'center'}));
- await page.waitForFunction(()=>{const rect=document.querySelector('#compositeStage').getBoundingClientRect();return rect.top>=0&&rect.bottom<=innerHeight;});
- await stage.screenshot({path,animations:'disabled'});
-};
-const importJSON=async(page,value)=>{await page.locator('#configFile').setInputFiles({name:'fixture.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(value))});await page.waitForFunction(()=>document.querySelector('#configFile').value==='');};
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {ARTWORKS,getAsset,createSnapshot} from '../dist/studio-artwork-catalog.js?v=90';
+import {publishedTags} from '../dist/studio-tags.js?v=90';
+import {FEATURE_CATEGORIES,REVEAL_SLOTS,revealFeaturesFor} from '../dist/studio-draw.js?v=90';
+import {promptFor} from '../dist/studio-prompt.js?v=90';
+const modulePath=process.env.DOTS_PLAYWRIGHT_MODULE||'/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const {chromium}=await import(pathToFileURL(modulePath));
+const output=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v90/browser';
+await fs.mkdir(output,{recursive:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.DOTS_CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true,permissions:['clipboard-read','clipboard-write']});
+const page=await context.newPage();const errors=[],network=[],checks=[],downloads=[],drawDownloads=[],detailPaints=[],promptCopies=[],retiredAssetResponses=[];
+page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>network.push(r.url()));
+const base=process.env.DOTS_BASE_URL||'http://127.0.0.1:5180/';
+async function ready(hash='home'){await page.goto(base+'#'+hash);await page.waitForFunction(()=>document.documentElement.dataset.catalogRevision);assert.equal(await page.locator('html').getAttribute('data-cache'),'90','browser page must use current cache 90');}
+async function closed(){await page.waitForFunction(()=>!document.querySelector('dialog').open&&!(history.state?.overlayTrail?.length));}
+async function detail(){await page.locator('.artwork-detail__image').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);await page.locator('.artwork-detail__image').evaluate(async image=>{await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});}
+async function screenshot(name){const modal=await page.locator('dialog').evaluate(el=>el.open);if(!modal&&/^(home|gallery|game)-\d+$/.test(name)){await page.evaluate(async()=>{for(let pos=0;pos<document.documentElement.scrollHeight;pos+=innerHeight){window.scrollTo(0,pos);await new Promise(resolve=>setTimeout(resolve,60));}window.scrollTo(0,0);});await page.waitForFunction(()=>[...document.querySelectorAll('#'+document.body.dataset.screen+'Portal img')].every(img=>img.complete&&img.naturalWidth));}await page.evaluate(async()=>{const visible=[...document.images].filter(img=>img.currentSrc&&img.getClientRects().length);await Promise.all(visible.map(img=>img.decode()));await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});await page.screenshot({path:path.join(output,name+'.png'),fullPage:!modal});}
+async function noOverflow(scope='document'){const excess=await page.evaluate(scope=>{const el=scope==='dialog'?document.querySelector('dialog'):document.documentElement;return el.scrollWidth-el.clientWidth;},scope);assert(excess<=2,`${scope} horizontal overflow ${excess}`);}
+async function inspectPngAlpha(bytes){
+ assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a','download has PNG signature');
+ return page.evaluate(async base64=>{
+  const binary=atob(base64),data=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)data[i]=binary.charCodeAt(i);
+  const bitmap=await createImageBitmap(new Blob([data],{type:'image/png'})),canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;
+  const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(bitmap,0,0);const rgba=context.getImageData(0,0,canvas.width,canvas.height).data;let transparentPixels=0,opaquePixels=0,partialAlphaPixels=0;
+  for(let i=3;i<rgba.length;i+=4){if(rgba[i]===0)transparentPixels++;else if(rgba[i]===255)opaquePixels++;else partialAlphaPixels++;}
+  bitmap.close();return {width:canvas.width,height:canvas.height,transparentPixels,opaquePixels,partialAlphaPixels};
+ },bytes.toString('base64'));
+}
+async function inspectRenderedImage(locator,asset,{allowVerifiedBlob=false}={}){
+ const painted=await locator.evaluate(async element=>{
+  const image=element instanceof HTMLImageElement?element:element.querySelector('img');if(!image)throw new Error('Expected a real artwork preview image element.');
+  await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const rect=image.getBoundingClientRect(),style=getComputedStyle(image),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
+  const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(image,0,0);const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;let visiblePixels=0;
+  for(let i=3;i<pixels.length;i+=4)if(pixels[i]>0)visiblePixels++;
+  let sourceSha256=null;if(image.currentSrc.startsWith('blob:')){const bytes=await (await fetch(image.currentSrc)).arrayBuffer(),digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));sourceSha256=[...digest].map(byte=>byte.toString(16).padStart(2,'0')).join('');}
+  return {src:image.currentSrc,sourceSha256,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,complete:image.complete,rect:{width:rect.width,height:rect.height},display:style.display,visibility:style.visibility,opacity:Number(style.opacity),visiblePixels};
+ });
+ assert.equal(painted.complete,true);assert(painted.naturalWidth>0&&painted.naturalHeight>0);assert(painted.rect.width>0&&painted.rect.height>0);assert.notEqual(painted.display,'none');assert.equal(painted.visibility,'visible');assert(painted.opacity>0);assert(painted.visiblePixels>0,'decoded image must contain painted pixels');
+ if(asset){if(painted.src.startsWith('blob:')){assert.equal(allowVerifiedBlob,true,'object URL is allowed only for a preloaded registered Artwork resource');assert.equal(painted.sourceSha256,asset.sha256,'object URL bytes match the frozen registered Artwork hash');}else assert.equal(new URL(painted.src).pathname,new URL(asset.path,base).pathname,'displayed preview resolves to the frozen registered Artwork resource');}
+ return painted;
+}
+async function assertDetailContract(artwork,{checkTagRows=false}={}){
+ const state=await page.locator('.artwork-detail').evaluate(root=>{
+  const primaryTags=[...root.querySelectorAll('.artwork-detail__tags:not(.artwork-detail__tags--more) [data-tag-id]')];
+  const image=root.querySelector('.artwork-detail__image'),column=root.querySelector('.artwork-detail__content');
+  const title=root.querySelector('.artwork-detail__title'),description=root.querySelector('.artwork-detail__description');
+  const media=root.querySelector('.artwork-detail__media'),mediaRect=media.getBoundingClientRect(),contentRect=column.getBoundingClientRect();
+  const tagGroup=root.querySelector('.artwork-detail__tag-group'),specification=root.querySelector('.artwork-detail__asset-summary');
+  const actions=root.querySelector('.artwork-detail__actions'),prompt=root.querySelector('.artwork-detail__prompt-block');
+  const secondary=root.querySelector('.artwork-detail__secondary-actions');
+  const referenceButton=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='用参考图继续创作');
+  const order=[title,description,tagGroup,specification,actions,prompt,secondary].map(node=>column&&node?[...column.children].indexOf(node):-1);
+  const detailTitle=root.querySelector('.artwork-detail__title');
+  const actionButtons=[...root.querySelector('.artwork-detail__actions').querySelectorAll('button')].filter(button=>!button.hidden).map(button=>button.textContent.trim());
+  const secondaryButtons=[...root.querySelector('.artwork-detail__secondary-actions').querySelectorAll('button')].map(button=>button.textContent.trim());
+  const rows=[...new Set(primaryTags.map(tag=>Math.round(tag.getBoundingClientRect().top)))];
+  const featureDetails=root.querySelector('.artwork-detail__feature-details');
+  const featureValues=[...root.querySelectorAll('.artwork-detail__feature-record [data-tag-id]')].map(tag=>tag.dataset.tagId);
+  const excerpt=root.querySelector('.artwork-detail__prompt-excerpt');
+  const excerptStyle=excerpt?getComputedStyle(excerpt):null;
+  const excerptLineCount=excerptStyle?Math.round(excerpt.getBoundingClientRect().height/parseFloat(excerptStyle.lineHeight)):0;
+  return {
+   title:detailTitle.textContent.trim(),titleClass:detailTitle.className,titleVisible:!!detailTitle.getClientRects().length,
+   naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,complete:image.complete,objectFit:getComputedStyle(image).objectFit,optical:image.classList.contains('artwork-detail__image--optical'),renderedAspect:(()=>{const rect=image.getBoundingClientRect();return rect.height?rect.width/rect.height:0;})(),
+   tags:primaryTags.map(tag=>({id:tag.dataset.tagId,dimension:tag.dataset.dimension,label:tag.textContent.trim(),scrollWidth:tag.scrollWidth,clientWidth:tag.clientWidth})),
+   moreOpen:root.querySelector('.artwork-detail__more-tags')?.open??false,
+   specification:specification?.textContent.trim()||'',order,
+   actionButtons,secondaryButtons,promptSummary:root.querySelector('.artwork-detail__prompt-summary')?.textContent.trim(),
+   promptCollapsed:root.querySelector('.artwork-detail__prompt-details')?.open===false,
+   languageBeforeDisclosure:!!root.querySelector('.artwork-detail__prompt-heading .artwork-detail__language-select')&&!root.querySelector('.artwork-detail__prompt-details .artwork-detail__language-select'),
+   excerptText:excerpt?.textContent.trim()||'',excerptLineCount,
+   referenceOutsideAssetDetails:!!referenceButton?.closest('.artwork-detail__secondary-actions')&&!referenceButton?.closest('.artwork-detail__asset-details'),
+   featureDetailsCollapsed:featureDetails?.open===false,featureValues,
+   targetDetailsCollapsed:root.querySelector('.artwork-detail__target-details')?.open===false,
+   assetDetailsCollapsed:root.querySelector('.artwork-detail__asset-details')?.open===false,
+   rows,viewportWidth:innerWidth,
+   mediaRect:{left:mediaRect.left,top:mediaRect.top,right:mediaRect.right,bottom:mediaRect.bottom},contentRect:{left:contentRect.left,top:contentRect.top,right:contentRect.right,bottom:contentRect.bottom}
+  };
+ });
+ assert.equal(await page.locator('#overlayTitle').innerText(),'作品详情','the shared overlay header has a generic detail label');
+ const visibleArtworkTitles=await page.locator('#studioOverlay .artwork-detail__title').evaluateAll(nodes=>nodes.filter(node=>{const rect=node.getBoundingClientRect(),style=getComputedStyle(node);return rect.width>2&&rect.height>2&&style.display!=='none'&&style.visibility!=='hidden'&&style.opacity!=='0';}).map(node=>node.textContent.trim()));assert.deepEqual(visibleArtworkTitles,[artwork.title],'the Artwork title appears in the detail content, not the generic overlay header');
+ assert.equal(state.title,artwork.title);assert.equal(state.titleVisible,true,'the Artwork title is visibly placed in the content column');
+ if(state.viewportWidth<=700)assert(state.contentRect.top>=state.mediaRect.bottom-1,'mobile detail stacks the information after the large image');else assert(state.contentRect.left>=state.mediaRect.right-1,'desktop detail places Artwork information beside the large image');
+ assert.equal(state.complete,true);assert.equal(state.naturalWidth,artwork.width||getAsset(artwork.assetRefs.original).width);assert.equal(state.naturalHeight,getAsset(artwork.assetRefs.original).height);if(state.optical)assert(Math.abs(state.renderedAspect-state.naturalWidth/state.naturalHeight)<.02,`${artwork.id} optical image keeps the PNG's aspect ratio (rendered ${state.renderedAspect}, source ${state.naturalWidth/state.naturalHeight})`);else assert.equal(state.objectFit,'contain',`${artwork.id} non-optical image is contained without distortion`);
+ assert.equal(state.tags.length,4,`${artwork.id} shows four curated default tags`);
+ const ids=state.tags.map(tag=>tag.id),labels=state.tags.map(tag=>tag.label);assert.equal(new Set(ids).size,ids.length,`${artwork.id} has no duplicate default tag IDs`);assert.equal(new Set(labels).size,labels.length,`${artwork.id} has no duplicate visible tag labels`);
+ assert(ids.every(id=>artwork.tagIds.includes(id)),`${artwork.id} only shows registered actual features`);assert(ids.every(id=>!/:none$/i.test(id)&&!['background','usage'].includes(id.split(':')[0])),`${artwork.id} default tags exclude none/background/usage`);
+ assert(state.order.every((index,i)=>index>=0&&(i===0||state.order[i-1]<index)),'title, description, curated tags, resource summary and operations follow in the content column');
+ assert.match(state.specification,/透明 PNG · 静态 · \d+ × \d+ px/);
+ assert.deepEqual(state.actionButtons,['复制 Prompt','下载原图']);assert.deepEqual([...state.secondaryButtons].sort(),['在 ChatGPT 中创作','用参考图继续创作'].sort());assert.equal(state.promptCollapsed,true);assert(state.promptSummary.includes('Prompt'));assert(state.excerptText.length>0&&state.excerptLineCount<=3,'a short Prompt excerpt is visible before the full-text disclosure');assert.equal(state.languageBeforeDisclosure,true,'language selection stays above the collapsed full Prompt');
+ assert.equal(state.referenceOutsideAssetDetails,true,'reference continuation is a secondary action, not a file-record control');
+ const allFeatureIds=new Set([...(artwork.tagIds||[]),...(artwork.featureIds||[])]);assert.equal(state.featureDetailsCollapsed,true,'complete feature index is available in a collapsed work-information section');assert([...allFeatureIds].every(id=>state.featureValues.includes(id)),`${artwork.id} preserves every registered feature in the expandable index`);assert.equal(new Set(state.featureValues).size,state.featureValues.length,`${artwork.id} feature index has no duplicated visible facts`);assert.equal(state.targetDetailsCollapsed,true);assert.equal(state.assetDetailsCollapsed,true);
+ assert.equal(await page.locator('.artwork-detail__versions button[data-artwork-id]').count(),0,'no unpublished or unapproved pose is presented as a selectable variant');
+ if(checkTagRows){assert(state.rows.length<=2,`${artwork.id} default tags wrap to at most two rows`);for(const tag of state.tags)assert(tag.scrollWidth<=tag.clientWidth+2,`${artwork.id} tag text is not clipped: ${tag.label}`);}
+ return state;
+}
 try{
- for(const width of [1440,320,390,768]){
-  const context=await browser.newContext({viewport:{width,height:1000},permissions:['clipboard-read','clipboard-write']});
-  const page=await context.newPage();page.on('pageerror',e=>report.errors.push({width,message:e.message}));
-  await page.goto(url);await settled(page);const initial=await project(page);
-  await noOverflow(page);
-  assert.equal(await page.locator('#familyCards [data-family-gallery]').count(),5);
-  assert.equal(await page.locator('#homePortal [data-more-tags]').count(),0);
-  await page.locator('[data-family-gallery="dots"]').click();
-  assert.equal(await page.locator('[data-look-card]').count(),3);
-  assert.deepEqual(await project(page),initial,'home card browsing changes active project');
-  await page.locator('#lookFilters [data-clear-tags]').click();
-  assert.equal(await page.locator('[data-look-card]').count(),15);
-  await page.locator('#lookFilters [data-tag="dots"]').click();
-  await page.locator('#lookFilters [data-tag="grok"]').click();
-  assert.equal(await page.locator('[data-look-card]').count(),6,'same dimension OR');
-  await page.locator('#lookFilters [data-more-tags]').click();
-  const dialog=page.locator('.tag-dialog[open]');assert(await dialog.isVisible());
-  await dialog.locator('input').fill('people');
-  assert.equal(await dialog.locator('[data-tag="humans"]').count(),1,'alias search');
-  await dialog.locator('[data-tag="humans"]').click();
-  assert.equal(await page.locator('[data-look-card]').count(),0,'cross dimension AND');
-  assert(await page.locator('#lookEmpty').isVisible());
-  await page.keyboard.press('Escape');
-  assert.equal(await page.locator('.tag-dialog[open]').count(),0);
-  await page.waitForFunction(()=>document.activeElement===document.querySelector('#lookFilters [data-more-tags]'));
-  assert.deepEqual(await project(page),initial,'tags must not commit');
-  await page.locator('#lookFilters [data-clear-tags]').click();
-  await page.locator('#familySearch').fill('zz-no-result');
-  assert.equal(await page.locator('[data-look-card]').count(),0);
-  await page.locator('#clearSearch').click();
-  assert.equal(await page.locator('[data-look-card]').count(),15);
-  await page.locator('[data-start-look="candidate-dots-20261005"]').first().click();await settled(page);
-  await page.locator('#workbenchTagBrowse summary').click();
-  const beforeBrowse=await project(page);
-  await page.locator('#workbenchTags [data-tag="animals"]').click();
-  assert.equal(await page.locator('[data-tag-look]').count(),3);
-  assert.deepEqual(await project(page),beforeBrowse,'workbench browse must not commit');
-  await page.locator('#workbenchTags [data-clear-tags]').click();
-  await page.locator('#workbenchTagBrowse summary').click();
-  const adaptations=[],drafts={};
-  for(const family of ['dots','humans','animals']){
-   await page.locator('#families [data-family="'+family+'"]').click();await settled(page);
-   const recipeIds=await page.locator('[data-modular-recipe]').evaluateAll(nodes=>nodes.map(node=>node.dataset.modularRecipe));
-   assert(recipeIds.length>0,'registered pilot adaptations must be selectable');
-   for(const recipeId of recipeIds){
-   const baseline=await project(page);await page.locator('[data-modular-recipe="'+recipeId+'"]').click();await settled(page);
-   const modular=await project(page);assert.equal(modular.creation.composition?.kind,'modular',`recipe ${recipeId} did not produce a resolved modular project; toast=${await page.locator('#toast').textContent()}; project=${JSON.stringify(modular)}`);
-   const cardTitle=(await page.locator('[data-modular-recipe="'+recipeId+'"] .look-template-name').textContent()).trim();
-   if(recipeId.includes('and-round-glasses'))assert.equal(cardTitle,'耳机 + 眼镜 · 经典','the multi-component card identifies both modules and its base pose');
-   else if(recipeId.includes('candidate-humans-20261005-wave'))assert.equal(cardTitle,'耳机 · 挥手','the chestnut wave card is distinguishable from Classic');
-   else if(recipeId.includes('pilot-headphones-v1-on-candidate-humans-20261005-classic'))assert.equal(cardTitle,'耳机 · 经典','the chestnut Classic headphone card is explicitly labeled');
-   assert.equal(await page.locator('#workbenchControls [data-dot-recipe],#workbenchControls [data-baseline-pose]').count(),0,'module recipes must not show unrelated complete-template controls');
-   assert.equal(modular.character.family,family);assert.match(await page.locator('#previewBadge').textContent(),/待美术确认/);
-   await page.locator('#undo').click();await settled(page);assert.deepEqual(await project(page),baseline,'module undo must restore exact template');
-   await page.locator('#redo').click();await settled(page);assert.deepEqual(await project(page),modular,'module redo must restore exact refs');
-   await noOverflow(page);const path='module-'+recipeId+'-'+width+'.png';await page.screenshot({path:join(out,path)});
-   const canvasPath='module-'+recipeId+'-'+width+'-canvas.png';await canvasScreenshot(page,join(out,canvasPath));
-   const resolved=await page.evaluate(async()=>{const src=document.querySelector('script[src*="studio.js"]').src;const {resolveProjectComposition}=await import(src.replace('studio.js','studio-composition-resolver.js'));const result=resolveProjectComposition(JSON.parse(sessionStorage.getItem('dot-studio-project-v2')));return {availability:result.availability,modules:result.renderPlan?.modules,recipe:result.renderPlan?.recipe,composition:result.composition};});
-   assert.equal(resolved.availability,'available');assert.deepEqual(resolved.composition,modular.creation.composition);
-   drafts[family]=modular;adaptations.push({family,recipeId,composition:modular.creation.composition,resolved,screenshot:path,canvasScreenshot:canvasPath});
-   }
-  }
-  const humanStateCases=[
-   {artworkId:'candidate-humans-20261005',baseId:'candidate-humans-20261005::classic',expectedTitle:'耳机 · 经典'},
-   {artworkId:'candidate-humans-20261005',baseId:'candidate-humans-20261005::wave',expectedTitle:'耳机 · 挥手'},
-   {artworkId:'human-bun-yellow',baseId:'human-bun-yellow::fixed'},
-   {artworkId:'human-blond-glasses',baseId:'human-blond-glasses::fixed'}
-  ];
-  const humanFitResults=[];
-  for(const target of humanStateCases){
-   await page.locator('#families [data-family="humans"]').click();await settled(page);
-   if((await project(page)).creation.artworkId!==target.artworkId){await page.locator('[data-look-template="'+target.artworkId+'"]').click();await settled(page);}
-   const recipe=await page.evaluate(async baseId=>{
-    const studioUrl=document.querySelector('script[src*="studio.js"]').src;
-    const {getTrustedModularCatalog}=await import(studioUrl.replace('studio.js','studio-composition-catalog.js'));
-    const catalog=getTrustedModularCatalog(),base=catalog.baseStates.find(item=>item.id===baseId);
-    const item=catalog.recipes.find(value=>value.baseId===baseId&&value.assetIds.includes('pilot-headphones-v1')&&value.assetIds.length===1);
-    return item&&base?{id:item.id,baseId:base.id,artworkId:base.artworkId,poseId:item.poseId,assetIds:item.assetIds,fitProfileRef:item.fitProfileRef}:null;
-   },target.baseId);
-   assert(recipe,`real registered headphone recipe for ${target.baseId}`);
-   assert.equal(recipe.artworkId,target.artworkId,'the recipe belongs to the selected built-in human look');
-   const selector='[data-modular-recipe="'+recipe.id+'"]';assert.equal(await page.locator(selector).count(),1,`${target.baseId} is selectable from its actual workbench`);
-   const cardTitle=(await page.locator(selector+' .look-template-name').textContent()).trim();
-   if(target.expectedTitle)assert.equal(cardTitle,target.expectedTitle,`${target.baseId} has the accurate card title`);
-   else assert.match(cardTitle,/^耳机 · (?:经典|挥手)$/,'the fixed human look card names its static base pose');
-   const baseline=await project(page);await page.locator(selector).click();await settled(page);
-   const modular=await project(page);assert.equal(modular.creation.composition?.kind,'modular',`human recipe ${recipe.id} did not resolve; toast=${await page.locator('#toast').textContent()}`);
-   assert.equal(modular.creation.composition.inputs.baseId,target.baseId,'the applied project keeps the exact state profile');
-   assert.equal(modular.creation.composition.recipeId,recipe.id);
-   assert(modular.creation.composition.assetRefs.some(ref=>ref.id==='pilot-headphones-v1'),'all human states use the same registered headphone kit');
-   assert.equal(modular.creation.composition.inputs.fitProfileRef.id,recipe.fitProfileRef.id);
-   assert.equal(await page.locator('#previewBadge').textContent().then(value=>/待美术确认/.test(value)),true,'the profile-specific result remains pending art approval');
-   await page.locator('#undo').click();await settled(page);assert.deepEqual(await project(page),baseline,'human module undo restores the exact preceding project');
-   await page.locator('#redo').click();await settled(page);assert.deepEqual(await project(page),modular,'human module redo restores exact refs and profile');
-   await importJSON(page,modular);await settled(page);assert.deepEqual(await project(page),modular,'human-state v2 import re-resolves the exact profile');
-   await noOverflow(page);const slug=target.baseId.replaceAll(':','-');
-   const path='human-state-'+slug+'-'+width+'.png';await page.screenshot({path:join(out,path)});
-   const canvasPath='human-state-'+slug+'-'+width+'-canvas.png';await canvasScreenshot(page,join(out,canvasPath));
-   const resolved=await page.evaluate(async()=>{const src=document.querySelector('script[src*="studio.js"]').src;const {resolveProjectComposition}=await import(src.replace('studio.js','studio-composition-resolver.js'));return resolveProjectComposition(JSON.parse(sessionStorage.getItem('dot-studio-project-v2')));});
-   assert.equal(resolved.availability,'available');assert.equal(resolved.composition.inputs.baseId,target.baseId);assert.deepEqual(resolved.composition,modular.creation.composition);
-   humanFitResults.push({viewportWidth:width,baseId:target.baseId,artworkId:target.artworkId,recipeId:recipe.id,poseId:recipe.poseId,profileRef:recipe.fitProfileRef,composition:modular.creation.composition,resolved,screenshot:path,canvasScreenshot:canvasPath});
-   adaptations.push({family:'humans',recipeId:recipe.id,baseId:target.baseId,composition:modular.creation.composition,resolved,screenshot:path,canvasScreenshot:canvasPath});
-   drafts.humans=modular;
-   if(width===768){await page.reload();await settled(page);assert.deepEqual(await project(page),modular,'human-state v2 reload preserves the exact registered recipe and fit refs');}
-  }
-  assert.equal(humanFitResults.length,4,'all three human looks and four exact human states are covered in the real workbench');
-  report.humanStateWorkbench??=[];report.humanStateWorkbench.push(...humanFitResults);
-  if(width===1440){
-   const fitFixture=await page.evaluate(async()=>{
-    const version=new URL(document.querySelector('script[src*="studio.js"]').src).search;
-    const [{getTrustedModularCatalog},{resolveModularComposition},{LayeredComposer}]=await Promise.all(['studio-composition-catalog','studio-composition-resolver','studio-composer'].map(name=>import('/'+name+'.js'+version)));
-    const trusted=getTrustedModularCatalog(),humanBaseIds=['candidate-humans-20261005::classic','candidate-humans-20261005::wave','human-bun-yellow::fixed','human-blond-glasses::fixed'];
-    const host=document.createElement('div');document.body.append(host);const composer=new LayeredComposer(host),outputs=[];
-    const digest=async value=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',value))].map(x=>x.toString(16).padStart(2,'0')).join('');
-    const fileDataUrl=blob=>new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.readAsDataURL(blob);});
-    let firstResolution=null;
-    try{
-     for(const baseId of [...humanBaseIds,humanBaseIds[0]]){
-      const base=trusted.baseStates.find(item=>item.id===baseId);
-      const recipe=trusted.recipes.find(item=>item.baseId===baseId&&item.assetIds.includes('pilot-headphones-v1')&&item.assetIds.length===1);
-      if(!base||!recipe?.fitProfileRef)throw new Error(`真实人形耳机适配或独立 profile 缺失：${baseId}`);
-      const resolution=resolveModularComposition({character:base.config,baseId:recipe.baseId,recipeId:recipe.id,assetIds:recipe.assetIds,poseId:recipe.poseId},{catalog:trusted});
-      if(resolution.availability!=='available'||!resolution.composition)throw new Error(`${baseId}: ${resolution.reason||'没有可解算的真实 recipe'}`);
-      if(resolution.approvalStatus==='approved')throw new Error(`${baseId}: 自动化工程 fixture 不得把待审人形适配标记为已获用户批准`);
-      await composer.updateResolved(resolution,{catalog:trusted});
-      const width=resolution.renderPlan.width,height=resolution.renderPlan.height,pixels=composer.context.getImageData(0,0,width,height).data;
-      let clearPixels=0,paintedPixels=0;for(let index=3;index<pixels.length;index+=4){if(pixels[index]===0)clearPixels++;if(pixels[index]>0)paintedPixels++;}
-      const pixelSha256=await digest(pixels),blob=await composer.capture(1254,{transparent:true});
-      const bitmap=await createImageBitmap(blob),pngWidth=bitmap.width,pngHeight=bitmap.height,probe=document.createElement('canvas');probe.width=pngWidth;probe.height=pngHeight;
-      const probeContext=probe.getContext('2d',{willReadFrequently:true});probeContext.drawImage(bitmap,0,0);const pngPixels=probeContext.getImageData(0,0,pngWidth,pngHeight).data;
-      let pngClearPixels=0,pngPaintedPixels=0;for(let index=3;index<pngPixels.length;index+=4){if(pngPixels[index]===0)pngClearPixels++;if(pngPixels[index]>0)pngPaintedPixels++;}bitmap.close();
-      const bytes=new Uint8Array(await blob.arrayBuffer()),fitRef=resolution.composition.inputs.fitRefs?.find(item=>item.assetId==='pilot-headphones-v1');
-      if(!fitRef)throw new Error(`${baseId}: resolver 未返回耳机 fitRef`);
-      const module=resolution.renderPlan.modules.find(item=>item.id==='pilot-headphones-v1');
-      if(!module?.parts?.length)throw new Error(`${baseId}: Canvas plan 未包含动态耳机部件`);
-      const dataUrl=await fileDataUrl(blob);
-      outputs.push({baseId,artworkId:base.artworkId,recipeId:recipe.id,poseId:recipe.poseId,profileRef:fitRef.fitProfileRef,
-       baseAssetRefs:base.assetRefs,headphoneAssetRef:resolution.composition.assetRefs.find(item=>item.id==='pilot-headphones-v1'),fitFingerprint:fitRef.fitFingerprint,
-       parts:module.parts,transformKey:JSON.stringify(module.parts.map(part=>part.transform)),pixelSha256,pngSha256:await digest(bytes),pngBytes:bytes.length,pngType:blob.type,
-       width:pngWidth,height:pngHeight,canvasClearPixels:clearPixels,canvasPaintedPixels:paintedPixels,pngClearPixels,pngPaintedPixels,approvalStatus:resolution.approvalStatus,dataUrl});
-      if(baseId===humanBaseIds[0]&&!firstResolution)firstResolution=resolution;
-     }
-     const classic=trusted.baseStates.find(item=>item.id===humanBaseIds[0]),classicRecipe=trusted.recipes.find(item=>item.baseId===humanBaseIds[0]&&item.assetIds.includes('pilot-headphones-v1')&&item.assetIds.length===1);
-     const unsupported=resolveModularComposition({character:classic.config,baseId:classicRecipe.baseId,recipeId:classicRecipe.id,assetIds:classicRecipe.assetIds,poseId:'front-unregistered-fit-fixture'},{catalog:trusted});
-     const tampered=structuredClone(firstResolution);tampered.renderPlan.modules.find(item=>item.id==='pilot-headphones-v1').parts[0].transform.e+=.1;
-     let tamperedRenderPlan='accepted';try{await composer.updateResolved(tampered);}catch{tamperedRenderPlan='rejected';}
-     if(tamperedRenderPlan!=='rejected')throw new Error('altered part matrix with unchanged fingerprints was accepted');
-     if(unsupported.availability!=='unsupported'||unsupported.composition!==null||unsupported.renderPlan!==null)throw new Error('unregistered pose did not remain unsupported');
-     return {sameTrustedHeadphoneKit:true,baseStateScope:humanBaseIds,unsupportedFixture:{availability:unsupported.availability,reason:unsupported.reason},tamperedRenderPlan,outputs};
-    }finally{composer.dispose();host.remove();}
-   });
-   assert.equal(fitFixture.outputs.length,5,'four real human states plus one identical-input repeat are captured');
-   const realOutputs=fitFixture.outputs.slice(0,4),repeat=fitFixture.outputs[4];
-   assert.deepEqual(realOutputs.map(output=>output.baseId),fitFixture.baseStateScope);
-   assert.equal(new Set(realOutputs.map(output=>output.profileRef.id)).size,4,'each real human state resolves through its own geometry profile');
-   assert.equal(new Set(realOutputs.map(output=>output.fitFingerprint)).size,4,'the same kit receives a distinct fit fingerprint for each real human profile');
-   assert.equal(new Set(realOutputs.map(output=>output.transformKey)).size,4,'actual per-state headphone parts use distinct geometry transforms');
-   assert(realOutputs.every(output=>JSON.stringify(output.headphoneAssetRef)===JSON.stringify(realOutputs[0].headphoneAssetRef)),'all four states use the exact same versioned headphone PNG kit');
-   assert(realOutputs.every(output=>output.pngType==='image/png'&&output.pngBytes>0&&output.width===1254&&output.height===1254),'each state exports a real 1254px PNG');
-   assert(realOutputs.every(output=>output.canvasClearPixels>0&&output.canvasPaintedPixels>0&&output.pngClearPixels>0&&output.pngPaintedPixels>0),'the Canvas and actual PNG both retain transparent and painted pixels');
-   assert.equal(repeat.baseId,realOutputs[0].baseId);assert.equal(repeat.fitFingerprint,realOutputs[0].fitFingerprint);
-   assert.equal(repeat.pixelSha256,realOutputs[0].pixelSha256,'same human geometry/profile input yields identical Canvas pixels');
-   assert.equal(repeat.pngSha256,realOutputs[0].pngSha256,'same human geometry/profile input yields identical transparent PNG bytes');
-   assert.equal(fitFixture.unsupportedFixture.availability,'unsupported');assert.equal(fitFixture.tamperedRenderPlan,'rejected');
-   for(const output of fitFixture.outputs){
-    const path='dynamic-fit-'+output.baseId.replaceAll(':','-')+(output===repeat?'-repeat':'')+'.png';await writeFile(join(out,path),Buffer.from(output.dataUrl.split(',')[1],'base64'));output.png=path;delete output.dataUrl;
-   }
-   report.dynamicFitFixture=fitFixture;
-   await page.locator('#families [data-family="dots"]').click();await settled(page);assert.deepEqual(await project(page),drafts.dots);
-   await page.locator('#families [data-family="meta-muse"]').click();await settled(page);assert.equal(await page.locator('#workbenchControls [data-path="background"], [data-setting="colors.background"]').count(),0);await page.locator('#advancedPromptSettings').evaluate(node=>node.open=true);await page.locator('#shape-advanced').evaluate(node=>node.open=true);await page.locator('[data-setting="name"]').fill('Muse draft');await page.locator('[data-setting="name"]').blur();const museDraft=await project(page);
-   await page.locator('#families [data-family="dots"]').click();await settled(page);assert.deepEqual(await project(page),drafts.dots,'Dots draft stays separate from Muse');
-   await page.locator('#families [data-family="meta-muse"]').click();await settled(page);assert.deepEqual(await project(page),museDraft,'Muse draft restores exact v2 project');
-   await page.locator('#families [data-family="animals"]').click();await settled(page);assert.deepEqual(await project(page),drafts.animals);report.familyDraftIsolation='pass';
-   report.tintFixture=await page.evaluate(async()=>{
-    const version=new URL(document.querySelector('script[src*="studio.js"]').src).search;
-    const [{getCompositionPack},{createLookCharacter},{resolveCompositionConfig,inspectCompositionPack},{LayeredComposer}]=await Promise.all(['studio-creation-assets','studio-model','studio-creation','studio-composer'].map(name=>import('/'+name+'.js'+version)));
-    const config=createLookCharacter('candidate-dots-20261005'),pack=structuredClone(getCompositionPack('dots','candidate-dots-20261005',config));
-    pack.editablePaths.push('colors.body');for(const layer of pack.layers)layer.tintPath='colors.body';
-    const host=document.createElement('div');document.body.append(host);const composer=new LayeredComposer(host);
-    await composer.update(pack,config);const before=[...composer.context.getImageData(620,620,1,1).data];
-    config.colors.body='#FF0000';const parsed=resolveCompositionConfig(pack,config);await composer.update(pack,config);
-    const after=[...composer.context.getImageData(620,620,1,1).data],blob=await composer.capture(1254,{transparent:true});
-    const digest=await crypto.subtle.digest('SHA-256',await blob.arrayBuffer());const sha256=[...new Uint8Array(digest)].map(x=>x.toString(16).padStart(2,'0')).join('');
-    const missingMask=structuredClone(pack);for(const layer of missingMask.layers)layer.src='./assets/qa/missing-mask.png';
-    const mismatch=structuredClone(pack);mismatch.editablePaths=mismatch.editablePaths.filter(path=>path!=='colors.body');
-    let missingMaskResult='available';try{await composer.update(missingMask,config);}catch{missingMaskResult='unsupported';}composer.dispose();host.remove();
-    return {resolvedBody:parsed.colors.body,before,after,exportBytes:blob.size,sha256,width:1254,height:1254,fixtureNotRegistered:true,missingMask:missingMaskResult,pathMismatch:inspectCompositionPack(mismatch,config).availability};
-   });
-   assert.equal(report.tintFixture.resolvedBody,'#FF0000');assert.notDeepEqual(report.tintFixture.before,report.tintFixture.after);assert(report.tintFixture.exportBytes>0);assert.equal(report.tintFixture.pathMismatch,'unsupported');assert.equal(report.tintFixture.missingMask,'unsupported');
-   const modular=await project(page);await page.locator('.project-menu summary').click();
-   assert.equal(await page.locator('[data-command="save-character"]').count(),0);
-   const dl=page.waitForEvent('download');await page.locator('[data-command="save-config"]').click();
-   const download=await dl;const path=join(out,'modular-project.json');await download.saveAs(path);
-   const saved=JSON.parse(await readFile(path,'utf8'));assert.deepEqual(saved,modular);assert.equal(saved.version,2);assert.equal(saved.character.version,10);
-   await page.locator('[data-look-template="candidate-animals-20261005"]').click();await settled(page);
-   const template=await project(page);assert.equal(template.creation.composition.kind,'template');
-   if(!await page.locator('.project-menu').evaluate(node=>node.open))await page.locator('.project-menu summary').click();
-   const templateDownload=page.waitForEvent('download');await page.locator('[data-command="save-config"]').click();
-   await (await templateDownload).saveAs(join(out,'template-project.json'));
-   assert.deepEqual(JSON.parse(await readFile(join(out,'template-project.json'),'utf8')),template);
-   await page.locator('#undo').click();await settled(page);assert.deepEqual(await project(page),saved);
-   await page.locator('#redo').click();await settled(page);assert.deepEqual(await project(page),template);
-   await page.reload();await settled(page);assert.deepEqual(await project(page),template);
-   await importJSON(page,template);await settled(page);assert.deepEqual(await project(page),template);
-   report.templateRoundtrip='pass';
-   await importJSON(page,saved);await settled(page);assert.deepEqual(await project(page),saved);
-   await page.reload();await settled(page);assert.deepEqual(await project(page),saved,'autosave recovery');
-   for(const bad of [{...saved,version:1},saved.character,...[6,7,8,9].map(version=>({...saved,character:{...saved.character,version}})),...['muse','pets'].map(family=>({...saved,character:{...saved.character,family}})),{...saved,creation:{...saved.creation,url:'https://example.invalid/image.png'}},{...saved,creation:{...saved.creation,composition:{...saved.creation.composition,layers:[]}}}]){
-    await importJSON(page,bad);await page.waitForFunction(()=>document.querySelector('#toast')?.classList.contains('visible'));
-    assert.deepEqual(await project(page),saved,'unsupported input changed current project');
-   }
-   const nullProject=structuredClone(saved);nullProject.character.notes='Prompt-only persistence fixture';nullProject.creation.composition=null;
-   await importJSON(page,nullProject);assert.deepEqual(await project(page),nullProject);assert(await page.locator('#exportImage').isDisabled());
-   await page.locator('#undo').click();await settled(page);assert.deepEqual(await project(page),saved);
-   await page.locator('#redo').click();assert.deepEqual(await project(page),nullProject);assert(await page.locator('#exportImage').isDisabled());
-   await page.reload();assert.deepEqual(await project(page),nullProject);assert(await page.locator('#exportImage').isDisabled());
-   report.nullRoundtrip='pass';
-   await importJSON(page,saved);await settled(page);
-   const promptDownload=page.waitForEvent('download');await page.locator('[data-command="export-prompt"]').click();const txt=await promptDownload;await txt.saveAs(join(out,'prompt-export.txt'));
-   // Prompt download is independently bound to the same live project state.
-   await page.locator('[data-command="copy"]').first().click();
-   const copied=await page.evaluate(()=>navigator.clipboard.readText());
-   const expected=await page.evaluate(async()=>{const m=await import(document.querySelector('script[src*="studio.js"]').src.replace('studio.js','studio-creation.js'));return m.buildCreationPrompt(JSON.parse(sessionStorage.getItem('dot-studio-project-v2')));});
-   assert.equal(copied,expected);assert.equal(await readFile(join(out,'prompt-export.txt'),'utf8'),expected);await writeFile(join(out,'prompt-readback.txt'),copied);
-   report.prompt={bytes:Buffer.byteLength(copied),sha256:hash(Buffer.from(copied)),method:'real browser clipboard readback'};
-  }
-  report.results.push({width,tagSemantics:'pass',browseIsolation:'pass',focusRestoration:'pass',overflow:'pass',adaptations});
-  await context.close();
+ await ready();
+ const eightCategories=[['style',['style']],['shape',['shape']],['facialFeatures',['facial-features']],['paletteMaterial',['color','material']],['clothing',['clothing']],['headAccessory',['head-accessory']],['bodyAccessory',['body-accessory']],['prop',['prop']]];
+ assert.deepEqual(FEATURE_CATEGORIES.map(category=>[category.key,category.dimensions]),eightCategories,'the visual fact ledger keeps all eight independently searchable categories');
+ const sixSlotMap=[['style',['style'],['style']],['appearance',['shape','facialFeatures'],['shape','facial-features']],['palette-material',['paletteMaterial'],['color','material']],['clothing',['clothing'],['clothing']],['accessory',['headAccessory','bodyAccessory'],['head-accessory','body-accessory']],['prop',['prop'],['prop']]];
+ assert.deepEqual(REVEAL_SLOTS.map(slot=>[slot.key,slot.categories,slot.kinds.flatMap(kind=>sixSlotMap.find(([key])=>key===slot.key)?.[2]||[])]),sixSlotMap,'the six public cards group the exact eight verified fact categories');
+ for(const artwork of ARTWORKS.filter(item=>item.status==='published')){
+  const grouped=revealFeaturesFor(artwork);assert.deepEqual(grouped.map(feature=>feature.kind),sixSlotMap.map(slot=>slot[0]),`${artwork.id} exposes six ordered Artwork-derived reveal facts`);
+  for(const [slotKey,,dimensions] of sixSlotMap){const facts=dimensions.map(dimension=>artwork.features?.[dimension]);const valueFacts=facts.some(fact=>fact?.state==='known')?facts.filter(fact=>fact?.state==='known'):facts.every(fact=>fact?.state==='not-applicable')?[]:facts.filter(fact=>fact?.state==='none');const expected=[...new Set(valueFacts.flatMap(fact=>Array.isArray(fact.ids)?fact.ids:typeof fact.id==='string'?[fact.id]:[]))];const actual=grouped.find(feature=>feature.kind===slotKey);assert.deepEqual(actual.value,expected,`${artwork.id} ${slotKey} card only reveals source feature IDs from its grouped dimensions`);}
  }
- assert.equal(report.errors.length,0,'page errors');report.status='pass';
-}catch(error){report.status='fail';report.failure=error.stack;process.exitCode=1;}
-finally{await browser.close();await writeFile(join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({status:report.status,out,results:report.results.length,failure:report.failure}));}
+ checks.push('eight typed feature categories map to six ordered reveal slots from actual Artwork facts');
+ assert.equal(await page.locator('[data-topic]').count(),5);assert.equal(await page.locator('.hero-group').count(),2);assert.equal(await page.locator('.topic-card .topic-foot').count(),0);assert.equal(await page.locator('dialog').count(),1);assert(!(await page.locator('body').innerText()).match(/登录|工作台|开始组装/));checks.push('cache90 home DOM, two hero groups/five topics, no legacy topic footer/workbench/account');
+ const browserTagIds=(await page.locator('#galleryTags [data-tag-id]').evaluateAll(nodes=>nodes.map(node=>node.dataset.tagId))).sort();assert.deepEqual(browserTagIds,publishedTags().map(tag=>tag.id).sort(),'every published typed tag remains available to gallery search');
+ await page.locator('[data-topic="dots"]').click();await page.waitForFunction(()=>document.body.dataset.screen==='gallery');assert.equal(await page.locator('[data-artwork-card]').count(),3);
+ await page.locator('#clearFilters').click();assert.equal(await page.locator('[data-artwork-card]').count(),15);
+ await page.locator('#gallerySearch').fill('眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);
+ await page.locator('#gallerySearch').fill('不可能找到的词');assert.equal(await page.locator('[data-artwork-card]').count(),0);await page.locator('#galleryEmpty').waitFor({state:'visible'});
+ await page.locator('#clearFilters').click();checks.push('topic/search/clear/empty');
+ await page.locator('#galleryTags [data-tag-id="style:dots"]').click();await page.locator('#galleryTags [data-tag-id="style:grok"]').click();assert.equal(await page.locator('[data-artwork-card]').count(),6);
+ await page.locator('#galleryTags summary').click();await page.locator('#galleryTags [data-tag-id="accessory:none"]').click();assert.equal(await page.locator('[data-artwork-card]').count(),3);await page.locator('#clearFilters').click();checks.push('browser same-dimension OR and cross-dimension AND');
+
+ await page.evaluate(()=>window.scrollTo(0,400));const before=await page.evaluate(()=>scrollY);const first=page.locator('#artworkGrid [data-artwork]').first();const trigger=await first.getAttribute('data-artwork');await first.click();await detail();const scrollAtOpen=await page.evaluate(()=>scrollY);const initialArtwork=ARTWORKS.find(artwork=>artwork.id===trigger);const firstDetail=await assertDetailContract(initialArtwork);assert.equal(await page.locator('#overlayBody').evaluate(el=>el.scrollTop),0,'fresh detail opens at its top');assert.equal(await page.locator('#overlayTitle').evaluate(el=>getComputedStyle(el).outlineStyle),'none','dialog title has no visible focus outline');
+ await page.keyboard.press('Tab');const keyboardFocus=await page.evaluate(()=>({id:document.activeElement.id,visible:document.activeElement.matches(':focus-visible'),outline:getComputedStyle(document.activeElement).outlineWidth}));assert.equal(keyboardFocus.id,'overlayClose');assert.equal(keyboardFocus.visible,true);assert.equal(keyboardFocus.outline,'3px');
+ await page.locator('.artwork-detail__button--primary').click();const prompt=await page.evaluate(()=>navigator.clipboard.readText());assert.equal(prompt,createSnapshot(trigger).prompt.text);
+ await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.querySelector('dialog').contains(document.activeElement)));
+ await page.keyboard.press('Escape');await closed();assert.equal(await page.evaluate(()=>document.activeElement.dataset.artwork),trigger);assert(Math.abs(await page.evaluate(()=>scrollY)-scrollAtOpen)<2);checks.push({detailRestore:{before,atOpen:scrollAtOpen,after:await page.evaluate(()=>scrollY)},clipboard:trigger,detailContract:firstDetail,keyboardFocus});
+ const fallbackArtwork=ARTWORKS[0];await page.locator(`#artworkGrid [data-artwork="${fallbackArtwork.id}"]`).click();await detail();await page.evaluate(()=>{window.__savedClipboard=Object.getOwnPropertyDescriptor(navigator,'clipboard');window.__savedExecCommand=Object.getOwnPropertyDescriptor(document,'execCommand');Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new Error('fixture clipboard denied');}}});Object.defineProperty(document,'execCommand',{configurable:true,value:()=>false});});
+ await page.locator('.artwork-detail__button--primary').click();await page.locator('.artwork-detail__copy-fallback').waitFor({state:'visible'});assert.equal(await page.locator('.artwork-detail__prompt-text').inputValue(),createSnapshot(fallbackArtwork.id).prompt.text);assert(await page.locator('.artwork-detail__prompt-text').evaluate(el=>el===document.activeElement));await page.locator('#overlayClose').click();await closed();await page.evaluate(()=>{if(window.__savedClipboard)Object.defineProperty(navigator,'clipboard',window.__savedClipboard);else delete navigator.clipboard;if(window.__savedExecCommand)Object.defineProperty(document,'execCommand',window.__savedExecCommand);else delete document.execCommand;});
+ await page.locator(`#artworkGrid [data-artwork="${fallbackArtwork.id}"]`).click();await detail();await page.evaluate(()=>{window.__pendingCopyToast=document.querySelector('#toast').textContent;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>new Promise((resolve,reject)=>{window.__rejectPendingClipboard=reject;})}});});
+ await page.locator('.artwork-detail__button--primary').click();await page.waitForFunction(()=>typeof window.__rejectPendingClipboard==='function');await page.locator('#overlayClose').click();await closed();const cancelFocus=await page.evaluate(()=>document.activeElement.dataset.artwork);assert.equal(cancelFocus,fallbackArtwork.id);await page.evaluate(()=>window.__rejectPendingClipboard(new Error('late clipboard denial')));await page.waitForTimeout(120);assert.equal(await page.evaluate(()=>document.activeElement.dataset.artwork),fallbackArtwork.id);assert.equal(await page.locator('#toast').innerText(),await page.evaluate(()=>window.__pendingCopyToast));await page.evaluate(()=>{if(window.__savedClipboard)Object.defineProperty(navigator,'clipboard',window.__savedClipboard);else delete navigator.clipboard;});checks.push('clipboard success/failure fallback and disposed late rejection preserve focus without stale toast');
+ await page.setViewportSize({width:390,height:700});await page.locator('#gallerySearch').fill('眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);await page.evaluate(()=>window.scrollTo({top:420,behavior:'instant'}));const tagBackRequested=await page.evaluate(()=>({scroll:scrollY,search:document.querySelector('#gallerySearch').value}));assert(tagBackRequested.scroll>0);
+ const tagArtwork=ARTWORKS.find(artwork=>artwork.id==='dots-rose-glasses'),tagArtworkTrigger=page.locator(`#artworkGrid [data-artwork="${tagArtwork.id}"]`);await tagArtworkTrigger.scrollIntoViewIfNeeded();const tagDetailOpenScroll=await page.evaluate(()=>scrollY);await tagArtworkTrigger.click();await detail();const tagActualOpenScroll=await page.evaluate(()=>scrollY);assert.equal(tagActualOpenScroll,tagDetailOpenScroll,'record the actual gallery position at the detail-open event after Playwright brings its trigger into view');await page.locator('.artwork-detail__tags:not(.artwork-detail__tags--more) .artwork-detail__tag[data-tag-id="style:dots"]').click();await page.waitForFunction(()=>{const [route,query='']=location.hash.slice(1).split('?');return document.body.dataset.screen==='gallery'&&route==='gallery'&&new URLSearchParams(query).get('style')==='style:dots';});
+ assert.equal(await page.locator('#gallerySearch').inputValue(),'');assert.equal(await page.locator('[data-artwork-card]').count(),3);assert.equal(await page.evaluate(()=>document.activeElement.id),'galleryTitle');assert.equal(await page.evaluate(()=>history.state.page),'gallery');
+ await page.goBack();await page.waitForFunction(()=>location.hash.includes('q=')&&document.querySelector('#gallerySearch')?.value==='眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);await page.waitForFunction(id=>document.activeElement?.dataset?.artwork===id,tagArtwork.id);const restoredGalleryScroll=await page.evaluate(()=>scrollY);assert(Math.abs(restoredGalleryScroll-tagActualOpenScroll)<2,`gallery Back restores click-time scroll ${tagActualOpenScroll}; observed ${restoredGalleryScroll} (pre-click requested ${tagBackRequested.scroll})`);const restoredNodeState=await page.evaluate(id=>{window.__restoredArtworkCard=[...document.querySelectorAll('#artworkGrid [data-artwork]')].find(node=>node.dataset.artwork===id);window.__restoredArtworkFocus=document.activeElement;return {scroll:scrollY,focusArtwork:document.activeElement.dataset.artwork,cardFound:!!window.__restoredArtworkCard};},tagArtwork.id);assert.equal(restoredNodeState.focusArtwork,tagArtwork.id);assert.equal(restoredNodeState.cardFound,true);await page.evaluate(()=>{const url=location.href;window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL:url,newURL:url}));return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});const lateHashState=await page.evaluate(()=>({sameCard:document.querySelector('#artworkGrid [data-artwork="dots-rose-glasses"]')===window.__restoredArtworkCard,sameFocus:document.activeElement===window.__restoredArtworkFocus,focusArtwork:document.activeElement.dataset.artwork,scroll:scrollY}));assert.equal(lateHashState.sameCard,true,'late same-URL hashchange must not replace the restored Gallery card node');assert.equal(lateHashState.sameFocus,true,'late same-URL hashchange must preserve the restored card focus');assert.equal(lateHashState.focusArtwork,tagArtwork.id);assert.equal(lateHashState.scroll,restoredGalleryScroll);checks.push({detailTagRoute:{tag:'style:dots',newCount:3,restoredQuery:tagBackRequested.search,requestedScroll:tagBackRequested.scroll,atOpen:tagActualOpenScroll,back:restoredGalleryScroll,focusArtwork:tagArtwork.id},lateHashchange:lateHashState});await page.locator('#clearFilters').click();await page.setViewportSize({width:1440,height:1000});
+ const overlayReturns=[];await page.setViewportSize({width:390,height:700});
+ for(const closeBy of ['close-button','escape','back-button','browser-back','backdrop']){
+  await page.setViewportSize({width:closeBy==='backdrop'?1440:390,height:closeBy==='backdrop'?500:700});
+  await page.locator(`#artworkGrid [data-artwork="${ARTWORKS[2].id}"]`).click();await detail();await assertDetailContract(ARTWORKS[2]);await page.locator('.artwork-detail__prompt-details summary').click();await page.locator('.artwork-detail__language-select').selectOption('en');await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);
+  await page.locator('.artwork-detail__asset-details summary').click();const ref=page.getByRole('button',{name:'用参考图继续创作',exact:true});await ref.scrollIntoViewIfNeeded();await ref.focus();
+  const state=await page.evaluate(()=>({scroll:document.querySelector('#overlayBody').scrollTop,pageScroll:scrollY}));assert(state.scroll>0,'Nested detail must actually be scrolled for restoration check');await page.keyboard.press('Enter');await page.locator('.reference-assist').waitFor();await page.locator('.reference-assist__description').fill('保留眼镜，换成挥手动作');assert.equal(await page.locator('input[type=file]').count(),0);
+  if(closeBy==='close-button')await page.locator('#overlayClose').click();else if(closeBy==='escape')await page.keyboard.press('Escape');else if(closeBy==='back-button')await page.locator('#overlayBack').click();else if(closeBy==='browser-back')await page.goBack();else await page.mouse.click(10,10);
+  await detail();await page.waitForFunction(()=>document.activeElement?.textContent==='用参考图继续创作'&&history.state?.overlayTrail?.length===1);
+  assert.equal(await page.locator('.artwork-detail__language-select').inputValue(),'en');assert.equal(await page.locator('.artwork-detail__prompt-preview').innerText(),promptFor(ARTWORKS[2],{language:'en'}));assert.equal(await page.locator('.artwork-detail__asset-details').evaluate(el=>el.open),true);
+  assert(Math.abs(await page.locator('#overlayBody').evaluate(el=>el.scrollTop)-state.scroll)<2);assert.equal(await page.evaluate(()=>scrollY),state.pageScroll);assert.equal(await page.evaluate(()=>document.body.style.overflow),'hidden');assert.equal(await page.locator('dialog[open]').count(),1);
+  await page.keyboard.press('Enter');assert.equal(await page.locator('.reference-assist__description').inputValue(),'保留眼镜，换成挥手动作');await page.keyboard.press('Escape');await detail();await page.waitForFunction(()=>history.state?.overlayTrail?.length===1);await page.locator('#overlayClose').click();await closed();overlayReturns.push({closeBy,language:'en',focus:'reference trigger',scroll:state.scroll,pageScroll:state.pageScroll,referenceDescriptionRetainedWithinOverlay:true});
+ }
+ checks.push({detailReferenceReturns:overlayReturns});await page.setViewportSize({width:1440,height:1000});
+ for(const artwork of ARTWORKS){
+  await page.locator(`#artworkGrid [data-artwork="${artwork.id}"]`).click();await detail();await assertDetailContract(artwork);const paint=await inspectRenderedImage(page.locator('.artwork-detail__image'),getAsset(artwork.assetRefs.original),{allowVerifiedBlob:true});detailPaints.push({artworkId:artwork.id,...paint});await page.locator('.artwork-detail__prompt-details summary').click();
+  for(const language of ['zh','en']){await page.locator('.artwork-detail__language-select').selectOption(language);await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);await page.locator('.artwork-detail__button--primary').click();const copied=await page.evaluate(()=>navigator.clipboard.readText());assert.equal(copied,promptFor(artwork,{language}));promptCopies.push({artworkId:artwork.id,language,text:copied});}
+  const event=page.waitForEvent('download');await page.getByRole('button',{name:'下载原图',exact:true}).click();const download=await event;const target=path.join(output,artwork.id+'.png');await download.saveAs(target);const bytes=await fs.readFile(target),asset=getAsset(artwork.assetRefs.original);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256);assert.equal(bytes.length,asset.byteSize);const alpha=await inspectPngAlpha(bytes);assert.equal(alpha.width,asset.width);assert.equal(alpha.height,asset.height);assert.equal(alpha.transparentPixels,asset.alpha.transparentPixels);assert.equal(alpha.opaquePixels,asset.alpha.opaquePixels);assert.equal(alpha.partialAlphaPixels,asset.alpha.partialAlphaPixels);downloads.push({artworkId:artwork.id,file:target,sha256:asset.sha256,width:asset.width,height:asset.height,bytes:bytes.length,alpha});await page.locator('#overlayClose').click();await closed();
+ }checks.push('15 actual native PNG downloads SHA/bytes');checks.push('30 actual Chinese/English artwork clipboard reads');
+
+ const responsiveTags=[];for(const width of [390,320]){await page.setViewportSize({width,height:800});for(const artwork of ARTWORKS){await page.locator(`#artworkGrid [data-artwork="${artwork.id}"]`).click();await detail();const state=await assertDetailContract(artwork,{checkTagRows:true});assert.equal(await page.locator('#overlayBody').evaluate(el=>el.scrollTop),0);await noOverflow('dialog');responsiveTags.push({width,artworkId:artwork.id,rows:state.rows.length});await page.locator('#overlayClose').click();await closed();}}checks.push({responsiveArtworkTags:responsiveTags});await page.setViewportSize({width:1440,height:1000});
+
+ await page.locator('[data-page="game"]').click();assert.equal(await page.locator('.game-scope,.random-scope,#gameSearch,#requiredFeatures').count(),0);
+ const expectedSlots=['style','appearance','palette-material','clothing','accessory','prop'];
+ const assertSixCardReady=async root=>{
+  const state=await page.locator(`${root} .fr-view`).evaluate(view=>({phase:view.dataset.phase,slotCount:view.querySelectorAll('.fr-reel').length,slots:[...view.querySelectorAll('.fr-reel')].map(card=>card.dataset.slot),backs:view.querySelectorAll('.fr-card-back').length,resultHidden:view.querySelector('.fr-result-card').hidden,lockHidden:view.querySelector('.fr-feature-locks').hidden,centerImages:view.querySelectorAll('.fr-reel-track img').length,randomHidden:view.querySelector('[data-fr="random"]').hidden}));
+  assert.equal(state.phase,'ready');assert.equal(state.slotCount,6);assert.deepEqual(state.slots,expectedSlots);assert.equal(state.backs,6);assert.equal(state.resultHidden,true);assert.equal(state.lockHidden,true);assert.equal(state.centerImages,0);assert.equal(state.randomHidden,false);
+  return state;
+ };
+ await assertSixCardReady('#gameReveal');await screenshot('cards-ready-game-desktop');
+ await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await screenshot('cards-rolling-desktop');
+ const order=await page.evaluate(()=>new Promise(resolve=>{
+  const view=document.querySelector('#gameReveal .fr-view'),landed=[];let prematureResult=false;
+  const collect=()=>{for(const reel of view.querySelectorAll('.fr-reel.is-landed'))if(!landed.includes(reel.dataset.index))landed.push(reel.dataset.index);if(landed.length<6&&!view.querySelector('.fr-result-card').hidden)prematureResult=true;};
+  const snapshot=()=>({order:landed,result:view.dataset.artworkId,reels:view.querySelectorAll('.fr-reel').length,
+   prematureResult,slots:[...view.querySelectorAll('.fr-reel')].map(el=>el.dataset.slot),
+   centers:[...view.querySelectorAll('.fr-reel')].map(el=>{const visual=el.querySelector('.fr-reel-item.is-centered .fr-reel-visual');return {artworkId:el.dataset.centerArtwork,value:el.dataset.centerValue,slot:el.dataset.slot,stopped:el.dataset.stopped,visual:visual?{kind:visual.dataset.visualKind,visualId:visual.dataset.visualId,src:visual.querySelector('img')?.currentSrc||'',hasSvg:!!visual.querySelector('svg'),images:visual.querySelectorAll('img').length,sourceArtwork:visual.dataset.sourceArtwork||'',sourceAsset:visual.dataset.sourceAsset||'',sourceHash:visual.dataset.sourceHash||'',sourceRect:visual.dataset.sourceRect||''}:null};}),
+   operations:[...view.querySelectorAll('.fr-actions [data-fr]')].filter(el=>!el.hidden).map(el=>el.dataset.fr),
+   extraActions:[...view.querySelectorAll('.fr-extra-actions [data-fr]')].filter(el=>!el.hidden).map(el=>el.dataset.fr),detail:!view.querySelector('.fr-result-detail').hidden});
+  const observer=new MutationObserver(()=>{collect();if(view.dataset.phase==='result'){observer.disconnect();resolve(snapshot());}});observer.observe(view,{subtree:true,attributes:true});collect();if(view.dataset.phase==='result'){observer.disconnect();resolve(snapshot());}
+ }));
+ assert.equal(order.order.length,6);assert.equal(order.reels,6);assert.deepEqual(order.order,['0','1','2','3','4','5']);assert.deepEqual(order.slots,expectedSlots);assert.equal(order.prematureResult,false,'the completed Artwork is hidden until all six cards stop');assert.deepEqual([...order.operations].sort(),['copy','download','random'].sort());assert.deepEqual(order.extraActions,['chatgpt']);assert.equal(order.detail,true);checks.push({sequentialSixCards:order});
+ const drawn=createSnapshot(order.result);for(const card of order.centers){assert.equal(card.artworkId,drawn.artworkId);assert.equal(card.stopped,'true');}
+ const styleAsset=getAsset(drawn.artwork.assetRefs.thumbnail||drawn.artwork.assetRefs.original);assert.equal(order.centers[0].visual.kind,'artwork-preview');assert.equal(order.centers[0].visual.visualId,`artwork-preview:${drawn.artworkId}`);await inspectRenderedImage(page.locator('#gameReveal .fr-reel[data-slot="style"] .fr-reel-item.is-centered .fr-reel-visual'),styleAsset,{allowVerifiedBlob:true});
+ for(const card of order.centers.filter(card=>card.slot!=='style')){
+  assert(['source-crop','empty-value'].includes(card.visual.kind),`${card.slot} uses a registered source crop or an explicit empty-value card`);assert.equal(card.visual.hasSvg,false,`${card.slot} does not use synthetic pictograms`);
+  if(card.visual.kind==='source-crop'){
+   assert.equal(card.visual.images,1,`${card.slot} renders one registered source crop`);assert(card.visual.sourceArtwork&&card.visual.sourceAsset&&/^[a-f0-9]{64}$/.test(card.visual.sourceHash),`${card.slot} crop records its source Artwork, Asset and hash`);
+   const sourceArtwork=ARTWORKS.find(item=>item.id===card.visual.sourceArtwork),cropAsset=getAsset(card.visual.sourceAsset);assert(sourceArtwork&&cropAsset,`${card.slot} crop resolves to a published source and registered asset`);assert.equal(cropAsset.ownerArtworkId,sourceArtwork.id);assert.equal(cropAsset.sha256,card.visual.sourceHash);assert.equal(cropAsset.resourceKind,'transparent-character-still');
+   const rect=JSON.parse(card.visual.sourceRect);assert.equal(rect.length,4);assert(rect.every(Number.isFinite)&&rect[0]>=0&&rect[1]>=0&&rect[2]>0&&rect[3]>0&&rect[0]+rect[2]<=1&&rect[1]+rect[3]<=1,`${card.slot} crop rectangle stays inside its source image`);
+   const cropLocator=page.locator(`#gameReveal .fr-reel[data-slot="${card.slot}"] .fr-reel-item.is-centered .fr-reel-visual`);const cropPaint=await inspectRenderedImage(cropLocator,cropAsset,{allowVerifiedBlob:true});assert(cropPaint.visiblePixels>0);assert.equal(await cropLocator.getAttribute('data-source-rect'),JSON.stringify(rect));
+  }else assert.equal(card.visual.images,0,`${card.slot} empty value contains no invented image`);
+ }
+ const resultPaint=await inspectRenderedImage(page.locator('#gameReveal .fr-result-image'),drawn.asset,{allowVerifiedBlob:true});await screenshot('random-result-desktop');checks.push({resultPaint});
+ let unblockDownload;let signalDownloadRequest;let downloadBlocked=false;const downloadRequestSeen=new Promise(resolve=>{signalDownloadRequest=resolve;});const downloadGate=new Promise(resolve=>{unblockDownload=resolve;});const aUrl=new URL(drawn.asset.path,base).href;
+ await page.route(aUrl,async route=>{if(route.request().resourceType()==='fetch'&&!downloadBlocked){downloadBlocked=true;signalDownloadRequest();await downloadGate;try{await route.continue();}catch{}return;}await route.continue();});
+ const aDownloadEvent=page.waitForEvent('download',{timeout:0});await page.locator('#gameReveal [data-fr="download"]').click();let downloadRequestTimeout;try{await Promise.race([downloadRequestSeen,new Promise((_,reject)=>{downloadRequestTimeout=setTimeout(()=>reject(new Error('Frozen Artwork A download did not reach its registered PNG request.')),10000);})]);}finally{clearTimeout(downloadRequestTimeout);}
+ await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await page.waitForFunction(id=>{const view=document.querySelector('#gameReveal .fr-view');return view?.dataset.phase==='result'&&view.dataset.artworkId!==id;},drawn.artworkId,{timeout:15000});const rerolledId=await page.locator('#gameReveal .fr-view').getAttribute('data-artwork-id');assert.notEqual(rerolledId,drawn.artworkId);unblockDownload();
+ let downloadEventTimeout;const aDownload=await Promise.race([aDownloadEvent,new Promise((_,reject)=>{downloadEventTimeout=setTimeout(()=>reject(new Error('Frozen Artwork A download did not complete within 15 seconds after releasing its request.')),15000);})]).finally(()=>clearTimeout(downloadEventTimeout)),aDownloadPath=path.join(output,'reroll-race-original-A.png');await aDownload.saveAs(aDownloadPath);const aBytes=await fs.readFile(aDownloadPath);assert.equal(crypto.createHash('sha256').update(aBytes).digest('hex'),drawn.asset.sha256,'reroll does not replace the in-flight download snapshot');drawDownloads.push({artworkId:drawn.artworkId,file:aDownloadPath,sha256:drawn.asset.sha256,operation:'A download completed after B reroll'});await page.unroute(aUrl);const currentDrawn=createSnapshot(rerolledId);await screenshot('random-reroll-B-result-desktop');
+ await page.locator('#gameReveal [data-fr="copy"]').click();assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),currentDrawn.prompt.text);
+ await page.evaluate(()=>{window.__openURLs=[];window.open=url=>{window.__openURLs.push(url);return {opener:null};};});
+ await page.locator('#gameReveal [data-fr="chatgpt"]').click();await page.waitForFunction(()=>window.__openURLs.length===1);const opened=await page.evaluate(()=>window.__openURLs[0]);assert.equal(new URL(opened).origin,'https://chatgpt.com');assert.equal(new URL(opened).searchParams.get('prompt'),currentDrawn.prompt.text);
+ await page.locator('#gameReveal [data-fr="detail"]').click();await detail();assert.equal((await page.locator('.artwork-detail__prompt-preview').textContent()).trim(),currentDrawn.prompt.text);
+ const drawEvent=page.waitForEvent('download');await page.getByRole('button',{name:'下载原图',exact:true}).click();const drawFile=await drawEvent,drawPath=path.join(output,'draw-'+currentDrawn.artworkId+'.png');await drawFile.saveAs(drawPath);assert.equal(crypto.createHash('sha256').update(await fs.readFile(drawPath)).digest('hex'),currentDrawn.asset.sha256);drawDownloads.push({artworkId:currentDrawn.artworkId,file:drawPath,sha256:currentDrawn.asset.sha256,prompt:currentDrawn.prompt.text});
+ assert.equal(await page.locator('.artwork-detail__media').evaluate(el=>getComputedStyle(el).backgroundImage),'none');const tagPlacement=await page.locator('.artwork-detail__tags:not(.artwork-detail__tags--more)').evaluate(el=>{const tag=el.getBoundingClientRect(),media=document.querySelector('.artwork-detail__media').getBoundingClientRect();return {text:el.textContent,viewportWidth:innerWidth,tagLeft:tag.left,tagTop:tag.top,mediaRight:media.right,mediaBottom:media.bottom};});if(tagPlacement.viewportWidth<=700)assert(tagPlacement.tagTop>=tagPlacement.mediaBottom-1,'mobile detail tags follow the large image');else assert(tagPlacement.tagLeft>=tagPlacement.mediaRight-1,'desktop detail tags sit in the right-hand information column');assert(!/风格：|背景：|动作：|配饰：/.test(tagPlacement.text));
+ await page.locator('#overlayClose').click();await closed();assert.equal(await page.locator('#gameReveal .fr-view').getAttribute('data-phase'),'result');
+ const lockPanel=page.locator('#gameReveal .fr-feature-locks');assert.equal(await lockPanel.evaluate(el=>el.open),false,'feature locks begin collapsed after a completed result');await lockPanel.locator('summary').click();
+ const lockChoices=await page.locator('#gameReveal .fr-view').evaluate(view=>{const choices=[...view.querySelectorAll('.fr-lock-option input')].map((input,index)=>({index,ids:JSON.parse(input.dataset.featureIds||'[]')})).filter(choice=>choice.ids.length);const selected=[],indexes=[];for(const choice of choices){const added=choice.ids.filter(id=>!selected.includes(id));if(added.length){indexes.push(choice.index);selected.push(...added);if(indexes.length===2)break;}}return {selected:[...new Set(selected)],indexes,checkboxes:choices.length,summary:view.querySelector('.fr-feature-locks summary').textContent};});assert(lockChoices.checkboxes>=2);assert(lockChoices.indexes.length===2);assert(lockChoices.selected.length>=2);assert(/保留|锁定/.test(lockChoices.summary));for(const index of lockChoices.indexes)await page.locator('#gameReveal .fr-lock-option input').nth(index).check();const lockChoiceState={selected:lockChoices.selected,checkboxes:lockChoices.checkboxes,summary:lockChoices.summary};
+ await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='result');const lockedResult=createSnapshot(await page.locator('#gameReveal .fr-view').getAttribute('data-artwork-id'));assert(lockChoiceState.selected.every(id=>lockedResult.artwork.featureIds.includes(id)),'all locked values are AND requirements on the next draw');await lockPanel.locator('summary').click();checks.push({featureLocks:{selected:lockChoiceState.selected,resultArtwork:lockedResult.artworkId,semantics:'AND'}});
+ checks.push('six sequential cards and primary image/Prompt operations; frozen clipboard, prefilled URL and detail raw download; plain image surface and tags below');
+ await page.locator('[data-command="random"]').last().click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await assertSixCardReady('#studioOverlay');await screenshot('cards-ready-modal-desktop');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const frozen=await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id');
+ await page.locator('#studioOverlay [data-fr="detail"]').click();await detail();await page.locator('#overlayBack').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),frozen);assert.equal(await page.locator('#studioOverlay .fr-reel.is-landed').count(),6);await page.goBack();await closed();await page.goForward();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await page.locator('#overlayClose').click();await closed();checks.push('modal opens with six backs and no draw; skip; frozen detail/back/Forward; single dialog and same result model');
+ await page.locator('[data-page="home"]').click();await page.waitForFunction(()=>document.body.dataset.screen==='home');await page.locator('.hero-actions [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const cancelArtwork=createSnapshot(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id')),cancelUrl=new URL(cancelArtwork.asset.path,base).href;let releaseCancelledRoute,signalCancelledRequest;const cancelledRequestSeen=new Promise(resolve=>{signalCancelledRequest=resolve;});const cancelledGate=new Promise(resolve=>{releaseCancelledRoute=resolve;});await page.route(cancelUrl,async route=>{if(route.request().resourceType()==='fetch'){signalCancelledRequest();await cancelledGate;try{await route.continue();}catch{}return;}await route.continue();});
+ const lateDownload=page.waitForEvent('download',{timeout:1500}).then(()=>true,()=>false);await page.locator('#studioOverlay [data-fr="download"]').click();let cancelledRequestTimeout;try{await Promise.race([cancelledRequestSeen,new Promise((_,reject)=>{cancelledRequestTimeout=setTimeout(()=>reject(new Error('Cancelled random download did not reach its registered PNG request.')),10000);})]);}finally{clearTimeout(cancelledRequestTimeout);}const toastBeforeDispose=await page.locator('#toast').textContent();await page.locator('#overlayClose').click();await closed();releaseCancelledRoute();assert.equal(await lateDownload,false,'closing random overlay aborts the in-flight image download before an anchor download');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>document.activeElement?.dataset?.command),'random');assert.equal(await page.locator('#toast').textContent(),toastBeforeDispose);await page.unroute(cancelUrl);checks.push('closing a random overlay cancels its in-flight download and does not write stale feedback');
+ await page.locator('.global-reference').click();await page.locator('.reference-assist').waitFor();assert.equal(await page.locator('input[type=file]').count(),0);await page.locator('.reference-assist__description').fill('保留眼镜，换成挥手动作');const referencePrompt=await page.locator('.reference-assist__prompt-preview').innerText();assert(referencePrompt.includes('保留眼镜'));assert(/如果.*上传|若.*上传/.test(referencePrompt));await screenshot('reference-desktop');await page.locator('#overlayClose').click();await closed();checks.push('reference description/template only; conditional ChatGPT image upload');
+ await page.locator('[data-page="gallery"]').click();await page.locator('#gallerySearch').fill('用于空池验证的无结果词');await page.locator('#galleryPortal [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='empty');assert.equal(await page.locator('#studioOverlay .fr-card-back').count(),6);assert.equal(await page.locator('#studioOverlay .fr-result-card').evaluate(el=>el.hidden),true);assert.equal(await page.locator('#studioOverlay .fr-reel.is-landed').count(),0);await page.locator('#overlayClose').click();await closed();checks.push('current gallery scope empty before animation without silent relaxing');
+ await page.locator('#gallerySearch').fill(ARTWORKS[0].title);assert.equal(await page.locator('[data-artwork-card]').count(),1);const brokenAsset=getAsset(ARTWORKS[0].assetRefs.original),broken=new URL(brokenAsset.path,base).href;await page.route(broken,route=>route.request().resourceType()==='fetch'?route.fulfill({status:404,body:'missing'}):route.continue());await page.locator('#galleryPortal [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='error');assert(!(await page.locator('#studioOverlay .fr-status').innerText()).includes('生成完成'));await page.unroute(broken);await page.locator('#studioOverlay [data-fr="retry-resources"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),ARTWORKS[0].id);await page.locator('#overlayClose').click();await closed();await page.locator('#clearFilters').click();checks.push('single filtered candidate; real registered PNG 404 has no fake reveal and explicit retry');
+ await page.locator('[data-page="home"]').click();await page.locator('.hero-actions [data-command="random"]').click();await page.locator('#overlayClose').click();await closed();await page.locator('.hero-actions [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const reopened=await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id');await page.waitForTimeout(200);assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),reopened);await page.locator('#overlayClose').click();await closed();checks.push('quick close/reopen starts one fresh run with no stale result writes');
+ await page.emulateMedia({reducedMotion:'reduce'});await page.locator('[data-page="home"]').click();await page.locator('.hero-actions [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await page.locator('#overlayClose').click();await closed();checks.push('reduced motion same valid revealed state after explicit start');
+ await page.locator('#toast').waitFor({state:'hidden',timeout:6000});
+ await page.emulateMedia({reducedMotion:'no-preference'});
+ for(const width of [1440,768,390,320]){
+  await page.setViewportSize({width,height:900});
+  await ready();
+  for(const screen of ['home','gallery','game']){await page.locator(`[data-page="${screen}"]`).click();if(screen==='game'){await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await noOverflow();if(width<=390){const strip=await page.locator('#gameReveal .fr-reel-stage').evaluate(el=>({clientWidth:el.clientWidth,scrollWidth:el.scrollWidth,first:el.children[0].getBoundingClientRect().toJSON(),second:el.children[1].getBoundingClientRect().toJSON(),host:el.getBoundingClientRect().toJSON(),aspect:(()=>{const r=el.children[0].getBoundingClientRect();return r.width/r.height;})()}));assert(strip.scrollWidth>strip.clientWidth,'the mobile six-card rail can scroll horizontally');assert(strip.second.left<strip.host.right&&strip.second.right>strip.host.left,'the current and adjacent card remain visible together');assert(Math.abs(strip.aspect-5/6)<.06,'mobile rolling cards keep the selected short-card proportion');await screenshot(`game-revealing-${width}`);}await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='result');}await noOverflow();await screenshot(`${screen}-${width}`);}
+  await page.locator('[data-page="gallery"]').click();await page.locator('#artworkGrid [data-artwork]').first().click();await detail();await noOverflow('dialog');await screenshot('detail-'+width);await page.locator('#overlayClose').click();await closed();
+  await page.locator('.global-reference').click();await noOverflow('dialog');await screenshot('reference-'+width);await page.locator('#overlayClose').click();await closed();
+  await page.locator('#galleryPortal [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='ready');await assertSixCardReady('#studioOverlay');await page.locator('#studioOverlay [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await noOverflow('dialog');await screenshot('random-'+width);await page.locator('#overlayClose').click();await closed();
+ }checks.push('1440/768/390/320 CSS viewport six surfaces no horizontal overflow');
+ await page.evaluate(()=>localStorage.setItem('dot-studio-project-v1','unchanged-invalid-old-project'));await page.evaluate(()=>location.hash='#gallery?style=style%3Agrok');await page.waitForFunction(()=>location.hash==='#gallery?style=style%3Agrok'&&document.body.dataset.screen==='gallery'&&document.querySelectorAll('[data-artwork-card]').length===3);checks.push('manual hash navigation filters exactly the three published Grok artworks');await page.evaluate(()=>location.hash='#home');await page.waitForFunction(()=>location.hash==='#home'&&document.body.dataset.screen==='home');await page.evaluate(()=>location.hash='#workspace');await page.waitForFunction(()=>location.hash==='#workspace'&&document.body.dataset.screen==='home');assert.equal(await page.evaluate(()=>localStorage.getItem('dot-studio-project-v1')),'unchanged-invalid-old-project');checks.push('unknown #workspace route safely falls back Home without legacy project migration');await page.evaluate(()=>location.hash='#gallery?unknown=bad');await page.waitForFunction(()=>location.hash==='#gallery?unknown=bad'&&document.body.dataset.screen==='gallery'&&document.querySelector('#queryError')?.checkVisibility()&&document.querySelectorAll('[data-artwork-card]').length===0);checks.push('unknown query fails closed');
+ const retirementEvidence='design/acceptance/current-20261007-v87/asset-retirement.json';const retiredAssets=JSON.parse(await fs.readFile(retirementEvidence)).moved;
+ for(const asset of retiredAssets){const url=new URL(asset.originalPath.slice('dist/'.length),base).href,response=await context.request.get(url);assert.equal(response.status(),404,`Retired static asset still reachable: ${asset.originalPath}`);retiredAssetResponses.push({originalPath:asset.originalPath,status:response.status()});}
+ checks.push('all retired static asset URLs return 404');
+ const moduleRequests=network.filter(url=>/\.js(?:\?|$)/.test(url));assert(!moduleRequests.some(url=>/studio-(?:creation|composer|model|looks|composition)|live-runtime|three/.test(url)));assert.equal(errors.length,0,errors.join('\n'));checks.push('actual network has no retired modules; no pageerrors');
+ await fs.writeFile(path.join(output,'report.json'),JSON.stringify({sourceCache:90,baseUrl:base,retirementEvidence,retiredTests:['random result TXT download action; direct PNG download remains verified'],checks,errors,moduleRequests:[...new Set(moduleRequests)],downloads,detailPaints,drawDownloads,promptCopies,retiredAssetResponses,simulation:'Chromium CSS viewport; physical device not verified',browser:'Playwright controlling installed Chromium',artApproval:'pending user review',targetValidation:'not performed',published:false},null,2)+'\n');
+ console.log(`Browser checks passed: ${checks.length}, ${downloads.length} real downloads.`);
+}finally{await browser.close();}

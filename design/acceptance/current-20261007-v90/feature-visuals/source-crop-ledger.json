@@ -1,0 +1,2995 @@
+{
+  "purpose": "QA visual reference from original PNGs; no new export/art approval",
+  "generatedAt": "2026-10-07T09:14:57.837Z",
+  "artworks": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "title": "蓝色耳机 Dots",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:dots",
+            "kind": "style",
+            "label": "Dots",
+            "labelZh": "Dots",
+            "labelEn": "Style",
+            "value": [
+              "style:dots"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-dots-20261005:style"
+          },
+          "visual": {
+            "id": "artwork-preview:candidate-dots-20261005",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-dots-20261005:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "candidate-dots-20261005",
+              "assetId": "asset:candidate-dots-20261005:original",
+              "version": "v2",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:sphere+facial-features:black-oval-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelZh": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:sphere",
+              "facial-features:black-oval-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-dots-20261005:appearance"
+          },
+          "visual": {
+            "id": "source-crop:candidate-dots-20261005:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-dots-20261005:original",
+            "sourceRect": [
+              0.15,
+              0.27,
+              0.7,
+              0.55
+            ],
+            "source": {
+              "artworkId": "candidate-dots-20261005",
+              "assetId": "asset:candidate-dots-20261005:original",
+              "version": "v2",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:blue+material:short-plush",
+            "kind": "palette-material",
+            "label": "蓝色 · 短绒质感",
+            "labelZh": "蓝色 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:blue",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-dots-20261005:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:candidate-dots-20261005:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-dots-20261005:original",
+            "sourceRect": [
+              0.27,
+              0.34,
+              0.46,
+              0.43
+            ],
+            "source": {
+              "artworkId": "candidate-dots-20261005",
+              "assetId": "asset:candidate-dots-20261005:original",
+              "version": "v2",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-dots-20261005:clothing"
+          },
+          "visual": {
+            "id": "empty:candidate-dots-20261005:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:over-ear-headphones",
+            "kind": "accessory",
+            "label": "包耳式耳机",
+            "labelZh": "包耳式耳机",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:over-ear-headphones"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-dots-20261005:accessory"
+          },
+          "visual": {
+            "id": "source-crop:candidate-dots-20261005:accessory",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-dots-20261005:original",
+            "sourceRect": [
+              0,
+              0.1,
+              1,
+              0.58
+            ],
+            "source": {
+              "artworkId": "candidate-dots-20261005",
+              "assetId": "asset:candidate-dots-20261005:original",
+              "version": "v2",
+              "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-dots-20261005:prop"
+          },
+          "visual": {
+            "id": "empty:candidate-dots-20261005:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "title": "紫色 Grok Bot",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:grok",
+            "kind": "style",
+            "label": "Grok Bot",
+            "labelZh": "Grok Bot",
+            "labelEn": "Style",
+            "value": [
+              "style:grok"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-grok-20261005:style"
+          },
+          "visual": {
+            "id": "artwork-preview:candidate-grok-20261005",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-grok-20261005:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "candidate-grok-20261005",
+              "assetId": "asset:candidate-grok-20261005:original",
+              "version": "v2",
+              "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/grok-bot-purple-orb-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:sphere+facial-features:white-capsule-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "圆球形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelZh": "圆球形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:sphere",
+              "facial-features:white-capsule-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-grok-20261005:appearance"
+          },
+          "visual": {
+            "id": "source-crop:candidate-grok-20261005:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-grok-20261005:original",
+            "sourceRect": [
+              0.12,
+              0.13,
+              0.8,
+              0.76
+            ],
+            "source": {
+              "artworkId": "candidate-grok-20261005",
+              "assetId": "asset:candidate-grok-20261005:original",
+              "version": "v2",
+              "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/grok-bot-purple-orb-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:purple+material:soft-matte",
+            "kind": "palette-material",
+            "label": "紫色 · 柔和哑光质感",
+            "labelZh": "紫色 · 柔和哑光质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:purple",
+              "material:soft-matte"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-grok-20261005:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:candidate-grok-20261005:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-grok-20261005:original",
+            "sourceRect": [
+              0.22,
+              0.22,
+              0.56,
+              0.58
+            ],
+            "source": {
+              "artworkId": "candidate-grok-20261005",
+              "assetId": "asset:candidate-grok-20261005:original",
+              "version": "v2",
+              "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/grok-bot-purple-orb-candidate-v2.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-grok-20261005:clothing"
+          },
+          "visual": {
+            "id": "empty:candidate-grok-20261005:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-grok-20261005:accessory"
+          },
+          "visual": {
+            "id": "empty:candidate-grok-20261005:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-grok-20261005:prop"
+          },
+          "visual": {
+            "id": "empty:candidate-grok-20261005:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "title": "奶油 Meta Muse",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:meta-muse",
+            "kind": "style",
+            "label": "Meta Muse",
+            "labelZh": "Meta Muse",
+            "labelEn": "Style",
+            "value": [
+              "style:meta-muse"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-meta-muse-20261005:style"
+          },
+          "visual": {
+            "id": "artwork-preview:candidate-meta-muse-20261005",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-meta-muse-20261005:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "candidate-meta-muse-20261005",
+              "assetId": "asset:candidate-meta-muse-20261005:original",
+              "version": "v1",
+              "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:hooded+facial-features:inset-peach-face+facial-features:dark-round-eyes+facial-features:soft-smile",
+            "kind": "appearance",
+            "label": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelZh": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:hooded",
+              "facial-features:inset-peach-face",
+              "facial-features:dark-round-eyes",
+              "facial-features:soft-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-meta-muse-20261005:appearance"
+          },
+          "visual": {
+            "id": "source-crop:candidate-meta-muse-20261005:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-meta-muse-20261005:original",
+            "sourceRect": [
+              0.25,
+              0.1,
+              0.52,
+              0.39
+            ],
+            "source": {
+              "artworkId": "candidate-meta-muse-20261005",
+              "assetId": "asset:candidate-meta-muse-20261005:original",
+              "version": "v1",
+              "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:cream+material:short-plush",
+            "kind": "palette-material",
+            "label": "奶油色 · 短绒质感",
+            "labelZh": "奶油色 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:cream",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-meta-muse-20261005:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:candidate-meta-muse-20261005:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-meta-muse-20261005:original",
+            "sourceRect": [
+              0.27,
+              0.52,
+              0.46,
+              0.32
+            ],
+            "source": {
+              "artworkId": "candidate-meta-muse-20261005",
+              "assetId": "asset:candidate-meta-muse-20261005:original",
+              "version": "v1",
+              "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-meta-muse-20261005:clothing"
+          },
+          "visual": {
+            "id": "empty:candidate-meta-muse-20261005:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-meta-muse-20261005:accessory"
+          },
+          "visual": {
+            "id": "empty:candidate-meta-muse-20261005:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-meta-muse-20261005:prop"
+          },
+          "visual": {
+            "id": "empty:candidate-meta-muse-20261005:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "title": "栗发青绿人物",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:humans",
+            "kind": "style",
+            "label": "原创人物",
+            "labelZh": "原创人物",
+            "labelEn": "Style",
+            "value": [
+              "style:humans"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-humans-20261005:style"
+          },
+          "visual": {
+            "id": "artwork-preview:candidate-humans-20261005",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-humans-20261005:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "candidate-humans-20261005",
+              "assetId": "asset:candidate-humans-20261005:original",
+              "version": "v1",
+              "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:chibi-person+facial-features:large-brown-eyes+facial-features:small-nose+facial-features:gentle-smile",
+            "kind": "appearance",
+            "label": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelZh": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:chibi-person",
+              "facial-features:large-brown-eyes",
+              "facial-features:small-nose",
+              "facial-features:gentle-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-humans-20261005:appearance"
+          },
+          "visual": {
+            "id": "source-crop:candidate-humans-20261005:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-humans-20261005:original",
+            "sourceRect": [
+              0.19,
+              0.02,
+              0.62,
+              0.47
+            ],
+            "source": {
+              "artworkId": "candidate-humans-20261005",
+              "assetId": "asset:candidate-humans-20261005:original",
+              "version": "v1",
+              "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:teal+material:knit-fabric",
+            "kind": "palette-material",
+            "label": "青绿色 · 针织衣料",
+            "labelZh": "青绿色 · 针织衣料",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:teal",
+              "material:knit-fabric"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-humans-20261005:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:candidate-humans-20261005:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-humans-20261005:original",
+            "sourceRect": [
+              0.34,
+              0.54,
+              0.34,
+              0.27
+            ],
+            "source": {
+              "artworkId": "candidate-humans-20261005",
+              "assetId": "asset:candidate-humans-20261005:original",
+              "version": "v1",
+              "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:teal-knit-top+clothing:ivory-shorts+clothing:light-sneakers",
+            "kind": "clothing",
+            "label": "青绿色针织上衣 · 米白短裤 · 浅色运动鞋",
+            "labelZh": "青绿色针织上衣 · 米白短裤 · 浅色运动鞋",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:teal-knit-top",
+              "clothing:ivory-shorts",
+              "clothing:light-sneakers"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-humans-20261005:clothing"
+          },
+          "visual": {
+            "id": "source-crop:candidate-humans-20261005:clothing",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-humans-20261005:original",
+            "sourceRect": [
+              0.27,
+              0.48,
+              0.47,
+              0.5
+            ],
+            "source": {
+              "artworkId": "candidate-humans-20261005",
+              "assetId": "asset:candidate-humans-20261005:original",
+              "version": "v1",
+              "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-humans-20261005:accessory"
+          },
+          "visual": {
+            "id": "empty:candidate-humans-20261005:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-humans-20261005:prop"
+          },
+          "visual": {
+            "id": "empty:candidate-humans-20261005:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "title": "暖橙柴犬",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:animals",
+            "kind": "style",
+            "label": "原创动物",
+            "labelZh": "原创动物",
+            "labelEn": "Style",
+            "value": [
+              "style:animals"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-animals-20261005:style"
+          },
+          "visual": {
+            "id": "artwork-preview:candidate-animals-20261005",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-animals-20261005:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "candidate-animals-20261005",
+              "assetId": "asset:candidate-animals-20261005:original",
+              "version": "v1",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/animals-original-shiba-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:shiba+facial-features:brown-eyes+facial-features:black-nose+facial-features:cream-muzzle",
+            "kind": "appearance",
+            "label": "柴犬外形 · 棕色眼睛 · 黑色鼻头 · 茶白口鼻",
+            "labelZh": "柴犬外形 · 棕色眼睛 · 黑色鼻头 · 茶白口鼻",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:shiba",
+              "facial-features:brown-eyes",
+              "facial-features:black-nose",
+              "facial-features:cream-muzzle"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-animals-20261005:appearance"
+          },
+          "visual": {
+            "id": "source-crop:candidate-animals-20261005:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-animals-20261005:original",
+            "sourceRect": [
+              0.18,
+              0.05,
+              0.64,
+              0.49
+            ],
+            "source": {
+              "artworkId": "candidate-animals-20261005",
+              "assetId": "asset:candidate-animals-20261005:original",
+              "version": "v1",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/animals-original-shiba-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:orange+material:short-fur",
+            "kind": "palette-material",
+            "label": "暖橙色 · 短绒毛质感",
+            "labelZh": "暖橙色 · 短绒毛质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:orange",
+              "material:short-fur"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:candidate-animals-20261005:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:candidate-animals-20261005:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:candidate-animals-20261005:original",
+            "sourceRect": [
+              0.27,
+              0.49,
+              0.46,
+              0.34
+            ],
+            "source": {
+              "artworkId": "candidate-animals-20261005",
+              "assetId": "asset:candidate-animals-20261005:original",
+              "version": "v1",
+              "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/animals-original-shiba-candidate-v1.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-animals-20261005:clothing"
+          },
+          "visual": {
+            "id": "empty:candidate-animals-20261005:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-animals-20261005:accessory"
+          },
+          "visual": {
+            "id": "empty:candidate-animals-20261005:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:candidate-animals-20261005:prop"
+          },
+          "visual": {
+            "id": "empty:candidate-animals-20261005:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "title": "莓粉圆框 Dots",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:dots",
+            "kind": "style",
+            "label": "Dots",
+            "labelZh": "Dots",
+            "labelEn": "Style",
+            "value": [
+              "style:dots"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-rose-glasses:style"
+          },
+          "visual": {
+            "id": "artwork-preview:dots-rose-glasses",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-rose-glasses:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "dots-rose-glasses",
+              "assetId": "asset:dots-rose-glasses:original",
+              "version": "v1",
+              "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-rose-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:sphere+facial-features:black-oval-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelZh": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:sphere",
+              "facial-features:black-oval-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-rose-glasses:appearance"
+          },
+          "visual": {
+            "id": "source-crop:dots-rose-glasses:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-rose-glasses:original",
+            "sourceRect": [
+              0.14,
+              0.26,
+              0.72,
+              0.55
+            ],
+            "source": {
+              "artworkId": "dots-rose-glasses",
+              "assetId": "asset:dots-rose-glasses:original",
+              "version": "v1",
+              "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-rose-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:pink+material:short-plush",
+            "kind": "palette-material",
+            "label": "莓粉色 · 短绒质感",
+            "labelZh": "莓粉色 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:pink",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-rose-glasses:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:dots-rose-glasses:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-rose-glasses:original",
+            "sourceRect": [
+              0.3,
+              0.46,
+              0.4,
+              0.37
+            ],
+            "source": {
+              "artworkId": "dots-rose-glasses",
+              "assetId": "asset:dots-rose-glasses:original",
+              "version": "v1",
+              "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-rose-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:dots-rose-glasses:clothing"
+          },
+          "visual": {
+            "id": "empty:dots-rose-glasses:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:round-glasses",
+            "kind": "accessory",
+            "label": "透明圆框眼镜",
+            "labelZh": "透明圆框眼镜",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:round-glasses"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-rose-glasses:accessory"
+          },
+          "visual": {
+            "id": "source-crop:dots-rose-glasses:accessory",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-rose-glasses:original",
+            "sourceRect": [
+              0.19,
+              0.33,
+              0.62,
+              0.32
+            ],
+            "source": {
+              "artworkId": "dots-rose-glasses",
+              "assetId": "asset:dots-rose-glasses:original",
+              "version": "v1",
+              "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-rose-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:dots-rose-glasses:prop"
+          },
+          "visual": {
+            "id": "empty:dots-rose-glasses:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "title": "浅紫渔夫帽 Dots",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:dots",
+            "kind": "style",
+            "label": "Dots",
+            "labelZh": "Dots",
+            "labelEn": "Style",
+            "value": [
+              "style:dots"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-lilac-bucket:style"
+          },
+          "visual": {
+            "id": "artwork-preview:dots-lilac-bucket",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-lilac-bucket:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "dots-lilac-bucket",
+              "assetId": "asset:dots-lilac-bucket:original",
+              "version": "v1",
+              "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-lilac-bucket.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:sphere+facial-features:black-oval-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelZh": "圆球形 · 一对黑色椭圆眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:sphere",
+              "facial-features:black-oval-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-lilac-bucket:appearance"
+          },
+          "visual": {
+            "id": "source-crop:dots-lilac-bucket:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-lilac-bucket:original",
+            "sourceRect": [
+              0.13,
+              0.25,
+              0.74,
+              0.55
+            ],
+            "source": {
+              "artworkId": "dots-lilac-bucket",
+              "assetId": "asset:dots-lilac-bucket:original",
+              "version": "v1",
+              "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-lilac-bucket.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:lilac+material:short-plush",
+            "kind": "palette-material",
+            "label": "浅紫色 · 短绒质感",
+            "labelZh": "浅紫色 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:lilac",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-lilac-bucket:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:dots-lilac-bucket:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-lilac-bucket:original",
+            "sourceRect": [
+              0.3,
+              0.49,
+              0.4,
+              0.34
+            ],
+            "source": {
+              "artworkId": "dots-lilac-bucket",
+              "assetId": "asset:dots-lilac-bucket:original",
+              "version": "v1",
+              "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-lilac-bucket.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:dots-lilac-bucket:clothing"
+          },
+          "visual": {
+            "id": "empty:dots-lilac-bucket:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:yellow-bucket-hat",
+            "kind": "accessory",
+            "label": "黄色软布渔夫帽",
+            "labelZh": "黄色软布渔夫帽",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:yellow-bucket-hat"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:dots-lilac-bucket:accessory"
+          },
+          "visual": {
+            "id": "source-crop:dots-lilac-bucket:accessory",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:dots-lilac-bucket:original",
+            "sourceRect": [
+              0.06,
+              0.1,
+              0.88,
+              0.39
+            ],
+            "source": {
+              "artworkId": "dots-lilac-bucket",
+              "assetId": "asset:dots-lilac-bucket:original",
+              "version": "v1",
+              "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-lilac-bucket.png"
+            }
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:dots-lilac-bucket:prop"
+          },
+          "visual": {
+            "id": "empty:dots-lilac-bucket:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "title": "青绿云朵 Grok",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:grok",
+            "kind": "style",
+            "label": "Grok Bot",
+            "labelZh": "Grok Bot",
+            "labelEn": "Style",
+            "value": [
+              "style:grok"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-green-cloud:style"
+          },
+          "visual": {
+            "id": "artwork-preview:grok-green-cloud",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-green-cloud:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "grok-green-cloud",
+              "assetId": "asset:grok-green-cloud:original",
+              "version": "v1",
+              "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-green-cloud.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:cloud+facial-features:white-capsule-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "云形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelZh": "云形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:cloud",
+              "facial-features:white-capsule-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-green-cloud:appearance"
+          },
+          "visual": {
+            "id": "source-crop:grok-green-cloud:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-green-cloud:original",
+            "sourceRect": [
+              0.04,
+              0.1,
+              0.92,
+              0.78
+            ],
+            "source": {
+              "artworkId": "grok-green-cloud",
+              "assetId": "asset:grok-green-cloud:original",
+              "version": "v1",
+              "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-green-cloud.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:green+material:soft-matte",
+            "kind": "palette-material",
+            "label": "青绿色 · 柔和哑光质感",
+            "labelZh": "青绿色 · 柔和哑光质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:green",
+              "material:soft-matte"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-green-cloud:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:grok-green-cloud:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-green-cloud:original",
+            "sourceRect": [
+              0.14,
+              0.43,
+              0.72,
+              0.45
+            ],
+            "source": {
+              "artworkId": "grok-green-cloud",
+              "assetId": "asset:grok-green-cloud:original",
+              "version": "v1",
+              "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-green-cloud.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-green-cloud:clothing"
+          },
+          "visual": {
+            "id": "empty:grok-green-cloud:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-green-cloud:accessory"
+          },
+          "visual": {
+            "id": "empty:grok-green-cloud:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-green-cloud:prop"
+          },
+          "visual": {
+            "id": "empty:grok-green-cloud:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "title": "蓝绿方形 Grok",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:grok",
+            "kind": "style",
+            "label": "Grok Bot",
+            "labelZh": "Grok Bot",
+            "labelEn": "Style",
+            "value": [
+              "style:grok"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-teal-square:style"
+          },
+          "visual": {
+            "id": "artwork-preview:grok-teal-square",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-teal-square:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "grok-teal-square",
+              "assetId": "asset:grok-teal-square:original",
+              "version": "v1",
+              "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-teal-square.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:rounded-square+facial-features:white-capsule-eyes+facial-features:no-visible-mouth",
+            "kind": "appearance",
+            "label": "圆角方形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelZh": "圆角方形 · 一对倾斜白色胶囊眼 · 没有可见嘴部",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:rounded-square",
+              "facial-features:white-capsule-eyes",
+              "facial-features:no-visible-mouth"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-teal-square:appearance"
+          },
+          "visual": {
+            "id": "source-crop:grok-teal-square:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-teal-square:original",
+            "sourceRect": [
+              0.08,
+              0.12,
+              0.84,
+              0.76
+            ],
+            "source": {
+              "artworkId": "grok-teal-square",
+              "assetId": "asset:grok-teal-square:original",
+              "version": "v1",
+              "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-teal-square.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:teal+material:soft-matte",
+            "kind": "palette-material",
+            "label": "蓝绿色 · 柔和哑光质感",
+            "labelZh": "蓝绿色 · 柔和哑光质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:teal",
+              "material:soft-matte"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:grok-teal-square:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:grok-teal-square:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:grok-teal-square:original",
+            "sourceRect": [
+              0.15,
+              0.45,
+              0.7,
+              0.44
+            ],
+            "source": {
+              "artworkId": "grok-teal-square",
+              "assetId": "asset:grok-teal-square:original",
+              "version": "v1",
+              "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-teal-square.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-teal-square:clothing"
+          },
+          "visual": {
+            "id": "empty:grok-teal-square:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-teal-square:accessory"
+          },
+          "visual": {
+            "id": "empty:grok-teal-square:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:grok-teal-square:prop"
+          },
+          "visual": {
+            "id": "empty:grok-teal-square:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "title": "玫粉花束 Meta Muse",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:meta-muse",
+            "kind": "style",
+            "label": "Meta Muse",
+            "labelZh": "Meta Muse",
+            "labelEn": "Style",
+            "value": [
+              "style:meta-muse"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-rose-flowers:style"
+          },
+          "visual": {
+            "id": "artwork-preview:muse-rose-flowers",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-rose-flowers:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "muse-rose-flowers",
+              "assetId": "asset:muse-rose-flowers:original",
+              "version": "v1",
+              "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-rose-flowers.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:hooded+facial-features:inset-peach-face+facial-features:dark-round-eyes+facial-features:soft-smile",
+            "kind": "appearance",
+            "label": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelZh": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:hooded",
+              "facial-features:inset-peach-face",
+              "facial-features:dark-round-eyes",
+              "facial-features:soft-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-rose-flowers:appearance"
+          },
+          "visual": {
+            "id": "source-crop:muse-rose-flowers:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-rose-flowers:original",
+            "sourceRect": [
+              0.18,
+              0.08,
+              0.64,
+              0.43
+            ],
+            "source": {
+              "artworkId": "muse-rose-flowers",
+              "assetId": "asset:muse-rose-flowers:original",
+              "version": "v1",
+              "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-rose-flowers.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:pink+material:short-plush",
+            "kind": "palette-material",
+            "label": "玫粉色 · 短绒质感",
+            "labelZh": "玫粉色 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:pink",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-rose-flowers:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:muse-rose-flowers:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-rose-flowers:original",
+            "sourceRect": [
+              0.22,
+              0.53,
+              0.56,
+              0.32
+            ],
+            "source": {
+              "artworkId": "muse-rose-flowers",
+              "assetId": "asset:muse-rose-flowers:original",
+              "version": "v1",
+              "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-rose-flowers.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:muse-rose-flowers:clothing"
+          },
+          "visual": {
+            "id": "empty:muse-rose-flowers:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:muse-rose-flowers:accessory"
+          },
+          "visual": {
+            "id": "empty:muse-rose-flowers:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:flowers",
+            "kind": "prop",
+            "label": "白色雏菊花束",
+            "labelZh": "白色雏菊花束",
+            "labelEn": "Prop",
+            "value": [
+              "prop:flowers"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-rose-flowers:prop"
+          },
+          "visual": {
+            "id": "source-crop:muse-rose-flowers:prop",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-rose-flowers:original",
+            "sourceRect": [
+              0.35,
+              0.35,
+              0.31,
+              0.35
+            ],
+            "source": {
+              "artworkId": "muse-rose-flowers",
+              "assetId": "asset:muse-rose-flowers:original",
+              "version": "v1",
+              "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-rose-flowers.png"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "title": "鼠尾草捧书 Meta Muse",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:meta-muse",
+            "kind": "style",
+            "label": "Meta Muse",
+            "labelZh": "Meta Muse",
+            "labelEn": "Style",
+            "value": [
+              "style:meta-muse"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-sage-reading:style"
+          },
+          "visual": {
+            "id": "artwork-preview:muse-sage-reading",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-sage-reading:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "muse-sage-reading",
+              "assetId": "asset:muse-sage-reading:original",
+              "version": "v1",
+              "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-sage-reading.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:hooded+facial-features:inset-peach-face+facial-features:dark-round-eyes+facial-features:soft-smile",
+            "kind": "appearance",
+            "label": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelZh": "包覆式轮廓 · 内嵌暖桃色脸面 · 深色圆眼 · 轻柔微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:hooded",
+              "facial-features:inset-peach-face",
+              "facial-features:dark-round-eyes",
+              "facial-features:soft-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-sage-reading:appearance"
+          },
+          "visual": {
+            "id": "source-crop:muse-sage-reading:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-sage-reading:original",
+            "sourceRect": [
+              0.18,
+              0.08,
+              0.64,
+              0.43
+            ],
+            "source": {
+              "artworkId": "muse-sage-reading",
+              "assetId": "asset:muse-sage-reading:original",
+              "version": "v1",
+              "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-sage-reading.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:sage+material:short-plush",
+            "kind": "palette-material",
+            "label": "浅鼠尾草绿 · 短绒质感",
+            "labelZh": "浅鼠尾草绿 · 短绒质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:sage",
+              "material:short-plush"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-sage-reading:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:muse-sage-reading:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-sage-reading:original",
+            "sourceRect": [
+              0.21,
+              0.53,
+              0.58,
+              0.33
+            ],
+            "source": {
+              "artworkId": "muse-sage-reading",
+              "assetId": "asset:muse-sage-reading:original",
+              "version": "v1",
+              "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-sage-reading.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:muse-sage-reading:clothing"
+          },
+          "visual": {
+            "id": "empty:muse-sage-reading:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:muse-sage-reading:accessory"
+          },
+          "visual": {
+            "id": "empty:muse-sage-reading:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:closed-book",
+            "kind": "prop",
+            "label": "合拢的绿色书",
+            "labelZh": "合拢的绿色书",
+            "labelEn": "Prop",
+            "value": [
+              "prop:closed-book"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:muse-sage-reading:prop"
+          },
+          "visual": {
+            "id": "source-crop:muse-sage-reading:prop",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:muse-sage-reading:original",
+            "sourceRect": [
+              0.37,
+              0.45,
+              0.28,
+              0.31
+            ],
+            "source": {
+              "artworkId": "muse-sage-reading",
+              "assetId": "asset:muse-sage-reading:original",
+              "version": "v1",
+              "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-sage-reading.png"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "title": "黄衣丸子头女孩",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:humans",
+            "kind": "style",
+            "label": "原创人物",
+            "labelZh": "原创人物",
+            "labelEn": "Style",
+            "value": [
+              "style:humans"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-bun-yellow:style"
+          },
+          "visual": {
+            "id": "artwork-preview:human-bun-yellow",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-bun-yellow:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "human-bun-yellow",
+              "assetId": "asset:human-bun-yellow:original",
+              "version": "v1",
+              "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-bun-yellow.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:chibi-person+facial-features:large-brown-eyes+facial-features:small-nose+facial-features:gentle-smile",
+            "kind": "appearance",
+            "label": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelZh": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:chibi-person",
+              "facial-features:large-brown-eyes",
+              "facial-features:small-nose",
+              "facial-features:gentle-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-bun-yellow:appearance"
+          },
+          "visual": {
+            "id": "source-crop:human-bun-yellow:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-bun-yellow:original",
+            "sourceRect": [
+              0.23,
+              0.02,
+              0.55,
+              0.48
+            ],
+            "source": {
+              "artworkId": "human-bun-yellow",
+              "assetId": "asset:human-bun-yellow:original",
+              "version": "v1",
+              "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-bun-yellow.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:yellow+material:soft-fabric",
+            "kind": "palette-material",
+            "label": "暖黄色 · 柔软衣料",
+            "labelZh": "暖黄色 · 柔软衣料",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:yellow",
+              "material:soft-fabric"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-bun-yellow:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:human-bun-yellow:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-bun-yellow:original",
+            "sourceRect": [
+              0.3,
+              0.47,
+              0.46,
+              0.39
+            ],
+            "source": {
+              "artworkId": "human-bun-yellow",
+              "assetId": "asset:human-bun-yellow:original",
+              "version": "v1",
+              "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-bun-yellow.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:yellow-hoodie+clothing:ivory-shorts+clothing:yellow-white-sneakers",
+            "kind": "clothing",
+            "label": "暖黄色连帽衫 · 米白短裤 · 黄白运动鞋",
+            "labelZh": "暖黄色连帽衫 · 米白短裤 · 黄白运动鞋",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:yellow-hoodie",
+              "clothing:ivory-shorts",
+              "clothing:yellow-white-sneakers"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-bun-yellow:clothing"
+          },
+          "visual": {
+            "id": "source-crop:human-bun-yellow:clothing",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-bun-yellow:original",
+            "sourceRect": [
+              0.25,
+              0.47,
+              0.51,
+              0.51
+            ],
+            "source": {
+              "artworkId": "human-bun-yellow",
+              "assetId": "asset:human-bun-yellow:original",
+              "version": "v1",
+              "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-bun-yellow.png"
+            }
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:human-bun-yellow:accessory"
+          },
+          "visual": {
+            "id": "empty:human-bun-yellow:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:human-bun-yellow:prop"
+          },
+          "visual": {
+            "id": "empty:human-bun-yellow:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "title": "金发圆框伙伴",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:humans",
+            "kind": "style",
+            "label": "原创人物",
+            "labelZh": "原创人物",
+            "labelEn": "Style",
+            "value": [
+              "style:humans"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-blond-glasses:style"
+          },
+          "visual": {
+            "id": "artwork-preview:human-blond-glasses",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-blond-glasses:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "human-blond-glasses",
+              "assetId": "asset:human-blond-glasses:original",
+              "version": "v1",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:chibi-person+facial-features:large-brown-eyes+facial-features:small-nose+facial-features:gentle-smile",
+            "kind": "appearance",
+            "label": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelZh": "精致 Q 版人物 · 大而清晰的棕色眼睛 · 小巧鼻子 · 温和微笑",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:chibi-person",
+              "facial-features:large-brown-eyes",
+              "facial-features:small-nose",
+              "facial-features:gentle-smile"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-blond-glasses:appearance"
+          },
+          "visual": {
+            "id": "source-crop:human-blond-glasses:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-blond-glasses:original",
+            "sourceRect": [
+              0.23,
+              0.02,
+              0.56,
+              0.49
+            ],
+            "source": {
+              "artworkId": "human-blond-glasses",
+              "assetId": "asset:human-blond-glasses:original",
+              "version": "v1",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:blond+material:knit-fabric",
+            "kind": "palette-material",
+            "label": "浅金色 · 针织衣料",
+            "labelZh": "浅金色 · 针织衣料",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:blond",
+              "material:knit-fabric"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-blond-glasses:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:human-blond-glasses:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-blond-glasses:original",
+            "sourceRect": [
+              0.23,
+              0.08,
+              0.56,
+              0.72
+            ],
+            "source": {
+              "artworkId": "human-blond-glasses",
+              "assetId": "asset:human-blond-glasses:original",
+              "version": "v1",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:light-blue-shirt+clothing:ivory-knit-cardigan+clothing:light-blue-trousers+clothing:ivory-sneakers",
+            "kind": "clothing",
+            "label": "浅蓝衬衣 · 米白针织开衫 · 浅蓝长裤 · 米白运动鞋",
+            "labelZh": "浅蓝衬衣 · 米白针织开衫 · 浅蓝长裤 · 米白运动鞋",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:light-blue-shirt",
+              "clothing:ivory-knit-cardigan",
+              "clothing:light-blue-trousers",
+              "clothing:ivory-sneakers"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-blond-glasses:clothing"
+          },
+          "visual": {
+            "id": "source-crop:human-blond-glasses:clothing",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-blond-glasses:original",
+            "sourceRect": [
+              0.25,
+              0.53,
+              0.51,
+              0.45
+            ],
+            "source": {
+              "artworkId": "human-blond-glasses",
+              "assetId": "asset:human-blond-glasses:original",
+              "version": "v1",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:round-glasses",
+            "kind": "accessory",
+            "label": "透明圆框眼镜",
+            "labelZh": "透明圆框眼镜",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:round-glasses"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:human-blond-glasses:accessory"
+          },
+          "visual": {
+            "id": "source-crop:human-blond-glasses:accessory",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:human-blond-glasses:original",
+            "sourceRect": [
+              0.3,
+              0.28,
+              0.43,
+              0.23
+            ],
+            "source": {
+              "artworkId": "human-blond-glasses",
+              "assetId": "asset:human-blond-glasses:original",
+              "version": "v1",
+              "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png"
+            }
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:human-blond-glasses:prop"
+          },
+          "visual": {
+            "id": "empty:human-blond-glasses:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "title": "奶油白猫伙伴",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:animals",
+            "kind": "style",
+            "label": "原创动物",
+            "labelZh": "原创动物",
+            "labelEn": "Style",
+            "value": [
+              "style:animals"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-white-cat:style"
+          },
+          "visual": {
+            "id": "artwork-preview:animal-white-cat",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-white-cat:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "animal-white-cat",
+              "assetId": "asset:animal-white-cat:original",
+              "version": "v1",
+              "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-white-cat.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:cat+facial-features:blue-eyes+facial-features:pink-nose+facial-features:feline-muzzle+facial-features:whiskers",
+            "kind": "appearance",
+            "label": "猫形 · 蓝色眼睛 · 粉色鼻头 · 清楚的猫科口鼻 · 细胡须",
+            "labelZh": "猫形 · 蓝色眼睛 · 粉色鼻头 · 清楚的猫科口鼻 · 细胡须",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:cat",
+              "facial-features:blue-eyes",
+              "facial-features:pink-nose",
+              "facial-features:feline-muzzle",
+              "facial-features:whiskers"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-white-cat:appearance"
+          },
+          "visual": {
+            "id": "source-crop:animal-white-cat:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-white-cat:original",
+            "sourceRect": [
+              0.14,
+              0.04,
+              0.7,
+              0.49
+            ],
+            "source": {
+              "artworkId": "animal-white-cat",
+              "assetId": "asset:animal-white-cat:original",
+              "version": "v1",
+              "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-white-cat.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:white+material:short-fur",
+            "kind": "palette-material",
+            "label": "奶油白 · 短绒毛质感",
+            "labelZh": "奶油白 · 短绒毛质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:white",
+              "material:short-fur"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-white-cat:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:animal-white-cat:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-white-cat:original",
+            "sourceRect": [
+              0.3,
+              0.45,
+              0.48,
+              0.35
+            ],
+            "source": {
+              "artworkId": "animal-white-cat",
+              "assetId": "asset:animal-white-cat:original",
+              "version": "v1",
+              "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-white-cat.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-white-cat:clothing"
+          },
+          "visual": {
+            "id": "empty:animal-white-cat:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-white-cat:accessory"
+          },
+          "visual": {
+            "id": "empty:animal-white-cat:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-white-cat:prop"
+          },
+          "visual": {
+            "id": "empty:animal-white-cat:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "title": "灰白哈士奇伙伴",
+      "slots": [
+        {
+          "key": "style",
+          "fact": {
+            "id": "reveal:style:style:animals",
+            "kind": "style",
+            "label": "原创动物",
+            "labelZh": "原创动物",
+            "labelEn": "Style",
+            "value": [
+              "style:animals"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-gray-husky:style"
+          },
+          "visual": {
+            "id": "artwork-preview:animal-gray-husky",
+            "kind": "artwork-preview",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-gray-husky:original",
+            "sourceRect": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "source": {
+              "artworkId": "animal-gray-husky",
+              "assetId": "asset:animal-gray-husky:original",
+              "version": "v1",
+              "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-gray-husky.png"
+            }
+          }
+        },
+        {
+          "key": "appearance",
+          "fact": {
+            "id": "reveal:appearance:shape:husky+facial-features:brown-eyes+facial-features:dark-nose+facial-features:husky-mask",
+            "kind": "appearance",
+            "label": "哈士奇外形 · 棕色眼睛 · 深色鼻头 · 灰白面部面罩",
+            "labelZh": "哈士奇外形 · 棕色眼睛 · 深色鼻头 · 灰白面部面罩",
+            "labelEn": "Shape and facial features",
+            "value": [
+              "shape:husky",
+              "facial-features:brown-eyes",
+              "facial-features:dark-nose",
+              "facial-features:husky-mask"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-gray-husky:appearance"
+          },
+          "visual": {
+            "id": "source-crop:animal-gray-husky:appearance",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-gray-husky:original",
+            "sourceRect": [
+              0.14,
+              0.04,
+              0.7,
+              0.49
+            ],
+            "source": {
+              "artworkId": "animal-gray-husky",
+              "assetId": "asset:animal-gray-husky:original",
+              "version": "v1",
+              "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-gray-husky.png"
+            }
+          }
+        },
+        {
+          "key": "palette-material",
+          "fact": {
+            "id": "reveal:palette-material:color:gray+material:short-fur",
+            "kind": "palette-material",
+            "label": "灰白色 · 短绒毛质感",
+            "labelZh": "灰白色 · 短绒毛质感",
+            "labelEn": "Palette and material",
+            "value": [
+              "color:gray",
+              "material:short-fur"
+            ],
+            "state": "known",
+            "status": "present",
+            "visualId": "source:animal-gray-husky:palette-material"
+          },
+          "visual": {
+            "id": "source-crop:animal-gray-husky:palette-material",
+            "kind": "source-crop",
+            "state": "known",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "assetRef": "asset:animal-gray-husky:original",
+            "sourceRect": [
+              0.28,
+              0.48,
+              0.48,
+              0.36
+            ],
+            "source": {
+              "artworkId": "animal-gray-husky",
+              "assetId": "asset:animal-gray-husky:original",
+              "version": "v1",
+              "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+              "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+              "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-gray-husky.png"
+            }
+          }
+        },
+        {
+          "key": "clothing",
+          "fact": {
+            "id": "reveal:clothing:clothing:none",
+            "kind": "clothing",
+            "label": "无独立衣物",
+            "labelZh": "无独立衣物",
+            "labelEn": "Clothing",
+            "value": [
+              "clothing:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-gray-husky:clothing"
+          },
+          "visual": {
+            "id": "empty:animal-gray-husky:clothing:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "accessory",
+          "fact": {
+            "id": "reveal:accessory:head-accessory:none+body-accessory:none",
+            "kind": "accessory",
+            "label": "无配饰",
+            "labelZh": "无配饰",
+            "labelEn": "Accessories",
+            "value": [
+              "head-accessory:none",
+              "body-accessory:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-gray-husky:accessory"
+          },
+          "visual": {
+            "id": "empty:animal-gray-husky:accessory:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        },
+        {
+          "key": "prop",
+          "fact": {
+            "id": "reveal:prop:prop:none",
+            "kind": "prop",
+            "label": "无道具",
+            "labelZh": "无道具",
+            "labelEn": "Prop",
+            "value": [
+              "prop:none"
+            ],
+            "state": "none",
+            "status": "none",
+            "visualId": "source:animal-gray-husky:prop"
+          },
+          "visual": {
+            "id": "empty:animal-gray-husky:prop:none",
+            "kind": "empty-value",
+            "state": "none",
+            "version": "approved-artwork-source-crops-cache90-v1",
+            "emptyKind": "none"
+          }
+        }
+      ]
+    }
+  ]
+}

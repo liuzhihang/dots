@@ -1,0 +1,210 @@
+import { ARTWORKS, CATALOG_REVISION, STYLE_IDENTITIES, getAsset, isEligible, isTransparentCharacter } from './studio-artwork-catalog.js?v=90';
+import { normalizeTagQuery, queryArtworks, TAGS } from './studio-tags.js?v=90';
+import { promptFor, promptRecordFor } from './studio-prompt.js?v=90';
+import { featureVisualFor } from './studio-feature-visuals.js?v=90';
+
+const deepFreeze = value => {
+  if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
+  for (const child of Object.values(value)) deepFreeze(child);
+  return Object.freeze(value);
+};
+
+/** The eight independently searchable visual-fact categories. */
+export const FEATURE_CATEGORIES = deepFreeze([
+  { key: 'style', label: '风格 / 角色', labelEn: 'Style / character', dimensions: ['style'] },
+  { key: 'shape', label: '外形', labelEn: 'Shape', dimensions: ['shape'] },
+  { key: 'facialFeatures', label: '五官特征', labelEn: 'Facial features', dimensions: ['facial-features'] },
+  { key: 'paletteMaterial', label: '配色与材质', labelEn: 'Palette and material', dimensions: ['color', 'material'] },
+  { key: 'clothing', label: '衣物', labelEn: 'Clothing', dimensions: ['clothing'] },
+  { key: 'headAccessory', label: '头部配饰', labelEn: 'Head accessories', dimensions: ['head-accessory'] },
+  { key: 'bodyAccessory', label: '身体配饰', labelEn: 'Body accessories', dimensions: ['body-accessory'] },
+  { key: 'prop', label: '道具', labelEn: 'Props', dimensions: ['prop'] }
+]);
+
+/** Six display slots; each slot is one frozen, Artwork-derived fact group. */
+export const REVEAL_SLOTS = deepFreeze([
+  { key: 'style', label: '角色风格', labelZh: '角色风格', labelEn: 'Style', shortLabel: '角色风格', kinds: ['style'], categories: ['style'] },
+  { key: 'appearance', label: '外形五官', labelZh: '外形五官', labelEn: 'Shape and facial features', shortLabel: '外形五官', kinds: ['appearance'], categories: ['shape', 'facialFeatures'] },
+  { key: 'palette-material', label: '配色材质', labelZh: '配色材质', labelEn: 'Palette and material', shortLabel: '配色材质', kinds: ['palette-material'], categories: ['paletteMaterial'] },
+  { key: 'clothing', label: '衣物', labelZh: '衣物', labelEn: 'Clothing', shortLabel: '衣物', kinds: ['clothing'], categories: ['clothing'] },
+  { key: 'accessory', label: '配饰', labelZh: '配饰', labelEn: 'Accessories', shortLabel: '配饰', kinds: ['accessory'], categories: ['headAccessory', 'bodyAccessory'] },
+  { key: 'prop', label: '道具', labelZh: '道具', labelEn: 'Prop', shortLabel: '道具', kinds: ['prop'], categories: ['prop'] }
+]);
+
+const slotByKey = new Map(REVEAL_SLOTS.map(slot => [slot.key, slot]));
+const tagById = new Map(TAGS.map(tag => [tag.id, tag]));
+const identityLabel = identityId => STYLE_IDENTITIES.find(identity => identity.id === identityId)?.label;
+
+function dimensionFact(artwork, dimension) {
+  const feature = artwork?.features?.[dimension];
+  if (!feature || !['known', 'none', 'not-applicable', 'unknown'].includes(feature.state)) return null;
+  const ids = Array.isArray(feature.ids) ? feature.ids.filter(id => typeof id === 'string')
+    : typeof feature.id === 'string' ? [feature.id] : [];
+  return { state: feature.state, ids, label: String(feature.label || '') };
+}
+
+function groupedValue(artwork, dimensions, { emptyIds = [], emptyLabel = '' } = {}) {
+  const facts = dimensions.map(dimension => dimensionFact(artwork, dimension));
+  if (facts.some(fact => !fact || fact.state === 'unknown')) return { state: 'unknown', value: [], label: '待核实' };
+  const hasKnown = facts.some(fact => fact.state === 'known');
+  if (!hasKnown) {
+    const noneFacts = facts.filter(fact => fact.state === 'none');
+    const ids = [...new Set(noneFacts.flatMap(fact => fact.ids))];
+    const value = ids.length ? ids : noneFacts.length ? emptyIds.filter(id => artwork.featureIds?.includes(id)) : [];
+    const state = noneFacts.length ? 'none' : 'not-applicable';
+    const detail = facts.map(fact => fact.label).filter(Boolean).join(' · ');
+    const label = state === 'none' && noneFacts.length === facts.length
+      ? (emptyLabel || detail || '无')
+      : detail || (state === 'none' ? emptyLabel || '无' : '不适用');
+    return { state, value, label };
+  }
+  const value = [...new Set(facts.filter(fact => fact.state === 'known').flatMap(fact => fact.ids))];
+  const label = facts.filter(fact => fact.state === 'known').map(fact => fact.label).filter(Boolean).join(' · ')
+    || value.map(id => tagById.get(id)?.label || id).join(' · ');
+  return { state: value.length ? 'known' : 'unknown', value, label: value.length ? label : '待核实' };
+}
+
+function toRevealFeature(kind, grouped, artwork) {
+  const slot = slotByKey.get(kind);
+  const label = kind === 'style'
+    ? (identityLabel(artwork.styleIdentity) || grouped.label)
+    : grouped.label;
+  const value = Object.freeze([...grouped.value]);
+  const state = grouped.state;
+  return deepFreeze({
+    id: `reveal:${kind}:${value.join('+') || state}`,
+    kind,
+    label: label || '待核实',
+    labelZh: label || '待核实',
+    labelEn: slot?.labelEn || kind,
+    value,
+    state,
+    status: state === 'known' ? 'present' : state === 'none' ? 'none' : state === 'not-applicable' ? 'notApplicable' : 'unknown',
+    visualId: `source:${artwork.id}:${kind}`
+  });
+}
+
+/** Build the six fixed reveal facts from Artwork's verified visual-feature ledger. */
+export function revealFeaturesFor(artwork) {
+  if (!artwork || typeof artwork !== 'object') return [];
+  const groups = {
+    style: groupedValue(artwork, ['style']),
+    appearance: groupedValue(artwork, ['shape', 'facial-features']),
+    'palette-material': groupedValue(artwork, ['color', 'material']),
+    clothing: groupedValue(artwork, ['clothing'], { emptyIds: ['clothing:none'], emptyLabel: '无独立衣物' }),
+    accessory: groupedValue(artwork, ['head-accessory', 'body-accessory'], { emptyIds: ['accessory:none'], emptyLabel: '无配饰' }),
+    prop: groupedValue(artwork, ['prop'], { emptyIds: ['prop:none'], emptyLabel: '无道具' })
+  };
+  return REVEAL_SLOTS.map(slot => toRevealFeature(slot.key, groups[slot.key], artwork));
+}
+
+function hasCompleteRevealFacts(artwork) {
+  const features = revealFeaturesFor(artwork);
+  return features.length === REVEAL_SLOTS.length && features.every(feature => {
+    if (feature.state === 'unknown') return false;
+    const visual = featureVisualFor([feature], feature.kind, artwork);
+    return ['artwork-preview', 'source-crop', 'empty-value'].includes(visual.kind);
+  });
+}
+
+function fingerprint(pool) {
+  const input = pool.map(artwork => {
+    const asset = getAsset(artwork.assetRefs?.original);
+    return `${artwork.id}@${asset?.version || ''}:${asset?.sha256 || ''}`;
+  }).sort().join('|');
+  let hash = 2166136261;
+  for (let i = 0; i < input.length; i += 1) {
+    hash ^= input.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return `fnv1a-${(hash >>> 0).toString(16).padStart(8, '0')}-${pool.length}`;
+}
+
+function queryKey(query, requiredFeatures) {
+  return JSON.stringify({
+    revision: CATALOG_REVISION,
+    text: query.text,
+    tagsByDimension: Object.fromEntries(Object.entries(query.tagsByDimension).sort(([a], [b]) => a.localeCompare(b))),
+    requiredFeatures: [...requiredFeatures].sort()
+  });
+}
+
+function snapshotFor(artwork) {
+  const asset = getAsset(artwork.assetRefs?.original);
+  const prompt = promptRecordFor(artwork, { language: 'zh', target: 'image' });
+  if (!asset || !prompt) return null;
+  return deepFreeze({ artworkId: artwork.id, artwork, asset, prompt, catalogRevision: CATALOG_REVISION });
+}
+
+export function createDrawEngine({ catalog = ARTWORKS, rng = Math.random } = {}) {
+  if (!Array.isArray(catalog)) throw new TypeError('DrawEngine catalog 必须是 Artwork 数组。');
+  if (typeof rng !== 'function') throw new TypeError('DrawEngine rng 必须是函数。');
+  const bags = new Map();
+  const unavailable = new Map();
+  let drawSequence = 0;
+
+  function select({ query = {}, requiredFeatures = [] } = {}) {
+    const normalized = normalizeTagQuery(query);
+    if (!normalized.valid) return { status: 'error', message: `筛选条件无效：${normalized.errors.map(item => item.value || item.dimension || item.kind).join('、')}` };
+    if (!Array.isArray(requiredFeatures) || requiredFeatures.some(id => typeof id !== 'string')) {
+      return { status: 'error', message: '必备特征条件无效，请重新选择。' };
+    }
+    const locks = [...new Set(requiredFeatures)].sort();
+    const knownFeatures = new Set(catalog.flatMap(artwork => artwork.featureIds || []));
+    const unknown = locks.filter(id => !knownFeatures.has(id));
+    if (unknown.length) return { status: 'error', message: `未知必备特征：${unknown.join('、')}` };
+
+    const pool = queryArtworks(normalized, catalog)
+      .filter(artwork => isEligible(artwork) && isTransparentCharacter(artwork) && hasCompleteRevealFacts(artwork))
+      .filter(artwork => !unavailable.has(artwork.id))
+      .filter(artwork => locks.every(id => artwork.featureIds?.includes(id)));
+    if (!pool.length) {
+      const resourceNote = unavailable.size ? '；部分图片资源曾校验失败，可重试后再抽取' : '';
+      return { status: 'empty', message: `当前范围没有符合全部条件、且六类揭晓事实完整的已发布透明角色作品${resourceNote}。调整筛选或必备条件后再试。` };
+    }
+
+    const poolFingerprint = fingerprint(pool);
+    const scope = queryKey(normalized, locks);
+    let bag = bags.get(scope);
+    let notice = '';
+    if (!bag || bag.fingerprint !== poolFingerprint) {
+      bag = { fingerprint: poolFingerprint, remaining: pool.map(artwork => artwork.id), cycle: 0, lastId: null };
+      bags.set(scope, bag);
+    } else if (!bag.remaining.length) {
+      bag.remaining = pool.map(artwork => artwork.id);
+      bag.cycle += 1;
+      notice = '这组作品都已抽过一遍，重新开始随机。';
+    }
+    let randomValue;
+    try { randomValue = Number(rng()); } catch { return { status: 'error', message: '随机抽取暂时失败，请重试。' }; }
+    if (!Number.isFinite(randomValue)) return { status: 'error', message: '随机源未返回有效结果，请重试。' };
+    const avoidId = bag.remaining.length === pool.length && pool.length > 1 ? bag.lastId : null;
+    const choices = avoidId ? bag.remaining.filter(id => id !== avoidId) : bag.remaining;
+    const index = Math.min(choices.length - 1, Math.max(0, Math.floor(Math.max(0, Math.min(0.999999999999, randomValue)) * choices.length)));
+    const artworkId = choices[index];
+    bag.remaining.splice(bag.remaining.indexOf(artworkId), 1);
+    bag.lastId = artworkId;
+    const artwork = pool.find(candidate => candidate.id === artworkId);
+    const snapshot = snapshotFor(artwork);
+    if (!snapshot) return { status: 'error', message: '作品缺少匹配的原图或 Prompt 记录，已停止抽取。' };
+    drawSequence += 1;
+    const result = deepFreeze({
+      ...snapshot,
+      promptText: promptFor(artwork, { language: 'zh', target: 'image' }),
+      drawId: `draw-${Date.now()}-${drawSequence}`,
+      querySnapshot: deepFreeze({ text: normalized.text, tagsByDimension: Object.fromEntries(Object.entries(normalized.tagsByDimension).map(([key, ids]) => [key, [...ids]])) }),
+      requiredFeatures: Object.freeze([...locks]),
+      revealFeatures: deepFreeze(revealFeaturesFor(artwork)),
+      poolFingerprint
+    });
+    if (pool.length === 1) notice = [notice, '只有 1 款作品符合全部条件。'].filter(Boolean).join(' ');
+    return { status: 'selected', result, pool: Object.freeze([...pool]), notice };
+  }
+
+  return Object.freeze({
+    select,
+    markUnavailable(artworkId, reason = '图片资源暂不可用') { if (typeof artworkId === 'string') unavailable.set(artworkId, String(reason)); },
+    clearUnavailable(artworkId) { artworkId ? unavailable.delete(artworkId) : unavailable.clear(); },
+    unavailableArtworkIds() { return Object.freeze([...unavailable.keys()]); }
+  });
+}

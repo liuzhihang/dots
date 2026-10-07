@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "cache": 87,
+  "sourceId": "08b2624c93505ba4282b1f1cf0242477232ff6df9e10571e4670fce9b88566a1",
+  "site": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dot Icon Studio",
+    "status": "active",
+    "latest_version_number": 38,
+    "current_live_url": "https://dot.liuzhihang.chatgpt.site",
+    "current_user_role": "owner",
+    "access_mode": "custom",
+    "access_policy": {
+      "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+      "access_mode": "custom",
+      "allowed_account_user_ids": [
+        "9da76308-12c7-4fc9-90ca-73685f2e4c95"
+      ],
+      "external_visitor_count": 0,
+      "allowed_users": [
+        {
+          "account_user_id": "9da76308-12c7-4fc9-90ca-73685f2e4c95",
+          "email": "liuzhihangs@gmail.com",
+          "name": "志航 刘",
+          "avatar_url": null,
+          "role": "owner"
+        }
+      ],
+      "allowed_groups": [],
+      "allowed_workspace_group_ids": [],
+      "allowed_tenant_group_ids": [],
+      "revision": 1,
+      "updated_at": "2026-10-02T11:02:12.722867+00:00",
+      "allowed_editors": []
+    },
+    "automations": []
+  },
+  "previousSite": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dot Icon Studio",
+    "status": "active",
+    "latest_version_number": 37,
+    "current_live_url": "https://dot.liuzhihang.chatgpt.site",
+    "current_user_role": "owner",
+    "access_mode": "custom",
+    "access_policy": {
+      "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+      "access_mode": "custom",
+      "allowed_account_user_ids": [
+        "9da76308-12c7-4fc9-90ca-73685f2e4c95"
+      ],
+      "external_visitor_count": 0,
+      "allowed_users": [
+        {
+          "account_user_id": "9da76308-12c7-4fc9-90ca-73685f2e4c95",
+          "email": "liuzhihangs@gmail.com",
+          "name": "志航 刘",
+          "avatar_url": null,
+          "role": "owner"
+        }
+      ],
+      "allowed_groups": [],
+      "allowed_workspace_group_ids": [],
+      "allowed_tenant_group_ids": [],
+      "revision": 1,
+      "updated_at": "2026-10-02T11:02:12.722867+00:00",
+      "allowed_editors": []
+    },
+    "automations": []
+  },
+  "savedVersion": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_7dcbb673e1f88191851d4b84233fecbd",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 38,
+    "source": {
+      "commit_sha": "f0242ac250f2d625dee319ca90f54243c152e674"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000008df881fb84e664ba8bcafbd7",
+      "content_hash": "sha256:8d9e44f61681d1d7a6ed564cc79be6b06651202c325021fa9e6a13e6060132b3",
+      "size_bytes": 31918080,
+      "file_count": 42
+    },
+    "screenshot_url": null,
+    "deployment_id": "appgdep_6ac590c5c8948191b6fcc82dbd6be64b"
+  },
+  "deployment": {
+    "id": "appgdep_6ac590c5c8948191b6fcc82dbd6be64b",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dot Icon Studio",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_7dcbb673e1f88191851d4b84233fecbd",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dot.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-07T00:22:40.616407+00:00"
+  },
+  "archive": "/Users/liuzhihang/workspace/dots/.tmp/sites-publish-cache87-20261007-081925/cache87-site.tar.gz",
+  "browserHandoff": {
+    "status": "queued",
+    "threadId": "01a11227-68f7-7280-9faa-7de7aa587970"
+  },
+  "userAuthorization": "发布到站点，我人工去确认下",
+  "artApproval": "pending-user-review",
+  "humanPreview": "pending-user-review",
+  "localGitCommitted": false,
+  "mainSpecsSynced": false,
+  "archived": false,
+  "onlineUiQA": "not-run; user will review",
+  "physicalDeviceQA": "not-run",
+  "archiveRepresentation": {
+    "localGzipSha256": "fa1b7f4b6556eedb09a9760d572e6bde4ee8f894eac5883c8aa1164b27ffcba6",
+    "localTarSha256": "d5c8c349ab0162552babf38735d9109dfc075d4f7c257ff2b506090f2ae78659",
+    "nativeContentHash": "sha256:8d9e44f61681d1d7a6ed564cc79be6b06651202c325021fa9e6a13e6060132b3",
+    "rawContainerHashIdentical": false,
+    "localPackageFilesMatchFrozen": true,
+    "nativeArchiveSourceAndFileCountReadBack": true,
+    "nativeArchiveFileBytesDirectReadBack": "not-available; no UI or resource fetch performed"
+  }
+}
