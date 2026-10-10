@@ -1,6 +1,0 @@
-{
-  "failure": "each progress indicator is visible",
-  "stage": "assertResultAndActions / inspectRow",
-  "classification": "harness still expected progress visible in compact result state; product contract hides it after reveal",
-  "repair": "assert reveal progress visible and result progress removed; sequential-stop assertions retained"
-}

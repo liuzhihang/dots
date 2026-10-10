@@ -6,12 +6,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createServer } from 'vite';
-import { chromium } from '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import {launchBrowser} from './browser-runtime.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const evidenceRoot = path.resolve(process.env.DOTS_EVIDENCE_DIR || path.join(repoRoot, 'design/acceptance/current-20261010-v99/cr-polish-20261011/editing'));
-const harnessFixtureRoot = path.join(repoRoot, 'design/acceptance/current-20261010-v99/editor');
+const evidenceRoot = resolveEvidenceDirectory('.artifacts/studio-editing');
+const harnessFixtureRoot = path.join(repoRoot, 'scripts/fixtures/editor');
 const manifestPath = path.join(repoRoot, 'dist/assets/templates/sources.json');
 const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const runRoot = path.join(evidenceRoot, `run-${runId}`);
@@ -19,7 +20,6 @@ const compositeRoot = path.join(runRoot, 'composites');
 const downloadRoot = path.join(runRoot, 'downloads');
 const screenshotRoot = path.join(runRoot, 'screenshots');
 const videoStageRoot = path.join(runRoot, 'video-segments');
-const chromePath = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const WIDTH = 1440;
 const HEIGHT = 900;
 const focusedRaceOnly = process.argv.includes('--focused-race-only');
@@ -104,7 +104,7 @@ const harnessURL = process.env.DOTS_QA_BASE_URL
   ? `${baseURL}/__dots_review__/`
   : `${baseURL}/__dots_editor_harness__/`;
 
-const browser = await chromium.launch({ headless: true, executablePath: chromePath });
+const browser = await launchBrowser({ headless: true });
 const browserFailures = [];
 const consoleErrors = [];
 const httpFailures = [];

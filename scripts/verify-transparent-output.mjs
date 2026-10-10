@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {inflateSync} from 'node:zlib';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=99';
 import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=99';
 function paeth(a,b,c) {
@@ -53,7 +54,7 @@ function readPngAlphaStats(bytes, label) {
   return {width:header.width,height:header.height,colorType:header.colorType,transparentPixels,opaquePixels,partialAlphaPixels,alphaBounds:maxX<0?null:{x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1}};
 }
 
-const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261010-v99/cr-polish-20261011/browser';
+const folder=resolveEvidenceDirectory('.artifacts/browser-acceptance');
 const report=JSON.parse(await fs.readFile(folder+'/report.json'));
 assert.equal(PREVIEW_ARTWORKS.length,0,'There are no preview-only Artworks in the published catalog.');
 assert.equal(report.downloads.length,ARTWORKS.length,'Every public Artwork journey has an actual browser download.');

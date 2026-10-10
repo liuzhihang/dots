@@ -1,7 +1,0 @@
-
-> test:browser
-> node scripts/verify-studio-browser.mjs && node scripts/verify-studio-contrast.mjs && node scripts/verify-editor-layout.mjs
-
-Browser: 14 checks; 25 captures; 22 exact original downloads.
-48 rendered contrast checks passed; minimum 3.09:1.
-Editor layout: 16 template/viewport/language checks, 48 captures, no overflow; real export reachable and 44px controls.

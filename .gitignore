@@ -7,6 +7,7 @@ coverage/
 playwright-report/
 test-results/
 .tmp/
+.artifacts/
 __pycache__/
 *.py[cod]
 
@@ -19,10 +20,23 @@ __pycache__/
 
 # Local logs and operating system files
 *.log
-!design/acceptance/**/*.log
-!openspec/changes/**/acceptance/**/*.log
 .DS_Store
 Thumbs.db
+
+# Frozen QA and retired runtime material. Selected, already tracked approval
+# and provenance records remain versioned; new evidence belongs in .artifacts/.
+# Exact retired paths and recovery revisions: design/repository-history.json.
+/design/acceptance/
+/historical-runtime/
+/openspec/changes/archive/**/acceptance/
+
+/openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/implementation/**/source-before/
+/openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/implementation/**/baseline.json
+/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/references/
+/openspec/changes/archive/2026-10-06-rebuild-character-system/references/
+/design/followup-qa-20261005/*.png
+/design/handoffs/dot-avatar-prototype-20261008*.zip
+/openspec/changes/archive/2026-10-06-rebuild-character-system/implementation/creation-logic-20261005/*.png
 
 # dist/ is checked-in application source and the Sites publication directory.
 # Keep .openai/hosting.json to retain the original Site identity.

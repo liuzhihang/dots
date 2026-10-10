@@ -2,11 +2,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 import {ASSETS} from '../dist/studio-artwork-catalog.js?v=99';
 import {createMotionController} from '../dist/studio-motion.js?v=99';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261010-v99/cr-polish-20261011/tests/motion');
+const output = resolveEvidenceDirectory('.artifacts/motion');
 const checks = [];
 const check = (condition, label) => { assert.ok(condition, label); checks.push(label); };
 const flush = async () => { await Promise.resolve(); await new Promise(resolve => setImmediate(resolve)); };

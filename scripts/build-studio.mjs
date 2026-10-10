@@ -3,13 +3,13 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {verifySafety} from './verify-implementation-safety.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
 const revision = 99;
 const cacheQuery = `?v=${revision}`;
 const catalogRevision = 'artwork-catalog-20261010-v99';
-const evidenceDirectory = process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261010-v99';
+const evidenceDirectory = resolveEvidenceDirectory('.artifacts/build');
 const templateSourcesPath = 'dist/assets/templates/sources.json';
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 
@@ -320,7 +320,6 @@ export async function build() {
   const expectedPendingFiles = [...previewFiles].sort();
   assert.deepEqual(manifestPreviewFiles, expectedPendingFiles, 'previewOnlyFiles must exactly match pending Artwork and template source resources');
 
-  const safety = await verifySafety();
   const deploymentBlockers = [
     ...(previewIds.size ? ['pending-preview-artwork'] : []),
     ...(pendingTemplateIds.size ? ['pending-template-artwork-and-engineering-review'] : []),
@@ -334,7 +333,7 @@ export async function build() {
   const report = {
     revision,
     catalogRevision,
-    evidenceDirectory,
+    evidenceDirectory: path.relative(root, evidenceDirectory),
     scope: 'v99 static build and registered content readiness; this report does not claim that deployment has run or succeeded.',
     deploymentReady: deploymentBlockers.length === 0,
     deploymentBlockers,
@@ -348,14 +347,13 @@ export async function build() {
     templateSourceManifest: templateSourcesPath,
     fileCount: files.length,
     files,
-    safety,
   };
-  await fs.mkdir(path.join(root, evidenceDirectory), {recursive: true});
-  await fs.writeFile(path.join(root, `${evidenceDirectory}/build-report.json`), `${JSON.stringify(report, null, 2)}\n`);
+  await fs.mkdir(evidenceDirectory, {recursive: true});
+  await fs.writeFile(path.join(evidenceDirectory, 'build-report.json'), `${JSON.stringify(report, null, 2)}\n`);
   return report;
 }
 
 if (process.argv[1] === import.meta.filename) {
   const report = await build();
-  console.log(`Static v${revision} build: ${report.fileCount} files; ${report.approvedArtworkCount} approved, ${report.previewArtworkCount} pending Artwork; ${report.safety.protectedCount} baseline hashes preserved.`);
+  console.log(`Static v${revision} build: ${report.fileCount} files; ${report.approvedArtworkCount} approved, ${report.previewArtworkCount} pending Artwork; deployment ${report.deploymentReady ? 'ready' : 'blocked'}.`);
 }

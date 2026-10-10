@@ -2,11 +2,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createServer} from 'vite';
-import {chromium} from '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+import {launchBrowser} from './browser-runtime.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=99';
 import {TEMPLATE_REGISTRY,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=99';
 
-const output=path.resolve(process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261010-v99/cr-polish-20261011/contrast');
+const output=resolveEvidenceDirectory('.artifacts/studio-contrast');
 await fs.mkdir(output,{recursive:true});
 const server=await createServer({configFile:path.resolve('vite.config.mjs'),server:{host:'127.0.0.1',port:0,strictPort:true,hmr:false}});
 await server.listen();
@@ -15,7 +16,7 @@ const html=(await fs.readFile('dist/index.html','utf8'))
   .replace('data-cache="99"','data-cache="99" data-studio-boot="manual"')
   .replace('<head>',`<head><base href="${origin}/">`)
   .replace('<script type="module" src="./studio.js?v=99"></script>','<script type="module">import {bootStudio} from "/studio.js?v=99";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
-const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const browser=await launchBrowser({headless:true});
 const rows=[];
 const failures=[];
 const staticFixture=ARTWORKS.find(item=>!getTemplateForArtwork(item));

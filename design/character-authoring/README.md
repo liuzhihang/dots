@@ -1,8 +1,8 @@
 # Dots 角色与外观新增规范
 
-本目录是后续会话的稳定入口。适用于新增完整静态作品、同角色新外观，以及另行获准的模板适配。它不要求每个角色都有编辑模板，也不把本轮24件已批准 Artwork 变成永久数量上限。
+本目录是后续会话的稳定入口。适用于新增完整静态作品、同角色新外观，以及另行获准的模板适配。每系列可以有多个独立 Artwork；静态作品不要求都有编辑模板。当前产品合同以 `openspec/specs/` 为准。
 
-2026-10-11：当前本地实施版本为 v99；暗色 Gallery / CharacterStudio 的合同与12份 delta 见 `openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/`。本目录与 [共用组件](components.md) 已落实到 vanilla ESM；工程验收见 design/acceptance/current-20261010-v99，用户美术批准独立记录。本轮24件 Artwork 已批准公开，2个 Template 均通过工程和美术确认；历史验收仍按原字节保留。未来先读取当时的 active change，不能把此处日期当成永远的源码版本。
+Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录规范](../../openspec/specs/artwork-catalog/spec.md)、[角色系列规范](../../openspec/specs/character-families/spec.md) 与 [模板编辑规范](../../openspec/specs/bounded-character-editing/spec.md)。当前审批范围及精确资源 hash 通过 [精选发布记录](../releases/20261011-site47-v99/README.md) 查找；历史报告保持原文。
 
 ## 先明确交付对象
 
@@ -14,7 +14,7 @@
 | 本地模板 Template | 显式绑定作品版本、真实分层、有限能力、合法组合及独立验收 | 一张透明 PNG 或静态配饰不等于可编辑层 |
 | 用户 Draft | 当前 Studio 会话与成功 revision | 不自动登记为公共作品、动画或 Pet |
 
-五系列均允许多个外观。本轮共有24件 Artwork 已通过用户美术确认并进入公开图库；28种合法编辑组合分属2个已通过工程与美术确认的 Template，不计入 Artwork 数量。后续会话仍按用户指定的系列、数量和区别增加，新作品逐项确认后再公开，不默认再扩充一整套。
+五系列均允许多个外观。具体公开数量与当前批准版本由静态目录和对应批准记录共同确定，不在本规范重复维护。后续按用户指定的系列、数量和区别增加作品；每项 Artwork 或 Template 都必须以精确版本取得相应确认后才公开。
 
 ## 从参考到可入库作品
 
@@ -45,13 +45,13 @@
 
 用户提供的设置截图可以直接作为外观参考，不要求提供每个颜色、眼型、眼镜、帽饰组合的截图。先用公开资料与已有截图核对，只有精确复现的特殊组合缺乏可见依据时，才针对性补充参考。公开资料能看到成品不代表提供了原始透明图或可编辑分层。
 
-图库收录有辨识度的完整外观，不穷举编辑选项。2026-10-10 追加两件蛙形/心形外观的制作记录见 `openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/README.md`；这两件作品已包含在本轮已批准的24件 Artwork 中。参考驱动重制仍须记录来源且不得冒称官方原始素材；无手脚约束与精确版本审批继续适用。原型中的更多眼型与配件只有独立完成素材适配后才能扩展编辑器。
+图库收录有辨识度的完整外观，不穷举编辑选项。现有作品的制作来源见各 change 的 planning/manifests，逐件批准范围见对应发布记录。参考驱动重制仍须记录来源且不得冒称官方原始素材；无手脚约束与精确版本审批继续适用。更多眼型与配件只有独立完成素材适配后才能扩展编辑器。
 
 透明素材在产品中使用无棋盘网格的展示面，素材选项缩略图用纯色底。底色只用于显示，原图和导出继续保留 alpha；离线边缘检查底不得烘焙进素材。
 
 ## 资源与内容合同
 
-- **原图**为实际生成/获准的完整 PNG，批准记录绑定原始字节；不能下载时重新 Canvas 绘制。15 件历史批准作品作为冻结子集单独保护，新作品各自建立来源与批准链，不冒用 v83 的 `makeApproval` 或 source snapshot。
+- **原图**为实际生成/获准的完整 PNG，批准记录绑定原始字节；不能下载时重新 Canvas 绘制。历史批准作品按原始字节和独立来源记录保护；新作品各自建立来源与批准链，不复用其他作品的批准或 source snapshot。
 - **展示资源**为独立、有来源引用的 thumbnail 与 display preview。目标 thumb 256px、detail 512/1024px 按显示需要制作并记录实际尺寸，保持比例、不裁掉肢体、不冒充图层；原尺寸不足时不虚报高清。当前通过 studio-display-assets.js 登记 256 poster 和 512/1024 detail preview，studio-preview-loader.js 按需加载；原图仅在实际下载时校验。原始参考与其派生资源都不能替代精确 Artwork/version/hash 的用户艺术确认。
 - **事实**沿用实际 `CORE_FACT_DIMENSIONS`：`characterStyle`、`appearance`、`facialFeatures`、`colorMaterial`、`clothing`、`headAccessory`、`bodyAccessory`、`prop`。`known`=有证据；`none`=确实没有；`notApplicable`=不适用；`unknown`=未确定，后者不能自动改 none。额外动作/表情等 typed facts 也须真实，静态持书不声称阅读动画。
 - **双语**名称、简述、别名、可复制 Prompt 根据实际最终图写，沿用具体模块的语言键（目前内容 `en`/`zh-CN`，Prompt target 的 language 字段由现有 schema 决定），不照搬制作愿望。无依据不写动作、尺寸、许可、安装或可编辑标签。
@@ -64,13 +64,13 @@
 
 当前 `CHARACTER_IDENTITIES` 使用独立身份 ID，与 `seriesId` 分开。新身份须同时登记双语 label；同身份的独立成品可以拥有多个 Artwork。新增完整外观不必新建 Template。不要重新使用系列 slug 充当所有作品的身份。
 
-验证分为**冻结 15 件原图完整性子集**与**当前数据导出的数量、唯一性及引用检查**。新增后运行 catalog/query/build/browser/download 验证；不得将当前 22 条（含 7 pending）再次写成永久全量限制。五系列 taxonomy 与八类 facts 是产品约束；历史验收保留原始数量。
+验证同时覆盖历史冻结素材完整性和当前目录的数量、唯一性及引用完整性。新增后运行 catalog/query/build/browser/download 验证；目录数量与待审规模从当前数据和批准记录派生，不在此处固定。五系列 taxonomy 与八类 facts 是产品约束；历史验收保留其原始数据。
 
 验收使用一个不进入发布的额外 Artwork fixture：只加有效资源/数据即可在共用查询、卡片、详情和 Prompt 中出现；无 Template 时无 Edit；pending 时不进入默认搜索。需要页面专用分支才能通过则扩展合同未完成。缺原图/错 hash/双语缺失/虚假 approval/重复 ID/非法 Template 绑定必须被拒绝。
 
 接入后按影响运行现有 `npm run build`、`npm test`、`npm run test:browser`、`npm run test:downloads`，新增模板还需当时真实存在的 renderer/template 验证。先读取 package scripts，未实施的脚本不声称已跑。四视口 1440×900、390×844、320/768 边界、EN/zh-CN、键盘返回、实际下载均按任务影响检查。只交付制作候选时报告资产检查，不把全站运行验收写成已通过。
 
-后续会话可以直接要求：“按角色新增规范，为 Animals 增加 1 件新外观，先制作候选”；或明确“将已确认的这 2 件作品接入现有图库并验证”。规范提供可复用路径，不把素材请求扩大为全站重构，也不额外强加未要求的模板、动画或发布。
+后续会话可以直接要求：“按角色新增规范，为 Animals 增加 1 件新外观，先制作候选”；或在有精确批准后要求“将该作品接入现有图库并验证”。规范提供可复用路径，不把素材请求扩大为全站重构，也不额外强加未要求的模板、动画或发布。
 
 ## 最新无肢体身份参考
 

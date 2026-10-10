@@ -1,16 +1,17 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
+import { launchBrowser } from './browser-runtime.mjs';
+import { resolveEvidenceDirectory } from './evidence-paths.mjs';
 import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=99';
 import { TEMPLATE_REGISTRY, getTemplateForArtwork } from '../dist/studio-edit-templates.js?v=99';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || path.join(repoRoot, 'design/acceptance/current-20261010-v99/cr-polish-20261011/editor-layout'));
-const harnessRoot = path.join(repoRoot, 'design/acceptance/current-20261010-v99/editor');
+const output = resolveEvidenceDirectory('.artifacts/editor-layout');
+const harnessRoot = path.join(repoRoot, 'scripts/fixtures/editor');
 await fs.mkdir(output, { recursive: true });
-const { chromium } = await import(pathToFileURL(process.env.DOTS_PLAYWRIGHT_MODULE || '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs'));
 
 const server = await createServer({
   configFile: path.join(repoRoot, 'vite.config.mjs'),
@@ -35,7 +36,7 @@ const server = await createServer({
 });
 await server.listen();
 const origin = `http://127.0.0.1:${server.httpServer.address().port}`;
-const browser = await chromium.launch({ headless: true, executablePath: process.env.DOTS_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
+const browser = await launchBrowser({ headless: true });
 const errors = [];
 const captures = [];
 const rows = [];

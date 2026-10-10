@@ -1,9 +1,8 @@
-import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import {pathToFileURL} from 'node:url';import {createServer} from 'vite';
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import {createServer} from 'vite';import {launchBrowser} from './browser-runtime.mjs';import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 import {ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=99';import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=99';
-const output=path.resolve(process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261010-v99/performance');await fs.mkdir(output,{recursive:true});
-const {chromium}=await import(pathToFileURL(process.env.DOTS_PLAYWRIGHT_MODULE||'/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs'));
+const output=resolveEvidenceDirectory('.artifacts/studio-performance');await fs.mkdir(output,{recursive:true});
 const vite=await createServer({configFile:path.resolve('vite.config.mjs'),server:{host:'127.0.0.1',port:0,strictPort:true,hmr:false}});await vite.listen();const origin=`http://127.0.0.1:${vite.httpServer.address().port}`;
-const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const browser=await launchBrowser({headless:true});
 const html=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="99"','data-cache="99" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=99"></script>','<script type="module">import {bootStudio} from "/studio.js?v=99";window.app=bootStudio();</script>');
 const staticFixture=ARTWORKS.find(artwork=>!getTemplateForArtwork(artwork));assert(staticFixture,'The catalog retains a genuine static-detail performance fixture.');
 let disposedLoader;const samples=[],cycles=[],originalPaths=ARTWORKS.map(a=>getAsset(a.assetRefs.original).path.slice(1));

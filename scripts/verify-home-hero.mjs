@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {pathToFileURL} from 'node:url';
 import {createServer} from 'vite';
+import {launchBrowser} from './browser-runtime.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
-const output=path.resolve(process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261010-v99/cr-polish-20261011/home');
+const output=resolveEvidenceDirectory('.artifacts/home-hero');
 await fs.mkdir(output,{recursive:true});
 const bannerRelative='dist/assets/banners/dots-gallery-hero-ensemble-v99.webp';
 const bannerBytes=await fs.readFile(bannerRelative);
@@ -13,11 +14,10 @@ const bannerSha256=crypto.createHash('sha256').update(bannerBytes).digest('hex')
 assert.equal(bannerBytes.length,126138,'The approved test fixture is the exact registered ensemble candidate size.');
 assert.equal(bannerSha256,'aaa7c0fe9e83e579fa0647f6994d58d84ca80831cb5b5c63cdc48a5537818091','The tested homepage banner matches its frozen preview hash.');
 
-const {chromium}=await import(pathToFileURL(process.env.DOTS_PLAYWRIGHT_MODULE||'/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs'));
 const server=await createServer({configFile:path.resolve('vite.config.mjs'),server:{host:'127.0.0.1',port:0,strictPort:true,hmr:false}});
 await server.listen();
 const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
-const browser=await chromium.launch({headless:true,executablePath:process.env.DOTS_CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
+const browser=await launchBrowser({headless:true});
 const errors=[],checks=[],rows=[];
 const viewports=[[1440,900],[1206,1257],[768,1024],[390,844],[320,700]];
 const expectedTitles={en:['Make It','Your Dot.'],'zh-CN':['创造','你的Dot.']};

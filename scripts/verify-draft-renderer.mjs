@@ -2,7 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
 import path from 'node:path';
-import {fileURLToPath, pathToFileURL} from 'node:url';
+import {fileURLToPath} from 'node:url';
+import {launchBrowser} from './browser-runtime.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -31,16 +33,11 @@ const server = http.createServer(async (request, response) => {
   }
 });
 
-const playwrightPath = process.env.DOTS_PLAYWRIGHT_MODULE || '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
-const {chromium} = await import(pathToFileURL(playwrightPath));
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const port = server.address().port;
 let browser;
 try {
-  browser = await chromium.launch({
-    headless: true,
-    executablePath: process.env.DOTS_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-  });
+  browser = await launchBrowser({headless: true});
   const page = await browser.newPage();
   const pageErrors = [];
   page.on('pageerror', error => pageErrors.push(error.message));

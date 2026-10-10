@@ -1,8 +1,0 @@
-Captured assertion excerpt from root test run; not a full stdout/stderr transcript.
-Command: node scripts/verify-card-reveal.mjs
-Exit: 1
-AssertionError: empty pools fail before the first card animation
-6 !== 0
-Location: scripts/verify-card-reveal.mjs:535
-Classification: obsolete harness expectation; the current empty UI retains six static card backs.
-Correction: assert six backs, no candidate track, no stopped fake fact, and no revealed result. Production behavior was not changed.

@@ -1,24 +1,20 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {pathToFileURL} from 'node:url';
 import {createServer} from 'vite';
+import {launchBrowser} from './browser-runtime.mjs';
+import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
-const evidenceDir=path.resolve(process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261010-v99/cr-polish-20261011/tests/history');
+const evidenceDir=resolveEvidenceDirectory('.artifacts/studio-history');
 await fs.mkdir(evidenceDir,{recursive:true});
 
-const {chromium} = await import(pathToFileURL(process.env.DOTS_PLAYWRIGHT_MODULE
-  || '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs'));
 const vite = await createServer({
   configFile: new URL('../vite.config.mjs', import.meta.url).pathname,
   server: {host: '127.0.0.1', port: 0, strictPort: true, hmr: false}
 });
 await vite.listen();
 const origin = `http://127.0.0.1:${vite.httpServer.address().port}`;
-const browser = await chromium.launch({
-  headless: true,
-  executablePath: process.env.DOTS_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-});
+const browser = await launchBrowser({headless: true});
 
 async function newDirtyPage() {
   const page = await browser.newPage({viewport: {width: 1280, height: 800}});
