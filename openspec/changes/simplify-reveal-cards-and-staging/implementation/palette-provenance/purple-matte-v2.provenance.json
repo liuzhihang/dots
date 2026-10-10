@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:purple-matte",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "candidate-grok-20261005",
+  "applicableArtworkIds": [
+    "candidate-grok-20261005"
+  ],
+  "factIds": [
+    "color:purple",
+    "material:soft-matte"
+  ],
+  "artworkFactReference": "color:purple + material:soft-matte",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/purple-matte-v2.provenance.json#purple-matte",
+    "assetSha256": "1678461201a094e08cb2a2b9535f008d12665c475861e72893677acbde5bd6e4",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-f74b5d3e-bf9e-4e40-bc46-cfb7bd636176; reference=dist/assets/characters/grok-bot-purple-orb-candidate-v2.png#e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "candidate-grok-20261005",
+    "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+    "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/purple-matte.svg",
+    "version": "v1-candidate",
+    "sha256": "4a95f3693da3c88492b4d0d3fe66ac236cbfde8238279f5c1a944a91c0c620fa"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-f74b5d3e-bf9e-4e40-bc46-cfb7bd636176",
+    "transparentBackgroundRequested": true,
+    "prompt": "Use case: stylized-concept\nAsset type: isolated palette-and-material clue for a character-gallery card\nPrimary request: create one premium 3D specimen showing the exact purple color and soft-matte surface of the Grok material in Image 1, presented as a material swatch only.\nSubject: a single softly curved rounded-square sample tile of smooth matte polymer, with a small beveled edge that reveals thickness; simple abstract sample, not a character body.\nStyle/medium: refined soft 3D product illustration with understated micro-roughness and clean silhouette.\nComposition/framing: centered, fully visible, about 70% of a square canvas, similar isolated framing to Image 1.\nLighting/mood: gentle studio lighting, broad soft highlight, no glossy glare.\nColor palette: saturated lavender-violet purple matching the reference surface.\nMaterials/textures: soft matte finish, velvety micro-roughness, no fibers or fabric weave.\nConstraints: transparent background with true alpha; no ground plane, cast shadow, eyes, face, limbs, accessories, orb, character, text, logo, frame, or UI.",
+    "referenceImages": [
+      {
+        "artworkId": "candidate-grok-20261005",
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/purple-matte-v2.png",
+    "mime": "image/png",
+    "sha256": "1678461201a094e08cb2a2b9535f008d12665c475861e72893677acbde5bd6e4",
+    "byteSize": 1151105,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 736932,
+      "partial": 835095,
+      "opaque": 489
+    }
+  }
+}
+

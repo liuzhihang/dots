@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:teal-knit",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "candidate-humans-20261005",
+  "applicableArtworkIds": [
+    "candidate-humans-20261005"
+  ],
+  "factIds": [
+    "color:teal",
+    "material:knit-fabric"
+  ],
+  "artworkFactReference": "color:teal + material:knit-fabric",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/teal-knit-v2.provenance.json#teal-knit",
+    "assetSha256": "9cc2b5cf51f6120b6cc87d9edd7770f61639038b0a02126707d81902f90081c8",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-4e405a1c-2a4d-4e61-8d41-29c19d2e7818; reference=dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png#56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "candidate-humans-20261005",
+    "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+    "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/teal-knit.svg",
+    "version": "v1-candidate",
+    "sha256": "896dbae42c312613ddd797218aeea61fc1d94f53f73167549c703ac036263603"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-4e405a1c-2a4d-4e61-8d41-29c19d2e7818",
+    "transparentBackgroundRequested": true,
+    "prompt": "Use case: stylized-concept\nAsset type: isolated palette-and-material clue for a character-gallery card\nPrimary request: create a premium rounded textile swatch that matches the muted teal knit color and stitch scale of the sweater in Image 1; show the color and knit material only.\nSubject: one softly padded rounded-square knit swatch with a folded corner revealing the fabric thickness and ribbed edge; no garment silhouette.\nStyle/medium: polished soft 3D product illustration, tactile and carefully detailed.\nComposition/framing: centered, fully visible, about 70% of a square canvas, same isolated specimen framing as Image 1.\nLighting/mood: gentle diffuse studio lighting, clear stitch shadows without dramatic contrast.\nColor palette: calm blue-green / muted teal matching the sweater in Image 1.\nMaterials/textures: visible fine vertical knit ribs and small interlocking stitches, soft wool-blend yarn, not plush fur.\nConstraints: transparent background with true alpha, no ground plane or cast shadow. No character, body, face, head, eyes, hands, clothing item, buttons, logo, text, frame, or UI.",
+    "referenceImages": [
+      {
+        "artworkId": "candidate-humans-20261005",
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/teal-knit-v2.png",
+    "mime": "image/png",
+    "sha256": "9cc2b5cf51f6120b6cc87d9edd7770f61639038b0a02126707d81902f90081c8",
+    "byteSize": 2325068,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 679011,
+      "partial": 893308,
+      "opaque": 197
+    }
+  }
+}
+

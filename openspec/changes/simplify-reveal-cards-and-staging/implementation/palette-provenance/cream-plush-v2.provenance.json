@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:cream-plush",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "candidate-meta-muse-20261005",
+  "applicableArtworkIds": [
+    "candidate-meta-muse-20261005"
+  ],
+  "factIds": [
+    "color:cream",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:cream + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/cream-plush-v2.provenance.json#cream-plush",
+    "assetSha256": "6081eb1d18ac5e8473d11b4ddf2f40fe69133e43446ffd4379e947ba7a436bd1",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-e9626b40-ae7e-4757-92a3-60bdd82fc4f1; reference=dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png#12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "candidate-meta-muse-20261005",
+    "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+    "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/cream-plush.svg",
+    "version": "v1-candidate",
+    "sha256": "59f6f698e8535d864532f80d7de9fe5641432715d5f1327de8fba50f77bc2ab9"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-e9626b40-ae7e-4757-92a3-60bdd82fc4f1",
+    "transparentBackgroundRequested": true,
+    "prompt": "Use case: stylized-concept\nAsset type: isolated palette-and-material clue for a character-gallery card\nPrimary request: create one soft cream short-pile plush material swatch whose ivory color and fine fibers match the fabric surface in Image 1. This must read as a fabric specimen, not a character.\nSubject: a single rounded-square textile swatch, softly padded and slightly curved, with a folded corner exposing the plush edge and thickness.\nStyle/medium: premium soft 3D product illustration with fine, delicate fibers and refined edges.\nComposition/framing: centered, fully visible, about 70% of the square canvas, similar isolated framing to Image 1.\nLighting/mood: warm gentle studio light, preserving creamy whites without yellow cast.\nColor palette: pale warm ivory and cream matching the reference; restrained beige fiber shadows.\nMaterials/textures: very short dense velvety plush, soft rather than shaggy.\nConstraints: genuinely transparent background with alpha; no ground or cast shadow. No full character/body, sphere/orb, eyes, face, limbs, garment, accessories, lettering, logo, frame, or UI.",
+    "referenceImages": [
+      {
+        "artworkId": "candidate-meta-muse-20261005",
+        "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/cream-plush-v2.png",
+    "mime": "image/png",
+    "sha256": "6081eb1d18ac5e8473d11b4ddf2f40fe69133e43446ffd4379e947ba7a436bd1",
+    "byteSize": 1716174,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 727024,
+      "partial": 845472,
+      "opaque": 20
+    }
+  }
+}
+

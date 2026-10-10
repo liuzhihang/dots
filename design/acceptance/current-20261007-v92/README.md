@@ -6,7 +6,7 @@
 
 - 首页/画廊随机单击即开场。后台准备图片时显示卡背洗牌；资源就绪后六类实际候选依次停止，再揭晓同一完整作品。
 - 不再向用户解释“已选定/校验原图/六类真实特征”等内部步骤。减少动态时不洗牌、不滚动，六张静态特征之后由“揭晓伙伴”进入结果。
-- 有限设计组合以已登记完整 Artwork 为单位。当前15套成品，Dots和Grok各3套；不将颜色、形状、眼型、服饰的交叉排列假算成已有作品。[逐件盘点](../../../openspec/changes/refocus-studio-on-gallery-and-card-reveal/planning/bounded-combinations.md)记录实际覆盖与内容缺口。
+- 有限设计组合以已登记完整 Artwork 为单位。当前15套成品，Dots和Grok各3套；不将颜色、形状、眼型、服饰的交叉排列假算成已有作品。[逐件盘点](../../../openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/bounded-combinations.md)记录实际覆盖与内容缺口。
 - 手机缩短首页留白、收起次级筛选、自然排列详情标签，保留完整预览及靠前的复制/下载；随机六项摘要仍在角色上方，主次操作分明。
 - 57个发布资源与v91字节完全一致。本轮没有重画角色；34个独立特征说明资源仍是候选，等待用户艺术确认。
 

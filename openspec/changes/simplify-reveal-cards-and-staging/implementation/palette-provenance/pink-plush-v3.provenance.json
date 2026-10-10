@@ -1,0 +1,133 @@
+{
+  "assetId": "asset:reveal:palette-material:pink-plush",
+  "version": "v3-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "dots-rose-glasses",
+  "applicableArtworkIds": [
+    "dots-rose-glasses",
+    "muse-rose-flowers"
+  ],
+  "factIds": [
+    "color:pink",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:pink + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/pink-plush-v3.provenance.json#pink-plush",
+    "assetSha256": "0468cf95c92524ecb91a58d17767ec6606a03bb5d5deb2680e7e0ed10367df05",
+    "assetVersion": "v3-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-3628b336-bdb4-4d21-8b74-8407cf2d4dad; generated-from=exec-12a8b043-1b0f-4d40-b3cb-36fa22d54998; reference=dist/assets/reveal/palette-material/pink-plush-v2.png#1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1; archive=historical-runtime/retired-assets/reveal-palette-v2/pink-plush-v2.png#1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1; reference=dist/assets/looks/dots-rose-glasses.png#a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75; reference=dist/assets/looks/muse-rose-flowers.png#d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be; selected-imagegen-bytes=unmodified; detached-alpha-max=2/255",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "dots-rose-glasses",
+    "path": "dist/assets/looks/dots-rose-glasses.png",
+    "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+    "hashVerified": true
+  },
+  "sharedArtworkReferences": [
+    {
+      "artworkId": "muse-rose-flowers",
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "hashVerified": true
+    }
+  ],
+  "priorCandidate": {
+    "originalPath": "dist/assets/reveal/palette-material/pink-plush-v2.png",
+    "archivedPath": "historical-runtime/retired-assets/reveal-palette-v2/pink-plush-v2.png",
+    "version": "v2-candidate",
+    "sha256": "1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1",
+    "byteSize": 2025051,
+    "retirementRecord": "historical-runtime/retired-assets/reveal-palette-v2/retirement.json"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-12a8b043-1b0f-4d40-b3cb-36fa22d54998",
+    "selectedGenerationId": "exec-3628b336-bdb4-4d21-8b74-8407cf2d4dad",
+    "refinementGenerationIds": [
+      "exec-fe11e082-a89b-4eff-bf29-88da445ae01a",
+      "exec-3628b336-bdb4-4d21-8b74-8407cf2d4dad"
+    ],
+    "discardedGenerationIds": [
+      "exec-b94c5a0e-a84f-4d40-a4ed-97da2c77ea6d"
+    ],
+    "transparentBackgroundRequested": true,
+    "prompt": "Use case: stylized-concept. Asset type: one independent, transparent PNG clue illustration for a character discovery card. Input images: Image 1 is the existing pink plush palette/material sample; use it only to preserve its exact shared berry-pink hue and short-plush fiber quality, while replacing its folded swatch silhouette. Images 2 and 3 are approved finished artworks that establish the same pink color/material semantics and applicability; use only as color and short-plush references, never reproduce their characters. Primary request: create one refined, isolated, perfectly round pink plush sphere as a color-and-material clue, with a soft toy-like volume and fine, short velvety fibers visible across its surface. It should read as a material sample, not a character. Scene/backdrop: true transparent background, centered with generous clear transparent margins. Subject: exactly one plain round berry-pink short-plush sphere. Style/medium: premium soft 3D toy-material render, tactile but clean, gentle controlled highlights, polished studio illustration. Composition/framing: single centered spherical object, full silhouette visible, no cropping, no deformation or folded flap. Lighting/mood: even soft studio light that reveals fiber texture without creating a backdrop or floor. Materials/textures: dense fine short-pile plush, consistent with the exact warm pink family in the references. Text: none. Constraints: preserve the pink hue and short-plush material meaning; true alpha transparency; no floor and no baked ground or cast shadow. Avoid: eyes, mouth, face, glasses, flowers, limbs, hands, feet, ears, headphones, clothing, accessories, labels, lettering, logo, card, border, scene, backdrop, horizon, shadow, square swatch, folded fabric, wrinkles, seams, character silhouette, mascot identity, watermark.",
+    "referenceImages": [
+      {
+        "assetId": "asset:reveal:palette-material:pink-plush",
+        "version": "v2-candidate",
+        "originalPath": "dist/assets/reveal/palette-material/pink-plush-v2.png",
+        "archivedPath": "historical-runtime/retired-assets/reveal-palette-v2/pink-plush-v2.png",
+        "sha256": "1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1"
+      },
+      {
+        "artworkId": "dots-rose-glasses",
+        "path": "dist/assets/looks/dots-rose-glasses.png",
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+      },
+      {
+        "artworkId": "muse-rose-flowers",
+        "path": "dist/assets/looks/muse-rose-flowers.png",
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+      }
+    ],
+    "refinementPrompts": [
+      "Keep the central spherical pink-plush material sample's shape, color, fiber detail, size, lighting, and position. Clean the transparent cutout by removing every detached pixel, fleck, sparkle, or colored artifact outside the sphere's natural short-fiber silhouette. Keep the sphere itself unchanged. True transparent background; only the sphere is visible; preserve the fine natural fiber fringe attached to the sphere.",
+      "Keep the berry-pink plush sphere visually the same in hue, size, texture, lighting, and position. Produce a clean isolated alpha cutout of only the plush sphere. Fully erase every detached speck, sparkle, colored pixel, or fragment outside the large central sphere. The top transparent margin must contain no visible marks. Preserve the round sphere and its fine attached short-fiber edge."
+    ],
+    "alphaReview": {
+      "method": "read-only inspection of the original ImageGen PNG alpha channel",
+      "alphaComponents": 339,
+      "largestComponentPixels": 791075,
+      "pixelsOutsideLargestComponent": 2070,
+      "maximumDetachedAlpha": 2,
+      "decision": "Retained the original ImageGen bytes without pixel edits. The detached specks have alpha at most 2/255; user art approval remains pending."
+    },
+    "discardedCleanupAttempt": {
+      "generationId": "exec-b94c5a0e-a84f-4d40-a4ed-97da2c77ea6d",
+      "path": "/Users/liuzhihang/.codex/generated_images/01a11905-03b5-7290-890a-2a4fddf9332b/exec-b94c5a0e-a84f-4d40-a4ed-97da2c77ea6d.png",
+      "sha256": "0e17967e943040dbccf336c4621e09b63d308a9fedf3fe876bafc48604d5eaf8",
+      "byteSize": 1569845,
+      "prompt": "Preserve the central sphere and its natural attached fiber edge. Remove only detached colored pixels and floating flecks outside the sphere. Keep the transparent margins clean with genuine alpha transparency.",
+      "reason": "This final ImageGen cleanup attempt still had low-alpha detached specks and more pixels outside the main component; it was not selected."
+    }
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/pink-plush-v3.png",
+    "mime": "image/png",
+    "sha256": "0468cf95c92524ecb91a58d17767ec6606a03bb5d5deb2680e7e0ed10367df05",
+    "byteSize": 1585484,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 779371,
+      "partial": 792999,
+      "opaque": 146
+    },
+    "alphaReview": {
+      "componentCount": 339,
+      "largestComponentPixels": 791075,
+      "pixelsOutsideLargestComponent": 2070,
+      "maximumDetachedAlpha": 2
+    },
+    "pixelPostProcessing": "none; exact ImageGen output bytes"
+  },
+  "discardedDerivedOutput": {
+    "path": "historical-runtime/retired-assets/reveal-palette-v3-swift-cleanup/pink-plush-v3-swift-alpha-cleanup.png",
+    "sourcePathBeforeRetirement": "dist/assets/reveal/palette-material/pink-plush-v3.png",
+    "sha256": "206e32b2aa51ece153f0208a67ab813ebf5f747836b300408c9f572101b2527a",
+    "byteSize": 1655588,
+    "processing": "Swift CoreGraphics/ImageIO connected-component alpha cleanup; explicitly discarded because ImageGen output bytes must remain unmodified. See historical-runtime/retired-assets/reveal-palette-v3-swift-cleanup/retirement.json."
+  }
+}

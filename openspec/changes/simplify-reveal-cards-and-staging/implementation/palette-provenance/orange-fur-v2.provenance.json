@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:orange-fur",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "candidate-animals-20261005",
+  "applicableArtworkIds": [
+    "candidate-animals-20261005"
+  ],
+  "factIds": [
+    "color:orange",
+    "material:short-fur"
+  ],
+  "artworkFactReference": "color:orange + material:short-fur",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/orange-fur-v2.provenance.json#orange-fur",
+    "assetSha256": "53cda3c4a6eda7252aee3be04c4caa24ad2cbbb8b01a55813a179d2171ca0f2f",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-666f38d8-6e66-4069-a721-3fb1e2762284; reference=dist/assets/characters/animals-original-shiba-candidate-v1.png#f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "candidate-animals-20261005",
+    "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+    "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/orange-fur.svg",
+    "version": "v1-candidate",
+    "sha256": "93b8b3d9fe36402c26b1d7164a15fbd651a05aeda513c327bb5e82a8dda3e83e"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-666f38d8-6e66-4069-a721-3fb1e2762284",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium material reference sample for Dot Icon Studio, matching the warm orange short plush fur of the reference Shiba character. Show only a small, softly rounded square tuft/swath of orange short plush with a subtle ivory edge hint, like a tangible fabric/fur swatch folded gently at one corner. The sample should read as a color-and-material specimen, not a character, not a sphere, not an animal part. Soft tactile fibers, refined miniature 3D studio rendering, centered with generous transparent margins. True transparent background, crisp clean alpha edge. No eyes, face, nose, ears, limbs, body, character, accessories, labels, text, border, card, UI, floor, backdrop, or cast shadow.",
+    "referenceImages": [
+      {
+        "artworkId": "candidate-animals-20261005",
+        "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/orange-fur-v2.png",
+    "mime": "image/png",
+    "sha256": "53cda3c4a6eda7252aee3be04c4caa24ad2cbbb8b01a55813a179d2171ca0f2f",
+    "byteSize": 1801430,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 820441,
+      "partial": 752074,
+      "opaque": 1
+    }
+  }
+}
+

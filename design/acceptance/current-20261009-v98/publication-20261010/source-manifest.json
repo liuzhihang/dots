@@ -1,0 +1,322 @@
+{
+  "revision": 98,
+  "purpose": "User-requested remote preview for art confirmation",
+  "authorization": "2026-10-10 user: 发布到网站，我去确认一下",
+  "userArtApproval": "pending",
+  "projectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+  "previousVersionNumber": 45,
+  "accessBefore": {
+    "mode": "custom",
+    "ownerOnly": true,
+    "revision": 1
+  },
+  "originalRepositoryHead": "b22c3f0df8b010da74b99caf9a80c417157857d7",
+  "originalIndexSha256": "da982f3881123d925d43e85241c842c3c8c66c6fdd0d292ad4504ad96901306d",
+  "sourceFiles": [
+    {
+      "path": "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png",
+      "byteSize": 1443408,
+      "sha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963"
+    },
+    {
+      "path": "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png",
+      "byteSize": 1292849,
+      "sha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0"
+    },
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "byteSize": 1413426,
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "byteSize": 574528,
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa"
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "byteSize": 1720054,
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "byteSize": 971168,
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "byteSize": 1151483,
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "byteSize": 1003955,
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+    },
+    {
+      "path": "dist/assets/icons/chevron-left.svg",
+      "byteSize": 3547,
+      "sha256": "94869faefd2831d671763e42dde0be05ae0d82bbdbf4a93834471661f7ec78ec"
+    },
+    {
+      "path": "dist/assets/icons/menu.svg",
+      "byteSize": 3580,
+      "sha256": "045538da5f6e82c8851cce68faf41205b427c95952f42bd772f559cb3c1f0819"
+    },
+    {
+      "path": "dist/assets/icons/search.svg",
+      "byteSize": 3578,
+      "sha256": "d34b9b7a045cfce76c2dc77cc39e27442dc84ac916943e7515258ee49fb4e828"
+    },
+    {
+      "path": "dist/assets/icons/x.svg",
+      "byteSize": 3558,
+      "sha256": "0cf35cee470ea5ea950eaf9176e77e3b9742cc6ade96aa4aaf95362b62a453c6"
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "byteSize": 1623665,
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "byteSize": 1382027,
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "byteSize": 1605008,
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "byteSize": 1860436,
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "byteSize": 790009,
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "byteSize": 828844,
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "byteSize": 1058375,
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "byteSize": 1086214,
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "byteSize": 1185166,
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "byteSize": 1142481,
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+    },
+    {
+      "path": "dist/assets/posters/animal-gray-husky-v1.webp",
+      "byteSize": 43698,
+      "sha256": "434a3d32da36754c3fa8853832caffffba3f61835712ab70adedd68108f0c012"
+    },
+    {
+      "path": "dist/assets/posters/animal-white-cat-v1.webp",
+      "byteSize": 42036,
+      "sha256": "3c73bdc9938c10d0f4f9acf2c17b3b2642afec5bd6f502ae456ad285c13fba36"
+    },
+    {
+      "path": "dist/assets/posters/brand-mark-display-v1.png",
+      "byteSize": 6053,
+      "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64"
+    },
+    {
+      "path": "dist/assets/posters/candidate-animals-20261005-v1.webp",
+      "byteSize": 44244,
+      "sha256": "eda605d6ea5d63da7bf2edda3b98379c624aa1bd710950e866f2ab1fc50ba952"
+    },
+    {
+      "path": "dist/assets/posters/candidate-dots-20261005-v1.webp",
+      "byteSize": 53964,
+      "sha256": "25a144017c3b85a6a0be743bcc2e01e4f8c600b3f506fc545ff6a1a915cc161f"
+    },
+    {
+      "path": "dist/assets/posters/candidate-grok-20261005-v1.webp",
+      "byteSize": 19620,
+      "sha256": "e1b40e2eb20e762b66e00be1dafc26a710a0b43cb849c07550ee1ecab20c73bc"
+    },
+    {
+      "path": "dist/assets/posters/candidate-humans-20261005-v1.webp",
+      "byteSize": 35746,
+      "sha256": "da95dedff71445bba0a102a3ee3dac862de1b7c21486d14beb4c92daadf6d8ad"
+    },
+    {
+      "path": "dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+      "byteSize": 26872,
+      "sha256": "e052eb98d4d0ed787445d0b3d66e70f614a5c568c5f65d98c7a9599349a3d751"
+    },
+    {
+      "path": "dist/assets/posters/dots-lilac-bucket-v1.webp",
+      "byteSize": 58256,
+      "sha256": "139613ea4e94998961ae68f2d5e73f96d5c500055e6f132b699844e349017062"
+    },
+    {
+      "path": "dist/assets/posters/dots-rose-glasses-v1.webp",
+      "byteSize": 63930,
+      "sha256": "743dfb9fe97fae19629e0e4c70cd850f841c748537f182c86ea8d5718a573823"
+    },
+    {
+      "path": "dist/assets/posters/grok-green-cloud-v1.webp",
+      "byteSize": 19066,
+      "sha256": "80a735fa20f8363959ce58545ef5470ef155606cd84ef71e377ac2075bd33fc3"
+    },
+    {
+      "path": "dist/assets/posters/grok-teal-square-v1.webp",
+      "byteSize": 16022,
+      "sha256": "2f76e1a8a2f515e6222e1c9d230ed841139c3fa7dbde6cc03b03446097286aa7"
+    },
+    {
+      "path": "dist/assets/posters/human-blond-glasses-v1.webp",
+      "byteSize": 34014,
+      "sha256": "d3ec6a31b89233d86bbfa9774f7477c3e3d7613f3b90ce270e4c1ff931295958"
+    },
+    {
+      "path": "dist/assets/posters/human-bun-yellow-v1.webp",
+      "byteSize": 37648,
+      "sha256": "99a25a4f4c0a21dd34731acadbfcb553bbd0565d8adabbebd1fb231307ab8e94"
+    },
+    {
+      "path": "dist/assets/posters/muse-rose-flowers-v1.webp",
+      "byteSize": 34690,
+      "sha256": "d1ef7e56c616c900c795b58fed4d3cf0106ccf3715b646cea663cdf1157034e6"
+    },
+    {
+      "path": "dist/assets/posters/muse-sage-reading-v1.webp",
+      "byteSize": 27236,
+      "sha256": "7e4715e708d8bf86bfbcdd58038bdf704a351e2ae298e369f3e52f5a69ffaf62"
+    },
+    {
+      "path": "dist/assets/terrace/v98/terrace-fullscreen-desktop-v98.webp",
+      "byteSize": 433978,
+      "sha256": "3c763e9027910d7ab461b8ac656c0d07ffe67a947ba2670d5bf014d126f632fc"
+    },
+    {
+      "path": "dist/assets/terrace/v98/terrace-fullscreen-mobile-v98.webp",
+      "byteSize": 426632,
+      "sha256": "fd44f0539a29695cd00eb54b5228776374829822acabbb19db606c58a153f57b"
+    },
+    {
+      "path": "dist/assets/terrace/v98/terrace-fullscreen-tablet-v98.webp",
+      "byteSize": 435790,
+      "sha256": "d9a3888e58753d7de2a245e03620d40eadbac578447adaa5f680252f4e33ea90"
+    },
+    {
+      "path": "dist/index.html",
+      "byteSize": 5815,
+      "sha256": "69d12dada879b974533303322bebe859c30ab4580b58a87648e98b3cd5468c28"
+    },
+    {
+      "path": "dist/studio-actions.js",
+      "byteSize": 3885,
+      "sha256": "c3024da967abc5fae76beba4a670a435d1acfeea8570c409f6cb200b3e2f3385"
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "byteSize": 51995,
+      "sha256": "12ee5f63c2c79ff8a0bfe97b32094b7776b8c0a73511162bbf57625d805d1425"
+    },
+    {
+      "path": "dist/studio-asset-loader.js",
+      "byteSize": 7399,
+      "sha256": "a57e65ca5d3cac41a77f99525dd502a991ee9b5b6dfd25eb127f3724f399e82d"
+    },
+    {
+      "path": "dist/studio-content.js",
+      "byteSize": 23423,
+      "sha256": "2769834de80d00c3f8dc56db8cf79fbb3fff3e5871229e866c94444d21f947eb"
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "byteSize": 9148,
+      "sha256": "17b29db196ff4d83c48212593c9d1d39a0c07f0efd87e1eb9aa6553bba3a4c73"
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "byteSize": 47630,
+      "sha256": "91899e788465dc4d7f3a6ddba0afabb7cf0db26fa9a96de8064276ba5f108050"
+    },
+    {
+      "path": "dist/studio-home.js",
+      "byteSize": 7858,
+      "sha256": "27e9a409187f4d08c7ffc760fc8fc15bb756125b088d1913d58eb8158a767464"
+    },
+    {
+      "path": "dist/studio-i18n.js",
+      "byteSize": 5175,
+      "sha256": "45070ac2421ec7f2bbeaaca69250fa50bb517a94172d48d7834fbc066df0fa9a"
+    },
+    {
+      "path": "dist/studio-motion.js",
+      "byteSize": 8433,
+      "sha256": "fdf658ef595321b620c4227eb85a8c57ef2bda38d86bdd3aaf51a03a083d326c"
+    },
+    {
+      "path": "dist/studio-overlay.js",
+      "byteSize": 6729,
+      "sha256": "7a0c3d961a507856eb65b9259c6815796aa039593dc52ba15b09ab8b3a073e1b"
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "byteSize": 3649,
+      "sha256": "a37d15a46080a7710d7b2a4ea5836624104e53807bf6cf39c585716cc6b7b818"
+    },
+    {
+      "path": "dist/studio-router.js",
+      "byteSize": 826,
+      "sha256": "f74d971c58c7fc060601c024213a1e26499979f9dc3e385582b94addecb0836f"
+    },
+    {
+      "path": "dist/studio-scenes.js",
+      "byteSize": 25602,
+      "sha256": "5794fa602c0b6be000f88cb231da6ce7484cbe3ef8e343b3c7d562d3570a4369"
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "byteSize": 2198,
+      "sha256": "a250bfe0508efa70b1575ed30d0987e177017ae1533a2a9b07880d771ecb04f8"
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "byteSize": 9874,
+      "sha256": "a2edbd037dc4ef6503a36489cd63e88ab7b3c33fc63e7b198ed1a4e9682e8cbb"
+    },
+    {
+      "path": "dist/studio.css",
+      "byteSize": 19118,
+      "sha256": "1018f94372114a479dc79cf1828bee8815f0f6ec9ad17604de911bf2935979dc"
+    },
+    {
+      "path": "dist/studio.js",
+      "byteSize": 13422,
+      "sha256": "f027487eafac2a511a73619aedc5c81719806cd68c0e1108a8b4b705009e9662"
+    },
+    {
+      "path": ".openai/hosting.json",
+      "byteSize": 106,
+      "sha256": "71a79bc0dbc7ca6e24de600a2d88dcb9eb798dafd5856b1050bed01f6c11386f"
+    }
+  ],
+  "sourceValidation": "59/59 current dist hashes equal v98 actual-browser and build reports",
+  "gitHubCommitOrPushAuthorized": false,
+  "sitesSourceSynchronizationAuthorized": true,
+  "sourceWorkspace": "/tmp/dots-sites-v98-20261010-QICc7o",
+  "status": "preparing"
+}

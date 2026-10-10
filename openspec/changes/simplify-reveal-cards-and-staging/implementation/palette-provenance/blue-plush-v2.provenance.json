@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:blue-plush",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "candidate-dots-20261005",
+  "applicableArtworkIds": [
+    "candidate-dots-20261005"
+  ],
+  "factIds": [
+    "color:blue",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:blue + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/blue-plush-v2.provenance.json#blue-plush",
+    "assetSha256": "c8d81574df48f98d2616add7e5a4838eda5bb8efe2ad41f10a0b172284265dc0",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-1f208550-2e72-4fd1-9a42-e1b4c7915647; reference=dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png#2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "candidate-dots-20261005",
+    "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+    "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/blue-plush.svg",
+    "version": "v1-candidate",
+    "sha256": "2c6eab23ef2584a8867203f3c0befc46724be7cf58ac8a0ebc27ba16641166d5"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-1f208550-2e72-4fd1-9a42-e1b4c7915647",
+    "transparentBackgroundRequested": true,
+    "prompt": "Use case: stylized-concept\nAsset type: isolated palette-and-material clue for a character-gallery card\nPrimary request: create a single premium tactile blue short-pile plush material specimen whose color and fiber character match the blue surface in Image 1. Make this unmistakably a material swatch, not a character.\nSubject: one softly curved rounded-square swatch cut from blue plush, with a visible short-pile fabric edge and a small folded corner showing textile thickness. The swatch itself is a simple abstract sample with no recognizable body silhouette.\nStyle/medium: refined soft 3D product illustration, detailed fibers, restrained highlights.\nComposition/framing: centered, fully visible, compact specimen occupying about 70% of a square canvas.\nLighting/mood: soft studio lighting, crisp detail, no dramatic glow.\nColor palette: saturated cobalt blue with subtle lighter-blue fiber highlights matching Image 1.\nMaterials/textures: dense short velvety pile, visible texture across the swatch face and edge.\nConstraints: transparent background with true alpha; no ground plane or cast shadow. No sphere, orb, round character body, eyes, face, limbs, accessories, garment, text, logo, frame, or UI.",
+    "referenceImages": [
+      {
+        "artworkId": "candidate-dots-20261005",
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/blue-plush-v2.png",
+    "mime": "image/png",
+    "sha256": "c8d81574df48f98d2616add7e5a4838eda5bb8efe2ad41f10a0b172284265dc0",
+    "byteSize": 2005203,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 692573,
+      "partial": 879939,
+      "opaque": 4
+    }
+  }
+}
+

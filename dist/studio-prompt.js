@@ -1,53 +1,67 @@
-import { PROMPTS, STYLE_IDENTITIES } from './studio-artwork-catalog.js?v=92';
+import { getPrompt } from './studio-artwork-catalog.js?v=98';
 
-const promptsById = new Map(PROMPTS.map(record => [record.id, record]));
-const stylesById = new Map(STYLE_IDENTITIES.map(style => [style.id, style]));
-const LANGUAGES = new Set(['zh', 'en']);
+export function normalizePromptLanguage(language) {
+  return language === 'en' ? 'en' : 'zh';
+}
 
-function resolvePrompt(artwork, language, target) {
+function resolvePrompt(artwork, language = 'en', target = 'image') {
   if (!artwork || typeof artwork !== 'object') throw new TypeError('Prompt 需要已登记的 Artwork。');
   if (target !== 'image') throw new RangeError(`暂不支持 ${target} 目标的作品 Prompt。`);
-  if (!LANGUAGES.has(language)) throw new RangeError(`暂不支持 ${language} Prompt 语言。`);
-  const ref = language === 'en' ? artwork.promptRefs?.enImage : artwork.promptRefs?.zhImage;
-  const record = promptsById.get(ref);
-  if (!record || record.artworkId !== artwork.id || record.language !== language || record.target !== target) {
+  const normalizedLanguage = normalizePromptLanguage(language);
+  const ref = normalizedLanguage === 'en' ? artwork.promptRefs?.enImage : artwork.promptRefs?.zhImage;
+  const record = getPrompt(ref);
+  if (!record || record.artworkId !== artwork.id || record.language !== normalizedLanguage || record.target !== target) {
     throw new Error('作品没有与当前版本匹配的 Prompt 记录。');
   }
   return record;
 }
 
-export function promptFor(artwork, { language = 'zh', target = 'image' } = {}) {
+export function promptFor(artwork, { language = 'en', target = 'image' } = {}) {
   return resolvePrompt(artwork, language, target).text;
 }
 
-export function promptRecordFor(artwork, { language = 'zh', target = 'image' } = {}) {
+export function promptRecordFor(artwork, { language = 'en', target = 'image' } = {}) {
   return resolvePrompt(artwork, language, target);
 }
 
-export function buildReferencePrompt({ styleId, description = '', retain = [], language = 'zh', target = 'image' } = {}) {
-  if (target !== 'image') throw new RangeError(`暂不支持 ${target} 目标的参考图 Prompt。`);
-  if (!LANGUAGES.has(language)) throw new RangeError(`暂不支持 ${language} Prompt 语言。`);
-  const style = stylesById.get(styleId);
-  if (!style) throw new RangeError('请选择已登记的目标风格。');
-  const details = String(description ?? '').trim().slice(0, 2000);
-  const retained = (Array.isArray(retain) ? retain : [retain]).map(value => String(value ?? '').trim()).filter(Boolean).slice(0, 20);
-  if (language === 'en') {
-    if (!style.labelEn || !style.descriptionEn) throw new Error('该风格尚无经编辑的英文参考模板。');
-    const lines = [
-      `Create an original still character image in the ${style.labelEn} identity. ${style.descriptionEn}`,
-      details ? `User-provided direction: ${details}` : '',
-      retained.length ? `Details to retain: ${retained.join('; ')}.` : '',
-      'If you upload a reference image in ChatGPT, use that image as visual guidance. This page has not accessed or analyzed any image; upload it in ChatGPT yourself.',
-      'Keep the character itself isolated on a transparent background unless the user explicitly requests a scene. This is a prompt for a still image, not an animation or a validated Dot/Pet package.'
-    ].filter(Boolean);
-    return lines.join('\n\n');
+/**
+ * Build a session-only variation prompt from a verified Artwork prompt.
+ * No Artwork fields or original assets are changed by this function.
+ */
+export function buildArtworkEditPrompt({ basePrompt, edits = [], additionalDirection = '', language = 'en' } = {}) {
+  const base = String(basePrompt ?? '').trim();
+  if (!base) throw new TypeError('修改 Prompt 需要当前作品的原始 Prompt。');
+  const locale = normalizePromptLanguage(language);
+  const changes = [];
+  for (const edit of Array.isArray(edits) ? edits : []) {
+    const label = String(edit?.label ?? '').trim();
+    const action = edit?.action;
+    if (!label || action === 'keep' || !['remove', 'replace'].includes(action)) continue;
+    if (action === 'replace') {
+      const replacement = String(edit?.replacement ?? '').trim();
+      if (!replacement) throw new TypeError(`“${label}”的替换内容不能为空。`);
+      changes.push(locale === 'en'
+        ? `Replace ${label} with ${replacement}.`
+        : `将${label}替换为${replacement}。`);
+    } else {
+      changes.push(locale === 'en'
+        ? `Remove ${label} while preserving the character's identity and all unchanged details.`
+        : `移除${label}，同时保留角色身份和未修改的其他细节。`);
+    }
   }
-  const lines = [
-    `以 ${style.label} 身份制作一张原创静态角色图。${style.description}`,
-    details ? `用户提供的创作要求：${details}` : '',
-    retained.length ? `希望保留的细节：${retained.join('、')}。` : '',
-    '如果你在 ChatGPT 中上传了参考图片，请以该图片作为视觉参考；未上传图片时，请只根据上述文字要求创作。本页面没有读取或分析任何图片，请由你在 ChatGPT 中手动上传。',
-    '除非用户明确要求场景，角色本身保持独立并使用透明背景。这是静态图 Prompt，不是动画或已验证的 Dot/Pet 资源包。'
-  ].filter(Boolean);
-  return lines.join('\n\n');
+
+  const direction = String(additionalDirection ?? '').trim().slice(0, 2000);
+  const header = locale === 'en'
+    ? 'Create a new variation of the same character. Preserve its identity and every detail that is not explicitly changed.'
+    : '请以同一角色身份创作一个新版本，并保留所有未明确修改的细节。';
+  const changeBlock = changes.length
+    ? `${locale === 'en' ? 'Changes to apply:' : '需要修改：'}\n${changes.map(item => `- ${item}`).join('\n')}`
+    : '';
+  const directionBlock = direction
+    ? (locale === 'en' ? `Additional direction: ${direction}` : `其他创作要求：${direction}`)
+    : '';
+  const attachmentNote = locale === 'en'
+    ? 'If you attach a reference image in ChatGPT, use it as visual guidance while preserving the character identity above. If you do not attach an image, follow the text prompt alone. This site has not accessed or analyzed any image.'
+    : '如果你在 ChatGPT 中自行附加参考图，请将其作为视觉参考并保持上述角色身份；未附图时，请只根据文字创作。本网站没有读取或分析任何图片。';
+  return [header, base, changeBlock, directionBlock, attachmentNote].filter(Boolean).join('\n\n');
 }

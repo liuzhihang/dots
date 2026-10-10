@@ -1,0 +1,22 @@
+{
+  "sourceUnchanged": true,
+  "method": "96px equal-aspect RGBA PNG resample, original retained byte-for-byte",
+  "resources": [
+    {
+      "id": "preserved-brand-source",
+      "path": "./assets/characters/brand-mark.png",
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+      "byteSize": 574528,
+      "purpose": "preserved-brand-source",
+      "derivedFrom": null
+    },
+    {
+      "id": "ui-brand-display",
+      "path": "./assets/posters/brand-mark-display-v1.png",
+      "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64",
+      "byteSize": 6053,
+      "purpose": "ui-brand-display",
+      "derivedFrom": "./assets/characters/brand-mark.png"
+    }
+  ]
+}

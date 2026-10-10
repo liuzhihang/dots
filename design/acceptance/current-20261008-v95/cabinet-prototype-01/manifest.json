@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-08",
+  "kind": "visual concept",
+  "status": "pending user review",
+  "runtime_cache": 95,
+  "implementation_changed": false,
+  "art_approved": false,
+  "source_hashes": {
+    "dist/index.html": "0e325d9d080c8d482c408e1142cab0d059b230d0cc3089a551e340900e100e9b",
+    "dist/studio-home.js": "97cfe0054cc28296694235799fccbb16887e25c87e28e6f014bf9c1efeb17759",
+    "dist/studio-artwork-catalog.js": "9c5ea2e923de9bf10d8bdccd976ce65ed053e068b526e6fd90f0c9aaf53c1c4b",
+    "dist/studio-detail.js": "badcebf0725a0d9cd951c8819a530f000e533ee7becc4f529e5081018b2c0855",
+    "DESIGN.md": "55063c4b893349c00cdfd4082f0879f83cd909a6ce0aa4fe980ea59f3df2c5ce",
+    ".agents/rules/design.md": "1489923e80c3a2dba1c6d25d4d5629f462a566fb3569639f263a86e03c5cf646"
+  },
+  "reference_hashes": {
+    "/tmp/codex-remote-attachments/01a116bb-2b8d-7a91-be6a-da5113c25c77/C684FFAC-8301-4596-BFBE-6B03B7AB30A9/1-Photo-1.jpg": "56df1df1148266cfe018366666df8a749bd52dcd55d10da1078abac20c0e46ba"
+  },
+  "generation_tool": "built-in ImageGen",
+  "outputs": [
+    {
+      "file": "01-home-cabinet-refined.png",
+      "width": 1487,
+      "height": 1058,
+      "sha256": "10d05fa4b7d52be38307e8e39b9a1ef5e1cb4608932311395c2e4013589d337f",
+      "status": "visual concept pending user review"
+    },
+    {
+      "file": "02-character-detail-refined.png",
+      "width": 1486,
+      "height": 1058,
+      "sha256": "c1d91bca3f71f613dffcdb490b717132182e39f26aea7e4b50d8aab3f0e095bc",
+      "status": "visual concept pending user review"
+    },
+    {
+      "file": "03-mobile-cabinet-refined.png",
+      "width": 853,
+      "height": 1844,
+      "sha256": "ef305b0e1b6628c96f4438bffb71cc445529a54a4585dfd66d06c50c0275512c",
+      "status": "visual concept pending user review"
+    }
+  ],
+  "checks": {
+    "images_visually_inspected": true,
+    "runtime_source_hashes_unchanged": true,
+    "browser_interactions_tested": false,
+    "physical_device_tested": false,
+    "user_art_approved": false
+  }
+}

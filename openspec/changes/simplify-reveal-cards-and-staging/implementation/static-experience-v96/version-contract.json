@@ -1,0 +1,32 @@
+{
+  "revision": 96,
+  "moduleQuery": "?v=96",
+  "htmlDataCache": "96",
+  "catalogRevision": "artwork-catalog-20261009-v96",
+  "evidenceDirectory": "design/acceptance/current-20261009-v96",
+  "allowedExistingPaths": [
+    "AGENTS.md",
+    "DESIGN.md",
+    ".agents/rules/design.md",
+    "README.md",
+    "design/studio-visual-interaction-system.md",
+    "design-qa.md",
+    "package.json",
+    "vite.config.mjs",
+    "design/static-publish-manifest.json"
+  ],
+  "allowedPrefixes": [
+    "dist/",
+    "scripts/",
+    "historical-runtime/static-refocus-v96/",
+    "design/acceptance/current-20261009-v96/",
+    "openspec/changes/simplify-reveal-cards-and-staging/implementation/static-experience-v96/"
+  ],
+  "taskTrackingPath": "openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+  "protectedPaths": [
+    ".openai/hosting.json",
+    "openspec/config.yaml",
+    "package-lock.json"
+  ],
+  "approval": "New scene and page remain pending until explicit user confirmation; build does not approve art."
+}

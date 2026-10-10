@@ -1,10 +1,9 @@
-# rebuild-character-system · 模板阶段关闭
+# rebuild-character-system 历史证据
 
-2026-10-06 按用户明确选择，以现有PNG模板、完整姿态/配方及背景的真实Canvas合成和Prompt为本阶段交付。五组内置形象与工作台形象美术已获用户确认，绑定Site35/cache83及原发布源码。
+本目录记录 Site 35 / cache 83 时期的模板、工作台图像和对应批准范围，作为历史资料保留。原 proposal、design、tasks、delta specs 与 OpenSpec 元数据已移除；它们不再是当前产品的执行合同。
 
-- [范围决定与取消清单](scope-decision-20261006.json)：原36项中20项工程/记录任务保留完成事实，5项人工确认按模板范围完成，11项旧3D工程/精细基准要求取消；当前25/25，不把取消当完成。
-- [模板人工确认](acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json) 与 [首页确认](acceptance/current-20261005-v83/user-art-approval.json)：分别绑定真实版本与范围。
-- [历史计划](history/pre-scope-20261006.json)：原proposal/design/tasks/四份delta逐字保留，旧3D未完成和矩阵失败不追改。
-- [验收索引](acceptance/README.md)：分开记录真实页面、技术检查、实际下载和用户美术确认。
+- [归档状态](archive-status-20261006.md)和[范围决定](scope-decision-20261006.json)记录原36项计划中11项旧3D工程/精细基准要求被取消。缩减后的25/25只表示当时选定的模板阶段，取消项不能算通过。
+- [批准记录](acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json)及[首页确认](acceptance/current-20261005-v83/user-art-approval.json)仅覆盖记录绑定的Site、源码和素材范围，不批准当前页面、随机卡或新素材。
+- [验收索引](acceptance/README.md)、baseline、references、source audit 和[原计划快照](history/pre-scope-20261006.json)保存当时的资源、任务状态、拒绝与取消记录。原计划快照只作历史状态证据，不驱动当前开发。
 
-当前不是自由3D编辑或通用图片生成服务。旧3D保留结构诊断；未来若交付真实3D成品，另建change落实原合同。当前全量PNG字节、所有剪贴板和实体手机未做的新验证不因归档被宣称通过。历史source snapshots与回执中的userArtApproved=false保留为记录当时状态。
+历史工程检查或批准记录不证明当前版本已通过；以当前主规范、当前候选证据和本轮明确的艺术确认范围为准。

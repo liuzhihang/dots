@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:teal-matte",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "grok-teal-square",
+  "applicableArtworkIds": [
+    "grok-teal-square"
+  ],
+  "factIds": [
+    "color:teal",
+    "material:soft-matte"
+  ],
+  "artworkFactReference": "color:teal + material:soft-matte",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/teal-matte-v2.provenance.json#teal-matte",
+    "assetSha256": "b3719fd96266778c40e629fc8ffbda194b91c689f622cf4ce3588f97155cb090",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-d9e4a9d5-c60d-49b7-9994-26f8c8e0f79a; reference=dist/assets/looks/grok-teal-square.png#81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "grok-teal-square",
+    "path": "dist/assets/looks/grok-teal-square.png",
+    "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/teal-matte.svg",
+    "version": "v1-candidate",
+    "sha256": "abcfb649c08392e53f085cc90a52352fcb0d2d849e7b9c722e8fa4b9056a7028"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-d9e4a9d5-c60d-49b7-9994-26f8c8e0f79a",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium color-and-material specimen for Dot Icon Studio, matching the bright blue-green teal soft-matte surface of the reference Grok character. Show only a small thick rounded-square sample tile, gently beveled with a smooth continuous matte finish and subtle curved edges to show thickness. Keep it plainly a material swatch with no character-like features; match the reference teal hue with calm diffuse lighting and restrained highlights. Refined soft 3D product illustration, centered and fully visible, generous transparent margins, true transparent background and clean alpha edge. No eyes, capsule shapes, face, cloud, character, body, sphere, orb, limbs, accessories, text, logo, labels, border, card, UI, floor, backdrop, or cast shadow.",
+    "referenceImages": [
+      {
+        "artworkId": "grok-teal-square",
+        "path": "dist/assets/looks/grok-teal-square.png",
+        "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/teal-matte-v2.png",
+    "mime": "image/png",
+    "sha256": "b3719fd96266778c40e629fc8ffbda194b91c689f622cf4ce3588f97155cb090",
+    "byteSize": 895899,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 904275,
+      "partial": 668138,
+      "opaque": 103
+    }
+  }
+}
+

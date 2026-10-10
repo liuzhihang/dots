@@ -1,0 +1,28 @@
+{
+  "revision": 96,
+  "catalogRevision": "artwork-catalog-20261009-v96",
+  "checks": [
+    "A concise real Prompt excerpt is visible before the full Prompt disclosure.",
+    "Prompt preview and version editor disclosures start collapsed.",
+    "Only selected factual detail fields are editable.",
+    "Opening the shared overlay locks the page background.",
+    "Production hides the variant selector while the catalog has no real variants.",
+    "Keep/remove/replace intent becomes a separate modified Prompt.",
+    "Free text is retained without changing the catalog Prompt.",
+    "Prompt edits do not alter Artwork facts or the real downloadable PNG bytes.",
+    "Language switching updates prompt language and labels while retaining edit choices and free text.",
+    "A delayed English Prompt cannot overwrite a newer Chinese selection while a detail is opening.",
+    "An image-load failure leaves the verified Prompt usable and retries the same registered original.",
+    "Download validation failures remain visible and are not reported as successful.",
+    "Clipboard denial exposes the complete selectable Prompt and a manual ChatGPT link without attaching or sending an image.",
+    "A failed variant load leaves the previous successful version selected and emits no route update.",
+    "Changing language during a pending variant keeps the previous successful Artwork selected.",
+    "A verified variant with a delayed stale English Prompt commits the current Chinese Prompt, image, version and callback atomically, then clears the prior draft.",
+    "The overlay traps focus, delegates Escape, unlocks page content and restores the invoking control.",
+    "A native dialog close event delegates to the app shell and releases background inert state.",
+    "The in-dialog language control updates the real app Prompt while preserving unsaved choices and exact free text."
+  ],
+  "errors": [],
+  "originalArtworkId": "candidate-dots-20261005",
+  "originalSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+}

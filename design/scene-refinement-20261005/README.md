@@ -1,6 +1,6 @@
 # R01 场景复原与 Muse 微调记录（2026-10-05）
 
-本目录记录首页与五组家族卡设计方向、素材来源和真实页面检查。具体要求由 [refine-family-scene-composition](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/proposal.md) 及其 spec delta 跟踪。用户已经明确：五张卡和首页场景按 R01 设计实现，不另提第二套；只有 Meta Muse 做身份微调。
+本目录保留首页与五组家族卡旧设计方向、素材来源和真实页面检查；当时的场景构图 change 只有过期规划合同，已按历史清理授权移除，原任务状态在[本轮清理记录](../../openspec/changes/simplify-reveal-cards-and-staging/implementation/spec-cleanup.md)。这份历史材料不代表当前产品方向；现行视觉与交互约定见[视觉交互系统](../studio-visual-interaction-system.md)和[主规范](../../openspec/specs/studio-visual-experience/spec.md)。
 
 当前 R01 素材选择、runtime 路径、文件 SHA 和历史候选索引见 [reference-home 素材索引](../reference-home-20261005/README.md)。该索引记录的是素材级选择，不是网页美术验收或用户艺术确认。
 

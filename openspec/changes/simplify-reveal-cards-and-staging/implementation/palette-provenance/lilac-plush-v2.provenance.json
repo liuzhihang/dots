@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:lilac-plush",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "dots-lilac-bucket",
+  "applicableArtworkIds": [
+    "dots-lilac-bucket"
+  ],
+  "factIds": [
+    "color:lilac",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:lilac + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/lilac-plush-v2.provenance.json#lilac-plush",
+    "assetSha256": "46b269d143df846d5d3c2bcbbfd3ef002957051422ee0799d9b12d00c758e451",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-ee92fa5f-5806-4557-a097-fd7300aaba94; reference=dist/assets/looks/dots-lilac-bucket.png#50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "dots-lilac-bucket",
+    "path": "dist/assets/looks/dots-lilac-bucket.png",
+    "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/lilac-plush.svg",
+    "version": "v1-candidate",
+    "sha256": "a0d159d866bc15c0b00dc5f98dd9a9527a86347543047e77454f4bcf06a955b5"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-ee92fa5f-5806-4557-a097-fd7300aaba94",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium material reference sample for Dot Icon Studio, matching the pale lilac short plush fur of the reference character. Show only one small abstract folded rounded-square swatch of soft lavender plush, with short fine fibers and a gentle folded edge that reveals the textile thickness. Keep the color light lilac with subtle violet shading, faithful to the reference. It must read as a fabric/material specimen, not as a character or body part. Refined soft 3D product illustration, centered, fully visible, generous transparent margins, true transparent background and clean alpha edge. No sphere, orb, eyes, face, hat, character, limbs, accessories, text, logo, labels, border, card, UI, floor, backdrop, or cast shadow.",
+    "referenceImages": [
+      {
+        "artworkId": "dots-lilac-bucket",
+        "path": "dist/assets/looks/dots-lilac-bucket.png",
+        "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/lilac-plush-v2.png",
+    "mime": "image/png",
+    "sha256": "46b269d143df846d5d3c2bcbbfd3ef002957051422ee0799d9b12d00c758e451",
+    "byteSize": 1653168,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 843051,
+      "partial": 729456,
+      "opaque": 9
+    }
+  }
+}
+

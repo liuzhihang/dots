@@ -2,7 +2,7 @@
 
 本索引把已选中的 R01 页面素材文件、其运行时目标和被替代的历史候选放在一处。这里的“已选中”只表示素材/文件级选择，**不表示真实网页美术验收通过，也不表示用户已批准角色美术**。页面实现、最终冻结来源、真实视口复核、独立美术评审和用户确认仍各有自己的验收记录。
 
-主要规范见 [refine-family-scene-composition proposal](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/proposal.md)、[design](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md)、[tasks](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/tasks.md) 和 [spec delta](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md)。
+本目录保留 R01 首页素材索引，旧场景构图 change 的 proposal/design/tasks/spec delta 已作为过期执行合同移除，原 15/15 任务状态见[本轮清理记录](../../openspec/changes/simplify-reveal-cards-and-staging/implementation/spec-cleanup.md)。当前页面与交互合同见[视觉交互系统](../studio-visual-interaction-system.md)和[首页视觉主规范](../../openspec/specs/studio-visual-experience/spec.md)。
 
 ## 当前选中的素材文件
 

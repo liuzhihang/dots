@@ -1,0 +1,10 @@
+
+> test
+> node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-reference-detail.mjs && node scripts/verify-motion.mjs && node scripts/verify-publish-inventory.mjs && node scripts/verify-router.mjs
+
+Artwork catalog: 15 approved originals unchanged; 2 pending local previews validated separately; v83 source/approval and all byte hashes checked.
+Artwork query: bilingual text and 89 typed facts indexed; tokens and series combine with AND.
+Reference detail checks passed: 20; original download hash verified; variant fixture atomicity passed.
+Motion controller checks passed: 8; production animations: 0.
+Publish inventory: full dist closure and preview-only subset fixtures passed
+Routes: new URLs, unicode query and invalid/legacy rejection passed

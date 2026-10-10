@@ -56,29 +56,6 @@ export async function copyText(value, { isCurrent = () => true } = {}) {
     : { ok: false, method: null, error: new Error('浏览器没有允许复制到剪贴板。') };
 }
 
-export function downloadText(value, filename = 'dot-icon-studio-prompt.txt') {
-  const text = String(value ?? '');
-  if (!text || typeof document === 'undefined' || typeof URL?.createObjectURL !== 'function') return false;
-
-  let url;
-  try {
-    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-    url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = filename;
-    link.hidden = true;
-    document.body.append(link);
-    link.click();
-    link.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 0);
-    return true;
-  } catch {
-    if (url) URL.revokeObjectURL(url);
-    return false;
-  }
-}
-
 export function chatGPTUrlForPrompt(value) {
   const prompt = String(value ?? '');
   return prompt ? `${CHATGPT_URL}?prompt=${encodeURIComponent(prompt)}` : CHATGPT_URL;

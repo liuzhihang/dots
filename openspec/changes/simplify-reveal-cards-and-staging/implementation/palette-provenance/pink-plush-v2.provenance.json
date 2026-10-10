@@ -1,0 +1,82 @@
+{
+  "assetId": "asset:reveal:palette-material:pink-plush",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "dots-rose-glasses",
+  "applicableArtworkIds": [
+    "dots-rose-glasses",
+    "muse-rose-flowers"
+  ],
+  "factIds": [
+    "color:pink",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:pink + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/pink-plush-v2.provenance.json#pink-plush",
+    "assetSha256": "1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-9b5823ec-6bde-40dc-8123-61ec6152bfcf; reference=dist/assets/looks/dots-rose-glasses.png#a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75; reference=dist/assets/looks/muse-rose-flowers.png#d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "dots-rose-glasses",
+    "path": "dist/assets/looks/dots-rose-glasses.png",
+    "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+    "hashVerified": true
+  },
+  "sharedArtworkReferences": [
+    {
+      "artworkId": "muse-rose-flowers",
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "hashVerified": true
+    }
+  ],
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/pink-plush.svg",
+    "version": "v1-candidate",
+    "sha256": "78a33cf7abd92c2cd8aa1fee47add21e01d90d03d7603f4163c51f2e281af65c"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-9b5823ec-6bde-40dc-8123-61ec6152bfcf",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium material reference sample for Dot Icon Studio, using both reference artworks only to match their shared soft berry-pink short-plush color and pile. Show only a small abstract rounded-square plush swatch, slightly folded at one corner to reveal textile thickness and short velvety fibers. This is a material specimen that must work equally for both pink characters; do not reproduce either character silhouette or any character details. Refined soft 3D product illustration, tactile short fibers, restrained highlights, centered with generous transparent margins. True transparent background with a clean alpha edge. No sphere, orb, body, hood, face, eyes, glasses, flowers, limbs, accessories, text, logo, labels, border, card, UI, floor, backdrop, or cast shadow.",
+    "referenceImages": [
+      {
+        "artworkId": "dots-rose-glasses",
+        "path": "dist/assets/looks/dots-rose-glasses.png",
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+      },
+      {
+        "artworkId": "muse-rose-flowers",
+        "path": "dist/assets/looks/muse-rose-flowers.png",
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/pink-plush-v2.png",
+    "mime": "image/png",
+    "sha256": "1f12df2208f5b7f95321545f721ad693e051fb7325b976ee63766ccddcb0aea1",
+    "byteSize": 2025051,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 727360,
+      "partial": 845102,
+      "opaque": 54
+    }
+  }
+}
+

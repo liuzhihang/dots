@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {inflateSync} from 'node:zlib';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
-import {ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js';
+import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=98';
 function paeth(a,b,c) {
   const p=a+b-c, pa=Math.abs(p-a), pb=Math.abs(p-b), pc=Math.abs(p-c);
   return pa<=pb&&pa<=pc?a:pb<=pc?b:c;
@@ -49,13 +49,16 @@ function readPngAlphaStats(bytes, label) {
       minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);
     }
   }
-  return {width:header.width,height:header.height,transparentPixels,opaquePixels,partialAlphaPixels,alphaBounds:maxX<0?null:{x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1}};
+  return {width:header.width,height:header.height,colorType:header.colorType,transparentPixels,opaquePixels,partialAlphaPixels,alphaBounds:maxX<0?null:{x:minX,y:minY,width:maxX-minX+1,height:maxY-minY+1}};
 }
 
-const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v92/browser';
+const folder=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261009-v98/browser';
 const report=JSON.parse(await fs.readFile(folder+'/report.json'));
-assert.equal(report.downloads.length,ARTWORKS.length,'Every published original must have an actual browser download');
-const records=[];
+const expectedArtworks=[...ARTWORKS,...PREVIEW_ARTWORKS];
+assert.equal(PREVIEW_ARTWORKS.length,2,'The two new local candidates remain separately classified.');
+assert.equal(report.downloads.length,expectedArtworks.length,'Every approved and pending detail URL must have an actual browser download');
+assert.equal(new Set(report.downloads.map(item=>item.artworkId)).size,expectedArtworks.length,'Every actual browser download belongs to a unique registered identity.');
+const approvedRecords=[];
 for(const artwork of ARTWORKS){
  const download=report.downloads.find(d=>d.artworkId===artwork.id);assert(download);
  const bytes=await fs.readFile(download.file),asset=getAsset(artwork.assetRefs.original),stats=readPngAlphaStats(bytes,artwork.id);
@@ -63,8 +66,34 @@ for(const artwork of ARTWORKS){
  assert.equal(stats.width,asset.width);assert.equal(stats.height,asset.height);
  assert(stats.transparentPixels>0&&stats.partialAlphaPixels>0&&stats.opaquePixels+stats.partialAlphaPixels>0);
  assert.equal(stats.transparentPixels,asset.alpha.transparentPixels);assert.equal(stats.partialAlphaPixels,asset.alpha.partialAlphaPixels);
- records.push({artworkId:artwork.id,sha256:asset.sha256,...stats});
+ approvedRecords.push({artworkId:artwork.id,status:'approved',sha256:asset.sha256,...stats});
+}
+const previewRecords=[];
+for(const artwork of PREVIEW_ARTWORKS){
+ const download=report.downloads.find(d=>d.artworkId===artwork.id);assert(download,`${artwork.id}: actual preview download`);
+ const asset=getAsset(artwork.assetRefs.original),bytes=await fs.readFile(download.file),stats=readPngAlphaStats(bytes,artwork.id);
+ assert.equal(artwork.artApproval.status,'pending',`${artwork.id}: remains pending art review`);
+ assert.equal(asset.artApproval.status,'pending',`${artwork.id}: its source remains pending art review`);
+ assert.equal(download.sha256,asset.sha256,`${artwork.id}: browser report names its registered local source hash`);
+ assert.equal(download.byteSize,asset.byteSize,`${artwork.id}: browser report names its exact byte count`);
+ assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256,`${artwork.id}: actual downloaded bytes match its candidate hash`);
+ assert.equal(stats.width,asset.width,`${artwork.id}: PNG width`);assert.equal(stats.height,asset.height,`${artwork.id}: PNG height`);
+ const isTransparent=asset.resourceKind==='transparent-character-still';
+ assert.equal(asset.resourceKind,isTransparent?'transparent-character-still':'opaque-character-still',`${artwork.id}: pending resource kind is explicit`);
+ assert.equal(stats.colorType,isTransparent?6:2,`${artwork.id}: PNG encoding matches its pending resource kind`);
+ assert.equal(asset.alpha.hasAlpha,isTransparent,`${artwork.id}: alpha-channel metadata matches its PNG encoding`);
+ assert.equal(asset.alpha.hasTransparency,isTransparent,`${artwork.id}: transparency metadata matches its PNG encoding`);
+ if(isTransparent){
+  assert(stats.transparentPixels>0&&stats.partialAlphaPixels>0&&stats.opaquePixels>0,`${artwork.id}: actual transparent PNG includes transparent, partial-alpha, and opaque pixels`);
+  assert.equal(stats.transparentPixels,asset.alpha.transparentPixels,`${artwork.id}: actual transparent pixel count`);
+  assert.equal(stats.partialAlphaPixels,asset.alpha.partialAlphaPixels,`${artwork.id}: actual partial-alpha pixel count`);
+ }else{
+  assert.equal(stats.transparentPixels,0,`${artwork.id}: opaque character still has no transparent pixels`);
+  assert.equal(stats.partialAlphaPixels,0,`${artwork.id}: opaque character still has no partial-alpha pixels`);
+  assert.equal(stats.opaquePixels,stats.width*stats.height,`${artwork.id}: every pixel in the opaque source is opaque`);
+ }
+ previewRecords.push({artworkId:artwork.id,status:'pending-user-art-approval',resourceKind:asset.resourceKind,alphaMetadata:asset.alpha,sha256:asset.sha256,...stats});
 }
 const opaque=readPngAlphaStats(await fs.readFile('historical-runtime/retired-assets/dist/assets/characters/hero-background.png'),'opaque source negative');assert.equal(opaque.transparentPixels,0);
-await fs.writeFile(folder+'/download-alpha.json',JSON.stringify({records,opaqueNegativeRejectedByCharacterContract:true,visualReview:'separate contrast contact-sheet review required; alpha alone does not prove no shadow'},null,2)+'\n');
-console.log(`Actual browser PNG alpha verified: ${records.length}; opaque source remains outside Artwork pool.`);
+await fs.writeFile(folder+'/download-alpha.json',JSON.stringify({approvedRecords,previewRecords,approvedCount:approvedRecords.length,pendingPreviewCount:previewRecords.length,opaqueNegativeAllPixelsOpaque:true,visualReview:'separate contrast contact-sheet review required; alpha alone does not prove no shadow'},null,2)+'\n');
+console.log(`Actual browser PNG downloads verified: ${approvedRecords.length} approved transparent originals; ${previewRecords.length} pending previews with their registered RGB/RGBA encoding, dimensions and exact bytes; opaque negative excluded from approved Artwork.`);

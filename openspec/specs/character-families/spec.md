@@ -14,7 +14,7 @@ Artwork SHALL 保留 Dots、Grok Bot、Meta Muse、原创人物和原创动物�
 - **THEN** Dots、Grok Bot、Meta Muse、人物和动物仍可辨识且风格不互相替代；分类通过可扩展标签呈现
 
 #### Scenario: 新制作的角色示意遵循身份差异
-- **WHEN** 制作首页或六卡中使用的 Dots、Grok Bot 或 Meta Muse 视觉材料
+- **WHEN** 制作首页或揭晓卡中使用的 Dots、Grok Bot 或 Meta Muse 视觉材料
 - **THEN** Dots 保留柔软短绒触感，Grok Bot 使用软几何与成对胶囊眼而无屏幕脸，Meta Muse 保留奶油包覆轮廓与内嵌脸面；已有素材文件和批准记录不被自动替换
 
 #### Scenario: 新增标签或系列

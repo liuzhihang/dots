@@ -4,7 +4,7 @@
 
 v83 已冻结、通过 source 绑定的内部页面视觉复核，并发布到原 Site version 35。2026-10-06 用户明确确认当前首页顶部与五组家族场景美术，见 [确认记录](../../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/user-art-approval.json)。该确认关闭 refine change 3.3，不覆盖原 3D 模型三视角、全部 Gallery/PNG 或实体手机验收。
 
-本轮针对用户否定的 v81 家族卡比例、全身目录式站位和独立字幕行进行纠偏：在 1280px 视口将五卡还原到 R01 约 212px 高的横向画面，保留近景/贴叠群像、底部共享字幕和有意艺术裁切。脸部、组别特征与道具接触不得被意外裁断。R01 网页图只作为构图/风格参考，禁止直接复用其中像素或从网页/动漫截图裁片；独立新插画可按设计稿做视口艺术裁切。详细身份与比例见 [change design](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md) 和 [spec delta](../../openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md)。
+本轮针对用户否定的 v81 家族卡比例、全身目录式站位和独立字幕行进行纠偏：在 1280px 视口将五卡还原到 R01 约 212px 高的横向画面，保留近景/贴叠群像、底部共享字幕和有意艺术裁切。脸部、组别特征与道具接触不得被意外裁断。R01 网页图只作为构图/风格参考，禁止直接复用其中像素或从网页/动漫截图裁片；独立新插画可按设计稿做视口艺术裁切。原场景构图 change 的 design/spec delta 已作为过期执行合同移除；本历史目录保留当时视觉记录，原任务状态见[清理记录](../../openspec/changes/simplify-reveal-cards-and-staging/implementation/spec-cleanup.md)，当前视觉要求见[视觉交互系统](../studio-visual-interaction-system.md)和[首页视觉主规范](../../openspec/specs/studio-visual-experience/spec.md)。
 
 ## 版本与独立评审
 

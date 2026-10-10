@@ -1,0 +1,68 @@
+{
+  "assetId": "asset:reveal:palette-material:green-matte",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "grok-green-cloud",
+  "applicableArtworkIds": [
+    "grok-green-cloud"
+  ],
+  "factIds": [
+    "color:green",
+    "material:soft-matte"
+  ],
+  "artworkFactReference": "color:green + material:soft-matte",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/green-matte-v2.provenance.json#green-matte",
+    "assetSha256": "8006aee5561920dcf48e31a8a81c02e72d5225d6f8b31a30eddf8da02bbbd070",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceRef": "imagegen:exec-5943e261-2d70-461e-b9c3-3a37149d717c; reference=dist/assets/looks/grok-green-cloud.png#d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+  "sourceKind": "imagegen-generated-palette-material-candidate",
+  "sourceArtwork": {
+    "artworkId": "grok-green-cloud",
+    "path": "dist/assets/looks/grok-green-cloud.png",
+    "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/green-matte.svg",
+    "version": "v1-candidate",
+    "sha256": "800785203903e5460f18d1254c0b86cedd06b7f8a8c7b1b94b6afa79e43d8e5a"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-5943e261-2d70-461e-b9c3-3a37149d717c",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium color-and-material specimen for Dot Icon Studio, matching the vivid fresh green soft-matte surface of the reference Grok character. Show only a small thick rounded-square sample tile with softly beveled corners and a smooth continuous matte surface, a restrained gentle curved bevel revealing its volume. It should be clearly a material sample, not a cloud, character, or body. Use vivid spring green with subtle tonal shading matching the reference; no glossy reflections, no texture pattern. Refined soft 3D product illustration, centered and fully visible with generous transparent margins, true transparent background and clean alpha edge. No sphere, orb, cloud silhouette, eyes, face, limbs, character, accessories, text, logo, labels, border, card, UI, floor, backdrop, or cast shadow.",
+    "referenceImages": [
+      {
+        "artworkId": "grok-green-cloud",
+        "path": "dist/assets/looks/grok-green-cloud.png",
+        "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/green-matte-v2.png",
+    "mime": "image/png",
+    "sha256": "8006aee5561920dcf48e31a8a81c02e72d5225d6f8b31a30eddf8da02bbbd070",
+    "byteSize": 852803,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 934238,
+      "partial": 638053,
+      "opaque": 225
+    }
+  }
+}
+

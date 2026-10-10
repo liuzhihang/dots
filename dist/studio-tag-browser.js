@@ -1,18 +1,50 @@
-import {TAGS,TAG_DIMENSIONS,publishedTags,normalizeTagQuery,toggleTag} from './studio-tags.js?v=92';
-import {escapeHTML as esc} from './studio-home.js?v=92';
+import { SERIES } from './studio-content.js?v=98';
+import { normalizeGalleryQuery } from './studio-tags.js?v=98';
 
-export function createTagBrowser(container,{getQuery,onChange}){
- const detailsState={open:false};
- function render(focusId){
-  const query=normalizeTagQuery(getQuery()),tags=publishedTags();
-  const group=dimension=>{const list=tags.filter(t=>t.dimension===dimension);if(!list.length)return '';return `<div class="tag-group" data-dimension="${esc(dimension)}"><span class="tag-group-label">${esc(TAG_DIMENSIONS[dimension]||dimension)}</span>${list.map(t=>`<button class="tag-chip" data-tag-id="${esc(t.id)}" aria-pressed="${(query.tagsByDimension[dimension]||[]).includes(t.id)}">${esc(t.label)}</button>`).join('')}</div>`;};
-  const main=['style'];const rest=[...new Set(tags.map(t=>t.dimension))].filter(d=>!main.includes(d));
-  const selectedCount=rest.reduce((count,dimension)=>count+(query.tagsByDimension[dimension]||[]).length,0);
-  container.innerHTML=main.map(group).join('')+(rest.length?`<details class="tag-more" ${detailsState.open?'open':''}><summary>更多筛选${selectedCount?` · ${selectedCount} 项已选`:''}</summary>${rest.map(group).join('')}</details>`:'');
-  container.querySelector('details')?.addEventListener('toggle',e=>{detailsState.open=e.target.open;});
-  if(focusId){const button=[...container.querySelectorAll('[data-tag-id]')].find(b=>b.dataset.tagId===focusId);button?.focus({preventScroll:true});}
- }
- const click=e=>{const b=e.target.closest('[data-tag-id]');if(!b)return;const id=b.dataset.tagId;onChange(toggleTag(getQuery(),id));render(id);};
- container.addEventListener('click',click);render();
- return {render,dispose(){container.removeEventListener('click',click);}};
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+})[character]);
+
+export function createGalleryFilters(container, { getQuery, onChange, getLocale } = {}) {
+  if (!container || typeof getQuery !== 'function' || typeof onChange !== 'function') {
+    throw new TypeError('createGalleryFilters requires a container, getQuery, and onChange.');
+  }
+
+  const locale = () => getLocale?.() === 'zh-CN' ? 'zh-CN' : 'en';
+  const labels = {
+    en: { all: 'All', group: 'Filter by series' },
+    'zh-CN': { all: '全部', group: '按系列筛选' }
+  };
+
+  function render(focusSeriesId) {
+    const language = locale();
+    const query = normalizeGalleryQuery(getQuery());
+    const selected = query.valid ? query.seriesId : '';
+    const options = [
+      { id: '', label: labels[language].all },
+      ...SERIES.map(series => ({ id: series.id, label: series.labelByLanguage[language] || series.labelByLanguage.en }))
+    ];
+    container.innerHTML = `<div class="gallery-series-filter" role="group" aria-label="${escapeHTML(labels[language].group)}">${options.map(option =>
+      `<button type="button" class="gallery-series-filter__button" data-series-id="${escapeHTML(option.id)}" aria-pressed="${selected === option.id}">${escapeHTML(option.label)}</button>`
+    ).join('')}</div>`;
+    if (focusSeriesId !== undefined) {
+      const button = [...container.querySelectorAll('[data-series-id]')].find(item => item.dataset.seriesId === focusSeriesId);
+      button?.focus({ preventScroll: true });
+    }
+  }
+
+  const click = event => {
+    const button = event.target.closest('[data-series-id]');
+    if (!button || !container.contains(button)) return;
+    const query = normalizeGalleryQuery(getQuery());
+    onChange({ text: query.text, seriesId: button.dataset.seriesId || '' });
+    render(button.dataset.seriesId || '');
+  };
+  container.addEventListener('click', click);
+  render();
+
+  return {
+    render,
+    dispose() { container.removeEventListener('click', click); }
+  };
 }

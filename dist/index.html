@@ -1,45 +1,39 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en" data-cache="98">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fafbff">
-  <title>Dot Icon Studio · 小小角色，大大的想象</title>
-  <meta name="description" content="探索高质量完整角色图：标签搜索、多卡片随机发现，直接带走对应 Prompt 与透明原图。">
-  <link rel="icon" href="./assets/characters/brand-mark.png">
-  <link rel="stylesheet" href="./studio.css?v=92"><link rel="stylesheet" href="./studio-detail.css?v=92"><link rel="stylesheet" href="./studio-fullscreen-random.css?v=92">
-  <script type="module" src="./studio.js?v=92"></script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f8fc">
+<title>Dot Icon Studio · Small Dots. Big Ideas.</title>
+<meta name="description" content="Find a character. Copy its prompt, download the original, and create your version in ChatGPT.">
+<link rel="icon" href="./assets/posters/brand-mark-display-v1.png">
+<link rel="stylesheet" href="./studio.css?v=98"><link rel="stylesheet" href="./studio-detail.css?v=98">
+<script type="module" src="./studio.js?v=98"></script>
 </head>
 <body data-screen="home">
-<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<a class="skip-link" href="#mainContent" data-i18n="skip">Skip to content</a>
 <div id="pageShell">
 <header class="topbar">
-  <a class="brand" href="#home" aria-label="Dot Icon Studio 首页"><img src="./assets/characters/brand-mark.png" alt=""><span><b>Dot Icon Studio</b><small>让想象，变成陪伴</small></span></a>
-  <nav class="studio-nav" aria-label="主导航"><a href="#home" data-page="home">首页</a><a href="#gallery" data-page="gallery">画廊</a><a href="#game" data-page="game">灵感游戏</a></nav>
-  <button class="button quiet global-reference" data-command="reference">参考图创作</button>
-</header>
-<main id="mainContent" class="site-main" tabindex="-1">
-<section id="homePortal" class="home-portal" aria-labelledby="homeTitle">
-  <section class="home-hero"><div class="hero-scene" id="heroScene"></div><div class="hero-copy"><h1 id="homeTitle" tabindex="-1">小小角色，<br>让大大的想象发生</h1><p>各有风格的小伙伴 · 无限创意可能</p><div class="hero-actions"><button class="button primary" data-command="random">随机一款 <span aria-hidden="true">→</span></button><a class="text-link" href="#gallery">逛逛画廊</a></div></div><span class="hero-note left" lang="en">Small Ideas<br>Big Friends</span><span class="hero-note right" lang="en">Good Characters<br>Brighter Days</span></section>
-  <section class="topic-section" aria-labelledby="topicsTitle"><div class="section-heading"><h2 id="topicsTitle">从喜欢的风格开始</h2><a class="text-link" href="#gallery">查看全部作品 <span aria-hidden="true">→</span></a></div><div id="topicCards" class="topic-grid"></div></section>
-  <section class="featured-section" aria-labelledby="featuredTitle"><div class="section-heading"><div><span class="eyebrow">SMALL IDEAS, BIG FRIENDS</span><h2 id="featuredTitle">找到一位灵感伙伴</h2><p>一张完整作品，一份对应 Prompt。把喜欢的角色带走，继续你的想象。</p></div><button class="button outlined" data-command="reference">用参考图继续创作</button></div><div id="featuredCards" class="featured-grid"></div></section>
+<a class="brand" href="#/home" aria-label="Dot Icon Studio home"><img src="./assets/posters/brand-mark-display-v1.png" alt=""><span>Dot Icon Studio</span></a>
+<nav class="studio-nav" aria-label="Main navigation"><a href="#/home" data-page="home" data-i18n="home">Home</a><a href="#/gallery" data-page="gallery" data-i18n="gallery">Gallery</a><a href="#/guide" data-page="guide" data-i18n="guide">Guide</a></nav>
+<form id="globalSearch" class="global-search" role="search"><img src="./assets/icons/search.svg" alt=""><label class="sr-only" for="navSearch" data-i18n="searchLabel">Search characters</label><input id="navSearch" type="search" maxlength="120" autocomplete="off" placeholder="Search characters, styles, ideas…"></form><button id="menuToggle" class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu"><img src="./assets/icons/menu.svg" alt=""></button><div class="preferences"><button id="motionPreference" class="preference-button" aria-pressed="false" title="Reduce motion">Motion</button><button id="languagePreference" class="preference-button" lang="zh-CN" aria-label="切换到简体中文">中文</button></div>
+</header><div id="mobileMenu" class="mobile-menu" hidden><nav aria-label="Mobile navigation"><a data-page="home" href="#/home" data-i18n="home">Home</a><a data-page="gallery" href="#/gallery" data-i18n="gallery">Gallery</a><a data-page="guide" href="#/guide" data-i18n="guide">Guide</a></nav><div id="mobilePreferences"></div></div>
+<main id="mainContent" tabindex="-1">
+<section id="homePortal" aria-labelledby="homeTitle">
+<section class="home-hero"><div id="heroScene" class="hero-scene"></div><div class="hero-copy"><h1 id="homeTitle" tabindex="-1">Small Dots.<br><span>Big Ideas.</span></h1><p class="hero-description" data-i18n="heroDescription">Pick a character. Create your version in ChatGPT.</p><div class="hero-actions"><button class="button light" id="heroCopy" data-i18n="copyPrompt">Copy Prompt</button><a class="button glass" href="#/gallery" data-i18n="explore">Explore Gallery</a></div><p class="hero-hint" data-i18n="heroHint">Click a companion. Get to know them.</p><div id="heroCopyFallback"></div></div><nav id="homeSeries" class="home-series" aria-label="Explore by series"></nav></section>
+
 </section>
 <section id="galleryPortal" class="page-portal" aria-labelledby="galleryTitle" hidden>
-  <header class="page-heading"><div><h1 id="galleryTitle" tabindex="-1">角色画廊</h1><p>发现喜欢的模样，带走图片与 Prompt。</p></div><button class="button primary" data-command="random">当前范围随机 <span aria-hidden="true">→</span></button></header>
-  <div class="search-row"><label class="search-field"><span class="sr-only">搜索作品、标签或特征</span><input id="gallerySearch" type="search" maxlength="120" placeholder="搜索角色、风格、配饰、动作…" autocomplete="off"></label><button class="button outlined" id="clearFilters">清空筛选</button></div>
-  <div id="galleryTags" class="tag-browser"></div><p id="queryError" class="error-note" role="alert" hidden></p>
-  <div class="results-heading"><p id="galleryCount" role="status" aria-live="polite"></p><span>透明 PNG · 静态角色</span></div>
-  <div id="artworkGrid" class="artwork-grid"></div>
-  <div id="galleryEmpty" class="empty-state" hidden><h2>还没有符合条件的作品</h2><p>试着减少一个筛选条件，或清空筛选重新看看。</p><button class="button outlined" data-command="clear-filters">清空筛选</button></div>
-  <p id="resourceNotice" class="error-note" role="status" hidden></p>
+<header class="page-heading"><h1 id="galleryTitle" tabindex="-1" data-i18n="galleryTitle">Character Gallery</h1><p data-i18n="galleryDescription">Find a familiar face. Imagine a new story.</p></header>
+<div class="gallery-tools"><label class="search-field"><span class="sr-only" data-i18n="searchLabel">Search characters</span><input id="gallerySearch" type="search" maxlength="120" placeholder="Search characters, colors, little details…" autocomplete="off"></label><button class="text-button" id="clearSearch" data-i18n="clearSearch" hidden>Clear search</button></div>
+<div class="filter-row"><div id="gallerySeries" class="series-filter" role="group" aria-label="Series"></div><button class="text-button" id="clearFilters" data-i18n="clearAll" hidden>Clear all</button></div>
+<p id="galleryCount" class="result-count" role="status" aria-live="polite"></p><div id="artworkGrid" class="artwork-grid"></div>
+<div id="galleryEmpty" class="empty-state" hidden><h2 data-i18n="emptyTitle">No companions here yet.</h2><p data-i18n="emptyDescription">Try another word or clear your filters.</p><button class="button primary" data-command="clear-filters" data-i18n="clearAll">Clear all</button></div>
 </section>
-<section id="gamePortal" class="page-portal" aria-labelledby="gameTitle" hidden>
-  <header class="page-heading"><div><span class="eyebrow">A LITTLE SURPRISE</span><h1 id="gameTitle" tabindex="-1">灵感游戏</h1><p>转动灵感，遇见新的小伙伴。</p></div><a class="text-link" href="#gallery">逛逛画廊 →</a></header>
-  <div id="gameReveal"></div>
-</section>
+<section id="guidePortal" class="page-portal guide-portal" aria-labelledby="guideTitle" hidden></section>
+<section id="notFoundPortal" class="page-portal empty-state" hidden><h1 tabindex="-1" data-i18n="notFound">This page isn’t here.</h1><p data-i18n="notFoundDescription">The link may be incomplete, or this version is not available.</p><a class="button primary" href="#/gallery" data-i18n="backGallery">Back to Gallery</a></section>
 </main>
-<footer class="site-footer"><span class="footer-brand"><img src="./assets/characters/brand-mark.png" alt="">Dot Icon Studio</span><p>小角色，大想象。<span lang="en">Small Ideas · Big Friends</span></p><a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">在 ChatGPT 继续创作</a></footer>
+<footer class="site-footer"><span>Dot Icon Studio</span><p data-i18n="footer">Small characters. New possibilities.</p><a href="#/guide" data-i18n="creationGuide">Creation guide</a></footer>
 </div>
-<dialog id="studioOverlay" aria-labelledby="overlayTitle"><div class="overlay-shell"><header class="overlay-header"><button id="overlayBack" class="button quiet" hidden>返回</button><h2 id="overlayTitle" tabindex="-1"></h2><button id="overlayClose" class="icon-button" aria-label="关闭弹窗">×</button></header><div id="overlayBody"></div></div></dialog>
+<dialog id="studioOverlay" aria-labelledby="overlayTitle"><div class="overlay-shell"><header class="overlay-header"><button id="overlayBack" class="button quiet"><img src="./assets/icons/chevron-left.svg" alt=""><span data-i18n="back">Back</span></button><h2 id="overlayTitle" class="sr-only" tabindex="-1"></h2><button id="detailLanguage" class="preference-button" aria-label="切换到简体中文">中文</button><button id="overlayClose" class="icon-button" aria-label="Close details"><img src="./assets/icons/x.svg" alt=""></button></header><div id="overlayBody"></div></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
-<noscript><p>请启用 JavaScript 以浏览作品、复制 Prompt 和使用随机发现。</p></noscript>
-</body>
-</html>
+<noscript><p>Please enable JavaScript to browse characters and copy prompts. 请启用 JavaScript 浏览角色和复制 Prompt。</p></noscript>
+</body></html>

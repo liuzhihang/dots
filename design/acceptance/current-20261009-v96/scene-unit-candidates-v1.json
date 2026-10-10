@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "sceneId": "home-terrace-v1",
+  "createdOn": "2026-10-09",
+  "status": "candidate-only",
+  "evidenceDirectory": "design/acceptance/current-20261009-v96/asset-sources/",
+  "generator": "Codex built-in image_gen.imagegen",
+  "generationCost": "Not exposed by the image generation tool.",
+  "prototypeInputPolicy": {
+    "P01P02UsedAsProductionPixels": false,
+    "P01P02PassedAsImageGenerationInputs": false,
+    "notes": "P01/P02 were reviewed as layout and lighting references only. C01-C03 and existing original artworks were used as identity references. No prototype screenshot was cropped or used as a production image."
+  },
+  "approvalBoundary": "Every new scene-unit hash below is pending user art approval for the exact image and home-scene use. Existing artwork approval covers only its recorded original Artwork; it does not approve a new pose, group composition, or scene placement.",
+  "candidateUnits": [
+    {
+      "id": "scene-unit:terrace-near-shiba-rose-dots",
+      "version": "v1",
+      "file": "./near-shiba-rose-dots-v1.webp",
+      "purpose": "home-scene-pose-only",
+      "resourceKind": "transparent-static-scene-unit",
+      "status": "candidate-pending-art-approval",
+      "mime": "image/webp",
+      "width": 1536,
+      "height": 1024,
+      "byteSize": 161868,
+      "sha256": "a062be274742b4a948af251d72f92438e2cfa836db8ccdaa7513b5c5918c6e39",
+      "alpha": {
+        "hasTransparency": true,
+        "channelRange": [
+          0,
+          254
+        ],
+        "cornerSamples": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visibleBoundsAlphaGreaterThan8Px": [
+          81,
+          38,
+          1415,
+          961
+        ],
+        "visibleBoundsAlphaGreaterThan128Px": [
+          84,
+          41,
+          1412,
+          960
+        ],
+        "boundsConvention": "left, top, right, bottom; right and bottom are exclusive"
+      },
+      "artworkRefs": [
+        {
+          "artworkId": "candidate-animals-20261005",
+          "version": "v1",
+          "role": "Shiba Inu identity",
+          "sourceAssetPath": "dist/assets/characters/animals-original-shiba-candidate-v1.png"
+        },
+        {
+          "artworkId": "dots-rose-glasses",
+          "version": "v1",
+          "role": "rose-glasses Dots identity",
+          "sourceAssetPath": "dist/assets/looks/dots-rose-glasses.png"
+        }
+      ],
+      "source": {
+        "generatedPng": "design/acceptance/current-20261009-v96/asset-sources/near-shiba-rose-dots-generated-source-v1.png",
+        "selectedPngBeforeWebp": "design/acceptance/current-20261009-v96/asset-sources/near-shiba-rose-dots-final-candidate-v1.png",
+        "generatorOutput": "/Users/liuzhihang/.codex/generated_images/01a11fac-f201-79c1-b35d-65f5d96dffc5/exec-ec72bc1f-2fa2-4a02-b73a-cd44c0986c5c.png",
+        "strictMatteAttemptPng": "design/acceptance/current-20261009-v96/asset-sources/near-shiba-rose-dots-strict-matte-attempt-v1.png",
+        "identityReferences": [
+          "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+          "dist/assets/looks/dots-rose-glasses.png",
+          "openspec/changes/simplify-reveal-cards-and-staging/planning/static-experience-20261009/references/C03-dots-material.jpeg"
+        ],
+        "processing": "Transparent-background generation followed by one background-extraction pass; current WebP was converted from that pass. A stricter matte attempt is retained as evidence and was not selected because it did not materially change the measured alpha bounds.",
+        "webpConversion": "Pillow WebP quality 82, alpha quality 100, method 6; dimensions preserved."
+      },
+      "charactersRelativeBounds": [
+        {
+          "artworkId": "candidate-animals-20261005",
+          "version": "v1",
+          "role": "Shiba Inu",
+          "rect": [
+            0.055,
+            0.04,
+            0.67,
+            0.9
+          ]
+        },
+        {
+          "artworkId": "dots-rose-glasses",
+          "version": "v1",
+          "role": "Dots",
+          "rect": [
+            0.595,
+            0.47,
+            0.325,
+            0.48
+          ]
+        }
+      ],
+      "otherObjectsRelativeBounds": [
+        {
+          "role": "small yellow ball",
+          "rect": [
+            0.49,
+            0.77,
+            0.12,
+            0.17
+          ],
+          "interactive": false
+        }
+      ],
+      "boundsNote": "Character rectangles are approximate visual bounds within the full 1536x1024 image, normalized to 0..1. They overlap near the intended nose-to-Dots interaction; verify and resolve hit priority in the rendered scene."
+    },
+    {
+      "id": "scene-unit:terrace-mid-collaboration-four",
+      "version": "v1",
+      "file": "./mid-collaboration-four-v1.webp",
+      "purpose": "home-scene-pose-only",
+      "resourceKind": "transparent-static-scene-unit",
+      "status": "candidate-pending-art-approval",
+      "mime": "image/webp",
+      "width": 1536,
+      "height": 1024,
+      "byteSize": 195930,
+      "sha256": "5d73b4299ea56889ccf715f8488c6f5b0d0ff9fb3f09277917462291ae9e9ed4",
+      "alpha": {
+        "hasTransparency": true,
+        "channelRange": [
+          0,
+          254
+        ],
+        "cornerSamples": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visibleBoundsAlphaGreaterThan8Px": [
+          23,
+          12,
+          1515,
+          959
+        ],
+        "visibleBoundsAlphaGreaterThan128Px": [
+          23,
+          14,
+          1514,
+          954
+        ],
+        "boundsConvention": "left, top, right, bottom; right and bottom are exclusive"
+      },
+      "artworkRefs": [
+        {
+          "artworkId": "candidate-dots-20261005",
+          "version": "v2",
+          "role": "blue headphone Dots identity",
+          "sourceAssetPath": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png"
+        },
+        {
+          "artworkId": "candidate-grok-20261005",
+          "version": "v2",
+          "role": "purple Grok Bot identity",
+          "sourceAssetPath": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png"
+        },
+        {
+          "artworkId": "candidate-humans-20261005",
+          "version": "v1",
+          "role": "chestnut-haired human identity",
+          "sourceAssetPath": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png"
+        },
+        {
+          "artworkId": "human-bun-yellow",
+          "version": "v1",
+          "role": "yellow-hoodie bun-haired human identity",
+          "sourceAssetPath": "dist/assets/looks/human-bun-yellow.png"
+        }
+      ],
+      "source": {
+        "generatedPng": "design/acceptance/current-20261009-v96/asset-sources/mid-collaboration-four-generated-source-v1.png",
+        "selectedPngBeforeWebp": "design/acceptance/current-20261009-v96/asset-sources/mid-collaboration-four-final-candidate-v1.png",
+        "generatorOutput": "/Users/liuzhihang/.codex/generated_images/01a11fac-f201-79c1-b35d-65f5d96dffc5/exec-9d296e0f-f7fb-4972-9051-d6da1a5428c9.png",
+        "strictMatteAttemptPng": "design/acceptance/current-20261009-v96/asset-sources/mid-collaboration-four-strict-matte-attempt-v1.png",
+        "identityReferences": [
+          "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+          "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+          "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+          "dist/assets/looks/human-bun-yellow.png",
+          "openspec/changes/simplify-reveal-cards-and-staging/planning/static-experience-20261009/references/C02-grok-identity.jpeg"
+        ],
+        "processing": "Transparent-background generation followed by one background-extraction pass; current WebP was converted from that pass. A stricter matte attempt is retained as evidence and was not selected because it did not materially change the measured alpha bounds.",
+        "webpConversion": "Pillow WebP quality 82, alpha quality 100, method 6; dimensions preserved."
+      },
+      "charactersRelativeBounds": [
+        {
+          "artworkId": "candidate-dots-20261005",
+          "version": "v2",
+          "role": "blue headphone Dots",
+          "rect": [
+            0.015,
+            0.45,
+            0.3,
+            0.45
+          ]
+        },
+        {
+          "artworkId": "candidate-humans-20261005",
+          "version": "v1",
+          "role": "chestnut-haired human",
+          "rect": [
+            0.18,
+            0.03,
+            0.32,
+            0.88
+          ]
+        },
+        {
+          "artworkId": "human-bun-yellow",
+          "version": "v1",
+          "role": "yellow hoodie human",
+          "rect": [
+            0.49,
+            0.02,
+            0.3,
+            0.85
+          ]
+        },
+        {
+          "artworkId": "candidate-grok-20261005",
+          "version": "v2",
+          "role": "purple Grok Bot",
+          "rect": [
+            0.73,
+            0.51,
+            0.26,
+            0.37
+          ]
+        }
+      ],
+      "otherObjectsRelativeBounds": [
+        {
+          "role": "low table, paper and pencil",
+          "rect": [
+            0.27,
+            0.61,
+            0.43,
+            0.36
+          ],
+          "interactive": false
+        }
+      ],
+      "boundsNote": "Character rectangles are approximate visual bounds within the full 1536x1024 image, normalized to 0..1. The table intentionally overlaps lower figure areas; keep hit regions fixed and give visible characters priority over furniture."
+    },
+    {
+      "id": "scene-unit:terrace-reading-cream-muse-white-cat",
+      "version": "v1",
+      "file": "./reading-cream-muse-white-cat-v1.webp",
+      "purpose": "home-scene-pose-only",
+      "resourceKind": "transparent-static-scene-unit",
+      "status": "candidate-pending-art-approval",
+      "mime": "image/webp",
+      "width": 1536,
+      "height": 1024,
+      "byteSize": 152198,
+      "sha256": "70bb8722f9cbcf9ac06d75f5d813044d8ebaad03790895ad13246032d57985a9",
+      "alpha": {
+        "hasTransparency": true,
+        "channelRange": [
+          0,
+          254
+        ],
+        "cornerSamples": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visibleBoundsAlphaGreaterThan8Px": [
+          100,
+          41,
+          1515,
+          943
+        ],
+        "visibleBoundsAlphaGreaterThan128Px": [
+          103,
+          43,
+          1511,
+          943
+        ],
+        "boundsConvention": "left, top, right, bottom; right and bottom are exclusive"
+      },
+      "artworkRefs": [
+        {
+          "artworkId": "candidate-meta-muse-20261005",
+          "version": "v1",
+          "role": "cream wrapped Muse identity",
+          "sourceAssetPath": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png"
+        },
+        {
+          "artworkId": "animal-white-cat",
+          "version": "v1",
+          "role": "white cat identity",
+          "sourceAssetPath": "dist/assets/looks/animal-white-cat.png"
+        }
+      ],
+      "source": {
+        "generatedPng": "design/acceptance/current-20261009-v96/asset-sources/reading-cream-muse-white-cat-generated-source-v1.png",
+        "selectedPngBeforeWebp": "design/acceptance/current-20261009-v96/asset-sources/reading-cream-muse-white-cat-final-candidate-v1.png",
+        "generatorOutput": "/Users/liuzhihang/.codex/generated_images/01a11fac-f201-79c1-b35d-65f5d96dffc5/exec-fe2859f2-e512-4a70-9948-5635e9dd6ceb.png",
+        "strictMatteAttemptPng": "design/acceptance/current-20261009-v96/asset-sources/reading-cream-muse-white-cat-strict-matte-attempt-v1.png",
+        "identityReferences": [
+          "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+          "openspec/changes/simplify-reveal-cards-and-staging/planning/static-experience-20261009/references/C01-muse-identity.jpeg",
+          "dist/assets/looks/animal-white-cat.png"
+        ],
+        "processing": "Transparent-background generation followed by one background-extraction pass; current WebP was converted from that pass. A stricter matte attempt is retained as evidence and was not selected because it did not materially change the measured alpha bounds.",
+        "webpConversion": "Pillow WebP quality 82, alpha quality 100, method 6; dimensions preserved."
+      },
+      "charactersRelativeBounds": [
+        {
+          "artworkId": "candidate-meta-muse-20261005",
+          "version": "v1",
+          "role": "cream Muse",
+          "rect": [
+            0.05,
+            0.04,
+            0.49,
+            0.85
+          ]
+        },
+        {
+          "artworkId": "animal-white-cat",
+          "version": "v1",
+          "role": "white cat",
+          "rect": [
+            0.49,
+            0.13,
+            0.49,
+            0.79
+          ]
+        }
+      ],
+      "otherObjectsRelativeBounds": [
+        {
+          "role": "open book and low book support",
+          "rect": [
+            0.27,
+            0.62,
+            0.41,
+            0.31
+          ],
+          "interactive": false
+        }
+      ],
+      "boundsNote": "Character rectangles are approximate visual bounds within the full 1536x1024 image, normalized to 0..1. Book and support overlap lower character areas; verify fixed hit regions in the rendered scene."
+    },
+    {
+      "id": "scene-unit:terrace-distant-lilac-dots-green-grok",
+      "version": "v1",
+      "file": "./distant-lilac-dots-green-grok-v1.webp",
+      "purpose": "home-scene-pose-only",
+      "resourceKind": "transparent-static-scene-unit",
+      "status": "candidate-pending-art-approval",
+      "mime": "image/webp",
+      "width": 1642,
+      "height": 958,
+      "byteSize": 128788,
+      "sha256": "957e09eea2b8016649788b46bf9a10aa488db2f370d80a89cf38b905d7e8f174",
+      "alpha": {
+        "hasTransparency": true,
+        "channelRange": [
+          0,
+          255
+        ],
+        "cornerSamples": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "visibleBoundsAlphaGreaterThan8Px": [
+          117,
+          153,
+          1545,
+          853
+        ],
+        "visibleBoundsAlphaGreaterThan128Px": [
+          118,
+          154,
+          1544,
+          852
+        ],
+        "boundsConvention": "left, top, right, bottom; right and bottom are exclusive"
+      },
+      "artworkRefs": [
+        {
+          "artworkId": "dots-lilac-bucket",
+          "version": "v1",
+          "role": "lilac bucket-hat Dots identity",
+          "sourceAssetPath": "dist/assets/looks/dots-lilac-bucket.png"
+        },
+        {
+          "artworkId": "grok-green-cloud",
+          "version": "v1",
+          "role": "green cloud Grok Bot identity",
+          "sourceAssetPath": "dist/assets/looks/grok-green-cloud.png"
+        }
+      ],
+      "source": {
+        "generatedPng": "design/acceptance/current-20261009-v96/asset-sources/distant-lilac-dots-green-grok-generated-source-v1.png",
+        "selectedPngBeforeWebp": "design/acceptance/current-20261009-v96/asset-sources/distant-lilac-dots-green-grok-final-candidate-v1.png",
+        "generatorOutput": "/Users/liuzhihang/.codex/generated_images/01a11fac-f201-79c1-b35d-65f5d96dffc5/exec-70ab1c50-bccd-43ef-9fbc-43f5eee61d1a.png",
+        "identityReferences": [
+          "dist/assets/looks/dots-lilac-bucket.png",
+          "dist/assets/looks/grok-green-cloud.png",
+          "openspec/changes/simplify-reveal-cards-and-staging/planning/static-experience-20261009/references/C03-dots-material.jpeg",
+          "openspec/changes/simplify-reveal-cards-and-staging/planning/static-experience-20261009/references/C02-grok-identity.jpeg"
+        ],
+        "processing": "Transparent-background generation; current WebP was converted directly from the generated PNG.",
+        "webpConversion": "Pillow WebP quality 82, alpha quality 100, method 6; dimensions preserved."
+      },
+      "charactersRelativeBounds": [
+        {
+          "artworkId": "dots-lilac-bucket",
+          "version": "v1",
+          "role": "lilac bucket-hat Dots",
+          "rect": [
+            0.07,
+            0.15,
+            0.45,
+            0.73
+          ]
+        },
+        {
+          "artworkId": "grok-green-cloud",
+          "version": "v1",
+          "role": "green cloud Grok Bot",
+          "rect": [
+            0.48,
+            0.28,
+            0.47,
+            0.64
+          ]
+        }
+      ],
+      "boundsNote": "Character rectangles are approximate visual bounds within the full 1642x958 image, normalized to 0..1. Scale the whole group for depth, while checking each character remains readable and has a stable target."
+    }
+  ],
+  "quietSingletonCandidates": [
+    {
+      "artworkId": "muse-sage-reading",
+      "version": "v1",
+      "assetId": "asset:muse-sage-reading:original",
+      "assetPath": "dist/assets/looks/muse-sage-reading.png",
+      "use": "quiet solo placement; static Muse holds a closed sage-green book",
+      "motion": false,
+      "originalArtworkApproval": "The existing approval scope covers this exact original Artwork only.",
+      "sceneUseApproval": "pending"
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "version": "v1",
+      "assetId": "asset:grok-teal-square:original",
+      "assetPath": "dist/assets/looks/grok-teal-square.png",
+      "use": "quiet solo placement; static soft-geometric Grok Bot still",
+      "motion": false,
+      "originalArtworkApproval": "The existing approval scope covers this exact original Artwork only.",
+      "sceneUseApproval": "pending"
+    }
+  ],
+  "reviewNotes": {
+    "sceneUseApproval": "pending for every candidate unit and reused solo placement",
+    "browserScreenshots": [
+      "design/acceptance/current-20261009-v96/browser/home-1440.png",
+      "design/acceptance/current-20261009-v96/browser/home-390.png"
+    ],
+    "statusMeaning": "Screenshot reference availability and engineering checks do not approve art. Functional, visual, and user art acceptance remain separate.",
+    "hitRegions": "The normalized character bounds are layout aids only; implement fixed semantic buttons and verify non-overlap/focus behavior in browser. They are not a claim that these candidate assets have passed interaction acceptance.",
+    "animation": "All listed scene units are static. No expression or animation is promised; no animation asset is registered here."
+  },
+  "assetRoot": "dist/assets/terrace/units"
+}

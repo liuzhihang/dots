@@ -1,0 +1,30 @@
+{
+  "nodeChecks": [
+    {
+      "command": "node scripts/verify-artwork-catalog.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "node scripts/verify-artwork-query.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "node scripts/verify-artwork-draw.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "node scripts/verify-card-reveal.mjs",
+      "status": "passed"
+    }
+  ],
+  "build": "passed",
+  "strictChangeValidation": "passed",
+  "scopedDiffCheck": "passed",
+  "fullNpmTest": "not-run-this-turn",
+  "externalPlaywrightSuites": "not-run-this-turn",
+  "actualDevice": "not-verified",
+  "browserMethod": "CUA",
+  "sourceId": "e847eba69dede5b0c9d899235d9c3382c1e0477902a71b0d70fb936303a8e782",
+  "userVisualApproval": "pending",
+  "deployment": "not-performed"
+}

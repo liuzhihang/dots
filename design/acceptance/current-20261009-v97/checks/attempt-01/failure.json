@@ -1,0 +1,43 @@
+{
+  "message": "Hotspot center is not covered by another layer: dots-lilac-bucket@v1",
+  "stack": "AssertionError [ERR_ASSERTION]: Hotspot center is not covered by another layer: dots-lilac-bucket@v1\n    at inspectScene (file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:194:12)\n    at async file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:355:20",
+  "checks": [
+    "gallery loads optimized posters, not all original PNGs",
+    "search, no results and clear search",
+    "series AND search, shared details, Escape/source query/focus and forward",
+    "real browser clipboard equals original English Prompt",
+    "real download preserves registered original bytes",
+    "collapsed edit retains replacement text without changing original title",
+    "Chinese interface and Prompt use same selected version",
+    "all 15 direct detail URLs use correct original dimensions and versions",
+    "direct detail reload closes safely to gallery",
+    "unknown IDs, versions and retired routes show recovery"
+  ],
+  "errors": [],
+  "sceneViewports": {
+    "1440x900": {
+      "layout": "desktop",
+      "width": 1440,
+      "height": 900,
+      "asset": "./assets/terrace/terrace-desktop-v97.webp",
+      "sha256": "f85bbbbb6bb208c22cb6ae8f3e40dc2cd9abc97e3b66d9baee97c3ef1ac0a0e8",
+      "targets": [
+        "dots-rose-glasses@v1",
+        "candidate-animals-20261005@v1",
+        "animal-gray-husky@v1",
+        "candidate-dots-20261005@v2",
+        "candidate-humans-20261005@v1",
+        "human-bun-yellow@v1",
+        "candidate-grok-20261005@v2",
+        "candidate-meta-muse-20261005@v1",
+        "animal-white-cat@v1",
+        "human-blond-glasses@v1",
+        "dots-lilac-bucket@v1",
+        "grok-green-cloud@v1",
+        "muse-rose-flowers@v1",
+        "grok-teal-square@v1",
+        "muse-sage-reading@v1"
+      ]
+    }
+  }
+}

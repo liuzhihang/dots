@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-08",
+  "scope": "Three independent desktop image mockups; no production code or specification changes",
+  "display_order_basis": "Order displayed in main chat: river, xiangqi, neighborhood",
+  "artifacts": [
+    {
+      "display_order": 1,
+      "file": "river-scroll.png",
+      "concept": "河畔伙伴长卷",
+      "width": 1487,
+      "height": 1058,
+      "sha256": "6b6450d63913d387070ca478a5d2e8230daff3d055d55612ef06f621a53852f2",
+      "status": "concept-pending-user-review"
+    },
+    {
+      "display_order": 2,
+      "file": "xiangqi-display.png",
+      "concept": "棋盘上的伙伴",
+      "width": 1487,
+      "height": 1058,
+      "sha256": "c0982764778d73557caa3dd3bff01f300f92b907a269f08f0d2d61f668b87036",
+      "status": "concept-pending-user-review"
+    },
+    {
+      "display_order": 3,
+      "file": "neighborhood.png",
+      "concept": "伙伴街区",
+      "width": 1487,
+      "height": 1058,
+      "sha256": "680a1c6159172f3e0d5f607afdcd2f097ab7c9bbda3b7769f2e5377792175bf7",
+      "status": "concept-pending-user-review"
+    }
+  ],
+  "inspection": "Visually inspected all three desktop PNGs. No browser/device/interaction test, and no user art approval. Minor decorative text or geometric inaccuracies may remain.",
+  "baseline": "source-baseline.json",
+  "interactions": "interaction-notes.txt"
+}

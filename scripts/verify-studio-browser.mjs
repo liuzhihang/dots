@@ -2,234 +2,650 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {pathToFileURL} from 'node:url';
-import {ARTWORKS,getAsset,createSnapshot} from '../dist/studio-artwork-catalog.js?v=92';
-import {publishedTags} from '../dist/studio-tags.js?v=92';
-import {FEATURE_CATEGORIES,REVEAL_SLOTS,revealFeaturesFor} from '../dist/studio-draw.js?v=92';
-import {promptFor} from '../dist/studio-prompt.js?v=92';
-import {featureVisualFor} from '../dist/studio-feature-visuals.js?v=92';
-const modulePath=process.env.DOTS_PLAYWRIGHT_MODULE||'/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
-const {chromium}=await import(pathToFileURL(modulePath));
-const output=process.env.DOTS_EVIDENCE_DIR||'design/acceptance/current-20261007-v92/browser';
-await fs.mkdir(output,{recursive:true});
-await fs.mkdir('.tmp',{recursive:true});
-const temporaryDownloads=await fs.mkdtemp(path.resolve('.tmp/cache92-browser-downloads-'));
-const browser=await chromium.launch({headless:true,executablePath:process.env.DOTS_CHROME_PATH||'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
-const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true,permissions:['clipboard-read','clipboard-write']});
-const page=await context.newPage();const errors=[],network=[],checks=[],downloads=[],drawDownloads=[],detailPaints=[],promptCopies=[],retiredAssetResponses=[];
-page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>network.push(r.url()));
-const base=process.env.DOTS_BASE_URL||'http://127.0.0.1:5180/';
-async function ready(hash='home'){await page.goto(base+'#'+hash);await page.waitForFunction(()=>document.documentElement.dataset.catalogRevision);assert.equal(await page.locator('html').getAttribute('data-cache'),'92','browser page must use current cache 92');}
-async function closed(){await page.waitForFunction(()=>!document.querySelector('dialog').open&&!(history.state?.overlayTrail?.length));}
-async function randomStarted(root='#studioOverlay .fr-view'){await page.waitForFunction(root=>['selecting','preloading','revealing','awaiting-reveal','result','empty','error'].includes(document.querySelector(root)?.dataset.phase),root,{timeout:15000});}
-async function openAutoRandom(trigger){await page.locator(trigger).click();await page.locator('#studioOverlay .fr-view').waitFor({state:'visible'});await randomStarted();}
-async function detail(){await page.locator('.artwork-detail__image').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);await page.locator('.artwork-detail__image').evaluate(async image=>{await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});}
-async function screenshot(name){const modal=await page.locator('dialog').evaluate(el=>el.open);if(!modal&&/^(home|gallery|game)-\d+$/.test(name)){await page.evaluate(async()=>{for(let pos=0;pos<document.documentElement.scrollHeight;pos+=innerHeight){window.scrollTo(0,pos);await new Promise(resolve=>setTimeout(resolve,60));}window.scrollTo(0,0);});await page.waitForFunction(()=>[...document.querySelectorAll('#'+document.body.dataset.screen+'Portal img')].every(img=>img.complete&&img.naturalWidth));}await page.evaluate(async()=>{const visible=[...document.images].filter(img=>img.currentSrc&&img.getClientRects().length);await Promise.all(visible.map(img=>img.decode()));await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});await page.screenshot({path:path.join(output,name+'.png'),fullPage:!modal});}
-async function noOverflow(scope='document'){const excess=await page.evaluate(scope=>{const el=scope==='dialog'?document.querySelector('dialog'):document.documentElement;return el.scrollWidth-el.clientWidth;},scope);assert(excess<=2,`${scope} horizontal overflow ${excess}`);}
-async function inspectPngAlpha(bytes){
- assert.equal(bytes.subarray(0,8).toString('hex'),'89504e470d0a1a0a','download has PNG signature');
- return page.evaluate(async base64=>{
-  const binary=atob(base64),data=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)data[i]=binary.charCodeAt(i);
-  const bitmap=await createImageBitmap(new Blob([data],{type:'image/png'})),canvas=document.createElement('canvas');canvas.width=bitmap.width;canvas.height=bitmap.height;
-  const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(bitmap,0,0);const rgba=context.getImageData(0,0,canvas.width,canvas.height).data;let transparentPixels=0,opaquePixels=0,partialAlphaPixels=0;
-  for(let i=3;i<rgba.length;i+=4){if(rgba[i]===0)transparentPixels++;else if(rgba[i]===255)opaquePixels++;else partialAlphaPixels++;}
-  bitmap.close();return {width:canvas.width,height:canvas.height,transparentPixels,opaquePixels,partialAlphaPixels};
- },bytes.toString('base64'));
+import {fileURLToPath, pathToFileURL} from 'node:url';
+import {ARTWORKS, PREVIEW_ARTWORKS, getArtwork, getAsset, CATALOG_REVISION} from '../dist/studio-artwork-catalog.js?v=98';
+import {promptFor} from '../dist/studio-prompt.js?v=98';
+import {SCENE_ART, SCENE_CHARACTERS} from '../dist/studio-scenes.js?v=98';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const dir = path.join(root, 'design/acceptance/current-20261009-v98/browser');
+const playwrightPath = process.env.DOTS_PLAYWRIGHT_MODULE || '/Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const {chromium} = await import(pathToFileURL(playwrightPath));
+const manifest = JSON.parse(await fs.readFile(path.join(root, 'design/static-publish-manifest.json')));
+const sourceSnapshot = await Promise.all(manifest.files.map(async file => ({
+  path: file,
+  sha256: crypto.createHash('sha256').update(await fs.readFile(path.resolve(root, file))).digest('hex')
+})));
+const sha256 = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
+const sceneAssetFile = asset => path.join(root, 'dist', asset.src.replace(/^\.?\//, ''));
+const sceneKey = entry => entry.artworkId + '@' + entry.artworkVersion;
+const sceneByKey = new Map(SCENE_CHARACTERS.map(entry => [sceneKey(entry), entry]));
+const desktopEntries = SCENE_CHARACTERS.filter(entry => entry.desktop);
+const mobileEntries = SCENE_CHARACTERS.filter(entry => entry.mobile);
+const mobileKeys = mobileEntries.map(sceneKey).sort();
+const desktopKeys = desktopEntries.map(sceneKey).sort();
+const originalPaths = new Set(ARTWORKS.map(artwork => new URL(getAsset(artwork.assetRefs.original).path, 'http://localhost/').pathname));
+
+assert.equal(desktopEntries.length, 17, 'The enriched terrace has 15 original identities plus two new preview companions.');
+assert.equal(sceneByKey.size, SCENE_CHARACTERS.length, 'Scene hotspot artwork ID and version pairs are unique.');
+for (const entry of SCENE_CHARACTERS) {
+  const artwork = getArtwork(entry.artworkId);
+  assert.ok(artwork, 'Scene hotspot resolves to a registered artwork: ' + sceneKey(entry));
+  assert.equal(artwork.version, entry.artworkVersion, 'Scene hotspot uses the registered artwork version: ' + sceneKey(entry));
 }
-async function inspectRenderedImage(locator,asset,{allowVerifiedBlob=false}={}){
- const painted=await locator.evaluate(async element=>{
-  const image=element instanceof HTMLImageElement?element:element.querySelector('img');if(!image)throw new Error('Expected a real artwork preview image element.');
-  await image.decode();await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));const rect=image.getBoundingClientRect(),style=getComputedStyle(image),canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
-  const context=canvas.getContext('2d',{willReadFrequently:true});context.drawImage(image,0,0);const pixels=context.getImageData(0,0,canvas.width,canvas.height).data;let visiblePixels=0;
-  for(let i=3;i<pixels.length;i+=4)if(pixels[i]>0)visiblePixels++;
-  let sourceSha256=null;if(image.currentSrc.startsWith('blob:')){const bytes=await (await fetch(image.currentSrc)).arrayBuffer(),digest=new Uint8Array(await crypto.subtle.digest('SHA-256',bytes));sourceSha256=[...digest].map(byte=>byte.toString(16).padStart(2,'0')).join('');}
-  return {src:image.currentSrc,sourceSha256,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,complete:image.complete,rect:{width:rect.width,height:rect.height},display:style.display,visibility:style.visibility,opacity:Number(style.opacity),visiblePixels};
- });
- assert.equal(painted.complete,true);assert(painted.naturalWidth>0&&painted.naturalHeight>0);assert(painted.rect.width>0&&painted.rect.height>0);assert.notEqual(painted.display,'none');assert.equal(painted.visibility,'visible');assert(painted.opacity>0);assert(painted.visiblePixels>0,'decoded image must contain painted pixels');
- if(asset){if(painted.src.startsWith('blob:')){assert.equal(allowVerifiedBlob,true,'object URL is allowed only for a preloaded registered Artwork resource');assert.equal(painted.sourceSha256,asset.sha256,'object URL bytes match the frozen registered Artwork hash');}else assert.equal(new URL(painted.src).pathname,new URL(asset.path,base).pathname,'displayed preview resolves to the frozen registered Artwork resource');}
- return painted;
+for (const layout of Object.keys(SCENE_ART)) {
+  const asset = SCENE_ART[layout];
+  assert.ok(asset && asset.src && asset.width > 0 && asset.height > 0 && asset.sha256, 'Scene ' + layout + ' artwork metadata is complete.');
+  const bytes = await fs.readFile(sceneAssetFile(asset));
+  assert.equal(sha256(bytes), asset.sha256, 'Scene ' + layout + ' image matches its registered hash.');
 }
-async function assertDetailContract(artwork,{checkTagRows=false}={}){
- const state=await page.locator('.artwork-detail').evaluate(root=>{
-  const primaryTags=[...root.querySelectorAll('.artwork-detail__tags:not(.artwork-detail__tags--more) [data-tag-id]')];
-  const image=root.querySelector('.artwork-detail__image'),column=root.querySelector('.artwork-detail__content');
-  const title=root.querySelector('.artwork-detail__title'),description=root.querySelector('.artwork-detail__description');
-  const media=root.querySelector('.artwork-detail__media'),mediaRect=media.getBoundingClientRect(),contentRect=column.getBoundingClientRect();
-  const tagGroup=root.querySelector('.artwork-detail__tag-group'),specification=root.querySelector('.artwork-detail__asset-summary');
-  const actions=root.querySelector('.artwork-detail__actions'),prompt=root.querySelector('.artwork-detail__prompt-block');
-  const secondary=root.querySelector('.artwork-detail__secondary-actions');
-  const referenceButton=[...root.querySelectorAll('button')].find(button=>button.textContent.trim()==='用参考图继续创作');
-  const order=[title,description,tagGroup,specification,actions,prompt,secondary].map(node=>column&&node?[...column.children].indexOf(node):-1);
-  const detailTitle=root.querySelector('.artwork-detail__title');
-  const actionButtons=[...root.querySelector('.artwork-detail__actions').querySelectorAll('button')].filter(button=>!button.hidden).map(button=>button.textContent.trim());
-  const secondaryButtons=[...root.querySelector('.artwork-detail__secondary-actions').querySelectorAll('button')].map(button=>button.textContent.trim());
-  const rows=[...new Set(primaryTags.map(tag=>Math.round(tag.getBoundingClientRect().top)))];
-  const featureDetails=root.querySelector('.artwork-detail__feature-details');
-  const featureValues=[...root.querySelectorAll('.artwork-detail__feature-record [data-tag-id]')].map(tag=>tag.dataset.tagId);
-  const excerpt=root.querySelector('.artwork-detail__prompt-excerpt');
-  const excerptStyle=excerpt?getComputedStyle(excerpt):null;
-  const excerptLineCount=excerptStyle?Math.round(excerpt.getBoundingClientRect().height/parseFloat(excerptStyle.lineHeight)):0;
-  return {
-   title:detailTitle.textContent.trim(),titleClass:detailTitle.className,titleVisible:!!detailTitle.getClientRects().length,
-   naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,complete:image.complete,objectFit:getComputedStyle(image).objectFit,optical:image.classList.contains('artwork-detail__image--optical'),renderedAspect:(()=>{const rect=image.getBoundingClientRect();return rect.height?rect.width/rect.height:0;})(),
-   tags:primaryTags.map(tag=>({id:tag.dataset.tagId,dimension:tag.dataset.dimension,label:tag.textContent.trim(),scrollWidth:tag.scrollWidth,clientWidth:tag.clientWidth})),
-   moreOpen:root.querySelector('.artwork-detail__more-tags')?.open??false,
-   specification:specification?.textContent.trim()||'',order,
-   actionButtons,secondaryButtons,promptSummary:root.querySelector('.artwork-detail__prompt-summary')?.textContent.trim(),
-   promptCollapsed:root.querySelector('.artwork-detail__prompt-details')?.open===false,
-   languageBeforeDisclosure:!!root.querySelector('.artwork-detail__prompt-heading .artwork-detail__language-select')&&!root.querySelector('.artwork-detail__prompt-details .artwork-detail__language-select'),
-   excerptText:excerpt?.textContent.trim()||'',excerptLineCount,
-   referenceOutsideAssetDetails:!!referenceButton?.closest('.artwork-detail__secondary-actions')&&!referenceButton?.closest('.artwork-detail__asset-details'),
-   featureDetailsCollapsed:featureDetails?.open===false,featureValues,
-   targetDetailsCollapsed:root.querySelector('.artwork-detail__target-details')?.open===false,
-   assetDetailsCollapsed:root.querySelector('.artwork-detail__asset-details')?.open===false,
-   rows,viewportWidth:innerWidth,
-   mediaRect:{left:mediaRect.left,top:mediaRect.top,right:mediaRect.right,bottom:mediaRect.bottom},contentRect:{left:contentRect.left,top:contentRect.top,right:contentRect.right,bottom:contentRect.bottom}
+
+const browser = await chromium.launch({
+  headless: true,
+  executablePath: process.env.DOTS_CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+});
+const context = await browser.newContext({
+  viewport: {width: 1440, height: 900},
+  acceptDownloads: true,
+  permissions: ['clipboard-read', 'clipboard-write']
+});
+await context.addInitScript(() => {
+  try { localStorage.clear(); } catch { /* Storage-denied behavior is tested in an isolated context. */ }
+});
+const page = await context.newPage();
+const errors = [];
+const checks = [];
+const media = [];
+const downloads = [];
+const sceneViewports = {};
+const base = process.env.DOTS_BASE_URL || 'http://127.0.0.1:5180/';
+page.on('pageerror', error => errors.push(error.message));
+page.on('response', response => {
+  if (/\.(png|webp|gif|mp4)(?:\?|$)/i.test(response.url())) {
+    media.push({
+      url: response.url(),
+      status: response.status(),
+      bytes: Number(response.headers()['content-length'] || 0)
+    });
+  }
+});
+
+const check = name => {
+  checks.push(name);
+  console.log('PASS', name);
+};
+const sceneLayoutForWidth = (width,height=900) => width <= 600 ? 'mobile' : (SCENE_ART.tablet&&width/height<1.1?'tablet':'desktop');
+const sceneAssetForWidth = (width,height=900) => SCENE_ART[sceneLayoutForWidth(width,height)];
+const sceneAssetPath = asset => new URL(asset.src, base).pathname;
+
+async function ready(route) {
+  await page.goto(base + (route || '#/home'));
+  await page.waitForFunction(revision => document.documentElement.dataset.catalogRevision === revision, CATALOG_REVISION);
+}
+async function loadedDetail(targetPage = page) {
+  await targetPage.waitForFunction(() => ['ready', 'image-error'].includes(document.querySelector('.artwork-detail')?.dataset.state));
+}
+async function waitForSceneAsset(asset, targetPage = page) {
+  await targetPage.waitForFunction(expected => {
+    const image = document.querySelector('img.terrace-art');
+    return image && image.complete && image.naturalWidth === expected.width
+      && image.naturalHeight === expected.height
+      && new URL(image.currentSrc || image.src, location.href).pathname === expected.pathname;
+  }, {width: asset.width, height: asset.height, pathname: sceneAssetPath(asset)});
+}
+async function closeWithX(targetPage = page) {
+  await targetPage.locator('#overlayClose').click();
+  await targetPage.waitForFunction(() => !document.querySelector('dialog').open);
+}
+async function backToSource(hash, targetPage = page) {
+  await targetPage.locator('#overlayBack').click();
+  await targetPage.waitForFunction(expected => location.hash === expected && !document.querySelector('dialog').open, hash);
+}
+async function navigatePage(name, width, targetPage = page) {
+  if (width <= 600) {
+    if (await targetPage.locator('#menuToggle').getAttribute('aria-expanded') !== 'true') {
+      await targetPage.locator('#menuToggle').click();
+    }
+    await targetPage.locator('#mobileMenu a[data-page="' + name + '"]').click();
+  } else {
+    await targetPage.locator('.studio-nav a[data-page="' + name + '"]').click();
+  }
+  await targetPage.waitForFunction(screen => document.body.dataset.screen === screen, name);
+}
+async function screenshot(name, targetPage = page) {
+  await targetPage.evaluate(async () => {
+    await Promise.all([...document.images]
+      .filter(image => image.getClientRects().length)
+      .map(image => image.decode().catch(() => {})));
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
+  await targetPage.screenshot({path: path.join(dir, name + '.png'), fullPage: false});
+}
+async function noOverflow(targetPage = page) {
+  assert.ok(await targetPage.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Page must not overflow horizontally.');
+}
+async function inspectScene(width, height, targetPage = page) {
+  const asset = sceneAssetForWidth(width,height);
+  const layout = sceneLayoutForWidth(width,height);
+  await waitForSceneAsset(asset, targetPage);
+  await targetPage.waitForFunction(expected=>{
+    const stage=document.querySelector('.terrace-stage').getBoundingClientRect(),canvas=document.querySelector('.scene-canvas').getBoundingClientRect();
+    const w=Math.max(stage.width,stage.height*expected.width/expected.height),h=w*expected.height/expected.width;
+    return Math.abs(canvas.width-w)<1&&Math.abs(canvas.height-h)<1&&Math.abs(canvas.left-(stage.left+(stage.width-w)/2))<1&&Math.abs(canvas.top-(stage.top+(stage.height-h)/2))<1;
+  },asset);
+  const snapshot = await targetPage.evaluate(() => {
+    const stage = document.querySelector('.terrace-stage');
+    const canvas = document.querySelector('.scene-canvas');
+    const image = document.querySelector('img.terrace-art');
+    const rect = element => {
+      const value = element.getBoundingClientRect();
+      return {left: value.left, top: value.top, right: value.right, bottom: value.bottom, width: value.width, height: value.height};
+    };
+    const all = [...document.querySelectorAll('.scene-character')];
+    const visible = all.filter(button => {
+      const style = getComputedStyle(button);
+      const box = button.getBoundingClientRect();
+      return !button.hidden && style.display !== 'none' && style.visibility !== 'hidden'
+        && box.width > 0 && box.height > 0 && button.getClientRects().length > 0;
+    });
+    return {
+      stage: rect(stage),
+      canvas: rect(canvas),
+      image: rect(image),
+      fit: getComputedStyle(image).objectFit,
+      src: new URL(image.currentSrc || image.src, location.href).pathname,
+      naturalWidth: image.naturalWidth,
+      naturalHeight: image.naturalHeight,
+      domCount: all.length,
+      visible: visible.map(button => {
+        const box = button.getBoundingClientRect();
+        const centerX = box.left + box.width / 2;
+        const centerY = box.top + box.height / 2;
+        const hit = document.elementFromPoint(centerX, centerY);
+        return {
+          artworkId: button.dataset.artworkId,
+          artworkVersion: button.dataset.version,
+          label: button.getAttribute('aria-label') || button.textContent.trim(),
+          width: box.width,
+          height: box.height,
+          centerX,
+          centerY,
+          centerHit: hit === button || button.contains(hit),
+          inCanvas: canvas?.contains(button) || false
+        };
+      })
+    };
+  });
+  assert.equal(snapshot.src, sceneAssetPath(asset), 'The correct ' + layout + ' scene image is active at ' + width + ' CSS px.');
+  assert.equal(snapshot.naturalWidth, asset.width, 'Scene image width matches registered ' + layout + ' metadata.');
+  assert.equal(snapshot.naturalHeight, asset.height, 'Scene image height matches registered ' + layout + ' metadata.');
+  assert.equal(snapshot.fit, 'cover', 'Scene image uses object-cover at ' + width + ' CSS px.');
+  assert.ok(snapshot.canvas, 'The scene canvas exists at ' + width + ' CSS px.');
+  assert.equal(snapshot.domCount, snapshot.visible.length, 'Only visible, applicable scene hotspots are present in the DOM at ' + width + ' CSS px.');
+  assert.ok(snapshot.visible.length > 0, 'The scene has selectable characters at ' + width + ' CSS px.');
+  const expectedEntries = SCENE_CHARACTERS.filter(entry => entry[layout]);
+  const expected = new Map(expectedEntries.map(entry => [sceneKey(entry), entry]));
+  const actualKeys = snapshot.visible.map(sceneKey).sort();
+  assert.equal(new Set(actualKeys).size, actualKeys.length, 'No duplicate scene hotspot IDs and versions at ' + width + ' CSS px.');
+  for (const target of snapshot.visible) {
+    const key = sceneKey(target);
+    assert.ok(expected.has(key), 'Visible hotspot maps to the ' + layout + ' source manifest: ' + key);
+    assert.ok(target.label, 'Visible hotspot has a localized accessible label: ' + key);
+    assert.ok(target.inCanvas, 'Hotspot belongs to the image-mapped scene canvas: ' + key);
+    assert.ok(target.width >= 44 && target.height >= 44, 'Scene target is at least 44 by 44 CSS px: ' + key);
+    assert.ok(target.centerX >= snapshot.stage.left && target.centerX <= snapshot.stage.right
+      && target.centerY >= snapshot.stage.top && target.centerY <= snapshot.stage.bottom,
+    'Hotspot center remains inside the visible scene crop: ' + key);
+    assert.ok(target.centerHit, 'Hotspot center is not covered by another layer: ' + key);
+    assert.ok(sceneByKey.has(key), 'Hotspot artwork ID and version are registered: ' + key);
+  }
+  if (layout === 'mobile' && height >= 700) {
+    assert.deepEqual(actualKeys, mobileKeys, 'Mobile DOM includes exactly the non-null mobile hotspots at ' + width + ' CSS px.');
+  } else if (width === 1440) {
+    assert.deepEqual(actualKeys, desktopKeys, 'The 1440px desktop scene includes all 17 registered desktop hotspots.');
+  }
+  const result = {layout, width, height, asset: asset.src, sha256: asset.sha256, targets: snapshot.visible.map(sceneKey)};
+  sceneViewports[width + 'x' + height] = result;
+  return result;
+}
+
+await fs.mkdir(dir, {recursive: true});
+await fs.mkdir(path.join(dir, 'downloads'), {recursive: true});
+
+try {
+  await ready('#/gallery');
+  assert.equal(await page.locator('#artworkGrid .artwork-card').count(), 15);
+  await page.waitForFunction(() => [...document.querySelectorAll('#artworkGrid img')]
+    .filter(image => image.getBoundingClientRect().top < innerHeight)
+    .every(image => image.complete && image.naturalWidth > 0));
+  const galleryMedia = media.slice();
+  assert.ok(!galleryMedia.some(item => originalPaths.has(new URL(item.url).pathname)),
+    'Gallery loads optimized posters rather than original character PNGs.');
+  check('gallery loads optimized posters, not all original PNGs');
+
+  const gallerySearch = async () => await page.locator('#navSearch').isVisible() ? '#navSearch' : '#gallerySearch';
+  const activeGallerySearch = await gallerySearch();
+  assert.equal(activeGallerySearch, '#navSearch', 'Desktop gallery uses the header search field.');
+  assert.equal(await page.locator('#gallerySearch').isVisible(), false, 'Desktop does not duplicate the gallery search field.');
+  await page.locator(activeGallerySearch).fill('rose');
+  assert.ok(await page.locator('#artworkGrid .artwork-card').count() > 0);
+  await page.locator(activeGallerySearch).fill('does-not-exist-zzz');
+  assert.equal(await page.locator('#artworkGrid .artwork-card').count(), 0);
+  assert.ok(await page.locator('#galleryEmpty').isVisible());
+  await page.locator('#clearSearch').click();
+  assert.equal(await page.locator('#artworkGrid .artwork-card').count(), 15);
+  check('search, no results and clear search');
+
+  const seriesButtons = page.locator('#gallerySeries button');
+  const seriesButton = seriesButtons.nth(1);
+  const seriesId = await seriesButton.getAttribute('data-series-id');
+  const expectedSeriesCount = ARTWORKS.filter(artwork => artwork.seriesId === seriesId || artwork.seriesIds?.includes(seriesId)).length;
+  await seriesButton.click();
+  assert.equal(await page.locator('#artworkGrid .artwork-card').count(), expectedSeriesCount);
+  await page.locator(activeGallerySearch).fill('headphones');
+  assert.equal(await page.locator('#artworkGrid .artwork-card').count(), 1);
+  const sourceHash = new URL(page.url()).hash;
+  const trigger = page.locator('#artworkGrid .artwork-select').first();
+  const artworkId = await trigger.getAttribute('data-artwork-id');
+  const artworkVersion = await trigger.getAttribute('data-version');
+  await trigger.click();
+  await loadedDetail();
+  assert.equal(await page.locator('.artwork-detail').getAttribute('data-artwork-id'), artworkId);
+  assert.equal(await page.locator('.artwork-detail').getAttribute('data-version'), artworkVersion);
+  assert.equal(await page.locator('#pageShell').evaluate(element => element.inert), true);
+  await page.keyboard.press('Escape');
+  await page.waitForFunction(() => !document.querySelector('dialog').open);
+  assert.equal(new URL(page.url()).hash, sourceHash);
+  await page.waitForFunction(id => document.activeElement.id === 'card-' + id, artworkId);
+  await page.goForward();
+  await loadedDetail();
+  assert.equal(await page.locator('.artwork-detail').getAttribute('data-artwork-id'), artworkId);
+  check('series AND search, shared details, Escape/source query/focus and forward');
+
+  await page.locator('.artwork-detail__copy-original').click();
+  const clipboard = await page.evaluate(() => navigator.clipboard.readText());
+  assert.equal(clipboard, promptFor(ARTWORKS.find(artwork => artwork.id === artworkId), {language: 'en'}));
+  check('real browser clipboard equals original English Prompt');
+
+  const selectedArtwork = ARTWORKS.find(artwork => artwork.id === artworkId);
+  const selectedAsset = getAsset(selectedArtwork.assetRefs.original);
+  const originalDownload = await Promise.all([
+    page.waitForEvent('download'),
+    page.locator('.artwork-detail__download-original').click()
+  ]).then(([download]) => download);
+  const originalPath = await originalDownload.path();
+  const downloadedBytes = await fs.readFile(originalPath);
+  assert.equal(sha256(downloadedBytes), selectedAsset.sha256);
+  assert.equal(downloadedBytes.length, selectedAsset.byteSize);
+  const savedOriginal = path.join(dir, 'downloads', selectedArtwork.id + '.png');
+  await originalDownload.saveAs(savedOriginal);
+  downloads.push({artworkId: selectedArtwork.id, file: path.relative(root, savedOriginal), sha256: selectedAsset.sha256, byteSize: downloadedBytes.length});
+  check('real download preserves registered original bytes');
+
+  assert.equal(await page.locator('.artwork-detail__versions').isVisible(), false);
+  const editSummary = page.locator('.artwork-detail__create-version-summary');
+  await editSummary.click();
+  const selects = page.locator('.artwork-detail__create-version select');
+  assert.ok(await selects.count() > 0);
+  await selects.first().selectOption('replace');
+  const replacement = page.locator('.artwork-detail__create-version input').first();
+  await replacement.fill('a little silver star');
+  const titleBefore = await page.locator('.artwork-detail__title').textContent();
+  await editSummary.click();
+  await editSummary.click();
+  assert.equal(await replacement.inputValue(), 'a little silver star');
+  assert.equal(await page.locator('.artwork-detail__title').textContent(), titleBefore);
+  check('collapsed edit retains replacement text without changing original title');
+
+  await closeWithX();
+  await page.locator('#clearFilters').click();
+  await page.locator('#languagePreference').click();
+  assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
+  await page.locator('#artworkGrid .artwork-select').first().click();
+  await loadedDetail();
+  await page.locator('.artwork-detail__copy-original').click();
+  const chineseArtworkId = await page.locator('.artwork-detail').getAttribute('data-artwork-id');
+  assert.equal(await page.evaluate(() => navigator.clipboard.readText()),
+    promptFor(ARTWORKS.find(artwork => artwork.id === chineseArtworkId), {language: 'zh'}));
+  check('Chinese interface and Prompt use same selected version');
+  await closeWithX();
+  await page.locator('#languagePreference').click();
+
+  for (const artwork of [...ARTWORKS,...PREVIEW_ARTWORKS]) {
+    await ready('#/artwork/' + artwork.id + '?v=' + artwork.version);
+    await loadedDetail();
+    assert.equal(await page.locator('.artwork-detail').getAttribute('data-artwork-id'), artwork.id);
+    assert.equal(await page.locator('.artwork-detail').getAttribute('data-version'), artwork.version);
+    const asset = getAsset(artwork.assetRefs.original);
+    assert.equal(await page.locator('.artwork-detail__image').evaluate(image => image.naturalWidth), asset.width);
+    if (!downloads.some(item => item.artworkId === artwork.id)) {
+      const pendingDownload = page.waitForEvent('download');
+      await page.locator('.artwork-detail__download-original').click();
+      const download = await pendingDownload;
+      const file = path.join(dir, 'downloads', artwork.id + '.png');
+      await download.saveAs(file);
+      const bytes = await fs.readFile(file);
+      assert.equal(sha256(bytes), asset.sha256);
+      assert.equal(bytes.length, asset.byteSize);
+      downloads.push({artworkId: artwork.id, file: path.relative(root, file), sha256: asset.sha256, byteSize: bytes.length});
+    }
+  }
+  check('15 approved and two pending preview detail URLs return their own exact original files');
+
+  await page.reload();
+  await loadedDetail();
+  await closeWithX();
+  assert.equal(new URL(page.url()).hash, '#/gallery');
+  await page.waitForFunction(() => document.activeElement.id === 'galleryTitle');
+  check('direct detail reload closes safely to gallery');
+
+  const unknownArtwork = ARTWORKS[0];
+  for (const route of [
+    '#/artwork/no-such-artwork?v=v1',
+    '#/artwork/' + unknownArtwork.id + '?v=no-such-version',
+    '#/game'
+  ]) {
+    await ready(route);
+    assert.ok(await page.locator('#notFoundPortal').isVisible());
+    assert.equal(await page.locator('dialog').evaluate(dialog => dialog.open), false);
+  }
+  check('unknown IDs, versions and retired routes show recovery');
+
+  const viewports = [[1440, 900], [390, 844], [320, 700], [768, 1024]];
+  for (const [width, height] of viewports) {
+    await page.setViewportSize({width, height});
+    await ready('#/home');
+    await waitForSceneAsset(sceneAssetForWidth(width,height));
+    await noOverflow();
+    const homeGeometry=await page.evaluate(()=>{const hero=document.querySelector('.home-hero').getBoundingClientRect(),series=document.querySelector('#homeSeries').getBoundingClientRect();return{height:hero.height,top:hero.top,bottom:hero.bottom,seriesTop:series.top,seriesBottom:series.bottom,scrollHeight:document.documentElement.scrollHeight,viewport:innerHeight,featured:!!document.querySelector('#featuredCards,.featured-section'),inside:document.querySelector('.home-hero').contains(document.querySelector('#homeSeries')),footerHidden:document.querySelector('.site-footer').hidden}});
+    assert.equal(homeGeometry.featured,false,'Featured Characters is removed from the DOM.');
+    assert.equal(homeGeometry.inside,true,'Categories belong inside the scenic homepage.');
+    assert.equal(homeGeometry.footerHidden,true,'Home ends with the scene rather than an external footer.');
+    assert.ok(Math.abs(homeGeometry.height-height)<=1&&Math.abs(homeGeometry.top)<=1,'Scene fills the browser viewport.');
+    assert.ok(homeGeometry.scrollHeight<=height+1,'No separate below-scene home content or scroll gap.');
+    assert.ok(homeGeometry.seriesTop>0&&homeGeometry.seriesBottom<=height,'Categories stay on the background and within the viewport.');
+    const report = await inspectScene(width, height);
+    await screenshot('home-' + width);
+    if (width === 390 || width === 320) {
+      assert.equal(await page.locator('#navSearch').isVisible(), false, 'Mobile hides the desktop header search field.');
+    }
+    const firstTarget = report.targets[0];
+    const source = new URL(page.url()).hash;
+    const expected = sceneByKey.get(firstTarget);
+    const target = page.locator('.scene-character').first();
+    await target.click();
+    await loadedDetail();
+    assert.equal(await page.locator('.artwork-detail').getAttribute('data-artwork-id'), expected.artworkId);
+    assert.equal(await page.locator('.artwork-detail').getAttribute('data-version'), expected.artworkVersion);
+    if (width === 390) {
+      const ctaBounds = await page.locator('.artwork-detail__actions .artwork-detail__button').evaluateAll(buttons =>
+        buttons.map(button => ({top: button.getBoundingClientRect().top, bottom: button.getBoundingClientRect().bottom})));
+      assert.equal(ctaBounds.length, 3);
+      assert.ok(ctaBounds.every(bounds => bounds.top >= 0 && bounds.bottom <= height),
+        'All three primary detail actions fit in the first 390 by 844 viewport.');
+    }
+    await screenshot('detail-' + width);
+    await noOverflow();
+    await backToSource(source);
+    await page.waitForFunction(id => document.activeElement?.matches('.scene-character')
+      && document.activeElement.dataset.artworkId === id, expected.artworkId);
+    await navigatePage('gallery', width);
+    if (width === 768) {
+      assert.ok(await page.locator('#gallerySearch').isVisible(), '768px tablet uses the page search field.');
+      assert.equal(await page.locator('#navSearch').isVisible(), false, '768px tablet hides the desktop header search field.');
+    }
+    await screenshot('gallery-' + width);
+    await noOverflow();
+    await navigatePage('guide', width);
+    await screenshot('guide-' + width);
+    await noOverflow();
+  }
+  check('four viewport home/gallery/detail/guide screenshots, scene identity mapping, target sizes and overflow');
+  await ready('#/home');
+  for(const [width,height] of [[1920,1080],[1100,700],[844,600],[390,568],[844,390]]){
+    await page.setViewportSize({width,height});
+    await inspectScene(width,height);await noOverflow();
+    assert.ok(await page.evaluate(()=>Math.abs(document.querySelector('.home-hero').getBoundingClientRect().height-innerHeight)<1&&document.documentElement.scrollHeight<=innerHeight+1),'Wide and short browser windows keep a single full-viewport homepage.');
+  }
+  check('continuous resize also covers 1920, intermediate desktop, and short landscape windows');
+
+
+  await page.setViewportSize({width: 1440, height: 900});
+  await ready('#/home');
+  const desktopBeforeResize = (await inspectScene(1440, 900)).targets;
+  await page.setViewportSize({width: 390, height: 844});
+  const mobileAfterResize = (await inspectScene(390, 844)).targets;
+  assert.deepEqual([...mobileAfterResize].sort(), mobileKeys, 'Resizing in place activates exactly the mobile scene entries.');
+  assert.ok(mobileAfterResize.every(key => desktopBeforeResize.includes(key)),
+    'Mobile and desktop scene layouts preserve the same character IDs and artwork versions.');
+  await page.setViewportSize({width: 1440, height: 900});
+  const desktopAfterResize = (await inspectScene(1440, 900)).targets;
+  assert.deepEqual([...desktopAfterResize].sort(), [...desktopBeforeResize].sort(), 'Resizing back restores the same desktop hotspot IDs and versions.');
+  check('switching between desktop and mobile preserves scene artwork identity and versions');
+
+  await page.setViewportSize({width: 1440, height: 900});
+  await ready('#/home');
+  for(const [layout,width,height] of [['desktop',1440,900],['tablet',768,1024],['mobile',390,844]]){
+    await page.setViewportSize({width,height});await inspectScene(width,height);
+    const folder=layout==='desktop'?'outlines':'outlines-'+layout;
+    await fs.mkdir(path.join(dir,folder),{recursive:true});
+    for(const entry of SCENE_CHARACTERS.filter(item=>item[layout])){
+      const target=page.locator('.scene-character[data-artwork-id="'+entry.artworkId+'"]');
+      await target.hover();
+      const shape=page.locator('.scene-outline[data-active]');
+      assert.equal(await shape.count(),1,'Each painted character has one hover contour in '+layout);
+      assert.equal(await shape.getAttribute('data-artwork-id'),entry.artworkId,'Hover selects the identity under the cursor in '+layout);
+      await page.waitForFunction(id=>getComputedStyle(document.querySelector('.scene-outline[data-active][data-artwork-id="'+id+'"]')).opacity==='1',entry.artworkId);
+      const bounds=await shape.boundingBox();
+      const x=Math.max(0,bounds.x-22),y=Math.max(0,bounds.y-35);
+      await page.screenshot({path:path.join(dir,folder,entry.artworkId+'.png'),clip:{x,y,width:Math.min(width-x,bounds.width+44),height:Math.min(height-y,bounds.height+70)}});
+    }
+  }
+  check('all 17 desktop, 17 tablet and 13 mobile silhouettes select the matching identity; actual browser crops saved');
+  await page.setViewportSize({width:1440,height:900});await inspectScene(1440,900);
+  const keyboardTarget = page.locator('.scene-character').first();
+  await keyboardTarget.hover();
+  assert.equal(await page.locator('dialog').evaluate(dialog => dialog.open), false);
+  const fixedBefore=await keyboardTarget.boundingBox();
+  const activeOutline=page.locator('.scene-outline[data-active]');
+  assert.equal(await activeOutline.count(),1,'Hover highlights exactly one character.');
+  assert.equal(await activeOutline.getAttribute('data-artwork-id'),await keyboardTarget.getAttribute('data-artwork-id'));
+  assert.ok((await activeOutline.locator('path').first().getAttribute('d')).length>100,'Highlight uses a traced silhouette, not a target rectangle.');
+  const offsetBefore=await activeOutline.locator('.outline-light').evaluate(node=>getComputedStyle(node).strokeDashoffset);
+  await page.waitForFunction(before=>getComputedStyle(document.querySelector('.scene-outline[data-active] .outline-light')).strokeDashoffset!==before,offsetBefore);
+  assert.deepEqual(await keyboardTarget.boundingBox(),fixedBefore,'Outline animation never moves the hit target.');
+  await screenshot('home-hover-outline-1440');
+  await page.locator('#motionPreference').click();
+  await keyboardTarget.hover();
+  assert.equal(await activeOutline.locator('.outline-light').evaluate(node=>getComputedStyle(node).animationName),'none','Reduced motion leaves a static contour.');
+  await screenshot('home-reduced-motion-outline-1440');
+  await page.locator('#motionPreference').click();
+  await keyboardTarget.focus();
+  await screenshot('home-keyboard-outline-1440');
+  await page.keyboard.press('Enter');
+  assert.equal(await page.locator('.scene-outline[data-active]').count(),0,'Opening details clears scene highlights.');
+  await loadedDetail();
+  const keyboardId = await page.locator('.artwork-detail').getAttribute('data-artwork-id');
+  const keyboardVersion = await page.locator('.artwork-detail').getAttribute('data-version');
+  await backToSource('#/home');
+  await page.waitForFunction(id => document.activeElement?.matches('.scene-character')
+    && document.activeElement.dataset.artworkId === id, keyboardId);
+  assert.equal(sceneByKey.get(keyboardId + '@' + keyboardVersion)?.artworkVersion, keyboardVersion);
+  await page.locator('.scene-character').first().press('Space');
+  await loadedDetail();
+  assert.equal(await page.locator('.artwork-detail').getAttribute('data-artwork-id'), keyboardId);
+  await closeWithX();
+  check('hover does not open details; keyboard Enter/Space and Back restore scene focus');
+
+  await page.setViewportSize({width: 390, height: 844});
+  await ready('#/home');
+  assert.ok(await page.locator('#menuToggle').isVisible());
+  await page.locator('#menuToggle').click();
+  assert.equal(await page.locator('#menuToggle').getAttribute('aria-expanded'), 'true');
+  assert.ok(await page.locator('#mobileMenu').isVisible());
+  assert.ok(await page.locator('#mobileMenu #languagePreference').isVisible());
+  assert.ok(await page.locator('#mobileMenu #motionPreference').isVisible());
+  await page.locator('#mobileMenu #languagePreference').click();
+  assert.equal(await page.locator('html').getAttribute('lang'), 'zh-CN');
+  assert.ok(await page.locator('#mobileMenu').isVisible(), 'Changing language leaves the open menu usable.');
+  const motionPreference = page.locator('#mobileMenu #motionPreference');
+  const motionBefore = await page.locator('html').getAttribute('data-reduced-motion');
+  await motionPreference.click();
+  const motionAfter = await page.locator('html').getAttribute('data-reduced-motion');
+  assert.notEqual(motionAfter, motionBefore);
+  await motionPreference.click();
+  assert.equal(await page.locator('html').getAttribute('data-reduced-motion'), motionBefore);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#mobileMenu').isVisible(), false);
+  await page.waitForFunction(() => document.activeElement.id === 'menuToggle');
+  await page.locator('#menuToggle').click();
+  await page.locator('#mobileMenu a[data-page="gallery"]').click();
+  await page.waitForFunction(() => document.body.dataset.screen === 'gallery' && location.hash === '#/gallery');
+  assert.equal(await page.locator('#mobileMenu').isVisible(), false);
+  await page.locator('#menuToggle').click();
+  await page.locator('#mobileMenu #languagePreference').click();
+  assert.equal(await page.locator('html').getAttribute('lang'), 'en');
+  await page.keyboard.press('Escape');
+  check('mobile menu opens and closes, navigates, localizes and exposes motion preference');
+
+  const failedContext = await browser.newContext({viewport: {width: 390, height: 844}});
+  await failedContext.addInitScript(() => {
+    Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.reject(new Error('Denied'))}});
+    document.execCommand = () => false;
+    window.open = () => null;
+    Object.defineProperty(window, 'localStorage', {get: () => { throw new Error('Denied'); }});
+  });
+  const failedPage = await failedContext.newPage();
+  failedPage.on('pageerror', error => errors.push(error.message));
+  const failedOriginalPath = new URL(getAsset(ARTWORKS[0].assetRefs.original).path, base).pathname;
+  await failedPage.route(url => url.pathname === failedOriginalPath, route => route.fulfill({status: 404, body: 'missing'}));
+  await failedPage.goto(base + '#/artwork/' + ARTWORKS[0].id + '?v=' + ARTWORKS[0].version);
+  await failedPage.waitForFunction(() => document.querySelector('.artwork-detail')?.dataset.state === 'image-error');
+  await failedPage.locator('.artwork-detail__copy-original').click();
+  assert.ok(await failedPage.locator('.artwork-detail__copy-fallback').isVisible());
+  await failedPage.locator('.artwork-detail__open-chatgpt-original').click();
+  assert.ok(await failedPage.locator('.artwork-detail__copy-fallback').isVisible());
+  await failedPage.screenshot({path: path.join(dir, 'detail-failure-390.png')});
+  await failedContext.close();
+  check('storage denied, original 404, clipboard denied and popup blocked retain text fallback');
+
+  const touchContext = await browser.newContext({viewport: {width: 390, height: 844}, hasTouch: true, isMobile: true});
+  const touchPage = await touchContext.newPage();
+  touchPage.on('pageerror', error => errors.push(error.message));
+  await touchPage.goto(base + '#/home');
+  await touchPage.waitForFunction(() => document.querySelector('.scene-character'));
+  const touchTarget = touchPage.locator('.scene-character').first();
+  const touchId = await touchTarget.getAttribute('data-artwork-id');
+  const touchVersion = await touchTarget.getAttribute('data-version');
+  await touchTarget.tap();
+  await touchPage.waitForFunction(() => document.querySelector('dialog').open);
+  await loadedDetail(touchPage);
+  assert.equal(await touchPage.locator('.artwork-detail').getAttribute('data-artwork-id'), touchId);
+  assert.equal(await touchPage.locator('.artwork-detail').getAttribute('data-version'), touchVersion);
+  await touchContext.close();
+  check('single touch opens the same artwork version without hover');
+
+  const resourceContext = await browser.newContext({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
+  const resourcePage = await resourceContext.newPage();
+  resourcePage.on('pageerror', error => errors.push(error.message));
+  const mobileScenePath = sceneAssetPath(SCENE_ART.mobile);
+  let sceneRequests = 0;
+  await resourcePage.route(url => url.pathname === mobileScenePath, route => {
+    sceneRequests += 1;
+    return sceneRequests === 1
+      ? route.fulfill({status: 404, body: 'missing scene art'})
+      : route.continue();
+  });
+  await resourcePage.goto(base + '#/home');
+  await resourcePage.waitForFunction(() => document.querySelector('#heroScene .scene-failed'));
+  assert.ok(await resourcePage.locator('#heroScene .scene-error').isVisible());
+  assert.equal(await resourcePage.locator('html').getAttribute('data-reduced-motion'), 'true');
+  const failedTargets = await resourcePage.locator('#heroScene .scene-character').evaluateAll(buttons =>
+    buttons.filter(button => !button.hidden && button.getClientRects().length).map(button => ({
+      id: button.dataset.artworkId,
+      version: button.dataset.version,
+      label: button.getAttribute('aria-label')
+    })));
+  assert.deepEqual(failedTargets.map(item => item.id + '@' + item.version).sort(), mobileKeys);
+  assert.ok(failedTargets.every(item => item.label));
+  const failedTarget = resourcePage.locator('#heroScene .scene-character').first();
+  const failedArtworkId = await failedTarget.getAttribute('data-artwork-id');
+  const failedArtworkVersion = await failedTarget.getAttribute('data-version');
+  await failedTarget.click();
+  await loadedDetail(resourcePage);
+  assert.equal(await resourcePage.locator('.artwork-detail').getAttribute('data-artwork-id'), failedArtworkId);
+  assert.equal(await resourcePage.locator('.artwork-detail').getAttribute('data-version'), failedArtworkVersion);
+  await resourcePage.locator('#overlayBack').click();
+  await resourcePage.waitForFunction(() => !document.querySelector('dialog').open);
+  await resourcePage.locator('.scene-error button').click();
+  await resourcePage.waitForFunction(() => {
+    const image = document.querySelector('img.terrace-art');
+    return image?.complete && image.naturalWidth > 0 && !document.querySelector('#heroScene .scene-failed');
+  });
+  assert.ok(sceneRequests >= 2, 'Retry requests the same selected scene image again.');
+  assert.equal(await resourcePage.locator('.scene-error').isVisible(), false);
+  check('mobile scene failure keeps labeled hotspots selectable and retry restores the same image under reduced motion');
+
+  await navigatePage('gallery', 390, resourcePage);
+  const firstPosterPath = new URL(getAsset(ARTWORKS[0].assetRefs.poster).path, base).pathname;
+  let posterRequests = 0, failPoster = true;
+  await resourcePage.route(url => url.pathname === firstPosterPath, route => {
+    posterRequests += 1;
+    return failPoster
+      ? route.fulfill({status: 404, body: 'missing poster'})
+      : route.continue();
+  });
+  await resourcePage.reload();
+  await resourcePage.waitForFunction(() => {
+    const error = document.querySelector('#artworkGrid .card-image-error');
+    return error && !error.hidden;
+  });
+  failPoster = false;
+  await resourcePage.locator('#artworkGrid .card-retry').first().click();
+  await resourcePage.waitForFunction(() => document.querySelector('#artworkGrid .card-image-error')?.hidden);
+  assert.ok(posterRequests >= 2);
+  await resourceContext.close();
+  check('failed poster retry uses the same character');
+
+  assert.deepEqual(errors, []);
+  check('no uncaught page errors');
+  for (const source of sourceSnapshot) {
+    assert.equal(sha256(await fs.readFile(path.resolve(root, source.path))), source.sha256,
+      'Source changed during browser QA: ' + source.path);
+  }
+  const report = {
+    sourceSnapshot,
+    revision: 98,
+    catalogRevision: CATALOG_REVISION,
+    browserVersion: browser.version(),
+    status: 'passed',
+    checks,
+    downloads,
+    scene: {
+      desktop: SCENE_ART.desktop,
+      mobile: SCENE_ART.mobile,
+      tablet: SCENE_ART.tablet,
+      characterEntries: SCENE_CHARACTERS.length,
+      viewportMappings: sceneViewports
+    },
+    galleryMedia,
+    galleryMediaBytes: galleryMedia.reduce((total, item) => total + item.bytes, 0),
+    productionAnimationCount: 0,
+    productionVariants: 0,
+    screenshots: 'real headless Chrome; simulated CSS viewports, not physical phones',
+    errors
   };
- });
- assert.equal(await page.locator('#overlayTitle').innerText(),'作品详情','the shared overlay header has a generic detail label');
- const visibleArtworkTitles=await page.locator('#studioOverlay .artwork-detail__title').evaluateAll(nodes=>nodes.filter(node=>{const rect=node.getBoundingClientRect(),style=getComputedStyle(node);return rect.width>2&&rect.height>2&&style.display!=='none'&&style.visibility!=='hidden'&&style.opacity!=='0';}).map(node=>node.textContent.trim()));assert.deepEqual(visibleArtworkTitles,[artwork.title],'the Artwork title appears in the detail content, not the generic overlay header');
- assert.equal(state.title,artwork.title);assert.equal(state.titleVisible,true,'the Artwork title is visibly placed in the content column');
- if(state.viewportWidth<=700)assert(state.contentRect.top>=state.mediaRect.bottom-1,'mobile detail stacks the information after the large image');else assert(state.contentRect.left>=state.mediaRect.right-1,'desktop detail places Artwork information beside the large image');
- assert.equal(state.complete,true);assert.equal(state.naturalWidth,artwork.width||getAsset(artwork.assetRefs.original).width);assert.equal(state.naturalHeight,getAsset(artwork.assetRefs.original).height);if(state.optical)assert(Math.abs(state.renderedAspect-state.naturalWidth/state.naturalHeight)<.02,`${artwork.id} optical image keeps the PNG's aspect ratio (rendered ${state.renderedAspect}, source ${state.naturalWidth/state.naturalHeight})`);else assert.equal(state.objectFit,'contain',`${artwork.id} non-optical image is contained without distortion`);
- assert.equal(state.tags.length,4,`${artwork.id} shows four curated default tags`);
- const ids=state.tags.map(tag=>tag.id),labels=state.tags.map(tag=>tag.label);assert.equal(new Set(ids).size,ids.length,`${artwork.id} has no duplicate default tag IDs`);assert.equal(new Set(labels).size,labels.length,`${artwork.id} has no duplicate visible tag labels`);
- assert(ids.every(id=>artwork.tagIds.includes(id)),`${artwork.id} only shows registered actual features`);assert(ids.every(id=>!/:none$/i.test(id)&&!['background','usage'].includes(id.split(':')[0])),`${artwork.id} default tags exclude none/background/usage`);
- assert(state.order.every((index,i)=>index>=0&&(i===0||state.order[i-1]<index)),'title, description, curated tags, resource summary and operations follow in the content column');
- assert.match(state.specification,/透明 PNG · 静态 · \d+ × \d+ px/);
- assert.deepEqual(state.actionButtons,['复制 Prompt','下载原图']);assert.deepEqual([...state.secondaryButtons].sort(),['在 ChatGPT 中创作','用参考图继续创作'].sort());assert.equal(state.promptCollapsed,true);assert(state.promptSummary.includes('Prompt'));assert(state.excerptText.length>0&&state.excerptLineCount<=3,'a short Prompt excerpt is visible before the full-text disclosure');assert.equal(state.languageBeforeDisclosure,true,'language selection stays above the collapsed full Prompt');
- assert.equal(state.referenceOutsideAssetDetails,true,'reference continuation is a secondary action, not a file-record control');
- const allFeatureIds=new Set([...(artwork.tagIds||[]),...(artwork.featureIds||[])]);assert.equal(state.featureDetailsCollapsed,true,'complete feature index is available in a collapsed work-information section');assert([...allFeatureIds].every(id=>state.featureValues.includes(id)),`${artwork.id} preserves every registered feature in the expandable index`);assert.equal(new Set(state.featureValues).size,state.featureValues.length,`${artwork.id} feature index has no duplicated visible facts`);assert.equal(state.targetDetailsCollapsed,true);assert.equal(state.assetDetailsCollapsed,true);
- assert.equal(await page.locator('.artwork-detail__versions button[data-artwork-id]').count(),0,'no unpublished or unapproved pose is presented as a selectable variant');
- if(checkTagRows){assert(state.rows.length<=2,`${artwork.id} default tags wrap to at most two rows`);for(const tag of state.tags)assert(tag.scrollWidth<=tag.clientWidth+2,`${artwork.id} tag text is not clipped: ${tag.label}`);}
- return state;
+  await fs.writeFile(path.join(dir, 'report.json'), JSON.stringify(report, null, 2) + '\n');
+} catch (error) {
+  await page.screenshot({path: path.join(dir, 'failed-state.png')}).catch(() => {});
+  await fs.writeFile(path.join(dir, 'failure.json'), JSON.stringify({
+    message: error.message,
+    stack: error.stack,
+    checks,
+    errors,
+    sceneViewports
+  }, null, 2));
+  throw error;
+} finally {
+  await browser.close();
 }
-try{
- await ready();
- const eightCategories=[['style',['style']],['shape',['shape']],['facialFeatures',['facial-features']],['paletteMaterial',['color','material']],['clothing',['clothing']],['headAccessory',['head-accessory']],['bodyAccessory',['body-accessory']],['prop',['prop']]];
- assert.deepEqual(FEATURE_CATEGORIES.map(category=>[category.key,category.dimensions]),eightCategories,'the visual fact ledger keeps all eight independently searchable categories');
- const sixSlotMap=[['style',['style'],['style']],['appearance',['shape','facialFeatures'],['shape','facial-features']],['palette-material',['paletteMaterial'],['color','material']],['clothing',['clothing'],['clothing']],['accessory',['headAccessory','bodyAccessory'],['head-accessory','body-accessory']],['prop',['prop'],['prop']]];
- assert.deepEqual(REVEAL_SLOTS.map(slot=>[slot.key,slot.categories,slot.kinds.flatMap(kind=>sixSlotMap.find(([key])=>key===slot.key)?.[2]||[])]),sixSlotMap,'the six public cards group the exact eight verified fact categories');
- for(const artwork of ARTWORKS.filter(item=>item.status==='published')){
-  const grouped=revealFeaturesFor(artwork);assert.deepEqual(grouped.map(feature=>feature.kind),sixSlotMap.map(slot=>slot[0]),`${artwork.id} exposes six ordered Artwork-derived reveal facts`);
-  for(const [slotKey,,dimensions] of sixSlotMap){const facts=dimensions.map(dimension=>artwork.features?.[dimension]);const valueFacts=facts.some(fact=>fact?.state==='known')?facts.filter(fact=>fact?.state==='known'):facts.every(fact=>fact?.state==='not-applicable')?[]:facts.filter(fact=>fact?.state==='none');const expected=[...new Set(valueFacts.flatMap(fact=>Array.isArray(fact.ids)?fact.ids:typeof fact.id==='string'?[fact.id]:[]))];const actual=grouped.find(feature=>feature.kind===slotKey);assert.deepEqual(actual.value,expected,`${artwork.id} ${slotKey} card only reveals source feature IDs from its grouped dimensions`);}
- }
- checks.push('eight typed feature categories map to six ordered reveal slots from actual Artwork facts');
- assert.equal(await page.locator('[data-topic]').count(),5);assert.equal(await page.locator('.hero-group').count(),2);assert.equal(await page.locator('.topic-card .topic-foot').count(),0);assert.equal(await page.locator('dialog').count(),1);assert(!(await page.locator('body').innerText()).match(/登录|工作台|开始组装/));checks.push('cache92 home DOM, two hero groups/five topics, no legacy topic footer/workbench/account');
- const browserTagIds=(await page.locator('#galleryTags [data-tag-id]').evaluateAll(nodes=>nodes.map(node=>node.dataset.tagId))).sort();assert.deepEqual(browserTagIds,publishedTags().map(tag=>tag.id).sort(),'every published typed tag remains available to gallery search');
- await page.locator('[data-topic="dots"]').click();await page.waitForFunction(()=>document.body.dataset.screen==='gallery');assert.equal(await page.locator('[data-artwork-card]').count(),3);
- await page.locator('#clearFilters').click();assert.equal(await page.locator('[data-artwork-card]').count(),15);
- await page.locator('#gallerySearch').fill('眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);
- await page.locator('#gallerySearch').fill('不可能找到的词');assert.equal(await page.locator('[data-artwork-card]').count(),0);await page.locator('#galleryEmpty').waitFor({state:'visible'});
- await page.locator('#clearFilters').click();checks.push('topic/search/clear/empty');
- await page.locator('#galleryTags [data-tag-id="style:dots"]').click();await page.locator('#galleryTags [data-tag-id="style:grok"]').click();assert.equal(await page.locator('[data-artwork-card]').count(),6);
- await page.locator('#galleryTags summary').click();await page.locator('#galleryTags [data-tag-id="accessory:none"]').click();assert.equal(await page.locator('[data-artwork-card]').count(),3);await page.locator('#clearFilters').click();checks.push('browser same-dimension OR and cross-dimension AND');
-
- await page.evaluate(()=>window.scrollTo(0,400));const before=await page.evaluate(()=>scrollY);const first=page.locator('#artworkGrid [data-artwork]').first();const trigger=await first.getAttribute('data-artwork');await first.click();await detail();const scrollAtOpen=await page.evaluate(()=>scrollY);const initialArtwork=ARTWORKS.find(artwork=>artwork.id===trigger);const firstDetail=await assertDetailContract(initialArtwork);assert.equal(await page.locator('#overlayBody').evaluate(el=>el.scrollTop),0,'fresh detail opens at its top');assert.equal(await page.locator('#overlayTitle').evaluate(el=>getComputedStyle(el).outlineStyle),'none','dialog title has no visible focus outline');
- await page.keyboard.press('Tab');const keyboardFocus=await page.evaluate(()=>({id:document.activeElement.id,visible:document.activeElement.matches(':focus-visible'),outline:getComputedStyle(document.activeElement).outlineWidth}));assert.equal(keyboardFocus.id,'overlayClose');assert.equal(keyboardFocus.visible,true);assert.equal(keyboardFocus.outline,'3px');
- await page.locator('.artwork-detail__button--primary').click();const prompt=await page.evaluate(()=>navigator.clipboard.readText());assert.equal(prompt,createSnapshot(trigger).prompt.text);
- await page.keyboard.press('Tab');assert(await page.evaluate(()=>document.querySelector('dialog').contains(document.activeElement)));
- await page.keyboard.press('Escape');await closed();assert.equal(await page.evaluate(()=>document.activeElement.dataset.artwork),trigger);assert(Math.abs(await page.evaluate(()=>scrollY)-scrollAtOpen)<2);checks.push({detailRestore:{before,atOpen:scrollAtOpen,after:await page.evaluate(()=>scrollY)},clipboard:trigger,detailContract:firstDetail,keyboardFocus});
- const fallbackArtwork=ARTWORKS[0];await page.locator(`#artworkGrid [data-artwork="${fallbackArtwork.id}"]`).click();await detail();await page.evaluate(()=>{window.__savedClipboard=Object.getOwnPropertyDescriptor(navigator,'clipboard');window.__savedExecCommand=Object.getOwnPropertyDescriptor(document,'execCommand');Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw new Error('fixture clipboard denied');}}});Object.defineProperty(document,'execCommand',{configurable:true,value:()=>false});});
- await page.locator('.artwork-detail__button--primary').click();await page.locator('.artwork-detail__copy-fallback').waitFor({state:'visible'});assert.equal(await page.locator('.artwork-detail__prompt-text').inputValue(),createSnapshot(fallbackArtwork.id).prompt.text);assert(await page.locator('.artwork-detail__prompt-text').evaluate(el=>el===document.activeElement));await page.locator('#overlayClose').click();await closed();await page.evaluate(()=>{if(window.__savedClipboard)Object.defineProperty(navigator,'clipboard',window.__savedClipboard);else delete navigator.clipboard;if(window.__savedExecCommand)Object.defineProperty(document,'execCommand',window.__savedExecCommand);else delete document.execCommand;});
- await page.locator(`#artworkGrid [data-artwork="${fallbackArtwork.id}"]`).click();await detail();await page.evaluate(()=>{window.__pendingCopyToast=document.querySelector('#toast').textContent;Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:()=>new Promise((resolve,reject)=>{window.__rejectPendingClipboard=reject;})}});});
- await page.locator('.artwork-detail__button--primary').click();await page.waitForFunction(()=>typeof window.__rejectPendingClipboard==='function');await page.locator('#overlayClose').click();await closed();const cancelFocus=await page.evaluate(()=>document.activeElement.dataset.artwork);assert.equal(cancelFocus,fallbackArtwork.id);await page.evaluate(()=>window.__rejectPendingClipboard(new Error('late clipboard denial')));await page.waitForTimeout(120);assert.equal(await page.evaluate(()=>document.activeElement.dataset.artwork),fallbackArtwork.id);assert.equal(await page.locator('#toast').innerText(),await page.evaluate(()=>window.__pendingCopyToast));await page.evaluate(()=>{if(window.__savedClipboard)Object.defineProperty(navigator,'clipboard',window.__savedClipboard);else delete navigator.clipboard;});checks.push('clipboard success/failure fallback and disposed late rejection preserve focus without stale toast');
- await page.setViewportSize({width:390,height:700});await page.locator('#gallerySearch').fill('眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);await page.evaluate(()=>window.scrollTo({top:420,behavior:'instant'}));const tagBackRequested=await page.evaluate(()=>({scroll:scrollY,search:document.querySelector('#gallerySearch').value}));assert(tagBackRequested.scroll>0);
- const tagArtwork=ARTWORKS.find(artwork=>artwork.id==='dots-rose-glasses'),tagArtworkTrigger=page.locator(`#artworkGrid [data-artwork="${tagArtwork.id}"]`);await tagArtworkTrigger.scrollIntoViewIfNeeded();const tagDetailOpenScroll=await page.evaluate(()=>scrollY);await tagArtworkTrigger.click();await detail();const tagActualOpenScroll=await page.evaluate(()=>scrollY);assert.equal(tagActualOpenScroll,tagDetailOpenScroll,'record the actual gallery position at the detail-open event after Playwright brings its trigger into view');await page.locator('.artwork-detail__tags:not(.artwork-detail__tags--more) .artwork-detail__tag[data-tag-id="style:dots"]').click();await page.waitForFunction(()=>{const [route,query='']=location.hash.slice(1).split('?');return document.body.dataset.screen==='gallery'&&route==='gallery'&&new URLSearchParams(query).get('style')==='style:dots';});
- assert.equal(await page.locator('#gallerySearch').inputValue(),'');assert.equal(await page.locator('[data-artwork-card]').count(),3);assert.equal(await page.evaluate(()=>document.activeElement.id),'galleryTitle');assert.equal(await page.evaluate(()=>history.state.page),'gallery');
- await page.goBack();await page.waitForFunction(()=>location.hash.includes('q=')&&document.querySelector('#gallerySearch')?.value==='眼镜');assert.equal(await page.locator('[data-artwork-card]').count(),2);await page.waitForFunction(id=>document.activeElement?.dataset?.artwork===id,tagArtwork.id);const restoredGalleryScroll=await page.evaluate(()=>scrollY);assert(Math.abs(restoredGalleryScroll-tagActualOpenScroll)<2,`gallery Back restores click-time scroll ${tagActualOpenScroll}; observed ${restoredGalleryScroll} (pre-click requested ${tagBackRequested.scroll})`);const restoredNodeState=await page.evaluate(id=>{window.__restoredArtworkCard=[...document.querySelectorAll('#artworkGrid [data-artwork]')].find(node=>node.dataset.artwork===id);window.__restoredArtworkFocus=document.activeElement;return {scroll:scrollY,focusArtwork:document.activeElement.dataset.artwork,cardFound:!!window.__restoredArtworkCard};},tagArtwork.id);assert.equal(restoredNodeState.focusArtwork,tagArtwork.id);assert.equal(restoredNodeState.cardFound,true);await page.evaluate(()=>{const url=location.href;window.dispatchEvent(new HashChangeEvent('hashchange',{oldURL:url,newURL:url}));return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});const lateHashState=await page.evaluate(()=>({sameCard:document.querySelector('#artworkGrid [data-artwork="dots-rose-glasses"]')===window.__restoredArtworkCard,sameFocus:document.activeElement===window.__restoredArtworkFocus,focusArtwork:document.activeElement.dataset.artwork,scroll:scrollY}));assert.equal(lateHashState.sameCard,true,'late same-URL hashchange must not replace the restored Gallery card node');assert.equal(lateHashState.sameFocus,true,'late same-URL hashchange must preserve the restored card focus');assert.equal(lateHashState.focusArtwork,tagArtwork.id);assert.equal(lateHashState.scroll,restoredGalleryScroll);checks.push({detailTagRoute:{tag:'style:dots',newCount:3,restoredQuery:tagBackRequested.search,requestedScroll:tagBackRequested.scroll,atOpen:tagActualOpenScroll,back:restoredGalleryScroll,focusArtwork:tagArtwork.id},lateHashchange:lateHashState});await page.locator('#clearFilters').click();await page.setViewportSize({width:1440,height:1000});
- const overlayReturns=[];await page.setViewportSize({width:390,height:700});
- for(const closeBy of ['close-button','escape','back-button','browser-back','backdrop']){
-  await page.setViewportSize({width:closeBy==='backdrop'?1440:390,height:closeBy==='backdrop'?500:700});
-  await page.locator(`#artworkGrid [data-artwork="${ARTWORKS[2].id}"]`).click();await detail();await assertDetailContract(ARTWORKS[2]);await page.locator('.artwork-detail__prompt-details summary').click();await page.locator('.artwork-detail__language-select').selectOption('en');await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);
-  await page.locator('.artwork-detail__asset-details summary').click();const ref=page.getByRole('button',{name:'用参考图继续创作',exact:true});await ref.scrollIntoViewIfNeeded();await ref.focus();
-  const state=await page.evaluate(()=>({scroll:document.querySelector('#overlayBody').scrollTop,pageScroll:scrollY}));assert(state.scroll>0,'Nested detail must actually be scrolled for restoration check');await page.keyboard.press('Enter');await page.locator('.reference-assist').waitFor();await page.locator('.reference-assist__description').fill('保留眼镜，换成挥手动作');assert.equal(await page.locator('input[type=file]').count(),0);
-  if(closeBy==='close-button')await page.locator('#overlayClose').click();else if(closeBy==='escape')await page.keyboard.press('Escape');else if(closeBy==='back-button')await page.locator('#overlayBack').click();else if(closeBy==='browser-back')await page.goBack();else await page.mouse.click(10,10);
-  await detail();await page.waitForFunction(()=>document.activeElement?.textContent==='用参考图继续创作'&&history.state?.overlayTrail?.length===1);
-  assert.equal(await page.locator('.artwork-detail__language-select').inputValue(),'en');assert.equal(await page.locator('.artwork-detail__prompt-preview').innerText(),promptFor(ARTWORKS[2],{language:'en'}));assert.equal(await page.locator('.artwork-detail__asset-details').evaluate(el=>el.open),true);
-  assert(Math.abs(await page.locator('#overlayBody').evaluate(el=>el.scrollTop)-state.scroll)<2);assert.equal(await page.evaluate(()=>scrollY),state.pageScroll);assert.equal(await page.evaluate(()=>document.body.style.overflow),'hidden');assert.equal(await page.locator('dialog[open]').count(),1);
-  await page.keyboard.press('Enter');assert.equal(await page.locator('.reference-assist__description').inputValue(),'保留眼镜，换成挥手动作');await page.keyboard.press('Escape');await detail();await page.waitForFunction(()=>history.state?.overlayTrail?.length===1);await page.locator('#overlayClose').click();await closed();overlayReturns.push({closeBy,language:'en',focus:'reference trigger',scroll:state.scroll,pageScroll:state.pageScroll,referenceDescriptionRetainedWithinOverlay:true});
- }
- checks.push({detailReferenceReturns:overlayReturns});await page.setViewportSize({width:1440,height:1000});
- for(const artwork of ARTWORKS){
-  await page.locator(`#artworkGrid [data-artwork="${artwork.id}"]`).click();await detail();await assertDetailContract(artwork);const paint=await inspectRenderedImage(page.locator('.artwork-detail__image'),getAsset(artwork.assetRefs.original),{allowVerifiedBlob:true});detailPaints.push({artworkId:artwork.id,...paint});await page.locator('.artwork-detail__prompt-details summary').click();
-  for(const language of ['zh','en']){await page.locator('.artwork-detail__language-select').selectOption(language);await page.waitForFunction(()=>!document.querySelector('.artwork-detail__button--primary').disabled);await page.locator('.artwork-detail__button--primary').click();const copied=await page.evaluate(()=>navigator.clipboard.readText());assert.equal(copied,promptFor(artwork,{language}));promptCopies.push({artworkId:artwork.id,language,text:copied});}
-  const event=page.waitForEvent('download');await page.getByRole('button',{name:'下载原图',exact:true}).click();const download=await event;const target=path.join(temporaryDownloads,artwork.id+'.png');await download.saveAs(target);const bytes=await fs.readFile(target),asset=getAsset(artwork.assetRefs.original);assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),asset.sha256);assert.equal(bytes.length,asset.byteSize);const alpha=await inspectPngAlpha(bytes);assert.equal(alpha.width,asset.width);assert.equal(alpha.height,asset.height);assert.equal(alpha.transparentPixels,asset.alpha.transparentPixels);assert.equal(alpha.opaquePixels,asset.alpha.opaquePixels);assert.equal(alpha.partialAlphaPixels,asset.alpha.partialAlphaPixels);downloads.push({artworkId:artwork.id,file:path.relative(process.cwd(),target),sha256:asset.sha256,width:asset.width,height:asset.height,bytes:bytes.length,alpha});await page.locator('#overlayClose').click();await closed();
- }checks.push('15 actual native PNG downloads SHA/bytes');checks.push('30 actual Chinese/English artwork clipboard reads');
-
- const responsiveTags=[];for(const width of [390,320]){await page.setViewportSize({width,height:800});for(const artwork of ARTWORKS){await page.locator(`#artworkGrid [data-artwork="${artwork.id}"]`).click();await detail();const state=await assertDetailContract(artwork,{checkTagRows:true});assert.equal(await page.locator('#overlayBody').evaluate(el=>el.scrollTop),0);await noOverflow('dialog');responsiveTags.push({width,artworkId:artwork.id,rows:state.rows.length});await page.locator('#overlayClose').click();await closed();}}checks.push({responsiveArtworkTags:responsiveTags});await page.setViewportSize({width:1440,height:1000});
-
- await page.locator('[data-page="game"]').click();assert.equal(await page.locator('.game-scope,.random-scope,#gameSearch,#requiredFeatures').count(),0);
- const expectedSlots=['style','appearance','palette-material','clothing','accessory','prop'];
- const assertSixCardReady=async root=>{
-  const state=await page.locator(`${root} .fr-view`).evaluate(view=>({phase:view.dataset.phase,slotCount:view.querySelectorAll('.fr-reel').length,slots:[...view.querySelectorAll('.fr-reel')].map(card=>card.dataset.slot),preparingWindows:view.querySelectorAll('.fr-preparing-window').length,backFaces:view.querySelectorAll('.fr-preparing-window .fr-card-back').length,resultHidden:view.querySelector('.fr-result-card').hidden,lockHidden:view.querySelector('.fr-feature-locks').hidden,centerImages:view.querySelectorAll('.fr-reel-track img').length,randomHidden:view.querySelector('[data-fr="random"]').hidden}));
-  assert.equal(state.phase,'ready');assert.equal(state.slotCount,6);assert.deepEqual(state.slots,expectedSlots);assert.equal(state.preparingWindows,6);assert.equal(state.backFaces,18);assert.equal(state.resultHidden,true);assert.equal(state.lockHidden,true);assert.equal(state.centerImages,0);assert.equal(state.randomHidden,false);
-  return state;
- };
- await assertSixCardReady('#gameReveal');await screenshot('cards-ready-game-desktop');
- await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await screenshot('cards-rolling-desktop');
- const order=await page.evaluate(()=>new Promise(resolve=>{
-  const view=document.querySelector('#gameReveal .fr-view'),landed=[];let prematureResult=false;
-  const collect=()=>{for(const reel of view.querySelectorAll('.fr-reel.is-landed'))if(!landed.includes(reel.dataset.index))landed.push(reel.dataset.index);if(landed.length<6&&!view.querySelector('.fr-result-card').hidden)prematureResult=true;};
-  const snapshot=()=>({order:landed,result:view.dataset.artworkId,reels:view.querySelectorAll('.fr-reel').length,
-   prematureResult,slots:[...view.querySelectorAll('.fr-reel')].map(el=>el.dataset.slot),
-   centers:[...view.querySelectorAll('.fr-reel')].map(el=>{const visual=el.querySelector('.fr-reel-item.is-centered .fr-reel-visual');return {artworkId:el.dataset.centerArtwork,value:el.dataset.centerValue,slot:el.dataset.slot,stopped:el.dataset.stopped,visual:visual?{kind:visual.dataset.visualKind,visualId:visual.dataset.visualId,src:visual.querySelector('img')?.currentSrc||'',hasSvg:!!visual.querySelector('svg'),images:visual.querySelectorAll('img').length,sourceArtwork:visual.dataset.sourceArtwork||'',sourceAsset:visual.dataset.sourceAsset||'',sourceHash:visual.dataset.sourceHash||'',sourceRect:visual.dataset.sourceRect||''}:null};}),
-   operations:[...view.querySelectorAll('.fr-actions [data-fr]')].filter(el=>!el.hidden).map(el=>el.dataset.fr),
-   extraActions:[...view.querySelectorAll('.fr-extra-actions [data-fr]')].filter(el=>!el.hidden).map(el=>el.dataset.fr),detail:!view.querySelector('.fr-result-detail').hidden});
-  const observer=new MutationObserver(()=>{collect();if(view.dataset.phase==='result'){observer.disconnect();resolve(snapshot());}});observer.observe(view,{subtree:true,attributes:true});collect();if(view.dataset.phase==='result'){observer.disconnect();resolve(snapshot());}
- }));
- assert.equal(order.order.length,6);assert.equal(order.reels,6);assert.deepEqual(order.order,['0','1','2','3','4','5']);assert.deepEqual(order.slots,expectedSlots);assert.equal(order.prematureResult,false,'the completed Artwork is hidden until all six cards stop');assert.deepEqual([...order.operations].sort(),['copy','download'].sort());assert.deepEqual([...order.extraActions].sort(),['random','detail','chatgpt'].sort());assert.equal(order.detail,true);checks.push({sequentialSixCards:order});
- const drawn=createSnapshot(order.result);for(const card of order.centers){assert.equal(card.artworkId,drawn.artworkId);assert.equal(card.stopped,'true');}
- const styleAsset=getAsset(drawn.artwork.assetRefs.thumbnail||drawn.artwork.assetRefs.original);assert.equal(order.centers[0].visual.kind,'original');assert.equal(order.centers[0].visual.visualId,featureVisualFor(revealFeaturesFor(drawn.artwork),'style',drawn.artwork).id);await inspectRenderedImage(page.locator('#gameReveal .fr-reel[data-slot="style"] .fr-reel-item.is-centered .fr-reel-visual'),styleAsset,{allowVerifiedBlob:true});
- for(const card of order.centers.filter(card=>card.slot!=='style')){
-  assert(['dedicated-asset','empty-value'].includes(card.visual.kind),`${card.slot} uses a registered independent display visual or an accurate empty value`);
-  if(card.visual.kind==='dedicated-asset'){
-   assert.equal(card.visual.images,1,`${card.slot} renders one independent resource`);assert(card.visual.sourceArtwork&&card.visual.sourceAsset&&/^[a-f0-9]{64}$/.test(card.visual.sourceHash));
-   const sourceArtwork=ARTWORKS.find(item=>item.id===card.visual.sourceArtwork),displayAsset=getAsset(card.visual.sourceAsset);assert(sourceArtwork&&displayAsset);assert.equal(displayAsset.sha256,card.visual.sourceHash);assert.equal(displayAsset.displayOnly,true);assert.notEqual(displayAsset.id,drawn.asset.id);assert.equal(card.visual.sourceRect,'');
-   const visualLocator=page.locator(`#gameReveal .fr-reel[data-slot="${card.slot}"] .fr-reel-item.is-centered .fr-reel-visual`);const painted=await inspectRenderedImage(visualLocator,displayAsset,{allowVerifiedBlob:true});assert(painted.visiblePixels>0);
-  }else assert.equal(card.visual.images,0,`${card.slot} empty value contains no invented image`);
- }
- const resultPaint=await inspectRenderedImage(page.locator('#gameReveal .fr-result-image'),drawn.asset,{allowVerifiedBlob:true});await screenshot('random-result-desktop');checks.push({resultPaint});
- let unblockDownload;let signalDownloadRequest;let downloadBlocked=false;const downloadRequestSeen=new Promise(resolve=>{signalDownloadRequest=resolve;});const downloadGate=new Promise(resolve=>{unblockDownload=resolve;});const aUrl=new URL(drawn.asset.path,base).href;
- await page.route(aUrl,async route=>{if(route.request().resourceType()==='fetch'&&!downloadBlocked){downloadBlocked=true;signalDownloadRequest();await downloadGate;try{await route.continue();}catch{}return;}await route.continue();});
- const aDownloadEvent=page.waitForEvent('download',{timeout:0});await page.locator('#gameReveal [data-fr="download"]').click();let downloadRequestTimeout;try{await Promise.race([downloadRequestSeen,new Promise((_,reject)=>{downloadRequestTimeout=setTimeout(()=>reject(new Error('Frozen Artwork A download did not reach its registered PNG request.')),10000);})]);}finally{clearTimeout(downloadRequestTimeout);}
- await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await page.waitForFunction(id=>{const view=document.querySelector('#gameReveal .fr-view');return view?.dataset.phase==='result'&&view.dataset.artworkId!==id;},drawn.artworkId,{timeout:15000});const rerolledId=await page.locator('#gameReveal .fr-view').getAttribute('data-artwork-id');assert.notEqual(rerolledId,drawn.artworkId);unblockDownload();
- let downloadEventTimeout;const aDownload=await Promise.race([aDownloadEvent,new Promise((_,reject)=>{downloadEventTimeout=setTimeout(()=>reject(new Error('Frozen Artwork A download did not complete within 15 seconds after releasing its request.')),15000);})]).finally(()=>clearTimeout(downloadEventTimeout)),aDownloadPath=path.join(temporaryDownloads,'reroll-race-original-A.png');await aDownload.saveAs(aDownloadPath);const aBytes=await fs.readFile(aDownloadPath);assert.equal(crypto.createHash('sha256').update(aBytes).digest('hex'),drawn.asset.sha256,'reroll does not replace the in-flight download snapshot');drawDownloads.push({artworkId:drawn.artworkId,file:path.relative(process.cwd(),aDownloadPath),sha256:drawn.asset.sha256,operation:'A download completed after B reroll'});await page.unroute(aUrl);const currentDrawn=createSnapshot(rerolledId);await screenshot('random-reroll-B-result-desktop');
- await page.locator('#gameReveal [data-fr="copy"]').click();assert.equal(await page.evaluate(()=>navigator.clipboard.readText()),currentDrawn.prompt.text);
- await page.evaluate(()=>{window.__openURLs=[];window.open=url=>{window.__openURLs.push(url);return {opener:null};};});
- await page.locator('#gameReveal [data-fr="chatgpt"]').click();await page.waitForFunction(()=>window.__openURLs.length===1);const opened=await page.evaluate(()=>window.__openURLs[0]);assert.equal(new URL(opened).origin,'https://chatgpt.com');assert.equal(new URL(opened).searchParams.get('prompt'),currentDrawn.prompt.text);
- await page.locator('#gameReveal [data-fr="detail"]').click();await detail();assert.equal((await page.locator('.artwork-detail__prompt-preview').textContent()).trim(),currentDrawn.prompt.text);
- const drawEvent=page.waitForEvent('download');await page.getByRole('button',{name:'下载原图',exact:true}).click();const drawFile=await drawEvent,drawPath=path.join(temporaryDownloads,'draw-'+currentDrawn.artworkId+'.png');await drawFile.saveAs(drawPath);assert.equal(crypto.createHash('sha256').update(await fs.readFile(drawPath)).digest('hex'),currentDrawn.asset.sha256);drawDownloads.push({artworkId:currentDrawn.artworkId,file:path.relative(process.cwd(),drawPath),sha256:currentDrawn.asset.sha256,prompt:currentDrawn.prompt.text});
- assert.equal(await page.locator('.artwork-detail__media').evaluate(el=>getComputedStyle(el).backgroundImage),'none');const tagPlacement=await page.locator('.artwork-detail__tags:not(.artwork-detail__tags--more)').evaluate(el=>{const tag=el.getBoundingClientRect(),media=document.querySelector('.artwork-detail__media').getBoundingClientRect();return {text:el.textContent,viewportWidth:innerWidth,tagLeft:tag.left,tagTop:tag.top,mediaRight:media.right,mediaBottom:media.bottom};});if(tagPlacement.viewportWidth<=700)assert(tagPlacement.tagTop>=tagPlacement.mediaBottom-1,'mobile detail tags follow the large image');else assert(tagPlacement.tagLeft>=tagPlacement.mediaRight-1,'desktop detail tags sit in the right-hand information column');assert(!/风格：|背景：|动作：|配饰：/.test(tagPlacement.text));
- await page.locator('#overlayClose').click();await closed();assert.equal(await page.locator('#gameReveal .fr-view').getAttribute('data-phase'),'result');
- const lockPanel=page.locator('#gameReveal .fr-feature-locks');assert.equal(await lockPanel.evaluate(el=>el.open),false,'feature locks begin collapsed after a completed result');await lockPanel.locator('summary').click();
- const lockChoices=await page.locator('#gameReveal .fr-view').evaluate(view=>{const choices=[...view.querySelectorAll('.fr-lock-option input')].map((input,index)=>({index,ids:JSON.parse(input.dataset.featureIds||'[]')})).filter(choice=>choice.ids.length);const selected=[],indexes=[];for(const choice of choices){const added=choice.ids.filter(id=>!selected.includes(id));if(added.length){indexes.push(choice.index);selected.push(...added);if(indexes.length===2)break;}}return {selected:[...new Set(selected)],indexes,checkboxes:choices.length,summary:view.querySelector('.fr-feature-locks summary').textContent};});assert(lockChoices.checkboxes>=2);assert(lockChoices.indexes.length===2);assert(lockChoices.selected.length>=2);assert(/保留|锁定/.test(lockChoices.summary));for(const index of lockChoices.indexes)await page.locator('#gameReveal .fr-lock-option input').nth(index).check();const lockChoiceState={selected:lockChoices.selected,checkboxes:lockChoices.checkboxes,summary:lockChoices.summary};
- await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='result');const lockedResult=createSnapshot(await page.locator('#gameReveal .fr-view').getAttribute('data-artwork-id'));assert(lockChoiceState.selected.every(id=>lockedResult.artwork.featureIds.includes(id)),'all locked values are AND requirements on the next draw');await lockPanel.locator('summary').click();checks.push({featureLocks:{selected:lockChoiceState.selected,resultArtwork:lockedResult.artworkId,semantics:'AND'}});
- checks.push('six sequential cards and primary image/Prompt operations; frozen clipboard, prefilled URL and detail raw download; plain image surface and tags below');
- await page.locator('[data-page="home"]').click();await page.waitForFunction(()=>document.body.dataset.screen==='home');await openAutoRandom('.hero-actions [data-command="random"]');await page.waitForFunction(()=>['revealing','awaiting-reveal','result'].includes(document.querySelector('#studioOverlay .fr-view')?.dataset.phase));await screenshot('cards-single-click-modal-desktop');if(await page.locator('#studioOverlay .fr-view').getAttribute('data-phase')==='revealing')await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const frozen=await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id');
- await page.locator('#studioOverlay [data-fr="detail"]').click();await detail();await page.locator('#overlayBack').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),frozen);assert.equal(await page.locator('#studioOverlay .fr-reel.is-landed').count(),6);await page.goBack();await closed();await page.goForward();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await page.locator('#overlayClose').click();await closed();checks.push('single home click starts the modal; result and all six cards survive detail/back/Forward in one dialog');
- await page.locator('[data-page="home"]').click();await page.waitForFunction(()=>document.body.dataset.screen==='home');await openAutoRandom('.hero-actions [data-command="random"]');await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const cancelArtwork=createSnapshot(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id')),cancelUrl=new URL(cancelArtwork.asset.path,base).href;let releaseCancelledRoute,signalCancelledRequest;const cancelledRequestSeen=new Promise(resolve=>{signalCancelledRequest=resolve;});const cancelledGate=new Promise(resolve=>{releaseCancelledRoute=resolve;});await page.route(cancelUrl,async route=>{if(route.request().resourceType()==='fetch'){signalCancelledRequest();await cancelledGate;try{await route.continue();}catch{}return;}await route.continue();});
- const lateDownload=page.waitForEvent('download',{timeout:1500}).then(()=>true,()=>false);await page.locator('#studioOverlay [data-fr="download"]').click();let cancelledRequestTimeout;try{await Promise.race([cancelledRequestSeen,new Promise((_,reject)=>{cancelledRequestTimeout=setTimeout(()=>reject(new Error('Cancelled random download did not reach its registered PNG request.')),10000);})]);}finally{clearTimeout(cancelledRequestTimeout);}const toastBeforeDispose=await page.locator('#toast').textContent();await page.locator('#overlayClose').click();await closed();releaseCancelledRoute();assert.equal(await lateDownload,false,'closing random overlay aborts the in-flight image download before an anchor download');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>document.activeElement?.dataset?.command),'random');assert.equal(await page.locator('#toast').textContent(),toastBeforeDispose);await page.unroute(cancelUrl);checks.push('closing a random overlay cancels its in-flight download and does not write stale feedback');
- await page.locator('.global-reference').click();await page.locator('.reference-assist').waitFor();assert.equal(await page.locator('input[type=file]').count(),0);await page.locator('.reference-assist__description').fill('保留眼镜，换成挥手动作');const referencePrompt=await page.locator('.reference-assist__prompt-preview').innerText();assert(referencePrompt.includes('保留眼镜'));assert(/如果.*上传|若.*上传/.test(referencePrompt));await screenshot('reference-desktop');await page.locator('#overlayClose').click();await closed();checks.push('reference description/template only; conditional ChatGPT image upload');
- await page.locator('[data-page="gallery"]').click();await page.locator('#gallerySearch').fill('用于空池验证的无结果词');await page.locator('#galleryPortal [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='empty');assert.equal(await page.locator('#studioOverlay .fr-preparing-window').count(),6);assert.equal(await page.locator('#studioOverlay .fr-preparing-window .fr-card-back').count(),18);assert.equal(await page.locator('#studioOverlay .fr-result-card').evaluate(el=>el.hidden),true);assert.equal(await page.locator('#studioOverlay .fr-reel.is-landed').count(),0);await page.locator('#overlayClose').click();await closed();checks.push('gallery launch with an empty query stops before animation and never relaxes the scope');
- await page.locator('#gallerySearch').fill(ARTWORKS[0].title);assert.equal(await page.locator('[data-artwork-card]').count(),1);const brokenAsset=getAsset(ARTWORKS[0].assetRefs.original),broken=new URL(brokenAsset.path,base).href;await page.route(broken,route=>route.request().resourceType()==='fetch'?route.fulfill({status:404,body:'missing'}):route.continue());await page.locator('#galleryPortal [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='error');assert(!(await page.locator('#studioOverlay .fr-status').innerText()).includes('生成完成'));await page.unroute(broken);await page.locator('#studioOverlay [data-fr="retry-resources"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),ARTWORKS[0].id);await page.locator('#overlayClose').click();await closed();await page.locator('#clearFilters').click();checks.push('single filtered candidate; real registered PNG 404 has no fake reveal and explicit retry');
- await page.locator('[data-page="home"]').click();await page.locator('.hero-actions [data-command="random"]').click();await page.locator('#overlayClose').click();await closed();await openAutoRandom('.hero-actions [data-command="random"]');await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='revealing');await page.locator('#studioOverlay [data-fr="skip"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');const reopened=await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id');await page.waitForTimeout(200);assert.equal(await page.locator('#studioOverlay .fr-view').getAttribute('data-artwork-id'),reopened);await page.locator('#overlayClose').click();await closed();checks.push('quick close/reopen starts one fresh run with no stale result writes');
- await page.emulateMedia({reducedMotion:'reduce'});await page.locator('[data-page="home"]').click();await page.locator('.hero-actions [data-command="random"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='awaiting-reveal');assert.equal(await page.locator('#studioOverlay .fr-result-card').evaluate(el=>el.hidden),true);assert.equal(await page.locator('#studioOverlay .fr-reel.is-rolling').count(),0);assert.equal(await page.locator('#studioOverlay .fr-reel[data-stopped="true"]').count(),6);await page.locator('#studioOverlay [data-fr="reveal-partner"]').click();await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await page.locator('#overlayClose').click();await closed();checks.push('reduced motion starts on the first home click, shows six static cards, then waits for explicit reveal');
- await page.locator('#toast').waitFor({state:'hidden',timeout:6000});
- await page.emulateMedia({reducedMotion:'no-preference'});
- for(const width of [1440,768,390,320]){
-  await page.setViewportSize({width,height:900});
-  await ready();
-  for(const screen of ['home','gallery','game']){await page.locator(`[data-page="${screen}"]`).click();if(screen==='game'){await page.locator('#gameReveal [data-fr="random"]').click();await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='revealing');await noOverflow();if(width<=390){const strip=await page.locator('#gameReveal .fr-reel-stage').evaluate(el=>({clientWidth:el.clientWidth,scrollWidth:el.scrollWidth,first:el.children[0].getBoundingClientRect().toJSON(),second:el.children[1].getBoundingClientRect().toJSON(),host:el.getBoundingClientRect().toJSON(),aspect:(()=>{const r=el.children[0].getBoundingClientRect();return r.width/r.height;})()}));assert(strip.scrollWidth>strip.clientWidth,'the mobile six-card rail can scroll horizontally');assert(strip.second.left<strip.host.right&&strip.second.right>strip.host.left,'the current and adjacent card remain visible together');assert(Math.abs(strip.aspect-5/6)<.06,'mobile rolling cards keep the selected short-card proportion');await screenshot(`game-revealing-${width}`);}await page.waitForFunction(()=>document.querySelector('#gameReveal .fr-view').dataset.phase==='result');}await noOverflow();await screenshot(`${screen}-${width}`);}
-  await page.locator('[data-page="gallery"]').click();await page.locator('#artworkGrid [data-artwork]').first().click();await detail();await noOverflow('dialog');await screenshot('detail-'+width);await page.locator('#overlayClose').click();await closed();
-  await page.locator('.global-reference').click();await noOverflow('dialog');await screenshot('reference-'+width);await page.locator('#overlayClose').click();await closed();
-  await openAutoRandom('#galleryPortal [data-command="random"]');await page.waitForFunction(()=>['revealing','awaiting-reveal','result'].includes(document.querySelector('#studioOverlay .fr-view')?.dataset.phase));await page.waitForFunction(()=>document.querySelector('#studioOverlay .fr-view')?.dataset.phase==='result');await noOverflow('dialog');await screenshot('random-'+width);await page.locator('#overlayClose').click();await closed();
- }checks.push('1440/768/390/320 CSS viewport six surfaces no horizontal overflow');
- await page.evaluate(()=>localStorage.setItem('dot-studio-project-v1','unchanged-invalid-old-project'));await page.evaluate(()=>location.hash='#gallery?style=style%3Agrok');await page.waitForFunction(()=>location.hash==='#gallery?style=style%3Agrok'&&document.body.dataset.screen==='gallery'&&document.querySelectorAll('[data-artwork-card]').length===3);checks.push('manual hash navigation filters exactly the three published Grok artworks');await page.evaluate(()=>location.hash='#home');await page.waitForFunction(()=>location.hash==='#home'&&document.body.dataset.screen==='home');await page.evaluate(()=>location.hash='#workspace');await page.waitForFunction(()=>location.hash==='#workspace'&&document.body.dataset.screen==='home');assert.equal(await page.evaluate(()=>localStorage.getItem('dot-studio-project-v1')),'unchanged-invalid-old-project');checks.push('unknown #workspace route safely falls back Home without legacy project migration');await page.evaluate(()=>location.hash='#gallery?unknown=bad');await page.waitForFunction(()=>location.hash==='#gallery?unknown=bad'&&document.body.dataset.screen==='gallery'&&document.querySelector('#queryError')?.checkVisibility()&&document.querySelectorAll('[data-artwork-card]').length===0);checks.push('unknown query fails closed');
- const retirementEvidence='design/acceptance/current-20261007-v87/asset-retirement.json';const retiredAssets=JSON.parse(await fs.readFile(retirementEvidence)).moved;
- for(const asset of retiredAssets){const url=new URL(asset.originalPath.slice('dist/'.length),base).href,response=await context.request.get(url);assert.equal(response.status(),404,`Retired static asset still reachable: ${asset.originalPath}`);retiredAssetResponses.push({originalPath:asset.originalPath,status:response.status()});}
- checks.push('all retired static asset URLs return 404');
- const moduleRequests=network.filter(url=>/\.js(?:\?|$)/.test(url));assert(!moduleRequests.some(url=>/studio-(?:creation|composer|model|looks|composition)|live-runtime|three/.test(url)));assert.equal(errors.length,0,errors.join('\n'));checks.push('actual network has no retired modules; no pageerrors');
- await fs.writeFile(path.join(output,'report.json'),JSON.stringify({sourceCache:92,baseUrl:base,retirementEvidence,retiredTests:['random result TXT download action; direct PNG download remains verified'],checks,errors,moduleRequests:[...new Set(moduleRequests)],downloads,downloadByteRetention:`actual browser download files retained under gitignored ${path.relative(process.cwd(),temporaryDownloads)} for npm run test:downloads`,detailPaints,drawDownloads,promptCopies,retiredAssetResponses,simulation:'Chromium CSS viewport; physical device not verified',browser:'Playwright controlling installed Chromium',artApproval:'pending user review',targetValidation:'not performed',published:false},null,2)+'\n');
- console.log(`Browser checks passed: ${checks.length}, ${downloads.length} real downloads.`);
-}finally{await browser.close();}

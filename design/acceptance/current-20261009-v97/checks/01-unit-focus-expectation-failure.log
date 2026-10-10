@@ -1,0 +1,26 @@
+
+> test
+> node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-reference-detail.mjs && node scripts/verify-motion.mjs && node scripts/verify-publish-inventory.mjs && node scripts/verify-router.mjs
+
+Artwork catalog: 15 approved originals, 15 verified gallery posters, v83 source/approval and all byte hashes checked.
+Artwork query: bilingual text and 89 typed facts indexed; tokens and series combine with AND.
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Tab from the final visible modal control wraps to its first control.
++ actual - expected
+
++ 'overlayBack'
+- 'overlayClose'
+          ^
+
+    at file:///Users/liuzhihang/workspace/dots/scripts/verify-reference-detail.mjs:305:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'overlayBack',
+  expected: 'overlayClose',
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

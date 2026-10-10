@@ -1,0 +1,77 @@
+{
+  "assetId": "asset:reveal:palette-material:yellow-fabric",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "human-bun-yellow",
+  "applicableArtworkIds": [
+    "human-bun-yellow"
+  ],
+  "factIds": [
+    "color:yellow",
+    "material:soft-fabric"
+  ],
+  "artworkFactReference": "color:yellow + material:soft-fabric",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/yellow-fabric-v2.provenance.json#yellow-fabric",
+    "assetSha256": "4f9c494d5ed32db5d9d840724c09a6e1b57edde956669852e08384330716f261",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceArtwork": {
+    "path": "dist/assets/looks/human-bun-yellow.png",
+    "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/yellow-fabric.svg",
+    "version": "v1-candidate",
+    "sha256": "d124dceb4cd22f27f435b5a94cba240f4784cb49f218c2cfcdbc355346d6d413"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-1e05775b-0e6a-4c5b-9249-dfb14f6cd60d",
+    "generatedArtifactPath": "/Users/liuzhihang/.codex/generated_images/01a1177c-e210-7f61-98a9-855e0ca6ad3d/exec-1e05775b-0e6a-4c5b-9249-dfb14f6cd60d.png",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium 3D material swatch for a visual catalog. Use the first reference only for the single softly rounded-square swatch silhouette and close-up composition; do not copy its color or knit texture. Use the second reference only to read the outfit's warm clear yellow color; do not depict the person or garments. Show one small, slightly padded soft fabric sample: rounded square, nearly front-facing, with one subtle folded-back lower-right corner. The entire swatch is soft fabric in a clean warm buttery yellow, with a fine matte textile weave and gentle cloth nap, clearly woven fabric rather than knitted loops or fur. Center it large with generous transparent margin. True transparent background, clean alpha; no floor, platform, cast shadow, character, body, clothing item, face, eyes, hair, limbs, accessories, text, label, logo, border, interface, or extra objects. Square image, high-quality soft 3D product render, restrained studio illumination on the object only.",
+    "referenceImages": [
+      {
+        "path": "dist/assets/reveal/palette-material/teal-knit-v2.png",
+        "sha256": "9cc2b5cf51f6120b6cc87d9edd7770f61639038b0a02126707d81902f90081c8"
+      },
+      {
+        "path": "dist/assets/looks/human-bun-yellow.png",
+        "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/yellow-fabric-v2.png",
+    "mime": "image/png",
+    "sha256": "4f9c494d5ed32db5d9d840724c09a6e1b57edde956669852e08384330716f261",
+    "byteSize": 2173193,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 663690,
+      "partial": 908336,
+      "opaque": 490
+    },
+    "visibleBounds": [
+      59,
+      25,
+      1237,
+      1245
+    ]
+  },
+  "sourceRef": "imagegen:exec-1e05775b-0e6a-4c5b-9249-dfb14f6cd60d; reference=dist/assets/reveal/palette-material/teal-knit-v2.png#9cc2b5cf51f6120b6cc87d9edd7770f61639038b0a02126707d81902f90081c8; reference=dist/assets/looks/human-bun-yellow.png#f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+  "sourceKind": "imagegen-generated-palette-material-candidate"
+}
+

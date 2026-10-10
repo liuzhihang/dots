@@ -1,0 +1,102 @@
+{
+  "message": "page.waitForFunction: Timeout 30000ms exceeded.",
+  "stack": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:545:22",
+  "checks": [
+    "gallery loads optimized posters, not all original PNGs",
+    "search, no results and clear search",
+    "series AND search, shared details, Escape/source query/focus and forward",
+    "real browser clipboard equals original English Prompt",
+    "real download preserves registered original bytes",
+    "collapsed edit retains replacement text without changing original title",
+    "Chinese interface and Prompt use same selected version",
+    "all 15 direct detail URLs use correct original dimensions and versions",
+    "direct detail reload closes safely to gallery",
+    "unknown IDs, versions and retired routes show recovery",
+    "four viewport home/gallery/detail/guide screenshots, scene identity mapping, target sizes and overflow",
+    "switching between desktop and mobile preserves scene artwork identity and versions",
+    "hover does not open details; keyboard Enter/Space and Back restore scene focus",
+    "mobile menu opens and closes, navigates, localizes and exposes motion preference",
+    "storage denied, original 404, clipboard denied and popup blocked retain text fallback",
+    "single touch opens the same artwork version without hover",
+    "mobile scene failure keeps labeled hotspots selectable and retry restores the same image under reduced motion"
+  ],
+  "errors": [],
+  "sceneViewports": {
+    "1440x900": {
+      "layout": "desktop",
+      "width": 1440,
+      "height": 900,
+      "asset": "./assets/terrace/terrace-desktop-v97.webp",
+      "sha256": "f85bbbbb6bb208c22cb6ae8f3e40dc2cd9abc97e3b66d9baee97c3ef1ac0a0e8",
+      "targets": [
+        "candidate-dots-20261005@v2",
+        "candidate-humans-20261005@v1",
+        "candidate-grok-20261005@v2",
+        "candidate-meta-muse-20261005@v1",
+        "dots-lilac-bucket@v1",
+        "grok-green-cloud@v1",
+        "candidate-animals-20261005@v1",
+        "animal-white-cat@v1",
+        "dots-rose-glasses@v1",
+        "animal-gray-husky@v1",
+        "human-bun-yellow@v1",
+        "human-blond-glasses@v1",
+        "muse-rose-flowers@v1",
+        "grok-teal-square@v1",
+        "muse-sage-reading@v1"
+      ]
+    },
+    "390x844": {
+      "layout": "mobile",
+      "width": 390,
+      "height": 844,
+      "asset": "./assets/terrace/terrace-mobile-v97.webp",
+      "sha256": "a5668ebbec7693dd45e6b166c302bd8dce3c2e71e74e78f4c370b3270f12b605",
+      "targets": [
+        "candidate-dots-20261005@v2",
+        "candidate-humans-20261005@v1",
+        "candidate-grok-20261005@v2",
+        "candidate-meta-muse-20261005@v1",
+        "dots-lilac-bucket@v1",
+        "grok-green-cloud@v1",
+        "candidate-animals-20261005@v1",
+        "animal-white-cat@v1"
+      ]
+    },
+    "320x700": {
+      "layout": "mobile",
+      "width": 320,
+      "height": 700,
+      "asset": "./assets/terrace/terrace-mobile-v97.webp",
+      "sha256": "a5668ebbec7693dd45e6b166c302bd8dce3c2e71e74e78f4c370b3270f12b605",
+      "targets": [
+        "candidate-animals-20261005@v1",
+        "candidate-dots-20261005@v2",
+        "candidate-humans-20261005@v1",
+        "candidate-grok-20261005@v2",
+        "candidate-meta-muse-20261005@v1",
+        "animal-white-cat@v1",
+        "dots-lilac-bucket@v1",
+        "grok-green-cloud@v1"
+      ]
+    },
+    "768x1024": {
+      "layout": "desktop",
+      "width": 768,
+      "height": 1024,
+      "asset": "./assets/terrace/terrace-desktop-v97.webp",
+      "sha256": "f85bbbbb6bb208c22cb6ae8f3e40dc2cd9abc97e3b66d9baee97c3ef1ac0a0e8",
+      "targets": [
+        "candidate-dots-20261005@v2",
+        "candidate-humans-20261005@v1",
+        "candidate-grok-20261005@v2",
+        "candidate-meta-muse-20261005@v1",
+        "dots-lilac-bucket@v1",
+        "grok-green-cloud@v1",
+        "animal-gray-husky@v1",
+        "human-bun-yellow@v1",
+        "muse-rose-flowers@v1"
+      ]
+    }
+  }
+}

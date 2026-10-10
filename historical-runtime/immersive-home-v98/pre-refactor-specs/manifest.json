@@ -1,0 +1,582 @@
+{
+  "sourceCommit": "b22c3f0df8b010da74b99caf9a80c417157857d7",
+  "purpose": "Preserve original OpenSpec archive and retired main-spec bytes when submitting the accumulated v98 refactor. Existing working-tree deletions are retained; these historical contracts do not re-enter active OpenSpec or static publication. Pending, rejected, and cancelled states are unchanged.",
+  "files": [
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/design.md",
+      "bytes": 6352,
+      "sha256": "869292f007edf5819bb5889e8459a89e69933755aeaa8142b094eaff35ee96ce"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/proposal.md",
+      "bytes": 1785,
+      "sha256": "e9d36c23efc66b89558966066681a3582bf6e9938af426a921648250a1a2f47f"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/specs/fullscreen-randomizer/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/specs/fullscreen-randomizer/spec.md",
+      "bytes": 6365,
+      "sha256": "530aae92873cf1483b3ff1cd4a387dceed82962e7c8de9694ab5631d22b14ef3"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-add-fullscreen-randomizer/tasks.md",
+      "bytes": 2877,
+      "sha256": "a33f473c65b1c1a66ec040171b8f4e6b53cb628427cbfa804ef0cc99e4a1e478"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refactor-family-navigation/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refactor-family-navigation/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refactor-family-navigation/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refactor-family-navigation/design.md",
+      "bytes": 6455,
+      "sha256": "277b3b265713552f684629d3b2d28ed173241a3c72392dca9b4ab80c77364b2a"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refactor-family-navigation/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refactor-family-navigation/proposal.md",
+      "bytes": 2269,
+      "sha256": "4a8ba9b57a96b0b61223025b6550340b44eeea3c1087447c66ea58fcd91e4908"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refactor-family-navigation/specs/family-navigation/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refactor-family-navigation/specs/family-navigation/spec.md",
+      "bytes": 5672,
+      "sha256": "d869973a4330246ebe7088c3c9faf0e23da43d3c1b6513980ae2abbd5390baf8"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refactor-family-navigation/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refactor-family-navigation/tasks.md",
+      "bytes": 3063,
+      "sha256": "9f1f58e00fcf97ab990fb9918a13f54dc50ff3db5c898df033c2faeac7dc27a0"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/design.md",
+      "bytes": 16690,
+      "sha256": "1941d83b1a19f34a031f5c37864ff3d8e2a03fb4d4f9cdc0f03d46de94274578"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/proposal.md",
+      "bytes": 6197,
+      "sha256": "4981658f7d9edc3656a6840cfb1f7220ee4665ab392b046781b2eea120b85165"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/specs/studio-creation-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/specs/studio-creation-experience/spec.md",
+      "bytes": 6602,
+      "sha256": "e3b18168a2cbde6e9c52bbf2bc3d9fcd32c04ba63965d4f1d8263befe7d8def7"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/specs/studio-visual-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/specs/studio-visual-experience/spec.md",
+      "bytes": 9160,
+      "sha256": "c5672a5d7d091c08e99c83e9ae807004fffc1933b0c59ece4c11efc7cd597788"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-05-refresh-studio-visual-design/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-05-refresh-studio-visual-design/tasks.md",
+      "bytes": 9547,
+      "sha256": "8f5e3bfb1705ce880b981056ee1896680431db5851fa9dfd8e36912fe5024258"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "d71302f07db183bc30ff75198cd90cb17632c1d016043d0f43248f117bdc2e26"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/design.md",
+      "bytes": 18598,
+      "sha256": "3bb1838e8d8ec458361ecc093a1c5726bc31aa656379bfc535109e2b023aa9c0"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/proposal.md",
+      "bytes": 3224,
+      "sha256": "bd16c420b15ef40e797ba370771c6cad0b422bb95de5d2a1f6bc45806c44ce1a"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/specs/character-visual-acceptance/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/specs/character-visual-acceptance/spec.md",
+      "bytes": 6039,
+      "sha256": "aa02b361314ee3a4f8bd1e8f0e8f7322ccd147245e9576e7a93b2799fb34dfb7"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/specs/composition-coverage/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/specs/composition-coverage/spec.md",
+      "bytes": 17055,
+      "sha256": "03299cd344691d61573c95c654309daf30cdc95624432234b30c45f7c2096647"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-composition-visual-regression/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-composition-visual-regression/tasks.md",
+      "bytes": 9635,
+      "sha256": "4f94b6841ab04f7aef1870680b8249205130b488f772e6785be4662f070b2d46"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "d71302f07db183bc30ff75198cd90cb17632c1d016043d0f43248f117bdc2e26"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/design.md",
+      "bytes": 29802,
+      "sha256": "424a94188fde52fd02cdfea1542870a47729879890dc20d2881ecba087f0edf0"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/proposal.md",
+      "bytes": 5142,
+      "sha256": "ea1828f3d865e739127672206b2e1dd48e997eda4d0199efc0db756331ac5888"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/character-contact-and-motion/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/character-contact-and-motion/spec.md",
+      "bytes": 5241,
+      "sha256": "3934491731662c1a33c4af379568a3135d13f8a680b47f51f4467de3709e4648"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/character-creation-modes/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/character-creation-modes/spec.md",
+      "bytes": 14119,
+      "sha256": "04c42c3555a91bdb261b480e38b977344a1355152d7bab03f1985510c44ba900"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/modular-2d-composition/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/modular-2d-composition/spec.md",
+      "bytes": 22641,
+      "sha256": "2edd044cd79e6c81fb08c22fbe9ac635974be096b925591fa096892b3011da95"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/studio-creation-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/specs/studio-creation-experience/spec.md",
+      "bytes": 8244,
+      "sha256": "faf76bdecfe0e77fd0cdd69599365f1d57f9fdf83c0b24af8fa0e683ea01dbe4"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-add-modular-2d-composition/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-add-modular-2d-composition/tasks.md",
+      "bytes": 16680,
+      "sha256": "72a6ab0c9ce8e08ba75b532ed985e2fa49e4141d398fe8c1582731327b7edf2c"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "d71302f07db183bc30ff75198cd90cb17632c1d016043d0f43248f117bdc2e26"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/design.md",
+      "bytes": 12151,
+      "sha256": "2d98557d76e1b2fc3f32e18325c1dbb1b2bccbe58019ee93bef6a39cdbb7154b"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/proposal.md",
+      "bytes": 2877,
+      "sha256": "5f48bd02ca4735f7f77d97697c1bac2e0012c5054f88f9d5d1b589093ed516e1"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/catalog-tags/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/catalog-tags/spec.md",
+      "bytes": 4686,
+      "sha256": "10479ae5c48c1a0cd9009f872b0f6e3d4eec5f9a83d80e4e7d6f016e6748e726"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/character-families/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/character-families/spec.md",
+      "bytes": 3849,
+      "sha256": "d711fa668f1ee21870d1da9573026c116e4c81798a8a8691acca8d5dc6a47f43"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/family-navigation/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/family-navigation/spec.md",
+      "bytes": 5689,
+      "sha256": "0673f51ac1adf4fe74c4aa5551e27de38f3cce0f9592730aefde8ae337e9c1ed"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/studio-visual-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/specs/studio-visual-experience/spec.md",
+      "bytes": 18007,
+      "sha256": "515e7fa57ab875f6bcade6a8be5b3a52eaa6a24a51cb6c4a7f126f46297a70f5"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-evolve-catalog-tags/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-evolve-catalog-tags/tasks.md",
+      "bytes": 4565,
+      "sha256": "d607a7660758173e40a297a3094b362fe45d037f4929a2eb8674858e4fb08a8d"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "d71302f07db183bc30ff75198cd90cb17632c1d016043d0f43248f117bdc2e26"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/design.md",
+      "bytes": 2782,
+      "sha256": "3c81a5224fc06e38f060c548e3810cf8b4dd3f5a5fd56e08902c1dd7438ec489"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/proposal.md",
+      "bytes": 3195,
+      "sha256": "dca9b1591fe8e678734b089812667ab791f5068d701724e30c8010b45e2e3ffa"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-contact-and-motion/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-contact-and-motion/spec.md",
+      "bytes": 2252,
+      "sha256": "90e1c63e0a6fcbc9c2ebf76333e80ce8bf131a4a2bc9b551ec68de94bf35dc62"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-creation-modes/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-creation-modes/spec.md",
+      "bytes": 6934,
+      "sha256": "805e49a6848824f74a228444c853cf2318fe081f3b4c79bfec1ff989d01c9db3"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-families/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-families/spec.md",
+      "bytes": 1401,
+      "sha256": "034e0514229442c7d02d02fa6ad99cfae09e3a5cec327020d8e8ed21a45601e8"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-visual-acceptance/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/character-visual-acceptance/spec.md",
+      "bytes": 5108,
+      "sha256": "b65f3e66bed1a2e972630731de0c96cb4cd7617da6610649b35810125bcb0a7d"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/composition-coverage/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/composition-coverage/spec.md",
+      "bytes": 2557,
+      "sha256": "0569588af50c101c462336f7f8d9bb91740a72510f974ca74d56bb940f2b4f42"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/fullscreen-randomizer/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/fullscreen-randomizer/spec.md",
+      "bytes": 1188,
+      "sha256": "9790f8224f92fddaa3aa0e0145395c67aef3cd0f765e8a7bf4f1162a686957e1"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/modular-2d-composition/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/modular-2d-composition/spec.md",
+      "bytes": 1705,
+      "sha256": "6421e5dac27fe2b3440856695be2019acaa3c2c8ea75586826ff5abde71febc4"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/studio-creation-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/specs/studio-creation-experience/spec.md",
+      "bytes": 7461,
+      "sha256": "528fd855a474034a063318b8bb947f042a63c4e1f460463d09c3891045659aeb"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-make-character-output-transparent/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-make-character-output-transparent/tasks.md",
+      "bytes": 1625,
+      "sha256": "113e515f73c0ea3a54721b07963c4507b921fefe34e8690e730eccca3456dbf0"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "c956e2a907cf0aa23d948e300827f91e46ab77d64e288d98285dfe990bb0d989"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/design.md",
+      "bytes": 28382,
+      "sha256": "be7680e6ad291ca38b5e519515c1f78eb58647819ee2b3d573e8303e194de127"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/proposal.md",
+      "bytes": 9294,
+      "sha256": "e899be7ca75005d627fe5d24b9a4b07ea7beabd2d546f7c7b0cda992ca93e034"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-contact-and-motion/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-contact-and-motion/spec.md",
+      "bytes": 4953,
+      "sha256": "8412a9608fd68a03bce3b941c9f66feba8da94f9e295a2f2fdea7d011a4469c5"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-creation-modes/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-creation-modes/spec.md",
+      "bytes": 3096,
+      "sha256": "a7dc9a7a4373923a0796fb0c09ca6da311940d23a0274f2cb5d21fdbefdf07ab"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-families/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-families/spec.md",
+      "bytes": 10572,
+      "sha256": "cb5ccf55e591d995a842ad7bc39637cafde0bb2c71d9f3ff9d0a787db83e62fe"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-visual-acceptance/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/character-visual-acceptance/spec.md",
+      "bytes": 6014,
+      "sha256": "cf44b0b43449259ece74f0f816f37c677f130f8e7aa6c052408d177b752a523f"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/studio-creation-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/studio-creation-experience/spec.md",
+      "bytes": 3376,
+      "sha256": "8a7a0ef71ac38686c40575c1def5f5440c0618ab8de5aa6c766f318bc5bb62df"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/specs/studio-visual-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/specs/studio-visual-experience/spec.md",
+      "bytes": 3677,
+      "sha256": "d11007c2711ca759d3115ee5ed17453156ea37344ae272d9a3fded80bf384e5d"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-rebuild-character-system/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-rebuild-character-system/tasks.md",
+      "bytes": 11022,
+      "sha256": "f29094d919d277a8580b37ab5913907e9d77fbfadb660790ab407d9275162723"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/.openspec.yaml",
+      "bytes": 258,
+      "sha256": "9ad73e5efc50f29ffdae32c09610fbc919184125a2682cab7945f34a11197afc"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/README.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/README.md",
+      "bytes": 673,
+      "sha256": "8707e2ecc3cb355d82a3c31b4d87282af6858a372c32fa11128a0109198f7a8e"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/design.md",
+      "bytes": 17753,
+      "sha256": "18a99d6fd19cf1379c7d4f0ab1c47faa07177b4742a8168b19609fb32910bab7"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/proposal.md",
+      "bytes": 4131,
+      "sha256": "6bc2f5f7ab6ee0256cd145138293498e5f0dd8b37eeb7fa9e55fda7b0a65e851"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/specs/studio-visual-experience/spec.md",
+      "bytes": 11122,
+      "sha256": "e83ed7c0d8c6fa301012e06d729c963d7666d07bcb7009b8063c763cac38f796"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-refine-family-scene-composition/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-refine-family-scene-composition/tasks.md",
+      "bytes": 7543,
+      "sha256": "b4dc43e0037b0903f97e9b0fb4a4f21f777c8cdc7b302b42beef675cb94ba44a"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "d71302f07db183bc30ff75198cd90cb17632c1d016043d0f43248f117bdc2e26"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/design.md",
+      "bytes": 17355,
+      "sha256": "b506104b16cbc499c6e55fd329719c04e80eea447f8691a2825992a6359cdf13"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/proposal.md",
+      "bytes": 2690,
+      "sha256": "84144fbbc80d73a2ec1eac78062c4e68a3befd3676de75204072c7153f682d5d"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/specs/fullscreen-randomizer/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/specs/fullscreen-randomizer/spec.md",
+      "bytes": 16939,
+      "sha256": "29e9ed437ff7e2e38dd6d44d154c0138b5eb9aeb4f059289d230710db877e273"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-06-upgrade-randomizer-to-rendered-recipes/tasks.md",
+      "bytes": 15432,
+      "sha256": "0988704f8fab5a5aaa5105889d929dafb153352f1982f528e05a2768f5da467c"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/.openspec.yaml",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/.openspec.yaml",
+      "bytes": 40,
+      "sha256": "720b3de6231f9647898feba395449b03234e0c4fa3bd4ce47fc3bb341b0f16d6"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/design.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/design.md",
+      "bytes": 30523,
+      "sha256": "abd3f2c343219d9ffd18ce9d372d7641faeaea977186a3f47e7bd282f11a2453"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/cleanup-and-spec-map.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/cleanup-and-spec-map.md",
+      "bytes": 9493,
+      "sha256": "a7262212419a6292bb257a9849297656d548114f552541acc1cb9d7390d17624"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/content-and-targets.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/content-and-targets.md",
+      "bytes": 10589,
+      "sha256": "3faf5fcea12ae4b1e5e13d57617008e0ed9bbd5efe87fce62ff054412879ed46"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/spec-sync-cache90.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/spec-sync-cache90.md",
+      "bytes": 5772,
+      "sha256": "07c9486e68b0a33d40267e132ede2ca6d56f9c0b2c603157b1a7a95093b9fac8"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/validation.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/planning/validation.md",
+      "bytes": 6809,
+      "sha256": "915ce0d06564c4aabc8db43296bb3728003a90424436d5d6d767bcfff026c064"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/proposal.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/proposal.md",
+      "bytes": 7010,
+      "sha256": "2d6612528d6362d87d5abb912c22066744fa22584a61b3546828578658136cf3"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/artwork-catalog/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/artwork-catalog/spec.md",
+      "bytes": 9529,
+      "sha256": "1a4fe2159e13b707d3e8eba068b17061421e853dce0ad8643fc07bba20ba8b43"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/catalog-tags/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/catalog-tags/spec.md",
+      "bytes": 7125,
+      "sha256": "134b7ebd1325e3a1380a002d15c5c39fc97ce8abf988d5224f93dc731b677fbc"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-contact-and-motion/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-contact-and-motion/spec.md",
+      "bytes": 5119,
+      "sha256": "031894fb8bb4a3b8ced99d16ef174c7fdbe51001c500ec65a5c13d5e04622d8c"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-creation-modes/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-creation-modes/spec.md",
+      "bytes": 3996,
+      "sha256": "b0661d0ec4492de3c43e69b8976f92d62dde4be5a6a8f22b52d0b2e47d39c947"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-families/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-families/spec.md",
+      "bytes": 6507,
+      "sha256": "c4d2a3a699bf56c50f7954da8dbfce903110c0bb2b7421d6b5738de18c68fda9"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-visual-acceptance/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/character-visual-acceptance/spec.md",
+      "bytes": 7809,
+      "sha256": "ae3d7148c51d1c0c0fccd9acabd754e5d7c50ec00948bb0434ba0a9a00068656"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/composition-coverage/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/composition-coverage/spec.md",
+      "bytes": 7407,
+      "sha256": "7b0c02739c5482e775c47c19bc3108a60522a2b0c4ea8ff76e1f8fda87e62b6b"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/family-navigation/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/family-navigation/spec.md",
+      "bytes": 5228,
+      "sha256": "f7c8d08c599d40cf44c184a57a0ceae7daeaf586ca3221f2c5ba5e391d7defdb"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/fullscreen-randomizer/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/fullscreen-randomizer/spec.md",
+      "bytes": 19223,
+      "sha256": "bc6384d5c67ad3cfd665af544d416bfe1d3e2e84c28b7a3a72fdb4499a343aa2"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/modular-2d-composition/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/modular-2d-composition/spec.md",
+      "bytes": 5453,
+      "sha256": "9091db28842222eb3c0c61b969f1703bff1c2c16f6149c8944633904c2f08a8a"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/reference-creation/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/reference-creation/spec.md",
+      "bytes": 3059,
+      "sha256": "bcb728fac0f75dd3b3925a00250a4c4a442b8030c37073b3a8a9cc503401b268"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/studio-creation-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/studio-creation-experience/spec.md",
+      "bytes": 4043,
+      "sha256": "4d4446a7c82a96209731625d0eaad348a76764f0a86b67175308eb2b2aade193"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/studio-visual-experience/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/studio-visual-experience/spec.md",
+      "bytes": 8455,
+      "sha256": "03f06bc896fdbfaa0bc6adacee88b0217036a0fc35413b4f68aabf75c38eaf92"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/target-resources/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/specs/target-resources/spec.md",
+      "bytes": 3665,
+      "sha256": "ed27ff6f12d60d4d47fbc514cb48c26da28f864537a98af4463fa24aba824293"
+    },
+    {
+      "originalPath": "openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/tasks.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/changes/archive/2026-10-07-refocus-studio-on-gallery-and-card-reveal/tasks.md",
+      "bytes": 53454,
+      "sha256": "e7ef65d61c4389d443da513972a5528ee03e971c2ad59fe392bdda753fcd8f7a"
+    },
+    {
+      "originalPath": "openspec/specs/character-creation-modes/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/specs/character-creation-modes/spec.md",
+      "bytes": 1251,
+      "sha256": "cd8c855f4b75f8b6afae3ba3dd46ce2ba2fafe237ea2c2254efc21a57c0d255f"
+    },
+    {
+      "originalPath": "openspec/specs/composition-coverage/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/specs/composition-coverage/spec.md",
+      "bytes": 5519,
+      "sha256": "99fc494b9d4582aec94c23534b51dbb5644c506b6a29ff938b534475ad893e08"
+    },
+    {
+      "originalPath": "openspec/specs/modular-2d-composition/spec.md",
+      "preservedPath": "historical-runtime/immersive-home-v98/pre-refactor-specs/openspec/specs/modular-2d-composition/spec.md",
+      "bytes": 2721,
+      "sha256": "6f44600c52ac9a5dd270a2830616318779803f133b6b1049d2312c2de530c998"
+    }
+  ]
+}

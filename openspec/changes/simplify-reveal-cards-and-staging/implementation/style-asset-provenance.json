@@ -1,0 +1,179 @@
+{
+  "change": "simplify-reveal-cards-and-staging",
+  "createdAt": "2026-10-08",
+  "purpose": "Independent style-slot reveal cues. These images are display-only candidates, not assembled components or finished Artwork and are not artistically approved for publication.",
+  "tool": "built-in image_gen.imagegen",
+  "validationMethod": "PNG IHDR/IDAT inspected with the Python standard-library PNG scanline decoder; sips confirmed alpha channel and pixel dimensions; shasum -a 256 recorded; each generated image visually inspected.",
+  "assets": [
+    {
+      "identityId": "dots",
+      "id": "asset:reveal:style:dots-neutral",
+      "path": "dist/assets/reveal/style/dots-neutral-v1.png",
+      "generatedSourcePath": "/Users/liuzhihang/.codex/generated_images/01a1177d-4524-70b2-9868-6bfb0080892d/exec-fa9cdd0c-4f72-4294-a422-2912325cf943.png",
+      "imagegenOperationId": "exec-fa9cdd0c-4f72-4294-a422-2912325cf943",
+      "reference": {
+        "id": "asset:candidate-dots-20261005:original",
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "version": "v2",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      },
+      "bytes": 1824605,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "a650f99e9b4f70973d376b6956a6ca2a28cf6c6f8b16722eb3e2e1edd7e31240",
+      "alpha": {
+        "hasAlpha": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 707238,
+        "opaquePixels": 1,
+        "partialAlphaPixels": 865277,
+        "visibleBounds": [
+          0,
+          97,
+          1198,
+          1080
+        ]
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: independent transparent PNG style cue used only to reveal the Dots character family in a card, never assembled into artwork.\nInput image: Image 1 is the real Dots source reference; use it only for the soft, tactile short-pile plush rendering and recognizable simple oval-eye identity. Do not reproduce its blue color or headphones.\nScene/backdrop: genuinely transparent alpha, isolated single subject, no floor, no pedestal, no cast shadow, no glow.\nSubject: one centered, near-spherical Dots mascot style specimen in a quiet warm ivory / cream neutral fur color, with exactly two glossy black vertical oval eyes.\nStyle/medium: polished premium 3D product illustration, exceptionally soft short-pile plush fibers, nuanced realistic fur depth, simple smooth rounded geometry; quality and tactile detail comparable to the reference artwork.\nComposition/framing: one large complete sphere, front-facing, balanced centered silhouette, ample transparent margin, no cropping.\nLighting/mood: soft diffuse studio illumination on the subject only; no visible light source or environmental backdrop.\nColor palette: neutral cream/ivory only for the body; black eyes. No blue, pink, purple, or other identifying result palette.\nMaterials/textures: fine short plush fibers, visually soft, not long shaggy fur.\nConstraints: exactly one Dots sphere, only two eyes; no mouth, no limbs, no glasses, no headphones, no clothing, no prop, no pose, no text, no logo, no watermark. Keep the output background transparent, not black or white. This is a neutral identity/style cue, not a specific finished character."
+    },
+    {
+      "identityId": "grok",
+      "id": "asset:reveal:style:grok-neutral",
+      "path": "dist/assets/reveal/style/grok-neutral-v1.png",
+      "generatedSourcePath": "/Users/liuzhihang/.codex/generated_images/01a1177d-4524-70b2-9868-6bfb0080892d/exec-97acb465-1265-4df0-b2db-481484c301e6.png",
+      "imagegenOperationId": "exec-97acb465-1265-4df0-b2db-481484c301e6",
+      "reference": {
+        "id": "asset:candidate-grok-20261005:original",
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "version": "v2",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      },
+      "bytes": 1044587,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "bc47cd8f17377a267c4568224163c532cae0978f4139a4c5ad04ef95acca0b2e",
+      "alpha": {
+        "hasAlpha": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 778753,
+        "opaquePixels": 590,
+        "partialAlphaPixels": 793173,
+        "visibleBounds": [
+          0,
+          59,
+          1144,
+          1187
+        ]
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: independent transparent PNG style cue used only to reveal the Grok Bot identity, never assembled into artwork.\nInput image: Image 1 is the real Grok Bot source reference; use it only for soft, simple geometry and the paired capsule-eye language. Do not copy its purple color or specific orb silhouette.\nScene/backdrop: genuine transparent alpha, one isolated subject, no floor, pedestal, cast shadow, halo, glow, or environment.\nSubject: a single compact, softly rounded abstract geometric mascot specimen in a restrained light warm-gray / pearl neutral material, with exactly two short, plump, white capsule-shaped eyes placed as a matched pair and tilted gently in parallel.\nStyle/medium: polished premium 3D product illustration, smooth soft-matte finish with subtle material depth, rounded edges, gentle dimensional lighting, minimal and tactile.\nComposition/framing: one complete front-facing simple geometric mascot form centered, large in the square canvas, clean silhouette and transparent margin.\nLighting/mood: diffuse studio light only on the object, soft highlights on geometry, no background illumination.\nColor palette: quiet neutral warm gray or pale stone for body and white capsule eyes; no purple or vivid result colors.\nMaterials/textures: refined soft-touch matte surface, no plush fibers.\nConstraints: eyes must read as two separate paired capsules, not dots or a digital display. No screen, screen bezel, mouth, limbs, accessory, clothing, prop, markings, text, logo, watermark, or pose. Do not include extra objects. Keep the background truly transparent, not black or white. This is a neutral identity/style cue and must not imply a specific color or precise shape variation for any Artwork."
+    },
+    {
+      "identityId": "meta-muse",
+      "id": "asset:reveal:style:meta-muse-neutral",
+      "path": "dist/assets/reveal/style/meta-muse-neutral-v1.png",
+      "generatedSourcePath": "/Users/liuzhihang/.codex/generated_images/01a1177d-4524-70b2-9868-6bfb0080892d/exec-7db31df4-4e09-4c9b-85ce-03c895ab533f.png",
+      "imagegenOperationId": "exec-7db31df4-4e09-4c9b-85ce-03c895ab533f",
+      "reference": {
+        "id": "asset:candidate-meta-muse-20261005:original",
+        "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "version": "v1",
+        "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+      },
+      "bytes": 1092090,
+      "dimensions": [
+        1235,
+        1274
+      ],
+      "sha256": "abb3f5af4267eadf311e519c27ed5e0c70baaba40d717c19fa7d5e8fc599b16b",
+      "alpha": {
+        "hasAlpha": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 977523,
+        "opaquePixels": 112,
+        "partialAlphaPixels": 595755,
+        "visibleBounds": [
+          39,
+          21,
+          1168,
+          1181
+        ]
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: independent transparent PNG style cue used only to reveal the Meta Muse character family, never assembled into artwork.\nInput image: Image 1 is the real Meta Muse source reference; use it only for the continuous wrapped outer silhouette, inset face, cream plush material, and level of 3D finish. Do not copy its arms, feet, pose, smile, or exact proportions.\nScene/backdrop: genuine transparent alpha, one isolated subject, no floor, pedestal, cast shadow, halo, glow, or environment.\nSubject: one simple upright neutral Meta Muse style specimen: a single continuous cream-colored softly wrapped hood-like body surrounding a small, clearly inset warm peach face; the inset face has only two small dark round eyes and no mouth. The wrapped body is a coherent sculptural form, not a human outfit, hooded person, or bear costume.\nStyle/medium: premium polished 3D collectible illustration, tactile fine cream plush on the wrapped outer form and smooth matte inset face, soft volume and refined edges.\nComposition/framing: centered, front-facing, head-and-body silhouette fully visible, compact and balanced, no distinct gesture or action, transparent margin.\nLighting/mood: soft diffuse studio light on the subject only; no external environment.\nColor palette: cream / warm ivory outer wrap and muted peach inset face with dark eyes; calm neutral treatment only, no vivid result-specific palette.\nMaterials/textures: soft fine short-pile plush for the wrapped shell, smooth skin-like inset face.\nConstraints: preserve the wrapped silhouette and inset-face identity. No visible clothing seams, no accessories, no props, no holding, no arms, no hands, no legs, no feet, no pose, no animation, no extra characters, no text, no logo, no watermark. Transparent background must be real alpha, not black or white. This is a family style cue, not a specific finished artwork or feature recipe."
+    },
+    {
+      "identityId": "humans",
+      "id": "asset:reveal:style:humans-neutral",
+      "path": "dist/assets/reveal/style/humans-neutral-v1.png",
+      "generatedSourcePath": "/Users/liuzhihang/.codex/generated_images/01a1177d-4524-70b2-9868-6bfb0080892d/exec-2a827113-be23-4762-90fb-0d00ab7202b8.png",
+      "imagegenOperationId": "exec-2a827113-be23-4762-90fb-0d00ab7202b8",
+      "reference": {
+        "id": "asset:candidate-humans-20261005:original",
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "version": "v1",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+      },
+      "bytes": 1675174,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "05aa34cef5f9f012b46f8f944243ca53af7c89c7e99f1e14ed66c8bd8b851fd2",
+      "alpha": {
+        "hasAlpha": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 751094,
+        "opaquePixels": 206,
+        "partialAlphaPixels": 821216,
+        "visibleBounds": [
+          0,
+          9,
+          1214,
+          1245
+        ]
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: independent transparent PNG identity-style cue for the original people category; not a specific person, outfit, pose, or completed Artwork.\nInput image: Image 1 is the real original chibi-person reference; use it only for the polished cute 3D rendering quality, delicate hair/skin shading, and refined proportions. Do not copy its hair cut, hair color, sweater, shorts, shoes, hands, or pose.\nScene/backdrop: genuine transparent alpha, isolated portrait, no room, floor, pedestal, cast shadow, halo, glow, or environment.\nSubject: one original, gender-neutral, friendly chibi human portrait bust from the top of the head through the shoulders, with softly rendered natural skin, carefully sculpted individual hair strands in a neutral dark-brown tone, large expressive brown eyes, a small subtle nose, and a calm gentle expression. Keep it generic and do not make it resemble a known person.\nStyle/medium: premium polished 3D character illustration, tasteful toy-like proportions with convincing soft skin and fine hair detail, clean and human rather than plush.\nComposition/framing: centered frontal bust portrait, complete head and both shoulders visible, no gesture, transparent margin.\nLighting/mood: soft diffuse studio illumination on the subject only, warm and friendly.\nColor palette: restrained natural neutral colors for skin and hair; no vivid accent colors.\nMaterials/textures: natural soft skin shading and fine individual hair strands; no fabric detail needed.\nConstraints: do not show below the shoulders, and do not include any visible garment details, collars, accessories, props, or clothing features. No hat, glasses, jewelry, text, logo, watermark, other character, or pose. Preserve generic human category identity without implying a particular hairstyle or outfit as a target feature. Keep the background genuinely transparent, not black or white."
+    },
+    {
+      "identityId": "animals",
+      "id": "asset:reveal:style:animals-neutral",
+      "path": "dist/assets/reveal/style/animals-neutral-v1.png",
+      "generatedSourcePath": "/Users/liuzhihang/.codex/generated_images/01a1177d-4524-70b2-9868-6bfb0080892d/exec-b78b5f3b-bffa-4731-9e2c-167b09e7ec09.png",
+      "imagegenOperationId": "exec-b78b5f3b-bffa-4731-9e2c-167b09e7ec09",
+      "reference": {
+        "id": "asset:candidate-animals-20261005:original",
+        "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "version": "v1",
+        "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+      },
+      "bytes": 1690824,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sha256": "c5d84dcbcd70c759beb821b2835ad95ead7f41b3d3f4d29aa58b5d2d56ba9d34",
+      "alpha": {
+        "hasAlpha": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 756203,
+        "opaquePixels": 4,
+        "partialAlphaPixels": 816309,
+        "visibleBounds": [
+          0,
+          0,
+          1220,
+          1254
+        ]
+      },
+      "prompt": "Use case: stylized-concept\nAsset type: independent transparent PNG style cue for the original animals category; never treated as a species-specific finished Artwork.\nInput image: Image 1 is the real animal-character reference; use it only for polished, tactile 3D fur rendering and friendly character craftsmanship. Do not copy the Shiba breed, pointed ears, orange-and-cream markings, muzzle design, curled tail, body pose, or any exact species traits.\nScene/backdrop: genuine transparent alpha, one isolated head portrait, no floor, pedestal, cast shadow, halo, glow, or environment.\nSubject: one original, species-neutral, cute animal-mascot head with a soft rounded silhouette, two small softly rounded ear nubs, gentle eyes, and a very simple subtle muzzle. Make it an imaginative generic creature rather than any recognizable cat, dog, fox, bear, rabbit, or other named species.\nStyle/medium: premium polished 3D character illustration with soft refined short fur, natural rounded anatomy, clear and appealing silhouette.\nComposition/framing: centered straight-on head portrait only; no body, limbs, tail, seated/standing pose, or gesture; transparent margin around complete silhouette.\nLighting/mood: soft diffuse studio illumination on the subject only; warm and gentle.\nColor palette: restrained light warm-gray or muted neutral fur with slightly lighter muzzle; no bright or species-identifying color patterns.\nMaterials/textures: fine natural short fur, softly modeled nose and eyes; no fabric or glossy costume.\nConstraints: depict a general animal category marker without specifying or implying one species as the target fact. No breed markers, whiskers, stripes, spots, eye-mask patches, white chest, collar, clothing, accessories, props, text, logo, watermark, or additional characters. Keep background genuinely transparent, not black or white."
+    }
+  ]
+}

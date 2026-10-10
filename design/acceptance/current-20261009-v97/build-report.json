@@ -1,0 +1,671 @@
+{
+  "revision": 97,
+  "evidenceDirectory": "design/acceptance/current-20261009-v97",
+  "scope": "v97 local static engineering validation only; it does not establish visual approval. v96 visual review was rejected by the user.",
+  "fileCount": 56,
+  "files": [
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "bytes": 1413426,
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "bytes": 574528,
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa"
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "bytes": 1720054,
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "bytes": 971168,
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "bytes": 1151483,
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "bytes": 1003955,
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+    },
+    {
+      "path": "dist/assets/icons/chevron-left.svg",
+      "bytes": 3547,
+      "sha256": "94869faefd2831d671763e42dde0be05ae0d82bbdbf4a93834471661f7ec78ec"
+    },
+    {
+      "path": "dist/assets/icons/menu.svg",
+      "bytes": 3580,
+      "sha256": "045538da5f6e82c8851cce68faf41205b427c95952f42bd772f559cb3c1f0819"
+    },
+    {
+      "path": "dist/assets/icons/search.svg",
+      "bytes": 3578,
+      "sha256": "d34b9b7a045cfce76c2dc77cc39e27442dc84ac916943e7515258ee49fb4e828"
+    },
+    {
+      "path": "dist/assets/icons/x.svg",
+      "bytes": 3558,
+      "sha256": "0cf35cee470ea5ea950eaf9176e77e3b9742cc6ade96aa4aaf95362b62a453c6"
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "bytes": 1623665,
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "bytes": 1382027,
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "bytes": 1605008,
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "bytes": 1860436,
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "bytes": 790009,
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "bytes": 828844,
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "bytes": 1058375,
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "bytes": 1086214,
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "bytes": 1185166,
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "bytes": 1142481,
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+    },
+    {
+      "path": "dist/assets/posters/animal-gray-husky-v1.webp",
+      "bytes": 43698,
+      "sha256": "434a3d32da36754c3fa8853832caffffba3f61835712ab70adedd68108f0c012"
+    },
+    {
+      "path": "dist/assets/posters/animal-white-cat-v1.webp",
+      "bytes": 42036,
+      "sha256": "3c73bdc9938c10d0f4f9acf2c17b3b2642afec5bd6f502ae456ad285c13fba36"
+    },
+    {
+      "path": "dist/assets/posters/brand-mark-display-v1.png",
+      "bytes": 6053,
+      "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64"
+    },
+    {
+      "path": "dist/assets/posters/candidate-animals-20261005-v1.webp",
+      "bytes": 44244,
+      "sha256": "eda605d6ea5d63da7bf2edda3b98379c624aa1bd710950e866f2ab1fc50ba952"
+    },
+    {
+      "path": "dist/assets/posters/candidate-dots-20261005-v1.webp",
+      "bytes": 53964,
+      "sha256": "25a144017c3b85a6a0be743bcc2e01e4f8c600b3f506fc545ff6a1a915cc161f"
+    },
+    {
+      "path": "dist/assets/posters/candidate-grok-20261005-v1.webp",
+      "bytes": 19620,
+      "sha256": "e1b40e2eb20e762b66e00be1dafc26a710a0b43cb849c07550ee1ecab20c73bc"
+    },
+    {
+      "path": "dist/assets/posters/candidate-humans-20261005-v1.webp",
+      "bytes": 35746,
+      "sha256": "da95dedff71445bba0a102a3ee3dac862de1b7c21486d14beb4c92daadf6d8ad"
+    },
+    {
+      "path": "dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+      "bytes": 26872,
+      "sha256": "e052eb98d4d0ed787445d0b3d66e70f614a5c568c5f65d98c7a9599349a3d751"
+    },
+    {
+      "path": "dist/assets/posters/dots-lilac-bucket-v1.webp",
+      "bytes": 58256,
+      "sha256": "139613ea4e94998961ae68f2d5e73f96d5c500055e6f132b699844e349017062"
+    },
+    {
+      "path": "dist/assets/posters/dots-rose-glasses-v1.webp",
+      "bytes": 63930,
+      "sha256": "743dfb9fe97fae19629e0e4c70cd850f841c748537f182c86ea8d5718a573823"
+    },
+    {
+      "path": "dist/assets/posters/grok-green-cloud-v1.webp",
+      "bytes": 19066,
+      "sha256": "80a735fa20f8363959ce58545ef5470ef155606cd84ef71e377ac2075bd33fc3"
+    },
+    {
+      "path": "dist/assets/posters/grok-teal-square-v1.webp",
+      "bytes": 16022,
+      "sha256": "2f76e1a8a2f515e6222e1c9d230ed841139c3fa7dbde6cc03b03446097286aa7"
+    },
+    {
+      "path": "dist/assets/posters/human-blond-glasses-v1.webp",
+      "bytes": 34014,
+      "sha256": "d3ec6a31b89233d86bbfa9774f7477c3e3d7613f3b90ce270e4c1ff931295958"
+    },
+    {
+      "path": "dist/assets/posters/human-bun-yellow-v1.webp",
+      "bytes": 37648,
+      "sha256": "99a25a4f4c0a21dd34731acadbfcb553bbd0565d8adabbebd1fb231307ab8e94"
+    },
+    {
+      "path": "dist/assets/posters/muse-rose-flowers-v1.webp",
+      "bytes": 34690,
+      "sha256": "d1ef7e56c616c900c795b58fed4d3cf0106ccf3715b646cea663cdf1157034e6"
+    },
+    {
+      "path": "dist/assets/posters/muse-sage-reading-v1.webp",
+      "bytes": 27236,
+      "sha256": "7e4715e708d8bf86bfbcdd58038bdf704a351e2ae298e369f3e52f5a69ffaf62"
+    },
+    {
+      "path": "dist/assets/terrace/terrace-desktop-v97.webp",
+      "bytes": 363778,
+      "sha256": "f85bbbbb6bb208c22cb6ae8f3e40dc2cd9abc97e3b66d9baee97c3ef1ac0a0e8"
+    },
+    {
+      "path": "dist/assets/terrace/terrace-mobile-v97.webp",
+      "bytes": 312858,
+      "sha256": "a5668ebbec7693dd45e6b166c302bd8dce3c2e71e74e78f4c370b3270f12b605"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 6105,
+      "sha256": "0f829285eeb07d01443026637bf0b8105d2363a48aa938d6d591d5054c8026e3"
+    },
+    {
+      "path": "dist/studio-actions.js",
+      "bytes": 3885,
+      "sha256": "c3024da967abc5fae76beba4a670a435d1acfeea8570c409f6cb200b3e2f3385"
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "bytes": 42932,
+      "sha256": "1d4f47c6b5cfee0ce4c3869517e92067a99932b8acbfca6b5bcfe7a233358edc"
+    },
+    {
+      "path": "dist/studio-asset-loader.js",
+      "bytes": 7399,
+      "sha256": "c95043c1cba92c9896ff201ecef8b394fa7ecbe85b84746810bdbadd86e4dfdc"
+    },
+    {
+      "path": "dist/studio-content.js",
+      "bytes": 16964,
+      "sha256": "e254ca4c347d4a6bf32e7c5fb750fa15b1f8cc008b485953f76c78a67e6bf644"
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "bytes": 9148,
+      "sha256": "17b29db196ff4d83c48212593c9d1d39a0c07f0efd87e1eb9aa6553bba3a4c73"
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "bytes": 46041,
+      "sha256": "798f46078beed2d9158a3238575e03ed013e449b488f61cbd867ee2d570fb685"
+    },
+    {
+      "path": "dist/studio-home.js",
+      "bytes": 4162,
+      "sha256": "18a0cf9660f31304c57a2506801bd5bb3f9c1f880de495ee8a94d27a791ecf35"
+    },
+    {
+      "path": "dist/studio-i18n.js",
+      "bytes": 5297,
+      "sha256": "12c7f81cccd90922d97b764d5a1479264d5844bd01a38de0c54f94f4552bae86"
+    },
+    {
+      "path": "dist/studio-motion.js",
+      "bytes": 8433,
+      "sha256": "fdf658ef595321b620c4227eb85a8c57ef2bda38d86bdd3aaf51a03a083d326c"
+    },
+    {
+      "path": "dist/studio-overlay.js",
+      "bytes": 6729,
+      "sha256": "7a0c3d961a507856eb65b9259c6815796aa039593dc52ba15b09ab8b3a073e1b"
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "bytes": 3727,
+      "sha256": "bb8ffa035a13f87c40c913eae2c08a229ffa45d9b73270459d79d0ee22716b0a"
+    },
+    {
+      "path": "dist/studio-router.js",
+      "bytes": 826,
+      "sha256": "f74d971c58c7fc060601c024213a1e26499979f9dc3e385582b94addecb0836f"
+    },
+    {
+      "path": "dist/studio-scenes.js",
+      "bytes": 4124,
+      "sha256": "f361ffdf6f3767524310fd8774616563a259eaaccda017b8b9982898b2d8ce67"
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "bytes": 2198,
+      "sha256": "79d67c1545d18b668a9ab71aedfe8713ad12b93470c1eedb680effedeec74e97"
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "bytes": 9874,
+      "sha256": "447e735a6995d0650e28eaa9ec8f5e5717d98414736ec17aa9e8820ffc7aacc4"
+    },
+    {
+      "path": "dist/studio.css",
+      "bytes": 17182,
+      "sha256": "240568a3807ba2742cb4f3d3e252b895356af7fb577243d6342f0e3efb6d8847"
+    },
+    {
+      "path": "dist/studio.js",
+      "bytes": 13378,
+      "sha256": "f5699ece241196fe5d9ce9f7dae8eaf3bd25ca7ab42274b78a73959263883abb"
+    }
+  ],
+  "safety": {
+    "baselineHead": "b22c3f0df8b010da74b99caf9a80c417157857d7",
+    "protectedCount": 6353,
+    "changed": [
+      {
+        "path": ".agents/rules/design.md",
+        "before": "075616f6ba43782315853ee51ac0345d340f15f1e7fce38c9edd1251b138f95b",
+        "after": "3adb93f4f497c03835fb30d8400060d75459e154ec3158dfaa50359ce71116f3"
+      },
+      {
+        "path": "DESIGN.md",
+        "before": "03288cba8b034539eaacbca2ef273b1066d765ff9a309ce0dba0e7c55f6475b1",
+        "after": "f715ba5959fe4eb94915cfb5443b4e782583409fb3979c090937401f03a9f769"
+      },
+      {
+        "path": "README.md",
+        "before": "c17fd4e98f4ad21c22bd51dd4af45cdc460959bbd917d6b74bca057df1b65ac0",
+        "after": "bd1da2088fee7e09af66897356137074e81e7737370c7f5f1fca36f727b9be59"
+      },
+      {
+        "path": "design-qa.md",
+        "before": "ce6eb5b46e830c690915edd352a58337f94e53444c05cac930843ff9b1e3d10b",
+        "after": "880675f60e443b605156ce26e15851a02a53294633ef971db759696d749be00f"
+      },
+      {
+        "path": "design/static-publish-manifest.json",
+        "before": "62134c5676dbe366c75e6af635a07100bd028bfced208b9256c533f4ff7797f1",
+        "after": "407a0950d0b08486019e7d25a3e78eb9b4549fb16f05ade4a0f4625cb7766160"
+      },
+      {
+        "path": "design/studio-visual-interaction-system.md",
+        "before": "4549b18a349e9d462c5cb917693c11b07c005f3a35bf207877a1583c9a9403b3",
+        "after": "b2dda53d5d5d20de369a941b01f7c9557ea63a279c6605d86cccd4dca6f8bdc3"
+      },
+      {
+        "path": "dist/index.html",
+        "before": "643e6aece8d1396486d3e241501a9351336e413ba0cd1a64e9c579342799a3ad",
+        "after": "0f829285eeb07d01443026637bf0b8105d2363a48aa938d6d591d5054c8026e3"
+      },
+      {
+        "path": "dist/studio-artwork-catalog.js",
+        "before": "a24e14d9e6b2ed54290bb8b7d66cb744740997c3e34f067d4ed5e88ca63d77a8",
+        "after": "1d4f47c6b5cfee0ce4c3869517e92067a99932b8acbfca6b5bcfe7a233358edc"
+      },
+      {
+        "path": "dist/studio-asset-loader.js",
+        "before": "445ea3007ca3be757eef3f7c1e11f6f9baefa9d53972ca24908d2cdfa26c7da0",
+        "after": "c95043c1cba92c9896ff201ecef8b394fa7ecbe85b84746810bdbadd86e4dfdc"
+      },
+      {
+        "path": "dist/studio-detail.css",
+        "before": "78f7c0f035bd9ea57ef33f6a233f817db735e49ff1b658ad4a53ecc5faef8651",
+        "after": "17b29db196ff4d83c48212593c9d1d39a0c07f0efd87e1eb9aa6553bba3a4c73"
+      },
+      {
+        "path": "dist/studio-detail.js",
+        "before": "20addbf8c10fff2d689721913742e431248db351ff29d87fe3f5128299ef9780",
+        "after": "798f46078beed2d9158a3238575e03ed013e449b488f61cbd867ee2d570fb685"
+      },
+      {
+        "path": "dist/studio-home.js",
+        "before": "9ca23640aed43a6d62835fd1a9dfcfd3b101a2544f8090e3fbc3c5cd214be01d",
+        "after": "18a0cf9660f31304c57a2506801bd5bb3f9c1f880de495ee8a94d27a791ecf35"
+      },
+      {
+        "path": "dist/studio-i18n.js",
+        "before": "30fa8c49c4ecba4b270c0f08fefae4d1f71386cd509c5a941425a1be3e83c610",
+        "after": "12c7f81cccd90922d97b764d5a1479264d5844bd01a38de0c54f94f4552bae86"
+      },
+      {
+        "path": "dist/studio-overlay.js",
+        "before": "81f7c0e58a1d64ed0aae0edb9c2694c03f056a67b522a672e5dfd89d9ebf322f",
+        "after": "7a0c3d961a507856eb65b9259c6815796aa039593dc52ba15b09ab8b3a073e1b"
+      },
+      {
+        "path": "dist/studio-prompt.js",
+        "before": "7a99758660c0b3c257fae7317a157a8fb853b4455f61857b9f38b21e8eeed909",
+        "after": "bb8ffa035a13f87c40c913eae2c08a229ffa45d9b73270459d79d0ee22716b0a"
+      },
+      {
+        "path": "dist/studio-scenes.js",
+        "before": "04305855ec222161eabc6b27363ec3a26f13ffb4539f026fdbf4d3d452d0ad8b",
+        "after": "f361ffdf6f3767524310fd8774616563a259eaaccda017b8b9982898b2d8ce67"
+      },
+      {
+        "path": "dist/studio-tag-browser.js",
+        "before": "bd13dd16630d6b071028b32a31e0df25d4e6af6ae9e458ea914ca6aeff77a9e3",
+        "after": "79d67c1545d18b668a9ab71aedfe8713ad12b93470c1eedb680effedeec74e97"
+      },
+      {
+        "path": "dist/studio-tags.js",
+        "before": "0e2703ac315ff3d76ec22f36cccf3b0d923af7867c83d44c2a0864801712b933",
+        "after": "447e735a6995d0650e28eaa9ec8f5e5717d98414736ec17aa9e8820ffc7aacc4"
+      },
+      {
+        "path": "dist/studio.css",
+        "before": "f33606556dbbe703b505058a39d648a25b45cb9cd4d40b8fd6143c04adf8b8db",
+        "after": "240568a3807ba2742cb4f3d3e252b895356af7fb577243d6342f0e3efb6d8847"
+      },
+      {
+        "path": "dist/studio.js",
+        "before": "8eccd8d1f14e44bd82a4b1791f9d844e604752a433156b9899cb018c073525ad",
+        "after": "f5699ece241196fe5d9ce9f7dae8eaf3bd25ca7ab42274b78a73959263883abb"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/design.md",
+        "before": "90f8bd04a9d857ee5e90a39a98a6355d7a48fff16b4c8dbd7644508ffffc569d",
+        "after": "8050371e5aa82e9793d78845a24e6f4d4120aa39b3ad0640c5088ccfa3e1a649"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/proposal.md",
+        "before": "a6006d5ca43140916ade2c8fbd9d1a2cb20179179541179b376e556a8b899463",
+        "after": "d095f962b5e4d181de3bbc0f5b6310cb37b0576989e6c1ed712033c3c3a6c7fb"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/artwork-catalog/spec.md",
+        "before": "379ef5c10a4f020393c9a42d97e09959fb2e4c0384c24960438e2afa7d0aa735",
+        "after": "294198c9e1ce34185a213ac7e084db5dd6cfffe39438e9cd7085a480552d6838"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/catalog-tags/spec.md",
+        "before": "fb0443eba43c1348b7e3f54f15076fa04e282cc04de07e932de7e96ee46bb778",
+        "after": "da956e49da7c4bad87842faf95f50c5756259a2f65e75f28f95718eb4df794b4"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/character-contact-and-motion/spec.md",
+        "before": "331cac2a2d9ed700bd8872b773b9713be13f742bb48707b70d540d693100e168",
+        "after": "f0c9abf24d714fab5ce3e3f67edca79e1622e1f8c4cb1eb6f4dc535cb6e41759"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/character-families/spec.md",
+        "before": "87813fbd2e35561271da580ff1370728f8aeaea527b4d8950f2cc60644cbf8d0",
+        "after": "f3a41c0264984cff6db55dea23fba0b3e84939764695cfdfe84e72e76f6a9728"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/character-visual-acceptance/spec.md",
+        "before": "e864144c1872bf563fbdca0cff99a6c6f92c03313c008881705a95afd89f7e0d",
+        "after": "99401acc75b03c298793ae5544f6b422ab7babe33ca8522b858f395f707afdd0"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/studio-visual-experience/spec.md",
+        "before": "3ca0a698e118d731e1c9a70f46b866516d190c7b346692ac2da62fdfefcee3f2",
+        "after": "913986dde8b532243fe21f3ea9ca7f1b8e47419f01369990e24697cc6ed36f2f"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/specs/target-resources/spec.md",
+        "before": "2e172d817e5bec52a3d5fb4c8a47a05d747ec4a5ea2a548fcdb10a374a3280a0",
+        "after": "60170e8effb3f9f8cd267ef2a83faa616dc317f3797d419a12cca633d463018c"
+      },
+      {
+        "path": "openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+        "before": "a173e985f6578c9a719d11d275ac331ab3bc4f2e29a89bf12d488d2d52059c48",
+        "after": "9143c649ae048dc8da98e58cc00104af762cd3766992596ebac84695df5100b7"
+      },
+      {
+        "path": "scripts/build-studio.mjs",
+        "before": "0ee8abb1a088e5c4e5a12f093b199212d57fac14434347ac83e8f59d17296fdf",
+        "after": "530a4a55aac126ecb84e03038f6fcf05b9cbc07f032853cd1026e40efe3aee13"
+      },
+      {
+        "path": "scripts/verify-artwork-catalog.mjs",
+        "before": "c5471a7345ac43e115cb40bfa15d8cb666d7fe1cc55ec20895e21f4274b329e2",
+        "after": "86b878ddb6f4471a02ba523470dd6c27a7cee00cc7e803aef6809c6b68017f20"
+      },
+      {
+        "path": "scripts/verify-artwork-query.mjs",
+        "before": "919e3d1ad79e26e512ecbd7bd1e5994e65dbd1bf62240bea9bbff7b36e803080",
+        "after": "63307f78063bfa6cc8f11cc614006d5bea2e4159a68d621bbfdbe83ede7b8f2d"
+      },
+      {
+        "path": "scripts/verify-implementation-safety.mjs",
+        "before": "78e25b2420d37914bfb0d073c7ccddd3335cfecd0386b551997b69b298af8be4",
+        "after": "ef6966f65dddc14e8da3a46cca4cabecc6de0b808fb2284eb948d135043ce514"
+      },
+      {
+        "path": "scripts/verify-motion.mjs",
+        "before": "9a78cca4b7210d7e53f1260d25d0a9beab24305e49f3cd2960d9830b92274b00",
+        "after": "fee92b10e982d40d5aebd5516681ea8424804e0ea8593d886d7602d5249b6578"
+      },
+      {
+        "path": "scripts/verify-reference-detail.mjs",
+        "before": "29ac3d1bb0fe1c950d45a8f38d12493c5dc4f4be37f35e88d434679e2cb1d3d5",
+        "after": "1a674ff1dd7cd0d7857fa3665d0085256d6b60d279dbde3131e3d8c700133ab4"
+      },
+      {
+        "path": "scripts/verify-studio-browser.mjs",
+        "before": "84be36912bbd32cdff2d1c76311417918c5e1fbcb2d2cdf0813cb52b8ba2125a",
+        "after": "48f9415919cb922caa007b789b523a039142046ea1ea533b63630c06bdeaf41d"
+      },
+      {
+        "path": "scripts/verify-transparent-output.mjs",
+        "before": "8a49f783023a67c9e7720161546b41dbd879c69dcca3f5e591885e67eb2e20df",
+        "after": "7da65b36ffefae1c90cbd77b1c189a875d4b16415d29d9d47a7939e2dd7ecb2f"
+      }
+    ],
+    "retired": [
+      {
+        "from": "dist/assets/terrace/terrace-background-v1.webp",
+        "to": "historical-runtime/visual-rework-v97/dist/assets/terrace/terrace-background-v1.webp",
+        "sha256": "bf2327c28c2ca36165c745e1e8642a1422d1c66e883e753db9efcc275ed08007"
+      },
+      {
+        "from": "dist/assets/terrace/units/distant-lilac-dots-green-grok-v1.webp",
+        "to": "historical-runtime/visual-rework-v97/dist/assets/terrace/units/distant-lilac-dots-green-grok-v1.webp",
+        "sha256": "957e09eea2b8016649788b46bf9a10aa488db2f370d80a89cf38b905d7e8f174"
+      },
+      {
+        "from": "dist/assets/terrace/units/mid-collaboration-four-v1.webp",
+        "to": "historical-runtime/visual-rework-v97/dist/assets/terrace/units/mid-collaboration-four-v1.webp",
+        "sha256": "5d73b4299ea56889ccf715f8488c6f5b0d0ff9fb3f09277917462291ae9e9ed4"
+      },
+      {
+        "from": "dist/assets/terrace/units/near-shiba-rose-dots-v1.webp",
+        "to": "historical-runtime/visual-rework-v97/dist/assets/terrace/units/near-shiba-rose-dots-v1.webp",
+        "sha256": "a062be274742b4a948af251d72f92438e2cfa836db8ccdaa7513b5c5918c6e39"
+      },
+      {
+        "from": "dist/assets/terrace/units/reading-cream-muse-white-cat-v1.webp",
+        "to": "historical-runtime/visual-rework-v97/dist/assets/terrace/units/reading-cream-muse-white-cat-v1.webp",
+        "sha256": "70bb8722f9cbcf9ac06d75f5d813044d8ebaad03790895ad13246032d57985a9"
+      }
+    ],
+    "added": [
+      "design/acceptance/current-20261009-v97/asset-sources/contact-sheet-15-approved-originals.png",
+      "design/acceptance/current-20261009-v97/asset-sources/identity-reference-strip-C01-C03.png",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-desktop-integrated-v1-candidate.png",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-desktop-integrated-v1-manifest.json",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-desktop-integrated-v1-prompt.txt",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-mobile-reframe-v1-candidate.png",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-mobile-reframe-v1-final-edit-prompt.txt",
+      "design/acceptance/current-20261009-v97/asset-sources/terrace-hero-mobile-reframe-v1-manifest.json",
+      "design/acceptance/current-20261009-v97/audit/01-home-1440.jpg",
+      "design/acceptance/current-20261009-v97/audit/02-gallery-1440.jpg",
+      "design/acceptance/current-20261009-v97/audit/03-detail-1440.jpg",
+      "design/acceptance/current-20261009-v97/audit/04-detail-390.jpg",
+      "design/acceptance/current-20261009-v97/audit/05-gallery-390.jpg",
+      "design/acceptance/current-20261009-v97/audit/06-home-390.jpg",
+      "design/acceptance/current-20261009-v97/audit/disposition.json",
+      "design/acceptance/current-20261009-v97/audit/review.md",
+      "design/acceptance/current-20261009-v97/browser/detail-1440.png",
+      "design/acceptance/current-20261009-v97/browser/detail-390.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/animal-gray-husky.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/animal-white-cat.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/candidate-animals-20261005.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/candidate-dots-20261005.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/candidate-grok-20261005.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/candidate-humans-20261005.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/candidate-meta-muse-20261005.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/dots-lilac-bucket.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/dots-rose-glasses.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/grok-green-cloud.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/grok-teal-square.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/human-blond-glasses.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/human-bun-yellow.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/muse-rose-flowers.png",
+      "design/acceptance/current-20261009-v97/browser/downloads/muse-sage-reading.png",
+      "design/acceptance/current-20261009-v97/browser/failed-state.png",
+      "design/acceptance/current-20261009-v97/browser/failure.json",
+      "design/acceptance/current-20261009-v97/browser/gallery-1440.png",
+      "design/acceptance/current-20261009-v97/browser/gallery-390.png",
+      "design/acceptance/current-20261009-v97/browser/guide-1440.png",
+      "design/acceptance/current-20261009-v97/browser/guide-390.png",
+      "design/acceptance/current-20261009-v97/browser/home-1440.png",
+      "design/acceptance/current-20261009-v97/browser/home-390.png",
+      "design/acceptance/current-20261009-v97/build-report.json",
+      "design/acceptance/current-20261009-v97/checks/01-unit-focus-expectation-failure.log",
+      "design/acceptance/current-20261009-v97/checks/02-build.log",
+      "design/acceptance/current-20261009-v97/checks/03-unit.log",
+      "design/acceptance/current-20261009-v97/checks/04-browser.log",
+      "design/acceptance/current-20261009-v97/checks/attempt-01/04-browser.log",
+      "design/acceptance/current-20261009-v97/checks/attempt-01/failed-state.png",
+      "design/acceptance/current-20261009-v97/checks/attempt-01/failure.json",
+      "design/acceptance/current-20261009-v97/checks/attempt-02/04-browser.log",
+      "design/acceptance/current-20261009-v97/checks/attempt-02/failed-state.png",
+      "design/acceptance/current-20261009-v97/checks/attempt-02/failure.json",
+      "design/acceptance/current-20261009-v97/icon-sources.json",
+      "design/acceptance/current-20261009-v97/reference-detail/motion-report.json",
+      "design/acceptance/current-20261009-v97/reference-detail/report.json",
+      "design/acceptance/current-20261009-v97/visual/comparisons/home-desktop-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/detail-1440-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/detail-390-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/detail-390-zh.jpg",
+      "design/acceptance/current-20261009-v97/visual/gallery-1440-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/home-1440-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/home-320.jpg",
+      "design/acceptance/current-20261009-v97/visual/home-390-interim.jpg",
+      "design/acceptance/current-20261009-v97/visual/home-768.jpg",
+      "dist/assets/icons/chevron-left.svg",
+      "dist/assets/icons/menu.svg",
+      "dist/assets/icons/search.svg",
+      "dist/assets/icons/x.svg",
+      "dist/assets/terrace/terrace-desktop-v97.webp",
+      "dist/assets/terrace/terrace-mobile-v97.webp",
+      "historical-runtime/visual-rework-v97/dist/assets/terrace/terrace-background-v1.webp",
+      "historical-runtime/visual-rework-v97/dist/assets/terrace/units/distant-lilac-dots-green-grok-v1.webp",
+      "historical-runtime/visual-rework-v97/dist/assets/terrace/units/mid-collaboration-four-v1.webp",
+      "historical-runtime/visual-rework-v97/dist/assets/terrace/units/near-shiba-rose-dots-v1.webp",
+      "historical-runtime/visual-rework-v97/dist/assets/terrace/units/reading-cream-muse-white-cat-v1.webp",
+      "historical-runtime/visual-rework-v97/retirement.json",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/baseline.json",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/.agents/rules/design.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/AGENTS.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/DESIGN.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/README.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/design-qa.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/design/static-publish-manifest.json",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/design/studio-visual-interaction-system.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/brand-mark.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/animal-gray-husky.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/animal-white-cat.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/dots-lilac-bucket.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/dots-rose-glasses.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/grok-green-cloud.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/grok-teal-square.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/human-blond-glasses.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/human-bun-yellow.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/muse-rose-flowers.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/looks/muse-sage-reading.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/animal-gray-husky-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/animal-white-cat-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/brand-mark-display-v1.png",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/candidate-animals-20261005-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/candidate-dots-20261005-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/candidate-grok-20261005-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/candidate-humans-20261005-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/dots-lilac-bucket-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/dots-rose-glasses-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/grok-green-cloud-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/grok-teal-square-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/human-blond-glasses-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/human-bun-yellow-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/muse-rose-flowers-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/posters/muse-sage-reading-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/terrace/terrace-background-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/terrace/units/distant-lilac-dots-green-grok-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/terrace/units/mid-collaboration-four-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/terrace/units/near-shiba-rose-dots-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/assets/terrace/units/reading-cream-muse-white-cat-v1.webp",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/index.html",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-actions.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-artwork-catalog.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-asset-loader.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-content.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-detail.css",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-detail.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-home.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-i18n.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-motion.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-overlay.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-prompt.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-router.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-scenes.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-tag-browser.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio-tags.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio.css",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/dist/studio.js",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/openspec/changes/simplify-reveal-cards-and-staging/design.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/package.json",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/build-studio.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-artwork-catalog.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-artwork-query.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-implementation-safety.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-motion.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-publish-inventory.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-reference-detail.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-router.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-studio-browser.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/scripts/verify-transparent-output.mjs",
+      "openspec/changes/simplify-reveal-cards-and-staging/implementation/visual-rework-v97/source-before/vite.config.mjs"
+    ],
+    "protectedV96Evidence": true,
+    "protectedApprovedArtworkPrefixes": [
+      "dist/assets/characters/",
+      "dist/assets/looks/"
+    ]
+  }
+}

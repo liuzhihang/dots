@@ -2,226 +2,260 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
-import { fileURLToPath } from 'node:url';
-import { execFileSync } from 'node:child_process';
-import { ARTWORKS, ASSETS, getAsset, isEligible } from '../dist/studio-artwork-catalog.js';
-import { HERO_SCENES, FAMILY_SCENES } from '../dist/studio-scenes.js';
+import {execFileSync} from 'node:child_process';
+import {verifySafety} from './verify-implementation-safety.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const snapshotRelativePath = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
-const retirementRelativePath = 'design/acceptance/current-20261007-v87/asset-retirement.json';
-const allowedModules = new Set([
-  'index.html', 'studio.js', 'studio.css', 'studio-home.js', 'studio-scenes.js',
-  'studio-tags.js', 'studio-tag-browser.js', 'studio-overlay.js', 'studio-artwork-catalog.js',
-  'studio-prompt.js', 'studio-asset-loader.js', 'studio-draw.js', 'studio-actions.js',
-  'studio-detail.js', 'studio-detail.css', 'studio-reference.js',
-  'studio-fullscreen-random.js', 'studio-fullscreen-random.css', 'studio-feature-visuals.js', 'studio-reveal-visual-assets.js'
-]);
-const seenModules = new Set();
-const moduleHashes = [];
+const root = path.resolve(import.meta.dirname, '..');
+const revision = 98;
+const cacheQuery = `?v=${revision}`;
+const catalogRevision = `artwork-catalog-20261009-v${revision}`;
+const evidenceDirectory = `design/acceptance/current-20261009-v${revision}`;
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 
-async function visitModule(name) {
-  assert(allowedModules.has(name), `Unapproved production module: ${name}`);
-  if (seenModules.has(name)) return;
-  seenModules.add(name);
-  const absolute = path.join(root, 'dist', name);
-  const bytes = await fs.readFile(absolute);
-  moduleHashes.push({ path: `dist/${name}`, sha256: hash(bytes), bytes: bytes.length });
-  const source = bytes.toString();
-  if (name.endsWith('.js')) {
-    execFileSync(process.execPath, ['--check', absolute]);
-    assert(!/\b(?:CharacterRecipe|FitProfile|makeProject|Three|buildCreationPrompt)\b/.test(source), `Retired dependency in ${name}`);
-    const references = [...source.matchAll(/(?:from\s*|import\s*\()(['"])(\.\/[^'"]+)\1/g)].map(match => match[2]);
-    for (const reference of references) {
-      assert(reference.endsWith('?v=92'), `Mixed module cache: ${name} -> ${reference}`);
-      await visitModule(reference.slice(2).split('?')[0]);
-    }
-  }
-  if (name === 'index.html') {
-    for (const match of source.matchAll(/(?:src|href)="(?:\.\/)?(studio[^"?]+)\?v=92"/g)) await visitModule(match[1]);
-  }
-}
-
-async function filesBelow(relativeDirectory) {
-  const absoluteDirectory = path.join(root, relativeDirectory);
+export async function listTree(dir) {
   const result = [];
-  async function walk(absolute, relative) {
-    for (const entry of await fs.readdir(absolute, { withFileTypes: true })) {
-      const childAbsolute = path.join(absolute, entry.name);
-      const childRelative = path.posix.join(relative, entry.name);
-      if (entry.isDirectory()) await walk(childAbsolute, childRelative);
-      else {
-        assert(entry.isFile(), `Unexpected non-file static resource: ${childRelative}`);
-        result.push(childRelative);
-      }
-    }
+  for (const entry of await fs.readdir(dir, {withFileTypes: true})) {
+    const filePath = path.join(dir, entry.name);
+    assert(!entry.isSymbolicLink(), `Symlink is not a publish file: ${filePath}`);
+    result.push(...entry.isDirectory() ? await listTree(filePath) : [filePath]);
   }
-  await walk(absoluteDirectory, relativeDirectory);
   return result.sort();
 }
 
-function addPublishedPath(target, candidate, label) {
-  assert.equal(typeof candidate, 'string', `${label} must have a published path`);
-  assert(candidate.startsWith('dist/assets/'), `${label} must resolve inside dist/assets: ${candidate}`);
-  const segments = candidate.split('/');
-  assert(!segments.some(segment => !segment || segment === '.' || segment === '..'), `${label} contains an unsafe path: ${candidate}`);
-  target.add(candidate);
+export function checkInventory(actual, expected) {
+  assert(Array.isArray(expected), 'Publish manifest files must be an array');
+  assert.equal(new Set(expected).size, expected.length, 'Duplicate publish path');
+  for (const filePath of expected) {
+    assert(isSafePublishPath(filePath), `Unsafe published path: ${filePath}`);
+  }
+  assert.deepEqual(actual.slice().sort(), expected.slice().sort(), 'Publish tree differs from explicit manifest (missing or orphan file)');
 }
 
-await visitModule('index.html');
-
-const expectedAssetPaths = new Set();
-const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
-for (const match of html.matchAll(/(?:src|href)=["'](?:\.\/)?(assets\/[^"'?#]+)["']/g)) {
-  addPublishedPath(expectedAssetPaths, `dist/${match[1]}`, `HTML asset ${match[1]}`);
+function isSafePublishPath(filePath) {
+  return typeof filePath === 'string' && /^dist\/(?!.*(?:\.\.|\\)).+/.test(filePath);
 }
 
-const eligibleArtworks = ARTWORKS.filter(isEligible);
-assert(eligibleArtworks.length > 0, 'The published Artwork catalog cannot be empty.');
-const usedArtworkAssetIds = new Set();
-const usedRevealAssetIds = new Set();
-for (const artwork of eligibleArtworks) {
-  const asset = getAsset(artwork.assetRefs?.original);
-  assert(asset, `${artwork.id} must reference a registered original asset.`);
-  assert.equal(asset.publicationStatus, 'published', `${artwork.id} original must be published.`);
-  assert.equal(typeof asset.path, 'string', `${artwork.id} original must have a runtime path.`);
-  usedArtworkAssetIds.add(asset.id);
-  addPublishedPath(expectedAssetPaths, `dist/${asset.path.slice(2)}`, `Artwork ${artwork.id}`);
+export function checkPreviewOnlyFiles(files, previewOnlyFiles) {
+  assert(Array.isArray(files), 'Publish manifest files must be an array');
+  assert(Array.isArray(previewOnlyFiles), 'Publish manifest previewOnlyFiles must be an array');
+  assert.equal(new Set(previewOnlyFiles).size, previewOnlyFiles.length, 'Duplicate preview-only path');
+  const published = new Set(files);
+  for (const filePath of previewOnlyFiles) {
+    assert(isSafePublishPath(filePath), `Unsafe preview-only path: ${filePath}`);
+    assert(published.has(filePath), `Preview-only file is outside the published dist tree: ${filePath}`);
+  }
+  return previewOnlyFiles.slice().sort();
 }
 
-const originalAssetPaths = new Set(expectedAssetPaths);
-for (const artwork of eligibleArtworks) {
-  for (const visual of Object.values(artwork.revealVisuals || {})) {
-    if (visual.kind !== 'dedicated-asset') continue;
-    const asset = getAsset(visual.assetRef);
-    assert(asset?.displayOnly && asset.resourceKind === 'reveal-illustration', `${artwork.id} independent reveal resource`);
-    assert.equal(visual.assetVersion, asset.version);
-    assert.equal(visual.assetSha256, asset.sha256);
-    usedRevealAssetIds.add(asset.id);
-    addPublishedPath(expectedAssetPaths, `dist/${asset.path.slice(2)}`, `Reveal ${asset.id}`);
+function assetPathFromReference(reference) {
+  assert.equal(typeof reference, 'string', 'Asset reference must be a string');
+  assert(reference.startsWith('./assets/'), `Asset must be a local published resource: ${reference}`);
+  const relativePath = path.posix.normalize(reference.slice(2));
+  assert(relativePath.startsWith('assets/'), `Asset path escapes the published asset directory: ${reference}`);
+  assert(!relativePath.startsWith('../') && !path.posix.isAbsolute(relativePath), `Unsafe asset path: ${reference}`);
+  return `dist/${relativePath}`;
+}
+
+async function verifyRegisteredAsset(asset, actual, expectedAssets) {
+  const filePath = assetPathFromReference(asset?.path);
+  expectedAssets.add(filePath);
+  assert(actual.includes(filePath), `Registered asset missing ${asset.id ?? filePath}`);
+  assert.match(asset.sha256 ?? '', /^[a-f0-9]{64}$/, `Registered asset ${asset.id ?? filePath} has no SHA-256`);
+  assert.equal(hash(await fs.readFile(path.join(root, filePath))), asset.sha256, `Asset hash ${asset.id ?? filePath}`);
+}
+
+async function verifySceneAsset(resource, viewport, actual, expectedAssets) {
+  const filePath = assetPathFromReference(resource?.src);
+  expectedAssets.add(filePath);
+  assert(actual.includes(filePath), `Scene ${viewport} asset missing: ${filePath}`);
+  assert.match(resource.sha256 ?? '', /^[a-f0-9]{64}$/, `Scene ${viewport} asset has no SHA-256`);
+  assert.equal(hash(await fs.readFile(path.join(root, filePath))), resource.sha256, `Scene ${viewport} asset hash`);
+}
+
+function readModuleDependencies(source, filePath) {
+  const dependencies = [...source.matchAll(/(?:from\s*|import\s*\()(['"])(\.\/[^'"]+\.js(?:\?[^'"]*)?)\1/g)]
+    .map(match => match[2]);
+  if (filePath.endsWith('.html')) {
+    dependencies.push(...[...source.matchAll(/(?:src|href)="\.\/(studio[^"?]+)(?:\?([^"]*))?"/g)]
+      .map(match => `./${match[1]}${match[2] === undefined ? '' : `?${match[2]}`}`));
+  }
+  return dependencies;
+}
+
+function collectHtmlAssets(source, expectedAssets) {
+  for (const match of source.matchAll(/(?:src|href)="\.\/(assets\/[^"?#]+)"/g)) {
+    expectedAssets.add(`dist/${match[1]}`);
   }
 }
 
-const activeScenes = [...HERO_SCENES, ...Object.values(FAMILY_SCENES)];
-for (const scene of activeScenes) {
-  assert.equal(typeof scene.src, 'string');
-  assert(scene.src.startsWith('assets/'), `Scene ${scene.id} must reference a local asset.`);
-  addPublishedPath(expectedAssetPaths, `dist/${scene.src}`, `Scene ${scene.id}`);
-  addPublishedPath(originalAssetPaths, `dist/${scene.src}`, `Scene ${scene.id}`);
-}
-
-for (const asset of ASSETS) {
-  if (asset.displayOnly) {
-    assert(usedRevealAssetIds.has(asset.id), `${asset.id} has no live reveal usage`);
-    assert(['candidate-preview', 'published'].includes(asset.publicationStatus));
-    if (asset.publicationStatus === 'candidate-preview') assert.equal(asset.artApproval.status, 'pending', 'Candidate preview cannot claim user art approval');
-    else assert(asset.artApproval.status === 'approved' && asset.artApproval.record && asset.artApproval.assetSha256 === asset.sha256, 'Published reveal visuals need approval tied to exact bytes');
-    continue;
-  }
-  if (asset.publicationStatus === 'published') {
-    assert.equal(typeof asset.path, 'string', `${asset.id} is published but has no runtime path.`);
-    assert(usedArtworkAssetIds.has(asset.id), `${asset.id} is marked published but is not used by an eligible Artwork.`);
-  } else {
-    assert.equal(asset.path, null, `${asset.id} is not published and must not resolve from the runtime tree.`);
-    assert.equal(asset.publicationStatus, 'pending-individual-approval', `${asset.id} has an unknown publication status.`);
+function collectCssAssets(source, expectedAssets) {
+  for (const match of source.matchAll(/url\(\s*(['"]?)(\.\/assets\/[^'")?#]+)\1(?:\?[^'")]+)?\s*\)/g)) {
+    expectedAssets.add(assetPathFromReference(match[2]));
   }
 }
 
-const snapshot = JSON.parse(await fs.readFile(path.join(root, snapshotRelativePath), 'utf8'));
-const snapshotFiles = new Map(snapshot.files.map(file => [file.path, file]));
-assert(snapshot.frozen === true, 'The source snapshot must remain frozen.');
-
-for (const asset of ASSETS.filter(asset => !asset.displayOnly)) {
-  assert.equal(asset.sourceSnapshotMatch, true, `${asset.id} is missing source snapshot verification.`);
-  assert.equal(typeof asset.sourcePath, 'string');
-  assert(!path.posix.isAbsolute(asset.sourcePath) && !asset.sourcePath.split('/').includes('..'), `${asset.id} has an unsafe source path.`);
-  const snapshotPath = asset.sourceSnapshotRef?.split('#')[1];
-  const frozen = snapshotFiles.get(snapshotPath);
-  assert(frozen, `${asset.id} source snapshot reference is missing: ${snapshotPath}`);
-  const sourceBytes = await fs.readFile(path.join(root, asset.sourcePath));
-  assert.equal(sourceBytes.length, asset.byteSize, `${asset.id} source byte size`);
-  assert.equal(hash(sourceBytes), asset.sha256, `${asset.id} source SHA-256`);
-  assert.equal(frozen.bytes, asset.byteSize, `${asset.id} frozen source byte size`);
-  assert.equal(frozen.sha256, asset.sha256, `${asset.id} frozen source SHA-256`);
+function placementIsValid(placement) {
+  if (!placement || typeof placement !== 'object') return false;
+  const geometryValid = ['x', 'y', 'w', 'h'].every(key => {
+    const value = placement[key];
+    return Number.isFinite(value) || (typeof value === 'string' && /^\d+(?:\.\d+)?%$/.test(value));
+  });
+  const contour = placement.contour;
+  return geometryValid && Array.isArray(contour) && contour.length >= 6
+    && contour.every(point => Array.isArray(point) && point.length === 2
+      && point.every(value => Number.isFinite(value) && value >= 0 && value <= 100));
 }
 
-const retirement = JSON.parse(await fs.readFile(path.join(root, retirementRelativePath), 'utf8'));
-assert.equal(retirement.sourceSnapshot, snapshotRelativePath);
-assert.equal(retirement.sourceSnapshotEdited, false);
-assert.equal(retirement.retainedCount, retirement.retained.length);
-assert.equal(retirement.retiredCount, retirement.moved.length);
-const retainedByPath = new Map(retirement.retained.map(item => [item.path, item]));
-const movedByOriginalPath = new Map(retirement.moved.map(item => [item.originalPath, item]));
-assert.deepEqual([...retainedByPath.keys()].sort(), [...originalAssetPaths].sort(), 'Retained asset evidence must match the live Artwork, current scenes, and HTML asset references exactly.');
-for (const [relativePath, item] of retainedByPath) {
-  const bytes = await fs.readFile(path.join(root, relativePath));
-  assert.equal(bytes.length, item.byteSize, `${relativePath} retained byte size`);
-  assert.equal(hash(bytes), item.sha256, `${relativePath} retained SHA-256`);
-}
-for (const [originalPath, item] of movedByOriginalPath) {
-  assert(item.sourcePath.startsWith('historical-runtime/retired-assets/'), `${originalPath} is not archived outside publication.`);
-  const frozen = snapshotFiles.get(originalPath);
-  assert(frozen, `${originalPath} is absent from the frozen source snapshot.`);
-  assert.equal(item.sourceSnapshotMatch, true, `${originalPath} archival source match`);
-  const bytes = await fs.readFile(path.join(root, item.sourcePath));
-  assert.equal(bytes.length, item.byteSize, `${originalPath} archived byte size`);
-  assert.equal(hash(bytes), item.sha256, `${originalPath} archived SHA-256`);
-  assert.equal(frozen.bytes, item.byteSize, `${originalPath} frozen byte size`);
-  assert.equal(frozen.sha256, item.sha256, `${originalPath} frozen SHA-256`);
-}
+export async function build() {
+  const manifest = JSON.parse(await fs.readFile(path.join(root, 'design/static-publish-manifest.json'), 'utf8'));
+  assert.equal(manifest.revision, revision, `Publish manifest must use revision ${revision}`);
 
-const expectedDistFiles = new Set([...seenModules].map(name => `dist/${name}`));
-for (const assetPath of expectedAssetPaths) expectedDistFiles.add(assetPath);
-const actualDistFiles = await filesBelow('dist');
-assert.deepEqual(actualDistFiles, [...expectedDistFiles].sort(), 'dist must contain only current modules and assets required by the Artwork catalog, scenes, and static HTML.');
+  const actual = (await listTree(path.join(root, 'dist'))).map(filePath => path.relative(root, filePath));
+  checkInventory(actual, manifest.files);
+  const manifestPreviewFiles = checkPreviewOnlyFiles(manifest.files, manifest.previewOnlyFiles);
 
-for (const artwork of eligibleArtworks) {
-  const asset = getAsset(artwork.assetRefs.original);
-  const bytes = await fs.readFile(path.join(root, 'dist', asset.path.slice(2)));
-  assert.equal(hash(bytes), asset.sha256, `${asset.path} published Artwork SHA-256`);
-  assert.equal(bytes.length, asset.byteSize, `${asset.path} published Artwork byte size`);
-  assert.equal(bytes.toString('hex', 0, 8), '89504e470d0a1a0a', `${asset.path} PNG signature`);
-  assert.equal(bytes.readUInt32BE(16), asset.width, `${asset.path} PNG width`);
-  assert.equal(bytes.readUInt32BE(20), asset.height, `${asset.path} PNG height`);
-}
+  const modules = actual.filter(filePath => /\.(?:js|css|html)$/.test(filePath));
+  const seen = new Set();
+  const references = new Map();
 
-// New display-only resources have their own current provenance, never a fabricated v83 approval.
-for (const asset of ASSETS.filter(asset => asset.displayOnly)) {
-  assert(asset.sourceRef && asset.sourcePath === `dist/${asset.path.slice(2)}`);
-  const bytes = await fs.readFile(path.join(root, asset.sourcePath));
-  assert.equal(bytes.length, asset.byteSize, `${asset.id} byte size`);
-  assert.equal(hash(bytes), asset.sha256, `${asset.id} SHA-256`);
-  if (asset.mime === 'image/svg+xml') {
-    const svg = bytes.toString('utf8');
-    assert(svg.startsWith('<svg') && /<\/svg>\s*$/.test(svg), `${asset.id} standalone SVG`);
-    assert.equal(Number(svg.match(/\bwidth="(\d+)"/)?.[1]), asset.width);
-    assert.equal(Number(svg.match(/\bheight="(\d+)"/)?.[1]), asset.height);
-    assert(!/<(?:script|foreignObject|image|iframe|object|embed)\b|\bon\w+\s*=|<!DOCTYPE|<!ENTITY/i.test(svg));
-  } else {
-    assert.equal(asset.mime, 'image/png');
-    assert.equal(bytes.toString('hex', 0, 8), '89504e470d0a1a0a');
-    assert.equal(bytes.readUInt32BE(16), asset.width);
-    assert.equal(bytes.readUInt32BE(20), asset.height);
+  for (const filePath of modules) {
+    const source = await fs.readFile(path.join(root, filePath), 'utf8');
+    if (filePath.endsWith('.js')) execFileSync(process.execPath, ['--check', path.join(root, filePath)]);
+
+    const dependencies = readModuleDependencies(source, filePath);
+    for (const reference of dependencies) {
+      assert(reference.endsWith(cacheQuery), `Mixed module cache: ${filePath} ${reference}`);
+      const destination = path.posix.join(path.posix.dirname(filePath), reference.split('?')[0]);
+      assert(actual.includes(destination), `Missing import ${destination}`);
+    }
+    references.set(filePath, dependencies.map(reference => path.posix.join(path.posix.dirname(filePath), reference.split('?')[0])));
   }
+
+  const visit = filePath => {
+    if (seen.has(filePath)) return;
+    seen.add(filePath);
+    for (const dependency of references.get(filePath) ?? []) visit(dependency);
+  };
+  visit('dist/index.html');
+  for (const filePath of modules) assert(seen.has(filePath), `Orphan runtime module: ${filePath}`);
+
+  const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
+  assert(html.includes(`data-cache="${revision}"`), `HTML cache ${revision}`);
+
+  const catalog = await import('../dist/studio-artwork-catalog.js');
+  assert.equal(catalog.CATALOG_REVISION, catalogRevision);
+  const expectedAssets = new Set();
+
+  assert(Array.isArray(catalog.PREVIEW_ARTWORKS), 'PREVIEW_ARTWORKS must be an explicit array');
+  assert(Array.isArray(catalog.PREVIEW_ASSETS), 'PREVIEW_ASSETS must be an explicit array');
+  assert(Array.isArray(catalog.PREVIEW_PROMPTS), 'PREVIEW_PROMPTS must be an explicit array');
+  assert.equal(catalog.ARTWORKS.length, 15, 'The approved artwork set must remain the original 15 items');
+  const previewFiles = new Set();
+  const approvedArtworks = catalog.ARTWORKS.filter(catalog.isEligible);
+  assert.equal(approvedArtworks.length, 15, 'All 15 existing artworks must retain their approved eligibility');
+  for (const artwork of approvedArtworks) {
+    assert(!catalog.isPreviewArtwork(artwork), `Pending Artwork leaked into ARTWORKS: ${artwork.id}`);
+    assert(catalog.canOpenArtwork(artwork.id, artwork.version), `Approved Artwork cannot open ${artwork.id}`);
+    const original = catalog.getAsset(artwork.assetRefs?.original);
+    assert(original, `Artwork ${artwork.id} has no registered original asset`);
+    assert.equal(artwork.version, original.version, `Artwork/source version mismatch ${artwork.id}`);
+    await verifyRegisteredAsset(original, actual, expectedAssets);
+  }
+
+  for (const artwork of catalog.PREVIEW_ARTWORKS) {
+    assert(catalog.isPreviewArtwork(artwork), `Preview Artwork status is invalid: ${artwork.id}`);
+    assert(!catalog.isEligible(artwork), `Preview Artwork is eligible for publication: ${artwork.id}`);
+    assert(catalog.canOpenArtwork(artwork.id, artwork.version), `Registered preview Artwork cannot open ${artwork.id}`);
+    const snapshot = catalog.createSnapshot(artwork.id, {allowPreview: true});
+    assert(snapshot?.artwork && snapshot.asset && snapshot.prompt, `Preview Artwork snapshot is incomplete: ${artwork.id}`);
+    assert.equal(snapshot.artwork.version, artwork.version, `Preview snapshot version mismatch: ${artwork.id}`);
+    assert.equal(snapshot.asset.ownerArtworkId, artwork.id, `Preview source binding mismatch: ${artwork.id}`);
+  }
+
+  const {BRAND_ASSETS} = await import('../dist/studio-content.js');
+  for (const asset of [...catalog.ASSETS, ...catalog.PREVIEW_ASSETS, ...BRAND_ASSETS].filter(item => item.path)) {
+    await verifyRegisteredAsset(asset, actual, expectedAssets);
+  }
+  for (const asset of catalog.PREVIEW_ASSETS.filter(item => item.path)) {
+    assert.equal(asset.publicationStatus, 'preview-only', `Preview asset status is invalid: ${asset.id}`);
+    previewFiles.add(assetPathFromReference(asset.path));
+  }
+
+  const scenes = await import('../dist/studio-scenes.js');
+  const hero = catalog.getArtwork(scenes.HERO_ARTWORK?.id);
+  assert(hero, 'Hero prompt must reference a registered Artwork');
+  assert.equal(hero.version, scenes.HERO_ARTWORK.version, 'Hero Prompt binding');
+
+  const requiredViewports = ['desktop', 'tablet', 'mobile'];
+  for (const viewport of requiredViewports) assert(scenes.SCENE_ART?.[viewport], `Scene art must provide ${viewport} composition`);
+  const sceneViewports = Object.keys(scenes.SCENE_ART).sort();
+  assert.deepEqual(sceneViewports, requiredViewports.slice().sort(), 'Scene art must contain only desktop, tablet, and mobile compositions');
+  for (const viewport of requiredViewports) {
+    const resource = scenes.SCENE_ART[viewport];
+    assert(Number.isInteger(resource.width) && resource.width > 0 && Number.isInteger(resource.height) && resource.height > 0, `Scene ${viewport} dimensions are invalid`);
+    assert(resource.artApproval, `Scene ${viewport} must record its art approval status`);
+    await verifySceneAsset(resource, viewport, actual, expectedAssets);
+    const approval = typeof resource.artApproval === 'string' ? resource.artApproval : resource.artApproval.status;
+    if (!['approved', 'approved-for-declared-scope'].includes(approval)) previewFiles.add(assetPathFromReference(resource.src));
+  }
+
+  assert(Array.isArray(scenes.SCENE_CHARACTERS), 'SCENE_CHARACTERS must be an array');
+  assert(scenes.SCENE_CHARACTERS.length > 0, 'Scene must contain at least one registered character');
+  const sceneArtworkIds = new Set();
+  const visibleByViewport = Object.fromEntries(requiredViewports.map(viewport => [viewport, 0]));
+  for (const character of scenes.SCENE_CHARACTERS) {
+    assert(character?.artworkId && character?.artworkVersion, 'Every scene character requires an Artwork ID and version');
+    assert(!sceneArtworkIds.has(character.artworkId), `Duplicate scene character ${character.artworkId}`);
+    sceneArtworkIds.add(character.artworkId);
+
+    const artwork = catalog.getArtwork(character.artworkId);
+    assert(artwork, `Scene character is not registered: ${character.artworkId}`);
+    assert(catalog.canOpenArtwork(character.artworkId, character.artworkVersion), `Scene character is not valid for shared detail: ${character.artworkId}`);
+    if (catalog.isPreviewArtwork(artwork)) assert(!catalog.isEligible(artwork), `Preview scene character is publication-eligible: ${character.artworkId}`);
+    else assert(catalog.isEligible(artwork), `Scene character is neither approved nor a valid preview: ${character.artworkId}`);
+    assert.equal(artwork.version, character.artworkVersion, `Scene version ${character.artworkId}`);
+    for (const viewport of requiredViewports) {
+      assert(Object.hasOwn(character, viewport), `Missing ${viewport} placement for ${character.artworkId}`);
+      const placement = character[viewport];
+      assert(placement === null || placementIsValid(placement), `Invalid ${viewport} placement or contour for ${character.artworkId}`);
+      if (placement) visibleByViewport[viewport]++;
+    }
+  }
+  for (const viewport of requiredViewports) assert(visibleByViewport[viewport] > 0, `Scene ${viewport} has no interactive characters`);
+
+  for (const filePath of modules) {
+    const source = await fs.readFile(path.join(root, filePath), 'utf8');
+    if (filePath.endsWith('.html')) collectHtmlAssets(source, expectedAssets);
+    if (filePath.endsWith('.css')) collectCssAssets(source, expectedAssets);
+  }
+  checkInventory(actual.filter(filePath => filePath.startsWith('dist/assets/')), [...expectedAssets]);
+  assert.deepEqual(manifestPreviewFiles, [...previewFiles].sort(), 'previewOnlyFiles must exactly match registered pending Artwork and Scene assets');
+
+  const safety = await verifySafety();
+  const files = [];
+  for (const filePath of actual) {
+    const bytes = await fs.readFile(path.join(root, filePath));
+    files.push({path: filePath, bytes: bytes.length, sha256: hash(bytes)});
+  }
+
+  const report = {
+    revision,
+    evidenceDirectory,
+    scope: 'v98 static engineering validation only; it does not establish visual approval or deployment authorization. Pending resources remain inside the complete dist/Sites static.directory tree.',
+    deploymentReady: false,
+    deploymentBlockers: ['pending-preview-and-scene-resources', 'no-deployment-authorization'],
+    approvedArtworkCount: approvedArtworks.length,
+    previewArtworkCount: catalog.PREVIEW_ARTWORKS.length,
+    fileCount: files.length,
+    files,
+    safety,
+  };
+  await fs.mkdir(path.join(root, evidenceDirectory), {recursive: true});
+  await fs.writeFile(path.join(root, `${evidenceDirectory}/build-report.json`), `${JSON.stringify(report, null, 2)}\n`);
+  return report;
 }
 
-const packageData = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
-assert(!packageData.dependencies?.three);
-assert(!packageData.devDependencies?.esbuild);
-const report = {
-  schema: 2,
-  cache: 92,
-  modules: moduleHashes.sort((a, b) => a.path.localeCompare(b.path)),
-  publishedArtworks: eligibleArtworks.map(artwork => artwork.id),
-  publishedAssetPaths: [...expectedAssetPaths].sort(),
-  retainedAssetCount: originalAssetPaths.size,
-  revealDisplayAssetCount: usedRevealAssetIds.size,
-  revealVisualArtApproval: 'pending-user-review',
-  retiredAssetCount: retirement.moved.length,
-  staticDirectory: 'dist',
-  destructiveBuild: false
-};
-const reportPath = process.env.DOTS_BUILD_REPORT;
-if (reportPath) await fs.writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`);
-console.log(`Static production source validated: ${seenModules.size} entry/module/style files, ${eligibleArtworks.length} Artwork originals, ${expectedAssetPaths.size} published assets, ${retirement.moved.length} byte-verified historical assets. No source directory is emptied.`);
+if (process.argv[1] === import.meta.filename) {
+  const report = await build();
+  console.log(`Static v${revision} build: ${report.fileCount} files; ${report.safety.protectedCount} baseline hashes preserved.`);
+}

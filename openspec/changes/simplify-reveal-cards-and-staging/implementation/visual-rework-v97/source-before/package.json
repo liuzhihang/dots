@@ -1,0 +1,15 @@
+{
+  "name": "dot-icon-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config vite.config.mjs",
+    "build": "node scripts/build-studio.mjs",
+    "test": "node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-reference-detail.mjs && node scripts/verify-motion.mjs && node scripts/verify-publish-inventory.mjs && node scripts/verify-router.mjs",
+    "test:browser": "node scripts/verify-studio-browser.mjs",
+    "test:downloads": "node scripts/verify-transparent-output.mjs"
+  },
+  "devDependencies": {
+    "vite": "8.3.2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "message": "Scene has real independently selectable characters",
+  "stack": "AssertionError [ERR_ASSERTION]: Scene has real independently selectable characters\n    at file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-browser.mjs:32:355\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:473:9)\n    at process.callbackTrampoline (node:internal/async_hooks:130:17)",
+  "checks": [
+    "gallery loads optimized posters, not all original PNGs",
+    "search, no results and clear search",
+    "series AND search, shared details, Escape/source query/focus and forward",
+    "real browser clipboard equals original English Prompt",
+    "real download preserves registered original bytes",
+    "collapsed edit retains replacement text without changing original title",
+    "Chinese interface and Prompt use same selected version",
+    "all 15 direct detail URLs use correct original dimensions and versions",
+    "direct detail reload closes safely to gallery",
+    "unknown IDs, versions and retired routes show recovery"
+  ],
+  "errors": []
+}

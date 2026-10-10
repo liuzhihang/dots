@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import {checkInventory,checkPreviewOnlyFiles} from './build-studio.mjs';
+const valid=['dist/index.html','dist/new-approved.png'];
+checkInventory(valid,valid);
+assert.throws(()=>checkInventory([...valid,'dist/orphan.png'],valid));
+assert.throws(()=>checkInventory([valid[0]],valid));
+assert.throws(()=>checkInventory(['dist/../secrets'],['dist/../secrets']));
+assert.throws(()=>checkInventory(valid,[...valid,valid[0]]));
+const preview=['dist/new-preview.png'];
+assert.deepEqual(checkPreviewOnlyFiles([...valid,...preview],preview),preview);
+assert.throws(()=>checkPreviewOnlyFiles(valid,['dist/not-in-publish-tree.png']));
+assert.throws(()=>checkPreviewOnlyFiles(valid,['dist/../outside.png']));
+assert.throws(()=>checkPreviewOnlyFiles([...valid,...preview],[...preview,...preview]));
+console.log('Publish inventory: full dist closure and preview-only subset fixtures passed');

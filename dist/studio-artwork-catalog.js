@@ -1,4 +1,5 @@
-import { REVEAL_VISUAL_ASSETS } from './studio-reveal-visual-assets.js?v=92';
+import { ARTWORK_CONTENT, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, PREVIEW_PROMPT_ROWS, SERIES } from './studio-content.js?v=98';
+export { SERIES };
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -6,7 +7,7 @@ const deepFreeze = value => {
   return Object.freeze(value);
 };
 
-export const CATALOG_REVISION = 'artwork-catalog-20261007-v92';
+export const CATALOG_REVISION = 'artwork-catalog-20261009-v98';
 
 const SOURCE_SNAPSHOT = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
 const ART_APPROVAL_RECORD = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json';
@@ -28,11 +29,6 @@ const assetRows = [
   ['asset:human-blond-glasses:original', 'v1', './assets/looks/human-blond-glasses.png', 1058375, '84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6', 1254, 1254, [1099076, 410, 473030], 'human-blond-glasses', 'artwork'],
   ['asset:animal-white-cat:original', 'v1', './assets/looks/animal-white-cat.png', 1382027, '6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a', 1254, 1254, [790208, 16, 782292], 'animal-white-cat', 'artwork'],
   ['asset:animal-gray-husky:original', 'v1', './assets/looks/animal-gray-husky.png', 1623665, '21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca', 1254, 1254, [790161, 24, 782331], 'animal-gray-husky', 'artwork'],
-  ['asset:pose-dots-wink:v1', 'v1', null, 1136161, '4fbeb4da84da597e7bcc9533012ca7659e1a12a6e20bd479f098e4da7c805ac1', 1254, 1254, [987842, 240, 584434], 'candidate-dots-20261005', 'pose-candidate', 'historical-runtime/retired-assets/dist/assets/poses/dots-wink-v1.png'],
-  ['asset:pose-grok-wink:v1', 'v1', null, 732939, '0e1543e89fe3e7d21ee6830e7a9435ad1d8cfca59ab1a16fec686c4a48211e86', 1254, 1254, [929630, 993, 641893], 'candidate-grok-20261005', 'pose-candidate', 'historical-runtime/retired-assets/dist/assets/poses/grok-wink-v1.png'],
-  ['asset:pose-human-wave:v1', 'v1', null, 786370, 'a3dde33c5ab00f21a735dcb0373e584e954c615d1108332ba40d1924b8e8b308', 1254, 1254, [1230684, 475, 341357], 'candidate-humans-20261005', 'pose-candidate', 'historical-runtime/retired-assets/dist/assets/poses/human-wave-v1.png'],
-  ['asset:pose-muse-wave:v1', 'v1', null, 1073265, 'bd4a5fb9c81fabcb751c6943dbeea52515c92a4f6b2f80335582e485487cb6e1', 1254, 1254, [933354, 136, 639026], 'candidate-meta-muse-20261005', 'pose-candidate', 'historical-runtime/retired-assets/dist/assets/poses/muse-wave-v1.png'],
-  ['asset:pose-shiba-wave:v1', 'v1', null, 697164, '8b3d1417cf4af554b6cbe8f3a0589dd24d0f07db98832b704c5b9a965548651c', 1254, 1254, [1219688, 37, 352791], 'candidate-animals-20261005', 'pose-candidate', 'historical-runtime/retired-assets/dist/assets/poses/shiba-wave-v1.png']
 ];
 
 // Cache 90 alpha scan, threshold >= 1. These are source-image pixel bounds;
@@ -55,43 +51,30 @@ const visibleBoundsByAsset = {
   'asset:animal-gray-husky:original': { x: 0, y: 23, width: 1230, height: 1231, alphaThreshold: 1 }
 };
 
-const makeApproval = (artworkId, asset) => asset.resourceKind === 'transparent-character-still'
-  ? {
-      status: 'approved',
-      record: ART_APPROVAL_RECORD,
-      sourceSnapshot: SOURCE_SNAPSHOT,
-      sourceId: V83_SOURCE_ID,
-      siteVersion: 35,
-      cacheRevision: '83',
-      scope: 'scope.registeredLooks',
-      artworkId,
-      assetSha256: asset.sha256,
-      note: '该Artwork ID列于v83 registeredLooks；当前资源hash与source-snapshot.json精确匹配。'
-    }
-  : {
-      status: 'pending',
-      record: ART_APPROVAL_RECORD,
-      sourceSnapshot: SOURCE_SNAPSHOT,
-      sourceId: V83_SOURCE_ID,
-      siteVersion: 35,
-      cacheRevision: '83',
-      scope: 'pose asset not individually listed in scope.registeredLooks',
-      artworkId,
-      assetSha256: asset.sha256,
-      note: '姿态资源已存在且source hash匹配，但v83逐项批准名单未列该pose asset ID；保留待核，不自动批准或否决。'
-    };
+const makeApproval = (artworkId, asset) => ({
+  status: 'approved',
+  record: ART_APPROVAL_RECORD,
+  sourceSnapshot: SOURCE_SNAPSHOT,
+  sourceId: V83_SOURCE_ID,
+  siteVersion: 35,
+  cacheRevision: '83',
+  scope: 'scope.registeredLooks',
+  artworkId,
+  assetSha256: asset.sha256,
+  note: '该Artwork ID列于v83 registeredLooks；当前资源hash与source-snapshot.json精确匹配。'
+});
 
-const artworkAssets = assetRows.map(([id, version, path, byteSize, sha256, width, height, alphaPixels, artworkId, kind, archivedSourcePath]) => {
-  const resourceKind = kind === 'artwork' ? 'transparent-character-still' : 'still-variant-candidate';
+const artworkAssets = assetRows.map(([id, version, path, byteSize, sha256, width, height, alphaPixels, artworkId]) => {
+  const resourceKind = 'transparent-character-still';
   const [transparentPixels, opaquePixels, partialAlphaPixels] = alphaPixels;
-  const sourcePath = archivedSourcePath || `dist/${path.slice(2)}`;
-  const snapshotPath = archivedSourcePath ? archivedSourcePath.replace('historical-runtime/retired-assets/', '') : `dist/${path.slice(2)}`;
+  const sourcePath = `dist/${path.slice(2)}`;
+  const snapshotPath = sourcePath;
   const asset = {
     id,
     version,
-    path: kind === 'artwork' ? path : null,
+    path,
     sourcePath,
-    publicationStatus: kind === 'artwork' ? 'published' : 'pending-individual-approval',
+    publicationStatus: 'published',
     sha256,
     mime: 'image/png',
     byteSize,
@@ -104,20 +87,50 @@ const artworkAssets = assetRows.map(([id, version, path, byteSize, sha256, width
     resourceKind,
     resourceStatus: 'verified-source',
     runtimeVerification: 'not-browser-checked',
-    sourceRef: kind === 'artwork' ? 'historical-runtime/dist/studio-creation-assets.js:16-17' : 'historical-runtime/dist/studio-creation-assets.js:117-121',
+    sourceRef: 'historical-runtime/dist/studio-creation-assets.js:16-17',
     sourceSnapshotRef: `${SOURCE_SNAPSHOT}#${snapshotPath}`,
     sourceSnapshotMatch: true,
     artApproval: makeApproval(artworkId, { resourceKind, sha256 }),
-    targetValidation: { status: 'not-target-tested', targetProfileIds: [] },
-    ownerArtworkId: artworkId,
-    candidateOnly: kind !== 'artwork'
+    ownerArtworkId: artworkId
   };
   return asset;
 });
-export const ASSETS = deepFreeze([...artworkAssets, ...REVEAL_VISUAL_ASSETS]);
+const originalAssetByArtworkId = new Map(artworkAssets.map(asset => [asset.ownerArtworkId, asset]));
+const posterAssets = POSTER_ASSETS.map(poster => {
+  const sourceAsset = originalAssetByArtworkId.get(poster.artworkId);
+  if (!sourceAsset) throw new Error(`Poster ${poster.id} has no registered original source`);
+  return {
+    ...poster,
+    publicationStatus: 'published-derivative',
+    resourceStatus: 'verified-local-derivative',
+    runtimeVerification: 'not-browser-checked',
+    sourceRef: `derived from ${sourceAsset.id} sha256:${sourceAsset.sha256}; ${poster.transformation}`,
+    sourceAssetId: sourceAsset.id,
+    sourceAssetSha256: sourceAsset.sha256,
+    sourceAssetSnapshotRef: sourceAsset.sourceSnapshotRef,
+    ownerArtworkId: poster.artworkId
+  };
+});
+export const ASSETS = deepFreeze([...artworkAssets, ...posterAssets]);
+export const PREVIEW_ASSETS = deepFreeze(PREVIEW_ORIGINAL_ASSETS.map(asset => ({
+  ...asset,
+  publicationStatus: 'preview-only',
+  resourceKind: asset.resourceKind || (asset.alpha?.hasTransparency ? 'transparent-character-still' : 'opaque-character-still'),
+  resourceStatus: 'verified-local-source',
+  runtimeVerification: 'not-browser-checked',
+  sourceSnapshotMatch: false,
+  artApproval: {
+    status: 'pending', record: null, sourceSnapshot: null, sourceId: null,
+    scope: 'local-preview-only', artworkId: asset.artworkId, assetSha256: asset.sha256,
+    note: '待用户美术确认；可供本地检查，不继承已有作品批准。'
+  },
+  ownerArtworkId: asset.artworkId
+})));
 
 const assetById = new Map(ASSETS.map(asset => [asset.id, asset]));
-const assetByPath = new Map(ASSETS.filter(asset => asset.path).map(asset => [asset.path, asset]));
+const previewAssetById = new Map(PREVIEW_ASSETS.map(asset => [asset.id, asset]));
+const allAssetById = new Map([...ASSETS, ...PREVIEW_ASSETS].map(asset => [asset.id, asset]));
+const assetByPath = new Map([...ASSETS, ...PREVIEW_ASSETS].filter(asset => asset.path).map(asset => [asset.path, asset]));
 
 const promptRows = [
   ['candidate-dots-20261005', '蓝色短绒圆球形 Dots，正面有一对黑色椭圆眼睛，佩戴黑色头带和紫色耳罩的包耳式耳机；不加嘴、手脚或其它配饰。保持单体居中、透明背景。', 'A blue short-pile plush orb-shaped Dots character, front-facing with two black oval eyes and over-ear headphones with a black headband and violet ear cups. Add no mouth, limbs, or other accessories. Keep the single character centered on a transparent background.'],
@@ -141,8 +154,11 @@ export const PROMPTS = deepFreeze(promptRows.flatMap(([artworkId, zh, en]) => [
   { id: `prompt:${artworkId}:zh-image`, artworkId, language: 'zh', target: 'image', text: zh, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' },
   { id: `prompt:${artworkId}:en-image`, artworkId, language: 'en', target: 'image', text: en, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' }
 ]));
-
-const promptById = new Map(PROMPTS.map(prompt => [prompt.id, prompt]));
+export const PREVIEW_PROMPTS = deepFreeze(PREVIEW_PROMPT_ROWS.flatMap(([artworkId, zh, en]) => [
+  { id: `prompt:${artworkId}:zh-image`, artworkId, language: 'zh', target: 'image', text: zh, source: 'maintainer-authored-from-pending-preview-facts', revision: '1', status: 'pending-review' },
+  { id: `prompt:${artworkId}:en-image`, artworkId, language: 'en', target: 'image', text: en, source: 'maintainer-authored-from-pending-preview-facts', revision: '1', status: 'pending-review' }
+]));
+export const ALL_PROMPTS = deepFreeze([...PROMPTS, ...PREVIEW_PROMPTS]);
 
 const fact = (id, label, state = 'known') => ({ id, label, value: label, state });
 const visualFacts = {
@@ -163,9 +179,8 @@ const visualFacts = {
   'animal-gray-husky': [fact('style:animals', '原创动物'), fact('object-type:dog', '犬类'), fact('shape:husky', '哈士奇外形'), fact('accessory:none', '无配饰', 'none'), fact('prop:none', '无道具', 'none'), fact('action:sitting', '坐姿'), fact('expression:gentle-smile', '温和表情'), fact('background:transparent', '透明背景'), fact('color:gray', '灰白色'), fact('material:short-fur', '短绒毛质感'), fact('usage:transparent-character', '透明角色图')]
 };
 
-// These are visible facts in the registered PNGs, grouped into the eight
-// feature categories used by the six reveal cards. Existing search dimensions
-// (color/material/action/expression/background/etc.) remain available.
+// These are visible facts in the registered PNGs. Search dimensions remain
+// atomic so the gallery can index every source-verified fact.
 const categoryFacts = {
   'candidate-dots-20261005': [
     fact('facial-features:black-oval-eyes', '一对黑色椭圆眼'), fact('facial-features:no-visible-mouth', '没有可见嘴部'),
@@ -239,69 +254,41 @@ const approvalIds = new Set([
   'human-bun-yellow', 'human-blond-glasses', 'animal-white-cat', 'animal-gray-husky'
 ]);
 
-const titles = {
-  'candidate-dots-20261005': ['蓝色耳机 Dots', '蓝色短绒圆球角色，佩戴包耳式耳机，黑色椭圆眼睛，无嘴与肢体。', 'dots'],
-  'candidate-grok-20261005': ['紫色 Grok Bot', '紫色软几何圆球，配对的斜置白色胶囊眼；不带屏幕脸、嘴或肢体。', 'grok'],
-  'candidate-meta-muse-20261005': ['奶油 Meta Muse', '奶油包覆式轮廓、内嵌暖桃色脸面、短圆肢体与柔和微笑。', 'meta-muse'],
-  'candidate-humans-20261005': ['栗发青绿人物', '原创栗发 Q 版人物，青绿色针织上衣与米白短裤，双手在身前自然交握。', 'humans'],
-  'candidate-animals-20261005': ['暖橙柴犬', '原创暖橙柴犬，茶白口鼻与胸腹，四爪坐姿和卷尾。', 'animals'],
-  'dots-rose-glasses': ['莓粉圆框 Dots', '莓粉短绒圆球 Dots，佩戴透明粉色圆框眼镜，无嘴与肢体。', 'dots'],
-  'dots-lilac-bucket': ['浅紫渔夫帽 Dots', '浅紫短绒圆球 Dots，戴黄色软布渔夫帽，无嘴与肢体。', 'dots'],
-  'grok-green-cloud': ['青绿云朵 Grok', '青绿色软云形 Grok Bot，配对斜置白色胶囊眼，无嘴与肢体。', 'grok'],
-  'grok-teal-square': ['蓝绿方形 Grok', '蓝绿色圆角方形 Grok Bot，配对斜置白色胶囊眼，无嘴与肢体。', 'grok'],
-  'muse-rose-flowers': ['玫粉花束 Meta Muse', '玫粉包覆式 Meta Muse 双手抱着白色雏菊花束；这是静态完整作品。', 'meta-muse'],
-  'muse-sage-reading': ['鼠尾草捧书 Meta Muse', '浅鼠尾草绿包覆式 Meta Muse 双手抱着一本竖直合拢的绿色书，不表示正在阅读。', 'meta-muse'],
-  'human-bun-yellow': ['黄衣丸子头女孩', '原创丸子头 Q 版人物，穿暖黄连帽衫并抬手挥别。', 'humans'],
-  'human-blond-glasses': ['金发圆框伙伴', '原创短金发 Q 版人物，戴透明圆框眼镜，穿米白针织开衫与浅蓝衣裤。', 'humans'],
-  'animal-white-cat': ['奶油白猫伙伴', '原创奶油白猫，灰耳灰尾、蓝眼、粉鼻、清晰口鼻与胡须，四爪坐姿。', 'animals'],
-  'animal-gray-husky': ['灰白哈士奇伙伴', '原创灰白哈士奇，三角立耳与清楚面罩色块，四爪坐姿和蓬松卷尾。', 'animals']
-};
+const posterAssetByArtworkId = new Map(POSTER_ASSETS.map(asset => [asset.artworkId, asset]));
+const artworkAsset = new Map(artworkAssets.map(asset => [asset.ownerArtworkId, asset]));
 
-// Independent illustrations explain frozen facts; they never enter composition or export.
-const revealRows = {
-  'candidate-dots-20261005': ['dots-orb', 'blue-plush', null, 'headphones', null],
-  'candidate-grok-20261005': ['grok-orb', 'purple-matte', null, null, null],
-  'candidate-meta-muse-20261005': ['meta-muse-wrapped', 'cream-plush', null, null, null],
-  'candidate-humans-20261005': ['human-chestnut', 'teal-knit', 'teal-knit-outfit', null, null],
-  'candidate-animals-20261005': ['animal-shiba', 'orange-fur', null, null, null],
-  'dots-rose-glasses': ['dots-orb', 'pink-plush', null, 'glasses-rose', null],
-  'dots-lilac-bucket': ['dots-orb', 'lilac-plush', null, 'yellow-bucket-hat', null],
-  'grok-green-cloud': ['grok-cloud', 'green-matte', null, null, null],
-  'grok-teal-square': ['grok-rounded-square', 'teal-matte', null, null, null],
-  'muse-rose-flowers': ['meta-muse-wrapped', 'pink-plush', null, null, 'daisy-bouquet'],
-  'muse-sage-reading': ['meta-muse-wrapped', 'sage-plush', null, null, 'sage-closed-book'],
-  'human-bun-yellow': ['human-bun', 'yellow-fabric', 'yellow-hoodie-outfit', null, null],
-  'human-blond-glasses': ['human-blond', 'blond-knit', 'blue-knit-outfit', 'glasses-clear', null],
-  'animal-white-cat': ['animal-cat', 'white-fur', null, null, null],
-  'animal-gray-husky': ['animal-husky', 'gray-fur', null, null, null]
-};
-const revealSlots = [
-  ['appearance', 'appearance'], ['paletteMaterial', 'palette-material'],
-  ['clothing', 'clothing'], ['accessory', 'accessory'], ['prop', 'prop']
-];
-function buildRevealVisuals(id, original, styleIdentity) {
-  const bound = asset => ({ assetRef: asset.id, assetVersion: asset.version, assetSha256: asset.sha256,
-    sourceRef: asset.sourceRef, purpose: 'reveal-only-display', shortName: asset.shortName,
-    description: asset.description, artApproval: asset.artApproval });
-  const visuals = { style: { ...bound(original), kind: 'original', status: original.publicationStatus,
-    shortName: { dots: 'Dots', grok: 'Grok Bot', 'meta-muse': 'Meta Muse', humans: '人物', animals: '动物' }[styleIdentity] } };
-  for (const [index, [key, directory]] of revealSlots.entries()) {
-    const name = revealRows[id]?.[index];
-    if (!name) {
-      visuals[key] = { kind: 'empty-value', state: 'none', shortName: { clothing: '无衣物', accessory: '无配饰', prop: '无道具' }[key] || '未登记' };
-      continue;
-    }
-    const asset = assetById.get(`asset:reveal:${directory}:${name}`);
-    visuals[key] = asset ? { ...bound(asset), kind: 'dedicated-asset', status: asset.publicationStatus }
-      : { kind: 'unknown-value', status: 'missing', shortName: '未登记' };
-  }
-  return visuals;
+const CORE_FACT_DIMENSIONS = deepFreeze({
+  characterStyle: ['style'],
+  appearance: ['object-type', 'shape'],
+  facialFeatures: ['facial-features'],
+  colorMaterial: ['color', 'material'],
+  clothing: ['clothing'],
+  headAccessory: ['head-accessory'],
+  bodyAccessory: ['body-accessory'],
+  prop: ['prop']
+});
+function coreFactsFor(features) {
+  return Object.fromEntries(Object.entries(CORE_FACT_DIMENSIONS).map(([category, dimensions]) => {
+    const values = dimensions.flatMap(dimension => {
+      const feature = features[dimension];
+      if (!feature) return [];
+      return (feature.ids || [feature.id]).filter(Boolean).map(id => ({ id, label: feature.labelsById?.[id] || feature.label, state: feature.state }));
+    });
+    return [category, values];
+  }));
 }
 
-const artworkAsset = new Map(ASSETS.filter(asset => asset.resourceKind === 'transparent-character-still').map(asset => [asset.ownerArtworkId, asset]));
 export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
-  const [title, description, styleIdentity] = titles[id];
+  const content = ARTWORK_CONTENT[id];
+  if (!content) throw new Error(`Missing localized static content for ${id}`);
+  const legacyText = LEGACY_ARTWORK_TEXT[id];
+  if (!legacyText) throw new Error(`Missing legacy source text for ${id}`);
+  const title = legacyText.title;
+  const description = legacyText.description;
+  const styleIdentity = content.seriesId;
   const asset = artworkAsset.get(id);
+  const poster = posterAssetByArtworkId.get(id);
+  if (!asset || !poster) throw new Error(`Artwork ${id} is missing a registered original or poster asset`);
   const facts = visualFacts[id];
   const groupedFacts = new Map();
   for (const item of facts) {
@@ -333,27 +320,90 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
     },
     status: 'published',
     publicationStatus: 'published',
+    characterId: styleIdentity,
     styleIdentity,
     tagIds: facts.map(item => item.id),
     featureIds: facts.map(item => item.id),
     features,
     featureReview: { status: 'verified-visible-facts', method: 'current PNG visually inspected against registered source/hash' },
-    assetRefs: { original: asset.id },
-    revealVisuals: buildRevealVisuals(id, asset, styleIdentity),
+    titleByLanguage: content.titleByLanguage,
+    descriptionByLanguage: content.descriptionByLanguage,
+    aliases: content.aliases,
+    seriesId: content.seriesId,
+    detailFactIds: content.detailFactIds,
+    coreFacts: coreFactsFor(features),
+    version: asset.version,
+    assetRefs: { original: asset.id, poster: poster.id },
     promptRefs: {
       zhImage: `prompt:${id}:zh-image`,
       enImage: `prompt:${id}:en-image`
     },
-    variantGroupId: null,
-    resourceKind: 'transparent-character-still',
+    resourceKind: asset.resourceKind,
     exportFormats: ['image/png'],
     artApproval: asset.artApproval,
-    targetValidation: { status: 'not-target-tested', profileIds: ['static-character-download'] },
     sourceSnapshotMatch: asset.sourceSnapshotMatch
   };
 }));
 
+const previewAssetByArtworkId = new Map(PREVIEW_ASSETS.map(asset => [asset.ownerArtworkId, asset]));
+export const PREVIEW_ARTWORKS = deepFreeze(Object.entries(PREVIEW_ARTWORK_CONTENT).map(([id, content]) => {
+  const asset = previewAssetByArtworkId.get(id);
+  if (!asset || content.originalAssetId !== asset.id) throw new Error(`Preview Artwork ${id} is missing its bound original asset`);
+  const facts = content.facts.map(item => ({
+    id: item.id,
+    label: item.labelByLanguage['zh-CN'],
+    value: item.labelByLanguage['zh-CN'],
+    labelByLanguage: item.labelByLanguage,
+    state: 'known'
+  }));
+  const groupedFacts = new Map();
+  for (const item of facts) {
+    const dimension = item.id.split(':', 1)[0];
+    const group = groupedFacts.get(dimension) || { dimension, facts: [] };
+    group.facts.push(item);
+    groupedFacts.set(dimension, group);
+  }
+  const features = Object.fromEntries([...groupedFacts].map(([dimension, group]) => {
+    const ids = group.facts.map(item => item.id);
+    const labelsById = Object.fromEntries(group.facts.map(item => [item.id, item.label]));
+    const labelsByLanguage = Object.fromEntries(group.facts.map(item => [item.id, item.labelByLanguage]));
+    const label = group.facts.map(item => item.label).join(' · ');
+    return [dimension, { id: ids[0], ids, labelsById, labelsByLanguage, label, value: label, state: 'known' }];
+  }));
+  return {
+    id,
+    title: content.titleByLanguage['zh-CN'],
+    description: content.descriptionByLanguage['zh-CN'],
+    source: { id: content.sourceId, kind: 'generated-original-artwork-candidate', registrationRef: content.sourcePath },
+    status: 'pending-review',
+    publicationStatus: 'preview-only',
+    reviewStatus: 'pending-user-art-approval',
+    previewOnly: true,
+    characterId: content.characterId,
+    styleIdentity: content.characterId,
+    tagIds: facts.map(item => item.id),
+    featureIds: facts.map(item => item.id),
+    features,
+    featureReview: { status: 'pending-visual-review', method: 'local preview; no user approval recorded' },
+    titleByLanguage: content.titleByLanguage,
+    descriptionByLanguage: content.descriptionByLanguage,
+    aliases: content.aliases,
+    seriesId: content.seriesId,
+    ...(content.seriesLabelByLanguage ? { seriesLabelByLanguage: content.seriesLabelByLanguage } : {}),
+    detailFactIds: content.detailFactIds,
+    coreFacts: coreFactsFor(features),
+    version: asset.version,
+    assetRefs: { original: asset.id },
+    promptRefs: { zhImage: `prompt:${id}:zh-image`, enImage: `prompt:${id}:en-image` },
+    resourceKind: asset.resourceKind,
+    artApproval: asset.artApproval,
+    sourceSnapshotMatch: false
+  };
+}));
+
 const artworkById = new Map(ARTWORKS.map(artwork => [artwork.id, artwork]));
+const previewArtworkById = new Map(PREVIEW_ARTWORKS.map(artwork => [artwork.id, artwork]));
+const promptById = new Map(ALL_PROMPTS.map(prompt => [prompt.id, prompt]));
 
 export const STYLE_IDENTITIES = deepFreeze([
   { id: 'dots', label: 'Dots', labelEn: 'Dots', description: '按已批准的简洁成对眼与圆润主体展示；不自动增加肢体、嘴或屏幕脸。', descriptionEn: 'Preserve the approved rounded body and paired simple eyes. Do not add limbs, a mouth, or a screen face unless the reference visibly includes them.' },
@@ -363,57 +413,11 @@ export const STYLE_IDENTITIES = deepFreeze([
   { id: 'animals', label: '原创动物', labelEn: 'original animals', description: '原创物种形象，耳、口鼻、毛色、爪和尾部按作品实际画面描述。', descriptionEn: 'Create original species-specific characters with clear ears, muzzles, coat colors, paws, and tails.' }
 ]);
 
-export const TARGET_PROFILES = deepFreeze([
-  {
-    id: 'static-character-download', platform: 'Dot Icon Studio', client: 'web browser download', version: 'catalog-v1',
-    format: 'PNG original bytes', dimensions: 'per asset manifest', alpha: 'registered PNG alpha channel with transparent pixels',
-    frameLayout: 'single still image', states: ['static artwork'], productionMethod: 'directly download registered source image',
-    sourceUrl: null, queriedAt: '2026-10-07T02:05:02+08:00', sourceType: 'local asset inventory', verificationStatus: 'source-verified; original bytes validated before each download',
-    note: '普通静态图下载能力，不表示可安装 Dot 或 Pet。'
-  },
-  {
-    id: 'chatgpt-work-web-custom-pet', platform: 'ChatGPT Work', client: 'supported web chats', version: 'current official docs checked 2026-10-07',
-    format: 'transparent PNG or WebP', dimensions: '1536 × 1872 px; maximum 20 MiB', alpha: 'transparent required',
-    frameLayout: null, states: null, productionMethod: 'upload a custom sprite sheet through Work settings',
-    sourceUrl: 'https://learn.chatgpt.com/docs/pets', queriedAt: '2026-10-07T02:14:26+08:00', sourceType: 'official documentation', verificationStatus: 'documented-only; no Pet package or target upload in this change',
-    note: 'Official Web page does not specify a frame grid/layout. Its dimensions must not be combined with local plugin frame contracts.'
-  },
-  {
-    id: 'chatgpt-dot-desktop', platform: 'ChatGPT Dot', client: 'ChatGPT desktop app and desktop web', version: 'current official docs checked 2026-10-07',
-    format: null, dimensions: null, alpha: null, frameLayout: null, states: null,
-    productionMethod: 'choose an available character or Pet; arbitrary PNG import format is not specified',
-    sourceUrl: 'https://help.openai.com/en/articles/20001530-getting-started-with-your-dot', queriedAt: '2026-10-07T02:14:26+08:00', sourceType: 'official documentation', verificationStatus: 'documented selection flow; custom static PNG import not verified',
-    note: 'Do not label a normal transparent character PNG as a directly installable Dot.'
-  },
-  {
-    id: 'chatgpt-dot-mobile', platform: 'ChatGPT Dot', client: 'ChatGPT mobile app / mobile web', version: 'current official docs checked 2026-10-07',
-    format: null, dimensions: null, alpha: null, frameLayout: null, states: null,
-    productionMethod: 'official help says mobile app can chat with a Dot when mobile access is available; Dot creation is not currently available on mobile and mobile web does not support Dot',
-    sourceUrl: 'https://help.openai.com/en/articles/20001530-getting-started-with-your-dot', queriedAt: '2026-10-07T02:14:26+08:00', sourceType: 'official documentation', verificationStatus: 'documented limitation; no target asset format specified',
-    note: 'Desktop file assumptions do not transfer to mobile.'
-  },
-  {
-    id: 'codex-local-pet-v1-contract', platform: 'Local work-pets tooling', client: 'local creation/install workflow', version: 'plugin 0.1.6 contract v1',
-    format: 'transparent PNG or WebP', dimensions: '1536 × 1872 px; maximum 20 MiB', alpha: 'transparent required',
-    frameLayout: '8 × 9 cells; 192 × 208 px per cell; 57 required frames and 15 empty cells',
-    states: ['idle', 'running-right', 'running-left', 'waving', 'jumping', 'failed', 'waiting', 'running', 'review'],
-    productionMethod: 'local plugin contract; full sprite resource and target install validation required',
-    sourceUrl: '/Users/liuzhihang/.codex/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/sprite-sheet-contract.md', queriedAt: '2026-10-07T02:05:02+08:00', sourceType: 'local plugin contract, not official web layout', verificationStatus: 'contract-only; package not made or installed'
-  },
-  {
-    id: 'codex-local-pet-v2-contract', platform: 'Local work-pets tooling', client: 'local creation/install workflow', version: 'plugin 0.1.6 contract v2',
-    format: 'transparent PNG or WebP', dimensions: '1536 × 2288 px; maximum 20 MiB', alpha: 'transparent required',
-    frameLayout: '8 × 11 cells; 192 × 208 px per cell; 73 required frames and 15 empty cells',
-    states: ['idle', 'running-right', 'running-left', 'waving', 'jumping', 'failed', 'waiting', 'running', 'review', '16 look directions'],
-    productionMethod: 'local plugin contract; full sprite resource and target install validation required',
-    sourceUrl: '/Users/liuzhihang/.codex/plugins/cache/openai-curated-remote/work-pets/0.1.6/references/sprite-sheet-contract.md', queriedAt: '2026-10-07T02:05:02+08:00', sourceType: 'local plugin contract, not official web layout', verificationStatus: 'contract-only; package not made or installed'
-  }
-]);
-
-const profileById = new Map(TARGET_PROFILES.map(profile => [profile.id, profile]));
-
-export function getArtwork(id) {
-  return typeof id === 'string' ? artworkById.get(id) ?? null : null;
+export function getArtwork(id, catalog) {
+  if (typeof id !== 'string') return null;
+  if (arguments.length < 2) return artworkById.get(id) ?? previewArtworkById.get(id) ?? null;
+  if (catalog === ARTWORKS) return artworkById.get(id) ?? null;
+  return Array.isArray(catalog) ? catalog.find(artwork => artwork?.id === id) ?? null : null;
 }
 
 function assetIdFromRef(value) {
@@ -423,36 +427,65 @@ function assetIdFromRef(value) {
 }
 
 export function getAsset(idOrRef) {
-  if (typeof idOrRef === 'string') return assetById.get(assetIdFromRef(idOrRef)) ?? null;
+  if (typeof idOrRef === 'string') return allAssetById.get(assetIdFromRef(idOrRef)) ?? null;
   if (!idOrRef || typeof idOrRef !== 'object') return null;
-  const registered = assetById.get(assetIdFromRef(idOrRef));
+  const registered = allAssetById.get(assetIdFromRef(idOrRef));
   if (!registered) return null;
   const bindingFields = ['version', 'path', 'sha256', 'mime', 'byteSize', 'width', 'height'];
   if (bindingFields.some(field => idOrRef[field] !== registered[field])) return null;
   return registered;
 }
 
-function promptForArtwork(artwork, language = 'zh', target = 'image') {
+/** Resolve an exact registered Prompt reference, including local-review prompts. */
+export function getPrompt(idOrRecord) {
+  const id = typeof idOrRecord === 'string' ? idOrRecord : idOrRecord?.id;
+  const registered = promptById.get(id);
+  if (!registered) return null;
+  if (idOrRecord && typeof idOrRecord === 'object') {
+    const fields = ['artworkId', 'language', 'target', 'revision', 'text'];
+    if (fields.some(field => idOrRecord[field] !== registered[field])) return null;
+  }
+  return registered;
+}
+
+function promptForArtwork(artwork, language = 'zh', target = 'image', prompts = PROMPTS) {
   if (!artwork || target !== 'image') return null;
   const requested = language === 'en' ? 'enImage' : 'zhImage';
   const alternate = requested === 'enImage' ? 'zhImage' : 'enImage';
   const ids = artwork.promptRefs || {};
-  const prompt = promptById.get(ids[requested]) ?? promptById.get(ids[alternate]) ?? null;
+  const promptRows = Array.isArray(prompts) ? prompts : [];
+  const prompt = promptRows.find(item => item.id === ids[requested]) ?? promptRows.find(item => item.id === ids[alternate]) ?? null;
   return prompt && prompt.artworkId === artwork.id && prompt.target === target ? prompt : null;
 }
 
-export function isEligible(artwork) {
+/** Apply the publication contract against the production manifest or an isolated fixture context. */
+export function validateArtwork(artwork, context = {}) {
   if (!artwork || typeof artwork !== 'object') return false;
+  const lookupAsset = typeof context.getAsset === 'function' ? context.getAsset : getAsset;
+  const prompts = Array.isArray(context.prompts) ? context.prompts : PROMPTS;
   if ((artwork.publicationStatus ?? artwork.status) !== 'published') return false;
   if (artwork.featureReview?.status !== 'verified-visible-facts') return false;
   if (artwork.sourceSnapshotMatch !== true || !artwork.source?.id || !artwork.source?.kind || !artwork.source?.sourceSnapshot) return false;
-  const asset = getAsset(artwork.assetRefs?.original);
-  if (!asset || asset.candidateOnly) return false;
+  if (!STYLE_IDENTITIES.some(character => character.id === artwork.characterId)) return false;
+  if (!SERIES.some(series => series.id === artwork.seriesId)) return false;
+  for (const language of ['en', 'zh-CN']) {
+    if (typeof artwork.titleByLanguage?.[language] !== 'string' || !artwork.titleByLanguage[language].trim()) return false;
+    if (typeof artwork.descriptionByLanguage?.[language] !== 'string' || !artwork.descriptionByLanguage[language].trim()) return false;
+  }
+  const asset = lookupAsset(artwork.assetRefs?.original);
+  const poster = lookupAsset(artwork.assetRefs?.poster);
+  if (!asset || !poster || poster.resourceKind !== 'gallery-poster' || poster.publicationStatus !== 'published-derivative' || poster.ownerArtworkId !== artwork.id) return false;
+  if (typeof poster.path !== 'string' || !poster.path.startsWith('./assets/posters/')) return false;
+  if (asset.ownerArtworkId !== artwork.id || poster.sourceAssetId !== asset.id || poster.sourceAssetSha256 !== asset.sha256) return false;
+  if (artwork.version !== asset.version || typeof poster.version !== 'string' || !poster.version) return false;
   if (!['verified-source', 'verified-in-browser'].includes(asset.resourceStatus) || asset.resourceVerified === false || artwork.resourceVerified === false) return false;
   if (!asset.sourceSnapshotMatch) return false;
   if (artwork.artApproval?.status !== 'approved' || asset.artApproval?.status !== 'approved') return false;
   if (artwork.artApproval.assetSha256 !== asset.sha256 || asset.artApproval.assetSha256 !== asset.sha256) return false;
-  if (!artwork.promptRefs?.zhImage || !promptForArtwork(artwork, 'zh', 'image')) return false;
+  const zhPrompt = prompts.find(prompt => prompt.id === artwork.promptRefs?.zhImage);
+  const enPrompt = prompts.find(prompt => prompt.id === artwork.promptRefs?.enImage);
+  if (!zhPrompt || zhPrompt.artworkId !== artwork.id || zhPrompt.language !== 'zh' || zhPrompt.target !== 'image') return false;
+  if (!enPrompt || enPrompt.artworkId !== artwork.id || enPrompt.language !== 'en' || enPrompt.target !== 'image') return false;
   if (!Array.isArray(artwork.featureIds) || !artwork.featureIds.length) return false;
   if (!Array.isArray(artwork.tagIds) || artwork.featureIds.some(id => !artwork.tagIds.includes(id))) return false;
   if (!artwork.features || typeof artwork.features !== 'object' || Array.isArray(artwork.features)) return false;
@@ -465,8 +498,61 @@ export function isEligible(artwork) {
   }
   if (!Object.keys(artwork.features).length) return false;
   if (!artwork.artApproval.record || !artwork.artApproval.sourceSnapshot || !artwork.artApproval.sourceId) return false;
-  if (artwork.artApproval.assetSha256 !== asset.sha256 || asset.artApproval?.assetSha256 !== asset.sha256) return false;
+  if (artwork.artApproval.artworkId !== artwork.id || artwork.artApproval.assetSha256 !== asset.sha256 || asset.artApproval?.assetSha256 !== asset.sha256) return false;
   return true;
+}
+
+/** Validate a registered pending candidate without granting it gallery eligibility. */
+export function validatePreviewArtwork(artwork, context = {}) {
+  if (!artwork || typeof artwork !== 'object') return false;
+  const registered = previewArtworkById.get(artwork.id);
+  if (!registered || artwork.version !== registered.version || artwork.assetRefs?.original !== registered.assetRefs.original) return false;
+  if (artwork.status !== 'pending-review' || artwork.publicationStatus !== 'preview-only' || artwork.reviewStatus !== 'pending-user-art-approval' || artwork.previewOnly !== true) return false;
+  if (artwork.sourceSnapshotMatch !== false || artwork.artApproval?.status !== 'pending' || artwork.artApproval?.record !== null || artwork.artApproval?.sourceSnapshot !== null || artwork.artApproval?.sourceId !== null) return false;
+  const lookupAsset = typeof context.getAsset === 'function' ? context.getAsset : getAsset;
+  const prompts = Array.isArray(context.prompts) ? context.prompts : PREVIEW_PROMPTS;
+  const asset = lookupAsset(artwork.assetRefs.original);
+  if (!asset || asset.ownerArtworkId !== artwork.id || asset.version !== artwork.version || asset.publicationStatus !== 'preview-only') return false;
+  if (artwork.resourceKind !== asset.resourceKind) return false;
+  if (!['transparent-character-still', 'opaque-character-still'].includes(asset.resourceKind) || asset.artApproval?.status !== 'pending' || asset.artApproval?.record !== null || asset.artApproval?.sourceSnapshot !== null || asset.artApproval?.sourceId !== null) return false;
+  if (asset.resourceKind === 'transparent-character-still' && (asset.alpha?.hasAlpha !== true || asset.alpha?.hasTransparency !== true)) return false;
+  if (asset.resourceKind === 'opaque-character-still' && (asset.alpha?.hasAlpha !== false || asset.alpha?.hasTransparency !== false)) return false;
+  if (asset.sha256 !== artwork.artApproval?.assetSha256 || asset.sha256 !== asset.artApproval?.assetSha256 || asset.sourceSnapshotMatch !== false) return false;
+  for (const language of ['zh', 'en']) {
+    const ref = language === 'en' ? artwork.promptRefs?.enImage : artwork.promptRefs?.zhImage;
+    const prompt = prompts.find(item => item.id === ref);
+    if (!prompt || prompt.artworkId !== artwork.id || prompt.language !== language || prompt.target !== 'image' || prompt.status !== 'pending-review') return false;
+  }
+  if (!Array.isArray(artwork.featureIds) || !artwork.featureIds.length || !Array.isArray(artwork.tagIds) || artwork.featureIds.some(id => !artwork.tagIds.includes(id))) return false;
+  for (const language of ['en', 'zh-CN']) {
+    if (!artwork.titleByLanguage?.[language]?.trim() || !artwork.descriptionByLanguage?.[language]?.trim()) return false;
+  }
+  return true;
+}
+
+export function isPreviewArtwork(artworkOrId) {
+  const id = typeof artworkOrId === 'string' ? artworkOrId : artworkOrId?.id;
+  const registered = previewArtworkById.get(id);
+  if (!registered) return false;
+  if (typeof artworkOrId === 'string') return true;
+  if (!artworkOrId || typeof artworkOrId !== 'object') return false;
+  return artworkOrId.version === registered.version
+    && artworkOrId.assetRefs?.original === registered.assetRefs.original
+    && artworkOrId.publicationStatus === 'preview-only'
+    && artworkOrId.reviewStatus === 'pending-user-art-approval'
+    && artworkOrId.artApproval?.status === 'pending';
+}
+
+export function canOpenArtwork(idOrRecord, version) {
+  const id = typeof idOrRecord === 'string' ? idOrRecord : idOrRecord?.id;
+  const artwork = typeof idOrRecord === 'string' ? getArtwork(id) : idOrRecord;
+  if (!artwork || (version !== undefined && artwork.version !== version)) return false;
+  if (isPreviewArtwork(artwork)) return validatePreviewArtwork(artwork);
+  return validateArtwork(artwork);
+}
+
+export function isEligible(artwork) {
+  return validateArtwork(artwork);
 }
 
 export function isTransparentCharacter(artwork) {
@@ -481,21 +567,26 @@ export function getVariants(id) {
   return ARTWORKS.filter(candidate => candidate.id !== artwork.id && candidate.variantGroupId === artwork.variantGroupId && isEligible(candidate));
 }
 
-export function createSnapshot(id) {
-  const artwork = getArtwork(id);
-  if (!isEligible(artwork)) return null;
-  const asset = getAsset(artwork.assetRefs.original);
-  const prompt = promptForArtwork(artwork, 'zh', 'image');
-  return deepFreeze({ artworkId: artwork.id, artwork, asset, prompt, catalogRevision: CATALOG_REVISION });
-}
-
-export function getTargetProfile(id) {
-  return profileById.get(id) ?? null;
+export function createSnapshot(id, context = {}) {
+  const allowPreview = context.allowPreview === true;
+  const catalog = Array.isArray(context.catalog) ? context.catalog : allowPreview ? [...ARTWORKS, ...PREVIEW_ARTWORKS] : ARTWORKS;
+  const artwork = getArtwork(id, catalog);
+  const valid = isPreviewArtwork(artwork)
+    ? allowPreview && validatePreviewArtwork(artwork, context)
+    : validateArtwork(artwork, context);
+  if (!valid) return null;
+  const lookupAsset = typeof context.getAsset === 'function' ? context.getAsset : getAsset;
+  const prompts = Array.isArray(context.prompts) ? context.prompts : isPreviewArtwork(artwork) ? PREVIEW_PROMPTS : PROMPTS;
+  const asset = lookupAsset(artwork.assetRefs.original);
+  const prompt = promptForArtwork(artwork, 'zh', 'image', prompts);
+  if (!asset || !prompt) return null;
+  return deepFreeze({ artworkId: artwork.id, artwork, asset, prompt, catalogRevision: context.catalogRevision || CATALOG_REVISION });
 }
 
 export const CATALOG_INVENTORY = deepFreeze({
   approvedArtworkCount: ARTWORKS.length,
-  candidatePoseAssetCount: ASSETS.filter(asset => asset.candidateOnly).length,
+  posterAssetCount: POSTER_ASSETS.length,
+  coreFactCategoryCount: Object.keys(CORE_FACT_DIMENSIONS).length,
   approvalRecord: ART_APPROVAL_RECORD,
   sourceSnapshot: SOURCE_SNAPSHOT,
   sourceId: V83_SOURCE_ID,

@@ -1,0 +1,414 @@
+{
+  "revision": 96,
+  "recordedOn": "2026-10-09",
+  "scope": "local implementation verification; not user art approval or deployment",
+  "commandRecordSource": "Final successful execution output in this apply session; summaries below are not a raw stdout transcript.",
+  "commands": [
+    {
+      "command": "npm run build",
+      "status": "passed",
+      "result": "55 static publish files; 6130 protected baseline records after final QA document update; 64 exact retirement mappings"
+    },
+    {
+      "command": "npm test",
+      "status": "passed",
+      "result": "catalog, query, reference-detail (19), motion (8), publish-inventory and router"
+    },
+    {
+      "command": "npm run test:browser",
+      "status": "passed",
+      "result": "17 checks across 1440x900, 390x844, 320x700, 768x1024; 55 source hashes stable"
+    },
+    {
+      "command": "npm run test:downloads",
+      "status": "passed",
+      "result": "15 browser downloads match original bytes, hashes, dimensions and alpha"
+    },
+    {
+      "command": "openspec validate simplify-reveal-cards-and-staging --strict",
+      "status": "passed"
+    },
+    {
+      "command": "node scripts/verify-implementation-safety.mjs",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "earlierFailures": [
+    {
+      "status": "failed_then_fixed_and_rerun",
+      "description": "Early scene/layout and focus restoration checks failed during implementation. Later complete browser report passed; earlier failure.json and failed-state.png retained."
+    },
+    {
+      "status": "environment_attempt_failed_then_replaced",
+      "description": "System Python had no Pillow; used existing bundled Python runtime. No package installation."
+    }
+  ],
+  "notRun": [
+    "physical phone",
+    "Safari",
+    "Firefox",
+    "public deployment",
+    "real throttled network timing",
+    "external ChatGPT auto-prefill"
+  ],
+  "approvalGates": {
+    "sceneAssets": "pending",
+    "currentPage": "pending",
+    "openspecTasks": [
+      "3.7",
+      "8.3"
+    ]
+  },
+  "productionAnimationCount": 0,
+  "productionVariantCount": 0,
+  "sourceFiles": [
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "bytes": 1413426,
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "bytes": 574528,
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa"
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "bytes": 1720054,
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "bytes": 971168,
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "bytes": 1151483,
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "bytes": 1003955,
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "bytes": 1623665,
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "bytes": 1382027,
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "bytes": 1605008,
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "bytes": 1860436,
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "bytes": 790009,
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "bytes": 828844,
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "bytes": 1058375,
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "bytes": 1086214,
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "bytes": 1185166,
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "bytes": 1142481,
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+    },
+    {
+      "path": "dist/assets/posters/animal-gray-husky-v1.webp",
+      "bytes": 43698,
+      "sha256": "434a3d32da36754c3fa8853832caffffba3f61835712ab70adedd68108f0c012"
+    },
+    {
+      "path": "dist/assets/posters/animal-white-cat-v1.webp",
+      "bytes": 42036,
+      "sha256": "3c73bdc9938c10d0f4f9acf2c17b3b2642afec5bd6f502ae456ad285c13fba36"
+    },
+    {
+      "path": "dist/assets/posters/brand-mark-display-v1.png",
+      "bytes": 6053,
+      "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64"
+    },
+    {
+      "path": "dist/assets/posters/candidate-animals-20261005-v1.webp",
+      "bytes": 44244,
+      "sha256": "eda605d6ea5d63da7bf2edda3b98379c624aa1bd710950e866f2ab1fc50ba952"
+    },
+    {
+      "path": "dist/assets/posters/candidate-dots-20261005-v1.webp",
+      "bytes": 53964,
+      "sha256": "25a144017c3b85a6a0be743bcc2e01e4f8c600b3f506fc545ff6a1a915cc161f"
+    },
+    {
+      "path": "dist/assets/posters/candidate-grok-20261005-v1.webp",
+      "bytes": 19620,
+      "sha256": "e1b40e2eb20e762b66e00be1dafc26a710a0b43cb849c07550ee1ecab20c73bc"
+    },
+    {
+      "path": "dist/assets/posters/candidate-humans-20261005-v1.webp",
+      "bytes": 35746,
+      "sha256": "da95dedff71445bba0a102a3ee3dac862de1b7c21486d14beb4c92daadf6d8ad"
+    },
+    {
+      "path": "dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+      "bytes": 26872,
+      "sha256": "e052eb98d4d0ed787445d0b3d66e70f614a5c568c5f65d98c7a9599349a3d751"
+    },
+    {
+      "path": "dist/assets/posters/dots-lilac-bucket-v1.webp",
+      "bytes": 58256,
+      "sha256": "139613ea4e94998961ae68f2d5e73f96d5c500055e6f132b699844e349017062"
+    },
+    {
+      "path": "dist/assets/posters/dots-rose-glasses-v1.webp",
+      "bytes": 63930,
+      "sha256": "743dfb9fe97fae19629e0e4c70cd850f841c748537f182c86ea8d5718a573823"
+    },
+    {
+      "path": "dist/assets/posters/grok-green-cloud-v1.webp",
+      "bytes": 19066,
+      "sha256": "80a735fa20f8363959ce58545ef5470ef155606cd84ef71e377ac2075bd33fc3"
+    },
+    {
+      "path": "dist/assets/posters/grok-teal-square-v1.webp",
+      "bytes": 16022,
+      "sha256": "2f76e1a8a2f515e6222e1c9d230ed841139c3fa7dbde6cc03b03446097286aa7"
+    },
+    {
+      "path": "dist/assets/posters/human-blond-glasses-v1.webp",
+      "bytes": 34014,
+      "sha256": "d3ec6a31b89233d86bbfa9774f7477c3e3d7613f3b90ce270e4c1ff931295958"
+    },
+    {
+      "path": "dist/assets/posters/human-bun-yellow-v1.webp",
+      "bytes": 37648,
+      "sha256": "99a25a4f4c0a21dd34731acadbfcb553bbd0565d8adabbebd1fb231307ab8e94"
+    },
+    {
+      "path": "dist/assets/posters/muse-rose-flowers-v1.webp",
+      "bytes": 34690,
+      "sha256": "d1ef7e56c616c900c795b58fed4d3cf0106ccf3715b646cea663cdf1157034e6"
+    },
+    {
+      "path": "dist/assets/posters/muse-sage-reading-v1.webp",
+      "bytes": 27236,
+      "sha256": "7e4715e708d8bf86bfbcdd58038bdf704a351e2ae298e369f3e52f5a69ffaf62"
+    },
+    {
+      "path": "dist/assets/terrace/terrace-background-v1.webp",
+      "bytes": 270786,
+      "sha256": "bf2327c28c2ca36165c745e1e8642a1422d1c66e883e753db9efcc275ed08007"
+    },
+    {
+      "path": "dist/assets/terrace/units/distant-lilac-dots-green-grok-v1.webp",
+      "bytes": 128788,
+      "sha256": "957e09eea2b8016649788b46bf9a10aa488db2f370d80a89cf38b905d7e8f174"
+    },
+    {
+      "path": "dist/assets/terrace/units/mid-collaboration-four-v1.webp",
+      "bytes": 195930,
+      "sha256": "5d73b4299ea56889ccf715f8488c6f5b0d0ff9fb3f09277917462291ae9e9ed4"
+    },
+    {
+      "path": "dist/assets/terrace/units/near-shiba-rose-dots-v1.webp",
+      "bytes": 161868,
+      "sha256": "a062be274742b4a948af251d72f92438e2cfa836db8ccdaa7513b5c5918c6e39"
+    },
+    {
+      "path": "dist/assets/terrace/units/reading-cream-muse-white-cat-v1.webp",
+      "bytes": 152198,
+      "sha256": "70bb8722f9cbcf9ac06d75f5d813044d8ebaad03790895ad13246032d57985a9"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 5427,
+      "sha256": "643e6aece8d1396486d3e241501a9351336e413ba0cd1a64e9c579342799a3ad"
+    },
+    {
+      "path": "dist/studio-actions.js",
+      "bytes": 3885,
+      "sha256": "c3024da967abc5fae76beba4a670a435d1acfeea8570c409f6cb200b3e2f3385"
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "bytes": 42932,
+      "sha256": "a24e14d9e6b2ed54290bb8b7d66cb744740997c3e34f067d4ed5e88ca63d77a8"
+    },
+    {
+      "path": "dist/studio-asset-loader.js",
+      "bytes": 7399,
+      "sha256": "445ea3007ca3be757eef3f7c1e11f6f9baefa9d53972ca24908d2cdfa26c7da0"
+    },
+    {
+      "path": "dist/studio-content.js",
+      "bytes": 16964,
+      "sha256": "e254ca4c347d4a6bf32e7c5fb750fa15b1f8cc008b485953f76c78a67e6bf644"
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "bytes": 7584,
+      "sha256": "78f7c0f035bd9ea57ef33f6a233f817db735e49ff1b658ad4a53ecc5faef8651"
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "bytes": 45422,
+      "sha256": "20addbf8c10fff2d689721913742e431248db351ff29d87fe3f5128299ef9780"
+    },
+    {
+      "path": "dist/studio-home.js",
+      "bytes": 3538,
+      "sha256": "9ca23640aed43a6d62835fd1a9dfcfd3b101a2544f8090e3fbc3c5cd214be01d"
+    },
+    {
+      "path": "dist/studio-i18n.js",
+      "bytes": 5206,
+      "sha256": "30fa8c49c4ecba4b270c0f08fefae4d1f71386cd509c5a941425a1be3e83c610"
+    },
+    {
+      "path": "dist/studio-motion.js",
+      "bytes": 8433,
+      "sha256": "fdf658ef595321b620c4227eb85a8c57ef2bda38d86bdd3aaf51a03a083d326c"
+    },
+    {
+      "path": "dist/studio-overlay.js",
+      "bytes": 6643,
+      "sha256": "81f7c0e58a1d64ed0aae0edb9c2694c03f056a67b522a672e5dfd89d9ebf322f"
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "bytes": 3727,
+      "sha256": "7a99758660c0b3c257fae7317a157a8fb853b4455f61857b9f38b21e8eeed909"
+    },
+    {
+      "path": "dist/studio-router.js",
+      "bytes": 826,
+      "sha256": "f74d971c58c7fc060601c024213a1e26499979f9dc3e385582b94addecb0836f"
+    },
+    {
+      "path": "dist/studio-scenes.js",
+      "bytes": 2774,
+      "sha256": "04305855ec222161eabc6b27363ec3a26f13ffb4539f026fdbf4d3d452d0ad8b"
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "bytes": 2211,
+      "sha256": "bd13dd16630d6b071028b32a31e0df25d4e6af6ae9e458ea914ca6aeff77a9e3"
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "bytes": 9874,
+      "sha256": "0e2703ac315ff3d76ec22f36cccf3b0d923af7867c83d44c2a0864801712b933"
+    },
+    {
+      "path": "dist/studio.css",
+      "bytes": 14162,
+      "sha256": "f33606556dbbe703b505058a39d648a25b45cb9cd4d40b8fd6143c04adf8b8db"
+    },
+    {
+      "path": "dist/studio.js",
+      "bytes": 11419,
+      "sha256": "8eccd8d1f14e44bd82a4b1791f9d844e604752a433156b9899cb018c073525ad"
+    }
+  ],
+  "evidenceHashes": {
+    "README.md": "f31521424ec249f2c6b172ee8efbece3ba6a476f8c9f3cd80e45fe986225d284",
+    "background-resource.json": "507cb1f776c879ab8c02222926d3eb154eb718505815acf03bbbd5cdd7feebd5",
+    "browser/detail-1440.png": "3f13c62cf38d6b7e7f18510c3dc220bcc3960eb3fd2906ca6e18ccd68d5010a3",
+    "browser/detail-320.png": "edddf0362da6fa956e9badc1b96e58c7fff71d56b1c617cfe60cf90d8753a33c",
+    "browser/detail-390.png": "6b355d94b577396667874f7e088301f3c40f8e17777058b332b72af40784719c",
+    "browser/detail-768.png": "d3f4a386874f96bcbd66849314853b0b7feeb588ff04bc7832f31f642a125e8c",
+    "browser/detail-failure-390.png": "a77d37d06778f3e01f7fe137b8defb85bd49e5583155234d08d6d8f1155ced59",
+    "browser/download-alpha.json": "ea6595661801f27a6aecf5033fb8388c0af689021ffb91d71b5ece2329eeaf22",
+    "browser/downloads/animal-gray-husky.png": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+    "browser/downloads/animal-white-cat.png": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+    "browser/downloads/candidate-animals-20261005.png": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+    "browser/downloads/candidate-dots-20261005.png": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+    "browser/downloads/candidate-grok-20261005.png": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+    "browser/downloads/candidate-humans-20261005.png": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+    "browser/downloads/candidate-meta-muse-20261005.png": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+    "browser/downloads/dots-lilac-bucket.png": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+    "browser/downloads/dots-rose-glasses.png": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+    "browser/downloads/grok-green-cloud.png": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+    "browser/downloads/grok-teal-square.png": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+    "browser/downloads/human-blond-glasses.png": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+    "browser/downloads/human-bun-yellow.png": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+    "browser/downloads/muse-rose-flowers.png": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+    "browser/downloads/muse-sage-reading.png": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+    "browser/failed-state.png": "f04e0188feb18a7457d26c753ac5647838559e06b6cfd52c62c82d2036caeb41",
+    "browser/failure.json": "6ab0a304e71ff53f2477bf67b9c1662c372b97434ee02aebbd6d73a32ce0ee94",
+    "browser/gallery-1440.png": "0230dbefaa95d9072a19f6ca051858fb80ea5370b28af4abe76a3a59e71229b9",
+    "browser/gallery-320.png": "eeef0a6583a3a8faa5c4378d7a72b0b4fa3e24b03e8026931147033323e97b95",
+    "browser/gallery-390.png": "5861682ae4ac6c73d8f596d6ac21b57b25f1e449465357fc1651b7fbb274bc31",
+    "browser/gallery-768.png": "a665dc707ca1eac28f0a43b779502f3c657c9beb8c97046666ed51b1d0dce345",
+    "browser/guide-1440.png": "063e340affbeb6dabe1de59b6bee7ae2878a3233af7471c14930f84c4449f8c9",
+    "browser/guide-320.png": "4d7d009c12e4379a6d6ec43d2d2f0bbf96c20bb2eba7324522cea078daf404aa",
+    "browser/guide-390.png": "28344a621e377145da3d5e6e1f663a840ec78dbddf0a9a800691fb68235b5b42",
+    "browser/guide-768.png": "4295017062df5105d08f323d4e3b9a771ff5e1a966d6eadf0f2865cfcf83a861",
+    "browser/home-1440.png": "8daa6dd63dd3f145335ed42f342eab1724c79812122ee2c1a12a0e2eedbb03a4",
+    "browser/home-320.png": "11312c078dd63a7c15fb7e07310d0b1ef0890208e5d7114f0ca2bd539198cce5",
+    "browser/home-390.png": "f8a9a31af1da97fdd75d3f86bff312981940a62954f09721b9727dc6670bd9dc",
+    "browser/home-768.png": "36705d647103f9073415d692583c756c80edf2fecb2f263990565b87b0054980",
+    "browser/media-budget.json": "e9da9e3544f589afd17d2a127a2ccb5f6097d4f0b3144a57fe194fe0969a0fbd",
+    "browser/report.json": "c3d37f91ba2d46801c64d71c55b1e7645a34b0a65e82f0a987b32f217b4dcdfd",
+    "build-report.json": "d1906430d81c219c394dddba6aaca99aee296be383a5cbb5ecf04964c36df30b",
+    "poster/asset-audit.json": "f6b922a1b14ff79c766658decb137a0394756482cba5a7d7814791910cfbd245",
+    "poster/brand-derivative.json": "abf0a40a5554f8da4751f9365b8e8c3e6733c8bf4a7ad465aa3e93f276951ebc",
+    "poster/contact-sheet-source-vs-poster.png": "c39cf4687c0ba8cfa6c60a8dafe782899ef7afb183bda0a55ff43295557afa3e",
+    "poster/visual-review.md": "b618a85b1d49dccb9694c17effd1620c6d70ad5d021a5101f5466fd6aeaafdc4",
+    "reference-detail/motion-report.json": "cad83620ec4ea2f09ecd1c02e3b5a15dfe8d2911b1143b60ebde0852e7c09f44",
+    "reference-detail/report.json": "ad382e2fae12d7907a329f6a358a45d1a6547e3d1b16792e7464168f7abf6c8c",
+    "scene-layout.json": "9a9d15944d75f0487decaeb44d2fb8fb50e381fa7c97da7378d6a21864a5fbcc",
+    "scene-unit-candidates-v1.json": "4252715260885d8c3f3f944aef3a296381b192e31d7ca72e7c748992557fe418",
+    "scope-audit.json": "e633e1923f024906a39c125e4a04ba90a94d022fb125de3e59ba3aff0dd076bf",
+    "visual/detail-comparison.png": "a0d367a31dd76b29189f1312452a67941a1a89219120c04224a0dd5e304e9539",
+    "visual/gallery-comparison.png": "9be922655778b769c4ca02ba9aaa06af840b0bb878835016e271f4ce253bf97e",
+    "visual/home-comparison.png": "0cfee0b79202ac0d8712a4391feea873515494e3be8cb70ad42344fc8f9e1183",
+    "visual/mobile-comparison.png": "aac17afff1a7308eea2bf8bb8a077ba7c1959acb54a6fb653fc5be7bd09a37b0"
+  },
+  "taskProgress": {
+    "complete": 40,
+    "total": 42,
+    "pending": [
+      "3.7",
+      "8.3"
+    ]
+  },
+  "finalDocumentationHashes": {
+    "README.md": "c17fd4e98f4ad21c22bd51dd4af45cdc460959bbd917d6b74bca057df1b65ac0",
+    "DESIGN.md": "03288cba8b034539eaacbca2ef273b1066d765ff9a309ce0dba0e7c55f6475b1",
+    "design-qa.md": "ce6eb5b46e830c690915edd352a58337f94e53444c05cac930843ff9b1e3d10b",
+    "openspec/changes/simplify-reveal-cards-and-staging/tasks.md": "a173e985f6578c9a719d11d275ac331ab3bc4f2e29a89bf12d488d2d52059c48"
+  }
+}

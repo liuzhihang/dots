@@ -1,0 +1,77 @@
+{
+  "assetId": "asset:reveal:palette-material:gray-fur",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "animal-gray-husky",
+  "applicableArtworkIds": [
+    "animal-gray-husky"
+  ],
+  "factIds": [
+    "color:gray",
+    "material:short-fur"
+  ],
+  "artworkFactReference": "color:gray + material:short-fur",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/gray-fur-v2.provenance.json#gray-fur",
+    "assetSha256": "16170c9b1150d4b63dc4c89d680b3ba062b6c39badab8a07c6015abf325ec6e1",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceArtwork": {
+    "path": "dist/assets/looks/animal-gray-husky.png",
+    "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/gray-fur.svg",
+    "version": "v1-candidate",
+    "sha256": "e5f3f8e7cf59605fa5696697cb99abb5602205f79195ed3ec0217b9277aa63b6"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-b595b7b4-1738-403a-9adc-6174da666878",
+    "generatedArtifactPath": "/Users/liuzhihang/.codex/generated_images/01a1177c-e210-7f61-98a9-855e0ca6ad3d/exec-b595b7b4-1738-403a-9adc-6174da666878.png",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create one isolated premium 3D material swatch for a visual catalog. Use the first reference only for the softly rounded-square tuft silhouette and close-up composition, not for its blue color. Use the second reference only to read the husky's neutral cool gray coat color; do not depict the dog. Show one thick, softly rounded-square short-fur sample, nearly front-facing, with a small curled-back lower-right corner revealing dense compact fibers. The material is mid-tone silver-gray with subtle cool gray highlights and natural low-contrast gray variation, clearly gray rather than brown or blue. Fine short fur fibers, plush and compact, not long or shaggy. Center the swatch large with generous transparent margin. True transparent background and clean alpha; no floor, platform, cast shadow. No character, animal, face, eyes, ears, nose, whiskers, limbs, clothing, text, label, logo, border, interface, or extra objects. Square image, polished soft 3D studio product render, restrained illumination on the material only.",
+    "referenceImages": [
+      {
+        "path": "dist/assets/reveal/palette-material/blue-plush-v2.png",
+        "sha256": "c8d81574df48f98d2616add7e5a4838eda5bb8efe2ad41f10a0b172284265dc0"
+      },
+      {
+        "path": "dist/assets/looks/animal-gray-husky.png",
+        "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/gray-fur-v2.png",
+    "mime": "image/png",
+    "sha256": "16170c9b1150d4b63dc4c89d680b3ba062b6c39badab8a07c6015abf325ec6e1",
+    "byteSize": 2441886,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 683864,
+      "partial": 888644,
+      "opaque": 8
+    },
+    "visibleBounds": [
+      0,
+      0,
+      1141,
+      1141
+    ]
+  },
+  "sourceRef": "imagegen:exec-b595b7b4-1738-403a-9adc-6174da666878; reference=dist/assets/reveal/palette-material/blue-plush-v2.png#c8d81574df48f98d2616add7e5a4838eda5bb8efe2ad41f10a0b172284265dc0; reference=dist/assets/looks/animal-gray-husky.png#21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+  "sourceKind": "imagegen-generated-palette-material-candidate"
+}
+

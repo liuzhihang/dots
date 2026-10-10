@@ -1,0 +1,77 @@
+{
+  "assetId": "asset:reveal:palette-material:sage-plush",
+  "version": "v2-candidate",
+  "purpose": "reveal-only-display",
+  "slot": "paletteMaterial",
+  "resourceKind": "reveal-illustration",
+  "displayOnly": true,
+  "publicationStatus": "candidate-preview",
+  "runtimeVerification": "not-browser-checked",
+  "ownerArtworkId": "muse-sage-reading",
+  "applicableArtworkIds": [
+    "muse-sage-reading"
+  ],
+  "factIds": [
+    "color:sage",
+    "material:short-plush"
+  ],
+  "artworkFactReference": "color:sage + material:short-plush",
+  "artApproval": {
+    "status": "pending",
+    "record": "openspec/changes/simplify-reveal-cards-and-staging/implementation/palette-provenance/sage-plush-v2.provenance.json#sage-plush",
+    "assetSha256": "109e1bf878e7344166e3bf287badadffd405d880dbbde195b245071a1f890829",
+    "assetVersion": "v2-candidate",
+    "purpose": "reveal-only-display",
+    "scope": "independent reveal-only candidate; user visual review required"
+  },
+  "sourceArtwork": {
+    "path": "dist/assets/looks/muse-sage-reading.png",
+    "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+    "hashVerified": true
+  },
+  "priorCandidate": {
+    "path": "dist/assets/reveal/palette-material/sage-plush.svg",
+    "version": "v1-candidate",
+    "sha256": "d131a9302295f67c357aaca39aefe596131d49c8ed4ac2f2b2ad4368e79d3fa7"
+  },
+  "generation": {
+    "tool": "image_gen.imagegen",
+    "generationId": "exec-65c0bb0a-aabf-4eec-adc6-d0fc6eb675ac",
+    "generatedArtifactPath": "/Users/liuzhihang/.codex/generated_images/01a1177c-e210-7f61-98a9-855e0ca6ad3d/exec-65c0bb0a-aabf-4eec-adc6-d0fc6eb675ac.png",
+    "transparentBackgroundRequested": true,
+    "prompt": "Create a single isolated high-quality 3D material swatch asset for a visual catalog. Use the first reference only for the softly rounded square sample silhouette and close-up composition: one thick, softly rounded square cushion-like swatch, nearly front-facing, with a small curled-back corner at the lower right revealing the same material. Do not copy its color. Use the second reference only to read the character's muted sage body color; do not depict the character. The entire swatch is an even, pale desaturated sage green, covered in dense very short plush fibers with a soft matte velvety finish; fibers should be fine and compact, not shaggy, not long fur. Center the single swatch large in frame with generous transparent margin. True transparent background and clean alpha; no floor, no platform, no cast shadow. No character, face, eyes, limbs, clothing, text, logo, border, interface, or extra objects. Square image, polished premium 3D product-render style, restrained soft studio illumination on the object only.",
+    "referenceImages": [
+      {
+        "path": "dist/assets/reveal/palette-material/cream-plush-v2.png",
+        "sha256": "6081eb1d18ac5e8473d11b4ddf2f40fe69133e43446ffd4379e947ba7a436bd1"
+      },
+      {
+        "path": "dist/assets/looks/muse-sage-reading.png",
+        "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+      }
+    ]
+  },
+  "output": {
+    "path": "dist/assets/reveal/palette-material/sage-plush-v2.png",
+    "mime": "image/png",
+    "sha256": "109e1bf878e7344166e3bf287badadffd405d880dbbde195b245071a1f890829",
+    "byteSize": 1914497,
+    "width": 1254,
+    "height": 1254,
+    "colorType": "RGBA",
+    "alphaPixels": {
+      "transparent": 726647,
+      "partial": 845859,
+      "opaque": 10
+    },
+    "visibleBounds": [
+      23,
+      27,
+      1201,
+      1228
+    ]
+  },
+  "sourceRef": "imagegen:exec-65c0bb0a-aabf-4eec-adc6-d0fc6eb675ac; reference=dist/assets/reveal/palette-material/cream-plush-v2.png#6081eb1d18ac5e8473d11b4ddf2f40fe69133e43446ffd4379e947ba7a436bd1; reference=dist/assets/looks/muse-sage-reading.png#82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+  "sourceKind": "imagegen-generated-palette-material-candidate"
+}
+
