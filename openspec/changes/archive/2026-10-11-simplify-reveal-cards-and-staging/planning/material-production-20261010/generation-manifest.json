@@ -1,0 +1,252 @@
+{
+  "date": "2026-10-10",
+  "scope": "reference-led material preparation only; no business apply",
+  "creator": "Codex via built-in image_gen",
+  "userSupplies": "reference images only; no PSD/layers/alpha required",
+  "requestedCanvas": [
+    1024,
+    1024
+  ],
+  "actualCanvas": [
+    1254,
+    1254
+  ],
+  "resampled": false,
+  "engineeringTemplateAccepted": false,
+  "publicEditableTemplates": 0,
+  "qaNote": "Bounding-box test is a conservative outside-contour noise indicator, not full connected-component or compositing QA. Files are visual candidates only. No Python image edits.",
+  "outputs": [
+    {
+      "file": "generated/dots-orb-v1/body-base-candidate-v1.png",
+      "selectedForReview": false,
+      "role": "prior-attempt",
+      "tool": "built-in image_gen",
+      "bytes": 1676502,
+      "sha256": "4f00e8caad7d27bfc97d05dca65e0aed7ec9ad02fc66e2eb6f198d466defa0b1",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 253,
+      "fullyTransparentPixels": 785883,
+      "semiTransparentPixels": 786633,
+      "fullyOpaquePixels": 0,
+      "alpha16BoundingBox": [
+        129,
+        146,
+        1122,
+        1140
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 2025,
+      "maxAlphaOutsideAlpha16Box": 14,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/dots-orb-v1/body-base-candidate-v2.png",
+      "selectedForReview": true,
+      "role": "body-reference",
+      "tool": "built-in image_gen",
+      "bytes": 1675380,
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 780429,
+      "semiTransparentPixels": 792084,
+      "fullyOpaquePixels": 3,
+      "alpha16BoundingBox": [
+        129,
+        151,
+        1124,
+        1145
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 7381,
+      "maxAlphaOutsideAlpha16Box": 9,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/dots-orb-v1/default-look-candidate-v1.png",
+      "selectedForReview": false,
+      "role": "prior-attempt",
+      "tool": "built-in image_gen",
+      "bytes": 1679566,
+      "sha256": "adcef0574897bf74d4132de9d774dfc578848ff29d0afb3dcdaeb558989d7e31",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 731454,
+      "semiTransparentPixels": 840797,
+      "fullyOpaquePixels": 265,
+      "alpha16BoundingBox": [
+        55,
+        142,
+        1198,
+        1143
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 1165,
+      "maxAlphaOutsideAlpha16Box": 8,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/dots-orb-v1/default-look-candidate-v2.png",
+      "selectedForReview": true,
+      "role": "default-look-reference",
+      "tool": "built-in image_gen",
+      "bytes": 1724456,
+      "sha256": "303f8bd49c9f5c74811efa154168c630d65bccfa55669ccfccce54add53d3fcb",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 720865,
+      "semiTransparentPixels": 851182,
+      "fullyOpaquePixels": 469,
+      "alpha16BoundingBox": [
+        53,
+        141,
+        1201,
+        1156
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 1013,
+      "maxAlphaOutsideAlpha16Box": 14,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/grok-orb-v1/grok-orb-v1-base-candidate.png",
+      "selectedForReview": false,
+      "role": "prior-attempt",
+      "tool": "built-in image_gen",
+      "bytes": 1100793,
+      "sha256": "2f67eeb54201c79c65b71267f9f2a66bc93b535a682b413edb86c48a697d1843",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 759367,
+      "semiTransparentPixels": 812297,
+      "fullyOpaquePixels": 852,
+      "alpha16BoundingBox": [
+        123,
+        123,
+        1131,
+        1127
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 9723,
+      "maxAlphaOutsideAlpha16Box": 7,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/grok-orb-v1/grok-orb-v1-base-retry-candidate.png",
+      "selectedForReview": true,
+      "role": "body-reference",
+      "tool": "built-in image_gen",
+      "bytes": 1106046,
+      "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 764701,
+      "semiTransparentPixels": 806449,
+      "fullyOpaquePixels": 1366,
+      "alpha16BoundingBox": [
+        121,
+        123,
+        1133,
+        1127
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 6547,
+      "maxAlphaOutsideAlpha16Box": 5,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/grok-orb-v1/grok-orb-v1-default-look-candidate.png",
+      "selectedForReview": true,
+      "role": "default-look-reference",
+      "tool": "built-in image_gen",
+      "bytes": 1061172,
+      "sha256": "d1bdc68f847aecc453e73a513a6b92f3dd2a1472267b4e43a474d6a5cc5f510b",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 764842,
+      "semiTransparentPixels": 806404,
+      "fullyOpaquePixels": 1270,
+      "alpha16BoundingBox": [
+        121,
+        123,
+        1132,
+        1128
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 6414,
+      "maxAlphaOutsideAlpha16Box": 9,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    },
+    {
+      "file": "generated/grok-orb-v1/grok-orb-v1-default-look-retry-candidate.png",
+      "selectedForReview": false,
+      "role": "prior-attempt",
+      "tool": "built-in image_gen",
+      "bytes": 1033848,
+      "sha256": "e6365ad7d7b553cada895d2b2169317d944a8835ea28e096425525ccc984d7d8",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "fullyTransparentPixels": 751697,
+      "semiTransparentPixels": 819498,
+      "fullyOpaquePixels": 1321,
+      "alpha16BoundingBox": [
+        120,
+        123,
+        1134,
+        1129
+      ],
+      "nonzeroPixelsOutsideAlpha16Box": 11884,
+      "maxAlphaOutsideAlpha16Box": 11,
+      "productionReady": false,
+      "artApproval": "pending",
+      "separatedLayers": false
+    }
+  ]
+}

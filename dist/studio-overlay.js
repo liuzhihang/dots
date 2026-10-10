@@ -1,4 +1,4 @@
-const focusableSelector = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+const focusableSelector = 'summary,a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
 function visibleFocusable(dialog) {
   return [...dialog.querySelectorAll(focusableSelector)].filter(element =>
@@ -60,7 +60,11 @@ export function createOverlay({
   const requestClose = reason => {
     if (!openState || closeRequested || destroyed) return;
     closeRequested = true;
-    try { onClose({ reason }); } catch { /* The app shell owns route and source restoration. */ }
+    try {
+      // Accepted history navigation is asynchronous. Keep the latch until the
+      // shell closes the panel; only a rejected exit permits another attempt.
+      if (onClose({ reason }) === false) closeRequested = false;
+    } catch { closeRequested = false; }
   };
 
   function onCancel(event) {
@@ -100,12 +104,13 @@ export function createOverlay({
     if (destroyed) return false;
     if (nextTitle !== undefined) setTitle(nextTitle);
     if (openState) {
-      closeRequested = false;
       return true;
     }
     returnFocus = trigger instanceof HTMLElement ? trigger : null;
     returnScrollY = Number.isFinite(Number(scrollY)) ? Number(scrollY) : window.scrollY;
     closeRequested = false;
+    body.scrollTop = 0;
+    body.scrollLeft = 0;
     setPageLocked(true);
     try {
       if (!dialog.open) dialog.showModal();

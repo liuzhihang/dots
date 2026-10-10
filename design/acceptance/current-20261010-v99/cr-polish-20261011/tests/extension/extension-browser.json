@@ -1,0 +1,60 @@
+{
+  "revision": 99,
+  "fixture": {
+    "artworkId": "fixture-new-static-artwork",
+    "characterId": "fixture-white-cat-variation",
+    "scope": "fixture-only",
+    "sourceSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+  },
+  "query": {
+    "text": "测试奶油白猫新外观",
+    "seriesId": "animals",
+    "sort": "curated",
+    "matchIds": [
+      "fixture-new-static-artwork"
+    ]
+  },
+  "checks": [
+    "A data-only Character and Artwork appear through the shared gallery query and card component.",
+    "The shared card is rendered and addressable by its data ID.",
+    "Query and ordinary card rendering do not fetch the original PNG.",
+    "The shared detail controller opens the fixture from the card without a character-specific page.",
+    "Detail cover and sharper preview use registered display derivatives; original bytes remain unloaded.",
+    "The unified Chinese Prompt copies and opens in ChatGPT with extra intent while leaving the static preview unchanged.",
+    "The primary static Export action returns exact registered PNG bytes and SHA-256 through the injected fixture resolver.",
+    "The isolated fixture flow does not mutate its source Artwork record."
+  ],
+  "browser": {
+    "name": "Google Chrome",
+    "version": "155.0.8059.39",
+    "viewport": {
+      "width": 1280,
+      "height": 800
+    },
+    "origin": "http://127.0.0.1:54382"
+  },
+  "requestedPaths": [
+    "/__character-extension-test",
+    "/studio.css",
+    "/studio-detail.css",
+    "/@fs//Users/liuzhihang/workspace/dots/scripts/fixtures/new-artwork.mjs",
+    "/studio-card.js",
+    "/studio-detail.js",
+    "/studio-artwork-catalog.js",
+    "/studio-tags.js",
+    "/studio-prompt.js",
+    "/studio-asset-loader.js",
+    "/studio-preview-loader.js",
+    "/studio-i18n.js",
+    "/studio-actions.js",
+    "/studio-content.js",
+    "/studio-edit-templates.js",
+    "/studio-display-assets.js",
+    "/assets/posters/animal-white-cat-thumb256-v99.png",
+    "/assets/previews/animal-white-cat-detail1024-v99.png",
+    "/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+    "/assets/posters/animal-gray-husky-thumb256-v99.png",
+    "/assets/looks/animal-white-cat.png"
+  ],
+  "errors": []
+}

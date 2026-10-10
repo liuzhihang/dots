@@ -1,0 +1,2911 @@
+{
+  "date": "2026-10-10T14:02:33.254Z",
+  "url": "http://127.0.0.1:5182/__dots_review__/",
+  "browser": "Project Playwright QA runner with installed local Chrome; Browser-specific skill/plugin was not available to this subtask.",
+  "cssSha256": "a1b74952a3e3d6f83edab622aa671c9cac675abf565af114a9340e07f41bd7e3",
+  "screenshots": [
+    "1440x900-en-static-muse.png",
+    "1440x900-en-edit-dots.png",
+    "1440x900-en-edit-grok.png",
+    "1440x900-zh-CN-static-muse.png",
+    "1440x900-zh-CN-edit-dots.png",
+    "1440x900-zh-CN-edit-grok.png",
+    "390x844-en-static-muse.png",
+    "390x844-en-edit-dots.png",
+    "390x844-en-edit-grok.png",
+    "390x844-zh-CN-static-muse.png",
+    "390x844-zh-CN-edit-dots.png",
+    "390x844-zh-CN-edit-grok.png",
+    "320x700-en-static-muse.png",
+    "320x700-en-edit-dots.png",
+    "320x700-en-edit-grok.png",
+    "320x700-zh-CN-static-muse.png",
+    "320x700-zh-CN-edit-dots.png",
+    "320x700-zh-CN-edit-grok.png",
+    "768x1024-en-static-muse.png",
+    "768x1024-en-edit-dots.png",
+    "768x1024-en-edit-grok.png",
+    "768x1024-zh-CN-static-muse.png",
+    "768x1024-zh-CN-edit-dots.png",
+    "768x1024-zh-CN-edit-grok.png",
+    "interaction-320x700-dots-warm-yellow.png",
+    "interaction-320x700-grok-mint.png",
+    "accessory-1440-dots-headphones-tab.png",
+    "accessory-1440-grok-cap-tab.png",
+    "fallback-reduced-transparency-320.png",
+    "fallback-no-blur-simulated-320.png"
+  ],
+  "matrix": [
+    {
+      "viewport": "1440x900",
+      "language": "en",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "1440x900-en-static-muse.png",
+      "metrics": {
+        "title": "Daisy Muse",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 98.640625,
+          "width": 1120,
+          "height": 702.71875,
+          "right": 1280,
+          "bottom": 801.359375
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 196.640625,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 744.359375
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 210.5,
+          "width": 547.71875,
+          "height": 520,
+          "right": 736.71875,
+          "bottom": 730.5
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 636,
+          "clientHeight": 636,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "1440x900",
+      "language": "en",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "1440x900-en-edit-dots.png",
+      "metrics": {
+        "title": "Headphone Dots",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 24,
+          "width": 1120,
+          "height": 852,
+          "right": 1280,
+          "bottom": 876
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 871,
+          "clientHeight": 871,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "1440x900",
+      "language": "en",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "1440x900-en-edit-grok.png",
+      "metrics": {
+        "title": "Purple Grok",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 24,
+          "width": 1120,
+          "height": 852,
+          "right": 1280,
+          "bottom": 876
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 871,
+          "clientHeight": 871,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "1440x900",
+      "language": "zh-CN",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "1440x900-zh-CN-static-muse.png",
+      "metrics": {
+        "title": "花束 Muse",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 98.640625,
+          "width": 1120,
+          "height": 702.71875,
+          "right": 1280,
+          "bottom": 801.359375
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 196.640625,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 744.359375
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 210.5,
+          "width": 547.71875,
+          "height": 520,
+          "right": 736.71875,
+          "bottom": 730.5
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 636,
+          "clientHeight": 636,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "1440x900",
+      "language": "zh-CN",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "1440x900-zh-CN-edit-dots.png",
+      "metrics": {
+        "title": "耳机 Dots",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 24,
+          "width": 1120,
+          "height": 852,
+          "right": 1280,
+          "bottom": 876
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 851,
+          "clientHeight": 851,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "1440x900",
+      "language": "zh-CN",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "1440x900-zh-CN-edit-grok.png",
+      "metrics": {
+        "title": "紫色 Grok",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 160,
+          "y": 24,
+          "width": 1120,
+          "height": 852,
+          "right": 1280,
+          "bottom": 876
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewContentRect": {
+          "x": 189,
+          "y": 122,
+          "width": 547.71875,
+          "height": 547.71875,
+          "right": 736.71875,
+          "bottom": 669.71875
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 851,
+          "clientHeight": 851,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          1440,
+          900
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "en",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "390x844-en-static-muse.png",
+      "metrics": {
+        "title": "Daisy Muse",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 73,
+          "width": 346,
+          "height": 260,
+          "right": 368,
+          "bottom": 333
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 73,
+          "width": 346,
+          "height": 260,
+          "right": 368,
+          "bottom": 333
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 565,
+          "clientHeight": 565,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "en",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "390x844-en-edit-dots.png",
+      "metrics": {
+        "title": "Headphone Dots",
+        "lang": "en",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 857,
+          "clientHeight": 562,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "en",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "390x844-en-edit-grok.png",
+      "metrics": {
+        "title": "Purple Grok",
+        "lang": "en",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 857,
+          "clientHeight": 562,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "zh-CN",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "390x844-zh-CN-static-muse.png",
+      "metrics": {
+        "title": "花束 Muse",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 73,
+          "width": 346,
+          "height": 260,
+          "right": 368,
+          "bottom": 333
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 73,
+          "width": 346,
+          "height": 260,
+          "right": 368,
+          "bottom": 333
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 535,
+          "clientHeight": 535,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "zh-CN",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "390x844-zh-CN-edit-dots.png",
+      "metrics": {
+        "title": "耳机 Dots",
+        "lang": "zh-CN",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 816,
+          "clientHeight": 562,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "390x844",
+      "language": "zh-CN",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "390x844-zh-CN-edit-grok.png",
+      "metrics": {
+        "title": "紫色 Grok",
+        "lang": "zh-CN",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844,
+          "right": 390,
+          "bottom": 844
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 346,
+          "height": 206,
+          "right": 368,
+          "bottom": 274
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 816,
+          "clientHeight": 562,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "en",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "320x700-en-static-muse.png",
+      "metrics": {
+        "title": "Daisy Muse",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 16,
+          "y": 73,
+          "width": 288,
+          "height": 220,
+          "right": 304,
+          "bottom": 293
+        },
+        "previewContentRect": {
+          "x": 16,
+          "y": 73,
+          "width": 288,
+          "height": 220,
+          "right": 304,
+          "bottom": 293
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 579,
+          "clientHeight": 579,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "en",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "320x700-en-edit-dots.png",
+      "metrics": {
+        "title": "Headphone Dots",
+        "lang": "en",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 886,
+          "clientHeight": 442,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "en",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "320x700-en-edit-grok.png",
+      "metrics": {
+        "title": "Purple Grok",
+        "lang": "en",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 886,
+          "clientHeight": 442,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "zh-CN",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "320x700-zh-CN-static-muse.png",
+      "metrics": {
+        "title": "花束 Muse",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 16,
+          "y": 73,
+          "width": 288,
+          "height": 220,
+          "right": 304,
+          "bottom": 293
+        },
+        "previewContentRect": {
+          "x": 16,
+          "y": 73,
+          "width": 288,
+          "height": 220,
+          "right": 304,
+          "bottom": 293
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 527,
+          "clientHeight": 527,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "zh-CN",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "320x700-zh-CN-edit-dots.png",
+      "metrics": {
+        "title": "耳机 Dots",
+        "lang": "zh-CN",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 824,
+          "clientHeight": 442,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "320x700",
+      "language": "zh-CN",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "320x700-zh-CN-edit-grok.png",
+      "metrics": {
+        "title": "紫色 Grok",
+        "lang": "zh-CN",
+        "dialogDisplay": "flex",
+        "dialogRect": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 700,
+          "right": 320,
+          "bottom": 700
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewContentRect": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "right": 298,
+          "bottom": 250
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 824,
+          "clientHeight": 442,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          320,
+          700
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "768x1024-en-static-muse.png",
+      "metrics": {
+        "title": "Daisy Muse",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 27.546875,
+          "width": 736,
+          "height": 968.890625,
+          "right": 752,
+          "bottom": 996.4375
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 107.546875,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 447.546875
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 107.546875,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 447.546875
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 537,
+          "clientHeight": 537,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "768x1024-en-edit-dots.png",
+      "metrics": {
+        "title": "Headphone Dots",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 16,
+          "width": 736,
+          "height": 992,
+          "right": 752,
+          "bottom": 1008
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 96,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 436
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 106,
+          "width": 674,
+          "height": 320,
+          "right": 721,
+          "bottom": 426
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 846,
+          "clientHeight": 846,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "en",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "768x1024-en-edit-grok.png",
+      "metrics": {
+        "title": "Purple Grok",
+        "lang": "en",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 16,
+          "width": 736,
+          "height": 992,
+          "right": 752,
+          "bottom": 1008
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 96,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 436
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 106,
+          "width": 674,
+          "height": 320,
+          "right": 721,
+          "bottom": 426
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "Review only — this template is not approved for public editing.",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 846,
+          "clientHeight": 846,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "zh-CN",
+      "target": "static-muse",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/muse-rose-flowers?v=v1",
+      "screenshot": "768x1024-zh-CN-static-muse.png",
+      "metrics": {
+        "title": "花束 Muse",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 27.546875,
+          "width": 736,
+          "height": 968.890625,
+          "right": 752,
+          "bottom": 996.4375
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 107.546875,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 447.546875
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 107.546875,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 447.546875
+        },
+        "previewAlpha": null,
+        "originalDetails": {
+          "open": true,
+          "summaryHidden": true,
+          "summaryHeight": 0
+        },
+        "tabs": [],
+        "selectedTab": null,
+        "activePanel": null,
+        "visiblePanelCount": 0,
+        "pendingText": null,
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 537,
+          "clientHeight": 537,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "zh-CN",
+      "target": "edit-dots",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-dots-20261005?v=v2",
+      "screenshot": "768x1024-zh-CN-edit-dots.png",
+      "metrics": {
+        "title": "耳机 Dots",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 16,
+          "width": 736,
+          "height": 992,
+          "right": 752,
+          "bottom": 1008
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 96,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 436
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 106,
+          "width": 674,
+          "height": 320,
+          "right": 721,
+          "bottom": 426
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 252
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 846,
+          "clientHeight": 846,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    },
+    {
+      "viewport": "768x1024",
+      "language": "zh-CN",
+      "target": "edit-grok",
+      "url": "http://127.0.0.1:5182/__dots_review__/#/artwork/candidate-grok-20261005?v=v2",
+      "screenshot": "768x1024-zh-CN-edit-grok.png",
+      "metrics": {
+        "title": "紫色 Grok",
+        "lang": "zh-CN",
+        "dialogDisplay": "block",
+        "dialogRect": {
+          "x": 16,
+          "y": 16,
+          "width": 736,
+          "height": 992,
+          "right": 752,
+          "bottom": 1008
+        },
+        "glass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(247, 249, 255, 0.075), rgba(29, 33, 46, 0.48) 42%, rgba(22, 26, 38, 0.54))",
+          "backdropFilter": "blur(26px) saturate(1.38)"
+        },
+        "headerGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(rgba(249, 250, 255, 0.075), rgba(35, 39, 52, 0.27))",
+          "backdropFilter": "blur(18px) saturate(1.42)"
+        },
+        "mediaGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "radial-gradient(at 45% 35%, rgba(138, 128, 184, 0.16), rgba(0, 0, 0, 0) 68%), linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0) 65%)",
+          "backdropFilter": "none"
+        },
+        "contentGlass": {
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "backgroundImage": "linear-gradient(145deg, rgba(249, 250, 255, 0.035), rgba(255, 255, 255, 0.008))",
+          "backdropFilter": "none"
+        },
+        "previewRect": {
+          "x": 47,
+          "y": 96,
+          "width": 674,
+          "height": 340,
+          "right": 721,
+          "bottom": 436
+        },
+        "previewContentRect": {
+          "x": 47,
+          "y": 106,
+          "width": 674,
+          "height": 320,
+          "right": 721,
+          "bottom": 426
+        },
+        "previewAlpha": {
+          "corner": 0,
+          "center": 254
+        },
+        "originalDetails": {
+          "open": false,
+          "summaryHidden": false,
+          "summaryHeight": 46
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "selected": "true",
+            "height": 44
+          },
+          {
+            "field": "eyes",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "glasses",
+            "selected": "false",
+            "height": 44
+          },
+          {
+            "field": "accessory",
+            "selected": "false",
+            "height": 44
+          }
+        ],
+        "selectedTab": "color",
+        "activePanel": "color",
+        "visiblePanelCount": 1,
+        "pendingText": "仅供审阅：此模板尚未获准公开编辑。",
+        "oldModeDom": 0,
+        "contentScroll": {
+          "top": 0,
+          "height": 846,
+          "clientHeight": 846,
+          "horizontalOverflow": false
+        },
+        "viewport": [
+          768,
+          1024
+        ]
+      },
+      "previewFits": true,
+      "noConsoleErrors": true,
+      "detailsPass": true,
+      "tabsPass": true,
+      "transparentCanvasPass": true,
+      "noLegacyModeUi": true,
+      "noHorizontalContentOverflow": true
+    }
+  ],
+  "interactions": [
+    {
+      "targetId": "candidate-dots-20261005",
+      "viewport": [
+        320,
+        700
+      ],
+      "optionId": "warm-yellow",
+      "before": {
+        "pixel": [
+          6,
+          115,
+          255,
+          252
+        ],
+        "canvas": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "bottom": 250
+        },
+        "preview": {
+          "x": 22,
+          "y": 68,
+          "right": 298,
+          "bottom": 250
+        },
+        "actions": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "position": "static"
+        },
+        "options": [
+          {
+            "id": "blue",
+            "x": 20,
+            "y": 553.140625,
+            "right": 157,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          },
+          {
+            "id": "warm-yellow",
+            "x": 163,
+            "y": 553.140625,
+            "right": 300,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          }
+        ],
+        "export": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "height": 64
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "width": 64.5,
+            "right": 89.5
+          },
+          {
+            "field": "eyes",
+            "width": 64.5,
+            "right": 158
+          },
+          {
+            "field": "glasses",
+            "width": 64.5,
+            "right": 226.5
+          },
+          {
+            "field": "accessory",
+            "width": 64.5,
+            "right": 295
+          }
+        ],
+        "scrollTop": 0
+      },
+      "pixelAfterTab": [
+        6,
+        115,
+        255,
+        252
+      ],
+      "after": {
+        "pixel": [
+          237,
+          184,
+          24,
+          252
+        ],
+        "canvas": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "bottom": 250
+        },
+        "preview": {
+          "x": 22,
+          "y": 68,
+          "right": 298,
+          "bottom": 250
+        },
+        "actions": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "position": "static"
+        },
+        "options": [
+          {
+            "id": "blue",
+            "x": 20,
+            "y": 553.140625,
+            "right": 157,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          },
+          {
+            "id": "warm-yellow",
+            "x": 163,
+            "y": 553.140625,
+            "right": 300,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          }
+        ],
+        "export": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "height": 64
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "width": 64.5,
+            "right": 89.5
+          },
+          {
+            "field": "eyes",
+            "width": 64.5,
+            "right": 158
+          },
+          {
+            "field": "glasses",
+            "width": 64.5,
+            "right": 226.5
+          },
+          {
+            "field": "accessory",
+            "width": 64.5,
+            "right": 295
+          }
+        ],
+        "scrollTop": 0
+      },
+      "tabDidNotRender": true,
+      "optionChangedCanvas": true,
+      "canvasContainedAndVisible": true,
+      "tabsAllVisible": true,
+      "optionsVisibleAndUnobstructed": true,
+      "exportScrolled": {
+        "scrollTop": 305,
+        "export": {
+          "y": 446.921875,
+          "bottom": 510.921875,
+          "height": 64
+        },
+        "exportVisible": true,
+        "canvasStillContained": true,
+        "canvasStillVisible": true
+      },
+      "exportReachable": true,
+      "screenshot": "interaction-320x700-dots-warm-yellow.png",
+      "noConsoleErrors": true
+    },
+    {
+      "targetId": "candidate-grok-20261005",
+      "viewport": [
+        320,
+        700
+      ],
+      "optionId": "mint",
+      "before": {
+        "pixel": [
+          120,
+          78,
+          227,
+          254
+        ],
+        "canvas": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "bottom": 250
+        },
+        "preview": {
+          "x": 22,
+          "y": 68,
+          "right": 298,
+          "bottom": 250
+        },
+        "actions": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "position": "static"
+        },
+        "options": [
+          {
+            "id": "purple",
+            "x": 20,
+            "y": 553.140625,
+            "right": 157,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          },
+          {
+            "id": "mint",
+            "x": 163,
+            "y": 553.140625,
+            "right": 300,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          }
+        ],
+        "export": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "height": 64
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "width": 64.5,
+            "right": 89.5
+          },
+          {
+            "field": "eyes",
+            "width": 64.5,
+            "right": 158
+          },
+          {
+            "field": "glasses",
+            "width": 64.5,
+            "right": 226.5
+          },
+          {
+            "field": "accessory",
+            "width": 64.5,
+            "right": 295
+          }
+        ],
+        "scrollTop": 0
+      },
+      "pixelAfterTab": [
+        120,
+        78,
+        227,
+        254
+      ],
+      "after": {
+        "pixel": [
+          100,
+          205,
+          180,
+          254
+        ],
+        "canvas": {
+          "x": 22,
+          "y": 68,
+          "width": 276,
+          "height": 182,
+          "bottom": 250
+        },
+        "preview": {
+          "x": 22,
+          "y": 68,
+          "right": 298,
+          "bottom": 250
+        },
+        "actions": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "position": "static"
+        },
+        "options": [
+          {
+            "id": "purple",
+            "x": 20,
+            "y": 553.140625,
+            "right": 157,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          },
+          {
+            "id": "mint",
+            "x": 163,
+            "y": 553.140625,
+            "right": 300,
+            "bottom": 634.640625,
+            "width": 137,
+            "height": 81.5
+          }
+        ],
+        "export": {
+          "y": 751.921875,
+          "bottom": 815.921875,
+          "height": 64
+        },
+        "tabs": [
+          {
+            "field": "color",
+            "width": 64.5,
+            "right": 89.5
+          },
+          {
+            "field": "eyes",
+            "width": 64.5,
+            "right": 158
+          },
+          {
+            "field": "glasses",
+            "width": 64.5,
+            "right": 226.5
+          },
+          {
+            "field": "accessory",
+            "width": 64.5,
+            "right": 295
+          }
+        ],
+        "scrollTop": 0
+      },
+      "tabDidNotRender": true,
+      "optionChangedCanvas": true,
+      "canvasContainedAndVisible": true,
+      "tabsAllVisible": true,
+      "optionsVisibleAndUnobstructed": true,
+      "exportScrolled": {
+        "scrollTop": 305,
+        "export": {
+          "y": 446.921875,
+          "bottom": 510.921875,
+          "height": 64
+        },
+        "exportVisible": true,
+        "canvasStillContained": true,
+        "canvasStillVisible": true
+      },
+      "exportReachable": true,
+      "screenshot": "interaction-320x700-grok-mint.png",
+      "noConsoleErrors": true
+    }
+  ],
+  "thumbnails": [
+    {
+      "targetId": "candidate-dots-20261005",
+      "screenshot": "accessory-1440-dots-headphones-tab.png",
+      "thumbnails": [
+        {
+          "width": 96,
+          "height": 63,
+          "alphaPixels": 2105,
+          "assetIds": "template:dots-orb-v1:headphones:default:rear template:dots-orb-v1:headphones:default:front"
+        }
+      ],
+      "allRealAlpha": true,
+      "noConsoleErrors": true
+    },
+    {
+      "targetId": "candidate-grok-20261005",
+      "screenshot": "accessory-1440-grok-cap-tab.png",
+      "thumbnails": [
+        {
+          "width": 96,
+          "height": 39,
+          "alphaPixels": 2754,
+          "assetIds": "template:grok-orb-v1:cap:soft:rear template:grok-orb-v1:cap:soft:front"
+        }
+      ],
+      "allRealAlpha": true,
+      "noConsoleErrors": true
+    }
+  ],
+  "mediaPreferences": {
+    "defaultStyle": {
+      "support": true,
+      "overlay": "blur(26px) saturate(1.38)",
+      "tabs": "blur(14px) saturate(1.3)",
+      "actions": "none"
+    },
+    "reducedTransparency": {
+      "matches": true,
+      "overlay": "none",
+      "tabs": "none",
+      "actions": "none",
+      "tabBackground": "rgb(36, 42, 56)",
+      "actionBackground": "rgba(0, 0, 0, 0)"
+    },
+    "reducedMotion": {
+      "matches": true,
+      "tabTransition": "0s",
+      "optionTransition": "0s",
+      "optionTransitionProperty": "none",
+      "summaryTransition": "0s"
+    },
+    "noBlur": {
+      "simulatedUnsupported": true,
+      "overlay": "none",
+      "tabs": "none",
+      "actions": "none",
+      "overlayBackground": "rgb(31, 36, 49)",
+      "overlayOpaqueSolid": true
+    }
+  },
+  "closedDialog": {
+    "open": false,
+    "display": "none",
+    "rect": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "console": [],
+  "summary": {
+    "matrixItems": 24,
+    "matrixPass": true,
+    "interactionPass": true,
+    "thumbnailPass": true,
+    "reducedTransparencyPass": true,
+    "reducedMotionPass": true,
+    "noBlurSimulationPass": true,
+    "closedDialogPass": true,
+    "consoleErrors": 0
+  }
+}

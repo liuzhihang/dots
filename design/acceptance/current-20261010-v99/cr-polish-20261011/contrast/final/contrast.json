@@ -1,0 +1,8662 @@
+{
+  "revision": 99,
+  "browser": "155.0.8059.39",
+  "method": "Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.",
+  "passed": true,
+  "minimumRatio": 3.4907732936681057,
+  "failures": [],
+  "rows": [
+    {
+      "scene": "en-gallery",
+      "selector": ".hero-title-line[data-home-copy=\"titleFirst\"]",
+      "text": "Make It",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "70px",
+        "fontWeight": "760"
+      },
+      "changedTextPixels": 6698,
+      "sampledGlyphPixels": 6698,
+      "minRatio": 17.97439177894187,
+      "worstPixel": {
+        "x": 83,
+        "y": 200,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          11,
+          13,
+          18
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".intro-description",
+      "text": "Pick a character. Make it yours in ChatGPT.",
+      "color": {
+        "rgb": [
+          193,
+          200,
+          214
+        ],
+        "alpha": 1,
+        "fontSize": "17px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1974,
+      "sampledGlyphPixels": 1974,
+      "minRatio": 11.561395782369539,
+      "worstPixel": {
+        "x": 375,
+        "y": 353,
+        "foreground": [
+          193,
+          200,
+          214
+        ],
+        "background": [
+          11,
+          13,
+          19
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": "#browseCharacters",
+      "text": "Browse characters",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 698,
+      "sampledGlyphPixels": 698,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 98,
+        "y": 414,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".gallery-series-filter__button[aria-pressed=\"true\"]",
+      "text": "All",
+      "color": {
+        "rgb": [
+          241,
+          234,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 98,
+      "sampledGlyphPixels": 98,
+      "minRatio": 12.996593794351831,
+      "worstPixel": {
+        "x": 105,
+        "y": 615,
+        "foreground": [
+          241,
+          234,
+          255
+        ],
+        "background": [
+          42,
+          32,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 486,
+      "sampledGlyphPixels": 486,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 94,
+        "y": 864,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Purple",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 239,
+      "sampledGlyphPixels": 239,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 310,
+        "y": 864,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Cream",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 230,
+      "sampledGlyphPixels": 230,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 527,
+        "y": 870,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Chestnut",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 350,
+      "sampledGlyphPixels": 350,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 747,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Shiba Inu",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 331,
+      "sampledGlyphPixels": 331,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 961,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-name",
+      "text": "Rose Glasses",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 500,
+      "sampledGlyphPixels": 500,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 1176,
+        "y": 864,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 88,
+      "sampledGlyphPixels": 88,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 238,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "Grok Bot",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 170,
+      "sampledGlyphPixels": 170,
+      "minRatio": 10.127168930573339,
+      "worstPixel": {
+        "x": 436,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          30,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "Muse",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 103,
+      "sampledGlyphPixels": 103,
+      "minRatio": 10.207923873480922,
+      "worstPixel": {
+        "x": 667,
+        "y": 870,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "People",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 133,
+      "sampledGlyphPixels": 133,
+      "minRatio": 10.127168930573339,
+      "worstPixel": {
+        "x": 877,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          30,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "Animals",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 154,
+      "sampledGlyphPixels": 154,
+      "minRatio": 10.127168930573339,
+      "worstPixel": {
+        "x": 1091,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          30,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-gallery",
+      "selector": ".artwork-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 96,
+      "sampledGlyphPixels": 96,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 1320,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-hero-gradient-title",
+      "selector": ".hero-title-line[data-home-copy=\"titleSecond\"]",
+      "text": "Your Dot.",
+      "fontSize": "70px",
+      "fontWeight": "760",
+      "backgroundImage": "linear-gradient(100deg, rgb(197, 173, 255) 0%, rgb(221, 157, 248) 52%, rgb(241, 135, 207) 100%)",
+      "threshold": 3,
+      "method": "Paired screenshots; compare gradient glyph pixels with the same-frame underlying backdrop. Record minima at multiple RGB-change cutoffs; assert large-text contrast on glyph pixels with at least 128/255 channel change to exclude the weakest anti-aliased edge pixels.",
+      "changedGlyphPixels": 7106,
+      "deltaSamples": {
+        "64": {
+          "pixels": 6747,
+          "minRatio": 1.7258745381085685,
+          "worstPixel": {
+            "x": 333,
+            "y": 306,
+            "foreground": [
+              78,
+              49,
+              75
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "96": {
+          "pixels": 6630,
+          "minRatio": 2.48735024172346,
+          "worstPixel": {
+            "x": 337,
+            "y": 306,
+            "foreground": [
+              112,
+              67,
+              103
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "128": {
+          "pixels": 6385,
+          "minRatio": 3.5251203245537255,
+          "worstPixel": {
+            "x": 320,
+            "y": 318,
+            "foreground": [
+              142,
+              86,
+              131
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "160": {
+          "pixels": 6250,
+          "minRatio": 4.6887661907972875,
+          "worstPixel": {
+            "x": 324,
+            "y": 318,
+            "foreground": [
+              171,
+              101,
+              155
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        }
+      },
+      "coreGlyphPixels": 6385,
+      "minRatio": 3.5251203245537255,
+      "worstPixel": {
+        "x": 320,
+        "y": 318,
+        "foreground": [
+          142,
+          86,
+          131
+        ],
+        "background": [
+          11,
+          13,
+          18
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__title",
+      "text": "Headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 2386,
+      "sampledGlyphPixels": 2386,
+      "minRatio": 12.430287848011835,
+      "worstPixel": {
+        "x": 868,
+        "y": 158,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          41,
+          70
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          185,
+          161,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "11px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 184,
+      "sampledGlyphPixels": 184,
+      "minRatio": 7.777201229416798,
+      "worstPixel": {
+        "x": 828,
+        "y": 106,
+        "foreground": [
+          185,
+          161,
+          255
+        ],
+        "background": [
+          24,
+          25,
+          56
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__description",
+      "text": "A blue short-pile plush orb with black oval eyes and over-ear headphones. It has no visible mouth or limbs.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 3184,
+      "sampledGlyphPixels": 3184,
+      "minRatio": 6.402881162717895,
+      "worstPixel": {
+        "x": 1048,
+        "y": 460,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          88,
+          64,
+          25
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "Blue",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 120,
+      "sampledGlyphPixels": 120,
+      "minRatio": 9.941919389807818,
+      "worstPixel": {
+        "x": 814,
+        "y": 522,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          33,
+          31,
+          67
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "Short-pile plush",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 359,
+      "sampledGlyphPixels": 359,
+      "minRatio": 9.82106788453706,
+      "worstPixel": {
+        "x": 856,
+        "y": 522,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          41,
+          27,
+          77
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "Over-ear headphones",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 494,
+      "sampledGlyphPixels": 494,
+      "minRatio": 6.975946444336563,
+      "worstPixel": {
+        "x": 1016,
+        "y": 524,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          81,
+          55,
+          27
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "Black oval eyes",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 364,
+      "sampledGlyphPixels": 364,
+      "minRatio": 6.912380347969741,
+      "worstPixel": {
+        "x": 1122,
+        "y": 524,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          85,
+          54,
+          27
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 355,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 7.500568176497008,
+      "worstPixel": {
+        "x": 1014,
+        "y": 364,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          88,
+          77,
+          79
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 7.738985640559471,
+      "worstPixel": {
+        "x": 1170,
+        "y": 364,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          84,
+          76,
+          74
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 9.011454203532606,
+      "worstPixel": {
+        "x": 847,
+        "y": 190,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          73,
+          65,
+          80
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2169,
+      "sampledGlyphPixels": 2169,
+      "minRatio": 6.806406893186537,
+      "worstPixel": {
+        "x": 884,
+        "y": 303,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          96,
+          83,
+          81
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1970,
+      "sampledGlyphPixels": 1970,
+      "minRatio": 5.4005404408178075,
+      "worstPixel": {
+        "x": 1102,
+        "y": 416,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          90,
+          77,
+          61
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-static-detail",
+      "selector": ".studio-prompt>summary",
+      "text": "Original Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 16.490318375450677,
+      "worstPixel": {
+        "x": 804,
+        "y": 582,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          23,
+          36
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".artwork-detail__title",
+      "text": "Headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 2386,
+      "sampledGlyphPixels": 2386,
+      "minRatio": 12.430287848011835,
+      "worstPixel": {
+        "x": 868,
+        "y": 158,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          41,
+          70
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 7.424537269953757,
+      "worstPixel": {
+        "x": 841,
+        "y": 268,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          99,
+          71,
+          143
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1023,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-field-title",
+      "text": "Color",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 11.226730315984865,
+      "worstPixel": {
+        "x": 827,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          52,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "Blue",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 120,
+      "sampledGlyphPixels": 120,
+      "minRatio": 10.052191915596842,
+      "worstPixel": {
+        "x": 842,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          51,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "Warm yellow",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 295,
+      "sampledGlyphPixels": 295,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 934,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 661,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 12.201127014583903,
+      "worstPixel": {
+        "x": 1026,
+        "y": 671,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          50,
+          47,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 14.527519070522237,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 11.959738979933476,
+      "worstPixel": {
+        "x": 986,
+        "y": 492,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          69,
+          40,
+          61
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 16.50720896246704,
+      "worstPixel": {
+        "x": 1220,
+        "y": 615,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          23,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-appearance",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1982,
+      "sampledGlyphPixels": 1982,
+      "minRatio": 6.825726445651513,
+      "worstPixel": {
+        "x": 1036,
+        "y": 723,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".artwork-detail__title",
+      "text": "Headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 2386,
+      "sampledGlyphPixels": 2386,
+      "minRatio": 12.430287848011835,
+      "worstPixel": {
+        "x": 868,
+        "y": 158,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          41,
+          70
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 7.424537269953757,
+      "worstPixel": {
+        "x": 1010,
+        "y": 268,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          99,
+          71,
+          143
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-field-title",
+      "text": "Eyes",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 194,
+      "sampledGlyphPixels": 194,
+      "minRatio": 11.564846573456066,
+      "worstPixel": {
+        "x": 821,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          50,
+          63
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "Original oval eyes",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 410,
+      "sampledGlyphPixels": 410,
+      "minRatio": 8.138497910301112,
+      "worstPixel": {
+        "x": 809,
+        "y": 430,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          195,
+          175,
+          231
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "Closed eyes (static)",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 443,
+      "sampledGlyphPixels": 443,
+      "minRatio": 7.407846111790164,
+      "worstPixel": {
+        "x": 938,
+        "y": 430,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          168,
+          176,
+          194
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 672,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 11.223785170699324,
+      "worstPixel": {
+        "x": 1025,
+        "y": 682,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          59,
+          52,
+          54
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 13.57870623188183,
+      "worstPixel": {
+        "x": 1234,
+        "y": 682,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          47,
+          36,
+          56
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 11.744019029574275,
+      "worstPixel": {
+        "x": 986,
+        "y": 504,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          70,
+          43,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 16.394411427445114,
+      "worstPixel": {
+        "x": 1218,
+        "y": 626,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          24,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-face",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1984,
+      "sampledGlyphPixels": 1984,
+      "minRatio": 6.542983469955215,
+      "worstPixel": {
+        "x": 1036,
+        "y": 734,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          81,
+          63,
+          55
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".artwork-detail__title",
+      "text": "Headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 2386,
+      "sampledGlyphPixels": 2386,
+      "minRatio": 12.430287848011835,
+      "worstPixel": {
+        "x": 868,
+        "y": 158,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          41,
+          70
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1023,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 7.232029481395888,
+      "worstPixel": {
+        "x": 1191,
+        "y": 267,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          100,
+          73,
+          145
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "Glasses",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 317,
+      "sampledGlyphPixels": 317,
+      "minRatio": 10.208589549512224,
+      "worstPixel": {
+        "x": 841,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          63,
+          58,
+          69
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "Accessory",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 387,
+      "sampledGlyphPixels": 387,
+      "minRatio": 13.07062089008629,
+      "worstPixel": {
+        "x": 821,
+        "y": 476,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          33,
+          36,
+          96
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "None",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 132,
+      "sampledGlyphPixels": 132,
+      "minRatio": 10.052191915596842,
+      "worstPixel": {
+        "x": 842,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          51,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "Round glasses",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 363,
+      "sampledGlyphPixels": 363,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 930,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "None",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 132,
+      "sampledGlyphPixels": 132,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 837,
+        "y": 573,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "Original headphones",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 506,
+      "sampledGlyphPixels": 506,
+      "minRatio": 13.761834578800611,
+      "worstPixel": {
+        "x": 981,
+        "y": 573,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          49,
+          33,
+          59
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 815,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 8.849273879293785,
+      "worstPixel": {
+        "x": 1041,
+        "y": 814,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          77,
+          67,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 12.781723844743375,
+      "worstPixel": {
+        "x": 1236,
+        "y": 816,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          64,
+          35,
+          58
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 16.02376141059815,
+      "worstPixel": {
+        "x": 824,
+        "y": 648,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          24,
+          26,
+          36
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 8.678074881661432,
+      "worstPixel": {
+        "x": 1041,
+        "y": 764,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          83,
+          67,
+          61
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-accessories",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1175,
+      "sampledGlyphPixels": 1175,
+      "minRatio": 9.529626107669882,
+      "worstPixel": {
+        "x": 996,
+        "y": 874,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          38,
+          41,
+          54
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-dots-editor-original",
+      "selector": ".studio-original>summary",
+      "text": "Original artwork & Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 895,
+      "sampledGlyphPixels": 895,
+      "minRatio": 12.55632649510483,
+      "worstPixel": {
+        "x": 826,
+        "y": 819,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          43,
+          46,
+          54
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".artwork-detail__title",
+      "text": "Purple",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1225,
+      "sampledGlyphPixels": 1225,
+      "minRatio": 12.795137368202004,
+      "worstPixel": {
+        "x": 880,
+        "y": 152,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          39,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 7.424537269953757,
+      "worstPixel": {
+        "x": 841,
+        "y": 268,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          99,
+          71,
+          143
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1023,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-field-title",
+      "text": "Color",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 11.226730315984865,
+      "worstPixel": {
+        "x": 827,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          52,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "Purple",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 164,
+      "sampledGlyphPixels": 164,
+      "minRatio": 10.045776468985109,
+      "worstPixel": {
+        "x": 836,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          52,
+          52,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "Mint",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 111,
+      "sampledGlyphPixels": 111,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 954,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 661,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 12.201127014583903,
+      "worstPixel": {
+        "x": 1026,
+        "y": 671,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          50,
+          47,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 14.527519070522237,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 11.959738979933476,
+      "worstPixel": {
+        "x": 986,
+        "y": 492,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          69,
+          40,
+          61
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 16.50720896246704,
+      "worstPixel": {
+        "x": 1220,
+        "y": 615,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          23,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-appearance",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1982,
+      "sampledGlyphPixels": 1982,
+      "minRatio": 6.825726445651513,
+      "worstPixel": {
+        "x": 1036,
+        "y": 723,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".artwork-detail__title",
+      "text": "Purple",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1225,
+      "sampledGlyphPixels": 1225,
+      "minRatio": 12.795137368202004,
+      "worstPixel": {
+        "x": 880,
+        "y": 152,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          39,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 7.424537269953757,
+      "worstPixel": {
+        "x": 1010,
+        "y": 268,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          99,
+          71,
+          143
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-field-title",
+      "text": "Eyes",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 194,
+      "sampledGlyphPixels": 194,
+      "minRatio": 11.564846573456066,
+      "worstPixel": {
+        "x": 821,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          50,
+          63
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "Angled capsules",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 386,
+      "sampledGlyphPixels": 386,
+      "minRatio": 8.138497910301112,
+      "worstPixel": {
+        "x": 812,
+        "y": 430,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          195,
+          175,
+          231
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "Upright capsules",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 384,
+      "sampledGlyphPixels": 384,
+      "minRatio": 7.407846111790164,
+      "worstPixel": {
+        "x": 924,
+        "y": 430,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          168,
+          176,
+          194
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 661,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 12.201127014583903,
+      "worstPixel": {
+        "x": 1026,
+        "y": 671,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          50,
+          47,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 14.527519070522237,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 11.959738979933476,
+      "worstPixel": {
+        "x": 986,
+        "y": 492,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          69,
+          40,
+          61
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 16.50720896246704,
+      "worstPixel": {
+        "x": 1220,
+        "y": 615,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          23,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-face",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1982,
+      "sampledGlyphPixels": 1982,
+      "minRatio": 6.825726445651513,
+      "worstPixel": {
+        "x": 1036,
+        "y": 723,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".overlay-header h2",
+      "text": "Character Studio",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 548,
+      "sampledGlyphPixels": 548,
+      "minRatio": 10.435849197417955,
+      "worstPixel": {
+        "x": 670,
+        "y": 43,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          30,
+          34,
+          48
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": "#overlayBack",
+      "text": "Back",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 201,
+      "sampledGlyphPixels": 201,
+      "minRatio": 9.44898905656038,
+      "worstPixel": {
+        "x": 240,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          39,
+          42,
+          51
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".artwork-detail__title",
+      "text": "Purple",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1225,
+      "sampledGlyphPixels": 1225,
+      "minRatio": 12.795137368202004,
+      "worstPixel": {
+        "x": 880,
+        "y": 152,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          39,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Appearance",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 428,
+      "sampledGlyphPixels": 428,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Face",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 175,
+      "sampledGlyphPixels": 175,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1023,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "Accessories",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 426,
+      "sampledGlyphPixels": 426,
+      "minRatio": 7.232029481395888,
+      "worstPixel": {
+        "x": 1191,
+        "y": 267,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          100,
+          73,
+          145
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "Glasses",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 317,
+      "sampledGlyphPixels": 317,
+      "minRatio": 10.208589549512224,
+      "worstPixel": {
+        "x": 841,
+        "y": 332,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          63,
+          58,
+          69
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "Accessory",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 387,
+      "sampledGlyphPixels": 387,
+      "minRatio": 13.07062089008629,
+      "worstPixel": {
+        "x": 821,
+        "y": 476,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          33,
+          36,
+          96
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "None",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 132,
+      "sampledGlyphPixels": 132,
+      "minRatio": 10.052191915596842,
+      "worstPixel": {
+        "x": 842,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          51,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "Round glasses",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 363,
+      "sampledGlyphPixels": 363,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 930,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "None",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 132,
+      "sampledGlyphPixels": 132,
+      "minRatio": 14.715986362671503,
+      "worstPixel": {
+        "x": 850,
+        "y": 576,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          28,
+          66
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "Soft cap",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 198,
+      "sampledGlyphPixels": 198,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 946,
+        "y": 573,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Copy Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 843,
+        "y": 804,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Use in ChatGPT",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 589,
+      "sampledGlyphPixels": 589,
+      "minRatio": 8.232045141236254,
+      "worstPixel": {
+        "x": 1040,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          84,
+          71,
+          67
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "Export PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 461,
+      "sampledGlyphPixels": 461,
+      "minRatio": 11.89079705282366,
+      "worstPixel": {
+        "x": 1236,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          75,
+          37,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".prompt-direction>span",
+      "text": "Additional instructions (optional)",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 1139,
+      "sampledGlyphPixels": 1139,
+      "minRatio": 16.36483043707337,
+      "worstPixel": {
+        "x": 796,
+        "y": 636,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          24,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "Added to the Prompt. This does not change the preview or exported image.",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 2170,
+      "sampledGlyphPixels": 2170,
+      "minRatio": 8.721595517575365,
+      "worstPixel": {
+        "x": 1039,
+        "y": 758,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          82,
+          67,
+          60
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-accessories",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "In ChatGPT, attach your image if needed, review the Prompt, and send.",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1985,
+      "sampledGlyphPixels": 1985,
+      "minRatio": 10.29741322208273,
+      "worstPixel": {
+        "x": 1022,
+        "y": 858,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          33,
+          35,
+          46
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "en-grok-editor-original",
+      "selector": ".studio-original>summary",
+      "text": "Original artwork & Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 895,
+      "sampledGlyphPixels": 895,
+      "minRatio": 12.55632649510483,
+      "worstPixel": {
+        "x": 826,
+        "y": 819,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          43,
+          46,
+          54
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".hero-title-line[data-home-copy=\"titleFirst\"]",
+      "text": "创造",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "70px",
+        "fontWeight": "760"
+      },
+      "changedTextPixels": 5163,
+      "sampledGlyphPixels": 5163,
+      "minRatio": 17.97439177894187,
+      "worstPixel": {
+        "x": 99,
+        "y": 192,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          11,
+          13,
+          18
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".intro-description",
+      "text": "挑选角色，在 ChatGPT 中创作。",
+      "color": {
+        "rgb": [
+          193,
+          200,
+          214
+        ],
+        "alpha": 1,
+        "fontSize": "17px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1773,
+      "sampledGlyphPixels": 1773,
+      "minRatio": 11.56855329170342,
+      "worstPixel": {
+        "x": 83,
+        "y": 352,
+        "foreground": [
+          193,
+          200,
+          214
+        ],
+        "background": [
+          11,
+          13,
+          18
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": "#browseCharacters",
+      "text": "浏览角色",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 522,
+      "sampledGlyphPixels": 522,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 97,
+        "y": 413,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".gallery-series-filter__button[aria-pressed=\"true\"]",
+      "text": "全部",
+      "color": {
+        "rgb": [
+          241,
+          234,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 224,
+      "sampledGlyphPixels": 224,
+      "minRatio": 12.996593794351831,
+      "worstPixel": {
+        "x": 101,
+        "y": 614,
+        "foreground": [
+          241,
+          234,
+          255
+        ],
+        "background": [
+          42,
+          32,
+          65
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 199,
+      "sampledGlyphPixels": 199,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 94,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "紫色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 231,
+      "sampledGlyphPixels": 231,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 310,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "奶油",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 237,
+      "sampledGlyphPixels": 237,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 527,
+        "y": 870,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "栗发",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 229,
+      "sampledGlyphPixels": 229,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 743,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "柴犬",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 204,
+      "sampledGlyphPixels": 204,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 959,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-name",
+      "text": "莓粉眼镜",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 501,
+      "sampledGlyphPixels": 501,
+      "minRatio": 15.63938720290126,
+      "worstPixel": {
+        "x": 1176,
+        "y": 862,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          20,
+          29,
+          44
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 88,
+      "sampledGlyphPixels": 88,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 238,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "Grok Bot",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 170,
+      "sampledGlyphPixels": 170,
+      "minRatio": 10.127168930573339,
+      "worstPixel": {
+        "x": 436,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          30,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "Muse",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 103,
+      "sampledGlyphPixels": 103,
+      "minRatio": 10.207923873480922,
+      "worstPixel": {
+        "x": 667,
+        "y": 870,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          43
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "人物",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 93,
+      "sampledGlyphPixels": 93,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 893,
+        "y": 866,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "动物",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 126,
+      "sampledGlyphPixels": 126,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 1105,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-gallery",
+      "selector": ".artwork-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          194,
+          202,
+          218
+        ],
+        "alpha": 1,
+        "fontSize": "9px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 96,
+      "sampledGlyphPixels": 96,
+      "minRatio": 10.219785188746968,
+      "worstPixel": {
+        "x": 1320,
+        "y": 864,
+        "foreground": [
+          194,
+          202,
+          218
+        ],
+        "background": [
+          24,
+          29,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-hero-gradient-title",
+      "selector": ".hero-title-line[data-home-copy=\"titleSecond\"]",
+      "text": "你的Dot.",
+      "fontSize": "70px",
+      "fontWeight": "760",
+      "backgroundImage": "linear-gradient(100deg, rgb(197, 173, 255) 0%, rgb(221, 157, 248) 52%, rgb(241, 135, 207) 100%)",
+      "threshold": 3,
+      "method": "Paired screenshots; compare gradient glyph pixels with the same-frame underlying backdrop. Record minima at multiple RGB-change cutoffs; assert large-text contrast on glyph pixels with at least 128/255 channel change to exclude the weakest anti-aliased edge pixels.",
+      "changedGlyphPixels": 8005,
+      "deltaSamples": {
+        "64": {
+          "pixels": 7481,
+          "minRatio": 1.6727679734816154,
+          "worstPixel": {
+            "x": 323,
+            "y": 318,
+            "foreground": [
+              76,
+              47,
+              72
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "96": {
+          "pixels": 7298,
+          "minRatio": 2.3705410786201297,
+          "worstPixel": {
+            "x": 320,
+            "y": 308,
+            "foreground": [
+              107,
+              65,
+              99
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "128": {
+          "pixels": 7134,
+          "minRatio": 3.4907732936681057,
+          "worstPixel": {
+            "x": 316,
+            "y": 318,
+            "foreground": [
+              142,
+              85,
+              130
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        },
+        "160": {
+          "pixels": 6897,
+          "minRatio": 4.925407303938255,
+          "worstPixel": {
+            "x": 295,
+            "y": 281,
+            "foreground": [
+              171,
+              106,
+              163
+            ],
+            "background": [
+              11,
+              13,
+              18
+            ]
+          }
+        }
+      },
+      "coreGlyphPixels": 7134,
+      "minRatio": 3.4907732936681057,
+      "worstPixel": {
+        "x": 316,
+        "y": 318,
+        "foreground": [
+          142,
+          85,
+          130
+        ],
+        "background": [
+          11,
+          13,
+          18
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__title",
+      "text": "耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 999,
+      "sampledGlyphPixels": 999,
+      "minRatio": 12.754358695187172,
+      "worstPixel": {
+        "x": 852,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          48,
+          40,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-series",
+      "text": "Dots",
+      "color": {
+        "rgb": [
+          185,
+          161,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "11px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 184,
+      "sampledGlyphPixels": 184,
+      "minRatio": 7.777201229416798,
+      "worstPixel": {
+        "x": 828,
+        "y": 106,
+        "foreground": [
+          185,
+          161,
+          255
+        ],
+        "background": [
+          24,
+          25,
+          56
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__description",
+      "text": "蓝色短绒圆球角色，佩戴包耳式耳机，黑色椭圆眼睛，无嘴与肢体。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 3077,
+      "sampledGlyphPixels": 3077,
+      "minRatio": 6.2863064885472735,
+      "worstPixel": {
+        "x": 1064,
+        "y": 460,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          90,
+          65,
+          22
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "蓝色",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 143,
+      "sampledGlyphPixels": 143,
+      "minRatio": 9.336381578134755,
+      "worstPixel": {
+        "x": 820,
+        "y": 498,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          36,
+          34,
+          83
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "短绒质感",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 321,
+      "sampledGlyphPixels": 321,
+      "minRatio": 9.208328459794458,
+      "worstPixel": {
+        "x": 858,
+        "y": 498,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          47,
+          28,
+          94
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "包耳式耳机",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 322,
+      "sampledGlyphPixels": 322,
+      "minRatio": 8.346290398154354,
+      "worstPixel": {
+        "x": 968,
+        "y": 504,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          65,
+          38,
+          73
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".artwork-detail__tag",
+      "text": "一对黑色椭圆眼",
+      "color": {
+        "rgb": [
+          200,
+          206,
+          222
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 449,
+      "sampledGlyphPixels": 449,
+      "minRatio": 6.743632032715488,
+      "worstPixel": {
+        "x": 1024,
+        "y": 500,
+        "foreground": [
+          200,
+          206,
+          222
+        ],
+        "background": [
+          84,
+          57,
+          27
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 354,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 829,
+      "sampledGlyphPixels": 829,
+      "minRatio": 7.149649454176456,
+      "worstPixel": {
+        "x": 1130,
+        "y": 364,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          89,
+          80,
+          89
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 7.795506597303596,
+      "worstPixel": {
+        "x": 1184,
+        "y": 360,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          82,
+          76,
+          74
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 8.81843829721348,
+      "worstPixel": {
+        "x": 856,
+        "y": 191,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          76,
+          66,
+          80
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 6.806406893186537,
+      "worstPixel": {
+        "x": 886,
+        "y": 299,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          96,
+          83,
+          81
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1828,
+      "sampledGlyphPixels": 1828,
+      "minRatio": 5.473258486941182,
+      "worstPixel": {
+        "x": 1072,
+        "y": 416,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          90,
+          76,
+          58
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-static-detail",
+      "selector": ".studio-prompt>summary",
+      "text": "原始 Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 505,
+      "sampledGlyphPixels": 505,
+      "minRatio": 16.118086848789197,
+      "worstPixel": {
+        "x": 814,
+        "y": 556,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          23,
+          24,
+          45
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".artwork-detail__title",
+      "text": "耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 999,
+      "sampledGlyphPixels": 999,
+      "minRatio": 12.754358695187172,
+      "worstPixel": {
+        "x": 852,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          48,
+          40,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 869,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1027,
+        "y": 266,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-field-title",
+      "text": "颜色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 249,
+      "sampledGlyphPixels": 249,
+      "minRatio": 11.698113357204052,
+      "worstPixel": {
+        "x": 812,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          49,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "蓝色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 137,
+      "sampledGlyphPixels": 137,
+      "minRatio": 10.052191915596842,
+      "worstPixel": {
+        "x": 842,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          51,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "暖黄色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 228,
+      "sampledGlyphPixels": 228,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 958,
+        "y": 429,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 660,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 12.148002678003998,
+      "worstPixel": {
+        "x": 1019,
+        "y": 672,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          51,
+          47,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 14.487971340561824,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          37,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 13.653049323934592,
+      "worstPixel": {
+        "x": 828,
+        "y": 486,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          32,
+          88
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 16.525067857152244,
+      "worstPixel": {
+        "x": 986,
+        "y": 606,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          23,
+          32
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-appearance",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1838,
+      "sampledGlyphPixels": 1838,
+      "minRatio": 6.819602007139445,
+      "worstPixel": {
+        "x": 1035,
+        "y": 724,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".artwork-detail__title",
+      "text": "耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 999,
+      "sampledGlyphPixels": 999,
+      "minRatio": 12.754358695187172,
+      "worstPixel": {
+        "x": 852,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          48,
+          40,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 1028,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-field-title",
+      "text": "眼睛",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 251,
+      "sampledGlyphPixels": 251,
+      "minRatio": 11.542433901240706,
+      "worstPixel": {
+        "x": 815,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          50,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "原椭圆眼",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 318,
+      "sampledGlyphPixels": 318,
+      "minRatio": 8.138497910301112,
+      "worstPixel": {
+        "x": 841,
+        "y": 429,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          195,
+          175,
+          231
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "闭眼（静态）",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 334,
+      "sampledGlyphPixels": 334,
+      "minRatio": 7.407846111790164,
+      "worstPixel": {
+        "x": 937,
+        "y": 429,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          168,
+          176,
+          194
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 660,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 12.148002678003998,
+      "worstPixel": {
+        "x": 1019,
+        "y": 672,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          51,
+          47,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 14.487971340561824,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          37,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 13.653049323934592,
+      "worstPixel": {
+        "x": 828,
+        "y": 486,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          32,
+          88
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 16.525067857152244,
+      "worstPixel": {
+        "x": 986,
+        "y": 606,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          23,
+          32
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-face",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1838,
+      "sampledGlyphPixels": 1838,
+      "minRatio": 6.819602007139445,
+      "worstPixel": {
+        "x": 1035,
+        "y": 724,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".artwork-detail__title",
+      "text": "耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 999,
+      "sampledGlyphPixels": 999,
+      "minRatio": 12.754358695187172,
+      "worstPixel": {
+        "x": 852,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          48,
+          40,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1027,
+        "y": 266,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 1173,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "眼镜",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 252,
+      "sampledGlyphPixels": 252,
+      "minRatio": 11.542433901240706,
+      "worstPixel": {
+        "x": 815,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          50,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "配件",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 226,
+      "sampledGlyphPixels": 226,
+      "minRatio": 12.823671557111007,
+      "worstPixel": {
+        "x": 813,
+        "y": 472,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          28,
+          38,
+          101
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "无",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 61,
+      "sampledGlyphPixels": 61,
+      "minRatio": 10.19875385388938,
+      "worstPixel": {
+        "x": 847,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          57,
+          49,
+          124
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "圆框眼镜",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 325,
+      "sampledGlyphPixels": 325,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 956,
+        "y": 429,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "无",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 61,
+      "sampledGlyphPixels": 61,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 845,
+        "y": 573,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "原耳机",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 217,
+      "sampledGlyphPixels": 217,
+      "minRatio": 13.809957963958798,
+      "worstPixel": {
+        "x": 976,
+        "y": 573,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          48,
+          33,
+          59
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 803,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 8.199739114361023,
+      "worstPixel": {
+        "x": 1044,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          85,
+          71,
+          67
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 11.89079705282366,
+      "worstPixel": {
+        "x": 1236,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          75,
+          37,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 16.36483043707337,
+      "worstPixel": {
+        "x": 796,
+        "y": 636,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          24,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 8.686363261167402,
+      "worstPixel": {
+        "x": 1044,
+        "y": 758,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          83,
+          67,
+          60
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-accessories",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1839,
+      "sampledGlyphPixels": 1839,
+      "minRatio": 10.42466289523635,
+      "worstPixel": {
+        "x": 1026,
+        "y": 856,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          32,
+          34,
+          45
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-dots-editor-original",
+      "selector": ".studio-original>summary",
+      "text": "原始作品与 Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 796,
+      "sampledGlyphPixels": 796,
+      "minRatio": 12.55632649510483,
+      "worstPixel": {
+        "x": 826,
+        "y": 818,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          43,
+          46,
+          54
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".artwork-detail__title",
+      "text": "紫色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1108,
+      "sampledGlyphPixels": 1108,
+      "minRatio": 12.907931854036294,
+      "worstPixel": {
+        "x": 851,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          47,
+          39,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 869,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1027,
+        "y": 266,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-field-title",
+      "text": "颜色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 249,
+      "sampledGlyphPixels": 249,
+      "minRatio": 11.698113357204052,
+      "worstPixel": {
+        "x": 812,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          53,
+          49,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "紫色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 136,
+      "sampledGlyphPixels": 136,
+      "minRatio": 10.052191915596842,
+      "worstPixel": {
+        "x": 842,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          55,
+          51,
+          125
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-editor-option-label",
+      "text": "薄荷绿",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 245,
+      "sampledGlyphPixels": 245,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 952,
+        "y": 429,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 660,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 12.148002678003998,
+      "worstPixel": {
+        "x": 1019,
+        "y": 672,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          51,
+          47,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 14.487971340561824,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          37,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 13.653049323934592,
+      "worstPixel": {
+        "x": 828,
+        "y": 486,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          32,
+          88
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 16.525067857152244,
+      "worstPixel": {
+        "x": 986,
+        "y": 606,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          23,
+          32
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-appearance",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1838,
+      "sampledGlyphPixels": 1838,
+      "minRatio": 6.819602007139445,
+      "worstPixel": {
+        "x": 1035,
+        "y": 724,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".artwork-detail__title",
+      "text": "紫色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1108,
+      "sampledGlyphPixels": 1108,
+      "minRatio": 12.907931854036294,
+      "worstPixel": {
+        "x": 851,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          47,
+          39,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 1028,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 10.737585964817045,
+      "worstPixel": {
+        "x": 1180,
+        "y": 272,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          28,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-field-title",
+      "text": "眼睛",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 251,
+      "sampledGlyphPixels": 251,
+      "minRatio": 11.542433901240706,
+      "worstPixel": {
+        "x": 815,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          50,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "倾斜胶囊眼",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 395,
+      "sampledGlyphPixels": 395,
+      "minRatio": 8.138497910301112,
+      "worstPixel": {
+        "x": 826,
+        "y": 429,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          195,
+          175,
+          231
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-editor-option-label",
+      "text": "较直胶囊眼",
+      "color": {
+        "rgb": [
+          25,
+          33,
+          49
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 385,
+      "sampledGlyphPixels": 385,
+      "minRatio": 7.407846111790164,
+      "worstPixel": {
+        "x": 941,
+        "y": 429,
+        "foreground": [
+          25,
+          33,
+          49
+        ],
+        "background": [
+          168,
+          176,
+          194
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 660,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 12.148002678003998,
+      "worstPixel": {
+        "x": 1019,
+        "y": 672,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          51,
+          47,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 14.487971340561824,
+      "worstPixel": {
+        "x": 1236,
+        "y": 670,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          37,
+          33,
+          49
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 13.653049323934592,
+      "worstPixel": {
+        "x": 828,
+        "y": 486,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          32,
+          88
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 16.525067857152244,
+      "worstPixel": {
+        "x": 986,
+        "y": 606,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          23,
+          32
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-face",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1838,
+      "sampledGlyphPixels": 1838,
+      "minRatio": 6.819602007139445,
+      "worstPixel": {
+        "x": 1035,
+        "y": 724,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          79,
+          60,
+          53
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".overlay-header h2",
+      "text": "角色工作室",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "500"
+      },
+      "changedTextPixels": 493,
+      "sampledGlyphPixels": 493,
+      "minRatio": 10.562138070658639,
+      "worstPixel": {
+        "x": 692,
+        "y": 42,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          33,
+          47
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": "#overlayBack",
+      "text": "返回",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 246,
+      "sampledGlyphPixels": 246,
+      "minRatio": 9.229616103487228,
+      "worstPixel": {
+        "x": 220,
+        "y": 44,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          40,
+          44,
+          52
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".artwork-detail__title",
+      "text": "紫色",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "30px",
+        "fontWeight": "700"
+      },
+      "changedTextPixels": 1108,
+      "sampledGlyphPixels": 1108,
+      "minRatio": 12.907931854036294,
+      "worstPixel": {
+        "x": 851,
+        "y": 156,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          47,
+          39,
+          72
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "外观",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 212,
+      "sampledGlyphPixels": 212,
+      "minRatio": 10.713764979024106,
+      "worstPixel": {
+        "x": 877,
+        "y": 270,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          29,
+          32,
+          42
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "五官",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 200,
+      "sampledGlyphPixels": 200,
+      "minRatio": 10.950606429531966,
+      "worstPixel": {
+        "x": 1027,
+        "y": 266,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          27,
+          30,
+          41
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-tabs .studio-editor-tab",
+      "text": "配饰",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 238,
+      "sampledGlyphPixels": 238,
+      "minRatio": 7.188279502239722,
+      "worstPixel": {
+        "x": 1173,
+        "y": 266,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          101,
+          73,
+          146
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "眼镜",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 252,
+      "sampledGlyphPixels": 252,
+      "minRatio": 11.542433901240706,
+      "worstPixel": {
+        "x": 815,
+        "y": 328,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          54,
+          50,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-field-title",
+      "text": "配件",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "650"
+      },
+      "changedTextPixels": 226,
+      "sampledGlyphPixels": 226,
+      "minRatio": 12.823671557111007,
+      "worstPixel": {
+        "x": 813,
+        "y": 472,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          28,
+          38,
+          101
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "无",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 61,
+      "sampledGlyphPixels": 61,
+      "minRatio": 10.19875385388938,
+      "worstPixel": {
+        "x": 847,
+        "y": 430,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          57,
+          49,
+          124
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "圆框眼镜",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 325,
+      "sampledGlyphPixels": 325,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 956,
+        "y": 429,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "无",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 61,
+      "sampledGlyphPixels": 61,
+      "minRatio": 14.715986362671503,
+      "worstPixel": {
+        "x": 848,
+        "y": 574,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          36,
+          28,
+          66
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-editor-option-label",
+      "text": "软帽",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 161,
+      "sampledGlyphPixels": 161,
+      "minRatio": 17.039237012875546,
+      "worstPixel": {
+        "x": 956,
+        "y": 572,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          16,
+          20,
+          29
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "复制 Prompt",
+      "color": {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 550,
+      "sampledGlyphPixels": 550,
+      "minRatio": 5.698586217871195,
+      "worstPixel": {
+        "x": 850,
+        "y": 803,
+        "foreground": [
+          255,
+          255,
+          255
+        ],
+        "background": [
+          124,
+          58,
+          237
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "在 ChatGPT 中使用",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 830,
+      "sampledGlyphPixels": 830,
+      "minRatio": 8.199739114361023,
+      "worstPixel": {
+        "x": 1044,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          85,
+          71,
+          67
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-actions button",
+      "text": "导出 PNG",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "13px",
+        "fontWeight": "600"
+      },
+      "changedTextPixels": 421,
+      "sampledGlyphPixels": 421,
+      "minRatio": 11.89079705282366,
+      "worstPixel": {
+        "x": 1236,
+        "y": 804,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          75,
+          37,
+          62
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".prompt-direction>span",
+      "text": "补充要求（选填）",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 720,
+      "sampledGlyphPixels": 720,
+      "minRatio": 16.36483043707337,
+      "worstPixel": {
+        "x": 796,
+        "y": 636,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          21,
+          24,
+          35
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-prompt-actions .prompt-direction-note",
+      "text": "补充到 Prompt 中，不改变当前预览或导出图片。",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1762,
+      "sampledGlyphPixels": 1762,
+      "minRatio": 8.686363261167402,
+      "worstPixel": {
+        "x": 1044,
+        "y": 758,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          83,
+          67,
+          60
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-accessories",
+      "selector": ".studio-prompt-actions .chatgpt-hint",
+      "text": "在 ChatGPT 中按需附图，检查 Prompt 后自行发送。",
+      "color": {
+        "rgb": [
+          203,
+          210,
+          225
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      "changedTextPixels": 1839,
+      "sampledGlyphPixels": 1839,
+      "minRatio": 10.42466289523635,
+      "worstPixel": {
+        "x": 1026,
+        "y": 856,
+        "foreground": [
+          203,
+          210,
+          225
+        ],
+        "background": [
+          32,
+          34,
+          45
+        ]
+      },
+      "passed": true
+    },
+    {
+      "scene": "zh-CN-grok-editor-original",
+      "selector": ".studio-original>summary",
+      "text": "原始作品与 Prompt",
+      "color": {
+        "rgb": [
+          244,
+          246,
+          251
+        ],
+        "alpha": 1,
+        "fontSize": "12px",
+        "fontWeight": "550"
+      },
+      "changedTextPixels": 796,
+      "sampledGlyphPixels": 796,
+      "minRatio": 12.55632649510483,
+      "worstPixel": {
+        "x": 826,
+        "y": 818,
+        "foreground": [
+          244,
+          246,
+          251
+        ],
+        "background": [
+          43,
+          46,
+          54
+        ]
+      },
+      "passed": true
+    }
+  ]
+}

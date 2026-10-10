@@ -1,0 +1,140 @@
+{
+  "status": "engineering-passed-art-approval-pending",
+  "recordedAt": "2026-10-10T14:06:47.400637+00:00",
+  "head": "b84e3db203a525755a839c100ec5bca8238f3fa3",
+  "openspec": {
+    "total": 49,
+    "complete": 48,
+    "remaining": 1
+  },
+  "remainingTask": "7.4 User art approval of exact new artwork, template configurations and page version",
+  "runtimeFilesChangedThisPass": [
+    "dist/studio-detail.css",
+    "dist/studio-detail.js",
+    "dist/studio-draft.js",
+    "dist/studio-editor.js",
+    "dist/studio-i18n.js",
+    "dist/studio-router.js",
+    "dist/studio.js"
+  ],
+  "sourceFreeze": "source-freeze.json",
+  "checks": {
+    "build": {
+      "status": "passed",
+      "fileCount": 154,
+      "allHashesMatch": true
+    },
+    "unitAndIntegration": {
+      "status": "passed",
+      "commands": "verification-commands.json"
+    },
+    "editing": {
+      "status": "passed",
+      "legalConfigurations": 28,
+      "fullJourneys": 2,
+      "report": "editor/run-2026-10-10T13-47-55-623Z/report.json"
+    },
+    "browser": {
+      "status": "passed",
+      "checks": 15,
+      "downloads": 24,
+      "report": "browser/final-2026-10-10T1405/report.json"
+    },
+    "layout": {
+      "status": "passed",
+      "combinations": 16,
+      "report": "editor-layout/final-2026-10-10T1405/report.json"
+    },
+    "visual": {
+      "status": "passed",
+      "matrixItems": 24,
+      "matrixPass": true,
+      "interactionPass": true,
+      "thumbnailPass": true,
+      "reducedTransparencyPass": true,
+      "reducedMotionPass": true,
+      "noBlurSimulationPass": true,
+      "closedDialogPass": true,
+      "consoleErrors": 0,
+      "report": "visual/report.json"
+    },
+    "contrast": {
+      "status": "passed",
+      "targets": 296,
+      "minimumRatio": 5.567040796393351,
+      "report": "accessibility/final-2026-10-10T1405/contrast.json"
+    },
+    "originalDownloadAlpha": {
+      "status": "passed",
+      "approved": 15,
+      "pending": 9,
+      "report": "browser/download-alpha.json"
+    },
+    "diffWhitespace": {
+      "status": "passed",
+      "command": "git diff --check"
+    }
+  },
+  "rootVerificationCommands": [
+    {
+      "record": "design/acceptance/current-20261010-v99/verification/glass-build-final-mobile.json",
+      "command": "npm run build",
+      "exitCode": 0
+    },
+    {
+      "record": "design/acceptance/current-20261010-v99/verification/glass-openspec-change.json",
+      "command": "openspec validate simplify-reveal-cards-and-staging --strict --json",
+      "exitCode": 0
+    },
+    {
+      "record": "design/acceptance/current-20261010-v99/verification/glass-openspec-all.json",
+      "command": "openspec validate --all --strict --json",
+      "exitCode": 0
+    },
+    {
+      "record": "design/acceptance/current-20261010-v99/verification/glass-downloads.json",
+      "command": "npm run test:downloads",
+      "exitCode": 0
+    },
+    {
+      "record": "design/acceptance/current-20261010-v99/verification/glass-performance.json",
+      "command": "node scripts/verify-studio-performance.mjs",
+      "exitCode": 0
+    }
+  ],
+  "preservation": {
+    "status": "passed",
+    "fileCount": 154,
+    "changedRuntimePaths": [
+      "dist/studio-detail.css",
+      "dist/studio-detail.js",
+      "dist/studio-draft.js",
+      "dist/studio-editor.js",
+      "dist/studio-i18n.js",
+      "dist/studio-router.js",
+      "dist/studio.js"
+    ],
+    "assetBytesChanged": false,
+    "all28ConfigurationBytesUnchanged": true,
+    "templateSourceManifestSha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f",
+    "approvedArtworkCount": 15,
+    "pendingArtworkCount": 9,
+    "newPendingArtworks": 7,
+    "pendingTemplates": 2,
+    "publicEditable": false,
+    "deploymentAuthorized": false,
+    "scopeSha256": "463e2468b893ef07b66c84a85e921c5af6f6d45217bdc1824b7d3e8f044d33c4",
+    "buildReportSha256": "89551ae5e5bf4e812e7e28d77e46b9769ffd1e664f3886877ae855c9f96c3a00",
+    "engineeringRun": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/report.json"
+  },
+  "limits": {
+    "userArtApproval": "pending",
+    "publicEditing": false,
+    "deployment": "not authorized or performed",
+    "physicalDevice": "not tested",
+    "otherBrowserEngines": "not tested",
+    "unsupportedBlur": "simulated fallback; not an unsupported browser run",
+    "referenceLiveInteraction": "not verified; implementation guided by user screenshots"
+  },
+  "gitOperationsPerformed": []
+}

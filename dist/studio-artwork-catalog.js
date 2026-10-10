@@ -1,5 +1,7 @@
-import { ARTWORK_CONTENT, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, PREVIEW_PROMPT_ROWS, SERIES } from './studio-content.js?v=98';
-export { SERIES };
+import { ARTWORK_CONTENT, CHARACTER_IDENTITIES, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, PREVIEW_PROMPT_ROWS, SERIES } from './studio-content.js?v=99';
+import { DISPLAY_ASSETS, DETAIL_PREVIEW_ASSETS, THUMBNAIL_ASSETS } from './studio-display-assets.js?v=99';
+export { SERIES, CHARACTER_IDENTITIES };
+export { DETAIL_PREVIEW_ASSETS, THUMBNAIL_ASSETS };
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -7,11 +9,24 @@ const deepFreeze = value => {
   return Object.freeze(value);
 };
 
-export const CATALOG_REVISION = 'artwork-catalog-20261009-v98';
+export const CATALOG_REVISION = 'artwork-catalog-20261010-v99';
 
 const SOURCE_SNAPSHOT = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
 const ART_APPROVAL_RECORD = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json';
 const V83_SOURCE_ID = '30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451';
+const RELEASE_APPROVAL_RECORD = 'design/acceptance/current-20261010-v99/release-20261011/approval.json';
+const RELEASE_APPROVAL_ID = 'dots-current-v99-artwork-ui-template-approval-20261011';
+const RELEASED_CANDIDATE_ARTWORKS = deepFreeze({
+  'robot-ivory-capsule-face-v98-candidate': { version: 'v1', sha256: '9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0' },
+  'animal-white-rabbit-v98-candidate': { version: 'v1', sha256: '571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963' },
+  'dots-butter-beret': { version: 'v2', sha256: '284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00' },
+  'grok-coral-drop': { version: 'v1', sha256: '443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8' },
+  'muse-lavender-lantern': { version: 'v1', sha256: 'ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574' },
+  'human-rust-jacket': { version: 'v1', sha256: 'f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4' },
+  'animal-cocoa-bear': { version: 'v1', sha256: '3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57' },
+  'dots-lime-frog-bow': { version: 'v1', sha256: 'bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f' },
+  'dots-pink-heart-shades': { version: 'v1', sha256: 'df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384' }
+});
 
 const assetRows = [
   ['asset:candidate-dots-20261005:original', 'v2', './assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png', 1720054, '2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455', 1254, 1254, [742591, 478, 829447], 'candidate-dots-20261005', 'artwork'],
@@ -96,7 +111,30 @@ const artworkAssets = assetRows.map(([id, version, path, byteSize, sha256, width
   return asset;
 });
 const originalAssetByArtworkId = new Map(artworkAssets.map(asset => [asset.ownerArtworkId, asset]));
-const posterAssets = POSTER_ASSETS.map(poster => {
+const releaseArtworkAssetRows = PREVIEW_ORIGINAL_ASSETS.filter(asset => RELEASED_CANDIDATE_ARTWORKS[asset.artworkId]).map(asset => {
+  const approved = RELEASED_CANDIDATE_ARTWORKS[asset.artworkId];
+  if (asset.version !== approved.version || asset.sha256 !== approved.sha256) throw new Error(`Release approval does not match original Artwork bytes: ${asset.artworkId}`);
+  return {
+    ...asset,
+    publicationStatus: 'published',
+    resourceStatus: 'verified-source',
+    sourceSnapshotRef: `${RELEASE_APPROVAL_RECORD}#scope/artworks/${asset.artworkId}/original`,
+    sourceSnapshotMatch: true,
+    artApproval: {
+      status: 'approved', record: RELEASE_APPROVAL_RECORD, sourceSnapshot: RELEASE_APPROVAL_RECORD,
+      sourceId: RELEASE_APPROVAL_ID, siteVersion: 99, cacheRevision: '99',
+      scope: 'scope.currentV99ArtworkApproval', artworkId: asset.artworkId, assetSha256: asset.sha256,
+      note: '用户于 2026-10-11 确认当前 v99 完整Artwork；批准只绑定登记ID、版本与原图SHA-256。'
+    },
+    ownerArtworkId: asset.artworkId
+  };
+});
+const releaseAssetById = new Map(releaseArtworkAssetRows.map(asset => [asset.id, asset]));
+const pendingPreviewContent = Object.fromEntries(Object.entries(PREVIEW_ARTWORK_CONTENT).filter(([id]) => !RELEASED_CANDIDATE_ARTWORKS[id]));
+const pendingPreviewOriginalAssetRows = PREVIEW_ORIGINAL_ASSETS.filter(asset => !RELEASED_CANDIDATE_ARTWORKS[asset.artworkId]).map(asset => ({ ...asset, ownerArtworkId: asset.artworkId }));
+const previewOriginalAssetRows = pendingPreviewOriginalAssetRows;
+const allSourceAssetsById = new Map([...artworkAssets, ...releaseArtworkAssetRows, ...previewOriginalAssetRows].map(asset => [asset.id, asset]));
+const legacyPosterAssets = POSTER_ASSETS.map(poster => {
   const sourceAsset = originalAssetByArtworkId.get(poster.artworkId);
   if (!sourceAsset) throw new Error(`Poster ${poster.id} has no registered original source`);
   return {
@@ -111,8 +149,38 @@ const posterAssets = POSTER_ASSETS.map(poster => {
     ownerArtworkId: poster.artworkId
   };
 });
-export const ASSETS = deepFreeze([...artworkAssets, ...posterAssets]);
-export const PREVIEW_ASSETS = deepFreeze(PREVIEW_ORIGINAL_ASSETS.map(asset => ({
+const displayAssetRows = DISPLAY_ASSETS.map(displayAsset => {
+  const sourceAsset = allSourceAssetsById.get(displayAsset.originalAssetId);
+  if (!sourceAsset || sourceAsset.sha256 !== displayAsset.sourceAssetSha256 || sourceAsset.ownerArtworkId !== displayAsset.artworkId) {
+    throw new Error(`Display derivative ${displayAsset.id} has no exact registered source`);
+  }
+  const previewOnly = displayAsset.publicationStatus === 'preview-only';
+  return {
+    ...displayAsset,
+    publicationStatus: previewOnly ? 'preview-only' : 'published-derivative',
+    resourceStatus: 'verified-local-derivative',
+    runtimeVerification: 'not-browser-checked',
+    sourceRef: `derived from ${sourceAsset.id} sha256:${sourceAsset.sha256}; ${displayAsset.transformation}`,
+    derivedFrom: sourceAsset.id,
+    sourceAssetId: sourceAsset.id,
+    sourceAssetSnapshotRef: sourceAsset.sourceSnapshotRef ?? null,
+    ownerArtworkId: displayAsset.artworkId,
+    alpha: {
+      hasAlpha: sourceAsset.alpha?.hasAlpha === true,
+      hasTransparency: sourceAsset.alpha?.hasTransparency === true
+    },
+    sourceSnapshotMatch: !previewOnly,
+    ...(previewOnly ? { artApproval: {
+      status: 'pending', record: null, sourceSnapshot: null, sourceId: null,
+      scope: 'local-preview-only', artworkId: displayAsset.artworkId, assetSha256: displayAsset.sha256,
+      note: '待用户美术确认；展示派生图不继承其它 Artwork 批准。'
+    } } : { artApproval: sourceAsset.artApproval })
+  };
+});
+const approvedDisplayAssetRows = displayAssetRows.filter(asset => asset.publicationStatus === 'published-derivative');
+const previewDisplayAssetRows = displayAssetRows.filter(asset => asset.publicationStatus === 'preview-only');
+export const ASSETS = deepFreeze([...artworkAssets, ...releaseArtworkAssetRows, ...legacyPosterAssets, ...approvedDisplayAssetRows]);
+export const PREVIEW_ASSETS = deepFreeze([...previewOriginalAssetRows, ...previewDisplayAssetRows].map(asset => ({
   ...asset,
   publicationStatus: 'preview-only',
   resourceKind: asset.resourceKind || (asset.alpha?.hasTransparency ? 'transparent-character-still' : 'opaque-character-still'),
@@ -124,7 +192,7 @@ export const PREVIEW_ASSETS = deepFreeze(PREVIEW_ORIGINAL_ASSETS.map(asset => ({
     scope: 'local-preview-only', artworkId: asset.artworkId, assetSha256: asset.sha256,
     note: '待用户美术确认；可供本地检查，不继承已有作品批准。'
   },
-  ownerArtworkId: asset.artworkId
+  ownerArtworkId: asset.ownerArtworkId || asset.artworkId
 })));
 
 const assetById = new Map(ASSETS.map(asset => [asset.id, asset]));
@@ -150,11 +218,13 @@ const promptRows = [
   ['animal-gray-husky', '原创灰白哈士奇，三角立耳、灰白脸部面罩、深色鼻头和蓬松卷尾清楚可辨；以四爪自然坐姿呈现，不佩戴饰物。背景透明。', 'An original gray-and-white Husky with triangular upright ears, a distinct gray-and-white facial mask, a dark nose, and a fluffy curled tail. Sit naturally on four paws with no accessories, on a transparent background.']
 ];
 
-export const PROMPTS = deepFreeze(promptRows.flatMap(([artworkId, zh, en]) => [
+const approvedCandidatePromptRows = PREVIEW_PROMPT_ROWS.filter(([artworkId]) => RELEASED_CANDIDATE_ARTWORKS[artworkId]);
+const pendingCandidatePromptRows = PREVIEW_PROMPT_ROWS.filter(([artworkId]) => !RELEASED_CANDIDATE_ARTWORKS[artworkId]);
+export const PROMPTS = deepFreeze([...promptRows, ...approvedCandidatePromptRows].flatMap(([artworkId, zh, en]) => [
   { id: `prompt:${artworkId}:zh-image`, artworkId, language: 'zh', target: 'image', text: zh, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' },
   { id: `prompt:${artworkId}:en-image`, artworkId, language: 'en', target: 'image', text: en, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' }
 ]));
-export const PREVIEW_PROMPTS = deepFreeze(PREVIEW_PROMPT_ROWS.flatMap(([artworkId, zh, en]) => [
+export const PREVIEW_PROMPTS = deepFreeze(pendingCandidatePromptRows.flatMap(([artworkId, zh, en]) => [
   { id: `prompt:${artworkId}:zh-image`, artworkId, language: 'zh', target: 'image', text: zh, source: 'maintainer-authored-from-pending-preview-facts', revision: '1', status: 'pending-review' },
   { id: `prompt:${artworkId}:en-image`, artworkId, language: 'en', target: 'image', text: en, source: 'maintainer-authored-from-pending-preview-facts', revision: '1', status: 'pending-review' }
 ]));
@@ -248,14 +318,18 @@ const categoryFacts = {
 };
 for (const [artworkId, facts] of Object.entries(categoryFacts)) visualFacts[artworkId].push(...facts);
 
-const approvalIds = new Set([
+const historicalApprovalIds = new Set([
   'candidate-dots-20261005', 'candidate-grok-20261005', 'candidate-meta-muse-20261005', 'candidate-humans-20261005', 'candidate-animals-20261005',
   'dots-rose-glasses', 'dots-lilac-bucket', 'grok-green-cloud', 'grok-teal-square', 'muse-rose-flowers', 'muse-sage-reading',
   'human-bun-yellow', 'human-blond-glasses', 'animal-white-cat', 'animal-gray-husky'
 ]);
+const approvalIds = new Set([...historicalApprovalIds, ...Object.keys(RELEASED_CANDIDATE_ARTWORKS)]);
 
-const posterAssetByArtworkId = new Map(POSTER_ASSETS.map(asset => [asset.artworkId, asset]));
-const artworkAsset = new Map(artworkAssets.map(asset => [asset.ownerArtworkId, asset]));
+const thumbnailAssetByArtworkId = new Map(THUMBNAIL_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').map(asset => [asset.artworkId, asset]));
+const legacyPosterAssetByArtworkId = new Map(legacyPosterAssets.map(asset => [asset.artworkId, asset]));
+const detailAssetByKey = new Map(DETAIL_PREVIEW_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').map(asset => [`${asset.artworkId}:${asset.purpose}`, asset]));
+const characterById = new Map(CHARACTER_IDENTITIES.map(character => [character.id, character]));
+const artworkAsset = new Map([...artworkAssets, ...releaseArtworkAssetRows].map(asset => [asset.ownerArtworkId, asset]));
 
 const CORE_FACT_DIMENSIONS = deepFreeze({
   characterStyle: ['style'],
@@ -279,17 +353,24 @@ function coreFactsFor(features) {
 }
 
 export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
-  const content = ARTWORK_CONTENT[id];
+  const content = ARTWORK_CONTENT[id] || PREVIEW_ARTWORK_CONTENT[id];
   if (!content) throw new Error(`Missing localized static content for ${id}`);
   const legacyText = LEGACY_ARTWORK_TEXT[id];
-  if (!legacyText) throw new Error(`Missing legacy source text for ${id}`);
-  const title = legacyText.title;
-  const description = legacyText.description;
-  const styleIdentity = content.seriesId;
+  const title = content.titleByLanguage['zh-CN'];
+  const description = legacyText?.description || content.descriptionByLanguage['zh-CN'];
+  const character = characterById.get(content.characterId);
   const asset = artworkAsset.get(id);
-  const poster = posterAssetByArtworkId.get(id);
-  if (!asset || !poster) throw new Error(`Artwork ${id} is missing a registered original or poster asset`);
-  const facts = visualFacts[id];
+  const poster = thumbnailAssetByArtworkId.get(id);
+  const poster512 = legacyPosterAssetByArtworkId.get(id);
+  const detail512 = detailAssetByKey.get(`${id}:detail512`);
+  const detail1024 = detailAssetByKey.get(`${id}:detail1024`);
+  if (!asset || !poster || (!RELEASED_CANDIDATE_ARTWORKS[id] && !poster512) || !detail512 || !detail1024 || !character) throw new Error(`Artwork ${id} is missing registered identity or display resources`);
+  const facts = visualFacts[id] || content.facts.map(item => ({
+    id: item.id,
+    label: item.labelByLanguage['zh-CN'],
+    labelByLanguage: item.labelByLanguage,
+    state: 'known'
+  }));
   const groupedFacts = new Map();
   for (const item of facts) {
     const dimension = item.id.split(':', 1)[0];
@@ -304,14 +385,23 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
       : states.has('known') ? 'known'
         : states.has('none') ? 'none' : 'not-applicable';
     const labelsById = Object.fromEntries(group.facts.map(item => [item.id, item.label]));
+    const labelsByLanguage = Object.fromEntries(group.facts.map(item => [item.id, item.labelByLanguage || { en: item.label, 'zh-CN': item.label }]));
     const label = group.facts.map(item => item.label).join(' · ');
-    return [dimension, { id: ids[0], ids, labelsById, label, value: label, state }];
+    return [dimension, { id: ids[0], ids, labelsById, labelsByLanguage, label, value: label, state }];
   }));
+  const isReleaseApproval = Boolean(RELEASED_CANDIDATE_ARTWORKS[id]);
   return {
     id,
     title,
     description,
-    source: {
+    source: isReleaseApproval ? {
+      id: content.sourceId,
+      kind: 'generated-original-artwork',
+      registrationRef: content.sourcePath,
+      promptRef: content.sourcePromptRef || null,
+      sourceSnapshot: RELEASE_APPROVAL_RECORD,
+      sourceId: RELEASE_APPROVAL_ID
+    } : {
       id: 'imagegen-20261005',
       kind: 'generated-original-artwork',
       registrationRef: 'historical-runtime/dist/studio-creation-assets.js:16-17',
@@ -320,20 +410,22 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
     },
     status: 'published',
     publicationStatus: 'published',
-    characterId: styleIdentity,
-    styleIdentity,
+    characterId: content.characterId,
+    characterLabelByLanguage: character.labelByLanguage,
     tagIds: facts.map(item => item.id),
     featureIds: facts.map(item => item.id),
     features,
-    featureReview: { status: 'verified-visible-facts', method: 'current PNG visually inspected against registered source/hash' },
+    featureReview: { status: 'verified-visible-facts', method: isReleaseApproval ? 'user-approved current v99 source/hash and visible facts' : 'current PNG visually inspected against registered source/hash' },
     titleByLanguage: content.titleByLanguage,
     descriptionByLanguage: content.descriptionByLanguage,
     aliases: content.aliases,
     seriesId: content.seriesId,
+    ...(content.seriesLabelByLanguage ? { seriesLabelByLanguage: content.seriesLabelByLanguage } : {}),
     detailFactIds: content.detailFactIds,
     coreFacts: coreFactsFor(features),
     version: asset.version,
-    assetRefs: { original: asset.id, poster: poster.id },
+    assetRefs: { original: asset.id, poster: poster.id, ...(poster512 ? { poster512: poster512.id } : {}), detail512: detail512.id, detail1024: detail1024.id },
+    displayPreviews: { small: detail512.id, large: detail1024.id },
     promptRefs: {
       zhImage: `prompt:${id}:zh-image`,
       enImage: `prompt:${id}:en-image`
@@ -345,10 +437,17 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
   };
 }));
 
-const previewAssetByArtworkId = new Map(PREVIEW_ASSETS.map(asset => [asset.ownerArtworkId, asset]));
-export const PREVIEW_ARTWORKS = deepFreeze(Object.entries(PREVIEW_ARTWORK_CONTENT).map(([id, content]) => {
+const previewOriginalIds = new Set(pendingPreviewOriginalAssetRows.map(asset => asset.id));
+const previewAssetByArtworkId = new Map(PREVIEW_ASSETS.filter(asset => previewOriginalIds.has(asset.id)).map(asset => [asset.ownerArtworkId, asset]));
+const previewThumbnailAssetByArtworkId = new Map(previewDisplayAssetRows.filter(asset => asset.purpose === 'poster').map(asset => [asset.ownerArtworkId, asset]));
+const previewDetailAssetByKey = new Map(previewDisplayAssetRows.filter(asset => asset.purpose === 'detail512' || asset.purpose === 'detail1024').map(asset => [`${asset.ownerArtworkId}:${asset.purpose}`, asset]));
+export const PREVIEW_ARTWORKS = deepFreeze(Object.entries(pendingPreviewContent).map(([id, content]) => {
   const asset = previewAssetByArtworkId.get(id);
-  if (!asset || content.originalAssetId !== asset.id) throw new Error(`Preview Artwork ${id} is missing its bound original asset`);
+  const character = characterById.get(content.characterId);
+  const poster = previewThumbnailAssetByArtworkId.get(id);
+  const detail512 = previewDetailAssetByKey.get(`${id}:detail512`);
+  const detail1024 = previewDetailAssetByKey.get(`${id}:detail1024`);
+  if (!asset || !character || !poster || !detail512 || !detail1024 || content.originalAssetId !== asset.id) throw new Error(`Preview Artwork ${id} is missing its bound identity or display assets`);
   const facts = content.facts.map(item => ({
     id: item.id,
     label: item.labelByLanguage['zh-CN'],
@@ -374,13 +473,13 @@ export const PREVIEW_ARTWORKS = deepFreeze(Object.entries(PREVIEW_ARTWORK_CONTEN
     id,
     title: content.titleByLanguage['zh-CN'],
     description: content.descriptionByLanguage['zh-CN'],
-    source: { id: content.sourceId, kind: 'generated-original-artwork-candidate', registrationRef: content.sourcePath },
+    source: { id: content.sourceId, kind: 'generated-original-artwork-candidate', registrationRef: content.sourcePath, promptRef: content.sourcePromptRef || null },
     status: 'pending-review',
     publicationStatus: 'preview-only',
     reviewStatus: 'pending-user-art-approval',
     previewOnly: true,
     characterId: content.characterId,
-    styleIdentity: content.characterId,
+    characterLabelByLanguage: character.labelByLanguage,
     tagIds: facts.map(item => item.id),
     featureIds: facts.map(item => item.id),
     features,
@@ -393,7 +492,8 @@ export const PREVIEW_ARTWORKS = deepFreeze(Object.entries(PREVIEW_ARTWORK_CONTEN
     detailFactIds: content.detailFactIds,
     coreFacts: coreFactsFor(features),
     version: asset.version,
-    assetRefs: { original: asset.id },
+    assetRefs: { original: asset.id, poster: poster.id, detail512: detail512.id, detail1024: detail1024.id },
+    displayPreviews: { small: detail512.id, large: detail1024.id },
     promptRefs: { zhImage: `prompt:${id}:zh-image`, enImage: `prompt:${id}:en-image` },
     resourceKind: asset.resourceKind,
     artApproval: asset.artApproval,
@@ -405,13 +505,7 @@ const artworkById = new Map(ARTWORKS.map(artwork => [artwork.id, artwork]));
 const previewArtworkById = new Map(PREVIEW_ARTWORKS.map(artwork => [artwork.id, artwork]));
 const promptById = new Map(ALL_PROMPTS.map(prompt => [prompt.id, prompt]));
 
-export const STYLE_IDENTITIES = deepFreeze([
-  { id: 'dots', label: 'Dots', labelEn: 'Dots', description: '按已批准的简洁成对眼与圆润主体展示；不自动增加肢体、嘴或屏幕脸。', descriptionEn: 'Preserve the approved rounded body and paired simple eyes. Do not add limbs, a mouth, or a screen face unless the reference visibly includes them.' },
-  { id: 'grok', label: 'Grok Bot', labelEn: 'Grok Bot', description: '保留柔和几何、成对胶囊眼与克制表现，点列/液滴方向按实际作品登记。', descriptionEn: 'Keep the soft geometric form, paired capsule eyes, and restrained expression. Follow the specific reference for dot or droplet orientation.' },
-  { id: 'meta-muse', label: 'Meta Muse', labelEn: 'Meta Muse', description: '保留包覆式轮廓和内嵌脸面，不替换为普通人物或熊玩偶。', descriptionEn: 'Keep the wrapped silhouette and inset face. Do not turn it into a human character or a generic bear plush.' },
-  { id: 'humans', label: '原创人物', labelEn: 'original chibi people', description: '原创精致 Q 版人物，头发、皮肤、衣物与实际姿态逐件描述。', descriptionEn: 'Create original, polished chibi people with carefully rendered hair, skin, clothing, and the requested pose.' },
-  { id: 'animals', label: '原创动物', labelEn: 'original animals', description: '原创物种形象，耳、口鼻、毛色、爪和尾部按作品实际画面描述。', descriptionEn: 'Create original species-specific characters with clear ears, muzzles, coat colors, paws, and tails.' }
-]);
+export const DISPLAY_DERIVATIVES = deepFreeze([...approvedDisplayAssetRows, ...previewDisplayAssetRows]);
 
 export function getArtwork(id, catalog) {
   if (typeof id !== 'string') return null;
@@ -463,20 +557,34 @@ export function validateArtwork(artwork, context = {}) {
   if (!artwork || typeof artwork !== 'object') return false;
   const lookupAsset = typeof context.getAsset === 'function' ? context.getAsset : getAsset;
   const prompts = Array.isArray(context.prompts) ? context.prompts : PROMPTS;
+  const characterIdentities = Array.isArray(context.characterIdentities) ? context.characterIdentities : CHARACTER_IDENTITIES;
   if ((artwork.publicationStatus ?? artwork.status) !== 'published') return false;
   if (artwork.featureReview?.status !== 'verified-visible-facts') return false;
   if (artwork.sourceSnapshotMatch !== true || !artwork.source?.id || !artwork.source?.kind || !artwork.source?.sourceSnapshot) return false;
-  if (!STYLE_IDENTITIES.some(character => character.id === artwork.characterId)) return false;
-  if (!SERIES.some(series => series.id === artwork.seriesId)) return false;
+  const character = characterIdentities.find(item => item.id === artwork.characterId);
+  if (!character || character.seriesId !== artwork.seriesId) return false;
+  const series = SERIES.find(item => item.id === artwork.seriesId);
+  if (!series && !(artwork.seriesLabelByLanguage?.en?.trim() && artwork.seriesLabelByLanguage?.['zh-CN']?.trim())) return false;
   for (const language of ['en', 'zh-CN']) {
     if (typeof artwork.titleByLanguage?.[language] !== 'string' || !artwork.titleByLanguage[language].trim()) return false;
     if (typeof artwork.descriptionByLanguage?.[language] !== 'string' || !artwork.descriptionByLanguage[language].trim()) return false;
   }
   const asset = lookupAsset(artwork.assetRefs?.original);
   const poster = lookupAsset(artwork.assetRefs?.poster);
+  const detail512 = lookupAsset(artwork.assetRefs?.detail512);
+  const detail1024 = lookupAsset(artwork.assetRefs?.detail1024);
   if (!asset || !poster || poster.resourceKind !== 'gallery-poster' || poster.publicationStatus !== 'published-derivative' || poster.ownerArtworkId !== artwork.id) return false;
   if (typeof poster.path !== 'string' || !poster.path.startsWith('./assets/posters/')) return false;
   if (asset.ownerArtworkId !== artwork.id || poster.sourceAssetId !== asset.id || poster.sourceAssetSha256 !== asset.sha256) return false;
+  if (!detail512 || !detail1024 || detail512.purpose !== 'detail512' || detail1024.purpose !== 'detail1024') return false;
+  for (const preview of [detail512, detail1024]) {
+    if (preview.ownerArtworkId !== artwork.id || preview.sourceAssetId !== asset.id || preview.sourceAssetSha256 !== asset.sha256
+      || preview.publicationStatus !== 'published-derivative' || preview.downloadable !== false
+      || typeof preview.path !== 'string' || !preview.path.startsWith('./assets/previews/')) return false;
+  }
+  const poster512 = artwork.assetRefs?.poster512 ? lookupAsset(artwork.assetRefs.poster512) : null;
+  if (artwork.assetRefs?.poster512 && (!poster512 || poster512.ownerArtworkId !== artwork.id || poster512.sourceAssetId !== asset.id)) return false;
+  if (artwork.displayPreviews?.small !== detail512.id || artwork.displayPreviews?.large !== detail1024.id) return false;
   if (artwork.version !== asset.version || typeof poster.version !== 'string' || !poster.version) return false;
   if (!['verified-source', 'verified-in-browser'].includes(asset.resourceStatus) || asset.resourceVerified === false || artwork.resourceVerified === false) return false;
   if (!asset.sourceSnapshotMatch) return false;
@@ -512,7 +620,15 @@ export function validatePreviewArtwork(artwork, context = {}) {
   const lookupAsset = typeof context.getAsset === 'function' ? context.getAsset : getAsset;
   const prompts = Array.isArray(context.prompts) ? context.prompts : PREVIEW_PROMPTS;
   const asset = lookupAsset(artwork.assetRefs.original);
+  const poster = lookupAsset(artwork.assetRefs?.poster);
+  const detail512 = lookupAsset(artwork.assetRefs?.detail512);
+  const detail1024 = lookupAsset(artwork.assetRefs?.detail1024);
   if (!asset || asset.ownerArtworkId !== artwork.id || asset.version !== artwork.version || asset.publicationStatus !== 'preview-only') return false;
+  if (![poster, detail512, detail1024].every(item => item && item.ownerArtworkId === artwork.id
+    && item.sourceAssetId === asset.id && item.sourceAssetSha256 === asset.sha256
+    && item.publicationStatus === 'preview-only' && item.downloadable === false)) return false;
+  if (poster.resourceKind !== 'gallery-poster' || detail512.purpose !== 'detail512' || detail1024.purpose !== 'detail1024') return false;
+  if (artwork.displayPreviews?.small !== detail512.id || artwork.displayPreviews?.large !== detail1024.id) return false;
   if (artwork.resourceKind !== asset.resourceKind) return false;
   if (!['transparent-character-still', 'opaque-character-still'].includes(asset.resourceKind) || asset.artApproval?.status !== 'pending' || asset.artApproval?.record !== null || asset.artApproval?.sourceSnapshot !== null || asset.artApproval?.sourceId !== null) return false;
   if (asset.resourceKind === 'transparent-character-still' && (asset.alpha?.hasAlpha !== true || asset.alpha?.hasTransparency !== true)) return false;
@@ -585,7 +701,11 @@ export function createSnapshot(id, context = {}) {
 
 export const CATALOG_INVENTORY = deepFreeze({
   approvedArtworkCount: ARTWORKS.length,
-  posterAssetCount: POSTER_ASSETS.length,
+  posterAssetCount: THUMBNAIL_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').length,
+  legacyPoster512AssetCount: POSTER_ASSETS.length,
+  detailPreviewAssetCount: DETAIL_PREVIEW_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').length,
+  previewArtworkCount: PREVIEW_ARTWORKS.length,
+  previewDerivativeAssetCount: DISPLAY_DERIVATIVES.filter(asset => asset.publicationStatus === 'preview-only').length,
   coreFactCategoryCount: Object.keys(CORE_FACT_DIMENSIONS).length,
   approvalRecord: ART_APPROVAL_RECORD,
   sourceSnapshot: SOURCE_SNAPSHOT,

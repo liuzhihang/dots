@@ -1,0 +1,123 @@
+{
+  "completedAt": "2026-10-10T12:38:07.130586+00:00",
+  "engineering": "passed",
+  "openspecProgress": {
+    "total": 43,
+    "complete": 42,
+    "remaining": [
+      "7.4 user art approval"
+    ]
+  },
+  "checks": {
+    "build-final": {
+      "command": "npm run build",
+      "startedAt": "2026-10-10T12:19:01.077Z",
+      "completedAt": "2026-10-10T12:19:05.308Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/build-final.log"
+    },
+    "npm-test-final": {
+      "command": "npm test",
+      "startedAt": "2026-10-10T12:19:10.390Z",
+      "completedAt": "2026-10-10T12:19:28.619Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/npm-test-final.log"
+    },
+    "browser-final": {
+      "command": "npm run test:browser",
+      "startedAt": "2026-10-10T12:19:10.390Z",
+      "completedAt": "2026-10-10T12:19:33.562Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/browser-final.log"
+    },
+    "downloads-final": {
+      "command": "npm run test:downloads",
+      "startedAt": "2026-10-10T12:19:10.390Z",
+      "completedAt": "2026-10-10T12:19:11.842Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/downloads-final.log"
+    },
+    "performance-final": {
+      "command": "npm run test:performance",
+      "startedAt": "2026-10-10T12:25:33.736Z",
+      "completedAt": "2026-10-10T12:25:54.367Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/performance-final.log"
+    },
+    "editing-final": {
+      "command": "npm run test:editing",
+      "startedAt": "2026-10-10T12:34:49.984Z",
+      "completedAt": "2026-10-10T12:35:48.437Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/editing-final.log"
+    },
+    "template-review-final": {
+      "command": "node scripts/capture-template-review.mjs run-2026-10-10T12-34-50-407Z",
+      "startedAt": "2026-10-10T12:36:02.975Z",
+      "completedAt": "2026-10-10T12:36:16.810Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/template-review-final.log"
+    },
+    "design-comparison-final": {
+      "command": "npm run qa:design",
+      "startedAt": "2026-10-10T12:36:02.975Z",
+      "completedAt": "2026-10-10T12:36:05.498Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/design-comparison-final.log"
+    },
+    "openspec-change-final": {
+      "command": "openspec validate simplify-reveal-cards-and-staging --strict",
+      "startedAt": "2026-10-10T12:24:30.598Z",
+      "completedAt": "2026-10-10T12:24:32.444Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/openspec-change-final.log"
+    },
+    "openspec-all-final": {
+      "command": "openspec validate --all --strict",
+      "startedAt": "2026-10-10T12:24:30.598Z",
+      "completedAt": "2026-10-10T12:24:32.259Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/openspec-all-final.log"
+    },
+    "safety-final": {
+      "command": "node scripts/verify-implementation-safety.mjs",
+      "startedAt": "2026-10-10T12:37:47.460Z",
+      "completedAt": "2026-10-10T12:37:50.820Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/safety-final.log"
+    },
+    "diff-check-final": {
+      "command": "git diff --check",
+      "startedAt": "2026-10-10T12:37:47.460Z",
+      "completedAt": "2026-10-10T12:37:47.493Z",
+      "exitCode": 0,
+      "status": "passed",
+      "log": "verification/diff-check-final.log"
+    }
+  },
+  "approvalScope": "approval-scope.json",
+  "engineeringRun": "editor/run-2026-10-10T12-34-50-407Z/report.json",
+  "tasksSha256": "09e2c09ce1a8283eb761beabf432811d76c664655d0c8fb0385ef0d27a25c1ee",
+  "notPerformed": [
+    "commit",
+    "push",
+    "deploy",
+    "sync",
+    "archive",
+    "physical-device acceptance",
+    "Safari/Firefox acceptance"
+  ],
+  "userArtApproval": "pending",
+  "note": "Safety check immediately precedes the final 7.5 checkbox and this documentation closeout; only authorized documentary changes followed it."
+}

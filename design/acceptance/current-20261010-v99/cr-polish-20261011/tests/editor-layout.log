@@ -1,0 +1,14 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 390×844: the detail header stays thin and close to 44px: {"dialogOpen":true,"titleVisible":true,"headerPosition":"relative","headerHeight":60,"headerBorderBottomWidth":"0px","headerBottom":60,"preview":{"left":20,"right":370,"top":72,"bottom":392},"canvas":{"left":35,"right":355,"top":72,"bottom":392},"objectFit":"contain","bodyScrollTop":0,"viewport":{"width":390,"height":844},"overflow":false}
+    at file:///Users/liuzhihang/workspace/dots/scripts/verify-editor-layout.mjs:308:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v23.11.0

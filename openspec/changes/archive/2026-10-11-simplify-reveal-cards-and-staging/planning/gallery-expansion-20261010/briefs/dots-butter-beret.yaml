@@ -1,0 +1,106 @@
+briefVersion: 1
+request:
+  summary: 各系列新增1件独立完整静态外观候选
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: dots-butter-beret
+  seriesId: dots
+  identity: new
+  differenceFromExisting: 圆角三角代替三个现有球形外观；海军蓝贝雷帽
+  invariants:
+  - 保留系列身份与完整轮廓；无模板不伪造编辑能力
+artwork:
+  proposedId: dots-butter-beret
+  proposedVersion: v1
+  name:
+    en: Butter Beret Dots
+    zh-CN: 奶油黄贝雷帽 Dots
+  description:
+    en: null
+    zh-CN: 黄色短密绒圆角三角，双黑眼、蓝帽、无嘴和肢体
+  aliases:
+    en: []
+    zh-CN: []
+references:
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/5-Photo-5.jpg
+  sha256: e232592a9e0aa95ed84cd204f9941fa9b202306d2e879e0dcefc1ab46082bf26
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+creation:
+  prompt: See prompts/dots-butter-beret-prompts.md for exact call text, input roles
+    and original output paths
+  negativeConstraints: []
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations:
+  - generated/dots-butter-beret-candidate-v1.png
+  - generated/dots-butter-beret-candidate-v2.png
+facts:
+  characterStyle:
+    state: known
+    evidence: dots
+  appearance:
+    state: known
+    evidence: rounded-triangle
+  facialFeatures:
+    state: known
+    evidence: black oval eyes
+  colorMaterial:
+    state: known
+    evidence: butter yellow micro-plush
+  clothing:
+    state: none
+    evidence: none
+  headAccessory:
+    state: known
+    evidence: navy felt beret
+  bodyAccessory:
+    state: none
+    evidence: none
+  prop:
+    state: none
+    evidence: none
+resources:
+  original:
+    sha256: 284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00
+    mime: image/png
+    bytes: 1541746
+    width: 1254
+    height: 1254
+    path: generated/dots-butter-beret-candidate-v2.png
+    alphaCheck:
+      min: 0
+      max: 255
+      zeroPixels: 816738
+      opaquePixels: 438
+      partialPixels: 755340
+      bboxAt16:
+      - 107
+      - 143
+      - 1145
+      - 1129
+      nonzeroOutsideBbox16: 2680
+      maxOutsideBbox16: 9
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: prompts/dots-butter-beret-prompts.md
+  license: unknown
+  engineering: read-only file/alpha/hash checked; integration not run
+  visualReview: initial inspected; edge/composition notes in README; not final approval
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

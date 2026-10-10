@@ -1,0 +1,1305 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "template-sources-20261010-v99",
+  "status": "pending",
+  "canvas": {
+    "width": 1254,
+    "height": 1254
+  },
+  "templates": [
+    {
+      "id": "dots-orb-v1",
+      "version": "v1",
+      "family": "dots",
+      "status": "pending",
+      "engineeringStatus": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "publicEditable": false,
+      "artworkBinding": {
+        "id": "candidate-dots-20261005",
+        "version": "v2",
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      },
+      "canvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "declaredLegalConfigurations": 12,
+      "defaults": {
+        "color": "blue",
+        "shape": "orb",
+        "eyes": "original",
+        "glasses": "none",
+        "accessory": "headphones"
+      },
+      "legalSet": {
+        "color": [
+          "blue",
+          "warm-yellow"
+        ],
+        "eyes": [
+          "original",
+          "closed"
+        ],
+        "glasses": [
+          "none",
+          "round"
+        ],
+        "accessory": [
+          "none",
+          "headphones"
+        ],
+        "conflict": {
+          "glasses": "round",
+          "accessory": "headphones"
+        },
+        "conflictConfigurations": 4
+      },
+      "renderOrder": [
+        "headphones.rear",
+        "glasses.rear",
+        "body-neutral",
+        "eyes",
+        "glasses.front",
+        "headphones.front"
+      ],
+      "colorMask": {
+        "assetId": "template:dots-orb-v1:body-neutral",
+        "channel": "A",
+        "derivation": "use the registered neutral body PNG alpha channel directly; no independent mask file"
+      },
+      "material": {
+        "assetId": "template:dots-orb-v1:body-neutral",
+        "channels": "RGBA",
+        "method": "preserve source per-pixel lightness/shading/texture while replacing hue; preserve original alpha; default blue keeps original source RGBA"
+      },
+      "occlusion": {
+        "physicalMaskAssetId": null,
+        "mode": "notApplicable",
+        "status": "pending-visual-review",
+        "appliesTo": [
+          "glasses-round rear/body/front",
+          "headphones-default rear/body/front"
+        ],
+        "reason": "Renderer draws rear overlays before the neutral body and front overlays after eyes, so the body alpha supplies rear-plane occlusion. This is only a layer-order plan; generated fit/intersections and final art approval remain pending."
+      },
+      "reviewRisks": [
+        "Body candidate has low-alpha edge/fringe extent requiring cleanup review.",
+        "Closed-eye overlay has a provisional y=-20 placement offset.",
+        "Default headset and all 12 declared configurations remain art-pending."
+      ]
+    },
+    {
+      "id": "grok-orb-v1",
+      "version": "v1",
+      "family": "grok",
+      "status": "pending",
+      "engineeringStatus": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "publicEditable": false,
+      "artworkBinding": {
+        "id": "candidate-grok-20261005",
+        "version": "v2",
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      },
+      "canvas": {
+        "width": 1254,
+        "height": 1254
+      },
+      "declaredLegalConfigurations": 16,
+      "defaults": {
+        "color": "purple",
+        "shape": "orb",
+        "eyes": "angled-capsules",
+        "glasses": "none",
+        "accessory": "none"
+      },
+      "legalSet": {
+        "color": [
+          "purple",
+          "mint"
+        ],
+        "eyes": [
+          "angled-capsules",
+          "upright-capsules"
+        ],
+        "glasses": [
+          "none",
+          "round"
+        ],
+        "accessory": [
+          "none",
+          "soft-cap"
+        ],
+        "conflict": null,
+        "capGlassesRequiresArtApproval": true
+      },
+      "renderOrder": [
+        "soft-cap.rear",
+        "glasses.rear",
+        "body-neutral",
+        "eyes",
+        "glasses.front",
+        "soft-cap.front"
+      ],
+      "colorMask": {
+        "assetId": "template:grok-orb-v1:body-neutral",
+        "channel": "A",
+        "derivation": "use the registered neutral body PNG alpha channel directly; no independent mask file"
+      },
+      "material": {
+        "assetId": "template:grok-orb-v1:body-neutral",
+        "channels": "RGBA",
+        "method": "preserve source per-pixel lightness/shading/texture while replacing hue; preserve original alpha; default purple keeps original source RGBA"
+      },
+      "occlusion": {
+        "physicalMaskAssetId": null,
+        "mode": "notApplicable",
+        "status": "pending-visual-review",
+        "appliesTo": [
+          "glasses-round rear/body/front",
+          "soft-cap crown/body/visor",
+          "soft-cap plus glasses intersection"
+        ],
+        "reason": "Renderer declares rear/body/face/front ordering. This avoids an empty mask file but does not establish that the generated cap/glasses pixels fit; cap plus glasses remains an explicit unapproved combination pending a rendered review and user art approval."
+      },
+      "reviewRisks": [
+        "Body candidate has low-alpha edge/fringe extent requiring cleanup review.",
+        "Grok glasses require provisional y=-46 placement; source-image generator repeatedly placed rims too low.",
+        "Cap front is visibly thick/broad and uses provisional y=-90 placement; cap/body and cap/glasses intersections are unapproved.",
+        "All 16 declared configurations, including cap plus glasses, remain pending engineering and art review."
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "template:dots-orb-v1:body-neutral",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/body-neutral.png",
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "byteSize": 1675380,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "body-neutral",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          0,
+          1244,
+          1254
+        ],
+        "bboxAtAlphaThreshold8": [
+          129,
+          150,
+          1124,
+          1145
+        ],
+        "bboxAtAlphaThreshold16": [
+          129,
+          151,
+          1124,
+          1145
+        ],
+        "bboxAtAlphaThreshold128": [
+          131,
+          154,
+          1122,
+          1142
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 30,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "body-neutral"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "candidate-derived-copy",
+        "sourceCandidatePath": "openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/generated/dots-orb-v1/body-base-candidate-v2.png",
+        "imageGenerationOutputPath": "openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/generated/dots-orb-v1/body-base-candidate-v2.png",
+        "referenceRoles": [
+          "no-face generated Dots body candidate v2",
+          "approved Dots artwork identity/shape reference"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:eyes:original",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/eyes/original.png",
+      "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+      "byteSize": 113720,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "eyes",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          33,
+          290,
+          1224,
+          875
+        ],
+        "bboxAtAlphaThreshold8": [
+          468,
+          522,
+          786,
+          731
+        ],
+        "bboxAtAlphaThreshold16": [
+          469,
+          522,
+          786,
+          731
+        ],
+        "bboxAtAlphaThreshold128": [
+          469,
+          523,
+          786,
+          731
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 40,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "eyes:original"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-d1bb8a25-cb67-4638-a3ab-68547a8cb4f7.png",
+        "referenceRoles": [
+          "no-face Dots body candidate v2",
+          "Dots eye placement guide",
+          "approved Dots eye style"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:eyes:closed",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/eyes/closed.png",
+      "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+      "byteSize": 72043,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "eyes",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          49,
+          224,
+          1146,
+          1002
+        ],
+        "bboxAtAlphaThreshold8": [
+          446,
+          619,
+          808,
+          676
+        ],
+        "bboxAtAlphaThreshold16": [
+          446,
+          619,
+          808,
+          676
+        ],
+        "bboxAtAlphaThreshold128": [
+          447,
+          620,
+          807,
+          675
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -20
+        ]
+      },
+      "layerOrder": 40,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "eyes:closed"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-4829c3f0-a56b-4fda-a1f4-57ad0d761896.png",
+        "referenceRoles": [
+          "no-face Dots body candidate v2",
+          "Dots eye placement guide",
+          "independent original eye overlay"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:glasses:round:front",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/glasses/round-front.png",
+      "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae",
+      "byteSize": 111958,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-front",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          132,
+          29,
+          1073,
+          1131
+        ],
+        "bboxAtAlphaThreshold8": [
+          405,
+          536,
+          850,
+          725
+        ],
+        "bboxAtAlphaThreshold16": [
+          405,
+          536,
+          850,
+          725
+        ],
+        "bboxAtAlphaThreshold128": [
+          406,
+          537,
+          849,
+          724
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 50,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "glasses:round:front"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-3b506304-ff74-4499-927f-4c9dc3177718.png",
+        "referenceRoles": [
+          "no-face Dots body candidate v2",
+          "independent original eye overlay",
+          "approved Dots artwork identity/style"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:glasses:round:rear",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/glasses/round-rear.png",
+      "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5",
+      "byteSize": 78452,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-rear",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          278,
+          1184,
+          866
+        ],
+        "bboxAtAlphaThreshold8": [
+          156,
+          593,
+          1098,
+          684
+        ],
+        "bboxAtAlphaThreshold16": [
+          156,
+          593,
+          1098,
+          684
+        ],
+        "bboxAtAlphaThreshold128": [
+          157,
+          594,
+          1097,
+          683
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 20,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "glasses:round:rear"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-e91e84f8-fa8e-4dec-9a20-3181fda86707.png",
+        "referenceRoles": [
+          "no-face Dots body candidate v2",
+          "selected Dots round-glasses front overlay"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:headphones:default:rear",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/headphones/rear.png",
+      "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0",
+      "byteSize": 216883,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-rear",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          110,
+          80,
+          1186,
+          1198
+        ],
+        "bboxAtAlphaThreshold8": [
+          113,
+          83,
+          1139,
+          508
+        ],
+        "bboxAtAlphaThreshold16": [
+          114,
+          83,
+          1139,
+          508
+        ],
+        "bboxAtAlphaThreshold128": [
+          114,
+          84,
+          1139,
+          507
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 10,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "headphones:default:rear"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-df0991cb-4734-4d99-9cfb-d1e0b81489f1.png",
+        "referenceRoles": [
+          "no-headphone Dots body candidate v2",
+          "default Dots headset placement guide",
+          "approved Dots headset identity/style"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-v1:headphones:default:front",
+      "version": "v1",
+      "path": "./assets/templates/dots-orb-v1/headphones/front.png",
+      "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9",
+      "byteSize": 371080,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-front",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          13,
+          21,
+          1240,
+          1166
+        ],
+        "bboxAtAlphaThreshold8": [
+          17,
+          451,
+          1237,
+          878
+        ],
+        "bboxAtAlphaThreshold16": [
+          17,
+          451,
+          1237,
+          878
+        ],
+        "bboxAtAlphaThreshold128": [
+          18,
+          452,
+          1237,
+          877
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 60,
+      "owner": {
+        "templateId": "dots-orb-v1",
+        "layer": "headphones:default:front"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-70543731-72c2-4af8-81f2-659a7b78efca.png",
+        "referenceRoles": [
+          "no-headphone Dots body candidate v2",
+          "default Dots headset placement guide",
+          "approved Dots headset identity/style"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:body-neutral",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/body-neutral.png",
+      "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+      "byteSize": 1106046,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "body-neutral",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          39,
+          1220,
+          1254
+        ],
+        "bboxAtAlphaThreshold8": [
+          121,
+          123,
+          1133,
+          1127
+        ],
+        "bboxAtAlphaThreshold16": [
+          121,
+          123,
+          1133,
+          1127
+        ],
+        "bboxAtAlphaThreshold128": [
+          122,
+          124,
+          1132,
+          1126
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 30,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "body-neutral"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "candidate-derived-copy",
+        "sourceCandidatePath": "openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/generated/grok-orb-v1/grok-orb-v1-base-retry-candidate.png",
+        "imageGenerationOutputPath": "openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/generated/grok-orb-v1/grok-orb-v1-base-retry-candidate.png",
+        "referenceRoles": [
+          "no-face Grok soft-geometry orb candidate",
+          "approved Grok artwork identity/shape reference"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:eyes:angled-capsules",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/eyes/angled-capsules.png",
+      "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+      "byteSize": 109511,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "eyes",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          174,
+          184,
+          1174,
+          957
+        ],
+        "bboxAtAlphaThreshold8": [
+          756,
+          344,
+          1019,
+          582
+        ],
+        "bboxAtAlphaThreshold16": [
+          757,
+          345,
+          1017,
+          580
+        ],
+        "bboxAtAlphaThreshold128": [
+          758,
+          346,
+          1016,
+          577
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 40,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "eyes:angled-capsules"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-c9d379ef-47ba-42e2-b12a-4bffa3dc2a96.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "approved eye placement guide",
+          "approved Grok white capsule-eye identity"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:eyes:upright-capsules",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "sha256": "29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466",
+      "byteSize": 94337,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "eyes",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          33,
+          23,
+          1160,
+          1117
+        ],
+        "bboxAtAlphaThreshold8": [
+          780,
+          396,
+          1005,
+          577
+        ],
+        "bboxAtAlphaThreshold16": [
+          780,
+          397,
+          1005,
+          577
+        ],
+        "bboxAtAlphaThreshold128": [
+          781,
+          397,
+          1005,
+          577
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "layerOrder": 40,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "eyes:upright-capsules"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-71d427c4-dad5-4466-a1e8-5061c5441c51.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "canonical Grok face-area guide",
+          "selected angled-eye overlay"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:glasses:round:front",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/glasses/round-front.png",
+      "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34",
+      "byteSize": 99090,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-front",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          97,
+          70,
+          1216,
+          1166
+        ],
+        "bboxAtAlphaThreshold8": [
+          725,
+          395,
+          1061,
+          627
+        ],
+        "bboxAtAlphaThreshold16": [
+          726,
+          396,
+          1061,
+          627
+        ],
+        "bboxAtAlphaThreshold128": [
+          727,
+          396,
+          1060,
+          627
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -46
+        ]
+      },
+      "layerOrder": 50,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "glasses:round:front"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-93febb0c-a1d9-4d15-b5e1-f3dffbbc000d.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "Grok angled capsule-eye overlay",
+          "approved Grok default-look face placement"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:glasses:round:rear",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "sha256": "2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2",
+      "byteSize": 86633,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-rear",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          178,
+          111,
+          1200,
+          1069
+        ],
+        "bboxAtAlphaThreshold8": [
+          372,
+          352,
+          1159,
+          715
+        ],
+        "bboxAtAlphaThreshold16": [
+          372,
+          352,
+          1159,
+          715
+        ],
+        "bboxAtAlphaThreshold128": [
+          373,
+          353,
+          1158,
+          714
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -46
+        ]
+      },
+      "layerOrder": 20,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "glasses:round:rear"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-0ef6e6bd-ae13-4c3d-8dd8-942eeb996bd7.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "selected Grok front-frame overlay",
+          "approved Grok default-look placement"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:cap:soft:rear",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/cap/rear.png",
+      "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+      "byteSize": 648210,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-rear",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          9,
+          1228,
+          1254
+        ],
+        "bboxAtAlphaThreshold8": [
+          236,
+          119,
+          1018,
+          539
+        ],
+        "bboxAtAlphaThreshold16": [
+          237,
+          119,
+          1018,
+          539
+        ],
+        "bboxAtAlphaThreshold128": [
+          237,
+          120,
+          1017,
+          538
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -75
+        ]
+      },
+      "layerOrder": 10,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "cap:soft:rear"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-78c3ff56-effa-4351-b629-ea4b8541b163.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "Grok default-look style/scale guide"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:cap:soft:front",
+      "version": "v1",
+      "path": "./assets/templates/grok-orb-v1/cap/front.png",
+      "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+      "byteSize": 222431,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "purpose": "accessory-front",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          89,
+          119,
+          1057,
+          1117
+        ],
+        "bboxAtAlphaThreshold8": [
+          313,
+          364,
+          941,
+          528
+        ],
+        "bboxAtAlphaThreshold16": [
+          313,
+          364,
+          941,
+          527
+        ],
+        "bboxAtAlphaThreshold128": [
+          314,
+          365,
+          940,
+          526
+        ],
+        "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -90
+        ]
+      },
+      "layerOrder": 60,
+      "owner": {
+        "templateId": "grok-orb-v1",
+        "layer": "cap:soft:front"
+      },
+      "status": "pending",
+      "publicEditable": false,
+      "source": {
+        "method": "imagegen",
+        "sourceCandidatePath": null,
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-aba09621-2456-4170-8c5a-52258b420028.png",
+        "referenceRoles": [
+          "no-face Grok body candidate",
+          "selected isolated Grok cap-crown layer",
+          "Grok default-look style/scale guide"
+        ],
+        "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+        "artApproval": "pending"
+      }
+    }
+  ],
+  "notes": [
+    "All listed files are pending generated layer candidates. Registration metadata enables explicit review-harness rendering only; it does not approve art or enable public editing.",
+    "Both template canvas dimensions are the locked 1254×1254 source-aligned canvas; no PNG was resized or edited to create these layer candidates.",
+    "Color masks are derived from each body-neutral PNG alpha channel; the same body RGBA supplies preserved source shading/texture. There are no separate mask/shading files.",
+    "Layer order and offsets are provisional renderer inputs recorded for truthful composition review, not a claim that all 28 declared configurations are valid or approved.",
+    "A threshold-1 alpha footprint may include detached near-transparent pixels; inspect the rendered composite over dark and light backgrounds before calling an edge defect visible. Thresholded alpha bbox data does not by itself establish perceptual edge quality."
+  ],
+  "unselectedAttempts": [
+    {
+      "path": "design/acceptance/current-20261010-v99/materials/unselected/dots-body-alpha-cleanup-attempt-v1.png",
+      "sha256": "2d8e7227bbcc621239c8985214d2b06fe013e6402b52cca89c8c0f2756dd7f28",
+      "byteSize": 1503874,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alphaThresholdBboxes": {
+        "1": [
+          0,
+          23,
+          1240,
+          1206
+        ],
+        "8": [
+          125,
+          148,
+          1129,
+          1147
+        ],
+        "16": [
+          126,
+          149,
+          1128,
+          1147
+        ],
+        "128": [
+          129,
+          152,
+          1126,
+          1144
+        ]
+      },
+      "selection": "unselected",
+      "reason": "ImageGen edge-cleanup candidate. Not selected: the edit introduced broader A>=16 fringe around the orb and changed plush texture; no improvement over current base established."
+    },
+    {
+      "path": "design/acceptance/current-20261010-v99/materials/unselected/grok-body-alpha-cleanup-attempt-v1.png",
+      "sha256": "47b488ba1553984ad1e2d7444ae88c5315ba7f4ee69c9cf8f0cf7a9f7756c083",
+      "byteSize": 1009879,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alphaThresholdBboxes": {
+        "1": [
+          51,
+          68,
+          1236,
+          1254
+        ],
+        "8": [
+          120,
+          124,
+          1133,
+          1128
+        ],
+        "16": [
+          120,
+          124,
+          1133,
+          1128
+        ],
+        "128": [
+          121,
+          125,
+          1132,
+          1127
+        ]
+      },
+      "selection": "unselected",
+      "reason": "ImageGen edge-cleanup candidate. Not selected: the purple satin body became flatter and its alpha>=16 extent/fringe expanded; no improvement over current base established."
+    },
+    {
+      "path": "design/acceptance/current-20261010-v99/materials/unselected/grok-cap-visor-still-thick-v2.png",
+      "sha256": "17d94d2facc489d605104be8f60b72e23e07b0867126de4588a9b0c29c7ceb88",
+      "byteSize": 213523,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alphaThresholdBboxes": {
+        "1": [
+          33,
+          150,
+          1192,
+          1005
+        ],
+        "8": [
+          322,
+          380,
+          932,
+          537
+        ],
+        "16": [
+          322,
+          380,
+          932,
+          537
+        ],
+        "128": [
+          323,
+          381,
+          931,
+          536
+        ]
+      },
+      "selection": "unselected",
+      "reason": "ImageGen visor correction. Not selected: alpha>=16 bounds are 322,380–932,537 (157 px high), still outside the requested 70–90 px bill target and the original output’s mint material/geometry is broad."
+    }
+  ]
+}

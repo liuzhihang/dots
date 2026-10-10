@@ -1,0 +1,15 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: en-static-detail .studio-prompt-actions .chatgpt-hint pixel-sampled contrast 3.81:1 is below 4.5:1.
+    at contrastSample (file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:82:5)
+    at async file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:147:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v23.11.0

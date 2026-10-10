@@ -1,0 +1,792 @@
+{
+  "revision": 99,
+  "projectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+  "sourcePolicy": "Overlay the exact approved application closure onto the existing Site source; retain non-runtime source history. Workspace Git records the complete OpenSpec and engineering history.",
+  "localBaselineHead": "b84e3db203a525755a839c100ec5bca8238f3fa3",
+  "files": [
+    {
+      "path": "dist/assets/banners/dots-gallery-hero-ensemble-v99.webp",
+      "sha256": "aaa7c0fe9e83e579fa0647f6994d58d84ca80831cb5b5c63cdc48a5537818091",
+      "bytes": 126138
+    },
+    {
+      "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "bytes": 1413426
+    },
+    {
+      "path": "dist/assets/characters/brand-mark.png",
+      "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa",
+      "bytes": 574528
+    },
+    {
+      "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+      "bytes": 1720054
+    },
+    {
+      "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+      "bytes": 971168
+    },
+    {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "bytes": 1151483
+    },
+    {
+      "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "bytes": 1003955
+    },
+    {
+      "path": "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png",
+      "sha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+      "bytes": 1443408
+    },
+    {
+      "path": "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png",
+      "sha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+      "bytes": 1292849
+    },
+    {
+      "path": "dist/assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+      "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+      "bytes": 956169
+    },
+    {
+      "path": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+      "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+      "bytes": 1541746
+    },
+    {
+      "path": "dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "bytes": 1087340
+    },
+    {
+      "path": "dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "bytes": 905104
+    },
+    {
+      "path": "dist/assets/companions/v99/grok-coral-drop-candidate-v1.png",
+      "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+      "bytes": 871631
+    },
+    {
+      "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "bytes": 944230
+    },
+    {
+      "path": "dist/assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+      "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+      "bytes": 1014161
+    },
+    {
+      "path": "dist/assets/icons/chevron-left.svg",
+      "sha256": "94869faefd2831d671763e42dde0be05ae0d82bbdbf4a93834471661f7ec78ec",
+      "bytes": 3547
+    },
+    {
+      "path": "dist/assets/icons/search.svg",
+      "sha256": "d34b9b7a045cfce76c2dc77cc39e27442dc84ac916943e7515258ee49fb4e828",
+      "bytes": 3578
+    },
+    {
+      "path": "dist/assets/icons/x.svg",
+      "sha256": "0cf35cee470ea5ea950eaf9176e77e3b9742cc6ade96aa4aaf95362b62a453c6",
+      "bytes": 3558
+    },
+    {
+      "path": "dist/assets/looks/animal-gray-husky.png",
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "bytes": 1623665
+    },
+    {
+      "path": "dist/assets/looks/animal-white-cat.png",
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "bytes": 1382027
+    },
+    {
+      "path": "dist/assets/looks/dots-lilac-bucket.png",
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "bytes": 1605008
+    },
+    {
+      "path": "dist/assets/looks/dots-rose-glasses.png",
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "bytes": 1860436
+    },
+    {
+      "path": "dist/assets/looks/grok-green-cloud.png",
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "bytes": 790009
+    },
+    {
+      "path": "dist/assets/looks/grok-teal-square.png",
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "bytes": 828844
+    },
+    {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "bytes": 1058375
+    },
+    {
+      "path": "dist/assets/looks/human-bun-yellow.png",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "bytes": 1086214
+    },
+    {
+      "path": "dist/assets/looks/muse-rose-flowers.png",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "bytes": 1185166
+    },
+    {
+      "path": "dist/assets/looks/muse-sage-reading.png",
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "bytes": 1142481
+    },
+    {
+      "path": "dist/assets/posters/animal-cocoa-bear-thumb256-v99.png",
+      "sha256": "922cf162a65537ca6c1d47e1d4bbd8254b5100e55ad8d4e5cb2c225ef1f3f6bb",
+      "bytes": 46099
+    },
+    {
+      "path": "dist/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "sha256": "d5998d6a1ec73f25077077e0da6c8025d81f9bf240e33dc3c09c3d19a7f94ae3",
+      "bytes": 73925
+    },
+    {
+      "path": "dist/assets/posters/animal-gray-husky-v1.webp",
+      "sha256": "434a3d32da36754c3fa8853832caffffba3f61835712ab70adedd68108f0c012",
+      "bytes": 43698
+    },
+    {
+      "path": "dist/assets/posters/animal-white-cat-thumb256-v99.png",
+      "sha256": "b2fecfe8dd29790c903d8364c990919dc708bc0bfccf37584fa44fd55b0d4392",
+      "bytes": 70948
+    },
+    {
+      "path": "dist/assets/posters/animal-white-cat-v1.webp",
+      "sha256": "3c73bdc9938c10d0f4f9acf2c17b3b2642afec5bd6f502ae456ad285c13fba36",
+      "bytes": 42036
+    },
+    {
+      "path": "dist/assets/posters/animal-white-rabbit-v98-candidate-thumb256-v99.png",
+      "sha256": "51a6cb8f6695a863afd0bca496f5b2e6da993ab3ce076c58cc3e4826ef13a3cf",
+      "bytes": 59780
+    },
+    {
+      "path": "dist/assets/posters/brand-mark-display-v1.png",
+      "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64",
+      "bytes": 6053
+    },
+    {
+      "path": "dist/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "sha256": "5b6b4fe5933c4f1bd27ecfeb9fbe9258d4ba03d653b161804769e15c45ef37dc",
+      "bytes": 73514
+    },
+    {
+      "path": "dist/assets/posters/candidate-animals-20261005-v1.webp",
+      "sha256": "eda605d6ea5d63da7bf2edda3b98379c624aa1bd710950e866f2ab1fc50ba952",
+      "bytes": 44244
+    },
+    {
+      "path": "dist/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "sha256": "69a25e7a06b24700d559fe7bb55611c0aad811089b3b549bdfce83f26a2277d3",
+      "bytes": 84406
+    },
+    {
+      "path": "dist/assets/posters/candidate-dots-20261005-v1.webp",
+      "sha256": "25a144017c3b85a6a0be743bcc2e01e4f8c600b3f506fc545ff6a1a915cc161f",
+      "bytes": 53964
+    },
+    {
+      "path": "dist/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "sha256": "6bd8edfd205e401814c9d170d71d15637cd18504e9de1536341faa4edde30148",
+      "bytes": 51606
+    },
+    {
+      "path": "dist/assets/posters/candidate-grok-20261005-v1.webp",
+      "sha256": "e1b40e2eb20e762b66e00be1dafc26a710a0b43cb849c07550ee1ecab20c73bc",
+      "bytes": 19620
+    },
+    {
+      "path": "dist/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "sha256": "41127daec848456f0dd634ae576fbd7e2f2655b0c7f37bc0e02389ff246fc53e",
+      "bytes": 57540
+    },
+    {
+      "path": "dist/assets/posters/candidate-humans-20261005-v1.webp",
+      "sha256": "da95dedff71445bba0a102a3ee3dac862de1b7c21486d14beb4c92daadf6d8ad",
+      "bytes": 35746
+    },
+    {
+      "path": "dist/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "sha256": "8523d1f72c372864c68ffec17f45e936b728a5ebcc53b1f4c8977f3ebcf7cb78",
+      "bytes": 50040
+    },
+    {
+      "path": "dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+      "sha256": "e052eb98d4d0ed787445d0b3d66e70f614a5c568c5f65d98c7a9599349a3d751",
+      "bytes": 26872
+    },
+    {
+      "path": "dist/assets/posters/dots-butter-beret-thumb256-v99.png",
+      "sha256": "4290b01c25fc3526085bc20a4bd5ec71ebfdaf66286486395b90adffe4f04aab",
+      "bytes": 69005
+    },
+    {
+      "path": "dist/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "sha256": "011b6334dddf1cbdc7a2451c16195d9cfc65406d6899dca004d6221894ec3bb3",
+      "bytes": 77063
+    },
+    {
+      "path": "dist/assets/posters/dots-lilac-bucket-v1.webp",
+      "sha256": "139613ea4e94998961ae68f2d5e73f96d5c500055e6f132b699844e349017062",
+      "bytes": 58256
+    },
+    {
+      "path": "dist/assets/posters/dots-lime-frog-bow-thumb256-v99.png",
+      "sha256": "f0ae422ba7987a2bb8b590363be00e7ccad329092ad2cc38b394473b18eebdb4",
+      "bytes": 48674
+    },
+    {
+      "path": "dist/assets/posters/dots-pink-heart-shades-thumb256-v99.png",
+      "sha256": "0acfeabd98955ede475fcf8e6bdf14a182971eeb52772e16df66ca8aaa464043",
+      "bytes": 44491
+    },
+    {
+      "path": "dist/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "sha256": "d16c856a14c2ab0cf4c47f0efb99d6eb8e3865288e39c86db690e8dce1f5c50f",
+      "bytes": 88307
+    },
+    {
+      "path": "dist/assets/posters/dots-rose-glasses-v1.webp",
+      "sha256": "743dfb9fe97fae19629e0e4c70cd850f841c748537f182c86ea8d5718a573823",
+      "bytes": 63930
+    },
+    {
+      "path": "dist/assets/posters/grok-coral-drop-thumb256-v99.png",
+      "sha256": "f39d087e7659ef0243314570b466b1f075f9a23f7a2c187da5cefeb6caa9a3f6",
+      "bytes": 44970
+    },
+    {
+      "path": "dist/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "sha256": "7f3186d6ab925f09fbeb978b6f61586d6ebcd278644d629b2b84122e1a953804",
+      "bytes": 44622
+    },
+    {
+      "path": "dist/assets/posters/grok-green-cloud-v1.webp",
+      "sha256": "80a735fa20f8363959ce58545ef5470ef155606cd84ef71e377ac2075bd33fc3",
+      "bytes": 19066
+    },
+    {
+      "path": "dist/assets/posters/grok-teal-square-thumb256-v99.png",
+      "sha256": "5a320f0b70b91ae099dbba7728a46eed4062f7aa7e42f774000843aa002a7d87",
+      "bytes": 46048
+    },
+    {
+      "path": "dist/assets/posters/grok-teal-square-v1.webp",
+      "sha256": "2f76e1a8a2f515e6222e1c9d230ed841139c3fa7dbde6cc03b03446097286aa7",
+      "bytes": 16022
+    },
+    {
+      "path": "dist/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "sha256": "d7fa339b38b4c05c087e384470fe1320c9315e7ee7b8128cad1d9db5823ba21e",
+      "bytes": 55307
+    },
+    {
+      "path": "dist/assets/posters/human-blond-glasses-v1.webp",
+      "sha256": "d3ec6a31b89233d86bbfa9774f7477c3e3d7613f3b90ce270e4c1ff931295958",
+      "bytes": 34014
+    },
+    {
+      "path": "dist/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "sha256": "b2242b6eb0d54f634d0af899325802b12dbc92ec5d08338f12c0fb0fbdc2f33c",
+      "bytes": 57324
+    },
+    {
+      "path": "dist/assets/posters/human-bun-yellow-v1.webp",
+      "sha256": "99a25a4f4c0a21dd34731acadbfcb553bbd0565d8adabbebd1fb231307ab8e94",
+      "bytes": 37648
+    },
+    {
+      "path": "dist/assets/posters/human-rust-jacket-thumb256-v99.png",
+      "sha256": "de2b5eae7cfed9ebb02af2387b9a1f53da4ef55c48d34f6775acd948c432376c",
+      "bytes": 49488
+    },
+    {
+      "path": "dist/assets/posters/muse-lavender-lantern-thumb256-v99.png",
+      "sha256": "dfc1a1fa5ec6a3f099c011738fb73395d702b2280248ee76329294f66e84b1a3",
+      "bytes": 48198
+    },
+    {
+      "path": "dist/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "sha256": "30b4af703170fb77726144dcbb207094691ee5679b76512074f0c81ebbc87c3f",
+      "bytes": 59468
+    },
+    {
+      "path": "dist/assets/posters/muse-rose-flowers-v1.webp",
+      "sha256": "d1ef7e56c616c900c795b58fed4d3cf0106ccf3715b646cea663cdf1157034e6",
+      "bytes": 34690
+    },
+    {
+      "path": "dist/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "sha256": "70f9c74df4e488ec5bb0a1fadc0629dcdd36043ac241ef0e54398cdce6f0fe56",
+      "bytes": 51031
+    },
+    {
+      "path": "dist/assets/posters/muse-sage-reading-v1.webp",
+      "sha256": "7e4715e708d8bf86bfbcdd58038bdf704a351e2ae298e369f3e52f5a69ffaf62",
+      "bytes": 27236
+    },
+    {
+      "path": "dist/assets/posters/robot-ivory-capsule-face-v98-candidate-thumb256-v99.png",
+      "sha256": "8ea8240f0aa4576965fe509d4d06ae1d7494488b9b6c9135eb29a210f9f0c78c",
+      "bytes": 66862
+    },
+    {
+      "path": "dist/assets/previews/animal-cocoa-bear-detail1024-v99.png",
+      "sha256": "4d913bae513a19f794f71d7695948a1543d3082a8f6893d90f7ba6ebb31dc543",
+      "bytes": 639016
+    },
+    {
+      "path": "dist/assets/previews/animal-cocoa-bear-detail512-v99.png",
+      "sha256": "8dfd623b13e739c6fbf6a7adddcc5d1b5aef44febab330b72e6de11edafd166a",
+      "bytes": 167958
+    },
+    {
+      "path": "dist/assets/previews/animal-gray-husky-detail1024-v99.png",
+      "sha256": "eaccb7d37b397420043d1fd625fbab6d5d30e0abc83bf88d31e4736771806bbd",
+      "bytes": 1139419
+    },
+    {
+      "path": "dist/assets/previews/animal-gray-husky-detail512-v99.png",
+      "sha256": "c0e77ff4f0cd3967119b81ffc4152e511d073631f5696faf2b7884b441878263",
+      "bytes": 284696
+    },
+    {
+      "path": "dist/assets/previews/animal-white-cat-detail1024-v99.png",
+      "sha256": "efde110d6d7aba39a17c83333cba67b991bed3ccddff4d2d5fad412d22a393c7",
+      "bytes": 1052197
+    },
+    {
+      "path": "dist/assets/previews/animal-white-cat-detail512-v99.png",
+      "sha256": "6fe42640a1d155226d7c249a07e12926de491697038bbfc9e9cb0f844906cfbf",
+      "bytes": 269028
+    },
+    {
+      "path": "dist/assets/previews/animal-white-rabbit-v98-candidate-detail1024-v99.png",
+      "sha256": "b6f025663d60ce92b0ae8ab36b9b77e8a164c509b0ca07a1b66ef1bef1c3fa37",
+      "bytes": 878083
+    },
+    {
+      "path": "dist/assets/previews/animal-white-rabbit-v98-candidate-detail512-v99.png",
+      "sha256": "cdf241a1a2147ff5f1c06e311edc0c4ff3e7856ced3630fb7cf95489f5c5a438",
+      "bytes": 239623
+    },
+    {
+      "path": "dist/assets/previews/candidate-animals-20261005-detail1024-v99.png",
+      "sha256": "727b6aa754002bf2bcc4e496116762509afe988bdc46f705d1f0ee84587c4fd0",
+      "bytes": 1073612
+    },
+    {
+      "path": "dist/assets/previews/candidate-animals-20261005-detail512-v99.png",
+      "sha256": "b338ba46b49865cb548b3e4f733848ef6afcba3ca2b4b0f74ba5f19d2867c65d",
+      "bytes": 276080
+    },
+    {
+      "path": "dist/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+      "sha256": "85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+      "bytes": 1247923
+    },
+    {
+      "path": "dist/assets/previews/candidate-dots-20261005-detail512-v99.png",
+      "sha256": "781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+      "bytes": 325276
+    },
+    {
+      "path": "dist/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+      "sha256": "ff300f02fd3d2a2e2587ea05a64087c75f10fdc2d69a3ee89f434100717d36d2",
+      "bytes": 774218
+    },
+    {
+      "path": "dist/assets/previews/candidate-grok-20261005-detail512-v99.png",
+      "sha256": "b148e1327c5e3af41ddc0e4389c064d28520783e0ec172fb0d7383f9c7269d9c",
+      "bytes": 186049
+    },
+    {
+      "path": "dist/assets/previews/candidate-humans-20261005-detail1024-v99.png",
+      "sha256": "1c06d305580209914707918eb08fa4c72bd7ad3a103057ab215e711a259e0bc7",
+      "bytes": 802010
+    },
+    {
+      "path": "dist/assets/previews/candidate-humans-20261005-detail512-v99.png",
+      "sha256": "41d13bb59455be285d51f987bc4d10281c11a92f0aee86d670da6eba2f8529da",
+      "bytes": 204888
+    },
+    {
+      "path": "dist/assets/previews/candidate-meta-muse-20261005-detail1024-v99.png",
+      "sha256": "40efc5745781364cafe77e5d4e4e8c00486159828f05b9b86f522487db43b139",
+      "bytes": 726570
+    },
+    {
+      "path": "dist/assets/previews/candidate-meta-muse-20261005-detail512-v99.png",
+      "sha256": "07f10ffe5fc13317a1897f78ba82d17902d724b71061c61fd392fcfb63c4ced1",
+      "bytes": 188064
+    },
+    {
+      "path": "dist/assets/previews/dots-butter-beret-detail1024-v99.png",
+      "sha256": "ae6f90e9100c6dd2dc06c1a863f9ac319381c2551bd1bf21f4f8d4359ddf6a90",
+      "bytes": 1105003
+    },
+    {
+      "path": "dist/assets/previews/dots-butter-beret-detail512-v99.png",
+      "sha256": "07f753683b3189d06344407e1f472899c317f3f644c35f82b6b841c5cc210d73",
+      "bytes": 274847
+    },
+    {
+      "path": "dist/assets/previews/dots-lilac-bucket-detail1024-v99.png",
+      "sha256": "12a0765f588d981382ba165c41c1e1c1a6bd1779701af5c1ff89816d32d0845c",
+      "bytes": 1174483
+    },
+    {
+      "path": "dist/assets/previews/dots-lilac-bucket-detail512-v99.png",
+      "sha256": "c4644a1d4e429154338a2a57d6607c22d6fa2c934469cee6f30e28a21d38163d",
+      "bytes": 301911
+    },
+    {
+      "path": "dist/assets/previews/dots-lime-frog-bow-detail1024-v99.png",
+      "sha256": "c2ccb676d24002ba6d95f5f992b6aea12107edc8466fb5c056efc8de5249d6fe",
+      "bytes": 752710
+    },
+    {
+      "path": "dist/assets/previews/dots-lime-frog-bow-detail512-v99.png",
+      "sha256": "cde44a03b55bebb7e0d695d3e7d5c8d3cb7a2de0c63629986c6909e65850b7a2",
+      "bytes": 187392
+    },
+    {
+      "path": "dist/assets/previews/dots-pink-heart-shades-detail1024-v99.png",
+      "sha256": "b8e513e9704123d45b39d8c0e0860b2b4a194e9438e335dc694df0bbdad1df70",
+      "bytes": 650778
+    },
+    {
+      "path": "dist/assets/previews/dots-pink-heart-shades-detail512-v99.png",
+      "sha256": "d389de51cb3444393154b85e329fb6c46caa6adb762c270860120da924f4a47c",
+      "bytes": 169007
+    },
+    {
+      "path": "dist/assets/previews/dots-rose-glasses-detail1024-v99.png",
+      "sha256": "8506166bcf07cf6c4d494853502b8f387797d5dd71f1235801417a295c82d945",
+      "bytes": 1329262
+    },
+    {
+      "path": "dist/assets/previews/dots-rose-glasses-detail512-v99.png",
+      "sha256": "d128cb8ccf335250118ef7bc54ba1a2d342243d3d68a6e48e412a0905dd5508e",
+      "bytes": 340473
+    },
+    {
+      "path": "dist/assets/previews/grok-coral-drop-detail1024-v99.png",
+      "sha256": "587dc080bb45534cd584b7422cc2a04323f0e8031216b0e37dabacf28f169dc6",
+      "bytes": 617323
+    },
+    {
+      "path": "dist/assets/previews/grok-coral-drop-detail512-v99.png",
+      "sha256": "aa7e4367d066d0ea7e355057906ef2a23e396d6fe39757a4bc095cc497a61e0e",
+      "bytes": 158562
+    },
+    {
+      "path": "dist/assets/previews/grok-green-cloud-detail1024-v99.png",
+      "sha256": "b59f4c2fa09f852cae47ffd66b4605224ddb2500bfa9009c50e689d44e72ae3e",
+      "bytes": 625096
+    },
+    {
+      "path": "dist/assets/previews/grok-green-cloud-detail512-v99.png",
+      "sha256": "03d9d6e48cf649f5f893fe20bda721f39771d410d6d273315d220d98fc424ef9",
+      "bytes": 154455
+    },
+    {
+      "path": "dist/assets/previews/grok-teal-square-detail1024-v99.png",
+      "sha256": "14bc73a80535893f2f00f562dac5b519027be0976f3047a0bcd925077481b370",
+      "bytes": 682704
+    },
+    {
+      "path": "dist/assets/previews/grok-teal-square-detail512-v99.png",
+      "sha256": "e9aaf3c2ba4f980e84f3875a6a65aab82b20bb491bf400188f00eada4c09bd10",
+      "bytes": 168548
+    },
+    {
+      "path": "dist/assets/previews/human-blond-glasses-detail1024-v99.png",
+      "sha256": "ed18d79571fdf6af305d9427e08cd1eeee48d63dd9e994138265b76153c115fc",
+      "bytes": 766229
+    },
+    {
+      "path": "dist/assets/previews/human-blond-glasses-detail512-v99.png",
+      "sha256": "3576b44ed80b7122653def839356a1b568883adae898cdd658537fd9fd608294",
+      "bytes": 198142
+    },
+    {
+      "path": "dist/assets/previews/human-bun-yellow-detail1024-v99.png",
+      "sha256": "f9ffebb3723cd1b152705b170fd9c2d597bd62d97005045b770b582533ce2d60",
+      "bytes": 787530
+    },
+    {
+      "path": "dist/assets/previews/human-bun-yellow-detail512-v99.png",
+      "sha256": "77c84c19155b3a35095b5877d0e15c6cfce0aba274182f74c7a9ef6df45c06c9",
+      "bytes": 204058
+    },
+    {
+      "path": "dist/assets/previews/human-rust-jacket-detail1024-v99.png",
+      "sha256": "8368f5d2f7307d8fff355b64d87e9f945950469072381b452e3265273534b7bf",
+      "bytes": 668486
+    },
+    {
+      "path": "dist/assets/previews/human-rust-jacket-detail512-v99.png",
+      "sha256": "647817f8479bfb2da863c8a1d2defec71847dc8fafedc2fb75e229d52af3192f",
+      "bytes": 171693
+    },
+    {
+      "path": "dist/assets/previews/muse-lavender-lantern-detail1024-v99.png",
+      "sha256": "b6436968ff4cafb46c0d836e5dabb54e1a994f477563da671b79cd30aa4407bc",
+      "bytes": 713163
+    },
+    {
+      "path": "dist/assets/previews/muse-lavender-lantern-detail512-v99.png",
+      "sha256": "2ca76313d62d6096d1ec2cdcb828cb06e9a860b62b47a3c14cb5d631c010f8c2",
+      "bytes": 180871
+    },
+    {
+      "path": "dist/assets/previews/muse-rose-flowers-detail1024-v99.png",
+      "sha256": "b163d60bd534ac070989ec61cf31fb4cc105f12f959d13a4f97ac8a5f9f38e61",
+      "bytes": 882751
+    },
+    {
+      "path": "dist/assets/previews/muse-rose-flowers-detail512-v99.png",
+      "sha256": "b0cf2196c5191d08262896f0c0f14f198d60e693616c2917c088c4eafd3e936b",
+      "bytes": 223641
+    },
+    {
+      "path": "dist/assets/previews/muse-sage-reading-detail1024-v99.png",
+      "sha256": "d56ae06c3ca9c06ab945097ed371ecb7f4fd9df1b1dd6bcb3a4cfb8ae6805d28",
+      "bytes": 807830
+    },
+    {
+      "path": "dist/assets/previews/muse-sage-reading-detail512-v99.png",
+      "sha256": "710f3bbf407046faa65cbbd6e95214c761e12ca707805959db4cf3e0ad4b6b10",
+      "bytes": 197195
+    },
+    {
+      "path": "dist/assets/previews/robot-ivory-capsule-face-v98-candidate-detail1024-v99.png",
+      "sha256": "ef15cc67bc3c022a2939541665bde48020dec773ec59607800f2b7b29ad57306",
+      "bytes": 873886
+    },
+    {
+      "path": "dist/assets/previews/robot-ivory-capsule-face-v98-candidate-detail512-v99.png",
+      "sha256": "924084411b53c7cb171b1ea29a280e2071de5b2b86a3d71804ed5b6ec5d4ead6",
+      "bytes": 249999
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "bytes": 1675380
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+      "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+      "bytes": 72043
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+      "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+      "bytes": 113720
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/glasses/round-front.png",
+      "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae",
+      "bytes": 111958
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/glasses/round-rear.png",
+      "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5",
+      "bytes": 78452
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/headphones/front.png",
+      "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9",
+      "bytes": 371080
+    },
+    {
+      "path": "dist/assets/templates/dots-orb-v1/headphones/rear.png",
+      "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0",
+      "bytes": 216883
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/body-neutral.png",
+      "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+      "bytes": 1106046
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/cap/front-v2.png",
+      "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+      "bytes": 222431
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/cap/rear-v2.png",
+      "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+      "bytes": 648210
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+      "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+      "bytes": 109511
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+      "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+      "bytes": 92782
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/glasses/round-front.png",
+      "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34",
+      "bytes": 99090
+    },
+    {
+      "path": "dist/assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+      "sha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f",
+      "bytes": 72835
+    },
+    {
+      "path": "dist/assets/templates/sources.json",
+      "sha256": "8a16b861a405922d40eb37b9b02b5a16a4afde15814f114ec69c0db945f3f1ba",
+      "bytes": 42346
+    },
+    {
+      "path": "dist/index.html",
+      "sha256": "01b46caff45e07935bbaf2b6162e9aaaeae0d1adec659cb6237b861cda86f503",
+      "bytes": 4882
+    },
+    {
+      "path": "dist/studio-actions.js",
+      "sha256": "c3024da967abc5fae76beba4a670a435d1acfeea8570c409f6cb200b3e2f3385",
+      "bytes": 3885
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "sha256": "6a30c5c882872f2a31afd52b89bcd6e0d7189c16468a4875c286221e9d1abeaf",
+      "bytes": 61388
+    },
+    {
+      "path": "dist/studio-asset-loader.js",
+      "sha256": "b838d6ab8d2f63a85f4d34a72ecd6e8a1539573ebad5a96512b5e3a86954a22f",
+      "bytes": 7520
+    },
+    {
+      "path": "dist/studio-card.js",
+      "sha256": "9a397fb9e3186423a678c34221c037c15480ccf94a3c9e83c0a35152435a143e",
+      "bytes": 2653
+    },
+    {
+      "path": "dist/studio-content.js",
+      "sha256": "d3fd45e70cd93b52b681e1a51694154486d073648bc3ad50ab0f9f58ddbab076",
+      "bytes": 54462
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "sha256": "ec02524c76ee494c0e75c5bded141e4ef432ac56e813aa40a5f60786bde94ee4",
+      "bytes": 29769
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "sha256": "655454e3411159dfc2b930827ccc26ed6350e41cc3769cf2d8d7b9111266a254",
+      "bytes": 25853
+    },
+    {
+      "path": "dist/studio-display-assets.js",
+      "sha256": "c7e2b1d0a812045b2bd2f1234e2a0e93fc0bcade6d1216ea59abd762f1762e91",
+      "bytes": 64932
+    },
+    {
+      "path": "dist/studio-draft.js",
+      "sha256": "8f30ee3523a9c011cd946a54617d468219034f141b28605a5a47bcb88134c0de",
+      "bytes": 6560
+    },
+    {
+      "path": "dist/studio-edit-templates.js",
+      "sha256": "75aa39b2a5bf6ef19843ec40b5f28b87c94472fa545b9fb855bc14d11a8499ce",
+      "bytes": 12618
+    },
+    {
+      "path": "dist/studio-editor.js",
+      "sha256": "4209c222f028c423009ae40847c8a79475ee538d4c3710d4cfa2f64290928783",
+      "bytes": 36565
+    },
+    {
+      "path": "dist/studio-i18n.js",
+      "sha256": "b78ae58e91db127c2d1ba15fe9144e1d6e25467909faf2132bf58c3b1b52ae98",
+      "bytes": 3261
+    },
+    {
+      "path": "dist/studio-motion.js",
+      "sha256": "fdf658ef595321b620c4227eb85a8c57ef2bda38d86bdd3aaf51a03a083d326c",
+      "bytes": 8433
+    },
+    {
+      "path": "dist/studio-overlay.js",
+      "sha256": "66766b415d44740f167a7386c3723c1b723ac771ffbfa69b0322db1038ffe1fb",
+      "bytes": 6931
+    },
+    {
+      "path": "dist/studio-preview-loader.js",
+      "sha256": "762ea8e6ecb5fda41318e6c067d5d0857535ac8a86dbd3f52c49a05113e77856",
+      "bytes": 25608
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "sha256": "c343f5b5cb33a6675f26956710b6b0e126b807caa6f3577970c96db7759e8fdd",
+      "bytes": 4982
+    },
+    {
+      "path": "dist/studio-renderer.js",
+      "sha256": "059a95d7a8b0192c101d2b7a580ec368cf7f3633d4dd74b972df9a5d8e6f3d77",
+      "bytes": 16497
+    },
+    {
+      "path": "dist/studio-router.js",
+      "sha256": "62d536828d8b0da6d5f9367cf3eff0656a30f7dee544923c0cd4df0b89c88bd4",
+      "bytes": 1573
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "sha256": "121838ff88c1e488a7200369458c02351457840c4215b514a825aa575f102024",
+      "bytes": 2190
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "sha256": "27cf624acbffdceaf5682e488e42b8acecd0a95a475383e5108697917496e181",
+      "bytes": 10337
+    },
+    {
+      "path": "dist/studio.css",
+      "sha256": "6242a4ae0243d60b92a7cdb4b7ba43f68fed47e4ae0f1c4dffbbbc9f6415ca61",
+      "bytes": 21208
+    },
+    {
+      "path": "dist/studio.js",
+      "sha256": "d5516a21bec39c1cd52e15d0e3775d57c0b4fd2dabffd94cc4f07d04c3405e68",
+      "bytes": 11783
+    }
+  ],
+  "retiredRuntimePaths": [
+    "dist/assets/icons/menu.svg",
+    "dist/assets/terrace/v98/terrace-fullscreen-desktop-v98.webp",
+    "dist/assets/terrace/v98/terrace-fullscreen-mobile-v98.webp",
+    "dist/assets/terrace/v98/terrace-fullscreen-tablet-v98.webp",
+    "dist/studio-home.js",
+    "dist/studio-scenes.js"
+  ],
+  "runtimeBytes": 63121504
+}

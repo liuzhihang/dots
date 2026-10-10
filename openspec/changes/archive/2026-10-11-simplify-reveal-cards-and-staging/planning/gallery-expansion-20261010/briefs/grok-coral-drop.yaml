@@ -1,0 +1,114 @@
+briefVersion: 1
+request:
+  summary: 各系列新增1件独立完整静态外观候选
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: grok-coral-drop
+  seriesId: grok
+  identity: new
+  differenceFromExisting: 水滴轮廓区别于紫球、绿云、青方
+  invariants:
+  - 保留系列身份与完整轮廓；无模板不伪造编辑能力
+artwork:
+  proposedId: grok-coral-drop
+  proposedVersion: v1
+  name:
+    en: Coral Drop Grok
+    zh-CN: 珊瑚水滴 Grok
+  description:
+    en: null
+    zh-CN: 珊瑚橙红软几何水滴，成对白色胶囊眼，无嘴和肢体
+  aliases:
+    en: []
+    zh-CN: []
+references:
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/2-Photo-2.jpg
+  sha256: 6fb8db743c51ee6c641b342edccbb38593b5f0f8b99ee9179be181b44397da4a
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/8-Photo-8.jpg
+  sha256: f2ce3bf714caaac43fb6849a0fc41df938e8b7db0339f93ac9e700fdee503d27
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/14-Photo-14.jpg
+  sha256: f143ab57dd015baa57d768cd40f4f9c8d2a2c48018e4aef5da31bfd07fc451e6
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+creation:
+  prompt: See prompts/grok-coral-drop-prompts.md for exact call text, input roles
+    and original output paths
+  negativeConstraints: []
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations:
+  - generated/grok-coral-drop-candidate-v1-initial.png
+  - generated/grok-coral-drop-candidate-v1.png
+facts:
+  characterStyle:
+    state: known
+    evidence: grok
+  appearance:
+    state: known
+    evidence: teardrop
+  facialFeatures:
+    state: known
+    evidence: paired white capsule eyes
+  colorMaterial:
+    state: known
+    evidence: coral soft matte
+  clothing:
+    state: none
+    evidence: none
+  headAccessory:
+    state: none
+    evidence: none
+  bodyAccessory:
+    state: none
+    evidence: none
+  prop:
+    state: none
+    evidence: none
+resources:
+  original:
+    sha256: 443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8
+    mime: image/png
+    bytes: 871631
+    width: 1254
+    height: 1254
+    path: generated/grok-coral-drop-candidate-v1.png
+    alphaCheck:
+      min: 0
+      max: 255
+      zeroPixels: 904562
+      opaquePixels: 976
+      partialPixels: 666978
+      bboxAt16:
+      - 166
+      - 125
+      - 1088
+      - 1135
+      nonzeroOutsideBbox16: 666
+      maxOutsideBbox16: 14
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: prompts/grok-coral-drop-prompts.md
+  license: unknown
+  engineering: read-only file/alpha/hash checked; integration not run
+  visualReview: initial inspected; edge/composition notes in README; not final approval
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

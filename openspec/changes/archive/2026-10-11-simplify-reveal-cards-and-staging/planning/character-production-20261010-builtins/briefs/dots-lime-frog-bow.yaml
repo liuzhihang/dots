@@ -1,0 +1,216 @@
+# JSON is valid YAML 1.2; production record only, not runtime data.
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "少量补齐用户截图中的Characters基础完整外观；更多眼型/配件后续增加",
+    "scope": "material-candidate-and-local-integration",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "dots-lime-frog-bow",
+    "seriesId": "dots",
+    "identity": "new",
+    "differenceFromExisting": "现有Dots圆球/三角之外新增可辨蛙形轮廓，不复用Grok绿色云朵身份。",
+    "invariants": [
+      "无手脚",
+      "短密绒",
+      "单体完整轮廓",
+      "静态Artwork不继承Template/Pet能力"
+    ]
+  },
+  "artwork": {
+    "proposedId": "dots-lime-frog-bow",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Lime Frog Dots",
+      "zh-CN": "青柠蛙领结 Dots"
+    },
+    "description": {
+      "en": "Single lime-green frog-shaped plush body with two raised eyes and a black bow tie.",
+      "zh-CN": "青柠绿色蛙形绒体，顶部两颗凸眼，正面黑领结。"
+    }
+  },
+  "references": [
+    {
+      "source": "user-provided screenshot; described by user as ChatGPT settings",
+      "inputPath": "/tmp/codex-remote-attachments/01a124f0-90bb-7361-a421-075ee9c26374/E3E3A47C-D28E-4521-9860-7A45C899A80D/6-Photo-6.jpg",
+      "retainedPath": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/references/characters-user-reference.jpg",
+      "sha256": "9d4675242c6b8e70fbf4f978ad7171a770c18650c841e3c3fa8d67fdc42d8311",
+      "use": "limbless green frog with black bow tie; pink heart with round sunglasses in Characters row",
+      "exclude": [
+        "UI",
+        "Mira orb",
+        "Pets",
+        "text",
+        "white background"
+      ],
+      "license": "unknown",
+      "officialOriginalAsset": false,
+      "scope": "two reference-driven complete Artwork candidates, local integration only; no Template expansion"
+    }
+  ],
+  "creation": {
+    "prompt": "../prompts/dots-lime-frog-bow-prompts.md",
+    "tool": "built-in image_gen",
+    "originalOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-852001c8-4b28-4385-9f1a-ff3f88c283a9.png",
+    "iterations": [
+      {
+        "version": "v1",
+        "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-lime-frog-bow-candidate-v1.png",
+        "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+        "status": "candidate-retained"
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Dots短密绒单体，无手脚"
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "蛙形连续轮廓，无四肢"
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "两颗浅色眼缘黑瞳，无可见口鼻"
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "青柠绿色短密绒"
+    },
+    "clothing": {
+      "state": "none",
+      "evidence": "图中无衣服"
+    },
+    "headAccessory": {
+      "state": "none",
+      "evidence": "无头部配件"
+    },
+    "bodyAccessory": {
+      "state": "known",
+      "evidence": "黑领结"
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "无道具"
+    }
+  },
+  "resources": {
+    "original": {
+      "id": "dots-lime-frog-bow",
+      "characterId": "dots-lime-frog-bow",
+      "version": "v1",
+      "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-lime-frog-bow-candidate-v1.png",
+      "generatedOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-852001c8-4b28-4385-9f1a-ff3f88c283a9.png",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "mime": "image/png",
+      "byteSize": 1087340,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1061852,
+        "opaquePixels": 164,
+        "partialAlphaPixels": 510500,
+        "visibleBounds": {
+          "x": 0,
+          "y": 19,
+          "width": 1234,
+          "height": 1211,
+          "alphaThreshold": 1
+        }
+      },
+      "diagnostics": {
+        "alpha16Bounds": [
+          192,
+          275,
+          1058,
+          1009
+        ],
+        "lowAlphaPixels1To15": 13751,
+        "edgeNote": "Raw generated alpha has faint fringe specks (alpha 1-15); alpha>=16 subject is inset. Retain source bytes and review solid light/dark display before release."
+      },
+      "artApproval": "pending",
+      "publicGalleryEligible": false,
+      "license": "unknown"
+    },
+    "thumbnail": {
+      "id": "asset:dots-lime-frog-bow:poster:v99",
+      "artworkId": "dots-lime-frog-bow",
+      "originalAssetId": "asset:dots-lime-frog-bow:original",
+      "purpose": "poster",
+      "path": "./assets/posters/dots-lime-frog-bow-thumb256-v99.png",
+      "sourcePath": "dist/assets/posters/dots-lime-frog-bow-thumb256-v99.png",
+      "version": "v99",
+      "sha256": "f0ae422ba7987a2bb8b590363be00e7ccad329092ad2cc38b394473b18eebdb4",
+      "mime": "image/png",
+      "byteSize": 48674,
+      "width": 256,
+      "height": 256,
+      "publicationStatus": "preview-only",
+      "resourceKind": "gallery-poster",
+      "displayOnly": true,
+      "downloadable": false,
+      "transformation": "sips proportional resize to maximum side 256px; transparent pixels preserved; source unchanged",
+      "sourceAssetSha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "resourceStatus": "verified-local-source",
+      "runtimeVerification": "not-browser-checked",
+      "sourceRef": "derived from asset:dots-lime-frog-bow:original sha256:bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f; sips proportional resize to maximum side 256px; transparent pixels preserved; source unchanged",
+      "derivedFrom": "asset:dots-lime-frog-bow:original",
+      "sourceAssetId": "asset:dots-lime-frog-bow:original",
+      "sourceAssetSnapshotRef": null,
+      "ownerArtworkId": "dots-lime-frog-bow",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true
+      },
+      "sourceSnapshotMatch": false,
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "sourceSnapshot": null,
+        "sourceId": null,
+        "scope": "local-preview-only",
+        "artworkId": "dots-lime-frog-bow",
+        "assetSha256": "f0ae422ba7987a2bb8b590363be00e7ccad329092ad2cc38b394473b18eebdb4",
+        "note": "待用户美术确认；可供本地检查，不继承已有作品批准。"
+      }
+    },
+    "displayPreview": [
+      {
+        "path": "dist/assets/previews/dots-lime-frog-bow-detail1024-v99.png",
+        "bytes": 752710,
+        "sha256": "c2ccb676d24002ba6d95f5f992b6aea12107edc8466fb5c056efc8de5249d6fe"
+      },
+      {
+        "path": "dist/assets/previews/dots-lime-frog-bow-detail512-v99.png",
+        "bytes": 187392,
+        "sha256": "cde44a03b55bebb7e0d695d3e7d5c8d3cb7a2de0c63629986c6909e65850b7a2"
+      }
+    ]
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": null
+  },
+  "evidence": {
+    "sourceRecord": "../reference-source.json",
+    "license": "unknown",
+    "engineering": "passed: current catalog/query/build/browser actual copy/download/alpha",
+    "visualReview": "实看深浅纯色底审阅图，轮廓与配件完整，无可见大面积底色或截断；原生成alpha存在1-15稀疏像素，记录保留，不声称像素级干净抠图。",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f"
+    },
+    "integration": "registered-preview-only",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

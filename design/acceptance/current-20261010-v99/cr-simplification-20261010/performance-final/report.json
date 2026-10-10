@@ -1,0 +1,1932 @@
+{
+  "revision": 99,
+  "environment": {
+    "browser": "155.0.8059.39",
+    "os": "Darwin",
+    "release": "27.0.0",
+    "arch": "arm64",
+    "cpu": "Apple M1 Max",
+    "physicalMemory": 68719476736,
+    "physicalDevice": false
+  },
+  "conditions": {
+    "desktop": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "dpr": 1,
+      "cpuRate": 1,
+      "network": "unthrottled"
+    },
+    "mobile-throttled": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "cpuRate": 4,
+      "latencyMs": 150,
+      "downBytesPerSecond": 209715.2,
+      "upBytesPerSecond": 96000
+    }
+  },
+  "samples": [
+    {
+      "kind": "cold",
+      "scenario": "desktop",
+      "index": 0,
+      "times": {
+        "panel": 19.300000190734863,
+        "metadata": 19.300000190734863,
+        "actions": 22.09999990463257,
+        "thumbnail": 32.200000286102295,
+        "preview": 49.5
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+          "encodedBodySize": 1247923,
+          "decodedBodySize": 1247923,
+          "transferSize": 1248223,
+          "duration": 10.300000190734863
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 4.799999713897705
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 3.8999996185302734
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 3.700000286102295
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 3.799999713897705
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "desktop",
+      "index": 1,
+      "times": {
+        "panel": 17.5,
+        "metadata": 17.5,
+        "actions": 19.59999990463257,
+        "thumbnail": 26.399999618530273,
+        "preview": 43.799999713897705
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+          "encodedBodySize": 1247923,
+          "decodedBodySize": 1247923,
+          "transferSize": 1248223,
+          "duration": 3.700000286102295
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 2
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 2
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 3.200000286102295
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 3.200000286102295
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "desktop",
+      "index": 2,
+      "times": {
+        "panel": 17.700000286102295,
+        "metadata": 17.700000286102295,
+        "actions": 20.200000286102295,
+        "thumbnail": 23.600000381469727,
+        "preview": 38.700000286102295
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+          "encodedBodySize": 1247923,
+          "decodedBodySize": 1247923,
+          "transferSize": 1248223,
+          "duration": 4.200000286102295
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 2.5
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 2.1000003814697266
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 4.099999904632568
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 4
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "desktop",
+      "index": 3,
+      "times": {
+        "panel": 17.300000190734863,
+        "metadata": 17.300000190734863,
+        "actions": 19.5,
+        "thumbnail": 23,
+        "preview": 38.59999990463257
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+          "encodedBodySize": 1247923,
+          "decodedBodySize": 1247923,
+          "transferSize": 1248223,
+          "duration": 4.199999809265137
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 2.3999996185302734
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 2.0999999046325684
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 2.9000000953674316
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 2.8000001907348633
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "desktop",
+      "index": 4,
+      "times": {
+        "panel": 18.800000190734863,
+        "metadata": 18.800000190734863,
+        "actions": 21,
+        "thumbnail": 24.5,
+        "preview": 39.30000019073486
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+          "encodedBodySize": 1247923,
+          "decodedBodySize": 1247923,
+          "transferSize": 1248223,
+          "duration": 4.099999904632568
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 2.8000001907348633
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 2.9000000953674316
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 2.5
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 2.8000001907348633
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail1024-v99.png?v=v99&sha256=85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "desktop",
+      "index": 0,
+      "times": {
+        "panel": 2.9000000953674316,
+        "metadata": 2.9000000953674316,
+        "thumbnail": 2.9000000953674316,
+        "actions": 34.59999990463257,
+        "preview": 34.59999990463257
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": []
+    },
+    {
+      "kind": "hot",
+      "scenario": "desktop",
+      "index": 1,
+      "times": {
+        "panel": 2.5999999046325684,
+        "metadata": 2.5999999046325684,
+        "thumbnail": 2.5999999046325684,
+        "actions": 9.299999713897705,
+        "preview": 9.299999713897705
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 1.5999999046325684
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "desktop",
+      "index": 2,
+      "times": {
+        "panel": 2.5,
+        "metadata": 2.5,
+        "thumbnail": 2.5,
+        "actions": 10.400000095367432,
+        "preview": 10.400000095367432
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 1.700000286102295
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "desktop",
+      "index": 3,
+      "times": {
+        "panel": 2.799999713897705,
+        "metadata": 2.799999713897705,
+        "thumbnail": 2.799999713897705,
+        "actions": 9.400000095367432,
+        "preview": 9.400000095367432
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 1.4000000953674316
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "desktop",
+      "index": 4,
+      "times": {
+        "panel": 2.700000286102295,
+        "metadata": 2.700000286102295,
+        "thumbnail": 2.700000286102295,
+        "actions": 9.300000190734863,
+        "preview": 9.300000190734863
+      },
+      "longTasks": [],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 1.4000000953674316
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 4194304,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "mobile-throttled",
+      "index": 0,
+      "times": {
+        "panel": 85.80000019073486,
+        "metadata": 85.80000019073486,
+        "actions": 97.80000019073486,
+        "thumbnail": 1862.5999999046326,
+        "preview": 3062.9000000953674
+      },
+      "longTasks": [
+        {
+          "start": 106.90000009536743,
+          "duration": 88
+        }
+      ],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+          "encodedBodySize": 325276,
+          "decodedBodySize": 325276,
+          "transferSize": 325576,
+          "duration": 2957.199999809265
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 1768
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 1667.9000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 1810.9000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 329.2000002861023
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "mobile-throttled",
+      "index": 1,
+      "times": {
+        "panel": 77.5,
+        "metadata": 77.5,
+        "actions": 88.10000038146973,
+        "thumbnail": 1850.3000001907349,
+        "preview": 3050.1000003814697
+      },
+      "longTasks": [
+        {
+          "start": 92.90000009536743,
+          "duration": 79
+        }
+      ],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+          "encodedBodySize": 325276,
+          "decodedBodySize": 325276,
+          "transferSize": 325576,
+          "duration": 2959
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 1770.4000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 1664
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 1813.6999998092651
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 324.30000019073486
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "mobile-throttled",
+      "index": 2,
+      "times": {
+        "panel": 74.40000009536743,
+        "metadata": 74.40000009536743,
+        "actions": 85,
+        "thumbnail": 1843,
+        "preview": 3041.5
+      },
+      "longTasks": [
+        {
+          "start": 111.5,
+          "duration": 76
+        }
+      ],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+          "encodedBodySize": 325276,
+          "decodedBodySize": 325276,
+          "transferSize": 325576,
+          "duration": 2957.9000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 1755.4000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 274.40000009536743
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 1825.4000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 1690.6999998092651
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "mobile-throttled",
+      "index": 3,
+      "times": {
+        "panel": 74.19999980926514,
+        "metadata": 74.19999980926514,
+        "actions": 85.30000019073486,
+        "thumbnail": 1824.1999998092651,
+        "preview": 3040.5999999046326
+      },
+      "longTasks": [
+        {
+          "start": 102.30000019073486,
+          "duration": 76
+        }
+      ],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+          "encodedBodySize": 325276,
+          "decodedBodySize": 325276,
+          "transferSize": 325576,
+          "duration": 2957.5
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 1747.7000002861023
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 271.09999990463257
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 1824.9000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 1695.3000001907349
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "cold",
+      "scenario": "mobile-throttled",
+      "index": 4,
+      "times": {
+        "panel": 80.09999990463257,
+        "metadata": 80.09999990463257,
+        "actions": 91.69999980926514,
+        "thumbnail": 1852.0999999046326,
+        "preview": 3052.199999809265
+      },
+      "longTasks": [
+        {
+          "start": 98.7999997138977,
+          "duration": 82
+        }
+      ],
+      "resources": [
+        {
+          "name": "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+          "encodedBodySize": 325276,
+          "decodedBodySize": 325276,
+          "transferSize": 325576,
+          "duration": 2956
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "encodedBodySize": 84406,
+          "decodedBodySize": 84406,
+          "transferSize": 84706,
+          "duration": 1768.3999996185303
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "encodedBodySize": 88307,
+          "decodedBodySize": 88307,
+          "transferSize": 88607,
+          "duration": 1814.4000000953674
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "encodedBodySize": 77063,
+          "decodedBodySize": 77063,
+          "transferSize": 77363,
+          "duration": 1672.0999999046326
+        },
+        {
+          "name": "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png",
+          "encodedBodySize": 6053,
+          "decodedBodySize": 6053,
+          "transferSize": 6353,
+          "duration": 312.80000019073486
+        }
+      ],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/previews/candidate-dots-20261005-detail512-v99.png?v=v99&sha256=781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907",
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "mobile-throttled",
+      "index": 0,
+      "times": {
+        "panel": 9.900000095367432,
+        "metadata": 10,
+        "actions": 45.700000286102295,
+        "thumbnail": 45.700000286102295,
+        "preview": 45.700000286102295
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "http://127.0.0.1:53358/assets/posters/brand-mark-display-v1.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "mobile-throttled",
+      "index": 1,
+      "times": {
+        "panel": 11.200000286102295,
+        "metadata": 11.200000286102295,
+        "actions": 15.5,
+        "thumbnail": 15.5,
+        "preview": 15.5
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "mobile-throttled",
+      "index": 2,
+      "times": {
+        "panel": 13.300000190734863,
+        "metadata": 13.300000190734863,
+        "actions": 17.90000009536743,
+        "thumbnail": 17.90000009536743,
+        "preview": 17.90000009536743
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "mobile-throttled",
+      "index": 3,
+      "times": {
+        "panel": 13.5,
+        "metadata": 13.5,
+        "actions": 18.600000381469727,
+        "thumbnail": 18.600000381469727,
+        "preview": 18.600000381469727
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png"
+      ]
+    },
+    {
+      "kind": "hot",
+      "scenario": "mobile-throttled",
+      "index": 4,
+      "times": {
+        "panel": 14.699999809265137,
+        "metadata": 14.699999809265137,
+        "actions": 20,
+        "thumbnail": 20,
+        "preview": 20
+      },
+      "longTasks": [],
+      "resources": [],
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 0,
+        "activeLeases": 1,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 1048576,
+        "cachedDecodedBytes": 1048576,
+        "idleDecodedBytes": 0,
+        "pinnedBytes": 1048576,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 1048576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "requests": [
+        "http://127.0.0.1:53358/assets/posters/candidate-dots-20261005-thumb256-v99.png"
+      ]
+    }
+  ],
+  "summary": {
+    "desktop-cold": {
+      "panel": {
+        "min": 17.300000190734863,
+        "median": 17.700000286102295,
+        "max": 19.300000190734863
+      },
+      "metadata": {
+        "min": 17.300000190734863,
+        "median": 17.700000286102295,
+        "max": 19.300000190734863
+      },
+      "actions": {
+        "min": 19.5,
+        "median": 20.200000286102295,
+        "max": 22.09999990463257
+      },
+      "thumbnail": {
+        "min": 23,
+        "median": 24.5,
+        "max": 32.200000286102295
+      },
+      "preview": {
+        "min": 38.59999990463257,
+        "median": 39.30000019073486,
+        "max": 49.5
+      }
+    },
+    "desktop-hot": {
+      "panel": {
+        "min": 2.5,
+        "median": 2.700000286102295,
+        "max": 2.9000000953674316
+      },
+      "metadata": {
+        "min": 2.5,
+        "median": 2.700000286102295,
+        "max": 2.9000000953674316
+      },
+      "actions": {
+        "min": 9.299999713897705,
+        "median": 9.400000095367432,
+        "max": 34.59999990463257
+      },
+      "thumbnail": {
+        "min": 2.5,
+        "median": 2.700000286102295,
+        "max": 2.9000000953674316
+      },
+      "preview": {
+        "min": 9.299999713897705,
+        "median": 9.400000095367432,
+        "max": 34.59999990463257
+      }
+    },
+    "mobile-throttled-cold": {
+      "panel": {
+        "min": 74.19999980926514,
+        "median": 77.5,
+        "max": 85.80000019073486
+      },
+      "metadata": {
+        "min": 74.19999980926514,
+        "median": 77.5,
+        "max": 85.80000019073486
+      },
+      "actions": {
+        "min": 85,
+        "median": 88.10000038146973,
+        "max": 97.80000019073486
+      },
+      "thumbnail": {
+        "min": 1824.1999998092651,
+        "median": 1850.3000001907349,
+        "max": 1862.5999999046326
+      },
+      "preview": {
+        "min": 3040.5999999046326,
+        "median": 3050.1000003814697,
+        "max": 3062.9000000953674
+      }
+    },
+    "mobile-throttled-hot": {
+      "panel": {
+        "min": 9.900000095367432,
+        "median": 13.300000190734863,
+        "max": 14.699999809265137
+      },
+      "metadata": {
+        "min": 10,
+        "median": 13.300000190734863,
+        "max": 14.699999809265137
+      },
+      "actions": {
+        "min": 15.5,
+        "median": 18.600000381469727,
+        "max": 45.700000286102295
+      },
+      "thumbnail": {
+        "min": 15.5,
+        "median": 18.600000381469727,
+        "max": 45.700000286102295
+      },
+      "preview": {
+        "min": 15.5,
+        "median": 18.600000381469727,
+        "max": 45.700000286102295
+      }
+    }
+  },
+  "cycles": [
+    {
+      "index": 0,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 1,
+        "idleEntries": 1,
+        "activeLeases": 0,
+        "objectURLs": 1,
+        "bitmaps": 1,
+        "decodedBytes": 4194304,
+        "cachedDecodedBytes": 4194304,
+        "idleDecodedBytes": 4194304,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 4194304,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5167688
+    },
+    {
+      "index": 1,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 2,
+        "idleEntries": 2,
+        "activeLeases": 0,
+        "objectURLs": 2,
+        "bitmaps": 2,
+        "decodedBytes": 8388608,
+        "cachedDecodedBytes": 8388608,
+        "idleDecodedBytes": 8388608,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 8388608,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4798324
+    },
+    {
+      "index": 2,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 3,
+        "idleEntries": 3,
+        "activeLeases": 0,
+        "objectURLs": 3,
+        "bitmaps": 3,
+        "decodedBytes": 12451840,
+        "cachedDecodedBytes": 12451840,
+        "idleDecodedBytes": 12451840,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 12451840,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4951364
+    },
+    {
+      "index": 3,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 4,
+        "idleEntries": 4,
+        "activeLeases": 0,
+        "objectURLs": 4,
+        "bitmaps": 4,
+        "decodedBytes": 16646144,
+        "cachedDecodedBytes": 16646144,
+        "idleDecodedBytes": 16646144,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 16646144,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5090584
+    },
+    {
+      "index": 4,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 5,
+        "idleEntries": 5,
+        "activeLeases": 0,
+        "objectURLs": 5,
+        "bitmaps": 5,
+        "decodedBytes": 20840448,
+        "cachedDecodedBytes": 20840448,
+        "idleDecodedBytes": 20840448,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 20840448,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5241244
+    },
+    {
+      "index": 5,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 6,
+        "idleEntries": 6,
+        "activeLeases": 0,
+        "objectURLs": 6,
+        "bitmaps": 6,
+        "decodedBytes": 25034752,
+        "cachedDecodedBytes": 25034752,
+        "idleDecodedBytes": 25034752,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 25034752,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5352892
+    },
+    {
+      "index": 6,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 7,
+        "idleEntries": 7,
+        "activeLeases": 0,
+        "objectURLs": 7,
+        "bitmaps": 7,
+        "decodedBytes": 29229056,
+        "cachedDecodedBytes": 29229056,
+        "idleDecodedBytes": 29229056,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 29229056,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5468956
+    },
+    {
+      "index": 7,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 8,
+        "idleEntries": 8,
+        "activeLeases": 0,
+        "objectURLs": 8,
+        "bitmaps": 8,
+        "decodedBytes": 33423360,
+        "cachedDecodedBytes": 33423360,
+        "idleDecodedBytes": 33423360,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 33423360,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5581080
+    },
+    {
+      "index": 8,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 9,
+        "idleEntries": 9,
+        "activeLeases": 0,
+        "objectURLs": 9,
+        "bitmaps": 9,
+        "decodedBytes": 37617664,
+        "cachedDecodedBytes": 37617664,
+        "idleDecodedBytes": 37617664,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 37617664,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5791072
+    },
+    {
+      "index": 9,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 10,
+        "idleEntries": 10,
+        "activeLeases": 0,
+        "objectURLs": 10,
+        "bitmaps": 10,
+        "decodedBytes": 41811968,
+        "cachedDecodedBytes": 41811968,
+        "idleDecodedBytes": 41811968,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 41811968,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4533376
+    },
+    {
+      "index": 10,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 11,
+        "idleEntries": 11,
+        "activeLeases": 0,
+        "objectURLs": 11,
+        "bitmaps": 11,
+        "decodedBytes": 46006272,
+        "cachedDecodedBytes": 46006272,
+        "idleDecodedBytes": 46006272,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 46006272,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4655412
+    },
+    {
+      "index": 11,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 12,
+        "idleEntries": 12,
+        "activeLeases": 0,
+        "objectURLs": 12,
+        "bitmaps": 12,
+        "decodedBytes": 50200576,
+        "cachedDecodedBytes": 50200576,
+        "idleDecodedBytes": 50200576,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 50200576,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4763132
+    },
+    {
+      "index": 12,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 13,
+        "idleEntries": 13,
+        "activeLeases": 0,
+        "objectURLs": 13,
+        "bitmaps": 13,
+        "decodedBytes": 54394880,
+        "cachedDecodedBytes": 54394880,
+        "idleDecodedBytes": 54394880,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 54394880,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4870720
+    },
+    {
+      "index": 13,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 14,
+        "idleEntries": 14,
+        "activeLeases": 0,
+        "objectURLs": 14,
+        "bitmaps": 14,
+        "decodedBytes": 58589184,
+        "cachedDecodedBytes": 58589184,
+        "idleDecodedBytes": 58589184,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 58589184,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4976896
+    },
+    {
+      "index": 14,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5083244
+    },
+    {
+      "index": 15,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 5180808
+    },
+    {
+      "index": 16,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4531192
+    },
+    {
+      "index": 17,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4637492
+    },
+    {
+      "index": 18,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4738472
+    },
+    {
+      "index": 19,
+      "loader": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 15,
+        "idleEntries": 15,
+        "activeLeases": 0,
+        "objectURLs": 15,
+        "bitmaps": 15,
+        "decodedBytes": 62783488,
+        "cachedDecodedBytes": 62783488,
+        "idleDecodedBytes": 62783488,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 62783488,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 78,
+        "disposed": false
+      },
+      "jsHeap": 4836408
+    }
+  ],
+  "disposedLoader": {
+    "activeRequests": 0,
+    "queuedRequests": 0,
+    "pendingRequests": 0,
+    "inFlightKeys": 0,
+    "cacheEntries": 0,
+    "idleEntries": 0,
+    "activeLeases": 0,
+    "objectURLs": 0,
+    "bitmaps": 0,
+    "decodedBytes": 0,
+    "cachedDecodedBytes": 0,
+    "idleDecodedBytes": 0,
+    "pinnedBytes": 0,
+    "reservedBytes": 0,
+    "peakDecodedBytes": 62783488,
+    "maxConcurrent": 4,
+    "maxDecodedBytes": 67108864,
+    "maxIdleEntries": 16,
+    "registeredAssets": 78,
+    "disposed": true
+  },
+  "slowOriginalBlocksView": false,
+  "notes": [
+    "Lab click-to-panel measurements; not field INP.",
+    "Cold samples reset only the isolated test browser cache and reload the controller; hot reopen retains bounded preview cache.",
+    "Editor resource cycles are reported separately in the editing suite."
+  ]
+}

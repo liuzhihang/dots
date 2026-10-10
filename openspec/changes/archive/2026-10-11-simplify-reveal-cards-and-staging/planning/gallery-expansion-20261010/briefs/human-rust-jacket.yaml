@@ -1,0 +1,109 @@
+briefVersion: 1
+request:
+  summary: 各系列新增1件独立完整静态外观候选
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: human-rust-jacket
+  seriesId: humans
+  identity: new
+  differenceFromExisting: 深棕卷bob、暖中棕皮肤和铁锈色服饰的新人物组合
+  invariants:
+  - 保留系列身份与完整轮廓；无模板不伪造编辑能力
+artwork:
+  proposedId: human-rust-jacket
+  proposedVersion: v1
+  name:
+    en: Rust Jacket Person
+    zh-CN: 铁锈夹克人物
+  description:
+    en: null
+    zh-CN: 完整Q版人物，深棕微卷bob、暖棕皮肤，铁锈夹克、米色长裤与棕鞋
+  aliases:
+    en: []
+    zh-CN: []
+references:
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/18-Photo-18.jpg
+  sha256: cd5f39d4196dfc72fa05ce60f226e7c40cc44974de2f10875293f805f6b8f474
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/24-Photo-24.jpg
+  sha256: ddef788d9e2a54983a8c7968eebc2a421c421d3d5b22e8e40aa9d9086e1d638c
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+creation:
+  prompt: See prompts/human-rust-jacket-candidate-v1-prompts.md for exact call text,
+    input roles and original output paths
+  negativeConstraints: []
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations:
+  - generated/human-rust-jacket-candidate-v1.png
+facts:
+  characterStyle:
+    state: known
+    evidence: humans
+  appearance:
+    state: known
+    evidence: chibi person
+  facialFeatures:
+    state: known
+    evidence: brown eyes and gentle smile
+  colorMaterial:
+    state: known
+    evidence: skin, dark brown hair, rust fabric
+  clothing:
+    state: known
+    evidence: rust jacket, ivory top, cream trousers, brown shoes
+  headAccessory:
+    state: none
+    evidence: none
+  bodyAccessory:
+    state: none
+    evidence: none
+  prop:
+    state: none
+    evidence: none
+resources:
+  original:
+    sha256: f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4
+    mime: image/png
+    bytes: 944230
+    width: 1254
+    height: 1254
+    path: generated/human-rust-jacket-candidate-v1.png
+    alphaCheck:
+      min: 0
+      max: 255
+      zeroPixels: 1133821
+      opaquePixels: 1423
+      partialPixels: 437272
+      bboxAt16:
+      - 305
+      - 20
+      - 908
+      - 1223
+      nonzeroOutsideBbox16: 1042
+      maxOutsideBbox16: 9
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: prompts/human-rust-jacket-candidate-v1-prompts.md
+  license: unknown
+  engineering: read-only file/alpha/hash checked; integration not run
+  visualReview: initial inspected; edge/composition notes in README; not final approval
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

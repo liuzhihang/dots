@@ -1,0 +1,16 @@
+{
+  "revision": 99,
+  "browser": "155.0.8059.39",
+  "scenarios": 7,
+  "outcomes": [
+    "Single Back cancellation returns to the same detail entry and retains dirty intent.",
+    "Rapid double Back cancellation converges to the original detail URL/state and retains dirty intent (confirm, beforeunload dialogs).",
+    "Forward dispatched from the dirty Back popstate, then Back cancelled, returns to the same detail entry and Draft (confirm dialogs).",
+    "Accepting Back lands on Gallery; Forward reopens the prior Artwork in the same clean CharacterStudio.",
+    "Accepting dirty Back before its queued Forward reopens the Artwork in the same clean CharacterStudio (confirm dialogs).",
+    "Dirty Forward from detail index 1 to a filtered Characters future entry: cancel restores detail and Draft; accept reaches the gallery at index 2.",
+    "Accepting the overlay close performs exactly one history traversal to Gallery."
+  ],
+  "route": "#/?series=grok",
+  "physicalDevice": false
+}

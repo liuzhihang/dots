@@ -1,0 +1,1883 @@
+{
+  "revision": 99,
+  "status": "pending-user-art-approval",
+  "newArtworks": [
+    {
+      "id": "dots-butter-beret",
+      "version": "v2",
+      "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+      "path": "./assets/companions/v99/dots-butter-beret-candidate-v2.png",
+      "status": "pending",
+      "name": "奶油黄贝雷帽"
+    },
+    {
+      "id": "grok-coral-drop",
+      "version": "v1",
+      "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+      "path": "./assets/companions/v99/grok-coral-drop-candidate-v1.png",
+      "status": "pending",
+      "name": "珊瑚水滴"
+    },
+    {
+      "id": "muse-lavender-lantern",
+      "version": "v1",
+      "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+      "path": "./assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+      "status": "pending",
+      "name": "灯笼"
+    },
+    {
+      "id": "human-rust-jacket",
+      "version": "v1",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "path": "./assets/companions/v99/human-rust-jacket-candidate-v1.png",
+      "status": "pending",
+      "name": "铁锈夹克"
+    },
+    {
+      "id": "animal-cocoa-bear",
+      "version": "v1",
+      "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+      "path": "./assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+      "status": "pending",
+      "name": "可可熊"
+    },
+    {
+      "id": "dots-lime-frog-bow",
+      "version": "v1",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "path": "./assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+      "status": "pending",
+      "name": "青柠蛙形"
+    },
+    {
+      "id": "dots-pink-heart-shades",
+      "version": "v1",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "path": "./assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+      "status": "pending",
+      "name": "粉色爱心"
+    }
+  ],
+  "templateSourceManifestSha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f",
+  "templates": [
+    {
+      "id": "dots-orb-v1",
+      "status": "pending",
+      "artworkId": "candidate-dots-20261005",
+      "artworkVersion": "v2",
+      "legalCount": 12,
+      "defaultReconstruction": {
+        "status": "pending",
+        "configurationIndex": 2,
+        "outputSha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+        "originalSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      },
+      "reviewSheet": "visual/dots-orb-v1-all-configurations.png",
+      "configurations": [
+        {
+          "index": 1,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc",
+          "outputByteSize": 1906954,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+          "alphaNonzero": 792092,
+          "alphaTransparent": 780424,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-01.png"
+        },
+        {
+          "index": 2,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 0,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+          "outputByteSize": 2186209,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+          "alphaNonzero": 940692,
+          "alphaTransparent": 631824,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-02.png"
+        },
+        {
+          "index": 3,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "af77273c1fcfc7af86fb0cd96510008be48059ee0d4709fd38c863d211883ece",
+          "outputByteSize": 1917136,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+          "alphaNonzero": 792174,
+          "alphaTransparent": 780342,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-03.png"
+        },
+        {
+          "index": 4,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "2537f741362dbef8309134b1ae4d789185d0895dd475ae7f9f2abdc24826c235",
+          "outputByteSize": 1919188,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+          "alphaNonzero": 792096,
+          "alphaTransparent": 780420,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-04.png"
+        },
+        {
+          "index": 5,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "f7f4976611860aec1060f7e9c190048e538db308ea97f4b7a6c0cf350c23aa66",
+          "outputByteSize": 2200238,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+          "alphaNonzero": 940697,
+          "alphaTransparent": 631819,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-05.png"
+        },
+        {
+          "index": 6,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "1b539aedf91637aa916ae25fbf70bb04a6c49243df16d702a4369fa52116263c",
+          "outputByteSize": 1930991,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+          "alphaNonzero": 792178,
+          "alphaTransparent": 780338,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-06.png"
+        },
+        {
+          "index": 7,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "3937c558ec7b0f6f96dc5cd2134ed8035f16187000be39fd8f0327af0b191fe3",
+          "outputByteSize": 1663632,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+          "alphaNonzero": 792092,
+          "alphaTransparent": 780424,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-07.png"
+        },
+        {
+          "index": 8,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "7e2acd388fb27439d151544d740ece08c65111119b0fd6aa9278b70f85bef950",
+          "outputByteSize": 1977566,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+          "alphaNonzero": 940692,
+          "alphaTransparent": 631824,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-08.png"
+        },
+        {
+          "index": 9,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "e0e09f4320c0af993492a27492d80ffd6df7f21ffb6004015787f08f9503eeb4",
+          "outputByteSize": 1680673,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+          "alphaNonzero": 792174,
+          "alphaTransparent": 780342,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-09.png"
+        },
+        {
+          "index": 10,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "42d8365050df8047814d1a8c508ad6233bf7f7b4f68878a40eb81c6618552eac",
+          "outputByteSize": 1667933,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+          "alphaNonzero": 792096,
+          "alphaTransparent": 780420,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-10.png"
+        },
+        {
+          "index": 11,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "b070f07b16eb92fc76dca71bd129d24f151eae9fc2b50d1abda85b280dcb5ddd",
+          "outputByteSize": 1982524,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+          "alphaNonzero": 940697,
+          "alphaTransparent": 631819,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-11.png"
+        },
+        {
+          "index": 12,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "6f687d781b14e7edb3da082263a97627edb140ae8380c5559b7700433966c721",
+          "outputByteSize": 1688451,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+          "alphaNonzero": 792178,
+          "alphaTransparent": 780338,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/dots-orb-v1-12.png"
+        }
+      ]
+    },
+    {
+      "id": "grok-orb-v1",
+      "status": "pending",
+      "artworkId": "candidate-grok-20261005",
+      "artworkVersion": "v2",
+      "legalCount": 16,
+      "defaultReconstruction": {
+        "status": "pending",
+        "configurationIndex": 1,
+        "outputSha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+        "originalSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      },
+      "reviewSheet": "visual/grok-orb-v1-all-configurations.png",
+      "configurations": [
+        {
+          "index": 1,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 0,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0",
+          "outputSha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+          "outputByteSize": 1316831,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "ea19233ecf2f6489d7d5b543b46f34b5e455d717f5131ecbf9e646a8ff5ccfa7",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-01.png"
+        },
+        {
+          "index": 2,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04",
+          "outputByteSize": 1588533,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "b80348ce372c8eeea2300278dfe8fa8ce09681547233b9322115823f15b5ac6c",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-02.png"
+        },
+        {
+          "index": 3,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0",
+          "outputByteSize": 1343112,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e42da2be49fb8fdc357eff4532ddc320ed97f18dbdb6eeac5b1956ad8cbad348",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-03.png"
+        },
+        {
+          "index": 4,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317",
+          "outputByteSize": 1613987,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "24b80665ed45f29292f5bdeb4e1e031afd6b22c12c67444a6a3fc1cdc370c377",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-04.png"
+        },
+        {
+          "index": 5,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10",
+          "outputSha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f",
+          "outputByteSize": 1313308,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "13a385ad20b3d881c03aea02dd81953b4472fd462eac4a4936836332eb3c8b2d",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-05.png"
+        },
+        {
+          "index": 6,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a",
+          "outputByteSize": 1584791,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "edda4706598d2acccf204f076ab805567e8c8f237fb780d77c6a156c8fcda4b7",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-06.png"
+        },
+        {
+          "index": 7,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7",
+          "outputByteSize": 1339210,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e47d0c94dcb34e478948bb6a45d71caebba74456a4816c1572c73aa695fa60d5",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-07.png"
+        },
+        {
+          "index": 8,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c",
+          "outputByteSize": 1610551,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "eb4c1c27029c374c279d88f50b510691110658b8b6b77cc21cce021980fba430",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-08.png"
+        },
+        {
+          "index": 9,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0",
+          "outputSha256": "486e0efa7a57ab0250f8f724849e512ad98d000b3a3e5d64e039c93bf75d7d8a",
+          "outputByteSize": 1172735,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "ea19233ecf2f6489d7d5b543b46f34b5e455d717f5131ecbf9e646a8ff5ccfa7",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-09.png"
+        },
+        {
+          "index": 10,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "aa9c02739a6086aba4f41689e9fe6a2fa57719c965359221fdfd286764dc61da",
+          "outputByteSize": 1464289,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "b80348ce372c8eeea2300278dfe8fa8ce09681547233b9322115823f15b5ac6c",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-10.png"
+        },
+        {
+          "index": 11,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "a9415327bb45db8232f2fcb09ad936087d15fa6c303b55f83ba646857cba9be4",
+          "outputByteSize": 1203985,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e42da2be49fb8fdc357eff4532ddc320ed97f18dbdb6eeac5b1956ad8cbad348",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-11.png"
+        },
+        {
+          "index": 12,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "856fc71fbe60be35a83c9e999acf74b02ef0ba4e9e4f375cd8d6425e6d9cf8b0",
+          "outputByteSize": 1494732,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "24b80665ed45f29292f5bdeb4e1e031afd6b22c12c67444a6a3fc1cdc370c377",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-12.png"
+        },
+        {
+          "index": 13,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10",
+          "outputSha256": "98d58945a00955e93080c81845ded48a6ae8811438e6711e459d32eab5123a28",
+          "outputByteSize": 1169646,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "13a385ad20b3d881c03aea02dd81953b4472fd462eac4a4936836332eb3c8b2d",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-13.png"
+        },
+        {
+          "index": 14,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "d639b3acae9d8551e09487f4736a5b1426621bd81832cd2b47240d7deaab413a",
+          "outputByteSize": 1461873,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "edda4706598d2acccf204f076ab805567e8c8f237fb780d77c6a156c8fcda4b7",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-14.png"
+        },
+        {
+          "index": 15,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "3556ed979269f0dce182e20b53450983edefbd0c2f62a3950b9c13f2201a7e2b",
+          "outputByteSize": 1200626,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e47d0c94dcb34e478948bb6a45d71caebba74456a4816c1572c73aa695fa60d5",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-15.png"
+        },
+        {
+          "index": 16,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "404eb3f9f281dbdaf0218de4b8d773877e1bdb71f5e403794ccfb5631d00b03b",
+          "outputByteSize": 1491491,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "eb4c1c27029c374c279d88f50b510691110658b8b6b77cc21cce021980fba430",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "png": "glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/composites/grok-orb-v1-16.png"
+        }
+      ]
+    }
+  ],
+  "page": {
+    "revision": 99,
+    "status": "pending",
+    "sourceHashFile": "cr-card-unity-20261011/build-report.json",
+    "buildReportSha256": "cfed719116120d529b4dcb25fb39b7f3264eabd0ba5a9e230ce2f1b00beeb683",
+    "files": [
+      {
+        "path": "dist/assets/banners/dots-gallery-hero-ensemble-v99.webp",
+        "bytes": 126138,
+        "sha256": "aaa7c0fe9e83e579fa0647f6994d58d84ca80831cb5b5c63cdc48a5537818091"
+      },
+      {
+        "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "bytes": 1413426,
+        "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+      },
+      {
+        "path": "dist/assets/characters/brand-mark.png",
+        "bytes": 574528,
+        "sha256": "a2b10ed8d7a605c5bbc0b640293ab36df70d3d6911c7c4684186b899f357aefa"
+      },
+      {
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "bytes": 1720054,
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      },
+      {
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "bytes": 971168,
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      },
+      {
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "bytes": 1151483,
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+      },
+      {
+        "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "bytes": 1003955,
+        "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6"
+      },
+      {
+        "path": "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png",
+        "bytes": 1443408,
+        "sha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963"
+      },
+      {
+        "path": "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png",
+        "bytes": 1292849,
+        "sha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0"
+      },
+      {
+        "path": "dist/assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+        "bytes": 956169,
+        "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57"
+      },
+      {
+        "path": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "bytes": 1541746,
+        "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00"
+      },
+      {
+        "path": "dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+        "bytes": 1087340,
+        "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f"
+      },
+      {
+        "path": "dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+        "bytes": 905104,
+        "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384"
+      },
+      {
+        "path": "dist/assets/companions/v99/grok-coral-drop-candidate-v1.png",
+        "bytes": 871631,
+        "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8"
+      },
+      {
+        "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+        "bytes": 944230,
+        "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4"
+      },
+      {
+        "path": "dist/assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+        "bytes": 1014161,
+        "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574"
+      },
+      {
+        "path": "dist/assets/icons/chevron-left.svg",
+        "bytes": 3547,
+        "sha256": "94869faefd2831d671763e42dde0be05ae0d82bbdbf4a93834471661f7ec78ec"
+      },
+      {
+        "path": "dist/assets/icons/search.svg",
+        "bytes": 3578,
+        "sha256": "d34b9b7a045cfce76c2dc77cc39e27442dc84ac916943e7515258ee49fb4e828"
+      },
+      {
+        "path": "dist/assets/icons/x.svg",
+        "bytes": 3558,
+        "sha256": "0cf35cee470ea5ea950eaf9176e77e3b9742cc6ade96aa4aaf95362b62a453c6"
+      },
+      {
+        "path": "dist/assets/looks/animal-gray-husky.png",
+        "bytes": 1623665,
+        "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+      },
+      {
+        "path": "dist/assets/looks/animal-white-cat.png",
+        "bytes": 1382027,
+        "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a"
+      },
+      {
+        "path": "dist/assets/looks/dots-lilac-bucket.png",
+        "bytes": 1605008,
+        "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+      },
+      {
+        "path": "dist/assets/looks/dots-rose-glasses.png",
+        "bytes": 1860436,
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+      },
+      {
+        "path": "dist/assets/looks/grok-green-cloud.png",
+        "bytes": 790009,
+        "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+      },
+      {
+        "path": "dist/assets/looks/grok-teal-square.png",
+        "bytes": 828844,
+        "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d"
+      },
+      {
+        "path": "dist/assets/looks/human-blond-glasses.png",
+        "bytes": 1058375,
+        "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+      },
+      {
+        "path": "dist/assets/looks/human-bun-yellow.png",
+        "bytes": 1086214,
+        "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc"
+      },
+      {
+        "path": "dist/assets/looks/muse-rose-flowers.png",
+        "bytes": 1185166,
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be"
+      },
+      {
+        "path": "dist/assets/looks/muse-sage-reading.png",
+        "bytes": 1142481,
+        "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+      },
+      {
+        "path": "dist/assets/posters/animal-cocoa-bear-thumb256-v99.png",
+        "bytes": 46099,
+        "sha256": "922cf162a65537ca6c1d47e1d4bbd8254b5100e55ad8d4e5cb2c225ef1f3f6bb"
+      },
+      {
+        "path": "dist/assets/posters/animal-gray-husky-thumb256-v99.png",
+        "bytes": 73925,
+        "sha256": "d5998d6a1ec73f25077077e0da6c8025d81f9bf240e33dc3c09c3d19a7f94ae3"
+      },
+      {
+        "path": "dist/assets/posters/animal-gray-husky-v1.webp",
+        "bytes": 43698,
+        "sha256": "434a3d32da36754c3fa8853832caffffba3f61835712ab70adedd68108f0c012"
+      },
+      {
+        "path": "dist/assets/posters/animal-white-cat-thumb256-v99.png",
+        "bytes": 70948,
+        "sha256": "b2fecfe8dd29790c903d8364c990919dc708bc0bfccf37584fa44fd55b0d4392"
+      },
+      {
+        "path": "dist/assets/posters/animal-white-cat-v1.webp",
+        "bytes": 42036,
+        "sha256": "3c73bdc9938c10d0f4f9acf2c17b3b2642afec5bd6f502ae456ad285c13fba36"
+      },
+      {
+        "path": "dist/assets/posters/animal-white-rabbit-v98-candidate-thumb256-v99.png",
+        "bytes": 59780,
+        "sha256": "51a6cb8f6695a863afd0bca496f5b2e6da993ab3ce076c58cc3e4826ef13a3cf"
+      },
+      {
+        "path": "dist/assets/posters/brand-mark-display-v1.png",
+        "bytes": 6053,
+        "sha256": "a55c3a996d47f3992995068942556385feddea419b87790283af0633c6a48d64"
+      },
+      {
+        "path": "dist/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+        "bytes": 73514,
+        "sha256": "5b6b4fe5933c4f1bd27ecfeb9fbe9258d4ba03d653b161804769e15c45ef37dc"
+      },
+      {
+        "path": "dist/assets/posters/candidate-animals-20261005-v1.webp",
+        "bytes": 44244,
+        "sha256": "eda605d6ea5d63da7bf2edda3b98379c624aa1bd710950e866f2ab1fc50ba952"
+      },
+      {
+        "path": "dist/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+        "bytes": 84406,
+        "sha256": "69a25e7a06b24700d559fe7bb55611c0aad811089b3b549bdfce83f26a2277d3"
+      },
+      {
+        "path": "dist/assets/posters/candidate-dots-20261005-v1.webp",
+        "bytes": 53964,
+        "sha256": "25a144017c3b85a6a0be743bcc2e01e4f8c600b3f506fc545ff6a1a915cc161f"
+      },
+      {
+        "path": "dist/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+        "bytes": 51606,
+        "sha256": "6bd8edfd205e401814c9d170d71d15637cd18504e9de1536341faa4edde30148"
+      },
+      {
+        "path": "dist/assets/posters/candidate-grok-20261005-v1.webp",
+        "bytes": 19620,
+        "sha256": "e1b40e2eb20e762b66e00be1dafc26a710a0b43cb849c07550ee1ecab20c73bc"
+      },
+      {
+        "path": "dist/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+        "bytes": 57540,
+        "sha256": "41127daec848456f0dd634ae576fbd7e2f2655b0c7f37bc0e02389ff246fc53e"
+      },
+      {
+        "path": "dist/assets/posters/candidate-humans-20261005-v1.webp",
+        "bytes": 35746,
+        "sha256": "da95dedff71445bba0a102a3ee3dac862de1b7c21486d14beb4c92daadf6d8ad"
+      },
+      {
+        "path": "dist/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+        "bytes": 50040,
+        "sha256": "8523d1f72c372864c68ffec17f45e936b728a5ebcc53b1f4c8977f3ebcf7cb78"
+      },
+      {
+        "path": "dist/assets/posters/candidate-meta-muse-20261005-v1.webp",
+        "bytes": 26872,
+        "sha256": "e052eb98d4d0ed787445d0b3d66e70f614a5c568c5f65d98c7a9599349a3d751"
+      },
+      {
+        "path": "dist/assets/posters/dots-butter-beret-thumb256-v99.png",
+        "bytes": 69005,
+        "sha256": "4290b01c25fc3526085bc20a4bd5ec71ebfdaf66286486395b90adffe4f04aab"
+      },
+      {
+        "path": "dist/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+        "bytes": 77063,
+        "sha256": "011b6334dddf1cbdc7a2451c16195d9cfc65406d6899dca004d6221894ec3bb3"
+      },
+      {
+        "path": "dist/assets/posters/dots-lilac-bucket-v1.webp",
+        "bytes": 58256,
+        "sha256": "139613ea4e94998961ae68f2d5e73f96d5c500055e6f132b699844e349017062"
+      },
+      {
+        "path": "dist/assets/posters/dots-lime-frog-bow-thumb256-v99.png",
+        "bytes": 48674,
+        "sha256": "f0ae422ba7987a2bb8b590363be00e7ccad329092ad2cc38b394473b18eebdb4"
+      },
+      {
+        "path": "dist/assets/posters/dots-pink-heart-shades-thumb256-v99.png",
+        "bytes": 44491,
+        "sha256": "0acfeabd98955ede475fcf8e6bdf14a182971eeb52772e16df66ca8aaa464043"
+      },
+      {
+        "path": "dist/assets/posters/dots-rose-glasses-thumb256-v99.png",
+        "bytes": 88307,
+        "sha256": "d16c856a14c2ab0cf4c47f0efb99d6eb8e3865288e39c86db690e8dce1f5c50f"
+      },
+      {
+        "path": "dist/assets/posters/dots-rose-glasses-v1.webp",
+        "bytes": 63930,
+        "sha256": "743dfb9fe97fae19629e0e4c70cd850f841c748537f182c86ea8d5718a573823"
+      },
+      {
+        "path": "dist/assets/posters/grok-coral-drop-thumb256-v99.png",
+        "bytes": 44970,
+        "sha256": "f39d087e7659ef0243314570b466b1f075f9a23f7a2c187da5cefeb6caa9a3f6"
+      },
+      {
+        "path": "dist/assets/posters/grok-green-cloud-thumb256-v99.png",
+        "bytes": 44622,
+        "sha256": "7f3186d6ab925f09fbeb978b6f61586d6ebcd278644d629b2b84122e1a953804"
+      },
+      {
+        "path": "dist/assets/posters/grok-green-cloud-v1.webp",
+        "bytes": 19066,
+        "sha256": "80a735fa20f8363959ce58545ef5470ef155606cd84ef71e377ac2075bd33fc3"
+      },
+      {
+        "path": "dist/assets/posters/grok-teal-square-thumb256-v99.png",
+        "bytes": 46048,
+        "sha256": "5a320f0b70b91ae099dbba7728a46eed4062f7aa7e42f774000843aa002a7d87"
+      },
+      {
+        "path": "dist/assets/posters/grok-teal-square-v1.webp",
+        "bytes": 16022,
+        "sha256": "2f76e1a8a2f515e6222e1c9d230ed841139c3fa7dbde6cc03b03446097286aa7"
+      },
+      {
+        "path": "dist/assets/posters/human-blond-glasses-thumb256-v99.png",
+        "bytes": 55307,
+        "sha256": "d7fa339b38b4c05c087e384470fe1320c9315e7ee7b8128cad1d9db5823ba21e"
+      },
+      {
+        "path": "dist/assets/posters/human-blond-glasses-v1.webp",
+        "bytes": 34014,
+        "sha256": "d3ec6a31b89233d86bbfa9774f7477c3e3d7613f3b90ce270e4c1ff931295958"
+      },
+      {
+        "path": "dist/assets/posters/human-bun-yellow-thumb256-v99.png",
+        "bytes": 57324,
+        "sha256": "b2242b6eb0d54f634d0af899325802b12dbc92ec5d08338f12c0fb0fbdc2f33c"
+      },
+      {
+        "path": "dist/assets/posters/human-bun-yellow-v1.webp",
+        "bytes": 37648,
+        "sha256": "99a25a4f4c0a21dd34731acadbfcb553bbd0565d8adabbebd1fb231307ab8e94"
+      },
+      {
+        "path": "dist/assets/posters/human-rust-jacket-thumb256-v99.png",
+        "bytes": 49488,
+        "sha256": "de2b5eae7cfed9ebb02af2387b9a1f53da4ef55c48d34f6775acd948c432376c"
+      },
+      {
+        "path": "dist/assets/posters/muse-lavender-lantern-thumb256-v99.png",
+        "bytes": 48198,
+        "sha256": "dfc1a1fa5ec6a3f099c011738fb73395d702b2280248ee76329294f66e84b1a3"
+      },
+      {
+        "path": "dist/assets/posters/muse-rose-flowers-thumb256-v99.png",
+        "bytes": 59468,
+        "sha256": "30b4af703170fb77726144dcbb207094691ee5679b76512074f0c81ebbc87c3f"
+      },
+      {
+        "path": "dist/assets/posters/muse-rose-flowers-v1.webp",
+        "bytes": 34690,
+        "sha256": "d1ef7e56c616c900c795b58fed4d3cf0106ccf3715b646cea663cdf1157034e6"
+      },
+      {
+        "path": "dist/assets/posters/muse-sage-reading-thumb256-v99.png",
+        "bytes": 51031,
+        "sha256": "70f9c74df4e488ec5bb0a1fadc0629dcdd36043ac241ef0e54398cdce6f0fe56"
+      },
+      {
+        "path": "dist/assets/posters/muse-sage-reading-v1.webp",
+        "bytes": 27236,
+        "sha256": "7e4715e708d8bf86bfbcdd58038bdf704a351e2ae298e369f3e52f5a69ffaf62"
+      },
+      {
+        "path": "dist/assets/posters/robot-ivory-capsule-face-v98-candidate-thumb256-v99.png",
+        "bytes": 66862,
+        "sha256": "8ea8240f0aa4576965fe509d4d06ae1d7494488b9b6c9135eb29a210f9f0c78c"
+      },
+      {
+        "path": "dist/assets/previews/animal-cocoa-bear-detail1024-v99.png",
+        "bytes": 639016,
+        "sha256": "4d913bae513a19f794f71d7695948a1543d3082a8f6893d90f7ba6ebb31dc543"
+      },
+      {
+        "path": "dist/assets/previews/animal-cocoa-bear-detail512-v99.png",
+        "bytes": 167958,
+        "sha256": "8dfd623b13e739c6fbf6a7adddcc5d1b5aef44febab330b72e6de11edafd166a"
+      },
+      {
+        "path": "dist/assets/previews/animal-gray-husky-detail1024-v99.png",
+        "bytes": 1139419,
+        "sha256": "eaccb7d37b397420043d1fd625fbab6d5d30e0abc83bf88d31e4736771806bbd"
+      },
+      {
+        "path": "dist/assets/previews/animal-gray-husky-detail512-v99.png",
+        "bytes": 284696,
+        "sha256": "c0e77ff4f0cd3967119b81ffc4152e511d073631f5696faf2b7884b441878263"
+      },
+      {
+        "path": "dist/assets/previews/animal-white-cat-detail1024-v99.png",
+        "bytes": 1052197,
+        "sha256": "efde110d6d7aba39a17c83333cba67b991bed3ccddff4d2d5fad412d22a393c7"
+      },
+      {
+        "path": "dist/assets/previews/animal-white-cat-detail512-v99.png",
+        "bytes": 269028,
+        "sha256": "6fe42640a1d155226d7c249a07e12926de491697038bbfc9e9cb0f844906cfbf"
+      },
+      {
+        "path": "dist/assets/previews/animal-white-rabbit-v98-candidate-detail1024-v99.png",
+        "bytes": 878083,
+        "sha256": "b6f025663d60ce92b0ae8ab36b9b77e8a164c509b0ca07a1b66ef1bef1c3fa37"
+      },
+      {
+        "path": "dist/assets/previews/animal-white-rabbit-v98-candidate-detail512-v99.png",
+        "bytes": 239623,
+        "sha256": "cdf241a1a2147ff5f1c06e311edc0c4ff3e7856ced3630fb7cf95489f5c5a438"
+      },
+      {
+        "path": "dist/assets/previews/candidate-animals-20261005-detail1024-v99.png",
+        "bytes": 1073612,
+        "sha256": "727b6aa754002bf2bcc4e496116762509afe988bdc46f705d1f0ee84587c4fd0"
+      },
+      {
+        "path": "dist/assets/previews/candidate-animals-20261005-detail512-v99.png",
+        "bytes": 276080,
+        "sha256": "b338ba46b49865cb548b3e4f733848ef6afcba3ca2b4b0f74ba5f19d2867c65d"
+      },
+      {
+        "path": "dist/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+        "bytes": 1247923,
+        "sha256": "85a3f34b8ec89e667d594b49251ae700bf8c1518dd8889318fbb73a527c57181"
+      },
+      {
+        "path": "dist/assets/previews/candidate-dots-20261005-detail512-v99.png",
+        "bytes": 325276,
+        "sha256": "781841f4370e28a5f165e88b1d45c3999ec0269a542c972310a81bce94ef1907"
+      },
+      {
+        "path": "dist/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+        "bytes": 774218,
+        "sha256": "ff300f02fd3d2a2e2587ea05a64087c75f10fdc2d69a3ee89f434100717d36d2"
+      },
+      {
+        "path": "dist/assets/previews/candidate-grok-20261005-detail512-v99.png",
+        "bytes": 186049,
+        "sha256": "b148e1327c5e3af41ddc0e4389c064d28520783e0ec172fb0d7383f9c7269d9c"
+      },
+      {
+        "path": "dist/assets/previews/candidate-humans-20261005-detail1024-v99.png",
+        "bytes": 802010,
+        "sha256": "1c06d305580209914707918eb08fa4c72bd7ad3a103057ab215e711a259e0bc7"
+      },
+      {
+        "path": "dist/assets/previews/candidate-humans-20261005-detail512-v99.png",
+        "bytes": 204888,
+        "sha256": "41d13bb59455be285d51f987bc4d10281c11a92f0aee86d670da6eba2f8529da"
+      },
+      {
+        "path": "dist/assets/previews/candidate-meta-muse-20261005-detail1024-v99.png",
+        "bytes": 726570,
+        "sha256": "40efc5745781364cafe77e5d4e4e8c00486159828f05b9b86f522487db43b139"
+      },
+      {
+        "path": "dist/assets/previews/candidate-meta-muse-20261005-detail512-v99.png",
+        "bytes": 188064,
+        "sha256": "07f10ffe5fc13317a1897f78ba82d17902d724b71061c61fd392fcfb63c4ced1"
+      },
+      {
+        "path": "dist/assets/previews/dots-butter-beret-detail1024-v99.png",
+        "bytes": 1105003,
+        "sha256": "ae6f90e9100c6dd2dc06c1a863f9ac319381c2551bd1bf21f4f8d4359ddf6a90"
+      },
+      {
+        "path": "dist/assets/previews/dots-butter-beret-detail512-v99.png",
+        "bytes": 274847,
+        "sha256": "07f753683b3189d06344407e1f472899c317f3f644c35f82b6b841c5cc210d73"
+      },
+      {
+        "path": "dist/assets/previews/dots-lilac-bucket-detail1024-v99.png",
+        "bytes": 1174483,
+        "sha256": "12a0765f588d981382ba165c41c1e1c1a6bd1779701af5c1ff89816d32d0845c"
+      },
+      {
+        "path": "dist/assets/previews/dots-lilac-bucket-detail512-v99.png",
+        "bytes": 301911,
+        "sha256": "c4644a1d4e429154338a2a57d6607c22d6fa2c934469cee6f30e28a21d38163d"
+      },
+      {
+        "path": "dist/assets/previews/dots-lime-frog-bow-detail1024-v99.png",
+        "bytes": 752710,
+        "sha256": "c2ccb676d24002ba6d95f5f992b6aea12107edc8466fb5c056efc8de5249d6fe"
+      },
+      {
+        "path": "dist/assets/previews/dots-lime-frog-bow-detail512-v99.png",
+        "bytes": 187392,
+        "sha256": "cde44a03b55bebb7e0d695d3e7d5c8d3cb7a2de0c63629986c6909e65850b7a2"
+      },
+      {
+        "path": "dist/assets/previews/dots-pink-heart-shades-detail1024-v99.png",
+        "bytes": 650778,
+        "sha256": "b8e513e9704123d45b39d8c0e0860b2b4a194e9438e335dc694df0bbdad1df70"
+      },
+      {
+        "path": "dist/assets/previews/dots-pink-heart-shades-detail512-v99.png",
+        "bytes": 169007,
+        "sha256": "d389de51cb3444393154b85e329fb6c46caa6adb762c270860120da924f4a47c"
+      },
+      {
+        "path": "dist/assets/previews/dots-rose-glasses-detail1024-v99.png",
+        "bytes": 1329262,
+        "sha256": "8506166bcf07cf6c4d494853502b8f387797d5dd71f1235801417a295c82d945"
+      },
+      {
+        "path": "dist/assets/previews/dots-rose-glasses-detail512-v99.png",
+        "bytes": 340473,
+        "sha256": "d128cb8ccf335250118ef7bc54ba1a2d342243d3d68a6e48e412a0905dd5508e"
+      },
+      {
+        "path": "dist/assets/previews/grok-coral-drop-detail1024-v99.png",
+        "bytes": 617323,
+        "sha256": "587dc080bb45534cd584b7422cc2a04323f0e8031216b0e37dabacf28f169dc6"
+      },
+      {
+        "path": "dist/assets/previews/grok-coral-drop-detail512-v99.png",
+        "bytes": 158562,
+        "sha256": "aa7e4367d066d0ea7e355057906ef2a23e396d6fe39757a4bc095cc497a61e0e"
+      },
+      {
+        "path": "dist/assets/previews/grok-green-cloud-detail1024-v99.png",
+        "bytes": 625096,
+        "sha256": "b59f4c2fa09f852cae47ffd66b4605224ddb2500bfa9009c50e689d44e72ae3e"
+      },
+      {
+        "path": "dist/assets/previews/grok-green-cloud-detail512-v99.png",
+        "bytes": 154455,
+        "sha256": "03d9d6e48cf649f5f893fe20bda721f39771d410d6d273315d220d98fc424ef9"
+      },
+      {
+        "path": "dist/assets/previews/grok-teal-square-detail1024-v99.png",
+        "bytes": 682704,
+        "sha256": "14bc73a80535893f2f00f562dac5b519027be0976f3047a0bcd925077481b370"
+      },
+      {
+        "path": "dist/assets/previews/grok-teal-square-detail512-v99.png",
+        "bytes": 168548,
+        "sha256": "e9aaf3c2ba4f980e84f3875a6a65aab82b20bb491bf400188f00eada4c09bd10"
+      },
+      {
+        "path": "dist/assets/previews/human-blond-glasses-detail1024-v99.png",
+        "bytes": 766229,
+        "sha256": "ed18d79571fdf6af305d9427e08cd1eeee48d63dd9e994138265b76153c115fc"
+      },
+      {
+        "path": "dist/assets/previews/human-blond-glasses-detail512-v99.png",
+        "bytes": 198142,
+        "sha256": "3576b44ed80b7122653def839356a1b568883adae898cdd658537fd9fd608294"
+      },
+      {
+        "path": "dist/assets/previews/human-bun-yellow-detail1024-v99.png",
+        "bytes": 787530,
+        "sha256": "f9ffebb3723cd1b152705b170fd9c2d597bd62d97005045b770b582533ce2d60"
+      },
+      {
+        "path": "dist/assets/previews/human-bun-yellow-detail512-v99.png",
+        "bytes": 204058,
+        "sha256": "77c84c19155b3a35095b5877d0e15c6cfce0aba274182f74c7a9ef6df45c06c9"
+      },
+      {
+        "path": "dist/assets/previews/human-rust-jacket-detail1024-v99.png",
+        "bytes": 668486,
+        "sha256": "8368f5d2f7307d8fff355b64d87e9f945950469072381b452e3265273534b7bf"
+      },
+      {
+        "path": "dist/assets/previews/human-rust-jacket-detail512-v99.png",
+        "bytes": 171693,
+        "sha256": "647817f8479bfb2da863c8a1d2defec71847dc8fafedc2fb75e229d52af3192f"
+      },
+      {
+        "path": "dist/assets/previews/muse-lavender-lantern-detail1024-v99.png",
+        "bytes": 713163,
+        "sha256": "b6436968ff4cafb46c0d836e5dabb54e1a994f477563da671b79cd30aa4407bc"
+      },
+      {
+        "path": "dist/assets/previews/muse-lavender-lantern-detail512-v99.png",
+        "bytes": 180871,
+        "sha256": "2ca76313d62d6096d1ec2cdcb828cb06e9a860b62b47a3c14cb5d631c010f8c2"
+      },
+      {
+        "path": "dist/assets/previews/muse-rose-flowers-detail1024-v99.png",
+        "bytes": 882751,
+        "sha256": "b163d60bd534ac070989ec61cf31fb4cc105f12f959d13a4f97ac8a5f9f38e61"
+      },
+      {
+        "path": "dist/assets/previews/muse-rose-flowers-detail512-v99.png",
+        "bytes": 223641,
+        "sha256": "b0cf2196c5191d08262896f0c0f14f198d60e693616c2917c088c4eafd3e936b"
+      },
+      {
+        "path": "dist/assets/previews/muse-sage-reading-detail1024-v99.png",
+        "bytes": 807830,
+        "sha256": "d56ae06c3ca9c06ab945097ed371ecb7f4fd9df1b1dd6bcb3a4cfb8ae6805d28"
+      },
+      {
+        "path": "dist/assets/previews/muse-sage-reading-detail512-v99.png",
+        "bytes": 197195,
+        "sha256": "710f3bbf407046faa65cbbd6e95214c761e12ca707805959db4cf3e0ad4b6b10"
+      },
+      {
+        "path": "dist/assets/previews/robot-ivory-capsule-face-v98-candidate-detail1024-v99.png",
+        "bytes": 873886,
+        "sha256": "ef15cc67bc3c022a2939541665bde48020dec773ec59607800f2b7b29ad57306"
+      },
+      {
+        "path": "dist/assets/previews/robot-ivory-capsule-face-v98-candidate-detail512-v99.png",
+        "bytes": 249999,
+        "sha256": "924084411b53c7cb171b1ea29a280e2071de5b2b86a3d71804ed5b6ec5d4ead6"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+        "bytes": 1675380,
+        "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+        "bytes": 72043,
+        "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+        "bytes": 113720,
+        "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/glasses/round-front.png",
+        "bytes": 111958,
+        "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/glasses/round-rear.png",
+        "bytes": 78452,
+        "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/headphones/front.png",
+        "bytes": 371080,
+        "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9"
+      },
+      {
+        "path": "dist/assets/templates/dots-orb-v1/headphones/rear.png",
+        "bytes": 216883,
+        "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/body-neutral.png",
+        "bytes": 1106046,
+        "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/cap/front-v2.png",
+        "bytes": 222431,
+        "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/cap/rear-v2.png",
+        "bytes": 648210,
+        "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+        "bytes": 109511,
+        "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+        "bytes": 92782,
+        "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/glasses/round-front.png",
+        "bytes": 99090,
+        "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34"
+      },
+      {
+        "path": "dist/assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+        "bytes": 72835,
+        "sha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f"
+      },
+      {
+        "path": "dist/assets/templates/sources.json",
+        "bytes": 39926,
+        "sha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f"
+      },
+      {
+        "path": "dist/index.html",
+        "bytes": 4882,
+        "sha256": "01b46caff45e07935bbaf2b6162e9aaaeae0d1adec659cb6237b861cda86f503"
+      },
+      {
+        "path": "dist/studio-actions.js",
+        "bytes": 3885,
+        "sha256": "c3024da967abc5fae76beba4a670a435d1acfeea8570c409f6cb200b3e2f3385"
+      },
+      {
+        "path": "dist/studio-artwork-catalog.js",
+        "bytes": 57069,
+        "sha256": "0247aa7844c7b7da2fe4f2897fc00ca78cb43796668fe3ab3a019dc104dc4f27"
+      },
+      {
+        "path": "dist/studio-asset-loader.js",
+        "bytes": 7520,
+        "sha256": "b838d6ab8d2f63a85f4d34a72ecd6e8a1539573ebad5a96512b5e3a86954a22f"
+      },
+      {
+        "path": "dist/studio-card.js",
+        "bytes": 2653,
+        "sha256": "9a397fb9e3186423a678c34221c037c15480ccf94a3c9e83c0a35152435a143e"
+      },
+      {
+        "path": "dist/studio-content.js",
+        "bytes": 53841,
+        "sha256": "c2887fcf4bb9d6570e8afc623df018337e21bb8b58ef4ee1592c7cf38b6b5908"
+      },
+      {
+        "path": "dist/studio-detail.css",
+        "bytes": 29769,
+        "sha256": "ec02524c76ee494c0e75c5bded141e4ef432ac56e813aa40a5f60786bde94ee4"
+      },
+      {
+        "path": "dist/studio-detail.js",
+        "bytes": 25853,
+        "sha256": "655454e3411159dfc2b930827ccc26ed6350e41cc3769cf2d8d7b9111266a254"
+      },
+      {
+        "path": "dist/studio-display-assets.js",
+        "bytes": 64716,
+        "sha256": "81eab8b97ccfb55c5a09bf2d06bb7bc98ee9717ccfd2dd982d5aa4ff65548bcf"
+      },
+      {
+        "path": "dist/studio-draft.js",
+        "bytes": 6560,
+        "sha256": "8f30ee3523a9c011cd946a54617d468219034f141b28605a5a47bcb88134c0de"
+      },
+      {
+        "path": "dist/studio-edit-templates.js",
+        "bytes": 12177,
+        "sha256": "65502525c3317aa4a3f6ecd4e46a93a04d83bcdd311a2da52aca0003df3514a8"
+      },
+      {
+        "path": "dist/studio-editor.js",
+        "bytes": 36565,
+        "sha256": "4209c222f028c423009ae40847c8a79475ee538d4c3710d4cfa2f64290928783"
+      },
+      {
+        "path": "dist/studio-i18n.js",
+        "bytes": 3261,
+        "sha256": "b78ae58e91db127c2d1ba15fe9144e1d6e25467909faf2132bf58c3b1b52ae98"
+      },
+      {
+        "path": "dist/studio-motion.js",
+        "bytes": 8433,
+        "sha256": "fdf658ef595321b620c4227eb85a8c57ef2bda38d86bdd3aaf51a03a083d326c"
+      },
+      {
+        "path": "dist/studio-overlay.js",
+        "bytes": 6931,
+        "sha256": "66766b415d44740f167a7386c3723c1b723ac771ffbfa69b0322db1038ffe1fb"
+      },
+      {
+        "path": "dist/studio-preview-loader.js",
+        "bytes": 25608,
+        "sha256": "762ea8e6ecb5fda41318e6c067d5d0857535ac8a86dbd3f52c49a05113e77856"
+      },
+      {
+        "path": "dist/studio-prompt.js",
+        "bytes": 4982,
+        "sha256": "c343f5b5cb33a6675f26956710b6b0e126b807caa6f3577970c96db7759e8fdd"
+      },
+      {
+        "path": "dist/studio-renderer.js",
+        "bytes": 16497,
+        "sha256": "059a95d7a8b0192c101d2b7a580ec368cf7f3633d4dd74b972df9a5d8e6f3d77"
+      },
+      {
+        "path": "dist/studio-router.js",
+        "bytes": 1573,
+        "sha256": "62d536828d8b0da6d5f9367cf3eff0656a30f7dee544923c0cd4df0b89c88bd4"
+      },
+      {
+        "path": "dist/studio-tag-browser.js",
+        "bytes": 2190,
+        "sha256": "121838ff88c1e488a7200369458c02351457840c4215b514a825aa575f102024"
+      },
+      {
+        "path": "dist/studio-tags.js",
+        "bytes": 10337,
+        "sha256": "27cf624acbffdceaf5682e488e42b8acecd0a95a475383e5108697917496e181"
+      },
+      {
+        "path": "dist/studio.css",
+        "bytes": 21208,
+        "sha256": "6242a4ae0243d60b92a7cdb4b7ba43f68fed47e4ae0f1c4dffbbbc9f6415ca61"
+      },
+      {
+        "path": "dist/studio.js",
+        "bytes": 11783,
+        "sha256": "d5516a21bec39c1cd52e15d0e3775d57c0b4fd2dabffd94cc4f07d04c3405e68"
+      }
+    ],
+    "latestUIEvidence": "cr-card-unity-20261011/README.md",
+    "newCharacterUIEvidence": "builtins-no-grid-20261010/ui/report.json"
+  },
+  "engineeringRun": "cr-polish-20261011/editing/run-2026-10-10T16-24-04-515Z/report.json",
+  "historicalArtworkApprovalDoesNotExtend": true,
+  "publicEditable": false,
+  "deploymentAuthorized": false,
+  "previousApprovalScope": "cr-card-unity-20261011/before/approval-scope.json",
+  "updatedReason": "Follow-up local card UI correction: one continuous surface, vertically centered caption with even spacing, title left and outlined series label right. Only studio.css changed in runtime; template capability and all asset bytes unchanged.",
+  "uiAssets": [
+    {
+      "id": "dots-gallery-hero",
+      "version": "v99-ensemble-2",
+      "path": "./assets/banners/dots-gallery-hero-ensemble-v99.webp",
+      "sha256": "aaa7c0fe9e83e579fa0647f6994d58d84ca80831cb5b5c63cdc48a5537818091",
+      "byteSize": 126138,
+      "width": 1536,
+      "height": 1024,
+      "artApproval": {
+        "status": "pending"
+      },
+      "publicationStatus": "preview-only"
+    }
+  ]
+}

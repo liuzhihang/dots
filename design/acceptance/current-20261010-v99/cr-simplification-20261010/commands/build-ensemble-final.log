@@ -1,0 +1,25 @@
+
+> build
+> node scripts/build-studio.mjs
+
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Chosen reference changed: openspec/changes/simplify-reveal-cards-and-staging/planning/dark-gallery-20261010/source-package/references/REFERENCES.json
++ actual - expected
+
++ 'f5214dd2c803dbf0e35d7a22f854f8912ddfc337a3cfb3caa7b9cac6e6cb2d92'
+- 'd0f5b07df1c9613748ea658fd2a3d9fa79244f08b6637f46d34cfd7c7d4b56d8'
+
+    at verifySafety (file:///Users/liuzhihang/workspace/dots/scripts/verify-implementation-safety.mjs:29:46)
+    at async build (file:///Users/liuzhihang/workspace/dots/scripts/build-studio.mjs:320:18)
+    at async file:///Users/liuzhihang/workspace/dots/scripts/build-studio.mjs:356:18 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'f5214dd2c803dbf0e35d7a22f854f8912ddfc337a3cfb3caa7b9cac6e6cb2d92',
+  expected: 'd0f5b07df1c9613748ea658fd2a3d9fa79244f08b6637f46d34cfd7c7d4b56d8',
+  operator: 'strictEqual'
+}
+
+Node.js v23.11.0

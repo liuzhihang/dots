@@ -1,66 +1,52 @@
-# v98 全屏首页返工与实际页面验收
+# Dots v99 设计验收
 
-**final result: passed**（本地工程及内部视觉复核）；**用户美术确认：pending；部署：未执行**。
+2026-10-10。本报告仅覆盖本地实现；没有部署，没有借用历史母图批准来确认新页面或新 Draft。
 
-当前 `main` / `b22c3f0df8b010da74b99caf9a80c417157857d7`。工作树开始前已有大量未提交内容，本轮以 `implementation/immersive-home-v98/baseline.json` 冻结，而不是从 Git diff 推断所有 dirty 均属于本轮。使用既有 `simplify-reveal-cards-and-staging`，无初始化、依赖升级、提交、部署、sync 或 archive。
+## 选稿和证据
 
-## 依据及本轮范围
+唯一桌面主稿为 D01-main-third-dark-gallery-studio.png；D02-support-first-mobile-guide.png 仅补手机与指南。不是更早的露台选稿。已把未改动原型与实际渲染放进同一审阅输入：
 
-- 最新用户手机反馈：`design/acceptance/current-20261009-v98/references/user-v97-mobile-feedback.jpg`。其明确要求取代 v97 的定高 Hero、背景外分类和 Featured Characters：当前首页整体铺满浏览器，分类只在背景内。
-- P01 / P02：`design/acceptance/current-20261009-v97/references/Photo-{1,2}.jpg` 是多页面概念拼版。P02 只指导首页台阶、远近和群组留白；P01 指导画廊、详情、移动层级及黄昏色；它们不是整页首页图片或原生像素标注。
-- 原 15 张母图及 C01–C03 身份约束继续有效。新的白色机器人是独立伙伴 Ivory Bot，不冒充 Grok；新增白兔与白猫分别登记。
-- `visual/comparisons/{home-desktop,home-mobile,user-feedback-vs-v98-mobile}.jpg` 将对应概念面板/反馈与实际浏览器截图归一化并排，仅用于 QA。源面板裁切不进入生产资产。
+- [D01 合并对照](design/acceptance/current-20261010-v99/visual/D01-combined-comparison.png)：桌面图库、同一 Studio View/Edit。
+- [D02 合并对照](design/acceptance/current-20261010-v99/visual/D02-combined-comparison.png)：390px 图库、详情、指南和实际编辑操作区。
+- [四视口与双语实页](design/acceptance/current-20261010-v99/browser/report.json)：1440×900、768×1024、390×844、320×700，共 24 张页面截图及透明降级截图。
+- [Edit 四视口双语](design/acceptance/current-20261010-v99/editor-layout/report.json)：Dots/Grok 共 16 个布局，48 张全览/操作区/选项区截图，128项选项文案/边界对比度检查；44px 操作与真实导出可达，无横向溢出；颜色色块、实际素材缩略图和键盘 Space 选择通过。
+- [实际合成底色对比度](design/acceptance/current-20261010-v99/accessibility/contrast.json)：48 项，正文/次级文案至少 4.5:1，输入边界/选中/焦点至少 3:1；不以色板单色猜测透明背景。
 
-## 本次实现与视觉复核
+## 逐区裁决
 
-| 用户要求 | 当前行为与证据 |
-|---|---|
-| 背景铺满首页 | 导航融合背景，场景使用 `100dvh`，窗口缩放时同步 cover 图像及交互坐标；首页 footer 隐藏，Featured 的 DOM、渲染及样式已移除。`browser/home-{1440,390,320,768}.png` |
-| 分类只在背景上 | 五个系列入口固定在画面底部玻璃底板内，链接到真实系列筛选，无白色分类分区或下半页精选。`visual/home-390.jpg` |
-| 场景更丰富且接地 | 同一露台使用桌面、平板、手机三种响应式构图，各 17 / 17 / 13 个实际身份；前排协作/阅读，中远景分组，角色与台阶、书本、电脑及接触阴影在同一整景内。没有角色贴图重复叠加 |
-| 白色机器人等伙伴 | Ivory Bot 和 White Rabbit 有独立原图、Prompt、版本和详情；候选状态明确，未混入原有 15 件已批准画廊。场景与母图身份关系逐项检查 |
-| 鼠标描边动态 | 逐角色描摹可见轮廓，暖白轮廓走光及名称提示；pointer 命中真实路径，按钮保持固定且至少 44px；不 hover 自动弹详情。47 份实际浏览器局部截图在 `browser/outlines{,-tablet,-mobile}/` |
-| 点击与键盘 | 点击/Enter/Space 立即进入共用详情；关闭/Back 恢复来源和焦点；手机一次轻点进入。轮廓与整景共享缩放平面，画面外热区退出焦点序列 |
-| 减少动态与失败路径 | reduced-motion 使用静态描边；详情、菜单、页面隐藏暂停背景反馈；图片未加载时不显示空中轮廓，失败后有同身份文字入口及重试 |
-
-五项视觉复核：
-
-1. **字体及层级**：保留本机无衬线字体、英文两行主标题、短说明、两个操作和轻提示。1440 标题约 62px，手机 36–44px；未猜测概念拼版字体文件。
-2. **布局及留白**：1440×900 整页露台，手机390×844同样满屏；台阶承托前中后景，组间可见空阶及过道。平板独立构图避免把宽幅场景硬裁成拥挤前排。短窗口收紧标题并隐藏非必要说明，保留主操作与角色入口。
-3. **色彩及控件**：蓝紫黄昏、暖色阶灯，白色文字与淡紫标题、玻璃导航/分类；局部暗化只服务文字可读性，不以 CSS 伪造角色或场景。
-4. **图片及材质**：Dots 以短密绒、无肢体外形为准；Grok 保留光滑软几何与成对胶囊眼；Muse 奶油包覆体与内嵌脸；人类保留发丝、皮肤、针织衣料差异；柴犬维持橙白立耳、四足及卷尾。最终场景为 edit3，原图见 `asset-sources/`，WebP 只做格式/体积优化。
-5. **内容与反馈**：画廊仍是 15 件已批准作品；新伙伴详情清楚标记待确认。场景中的姿态不冒充变体或下载原图。当前真实作品动画 0、变体 0；描边是交互反馈，不代表角色独立表情动画。
-
-## 发现的问题与修复记录
-
-| 阶段 | 发现 | 修复 / 复验 |
+| 区域 | 实页结果 | 裁决与依据 |
 |---|---|---|
-| 用户 v97 拒绝 | 首页下半部分和背景外分类不符合要求，角色不足、反馈弱 | 结构重做为单屏，分类叠在背景内；新增伙伴并重新构图；真实新旧手机截图对照保留 |
-| 素材迭代 | 初期场景含未登记伙伴；透明候选边缘残留；部分 Dots 绒毛过长 | 删除未登记身份的候选场景；两张独立成品改为诚实登记的 RGB 摄影棚底原图；用既有 Dots 原图修正短绒。失败/拒绝候选留在证据目录，不进入 dist |
-| browser attempts 01–03 | resize 测试在几何未同步时读取；短手机/横屏的说明和 CTA 遮住远景热区 | 等待真实图像坐标同步；短窗口压缩文字。原失败日志保留，最终覆盖连续 resize 和短横屏 |
-| browser attempt 04 | 通过功能与桌面描边；尚未逐角色检查另外两套构图 | 扩展到 17 桌面 + 17 平板 + 13 手机轮廓截图 |
-| browser attempt 05 / 视觉复核 | 平板轮廓有椭圆包围背景、只包头部、机器人绕进前排 Dots 等问题；功能通过不足以判定贴合 | 按最终平板源图逐点重描全部 17 个可见边缘，沿实际遮挡线收边。`visual/home-robot-focus-768-interim.jpg` 保留失败；最终 `home-robot-focus-768.jpg` 与 contact sheets 已人工查看 |
-| browser attempt 06 | 最终 dist 无测试中变动，完整浏览器验收通过 | `browser/report.json`、`browser-attempt-06.log` 及三个 `visual/outlines-*-review.jpg`；轮廓、标签、身份/版本一致 |
+| 导航 | Dots、角色库、指南、语言 | 仅保留需求中的两入口；删除原型收藏、更多、账户等额外入口 |
+| 首页介绍 | 短标题、复制通用 Prompt、同页浏览 | 角色库即首页；取消长 Hero、实体/阶梯场景、发光底座和虚构统计 |
+| 桌面 Gallery | 六列，1440×900 首屏完整一排真实作品 | 深色数字画布、局部描边/烟黑玻璃；批准原图保持自己的真实身份，不照抄原型中错误机器人/Muse |
+| 移动 Gallery | 390/320 两列，768 三列 | 真实 contain，帽、耳、脚与尾完整；44px 主操作与系列按钮，无横向溢出 |
+| View | 桌面左预览右信息；手机全屏纵向 | 原图、事实、复制、独立原图下载先出现；详情壳与图库 DOM 保持，无第二角色状态 |
+| 编辑 | 同一 Studio 的 Edit 状态；真实颜色色块及素材缩略图 | 独立 Draft 与原图隔离；完整渲染/导出证据在 editor 验收，模板 pending 不对公开目录伪开放 |
+| 指南 | 三步和原图/编辑/外部创作区别 | 采用 D02 清晰层级；只说明真实可用能力，没有安装、许可、自动附图、视频或账号承诺 |
+| 透明与动态 | 无 blur 时实色；reduced-motion 移除过渡 | 静态角色不伪装成动画，真实 motion manager 按资源与暂停原因工作 |
 
-## 实际验证
+## 视觉发现与处理
 
-| 检查 | 状态及证据 |
-|---|---|
-| 内容、查询、详情、动态控制、路由、发布清单 fixtures | 通过：`unit-final.log`。89 typed facts 查询、20 详情检查、8 动态控制检查；原 15 件批准/字节不变，新 2 件单独为 pending |
-| 浏览器 | 通过：`browser-attempt-06.log`，真实 Chrome 155.0.8059.39，21 组检查，未捕获页面错误 0。`browser/report.json` 绑定全部 59 个活动文件的 SHA-256 |
-| 视口及调整尺寸 | 1440×900、390×844、320×700、768×1024；另有1920×1080、1100×700、844×600、390×568、844×390；分类位于场景内、没有 Featured、无横向溢出、热区与图片同步 |
-| 交互 | 搜索/系列组合/无结果清空、双语、共用详情及直链刷新、Back/前进/Escape/焦点、复制原 Prompt、修改 Prompt 不污染成品、点击和真实触摸模拟、降低动态均通过 |
-| 异常路径 | storage denied、clipboard denied、popup blocked、原图404、封面/场景失败重试通过；文字和下载入口保留正确身份 |
-| 实际下载 | `downloads-final.log` 与 `browser/download-alpha.json`。17 次真实浏览器下载逐一核对 bytes/hash/尺寸：15 原透明 RGBA，新增2为不透明 RGB 摄影棚底，不承诺透明格式 |
-| 构建与安全 | `build-final.log`、`build-report.json`。59 文件精确闭包，5 个 pending 资源；原15素材、历史证据、配置/依赖保持；旧两张 v97 场景只按精确清单退役并核对 hash |
-| OpenSpec | `openspec-final.log`：现有 change strict 校验通过；无主规范 sync / archive |
-| 人工实页 | Codex IAB 实际查看桌面、手机、平板、320边界；新机器人中英文详情及键盘返回；`visual/`是实际截图，非生成页面图 |
+实际对照未发现错切轮廓、首屏空白、额外导航、过长 Hero 或实体场景残留。内容卡片按原图统一 contain，未对某个角色加专用缩放分支。输入及选中边界先提高到可辨对比度后才通过检查。修复过预览加载基址在 Vite 下的错误路径，并重跑实页，不把封面回退冒充高清加载成功。
 
-## 边界与未通过用户确认的内容
+图中紫色主按钮、浅紫选中态与低饱和深底沿用主稿关系；明确执行用户裁决而非逐像素复制原型错误。五个新增作品、模板默认重建与组合仍由各自 pending 艺术记录控制。工程视觉核对不等于用户批准。
 
-- 本次只完成本地可预览版本。三幅响应式场景、两张新增角色原图和最终页面仍 **pending user art approval**；任务 3.7、8.3 不勾选。既有母图批准不扩大到本次场景。
-- `previewOnlyFiles` 是资源状态清单，不是物理隔离或 localhost 门禁。pending 资源实际在完整 dist 树内，可信登记记录通过同一详情路由打开；`deploymentReady:false` 明确记录未获发布授权和美术待确认。没有执行部署。
-- 单张静态整景按响应式构图切换，不是主题轮播；极短窗口会裁掉边缘角色，相应热区退出，画廊保留完整成品。未引入真实角色动画、表情变形或独立局部图层。
-- 已有耳机 Dots 仍保持自己的身份，没有为了更像概念图把它换成贝雷帽角色。概念拼版没有原生像素标注，本报告不声称像素级复刻。
-- Safari、Firefox、实体手机及线上部署未运行；真实 Chrome/IAB 的模拟视口和触摸不能代替这些验收。
-- v96/v97 失败、旧来源、原图和 Git 历史保留。两张旧场景的精确退役记录是 `historical-runtime/immersive-home-v98/retirement.json`，未整体清空 dist 或覆盖无关 dirty。
+## 验收边界
+
+Chrome 本地自动化与 Codex 内嵌浏览器已看实页；没有把响应式视口称为实体手机验收。Safari/Firefox、真实 iOS/Android、安全区硬件和线上域名未测。编辑合成的最终视觉记录随 `design/acceptance/current-20261010-v99/editor/` 交付；未确认的艺术项保持未完成。Sites 身份、访问设置、依赖和历史证据保持。
+
+## apply 期间补充裁决
+
+[可视选择参考](design/acceptance/current-20261010-v99/visual-controls.md)要求编辑素材以可视选项呈现，现已使用真实图层缩略图，辅助短名称与明确选中描边。黑镜框在近黑检查底上可读性不足，改用中性灰透明检查底；实际素材像素保持。缩略图共用 PreviewLoader 的lease与预算，完成/取消/错误释放，失败可重试；普通View不请求这些图层。
+
+[十张身份参考](design/acceptance/current-20261010-v99/identity-reference-20261010/README.md)明确 Dots/Grok 两类都无手脚，多种轮廓作为独立Artwork保持；不把参考中的Shape、Pets或其它未适配功能直接引入产品。通用Dots Prompt已强化无肢体身份，15原图未重绘。
+
+最终素材冻结后，在 Codex 内嵌浏览器实际点击 Grok 的 Round glasses 和 Soft cap 缩略图；两项选中状态与组合预览同步更新，眼镜和帽子接触位置可见，页面无 error/warn 日志。该检查只确认操作与可见组合；Grok 默认眼型更扁、Dots 主体更圆等重建差异在[艺术审阅清单](design/acceptance/current-20261010-v99/art-approval-review.md)明确保留，未转成用户批准。
+
+最终整轮 `run-2026-10-10T12-34-50-407Z` 通过后，已重新生成并查看上面的 D01/D02 实页对照，以及 [Dots全部12配置](design/acceptance/current-20261010-v99/visual/dots-orb-v1-all-configurations.png)、[Grok全部16配置](design/acceptance/current-20261010-v99/visual/grok-orb-v1-all-configurations.png)深/浅底总图。图库多外观、同壳View/Edit、可视选项与手机操作区均与当前裁决一致；图层总览的局部布局结论和待审差异见[素材视觉记录](design/acceptance/current-20261010-v99/materials/visual-review.md)。
+
+## 2026-10-10 追加：无网格与基础 Characters
+
+透明素材的页面网格已移除：图层缩略图为纯中灰，颜色样本与None占位保留语义，原PNG和Draft像素不加底色。新版CSS在两模板×四视口×双语16项与两模板焦点专项实测通过，截图与报告见 [无网格证据](design/acceptance/current-20261010-v99/no-grid-20261010/report.json)。此前editor-layout和D01/D02截图保留为历史证据，不能用其旧检查底证明本次显示。
+
+青柠蛙领结与粉心墨镜两件参考驱动的完整静态候选已登记，非官方原始素材。新增详情在桌面英文/手机中文的复制、Esc、pending排除检查通过，全部24件原图均实际下载并核对hash/alpha；默认画廊仍15件，待审9件。两件深浅纯色底已实看，轮廓/配件完整，低alpha散点记录保留，未给予美术批准。详见 [追加验收](design/acceptance/current-20261010-v99/builtins-no-grid-20261010/README.md)。

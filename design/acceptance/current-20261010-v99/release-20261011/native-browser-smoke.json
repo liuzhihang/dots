@@ -1,0 +1,16 @@
+{
+  "surface": "Codex in-app browser",
+  "url": "http://127.0.0.1:5182/#/",
+  "reviewHarness": false,
+  "observations": [
+    "24 public artwork cards present; names and outlined series tags separate",
+    "Opening headphone Artwork automatically displayed Appearance/Face/Accessories controls",
+    "Warm yellow selection replaced the blue preview and main export stayed available after rendering",
+    "Related characters below preview; Copy Prompt/Use in ChatGPT primary, Export secondary",
+    "Returned to gallery; temporary QA tab closed"
+  ],
+  "limits": [
+    "No native-browser clipboard/download assertions in this smoke; automated journeys cover those separately",
+    "No physical device tested"
+  ]
+}

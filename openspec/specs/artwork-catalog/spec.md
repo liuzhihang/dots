@@ -7,118 +7,98 @@
 ## Requirements
 
 ### Requirement: 完整作品必须拥有稳定的资源与提示词关联
-系统 SHALL 为每张实际完整作品提供稳定 ID、标题、描述、来源、发布状态、风格身份、标签、事实特征、尺寸/背景类型及资源和 Prompt 引用。原图、缩略图、Prompt、动作文件和目标资源 SHALL 各有独立版本及可靠关联；作品身份和最终像素 MUST 来自实际登记的完整 Artwork。
-
-有限的颜色、外形、五官、衣物、配饰或道具搭配 MAY 作为随机内容，但每个可命中的搭配 MUST 已作为一张完整 Artwork 独立制作、登记，并具备适用的资源、Prompt、真实 Feature 和艺术批准。Artwork 目录中实际登记的作品集合 SHALL 是抽取可命中的组合清单；系统 MUST NOT 从单独 Feature 的笛卡尔积推导未登记结果、临时合成图像或把一件 Artwork 的部件适配到另一件作品。Artwork 的特征标签仅用于发现和描述，不自动赋予渲染或穿戴能力。
+系统 SHALL 为每张实际完整 Artwork 提供稳定 ID、名称、描述、来源、发布状态、身份、系列、八类 typed facts、原图与 Prompt 引用。首批静态 Gallery 曾以 20 件作为初始目标；截至 2026-10-11，本轮用户批准公开的目录含 24 件独立完整 Artwork。该数量描述当前批准版本，不是目录上限；后续作品仍须逐件登记自身来源、素材、元数据并获得覆盖该作品版本的美术批准后，方可加入默认目录。Gallery 外观计数只计唯一、完整、独立登记的 Artwork，不计 Template/Draft 渲染、色卡、姿态资源、截图或重复副本。封面、展示预览、原图、Template、Template 图层、Draft 与 Prompt SHALL 有各自明确的类型、用途及版本关联。Artwork 原图像素 MUST 来自登记的完整作品；未登记组合不得成为 Artwork、已发布变体或自动生成内容，受控 Template 只在隔离 Draft 中产生明确支持的本地变化。
 
 #### Scenario: 查看一张发布作品
-- **WHEN** 用户从画廊或随机结果打开作品
-- **THEN** 名称、图片、标签、来源和 Prompt 来自同一作品的登记版本，操作无需应用到其他页面或工作台
+- **WHEN** 用户从角色库或 CharacterStudio 查看已发布 Artwork
+- **THEN** 名称、封面、facts、原图与原始 Prompt 对应同一登记版本，编辑能力不改变其资源引用
 
 #### Scenario: 随机发现预先设计的有限变化
-- **WHEN** 候选 Artwork 含不同颜色、形状、五官、衣物或配饰的已完成设计
-- **THEN** 每个结果仍对应目录中实际登记的完整作品；未登记的跨维搭配不会被随机生成或假定存在
+- **WHEN** 用户通过受控 Template 选择一组合法选项；旧随机发现入口已退役
+- **THEN** 系统只生成与当前 Artwork 隔离的 Draft，不提供老虎机或随机组装，也不把未登记组合加入 Artwork 目录或发布作品集合
 
 ### Requirement: 事实特征不得与未来创作要求混淆
-作品 SHALL 只登记图像实际包含的配饰、道具、形状、动作、表情及背景类型。“无配饰”“无道具”“透明背景” SHALL 是明确核实值；未知/未标注 MUST NOT 被自动解释为没有。未来希望新增的元素 SHALL 仅出现在明确的创作要求中，不污染作品事实或抽取揭晓值。独立词条缩略图 SHALL 有来源及示意用途，不冒充新成品或可装备组件。
+Artwork SHALL 只记录原图实际呈现的八类 typed facts 和已制作动作/表情；none、notApplicable 与 unknown MUST 明确区分。用户的 Template 选择与外部 ChatGPT 二创意图 SHALL 与 Artwork facts、标签、原始 Prompt、原图和批准状态隔离。
 
 #### Scenario: 图中没有帽子但参考 Prompt 要求新增帽子
-- **WHEN** 用户为后续创作加入戴帽要求
-- **THEN** 原作品标签、随机条件和下载仍不包含帽子事实，新增要求只出现在明确标注的创作 Prompt 中
+- **WHEN** Artwork 原图没有帽子且 Template 明确支持合法的加帽配置
+- **THEN** Draft 可按受控模板呈现该变化，Artwork facts、基础 Prompt、原图及原图下载仍描述和返回没有帽子的源作品
 
 #### Scenario: 无道具与尚未核实道具
-- **WHEN** 一个作品已核实无道具，另一作品的道具尚未标注
-- **THEN** 前者可匹配“无道具”，后者不能据缺失字段匹配，也不能进入需要该揭晓事实齐备的发布抽取范围
-
-### Requirement: Artwork 必须记录八类事实并派生有效揭晓卡片
-事实目录 SHALL 区分角色风格、外形、五官、配色材质、衣物、头部配饰、身体饰品和随身道具八类信息。系统 MUST 保留完整事实账本，并按角色风格、外形五官、配色材质、衣物、配饰、道具的稳定顺序派生 3～6 张有效展示卡：前三类必显，后三类仅在核实有值时显示。动作/表情属于独立变体或动画，背景属于资源规格，均不占卡。`none`、`notApplicable` 与 `unknown` MUST 区分；任何相关事实未知或缺失的作品不得因隐藏卡片进入默认随机池。每轮有效卡清单 SHALL 随唯一 DrawResult 固定，且不改变完整 Feature、筛选或 Prompt 事实。
-
-#### Scenario: 记录一件角色的八类事实
-- **WHEN** 维护者登记已完成 Artwork 的结构化事实
-- **THEN** 八类数据按实际图像填写；头部配饰与身体饰品仅在前台合并为一张配饰卡，多件配饰不增加卡数，动作和背景不作为抽卡维度
-
-#### Scenario: 未核实事实与明确无值区分
-- **WHEN** 衣物或任一配饰子维度尚未核实，或已确认没有该元素
-- **THEN** 前者保留 unknown 并排除默认随机池，即便同组另一项已知有值也不能绕过；后者保留 none/notApplicable 事实，只省略对应可选展示卡，不删除数据
-
-#### Scenario: 基础角色与眼镜角色的卡数
-- **WHEN** 角色前三类事实齐备，且衣物、配饰、道具都已确认无值；或仅配饰有眼镜
-- **THEN** 前者派生三张卡，后者派生四张卡；都遵循相同类别顺序，不以“无”卡补齐六张
-
-#### Scenario: 同一类别有多项真实内容
-- **WHEN** 作品同时有帽子、眼镜和身体饰品
-- **THEN** 三项实际 Feature 共同属于一张配饰卡，全部事实仍可查询并用于结果后的 AND 锁定；卡数按类别计数而非物件数量
-
-#### Scenario: 五卡与六卡作品
-- **WHEN** 三个可选类别中恰有两类或三类已核实有值
-- **THEN** 分别派生五张或六张卡，省略已核实无值类别但不重排其余类别
+- **WHEN** 一个 Artwork 已确认没有某项事实，另一个 Artwork 对同一事实尚未核实
+- **THEN** 前者保留 none 或 notApplicable，后者保留 unknown；Draft 选择不得推断或覆盖任一 Artwork 的事实
 
 ### Requirement: 发布资格必须同时满足内容资源与批准边界
-用户画廊及默认抽取池 SHALL 仅包含已发布、维护者登记、来源有效、实际资源可用、Prompt/事实齐备且人工批准覆盖具体素材的完整作品。素材存在、工程可渲染、目标格式资料、标签名称及自动测试成功 MUST NOT 自动授予发布或美术批准。批准、工程验证、目标端验证和部署 SHALL 分别记录；资源变更不能继承未覆盖批准。
+默认角色库 SHALL 仅包含已登记、来源有效、资源与 Prompt 完整且人工批准覆盖具体 Artwork 版本的作品。任何尚未获得对应版本批准的新 Artwork MUST 保持 pending，不能因规划数量、资源存在、Template 可渲染、Draft 导出、标签名称或工程测试而进入默认目录。本轮 2026-10-11 发布批准范围为 24 件公开 Artwork，当前没有待确认 Artwork；该记录不自动批准后续新增或变更版本。资源存在、Template 可渲染、Draft 导出、标签名称或工程测试 MUST NOT 自动授予 Artwork 批准或发布资格；Artwork、Template、图层、Draft 导出及页面呈现的状态 SHALL 分别记录。当前已批准目录必须按实际逐件批准状态动态计算。
+
+#### Scenario: 已批准 Artwork 生成本地 Draft
+- **WHEN** 用户通过已批准 Template 为 Artwork 生成 Draft
+- **THEN** 原 Artwork 保持原发布与批准状态，Draft 不作为新 Artwork、变体或默认角色库内容
+
+#### Scenario: Pending 候选在普通详情中打开
+- **WHEN** 用户通过已登记地址查看 pending Artwork
+- **THEN** CharacterStudio 明确显示待确认状态并保持只读，不进入默认角色库、搜索、系列或已批准作品计数，也不自动开放 pending Template 编辑
+
+#### Scenario: 当前发布批准范围与后续候选
+- **WHEN** 系统组装 2026-10-11 本轮已确认的发布目录，或登记后续新作品
+- **THEN** 当前目录包含 24 件逐件获批的公开 Artwork，当前没有待确认 Artwork；任何后续新作品或变更版本仍须取得其自身批准，不能继承此轮批准
+
+#### Scenario: Pending Template 进入审阅 harness
+- **WHEN** 维护者明确在审阅 harness 中检查 pending Template
+- **THEN** Artwork、Template 与 Draft 均持续标注待确认，不因此进入发布清单或获得批准
 
 #### Scenario: 已批准成品关联待确认线索
-- **WHEN** 已批准 Artwork 引用的某张有效揭晓线索仍处于待确认状态
-- **THEN** 成品的画廊资格与线索状态分开记录；该 Artwork 不进入默认随机池，直到所有有效卡线索均符合发布条件
+- **WHEN** 已批准 Artwork 与待确认候选在内容清单或人工审阅中有关联
+- **THEN** 不生成旧揭晓线索；待确认候选只可通过各自显式登记的详情只读查看，批准状态不从已批准 Artwork 继承，候选不进入默认角色库
 
 #### Scenario: 资源缺失或 hash 不匹配
-- **WHEN** 已登记作品的必需原图不能通过资源检查
-- **THEN** 作品不能作为新的有效结果；页面说明不可用并提供恢复路径，不下载另一作品替代
+- **WHEN** 已批准 Artwork 的必要原图或展示资源缺失、hash 不匹配或解码失败
+- **THEN** 系统显示对应资源不可用并提供恢复路径，不用另一作品替换，原 Artwork 的历史批准记录保持不变
 
 ### Requirement: 作品资源必须来自可校验的登记引用
-所有可查看或下载资源 SHALL 登记类型、MIME、尺寸、字节量、版本、内容 hash、来源及透明状态；输出 SHALL 校验实际字节及登记引用。输入条件、路由或参考图文件 MUST NOT 注入任意资源路径、外部 URL 或作品 Prompt。未登记或无可靠来源资源不得作为发布成品输出。
+Artwork、封面、展示预览、Template 图层、Draft 输出及动态资源 SHALL 有登记类型、MIME、尺寸、字节量、版本、内容 hash、来源、用途和状态；原图下载 SHALL 返回当前 Artwork 登记的原始字节。路由与用户输入 MUST NOT 注入任意资源路径、URL、Template 图层或作品 Prompt；Draft 只能由受信任目录引用渲染。
 
 #### Scenario: 条件输入含未知资源引用
-- **WHEN** 路由或条件带入目录外 ID、任意路径或 URL
-- **THEN** 系统不读取该路径作为作品，显示可恢复错误或安全回退，并保持可信目录范围
+- **WHEN** 路由、Template 选项或 Draft 输入引用目录外 ID、路径或 URL
+- **THEN** 系统拒绝该引用并显示可恢复状态，不读取或导出未登记资源
+
+#### Scenario: 导出资源缺少校验资料
+- **WHEN** Template 图层或 Draft 输出缺少登记的版本、来源或必要图像信息
+- **THEN** 系统不把它作为有效可导出资源，且不以缺失资源替换当前有效 Artwork
 
 ### Requirement: 同角色变体必须由明确关系与真实作品构成
-同角色动作/表情系列 SHALL 仅关联已确认身份关系下实际制作的完整作品，各变体独立绑定图像、特征、Prompt、资源状态与批准。相同风格、物种或类似颜色 MUST NOT 自动归为同一角色。不存在已发布变体时 SHALL 明确显示暂无，不以示意拼贴、CSS 位移或未来 Prompt 补作现有变体。
+动作、表情和已发布变体 SHALL 仅关联已确认身份下真实制作、单独登记且获对应批准的 Artwork/Asset。相似系列作品或受控 Template 静态 Draft MUST NOT 自动成为变体；没有合格变体时详情隐藏该区块。
 
 #### Scenario: 同一已确认角色有可用眨眼版本
-- **WHEN** 用户在详情选择已发布的眨眼变体
-- **THEN** 图片、特征、Prompt、下载和支持标识同步切到该变体版本，未完成加载时不导出旧图配新描述
+- **WHEN** 用户选择同身份、已登记且批准覆盖的真实变体
+- **THEN** CharacterStudio 的图像、facts、Prompt、原图下载和版本一起切换到该变体
+
+#### Scenario: 模板导出静态 Draft
+- **WHEN** 用户编辑并导出静态 Draft
+- **THEN** 它不出现在动作或变体列表，也不显示动画或 Pet 能力
 
 #### Scenario: 已有姿态文件但确认范围待核定
-- **WHEN** 姿态 PNG 存在且工程检查通过，但没有覆盖该文件的明确艺术确认
-- **THEN** 该文件保留非发布候选状态，不能自动成为详情可下载的已批准动作
+- **WHEN** 姿态 PNG 已存在且工程检查通过，但没有覆盖该文件和用途的明确艺术批准
+- **THEN** 该资源保持候选状态，不成为详情可下载的已发布变体
 
 ### Requirement: 扩充作品与标签不得要求组件适配
-维护者 SHALL 能通过登记完整图片、事实特征、标签、Prompt、版本和批准来新增作品或分类，同一作品可属于多标签。系统 MUST NOT 要求为新作品建立新的角色渲染分支或复制一套页面；无内容的分类不作为公开占位入口。
+维护者 SHALL 通过 Character 与完整 Artwork、真实 facts、双语名称/描述/Prompt、版本、原图及展示资源、来源和逐件批准记录扩充角色库。新增 Character/Artwork 仅需符合现有静态数据与资源合同，即自动进入共用卡片、详情、搜索和 Prompt 流程；系统 MUST NOT 增加角色专用页面、角色 ID 条件分支或专属渲染组件。每件 Artwork MUST 显式关联 Character 与系列；Template 只能显式绑定适用的 Artwork/版本，并在确有资源、来源、能力规则和验收时提供有限本地编辑。无 Template 的新增作品仍可作为静态作品查看、搜索、复制 Prompt 和下载原图；不得把新作品自动纳入 Dots/Grok 试点模板。
 
 #### Scenario: 登记一种新的已批准完整角色图
-- **WHEN** 维护者补齐新作品资源、事实、Prompt和批准引用
-- **THEN** 作品经同一目录查询、详情和随机合同接入，不需要为其适配耳机/帽子或增加新的工作台分支
+- **WHEN** 维护者按项目根目录 `design/character-authoring/README.md` 的角色创建流程登记 Character 和一件独立完整 Artwork，并补齐 Artwork/Asset/Prompt 所需字段与批准
+- **THEN** 作品由共用卡片、详情、搜索和 Prompt 组件发现，不要求新增角色专用页面、角色条件分支或渲染组件；Artwork 作为一个独立静态外观计数，不因新增 Character 自动生成 Template
+
+#### Scenario: 新作品没有适配模板
+- **WHEN** 新 Character 或 Artwork 未显式关联具备真实资源与验收范围的 Template
+- **THEN** 已获 Artwork 批准的静态作品仍可查看、搜索、复制 Prompt 和下载原图，不提供本地 Edit 入口；pending 候选仍不进入默认目录，显式 Edit 请求显示未适配提示
 
 ### Requirement: 所有结果操作必须使用同一冻结作品快照
-详情、随机结果、复制、Prompt TXT、图片下载和目标说明 SHALL 使用同一个冻结的作品/资源/Prompt版本。改变筛选、再次抽取、异步加载及打开其他作品不得污染已发起的操作；失败或取消不能使旧回调更新新结果。
+CharacterStudio 的查看、Prompt、原图下载和 Draft 导出 SHALL 绑定启动操作时冻结的 Artwork、Asset、Prompt 或 Template revision；异步加载、编辑或切换作品 MUST NOT 使已启动操作输出另一版本的内容。
 
 #### Scenario: 下载期间开始下一次抽取
-- **WHEN** 用户对作品 A 发起下载后又抽取作品 B
-- **THEN** 已发起的下载仍校验并输出 A 的登记文件，B 的图片、标签或 Prompt 不混入 A 的结果
+- **WHEN** 用户对 Artwork A 发起原图下载后切换查看 Artwork B；旧抽取操作不再存在
+- **THEN** 已发起下载仍返回 A 登记的原始文件，B 的图像、facts 或 Prompt 不混入该操作，切换查看不会启动随机发现
 
-### Requirement: Artwork 独立登记六类揭晓说明视觉
-每件 Artwork SHALL 为实际展示的 `revealVisuals.style/appearance/paletteMaterial/clothing/accessory/prop` 登记独立 Asset 引用、来源、版本/hash、尺寸、用途、工程及美术状态。style MUST 使用中性身份示意；不能引用最终原图、变体或其裁片。其余有值维度 MUST 使用准确、可追溯的展示素材。同一素材可由多个匹配作品显式引用，不要求逐作品复制文件；复用不授予穿戴或合成能力。已核实无值的可选维度不要求空值图；有值维度缺图仍为缺口，不能删卡。`sourceRect` 仅作内部制作辅助。候选预览 MUST 保持 `artApproval=pending`，与成品批准和发布资格分别记录。
-
-#### Scenario: 完整作品与揭晓示意的审批边界
-- **WHEN** 已批准 Artwork 使用新制但未批准的线索进入用户复核预览
-- **THEN** 原作品批准和线索 pending 分开保留；预览不增加作品发布范围，不授予线索艺术批准，也不代表本轮全部有效视觉已验收
-
-#### Scenario: 新作品没有某类揭晓视觉
-- **WHEN** 一件完整作品的有值维度缺少独立线索图
-- **THEN** 保留该事实及应显示的卡片需求，记录缺口并排除正式随机资格；不能省略该卡、显示“无”或裁最终原图补位，画廊成品的既有资格单独判断
-
-#### Scenario: 共用中性风格图
-- **WHEN** 多张同身份作品的配色、衣物或配饰不同
-- **THEN** 它们可引用同一中性风格示意；该图只表达身份，不携带某张成品的专属配色、装备或姿态组合，也不改变各作品的真实颜色事实
-
-#### Scenario: 复用通用配饰线索
-- **WHEN** 一个独立眼镜素材被关联到多个实际戴该类眼镜的作品
-- **THEN** 每个关联都核对表达的 Feature、外观语义和资源版本；不匹配的作品不能使用它作最终停卡，无眼镜作品不会因此增加配饰事实
-
-#### Scenario: 合并配饰卡的视觉覆盖
-- **WHEN** 作品的配饰事实含帽子和眼镜，但当前登记素材只表达眼镜
-- **THEN** 该素材不能冒充完整配饰卡；须登记可覆盖全部该卡实际内容的展示视觉，或在同卡中完整展示各已登记线索，不能遗漏事实或伪称组件已装配
-
-#### Scenario: 无值不产生素材负担
-- **WHEN** 可选衣物、配饰或道具类别已核实全部为 none/notApplicable
-- **THEN** 默认抽卡不为该类别请求、显示或要求批准空值图；原始无值事实仍可在搜索、详情和记录中使用
+#### Scenario: Draft 导出期间更新配置
+- **WHEN** 用户在 Draft PNG 导出开始后继续修改配置
+- **THEN** 导出只使用开始时固定的 Artwork 基线、Template revision、选项及渲染快照，或明确取消并要求对最新 revision 重新导出

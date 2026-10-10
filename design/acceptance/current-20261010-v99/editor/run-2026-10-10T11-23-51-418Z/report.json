@@ -1,0 +1,4723 @@
+{
+  "runId": "2026-10-10T11-23-51-418Z",
+  "baseURL": "http://127.0.0.1:62300",
+  "harnessURL": "http://127.0.0.1:62300/__dots_editor_harness__/",
+  "browser": "Project Playwright QA runner with installed local Chrome; separate interactive review used Codex in-app browser.",
+  "viewport": [
+    1440,
+    900
+  ],
+  "sourceManifestSha256": "180fa15e2b117d63989d01b5c1feaf5d72540e2273bf82a0ee9738b72cc6569b",
+  "actualAssetRows": 14,
+  "engineeringReport": {
+    "manifestAssetCount": 14,
+    "templates": [
+      {
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2",
+        "status": "pending",
+        "accessMode": "review-only",
+        "assetCount": 7,
+        "legalCount": 12,
+        "configurations": [
+          {
+            "index": 1,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0",
+            "outputSha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc",
+            "outputByteSize": 1906954,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+            "alphaNonzero": 792092,
+            "alphaTransparent": 780424,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 2,
+              "idleEntries": 2,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 2,
+              "decodedBytes": 12580128,
+              "cachedDecodedBytes": 12580128,
+              "idleDecodedBytes": 12580128,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 12580128,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 2,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "headphones"
+            },
+            "revision": 0,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+            "outputSha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+            "outputByteSize": 2186209,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+            "alphaNonzero": 940692,
+            "alphaTransparent": 631824,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 4,
+              "idleEntries": 4,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 4,
+              "decodedBytes": 25160256,
+              "cachedDecodedBytes": 25160256,
+              "idleDecodedBytes": 25160256,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 25160256,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 3,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:offset=0,0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:offset=0,0",
+            "outputSha256": "af77273c1fcfc7af86fb0cd96510008be48059ee0d4709fd38c863d211883ece",
+            "outputByteSize": 1917136,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+            "alphaNonzero": 792174,
+            "alphaTransparent": 780342,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 6,
+              "idleEntries": 6,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 6,
+              "decodedBytes": 37740384,
+              "cachedDecodedBytes": 37740384,
+              "idleDecodedBytes": 37740384,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 37740384,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 4,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20",
+            "outputSha256": "2537f741362dbef8309134b1ae4d789185d0895dd475ae7f9f2abdc24826c235",
+            "outputByteSize": 1919188,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+            "alphaNonzero": 792096,
+            "alphaTransparent": 780420,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 5,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "headphones"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+            "outputSha256": "f7f4976611860aec1060f7e9c190048e538db308ea97f4b7a6c0cf350c23aa66",
+            "outputByteSize": 2200238,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+            "alphaNonzero": 940697,
+            "alphaTransparent": 631819,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 6,
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:offset=0,0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:offset=0,0",
+            "outputSha256": "1b539aedf91637aa916ae25fbf70bb04a6c49243df16d702a4369fa52116263c",
+            "outputByteSize": 1930991,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+            "alphaNonzero": 792178,
+            "alphaTransparent": 780338,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              1,
+              78,
+              233,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 7,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0",
+            "outputSha256": "3937c558ec7b0f6f96dc5cd2134ed8035f16187000be39fd8f0327af0b191fe3",
+            "outputByteSize": 1663632,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+            "alphaNonzero": 792092,
+            "alphaTransparent": 780424,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 8,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "headphones"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+            "outputSha256": "7e2acd388fb27439d151544d740ece08c65111119b0fd6aa9278b70f85bef950",
+            "outputByteSize": 1977566,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+            "alphaNonzero": 940692,
+            "alphaTransparent": 631824,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 9,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:offset=0,0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:offset=0,0",
+            "outputSha256": "e0e09f4320c0af993492a27492d80ffd6df7f21ffb6004015787f08f9503eeb4",
+            "outputByteSize": 1680673,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+            "alphaNonzero": 792174,
+            "alphaTransparent": 780342,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 10,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20",
+            "outputSha256": "42d8365050df8047814d1a8c508ad6233bf7f7b4f68878a40eb81c6618552eac",
+            "outputByteSize": 1667933,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+            "alphaNonzero": 792096,
+            "alphaTransparent": 780420,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 11,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "headphones"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+            "outputSha256": "b070f07b16eb92fc76dca71bd129d24f151eae9fc2b50d1abda85b280dcb5ddd",
+            "outputByteSize": 1982524,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+            "alphaNonzero": 940697,
+            "alphaTransparent": 631819,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 12,
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:offset=0,0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:offset=0,0",
+            "outputSha256": "6f687d781b14e7edb3da082263a97627edb140ae8380c5559b7700433966c721",
+            "outputByteSize": 1688451,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+            "alphaNonzero": 792178,
+            "alphaTransparent": 780338,
+            "alphaBounds": [
+              0,
+              0,
+              1244,
+              1254
+            ],
+            "bodySampleRGBA": [
+              217,
+              168,
+              17,
+              252
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 7,
+              "idleEntries": 7,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 7,
+              "decodedBytes": 44030448,
+              "cachedDecodedBytes": 44030448,
+              "idleDecodedBytes": 44030448,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 44030448,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          }
+        ],
+        "distinctOutputCount": 12
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2",
+        "status": "pending",
+        "accessMode": "review-only",
+        "assetCount": 7,
+        "legalCount": 16,
+        "configurations": [
+          {
+            "index": 1,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 0,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0",
+            "outputSha256": "8d9388b7696861cb07a287c359a87677636a837d731f24a9d97c2784c63f1355",
+            "outputByteSize": 1316633,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "c965d9887eea5c24c907d64b853421a6b6a631384161bd5a7a7057bdd6548df6",
+            "alphaNonzero": 807821,
+            "alphaTransparent": 764695,
+            "alphaBounds": [
+              0,
+              39,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 9,
+              "idleEntries": 9,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 9,
+              "decodedBytes": 56610576,
+              "cachedDecodedBytes": 56610576,
+              "idleDecodedBytes": 56610576,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 56610576,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 2,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "e4592dabae3374f25ac2157b375ebd02fff68ee2349308294f271ff781d2a9dc",
+            "outputByteSize": 1588598,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "5cb07217572e8e3c703d58f40b1cfa5f32ab6dcde39c8c772ed6f17fffb95874",
+            "alphaNonzero": 845799,
+            "alphaTransparent": 726717,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 3,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46",
+            "outputSha256": "3b9888be54be3ca48f6e85f059d6aa00c79b6094f8e3a18463cd3dcdf4354545",
+            "outputByteSize": 1353004,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "5322ce10439f963e9c75cf08cdbe0b9fcb1ccd513cb78630d847d9070c346075",
+            "alphaNonzero": 811419,
+            "alphaTransparent": 761097,
+            "alphaBounds": [
+              0,
+              24,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 4,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "e2a4abe42597e0f231f89db2f207ed5de8ccf11590da4ae26a44730bca9d0f21",
+            "outputByteSize": 1618073,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "d64b2d44d4c5e1cc38b67455bcbae651d012edb8244ba8f041fd0789bd72a3b6",
+            "alphaNonzero": 849397,
+            "alphaTransparent": 723119,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 5,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0",
+            "outputSha256": "cde8a2f086e02a2185abf7b72c9c3f78817fe8b249b7c5b16a9811a97da95161",
+            "outputByteSize": 1312263,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "ead84b7cc385bb0a44331a7f5e910b1ad52a769c2d82796dbc95f26a19882961",
+            "alphaNonzero": 807865,
+            "alphaTransparent": 764651,
+            "alphaBounds": [
+              0,
+              23,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 6,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "0ec1ed3821c1e2a052e9da7734a789c1af4e3e6101aca7f883e7d44e2043e278",
+            "outputByteSize": 1586344,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "a8b51b34c54c38c36e4829d557e410c54fa54202c5882661d3cc38f41707f6d1",
+            "alphaNonzero": 845843,
+            "alphaTransparent": 726673,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 7,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46",
+            "outputSha256": "23b3fe3558f492b5fc867f5a866c97fd0d980a81a669f469c7ebe8d838e7ce21",
+            "outputByteSize": 1350655,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "ec62f8dad3b90a898fb86e491305cb3595a142aa46d69b0c0b68452bf9623c82",
+            "alphaNonzero": 811463,
+            "alphaTransparent": 761053,
+            "alphaBounds": [
+              0,
+              23,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 8,
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "2399abe346bc0fe4cd63a88e818d4c1a86ac689ac09fc9ff142325b7529a91e8",
+            "outputByteSize": 1616855,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "97da2d7c22dc65fa4b30ce48be78a2ce490242b49e6229394d2c4be898c9a758",
+            "alphaNonzero": 849441,
+            "alphaTransparent": 723075,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              105,
+              62,
+              211,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 9,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0",
+            "outputSha256": "e390997127a732adfbb9ba6e8d03fb31c72fdcfc0692ee2e8cd860277f82edf4",
+            "outputByteSize": 1174588,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "c965d9887eea5c24c907d64b853421a6b6a631384161bd5a7a7057bdd6548df6",
+            "alphaNonzero": 807821,
+            "alphaTransparent": 764695,
+            "alphaBounds": [
+              0,
+              39,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 10,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "8f575dd3116c366311314178a7df78d6a5c4b107013806dbcdcd60ca7b14add7",
+            "outputByteSize": 1482265,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "5cb07217572e8e3c703d58f40b1cfa5f32ab6dcde39c8c772ed6f17fffb95874",
+            "alphaNonzero": 845799,
+            "alphaTransparent": 726717,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 11,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46",
+            "outputSha256": "391924337d878e7c7de0292012e56e0dd17b528f9ce5b069130d268151c62218",
+            "outputByteSize": 1216118,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "5322ce10439f963e9c75cf08cdbe0b9fcb1ccd513cb78630d847d9070c346075",
+            "alphaNonzero": 811419,
+            "alphaTransparent": 761097,
+            "alphaBounds": [
+              0,
+              24,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 12,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:angled-capsules@v1:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "6a344fbf0d5b121acedc39d721cd7e3edd48a20acd29b5c3336f80faabdf7d6b",
+            "outputByteSize": 1517495,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "d64b2d44d4c5e1cc38b67455bcbae651d012edb8244ba8f041fd0789bd72a3b6",
+            "alphaNonzero": 849397,
+            "alphaTransparent": 723119,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 13,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0",
+            "outputSha256": "9c1f0b1bd452de65953062d93e6ca3513ad54a772ce6c74b5d44abe4162dbb19",
+            "outputByteSize": 1169493,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "ead84b7cc385bb0a44331a7f5e910b1ad52a769c2d82796dbc95f26a19882961",
+            "alphaNonzero": 807865,
+            "alphaTransparent": 764651,
+            "alphaBounds": [
+              0,
+              23,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 14,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "2ac0409ab46a36c8f5c3c2ebe51058fbca26170da7ca1aca7148434dadaeb999",
+            "outputByteSize": 1480957,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "a8b51b34c54c38c36e4829d557e410c54fa54202c5882661d3cc38f41707f6d1",
+            "alphaNonzero": 845843,
+            "alphaTransparent": 726673,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 15,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46",
+            "outputSha256": "de8d0975f1b66cecc31126d5bef24810f92f463c22669dcdc642bf801c50b1e5",
+            "outputByteSize": 1213352,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "ec62f8dad3b90a898fb86e491305cb3595a142aa46d69b0c0b68452bf9623c82",
+            "alphaNonzero": 811463,
+            "alphaTransparent": 761053,
+            "alphaBounds": [
+              0,
+              23,
+              1220,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          },
+          {
+            "index": 16,
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            },
+            "revision": 1,
+            "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+            "outputSha256": "7de33d3187fdba4d15e006c1efc7275ab72d1d42b7b07fd29185d49224fbe853",
+            "outputByteSize": 1516724,
+            "previewAndExportSha256Match": true,
+            "canvas": [
+              1254,
+              1254
+            ],
+            "alphaSha256": "97da2d7c22dc65fa4b30ce48be78a2ce490242b49e6229394d2c4be898c9a758",
+            "alphaNonzero": 849441,
+            "alphaTransparent": 723075,
+            "alphaBounds": [
+              0,
+              4,
+              1228,
+              1254
+            ],
+            "bodySampleRGBA": [
+              76,
+              197,
+              169,
+              253
+            ],
+            "loader": {
+              "activeRequests": 0,
+              "queuedRequests": 0,
+              "pendingRequests": 0,
+              "inFlightKeys": 0,
+              "cacheEntries": 10,
+              "idleEntries": 10,
+              "activeLeases": 0,
+              "objectURLs": 0,
+              "bitmaps": 10,
+              "decodedBytes": 62900640,
+              "cachedDecodedBytes": 62900640,
+              "idleDecodedBytes": 62900640,
+              "pinnedBytes": 0,
+              "reservedBytes": 0,
+              "peakDecodedBytes": 62900640,
+              "maxConcurrent": 4,
+              "maxDecodedBytes": 67108864,
+              "maxIdleEntries": 16,
+              "registeredAssets": 88,
+              "disposed": false
+            }
+          }
+        ],
+        "distinctOutputCount": 16
+      }
+    ],
+    "reviewBackgrounds": [
+      {
+        "templateId": "dots-orb-v1",
+        "options": {
+          "color": "blue",
+          "shape": "orb",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "transparentComposite": "composites/dots-orb-v1-02.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/dots-orb-v1-02-dark.png",
+            "sha256": "e7c9be4ae7ebb44bd51446ec932a1377e1ebf7a929c6d2f651e5681dfd853048"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/dots-orb-v1-02-white.png",
+            "sha256": "296fba2f8b754b92a0664264915cfa7e88e6831463e71fe10e7b48c846bd48ef"
+          }
+        ]
+      },
+      {
+        "templateId": "dots-orb-v1",
+        "options": {
+          "color": "blue",
+          "shape": "orb",
+          "eyes": "original",
+          "glasses": "round",
+          "accessory": "none"
+        },
+        "transparentComposite": "composites/dots-orb-v1-03.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/dots-orb-v1-03-dark.png",
+            "sha256": "ecd48a838516d935d0f9a37b80aaacf87f00e4d0b5bd8a6a2469d1224c164092"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/dots-orb-v1-03-white.png",
+            "sha256": "6b7c8518f29589006142fed229a79b8289807fbedb16e9fa4a822fcc5880f984"
+          }
+        ]
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "options": {
+          "color": "purple",
+          "shape": "orb",
+          "eyes": "angled-capsules",
+          "glasses": "none",
+          "accessory": "none"
+        },
+        "transparentComposite": "composites/grok-orb-v1-01.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/grok-orb-v1-01-dark.png",
+            "sha256": "b7bdd00c738482afbe5814207682f53852fb962bda570b8019c90f8d3ccd0a55"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/grok-orb-v1-01-white.png",
+            "sha256": "abc19ac25041d8c1bcbb0e45d4f54962ec73ab8cbe6ff0088ef5a00d85a96326"
+          }
+        ]
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "options": {
+          "color": "purple",
+          "shape": "orb",
+          "eyes": "angled-capsules",
+          "glasses": "none",
+          "accessory": "soft-cap"
+        },
+        "transparentComposite": "composites/grok-orb-v1-02.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/grok-orb-v1-02-dark.png",
+            "sha256": "0822749c8fec62a106971ce03fa5dc8f0e8e4c520a5613013519dabadca67d9a"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/grok-orb-v1-02-white.png",
+            "sha256": "7e6cd8290dd7650ba989261e51b500b5282efdb5e9426d2362fb9a884e8597cf"
+          }
+        ]
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "options": {
+          "color": "purple",
+          "shape": "orb",
+          "eyes": "angled-capsules",
+          "glasses": "round",
+          "accessory": "none"
+        },
+        "transparentComposite": "composites/grok-orb-v1-03.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/grok-orb-v1-03-dark.png",
+            "sha256": "19a0fe0015c8a97222f8a4a61037ce67399ae995720c6451b18c88c5884a412b"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/grok-orb-v1-03-white.png",
+            "sha256": "d5cc1c38d13e6c8f8496e9f21584c025f05882b8a9be40ad5eecc34edb9edd18"
+          }
+        ]
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "options": {
+          "color": "purple",
+          "shape": "orb",
+          "eyes": "angled-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "transparentComposite": "composites/grok-orb-v1-04.png",
+        "backgrounds": [
+          {
+            "name": "dark",
+            "path": "review-backgrounds/grok-orb-v1-04-dark.png",
+            "sha256": "a9bc4b2ca76e12428caf56f9b3b62df7bf3a66ba2bdeea8208370f055c792dcc"
+          },
+          {
+            "name": "white",
+            "path": "review-backgrounds/grok-orb-v1-04-white.png",
+            "sha256": "0409ffa2cda6be28be6ac87f2cf397e85f0a7883a4029cf07865f1f137abde26"
+          }
+        ]
+      }
+    ],
+    "loaderBeforeRelease": {
+      "activeRequests": 0,
+      "queuedRequests": 0,
+      "pendingRequests": 0,
+      "inFlightKeys": 0,
+      "cacheEntries": 10,
+      "idleEntries": 10,
+      "activeLeases": 0,
+      "objectURLs": 0,
+      "bitmaps": 10,
+      "decodedBytes": 62900640,
+      "cachedDecodedBytes": 62900640,
+      "idleDecodedBytes": 62900640,
+      "pinnedBytes": 0,
+      "reservedBytes": 0,
+      "peakDecodedBytes": 62900640,
+      "maxConcurrent": 4,
+      "maxDecodedBytes": 67108864,
+      "maxIdleEntries": 16,
+      "registeredAssets": 88,
+      "disposed": false
+    },
+    "loaderAfterRelease": {
+      "activeRequests": 0,
+      "queuedRequests": 0,
+      "pendingRequests": 0,
+      "inFlightKeys": 0,
+      "cacheEntries": 0,
+      "idleEntries": 0,
+      "activeLeases": 0,
+      "objectURLs": 0,
+      "bitmaps": 0,
+      "decodedBytes": 0,
+      "cachedDecodedBytes": 0,
+      "idleDecodedBytes": 0,
+      "pinnedBytes": 0,
+      "reservedBytes": 0,
+      "peakDecodedBytes": 62900640,
+      "maxConcurrent": 4,
+      "maxDecodedBytes": 67108864,
+      "maxIdleEntries": 16,
+      "registeredAssets": 88,
+      "disposed": true
+    }
+  },
+  "editingCycles": {
+    "cycles": [
+      {
+        "index": 1,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-1.png",
+        "exportFile": "run-2026-10-10T11-23-51-418Z/downloads/cycle-01.png",
+        "exportBytes": 2186209
+      },
+      {
+        "index": 2,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-2.png"
+      },
+      {
+        "index": 3,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-3.png"
+      },
+      {
+        "index": 4,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-4.png"
+      },
+      {
+        "index": 5,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-5.png"
+      },
+      {
+        "index": 6,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-6.png"
+      },
+      {
+        "index": 7,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-7.png"
+      },
+      {
+        "index": 8,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-8.png"
+      },
+      {
+        "index": 9,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-9.png"
+      },
+      {
+        "index": 10,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-10.png"
+      },
+      {
+        "index": 11,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-11.png"
+      },
+      {
+        "index": 12,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-12.png"
+      },
+      {
+        "index": 13,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-13.png"
+      },
+      {
+        "index": 14,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-14.png"
+      },
+      {
+        "index": 15,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-15.png"
+      },
+      {
+        "index": 16,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-16.png"
+      },
+      {
+        "index": 17,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-17.png"
+      },
+      {
+        "index": 18,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-18.png"
+      },
+      {
+        "index": 19,
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "options": {
+          "color": "blue",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        },
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "disabledDuringPending": true,
+        "abortedFetches": 0,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 4,
+          "idleEntries": 4,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 4,
+          "decodedBytes": 25160256,
+          "cachedDecodedBytes": 25160256,
+          "idleDecodedBytes": 25160256,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 25160256,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-dots-20261005-dots-orb-v1-cycle-19.png"
+      },
+      {
+        "index": 20,
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "options": {
+          "color": "mint",
+          "eyes": "upright-capsules",
+          "glasses": "round",
+          "accessory": "soft-cap"
+        },
+        "revision": 4,
+        "recipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+        "disabledDuringPending": true,
+        "abortedFetches": 2,
+        "statsBeforeExport": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterDestroy": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 6,
+          "idleEntries": 6,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 6,
+          "decodedBytes": 37740384,
+          "cachedDecodedBytes": 37740384,
+          "idleDecodedBytes": 37740384,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": false
+        },
+        "statsAfterRelease": {
+          "activeRequests": 0,
+          "queuedRequests": 0,
+          "pendingRequests": 0,
+          "inFlightKeys": 0,
+          "cacheEntries": 0,
+          "idleEntries": 0,
+          "activeLeases": 0,
+          "objectURLs": 0,
+          "bitmaps": 0,
+          "decodedBytes": 0,
+          "cachedDecodedBytes": 0,
+          "idleDecodedBytes": 0,
+          "pinnedBytes": 0,
+          "reservedBytes": 0,
+          "peakDecodedBytes": 37740384,
+          "maxConcurrent": 4,
+          "maxDecodedBytes": 67108864,
+          "maxIdleEntries": 16,
+          "registeredAssets": 81,
+          "disposed": true
+        },
+        "expectedFilename": "candidate-grok-20261005-grok-orb-v1-cycle-20.png",
+        "exportFile": "run-2026-10-10T11-23-51-418Z/downloads/cycle-20.png",
+        "exportBytes": 1516724
+      }
+    ],
+    "totalAbortCount": 20
+  },
+  "editorRaces": {
+    "outOfOrder": {
+      "sequence": [
+        "closed",
+        "original",
+        "closed"
+      ],
+      "delayedClosedEyeFetches": 2,
+      "firstPendingExportDisabled": true,
+      "latestPendingExportDisabled": true,
+      "latestSnapshot": {
+        "revision": 3,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "options": {
+          "color": "blue",
+          "shape": "orb",
+          "eyes": "closed",
+          "glasses": "none",
+          "accessory": "headphones"
+        }
+      },
+      "latestDraftRevision": 3,
+      "lateCompletionStatusCountUnchanged": true,
+      "loaderAfterLateCompletion": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 5,
+        "idleEntries": 5,
+        "activeLeases": 0,
+        "objectURLs": 0,
+        "bitmaps": 5,
+        "decodedBytes": 31450320,
+        "cachedDecodedBytes": 31450320,
+        "idleDecodedBytes": 31450320,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 31450320,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 7,
+        "disposed": false
+      }
+    },
+    "latestFailure": {
+      "canExport": false,
+      "exportDisabled": true,
+      "snapshot": null,
+      "retryVisible": true,
+      "error": {
+        "code": "missing-template-layer",
+        "assetId": "template:dots-orb-v1:eyes:closed"
+      },
+      "retry": {
+        "canExport": true,
+        "snapshot": {
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "headphones"
+          }
+        }
+      }
+    },
+    "closeLateCallback": {
+      "delayedLateFetches": 1,
+      "oldSessionStatusCountUnchanged": true,
+      "replacementSession": {
+        "revision": 0,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "options": {
+          "color": "blue",
+          "shape": "orb",
+          "eyes": "original",
+          "glasses": "none",
+          "accessory": "headphones"
+        }
+      },
+      "oldLoaderBeforeRelease": {
+        "activeRequests": 0,
+        "queuedRequests": 0,
+        "pendingRequests": 0,
+        "inFlightKeys": 0,
+        "cacheEntries": 4,
+        "idleEntries": 4,
+        "activeLeases": 0,
+        "objectURLs": 0,
+        "bitmaps": 4,
+        "decodedBytes": 25160256,
+        "cachedDecodedBytes": 25160256,
+        "idleDecodedBytes": 25160256,
+        "pinnedBytes": 0,
+        "reservedBytes": 0,
+        "peakDecodedBytes": 25160256,
+        "maxConcurrent": 4,
+        "maxDecodedBytes": 67108864,
+        "maxIdleEntries": 16,
+        "registeredAssets": 7,
+        "disposed": false
+      }
+    }
+  },
+  "flows": [
+    {
+      "artwork": {
+        "id": "candidate-dots-20261005",
+        "version": "v2",
+        "originalSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+      },
+      "initialViewPreview": {
+        "src": "blob:http://127.0.0.1:62300/893c25fc-e763-4ed8-83a0-59b8a038be16",
+        "width": 1024,
+        "height": 1024,
+        "assetRequests": [
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png"
+        ]
+      },
+      "editedOptions": {
+        "color": "warm-yellow",
+        "shape": "orb",
+        "eyes": "closed",
+        "glasses": "none",
+        "accessory": "none"
+      },
+      "editedRevision": 3,
+      "editedRecipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20",
+      "editedPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-dots-20261005-dots-orb-v1-draft-r3.png",
+        "filename": "candidate-dots-20261005-dots-orb-v1-draft-r3.png",
+        "sha256": "42d8365050df8047814d1a8c508ad6233bf7f7b4f68878a40eb81c6618552eac",
+        "byteSize": 1667933,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "originalDownload": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-dots-20261005.png",
+        "filename": "candidate-dots-20261005.png",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "byteSize": 1720054,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "viewEditRetainedSession": true,
+      "viewEditRetainedRevision": true,
+      "previewStillNotOriginal": true
+    },
+    {
+      "artwork": {
+        "id": "candidate-grok-20261005",
+        "version": "v2",
+        "originalSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+      },
+      "initialViewPreview": {
+        "src": "blob:http://127.0.0.1:62300/82d42bba-c45b-498a-8d07-86228afbfe77",
+        "width": 1024,
+        "height": 1024,
+        "assetRequests": [
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+          "http://127.0.0.1:62300/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+          "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png"
+        ]
+      },
+      "editedOptions": {
+        "color": "mint",
+        "shape": "orb",
+        "eyes": "upright-capsules",
+        "glasses": "round",
+        "accessory": "soft-cap"
+      },
+      "editedRevision": 4,
+      "editedRecipeKey": "studio-renderer-20261010-v99|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:offset=0,0|template:grok-orb-v1:eyes:upright-capsules@v1:29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466:offset=0,0|template:grok-orb-v1:glasses:round:rear@v1:2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2:offset=0,-46|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:offset=0,-46|template:grok-orb-v1:cap:soft:rear@v1:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:offset=0,-75|template:grok-orb-v1:cap:soft:front@v1:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:offset=0,-90",
+      "editedPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-grok-20261005-grok-orb-v1-draft-r4.png",
+        "filename": "candidate-grok-20261005-grok-orb-v1-draft-r4.png",
+        "sha256": "7de33d3187fdba4d15e006c1efc7275ab72d1d42b7b07fd29185d49224fbe853",
+        "byteSize": 1516724,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "originalDownload": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-grok-20261005.png",
+        "filename": "candidate-grok-20261005.png",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "byteSize": 971168,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "viewEditRetainedSession": true,
+      "viewEditRetainedRevision": true,
+      "previewStillNotOriginal": true
+    }
+  ],
+  "journeyVideos": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "editedPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-dots-20261005-dots-orb-v1-draft-r3.png",
+        "filename": "candidate-dots-20261005-dots-orb-v1-draft-r3.png",
+        "sha256": "42d8365050df8047814d1a8c508ad6233bf7f7b4f68878a40eb81c6618552eac",
+        "byteSize": 1667933,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "originalPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-dots-20261005.png",
+        "filename": "candidate-dots-20261005.png",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "byteSize": 1720054,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "video": "run-2026-10-10T11-23-51-418Z/video-segments/dots-app-png-app-journey.webm",
+      "order": [
+        "CharacterStudio View",
+        "Edit and export PNG",
+        "open exported PNG in browser image viewer",
+        "reopen same Artwork in View",
+        "download byte-identical original PNG"
+      ]
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "editedPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-grok-20261005-grok-orb-v1-draft-r4.png",
+        "filename": "candidate-grok-20261005-grok-orb-v1-draft-r4.png",
+        "sha256": "7de33d3187fdba4d15e006c1efc7275ab72d1d42b7b07fd29185d49224fbe853",
+        "byteSize": 1516724,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "originalPNG": {
+        "filePath": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/editor/run-2026-10-10T11-23-51-418Z/downloads/candidate-grok-20261005.png",
+        "filename": "candidate-grok-20261005.png",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "byteSize": 971168,
+        "header": {
+          "width": 1254,
+          "height": 1254,
+          "bitDepth": 8,
+          "colorType": 6
+        }
+      },
+      "video": "run-2026-10-10T11-23-51-418Z/video-segments/grok-app-png-app-journey.webm",
+      "order": [
+        "CharacterStudio View",
+        "Edit and export PNG",
+        "open exported PNG in browser image viewer",
+        "reopen same Artwork in View",
+        "download byte-identical original PNG"
+      ]
+    }
+  ],
+  "dirtyExitGuards": {
+    "tested": [
+      {
+        "name": "Escape",
+        "message": "Discard the unsaved changes to this character?"
+      },
+      {
+        "name": "overlay close",
+        "message": "Discard the unsaved changes to this character?"
+      },
+      {
+        "name": "overlay back",
+        "message": "Discard the unsaved changes to this character?"
+      },
+      {
+        "name": "guide navigation",
+        "message": "Discard the unsaved changes to this character?"
+      },
+      {
+        "name": "related Artwork navigation",
+        "message": "Discard the unsaved changes to this character?"
+      }
+    ],
+    "dirtyState": {
+      "dirty": true,
+      "hash": "#/artwork/candidate-dots-20261005?v=v2&mode=edit"
+    }
+  },
+  "observedDisplayAndTemplateRequests": [
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/body-neutral.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/original.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/rear.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/front.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/glasses/round-rear.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/glasses/round-front.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/closed.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/body-neutral.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/angled-capsules.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/rear.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/front.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-front.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "segmentName": "real-28-recipes"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/rear.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/body-neutral.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/original.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/front.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/closed.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "segmentName": "dots-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/body-neutral.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/angled-capsules.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/rear.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-front.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/front.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "segmentName": "grok-view-edit-export"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/rear.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/body-neutral.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/original.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/front.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/closed.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+      "segmentName": "dots-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/body-neutral.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/angled-capsules.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-rear.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/rear.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/glasses/round-front.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/grok-orb-v1/cap/front.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-grok-20261005-detail1024-v99.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+      "segmentName": "grok-app-png-app-journey"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-meta-muse-20261005-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-humans-20261005-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/candidate-animals-20261005-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-rose-glasses-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/dots-lilac-bucket-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/grok-teal-square-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-rose-flowers-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/muse-sage-reading-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-bun-yellow-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/human-blond-glasses-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-white-cat-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/animal-gray-husky-thumb256-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/previews/candidate-dots-20261005-detail1024-v99.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/posters/brand-mark-display-v1.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/sources.json",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/rear.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/body-neutral.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/eyes/original.png",
+      "segmentName": "dirty-exit-guards"
+    },
+    {
+      "url": "http://127.0.0.1:62300/assets/templates/dots-orb-v1/headphones/front.png",
+      "segmentName": "dirty-exit-guards"
+    }
+  ],
+  "consoleErrors": [],
+  "browserFailures": [],
+  "httpFailures": [],
+  "videoSegments": [
+    {
+      "segmentName": "real-28-recipes",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/real-28-recipes.webm"
+    },
+    {
+      "segmentName": "dots-view-edit-export",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/dots-app-flow.webm"
+    },
+    {
+      "segmentName": "grok-view-edit-export",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/grok-app-flow.webm"
+    },
+    {
+      "segmentName": "dots-app-png-app-journey",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/dots-app-png-app-journey.webm"
+    },
+    {
+      "segmentName": "grok-app-png-app-journey",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/grok-app-png-app-journey.webm"
+    },
+    {
+      "segmentName": "dirty-exit-guards",
+      "path": "run-2026-10-10T11-23-51-418Z/video-segments/dirty-exit-guards.webm"
+    }
+  ]
+}

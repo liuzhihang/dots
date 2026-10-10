@@ -1,0 +1,16 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+locator.evaluate: Error: strict mode violation: locator('.studio-editor-controls') resolved to 2 elements:
+    1) <div class="studio-editor-controls">…</div> aka locator('div').filter({ hasText: 'Customize this artworkReview' }).nth(3)
+    2) <section lang="en" data-can-export="true" data-review-only="true" data-template-version="v1" class="studio-editor-controls" data-template-id="dots-orb-v1" aria-label="Character artwork editor">…</section> aka getByRole('region', { name: 'Character artwork editor' })
+
+Call log:
+[2m  - waiting for locator('.studio-editor-controls')[22m
+
+    at /Users/liuzhihang/workspace/dots/scripts/verify-editor-layout.mjs:26:406 {
+  log: [ "  - waiting for locator('.studio-editor-controls')" ]
+}
+
+Node.js v23.11.0

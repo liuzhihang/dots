@@ -1,4 +1,4 @@
-import { getAsset } from './studio-artwork-catalog.js?v=98';
+import { getAsset } from './studio-artwork-catalog.js?v=99';
 
 const PNG_SIGNATURE = [137, 80, 78, 71, 13, 10, 26, 10];
 const abortError = () => new DOMException('资源校验已取消。', 'AbortError');
@@ -82,8 +82,8 @@ async function decodeBlob(blob, signal) {
   }
 }
 
-function registeredAsset(assetOrRef) {
-  const asset = getAsset(assetOrRef);
+function registeredAsset(assetOrRef, resolveAsset = getAsset) {
+  const asset = resolveAsset(assetOrRef);
   if (!asset) throw new Error('资源记录与 Artwork 目录中的 ID、版本、路径或 SHA-256 不匹配。');
   assetUrl(asset);
   const png = asset.mime === 'image/png' && asset.path.toLowerCase().endsWith('.png');
@@ -92,9 +92,9 @@ function registeredAsset(assetOrRef) {
 }
 
 /** Fetch and verify registered source bytes, MIME, dimensions, SHA-256 and browser decode. */
-export async function loadAsset(assetOrRef, { signal } = {}) {
+export async function loadAsset(assetOrRef, { signal, resolveAsset = getAsset } = {}) {
   throwIfAborted(signal);
-  const asset = registeredAsset(assetOrRef);
+  const asset = registeredAsset(assetOrRef, resolveAsset);
   const response = await fetch(assetUrl(asset), { signal, credentials: 'same-origin', cache: 'no-cache' });
   throwIfAborted(signal);
   if (!response.ok) throw new Error(`原图读取失败（HTTP ${response.status}）。`);
@@ -127,11 +127,11 @@ export async function loadAsset(assetOrRef, { signal } = {}) {
 }
 
 /** Download the verified original Blob without re-encoding or flattening alpha. */
-export async function downloadAsset(assetOrRef, { signal } = {}) {
+export async function downloadAsset(assetOrRef, { signal, resolveAsset = getAsset } = {}) {
   if (typeof document === 'undefined' || !document.body) throw new Error('当前环境无法启动浏览器原图下载。');
-  const original = registeredAsset(assetOrRef);
+  const original = registeredAsset(assetOrRef, resolveAsset);
   if (original.mime !== 'image/png' || original.displayOnly === true) throw new Error('特征示意仅供展示；下载必须使用作品 PNG 原图。');
-  const loaded = await loadAsset(original, { signal });
+  const loaded = await loadAsset(original, { signal, resolveAsset });
   try {
     throwIfAborted(signal);
     const anchor = document.createElement('a');

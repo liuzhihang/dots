@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-10",
+  "tool": "builtin image_gen",
+  "checks": "Pillow/numpy read-only; no raster changes",
+  "approvedCatalogBefore": 15,
+  "newIndependentArtworkCandidates": 5,
+  "galleryTargetAfterIndividualApproval": 20,
+  "templateRecipeCountExcluded": 28,
+  "notAnArtworkCount": "7 files include 2 unselected iterations",
+  "assets": [
+    {
+      "file": "generated/animal-cocoa-bear-candidate-v1.png",
+      "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+      "bytes": 956169,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1136537,
+        "opaquePixels": 5,
+        "partialPixels": 435974,
+        "bboxAt16": [
+          264,
+          243,
+          1001,
+          1057
+        ],
+        "nonzeroOutsideBbox16": 1056,
+        "maxOutsideBbox16": 14
+      },
+      "selectedForArtReview": true,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/dots-butter-beret-candidate-v1.png",
+      "sha256": "3ee3be75430fa0b07625e78a73bb167f6545a153349f2789324b2148acb7567e",
+      "bytes": 1618121,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 817819,
+        "opaquePixels": 108,
+        "partialPixels": 754589,
+        "bboxAt16": [
+          113,
+          144,
+          1141,
+          1130
+        ],
+        "nonzeroOutsideBbox16": 2621,
+        "maxOutsideBbox16": 4
+      },
+      "selectedForArtReview": false,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/dots-butter-beret-candidate-v2.png",
+      "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+      "bytes": 1541746,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 816738,
+        "opaquePixels": 438,
+        "partialPixels": 755340,
+        "bboxAt16": [
+          107,
+          143,
+          1145,
+          1129
+        ],
+        "nonzeroOutsideBbox16": 2680,
+        "maxOutsideBbox16": 9
+      },
+      "selectedForArtReview": true,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/grok-coral-drop-candidate-v1-initial.png",
+      "sha256": "a334dcd3a88451d4088ebc470cffe91c76b34b8f46745a47d42cb5ba4fead1cb",
+      "bytes": 918548,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 898432,
+        "opaquePixels": 459,
+        "partialPixels": 673625,
+        "bboxAt16": [
+          174,
+          124,
+          1081,
+          1134
+        ],
+        "nonzeroOutsideBbox16": 4131,
+        "maxOutsideBbox16": 9
+      },
+      "selectedForArtReview": false,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/grok-coral-drop-candidate-v1.png",
+      "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+      "bytes": 871631,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 904562,
+        "opaquePixels": 976,
+        "partialPixels": 666978,
+        "bboxAt16": [
+          166,
+          125,
+          1088,
+          1135
+        ],
+        "nonzeroOutsideBbox16": 666,
+        "maxOutsideBbox16": 14
+      },
+      "selectedForArtReview": true,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/human-rust-jacket-candidate-v1.png",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "bytes": 944230,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1133821,
+        "opaquePixels": 1423,
+        "partialPixels": 437272,
+        "bboxAt16": [
+          305,
+          20,
+          908,
+          1223
+        ],
+        "nonzeroOutsideBbox16": 1042,
+        "maxOutsideBbox16": 9
+      },
+      "selectedForArtReview": true,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    },
+    {
+      "file": "generated/muse-lavender-lantern-candidate-v1.png",
+      "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+      "bytes": 1014161,
+      "mime": "image/png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroPixels": 1033310,
+        "opaquePixels": 101,
+        "partialPixels": 539105,
+        "bboxAt16": [
+          306,
+          121,
+          951,
+          1127
+        ],
+        "nonzeroOutsideBbox16": 2948,
+        "maxOutsideBbox16": 10
+      },
+      "selectedForArtReview": true,
+      "artApproval": "pending",
+      "productionReady": false,
+      "templateBinding": null,
+      "catalogIntegration": "not-applied"
+    }
+  ]
+}

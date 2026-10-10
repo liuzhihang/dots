@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-11",
+  "authorization": [
+    "发布到站点，并归档 ，提交代码",
+    "用户确认 ok",
+    "要归档所有 change 当前版本确认 OK"
+  ],
+  "baselineHead": "b84e3db203a525755a839c100ec5bca8238f3fa3",
+  "changeSource": "openspec/changes/simplify-reveal-cards-and-staging",
+  "changeArchive": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging",
+  "specFiles": [
+    "openspec/specs/artwork-catalog/spec.md",
+    "openspec/specs/bounded-character-editing/spec.md",
+    "openspec/specs/catalog-tags/spec.md",
+    "openspec/specs/character-contact-and-motion/spec.md",
+    "openspec/specs/character-families/spec.md",
+    "openspec/specs/character-visual-acceptance/spec.md",
+    "openspec/specs/family-navigation/spec.md",
+    "openspec/specs/fullscreen-randomizer/spec.md",
+    "openspec/specs/reference-creation/spec.md",
+    "openspec/specs/studio-creation-experience/spec.md",
+    "openspec/specs/studio-visual-experience/spec.md",
+    "openspec/specs/target-resources/spec.md"
+  ],
+  "retiredSpecs": [
+    {
+      "from": "openspec/specs/fullscreen-randomizer/spec.md",
+      "preservedAt": "design/acceptance/current-20261010-v99/release-20261011/before/openspec/specs/fullscreen-randomizer/spec.md",
+      "sha256": "3c7350868d6ecbd84e47446bd79959f0816100c861954d7b1bb4b69b46bfea68"
+    }
+  ],
+  "boundaries": {
+    "siteProjectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "preserveAccess": "public",
+    "localCommit": true,
+    "sitesSourcePush": true,
+    "githubPush": false,
+    "preserveHistoricalBytes": true
+  }
+}

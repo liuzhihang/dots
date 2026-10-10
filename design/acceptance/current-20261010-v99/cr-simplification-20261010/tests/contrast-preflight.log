@@ -1,0 +1,16 @@
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+page.evaluate: ReferenceError: threshold is not defined
+    at eval (eval at evaluate (:311:30), <anonymous>:30:59)
+    at Array.map (<anonymous>)
+    at eval (eval at evaluate (:311:30), <anonymous>:30:19)
+    at UtilityScript.evaluate (<anonymous>:313:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+    at contrastSample (/Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:21:28)
+    at /Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:141:11 {
+  log: []
+}
+
+Node.js v23.11.0

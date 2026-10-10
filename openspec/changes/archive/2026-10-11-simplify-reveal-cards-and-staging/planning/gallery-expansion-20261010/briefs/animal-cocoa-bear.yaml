@@ -1,0 +1,105 @@
+briefVersion: 1
+request:
+  summary: 各系列新增1件独立完整静态外观候选
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: animal-cocoa-bear
+  seriesId: animals
+  identity: new
+  differenceFromExisting: 新增圆耳熊物种，区别于柴犬、猫、哈士奇
+  invariants:
+  - 保留系列身份与完整轮廓；无模板不伪造编辑能力
+artwork:
+  proposedId: animal-cocoa-bear
+  proposedVersion: v1
+  name:
+    en: Cocoa Bear
+    zh-CN: 可可熊
+  description:
+    en: null
+    zh-CN: 可可棕圆耳熊，奶油口鼻，四掌坐姿，无衣饰
+  aliases:
+    en: []
+    zh-CN: []
+references:
+- path: openspec/changes/simplify-reveal-cards-and-staging/planning/material-production-20261010/references/27-Photo-27.jpg
+  sha256: 319062053b1c96a2be8109c3f0e191d0c9437d4817f71d57fec1a80b24473eed
+  role: appearance inspiration; see exact prompt mapping
+  license: unknown
+creation:
+  prompt: See prompts/animal-cocoa-bear-candidate-v1-prompts.md for exact call text,
+    input roles and original output paths
+  negativeConstraints: []
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations:
+  - generated/animal-cocoa-bear-candidate-v1.png
+facts:
+  characterStyle:
+    state: known
+    evidence: animals
+  appearance:
+    state: known
+    evidence: seated bear with four paws
+  facialFeatures:
+    state: known
+    evidence: brown eyes and cream muzzle
+  colorMaterial:
+    state: known
+    evidence: cocoa brown short fur
+  clothing:
+    state: none
+    evidence: none
+  headAccessory:
+    state: none
+    evidence: none
+  bodyAccessory:
+    state: none
+    evidence: none
+  prop:
+    state: none
+    evidence: none
+resources:
+  original:
+    sha256: 3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57
+    mime: image/png
+    bytes: 956169
+    width: 1254
+    height: 1254
+    path: generated/animal-cocoa-bear-candidate-v1.png
+    alphaCheck:
+      min: 0
+      max: 255
+      zeroPixels: 1136537
+      opaquePixels: 5
+      partialPixels: 435974
+      bboxAt16:
+      - 264
+      - 243
+      - 1001
+      - 1057
+      nonzeroOutsideBbox16: 1056
+      maxOutsideBbox16: 14
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: prompts/animal-cocoa-bear-candidate-v1-prompts.md
+  license: unknown
+  engineering: read-only file/alpha/hash checked; integration not run
+  visualReview: initial inspected; edge/composition notes in README; not final approval
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

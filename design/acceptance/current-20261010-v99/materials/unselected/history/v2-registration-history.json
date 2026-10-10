@@ -1,0 +1,514 @@
+{
+  "priorManifestSha256": "180fa15e2b117d63989d01b5c1feaf5d72540e2273bf82a0ee9738b72cc6569b",
+  "currentManifestSha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f",
+  "changes": [
+    {
+      "id": "template:grok-orb-v1:eyes:angled-capsules",
+      "prior": {
+        "id": "template:grok-orb-v1:eyes:angled-capsules",
+        "version": "v1",
+        "path": "./assets/templates/grok-orb-v1/eyes/angled-capsules.png",
+        "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+        "byteSize": 109511,
+        "width": 1254,
+        "height": 1254,
+        "mime": "image/png",
+        "purpose": "eyes",
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "bboxAtAlphaThreshold1": [
+            174,
+            184,
+            1174,
+            957
+          ],
+          "bboxAtAlphaThreshold8": [
+            756,
+            344,
+            1019,
+            582
+          ],
+          "bboxAtAlphaThreshold16": [
+            757,
+            345,
+            1017,
+            580
+          ],
+          "bboxAtAlphaThreshold128": [
+            758,
+            346,
+            1016,
+            577
+          ],
+          "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+        },
+        "placement": {
+          "anchor": "canvas",
+          "canvas": [
+            1254,
+            1254
+          ],
+          "offset": [
+            0,
+            0
+          ]
+        },
+        "layerOrder": 40,
+        "owner": {
+          "templateId": "grok-orb-v1",
+          "layer": "eyes:angled-capsules"
+        },
+        "status": "pending",
+        "publicEditable": false,
+        "source": {
+          "method": "imagegen",
+          "sourceCandidatePath": null,
+          "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-c9d379ef-47ba-42e2-b12a-4bffa3dc2a96.png",
+          "referenceRoles": [
+            "no-face Grok body candidate",
+            "approved eye placement guide",
+            "approved Grok white capsule-eye identity"
+          ],
+          "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+          "artApproval": "pending"
+        }
+      },
+      "preservedAt": "design/acceptance/current-20261010-v99/materials/unselected/history/grok-angled-capsules-v1-superseded.png",
+      "selectedVersion": "v2",
+      "selectedPath": "dist/assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+      "selectedSha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          5.75,
+          5
+        ],
+        "transform": {
+          "pivot": [
+            888.5,
+            462
+          ],
+          "scale": [
+            1.17,
+            0.58
+          ],
+          "shear": [
+            0,
+            -0.274
+          ],
+          "rotationDegrees": 0
+        }
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:eyes:upright-capsules",
+      "prior": {
+        "id": "template:grok-orb-v1:eyes:upright-capsules",
+        "version": "v1",
+        "path": "./assets/templates/grok-orb-v1/eyes/upright-capsules.png",
+        "sha256": "29f447d6fd79cff4b4b82b84e48efc190cdb181430e542a57837e460a0544466",
+        "byteSize": 94337,
+        "width": 1254,
+        "height": 1254,
+        "mime": "image/png",
+        "purpose": "eyes",
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "bboxAtAlphaThreshold1": [
+            33,
+            23,
+            1160,
+            1117
+          ],
+          "bboxAtAlphaThreshold8": [
+            780,
+            396,
+            1005,
+            577
+          ],
+          "bboxAtAlphaThreshold16": [
+            780,
+            397,
+            1005,
+            577
+          ],
+          "bboxAtAlphaThreshold128": [
+            781,
+            397,
+            1005,
+            577
+          ],
+          "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+        },
+        "placement": {
+          "anchor": "canvas",
+          "canvas": [
+            1254,
+            1254
+          ],
+          "offset": [
+            0,
+            0
+          ]
+        },
+        "layerOrder": 40,
+        "owner": {
+          "templateId": "grok-orb-v1",
+          "layer": "eyes:upright-capsules"
+        },
+        "status": "pending",
+        "publicEditable": false,
+        "source": {
+          "method": "imagegen",
+          "sourceCandidatePath": null,
+          "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-71d427c4-dad5-4466-a1e8-5061c5441c51.png",
+          "referenceRoles": [
+            "no-face Grok body candidate",
+            "canonical Grok face-area guide",
+            "selected angled-eye overlay"
+          ],
+          "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+          "artApproval": "pending"
+        }
+      },
+      "preservedAt": "design/acceptance/current-20261010-v99/materials/unselected/history/grok-upright-capsules-v1-original.png",
+      "selectedVersion": "v2",
+      "selectedPath": "dist/assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+      "selectedSha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          -18,
+          -117
+        ],
+        "transform": {
+          "pivot": [
+            909,
+            578
+          ],
+          "scale": [
+            1.11,
+            0.75
+          ],
+          "rotationDegrees": -10
+        }
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:glasses:round:rear",
+      "prior": {
+        "id": "template:grok-orb-v1:glasses:round:rear",
+        "version": "v1",
+        "path": "./assets/templates/grok-orb-v1/glasses/round-rear.png",
+        "sha256": "2f19749ff26bb7acbe149aa0dc65d26f44118540390469d928a9ad8ea68b50a2",
+        "byteSize": 86633,
+        "width": 1254,
+        "height": 1254,
+        "mime": "image/png",
+        "purpose": "accessory-rear",
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "bboxAtAlphaThreshold1": [
+            178,
+            111,
+            1200,
+            1069
+          ],
+          "bboxAtAlphaThreshold8": [
+            372,
+            352,
+            1159,
+            715
+          ],
+          "bboxAtAlphaThreshold16": [
+            372,
+            352,
+            1159,
+            715
+          ],
+          "bboxAtAlphaThreshold128": [
+            373,
+            353,
+            1158,
+            714
+          ],
+          "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+        },
+        "placement": {
+          "anchor": "canvas",
+          "canvas": [
+            1254,
+            1254
+          ],
+          "offset": [
+            0,
+            -46
+          ]
+        },
+        "layerOrder": 20,
+        "owner": {
+          "templateId": "grok-orb-v1",
+          "layer": "glasses:round:rear"
+        },
+        "status": "pending",
+        "publicEditable": false,
+        "source": {
+          "method": "imagegen",
+          "sourceCandidatePath": null,
+          "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-0ef6e6bd-ae13-4c3d-8dd8-942eeb996bd7.png",
+          "referenceRoles": [
+            "no-face Grok body candidate",
+            "selected Grok front-frame overlay",
+            "approved Grok default-look placement"
+          ],
+          "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+          "artApproval": "pending"
+        }
+      },
+      "preservedAt": "design/acceptance/current-20261010-v99/materials/unselected/history/grok-round-rear-v1-original.png",
+      "selectedVersion": "v2",
+      "selectedPath": "dist/assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+      "selectedSha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f",
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          482,
+          230
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.536,
+            0.397
+          ],
+          "rotationDegrees": 0
+        }
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:cap:soft:rear",
+      "prior": {
+        "id": "template:grok-orb-v1:cap:soft:rear",
+        "version": "v1",
+        "path": "./assets/templates/grok-orb-v1/cap/rear.png",
+        "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+        "byteSize": 648210,
+        "width": 1254,
+        "height": 1254,
+        "mime": "image/png",
+        "purpose": "accessory-rear",
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "bboxAtAlphaThreshold1": [
+            0,
+            9,
+            1228,
+            1254
+          ],
+          "bboxAtAlphaThreshold8": [
+            236,
+            119,
+            1018,
+            539
+          ],
+          "bboxAtAlphaThreshold16": [
+            237,
+            119,
+            1018,
+            539
+          ],
+          "bboxAtAlphaThreshold128": [
+            237,
+            120,
+            1017,
+            538
+          ],
+          "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+        },
+        "placement": {
+          "anchor": "canvas",
+          "canvas": [
+            1254,
+            1254
+          ],
+          "offset": [
+            0,
+            -75
+          ]
+        },
+        "layerOrder": 10,
+        "owner": {
+          "templateId": "grok-orb-v1",
+          "layer": "cap:soft:rear"
+        },
+        "status": "pending",
+        "publicEditable": false,
+        "source": {
+          "method": "imagegen",
+          "sourceCandidatePath": null,
+          "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-78c3ff56-effa-4351-b629-ea4b8541b163.png",
+          "referenceRoles": [
+            "no-face Grok body candidate",
+            "Grok default-look style/scale guide"
+          ],
+          "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+          "artApproval": "pending"
+        }
+      },
+      "preservedAt": "design/acceptance/current-20261010-v99/materials/unselected/history/grok-cap-rear-v1-original.png",
+      "selectedVersion": "v2",
+      "selectedPath": "dist/assets/templates/grok-orb-v1/cap/rear-v2.png",
+      "selectedSha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -71.25
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            0.75
+          ],
+          "rotationDegrees": 0
+        }
+      }
+    },
+    {
+      "id": "template:grok-orb-v1:cap:soft:front",
+      "prior": {
+        "id": "template:grok-orb-v1:cap:soft:front",
+        "version": "v1",
+        "path": "./assets/templates/grok-orb-v1/cap/front.png",
+        "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+        "byteSize": 222431,
+        "width": 1254,
+        "height": 1254,
+        "mime": "image/png",
+        "purpose": "accessory-front",
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "bboxAtAlphaThreshold1": [
+            89,
+            119,
+            1057,
+            1117
+          ],
+          "bboxAtAlphaThreshold8": [
+            313,
+            364,
+            941,
+            528
+          ],
+          "bboxAtAlphaThreshold16": [
+            313,
+            364,
+            941,
+            527
+          ],
+          "bboxAtAlphaThreshold128": [
+            314,
+            365,
+            940,
+            526
+          ],
+          "edgeReview": "pending; threshold-1 footprint is wider than the visible threshold-16 shape"
+        },
+        "placement": {
+          "anchor": "canvas",
+          "canvas": [
+            1254,
+            1254
+          ],
+          "offset": [
+            0,
+            -90
+          ]
+        },
+        "layerOrder": 60,
+        "owner": {
+          "templateId": "grok-orb-v1",
+          "layer": "cap:soft:front"
+        },
+        "status": "pending",
+        "publicEditable": false,
+        "source": {
+          "method": "imagegen",
+          "sourceCandidatePath": null,
+          "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f8-754b-7882-89ac-e15fcfddb48a/exec-aba09621-2456-4170-8c5a-52258b420028.png",
+          "referenceRoles": [
+            "no-face Grok body candidate",
+            "selected isolated Grok cap-crown layer",
+            "Grok default-look style/scale guide"
+          ],
+          "productionRecord": "design/acceptance/current-20261010-v99/materials/production-log.md",
+          "artApproval": "pending"
+        }
+      },
+      "preservedAt": "design/acceptance/current-20261010-v99/materials/unselected/history/grok-cap-front-v1-original.png",
+      "selectedVersion": "v2",
+      "selectedPath": "dist/assets/templates/grok-orb-v1/cap/front-v2.png",
+      "selectedSha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -82.5
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            0.75
+          ],
+          "rotationDegrees": 0
+        }
+      }
+    }
+  ]
+}

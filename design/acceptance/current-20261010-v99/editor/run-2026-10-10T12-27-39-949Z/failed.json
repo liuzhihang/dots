@@ -1,0 +1,17 @@
+{
+  "runId": "2026-10-10T12-27-39.949Z",
+  "command": "npm run test:editing",
+  "exitCode": 1,
+  "sourceManifestSha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f",
+  "failedAssertion": {
+    "file": "scripts/verify-studio-editing.mjs",
+    "line": 633,
+    "message": "Cycle 1 canceled stale renderer consumers after rapid Draft edits."
+  },
+  "partialEvidence": [
+    "real-28-recipes.json was written before the failure",
+    "Dots and Grok real View/Edit/export/original-download flow evidence and video segments were written before the failure"
+  ],
+  "notACompletePass": true,
+  "diagnosis": "Cycle 1 selected its existing Dots defaults (blue, original eyes, no glasses, headphones), so no Draft revision or stale renderer consumer existed to cancel. The cycle-specific cancellation assertion correctly exposed that the test was not editing every cycle. The next run selects a non-default eye option on every cycle before measuring cancellation."
+}

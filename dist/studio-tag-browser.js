@@ -1,5 +1,5 @@
-import { SERIES } from './studio-content.js?v=98';
-import { normalizeGalleryQuery } from './studio-tags.js?v=98';
+import { SERIES } from './studio-content.js?v=99';
+import { normalizeGalleryQuery } from './studio-tags.js?v=99';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -37,7 +37,7 @@ export function createGalleryFilters(container, { getQuery, onChange, getLocale 
     const button = event.target.closest('[data-series-id]');
     if (!button || !container.contains(button)) return;
     const query = normalizeGalleryQuery(getQuery());
-    onChange({ text: query.text, seriesId: button.dataset.seriesId || '' });
+    onChange({ ...query, seriesId: button.dataset.seriesId || '' });
     render(button.dataset.seriesId || '');
   };
   container.addEventListener('click', click);

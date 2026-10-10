@@ -2,11 +2,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {ASSETS} from '../dist/studio-artwork-catalog.js?v=98';
-import {createMotionController} from '../dist/studio-motion.js?v=98';
+import {ASSETS} from '../dist/studio-artwork-catalog.js?v=99';
+import {createMotionController} from '../dist/studio-motion.js?v=99';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261009-v98/reference-detail');
+const output = path.resolve(process.env.DOTS_EVIDENCE_DIR || 'design/acceptance/current-20261010-v99/cr-polish-20261011/tests/motion');
 const checks = [];
 const check = (condition, label) => { assert.ok(condition, label); checks.push(label); };
 const flush = async () => { await Promise.resolve(); await new Promise(resolve => setImmediate(resolve)); };
@@ -146,5 +146,5 @@ assert.equal(listeners.size, 0);
 check(true, 'The production catalog remains static and controller teardown removes browser listeners.');
 
 await fs.mkdir(output, {recursive: true});
-await fs.writeFile(path.join(output, 'motion-report.json'), JSON.stringify({revision: 98, productionAnimationCount: unsupportedAssets.length, checks, pauseReasons: ['offscreen', 'pageHidden', 'detailOpen', 'reducedMotion', 'user']}, null, 2) + '\n');
+await fs.writeFile(path.join(output, 'motion-report.json'), JSON.stringify({revision: 99, productionAnimationCount: unsupportedAssets.length, checks, pauseReasons: ['offscreen', 'pageHidden', 'detailOpen', 'reducedMotion', 'user']}, null, 2) + '\n');
 console.log(`Motion controller checks passed: ${checks.length}; production animations: ${unsupportedAssets.length}.`);

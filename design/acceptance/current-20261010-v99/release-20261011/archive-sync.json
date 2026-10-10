@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "recordedAtLocal": "2026-10-11",
+  "change": "simplify-reveal-cards-and-staging",
+  "sourceDirectory": "openspec/changes/simplify-reveal-cards-and-staging",
+  "plannedArchiveDirectory": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging",
+  "archiveExecuted": true,
+  "sync": {
+    "instructionsCommand": "openspec instructions specs --change simplify-reveal-cards-and-staging --json",
+    "instructionsResult": "valid; no rules field configured",
+    "deltaPathsSource": "openspec status --change simplify-reveal-cards-and-staging --json artifactPaths.specs.existingOutputPaths",
+    "deltaSpecCount": 12,
+    "deltaCapabilities": [
+      "artwork-catalog",
+      "bounded-character-editing",
+      "catalog-tags",
+      "character-contact-and-motion",
+      "character-families",
+      "character-visual-acceptance",
+      "family-navigation",
+      "fullscreen-randomizer",
+      "reference-creation",
+      "studio-creation-experience",
+      "studio-visual-experience",
+      "target-resources"
+    ],
+    "mainSpecOutcome": {
+      "validSpecCount": 11,
+      "updatedExisting": [
+        "artwork-catalog",
+        "catalog-tags",
+        "character-contact-and-motion",
+        "character-families",
+        "character-visual-acceptance",
+        "family-navigation",
+        "reference-creation",
+        "studio-creation-experience",
+        "studio-visual-experience",
+        "target-resources"
+      ],
+      "added": [
+        "bounded-character-editing"
+      ],
+      "retired": [
+        {
+          "capability": "fullscreen-randomizer",
+          "specPath": "openspec/specs/fullscreen-randomizer/spec.md",
+          "purposeRemovedWithSpec": true,
+          "preservedOriginal": "design/acceptance/current-20261010-v99/release-20261011/before/openspec/specs/fullscreen-randomizer/spec.md",
+          "originalSha256": "3c7350868d6ecbd84e47446bd79959f0816100c861954d7b1bb4b69b46bfea68",
+          "retirementMarker": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/.openspec.yaml: retire_capabilities: true"
+        }
+      ]
+    },
+    "approvalCurrentState": {
+      "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+      "publicApprovedArtworkCount": 24,
+      "approvedTemplateVersionCount": 2,
+      "approvedLegalCombinationCount": 28,
+      "heroDecorationApproved": true,
+      "heroIsArtwork": false,
+      "currentPendingScopeCount": 0,
+      "futureNewOrChangedScopeStillRequiresApproval": true,
+      "testFixturesRetainPendingNegativeCases": true
+    },
+    "tasks": {
+      "completionOwner": "release approval agent",
+      "releaseAuthorizationOverrideAddedAtTopAndBottom": true,
+      "sevenPointFourComplete": true
+    },
+    "validation": {
+      "openspecValidateSpecs": "passed: 11 passed, 0 failed",
+      "openspecValidateChangeStrict": "passed",
+      "gitDiffCheckForUpdatedSpecAndTaskFiles": "passed"
+    }
+  },
+  "safety": {
+    "historicalApprovalAndSourceArtifactsPreserved": true,
+    "runtimeAndApprovalDataEditsExcludedFromThisSync": true,
+    "changeDirectoryMoveDeferredUntilAfterTaskSevenPointFour": true,
+    "archivePreflightIsFinalized": true
+  },
+  "archivedAtLocal": "2026-10-11",
+  "archivePath": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging",
+  "archiveMoved": true,
+  "completedTasks": 58,
+  "totalTasks": 58,
+  "preflightSnapshot": {
+    "archiveExecuted": false,
+    "taskSevenPointFourUnchecked": true,
+    "archivePreflightIsFinalized": false,
+    "note": "Historical preflight values before approval and directory move."
+  },
+  "activeChangeCountAfterArchive": 0
+}

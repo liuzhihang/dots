@@ -1,0 +1,21 @@
+
+> test:browser
+> node scripts/verify-studio-browser.mjs && node scripts/verify-studio-contrast.mjs && node scripts/verify-editor-layout.mjs
+
+12:25:47 AM [vite] (client) Re-optimizing dependencies because vite config has changed
+Browser: 18 checks; 21 captures; 24 exact original downloads.
+node:internal/modules/run_main:104
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: en-static-detail .studio-actions button pixel-sampled contrast 3.89:1 is below 4.5:1.
+    at contrastSample (file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:82:5)
+    at async file:///Users/liuzhihang/workspace/dots/scripts/verify-studio-contrast.mjs:147:5 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v23.11.0

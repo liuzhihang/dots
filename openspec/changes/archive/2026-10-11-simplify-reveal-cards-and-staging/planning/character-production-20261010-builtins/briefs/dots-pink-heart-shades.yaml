@@ -1,0 +1,216 @@
+# JSON is valid YAML 1.2; production record only, not runtime data.
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "少量补齐用户截图中的Characters基础完整外观；更多眼型/配件后续增加",
+    "scope": "material-candidate-and-local-integration",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "dots-pink-heart-shades",
+    "seriesId": "dots",
+    "identity": "new",
+    "differenceFromExisting": "与莓粉圆球透明圆框眼镜区分：独立心形轮廓及不透光圆墨镜。",
+    "invariants": [
+      "无手脚",
+      "短密绒",
+      "单体完整轮廓",
+      "静态Artwork不继承Template/Pet能力"
+    ]
+  },
+  "artwork": {
+    "proposedId": "dots-pink-heart-shades",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Pink Heart Dots",
+      "zh-CN": "粉心墨镜 Dots"
+    },
+    "description": {
+      "en": "A hot-pink plush heart with round black sunglasses.",
+      "zh-CN": "粉色心形短绒角色，佩戴圆黑墨镜。"
+    }
+  },
+  "references": [
+    {
+      "source": "user-provided screenshot; described by user as ChatGPT settings",
+      "inputPath": "/tmp/codex-remote-attachments/01a124f0-90bb-7361-a421-075ee9c26374/E3E3A47C-D28E-4521-9860-7A45C899A80D/6-Photo-6.jpg",
+      "retainedPath": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/references/characters-user-reference.jpg",
+      "sha256": "9d4675242c6b8e70fbf4f978ad7171a770c18650c841e3c3fa8d67fdc42d8311",
+      "use": "limbless green frog with black bow tie; pink heart with round sunglasses in Characters row",
+      "exclude": [
+        "UI",
+        "Mira orb",
+        "Pets",
+        "text",
+        "white background"
+      ],
+      "license": "unknown",
+      "officialOriginalAsset": false,
+      "scope": "two reference-driven complete Artwork candidates, local integration only; no Template expansion"
+    }
+  ],
+  "creation": {
+    "prompt": "../prompts/dots-pink-heart-shades-prompts.md",
+    "tool": "built-in image_gen",
+    "originalOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-86f82daf-f04e-4ea1-a0d6-8438703f7bc5.png",
+    "iterations": [
+      {
+        "version": "v1",
+        "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-pink-heart-shades-candidate-v1.png",
+        "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+        "status": "candidate-retained"
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Dots短密绒单体，无手脚"
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "心形连续轮廓，无四肢"
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "眼睛被圆黑墨镜遮挡，无可见口鼻"
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "粉色短密绒"
+    },
+    "clothing": {
+      "state": "none",
+      "evidence": "图中无衣服"
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "圆黑墨镜"
+    },
+    "bodyAccessory": {
+      "state": "none",
+      "evidence": "无身体配件"
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "无道具"
+    }
+  },
+  "resources": {
+    "original": {
+      "id": "dots-pink-heart-shades",
+      "characterId": "dots-pink-heart-shades",
+      "version": "v1",
+      "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-pink-heart-shades-candidate-v1.png",
+      "generatedOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-86f82daf-f04e-4ea1-a0d6-8438703f7bc5.png",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "mime": "image/png",
+      "byteSize": 905104,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1136516,
+        "opaquePixels": 7,
+        "partialAlphaPixels": 435993,
+        "visibleBounds": {
+          "x": 0,
+          "y": 19,
+          "width": 1240,
+          "height": 1209,
+          "alphaThreshold": 1
+        }
+      },
+      "diagnostics": {
+        "alpha16Bounds": [
+          213,
+          277,
+          1040,
+          992
+        ],
+        "lowAlphaPixels1To15": 10515,
+        "edgeNote": "Raw generated alpha has faint fringe specks (alpha 1-15); alpha>=16 subject is inset. Retain source bytes and review solid light/dark display before release."
+      },
+      "artApproval": "pending",
+      "publicGalleryEligible": false,
+      "license": "unknown"
+    },
+    "thumbnail": {
+      "id": "asset:dots-pink-heart-shades:poster:v99",
+      "artworkId": "dots-pink-heart-shades",
+      "originalAssetId": "asset:dots-pink-heart-shades:original",
+      "purpose": "poster",
+      "path": "./assets/posters/dots-pink-heart-shades-thumb256-v99.png",
+      "sourcePath": "dist/assets/posters/dots-pink-heart-shades-thumb256-v99.png",
+      "version": "v99",
+      "sha256": "0acfeabd98955ede475fcf8e6bdf14a182971eeb52772e16df66ca8aaa464043",
+      "mime": "image/png",
+      "byteSize": 44491,
+      "width": 256,
+      "height": 256,
+      "publicationStatus": "preview-only",
+      "resourceKind": "gallery-poster",
+      "displayOnly": true,
+      "downloadable": false,
+      "transformation": "sips proportional resize to maximum side 256px; transparent pixels preserved; source unchanged",
+      "sourceAssetSha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "resourceStatus": "verified-local-source",
+      "runtimeVerification": "not-browser-checked",
+      "sourceRef": "derived from asset:dots-pink-heart-shades:original sha256:df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384; sips proportional resize to maximum side 256px; transparent pixels preserved; source unchanged",
+      "derivedFrom": "asset:dots-pink-heart-shades:original",
+      "sourceAssetId": "asset:dots-pink-heart-shades:original",
+      "sourceAssetSnapshotRef": null,
+      "ownerArtworkId": "dots-pink-heart-shades",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true
+      },
+      "sourceSnapshotMatch": false,
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "sourceSnapshot": null,
+        "sourceId": null,
+        "scope": "local-preview-only",
+        "artworkId": "dots-pink-heart-shades",
+        "assetSha256": "0acfeabd98955ede475fcf8e6bdf14a182971eeb52772e16df66ca8aaa464043",
+        "note": "待用户美术确认；可供本地检查，不继承已有作品批准。"
+      }
+    },
+    "displayPreview": [
+      {
+        "path": "dist/assets/previews/dots-pink-heart-shades-detail1024-v99.png",
+        "bytes": 650778,
+        "sha256": "b8e513e9704123d45b39d8c0e0860b2b4a194e9438e335dc694df0bbdad1df70"
+      },
+      {
+        "path": "dist/assets/previews/dots-pink-heart-shades-detail512-v99.png",
+        "bytes": 169007,
+        "sha256": "d389de51cb3444393154b85e329fb6c46caa6adb762c270860120da924f4a47c"
+      }
+    ]
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": null
+  },
+  "evidence": {
+    "sourceRecord": "../reference-source.json",
+    "license": "unknown",
+    "engineering": "passed: current catalog/query/build/browser actual copy/download/alpha",
+    "visualReview": "实看深浅纯色底审阅图，轮廓与配件完整，无可见大面积底色或截断；原生成alpha存在1-15稀疏像素，记录保留，不声称像素级干净抠图。",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384"
+    },
+    "integration": "registered-preview-only",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

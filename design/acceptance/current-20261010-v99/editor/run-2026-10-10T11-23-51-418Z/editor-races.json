@@ -1,0 +1,108 @@
+{
+  "outOfOrder": {
+    "sequence": [
+      "closed",
+      "original",
+      "closed"
+    ],
+    "delayedClosedEyeFetches": 2,
+    "firstPendingExportDisabled": true,
+    "latestPendingExportDisabled": true,
+    "latestSnapshot": {
+      "revision": 3,
+      "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+      "options": {
+        "color": "blue",
+        "shape": "orb",
+        "eyes": "closed",
+        "glasses": "none",
+        "accessory": "headphones"
+      }
+    },
+    "latestDraftRevision": 3,
+    "lateCompletionStatusCountUnchanged": true,
+    "loaderAfterLateCompletion": {
+      "activeRequests": 0,
+      "queuedRequests": 0,
+      "pendingRequests": 0,
+      "inFlightKeys": 0,
+      "cacheEntries": 5,
+      "idleEntries": 5,
+      "activeLeases": 0,
+      "objectURLs": 0,
+      "bitmaps": 5,
+      "decodedBytes": 31450320,
+      "cachedDecodedBytes": 31450320,
+      "idleDecodedBytes": 31450320,
+      "pinnedBytes": 0,
+      "reservedBytes": 0,
+      "peakDecodedBytes": 31450320,
+      "maxConcurrent": 4,
+      "maxDecodedBytes": 67108864,
+      "maxIdleEntries": 16,
+      "registeredAssets": 7,
+      "disposed": false
+    }
+  },
+  "latestFailure": {
+    "canExport": false,
+    "exportDisabled": true,
+    "snapshot": null,
+    "retryVisible": true,
+    "error": {
+      "code": "missing-template-layer",
+      "assetId": "template:dots-orb-v1:eyes:closed"
+    },
+    "retry": {
+      "canExport": true,
+      "snapshot": {
+        "revision": 1,
+        "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:offset=0,-20|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+        "options": {
+          "color": "blue",
+          "shape": "orb",
+          "eyes": "closed",
+          "glasses": "none",
+          "accessory": "headphones"
+        }
+      }
+    }
+  },
+  "closeLateCallback": {
+    "delayedLateFetches": 1,
+    "oldSessionStatusCountUnchanged": true,
+    "replacementSession": {
+      "revision": 0,
+      "recipeKey": "studio-renderer-20261010-v99|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:offset=0,0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:offset=0,0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:offset=0,0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:offset=0,0",
+      "options": {
+        "color": "blue",
+        "shape": "orb",
+        "eyes": "original",
+        "glasses": "none",
+        "accessory": "headphones"
+      }
+    },
+    "oldLoaderBeforeRelease": {
+      "activeRequests": 0,
+      "queuedRequests": 0,
+      "pendingRequests": 0,
+      "inFlightKeys": 0,
+      "cacheEntries": 4,
+      "idleEntries": 4,
+      "activeLeases": 0,
+      "objectURLs": 0,
+      "bitmaps": 4,
+      "decodedBytes": 25160256,
+      "cachedDecodedBytes": 25160256,
+      "idleDecodedBytes": 25160256,
+      "pinnedBytes": 0,
+      "reservedBytes": 0,
+      "peakDecodedBytes": 25160256,
+      "maxConcurrent": 4,
+      "maxDecodedBytes": 67108864,
+      "maxIdleEntries": 16,
+      "registeredAssets": 7,
+      "disposed": false
+    }
+  }
+}

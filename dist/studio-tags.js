@@ -1,5 +1,5 @@
-import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=98';
-import { SERIES } from './studio-content.js?v=98';
+import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=99';
+import { SERIES } from './studio-content.js?v=99';
 
 const DIMENSION_LABELS = Object.freeze({
   style: '风格 / 角色', 'object-type': '对象类型', shape: '外形', 'facial-features': '五官特征',
@@ -110,10 +110,13 @@ export function normalizeGalleryQuery(query = {}) {
   const rawSeriesId = validObject ? (query.seriesId ?? '') : undefined;
   const seriesId = typeof rawSeriesId === 'string' ? rawSeriesId.trim() : '';
   const valid = validObject && typeof (query.text ?? '') === 'string'
-    && typeof rawSeriesId === 'string' && (seriesId === '' || seriesIds.has(seriesId));
+    && typeof rawSeriesId === 'string' && (seriesId === '' || seriesIds.has(seriesId))
+    && ['curated','name'].includes(query.sort ?? 'curated');
   return Object.freeze({
     text: normalizeText(validObject ? query.text : ''),
     seriesId,
+    sort: query.sort ?? 'curated',
+    language: query.language === 'zh-CN' ? 'zh-CN' : 'en',
     valid
   });
 }
@@ -127,7 +130,7 @@ function searchableText(artwork) {
   const names = Object.values(artwork.titleByLanguage || {});
   const descriptions = Object.values(artwork.descriptionByLanguage || {});
   return normalizeText([
-    artwork.id, artwork.title, artwork.description, artwork.styleIdentity,
+    artwork.id, artwork.title, artwork.description, artwork.characterId, ...Object.values(artwork.characterLabelByLanguage || {}),
     artwork.seriesId, ...names, ...descriptions, ...aliases, ...tagText
   ].join(' '));
 }
@@ -136,10 +139,12 @@ export function queryArtworks(query = {}, catalog = ARTWORKS, validationContext 
   const normalized = normalizeGalleryQuery(query);
   if (!normalized.valid || !Array.isArray(catalog)) return [];
   const tokens = normalized.text.split(' ').filter(Boolean);
-  return catalog.filter(artwork => {
+  const results = catalog.filter(artwork => {
     if (!validateArtwork(artwork, validationContext)) return false;
     if (normalized.seriesId && artwork.seriesId !== normalized.seriesId) return false;
     const haystack = searchableText(artwork);
     return tokens.every(token => haystack.includes(token));
   });
+  if (normalized.sort === 'name') results.sort((a,b)=>(a.titleByLanguage?.[normalized.language] || a.title).localeCompare(b.titleByLanguage?.[normalized.language] || b.title, normalized.language) || a.id.localeCompare(b.id));
+  return results;
 }

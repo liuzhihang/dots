@@ -1,0 +1,101 @@
+briefVersion: 1
+request:
+  summary: 各系列新增1件独立完整静态外观候选
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: muse-lavender-lantern
+  seriesId: meta-muse
+  identity: new
+  differenceFromExisting: 淡薰衣草包覆和灯笼区别于奶油、持花、持书外观
+  invariants:
+  - 保留系列身份与完整轮廓；无模板不伪造编辑能力
+artwork:
+  proposedId: muse-lavender-lantern
+  proposedVersion: v1
+  name:
+    en: Lantern Muse
+    zh-CN: 灯笼 Muse
+  description:
+    en: null
+    zh-CN: 奶油包覆式淡薰衣草外形，桃色内嵌脸、短圆肢体，胸前持琥珀灯笼
+  aliases:
+    en: []
+    zh-CN: []
+references: []
+creation:
+  prompt: See prompts/muse-lavender-lantern-prompts.md for exact call text, input
+    roles and original output paths
+  negativeConstraints: []
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations:
+  - generated/muse-lavender-lantern-candidate-v1.png
+facts:
+  characterStyle:
+    state: known
+    evidence: meta-muse
+  appearance:
+    state: known
+    evidence: continuous wrapped body
+  facialFeatures:
+    state: known
+    evidence: inset peach face, round eyes and smile
+  colorMaterial:
+    state: known
+    evidence: pale lavender short plush
+  clothing:
+    state: none
+    evidence: none
+  headAccessory:
+    state: none
+    evidence: none
+  bodyAccessory:
+    state: none
+    evidence: none
+  prop:
+    state: known
+    evidence: amber lantern
+resources:
+  original:
+    sha256: ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574
+    mime: image/png
+    bytes: 1014161
+    width: 1254
+    height: 1254
+    path: generated/muse-lavender-lantern-candidate-v1.png
+    alphaCheck:
+      min: 0
+      max: 255
+      zeroPixels: 1033310
+      opaquePixels: 101
+      partialPixels: 539105
+      bboxAt16:
+      - 306
+      - 121
+      - 951
+      - 1127
+      nonzeroOutsideBbox16: 2948
+      maxOutsideBbox16: 10
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: prompts/muse-lavender-lantern-prompts.md
+  license: unknown
+  engineering: read-only file/alpha/hash checked; integration not run
+  visualReview: initial inspected; edge/composition notes in README; not final approval
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

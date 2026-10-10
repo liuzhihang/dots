@@ -1,0 +1,2009 @@
+{
+  "revision": 99,
+  "catalogRevision": "artwork-catalog-20261010-v99",
+  "environment": {
+    "browser": "155.0.8059.39",
+    "platform": "darwin",
+    "physicalDevice": false,
+    "hosting": "local-only"
+  },
+  "catalog": {
+    "eligibleArtworkCount": 24,
+    "pendingPreviewCount": 0,
+    "staticFixture": {
+      "id": "candidate-meta-muse-20261005",
+      "version": "v1",
+      "seriesId": "meta-muse"
+    },
+    "approvedTemplates": [
+      {
+        "templateId": "dots-orb-v1",
+        "artworkId": "candidate-dots-20261005",
+        "version": "v2"
+      },
+      {
+        "templateId": "grok-orb-v1",
+        "artworkId": "candidate-grok-20261005",
+        "version": "v2"
+      }
+    ]
+  },
+  "checks": [
+    "Gallery counts derive from eligible records.",
+    "1440px desktop places the first six cards in one aligned row without horizontal overflow; hero keeps the approved prototype scale.",
+    "Characters is the home page with a single Browse CTA, no Guide, scenes or original-image requests.",
+    "Browse is the only homepage CTA and moves focus to the character library (Browse characters).",
+    "Search AND series, partial clear, full clear and name sort work in the rendered gallery.",
+    "Opening Studio preserves the same gallery and invoking card DOM.",
+    "Static artwork exposes its original materials directly, with no View/Edit mode.",
+    "Related characters stay directly under the main preview in the media column.",
+    "Related characters are not hidden inside a disclosure.",
+    "One plain additional-instructions field replaces keep/remove/replace controls.",
+    "Additional instructions update the complete copied and ChatGPT Prompt without changing Artwork pixels.",
+    "Close, Escape and Back cancellation retain dirty intent, URL and panel.",
+    "Double close confirms once and performs exactly one history navigation.",
+    "A static Artwork uses the primary Export action to download the byte-identical registered original PNG.",
+    "Five viewport sizes × both languages preserve gallery/banner layout, expected columns, complete contains, 44px targets, compact detail actions, fixed left-aligned related cards, and zero Guide routes without overflow.",
+    "Every publicly eligible Artwork copies its current Prompt and exports either the latest approved-template PNG or exact static original.",
+    "Reduced motion works and old storage is neither interpreted nor deleted.",
+    "Unknown versions, retired routes and removed mode query resolve to recoverable not-found, with no compatibility redirects."
+  ],
+  "downloads": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "sha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+      "byteSize": 2186209,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/candidate-dots-20261005.png",
+      "status": "approved",
+      "exportKind": "successful-template-revision",
+      "templateId": "dots-orb-v1",
+      "revision": 0,
+      "canvasSha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+      "promptSha256": "c82bfb193e1534f3f0ae109dc76fe830c6a4fc580795b8f4dec3a2a39809d4c5"
+    },
+    {
+      "artworkId": "candidate-grok-20261005",
+      "sha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+      "byteSize": 1316831,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/candidate-grok-20261005.png",
+      "status": "approved",
+      "exportKind": "successful-template-revision",
+      "templateId": "grok-orb-v1",
+      "revision": 0,
+      "canvasSha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+      "promptSha256": "8eff01f38c8ccea10499b64d1245329316519c543a6966a5772d5a02ac7ba644"
+    },
+    {
+      "artworkId": "candidate-meta-muse-20261005",
+      "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+      "byteSize": 1003955,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/candidate-meta-muse-20261005.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "c63b562088b9a061fd43e65d262b3e4456df10d593e52734491c186512ab1e5d"
+    },
+    {
+      "artworkId": "candidate-humans-20261005",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "byteSize": 1151483,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/candidate-humans-20261005.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "3186e4e3ca11136ce763791e4083c98910df4079181f91c118cf47864b3d596a"
+    },
+    {
+      "artworkId": "candidate-animals-20261005",
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "byteSize": 1413426,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/candidate-animals-20261005.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "af15a69231510b6d4fde7459191b8da8297e2ce0062d8e47e5d1a552071cde1e"
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+      "byteSize": 1860436,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/dots-rose-glasses.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "5f56fc3a7928399e0fcf349b5eaac4fdba6e50f575a10c0b266283c21b5df9c0"
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+      "byteSize": 1605008,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/dots-lilac-bucket.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "4d853c699d8fff6f1392b370e08120abd04d99c67f099ab73f2323b29e3cd549"
+    },
+    {
+      "artworkId": "grok-green-cloud",
+      "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+      "byteSize": 790009,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/grok-green-cloud.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "3e3f8128d8fceeb9defead9585e8453ea22e43b3aa548b57b3664ddbff89f61f"
+    },
+    {
+      "artworkId": "grok-teal-square",
+      "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+      "byteSize": 828844,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/grok-teal-square.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "7e65e6621245d3dea98a8b412f872e071484058c32181ec768b910a7dd2c4fe4"
+    },
+    {
+      "artworkId": "muse-rose-flowers",
+      "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+      "byteSize": 1185166,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/muse-rose-flowers.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "92bcce15d792e68a7afe8ad52153ad3a2c47ddf61e073df5653e8e09d868002b"
+    },
+    {
+      "artworkId": "muse-sage-reading",
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "byteSize": 1142481,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/muse-sage-reading.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "4788d20a67a10ed5ad6e5fda7ee150066f185259976d7a451f8fd24546582b36"
+    },
+    {
+      "artworkId": "human-bun-yellow",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "byteSize": 1086214,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/human-bun-yellow.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "044a6d09a26021b547f9130d75577524ed6a49921de133a4777f509a8cf2a482"
+    },
+    {
+      "artworkId": "human-blond-glasses",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "byteSize": 1058375,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/human-blond-glasses.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "241783f24a34b56a960a157551fd766de0a78639e05a2e6ca9c847faded976b4"
+    },
+    {
+      "artworkId": "animal-white-cat",
+      "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+      "byteSize": 1382027,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/animal-white-cat.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "03188a594e7334cc8878b380efc01929d728ab50ca4055e5f52e58cbc4c533ac"
+    },
+    {
+      "artworkId": "animal-gray-husky",
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "byteSize": 1623665,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/animal-gray-husky.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "0e011573929fb62ae6a8fbe4e29975564541956cd72e040ca362c46a92067013"
+    },
+    {
+      "artworkId": "robot-ivory-capsule-face-v98-candidate",
+      "sha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+      "byteSize": 1292849,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/robot-ivory-capsule-face-v98-candidate.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "e108b14cb77de14fc4ebf0401b5c389af393ec93a7057cd0310f8d68ac9d4e8c"
+    },
+    {
+      "artworkId": "animal-white-rabbit-v98-candidate",
+      "sha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+      "byteSize": 1443408,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/animal-white-rabbit-v98-candidate.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "49c52f940ef53f99a3c5b43fd0606a03594d98cae1ce3cafcc16dadf23bf2317"
+    },
+    {
+      "artworkId": "dots-butter-beret",
+      "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+      "byteSize": 1541746,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/dots-butter-beret.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "3df922174ef28c2a66cf2e891c9509a798de68806af1fa8bba79040cc976b54e"
+    },
+    {
+      "artworkId": "grok-coral-drop",
+      "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+      "byteSize": 871631,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/grok-coral-drop.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "f2cad13d04050139e24a3d21e0f3caaf8d8747ab1573438cbb671648f3c60444"
+    },
+    {
+      "artworkId": "muse-lavender-lantern",
+      "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+      "byteSize": 1014161,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/muse-lavender-lantern.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "0e162a6ff631ccf3568318c4facc6240fa2bc745292386ac7f43985a4b2311cb"
+    },
+    {
+      "artworkId": "human-rust-jacket",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "byteSize": 944230,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/human-rust-jacket.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "ec92cbef6b2385f62a094a1a094cf4094df26b262e889604324e339af2ad73f4"
+    },
+    {
+      "artworkId": "animal-cocoa-bear",
+      "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+      "byteSize": 956169,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/animal-cocoa-bear.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "d6daf67a1426bf23f5336619d2908853b0d7cd79b45beae08ed7dd43d849067b"
+    },
+    {
+      "artworkId": "dots-lime-frog-bow",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "byteSize": 1087340,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/dots-lime-frog-bow.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "15d7228e2adf883724b8029402ded7cfdedb009209f91a14ae9e7057a87662b5"
+    },
+    {
+      "artworkId": "dots-pink-heart-shades",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "byteSize": 905104,
+      "file": "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/dots-pink-heart-shades.png",
+      "status": "approved",
+      "exportKind": "registered-original",
+      "templateId": null,
+      "revision": null,
+      "canvasSha256": null,
+      "promptSha256": "f560746be2fe315f3c112f369f6546c87bea5c64e5b5f1e4504c7fee13f35c29"
+    }
+  ],
+  "screenshots": [
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-1440-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-1440-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-1440-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-1440-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-1206-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-1206-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-1206-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-1206-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-768-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-768-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-768-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-768-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-390-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-390-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-390-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-390-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-320-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-320-en.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/gallery-320-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/studio-320-zh-CN.png",
+    "/Users/liuzhihang/workspace/dots/design/acceptance/current-20261010-v99/release-20261011/browser-checks/studio-browser/reduce-opaque-fallback.png"
+  ],
+  "layouts": [
+    {
+      "width": 1440,
+      "height": 900,
+      "language": "en",
+      "overflow": false,
+      "columns": 6,
+      "buttons": [
+        {
+          "text": "Characters",
+          "h": 63
+        },
+        {
+          "text": "中文",
+          "h": 44
+        },
+        {
+          "text": "Browse characters",
+          "h": 48
+        },
+        {
+          "text": "All",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "People",
+          "h": 44
+        },
+        {
+          "text": "Animals",
+          "h": 44
+        },
+        {
+          "text": "Preview unavailableHeadphonesDots",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailablePurpleGrok Bot",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailableCreamMuse",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailableChestnutPeople",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailableShiba InuAnimals",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailableRose GlassesDots",
+          "h": 252.140625
+        },
+        {
+          "text": "Preview unavailableBucket HatDots",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableGreen CloudGrok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableTeal SquareGrok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableDaisyMuse",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableSageMuse",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableYellow HoodiePeople",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableBlond GlassesPeople",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableWhite CatAnimals",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableHuskyAnimals",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableIvory BotOriginal robot",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableWhite RabbitAnimals",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableButter BeretDots",
+          "h": 286.875
+        },
+        {
+          "text": "Preview unavailableCoral DropGrok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableLanternMuse",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableRust JacketPeople",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableCocoa BearAnimals",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailableLime FrogDots",
+          "h": 246.34375
+        },
+        {
+          "text": "Preview unavailablePink HeartDots",
+          "h": 246.34375
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "View character: Daisy · Muse",
+        "title": {
+          "text": "Daisy",
+          "left": 741.984375,
+          "right": 865.328125,
+          "top": 936.0625,
+          "bottom": 952.25
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 872.328125,
+          "right": 914.328125,
+          "top": 933.15625,
+          "bottom": 955.15625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "language": "zh-CN",
+      "overflow": false,
+      "columns": 6,
+      "buttons": [
+        {
+          "text": "角色库",
+          "h": 63
+        },
+        {
+          "text": "EN",
+          "h": 44
+        },
+        {
+          "text": "浏览角色",
+          "h": 48
+        },
+        {
+          "text": "全部",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "人物",
+          "h": 44
+        },
+        {
+          "text": "动物",
+          "h": 44
+        },
+        {
+          "text": "预览暂不可用耳机Dots",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用紫色Grok Bot",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用奶油Muse",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用栗发人物",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用柴犬动物",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用莓粉眼镜Dots",
+          "h": 252.140625
+        },
+        {
+          "text": "预览暂不可用渔夫帽Dots",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用青绿云Grok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用蓝绿方Grok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用花束Muse",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用鼠尾草Muse",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用黄衣丸子头人物",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用金发眼镜人物",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用奶油白猫动物",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用灰白哈士奇动物",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用奶白机器人原创机器人",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用白兔动物",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用奶油黄贝雷帽Dots",
+          "h": 286.875
+        },
+        {
+          "text": "预览暂不可用珊瑚水滴Grok Bot",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用灯笼Muse",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用铁锈夹克人物",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用可可熊动物",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用青柠蛙形Dots",
+          "h": 246.34375
+        },
+        {
+          "text": "预览暂不可用粉色爱心Dots",
+          "h": 246.34375
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "查看角色: 花束 · Muse",
+        "title": {
+          "text": "花束",
+          "left": 741.984375,
+          "right": 865.328125,
+          "top": 1145.0625,
+          "bottom": 1161.25
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 872.328125,
+          "right": 914.328125,
+          "top": 1142.15625,
+          "bottom": 1164.15625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 1206,
+      "height": 1257,
+      "language": "en",
+      "overflow": false,
+      "columns": 6,
+      "buttons": [
+        {
+          "text": "Characters",
+          "h": 63
+        },
+        {
+          "text": "中文",
+          "h": 44
+        },
+        {
+          "text": "Browse characters",
+          "h": 48
+        },
+        {
+          "text": "All",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "People",
+          "h": 44
+        },
+        {
+          "text": "Animals",
+          "h": 44
+        },
+        {
+          "text": "Preview unavailableHeadphonesDots",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailablePurpleGrok Bot",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailableCreamMuse",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailableChestnutPeople",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailableShiba InuAnimals",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailableRose GlassesDots",
+          "h": 225.65625
+        },
+        {
+          "text": "Preview unavailableBucket HatDots",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableGreen CloudGrok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableTeal SquareGrok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableDaisyMuse",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableSageMuse",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableYellow HoodiePeople",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableBlond GlassesPeople",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableWhite CatAnimals",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableHuskyAnimals",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableIvory BotOriginal robot",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableWhite RabbitAnimals",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableButter BeretDots",
+          "h": 255.453125
+        },
+        {
+          "text": "Preview unavailableCoral DropGrok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableLanternMuse",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableRust JacketPeople",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableCocoa BearAnimals",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailableLime FrogDots",
+          "h": 220.671875
+        },
+        {
+          "text": "Preview unavailablePink HeartDots",
+          "h": 220.671875
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "View character: Daisy · Muse",
+        "title": {
+          "text": "Daisy",
+          "left": 625,
+          "right": 722.65625,
+          "top": 1033.21875,
+          "bottom": 1049.40625
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 729.65625,
+          "right": 771.65625,
+          "top": 1030.3125,
+          "bottom": 1052.3125,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 1206,
+      "height": 1257,
+      "language": "zh-CN",
+      "overflow": false,
+      "columns": 6,
+      "buttons": [
+        {
+          "text": "角色库",
+          "h": 63
+        },
+        {
+          "text": "EN",
+          "h": 44
+        },
+        {
+          "text": "浏览角色",
+          "h": 48
+        },
+        {
+          "text": "全部",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "人物",
+          "h": 44
+        },
+        {
+          "text": "动物",
+          "h": 44
+        },
+        {
+          "text": "预览暂不可用耳机Dots",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用紫色Grok Bot",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用奶油Muse",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用栗发人物",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用柴犬动物",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用莓粉眼镜Dots",
+          "h": 225.65625
+        },
+        {
+          "text": "预览暂不可用渔夫帽Dots",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用青绿云Grok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用蓝绿方Grok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用花束Muse",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用鼠尾草Muse",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用黄衣丸子头人物",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用金发眼镜人物",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用奶油白猫动物",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用灰白哈士奇动物",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用奶白机器人原创机器人",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用白兔动物",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用奶油黄贝雷帽Dots",
+          "h": 255.453125
+        },
+        {
+          "text": "预览暂不可用珊瑚水滴Grok Bot",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用灯笼Muse",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用铁锈夹克人物",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用可可熊动物",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用青柠蛙形Dots",
+          "h": 220.671875
+        },
+        {
+          "text": "预览暂不可用粉色爱心Dots",
+          "h": 220.671875
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "查看角色: 花束 · Muse",
+        "title": {
+          "text": "花束",
+          "left": 625,
+          "right": 722.65625,
+          "top": 1033.21875,
+          "bottom": 1049.40625
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 729.65625,
+          "right": 771.65625,
+          "top": 1030.3125,
+          "bottom": 1052.3125,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "language": "en",
+      "overflow": false,
+      "columns": 3,
+      "buttons": [
+        {
+          "text": "Characters",
+          "h": 63
+        },
+        {
+          "text": "中文",
+          "h": 44
+        },
+        {
+          "text": "Browse characters",
+          "h": 48
+        },
+        {
+          "text": "All",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "People",
+          "h": 44
+        },
+        {
+          "text": "Animals",
+          "h": 44
+        },
+        {
+          "text": "Preview unavailableHeadphonesDots",
+          "h": 284.140625
+        },
+        {
+          "text": "Preview unavailablePurpleGrok Bot",
+          "h": 284.140625
+        },
+        {
+          "text": "Preview unavailableCreamMuse",
+          "h": 284.140625
+        },
+        {
+          "text": "Preview unavailableChestnutPeople",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableShiba InuAnimals",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableRose GlassesDots",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableBucket HatDots",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableGreen CloudGrok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableTeal SquareGrok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableDaisyMuse",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableSageMuse",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableYellow HoodiePeople",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableBlond GlassesPeople",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableWhite CatAnimals",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableHuskyAnimals",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableIvory BotOriginal robot",
+          "h": 324.84375
+        },
+        {
+          "text": "Preview unavailableWhite RabbitAnimals",
+          "h": 324.84375
+        },
+        {
+          "text": "Preview unavailableButter BeretDots",
+          "h": 324.84375
+        },
+        {
+          "text": "Preview unavailableCoral DropGrok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableLanternMuse",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableRust JacketPeople",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableCocoa BearAnimals",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailableLime FrogDots",
+          "h": 277.328125
+        },
+        {
+          "text": "Preview unavailablePink HeartDots",
+          "h": 277.328125
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "View character: Daisy · Muse",
+        "title": {
+          "text": "Daisy",
+          "left": 37,
+          "right": 191.328125,
+          "top": 1655.984375,
+          "bottom": 1672.171875
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 198.328125,
+          "right": 240.328125,
+          "top": 1653.078125,
+          "bottom": 1675.078125,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "language": "zh-CN",
+      "overflow": false,
+      "columns": 3,
+      "buttons": [
+        {
+          "text": "角色库",
+          "h": 63
+        },
+        {
+          "text": "EN",
+          "h": 44
+        },
+        {
+          "text": "浏览角色",
+          "h": 48
+        },
+        {
+          "text": "全部",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "人物",
+          "h": 44
+        },
+        {
+          "text": "动物",
+          "h": 44
+        },
+        {
+          "text": "预览暂不可用耳机Dots",
+          "h": 284.140625
+        },
+        {
+          "text": "预览暂不可用紫色Grok Bot",
+          "h": 284.140625
+        },
+        {
+          "text": "预览暂不可用奶油Muse",
+          "h": 284.140625
+        },
+        {
+          "text": "预览暂不可用栗发人物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用柴犬动物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用莓粉眼镜Dots",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用渔夫帽Dots",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用青绿云Grok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用蓝绿方Grok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用花束Muse",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用鼠尾草Muse",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用黄衣丸子头人物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用金发眼镜人物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用奶油白猫动物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用灰白哈士奇动物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用奶白机器人原创机器人",
+          "h": 324.84375
+        },
+        {
+          "text": "预览暂不可用白兔动物",
+          "h": 324.84375
+        },
+        {
+          "text": "预览暂不可用奶油黄贝雷帽Dots",
+          "h": 324.84375
+        },
+        {
+          "text": "预览暂不可用珊瑚水滴Grok Bot",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用灯笼Muse",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用铁锈夹克人物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用可可熊动物",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用青柠蛙形Dots",
+          "h": 277.328125
+        },
+        {
+          "text": "预览暂不可用粉色爱心Dots",
+          "h": 277.328125
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "查看角色: 花束 · Muse",
+        "title": {
+          "text": "花束",
+          "left": 37,
+          "right": 191.328125,
+          "top": 1655.984375,
+          "bottom": 1672.171875
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 198.328125,
+          "right": 240.328125,
+          "top": 1653.078125,
+          "bottom": 1675.078125,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "language": "en",
+      "overflow": false,
+      "columns": 2,
+      "buttons": [
+        {
+          "text": "Characters",
+          "h": 59
+        },
+        {
+          "text": "中文",
+          "h": 44
+        },
+        {
+          "text": "Browse characters",
+          "h": 44
+        },
+        {
+          "text": "All",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "People",
+          "h": 44
+        },
+        {
+          "text": "Animals",
+          "h": 44
+        },
+        {
+          "text": "Preview unavailableHeadphonesDots",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailablePurpleGrok Bot",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableCreamMuse",
+          "h": 226.1875
+        },
+        {
+          "text": "Preview unavailableChestnutPeople",
+          "h": 226.1875
+        },
+        {
+          "text": "Preview unavailableShiba InuAnimals",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableRose GlassesDots",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableBucket HatDots",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableGreen CloudGrok Bot",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableTeal SquareGrok Bot",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableDaisyMuse",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableSageMuse",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableYellow HoodiePeople",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableBlond GlassesPeople",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableWhite CatAnimals",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableHuskyAnimals",
+          "h": 231.71875
+        },
+        {
+          "text": "Preview unavailableIvory BotOriginal robot",
+          "h": 231.71875
+        },
+        {
+          "text": "Preview unavailableWhite RabbitAnimals",
+          "h": 257.203125
+        },
+        {
+          "text": "Preview unavailableButter BeretDots",
+          "h": 257.203125
+        },
+        {
+          "text": "Preview unavailableCoral DropGrok Bot",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableLanternMuse",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableRust JacketPeople",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableCocoa BearAnimals",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailableLime FrogDots",
+          "h": 221
+        },
+        {
+          "text": "Preview unavailablePink HeartDots",
+          "h": 221
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "View character: Daisy · Muse",
+        "title": {
+          "text": "Daisy",
+          "left": 211,
+          "right": 320.359375,
+          "top": 1737.46875,
+          "bottom": 1752.3125
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 326.359375,
+          "right": 364,
+          "top": 1733.890625,
+          "bottom": 1755.890625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "language": "zh-CN",
+      "overflow": false,
+      "columns": 2,
+      "buttons": [
+        {
+          "text": "角色库",
+          "h": 59
+        },
+        {
+          "text": "EN",
+          "h": 44
+        },
+        {
+          "text": "浏览角色",
+          "h": 44
+        },
+        {
+          "text": "全部",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "人物",
+          "h": 44
+        },
+        {
+          "text": "动物",
+          "h": 44
+        },
+        {
+          "text": "预览暂不可用耳机Dots",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用紫色Grok Bot",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用奶油Muse",
+          "h": 226.1875
+        },
+        {
+          "text": "预览暂不可用栗发人物",
+          "h": 226.1875
+        },
+        {
+          "text": "预览暂不可用柴犬动物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用莓粉眼镜Dots",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用渔夫帽Dots",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用青绿云Grok Bot",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用蓝绿方Grok Bot",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用花束Muse",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用鼠尾草Muse",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用黄衣丸子头人物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用金发眼镜人物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用奶油白猫动物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用灰白哈士奇动物",
+          "h": 231.71875
+        },
+        {
+          "text": "预览暂不可用奶白机器人原创机器人",
+          "h": 231.71875
+        },
+        {
+          "text": "预览暂不可用白兔动物",
+          "h": 257.203125
+        },
+        {
+          "text": "预览暂不可用奶油黄贝雷帽Dots",
+          "h": 257.203125
+        },
+        {
+          "text": "预览暂不可用珊瑚水滴Grok Bot",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用灯笼Muse",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用铁锈夹克人物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用可可熊动物",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用青柠蛙形Dots",
+          "h": 221
+        },
+        {
+          "text": "预览暂不可用粉色爱心Dots",
+          "h": 221
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "查看角色: 花束 · Muse",
+        "title": {
+          "text": "花束",
+          "left": 211,
+          "right": 320.359375,
+          "top": 1737.46875,
+          "bottom": 1752.3125
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 326.359375,
+          "right": 364,
+          "top": 1733.890625,
+          "bottom": 1755.890625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "language": "en",
+      "overflow": false,
+      "columns": 2,
+      "buttons": [
+        {
+          "text": "Characters",
+          "h": 59
+        },
+        {
+          "text": "中文",
+          "h": 44
+        },
+        {
+          "text": "Browse characters",
+          "h": 44
+        },
+        {
+          "text": "All",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "People",
+          "h": 44
+        },
+        {
+          "text": "Animals",
+          "h": 44
+        },
+        {
+          "text": "Preview unavailableHeadphonesDots",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailablePurpleGrok Bot",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableCreamMuse",
+          "h": 195.21875
+        },
+        {
+          "text": "Preview unavailableChestnutPeople",
+          "h": 195.21875
+        },
+        {
+          "text": "Preview unavailableShiba InuAnimals",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableRose GlassesDots",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableBucket HatDots",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableGreen CloudGrok Bot",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableTeal SquareGrok Bot",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableDaisyMuse",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableSageMuse",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableYellow HoodiePeople",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableBlond GlassesPeople",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableWhite CatAnimals",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableHuskyAnimals",
+          "h": 199.71875
+        },
+        {
+          "text": "Preview unavailableIvory BotOriginal robot",
+          "h": 199.71875
+        },
+        {
+          "text": "Preview unavailableWhite RabbitAnimals",
+          "h": 220.453125
+        },
+        {
+          "text": "Preview unavailableButter BeretDots",
+          "h": 220.453125
+        },
+        {
+          "text": "Preview unavailableCoral DropGrok Bot",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableLanternMuse",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableRust JacketPeople",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableCocoa BearAnimals",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailableLime FrogDots",
+          "h": 191
+        },
+        {
+          "text": "Preview unavailablePink HeartDots",
+          "h": 191
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "View character: Daisy · Muse",
+        "title": {
+          "text": "Daisy",
+          "left": 174,
+          "right": 258.359375,
+          "top": 1522.40625,
+          "bottom": 1535.90625
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 263.359375,
+          "right": 299,
+          "top": 1518.15625,
+          "bottom": 1540.15625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    },
+    {
+      "width": 320,
+      "height": 700,
+      "language": "zh-CN",
+      "overflow": false,
+      "columns": 2,
+      "buttons": [
+        {
+          "text": "角色库",
+          "h": 59
+        },
+        {
+          "text": "EN",
+          "h": 44
+        },
+        {
+          "text": "浏览角色",
+          "h": 44
+        },
+        {
+          "text": "全部",
+          "h": 44
+        },
+        {
+          "text": "Dots",
+          "h": 44
+        },
+        {
+          "text": "Grok Bot",
+          "h": 44
+        },
+        {
+          "text": "Muse",
+          "h": 44
+        },
+        {
+          "text": "人物",
+          "h": 44
+        },
+        {
+          "text": "动物",
+          "h": 44
+        },
+        {
+          "text": "预览暂不可用耳机Dots",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用紫色Grok Bot",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用奶油Muse",
+          "h": 195.21875
+        },
+        {
+          "text": "预览暂不可用栗发人物",
+          "h": 195.21875
+        },
+        {
+          "text": "预览暂不可用柴犬动物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用莓粉眼镜Dots",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用渔夫帽Dots",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用青绿云Grok Bot",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用蓝绿方Grok Bot",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用花束Muse",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用鼠尾草Muse",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用黄衣丸子头人物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用金发眼镜人物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用奶油白猫动物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用灰白哈士奇动物",
+          "h": 199.71875
+        },
+        {
+          "text": "预览暂不可用奶白机器人原创机器人",
+          "h": 199.71875
+        },
+        {
+          "text": "预览暂不可用白兔动物",
+          "h": 220.453125
+        },
+        {
+          "text": "预览暂不可用奶油黄贝雷帽Dots",
+          "h": 220.453125
+        },
+        {
+          "text": "预览暂不可用珊瑚水滴Grok Bot",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用灯笼Muse",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用铁锈夹克人物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用可可熊动物",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用青柠蛙形Dots",
+          "h": 191
+        },
+        {
+          "text": "预览暂不可用粉色爱心Dots",
+          "h": 191
+        }
+      ],
+      "contains": true,
+      "introArtworkCount": 1,
+      "guideLinks": 0,
+      "museCaption": {
+        "accessibleName": "查看角色: 花束 · Muse",
+        "title": {
+          "text": "花束",
+          "left": 174,
+          "right": 258.359375,
+          "top": 1522.40625,
+          "bottom": 1535.90625
+        },
+        "chip": {
+          "text": "Muse",
+          "left": 263.359375,
+          "right": 299,
+          "top": 1518.15625,
+          "bottom": 1540.15625,
+          "borderWidth": "1px",
+          "borderStyle": "solid",
+          "display": "flex"
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "productionVariants": 0,
+  "productionAnimations": 0
+}

@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-10",
+  "scope": "WYSIWYG CharacterStudio test migration and responsive/accessibility verification",
+  "executions": [
+    {
+      "name": "npm test",
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/tests npm test",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/tests/report.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/tests/extension-browser.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/tests/implementation-safety.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/tests/motion-report.json"
+      ],
+      "result": "18 catalog/reference checks and remaining router, history, template, renderer, loader, extension, motion, publish-inventory and safety checks passed; no reported errors."
+    },
+    {
+      "name": "test:editing",
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor npm run test:editing",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/report.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/downloads/",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor/run-2026-10-10T13-47-55-623Z/video-segments/"
+      ],
+      "result": "All 12 Dots and 16 Grok legal recipes rendered/exported; two complete edit/export/original-download journeys, dirty-exit guards, thumbnail recovery, revision races and resource release checks passed. No console, browser or HTTP failures."
+    },
+    {
+      "name": "studio browser",
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/browser/final-2026-10-10T1405 node scripts/verify-studio-browser.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/browser/final-2026-10-10T1405/report.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/browser/final-2026-10-10T1405/"
+      ],
+      "result": "15 browser checks, 25 captures and 24 exact original downloads passed; no reported errors."
+    },
+    {
+      "name": "studio contrast",
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/accessibility/final-2026-10-10T1405 node scripts/verify-studio-contrast.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/accessibility/final-2026-10-10T1405/contrast.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/accessibility/final-2026-10-10T1405/"
+      ],
+      "result": "296 rendered text targets passed paired-screenshot pixel contrast analysis on the final CSS; minimum ratio 5.567:1."
+    },
+    {
+      "name": "editor layout",
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor-layout/final-2026-10-10T1405 node scripts/verify-editor-layout.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor-layout/final-2026-10-10T1405/report.json",
+        "design/acceptance/current-20261010-v99/glass-wysiwyg-20261010/editor-layout/final-2026-10-10T1405/"
+      ],
+      "result": "16 template, viewport and language combinations passed with 48 captures; mobile preview and canvas stayed fully visible during option changes, the 320 px option cards did not overlap the action row, and Export remained visible, enabled and pointer-accessible after scrolling. Closed mobile dialogs occupied no layout space."
+    }
+  ],
+  "failedAttempts": [
+    {
+      "suite": "test:editing",
+      "cause": "The migrated test initially assumed hidden tab panels exposed their options, used an ambiguous nested summary selector, and returned a DOM node from page.evaluate instead of a serializable revision value.",
+      "repair": "Activated each category tab before testing options, selected the direct original disclosure summary, and compared the rendered canvas revision as a scalar. The final run above passed."
+    },
+    {
+      "suite": "editor layout",
+      "cause": "An initial max-scroll assertion required tabs to remain sticky after scrolling past the editor, original and Prompt content; this exceeded the requested mobile interaction scope. A paired screenshot also showed the action row covering part of the color card at 320 px.",
+      "repair": "Replaced the max-scroll assertion with real tab/option hit-testing during the selection flow. The CSS action row was moved to normal flow; the final layout run above verifies complete option visibility, preview visibility and reachable export."
+    },
+    {
+      "suite": "studio contrast",
+      "cause": "The first migrated run compared the paired captures in reverse order and included a hidden Prompt node.",
+      "repair": "Corrected normal/masked capture ordering and restricted measurements to visible text. The final run above passed."
+    }
+  ],
+  "browserMethod": "Automated interactions and downloads used the project Playwright runner with installed local Chrome. Codex in-app browser use was visual inspection only; no interaction pass is claimed.",
+  "limitations": [
+    "No physical-device run is claimed.",
+    "No deployment or production-site acceptance is claimed."
+  ]
+}

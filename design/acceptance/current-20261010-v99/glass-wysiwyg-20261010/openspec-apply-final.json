@@ -1,0 +1,388 @@
+{
+  "changeName": "simplify-reveal-cards-and-staging",
+  "changeDir": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging",
+  "schemaName": "spec-driven",
+  "contextFiles": {
+    "proposal": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/proposal.md"
+    ],
+    "specs": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/artwork-catalog/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/bounded-character-editing/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/catalog-tags/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/character-contact-and-motion/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/character-families/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/character-visual-acceptance/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/family-navigation/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/fullscreen-randomizer/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/reference-creation/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/studio-creation-experience/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/studio-visual-experience/spec.md",
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/specs/target-resources/spec.md"
+    ],
+    "design": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/design.md"
+    ],
+    "tasks": [
+      "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md"
+    ]
+  },
+  "progress": {
+    "total": 49,
+    "complete": 48,
+    "remaining": 1
+  },
+  "tasks": [
+    {
+      "id": "1",
+      "description": "1.1 确认本轮apply授权后回读HEAD/dirty、当前change和原型校验和，冻结本次允许路径及15原图、pending和历史hash；完成条件：新baseline明确保护清单，外部dirty未覆盖，不checkout旧远端。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 7
+    },
+    {
+      "id": "2",
+      "description": "1.2 为新实现锁定统一cache（建议v99，先核对无冲突）和独立acceptance目录，更新AGENTS.md、DESIGN.md、.agents/rules/design.md、README.md、design/studio-visual-interaction-system.md当前合同；完成条件：活动文档不再要求露台/纯Prompt/全面禁Canvas，hosting/OpenSpec配置/依赖版本不改，旧证据不覆盖。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 8
+    },
+    {
+      "id": "3",
+      "description": "1.3 在v98当前浏览器记录click→panel→metadata/actions→preview时间线及原图/解码/下载请求；完成条件：冷/热各≥5原始样本、环境/缓存/字节和视频入新基线，不把审计推断写成耗时结论。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 9
+    },
+    {
+      "id": "4",
+      "description": "1.4 修订scripts/build-studio.mjs及verify-publish-inventory.mjs维护增量闭包，准备逐路径退役清单；完成条件：孤儿/缺文件/越权pending负例拒绝，dist不整体重建，原图及历史基线独立保持。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 10
+    },
+    {
+      "id": "5",
+      "description": "2.1 在新素材记录中锁定candidate-dots-20261005@v2与candidate-grok-20261005@v2基准、模板画布和12/16合法配置；完成条件：每个拟开放选项有具体gap/来源/输出路径，Shape固定，不把历史bare/wink当已批准图层。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 14
+    },
+    {
+      "id": "6",
+      "description": "2.2 制作Dots无耳机无脸主体、颜色mask及材质/光影层到assets/templates/dots-orb-v1；完成条件：真实完整隐藏区、短密绒、无肢体，alpha/尺寸/hash登记，默认身份并排审阅并保留pending。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 15
+    },
+    {
+      "id": "7",
+      "description": "2.3 制作Dots两眼型、round眼镜前后层/遮挡及耳机前后层；完成条件：默认重建、摘耳机、新眼型和无耳机眼镜接触正确，耳机+眼镜4种冲突不列合法；每层来源与检查图齐全。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 16
+    },
+    {
+      "id": "8",
+      "description": "2.4 制作Grok软几何主体、颜色mask/光影与两组成对胶囊眼到assets/templates/grok-orb-v1；完成条件：无屏幕脸/毛绒/肢体，原紫色及mint变化不染眼睛，alpha/版本记录齐全。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 17
+    },
+    {
+      "id": "9",
+      "description": "2.5 制作Grok round眼镜/soft cap前后层与交叉遮挡；完成条件：无帽基底完整，帽子+眼镜为真实适配而非通用贴图，16合法配置所需文件全可读，缺口不得静默删选项。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 18
+    },
+    {
+      "id": "10",
+      "description": "2.6 制作首批作品的512/1024详情display preview（assets/previews），保留/新增256 poster；完成条件：现有15件及新5件逐件登记实际尺寸/字节/hash/用途、完整轮廓与色彩对照，15张原图字节不变，新作逐件候选/批准状态准确，preview不充当export layer。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 19
+    },
+    {
+      "id": "11",
+      "description": "2.7 交付两模板基底、材质、眼型和配件图层的身份/素材初审；完成条件：来源与单项素材的批准/拒绝/pending记录准确，静态制作参考不充当最终Draft组合批准。精确配方审阅图待5.8使用真实renderer生成，最终公开组合艺术确认在7.4，之前不授予公开Editable。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 20
+    },
+    {
+      "id": "12",
+      "description": "2.8 完成每系列新增1件独立Artwork的制作、透明边缘修整、来源、八类facts及双语内容；完成条件：五个系列各4件的20件目标有独立真实作品清单，5件新作及未选迭代留存、逐件pending/批准准确，不用28个Draft配方/色卡/姿态充数；现已生成的[五件候选](planning/gallery-expansion-20261010/README.md)不等于本项验收通过。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 22
+    },
+    {
+      "id": "13",
+      "description": "3.1 更新studio-artwork-catalog.js / studio-content.js中displayPreview引用、模板binding与能力状态；完成条件：verify-artwork-catalog.mjs覆盖15原图hash不变、两pending独立、缺资源/未知路径/unknown事实负例，维护文档说明新增完整作品不需角色专用分支。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 26
+    },
+    {
+      "id": "14",
+      "description": "3.2 在index.html、studio.js、studio.css、studio-i18n.js实现Dots品牌/深色tokens/短介绍与唯一角色库，在index.html登记用户给定的 https://dots.liuzhihang.chatgpt.site canonical与og:url；完成条件：源码及浏览器head回读新地址、hosting身份和访问设置保持，1440×900首屏一整排真实作品、无实体场景/长Hero/假统计/收藏/额外导航，D01逐区截图入新目录。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 27
+    },
+    {
+      "id": "15",
+      "description": "3.3 重构studio-tag-browser.js / studio-tags.js及路由参数为文本+单系列+curated/name排序；完成条件：verify-artwork-query.mjs覆盖多词AND、系列AND、部分/全部清除、未知条件/空结果、不包含Draft/pending，双语词条一致。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 28
+    },
+    {
+      "id": "16",
+      "description": "3.4 在studio-content.js及Prompt清单登记双语通用Dots Prompt，接入Copy Dots Prompt与同页Browse；完成条件：真实剪贴板内容/失败回退正确，不随机引用pending作品，不自动附图/发送。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 29
+    },
+    {
+      "id": "17",
+      "description": "3.5 完成390/320两列、768三列、双语与无blur/reduce重排；完成条件：verify-studio-browser对应G01–G03/A01–A02用例和截图证明帽/耳/脚/尾完整、44px操作可达、无横向溢出；回读最终合成背景下正文/次级文案≥4.5:1、大字≥3:1及控件/focus状态对比度，更新当前设计说明。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 30
+    },
+    {
+      "id": "18",
+      "description": "3.6 落实角色新增规范及共用组件扩展契约，解耦Character身份与seriesId；完成条件：静态内容/资源新增的隔离Artwork fixture无需角色专用分支即可查询、展示卡片、查看详情、复制Prompt与下载，无Template时不开放Edit；pending排除默认查询。将catalog/build/query/browser/download的固定15/30/89/2全量断言改为当前合格目录导出的完整性检查，冻结15原图子集继续独立验证；维护design/character-authoring，使下次新增无需重构页面。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 31
+    },
+    {
+      "id": "19",
+      "description": "4.1 重构studio-router.js为#/?q=&series=&sort=、#/artwork/id?v=&mode=、#/guide；完成条件：verify-router.mjs覆盖mode默认/显式edit、未知ID/version/旧home/gallery/random路径not-found，不读取/清理旧storage，回图库有明确入口。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 35
+    },
+    {
+      "id": "20",
+      "description": "4.2 在studio-detail.js重构单一CharacterStudio会话、View/Edit宿主及studio-overlay.js焦点/滚动；完成条件：同一DOM壳与预览位置，背景图库不销毁，桌面单面板/手机全屏，静态标题初始focus不跳动。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 36
+    },
+    {
+      "id": "21",
+      "description": "4.3 建立studio-preview-loader.js分离thumbnail/detailPreview与original下载，移除普通查看Promise.all原图barrier；完成条件：慢原图10s时封面/metadata/复制/下载入口即时可用，普通View无original fetch/hash/编辑模块请求，局部失败可重试。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 37
+    },
+    {
+      "id": "22",
+      "description": "4.4 在preview/asset loader实现版本key、in-flight共享、consumer lease和有界LRU/并发；完成条件：两消费者取消其一仍完成、全取消/错误可重试、版本不串、bitmap/Blob URL清理负例通过，预算/策略写入当前文档。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 38
+    },
+    {
+      "id": "23",
+      "description": "4.5 保留原始Prompt与原图独立下载操作及当前版本freeze；完成条件：更新verify-reference-detail.mjs / verify-transparent-output.mjs，真实复制/拒绝剪贴板/窗口阻止/404/hash错/decode错/下载后切角色均不伪成功、不重绘原字节。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 39
+    },
+    {
+      "id": "24",
+      "description": "4.6 实现原子变体选择与按需相关内容，未登记变体/动画隐藏；完成条件：隔离fixture证明失败保留上一成功版本与URL/操作，生产仍按实数报告，fixture不写入发布清单。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 40
+    },
+    {
+      "id": "25",
+      "description": "4.7 完成source context与所有出口dirty guard（对接第5组Draft）；完成条件：关闭/Esc/Back/Forward/导航/切Artwork取消保留URL和草稿，确认只导航一次；Edit↔View不触发丢弃，恢复筛选/滚动/焦点，直链回规范角色库，浏览器用例通过。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 41
+    },
+    {
+      "id": "26",
+      "description": "5.1 新增studio-edit-templates.js，登记两套候选资源及能力/冲突/批准规则；完成条件：scripts/verify-edit-templates.mjs对12+16合法及Dots4非法组合、缺层/错误版本/未批准公开模板运行正反例，pending审阅harness不进入生产。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 45
+    },
+    {
+      "id": "27",
+      "description": "5.2 新增studio-draft.js，绑定Artwork/Template版本、请求/成功revision、脏状态与外部意图；完成条件：Reset/Cancel/View↔Edit/语言切换/关闭释放单测验证内存生命周期，导出不清除dirty、原Artwork对象与facts不变，不持久化草稿。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 46
+    },
+    {
+      "id": "28",
+      "description": "5.3 新增studio-renderer.js统一配方与Canvas透明像素输出；完成条件：scripts/verify-draft-renderer.mjs验证颜色只影响mask范围、眼/饰真实变化、层序/alpha正确、预览与export同recipe/revision，非模板任意组合拒绝。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 47
+    },
+    {
+      "id": "29",
+      "description": "5.4 在studio-editor.js按需实现模板实际可视控件、合法替换确认及Original/Draft标签；完成条件：Color真实色块，Eyes/Glasses/Accessories真实图层缩略图与明确选中/焦点/失败状态，不使用文字下拉框；44px、键盘、双语与320px可达，选项真实改变预览，Shape不提供假控制，无模板View保留且edit直链明确提示，无第二工作台。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 48
+    },
+    {
+      "id": "30",
+      "description": "5.5 实现session+template+recipe+revision异步归属及render错误状态；完成条件：A→B→A、连续选项乱序、关闭晚回调不覆盖新状态；最新revision未完成/失败时禁导出，保留旧预览明确标旧状态而非伪完成。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 49
+    },
+    {
+      "id": "31",
+      "description": "5.6 在renderer/actions接入独立Export current PNG；完成条件：toBlob期间改选项仅输出点击时冻结成功版本或明确取消，实际PNG回读尺寸/alpha/内容无底色/棋盘格/UI/底座，不自动注册Artwork/动画/Pet。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 50
+    },
+    {
+      "id": "32",
+      "description": "5.7 在studio-prompt.js明确原Prompt/成功配置Prompt/ChatGPT-only意图；完成条件：keep/remove/replace空值、非法替换、外部动作意图与当前像素区分，copy失败可恢复，语言变化不翻译用户文本或污染原始Prompt。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 51
+    },
+    {
+      "id": "33",
+      "description": "5.8 跑两模板全部28合法配方工程检查及关键组合美术对照；完成条件：每份recipe/revision/输出hash/alpha证据齐全，以真实renderer产出默认重建、所有单项和关键交叉组合审阅图，交7.4确认精确配置范围；2.7素材初审不替代此确认，不把自动检查写成艺术确认。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 52
+    },
+    {
+      "id": "34",
+      "description": "5.9 在浏览器完成Dots/Grok各一套View→Edit→真实改色/眼/配件→导出并打开文件→View下载原图旅程；完成条件：两份完整录屏、导出文件内容和原图hash回读，任何一套不足则bounded-editing不完成；更新README实际使用说明。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 53
+    },
+    {
+      "id": "35",
+      "description": "6.1 更新双语Guide为选择/复制、本地有限编辑或ChatGPT附图、按真实目标使用；完成条件：D02指南层级实页核对，不发明安装/许可/尺寸或自动附图，不增加视频/账号/上传入口。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 57
+    },
+    {
+      "id": "36",
+      "description": "6.2 按精确manifest将studio-home.js、studio-scenes.js、terrace/v98三图及不再使用场景规则退役到历史；完成条件：源字节/来源/历史验收不变，活动HTML/import graph无露台/热点/随机/旧workspace/compat，两pending伙伴继续独立保留。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 58
+    },
+    {
+      "id": "37",
+      "description": "6.3 保留studio-motion.js的真实资源暂停管理、删除场景专用调用；完成条件：verify-motion.mjs验证offscreen/pageHidden/detailOpen/userPause/reduce合并，生产无资源就无播放，不以CSS位移冒充角色动画。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 59
+    },
+    {
+      "id": "38",
+      "description": "6.4 更新package scripts连接新增验证、清除旧场景测试依赖，统一HTML/CSS/module/catalog/report cache并精确维护static-publish-manifest；完成条件：版本一致、fixture/旧运行不发布、依赖版本不变，源码与当前文档无旧产品承诺。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 60
+    },
+    {
+      "id": "39",
+      "description": "7.1 在冻结新版本运行npm run build、npm test、test:browser、test:downloads和新增模板/渲染检查；完成条件：记录每条命令与passed/failed/unrun，不覆盖旧证据，失败先修再复验。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 64
+    },
+    {
+      "id": "40",
+      "description": "7.2 以scripts/verify-studio-performance.mjs执行acceptance-plan性能合同；完成条件：冷/热样本、受控慢网、点击壳目标≤100ms且>200ms解决、原图不阻塞、20次切换/释放/内存与请求预算证据齐全，不称现场INP。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 65
+    },
+    {
+      "id": "41",
+      "description": "7.3 完成四视口×双语、键盘/reduce/透明降级/手机安全区、错误与竞态联合检查；完成条件：真实页面截图逐区对照D01/D02与裁决，交互和资源回读覆盖验收矩阵，未测浏览器/实体设备明确记录。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 66
+    },
+    {
+      "id": "42",
+      "description": "7.4 呈现新5件Artwork、新页面与两套模板的当前精确版本供用户艺术确认；完成条件：批准/拒绝/pending范围可追溯，原15件母图、5件新作、新默认Draft、组合、页面分别记录，未确认本项保持未完成；不可借用原图批准或技术通过。",
+      "done": false,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 67
+    },
+    {
+      "id": "43",
+      "description": "7.5 运行OpenSpec change与all严格校验并回读最终diff/发布闭包/保护hash；完成条件：业务实现、功能、视觉、艺术、设备、目标和部署各自报告，素材阻塞不被Prompt-only掩盖，无范围外改动。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 68
+    },
+    {
+      "id": "44",
+      "description": "8.1 按新增角色流程制作并登记青柠蛙领结、粉心墨镜两件独立 Dots 候选；完成条件：参考/精确提示词/原始输出/实测 alpha/双语 facts 与 Prompt 齐全，无手脚、无 Template 能力，pending 只在可信详情可看，原15件不变，不穷举配饰组合。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 72
+    },
+    {
+      "id": "45",
+      "description": "8.2 去掉页面透明素材的棋盘网格；完成条件：真实眼型/配件缩略图为纯色底，色块仍显示选项颜色，页面与下载 PNG 的透明像素分离，四视口双语和键盘可用。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 73
+    },
+    {
+      "id": "46",
+      "description": "8.3 验证新增候选的详情、复制、原字节下载、默认查询排除与精确发布闭包，回读无网格截图、透明 alpha 与保护文件；完成条件：新证据独立留存，刷新精确待审范围，工程通过不授予美术确认或部署。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 74
+    },
+    {
+      "id": "47",
+      "description": "9.1 将 CharacterStudio 改为半透明烟色玻璃面板，保留后方背景轮廓；浏览器不支持 blur 或用户启用降低透明度时，降级为不透明且对比度合格的实底。验证文字、焦点、控件仍可读，玻璃与背景不进入 Artwork/Draft PNG。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 80
+    },
+    {
+      "id": "48",
+      "description": "9.2 移除 View/Edit 标签、状态切换与 `mode` URL。精确获批 Template 在打开作品后自动载入真实模板和 Color/Eyes/Glasses/Accessory 分类 tabs；只显示模板实际能力，不新增 Head/Hair/Outfit/Backdrop/Frame/Randomize/SVG。tab 使用 roving tabindex 与 ArrowLeft/ArrowRight/Home/End，切换不改 Draft/session/revision；选项点击立即对同一预览启动渲染。当前配置 Prompt 与 PNG 导出绑定最新成功预览，渲染未完成或失败时不允许导出；原图、原Prompt、原描述和原 tags 置于 `.studio-original`（可编辑作品默认折叠，无 Template 的静态详情默认展开），不将原始描述/tags 作为编辑后事实。Reset/Cancel 在同一界面恢复默认预览；pending 资格不变，只有外部 reviewHarness 可直接打开 pending Template。无 Template 作品保留完整静态详情、原 Prompt 和原字节下载。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 81
+    },
+    {
+      "id": "49",
+      "description": "9.3 验收透明玻璃/背景可见与无 blur/降低透明度降级；验证获批 Template 自动进入直接编辑、无 Template 静态详情、reviewHarness pending 标识、没有 View/Edit 或 mode URL、分类 tabs 键盘与移动端预览/导出可达、选项渲染状态与成功预览一致、Reset/Cancel 留在同一界面，以及关闭/Esc/Back/Forward/导航/切 Artwork 全部 dirty guard。回读原图原字节、当前配置 Prompt 与同 revision PNG；确认原描述/tags 仅代表源作品，不要求生成编辑后事实；功能和工程结果不得代替用户美术确认，7.4 保持未完成。",
+      "done": true,
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/simplify-reveal-cards-and-staging/tasks.md",
+      "line": 82
+    }
+  ],
+  "taskTrackingConfigured": true,
+  "state": "ready",
+  "instruction": "Read context files, work through pending tasks, mark complete as you go.\nPause if you hit blockers or need clarification.",
+  "context": "Language: zh-CN\nAll artifacts must be written in zh-CN.\nKeep OpenSpec structural headings and SHALL/MUST keywords in English.\n",
+  "root": {
+    "path": "/Users/liuzhihang/workspace/dots",
+    "source": "nearest"
+  }
+}

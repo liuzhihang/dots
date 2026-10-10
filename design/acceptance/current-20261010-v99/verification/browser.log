@@ -1,0 +1,6 @@
+
+> test:browser
+> node scripts/verify-studio-browser.mjs && node scripts/verify-studio-contrast.mjs
+
+Browser: 13 checks; 25 captures; 22 exact original downloads.
+48 rendered contrast checks passed; minimum 3.09:1.

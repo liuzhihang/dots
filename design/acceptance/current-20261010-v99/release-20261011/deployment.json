@@ -1,0 +1,73 @@
+{
+  "recordedAt": "2026-10-10T18:29:41.216Z",
+  "site": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "url": "https://dots.liuzhihang.chatgpt.site",
+    "audience": "public",
+    "audienceChanged": false
+  },
+  "version": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_fd2b0fc41ffc81918161691ad2f49ff9",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 47,
+    "source": {
+      "commit_sha": "3e2dbeccaca273c575cfe5fd1de72e9fea776a4e"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000002b8081fbb6f4292bb0881d66",
+      "content_hash": "sha256:36efc31e27a62334ab55f928a73c5acc91a2806f5fbe1ee886ee0e52f3a48b3e",
+      "size_bytes": 63252480,
+      "file_count": 156
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6aca82d793708191900e15af4b7dbf4c",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_fd2b0fc41ffc81918161691ad2f49ff9",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dots.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-10T18:24:37.016613+00:00"
+  },
+  "productionReadback": {
+    "method": "Codex in-app browser",
+    "url": "https://dots.liuzhihang.chatgpt.site/#/",
+    "languages": [
+      "en",
+      "zh-CN"
+    ],
+    "visibleArtworkCount": 24,
+    "zhTitle": "创造你的Dot.",
+    "dotsDetail": {
+      "url": "https://dots.liuzhihang.chatgpt.site/#/artwork/candidate-dots-20261005?v=v2",
+      "preview": "current transparent Draft",
+      "templateAutoLoaded": true,
+      "categories": [
+        "外观",
+        "五官",
+        "配饰"
+      ],
+      "actionsEnabled": [
+        "复制 Prompt",
+        "在 ChatGPT 中使用",
+        "导出 PNG"
+      ],
+      "relatedCharacters": 3
+    },
+    "result": "passed"
+  },
+  "limits": [
+    "This online readback is a focused smoke check; full public-path regression is recorded separately in browser-checks/README.md.",
+    "Physical devices and full performance load were not rerun for this release."
+  ],
+  "gitHubPush": false
+}

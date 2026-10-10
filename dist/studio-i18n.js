@@ -1,6 +1,32 @@
-const strings={en:{back:'Back',menu:'Open menu',closeMenu:'Close menu',skip:'Skip to content',home:'Home',gallery:'Gallery',guide:'Guide',heroEyebrow:'A LITTLE COMPANY. A LOT OF POSSIBILITY.',heroDescription:'A world of tiny companions. Create your own version in ChatGPT.',copyPrompt:'Copy Prompt',explore:'Explore Gallery',heroHint:'Click a companion. Get to know them.',sceneCaption:'A small place to make something new.',smallWorld:'A WORLD OF LITTLE PERSONALITIES',galleryTitle:'Character Gallery',galleryDescription:'Find a familiar face. Imagine a new story.',searchLabel:'Search characters',searchPlaceholder:'Search characters, styles, ideas…',clearSearch:'Clear search',clearAll:'Clear all',emptyTitle:'No companions here yet.',emptyDescription:'Try another word or clear your filters.',all:'All',notFound:'This page isn’t here.',notFoundDescription:'The link may be incomplete, or this version is not available.',backGallery:'Back to Gallery',footer:'Small characters. New possibilities.',creationGuide:'Creation guide',motion:'Motion',reduce:'Reduce motion',motionOff:'Reduced motion on',view:'View character',imageFailed:'Image unavailable',retry:'Try again',copied:'Prompt copied',copyFailed:'Copy wasn’t available. Select and copy the full prompt below.',count:n=>`${n} ${n===1?'character':'characters'}`,series:'Series',sceneFailed:'The terrace image could not load. You can still choose a companion.',close:'Close details',guideTitle:'Make it your own.',guideDescription:'A character is the beginning. The next idea is yours.',steps:[['Find your companion','Explore the gallery or click a character on the terrace. Open the details to see the original and its prompt.'],['Take the inspiration','Copy the original prompt and download the image. For a different direction, expand “Create my version” in the details and describe what to keep, remove, or replace.'],['Create in ChatGPT','Open ChatGPT, attach the image yourself if you want to use it as a reference, paste the prompt, and send it. If no image is attached, the prompt still works as a text description.']],guideNote:'This site creates prompt text only. It does not upload images, generate artwork, or send messages for you.',openChatGPT:'Open ChatGPT',guideFooter:'Your new image is created in ChatGPT. The original here stays the same.'},'zh-CN':{back:'返回',menu:'打开菜单',closeMenu:'关闭菜单',skip:'跳到主要内容',home:'首页',gallery:'画廊',guide:'指南',heroEyebrow:'小小陪伴，无限可能。',heroDescription:'挑选一位角色，在 ChatGPT 创作你的版本。',copyPrompt:'复制 Prompt',explore:'探索画廊',heroHint:'轻点一位伙伴，认识它。',sceneCaption:'在小小角落，创造新的可能。',smallWorld:'每个小角色，都有自己的性格',galleryTitle:'角色画廊',galleryDescription:'找到喜欢的模样，想象新的故事。',searchLabel:'搜索角色',searchPlaceholder:'搜索角色、颜色或小细节…',clearSearch:'清除搜索',clearAll:'清空筛选',emptyTitle:'这里还没有匹配的伙伴。',emptyDescription:'换个关键词，或清空筛选再看看。',all:'全部',notFound:'没有找到这个页面。',notFoundDescription:'链接可能不完整，或这个版本尚未提供。',backGallery:'返回画廊',footer:'小小角色，新的可能。',creationGuide:'创作指南',motion:'动态',reduce:'减少动态',motionOff:'已减少动态',view:'查看角色',imageFailed:'图片暂时不可用',retry:'重试',copied:'已复制 Prompt',copyFailed:'未能自动复制，请选择并复制下方全文。',count:n=>`${n} 位角色`,series:'系列',sceneFailed:'场景图片暂时无法加载，仍可选择角色。',close:'关闭详情',guideTitle:'创作你的版本。',guideDescription:'角色是起点，接下来的想法属于你。',steps:[['找到你的伙伴','探索画廊，或轻点露台上的角色。在详情里查看原图与对应的 Prompt。'],['带走灵感','复制原始 Prompt 并下载图片。想改变一些细节，可以展开详情中的“创作我的版本”，说明需要保留、移除或替换的内容。'],['在 ChatGPT 创作','打开 ChatGPT，按需要自行附上参考图、粘贴 Prompt 并发送。没有附图时，也可以直接使用文字描述创作。']],guideNote:'本站只生成 Prompt 文字，不上传图片、不自动生图，也不代你发送消息。',openChatGPT:'打开 ChatGPT',guideFooter:'新图片在 ChatGPT 中创作，本站的原作品保持不变。'}};
-export function t(language,key,...args){const value=strings[language]?.[key]??strings.en[key];return typeof value==='function'?value(...args):value}
-export function storedPreference(key,fallback){try{return localStorage.getItem(`dots-${key}`)??fallback}catch{return fallback}}
-export function savePreference(key,value){try{localStorage.setItem(`dots-${key}`,value)}catch{}}
-export const label=(record,language)=>record.titleByLanguage?.[language]??record.labelByLanguage?.[language]??record.title??record.label??'';
-export function escapeHTML(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const strings = {
+  en: {
+    skip:'Skip to content', back:'Back', close:'Close studio', gallery:'Characters',
+    eyebrow:'SMALL CHARACTERS. ENDLESS STORIES.', galleryTitle:'Make It Your Dot.', galleryDescription:'Pick a character. Copy a prompt. Make it yours.',
+    copyDotsPrompt:'Copy Dots Prompt', browse:'Browse characters', searchLabel:'Search characters', searchPlaceholder:'Search characters, colors, little details…',
+    clearSearch:'Clear search',clearAll:'Clear all',sortLabel:'Sort characters',curated:'Curated',nameSort:'Name',
+    emptyTitle:'No matching characters.',emptyDescription:'Try another word or clear your filters.',
+    notFound:'This page isn’t here.',notFoundDescription:'The link or artwork version is unavailable.',backGallery:'Back to characters',
+    footer:'Small characters. New possibilities.',view:'View character',imageFailed:'Preview unavailable',retry:'Try again',
+    copied:'Prompt copied.',copyFailed:'Copy wasn’t available. Select and copy the full prompt below.',count:n=>`${n} ${n===1?'character':'characters'}`,
+    invalidQuery:'This filter is unavailable. Clear filters to continue.',
+    discard:'Discard the unsaved changes to this character?',stay:'Keep editing',discardAction:'Discard changes'
+  },
+  'zh-CN': {
+    skip:'跳到主要内容',back:'返回',close:'关闭工作室',gallery:'角色库',
+    eyebrow:'小小角色，故事由你。',galleryTitle:'创作属于你的 Dots。',galleryDescription:'挑选角色，复制 Prompt，创作你的版本。',
+    copyDotsPrompt:'复制 Dots Prompt',browse:'浏览角色',searchLabel:'搜索角色',searchPlaceholder:'搜索角色、颜色或小细节…',
+    clearSearch:'清除搜索',clearAll:'清空筛选',sortLabel:'角色排序',curated:'精选顺序',nameSort:'按名称',
+    emptyTitle:'没有匹配的角色。',emptyDescription:'换个关键词，或清空筛选再看看。',
+    notFound:'没有找到这个页面。',notFoundDescription:'链接或作品版本暂不可用。',backGallery:'返回角色库',
+    footer:'小小角色，新的可能。',view:'查看角色',imageFailed:'预览暂不可用',retry:'重试',
+    copied:'Prompt 已复制。',copyFailed:'未能自动复制，请选择并复制下方全文。',count:n=>`${n} 个角色`,
+    invalidQuery:'此筛选条件不可用，请清空筛选继续浏览。',
+    discard:'放弃这个角色尚未保存的修改？',stay:'继续编辑',discardAction:'放弃修改'
+  }
+};
+export function t(language,key,...args){const value=strings[language]?.[key]??strings.en[key];return typeof value==='function'?value(...args):value;}
+// New namespace only. No legacy route/storage migration or cleanup.
+export function storedPreference(key,fallback){try{return localStorage.getItem(`dots-v99-${key}`)??fallback;}catch{return fallback;}}
+export function savePreference(key,value){try{localStorage.setItem(`dots-v99-${key}`,value);}catch{/* Session behavior remains available. */}}
+export const label=(record,language)=>record?.titleByLanguage?.[language]??record?.labelByLanguage?.[language]??record?.title??record?.label??'';
+export function escapeHTML(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}

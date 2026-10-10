@@ -1,0 +1,53 @@
+# 制作记录模板；不是运行 schema，不由网站读取。null = 尚未记录，不等于能力已通过。
+briefVersion: 1
+request:
+  summary: null
+  scope: material-candidate # 依实际授权填写；接入、模板和发布分别明确
+  count: 1
+character:
+  proposedId: null
+  seriesId: null # dots | grok | meta-muse | humans | animals；新增系列另评估
+  identity: new # new 或现有 Character ID
+  differenceFromExisting: null
+  invariants: []
+artwork:
+  proposedId: null
+  proposedVersion: v1
+  name: {en: null, zh-CN: null}
+  description: {en: null, zh-CN: null}
+  aliases: {en: [], zh-CN: []}
+references: [] # 每项记录 path、sha256、role、use、exclude、来源/许可状态；参考来源不等于派生 Artwork、Template 或发布获批
+creation:
+  prompt: null
+  negativeConstraints: []
+  tool: null
+  originalOutputPath: null
+  iterations: [] # 文件、hash、保留/未选原因；不能覆盖已批准源
+facts: # 填最终图片的观察结果；沿用运行 core facts 名称，勿把愿望当 known
+  characterStyle: {state: unknown, evidence: null}
+  appearance: {state: unknown, evidence: null}
+  facialFeatures: {state: unknown, evidence: null}
+  colorMaterial: {state: unknown, evidence: null}
+  clothing: {state: unknown, evidence: null}
+  headAccessory: {state: unknown, evidence: null}
+  bodyAccessory: {state: unknown, evidence: null}
+  prop: {state: unknown, evidence: null}
+resources:
+  original: {path: null, sha256: null, mime: null, bytes: null, width: null, height: null, alphaCheck: null}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null} # 观察最终图后写，不自动使用制作提示词
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null # 静态 Artwork 不要求模板；绑定需另行验收
+evidence:
+  sourceRecord: null
+  license: unknown
+  engineering: not-run
+  visualReview: not-run
+  artApproval: {status: pending, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

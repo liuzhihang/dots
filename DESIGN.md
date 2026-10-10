@@ -1,25 +1,25 @@
-# Dot Icon Studio 产品与设计约定
+# Dots 产品与设计约定 v99
 
-用户路径：挑选完整角色 → 共用详情 → 复制 Prompt / 下载已有作品 → 在 ChatGPT 自行附图创作。范围为单场景首页、开放画廊、共用详情与轻量指南，英文默认及简体中文。详情内折叠的修改区只生成文字，不改变图、标签、原始 Prompt 或下载。
+本轮 change `openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/` 的12份 delta 已同步至 `openspec/specs/`；后续实现以主规范为准。沿用 OpenSpec CLI 1.14.1 / `spec-driven`，未经用户明确授权不初始化、升级 CLI，也不自动 sync/archive。本轮用户已于2026-10-11明确授权 Sites 发布、代码提交与 change 归档；该授权仅适用于本轮。
 
-## 原型与页面
+网站品牌为 Dots，canonical / og:url 使用 https://dots.liuzhihang.chatgpt.site 。角色库是唯一页面与导航入口；不提供 Guide 页面或导航，`#/guide` 按普通无效路由处理。D01-main-third-dark-gallery-studio.png 是唯一主稿，D02-support-first-mobile-guide.png 仅补手机细节；它们是多页拼版，按面板分别实现。首页 banner 延续左右构图：左侧大字号两行渐变标题“Make It / Your Dot.”（中文 Hero 两行为“创造”/“你的Dot.”，浏览器标题精确为“创造你的Dot.”），右侧约占60%的大角色群像；1440px 桌面高度约440–500px。群像可表现机器人、戴耳机并系领带的兔子、人物与 Meta Muse；机器人是独立身份，不把 Grok Bot 改成屏幕脸机器人，Dots 与 Grok 均保持无手脚。短介绍精确为英文“Pick a character. Make it yours in ChatGPT.”、中文“挑选角色，在 ChatGPT 中创作。”；Hero 不显示通用 Copy Dots Prompt 按钮。短介绍区域可控制在240px内，但这不是整体 banner/hero 的高度上限。D01 暗色展示台与微光允许出现在专用首页 Hero 插画中；该经用户确认的 UI 装饰素材不登记为 Artwork，也不为图中角色创建或授予 Artwork 的 pending/approved 状态，不进入角色卡、Studio 预览或 PNG 导出，也不直接复用带 UI 的概念拼版。不得恢复旧露台、庭院、城市、房间、台阶或场景型长宣传首页。游戏、随机与独立工作台退出活动运行，不建立兼容层。
 
-P01 与 P02 都是多页概念拼版，必须分别识别首页、画廊、详情和手机面板，不把整张拼版当单页或生产素材。P02 对应桌面首页的宽幅比例、台阶纵深、前中后景和留白；P01 对应画廊、详情、手机层级与控件，并提供首页克制黄昏光色。首页只有一个黄昏露台背景，随视口自适应铺满屏幕；v98 覆盖此前固定 624px Hero 的要求。类别控件只作为场景上的轻量 overlay，不另建 Featured 作品区或宣传卡。近处互动、中景合作/阅读、远景伙伴与空台阶之间保留疏密和通道。
+深色数字画布与局部半透明烟色玻璃；玻璃应让后方画布轮廓可见。支持时使用背景模糊；不支持模糊或用户启用降低透明度时，改用不透明且可读的实底。短介绍精确为英文“Pick a character. Make it yours in ChatGPT.”、中文“挑选角色，在 ChatGPT 中创作。”；Hero 不显示通用 Copy Dots Prompt 按钮。240px 约束只作用于短介绍区域，不限制 banner 总高。默认英文和简体中文；文本多词AND、单系列AND、curated/name真实排序。1440px六列、768px三列、390/320px两列，contain完整展示帽、耳、脚、尾。正文/次级文案对比度至少4.5:1，大字3:1，操作至少44px，键盘、reduce、无blur与安全区均须实际验证。
 
-每个视口使用一张完整合成的静态场景图，图内统一人物、动物、家具、台阶、承托、接触阴影和遮挡关系；不叠透明角色群组或家具层。v98 首页背景随视口铺满屏幕，实际构图、场景资源和热点映射按桌面、手机及平板视口分别核对，不能固定在624px Hero内，也不能用裁切隐藏未映射角色。类别控件只以背景 overlay 呈现。保留已批准的15个 Artwork 身份和原始文件；新增白色原创机器人、白兔等角色作为独立身份候选，进入 `PREVIEW_*` 集合并标注 pending，不能冒充已批准 Artwork。所有新角色、整景和页面呈现仍待用户艺术确认，原有15张原图批准不扩大到新角色或整景。
+图库涵盖 Dots、Grok Bot、Muse、人物与动物等多系列完整外观。本轮登记的24件 Artwork 均已获用户美术确认并取得公开资格；两套精确版本 Template 均通过工程与美术确认，覆盖28种合法编辑组合。Hero 群像是已获确认的 UI 装饰素材，不计入 Artwork；编辑组合也不计为 Artwork。未来新增素材、组合与页面仍需对应版本的用户美术确认及准入验证，确认前不公开。
 
-hover/focus显示简短提示，并沿图中该角色的真实外轮廓显示描边反馈；焦点与 hover 使用同一角色几何，不用矩形框或整图高亮。描边动画只改变 UI 边线，不移动或重绘角色；减少动态偏好下改为静态可见轮廓。点击/Enter/Space/手机单次轻点立即打开同一详情，不等动画，不自动开浮窗。热区固定对齐当前视口完整场景图中的真实角色。首页整景保持静态，不声称单角色独立表情动画；无真实动画则不显示播放控件。
+Character身份与seriesId分离；Artwork成品、Asset用途、Template能力、内存Draft、Prompt意图、实际动画/目标包独立登记。八类typed facts保留none/notApplicable/unknown区别。Dots短密绒；Grok软几何成对胶囊眼，不是机器人屏幕脸；Dots与Grok两类均无手脚，不从旧营销素材借用四肢；Muse包覆体、内嵌脸、短圆肢体；人物材质分区、动物物种特征保持。新增内容靠资源与清单，不添加角色专用页面分支。角色显示名去掉重复系列后缀，Meta Muse 显示为 Muse，描边系列标签与名字同行；身份ID和seriesId不变。
 
-画廊浅色开放网格、完整contain、光学尺寸平衡，弱化卡片边界，不做每角色小场景/底座。一个文本搜索和单系列筛选，多词AND、系列与文本AND。默认静态poster按视口加载，不预取全部原图。
+角色详情与编辑共用同一CharacterStudio壳、Artwork身份及预览位置，不提供View/Edit标签或mode URL。面板语言继承网站当前语言，不提供独立detailLanguage切换。精确获批Template在打开作品时自动载入真实模板和可视选项；Appearance（外观）、Face（五官）、Clothing（服装）、Accessories（配饰）、Objects（物品）按真实 Template 能力分组，只显示非空 tab。当前仅有 Appearance/Color、Face/Eyes、Accessories/{Glasses,Accessory}；不改 option field key，不增加 recipe。标题为“微调作品”，说明为“预览与 Prompt 随选择同步更新。”tab切换不改变Draft/session/revision；支持roving tabindex及ArrowLeft/Right/Home/End。相关角色常显在主预览下方，以紧凑固定宽度左对齐且不可折叠。整个面板使用烟色玻璃；轻薄header无独立背景/分隔线，header固定、内容body滚动，编辑分类tabs不sticky；手机自然滚动，初次打开能看到完整角色，但不要求预览在整个编辑期间固定。可编辑作品的原图、原Prompt、原描述和原tags放入只读折叠的.studio-original；无Template静态详情默认展开该原始资料，不把原始描述/tags宣称为编辑后的事实。复制 Prompt 与在 ChatGPT 中使用为主操作，Export 为次级操作：静态作品 Export 返回登记原图字节，适配编辑作品 Export 仅输出最近成功 revision 的透明 PNG；不另设重复原图按钮，也不提供 Reset/Cancel 控件。一个额外要求文本框替代逐项keep/remove/replace和折叠二创区。复制或在ChatGPT中使用的统一Prompt由静态作品原Prompt或最近成功的Template配置Prompt，加上用户额外要求组成；额外要求明确不改本地预览/导出，ChatGPT不自动附图或发送。最新渲染中/失败时禁用编辑PNG导出，当前基础Prompt仍只对应最近成功预览。所有按钮及关闭/返回控件至少44px并保持可见命中区；两项主操作与次级 Export 层级清楚；内容滚动不遮挡预览、输入或主操作。导出不清dirty。没有Template的作品仍显示完整静态详情和原作品预览，不展示虚构编辑项。pending Template 只可由显式外部reviewHarness打开，审阅状态保留在Artwork元数据或reviewHarness，现有作品标识可留但不强制额外编辑器badge或长文案；不改变公开资格。关闭/Esc/历史返回与前进/导航/切Artwork均有同一丢弃确认，取消保留URL/草稿/焦点。草稿只存内存，不读、不删旧storage。
 
-## 内容与身份
+仅真实适配模板可本地改色/眼型/眼镜/配件并导出透明PNG。首批Dots固定球形12合法配置，Grok固定球形16配置；Dots耳机+眼镜4种冲突明确拒绝，可确认合法替换，不静默丢选项。Appearance 下 Color 使用色块，Face 下 Eyes 使用真实图层缩略图，Accessories 下 Glasses 与 Accessory 为真实图层；不使用文字下拉框、棋盘网格或灰色方块缩略图底。眼型使用统一纯色底，界面几何 SVG/CSS 图标居中且不替代图层，PNG继续保留alpha；选中/焦点/失败可辨，44px且键盘可操作。每个选项必须有真实层/无帽基底/遮挡适配，无万能配件。模板素材与配方保持pending时仅外部审阅harness可测试，公开Edit需精确版本批准。预览与导出共用同一配方、成功revision和冻结像素；最新渲染未成功禁止导出。不继承动画或Pet能力。
 
-保留15个既有Artwork ID/version、原图字节和v83批准引用。Character身份、Artwork成品、Asset用途、完整SceneArt、只含热点坐标的ScenePlacement、Prompt意图分离。真实动作/变体只显式登记，当前没有则隐藏。八类事实保留none/notApplicable/unknown差异。
+打开作品先同步显示面板、封面、元数据及主操作与次级 Export；有精确获批Template时继续按需加载模板和选项，成功默认预览作为唯一可编辑/导出预览。无Template作品保持静态详情。高清展示预览、配件和主预览下方的相关角色按需加载，不以原图读取/哈希作为查看前置。预览loader按Asset ID/version/hash/purpose共享请求，最多4并发、64MiB解码缓存、16闲置条目，消费者lease与取消独立，迟到回调按session/revision丢弃并释放Bitmap/BlobURL。静态作品Export校验后返回原图字节；编辑作品Export只使用成功冻结的Canvas PNG。
 
-Dots短密绒和清楚轮廓，无肢体基准不得长手脚；Grok Bot软几何胶囊眼不是屏幕脸；Muse按C01奶油包覆体/内嵌脸/短圆肢体；柴犬立耳橙白口鼻四足卷尾；人类皮肤/发丝/衣料保持区别。统一光照，不统一成毛绒。
+统一Prompt由静态作品的原Prompt或编辑作品的最近成功配置Prompt，加上一个额外要求文本组成；额外要求仅用于Prompt，不改本地像素。ChatGPT由用户自行附图、检查与发送，站内不自动附图或发送。没有上传、账号/收藏、数据库、后台CMS/MCP、站内模型调用/聊天、公共投稿、Guide页面或旧schema/路由/storage迁移。动画/变体/许可/尺寸/下载目标只按真实登记显示。
 
-## 详情与边界
+## 验收与保留
 
-首页/画廊/直链共用一份详情，绑定同一ID/version。桌面浮窗、窄屏全屏；返回恢复来源、搜索、筛选、滚动与焦点。原图失败不阻塞文字。只显示真实文件和精选事实，不展示未验证许可/尺寸/格式/Pet能力。下载原始字节，不Canvas重绘。修改意图区分保留/移除/替换，空值不是移除；不向人物、动物或Muse套Dots换形。折叠/语言切换保留草稿，关闭/成功变体切换清空。
+`dist/` 同时是可编辑源码和Sites发布树，不能整体清空。`design/static-publish-manifest.json` 必须逐路径精确维护活动闭包；pending资源列于previewOnlyFiles（仍物理位于dist），构建 deploymentReady:false不等于部署隔离。旧活动源码按原字节保存于historical-runtime/v98-before-dark-gallery；来源、批准素材及历史验收保持。15张原图的字节/alpha不变，不能用新衍生图覆盖。
 
-不做上传、存储库、API/CMS、账号/收藏、社区、模型调用、通用配件、游戏、第二场景或旧兼容层。v96因原型差距大、角色悬浮且与背景无关、角色缺少、把多页拼版误当单页而被用户拒绝；其证据保留为历史。v97 场景及预览证据保留原样，v98 满屏背景、叠加分类和新增候选仍待用户确认。保留浏览器/响应式/减少动态和失败降级。旧运行退出dist，来源/批准/历史保留。工程验证不代表用户批准新素材或页面。
+当前源码cache统一v99；新证据只写design/acceptance/current-20261010-v99/，不覆盖v98/v97/v96。保护 .openai/hosting.json、openspec/config.yaml、package-lock.json、vite.config.mjs与既有依赖版本。工程、实页视觉、用户美术确认、实体设备、目标包与部署分别报告；未测不得标通过。实际检查1440×900、390×844、320×700、768×1024双语、键盘/返回、复制/实际下载、全部28合法配方与两套完整编辑导出旅程。

@@ -1,0 +1,1781 @@
+{
+  "manifestAssetCount": 14,
+  "templates": [
+    {
+      "templateId": "dots-orb-v1",
+      "artworkId": "candidate-dots-20261005",
+      "artworkVersion": "v2",
+      "status": "pending",
+      "accessMode": "review-only",
+      "assetCount": 7,
+      "legalCount": 12,
+      "configurations": [
+        {
+          "index": 1,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc",
+          "outputByteSize": 1906954,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+          "alphaNonzero": 792092,
+          "alphaTransparent": 780424,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 2,
+            "idleEntries": 2,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 2,
+            "decodedBytes": 12580128,
+            "cachedDecodedBytes": 12580128,
+            "idleDecodedBytes": 12580128,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 12580128,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 2,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 0,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16",
+          "outputByteSize": 2186209,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+          "alphaNonzero": 940692,
+          "alphaTransparent": 631824,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 4,
+            "idleEntries": 4,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 4,
+            "decodedBytes": 25160256,
+            "cachedDecodedBytes": 25160256,
+            "idleDecodedBytes": 25160256,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 25160256,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 3,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "af77273c1fcfc7af86fb0cd96510008be48059ee0d4709fd38c863d211883ece",
+          "outputByteSize": 1917136,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+          "alphaNonzero": 792174,
+          "alphaTransparent": 780342,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 6,
+            "idleEntries": 6,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 6,
+            "decodedBytes": 37740384,
+            "cachedDecodedBytes": 37740384,
+            "idleDecodedBytes": 37740384,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 37740384,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 4,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "2537f741362dbef8309134b1ae4d789185d0895dd475ae7f9f2abdc24826c235",
+          "outputByteSize": 1919188,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+          "alphaNonzero": 792096,
+          "alphaTransparent": 780420,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 5,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "f7f4976611860aec1060f7e9c190048e538db308ea97f4b7a6c0cf350c23aa66",
+          "outputByteSize": 2200238,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+          "alphaNonzero": 940697,
+          "alphaTransparent": 631819,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 6,
+          "options": {
+            "color": "blue",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=blue&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "1b539aedf91637aa916ae25fbf70bb04a6c49243df16d702a4369fa52116263c",
+          "outputByteSize": 1930991,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+          "alphaNonzero": 792178,
+          "alphaTransparent": 780338,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            1,
+            78,
+            233,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 7,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "3937c558ec7b0f6f96dc5cd2134ed8035f16187000be39fd8f0327af0b191fe3",
+          "outputByteSize": 1663632,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "9147a8c45fd21b3abf97537dca3a63416edcfd77dc7bac09be9495412e01d346",
+          "alphaNonzero": 792092,
+          "alphaTransparent": 780424,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 8,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "7e2acd388fb27439d151544d740ece08c65111119b0fd6aa9278b70f85bef950",
+          "outputByteSize": 1977566,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "31c22c05997daf8fffb169a78c9776e137b7166e37729b934b793906eb823626",
+          "alphaNonzero": 940692,
+          "alphaTransparent": 631824,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 9,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "original",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=original&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:original@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "e0e09f4320c0af993492a27492d80ffd6df7f21ffb6004015787f08f9503eeb4",
+          "outputByteSize": 1680673,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3d93043a22bc088a4bd92967b202350763c13412539aa1e6c82db8990a8d0590",
+          "alphaNonzero": 792174,
+          "alphaTransparent": 780342,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 10,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=none|layer-order=body>eyes|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "42d8365050df8047814d1a8c508ad6233bf7f7b4f68878a40eb81c6618552eac",
+          "outputByteSize": 1667933,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "4a1c7a25e1e199ef801467238986ae728cd03a1335605fef02195e9d4807cf30",
+          "alphaNonzero": 792096,
+          "alphaTransparent": 780420,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 11,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "none",
+            "accessory": "headphones"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=none&accessory=headphones|layer-order=accessory-rear>body>eyes>accessory-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:rear@v1:473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:headphones:default:front@v1:eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "b070f07b16eb92fc76dca71bd129d24f151eae9fc2b50d1abda85b280dcb5ddd",
+          "outputByteSize": 1982524,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "3b6b50ec44ed7117342020c56b6a8574a505137273c8def630cd81545d4b4d97",
+          "alphaNonzero": 940697,
+          "alphaTransparent": 631819,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 12,
+          "options": {
+            "color": "warm-yellow",
+            "shape": "orb",
+            "eyes": "closed",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|dots-orb-v1@v1|candidate-dots-20261005@v2|color=warm-yellow&shape=orb&eyes=closed&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:dots-orb-v1:body-neutral@v1:0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:eyes:closed@v1:f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea:placement=0,-20;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-v1:glasses:round:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "6f687d781b14e7edb3da082263a97627edb140ae8380c5559b7700433966c721",
+          "outputByteSize": 1688451,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e00f154c1fe9bb137ade53f75e58727bc245e21096d3b680e505837816cc5cba",
+          "alphaNonzero": 792178,
+          "alphaTransparent": 780338,
+          "alphaBounds": [
+            0,
+            0,
+            1244,
+            1254
+          ],
+          "bodySampleRGBA": [
+            217,
+            168,
+            17,
+            252
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 7,
+            "idleEntries": 7,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 7,
+            "decodedBytes": 44030448,
+            "cachedDecodedBytes": 44030448,
+            "idleDecodedBytes": 44030448,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 44030448,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        }
+      ],
+      "distinctOutputCount": 12
+    },
+    {
+      "templateId": "grok-orb-v1",
+      "artworkId": "candidate-grok-20261005",
+      "artworkVersion": "v2",
+      "status": "pending",
+      "accessMode": "review-only",
+      "assetCount": 7,
+      "legalCount": 16,
+      "configurations": [
+        {
+          "index": 1,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 0,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0",
+          "outputSha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+          "outputByteSize": 1316831,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "ea19233ecf2f6489d7d5b543b46f34b5e455d717f5131ecbf9e646a8ff5ccfa7",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 9,
+            "idleEntries": 9,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 9,
+            "decodedBytes": 56610576,
+            "cachedDecodedBytes": 56610576,
+            "idleDecodedBytes": 56610576,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 56610576,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 2,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04",
+          "outputByteSize": 1588533,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "b80348ce372c8eeea2300278dfe8fa8ce09681547233b9322115823f15b5ac6c",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 3,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0",
+          "outputByteSize": 1343112,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e42da2be49fb8fdc357eff4532ddc320ed97f18dbdb6eeac5b1956ad8cbad348",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 4,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317",
+          "outputByteSize": 1613987,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "24b80665ed45f29292f5bdeb4e1e031afd6b22c12c67444a6a3fc1cdc370c377",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 5,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10",
+          "outputSha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f",
+          "outputByteSize": 1313308,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "13a385ad20b3d881c03aea02dd81953b4472fd462eac4a4936836332eb3c8b2d",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 6,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a",
+          "outputByteSize": 1584791,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "edda4706598d2acccf204f076ab805567e8c8f237fb780d77c6a156c8fcda4b7",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 7,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7",
+          "outputByteSize": 1339210,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e47d0c94dcb34e478948bb6a45d71caebba74456a4816c1572c73aa695fa60d5",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 8,
+          "options": {
+            "color": "purple",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=purple&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c",
+          "outputByteSize": 1610551,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "eb4c1c27029c374c279d88f50b510691110658b8b6b77cc21cce021980fba430",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            105,
+            62,
+            211,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 9,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0",
+          "outputSha256": "486e0efa7a57ab0250f8f724849e512ad98d000b3a3e5d64e039c93bf75d7d8a",
+          "outputByteSize": 1172735,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "ea19233ecf2f6489d7d5b543b46f34b5e455d717f5131ecbf9e646a8ff5ccfa7",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 10,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "aa9c02739a6086aba4f41689e9fe6a2fa57719c965359221fdfd286764dc61da",
+          "outputByteSize": 1464289,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "b80348ce372c8eeea2300278dfe8fa8ce09681547233b9322115823f15b5ac6c",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 11,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "a9415327bb45db8232f2fcb09ad936087d15fa6c303b55f83ba646857cba9be4",
+          "outputByteSize": 1203985,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e42da2be49fb8fdc357eff4532ddc320ed97f18dbdb6eeac5b1956ad8cbad348",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 12,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "angled-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=angled-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:angled-capsules@v2:1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f:placement=5.75,5;pivot=888.5,462;scale=1.17,0.58;shear=0,-0.274;rotation=0|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "856fc71fbe60be35a83c9e999acf74b02ef0ba4e9e4f375cd8d6425e6d9cf8b0",
+          "outputByteSize": 1494732,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "24b80665ed45f29292f5bdeb4e1e031afd6b22c12c67444a6a3fc1cdc370c377",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 13,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=none|layer-order=body>eyes|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10",
+          "outputSha256": "98d58945a00955e93080c81845ded48a6ae8811438e6711e459d32eab5123a28",
+          "outputByteSize": 1169646,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "13a385ad20b3d881c03aea02dd81953b4472fd462eac4a4936836332eb3c8b2d",
+          "alphaNonzero": 807815,
+          "alphaTransparent": 764701,
+          "alphaBounds": [
+            0,
+            39,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 14,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "none",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=none&accessory=soft-cap|layer-order=body>accessory-rear>eyes>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "d639b3acae9d8551e09487f4736a5b1426621bd81832cd2b47240d7deaab413a",
+          "outputByteSize": 1461873,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "edda4706598d2acccf204f076ab805567e8c8f237fb780d77c6a156c8fcda4b7",
+          "alphaNonzero": 880312,
+          "alphaTransparent": 692204,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 15,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "none"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=none|layer-order=glasses-rear>body>eyes>glasses-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+          "outputSha256": "3556ed979269f0dce182e20b53450983edefbd0c2f62a3950b9c13f2201a7e2b",
+          "outputByteSize": 1200626,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "e47d0c94dcb34e478948bb6a45d71caebba74456a4816c1572c73aa695fa60d5",
+          "alphaNonzero": 808149,
+          "alphaTransparent": 764367,
+          "alphaBounds": [
+            0,
+            24,
+            1220,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        },
+        {
+          "index": 16,
+          "options": {
+            "color": "mint",
+            "shape": "orb",
+            "eyes": "upright-capsules",
+            "glasses": "round",
+            "accessory": "soft-cap"
+          },
+          "revision": 1,
+          "recipeKey": "studio-renderer-20261010-v99-placement-transform-1|grok-orb-v1@v1|candidate-grok-20261005@v2|color=mint&shape=orb&eyes=upright-capsules&glasses=round&accessory=soft-cap|layer-order=glasses-rear>body>accessory-rear>eyes>glasses-front>accessory-front|template:grok-orb-v1:body-neutral@v1:a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f:placement=0,0;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:eyes:upright-capsules@v2:f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697:placement=-18,-117;pivot=909,578;scale=1.11,0.75;shear=0,0;rotation=-10|template:grok-orb-v1:glasses:round:rear@v2:4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f:placement=482,230;pivot=0,0;scale=0.536,0.397;shear=0,0;rotation=0|template:grok-orb-v1:glasses:round:front@v1:635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34:placement=0,-46;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:rear@v2:cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0:placement=0,-71.25;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0|template:grok-orb-v1:cap:soft:front@v2:0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644:placement=0,-82.5;pivot=0,0;scale=1,0.75;shear=0,0;rotation=0",
+          "outputSha256": "404eb3f9f281dbdaf0218de4b8d773877e1bdb71f5e403794ccfb5631d00b03b",
+          "outputByteSize": 1491491,
+          "previewAndExportSha256Match": true,
+          "canvas": [
+            1254,
+            1254
+          ],
+          "alphaSha256": "eb4c1c27029c374c279d88f50b510691110658b8b6b77cc21cce021980fba430",
+          "alphaNonzero": 880646,
+          "alphaTransparent": 691870,
+          "alphaBounds": [
+            0,
+            0,
+            1226,
+            1254
+          ],
+          "bodySampleRGBA": [
+            76,
+            197,
+            169,
+            253
+          ],
+          "loader": {
+            "activeRequests": 0,
+            "queuedRequests": 0,
+            "pendingRequests": 0,
+            "inFlightKeys": 0,
+            "cacheEntries": 10,
+            "idleEntries": 10,
+            "activeLeases": 0,
+            "objectURLs": 0,
+            "bitmaps": 10,
+            "decodedBytes": 62900640,
+            "cachedDecodedBytes": 62900640,
+            "idleDecodedBytes": 62900640,
+            "pinnedBytes": 0,
+            "reservedBytes": 0,
+            "peakDecodedBytes": 62900640,
+            "maxConcurrent": 4,
+            "maxDecodedBytes": 67108864,
+            "maxIdleEntries": 16,
+            "registeredAssets": 88,
+            "disposed": false
+          }
+        }
+      ],
+      "distinctOutputCount": 16
+    }
+  ],
+  "reviewBackgrounds": [
+    {
+      "templateId": "dots-orb-v1",
+      "options": {
+        "color": "blue",
+        "shape": "orb",
+        "eyes": "original",
+        "glasses": "none",
+        "accessory": "headphones"
+      },
+      "transparentComposite": "composites/dots-orb-v1-02.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/dots-orb-v1-02-dark.png",
+          "sha256": "e7c9be4ae7ebb44bd51446ec932a1377e1ebf7a929c6d2f651e5681dfd853048"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/dots-orb-v1-02-white.png",
+          "sha256": "296fba2f8b754b92a0664264915cfa7e88e6831463e71fe10e7b48c846bd48ef"
+        }
+      ]
+    },
+    {
+      "templateId": "dots-orb-v1",
+      "options": {
+        "color": "blue",
+        "shape": "orb",
+        "eyes": "original",
+        "glasses": "round",
+        "accessory": "none"
+      },
+      "transparentComposite": "composites/dots-orb-v1-03.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/dots-orb-v1-03-dark.png",
+          "sha256": "ecd48a838516d935d0f9a37b80aaacf87f00e4d0b5bd8a6a2469d1224c164092"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/dots-orb-v1-03-white.png",
+          "sha256": "6b7c8518f29589006142fed229a79b8289807fbedb16e9fa4a822fcc5880f984"
+        }
+      ]
+    },
+    {
+      "templateId": "grok-orb-v1",
+      "options": {
+        "color": "purple",
+        "shape": "orb",
+        "eyes": "angled-capsules",
+        "glasses": "none",
+        "accessory": "none"
+      },
+      "transparentComposite": "composites/grok-orb-v1-01.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/grok-orb-v1-01-dark.png",
+          "sha256": "f4dc44a047f84ae744786dda83d93e37618e7587991532b80bc3db9c5d081f33"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/grok-orb-v1-01-white.png",
+          "sha256": "bfb46725e1666a5bef7476120e822f22dc5cdbe1d944e512834642e13bf80237"
+        }
+      ]
+    },
+    {
+      "templateId": "grok-orb-v1",
+      "options": {
+        "color": "purple",
+        "shape": "orb",
+        "eyes": "angled-capsules",
+        "glasses": "none",
+        "accessory": "soft-cap"
+      },
+      "transparentComposite": "composites/grok-orb-v1-02.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/grok-orb-v1-02-dark.png",
+          "sha256": "f7b44ab24245bea8643424ac1d65aadba6731a38a2d40ffc8fe543789de858ac"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/grok-orb-v1-02-white.png",
+          "sha256": "dc61a41a17077fb7411e8725defcdfc2e4b17da4ff274f48a3b532eeffaf0fd4"
+        }
+      ]
+    },
+    {
+      "templateId": "grok-orb-v1",
+      "options": {
+        "color": "purple",
+        "shape": "orb",
+        "eyes": "angled-capsules",
+        "glasses": "round",
+        "accessory": "none"
+      },
+      "transparentComposite": "composites/grok-orb-v1-03.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/grok-orb-v1-03-dark.png",
+          "sha256": "4e2d60f294a2db1a024218ad097036f724839b70b5d091b1878235abfbe914bc"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/grok-orb-v1-03-white.png",
+          "sha256": "678effccfc31ae0b69a7330ae338ef60bc42cc7625854c178dbdd681be7460f8"
+        }
+      ]
+    },
+    {
+      "templateId": "grok-orb-v1",
+      "options": {
+        "color": "purple",
+        "shape": "orb",
+        "eyes": "angled-capsules",
+        "glasses": "round",
+        "accessory": "soft-cap"
+      },
+      "transparentComposite": "composites/grok-orb-v1-04.png",
+      "backgrounds": [
+        {
+          "name": "dark",
+          "path": "review-backgrounds/grok-orb-v1-04-dark.png",
+          "sha256": "ccc752a49fc20b98aca34b78ec89973c0f40cfecc7b482d215ef469abc5d35b3"
+        },
+        {
+          "name": "white",
+          "path": "review-backgrounds/grok-orb-v1-04-white.png",
+          "sha256": "9b83de55eba26ba605daa521d14fd0f80c08530209f6df654822ae53930e8bfe"
+        }
+      ]
+    }
+  ],
+  "loaderBeforeRelease": {
+    "activeRequests": 0,
+    "queuedRequests": 0,
+    "pendingRequests": 0,
+    "inFlightKeys": 0,
+    "cacheEntries": 10,
+    "idleEntries": 10,
+    "activeLeases": 0,
+    "objectURLs": 0,
+    "bitmaps": 10,
+    "decodedBytes": 62900640,
+    "cachedDecodedBytes": 62900640,
+    "idleDecodedBytes": 62900640,
+    "pinnedBytes": 0,
+    "reservedBytes": 0,
+    "peakDecodedBytes": 62900640,
+    "maxConcurrent": 4,
+    "maxDecodedBytes": 67108864,
+    "maxIdleEntries": 16,
+    "registeredAssets": 88,
+    "disposed": false
+  },
+  "loaderAfterRelease": {
+    "activeRequests": 0,
+    "queuedRequests": 0,
+    "pendingRequests": 0,
+    "inFlightKeys": 0,
+    "cacheEntries": 0,
+    "idleEntries": 0,
+    "activeLeases": 0,
+    "objectURLs": 0,
+    "bitmaps": 0,
+    "decodedBytes": 0,
+    "cachedDecodedBytes": 0,
+    "idleDecodedBytes": 0,
+    "pinnedBytes": 0,
+    "reservedBytes": 0,
+    "peakDecodedBytes": 62900640,
+    "maxConcurrent": 4,
+    "maxDecodedBytes": 67108864,
+    "maxIdleEntries": 16,
+    "registeredAssets": 88,
+    "disposed": true
+  }
+}

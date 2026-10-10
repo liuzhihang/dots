@@ -1,0 +1,88 @@
+{
+  "status": "pending-user-art-approval",
+  "originalsUnmodified": true,
+  "artworks": [
+    {
+      "id": "dots-lime-frog-bow",
+      "characterId": "dots-lime-frog-bow",
+      "version": "v1",
+      "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-lime-frog-bow-candidate-v1.png",
+      "generatedOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-852001c8-4b28-4385-9f1a-ff3f88c283a9.png",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "mime": "image/png",
+      "byteSize": 1087340,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1061852,
+        "opaquePixels": 164,
+        "partialAlphaPixels": 510500,
+        "visibleBounds": {
+          "x": 0,
+          "y": 19,
+          "width": 1234,
+          "height": 1211,
+          "alphaThreshold": 1
+        }
+      },
+      "diagnostics": {
+        "alpha16Bounds": [
+          192,
+          275,
+          1058,
+          1009
+        ],
+        "lowAlphaPixels1To15": 13751,
+        "edgeNote": "Raw generated alpha has faint fringe specks (alpha 1-15); alpha>=16 subject is inset. Retain source bytes and review solid light/dark display before release."
+      },
+      "artApproval": "pending",
+      "publicGalleryEligible": false,
+      "license": "unknown"
+    },
+    {
+      "id": "dots-pink-heart-shades",
+      "characterId": "dots-pink-heart-shades",
+      "version": "v1",
+      "file": "openspec/changes/simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-pink-heart-shades-candidate-v1.png",
+      "generatedOutputPath": "/Users/liuzhihang/.codex/generated_images/01a124f0-90bb-7361-a421-075ee9c26374/exec-86f82daf-f04e-4ea1-a0d6-8438703f7bc5.png",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "mime": "image/png",
+      "byteSize": 905104,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1136516,
+        "opaquePixels": 7,
+        "partialAlphaPixels": 435993,
+        "visibleBounds": {
+          "x": 0,
+          "y": 19,
+          "width": 1240,
+          "height": 1209,
+          "alphaThreshold": 1
+        }
+      },
+      "diagnostics": {
+        "alpha16Bounds": [
+          213,
+          277,
+          1040,
+          992
+        ],
+        "lowAlphaPixels1To15": 10515,
+        "edgeNote": "Raw generated alpha has faint fringe specks (alpha 1-15); alpha>=16 subject is inset. Retain source bytes and review solid light/dark display before release."
+      },
+      "artApproval": "pending",
+      "publicGalleryEligible": false,
+      "license": "unknown"
+    }
+  ]
+}

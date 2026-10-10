@@ -1,4 +1,4 @@
-import { getPrompt } from './studio-artwork-catalog.js?v=98';
+import { getPrompt } from './studio-artwork-catalog.js?v=99';
 
 export function normalizePromptLanguage(language) {
   return language === 'en' ? 'en' : 'zh';
@@ -36,7 +36,8 @@ export function buildArtworkEditPrompt({ basePrompt, edits = [], additionalDirec
   for (const edit of Array.isArray(edits) ? edits : []) {
     const label = String(edit?.label ?? '').trim();
     const action = edit?.action;
-    if (!label || action === 'keep' || !['remove', 'replace'].includes(action)) continue;
+    if (action === 'keep') continue;
+    if (!label || !['remove', 'replace'].includes(action)) throw new TypeError('Every non-keep request needs a named feature and a remove or replace action.');
     if (action === 'replace') {
       const replacement = String(edit?.replacement ?? '').trim();
       if (!replacement) throw new TypeError(`“${label}”的替换内容不能为空。`);
@@ -64,4 +65,16 @@ export function buildArtworkEditPrompt({ basePrompt, edits = [], additionalDirec
     ? 'If you attach a reference image in ChatGPT, use it as visual guidance while preserving the character identity above. If you do not attach an image, follow the text prompt alone. This site has not accessed or analyzed any image.'
     : '如果你在 ChatGPT 中自行附加参考图，请将其作为视觉参考并保持上述角色身份；未附图时，请只根据文字创作。本网站没有读取或分析任何图片。';
   return [header, base, changeBlock, directionBlock, attachmentNote].filter(Boolean).join('\n\n');
+}
+
+/** Describe only a frozen successful local recipe; never mix external intent into pixel claims. */
+export function buildConfigurationPrompt({artwork,template,snapshot,language='en'}={}) {
+  if(!artwork||!template||!snapshot||!snapshot.recipeKey||!Number.isInteger(snapshot.revision))throw new TypeError('A successful local preview is required.');
+  const options=snapshot.options||snapshot.configuration||snapshot.draft?.options;
+  if(!options)throw new TypeError('The successful preview has no frozen configuration.');
+  const rows=Object.entries(options).map(([key,value])=>`${key}: ${value}`);
+  const base=promptFor(artwork,{language});
+  return language==='en'
+    ? `Local template configuration (${template.id}@${template.version}, revision ${snapshot.revision}).\n${rows.join('\n')}\n\nCharacter reference:\n${base}\n\nUse the configuration above in place of the original appearance's corresponding options. This is a still PNG, not an animation or Pet package.`
+    : `本地模板配置（${template.id}@${template.version}，revision ${snapshot.revision}）。\n${rows.join('\n')}\n\n角色参考：\n${base}\n\n以上配置替代原作品对应的外观选项。这是静态 PNG，不是动画或 Pet 包。`;
 }

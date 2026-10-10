@@ -1,0 +1,34 @@
+{
+  "revision": 99,
+  "files": 154,
+  "previewOnlyFiles": 50,
+  "approvedArtworkCount": 15,
+  "pendingArtworkCount": 9,
+  "buildReportSha256": "8b2ec355785908c7dffd31bbf8b7ab3e4b9a5e72b982ce523b713d763b9b84b0",
+  "approvalScopeSha256": "77906210de96adf29264d858102923dc6e0c08e2bc1e542b50bd5a9f56debc19",
+  "unchangedRenderer": [
+    {
+      "path": "dist/studio-renderer.js",
+      "sha256": "059a95d7a8b0192c101d2b7a580ec368cf7f3633d4dd74b972df9a5d8e6f3d77"
+    },
+    {
+      "path": "dist/studio-draft.js",
+      "sha256": "8b4531a94f4000ae1cf68ded160cc9e8dca76f3f9aa28f0c67b1731ab01a2370"
+    },
+    {
+      "path": "dist/studio-editor.js",
+      "sha256": "1caf78e18a2669b0282a632ff0acfd76a10a125bbd93c5080ed71d57425844f4"
+    },
+    {
+      "path": "dist/studio-edit-templates.js",
+      "sha256": "65502525c3317aa4a3f6ecd4e46a93a04d83bcdd311a2da52aca0003df3514a8"
+    },
+    {
+      "path": "dist/assets/templates/sources.json",
+      "sha256": "83df339fb0f0d932171b46c065e8f8941a1599c6d2d3416f49d23456acfac70f"
+    }
+  ],
+  "retained28RecipeEvidence": "editor/run-2026-10-10T12-34-50-407Z/report.json",
+  "reason": "Only CSS and static candidate catalog/assets changed; original template assets and rendering logic unchanged; full prior recipe run retained, not rerun or claimed new.",
+  "deploymentReady": false
+}

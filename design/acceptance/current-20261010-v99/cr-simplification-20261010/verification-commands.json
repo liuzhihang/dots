@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-10",
+  "commands": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/history/history.json"
+      ],
+      "result": "Catalog, query, reference detail, motion, publish inventory, router/history, templates, draft renderer, preview loader, character extension, and implementation safety passed."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/editor npm run test:editing",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/editor/run-2026-10-10T14-55-47-804Z/report.json",
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/editor/run-2026-10-10T14-55-47-804Z/real-28-recipes.json",
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/editor/run-2026-10-10T14-55-47-804Z/20-edit-cycles.json",
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/editor/run-2026-10-10T14-55-47-804Z/editor-races.json"
+      ],
+      "result": "All 28 real-source recipes, both complete editing/export journeys, 20 edit cycles, resource teardown, and render/thumbnail race checks passed."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/browser node scripts/verify-studio-browser.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/browser/report.json"
+      ],
+      "result": "19 browser checks, 21 captures, and 24 exact original downloads passed. This full flow run predates the final two-line slogan and multi-character ensemble; final home appearance and contrast are separately verified by hero-final runs."
+    },
+    {
+      "command": "node scripts/verify-studio-contrast.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/contrast/contrast.json"
+      ],
+      "result": "Earlier pixel-sampled contrast pass before the final Hero ensemble and gradient-title sampling; superseded for current Hero by the later focused contrast run."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/editor-layout node scripts/verify-editor-layout.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/editor-layout/layout.json"
+      ],
+      "result": "24 bilingual/template/viewport cases passed with 40 screenshots, including 768x1024 canvas containment and all four accessible visual-option tabs."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-final/home node scripts/verify-home-hero.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-final/home/report.json",
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/tests/hero-home.log"
+      ],
+      "result": "Five viewport sizes x both languages passed: exact two-line title, frozen ensemble path/hash, complete title layout, both CTA hit targets and actions, expected gallery columns, no overflow or page errors."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-final/contrast node scripts/verify-studio-contrast.mjs",
+      "exitCode": 0,
+      "evidence": [
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-final/contrast/contrast.json",
+        "design/acceptance/current-20261010-v99/cr-simplification-20261010/tests/contrast-final-repaired.log"
+      ],
+      "result": "322 rendered text targets passed in English and Simplified Chinese. Solid text passed the 4.5:1 threshold; the large gradient hero line passed 3:1 with a conservative high-coverage glyph minimum of 3.53:1."
+    }
+  ],
+  "scopeNote": "The earlier npm test and full 28-recipe/edit/download suites were not rerun for this decorative Hero asset and CSS-only crop change. The focused final homepage and contrast runs are recorded above.",
+  "repairedAttempts": [
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/editor npm run test:editing",
+      "exitCode": 1,
+      "reason": "The isolated editor cycle still waited for a browser download event after exportPNG moved to the onExport Blob callback.",
+      "repair": "The QA cycle now inspects Blob bytes through onExport; the full Dots/Grok user journeys continue to assert actual browser downloads. The repaired run passed as recorded above."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/browser node scripts/verify-studio-browser.mjs",
+      "exitCode": 1,
+      "reason": "The old 1440x900 assertion forced all six cards above the fold, conflicting with the restored larger prototype Hero.",
+      "repair": "The check now verifies an aligned six-card desktop row with no horizontal overflow."
+    },
+    {
+      "command": "node scripts/verify-studio-contrast.mjs",
+      "exitCode": 1,
+      "reason": "The additional-instructions note initially measured 3.91:1 against the glass background.",
+      "repair": "The note now uses the primary text color; the repaired pixel-sampled run measured at least 5.00:1."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-preflight/home node scripts/verify-home-hero.mjs",
+      "exitCode": 1,
+      "reason": "The initial 2px CTA corner probes landed in the buttons' rounded transparent corners.",
+      "repair": "Use 8px inset hit probes and explicitly reset the page scroll before each viewport/language capture; the final run passed all 10 cases. Logs: tests/hero-home-preflight.log, tests/hero-home-preflight-repaired.log, tests/hero-home-preflight-final.log."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-final/contrast node scripts/verify-studio-contrast.mjs",
+      "exitCode": 1,
+      "reason": "The first gradient-title sampler treated a low-alpha anti-aliased edge pixel as the contrast minimum.",
+      "repair": "The test now records several pixel-change cutoffs and asserts the large-text 3:1 threshold on glyph pixels with at least 128/255 RGB change; the repaired result is 3.53:1. See tests/contrast-final.log and tests/contrast-final-repaired.log."
+    },
+    {
+      "command": "DOTS_EVIDENCE_DIR=design/acceptance/current-20261010-v99/cr-simplification-20261010/hero-preflight/contrast node scripts/verify-studio-contrast.mjs",
+      "exitCode": 1,
+      "reason": "A first attempt to thread the configurable contrast threshold into the browser-side evaluator referenced it outside the serialized function scope.",
+      "repair": "Pass selector and threshold as evaluator arguments; the subsequent contrast run completed. See tests/contrast-preflight.log and tests/contrast-preflight-repaired.log."
+    }
+  ]
+}

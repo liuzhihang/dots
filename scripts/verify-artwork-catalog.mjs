@@ -2,67 +2,119 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import {
-  ARTWORKS, ASSETS, CATALOG_INVENTORY, PREVIEW_ARTWORKS, PREVIEW_ASSETS, PREVIEW_PROMPTS, PROMPTS, SERIES, STYLE_IDENTITIES,
+  ARTWORKS, ASSETS, CATALOG_INVENTORY, CHARACTER_IDENTITIES, DETAIL_PREVIEW_ASSETS, DISPLAY_DERIVATIVES, PREVIEW_ARTWORKS, PREVIEW_ASSETS, PREVIEW_PROMPTS, PROMPTS, SERIES,
   canOpenArtwork, createSnapshot, getAsset, getArtwork, getPrompt, getVariants, isEligible, isPreviewArtwork, isTransparentCharacter, validateArtwork, validatePreviewArtwork
-} from '../dist/studio-artwork-catalog.js?v=98';
-import { ARTWORK_CONTENT, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT } from '../dist/studio-content.js?v=98';
-import { queryArtworks } from '../dist/studio-tags.js?v=98';
+} from '../dist/studio-artwork-catalog.js?v=99';
+import { ARTWORK_CONTENT, CHARACTER_IDENTITIES as CONTENT_CHARACTERS, DOTS_PROMPT, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, THUMBNAIL_ASSETS } from '../dist/studio-content.js?v=99';
+import { queryArtworks } from '../dist/studio-tags.js?v=99';
+import { createNewArtworkFixture } from './fixtures/new-artwork.mjs';
 
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
-const expectedVersions = new Map([
-  ['candidate-dots-20261005', 'v2'], ['candidate-grok-20261005', 'v2'],
-  ['candidate-meta-muse-20261005', 'v1'], ['candidate-humans-20261005', 'v1'],
-  ['candidate-animals-20261005', 'v1'], ...ARTWORKS.slice(5).map(artwork => [artwork.id, 'v1'])
-]);
+const releasePath = '../design/acceptance/current-20261010-v99/release-20261011/approval.json';
+const releaseApproval = JSON.parse(await readFile(new URL(releasePath, import.meta.url), 'utf8'));
 const approvalPath = '../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json';
 const snapshotPath = '../openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
 const approval = JSON.parse(await readFile(new URL(approvalPath, import.meta.url), 'utf8'));
 const sourceSnapshot = JSON.parse(await readFile(new URL(snapshotPath, import.meta.url), 'utf8'));
-const sourceRows = new Map(sourceSnapshot.files.map(file => [file.path, file]));
-const approvedIds = approval.scope.registeredLooks.map(item => item.id).sort();
+const frozenArtworkIds = approval.scope.registeredLooks.map(item => item.id).sort();
 const artworkIds = ARTWORKS.map(artwork => artwork.id).sort();
-const originalAssets = ASSETS.filter(asset => asset.resourceKind === 'transparent-character-still');
+const originalAssets = ASSETS.filter(asset => ['transparent-character-still', 'opaque-character-still'].includes(asset.resourceKind));
 const posterAssets = ASSETS.filter(asset => asset.resourceKind === 'gallery-poster');
+const publishedThumbnails = THUMBNAIL_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative');
+const publishedDetailPreviews = DETAIL_PREVIEW_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative');
+const previewOriginalIds = new Set(PREVIEW_ORIGINAL_ASSETS.map(asset => asset.id));
+const previewArtworkIds = new Set(PREVIEW_ARTWORKS.map(artwork => artwork.id));
+const registeredPendingOriginals = PREVIEW_ASSETS.filter(asset => previewArtworkIds.has(asset.ownerArtworkId) && ['transparent-character-still', 'opaque-character-still'].includes(asset.resourceKind));
 const coreCategories = ['appearance', 'bodyAccessory', 'characterStyle', 'clothing', 'colorMaterial', 'facialFeatures', 'headAccessory', 'prop'];
+const newCandidateIds = ['dots-butter-beret', 'grok-coral-drop', 'muse-lavender-lantern', 'human-rust-jacket', 'animal-cocoa-bear', 'dots-lime-frog-bow', 'dots-pink-heart-shades'];
+const releaseArtworkById = new Map(releaseApproval.scope.artworks.map(item => [item.id, item]));
+const sourceSnapshotCache = new Map([[snapshotPath.slice(3), sourceSnapshot]]);
+async function sourceRecordFor(asset) {
+  const [snapshotFile, itemPath] = String(asset.sourceSnapshotRef || '').split('#');
+  assert(snapshotFile && itemPath, `${asset.id} must identify its source snapshot record.`);
+  const relativeSnapshotPath = snapshotFile.replace(/^\.\.\//, '');
+  let snapshot = sourceSnapshotCache.get(relativeSnapshotPath);
+  if (!snapshot) {
+    snapshot = JSON.parse(await readFile(new URL(`../${relativeSnapshotPath}`, import.meta.url), 'utf8'));
+    sourceSnapshotCache.set(relativeSnapshotPath, snapshot);
+  }
+  return snapshot.files.find(file => file.path === itemPath);
+}
 
-assert.equal(ARTWORKS.length, 15);
-assert.deepEqual(artworkIds, approvedIds, 'The published catalog is exactly the v83 user-approved Artwork set.');
+assert.equal(frozenArtworkIds.length, 15, 'The v83 approval record freezes the historical 15-artwork subset.');
+assert.equal(releaseApproval.approvalId, 'dots-current-v99-artwork-ui-template-approval-20261011');
+assert.equal(releaseApproval.scope.revision, 99);
+assert.equal(releaseApproval.scope.artworkCount, 24);
+assert.equal(releaseApproval.userConfirmation.messages.includes('用户确认 ok'), true, 'The current user approval is traceable to the explicit confirmation.');
+assert.equal(new Set(artworkIds).size, ARTWORKS.length, 'The current approved catalog has unique Artwork IDs.');
+assert.equal(ARTWORKS.length, 24, 'All 24 exact artworks approved for this release enter the catalog.');
+assert.ok(frozenArtworkIds.every(id => artworkIds.includes(id)), 'All 15 historical approved Artworks remain in the active catalog.');
+assert.deepEqual([...releaseArtworkById.keys()].sort(), artworkIds, 'The current release approval enumerates every active Artwork exactly once.');
 assert.equal(approval.userArtApproved, true);
 assert.equal(approval.sourceId, sourceSnapshot.sourceId);
 assert.equal(sourceSnapshot.cacheRevision, '83');
-assert.equal(originalAssets.length, 15, 'The active catalog contains only the 15 complete original PNGs.');
-assert.equal(posterAssets.length, 15, 'Each Artwork has one separate gallery poster.');
-assert.equal(ASSETS.length, 30, 'Only original Artwork and its gallery poster are in the active asset catalog.');
-assert.equal(CATALOG_INVENTORY.approvedArtworkCount, 15);
-assert.equal(CATALOG_INVENTORY.posterAssetCount, 15);
+assert.equal(originalAssets.length, ARTWORKS.length, 'Each currently approved Artwork has one complete original PNG.');
+assert.equal(publishedThumbnails.length, ARTWORKS.length, 'Each approved Artwork has one 256px gallery poster.');
+assert.equal(publishedDetailPreviews.length, ARTWORKS.length * 2, 'Each approved Artwork has separate 512px and 1024px detail previews.');
+assert.equal(posterAssets.length, publishedThumbnails.length + POSTER_ASSETS.length, 'New thumbnails and preserved historical posters are registered separately.');
+assert.equal(ASSETS.length, originalAssets.length + POSTER_ASSETS.length + publishedThumbnails.length + publishedDetailPreviews.length);
+assert.equal(CATALOG_INVENTORY.approvedArtworkCount, ARTWORKS.length);
+assert.equal(CATALOG_INVENTORY.posterAssetCount, ARTWORKS.length);
 assert.equal(CATALOG_INVENTORY.coreFactCategoryCount, 8);
-assert.equal(PROMPTS.length, 30, 'Each Artwork keeps its attached Chinese and English image prompts.');
-assert.equal(PREVIEW_ARTWORKS.length, 2, 'Pending candidates live in a separate local-preview list.');
-assert.equal(PREVIEW_ASSETS.length, 2, 'Each pending candidate has only its actual original source asset.');
-assert.equal(PREVIEW_PROMPTS.length, 4, 'Each pending candidate has bilingual pending Prompt records.');
+assert.equal(PROMPTS.length, ARTWORKS.length * 2, 'Each Artwork keeps its attached Chinese and English image prompts.');
+assert.equal(PREVIEW_ARTWORKS.length, 0, 'The exact approved release has no pending Artwork records.');
+assert.equal(PREVIEW_ASSETS.length, 0, 'The exact approved release has no pending Asset records.');
+assert.equal(PREVIEW_PROMPTS.length, 0, 'The exact approved release has no pending Prompt records.');
+assert.equal(Object.keys(PREVIEW_ARTWORK_CONTENT).length, 9, 'The source candidate set remains available for exact approval binding.');
+assert.equal(PREVIEW_ORIGINAL_ASSETS.length, 9, 'Candidate originals remain registered as immutable source inputs.');
+assert.ok(newCandidateIds.every(id => releaseArtworkById.has(id)), 'All seven newly produced candidates are included in the exact current approval.');
+assert.ok(['robot-ivory-capsule-face-v98-candidate', 'animal-white-rabbit-v98-candidate'].every(id => releaseArtworkById.has(id)), 'The two earlier pending candidates are included in the explicit current approval.');
+assert.equal(PREVIEW_ASSETS.filter(asset => previewOriginalIds.has(asset.id)).length, 0, 'Approved candidate sources do not leak into the pending Asset registry.');
+assert.equal(PREVIEW_ASSETS.length, registeredPendingOriginals.length + PREVIEW_ARTWORKS.length * 3, 'Any future pending Artwork keeps its own original and three isolated display derivatives.');
+assert.equal(PREVIEW_PROMPTS.length, PREVIEW_ARTWORKS.length * 2, 'Any future pending Artwork keeps bilingual Prompts outside production.');
 assert.equal(SERIES.length, 5);
-assert.equal(STYLE_IDENTITIES.length, 5);
+const museSeries = SERIES.find(series => series.id === 'meta-muse');
+assert.deepEqual(museSeries?.labelByLanguage, { en: 'Muse', 'zh-CN': 'Muse' }, 'The public series label is Muse in both site languages.');
+for (const artwork of [...ARTWORKS, ...PREVIEW_ARTWORKS]) {
+  const series = SERIES.find(item => item.id === artwork.seriesId);
+  const explicitSeriesLabels = artwork.seriesLabelByLanguage;
+  assert.ok(series || (explicitSeriesLabels?.en && explicitSeriesLabels?.['zh-CN']), `${artwork.id} resolves either a current public series or an explicit localized label.`);
+  for (const language of ['en', 'zh-CN']) {
+    const title = artwork.titleByLanguage?.[language]?.trim().toLocaleLowerCase(language === 'zh-CN' ? 'zh-CN' : 'en');
+    const label = (explicitSeriesLabels?.[language] || series?.labelByLanguage[language] || '').trim().toLocaleLowerCase(language === 'zh-CN' ? 'zh-CN' : 'en');
+    assert.ok(title && label && title !== label && !title.endsWith(` ${label}`), `${artwork.id} ${language} title has no series-name suffix; the series is rendered separately.`);
+  }
+}
+assert.equal(CHARACTER_IDENTITIES.length, CONTENT_CHARACTERS.length);
+assert.ok(DOTS_PROMPT.en && DOTS_PROMPT['zh-CN'] && Object.isFrozen(DOTS_PROMPT));
 
 for (const artwork of ARTWORKS) {
   const original = getAsset(artwork.assetRefs.original);
   const poster = getAsset(artwork.assetRefs.poster);
-  const content = ARTWORK_CONTENT[artwork.id];
+  const poster512 = getAsset(artwork.assetRefs.poster512);
+  const detail512 = getAsset(artwork.assetRefs.detail512);
+  const detail1024 = getAsset(artwork.assetRefs.detail1024);
+  const character = CHARACTER_IDENTITIES.find(item => item.id === artwork.characterId);
+  const content = ARTWORK_CONTENT[artwork.id] || PREVIEW_ARTWORK_CONTENT[artwork.id];
   const legacyText = LEGACY_ARTWORK_TEXT[artwork.id];
   assert.ok(original, `${artwork.id} has a registered original asset`);
   assert.ok(poster, `${artwork.id} has a registered poster`);
-  assert.equal(artwork.version, expectedVersions.get(artwork.id), `${artwork.id} keeps its approved version`);
+  assert.ok(detail512 && detail1024, `${artwork.id} has separately registered detail display resources`);
   assert.equal(artwork.version, original.version, `${artwork.id} version binds to its original asset`);
-  assert.equal(artwork.title, legacyText.title, 'The existing title field stays byte-for-byte unchanged.');
-  assert.equal(artwork.description, legacyText.description, 'The existing description field stays byte-for-byte unchanged.');
+  assert.equal(artwork.title, content.titleByLanguage['zh-CN'], 'The catalog title mirrors the current localized Chinese Artwork title.');
+  assert.equal(artwork.description, legacyText?.description || content.descriptionByLanguage['zh-CN'], 'The description follows the immutable historical text or its approved current source.');
   assert.equal(artwork.titleByLanguage.en, content.titleByLanguage.en);
   assert.equal(artwork.titleByLanguage['zh-CN'], content.titleByLanguage['zh-CN']);
   assert.ok(artwork.titleByLanguage.en && artwork.titleByLanguage['zh-CN']);
   assert.ok(artwork.descriptionByLanguage.en && artwork.descriptionByLanguage['zh-CN']);
   assert.ok(artwork.aliases.en.length && artwork.aliases['zh-CN'].length);
-  assert.ok(STYLE_IDENTITIES.some(character => character.id === artwork.characterId), `${artwork.id} links to a static Character identity`);
-  assert.ok(SERIES.some(series => series.id === artwork.seriesId));
+  assert.ok(character, `${artwork.id} links to a static Character identity`);
+  assert.equal(character.seriesId, artwork.seriesId, `${artwork.id} keeps identity separate from its series`);
+  assert.equal(content.characterId, artwork.characterId);
+  assert.equal(artwork.characterLabelByLanguage.en, character.labelByLanguage.en);
+  assert.ok(SERIES.some(series => series.id === artwork.seriesId) || (artwork.seriesLabelByLanguage?.en && artwork.seriesLabelByLanguage?.['zh-CN']), `${artwork.id} has a registered or explicitly localized series label.`);
   assert.deepEqual(Object.keys(artwork.coreFacts).sort(), coreCategories);
-  assert.ok(artwork.detailFactIds.length >= 3 && artwork.detailFactIds.length <= 4);
+  assert.ok(artwork.detailFactIds.length >= 3 && artwork.detailFactIds.length <= 5);
   assert.ok(artwork.detailFactIds.every(id => artwork.featureIds.includes(id)), `${artwork.id} detail labels refer to real registered facts`);
   assert.ok(artwork.featureIds.length > 0 && artwork.featureIds.every(id => artwork.tagIds.includes(id)));
   for (const values of Object.values(artwork.coreFacts)) {
@@ -74,31 +126,54 @@ for (const artwork of ARTWORKS) {
     }
   }
 
-  assert.equal(original.resourceKind, 'transparent-character-still');
+  assert.equal(original.resourceKind, artwork.resourceKind);
   assert.equal(original.publicationStatus, 'published');
   assert.equal(original.artApproval.status, 'approved');
-  assert.equal(original.artApproval.scope, 'scope.registeredLooks');
-  assert.equal(original.artApproval.cacheRevision, '83');
   assert.equal(original.artApproval.artworkId, artwork.id);
   assert.equal(original.artApproval.assetSha256, original.sha256);
   assert.equal(artwork.artApproval.assetSha256, original.sha256);
   assert.equal(original.sourceSnapshotMatch, true);
-  assert.equal(original.alpha.hasAlpha, true);
-  assert.equal(original.alpha.hasTransparency, true);
+  if (frozenArtworkIds.includes(artwork.id)) {
+    assert.equal(original.artApproval.scope, 'scope.registeredLooks');
+    assert.equal(original.artApproval.cacheRevision, '83');
+    assert.equal(original.resourceKind, 'transparent-character-still');
+    assert.equal(original.alpha.hasAlpha, true);
+    assert.equal(original.alpha.hasTransparency, true);
+  } else {
+    const approved = releaseArtworkById.get(artwork.id);
+    assert.ok(approved, `${artwork.id} appears in the current approval scope.`);
+    assert.equal(original.artApproval.record, releasePath.slice(3));
+    assert.equal(original.artApproval.sourceId, releaseApproval.approvalId);
+    assert.equal(original.artApproval.scope, 'scope.currentV99ArtworkApproval');
+    assert.equal(approved.version, artwork.version);
+    assert.equal(approved.original.sha256, original.sha256);
+    assert.equal(approved.original.byteSize, original.byteSize);
+    assert.equal(approved.original.path, original.path);
+    assert.equal(original.alpha.hasAlpha, original.resourceKind === 'transparent-character-still');
+    assert.equal(original.alpha.hasTransparency, original.resourceKind === 'transparent-character-still');
+  }
   assert.equal(poster.ownerArtworkId, artwork.id);
-  assert.equal(poster.version, 'v1');
-  assert.equal(poster.purpose, 'gallery-cover-only');
+  assert.equal(poster.version, 'v99');
+  assert.equal(poster.purpose, 'poster');
   assert.equal(poster.downloadable, false);
   assert.equal(poster.derivedFrom, original.id);
   assert.equal(poster.sourceAssetId, original.id);
   assert.equal(poster.sourceAssetSha256, original.sha256);
-  assert.equal(poster.width, 512);
-  assert.equal(poster.height, 512);
-  assert.equal(poster.alpha.hasAlpha, true);
-  assert.equal(poster.alpha.hasTransparency, true);
-  assert.equal(poster.alpha.transparentPixels + poster.alpha.opaquePixels + poster.alpha.partialAlphaPixels, 512 * 512);
+  assert.equal(Math.max(poster.width, poster.height), 256);
+  if (poster512) {
+    assert.equal(poster512.version, 'v1');
+    assert.equal(poster512.width, 512);
+    assert.equal(poster512.height, 512);
+  }
+  for (const [preview, side] of [[detail512, 512], [detail1024, 1024]]) {
+    assert.equal(Math.max(preview.width, preview.height), side);
+    assert.equal(preview.resourceKind, 'display-preview');
+    assert.equal(preview.downloadable, false);
+    assert.equal(preview.sourceAssetId, original.id);
+    assert.equal(preview.sourceAssetSha256, original.sha256);
+  }
   assert.equal(isEligible(artwork), true);
-  assert.equal(isTransparentCharacter(artwork), true);
+  assert.equal(isTransparentCharacter(artwork), artwork.resourceKind === 'transparent-character-still');
   assert.deepEqual(getVariants(artwork.id), [], 'Unregistered variants are omitted rather than represented by placeholders.');
 
   const originalBytes = await readFile(new URL(`../${original.sourcePath}`, import.meta.url));
@@ -108,17 +183,25 @@ for (const artwork of ARTWORKS) {
   const originalView = new DataView(originalBytes.buffer, originalBytes.byteOffset, originalBytes.byteLength);
   assert.equal(originalView.getUint32(16), original.width);
   assert.equal(originalView.getUint32(20), original.height);
-  assert.ok([4, 6].includes(originalBytes[25]), `${original.id} source PNG retains an alpha channel`);
-  assert.equal(original.alpha.transparentPixels + original.alpha.opaquePixels + original.alpha.partialAlphaPixels, original.width * original.height);
-  const frozenOriginal = sourceRows.get(original.sourceSnapshotRef.split('#')[1]);
-  assert.ok(frozenOriginal, `${original.id} links to its frozen v83 source record`);
-  assert.equal(frozenOriginal.bytes, original.byteSize);
-  assert.equal(frozenOriginal.sha256, original.sha256);
+  assert.equal(originalBytes[25], original.resourceKind === 'transparent-character-still' ? 6 : 2, `${original.id} PNG channel type matches its registered resource kind`);
+  if (original.alpha.hasAlpha) assert.equal(original.alpha.transparentPixels + original.alpha.opaquePixels + original.alpha.partialAlphaPixels, original.width * original.height);
+  if (frozenArtworkIds.includes(artwork.id)) {
+    const sourceRecord = await sourceRecordFor(original);
+    assert.ok(sourceRecord, `${original.id} links to an exact source snapshot record`);
+    assert.equal(sourceRecord.bytes, original.byteSize);
+    assert.equal(sourceRecord.sha256, original.sha256);
+    assert.equal(original.sourceSnapshotRef.split('#')[0], snapshotPath.slice(3), `${original.id} retains the frozen v83 source snapshot.`);
+  } else {
+    assert.equal(original.artApproval.status, 'approved', `${artwork.id} has explicit artwork approval.`);
+    assert.equal(original.artApproval.artworkId, artwork.id, `${artwork.id} approval is bound to this Artwork.`);
+    assert.equal(original.sourceSnapshotRef.split('#')[0], releasePath.slice(3), `${artwork.id} binds to the current approval record.`);
+  }
 
-  const posterBytes = await readFile(new URL(`../${poster.sourcePath}`, import.meta.url));
-  assert.equal(posterBytes.byteLength, poster.byteSize, `${poster.path} byte length`);
-  assert.ok(posterBytes.byteLength <= 100 * 1024, `${poster.path} stays within the 100 KiB gallery-poster budget`);
-  assert.equal(digest(posterBytes), poster.sha256, `${poster.path} manifest SHA-256`);
+  if (poster512) {
+  const posterBytes = await readFile(new URL(`../${poster512.sourcePath}`, import.meta.url));
+  assert.equal(posterBytes.byteLength, poster512.byteSize, `${poster512.path} byte length`);
+  assert.ok(posterBytes.byteLength <= 100 * 1024, `${poster512.path} stays within the legacy poster budget`);
+  assert.equal(digest(posterBytes), poster512.sha256, `${poster512.path} manifest SHA-256`);
   assert.equal(posterBytes.toString('ascii', 0, 4), 'RIFF');
   assert.equal(posterBytes.toString('ascii', 8, 12), 'WEBP');
   let chunks = [];
@@ -128,11 +211,25 @@ for (const artwork of ARTWORKS) {
     chunks.push(name);
     offset += 8 + size + (size & 1);
   }
-  assert.ok(chunks.includes('ALPH'), `${poster.path} retains its alpha chunk`);
-  assert.ok(chunks.includes('VP8 '), `${poster.path} uses the actual lossy VP8 image chunk`);
-  assert.ok(poster.transformation.includes('lossy VP8 WebP with alpha'));
-  assert.ok(poster.approvalRelation.includes('no independent Artwork approval'));
-  assert.equal(POSTER_ASSETS.find(item => item.artworkId === artwork.id)?.sha256, poster.sha256);
+  assert.ok(chunks.includes('ALPH'), `${poster512.path} retains its alpha chunk`);
+  assert.ok(chunks.includes('VP8 '), `${poster512.path} uses the actual lossy VP8 image chunk`);
+  assert.ok(poster512.transformation.includes('lossy VP8 WebP with alpha'));
+  assert.ok(poster512.approvalRelation.includes('no independent Artwork approval'));
+  assert.equal(POSTER_ASSETS.find(item => item.artworkId === artwork.id)?.sha256, poster512.sha256);
+  } else {
+    assert.equal(frozenArtworkIds.includes(artwork.id), false, `${artwork.id} has no legacy 512px poster registration.`);
+  }
+
+  for (const preview of [poster, detail512, detail1024]) {
+    const bytes = await readFile(new URL(`../${preview.sourcePath}`, import.meta.url));
+    assert.equal(bytes.byteLength, preview.byteSize, `${preview.path} byte length`);
+    assert.equal(digest(bytes), preview.sha256, `${preview.path} SHA-256`);
+    assert.deepEqual([...bytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10], `${preview.path} remains PNG`);
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    assert.equal(view.getUint32(16), preview.width);
+    assert.equal(view.getUint32(20), preview.height);
+    assert.equal(bytes[25], original.resourceKind === 'transparent-character-still' ? 6 : 2, `${preview.path} preserves the original channel type`);
+  }
 
   const snapshot = createSnapshot(artwork.id);
   assert.equal(snapshot.artworkId, artwork.id);
@@ -145,7 +242,7 @@ for (const artwork of PREVIEW_ARTWORKS) {
   const content = PREVIEW_ARTWORK_CONTENT[artwork.id];
   const asset = getAsset(artwork.assetRefs.original);
   assert.ok(content && asset, `${artwork.id} has registered pending content and a local original.`);
-  assert.equal(artwork.version, 'v1');
+  assert.equal(artwork.version, asset.version);
   assert.equal(artwork.publicationStatus, 'preview-only');
   assert.equal(artwork.reviewStatus, 'pending-user-art-approval');
   assert.equal(artwork.status, 'pending-review');
@@ -169,17 +266,23 @@ for (const artwork of PREVIEW_ARTWORKS) {
   assert.equal(isEligible(artwork), false, 'A pending preview never becomes gallery eligible.');
   assert.equal(isTransparentCharacter(artwork), false, 'Preview transparency does not grant approved Artwork status.');
   assert.equal(canOpenArtwork(artwork.id, artwork.version), true);
-  assert.equal(canOpenArtwork(artwork.id, 'v2'), false, 'Direct detail links must bind the preview version.');
-  assert.equal(getArtwork(artwork.id), artwork, 'Shared identity lookup can resolve a local preview.');
-  assert.equal(getArtwork(artwork.id, ARTWORKS), null, 'The approved catalog stays limited to the frozen 15.');
+  assert.equal(canOpenArtwork(artwork.id, `${artwork.version}-stale`), false, 'Direct detail links must bind the preview version.');
+  assert.ok(getArtwork(artwork.id), 'Shared identity lookup can resolve a local preview.');
+  assert.equal(getArtwork(artwork.id).id, artwork.id);
+  assert.equal(getArtwork(artwork.id, ARTWORKS), null, 'Pending Artwork remains outside the currently approved catalog.');
   assert.equal(ARTWORKS.some(item => item.id === artwork.id), false);
   assert.equal(getPrompt(artwork.promptRefs.enImage)?.status, 'pending-review');
   assert.equal(getPrompt(artwork.promptRefs.zhImage)?.status, 'pending-review');
   const pendingEnglishPrompt = getPrompt(artwork.promptRefs.enImage).text;
   const pendingChinesePrompt = getPrompt(artwork.promptRefs.zhImage).text;
-  assert.match(pendingEnglishPrompt, /pale cool-gray studio background/i, 'The pending source image and its prompt agree on the opaque studio background.');
-  assert.match(pendingChinesePrompt, /浅冷灰色摄影棚背景/, 'The Chinese pending prompt agrees on the opaque studio background.');
-  assert.doesNotMatch(`${pendingEnglishPrompt} ${pendingChinesePrompt}`, /transparent background|透明背景/i, 'Opaque preview candidates are not described as transparent.');
+  if (asset.alpha.hasTransparency) {
+    assert.match(pendingEnglishPrompt, /transparent background/i, 'Transparent pending art and Prompt agree.');
+    assert.match(pendingChinesePrompt, /透明/, 'Chinese transparent-art Prompt agrees.');
+  } else {
+    assert.match(pendingEnglishPrompt, /pale cool-gray studio background/i, 'Opaque pending art and Prompt agree.');
+    assert.match(pendingChinesePrompt, /浅冷灰色摄影棚背景/, 'Chinese opaque-art Prompt agrees.');
+    assert.doesNotMatch(`${pendingEnglishPrompt} ${pendingChinesePrompt}`, /transparent background|透明背景/i, 'Opaque previews are not described as transparent.');
+  }
   assert.equal(getAsset(asset.id)?.sha256, asset.sha256);
   assert.equal(getAsset({ ...asset, sha256: '0'.repeat(64) }), null, 'Preview asset lookups still bind immutable metadata.');
   assert.equal(createSnapshot(artwork.id), null, 'Pending content cannot enter a default approved snapshot.');
@@ -205,10 +308,9 @@ for (const artwork of PREVIEW_ARTWORKS) {
   assert.equal(asset.alpha.hasAlpha, expectedColorType === 6, `${asset.id} alpha-channel metadata matches its PNG encoding`);
   assert.equal(asset.alpha.hasTransparency, expectedColorType === 6, `${asset.id} transparency metadata matches its PNG encoding`);
 }
-assert.equal(ARTWORKS.length, 15, 'Local preview candidates do not expand the approved set.');
-assert.equal(ASSETS.length, 30, 'Preview files remain outside the approved asset list.');
-assert.equal(PROMPTS.length, 30, 'Preview Prompts remain outside the approved Prompt list.');
-assert.equal(queryArtworks({}).length, 15, 'Default gallery query continues to return only approved Artwork.');
+assert.equal(ASSETS.length, originalAssets.length + POSTER_ASSETS.length + publishedThumbnails.length + publishedDetailPreviews.length, 'Pending preview files remain outside the approved asset list.');
+assert.equal(PROMPTS.length, ARTWORKS.length * 2, 'Preview Prompts remain outside the approved Prompt list.');
+assert.equal(queryArtworks({}).length, ARTWORKS.length, 'Default gallery query returns the current approved Artwork count.');
 
 assert.equal(getArtwork('missing-artwork'), null);
 assert.equal(getAsset({ ...originalAssets[0], path: './assets/elsewhere.png' }), null);
@@ -229,74 +331,29 @@ const unknownFeature = {
 };
 assert.equal(isEligible(unknownFeature), false, 'An unknown fact does not publish as verified Artwork.');
 assert.ok(ARTWORKS.every(artwork => !('revealVisuals' in artwork) && !('targetValidation' in artwork)));
-assert.ok(ASSETS.every(asset => ['transparent-character-still', 'gallery-poster'].includes(asset.resourceKind)));
+assert.ok(ASSETS.every(asset => ['transparent-character-still', 'opaque-character-still', 'gallery-poster', 'display-preview'].includes(asset.resourceKind)));
 
-// This test-only entry exercises the same static model without joining the
-// production approval list or writing any fixture files into dist/.
-const fixtureId = 'fixture-new-static-artwork';
-const sourceArtwork = ARTWORKS[0];
-const sourceOriginal = getAsset(sourceArtwork.assetRefs.original);
-const sourcePoster = getAsset(sourceArtwork.assetRefs.poster);
-const fixtureOriginal = {
-  ...sourceOriginal,
-  id: `asset:${fixtureId}:original`,
-  ownerArtworkId: fixtureId,
-  artApproval: { ...sourceOriginal.artApproval, artworkId: fixtureId, scope: 'fixture-only', record: 'fixture-only/approval.json' }
-};
-const fixturePoster = {
-  ...sourcePoster,
-  id: `asset:${fixtureId}:poster:v1`,
-  artworkId: fixtureId,
-  ownerArtworkId: fixtureId,
-  derivedFrom: fixtureOriginal.id,
-  sourceAssetId: fixtureOriginal.id,
-  sourceAssetSha256: fixtureOriginal.sha256,
-  approvalRelation: 'test fixture only; no production Artwork approval'
-};
-const fixtureArtwork = {
-  ...structuredClone(sourceArtwork),
-  id: fixtureId,
-  title: 'fixture title',
-  description: 'fixture description',
-  titleByLanguage: { en: 'Test Fixture Dots', 'zh-CN': '新增测试 Dots' },
-  descriptionByLanguage: { en: 'Isolated static catalog fixture.', 'zh-CN': '隔离的静态目录测试作品。' },
-  aliases: { en: ['fixture discovery token'], 'zh-CN': ['fixture discovery token'] },
-  source: { id: 'fixture-source-id', kind: 'test-only-original-artwork', sourceSnapshot: 'fixture-only/source-snapshot.json', sourceId: 'fixture-source-id' },
-  artApproval: { ...sourceArtwork.artApproval, artworkId: fixtureId, scope: 'fixture-only', record: 'fixture-only/approval.json', sourceSnapshot: 'fixture-only/source-snapshot.json', sourceId: 'fixture-source-id', assetSha256: fixtureOriginal.sha256 },
-  assetRefs: { original: fixtureOriginal.id, poster: fixturePoster.id },
-  version: fixtureOriginal.version
-};
-const fixturePrompts = [
-  ...PROMPTS,
-  { ...PROMPTS.find(prompt => prompt.id === sourceArtwork.promptRefs.zhImage), id: `prompt:${fixtureId}:zh-image`, artworkId: fixtureId },
-  { ...PROMPTS.find(prompt => prompt.id === sourceArtwork.promptRefs.enImage), id: `prompt:${fixtureId}:en-image`, artworkId: fixtureId }
-];
-fixtureArtwork.promptRefs = { zhImage: `prompt:${fixtureId}:zh-image`, enImage: `prompt:${fixtureId}:en-image` };
-const fixtureAssets = new Map([[fixtureOriginal.id, fixtureOriginal], [fixturePoster.id, fixturePoster]]);
-const fixtureGetAsset = idOrRef => {
-  const id = typeof idOrRef === 'string' ? idOrRef : idOrRef?.id;
-  const fixtureAsset = fixtureAssets.get(id);
-  if (fixtureAsset) {
-    if (typeof idOrRef === 'object' && idOrRef) {
-      const fields = ['version', 'path', 'sha256', 'mime', 'byteSize', 'width', 'height'];
-      if (fields.some(field => idOrRef[field] !== fixtureAsset[field])) return null;
-    }
-    return fixtureAsset;
-  }
-  return getAsset(idOrRef);
-};
-const fixtureContext = { getAsset: fixtureGetAsset, prompts: fixturePrompts };
-const fixtureCatalog = [...ARTWORKS, fixtureArtwork];
-assert.equal(validateArtwork(fixtureArtwork, fixtureContext), true, 'An isolated complete new record passes the same publication contract.');
-assert.deepEqual(queryArtworks({ text: 'fixture discovery', seriesId: 'dots' }, fixtureCatalog, fixtureContext).map(item => item.id), [fixtureId]);
-assert.equal(getArtwork(fixtureId), null, 'The test fixture is absent from the production lookup.');
-assert.equal(getArtwork(fixtureId, fixtureCatalog), fixtureArtwork, 'Generic catalog lookup discovers a new static entry.');
-const fixtureSnapshot = createSnapshot(fixtureId, { ...fixtureContext, catalog: fixtureCatalog, catalogRevision: 'fixture-only' });
-assert.equal(fixtureSnapshot.artworkId, fixtureId, 'The same detail snapshot API can discover an injected static entry.');
-assert.equal(fixtureSnapshot.asset.id, fixtureOriginal.id);
-assert.equal(fixtureSnapshot.prompt.artworkId, fixtureId);
-assert.equal(ARTWORKS.length, 15);
-assert.equal(ASSETS.some(asset => asset.id === fixtureOriginal.id || asset.id === fixturePoster.id), false, 'Fixture assets are never written to the production manifest.');
-assert.equal(isEligible(fixtureArtwork), false, 'The fixture cannot publish without its isolated validation context.');
+// This test-only new Character is generated from actual catalog bytes. It is
+// isolated from the production list, publish inventory, and approval records.
+const fixture = createNewArtworkFixture();
+assert.equal(validateArtwork(fixture.artwork, fixture.validationContext), true, 'An isolated new Character/Artwork passes the shared data contract.');
+assert.deepEqual(fixture.queryArtworks({ text: 'fixture only', seriesId: 'animals' }).map(item => item.id), [fixture.artwork.id]);
+assert.equal(getArtwork(fixture.artwork.id), null, 'The fixture is absent from production lookup.');
+assert.equal(fixture.getArtwork(fixture.artwork.id), fixture.artwork, 'The injected catalog uses generic identity lookup.');
+assert.equal(fixture.canOpenArtwork(fixture.artwork.id, fixture.artwork.version), true);
+const fixtureSnapshot = fixture.createSnapshot(fixture.artwork.id);
+assert.equal(fixtureSnapshot.artworkId, fixture.artwork.id, 'The normal detail snapshot API accepts an injected static Artwork.');
+assert.equal(fixtureSnapshot.asset.id, fixture.artwork.assetRefs.original);
+assert.equal(fixtureSnapshot.prompt.artworkId, fixture.artwork.id);
+assert.equal(fixture.promptFor(fixture.artwork, { language: 'en' }).language, 'en');
+assert.equal(fixture.promptFor(fixture.artwork, { language: 'zh-CN' }).language, 'zh');
+assert.ok(frozenArtworkIds.every(id => ARTWORKS.some(artwork => artwork.id === id)), 'The frozen 15 approved historical artworks remain intact as a protected subset.');
+const pendingMutation = { ...ARTWORKS[0], publicationStatus: 'preview-only', status: 'pending-review', reviewStatus: 'pending-user-art-approval', previewOnly: true, sourceSnapshotMatch: false, artApproval: { ...ARTWORKS[0].artApproval, status: 'pending', record: null, sourceSnapshot: null, sourceId: null } };
+assert.equal(isEligible(pendingMutation), false, 'A pending status mutation cannot enter the production catalog.');
+assert.equal(validatePreviewArtwork(pendingMutation), false, 'A pending record must also be explicitly registered in the isolated preview registry.');
+assert.equal(canOpenArtwork(pendingMutation), false, 'A pending Artwork without registered preview resources cannot open.');
+assert.equal(ARTWORKS.some(item => item.id === fixture.artwork.id), false);
+assert.equal(ASSETS.some(asset => fixture.assets.some(entry => entry.id === asset.id)), false, 'Fixture assets never enter the production manifest.');
+assert.equal(isEligible(fixture.artwork), false, 'The fixture cannot publish without its isolated validation context.');
 
-console.log(`Artwork catalog: ${ARTWORKS.length} approved originals unchanged; ${PREVIEW_ARTWORKS.length} pending local previews validated separately; v83 source/approval and all byte hashes checked.`);
+console.log(`Artwork catalog: ${ARTWORKS.length} approved Artworks; 15 historical approvals and 9 exact v99 approvals verified; ${PREVIEW_ARTWORKS.length} pending local previews; source, approval, and byte hashes checked.`);
