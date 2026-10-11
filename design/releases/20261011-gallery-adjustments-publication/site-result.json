@@ -1,0 +1,52 @@
+{
+  "projectId": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+  "savedVersion": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_6a9edf4a9d708191b3516bca5ad47042",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 48,
+    "source": {
+      "commit_sha": "e42f0f42f8c5b6307638ff7ced733d6f7e0be56f"
+    },
+    "archive_storage": null,
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6acbb478fe108191aa175f1c5cbadc25",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_6a9edf4a9d708191b3516bca5ad47042",
+    "type": "publish",
+    "status": "failed",
+    "url": null,
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": null,
+    "failure_message": "AppGen input archive exceeds the 256 MiB limit. Package only the required build output or configured static assets. Remove unused files or reduce large media, then package and upload again.",
+    "env_set_revision": 0,
+    "updated_at": "2026-10-11T16:11:22.027815+00:00"
+  },
+  "liveReadback": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "latest_version_number": 48,
+    "current_live_url": "https://dots.liuzhihang.chatgpt.site",
+    "access_mode": "public",
+    "accessPolicyRevision": 2
+  },
+  "productionObservation": {
+    "uiArtworkCount": 24,
+    "htmlCacheVersion": 99,
+    "consoleErrorsObserved": [],
+    "source": "Codex in-app Browser plus HTTP index readback",
+    "newVersionObserved": false
+  },
+  "localPackage": {
+    "sha256": "b75954a635455756316d5a7f72c7e8a4c4e7a1c1ec45bb3a66aa999337408b41",
+    "fileHashVerification": "551/551 source runtime files match",
+    "inputLimitMiB": 256,
+    "approximateArchiveMiB": 354
+  },
+  "status": "publication-blocked",
+  "blocker": "Complete required static input exceeds Sites 256 MiB archive limit in both uploaded-archive and remote-source build paths.",
+  "nextStep": "Await user choice on a separate lossless delivery-format implementation; original approved PNGs and current production remain unchanged."
+}

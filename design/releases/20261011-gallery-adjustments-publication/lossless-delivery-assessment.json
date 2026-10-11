@@ -1,0 +1,72 @@
+{
+  "status": "measured-candidate-only-not-integrated",
+  "scope": [
+    "dist/assets/templates/**/*.png",
+    "dist/assets/previews/**/*.png"
+  ],
+  "format": "lossless WebP",
+  "encoder": {
+    "library": "Pillow",
+    "version": "12.3.0",
+    "lossless": true,
+    "exact": true,
+    "quality": 100,
+    "method": 6
+  },
+  "workers": 6,
+  "dedupeKey": "exact source PNG file SHA-256; each distinct path still counted as a separate delivered file",
+  "sourcesWereWritten": false,
+  "candidateWebpFilesWereWritten": false,
+  "files": 412,
+  "uniqueSourceHashesEncoded": 356,
+  "duplicatePathsAvoidedForEncoding": 56,
+  "allRgbaByteExact": true,
+  "allAlphaExact": true,
+  "allVisibleAndAlphaExact": true,
+  "targetOriginalBytesPerPath": 319481906,
+  "targetCandidateWebpBytesPerPath": 199097230,
+  "uniqueCandidateBytesIfSharedPathsWereAllowed": 174778118,
+  "targetSavingsBytes": 120384676,
+  "targetSavingsMiB": 114.808,
+  "targetSavingsPercent": 37.681,
+  "distOriginalBytes": 380079033,
+  "distCandidateEstimatedBytes": 259694357,
+  "distCandidateEstimatedMiB": 247.664,
+  "currentTarGzBytes": 370776004,
+  "currentTarGzMiB": 353.6,
+  "sitesInputLimitBytes": 268435456,
+  "sitesInputLimitMiB": 256,
+  "tarGzCandidateEstimateMethod": "Measured current archive bytes minus per-path PNG-to-WebP raw byte savings. PNG/WebP payloads are internally compressed; this is a close but not rebuilt tar.gz measurement.",
+  "tarGzCandidateEstimatedBytes": 250391328,
+  "tarGzCandidateEstimatedMiB": 238.792,
+  "tarGzEstimatedUnder256MiB": true,
+  "tarGzMarginBytes": 18044128,
+  "tarGzMarginMiB": 17.208,
+  "familyTotals": {
+    "templates": {
+      "sourceBytes": 272081822,
+      "candidateBytesPerPath": 171351738,
+      "fileCount": 320,
+      "savingsBytes": 100730084,
+      "savingsMiB": 96.064,
+      "savingsPercent": 37.022,
+      "uniqueSourceHashes": 264,
+      "duplicatePathsWithinFamily": 56
+    },
+    "previews": {
+      "sourceBytes": 47400084,
+      "candidateBytesPerPath": 27745492,
+      "fileCount": 92,
+      "savingsBytes": 19654592,
+      "savingsMiB": 18.744,
+      "savingsPercent": 41.465,
+      "uniqueSourceHashes": 92,
+      "duplicatePathsWithinFamily": 0
+    }
+  },
+  "elapsedSeconds": 225.85,
+  "evidenceSha256": "35a424c72f2e59dad6ad58649d00f0d1cfa6a546780da2b400eb241db16b0d3f",
+  "evidenceLocation": "Local QA: .artifacts/release-v100/lossless-webp-candidate-estimate.json",
+  "approvalStatus": "Pending user choice; no delivery-format implementation authorized or performed in this record.",
+  "actualCandidateArchiveBuilt": false
+}

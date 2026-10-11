@@ -31,7 +31,7 @@ openspec validate --specs
 - `.artifacts/`：本地临时构建、测试与 QA 输出；不作为发布素材。
 - `design/releases/`：精选发布摘要与当前版本入口；`design/acceptance/` 保留精选审批、来源和验收记录。更早的历史 QA 文件按 `design/repository-history.json` 从 Git 恢复，历史原文不回写。
 
-本地正在接入的全角色调整版本见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)；该版本不代表线上发布。
+全角色调整 v100 已完成本地接入、验证与 OpenSpec 归档，见 [本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)。本次发布包超过 Sites 的 256 MiB 输入上限，版本 48 部署失败；[发布与归档记录](design/releases/20261011-gallery-adjustments-publication/README.md) 分别记录源码、归档和站点状态。
 
 当前生产站点及精选回执见 [Site 47 / v99 发布记录](design/releases/20261011-site47-v99/README.md)。该摘要链接到完整审批、归档、部署与验证回执。
 

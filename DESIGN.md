@@ -26,4 +26,4 @@
 
 ## 全角色调整接入
 
-本轮接入沿用上述主视觉。角色素材与有限组合以 [精确批准记录](design/acceptance/20261011-character-adjustments-v1/approval.json) 和 [当前 change](openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/design.md) 为准：角色 PNG 保留真实透明；Dots / Grok Bot 无肢体、不提供服装；其余家族按真实模板提供服装。详情统一使用“角色调整”，所有选项驱动同一预览、Prompt 和透明导出。当前文件与验证入口见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)，不改变 Site 47 的发布状态。
+本轮接入沿用上述主视觉。角色素材与有限组合以 [精确批准记录](design/acceptance/20261011-character-adjustments-v1/approval.json) 和 [已归档 change](openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/design.md) 为准：角色 PNG 保留真实透明；Dots / Grok Bot 无肢体、不提供服装；其余家族按真实模板提供服装。详情统一使用“角色调整”，所有选项驱动同一预览、Prompt 和透明导出。当前文件与验证入口见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)，不改变 Site 47 的发布状态。
