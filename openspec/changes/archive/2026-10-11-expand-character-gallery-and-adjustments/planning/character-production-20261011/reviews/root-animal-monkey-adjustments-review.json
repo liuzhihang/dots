@@ -1,0 +1,67 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-monkey-adjustments-review.json",
+  "manifestSha256": "614e2fe6e413be87300e3444e5261e8ced97afa756bf4070c237f5db090ba3b2",
+  "templateId": "candidate-animal-monkey-adjustments-v1",
+  "artworkBinding": {
+    "artworkId": "candidate-animal-monkey",
+    "artworkVersion": "v2"
+  },
+  "originalSha256": "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-monkey-adjustments-v1/report.json",
+  "engineeringReportSha256": "034a4c866e8bd561e6694825f0a19f57574c877864df7bd9ad1e055bc83d36ea",
+  "checkedRecipes": [
+    {
+      "id": "seated-chestnut-open-none-none",
+      "sha256": "bdb19cf9a60d5ec931b6656f638674c05844407a4919f5b9218d82484b354427"
+    },
+    {
+      "id": "seated-chestnut-open-none-blue-bow-clip",
+      "sha256": "38a7422578479483a0591d8d2acd67da518359a0d25127817a8576f3b1f599fb"
+    },
+    {
+      "id": "seated-chestnut-open-knit-vest-none",
+      "sha256": "5efa88dcaa090e23ccbec966f2967ca9085bb50cf08f2ea3753b5785bdc69afd"
+    },
+    {
+      "id": "seated-chestnut-open-knit-vest-blue-bow-clip",
+      "sha256": "b4237296f677b7a25cb6728d1ff510f8910f779e5ab1cef55182cff1e8ecca4c"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-none-none",
+      "sha256": "0d4a302077eacd9dcf3a2615ec989c9db14f1057ac7bc06186952339097c7911"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-none-blue-bow-clip",
+      "sha256": "aec41c83ca50781146813d47832c1c3137067c6b1d8f74b662ad25c61270f08f"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-knit-vest-none",
+      "sha256": "fd56fc5962f22d5bbce66ebc228ed5b87b102c27dfa2ff275843af54fff2ffdf"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-knit-vest-blue-bow-clip",
+      "sha256": "fce1268d3e2ead80c338e09ccf022541615da43ccb426f362198af5d36e26c46"
+    },
+    {
+      "id": "standing-chestnut-open-none-none",
+      "sha256": "93c49de8df0f583178675bd9dbb0bdae72efb72b7eb0c4f48747f7d7478250df"
+    },
+    {
+      "id": "seated-golden-open-none-none",
+      "sha256": "0a526b6760be9aed274c869fdf764810d609ae543f5443d85cd1135bbc5a92fc"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

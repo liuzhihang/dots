@@ -1,0 +1,830 @@
+{
+  "status": "pending",
+  "scope": "candidate only; five classes each have a real image branch with explicit finite-combination conflicts; user approval pending",
+  "artwork": {
+    "id": "animal-cocoa-bear",
+    "version": "v1",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "可可熊",
+      "en": "Cocoa Bear"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+    "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "animal-cocoa-bear-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "animal-cocoa-bear",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单只短绒熊幼崽，圆耳、短口鼻与四只熊爪，不改变物种解剖。",
+      "en": "One short-plush bear cub with round ears, a short muzzle and four bear paws. Preserve bear anatomy."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典坐姿",
+            "en": "Classic seated"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有圆头坐姿，保留该物种耳形、口鼻、四爪与尾部结构",
+            "en": "the original round-headed seated silhouette with the species-specific ears, muzzle, four paws and tail structure"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "宽圆轮廓",
+            "en": "Broader silhouette"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "头颊与坐姿躯干更加宽圆，耳、口鼻和四爪结构不变",
+            "en": "a broader round head and seated torso preserving species-specific ears, muzzle and four paws"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "可可棕",
+            "en": "Cocoa"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "可可棕短绒与浅色口鼻，保留黑鼻",
+            "en": "cocoa brown short fur and lighter muzzle; preserve black nose"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#805036"
+          ],
+          "zoneColors": {
+            "fur": "#805036"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "蜂蜜金",
+            "en": "Honey gold"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "蜂蜜金短绒、浅奶油色口鼻和足垫，鼻眼颜色不变",
+            "en": "honey-gold short fur with lighter cream muzzle and paw pads; unchanged nose and eye colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#d89a45"
+          ],
+          "zoneColors": {
+            "fur": "#d89a45"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双眼睁开，保留鼻和轻柔微笑",
+            "en": "open eyes with the original nose and gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "两条闭合弧形眼睑，保留原有鼻与轻柔微笑；静态表情",
+            "en": "two softly closed curved eyelids preserving the original nose and smile; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无服装",
+            "en": "No clothing"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "保留原有毛绒身体，不穿衣物",
+            "en": "original fur-covered body without clothing"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合肩颈与胸部的柔雾蓝针织背心，前爪在衣物前方",
+            "en": "a fitted muted-blue knitted vest supported by the shoulders, with front paws in front of the garment"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "bow",
+          "labelByLanguage": {
+            "zh-CN": "小领结",
+            "en": "Bow tie"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "鼠尾草绿小领结通过窄领带贴合颈部、位于口鼻下方",
+            "en": "a small sage-green bow tie secured by a narrow collar below the muzzle"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-cocoa-bear-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "appearance-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "bow"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "clothing": "vest"
+        },
+        "code": "colors-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "bow"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "clothing": "vest"
+        },
+        "code": "face-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "bow"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "clothing": "vest",
+          "accessories": "bow"
+        },
+        "code": "clothing-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-bow",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "bow"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-cocoa-bear-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+      "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+      "byteSize": 956169,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1136537,
+        "bboxAtAlphaThreshold16": [
+          264,
+          243,
+          1001,
+          1057
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized."
+    },
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-cocoa-bear-appearance-full-candidate-v2.png",
+      "sha256": "455139036a58bd8e86a7755aed999e5cd80efeb7a0cd5b19bae2367c9df44ec5",
+      "byteSize": 1818433,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 705444,
+        "bboxAtAlphaThreshold16": [
+          92,
+          84,
+          1162,
+          1184
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          168.51999999999998,
+          180.84000000000003
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.74,
+            0.74
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized.",
+      "registrationNote": "Uniform scene placement preserves source geometry while matching the original full-character baseline height, horizontal center and feet. No bitmap resampling or original-byte change."
+    },
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-cocoa-bear-colors-full-candidate-v2.png",
+      "sha256": "08bafe260384eebca279e321e9c4ddd33ba979a144d477b0c3f202dcbb1935b8",
+      "byteSize": 1630253,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 809748,
+        "bboxAtAlphaThreshold16": [
+          143,
+          127,
+          1125,
+          1204
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          153.32079851439187,
+          147.01299907149496
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.755803156917363,
+            0.755803156917363
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized.",
+      "registrationNote": "Uniform scene placement preserves source geometry while matching the original full-character baseline height, horizontal center and feet. No bitmap resampling or original-byte change."
+    },
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-cocoa-bear-face-full-candidate-v2.png",
+      "sha256": "0e03b2e817d377b479d2ab12e2ad3b558f209fe470515ccea9bce4a0cbb3a4b4",
+      "byteSize": 1608456,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 788815,
+        "bboxAtAlphaThreshold16": [
+          140,
+          95,
+          1138,
+          1186
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          155.7392300641613,
+          172.1200733272227
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.7461044912923923,
+            0.7461044912923923
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized.",
+      "registrationNote": "Uniform scene placement preserves source geometry while matching the original full-character baseline height, horizontal center and feet. No bitmap resampling or original-byte change."
+    },
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:clothing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/clothing.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-cocoa-bear-clothing-full-candidate-v2.png",
+      "sha256": "25b22b79e139066b94c068af48774dcd113985a0fa0e60064129d6d1e1bd6f45",
+      "byteSize": 1317273,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 960446,
+        "bboxAtAlphaThreshold16": [
+          202,
+          154,
+          1078,
+          1134
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          100.90816326530614,
+          115.08571428571429
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8306122448979592,
+            0.8306122448979592
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized.",
+      "registrationNote": "Uniform scene placement preserves source geometry while matching the original full-character baseline height, horizontal center and feet. No bitmap resampling or original-byte change."
+    },
+    {
+      "id": "template:animal-cocoa-bear-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-cocoa-bear-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-cocoa-bear-accessories-full-candidate-v2.png",
+      "sha256": "e2cbe7650d9c5dcb3e921ab803f48a7c25ec386c6b180a0b7b7d7ee04243f1bd",
+      "byteSize": 1433615,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 885816,
+        "bboxAtAlphaThreshold16": [
+          177,
+          134,
+          1090,
+          1166
+        ]
+      },
+      "owner": {
+        "templateId": "animal-cocoa-bear-adjustments-v1",
+        "artworkId": "animal-cocoa-bear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          132.82073643410854,
+          137.30620155038764
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.7887596899224806,
+            0.7887596899224806
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from exact character; complete coherent anatomy and garment branches; originals retained and alpha-only cleanup authorized.",
+      "registrationNote": "Uniform scene placement preserves source geometry while matching the original full-character baseline height, horizontal center and feet. No bitmap resampling or original-byte change."
+    }
+  ]
+}

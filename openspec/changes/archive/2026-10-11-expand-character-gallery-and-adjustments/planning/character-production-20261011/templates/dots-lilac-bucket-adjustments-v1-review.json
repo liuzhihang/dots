@@ -1,0 +1,2057 @@
+{
+  "status": "pending",
+  "scope": "Review-only v2 schema adjustment Template for the approved dots-lilac-bucket@v1 Artwork. The bucket hat, layer extraction, shape/color options, and recompositions do not inherit approval.",
+  "artwork": {
+    "id": "dots-lilac-bucket",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "published",
+    "publicationStatus": "published",
+    "titleByLanguage": {
+      "en": "Bucket Hat",
+      "zh-CN": "浅紫渔夫帽 Dots"
+    },
+    "descriptionByLanguage": {
+      "en": "A light-lilac short-pile Dots orb wearing a yellow soft-fabric bucket hat, with no visible mouth or limbs.",
+      "zh-CN": "浅紫短绒圆球 Dots，戴黄色软布渔夫帽，无嘴与肢体。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "asset:dots-lilac-bucket:original"
+    },
+    "sourcePath": "dist/assets/looks/dots-lilac-bucket.png",
+    "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+    "artApproval": {
+      "status": "approved",
+      "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+      "sourceSnapshot": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json",
+      "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+      "artworkId": "dots-lilac-bucket",
+      "assetSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-lilac-bucket-adjustments-v1-candidate",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "pending",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "This pending Template does not change the approved Artwork. All new body, hat, clothing and recomposed recipes remain pending."
+    },
+    "artworkBinding": {
+      "artworkId": "dots-lilac-bucket",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "anchors": {
+      "face.center": {
+        "point": [
+          627,
+          626
+        ]
+      },
+      "body.lower.orb": {
+        "point": [
+          627,
+          940
+        ]
+      },
+      "body.lower.cloud": {
+        "point": [
+          627,
+          930
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Dots character with one continuous short-plush body and two simple eyes. No arms, hands, legs, feet, mouth, screen face, props, or background.",
+      "zh-CN": "单个连续短绒身体、两只简洁眼睛的 Dots 角色。无手臂、手、腿、脚、嘴、屏幕脸、道具或背景。"
+    },
+    "defaultOptions": {
+      "appearance": "orb",
+      "colors": "lilac",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "bucket-hat"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "orb",
+          "labelByLanguage": {
+            "en": "Orb",
+            "zh-CN": "圆球"
+          },
+          "semanticByLanguage": {
+            "en": "a round light-lilac short-plush Dots body",
+            "zh-CN": "浅薰衣草紫圆球短绒 Dots 身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "cloud",
+          "labelByLanguage": {
+            "en": "Cloud",
+            "zh-CN": "云团"
+          },
+          "semanticByLanguage": {
+            "en": "a low three-lobed light-lilac plush cloud Dots body",
+            "zh-CN": "浅薰衣草紫低矮三瓣云团绒面 Dots 身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "lilac",
+          "labelByLanguage": {
+            "en": "Lilac",
+            "zh-CN": "浅紫色"
+          },
+          "semanticByLanguage": {
+            "en": "light lilac short-pile plush body",
+            "zh-CN": "浅薰衣草紫短绒身体"
+          },
+          "hex": "#b594e8",
+          "swatches": [
+            "#b594e8"
+          ],
+          "zoneColors": {
+            "body": "#b594e8"
+          }
+        },
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "en": "Blue",
+            "zh-CN": "蓝色"
+          },
+          "semanticByLanguage": {
+            "en": "blue short-pile plush body",
+            "zh-CN": "蓝色短绒身体"
+          },
+          "hex": "#3989e5",
+          "swatches": [
+            "#3989e5"
+          ],
+          "zoneColors": {
+            "body": "#3989e5"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy black upright oval eyes",
+            "zh-CN": "两只黑色竖椭圆眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed eyes",
+            "zh-CN": "闭眼"
+          },
+          "semanticByLanguage": {
+            "en": "two gently curved closed-eye marks as a static expression",
+            "zh-CN": "两道柔和弯曲的闭眼线，作为静态表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "无服装"
+          }
+        },
+        {
+          "id": "knit-wrap",
+          "labelByLanguage": {
+            "en": "Knit wrap",
+            "zh-CN": "针织下身衣"
+          },
+          "semanticByLanguage": {
+            "en": "a broad ivory rib-knit lower-body wrap that visibly covers the lower third of the body",
+            "zh-CN": "宽幅象牙白罗纹针织下身衣，明显包覆身体下方约三分之一"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "None",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "无配饰"
+          }
+        },
+        {
+          "id": "bucket-hat",
+          "labelByLanguage": {
+            "en": "Yellow bucket hat",
+            "zh-CN": "黄色渔夫帽"
+          },
+          "semanticByLanguage": {
+            "en": "a soft yellow fabric bucket hat with a wide brim and visible stitched crown",
+            "zh-CN": "黄色软布宽檐渔夫帽，帽冠缝线清晰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "bucket-hat"
+        },
+        "code": "bucket-hat-cloud-fit-conflict",
+        "messageByLanguage": {
+          "en": "The bucket hat layer is fitted to the round orb. Use no accessory with the cloud appearance, or switch back to orb.",
+          "zh-CN": "渔夫帽配件按圆球外形制作。云团外形请选无配饰，或切回圆球。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "orb-lilac-open-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-open-none-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-open-knit-wrap-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-open-knit-wrap-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-closed-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-closed-none-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-lilac-closed-knit-wrap-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-knit-wrap-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-knit-wrap-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-knit-wrap-bucket-hat",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "bucket-hat"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "bucket-hat",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-lilac-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-lilac-open-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "lilac",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:cloud",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-lilac-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-lilac-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "lilac",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:cloud",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:cloud",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-wrap",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:cloud",
+                "version": "v1",
+                "purpose": "silhouette-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:orb",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-appearance-orb.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png",
+      "sha256": "ec21fdede17d9a177350114247279abfea6dd5c554662c14e08e6512947b1476",
+      "byteSize": 1321255,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          163,
+          225,
+          1089,
+          1140
+        ],
+        "bboxAtAlphaThreshold16": [
+          165,
+          227,
+          1087,
+          1138
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "imagegen-body-layer-with-alpha-cleanup",
+        "sourcePath": "dist/assets/looks/dots-lilac-bucket.png",
+        "sourceSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-d4c673ea-98c0-4f92-95b0-f1bc1c7ad371.png",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-raw-v1.png.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:appearance:cloud",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-appearance-cloud.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-clean-v1.png",
+      "sha256": "b52d6fb65e215d5a3c21c4dbc82a68366ad82e2c068a489aa34b0c31a1c3b93a",
+      "byteSize": 1439793,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          14,
+          236,
+          1241,
+          1039
+        ],
+        "bboxAtAlphaThreshold16": [
+          16,
+          238,
+          1239,
+          1037
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "imagegen-cloud-body-layer-with-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+        "sourceSha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-dc1ee8bc-6996-431a-a947-781063372b83.png",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-raw-v1.png.alpha-cleanup.json",
+        "materialReference": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:orb",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-mask-color-orb.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png",
+      "sha256": "ec21fdede17d9a177350114247279abfea6dd5c554662c14e08e6512947b1476",
+      "byteSize": 1321255,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          163,
+          225,
+          1089,
+          1140
+        ],
+        "bboxAtAlphaThreshold16": [
+          165,
+          227,
+          1087,
+          1138
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "same-imagegen-orb-body-alpha-color-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png",
+        "sourceSha256": "ec21fdede17d9a177350114247279abfea6dd5c554662c14e08e6512947b1476",
+        "approvalTransferred": false,
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:color:cloud",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-mask-color-cloud.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-clean-v1.png",
+      "sha256": "b52d6fb65e215d5a3c21c4dbc82a68366ad82e2c068a489aa34b0c31a1c3b93a",
+      "byteSize": 1439793,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          14,
+          236,
+          1241,
+          1039
+        ],
+        "bboxAtAlphaThreshold16": [
+          16,
+          238,
+          1239,
+          1037
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "same-imagegen-cloud-body-alpha-color-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-clean-v1.png",
+        "sourceSha256": "b52d6fb65e215d5a3c21c4dbc82a68366ad82e2c068a489aa34b0c31a1c3b93a",
+        "approvalTransferred": false,
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:orb",
+      "version": "v1",
+      "purpose": "silhouette-mask",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-mask-silhouette-orb.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png",
+      "sha256": "ec21fdede17d9a177350114247279abfea6dd5c554662c14e08e6512947b1476",
+      "byteSize": 1321255,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          163,
+          225,
+          1089,
+          1140
+        ],
+        "bboxAtAlphaThreshold16": [
+          165,
+          227,
+          1087,
+          1138
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "same-imagegen-orb-body-alpha-silhouette-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/lilac-body-imagegen-clean-v1.png",
+        "sourceSha256": "ec21fdede17d9a177350114247279abfea6dd5c554662c14e08e6512947b1476",
+        "approvalTransferred": false,
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:mask:silhouette:cloud",
+      "version": "v1",
+      "purpose": "silhouette-mask",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-mask-silhouette-cloud.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-clean-v1.png",
+      "sha256": "b52d6fb65e215d5a3c21c4dbc82a68366ad82e2c068a489aa34b0c31a1c3b93a",
+      "byteSize": 1439793,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          14,
+          236,
+          1241,
+          1039
+        ],
+        "bboxAtAlphaThreshold16": [
+          16,
+          238,
+          1239,
+          1037
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "same-imagegen-cloud-body-alpha-silhouette-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/cloud-body-imagegen-clean-v1.png",
+        "sourceSha256": "b52d6fb65e215d5a3c21c4dbc82a68366ad82e2c068a489aa34b0c31a1c3b93a",
+        "approvalTransferred": false,
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-face-open.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+      "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+      "byteSize": 113720,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          33,
+          290,
+          1224,
+          875
+        ],
+        "bboxAtAlphaThreshold16": [
+          469,
+          522,
+          786,
+          731
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "offset": [
+          0,
+          0
+        ],
+        "sourceAnchor": [
+          627,
+          626
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+        "sourceSha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "originalAssetId": "template:dots-orb-v1:eyes:original"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:face:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-face-closed.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+      "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+      "byteSize": 72043,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          49,
+          224,
+          1146,
+          1002
+        ],
+        "bboxAtAlphaThreshold16": [
+          446,
+          619,
+          808,
+          676
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "offset": [
+          0,
+          0
+        ],
+        "sourceAnchor": [
+          627,
+          648
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+        "sourceSha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "originalAssetId": "template:dots-orb-v1:eyes:closed"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:clothing:wrap",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-clothing-wrap.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-adjustments-v2/knit-lower-wrap-clean-v1.png",
+      "sha256": "44aa599f295293a9a7d1e1358cb59af7f78c5612bb54cb12187cf7d95cecb1a2",
+      "byteSize": 779417,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          114,
+          587,
+          1141,
+          1145
+        ],
+        "bboxAtAlphaThreshold16": [
+          116,
+          589,
+          1139,
+          1143
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "reused-pending-knit-wrap-as-pending-review-source",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-adjustments-v2/knit-lower-wrap-clean-v1.png",
+        "sourceSha256": "44aa599f295293a9a7d1e1358cb59af7f78c5612bb54cb12187cf7d95cecb1a2",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "originalTemplateId": "dots-orb-adjustments-v2-candidate@v2"
+      }
+    },
+    {
+      "id": "template:dots-lilac-bucket-adjustments-v1-candidate:accessories:bucket-hat",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-lilac-bucket-adjustments-v1-candidate/template-dots-lilac-bucket-adjustments-v1-candidate-accessories-bucket-hat.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/bucket-hat-imagegen-clean-v2.png",
+      "sha256": "50f272a99d7a2fa2cca797be070cb140bb7c0554a821a1128ee6baecab28725b",
+      "byteSize": 572153,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          77,
+          144,
+          1177,
+          738
+        ],
+        "bboxAtAlphaThreshold16": [
+          79,
+          146,
+          1175,
+          736
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+        "artworkId": "dots-lilac-bucket",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New/reused visual component is pending this exact Artwork and Template review; prior approval does not transfer."
+      },
+      "source": {
+        "method": "imagegen-bucket-hat-accessory-extraction-with-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/bucket-hat-imagegen-raw-v2.png",
+        "sourceSha256": "2eee6ad4101092fdfe85d5cffbe53a04dfdfdf7b7c638c12585a924e6076f475",
+        "approvalTransferred": false,
+        "artApproval": "pending",
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-9fda2efd-426f-468a-8a62-5d69f7772e4d.png",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/bucket-hat-imagegen-raw-v2.png.alpha-cleanup.json",
+        "rejectedInitialOutput": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-lilac-adjustments-v1/hat-hollow-extraction-rejected-v1.png"
+      }
+    }
+  ]
+}

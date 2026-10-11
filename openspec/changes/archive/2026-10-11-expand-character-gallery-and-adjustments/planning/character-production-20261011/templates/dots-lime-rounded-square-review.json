@@ -1,0 +1,690 @@
+{
+  "status": "pending",
+  "scope": "Four-category Dots candidate; whole-character finite branches; clothing is not supported. Neither Artwork nor Template is user approved.",
+  "artwork": {
+    "id": "dots-lime-rounded-square",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "绿色绒方块",
+      "en": "Lime Plush Square"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-candidate-v2.png",
+    "sha256": "0c743f839d3e356009ef41792f4cf3c2be60e6211a62a69cdcf45a1bae441fe4"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-lime-rounded-square-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-lime-rounded-square",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1367,
+      "height": 1151
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。",
+      "en": "One Dots character with a continuous short-dense-plush body and simple paired black eyes. No arms, hands, legs, feet, mouth, screen face or clothing."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典轮廓",
+            "en": "Classic outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "厚圆角的短密绒近方形块体",
+            "en": "a short-dense-plush square block with thick rounded corners"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "柔圆轮廓",
+            "en": "Softer outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "明显更横宽、保留厚圆角的绒感长方块体",
+            "en": "a distinctly wider plush rounded rectangle preserving thick round corners"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "青绿色",
+            "en": "Lime green"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "青绿色短密绒",
+            "en": "Lime green short dense plush"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#55d989"
+          ],
+          "zoneColors": {
+            "body": "#55d989"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "亮蓝色",
+            "en": "Cobalt blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "亮蓝色短密绒，保持成对黑眼",
+            "en": "cobalt-blue short dense plush preserving the paired black eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#2688e9"
+          ],
+          "zoneColors": {
+            "body": "#2688e9"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色双眼",
+            "en": "Black paired eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色眼睛，无嘴",
+            "en": "simple paired black eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色闭合弧线眼，无嘴；静态表情",
+            "en": "simple paired black closed curved eyelids, no mouth; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "fitted",
+          "labelByLanguage": {
+            "zh-CN": "贴合耳机",
+            "en": "Fitted headphones"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "炭黑耳机的耳罩贴合两侧、头梁顺应顶部轮廓",
+            "en": "charcoal headphones with both earcups touching the sides and a padded band following the top contour"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "fitted"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "fitted"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "fitted"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-fitted",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "fitted"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-rounded-square-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-lime-rounded-square-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-rounded-square-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-candidate-v2.png",
+      "sha256": "0c743f839d3e356009ef41792f4cf3c2be60e6211a62a69cdcf45a1bae441fe4",
+      "byteSize": 1761543,
+      "width": 1367,
+      "height": 1151,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 761466,
+        "bboxAtAlphaThreshold16": [
+          202,
+          170,
+          1218,
+          1068
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-rounded-square-adjustments-v1",
+        "artworkId": "dots-lime-rounded-square",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1367,
+          1151
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-rounded-square-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-rounded-square-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-appearance-full-candidate-v2.png",
+      "sha256": "95cd99adf9c72c7212fe4c9a6b724381ac42a50b80c7f1f60bea73b044b50165",
+      "byteSize": 1815603,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 739068,
+        "bboxAtAlphaThreshold16": [
+          51,
+          288,
+          1213,
+          1076
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-rounded-square-adjustments-v1",
+        "artworkId": "dots-lime-rounded-square",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1367,
+          1151
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -10.2234,
+          -158.203
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.1395939086294415,
+            1.1395939086294415
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-rounded-square-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-rounded-square-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-colors-full-candidate-v2.png",
+      "sha256": "5018b76ffb6a6db48106b1a162b0a87a3b4779c8c9c8c241107d121f3445e1c2",
+      "byteSize": 2043493,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 639259,
+        "bboxAtAlphaThreshold16": [
+          93,
+          176,
+          1188,
+          1138
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-rounded-square-adjustments-v1",
+        "artworkId": "dots-lime-rounded-square",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1367,
+          1151
+        ],
+        "anchor": "canvas",
+        "offset": [
+          112.1112,
+          5.7089
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9334719334719335,
+            0.9334719334719335
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-rounded-square-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-rounded-square-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-face-full-candidate-v2.png",
+      "sha256": "6a1f35dc8a39b015daad5f950b34dd36c58f1def68ff800c5f053f287d3e6065",
+      "byteSize": 2059441,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 633984,
+        "bboxAtAlphaThreshold16": [
+          90,
+          155,
+          1179,
+          1127
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-rounded-square-adjustments-v1",
+        "artworkId": "dots-lime-rounded-square",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1367,
+          1151
+        ],
+        "anchor": "canvas",
+        "offset": [
+          123.8056,
+          26.8004
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9238683127572016,
+            0.9238683127572016
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-rounded-square-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-rounded-square-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-accessories-full-candidate-v2.png",
+      "sha256": "436b74a31b72f9c2cb939afe8f8de35905c152ef97e8768d027716c6dc65bc2a",
+      "byteSize": 2059023,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 600351,
+        "bboxAtAlphaThreshold16": [
+          34,
+          121,
+          1219,
+          1150
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-rounded-square-adjustments-v1",
+        "artworkId": "dots-lime-rounded-square",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1367,
+          1151
+        ],
+        "anchor": "canvas",
+        "offset": [
+          163.2585,
+          64.4043
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8726919339164237,
+            0.8726919339164237
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    }
+  ]
+}

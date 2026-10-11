@@ -1,0 +1,1054 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Template. Artwork v2 is the preserved v1 generated panda with explicitly authorized isolated-alpha speck cleanup; it is not approved or published. All variants, layers, and recompositions remain pending.",
+  "artwork": {
+    "id": "candidate-animal-panda",
+    "version": "v2",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Panda Cub",
+      "zh-CN": "熊猫幼崽"
+    },
+    "descriptionByLanguage": {
+      "en": "A compact ivory plush panda cub with charcoal eye patches and round ears.",
+      "zh-CN": "一只紧凑的象牙白绒面熊猫幼崽，带炭黑眼斑与圆耳。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "candidate-animal-panda@v2-alpha-clean"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-candidate-v2-alpha-clean.png",
+    "sha256": "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Candidate artwork only; the original v1 and this cleaned derivative are not user-approved gallery artwork."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "candidate-animal-panda-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "not-run",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only Template and recompositions; no Artwork or layer approval transfers."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animal-panda",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1230,
+      "height": 1278
+    },
+    "anchors": {
+      "face.center": {
+        "point": [
+          615,
+          561
+        ]
+      },
+      "body.chest": {
+        "point": [
+          615,
+          930
+        ]
+      },
+      "panda.left-ear.clip": {
+        "point": [
+          352,
+          252
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One compact plush panda cub with round black ears, paired dark eye patches, a small muzzle and integrated short limbs. Preserve panda species markings and the same identity. No extra arms, hands, legs, feet, props or background.",
+      "zh-CN": "一只紧凑的绒面熊猫幼崽，具有圆形黑耳、成对深色眼斑、小口鼻和连为整体的短肢。保持熊猫物种斑纹与同一角色身份。不增加手臂、手、腿、脚、道具或背景。"
+    },
+    "defaultOptions": {
+      "appearance": "seated",
+      "colors": "classic",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "seated",
+          "labelByLanguage": {
+            "en": "Seated",
+            "zh-CN": "坐姿"
+          },
+          "semanticByLanguage": {
+            "en": "a compact front-facing seated panda with round ears, paired eye patches and short integrated limbs",
+            "zh-CN": "正面紧凑坐姿的熊猫，圆耳、成对眼斑与短小连体四肢清楚"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "crouched",
+          "labelByLanguage": {
+            "en": "Tucked crouch",
+            "zh-CN": "蜷坐"
+          },
+          "semanticByLanguage": {
+            "en": "the same panda in a lower softly tucked crouch, preserving its round ears, face markings and plush identity",
+            "zh-CN": "同一只熊猫采用更低、更收拢的自然蜷坐姿，保留圆耳、脸部斑纹与绒面身份"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:crouched",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "en": "Ivory and charcoal",
+            "zh-CN": "象牙白与炭黑"
+          },
+          "semanticByLanguage": {
+            "en": "warm ivory fur with charcoal-black ears, eye patches, forearms and feet",
+            "zh-CN": "暖象牙白体毛，配炭黑色耳朵、眼斑、前臂和脚掌"
+          },
+          "zoneColors": {
+            "ivory-fur": "#F1ECE4",
+            "panda-markings": "#242124"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "espresso",
+          "labelByLanguage": {
+            "en": "Cream and espresso",
+            "zh-CN": "奶油白与浓咖"
+          },
+          "semanticByLanguage": {
+            "en": "pale cream fur with warm espresso-brown panda ears, eye patches, forearms and feet",
+            "zh-CN": "浅奶油色体毛，配暖浓咖色熊猫耳朵、眼斑、前臂和脚掌"
+          },
+          "zoneColors": {
+            "cream-fur": "#FFF0D6",
+            "espresso-markings": "#593620"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:colors:espresso",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "large glossy dark eyes centered inside the original black patches, with the small friendly muzzle and smile",
+            "zh-CN": "原有黑色眼斑中间的大而明亮的深色眼睛，保留小巧友好的口鼻与微笑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-smile",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "two matching warm-ivory curved closed eyelids fitted inside the panda's charcoal eye patches; keep the nose and smile unchanged",
+            "zh-CN": "熊猫炭黑眼斑中的两道匹配暖象牙白闭眼弧线；鼻子与微笑保持不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "不穿服装"
+          }
+        },
+        {
+          "id": "knit-vest",
+          "labelByLanguage": {
+            "en": "Forest knit vest",
+            "zh-CN": "森林绿针织背心"
+          },
+          "semanticByLanguage": {
+            "en": "a short sleeveless forest-green knit vest with ivory piping and two small wooden buttons fitted over the front torso",
+            "zh-CN": "贴合前侧躯干的短款森林绿无袖针织背心，带象牙白滚边和两枚小木扣"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessories",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          }
+        },
+        {
+          "id": "sage-leaf-clip",
+          "labelByLanguage": {
+            "en": "Sage leaf clip",
+            "zh-CN": "鼠尾草绿叶夹"
+          },
+          "semanticByLanguage": {
+            "en": "a small sage-green two-leaf felt clip attached to the outer upper edge of the panda's left ear",
+            "zh-CN": "固定在熊猫左耳外上缘的鼠尾草绿色双叶毛毡小夹"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "crouched",
+          "clothing": "knit-vest"
+        },
+        "code": "panda-vest-registered-for-seated-appearance",
+        "messageByLanguage": {
+          "en": "The vest placement is registered only for the seated Panda artwork. Choose Seated or remove the vest.",
+          "zh-CN": "背心定位目前仅登记在熊猫坐姿图上。请切回坐姿或脱下背心。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "crouched",
+          "accessories": "sage-leaf-clip"
+        },
+        "code": "panda-leaf-clip-registered-for-seated-appearance",
+        "messageByLanguage": {
+          "en": "The leaf clip placement is registered only for the seated Panda artwork. Choose Seated or remove the clip.",
+          "zh-CN": "叶夹定位目前仅登记在熊猫坐姿图上。请切回坐姿或取下叶夹。"
+        }
+      },
+      {
+        "when": {
+          "colors": "espresso",
+          "face": "closed-smile"
+        },
+        "code": "panda-closed-eyes-registered-for-classic-palette",
+        "messageByLanguage": {
+          "en": "The closed-eye patch overlay is registered only for the classic palette. Choose the classic palette or open eyes.",
+          "zh-CN": "闭眼眼斑层目前仅登记于经典配色。请切回经典配色或选择睁眼。"
+        }
+      },
+      {
+        "when": {
+          "colors": "espresso",
+          "clothing": "knit-vest"
+        },
+        "code": "panda-vest-registered-for-classic-palette",
+        "messageByLanguage": {
+          "en": "The vest is registered only for the classic palette. Choose the classic palette or remove the vest.",
+          "zh-CN": "背心目前仅登记于经典配色。请切回经典配色或脱下背心。"
+        }
+      },
+      {
+        "when": {
+          "colors": "espresso",
+          "accessories": "sage-leaf-clip"
+        },
+        "code": "panda-leaf-clip-registered-for-classic-palette",
+        "messageByLanguage": {
+          "en": "The leaf clip is registered only for the classic palette. Choose the classic palette or remove the clip.",
+          "zh-CN": "叶夹目前仅登记于经典配色。请切回经典配色或取下叶夹。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "seated-classic-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-none-sage-leaf-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "sage-leaf-clip"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "left-ear-leaf-clip",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "front-vest",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-knit-vest-sage-leaf-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "sage-leaf-clip"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "front-vest",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "left-ear-leaf-clip",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "closed-eye-patches",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-none-sage-leaf-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "sage-leaf-clip"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "closed-eye-patches",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "left-ear-leaf-clip",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "closed-eye-patches",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "front-vest",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-knit-vest-sage-leaf-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "sage-leaf-clip"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "closed-eye-patches",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "front-vest",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "left-ear-leaf-clip",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "crouched-classic-open-none-none",
+        "selections": {
+          "appearance": "crouched",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:appearance:crouched",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-espresso-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "espresso",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body-and-open-face",
+            "asset": {
+              "id": "template:candidate-animal-panda-adjustments-v1:colors:espresso",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:appearance:seated",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/body-seated.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-candidate-v2-alpha-clean.png",
+      "sha256": "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3",
+      "byteSize": 1624595,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "bboxAtAlphaThreshold1": [
+          144,
+          113,
+          1089,
+          1213
+        ],
+        "bboxAtAlphaThreshold8": [
+          145,
+          115,
+          1088,
+          1212
+        ],
+        "bboxAtAlphaThreshold16": [
+          146,
+          115,
+          1087,
+          1211
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "No approval transfers from the original model output or the alpha-clean operation."
+      },
+      "source": {
+        "method": "generated-complete-panda-candidate-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-942df9e7-dc59-4c73-ab20-865218c0517d.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:appearance:crouched",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/body-crouched.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-appearance-crouch-candidate-v2-alpha-clean.png",
+      "sha256": "b910b7196a8d8f0513878023f504888c65d5fd74dc17c501049cffd8aca2b72a",
+      "byteSize": 1535385,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          119,
+          127,
+          1108,
+          1158
+        ],
+        "bboxAtAlphaThreshold8": [
+          120,
+          129,
+          1107,
+          1157
+        ],
+        "bboxAtAlphaThreshold16": [
+          121,
+          129,
+          1106,
+          1156
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Full-body alternate appearance candidate; no approval is transferred."
+      },
+      "source": {
+        "method": "generated-complete-panda-appearance-candidate-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-55b7b9c7-9c70-4dbc-be04-a76b023ce31f.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-appearance-crouch-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-appearance-crouch-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:colors:espresso",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/body-espresso.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-color-espresso-candidate-v2-alpha-clean.png",
+      "sha256": "29266c908b9f80445119b09bbc7883ef44ae294a8f875d6e926ae07ab2eba511",
+      "byteSize": 1615942,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          139,
+          111,
+          1094,
+          1218
+        ],
+        "bboxAtAlphaThreshold8": [
+          140,
+          112,
+          1093,
+          1216
+        ],
+        "bboxAtAlphaThreshold16": [
+          140,
+          113,
+          1092,
+          1216
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Complete alternate palette artwork; no approval is transferred."
+      },
+      "source": {
+        "method": "generated-complete-panda-color-candidate-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-1e1eb2cb-9154-451e-be16-3d365b693dda.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-color-espresso-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-color-espresso-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:face:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/face-closed-patches.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-face-closed-patches-candidate-v2-alpha-clean.png",
+      "sha256": "61b5500bcaf961900b1c1f1c3b84e1315300784efc228313b2b502fd6c18e806",
+      "byteSize": 661010,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          140,
+          321,
+          1090,
+          805
+        ],
+        "bboxAtAlphaThreshold8": [
+          142,
+          322,
+          1088,
+          804
+        ],
+        "bboxAtAlphaThreshold16": [
+          142,
+          323,
+          1088,
+          803
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          615,
+          561
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            615,
+            561
+          ],
+          "scale": [
+            0.67,
+            0.67
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Two eye-patch closed-expression layer; fit must receive visual confirmation."
+      },
+      "source": {
+        "method": "generated-transparent-two-patch-expression-layer-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-1919a744-bd75-4989-9d68-db64a5e24855.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-face-closed-patches-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-face-closed-patches-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:clothing:knit-vest",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/clothing-knit-vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-clothing-knit-vest-candidate-v2-alpha-clean.png",
+      "sha256": "c9b1fc5faec5d312517adb36f730ccd1199bd10635d3d859782b81ff217f9adc",
+      "byteSize": 506015,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          365,
+          659,
+          867,
+          1148
+        ],
+        "bboxAtAlphaThreshold8": [
+          366,
+          661,
+          865,
+          1146
+        ],
+        "bboxAtAlphaThreshold16": [
+          367,
+          661,
+          865,
+          1146
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "body.chest",
+        "sourceAnchor": [
+          615,
+          904
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            615,
+            904
+          ],
+          "scale": [
+            0.42,
+            0.42
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Vest layer is shown over the seated body only; overlap and fit remain pending visual review."
+      },
+      "source": {
+        "method": "generated-transparent-knit-vest-overlay-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-074e83d2-776b-49c7-886d-d81f5bb7dbad.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-clothing-knit-vest-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-clothing-knit-vest-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-panda-adjustments-v1:accessories:sage-leaf-clip",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/candidate-animal-panda-adjustments-v1/accessory-sage-leaf-clip.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-accessory-leaf-clip-candidate-v2-alpha-clean.png",
+      "sha256": "0ca7fde67430b6b00ab317bde2ec9388aee401f16cdf04f30a1f5fc10b8411a1",
+      "byteSize": 113973,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          349,
+          221,
+          638,
+          468
+        ],
+        "bboxAtAlphaThreshold8": [
+          351,
+          223,
+          636,
+          466
+        ],
+        "bboxAtAlphaThreshold16": [
+          351,
+          223,
+          636,
+          466
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-panda-adjustments-v1",
+        "artworkId": "candidate-animal-panda",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "panda.left-ear.clip",
+        "sourceAnchor": [
+          493,
+          345
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            493,
+            345
+          ],
+          "scale": [
+            0.32,
+            0.32
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Leaf clip placement on the Panda's left ear remains pending visual review."
+      },
+      "source": {
+        "method": "generated-transparent-two-leaf-felt-clip-overlay-with-authorized-alpha-cleanup",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-5aa0ec9f-fe68-4bf7-bf2b-17fe3f517295.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-accessory-leaf-clip-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-panda-accessory-leaf-clip-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    }
+  ]
+}

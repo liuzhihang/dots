@@ -1,0 +1,38 @@
+{
+  "proposedArtworkId": "candidate-animal-pig",
+  "version": "v1",
+  "status": "pending",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "referenceIds": ["R05"],
+  "referenceFiles": ["../references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"],
+  "promptFile": "../prompts/candidate-animal-pig-prompts.md",
+  "promptSha256": "13200d6a3717105e2fc0780d0567dcb41eae5ced45ff11e7d81b96e773817023",
+  "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-63bddc2e-c1b1-4b28-9773-0febbdd39990.png",
+  "workspaceOutput": "candidate-animal-pig-candidate-v1.png",
+  "mime": "image/png",
+  "bytes": 1309412,
+  "width": 1347,
+  "height": 1168,
+  "sha256": "2aebe83a663699cdf4852681d4be27064dc8ca712a30de418d338b38a7f369bf",
+  "alphaInspection": {
+    "format": "RGBA PNG, 8-bit, non-interlaced",
+    "hasAlpha": true,
+    "extrema": [0, 255],
+    "cornerValues": [0, 0, 0, 0],
+    "visibleBoundsAlphaAtLeast8": [223, 98, 1150, 1071],
+    "lowAlphaPixels1To7": 97663,
+    "note": "Alpha values 1-7 extend outside the visible silhouette to canvas edges; isolated edge quality remains pending human review."
+  },
+  "engineering": "not-run",
+  "visualReview": "pending human edge and silhouette review",
+  "artApproval": {
+    "status": "pending",
+    "record": null,
+    "exactAssetHash": null
+  },
+  "integration": "not-applied",
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

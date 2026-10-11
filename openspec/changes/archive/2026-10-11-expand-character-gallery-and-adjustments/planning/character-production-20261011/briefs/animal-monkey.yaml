@@ -1,0 +1,109 @@
+# 本记录是制作候选，不是已登记Artwork/Template或批准。
+briefVersion: 1
+request:
+  summary: "动物 猴；以可见暖棕脸形/圆耳线索制作原创猴候选；尾部、物种细节先保持unknown。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "candidate-animal-monkey"
+  seriesId: "animals"
+  identity: new
+  differenceFromExisting: "以可见暖棕脸形/圆耳线索制作原创猴候选；尾部、物种细节先保持unknown。"
+  invariants:
+    - "制作前重新核看R05主体；物种未确认则保持pending，不虚写facts。"
+artwork:
+  proposedId: "candidate-animal-monkey"
+  canonicalArtworkId: "animal-monkey"
+  proposedVersion: v2
+  name: {en: "Monkey", zh-CN: "原创毛绒猴"}
+  description: {en: "An original seated chestnut plush monkey with a tan heart-shaped face, rounded ears, and an attached curved tail.", zh-CN: "原创坐姿栗棕绒面猴，带暖棕心形脸、圆耳和相连卷尾。"}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R05"
+    path: "planning/character-production-20261011/references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"
+    sha256: "8cbc97096d2b3d30ce52955497837fe2bc4e104ab106b7adaa1dd5a176aa8ffc"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "以可见暖棕脸形/圆耳线索制作原创猴候选；尾部、物种细节先保持unknown。"
+    exclude: "不清晰的职业/名字文字、相邻动物、界面元素。"
+    license: unknown
+creation:
+  prompt: "Create one original plush monkey; exact species cues remain low-confidence because the reference is a tiny screenshot figure. See the exact recorded prompt."
+  promptReference: "../prompts/candidate-animal-monkey-prompts.md"
+  negativeConstraints:
+    - "不清晰的职业/名字文字、相邻动物、界面元素。"
+    - "不得使用参考截图像素、UI、Logo、图中文字或背景场景。"
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-44eea603-ad53-4b48-8fca-1fedf99334ce.png"
+  iterations:
+    - kind: appearance-standing-four-limbs
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-f8ad79be-caa5-4c91-a283-ca03fd703ef2.png"
+      rawCandidate: "../generated/candidate-animal-monkey-appearance-standing-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-monkey-appearance-standing-candidate-v2-alpha-clean.png"
+      sha256: "a62ec2349af886a34f37246bb341a95188ecb27717343956f9668deaeca7cb54"
+      promptRecord: verbatim-retained-in-prompts-file
+      status: pending
+    - kind: alternate-golden-palette
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-b81fffb4-0a8a-4bf9-89fd-29266385aa64.png"
+      rawCandidate: "../generated/candidate-animal-monkey-color-golden-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-monkey-color-golden-candidate-v2-alpha-clean.png"
+      sha256: "78366e689ff8f4db66b7fa9a341694a65d6d778452c0b3b32facb82b61168a0a"
+      promptRecord: verbatim-retained-in-prompts-file
+      status: pending
+    - kind: fullbody-closed-eye-revision
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-2b6d6683-58e5-41f9-9700-d3cd42685e8c.png"
+      rawCandidate: "../generated/candidate-animal-monkey-face-closed-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-monkey-face-closed-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "43632fcd99ec82b7a0eb4e6b5f95fc6fa8a6ef46153333f4c83594e870d2936a"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Full monkey figure edited with two natural closed-eye arcs; the earlier raised eye patches remain as superseded history."
+      status: pending
+    - kind: reduced-blue-bow-clip
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-b33bfea5-51f0-46da-be70-78c53dbaf8d3.png"
+      rawCandidate: "../generated/candidate-animal-monkey-accessory-blue-bow-clip-small-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-monkey-accessory-blue-bow-clip-small-candidate-v2-alpha-clean.png"
+      sha256: "7d5333330627d9541256c3b1da4fffd21735652f2c28098a292939acdb5167f0"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Smaller blue two-loop ear clip sized to the monkey's outer viewer-left ear after the first bow read too large."
+      status: pending
+facts:
+  characterStyle: {state: known, description: "单只柔软短绒质感的3D猴子幼崽。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  appearance: {state: known, description: "正面坐姿，圆耳、紧凑躯干、短小猴爪与相连弯曲长尾。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  facialFeatures: {state: known, description: "浅棕心形脸面罩，大而明亮的棕色双眼、短口鼻、小鼻和张口笑容。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  colorMaterial: {state: known, description: "栗棕短绒身体，浅暖棕脸部与胸口斑块。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  clothing: {state: none, description: "原始Artwork不穿衣物；针织背心仅为pending调整候选。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  headAccessory: {state: none, description: "原始Artwork无头部配饰；蓝色小蝴蝶结仅为pending调整候选。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  bodyAccessory: {state: none, description: "原始Artwork无身体配饰。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+  prop: {state: none, description: "原始Artwork无独立持物。", evidence: "原始候选目视与reviews/animal-monkey-review.json"}
+resources:
+  original:
+    path: "../generated/candidate-animal-monkey-candidate-v1-v2-alpha-clean.png"
+    sha256: "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a"
+    mime: "image/png"
+    bytes: 1853281
+    width: 1245
+    height: 1263
+    alphaCheck: "RGBA with transparency; authorized isolated-alpha cleanup recorded; raw tool output remains preserved"
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+applicableAdjustmentCategories:
+  - appearance
+  - colors
+  - face
+  - clothing
+  - accessories
+finiteRecipes:
+  count: 10
+  manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-monkey-adjustments-review.json"
+  combinationPolicy: "仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。"
+evidence:
+  sourceRecord: "references/manifest.json; source records: R05"
+  license: unknown
+  engineering: passed-candidate
+  visualReview: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-monkey-review.json"
+  artApproval: {status: pending, record: null, exactAssetHash: "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a"}
+  integration: not-applied
+  manifestSha256: "614e2fe6e413be87300e3444e5261e8ced97afa756bf4070c237f5db090ba3b2"
+  deviceCheck: not-run
+  deployment: not-authorized
+materialPolicy: "所有原始图像生成输出均保留；仅对透明 alpha 执行授权的保守边缘清理。完整候选角色和图层仍须独立人工批准后才能成为发布资产。"

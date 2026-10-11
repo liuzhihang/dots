@@ -1,0 +1,1074 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Template bound to the exact existing gallery Artwork; eight complete-character recipes with explicit ready-pose-to-held-prop path. Generated branches are preview-only and not approved.",
+  "artwork": {
+    "id": "human-bun-yellow",
+    "version": "v1",
+    "seriesId": "humans",
+    "status": "current-source",
+    "publicationStatus": "existing-gallery-artwork",
+    "titleByLanguage": {
+      "en": "Yellow Hoodie Person",
+      "zh-CN": "黄衣丸子头女孩"
+    },
+    "descriptionByLanguage": {
+      "en": "An original chibi person with a high chestnut bun and loose strands, a warm-yellow hoodie, ivory shorts and yellow-white shoes, waving with one raised hand.",
+      "zh-CN": "原创栗色高丸子头 Q 版人物，穿暖黄色连帽衫、米白短裤和黄白鞋，抬手挥别。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "asset:human-bun-yellow:original"
+    },
+    "sourcePath": "dist/assets/looks/human-bun-yellow.png",
+    "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+    "artApproval": {
+      "status": "existing-source",
+      "record": null,
+      "scope": "Existing gallery source remains unchanged; only the new Template and generated branches are pending review."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "human-bun-girl-adjustments-v3",
+    "version": "v3",
+    "family": "humans",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only full-character v3 branches for ready-to-hold pose and held prop; does not approve or replace the existing Artwork."
+    },
+    "artworkBinding": {
+      "artworkId": "human-bun-yellow",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One original chibi person. Preserve the same individual, facial identity, skin tone, age impression, body proportions and hand count. The original pose, hand placement, hair arrangement, garment color, expression, clothing and accessories may change only when the selected registered option explicitly names that change. Keep the complete person in a single transparent PNG; do not add another character, typography or a scene.",
+      "zh-CN": "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例和手部数量。原始姿势、手部位置、发型整理、衣料配色、表情、衣着和配饰，只有在所选注册选项明确说明时才允许改变。完整人物保留在单张透明 PNG 中；不得增加其他人物、文字或场景。"
+    },
+    "defaultOptions": {
+      "appearance": "high-bun",
+      "colors": "warm-yellow",
+      "face": "open",
+      "clothing": "hoodie",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "high-bun",
+          "labelByLanguage": {
+            "en": "Original hairstyle",
+            "zh-CN": "原有发型"
+          },
+          "semanticByLanguage": {
+            "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+            "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "twin-buns",
+          "labelByLanguage": {
+            "en": "Twin buns",
+            "zh-CN": "双丸子头"
+          },
+          "semanticByLanguage": {
+            "en": "the same person with hair arranged into two balanced buns; preserve face, waving gesture, outfit and shoes",
+            "zh-CN": "同一人物，头发整理为对称双丸子头；保留脸、挥手手势、衣服和鞋子"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "camera-ready-standing",
+          "labelByLanguage": {
+            "en": "Standing, ready to hold camera",
+            "zh-CN": "站姿，准备托住相机"
+          },
+          "semanticByLanguage": {
+            "en": "the same girl standing upright with the same legs, high chestnut bun, face, warm-yellow hoodie, ivory shorts and yellow-white shoes; lower the waving arm and bring both forearms forward to chest height, with relaxed hands open around a small empty grip space; this option contains no camera",
+            "zh-CN": "同一女孩保持直立站姿、双腿姿势、高栗色丸子头、面容、暖黄色连帽衫、米白短裤和黄白鞋不变；放下挥手的手臂并将双前臂调整到胸前高度，双手放松、围出一处空的握持空间；此选项不含相机"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:ready-pose",
+              "version": "v2",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "warm-yellow",
+          "labelByLanguage": {
+            "en": "Warm-yellow hoodie",
+            "zh-CN": "暖黄色连帽衫"
+          },
+          "semanticByLanguage": {
+            "en": "the original warm-yellow hoodie color; preserve skin, hair and all other garment zones",
+            "zh-CN": "保留原有暖黄色连帽衫配色；肤色、头发和其他衣物区域不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "garment": "#F2BE43"
+          }
+        },
+        {
+          "id": "lavender",
+          "labelByLanguage": {
+            "en": "Lavender hoodie",
+            "zh-CN": "薰衣草紫连帽衫"
+          },
+          "semanticByLanguage": {
+            "en": "only the hoodie changes to soft lavender; preserve skin, chestnut hair, shorts, shoes and waving pose",
+            "zh-CN": "仅连帽衫改为柔和薰衣草紫；保留肤色、栗色头发、短裤、鞋和挥手姿势"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "garment": "#A77BD1"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open-eye smile",
+            "zh-CN": "睁眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "the original open eyes and gentle smile",
+            "zh-CN": "保留原有睁眼与柔和微笑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "two matching gentle closed eyes; preserve the original smile, face shape, high-bun hairstyle, outfit and waving pose",
+            "zh-CN": "两只对称柔和的闭合眼睛；保留原有微笑、脸型、高丸子头、衣着与挥手姿势"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "hoodie",
+          "labelByLanguage": {
+            "en": "Original outfit",
+            "zh-CN": "原有衣着"
+          },
+          "semanticByLanguage": {
+            "en": "the original outfit with its fit and natural hand occlusion",
+            "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "coral-pinafore",
+          "labelByLanguage": {
+            "en": "Coral pinafore",
+            "zh-CN": "珊瑚色背带裙"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted coral pinafore over a light blouse; keep straps naturally on the shoulders, garment fitted to the torso and waving hand unobstructed",
+            "zh-CN": "浅色上衣外穿合体珊瑚色背带裙；肩带自然落肩、裙身贴合躯干且不遮挡挥手"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "Original accessories",
+            "zh-CN": "原有配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no added accessories",
+            "zh-CN": "不增加配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "lavender-flower-clip",
+          "labelByLanguage": {
+            "en": "Lavender flower clip",
+            "zh-CN": "薰衣草花朵发夹"
+          },
+          "semanticByLanguage": {
+            "en": "one a small lavender flower clip attached naturally to the hair beside the high bun",
+            "zh-CN": "固定在高丸子头旁发丝上的小巧薰衣草色花朵发夹"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "camera-held",
+          "labelByLanguage": {
+            "en": "Holding a camera",
+            "zh-CN": "手持相机"
+          },
+          "semanticByLanguage": {
+            "en": "one compact mirrorless camera held at chest height; the right hand grips the body near the shutter while the left hand visibly supports the lens from below, with natural contact and hand-camera occlusion; no floating strap or detached parts",
+            "zh-CN": "一台在胸前高度手持的紧凑微单相机；右手握住靠近快门的机身，左手从下方清楚托住镜头，手与相机自然接触并有正确遮挡；肩带和部件不得悬浮或脱离"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-bun-girl-adjustments-v3:held-prop",
+              "version": "v2",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "twin-buns",
+          "colors": "lavender"
+        },
+        "code": "appearance-colors-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "twin-buns",
+          "face": "closed"
+        },
+        "code": "appearance-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "twin-buns",
+          "clothing": "coral-pinafore"
+        },
+        "code": "appearance-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "twin-buns",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "appearance-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "lavender",
+          "face": "closed"
+        },
+        "code": "colors-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "lavender",
+          "clothing": "coral-pinafore"
+        },
+        "code": "colors-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "lavender",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "colors-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "clothing": "coral-pinafore"
+        },
+        "code": "face-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "face-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "clothing": "coral-pinafore",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "clothing-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "camera-ready-standing": "camera-ready-standing",
+          "colors": "lavender"
+        },
+        "code": "ready-pose-colors-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-ready-standing": "camera-ready-standing",
+          "face": "closed"
+        },
+        "code": "ready-pose-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-ready-standing": "camera-ready-standing",
+          "clothing": "coral-pinafore"
+        },
+        "code": "ready-pose-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-ready-standing": "camera-ready-standing",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "ready-pose-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "appearance": "high-bun"
+        },
+        "code": "held-prop-appearance-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "appearance": "twin-buns"
+        },
+        "code": "held-prop-appearance-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "colors": "lavender"
+        },
+        "code": "held-prop-colors-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "face": "closed"
+        },
+        "code": "held-prop-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "clothing": "coral-pinafore"
+        },
+        "code": "held-prop-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      },
+      {
+        "when": {
+          "camera-held": "camera-held",
+          "accessories": "lavender-flower-clip"
+        },
+        "code": "held-prop-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+          "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "bun-girl-default",
+        "selections": {
+          "appearance": "high-bun",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-appearance",
+        "selections": {
+          "appearance": "twin-buns",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-colors",
+        "selections": {
+          "appearance": "high-bun",
+          "colors": "lavender",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-face",
+        "selections": {
+          "appearance": "high-bun",
+          "colors": "warm-yellow",
+          "face": "closed",
+          "clothing": "hoodie",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-clothing",
+        "selections": {
+          "appearance": "high-bun",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "coral-pinafore",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-accessories",
+        "selections": {
+          "appearance": "high-bun",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "lavender-flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-ready-to-hold",
+        "selections": {
+          "appearance": "camera-ready-standing",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:ready-pose",
+              "version": "v2",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "bun-girl-holding-prop",
+        "selections": {
+          "appearance": "camera-ready-standing",
+          "colors": "warm-yellow",
+          "face": "open",
+          "clothing": "hoodie",
+          "accessories": "camera-held"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-bun-girl-adjustments-v3:held-prop",
+              "version": "v2",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:human-bun-girl-adjustments-v3:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/source-original.png",
+      "sourcePath": "dist/assets/looks/human-bun-yellow.png",
+      "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+      "byteSize": 1086214,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1087604,
+        "opaquePixels": 328,
+        "partialAlphaPixels": 484584,
+        "bboxAtAlphaThreshold16": [
+          318,
+          11,
+          927,
+          1238
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-twin-buns.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/bun-girl-twin-buns.png",
+      "sha256": "b11e4f7a52b604c1b9ce845b4d5b16f0364e5e7c3c07c14c5d20392e16c96e4b",
+      "byteSize": 1132217,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1069088,
+        "opaquePixels": 661,
+        "partialAlphaPixels": 502767,
+        "bboxAtAlphaThreshold16": [
+          318,
+          75,
+          965,
+          1239
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-lavender-hoodie.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/bun-girl-lavender-hoodie.png",
+      "sha256": "1ad265f93be4247db528a31f59a4392ea0d593a8fc5c02518d2148119b5a6c55",
+      "byteSize": 1070703,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1086237,
+        "opaquePixels": 454,
+        "partialAlphaPixels": 485825,
+        "bboxAtAlphaThreshold16": [
+          318,
+          9,
+          930,
+          1239
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-closed-eyes.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/bun-girl-closed-eyes.png",
+      "sha256": "468886b5fcd5235153ae8ea80d2348dc5c8a0748acf9df6b4d194a44934ba3e3",
+      "byteSize": 1047867,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1083138,
+        "opaquePixels": 450,
+        "partialAlphaPixels": 488928,
+        "bboxAtAlphaThreshold16": [
+          317,
+          8,
+          929,
+          1239
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:clothing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-coral-pinafore.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/bun-girl-coral-pinafore.png",
+      "sha256": "71dacc71ec749ba7630b911ce1cdfed6d7ddada0e7f858daf0ee366cefb5a6ca",
+      "byteSize": 1049026,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1091865,
+        "opaquePixels": 617,
+        "partialAlphaPixels": 480034,
+        "bboxAtAlphaThreshold16": [
+          318,
+          9,
+          929,
+          1239
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-lavender-flower-clip.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/bun-girl-lavender-flower-clip.png",
+      "sha256": "8515a15af79b8cf264af41a90dd6d3ef2a6561d86dc2b5636c87a4d37cc78436",
+      "byteSize": 1070003,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1083732,
+        "opaquePixels": 599,
+        "partialAlphaPixels": 488185,
+        "bboxAtAlphaThreshold16": [
+          318,
+          9,
+          928,
+          1238
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:ready-pose",
+      "version": "v2",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-camera-ready-standing-clean-v2.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-ready-standing-clean-v2.png",
+      "sha256": "8bf6ee1a4f30c22305d786a7758c81a4de849011267fea14f101dd5c8dc234fc",
+      "byteSize": 970055,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1122850,
+        "opaquePixels": 440,
+        "partialAlphaPixels": 449226,
+        "bboxAtAlphaThreshold16": [
+          360,
+          10,
+          928,
+          1239
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen output 511a9d74-c0ed-4caa-98d5-3619411bc995; full-character branch operation intent; exact reference dist/assets/looks/human-bun-yellow.png (SHA-256 f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc); clean-v2 is a local alpha-only derivative of the preserved raw image openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-ready-standing-v1.png (SHA-256 2a7868d359092ce0fa04f429029b918553bcee12a64d948721a5a85cea1cf153); cleanup record openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-ready-standing-clean-v2.alpha-cleanup.json (output SHA-256 8bf6ee1a4f30c22305d786a7758c81a4de849011267fea14f101dd5c8dc234fc; retained main alpha component with 2px soft edge; RGB and retained alpha unchanged; dimensions unchanged). Dark/warm full-size composite review found no visible isolated edge artifact. The exact submitted ImageGen prompt was not persisted as text and is not reconstructed. Preview-only; not approved for publication."
+    },
+    {
+      "id": "template:human-bun-girl-adjustments-v3:held-prop",
+      "version": "v2",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-bun-girl-adjustments-v3/bun-girl-camera-held-clean-v2.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-held-clean-v2.png",
+      "sha256": "57f6fada3064d3289ca545faffe8f389dc367edd8393cc446fd2e3ed869bb13f",
+      "byteSize": 940310,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1121012,
+        "opaquePixels": 404,
+        "partialAlphaPixels": 451100,
+        "bboxAtAlphaThreshold16": [
+          360,
+          7,
+          929,
+          1240
+        ]
+      },
+      "owner": {
+        "templateId": "human-bun-girl-adjustments-v3",
+        "artworkId": "human-bun-yellow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen output 91888cc9-b922-4935-a448-8936f17357c7; full-character branch operation intent; exact reference openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-ready-standing-v1.png (SHA-256 2a7868d359092ce0fa04f429029b918553bcee12a64d948721a5a85cea1cf153); clean-v2 is a local alpha-only derivative of the preserved raw image openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-held-v1.png (SHA-256 8d6d27c3d19fbdc0afad75f77d6e1362420c60cdde9cc36a53ddf952349a6abb); cleanup record openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/bun-girl-camera-held-clean-v2.alpha-cleanup.json (output SHA-256 57f6fada3064d3289ca545faffe8f389dc367edd8393cc446fd2e3ed869bb13f; retained main alpha component with 2px soft edge; RGB and retained alpha unchanged; dimensions unchanged). Dark/warm full-size composite review found no visible isolated edge artifact. The exact submitted ImageGen prompt was not persisted as text and is not reconstructed. Preview-only; not approved for publication."
+    }
+  ]
+}

@@ -1,0 +1,690 @@
+{
+  "status": "pending",
+  "scope": "Four-category Dots candidate; whole-character finite branches; clothing is not supported. Neither Artwork nor Template is user approved.",
+  "artwork": {
+    "id": "dots-violet-star",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "紫色星团",
+      "en": "Violet Star"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-candidate-v2.png",
+    "sha256": "1dde58d2eb78c4a7025ba60e0f3a62a492a3a076a647f9a615f989e4665393c8"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-violet-star-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-violet-star",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1312,
+      "height": 1199
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。",
+      "en": "One Dots character with a continuous short-dense-plush body and simple paired black eyes. No arms, hands, legs, feet, mouth, screen face or clothing."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典轮廓",
+            "en": "Classic outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "五个圆润星角构成的连续星形身体",
+            "en": "a continuous five-point star body with rounded points"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "柔圆轮廓",
+            "en": "Softer outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "五个星角更圆钝、凹处更浅的饱满星团",
+            "en": "a plumper five-point star with rounded tips and shallower valleys"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "淡紫色",
+            "en": "Violet"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "淡紫色短密绒",
+            "en": "Violet short dense plush"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#b88bee"
+          ],
+          "zoneColors": {
+            "body": "#b88bee"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "天空蓝",
+            "en": "Sky blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "天空蓝短绒，保持成对黑眼",
+            "en": "sky-blue short plush preserving the paired black eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#79b8ed"
+          ],
+          "zoneColors": {
+            "body": "#79b8ed"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色双眼",
+            "en": "Black paired eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色眼睛，无嘴",
+            "en": "simple paired black eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色闭合弧线眼，无嘴；静态表情",
+            "en": "simple paired black closed curved eyelids, no mouth; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "fitted",
+          "labelByLanguage": {
+            "zh-CN": "月牙徽章",
+            "en": "Moon pin"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "身体左上区域贴合小型金色月牙徽章，位于眼睛上方",
+            "en": "a tiny gold crescent-moon pin fitted inside the upper-left body contour above the eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-violet-star-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "fitted"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "fitted"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "fitted"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-violet-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-violet-star-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-violet-star-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-violet-star-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-fitted",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "fitted"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-violet-star-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-violet-star-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-violet-star-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-candidate-v2.png",
+      "sha256": "1dde58d2eb78c4a7025ba60e0f3a62a492a3a076a647f9a615f989e4665393c8",
+      "byteSize": 1548983,
+      "width": 1312,
+      "height": 1199,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 873081,
+        "bboxAtAlphaThreshold16": [
+          114,
+          127,
+          1203,
+          1094
+        ]
+      },
+      "owner": {
+        "templateId": "dots-violet-star-adjustments-v1",
+        "artworkId": "dots-violet-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-violet-star-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-violet-star-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-appearance-full-candidate-v2.png",
+      "sha256": "22a832046f5cf69eeb3d34d6c163e9705f5d99ee1d2a1d832fc7ad76987d1798",
+      "byteSize": 1470408,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 860163,
+        "bboxAtAlphaThreshold16": [
+          99,
+          155,
+          1155,
+          1116
+        ]
+      },
+      "owner": {
+        "templateId": "dots-violet-star-adjustments-v1",
+        "artworkId": "dots-violet-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "anchor": "canvas",
+        "offset": [
+          27.5853,
+          -28.9677
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0062434963579605,
+            1.0062434963579605
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-violet-star-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-violet-star-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-colors-full-candidate-v2.png",
+      "sha256": "c0e3fb998e800486c2910fb675f620b313e5b29cab562c4ac753c241a77fd296",
+      "byteSize": 1557101,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 753376,
+        "bboxAtAlphaThreshold16": [
+          47,
+          111,
+          1210,
+          1167
+        ]
+      },
+      "owner": {
+        "templateId": "dots-violet-star-adjustments-v1",
+        "artworkId": "dots-violet-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "anchor": "canvas",
+        "offset": [
+          82.9702,
+          25.3551
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.915719696969697,
+            0.915719696969697
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-violet-star-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-violet-star-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-face-full-candidate-v2.png",
+      "sha256": "ee3b0de69076b579b55edab76e43719c6e410a500235a7443ebb12ce0d21e242",
+      "byteSize": 1524229,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 807034,
+        "bboxAtAlphaThreshold16": [
+          59,
+          131,
+          1200,
+          1143
+        ]
+      },
+      "owner": {
+        "templateId": "dots-violet-star-adjustments-v1",
+        "artworkId": "dots-violet-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "anchor": "canvas",
+        "offset": [
+          56.9916,
+          1.8251
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9555335968379447,
+            0.9555335968379447
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-violet-star-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-violet-star-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-accessories-full-candidate-v2.png",
+      "sha256": "decd5859617ad62989a2c96b0f2a621c7accd12f6387aff9f449c86a22a1d9ad",
+      "byteSize": 1604407,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 795335,
+        "bboxAtAlphaThreshold16": [
+          62,
+          103,
+          1194,
+          1136
+        ]
+      },
+      "owner": {
+        "templateId": "dots-violet-star-adjustments-v1",
+        "artworkId": "dots-violet-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1312,
+          1199
+        ],
+        "anchor": "canvas",
+        "offset": [
+          70.6239,
+          30.5808
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.936108422071636,
+            0.936108422071636
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    }
+  ]
+}

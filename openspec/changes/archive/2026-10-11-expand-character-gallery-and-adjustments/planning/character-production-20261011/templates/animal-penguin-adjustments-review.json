@@ -1,0 +1,1150 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Artwork and Template. Generated assets and alpha-clean derivatives remain unapproved and unpublished.",
+  "artwork": {
+    "id": "candidate-animal-penguin",
+    "version": "v2",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Plush Penguin",
+      "zh-CN": "毛绒企鹅"
+    },
+    "descriptionByLanguage": {
+      "en": "A round black-and-ivory plush penguin with orange beak and feet.",
+      "zh-CN": "一只圆润的黑白绒面企鹅，配橙色喙和双脚。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "candidate-animal-penguin@v2-alpha-clean"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.png",
+    "sha256": "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Candidate only; no gallery approval transfers."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "candidate-animal-penguin-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only Template and recompositions; no Artwork or layer approval transfers."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animal-penguin",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1230,
+      "height": 1278
+    },
+    "anchors": {
+      "penguin.crown.hat": {
+        "point": [
+          615,
+          220
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One rounded plush penguin with a charcoal head, back and flippers; broad ivory face and belly; short orange beak; two glossy dark eyes; pink blush; and two orange webbed feet. Preserve clear penguin proportions, natural flippers, and soft plush material; do not add human arms or hands.",
+      "zh-CN": "一只圆润绒面企鹅，炭灰色头部、背部与鳍肢，宽阔象牙白脸部和腹部，短橙喙、两只亮泽深色眼睛、粉色腮红及橙色蹼足。保持企鹅比例、自然鳍肢和柔软绒面，不添加人类手臂或手掌。"
+    },
+    "defaultOptions": {
+      "appearance": "front",
+      "colors": "charcoal-ivory",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "front",
+          "labelByLanguage": {
+            "en": "Front view",
+            "zh-CN": "正面"
+          },
+          "semanticByLanguage": {
+            "en": "the original front-facing rounded penguin with both flippers visible",
+            "zh-CN": "原始圆润正面企鹅，双侧鳍肢均可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "wave",
+          "labelByLanguage": {
+            "en": "Raised flipper",
+            "zh-CN": "抬鳍姿态"
+          },
+          "semanticByLanguage": {
+            "en": "the same penguin in a gentle three-quarter pose with one flipper raised and the other visible",
+            "zh-CN": "同一企鹅采用柔和三分之四侧身姿态，一侧鳍肢抬起，另一侧仍清楚可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "charcoal-ivory",
+          "labelByLanguage": {
+            "en": "Charcoal and ivory",
+            "zh-CN": "炭灰象牙白"
+          },
+          "semanticByLanguage": {
+            "en": "charcoal plush head, back and flippers with an ivory face and belly and orange beak and feet",
+            "zh-CN": "炭灰色绒面头背和鳍肢，象牙白脸腹及橙色喙足"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "plumage": "#37343B",
+            "belly": "#F4F0E7"
+          }
+        },
+        {
+          "id": "navy-ivory",
+          "labelByLanguage": {
+            "en": "Navy and ivory",
+            "zh-CN": "海军蓝象牙白"
+          },
+          "semanticByLanguage": {
+            "en": "deep navy plush head, back and flippers with an ivory face and belly and unchanged orange beak and feet",
+            "zh-CN": "深海军蓝绒面头背和鳍肢，象牙白脸腹，橙色喙足不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-color",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "plumage": "#172C53",
+            "belly": "#F6F1E6"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy dark open eyes and the original short beak",
+            "zh-CN": "两只亮泽深色睁眼和原有短喙"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-smile",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "two dark embroidered curved closed eyelids, keeping the beak and blush unchanged",
+            "zh-CN": "两条深色刺绣弧形闭眼，喙和腮红保持不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "the original plush body without clothing",
+            "zh-CN": "保留原绒面身体，不穿服装"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "teal-scarf",
+          "labelByLanguage": {
+            "en": "Teal knitted scarf",
+            "zh-CN": "青绿色针织围巾"
+          },
+          "semanticByLanguage": {
+            "en": "a muted teal scarf naturally wrapped around the neck, with a short front end, both flippers and feet unobstructed",
+            "zh-CN": "柔和青绿色围巾自然环绕颈部，短前垂片，双侧鳍肢和双脚无遮挡"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessory",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no extra accessory",
+            "zh-CN": "不添加额外配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "coral-beanie",
+          "labelByLanguage": {
+            "en": "Coral beanie",
+            "zh-CN": "珊瑚色针织帽"
+          },
+          "semanticByLanguage": {
+            "en": "a compact coral knitted beanie seated on top of the head, leaving both eyes and beak clear",
+            "zh-CN": "稳固戴在头顶的小型珊瑚色针织帽，双眼和喙清晰可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "wave",
+          "colors": "navy-ivory"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "wave",
+          "face": "closed-smile"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "wave",
+          "clothing": "teal-scarf"
+        },
+        "code": "appearance-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "wave",
+          "accessories": "coral-beanie"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "navy-ivory",
+          "face": "closed-smile"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "navy-ivory",
+          "clothing": "teal-scarf"
+        },
+        "code": "colors-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "navy-ivory",
+          "accessories": "coral-beanie"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "front-charcoal-ivory-open-none-none",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-open-none-coral-beanie",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "coral-beanie"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-open-teal-scarf-none",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "open",
+          "clothing": "teal-scarf",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-open-teal-scarf-coral-beanie",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "open",
+          "clothing": "teal-scarf",
+          "accessories": "coral-beanie"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-closed-smile-none-none",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-closed-smile-none-coral-beanie",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "coral-beanie"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-closed-smile-teal-scarf-none",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "closed-smile",
+          "clothing": "teal-scarf",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-charcoal-ivory-closed-smile-teal-scarf-coral-beanie",
+        "selections": {
+          "appearance": "front",
+          "colors": "charcoal-ivory",
+          "face": "closed-smile",
+          "clothing": "teal-scarf",
+          "accessories": "coral-beanie"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave-charcoal-ivory-open-none-none",
+        "selections": {
+          "appearance": "wave",
+          "colors": "charcoal-ivory",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "front-navy-ivory-open-none-none",
+        "selections": {
+          "appearance": "front",
+          "colors": "navy-ivory",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-penguin-adjustments-v1:body-color",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-base.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.png",
+      "sha256": "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e",
+      "byteSize": 1377810,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 855624,
+        "bboxAtAlphaThreshold1": [
+          94,
+          96,
+          1131,
+          1182
+        ],
+        "bboxAtAlphaThreshold8": [
+          96,
+          98,
+          1130,
+          1180
+        ],
+        "bboxAtAlphaThreshold16": [
+          96,
+          98,
+          1129,
+          1180
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-master-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-dd11fc49-a627-4a9b-bfc3-bdde5f1c1cd8.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-appearance-three-quarter-candidate-v2-alpha-clean.png",
+      "sha256": "901ea4d9458122313c590badea82d0034cd76534e6749dbb1b9d41e994575bcd",
+      "byteSize": 1298821,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 912495,
+        "bboxAtAlphaThreshold1": [
+          252,
+          96,
+          1067,
+          1191
+        ],
+        "bboxAtAlphaThreshold8": [
+          253,
+          98,
+          1065,
+          1189
+        ],
+        "bboxAtAlphaThreshold16": [
+          254,
+          98,
+          1065,
+          1189
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-raised-flipper-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-0f7b2735-826c-4878-a22a-250b15726abb.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-appearance-three-quarter-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-appearance-three-quarter-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-color",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-color.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-color-navy-ivory-candidate-v2-alpha-clean.png",
+      "sha256": "a6cbe251423e3ef65b582aa53a7cfcef90644d67a4435a487f8fb54d525036f9",
+      "byteSize": 1265423,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 846413,
+        "bboxAtAlphaThreshold1": [
+          92,
+          95,
+          1137,
+          1185
+        ],
+        "bboxAtAlphaThreshold8": [
+          94,
+          97,
+          1135,
+          1183
+        ],
+        "bboxAtAlphaThreshold16": [
+          94,
+          97,
+          1135,
+          1183
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-navy-ivory-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-d51aa46d-c6ad-403f-b21d-89ef4ddaa851.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-color-navy-ivory-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-color-navy-ivory-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-closed",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-smile-candidate-v2-alpha-clean.png",
+      "sha256": "f38e868afd89684d618f7dd24221b354b0bc019eeb1541db52af4285c45fb5af",
+      "byteSize": 1276403,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 849107,
+        "bboxAtAlphaThreshold1": [
+          93,
+          95,
+          1137,
+          1184
+        ],
+        "bboxAtAlphaThreshold8": [
+          95,
+          97,
+          1135,
+          1183
+        ],
+        "bboxAtAlphaThreshold16": [
+          95,
+          97,
+          1135,
+          1182
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-closed-eye-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-1d2678a2-fd00-4751-8faa-dd9f8d35d66e.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-smile-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-smile-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-open",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-clothing-open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "350dbcad64a6113076cd0a8024d868e66cdd03da1f9100281eb934f9a04e9771",
+      "byteSize": 1426289,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 846159,
+        "bboxAtAlphaThreshold1": [
+          108,
+          91,
+          1122,
+          1188
+        ],
+        "bboxAtAlphaThreshold8": [
+          110,
+          93,
+          1120,
+          1187
+        ],
+        "bboxAtAlphaThreshold16": [
+          110,
+          93,
+          1120,
+          1186
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-fullbody-scarf-open-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-25da703d-98e9-43fb-a93d-59a138356830.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:body-clothing-closed",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/body-clothing-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "d3b38c510a1b3423c3f6af9235ce59bdd1fc033b3b275980ea8fd785272051fe",
+      "byteSize": 1352306,
+      "width": 1230,
+      "height": 1278,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 843985,
+        "bboxAtAlphaThreshold1": [
+          108,
+          90,
+          1122,
+          1191
+        ],
+        "bboxAtAlphaThreshold8": [
+          109,
+          92,
+          1120,
+          1189
+        ],
+        "bboxAtAlphaThreshold16": [
+          110,
+          92,
+          1120,
+          1189
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-fullbody-scarf-closed-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-e327639c-90da-4393-9a4a-bf17fa1f9461.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-penguin-adjustments-v1:accessory",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/candidate-animal-penguin-adjustments-v1/accessory.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v2-alpha-clean.png",
+      "sha256": "c5419965c8bfd8a88095b92027c2c580abe0e6c44d6b1a0c64792034b1eb8e6d",
+      "byteSize": 486272,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1385668,
+        "bboxAtAlphaThreshold1": [
+          351,
+          361,
+          903,
+          873
+        ],
+        "bboxAtAlphaThreshold8": [
+          353,
+          363,
+          902,
+          873
+        ],
+        "bboxAtAlphaThreshold16": [
+          353,
+          363,
+          901,
+          871
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-penguin-adjustments-v1",
+        "artworkId": "candidate-animal-penguin",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1230,
+          1278
+        ],
+        "anchor": "canvas",
+        "offset": [
+          238.8,
+          -173.8
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.6,
+            0.6
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "penguin-coral-beanie-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-e635abd1-544d-47e6-ac29-f01c02c3ff28.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    }
+  ]
+}

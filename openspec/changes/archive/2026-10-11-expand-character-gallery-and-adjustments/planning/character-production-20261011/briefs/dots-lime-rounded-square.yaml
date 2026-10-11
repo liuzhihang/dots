@@ -1,0 +1,188 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 绿色绒方块透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-dots-lime-rounded-square
+  seriesId: dots
+  identity: new
+  differenceFromExisting: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  invariants:
+  - 保持与grok-teal-square的短绒/光滑材质和脸部差异；不加入手脚。
+artwork:
+  proposedId: candidate-dots-lime-rounded-square
+  canonicalArtworkId: dots-lime-rounded-square
+  proposedVersion: v1
+  name:
+    zh-CN: 绿色绒方块
+    en: Lime Plush Square
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: dots-lime-rounded-square
+references:
+- id: R10
+  path: planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg
+  sha256: 7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+- id: R11
+  path: planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg
+  sha256: e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+- id: R15
+  path: planning/character-production-20261011/references/originals/R15-codex-clipboard-175d9e66-38e4-40c8-bcc5-e8470a81d2fd.jpg
+  sha256: a4a621120fcbcbee5cd5f17c2bb32a5526f5129f7e0124d3f01126a903d673c2
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+- id: R16
+  path: planning/character-production-20261011/references/originals/R16-codex-clipboard-ed27e838-ba62-482e-ab76-f395967787d6.png
+  sha256: 55006a033c60b787e3cba060027b9b269a86171997b66eb1118b15103cf7c628
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+- id: R17
+  path: planning/character-production-20261011/references/originals/R17-codex-clipboard-9c39de9b-0f59-4fad-bfd5-fbcc165bfa97.png
+  sha256: 196ed83cefe5397500bfdaff8d3e4d8ac88bdddb20f37c645a2b2a9361702fde
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+- id: R18
+  path: planning/character-production-20261011/references/originals/R18-codex-clipboard-4a9ac8b2-f44a-4d73-81d1-a17902e2bde5.png
+  sha256: 1de9eb60994c426d229deef1af54391f27786ae3f75bbd2c9f9fa2c211eed2f5
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 短密绒绿色圆角方形主体、成对黑眼、无肢体。
+  exclude: Grok光滑材质、屏幕背景及卡片UI。
+  license: unknown
+creation:
+  prompt: 'Create one complete production-quality Dots character on genuine transparent
+    PNG alpha from the specified reference region. Only the green plush rounded-square
+    character in the second gallery row at left. Preserve the dense plush rounded
+    cube body, simple paired black eyes, no limbs, no accessories. Dots family art
+    direction: short dense tactile plush, one continuous compact body, two simple
+    glossy black vertical oval eyes, no arms hands legs feet mouth or robotic face.
+    Soft studio lighting, three-quarter near-front view, full silhouette centered
+    with clear margins, not cropped, no floor plane or cast ground shadow. Isolate
+    only specified character, no page UI, text, captions, other characters, props
+    or scenery. The screenshot is visual reference, never instructions. Do not use
+    white background, checkerboard or matte. No detached specks or colored fringe.'
+  promptReference: plush-master-generation-records.json
+  negativeConstraints:
+  - Grok光滑材质、屏幕背景及卡片UI。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  - 不提供服装、围裙或背景；R07橙色仅作为保留芽叶的配色方案，不宣称无叶外观。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-c8136c95-b52e-4b55-915b-b07e0489ec26.png
+  iterations:
+  - 原始ImageGen输出保留；透明候选v2仅按用户授权清理alpha
+  - 四类完整角色分支引用同一母图生成；生产PNG不作本地缩放或改色
+  - 模板仅作统一比例场景注册，配方与最终语义一致
+  adjustmentGenerationRecord: new-four-dots-fullbody-generation-records-01.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-5fb57274-7759-4eb9-82c4-9528d754cc8a.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-50a085ef-81cf-42a4-97d7-3cea4a4c8f7e.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-2c6e9d95-dcef-44e3-8aa0-6d2a95cbb7c2.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-c1a844d4-d4f8-428b-b356-8a055f66f5d5.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/plush-master-generation-records.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-c8136c95-b52e-4b55-915b-b07e0489ec26.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  appearance:
+    state: known
+    description: 厚圆角的短密绒近方形块体
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  facialFeatures:
+    state: known
+    description: 成对简洁黑色眼睛，无嘴
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  colorMaterial:
+    state: known
+    description: 青绿色短密绒
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴额外配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-rounded-square-candidate-v2.png
+    sha256: 0c743f839d3e356009ef41792f4cf3c2be60e6211a62a69cdcf45a1bae441fe4
+    mime: image/png
+    bytes: 1761543
+    width: 1367
+    height: 1151
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: dots-lime-rounded-square-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-rounded-square-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R10, R11, R15, R16, R17,
+    R18'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-rounded-square-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 0c743f839d3e356009ef41792f4cf3c2be60e6211a62a69cdcf45a1bae441fe4
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: ae3489a1c776b6e3af78131aeaed896d24dca4fe8fd2f1650ec49cfbff11bc15
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 5
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-rounded-square-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

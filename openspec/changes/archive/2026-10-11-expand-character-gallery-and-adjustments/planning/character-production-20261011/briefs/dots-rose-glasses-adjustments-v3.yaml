@@ -1,0 +1,67 @@
+# 已有 Artwork 的调整 Template 记录；用户美术批准仍 pending。
+briefVersion: 1
+request:
+  summary: 为已批准的莓粉眼镜 Dots 绑定四字段有限调整 Template
+  scope: existing-artwork-adjustment-template-candidate
+  count: 1
+character:
+  proposedId: dots-rose-glasses
+  seriesId: dots
+  identity: existing Artwork dots-rose-glasses@v1
+  invariants:
+  - 保持单个无手脚、无嘴的连续短绒 Dots；选择只改变已注册的轮廓、身体配色、眼型或眼镜，不出现服装、道具或背景。
+artwork:
+  canonicalArtworkId: dots-rose-glasses
+  version: v1
+  sourcePath: dist/assets/looks/dots-rose-glasses.png
+  sha256: a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75
+  status: existing-approved-artwork-unchanged
+template:
+  id: dots-rose-glasses-adjustments-v3-four-tabs-candidate
+  version: v3
+  schemaVersion: 2
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-rose-glasses-adjustments-v3-four-tabs-review.json
+  manifestSha256: 326230f7f78e602d41fa899740ea2bb01c7ffec56fb2aefd07d478dec4b32632
+  engineeringStatus: passed
+  engineeringReport: .artifacts/character-adjustments/dots-rose-glasses-adjustments-v3-four-tabs-candidate/report.json
+  engineeringReportSha256: 5788b0b5da130ae7da165c00d7e6b6f5a6d0d78d70b2cfbea05eb61696a99db7
+  rootVisualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/root-dots-rose-glasses-adjustments-v3-four-tabs-review.json
+  rootVisualReviewStatus: passed-internal-root-review
+  artApproval:
+    status: pending
+    record: null
+fields:
+  appearance:
+    orb: 莓粉色圆球短绒身体
+    cloud: 莓粉色低矮三瓣云团短绒身体
+  colors:
+    rose: 莓粉色短绒身体
+    blue: 蓝色短绒身体
+  face:
+    open: 两只黑色竖椭圆睁眼
+    closed: 两道弯曲闭眼线（静态表情）
+  accessories:
+    none: 无配饰
+    rose-round-glasses: 莓粉圆框眼镜；镜框围住睁眼/闭眼图层，眼睛适配框内孔
+  clothing: not-applicable-by-user-direction
+  legalRecipeCount: 16
+  conflicts: []
+creation:
+  promptReference: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/imagegen-prompt.md
+  generationRecords:
+  - purpose: 从原 Artwork 移除眼睛与眼镜、重建莓粉色圆球身体层；原图不修改。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-6454f0d5-45ec-48df-9560-bd294bbcce1c.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/rose-body-imagegen-raw-v1.png
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/rose-body-alpha-clean-v1.png
+    cleanedSha256: b0b7519dc6feabf87e60f159a1708f1c9f7cca82edb6b43c682cd3c3c25858db
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/rose-body-alpha-clean-v1.alpha-cleanup.json
+  - purpose: 以蓝色三瓣云团的精确轮廓/位置为参考，生成莓粉短绒云团身体层。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-c0ff0dce-4f2e-4125-936a-18d8f87b4022.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/cloud-body-imagegen-raw-v1.png
+    rawSha256: 64525f93d7ab5d9a2cb078964caa0586c80a5d6fd960f7b3e38263993f50cf7d
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/cloud-body-imagegen-clean-v1.png
+    cleanedSha256: 5753fe4025df047ccb10335b19bbdd0c3967124901ab3e8e0df6c0082fa9a5da
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-rose-adjustments-v1/cloud-body-imagegen-clean-v1.alpha-cleanup.json
+  derivedColorMasks: template-bound alpha/silhouette masks for orb and cloud; colors affect only body pixels.
+  reusedLayers: Approved Dots open/closed eyes reused by exact hash as pending template references; pink rear/front round glasses recolor layers are separately bound in the manifest.
+combinationPolicy: 仅manifest列出的16个配方可渲染；配色、轮廓、表情与圆框眼镜均有合法路径。保持透明PNG输出，原 Artwork 字节不变。

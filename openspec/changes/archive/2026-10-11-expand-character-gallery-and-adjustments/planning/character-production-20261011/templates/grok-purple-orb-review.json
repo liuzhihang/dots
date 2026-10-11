@@ -1,0 +1,2962 @@
+{
+  "status": "pending",
+  "scope": "complete candidate review, user art approval pending",
+  "artwork": {
+    "id": "candidate-grok-20261005",
+    "version": "v2",
+    "seriesId": "grok",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "紫色 Grok 圆团",
+      "en": "Purple Grok Orb"
+    },
+    "sourcePath": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+    "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "grok-purple-orb-adjustments-v1",
+    "version": "v1",
+    "family": "grok",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-grok-20261005",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Grok Bot，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴或屏幕脸。",
+      "en": "One Grok Bot with a continuous smooth soft geometric body and paired capsule eyes. No arms, hands, legs, feet, mouth or screen face."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "angled",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典圆团",
+            "en": "Classic orb"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "无肢体软圆团",
+            "en": "one soft spherical body without limbs"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "低宽椭团",
+            "en": "Low wide ovoid"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更低矮横宽的柔软椭圆身体",
+            "en": "a low wide soft ovoid body"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "紫色",
+            "en": "Purple"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "紫色光滑软硅胶",
+            "en": "purple smooth soft silicone"
+          },
+          "zoneColors": {
+            "body": "#7846d4"
+          },
+          "swatches": [
+            "#7846d4"
+          ]
+        },
+        {
+          "id": "mint",
+          "labelByLanguage": {
+            "zh-CN": "薄荷青",
+            "en": "Mint teal"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "薄荷青色光滑软硅胶",
+            "en": "mint teal smooth soft silicone"
+          },
+          "zoneColors": {
+            "body": "#39ba9e"
+          },
+          "swatches": [
+            "#39ba9e"
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "angled",
+          "labelByLanguage": {
+            "zh-CN": "斜胶囊眼",
+            "en": "Angled capsule eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对象牙白斜胶囊眼，无嘴",
+            "en": "paired angled ivory capsule eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "upright",
+          "labelByLanguage": {
+            "zh-CN": "直胶囊眼",
+            "en": "Upright capsule eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对象牙白直胶囊眼，无嘴",
+            "en": "paired upright ivory capsule eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无服装",
+            "en": "No clothing"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不穿衣装",
+            "en": "no clothing"
+          }
+        },
+        {
+          "id": "wrap",
+          "labelByLanguage": {
+            "zh-CN": "针织围衣",
+            "en": "Knit wrap"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "下身贴合深蓝针织围衣与象牙白滚边",
+            "en": "a fitted navy rib-knit lower-body wrap with ivory piping"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessories"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴配饰",
+            "en": "no accessories"
+          }
+        },
+        {
+          "id": "glasses",
+          "labelByLanguage": {
+            "zh-CN": "圆框眼镜",
+            "en": "Round glasses"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合双眼的黑色圆框眼镜",
+            "en": "fitted black round eyeglasses around both eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        },
+        {
+          "id": "cap",
+          "labelByLanguage": {
+            "zh-CN": "软帽",
+            "en": "Soft cap"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "戴贴合头顶的软帽",
+            "en": "a fitted soft cap"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        },
+        {
+          "id": "glasses-cap",
+          "labelByLanguage": {
+            "zh-CN": "眼镜与软帽",
+            "en": "Glasses and cap"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "佩戴贴合双眼的圆框眼镜与贴合头顶的软帽",
+            "en": "fitted round glasses and a fitted soft cap"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "clothing": "wrap"
+        },
+        "code": "wrap-classic-only",
+        "messageByLanguage": {
+          "zh-CN": "这件围衣适配经典轮廓，请先切回经典轮廓或脱下围衣。",
+          "en": "This wrap fits the classic outline. Choose Classic or remove the wrap first."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "glasses"
+        },
+        "code": "accessory-classic-only-glasses",
+        "messageByLanguage": {
+          "zh-CN": "这组配饰适配经典圆团，请先切回经典圆团或取下配饰。",
+          "en": "These accessories fit the classic orb. Choose Classic or remove them first."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "cap"
+        },
+        "code": "accessory-classic-only-cap",
+        "messageByLanguage": {
+          "zh-CN": "这组配饰适配经典圆团，请先切回经典圆团或取下配饰。",
+          "en": "These accessories fit the classic orb. Choose Classic or remove them first."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "glasses-cap"
+        },
+        "code": "accessory-classic-only-glasses-cap",
+        "messageByLanguage": {
+          "zh-CN": "这组配饰适配经典圆团，请先切回经典圆团或取下配饰。",
+          "en": "These accessories fit the classic orb. Choose Classic or remove them first."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-angled-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-none-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-none-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-wrap-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-angled-wrap-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-none-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-none-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-wrap-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-upright-wrap-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-none-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-none-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-wrap-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-angled-wrap-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "wrap",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-none-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-none-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-wrap-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "cap"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-upright-wrap-glasses-cap",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "wrap",
+          "accessories": "glasses-cap"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "cap-rear",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capRear",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          },
+          {
+            "slot": "cap-front",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:capFront",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-angled-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled-soft",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-upright-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright-soft",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-angled-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "angled",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:angled-soft",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-upright-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "upright",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-purple-orb-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-purple-orb-adjustments-v1:upright-soft",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:body",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/body.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/body-neutral.png",
+      "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+      "byteSize": 1106046,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 764701,
+        "bboxAtAlphaThreshold16": [
+          121,
+          123,
+          1133,
+          1127
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:angled",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/angled.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+      "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+      "byteSize": 109511,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1543030,
+        "bboxAtAlphaThreshold16": [
+          757,
+          345,
+          1017,
+          580
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          5.75,
+          5
+        ],
+        "transform": {
+          "pivot": [
+            888.5,
+            462
+          ],
+          "scale": [
+            1.17,
+            0.58
+          ],
+          "shear": [
+            0,
+            -0.274
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:upright",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/upright.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+      "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+      "byteSize": 92782,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1547985,
+        "bboxAtAlphaThreshold16": [
+          777,
+          462,
+          1042,
+          690
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          -18,
+          -117
+        ],
+        "transform": {
+          "pivot": [
+            909,
+            578
+          ],
+          "scale": [
+            1.11,
+            0.75
+          ],
+          "rotationDegrees": -10
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:glassesFront",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/glassesFront.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/glasses/round-front.png",
+      "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34",
+      "byteSize": 99090,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1555504,
+        "bboxAtAlphaThreshold16": [
+          726,
+          396,
+          1061,
+          627
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -46
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:glassesRear",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/glassesRear.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+      "sha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f",
+      "byteSize": 72835,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1565513,
+        "bboxAtAlphaThreshold16": [
+          392,
+          389,
+          1152,
+          726
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          482,
+          230
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.536,
+            0.397
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:capFront",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/capFront.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/cap/front-v2.png",
+      "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+      "byteSize": 222431,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1511205,
+        "bboxAtAlphaThreshold16": [
+          313,
+          364,
+          941,
+          527
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -82.5
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            0.75
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:capRear",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/capRear.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/cap/rear-v2.png",
+      "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+      "byteSize": 648210,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1338727,
+        "bboxAtAlphaThreshold16": [
+          237,
+          119,
+          1018,
+          539
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          -71.25
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            0.75
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:bodyMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/bodyMask.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/body-neutral.png",
+      "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+      "byteSize": 1106046,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 764701,
+        "bboxAtAlphaThreshold16": [
+          121,
+          123,
+          1133,
+          1127
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:soft",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/soft.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-purple-orb-body-soft-candidate-v2.png",
+      "sha256": "d785113265da0586cdee62b0f880426e563037ee15f1be2c069aad2f8b7631f4",
+      "byteSize": 641446,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 972421,
+        "bboxAtAlphaThreshold16": [
+          75,
+          319,
+          1179,
+          1008
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:softMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/softMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-purple-orb-body-soft-candidate-v2.png",
+      "sha256": "d785113265da0586cdee62b0f880426e563037ee15f1be2c069aad2f8b7631f4",
+      "byteSize": 641446,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 972421,
+        "bboxAtAlphaThreshold16": [
+          75,
+          319,
+          1179,
+          1008
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:wrap",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/wrap.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-purple-orb-knit-wrap-candidate-v2.png",
+      "sha256": "20c9a44c046358e4883c5acdd5f164899e6c5da7ff2bedacac21e83844d55fd4",
+      "byteSize": 752439,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1231374,
+        "bboxAtAlphaThreshold16": [
+          114,
+          651,
+          1141,
+          1139
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:angled-soft",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/angled.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+      "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+      "byteSize": 109511,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1543030,
+        "bboxAtAlphaThreshold16": [
+          757,
+          345,
+          1017,
+          580
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          -54.25,
+          145
+        ],
+        "transform": {
+          "pivot": [
+            888.5,
+            462
+          ],
+          "scale": [
+            1.17,
+            0.58
+          ],
+          "shear": [
+            0,
+            -0.274
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:grok-purple-orb-adjustments-v1:upright-soft",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-purple-orb-adjustments-v1/upright.png",
+      "sourcePath": "dist/assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+      "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+      "byteSize": 92782,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1547985,
+        "bboxAtAlphaThreshold16": [
+          777,
+          462,
+          1042,
+          690
+        ]
+      },
+      "owner": {
+        "templateId": "grok-purple-orb-adjustments-v1",
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "anchor": "canvas",
+        "canvas": [
+          1254,
+          1254
+        ],
+        "offset": [
+          -78,
+          23
+        ],
+        "transform": {
+          "pivot": [
+            909,
+            578
+          ],
+          "scale": [
+            1.11,
+            0.75
+          ],
+          "rotationDegrees": -10
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    }
+  ]
+}

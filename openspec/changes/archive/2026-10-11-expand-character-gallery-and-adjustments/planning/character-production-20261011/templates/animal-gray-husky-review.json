@@ -1,0 +1,860 @@
+{
+  "status": "pending",
+  "scope": "candidate only; five classes each have a real image branch with explicit finite-combination conflicts; user approval pending",
+  "artwork": {
+    "id": "animal-gray-husky",
+    "version": "v1",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "灰色哈士奇",
+      "en": "Gray Husky"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/looks/animal-gray-husky.png",
+    "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "animal-gray-husky-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "animal-gray-husky",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单只短绒哈士奇，立耳、分明的额头面罩纹、犬科口鼻、四爪和蓬松卷尾；保留物种结构。",
+      "en": "One short-plush husky with upright ears, a distinct forehead mask, a canine muzzle, four paws and a fluffy curled tail. Preserve species anatomy."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典坐姿",
+            "en": "Classic seated"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有圆头坐姿，保留立耳、口鼻、四爪与卷尾结构",
+            "en": "the original round-headed seated silhouette with upright ears, muzzle, four paws and curled tail"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "蓬松宽圆",
+            "en": "Fluffy broad silhouette"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "脸颊和身体更蓬松宽圆，仍为原物种坐姿与卷尾",
+            "en": "fluffier broader cheeks and torso preserving the original species, seated pose and curled tail"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "灰白毛色",
+            "en": "Gray and white"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "灰白主毛与额头面罩，保留棕眼黑鼻",
+            "en": "gray-white fur with a forehead mask; preserve brown eyes and black nose"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#77767a"
+          ],
+          "zoneColors": {
+            "fur": "#77767a"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "铜棕白毛色",
+            "en": "Copper and white"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "铜棕与白色主毛，保持额头面罩及棕眼黑鼻",
+            "en": "copper-brown and white fur preserving the forehead mask, brown eyes and black nose"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#8b4b2d"
+          ],
+          "zoneColors": {
+            "fur": "#8b4b2d"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双眼睁开，保留犬鼻与轻柔微笑",
+            "en": "open brown eyes with the original canine nose and gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "两条闭合弧形眼睑，保留犬鼻与轻柔微笑；静态表情",
+            "en": "two softly closed curved eyelids preserving the canine nose and smile; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无服装",
+            "en": "No clothing"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "保留原有毛绒身体，不穿衣物",
+            "en": "original fur-covered body without clothing"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合肩颈与胸部的柔雾蓝针织背心，前爪在衣物前方",
+            "en": "a fitted muted-blue knitted vest supported by the shoulders, with front paws in front of the garment"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "collar",
+          "labelByLanguage": {
+            "zh-CN": "小吊牌项圈",
+            "en": "Collar and tag"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "砖红细项圈贴合颈部，小黄铜圆牌位于口鼻下方",
+            "en": "a narrow rust-red collar fitted around the neck with a small brass tag below the muzzle"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-gray-husky-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "appearance-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "collar"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "clothing": "vest"
+        },
+        "code": "colors-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "collar"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "clothing": "vest"
+        },
+        "code": "face-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "collar"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "clothing": "vest",
+          "accessories": "collar"
+        },
+        "code": "clothing-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-collar",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "collar"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-gray-husky-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/looks/animal-gray-husky.png",
+      "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+      "byteSize": 1623665,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 790161,
+        "bboxAtAlphaThreshold16": [
+          219,
+          28,
+          1136,
+          1216
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-gray-husky-appearance-full-candidate-v2.png",
+      "sha256": "f4d3639db14a74a92568f352422f699c279e818589d6f7d70cb4a8a907b374e3",
+      "byteSize": 1677482,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 712794,
+        "bboxAtAlphaThreshold16": [
+          190,
+          21,
+          1173,
+          1237
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          11.6924,
+          7.4836
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9769736842105263,
+            0.9769736842105263
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-gray-husky-colors-full-candidate-v2.png",
+      "sha256": "91039691498d04b40f1815d162eac7b847d17d7d82bcf93c880d127965a18eb2",
+      "byteSize": 1578891,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 790466,
+        "bboxAtAlphaThreshold16": [
+          216,
+          27,
+          1142,
+          1217
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -0.3588,
+          1.0454
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9983193277310924,
+            0.9983193277310924
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-gray-husky-face-full-candidate-v2.png",
+      "sha256": "5312626bbb5eca5cac2737f7c2e3e4fba71bbf09ffbaaa6196ab720e256dda35",
+      "byteSize": 1508167,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 779771,
+        "bboxAtAlphaThreshold16": [
+          214,
+          23,
+          1144,
+          1218
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          2.4774,
+          5.1347
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.994142259414226,
+            0.994142259414226
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:clothing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/clothing.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-gray-husky-clothing-full-candidate-v2.png",
+      "sha256": "e03d953218f93ef5ec248b3e4d3315f2452eba6c972c641c3236a7562460cff2",
+      "byteSize": 1543661,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 797561,
+        "bboxAtAlphaThreshold16": [
+          220,
+          26,
+          1139,
+          1218
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.2802,
+          2.0872
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9966442953020134,
+            0.9966442953020134
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-gray-husky-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-gray-husky-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-gray-husky-accessories-full-candidate-v2.png",
+      "sha256": "e062f9c0e3b4fd86c16d494828b50de920734b81fd193b5ef8c39d90b07e0aa5",
+      "byteSize": 1574331,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 793034,
+        "bboxAtAlphaThreshold16": [
+          217,
+          26,
+          1139,
+          1218
+        ]
+      },
+      "owner": {
+        "templateId": "animal-gray-husky-adjustments-v1",
+        "artworkId": "animal-gray-husky",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          1.7752,
+          2.0872
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9966442953020134,
+            0.9966442953020134
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    }
+  ]
+}

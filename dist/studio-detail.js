@@ -1,11 +1,11 @@
-import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=99';
-import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=99';
-import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=99';
-import { SERIES } from './studio-content.js?v=99';
-import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=99';
-import { downloadAsset } from './studio-asset-loader.js?v=99';
-import { createPreviewLoader } from './studio-preview-loader.js?v=99';
-import { getTemplateForArtwork } from './studio-edit-templates.js?v=99';
+import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=100';
+import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=100';
+import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=100';
+import { SERIES } from './studio-content.js?v=100';
+import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=100';
+import { downloadAsset } from './studio-asset-loader.js?v=100';
+import { createPreviewLoader } from './studio-preview-loader.js?v=100';
+import { getTemplateForArtwork } from './studio-edit-templates.js?v=100';
 const DEFAULT_DETAIL_API = { ARTWORKS, TAGS, TAG_DIMENSIONS, SERIES, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork, promptFor, downloadAsset };
 const FEATURE_PRIORITY = Object.freeze({ style: 100, series: 96, accessory: 94, prop: 92, color: 90, material: 88, action: 86, shape: 75, expression: 72, 'object-type': 60, theme: 48, content: 44 });
 const EXCLUDED_STATES = new Set(['none', 'not-applicable', 'notApplicable', 'unknown', 'unrecorded', 'not-recorded']);
@@ -91,8 +91,8 @@ function promptText(value) {
 }
 
 const COPY = {
- en:{original:'Original',current:'Current preview',originalAsset:'Original artwork & Prompt',copy:'Copy Prompt',export:'Export PNG',chat:'Use in ChatGPT',prompt:'Original Prompt',pending:'Preview · Pending art review',editLoading:'Loading the editor…',editFailed:'The editor could not load. Try again.',retry:'Retry',previewLoading:'Loading a sharper preview…',previewFailed:'The sharper preview is unavailable. The cover remains visible.',direction:'Additional instructions (optional)',directionHint:'Describe what you would like to create…',directionNote:'Added to the Prompt. This does not change the preview or exported image.',chatHint:'In ChatGPT, attach your image if needed, review the Prompt, and send.',copied:'Prompt copied.',copyFailed:'Copy failed. Select and copy the text below.',downloaded:'PNG download started.',downloadFailed:'Download failed. Please retry.',chatOpened:'ChatGPT opened. Review the Prompt, attach your image if needed, and send.',chatBlocked:'ChatGPT could not open. Use the manual link below.',manual:'Open ChatGPT manually',select:'Select text',versions:'Existing versions',related:'Related characters',variantFailed:'This version could not load. The current version remains selected.',unavailable:'This artwork version is unavailable.'},
- 'zh-CN':{original:'原作',current:'当前预览',originalAsset:'原始作品与 Prompt',copy:'复制 Prompt',export:'导出 PNG',chat:'在 ChatGPT 中使用',prompt:'原始 Prompt',pending:'预览 · 待美术确认',editLoading:'正在加载编辑器…',editFailed:'编辑器加载失败，请重试。',retry:'重试',previewLoading:'正在加载更清晰的预览…',previewFailed:'高清预览暂不可用，仍显示封面。',direction:'补充要求（选填）',directionHint:'描述你想创作的内容…',directionNote:'补充到 Prompt 中，不改变当前预览或导出图片。',chatHint:'在 ChatGPT 中按需附图，检查 Prompt 后自行发送。',copied:'Prompt 已复制。',copyFailed:'复制失败，请选择并复制下方全文。',downloaded:'已开始下载 PNG。',downloadFailed:'下载失败，请重试。',chatOpened:'已打开 ChatGPT，请检查 Prompt、按需附图并发送。',chatBlocked:'未能打开 ChatGPT，可使用下方手动链接。',manual:'手动打开 ChatGPT',select:'选择全文',versions:'已有版本',related:'相关角色',variantFailed:'此版本加载失败，仍保留当前版本。',unavailable:'此作品版本不可用。'}
+ en:{original:'Original',current:'Current preview',originalAsset:'Original artwork & Prompt',copy:'Copy Prompt',export:'Export PNG',historicalExport:'Export historical original',chat:'Use in ChatGPT',prompt:'Original Prompt',pending:'Preview · Pending art review',editLoading:'Loading the editor…',editFailed:'The editor could not load. Try again.',retry:'Retry',previewLoading:'Loading a sharper preview…',previewFailed:'The sharper preview is unavailable. The cover remains visible.',direction:'Additional instructions (optional)',directionHint:'Describe what you would like to create…',directionNote:'Added to the Prompt. This does not change the preview or exported image.',chatHint:'In ChatGPT, attach your image if needed, review the Prompt, and send.',copied:'Prompt copied.',copyFailed:'Copy failed. Select and copy the text below.',downloaded:'PNG download started.',downloadFailed:'Download failed. Please retry.',chatOpened:'ChatGPT opened. Review the Prompt, attach your image if needed, and send.',chatBlocked:'ChatGPT could not open. Use the manual link below.',manual:'Open ChatGPT manually',select:'Select text',versions:'Existing versions',related:'Related characters',variantFailed:'This version could not load. The current version remains selected.',unavailable:'This artwork version is unavailable.'},
+ 'zh-CN':{original:'原作',current:'当前预览',originalAsset:'原始作品与 Prompt',copy:'复制 Prompt',export:'导出 PNG',historicalExport:'导出历史原图',chat:'在 ChatGPT 中使用',prompt:'原始 Prompt',pending:'预览 · 待美术确认',editLoading:'正在加载编辑器…',editFailed:'编辑器加载失败，请重试。',retry:'重试',previewLoading:'正在加载更清晰的预览…',previewFailed:'高清预览暂不可用，仍显示封面。',direction:'补充要求（选填）',directionHint:'描述你想创作的内容…',directionNote:'补充到 Prompt 中，不改变当前预览或导出图片。',chatHint:'在 ChatGPT 中按需附图，检查 Prompt 后自行发送。',copied:'Prompt 已复制。',copyFailed:'复制失败，请选择并复制下方全文。',downloaded:'已开始下载 PNG。',downloadFailed:'下载失败，请重试。',chatOpened:'已打开 ChatGPT，请检查 Prompt、按需附图并发送。',chatBlocked:'未能打开 ChatGPT，可使用下方手动链接。',manual:'手动打开 ChatGPT',select:'选择全文',versions:'已有版本',related:'相关角色',variantFailed:'此版本加载失败，仍保留当前版本。',unavailable:'此作品版本不可用。'}
 };
 
 /** One CharacterStudio: one preview, one optional direction, and three take-away actions. */
@@ -141,10 +141,12 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
    const snapshot=template&&currentReady?editor?.getSnapshot():null;
    try{
      const base=template?(snapshot?buildConfigurationPrompt({artwork:active.artwork,template,snapshot,language:locale}):''):originalPrompt;
-     if(base)composedPrompt=external.trim()?buildArtworkEditPrompt({basePrompt:base,additionalDirection:external,language:locale}):base;
+     if(base)composedPrompt=buildArtworkEditPrompt({basePrompt:base,artwork:active.artwork,additionalDirection:external,language:locale});
    }catch(error){message(error.message);}
    copyButton.disabled=chatButton.disabled=!active||!composedPrompt;
    exportButton.disabled=!active||exporting||Boolean(template&&(!currentReady||!snapshot));
+   const historical = active?.asset?.alpha?.hasTransparency !== true;
+   exportButton.textContent = historical && !template ? lang().historicalExport : lang().export;
  }
  function syncExternalIntent(){
    if(draft&&draftModule){draft=draftModule.markExternalIntent(draft,{direction:external,edits:[]});editor?.setDraft(draft);}
@@ -179,7 +181,7 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
  async function ensureEditor(){
    if(!active||!template||editor)return;const token=session,request=++editorRequest,record=active;editorStatus.textContent=lang().editLoading;editorRetry.hidden=true;root.dataset.editor='loading';currentReady=false;syncActions();
    try{
-     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=99'),import('./studio-draft.js?v=99')]);
+     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=100'),import('./studio-draft.js?v=100')]);
      if(!current(token,record)||request!==editorRequest)return;draftModule=drafts;
      draft ||= drafts.createDraft({artwork:record.artwork,template,language:locale,sessionId:`studio-${token}`,reviewHarness});
      editor=module.createEditor({root:editorControls,artwork:record.artwork,template,draft,loader,language:locale,reviewHarness,
@@ -210,7 +212,8 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
  copyButton.onclick=()=>{if(!copyButton.disabled)void copy(composedPrompt);};chatButton.onclick=()=>{if(!chatButton.disabled)void copy(composedPrompt,true);};
  exportButton.onclick=async()=>{
    if(!active||exportButton.disabled)return;const record=active,token=session;exporting=true;syncActions();let result;
-   try{if(template){const exported=await editor.exportPNG();if(exported&&current(token,record))message(lang().downloaded);}
+   try{const defaults=template&&draft&&Object.keys(draft.defaultOptions).every(key=>draft.options[key]===draft.defaultOptions[key]);
+     if(template&&!defaults){const exported=await editor.exportPNG();if(exported&&current(token,record))message(lang().downloaded);}
      else{result=await api.downloadAsset(record.asset);if(!result?.blob||result.asset?.sha256!==record.asset.sha256)throw Error('Downloaded asset mismatch');if(current(token,record))message(lang().downloaded);}}
    catch(error){if(current(token,record))message(`${lang().downloadFailed} ${error.message}`);}
    finally{if(result)setTimeout(()=>result.dispose?.(),1500);if(current(token,record)){exporting=false;syncActions();}}

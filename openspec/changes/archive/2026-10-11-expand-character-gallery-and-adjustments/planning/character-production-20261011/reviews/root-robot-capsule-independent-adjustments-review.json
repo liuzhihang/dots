@@ -1,0 +1,155 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/robot-capsule-independent-adjustments-review.json",
+  "manifestSha256": "e4af72c450c96a14ec6ce62a0e6a6511e0285d4a42df3e327dd98d13fd0c528d",
+  "templateId": "robot-capsule-independent-adjustments-v1",
+  "artworkBinding": {
+    "artworkId": "robot-ivory-capsule-face-v98-candidate",
+    "artworkVersion": "v2"
+  },
+  "originalSha256": "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c",
+  "engineeringReport": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/report.json",
+  "engineeringReportSha256": "bf1511207c28255a9dd1baf08a90c19168b8e6f3305eda3fe08d4d11f8d445cf",
+  "checkedRecipes": [
+    {
+      "id": "standard-ivory-capsule-eyes-none-none",
+      "sha256": "2afd9eeb33639b4b4e2a655ded447db3a40ad75505db650a0ac0eb1bec1b6886"
+    },
+    {
+      "id": "standard-ivory-capsule-eyes-none-mint-antenna",
+      "sha256": "1525497ddff37e42d6e8f41565ed3ffc9915da316d3940fc444cb6353d6d1113"
+    },
+    {
+      "id": "standard-ivory-capsule-eyes-seam-collar-none",
+      "sha256": "9f04015e7e71e508a7e8f5210db5c40ccb0fce98f2688da82d2c582fdb704145"
+    },
+    {
+      "id": "standard-ivory-capsule-eyes-seam-collar-mint-antenna",
+      "sha256": "5be2753940ef8727148df23c4123e5c4c3b9561446f8011c31487addb9be4367"
+    },
+    {
+      "id": "standard-ivory-closed-cyan-none-none",
+      "sha256": "06f98e620fbc7486760636e8c6f2c729884ea8817627600aafb8e60afcb525f1"
+    },
+    {
+      "id": "standard-ivory-closed-cyan-none-mint-antenna",
+      "sha256": "7cc100d854deb7dc653111f083bf0471234217431a247e6e017995480e32d3c2"
+    },
+    {
+      "id": "standard-ivory-closed-cyan-seam-collar-none",
+      "sha256": "ccde0fd6d6fa20864051ef3c020428e62e15b8a70bbbc665173dfcc15e83368e"
+    },
+    {
+      "id": "standard-ivory-closed-cyan-seam-collar-mint-antenna",
+      "sha256": "7c1979099beb19835dd5d32cc6d49f9024edeac016fd1c320699a5b0318cf02c"
+    },
+    {
+      "id": "standard-glacier-blue-capsule-eyes-none-none",
+      "sha256": "f0374c72684f0acd615cd0941088a2538e67f31249187a4954d60a69d093e86a"
+    },
+    {
+      "id": "standard-glacier-blue-capsule-eyes-none-mint-antenna",
+      "sha256": "87eeae85aeb6bcebd4d18c7cf6846cd27e58bb4ccb301e6953e861354119b14b"
+    },
+    {
+      "id": "standard-glacier-blue-capsule-eyes-seam-collar-none",
+      "sha256": "f67b7f93bdb61265e776e4cb2a3ecfa4df4c939648ea5e8e7d1692d8b6dde67d"
+    },
+    {
+      "id": "standard-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+      "sha256": "d563cd288c4f720b64c609c37e0ef7f9ca8b86e0e08641c66582c31f1bcaae5d"
+    },
+    {
+      "id": "standard-glacier-blue-closed-cyan-none-none",
+      "sha256": "1987bb3f7b1269fe5e55323730ef0ba734bf1d8f027569c02de4e045001b2a95"
+    },
+    {
+      "id": "standard-glacier-blue-closed-cyan-none-mint-antenna",
+      "sha256": "49281026a6b3419ca7d57a4c159244ef81b3a61d5885baecc66709efb83d4199"
+    },
+    {
+      "id": "standard-glacier-blue-closed-cyan-seam-collar-none",
+      "sha256": "e0e9eb280c3fc649d43395c9c140ef9f2f3ea7fbea08d2ea614eb26d112dca6c"
+    },
+    {
+      "id": "standard-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+      "sha256": "ae0d64f19b1357842b2dc7cbead49e88a80624afe7dff06b4e321ade7814db67"
+    },
+    {
+      "id": "broad-torso-ivory-capsule-eyes-none-none",
+      "sha256": "45f4c47698f5b275b66db2132d55c531121ac5b103e9f6311a27eaaea479223b"
+    },
+    {
+      "id": "broad-torso-ivory-capsule-eyes-none-mint-antenna",
+      "sha256": "4a56b7fde04316a97e2f3244d8607f2878f0d514a333e7e1e59aafe17b37513b"
+    },
+    {
+      "id": "broad-torso-ivory-capsule-eyes-seam-collar-none",
+      "sha256": "0f347bb7d694d0bdf2c50cdec61d585ab33d3f976f604dfeba6f55cf94a8a8b7"
+    },
+    {
+      "id": "broad-torso-ivory-capsule-eyes-seam-collar-mint-antenna",
+      "sha256": "698b20875cb1f0a07aeb1355bc56f0b7110e27229d0bdb22a47407e9f729c771"
+    },
+    {
+      "id": "broad-torso-ivory-closed-cyan-none-none",
+      "sha256": "8d11d0abea53e473e90f11f8fda9fe2b6fcf40c7835e53b135a840c44f8e2fd3"
+    },
+    {
+      "id": "broad-torso-ivory-closed-cyan-none-mint-antenna",
+      "sha256": "3a560a95ef338dff1fd8ab2100dd969dc3fd1baee8ccacae771bd4cdd69a7cc5"
+    },
+    {
+      "id": "broad-torso-ivory-closed-cyan-seam-collar-none",
+      "sha256": "e45f6223ff2d5806329c3cf2b5eac4b881d5e4ef9549fa781205c9894fbad411"
+    },
+    {
+      "id": "broad-torso-ivory-closed-cyan-seam-collar-mint-antenna",
+      "sha256": "9cfdd357d2d1565e2aa39c89114115955049f4d393072bb5204fbf6d8aaf005e"
+    },
+    {
+      "id": "broad-torso-glacier-blue-capsule-eyes-none-none",
+      "sha256": "e193bcd42a445cae3bed1d033d19da86aef4a1856f3a8748c15ec04a0839bf35"
+    },
+    {
+      "id": "broad-torso-glacier-blue-capsule-eyes-none-mint-antenna",
+      "sha256": "c5a2c16b358d62e23526564249ec5707f995cf72023de6dd2fdd08290a76c804"
+    },
+    {
+      "id": "broad-torso-glacier-blue-capsule-eyes-seam-collar-none",
+      "sha256": "748d55903b6ddffe38eec438603faa3dd1738b9bfe680ac375fb1826479efa08"
+    },
+    {
+      "id": "broad-torso-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+      "sha256": "4d7c8b855c51b0d9d7780e4cd041820c61e4c3df2d47f408e00eda9951c36440"
+    },
+    {
+      "id": "broad-torso-glacier-blue-closed-cyan-none-none",
+      "sha256": "1dc98a2cc8ac531d2d70ea1512a6940b06c789215176c1eaf8999a5f3d953a79"
+    },
+    {
+      "id": "broad-torso-glacier-blue-closed-cyan-none-mint-antenna",
+      "sha256": "810b6b5b8e6b5d2a097896ecd8d166dc2d9a2f678386b377a8682265acdaf5f4"
+    },
+    {
+      "id": "broad-torso-glacier-blue-closed-cyan-seam-collar-none",
+      "sha256": "5b959f01762af894f480e4c57dd8c20a7afb77000d57fc5013122e91af08e2d4"
+    },
+    {
+      "id": "broad-torso-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+      "sha256": "6c027d0de929594b95a93c7169a07eddd23e9e59023713f074cb0c34cf85c898"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

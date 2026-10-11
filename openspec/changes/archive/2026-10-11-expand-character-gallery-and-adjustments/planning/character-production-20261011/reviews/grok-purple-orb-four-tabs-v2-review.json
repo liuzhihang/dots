@@ -1,0 +1,259 @@
+{
+  "artworkId": "candidate-grok-20261005",
+  "artworkVersion": "v2",
+  "originalSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+  "templateId": "grok-purple-orb-adjustments-v2",
+  "templateVersion": "v2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-purple-orb-four-tabs-v2-review.json",
+  "manifestSha256": "3389fac44864e4aef6beda8d233a6ddc045e5c63fd4751ba2f947f571146292f",
+  "engineeringReport": ".artifacts/character-adjustments/grok-purple-orb-adjustments-v2/report.json",
+  "engineeringReportSha256": "8ecfd461d9893e1b8ba68606e2cca6719b8f301e840754f0c2bed6a90dab1d2f",
+  "legalRecipes": [
+    {
+      "id": "classic-original-angled-none",
+      "sha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3"
+    },
+    {
+      "id": "classic-original-angled-glasses",
+      "sha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0"
+    },
+    {
+      "id": "classic-original-angled-cap",
+      "sha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04"
+    },
+    {
+      "id": "classic-original-angled-glasses-cap",
+      "sha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317"
+    },
+    {
+      "id": "classic-original-upright-none",
+      "sha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f"
+    },
+    {
+      "id": "classic-original-upright-glasses",
+      "sha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7"
+    },
+    {
+      "id": "classic-original-upright-cap",
+      "sha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a"
+    },
+    {
+      "id": "classic-original-upright-glasses-cap",
+      "sha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c"
+    },
+    {
+      "id": "classic-mint-angled-none",
+      "sha256": "a449e107a544842e6a91f679edf75e07ec6bd9e9d0a8d4c24f3a28055c01f173"
+    },
+    {
+      "id": "classic-mint-angled-glasses",
+      "sha256": "4b3d35eebf96cc63e55b87ce3e0e1328a7864709190bc1612127a47c8f777d7e"
+    },
+    {
+      "id": "classic-mint-angled-cap",
+      "sha256": "3114cc0675bad7a2a6663ede8d9ec73b6b636e43d0676f0d01caffadea596da5"
+    },
+    {
+      "id": "classic-mint-angled-glasses-cap",
+      "sha256": "14c7f275b5f0b5fc7e1b20caba05d216f7da897982bff4fabb51acbb72cec516"
+    },
+    {
+      "id": "classic-mint-upright-none",
+      "sha256": "ef63a025179339adcc04a1234fad9ba6a0b0deb8d97745b6f031166f9617ee52"
+    },
+    {
+      "id": "classic-mint-upright-glasses",
+      "sha256": "0cfd7150de0f5281b008dc67d641b46263f1869486057760851ca214b84bc043"
+    },
+    {
+      "id": "classic-mint-upright-cap",
+      "sha256": "884eb82802177e23e37c7dbacf2688e7f50f1ec35d72a80b5f3a77d23a49ec02"
+    },
+    {
+      "id": "classic-mint-upright-glasses-cap",
+      "sha256": "deb75fe251a6c4aed033ba88ab6a6159a7c43de07d6716964013b044f0c829ad"
+    },
+    {
+      "id": "soft-original-angled-none",
+      "sha256": "917808d22a3c80938be03f9386ba886ba08b76e451f805064f8e5a76053c7a91"
+    },
+    {
+      "id": "soft-original-upright-none",
+      "sha256": "7196da687388d5ff4cf1706e944ed7a273073bc19193981aadb5582f7128c7ed"
+    },
+    {
+      "id": "soft-mint-angled-none",
+      "sha256": "177a0012af7999834c5c45919b87ec116b4da1ef1e26b1060b78431ed1575b4a"
+    },
+    {
+      "id": "soft-mint-upright-none",
+      "sha256": "00ad3be78de2fc38d5b17724cee3b8c60a5c9d43790df65222bd936d3ac91426"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "method": "新四类配方实际重渲染、导出与浏览器控件复验；所有 PNG 字节与此前已逐项视觉核对的无衣物配方完全一致。仅复用精确相同的像素证据，不沿用旧服装配方的评价。",
+    "previousReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-purple-orb-review.json",
+    "previousReviewSha256": "90a4f6eac2363e5f0877fc0c86b3d366ad5f09d10738e3e290170597021e61e5",
+    "exactPixelCorrespondence": [
+      {
+        "recipeId": "classic-original-angled-none",
+        "sha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+        "oldRecipeId": "classic-original-angled-none-none",
+        "oldSha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-angled-glasses",
+        "sha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0",
+        "oldRecipeId": "classic-original-angled-none-glasses",
+        "oldSha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-angled-cap",
+        "sha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04",
+        "oldRecipeId": "classic-original-angled-none-cap",
+        "oldSha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-angled-glasses-cap",
+        "sha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317",
+        "oldRecipeId": "classic-original-angled-none-glasses-cap",
+        "oldSha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-upright-none",
+        "sha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f",
+        "oldRecipeId": "classic-original-upright-none-none",
+        "oldSha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-upright-glasses",
+        "sha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7",
+        "oldRecipeId": "classic-original-upright-none-glasses",
+        "oldSha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-upright-cap",
+        "sha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a",
+        "oldRecipeId": "classic-original-upright-none-cap",
+        "oldSha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-upright-glasses-cap",
+        "sha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c",
+        "oldRecipeId": "classic-original-upright-none-glasses-cap",
+        "oldSha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-angled-none",
+        "sha256": "a449e107a544842e6a91f679edf75e07ec6bd9e9d0a8d4c24f3a28055c01f173",
+        "oldRecipeId": "classic-mint-angled-none-none",
+        "oldSha256": "a449e107a544842e6a91f679edf75e07ec6bd9e9d0a8d4c24f3a28055c01f173",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-angled-glasses",
+        "sha256": "4b3d35eebf96cc63e55b87ce3e0e1328a7864709190bc1612127a47c8f777d7e",
+        "oldRecipeId": "classic-mint-angled-none-glasses",
+        "oldSha256": "4b3d35eebf96cc63e55b87ce3e0e1328a7864709190bc1612127a47c8f777d7e",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-angled-cap",
+        "sha256": "3114cc0675bad7a2a6663ede8d9ec73b6b636e43d0676f0d01caffadea596da5",
+        "oldRecipeId": "classic-mint-angled-none-cap",
+        "oldSha256": "3114cc0675bad7a2a6663ede8d9ec73b6b636e43d0676f0d01caffadea596da5",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-angled-glasses-cap",
+        "sha256": "14c7f275b5f0b5fc7e1b20caba05d216f7da897982bff4fabb51acbb72cec516",
+        "oldRecipeId": "classic-mint-angled-none-glasses-cap",
+        "oldSha256": "14c7f275b5f0b5fc7e1b20caba05d216f7da897982bff4fabb51acbb72cec516",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-upright-none",
+        "sha256": "ef63a025179339adcc04a1234fad9ba6a0b0deb8d97745b6f031166f9617ee52",
+        "oldRecipeId": "classic-mint-upright-none-none",
+        "oldSha256": "ef63a025179339adcc04a1234fad9ba6a0b0deb8d97745b6f031166f9617ee52",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-upright-glasses",
+        "sha256": "0cfd7150de0f5281b008dc67d641b46263f1869486057760851ca214b84bc043",
+        "oldRecipeId": "classic-mint-upright-none-glasses",
+        "oldSha256": "0cfd7150de0f5281b008dc67d641b46263f1869486057760851ca214b84bc043",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-upright-cap",
+        "sha256": "884eb82802177e23e37c7dbacf2688e7f50f1ec35d72a80b5f3a77d23a49ec02",
+        "oldRecipeId": "classic-mint-upright-none-cap",
+        "oldSha256": "884eb82802177e23e37c7dbacf2688e7f50f1ec35d72a80b5f3a77d23a49ec02",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-upright-glasses-cap",
+        "sha256": "deb75fe251a6c4aed033ba88ab6a6159a7c43de07d6716964013b044f0c829ad",
+        "oldRecipeId": "classic-mint-upright-none-glasses-cap",
+        "oldSha256": "deb75fe251a6c4aed033ba88ab6a6159a7c43de07d6716964013b044f0c829ad",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-angled-none",
+        "sha256": "917808d22a3c80938be03f9386ba886ba08b76e451f805064f8e5a76053c7a91",
+        "oldRecipeId": "soft-original-angled-none-none",
+        "oldSha256": "917808d22a3c80938be03f9386ba886ba08b76e451f805064f8e5a76053c7a91",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-upright-none",
+        "sha256": "7196da687388d5ff4cf1706e944ed7a273073bc19193981aadb5582f7128c7ed",
+        "oldRecipeId": "soft-original-upright-none-none",
+        "oldSha256": "7196da687388d5ff4cf1706e944ed7a273073bc19193981aadb5582f7128c7ed",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-angled-none",
+        "sha256": "177a0012af7999834c5c45919b87ec116b4da1ef1e26b1060b78431ed1575b4a",
+        "oldRecipeId": "soft-mint-angled-none-none",
+        "oldSha256": "177a0012af7999834c5c45919b87ec116b4da1ef1e26b1060b78431ed1575b4a",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-upright-none",
+        "sha256": "00ad3be78de2fc38d5b17724cee3b8c60a5c9d43790df65222bd936d3ac91426",
+        "oldRecipeId": "soft-mint-upright-none-none",
+        "oldSha256": "00ad3be78de2fc38d5b17724cee3b8c60a5c9d43790df65222bd936d3ac91426",
+        "identical": true
+      }
+    ],
+    "surfaces": [
+      "174px 深灰/浅灰检查底",
+      "4 个模拟视口",
+      "蓝云四标签 IAB 实际选择、Prompt 和透明下载"
+    ],
+    "checks": [
+      "家族身份和眼型保持",
+      "无手脚、无服装层、无隐藏服装选项",
+      "配色、五官与配饰独立，接触及层序保留",
+      "全部配方可从默认逐字段抵达"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

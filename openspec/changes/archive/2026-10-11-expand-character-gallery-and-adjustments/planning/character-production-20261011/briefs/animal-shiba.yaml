@@ -1,0 +1,111 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 柴犬透明素材与五类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-animals-20261005
+  seriesId: animals
+  identity: existing
+  invariants:
+  - 单只短绒柴犬，三角立耳、犬科口鼻、四爪和卷尾；保留物种结构。
+artwork:
+  proposedId: candidate-animals-20261005
+  canonicalArtworkId: candidate-animals-20261005
+  proposedVersion: v1
+  name:
+    zh-CN: 柴犬
+    en: Shiba
+  resolvedId: candidate-animals-20261005
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png
+  sha256: f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png
+    sha256: f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62
+    mime: image/png
+    bytes: 1413426
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: animal-shiba-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-shiba-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: b3408fe4a7c7bc7e2c4025a478dbfaf5c1cf6e9607a8eac713e4bb0c3ece20cc
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- clothing
+- accessories
+finiteRecipes:
+  count: 6
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-shiba-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单只短绒柴犬，三角立耳、犬科口鼻、四爪和卷尾；保留物种结构。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  appearance:
+    state: known
+    description: 原有圆头坐姿，保留立耳、口鼻、四爪与卷尾结构
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  facialFeatures:
+    state: known
+    description: 双眼睁开，保留犬鼻与轻柔微笑
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  colorMaterial:
+    state: known
+    description: 橙褐色主毛、奶油白口鼻胸口与爪，保留棕眼黑鼻
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  clothing:
+    state: none
+    description: 保留原有毛绒身体，不穿衣物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴额外配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-shiba-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/dog-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-2e74fa12-a88d-42d8-9c14-32e31a6e61bb.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/dog-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9075feae-8d53-4731-a0ba-4ab98c95f1f7.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/dog-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-b05c2788-0369-45a5-8b25-f2c8f6931ad1.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/dog-fullbody-generation-records-01.json
+    kind: clothing
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-a86270da-a196-44a2-8e8b-b3db4c43429b.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/dog-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-b80ed9d6-85bb-4df8-bff2-b265c98aa62c.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

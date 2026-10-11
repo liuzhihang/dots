@@ -1,0 +1,1107 @@
+{
+  "status": "pending",
+  "scope": "待审四类角色调整；用户2026-10-11明确取消Dots/Grok服装。仅外观、配色、五官、配饰；旧含围衣候选保留为历史制作记录。",
+  "artwork": {
+    "id": "grok-coral-drop",
+    "version": "v1",
+    "seriesId": "grok",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Coral Drop",
+      "zh-CN": "珊瑚水滴"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/grok-coral-drop-candidate-v1.png",
+    "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "grok-coral-drop-adjustments-v2",
+    "version": "v2",
+    "family": "grok",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "grok-coral-drop",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Grok Bot character with one continuous smooth soft geometric body and paired capsule eyes. No arms, hands, legs, feet, mouth, fur, robotic mechanism or screen face.",
+      "zh-CN": "单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。"
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "en": "Classic outline",
+            "zh-CN": "经典轮廓"
+          },
+          "semanticByLanguage": {
+            "en": "a soft teardrop with tapered top and round lower body",
+            "zh-CN": "上尖下圆的软水滴"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "en": "Softer outline",
+            "zh-CN": "柔圆轮廓"
+          },
+          "semanticByLanguage": {
+            "en": "a broader softly leaning teardrop",
+            "zh-CN": "更宽且偏斜的软水滴"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "en": "coral red",
+            "zh-CN": "珊瑚红"
+          },
+          "semanticByLanguage": {
+            "en": "coral red smooth soft silicone",
+            "zh-CN": "珊瑚红光滑软硅胶材质"
+          },
+          "zoneColors": {
+            "body": "#ff5c57"
+          },
+          "swatches": [
+            "#ff5c57"
+          ]
+        },
+        {
+          "id": "mint",
+          "labelByLanguage": {
+            "en": "Soft blue",
+            "zh-CN": "浅蓝"
+          },
+          "semanticByLanguage": {
+            "en": "soft blue smooth soft silicone",
+            "zh-CN": "浅蓝色光滑软硅胶材质"
+          },
+          "zoneColors": {
+            "body": "#6f9bd8"
+          },
+          "swatches": [
+            "#6f9bd8"
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Capsule eyes",
+            "zh-CN": "胶囊眼"
+          },
+          "semanticByLanguage": {
+            "en": "paired vertical ivory capsule eyes",
+            "zh-CN": "成对竖向象牙白胶囊眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "relaxed",
+          "labelByLanguage": {
+            "en": "Short capsule eyes",
+            "zh-CN": "短胶囊眼"
+          },
+          "semanticByLanguage": {
+            "en": "paired shorter vertical ivory capsules, a static relaxed expression",
+            "zh-CN": "成对短竖胶囊眼，静态放松表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessories",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          }
+        },
+        {
+          "id": "pin",
+          "labelByLanguage": {
+            "en": "Star pin",
+            "zh-CN": "星形胸针"
+          },
+          "semanticByLanguage": {
+            "en": "one small gold star pin fitted on the side front of the body",
+            "zh-CN": "身体侧前方贴合一枚小型金色星形胸针"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [],
+    "recipes": [
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-relaxed-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "relaxed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-relaxed-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "relaxed",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-open-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "open",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-relaxed-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "relaxed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-relaxed-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "relaxed",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-coral-drop-adjustments-v2:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-coral-drop-adjustments-v2:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:body",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/body.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-body-candidate-v2.png",
+      "sha256": "5223cffe44b53e7963e211f5a253f3313abb21e2ba57542ab7cf39b989b4e103",
+      "byteSize": 700234,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 900927,
+        "bboxAtAlphaThreshold16": [
+          163,
+          123,
+          1092,
+          1136
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:soft",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/soft.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-body-soft-candidate-v2.png",
+      "sha256": "3538f4ea55c51fa13fd35298cdaeccbe631b43e825ac9f233b58d24457299524",
+      "byteSize": 759049,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 845044,
+        "bboxAtAlphaThreshold16": [
+          100,
+          141,
+          1154,
+          1135
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-eyes-open-candidate-v2.png",
+      "sha256": "56c753eae90168e53663d6e41194f18f0b93bfefce480efc4bef48d03835a558",
+      "byteSize": 59725,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1542617,
+        "bboxAtAlphaThreshold16": [
+          651,
+          417,
+          912,
+          635
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:relaxed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/relaxed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-eyes-narrow-candidate-v2.png",
+      "sha256": "c029667a952e13915bf81219f00ca8b9ff11acaeb71b6f0362e250af0ae384d8",
+      "byteSize": 43457,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1552911,
+        "bboxAtAlphaThreshold16": [
+          657,
+          451,
+          903,
+          608
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          2,
+          -4
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:pin",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/pin.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-pin-candidate-v2.png",
+      "sha256": "842be8211bce6f9a366fab77b561c89b45657a09e1a6f5f8d0d1f868dbe87fe0",
+      "byteSize": 83487,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1539838,
+        "bboxAtAlphaThreshold16": [
+          273,
+          262,
+          499,
+          490
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          70,
+          70
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:bodyMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/bodyMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-body-candidate-v2.png",
+      "sha256": "5223cffe44b53e7963e211f5a253f3313abb21e2ba57542ab7cf39b989b4e103",
+      "byteSize": 700234,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 900927,
+        "bboxAtAlphaThreshold16": [
+          163,
+          123,
+          1092,
+          1136
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-coral-drop-adjustments-v2:softMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-coral-drop-adjustments-v2/softMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-coral-drop-body-soft-candidate-v2.png",
+      "sha256": "3538f4ea55c51fa13fd35298cdaeccbe631b43e825ac9f233b58d24457299524",
+      "byteSize": 759049,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 845044,
+        "bboxAtAlphaThreshold16": [
+          100,
+          141,
+          1154,
+          1135
+        ]
+      },
+      "owner": {
+        "templateId": "grok-coral-drop-adjustments-v2",
+        "artworkId": "grok-coral-drop",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    }
+  ],
+  "supersedes": {
+    "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-coral-drop-review.json",
+    "sha256": "fc4c0a051eaae54ee1d4e18a4ea620fa6201f32e6d146b1f66a21ae71df7a93a",
+    "reason": "user explicitly removed clothing for Dots/Grok"
+  }
+}

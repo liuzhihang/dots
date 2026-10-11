@@ -1,0 +1,67 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-penguin-adjustments-review.json",
+  "manifestSha256": "0f8666b5c7d467d7957248fb96c71f07a4cd48eb412a9b2ae769a330e0a47555",
+  "templateId": "candidate-animal-penguin-adjustments-v1",
+  "artworkBinding": {
+    "artworkId": "candidate-animal-penguin",
+    "artworkVersion": "v2"
+  },
+  "originalSha256": "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-penguin-adjustments-v1/report.json",
+  "engineeringReportSha256": "e68906888bc0e87478d7a352103376c4a4ad424b5a850cd1b0961b40e63089a9",
+  "checkedRecipes": [
+    {
+      "id": "front-charcoal-ivory-open-none-none",
+      "sha256": "2340fc04ca85820a94c730ed21797e64dcbd1e11bee4eeff5f5ed9d6c1afa4d1"
+    },
+    {
+      "id": "front-charcoal-ivory-open-none-coral-beanie",
+      "sha256": "0457cc74af906813b178c4c6563fff180ed76c7642f1466e8d06c1f8e14abf43"
+    },
+    {
+      "id": "front-charcoal-ivory-open-teal-scarf-none",
+      "sha256": "dde33538eceaf9f282411ba9c55cb39a2275561bfc277647a7f471ac4c2af4c5"
+    },
+    {
+      "id": "front-charcoal-ivory-open-teal-scarf-coral-beanie",
+      "sha256": "4fe1e83575c4510aa922565c61dde6a3c700e4c285a35d9e19002a3a3c5ddb01"
+    },
+    {
+      "id": "front-charcoal-ivory-closed-smile-none-none",
+      "sha256": "4d0b18754fabf6e64a667ddad2f35ccd16253c5e4f5f23709b70837d57d74189"
+    },
+    {
+      "id": "front-charcoal-ivory-closed-smile-none-coral-beanie",
+      "sha256": "4bb174b0d8f3122e2a20ec3ebe4cac89749c6630eca34fa760f267fbcd226ca9"
+    },
+    {
+      "id": "front-charcoal-ivory-closed-smile-teal-scarf-none",
+      "sha256": "5ab8140313a0166e588280011186e19b2895c2297728359ebb19f4ef6a26ff57"
+    },
+    {
+      "id": "front-charcoal-ivory-closed-smile-teal-scarf-coral-beanie",
+      "sha256": "936b3a2a5533e39f96f8790b3d520d668e68f996236c6bf022fd63ef438865fa"
+    },
+    {
+      "id": "wave-charcoal-ivory-open-none-none",
+      "sha256": "d856afb4f61d6c0f35158b594dc68a68761268c2cfa19a4d7933852a96435618"
+    },
+    {
+      "id": "front-navy-ivory-open-none-none",
+      "sha256": "3cb7dbcf26a67de3f31ad86dd00dacbe6061d5cc3747c22e9bc66e862effd2f0"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

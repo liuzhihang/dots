@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-11",
+  "status": "local-integration-verified",
+  "change": "expand-character-gallery-and-adjustments",
+  "localCacheRevision": 100,
+  "openSpecTracking": {
+    "total": 51,
+    "complete": 51,
+    "remaining": 0
+  },
+  "head": "46524302b225e8387c4d46cc600050fc6d127a32",
+  "authorization": {
+    "materials": "gallery-adjustments-review-package-v1",
+    "sha256": "c9d1096258291a9d62e185a274ecf0bb0f1deba97010f96f96b688e41f01c49c",
+    "approval": {
+      "path": "design/acceptance/20261011-character-adjustments-v1/approval.json",
+      "sha256": "f2f4296013a1ccdb1eb8305720fabd21bd5f84a83b4412d2a1599a10312383d8",
+      "byteSize": 1228632
+    },
+    "scope": "Integrate and verify locally; no commit, push, sync, archive or deployment."
+  },
+  "catalog": {
+    "oldIdentityCount": 24,
+    "newIdentityCount": 20,
+    "artworks": 44,
+    "templates": 44,
+    "recipes": 540,
+    "uiRecipes": 540,
+    "families": {
+      "dots": 12,
+      "grok": 12,
+      "muse": 5,
+      "animals": 10,
+      "humans": 4,
+      "independentRobot": 1
+    },
+    "clothingExcludedFamilies": [
+      "dots",
+      "grok"
+    ],
+    "transparentOnly": true,
+    "backgroundSetting": false,
+    "staticPNG": true
+  },
+  "build": {
+    "files": 551,
+    "activeTemplateAssetTuples": 309,
+    "retainedTemplateAssetTuples": 6,
+    "physicalTemplateFiles": 306,
+    "retainedHistoricalPaths": 18
+  },
+  "checks": [
+    {
+      "command": "npm run build",
+      "status": "passed"
+    },
+    {
+      "command": "npm test",
+      "status": "passed"
+    },
+    {
+      "command": "npm run test:browser",
+      "execution": "Components executed separately; shared successful results reused.",
+      "components": [
+        "node scripts/verify-studio-browser.mjs",
+        "node scripts/verify-studio-contrast.mjs",
+        "node scripts/verify-editor-layout.mjs"
+      ],
+      "status": "passed",
+      "browserChecks": 17,
+      "layoutRecords": 528,
+      "layoutCaptures": 880,
+      "contrastTargets": 4808
+    },
+    {
+      "command": "npm run test:downloads",
+      "execution": "Reuses the same final browser run, followed by actual PNG decoding.",
+      "components": [
+        "node scripts/verify-studio-browser.mjs",
+        "node scripts/verify-transparent-output.mjs"
+      ],
+      "status": "passed",
+      "originalDownloads": 44,
+      "changedDownloads": 44,
+      "wrapperNote": "The post-validation shell summary used the zsh readonly name status and errored after both scripts succeeded; their chained execution and success output are retained."
+    },
+    {
+      "command": "npm run test:editing",
+      "status": "passed",
+      "recipes": 540,
+      "uiRecipes": 540,
+      "flows": 44,
+      "reopenJourneys": 44,
+      "lifecycleCycles": 20
+    },
+    {
+      "command": "npm run test:performance",
+      "status": "passed",
+      "samples": 20,
+      "resourceCycles": 44,
+      "conditions": {
+        "desktop": {
+          "viewport": [
+            1440,
+            900
+          ],
+          "dpr": 1,
+          "cpuRate": 1,
+          "network": "unthrottled"
+        },
+        "mobile-throttled": {
+          "viewport": [
+            390,
+            844
+          ],
+          "dpr": 2,
+          "cpuRate": 4,
+          "latencyMs": 150,
+          "downBytesPerSecond": 209715.2,
+          "upBytesPerSecond": 96000
+        }
+      },
+      "summary": {
+        "desktop-cold": {
+          "panel": {
+            "min": 7.699999809265137,
+            "median": 7.700000286102295,
+            "max": 7.899999618530273
+          },
+          "metadata": {
+            "min": 7.699999809265137,
+            "median": 7.700000286102295,
+            "max": 7.899999618530273
+          },
+          "actions": {
+            "min": 108.7999997138977,
+            "median": 118.5,
+            "max": 126
+          },
+          "thumbnail": {
+            "min": 25.5,
+            "median": 29.899999618530273,
+            "max": 36.5
+          },
+          "preview": {
+            "min": 48.90000009536743,
+            "median": 57.40000009536743,
+            "max": 61.09999990463257
+          }
+        },
+        "desktop-hot": {
+          "panel": {
+            "min": 2.8000001907348633,
+            "median": 2.9000000953674316,
+            "max": 3
+          },
+          "metadata": {
+            "min": 2.8000001907348633,
+            "median": 2.9000000953674316,
+            "max": 3
+          },
+          "actions": {
+            "min": 24.09999990463257,
+            "median": 27.199999809265137,
+            "max": 55.30000019073486
+          },
+          "thumbnail": {
+            "min": 2.8000001907348633,
+            "median": 2.9000000953674316,
+            "max": 3
+          },
+          "preview": {
+            "min": 8.299999713897705,
+            "median": 9.300000190734863,
+            "max": 38.19999980926514
+          }
+        },
+        "mobile-throttled-cold": {
+          "panel": {
+            "min": 35.80000019073486,
+            "median": 36.80000019073486,
+            "max": 40.59999990463257
+          },
+          "metadata": {
+            "min": 35.80000019073486,
+            "median": 36.80000019073486,
+            "max": 40.59999990463257
+          },
+          "actions": {
+            "min": 20582.800000190735,
+            "median": 20596.699999809265,
+            "max": 20605.400000095367
+          },
+          "thumbnail": {
+            "min": 2523,
+            "median": 2559.199999809265,
+            "max": 2575
+          },
+          "preview": {
+            "min": 4909.300000190735,
+            "median": 4921.5,
+            "max": 4925
+          }
+        },
+        "mobile-throttled-hot": {
+          "panel": {
+            "min": 10.200000286102295,
+            "median": 11.5,
+            "max": 12.400000095367432
+          },
+          "metadata": {
+            "min": 10.200000286102295,
+            "median": 11.5,
+            "max": 12.400000095367432
+          },
+          "actions": {
+            "min": 3433.0999999046326,
+            "median": 3440.5999999046326,
+            "max": 3484.4000000953674
+          },
+          "thumbnail": {
+            "min": 15.099999904632568,
+            "median": 15.800000190734863,
+            "max": 54.5
+          },
+          "preview": {
+            "min": 15.099999904632568,
+            "median": 15.800000190734863,
+            "max": 54.5
+          }
+        }
+      }
+    },
+    {
+      "command": "npm run verify:release-safety",
+      "status": "passed"
+    },
+    {
+      "command": "node scripts/verify-character-coverage.mjs --strict",
+      "status": "passed",
+      "covered": 44,
+      "gaps": 0
+    },
+    {
+      "command": "openspec validate expand-character-gallery-and-adjustments --strict",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    }
+  ],
+  "protection": {
+    "frozenAndConfigurationFiles": 7476,
+    "previousOriginals": 24,
+    "reviewPackageUnchanged": true
+  },
+  "manualBrowser": {
+    "engine": "Codex in-app Browser",
+    "observed": [
+      "desktop Dots four tabs",
+      "actual option changes and incompatible-option reasons",
+      "clipboard readback",
+      "actual transparent PNG download",
+      "390px simulated mobile preview",
+      "Grok four tabs",
+      "gallery and direct detail loading"
+    ],
+    "limitation": "One dirty-close attempt lost browser automation synchronization; not counted as manual close acceptance. Automated dirty-close/history coverage passed."
+  },
+  "notPerformed": [
+    "physical-device testing",
+    "external ChatGPT image generation",
+    "Pets animation package/install",
+    "git commit",
+    "git push",
+    "OpenSpec sync",
+    "OpenSpec archive",
+    "Sites deployment",
+    "production readback"
+  ],
+  "previousRelease": {
+    "name": "Site 47 / v99",
+    "recordedProductionSourceCommit": "3e2dbeccaca273c575cfe5fd1de72e9fea776a4e",
+    "availableLocalRollbackCommit": "46524302b225e8387c4d46cc600050fc6d127a32",
+    "rollbackVerified": "Local commit object and v99 entry/template/manifest metadata were read; no rollback performed."
+  },
+  "evidence": [
+    {
+      "path": ".artifacts/character-adjustments/apply-progress.json",
+      "sha256": "75cce4f022c58cab2286daa3b408a04fe5696939692c48f4d9b6fd94ee79a4b9",
+      "byteSize": 28535
+    },
+    {
+      "path": ".artifacts/studio-performance/run-result.json",
+      "sha256": "8b36320ab04ed8e9752410cd5b66be9f60527597262312d4838957c3635e4ba8",
+      "byteSize": 1800
+    },
+    {
+      "path": ".artifacts/build/build-report.json",
+      "sha256": "0ec3e1ccdbe5fe06c231193918d27b2ea01efaf92c30070342fa412a50ca04b5",
+      "byteSize": 112411
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-build-final.log",
+      "sha256": "4e223c511d8fc4a3a8a753dbdcb2a2acbef50cb0674eb0004c88aa73e1f38409",
+      "byteSize": 122
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-npm-test-final.log",
+      "sha256": "ff8874e8761b427838aa87a05bbf1afbfbc6b95ed7170b3873ab1e9684fd7337",
+      "byteSize": 4860
+    },
+    {
+      "path": ".artifacts/browser-acceptance/report.json",
+      "sha256": "0b3c944bb49cfbe7cf9c05f523210127e14a375e4e8a86c9ea4e04ded79c4e1a",
+      "byteSize": 126292
+    },
+    {
+      "path": ".artifacts/browser-acceptance/download-alpha.json",
+      "sha256": "3218eac4d0ec18017e8b2f09786216b7b6954bfeed8207d45b5d200ebab6e446",
+      "byteSize": 74431
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-browser-downloads-final.log",
+      "sha256": "c699f782e115f4f0e0b0a14a171f8e0834b306ca60736547a9ad6ae8abf0521d",
+      "byteSize": 250
+    },
+    {
+      "path": ".artifacts/studio-editing/run-2026-10-11T12-35-05-845Z/report.json",
+      "sha256": "b148319b03ee3162e53143bc3e18dad91a2cf7182ad660118ee7529655cd7e96",
+      "byteSize": 7021967
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-editing-final.log",
+      "sha256": "db3b63f061f021a9f18a994bcc66befac2e031d7cd6bf4decb3ad897ce8b5859",
+      "byteSize": 9820
+    },
+    {
+      "path": ".artifacts/editor-layout/layout.json",
+      "sha256": "e186d36c79866e1608f74aeb7c6395ae068d807e6965224741b878c8f6745c0b",
+      "byteSize": 1218378
+    },
+    {
+      "path": ".artifacts/studio-contrast/contrast.json",
+      "sha256": "dd0479d5d3e81ca8163341adea20b1369634ff763fbb30e77d8fe6a0c19103f8",
+      "byteSize": 3303835
+    },
+    {
+      "path": ".artifacts/studio-performance/report.json",
+      "sha256": "2862be552576d66c6a0b498f94ceefe5d66e6d7315dfbccd2446cdd20a8b2a27",
+      "byteSize": 158860
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-coverage-final.log",
+      "sha256": "5452e056ae7295bac7590297236df7d82511ba741b33a7bd12716d7372c50a18",
+      "byteSize": 362
+    },
+    {
+      "path": ".artifacts/character-adjustments/integration-protection.json",
+      "sha256": "5a247a293b8c2d266c7fc3dd280067d91a82202c4df9e17bcd7ba5bd8994687b",
+      "byteSize": 2437545
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-release-safety.log",
+      "sha256": "1c15b9cadb1591a998d9d96bf19485b5089fa4c1430c287bbc7cfde1dbb35f63",
+      "byteSize": 226
+    },
+    {
+      "path": ".artifacts/character-adjustments/openspec-final-validation.log",
+      "sha256": "caf23f3a6c9859a2979fab3a2dd82a8f402b59b076129326cc172003dd1d2b8b",
+      "byteSize": 59
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-gallery.png",
+      "sha256": "9a5d2133fd6431800f21266c97f27f6cb5919c24ea68fc57c306b1cf595295cb",
+      "byteSize": 97982
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-desktop-adjustment.png",
+      "sha256": "94a55e5b54928fc6facbd6f83f379ce5b46ebb4685d87974eda6cd912bc0baa6",
+      "byteSize": 102154
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-mobile-390.png",
+      "sha256": "10e6502b321de50a9ac1a9aa72da5ef9fe011a12d3c060b9843648495ca5e8d5",
+      "byteSize": 31176
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-grok-detail.png",
+      "sha256": "6f0753c2741d5afb5f330de089f14d2bcb0e867f88d4ed2ae825395d951ee296",
+      "byteSize": 57008
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-iab-export.json",
+      "sha256": "d0f471384f055b233762eb4f800ac1d07151c5b1ee0df29ad2d3b307d416814c",
+      "byteSize": 415
+    },
+    {
+      "path": ".artifacts/character-adjustments/integrated-iab-prompt.txt",
+      "sha256": "d7bb26d39b98575386ac99957fc75499d5acd68709b5bfd93c9bee9e8c935a56",
+      "byteSize": 1653
+    }
+  ]
+}

@@ -1,0 +1,551 @@
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。 的局部调整候选 Template；原 Gallery Artwork 不替换，所有外观分支保持同一人物身份。",
+    "scope": "existing-artwork-adjustment-template-candidate",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "candidate-humans-20261005",
+    "seriesId": "humans",
+    "identity": "existing gallery Artwork candidate-humans-20261005@v1",
+    "differenceFromExisting": "Adds a pending bounded-adjustment Template to the exact existing gallery Artwork candidate-humans-20261005@v1; the original gallery file remains unchanged.",
+    "invariants": [
+      "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例、原始姿势、手部数量与位置。只有选择对应注册选项时，才允许改变发型整理、衣料配色、面部表情、衣着或配饰。完整人物保留在单张透明 PNG 中；不得增加其他人物、道具、文字或场景。",
+      "默认透明完整单体；分支是完整角色图，使用有界配方并拒绝互斥组合。"
+    ]
+  },
+  "artwork": {
+    "proposedId": "candidate-humans-20261005",
+    "canonicalArtworkId": "candidate-humans-20261005",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Chestnut-Haired Person",
+      "zh-CN": "栗发青绿人物"
+    },
+    "description": {
+      "en": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together.",
+      "zh-CN": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。"
+    },
+    "aliases": {
+      "en": [],
+      "zh-CN": []
+    },
+    "sourceStatus": "current-source",
+    "publicationStatus": "existing-gallery-artwork"
+  },
+  "references": [
+    {
+      "id": "candidate-humans-20261005@v1",
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "role": "exact existing Artwork identity and pose reference",
+      "use": "Preserve the exact same character identity, face, pose, body proportions and unselected details; registered options define permitted changes.",
+      "exclude": "Do not replace or overwrite the existing source Artwork; no UI, background, text, props or extra subject.",
+      "license": "unknown"
+    }
+  ],
+  "creation": {
+    "prompt": "See linked provenance and Template semantics; do not fabricate missing historical ImageGen prompts.",
+    "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+    "negativeConstraints": [
+      "Keep the selected Artwork identity and preserve all unselected character details.",
+      "Transparent full-character PNG; no background, UI, text, watermark or additional subjects.",
+      "Combine only exact finite recipes registered by the pending Template; reject conflicting choices."
+    ],
+    "tool": "built-in image_gen.imagegen for the recorded complete-character branch assets; local browser renderer for finite recipes",
+    "originalOutputPath": null,
+    "iterations": [
+      {
+        "field": "appearance",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-neat-side-swept-crop.png",
+        "sha256": "95f4b702f5322c9864c988db58d9b63412214bc2de39fcca6bcd15b284446059",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "colors",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-periwinkle-sweater.png",
+        "sha256": "93bd3ef3848715814f5479316eb461cd00feae4318738cc6f98e8483e4b2228b",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "face",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-closed-eyes.png",
+        "sha256": "8425076ef81901290192df70ced916df7e936b788b558a30afd3ebc2a38df4be",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "clothing",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-navy-vest.png",
+        "sha256": "a1295dc3f6af529c63faaa7e5f610d8ce45ea300f46f66f75f9e3181cca40053",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "accessories",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-mustard-beret.png",
+        "sha256": "9a3b06b29c8fb27cf295a9fd170e7b334fdd67f0dbebf23a38fd46d8a34734fa",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Existing transparent chibi character artwork, visually checked with the bound source and preview branches."
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together."
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "Preserve the source identity and facial placement; expression options are bound in the Template."
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "Use only registered color variant semantics; never infer unregistered recoloring from enum IDs or palette values."
+    },
+    "clothing": {
+      "state": "present",
+      "evidence": "See selected clothing option and exact source image; options are template-bound."
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "Only the registered accessory options may add or change head-worn details."
+    },
+    "bodyAccessory": {
+      "state": "unknown",
+      "evidence": "No independent body accessory is registered in this Template."
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "No prop is registered in this Template."
+    }
+  },
+  "resources": {
+    "original": {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "mime": "image/png",
+      "bytes": 1151483,
+      "width": 1254,
+      "height": 1254,
+      "alphaCheck": "RGBA; alpha range 0..255; all four canvas corners are fully transparent; decoded source sampled."
+    },
+    "thumbnail": null,
+    "displayPreview": null
+  },
+  "promptText": {
+    "en": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together.",
+    "zh-CN": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。"
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": {
+      "manifestPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/chestnut-boy-adjustments-review-v2.json",
+      "manifestSha256": "14e4bc96a89c0f7b4fec69b676cb77811a87f37045a2b2fc3825ab6da959dd24",
+      "templateId": "human-chestnut-boy-adjustments-v2",
+      "templateVersion": "v2",
+      "schemaVersion": 2,
+      "status": "pending; preview-only",
+      "engineeringStatus": "passed",
+      "artApproval": "pending",
+      "canonicalFields": [
+        {
+          "field": "appearance",
+          "values": [
+            {
+              "id": "layered-chestnut",
+              "labelByLanguage": {
+                "en": "Original hairstyle",
+                "zh-CN": "原有发型"
+              },
+              "semanticByLanguage": {
+                "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+                "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+              }
+            },
+            {
+              "id": "neat-side-swept-crop",
+              "labelByLanguage": {
+                "en": "Neat side-swept crop",
+                "zh-CN": "整齐侧梳短发"
+              },
+              "semanticByLanguage": {
+                "en": "the same person with a neat short side-swept crop with a clearly open forehead wedge; preserve chestnut hair color, face, expression, knit top, clasped hands and standing pose",
+                "zh-CN": "同一人物，整齐的短款侧梳发型，额前留出明显侧向分开的额头区域；保留栗色发色、脸、表情、针织上衣、交握双手与站姿"
+              }
+            }
+          ]
+        },
+        {
+          "field": "colors",
+          "values": [
+            {
+              "id": "teal",
+              "labelByLanguage": {
+                "en": "Teal knit",
+                "zh-CN": "青绿色针织"
+              },
+              "semanticByLanguage": {
+                "en": "the original teal knit top color; preserve skin, hair and all other garment zones",
+                "zh-CN": "保留原有青绿色针织上衣配色；肤色、头发和其他衣物区域不变"
+              }
+            },
+            {
+              "id": "periwinkle",
+              "labelByLanguage": {
+                "en": "Periwinkle knit",
+                "zh-CN": "薰衣草蓝针织"
+              },
+              "semanticByLanguage": {
+                "en": "periwinkle knit top; preserve original skin, chestnut hair, shorts and shoes",
+                "zh-CN": "薰衣草蓝针织上衣；保留原肤色、栗色头发、短裤和鞋子"
+              }
+            }
+          ]
+        },
+        {
+          "field": "face",
+          "values": [
+            {
+              "id": "open",
+              "labelByLanguage": {
+                "en": "Open-eye smile",
+                "zh-CN": "睁眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "the original open eyes and gentle smile",
+                "zh-CN": "保留原有睁眼与柔和微笑"
+              }
+            },
+            {
+              "id": "closed",
+              "labelByLanguage": {
+                "en": "Closed-eye smile",
+                "zh-CN": "闭眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "two matching gentle closed eyes; preserve the original smile, face shape, hair, outfit and clasped hands",
+                "zh-CN": "两只对称柔和的闭合眼睛；保留原有微笑、脸型、发型、衣着和交握双手"
+              }
+            }
+          ]
+        },
+        {
+          "field": "clothing",
+          "values": [
+            {
+              "id": "knit-top",
+              "labelByLanguage": {
+                "en": "Original outfit",
+                "zh-CN": "原有衣着"
+              },
+              "semanticByLanguage": {
+                "en": "the original outfit with its fit and natural hand occlusion",
+                "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+              }
+            },
+            {
+              "id": "navy-vest",
+              "labelByLanguage": {
+                "en": "Navy vest",
+                "zh-CN": "藏青背心"
+              },
+              "semanticByLanguage": {
+                "en": "a fitted navy vest layered over the original knit top, following the torso contour; preserve clasped-hand occlusion and pose",
+                "zh-CN": "在原针织上衣外穿合体藏青背心，沿躯干贴合；保留交握双手的遮挡关系与姿势"
+              }
+            }
+          ]
+        },
+        {
+          "field": "accessories",
+          "values": [
+            {
+              "id": "none",
+              "labelByLanguage": {
+                "en": "Original accessories",
+                "zh-CN": "原有配饰"
+              },
+              "semanticByLanguage": {
+                "en": "no added accessories",
+                "zh-CN": "不增加配饰"
+              }
+            },
+            {
+              "id": "mustard-beret",
+              "labelByLanguage": {
+                "en": "Mustard beret",
+                "zh-CN": "芥末黄贝雷帽"
+              },
+              "semanticByLanguage": {
+                "en": "one a fitted mustard-yellow wool beret following the hair and head perspective without covering the eyes",
+                "zh-CN": "贴合头顶并顺应发型和透视的芥末黄色羊毛贝雷帽，不遮眼睛"
+              }
+            }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "chestnut-boy-default",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-appearance",
+          "selections": {
+            "appearance": "neat-side-swept-crop",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-colors",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "periwinkle",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-face",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "closed",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-clothing",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "navy-vest",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-accessories",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "mustard-beret"
+          }
+        }
+      ],
+      "conflicts": [
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "colors": "periwinkle"
+          },
+          "code": "appearance-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "face": "closed"
+          },
+          "code": "appearance-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "clothing": "navy-vest"
+          },
+          "code": "appearance-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "accessories": "mustard-beret"
+          },
+          "code": "appearance-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "face": "closed"
+          },
+          "code": "colors-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "clothing": "navy-vest"
+          },
+          "code": "colors-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "accessories": "mustard-beret"
+          },
+          "code": "colors-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "clothing": "navy-vest"
+          },
+          "code": "face-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "accessories": "mustard-beret"
+          },
+          "code": "face-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "clothing": "navy-vest",
+            "accessories": "mustard-beret"
+          },
+          "code": "clothing-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:base",
+          "field": "base",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+          "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:appearance",
+          "field": "appearance",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-neat-side-swept-crop.png",
+          "sha256": "95f4b702f5322c9864c988db58d9b63412214bc2de39fcca6bcd15b284446059"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:colors",
+          "field": "colors",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-periwinkle-sweater.png",
+          "sha256": "93bd3ef3848715814f5479316eb461cd00feae4318738cc6f98e8483e4b2228b"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:face",
+          "field": "face",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-closed-eyes.png",
+          "sha256": "8425076ef81901290192df70ced916df7e936b788b558a30afd3ebc2a38df4be"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:clothing",
+          "field": "clothing",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-navy-vest.png",
+          "sha256": "a1295dc3f6af529c63faaa7e5f610d8ce45ea300f46f66f75f9e3181cca40053"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v2:accessories",
+          "field": "accessories",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-mustard-beret.png",
+          "sha256": "9a3b06b29c8fb27cf295a9fd170e7b334fdd67f0dbebf23a38fd46d8a34734fa"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sourceRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/prompts/human-adjustments-full-character-v2-provenance.md; Template manifest is authoritative for all option semantics and assets.",
+    "provenance": {
+      "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+      "correctionRecord": "../prompts/human-adjustments-v2-bilingual-semantics-correction.md"
+    },
+    "license": "unknown",
+    "engineering": {
+      "status": "engineering-passed",
+      "path": ".artifacts/character-adjustments/human-chestnut-boy-adjustments-v2/report.json",
+      "sha256": "cf32d5a75b0efd9df4f85e4ed37397d2f799dbb859a391452d86ecc368bd1dca",
+      "recipeCount": 6,
+      "optionChecks": 10,
+      "conflictChecks": 20,
+      "viewports": 4,
+      "errors": []
+    },
+    "visualReview": {
+      "status": "internal-review-only",
+      "contactSheet": ".artifacts/character-adjustments/chestnut-boy-six-branches-dark-light.jpg",
+      "sha256": "adbbd35bb0316faf6d87b43e9adb7782ab83b97e56215d42ff1f17193a3a52c1",
+      "note": "Root visually reviewed all six-branch dark/warm contacts and reported identity, hair, clothing, skin and hand occlusion acceptable; a separate hash-bound co-review record is pending. User art approval remains pending."
+    },
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": null,
+      "note": "This approval applies to the new Template branches only; existing source Artwork remains unchanged."
+    },
+    "integration": "not-applied",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

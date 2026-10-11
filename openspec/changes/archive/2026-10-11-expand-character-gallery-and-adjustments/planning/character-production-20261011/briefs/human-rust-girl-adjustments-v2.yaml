@@ -1,0 +1,551 @@
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "原创 Q 版人物，暖棕肤色、深棕微卷短发，穿铁锈色夹克、米白上衣和奶油色长裤，配棕色鞋。 的局部调整候选 Template；原 Gallery Artwork 不替换，所有外观分支保持同一人物身份。",
+    "scope": "existing-artwork-adjustment-template-candidate",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "human-rust-jacket",
+    "seriesId": "humans",
+    "identity": "existing gallery Artwork human-rust-jacket@v1",
+    "differenceFromExisting": "Adds a pending bounded-adjustment Template to the exact existing gallery Artwork human-rust-jacket@v1; the original gallery file remains unchanged.",
+    "invariants": [
+      "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例、原始姿势、手部数量与位置。只有选择对应注册选项时，才允许改变发型整理、衣料配色、面部表情、衣着或配饰。完整人物保留在单张透明 PNG 中；不得增加其他人物、道具、文字或场景。",
+      "默认透明完整单体；分支是完整角色图，使用有界配方并拒绝互斥组合。"
+    ]
+  },
+  "artwork": {
+    "proposedId": "human-rust-jacket",
+    "canonicalArtworkId": "human-rust-jacket",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Rust Jacket Person",
+      "zh-CN": "铁锈夹克女孩"
+    },
+    "description": {
+      "en": "An original chibi person with warm-brown skin, a dark wavy bob, a rust jacket, ivory top, cream trousers and brown shoes.",
+      "zh-CN": "原创 Q 版人物，暖棕肤色、深棕微卷短发，穿铁锈色夹克、米白上衣和奶油色长裤，配棕色鞋。"
+    },
+    "aliases": {
+      "en": [],
+      "zh-CN": []
+    },
+    "sourceStatus": "current-source",
+    "publicationStatus": "existing-gallery-artwork"
+  },
+  "references": [
+    {
+      "id": "human-rust-jacket@v1",
+      "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "role": "exact existing Artwork identity and pose reference",
+      "use": "Preserve the exact same character identity, face, pose, body proportions and unselected details; registered options define permitted changes.",
+      "exclude": "Do not replace or overwrite the existing source Artwork; no UI, background, text, props or extra subject.",
+      "license": "unknown"
+    }
+  ],
+  "creation": {
+    "prompt": "See linked provenance and Template semantics; do not fabricate missing historical ImageGen prompts.",
+    "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+    "negativeConstraints": [
+      "Keep the selected Artwork identity and preserve all unselected character details.",
+      "Transparent full-character PNG; no background, UI, text, watermark or additional subjects.",
+      "Combine only exact finite recipes registered by the pending Template; reject conflicting choices."
+    ],
+    "tool": "built-in image_gen.imagegen for the recorded complete-character branch assets; local browser renderer for finite recipes",
+    "originalOutputPath": null,
+    "iterations": [
+      {
+        "field": "appearance",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-curl-puffs.png",
+        "sha256": "725fd6b3f734d15f3bbd792061285022b1fe932dfec64f00e75e9b810e6b1f28",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "colors",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-teal-jacket.png",
+        "sha256": "34af0c2a5404438962db8d620bcab0bef43d537df4e699f11f2c5686c507ad71",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "face",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-closed-eyes.png",
+        "sha256": "0b82658aa7c1d4ba579c4813d026d15c81161cde58decb11e57f594b3198cd1f",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "clothing",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-ivory-cardigan.png",
+        "sha256": "de5fdc49d558fec76a8582546157e957409b9df96ac613cef03cda62e0c4dbe2",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "accessories",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-gold-leaf-clip.png",
+        "sha256": "a9ad172dc078a111054f200e6d20190e24986e5902290d137d58630e69f16875",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Existing transparent chibi character artwork, visually checked with the bound source and preview branches."
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "An original chibi person with warm-brown skin, a dark wavy bob, a rust jacket, ivory top, cream trousers and brown shoes."
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "Preserve the source identity and facial placement; expression options are bound in the Template."
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "Use only registered color variant semantics; never infer unregistered recoloring from enum IDs or palette values."
+    },
+    "clothing": {
+      "state": "present",
+      "evidence": "See selected clothing option and exact source image; options are template-bound."
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "Only the registered accessory options may add or change head-worn details."
+    },
+    "bodyAccessory": {
+      "state": "unknown",
+      "evidence": "No independent body accessory is registered in this Template."
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "No prop is registered in this Template."
+    }
+  },
+  "resources": {
+    "original": {
+      "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+      "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+      "mime": "image/png",
+      "bytes": 944230,
+      "width": 1254,
+      "height": 1254,
+      "alphaCheck": "RGBA; alpha range 0..255; all four canvas corners are fully transparent; decoded source sampled."
+    },
+    "thumbnail": null,
+    "displayPreview": null
+  },
+  "promptText": {
+    "en": "An original chibi person with warm-brown skin, a dark wavy bob, a rust jacket, ivory top, cream trousers and brown shoes.",
+    "zh-CN": "原创 Q 版人物，暖棕肤色、深棕微卷短发，穿铁锈色夹克、米白上衣和奶油色长裤，配棕色鞋。"
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": {
+      "manifestPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/rust-girl-adjustments-review-v2.json",
+      "manifestSha256": "dcd8d5aedb486067e24e4a24569c58bd8aa8c4778ceddc6a392f924ad5e59e92",
+      "templateId": "human-rust-girl-adjustments-v2",
+      "templateVersion": "v2",
+      "schemaVersion": 2,
+      "status": "pending; preview-only",
+      "engineeringStatus": "passed",
+      "artApproval": "pending",
+      "canonicalFields": [
+        {
+          "field": "appearance",
+          "values": [
+            {
+              "id": "wavy-bob",
+              "labelByLanguage": {
+                "en": "Original hairstyle",
+                "zh-CN": "原有发型"
+              },
+              "semanticByLanguage": {
+                "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+                "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+              }
+            },
+            {
+              "id": "curl-puffs",
+              "labelByLanguage": {
+                "en": "Soft curl puffs",
+                "zh-CN": "蓬松卷发"
+              },
+              "semanticByLanguage": {
+                "en": "the same person with dark-brown hair arranged into soft rounded curl puffs; preserve skin, face, jacket, hands and standing pose",
+                "zh-CN": "同一人物，深棕头发整理为柔软蓬松的小卷发束；保留肤色、脸、夹克、手和站姿"
+              }
+            }
+          ]
+        },
+        {
+          "field": "colors",
+          "values": [
+            {
+              "id": "rust",
+              "labelByLanguage": {
+                "en": "Rust jacket",
+                "zh-CN": "铁锈色夹克"
+              },
+              "semanticByLanguage": {
+                "en": "the original rust jacket color; preserve skin, hair and all other garment zones",
+                "zh-CN": "保留原有铁锈色夹克配色；肤色、头发和其他衣物区域不变"
+              }
+            },
+            {
+              "id": "teal",
+              "labelByLanguage": {
+                "en": "Teal jacket",
+                "zh-CN": "蓝绿色夹克"
+              },
+              "semanticByLanguage": {
+                "en": "only the jacket changes to teal; preserve warm-brown skin, dark-brown hair, top, trousers and shoes",
+                "zh-CN": "仅夹克改为蓝绿色；保留暖棕肤色、深棕头发、上衣、长裤和鞋子"
+              }
+            }
+          ]
+        },
+        {
+          "field": "face",
+          "values": [
+            {
+              "id": "open",
+              "labelByLanguage": {
+                "en": "Open-eye smile",
+                "zh-CN": "睁眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "the original open eyes and gentle smile",
+                "zh-CN": "保留原有睁眼与柔和微笑"
+              }
+            },
+            {
+              "id": "closed",
+              "labelByLanguage": {
+                "en": "Closed-eye smile",
+                "zh-CN": "闭眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "two matching gentle closed eyes; preserve the original smile, face shape, hair, outfit and pose",
+                "zh-CN": "两只对称柔和的闭合眼睛；保留原有微笑、脸型、头发、衣着和姿势"
+              }
+            }
+          ]
+        },
+        {
+          "field": "clothing",
+          "values": [
+            {
+              "id": "jacket",
+              "labelByLanguage": {
+                "en": "Original outfit",
+                "zh-CN": "原有衣着"
+              },
+              "semanticByLanguage": {
+                "en": "the original outfit with its fit and natural hand occlusion",
+                "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+              }
+            },
+            {
+              "id": "ivory-cardigan",
+              "labelByLanguage": {
+                "en": "Ivory cardigan",
+                "zh-CN": "象牙白开衫"
+              },
+              "semanticByLanguage": {
+                "en": "a fitted ivory cardigan with natural wrist-length sleeves that leave the hands visible; follow the torso contour and preserve trousers and shoes",
+                "zh-CN": "合体象牙白开衫，袖口自然落在手腕且露出双手；衣身沿躯干贴合，保留长裤和鞋子"
+              }
+            }
+          ]
+        },
+        {
+          "field": "accessories",
+          "values": [
+            {
+              "id": "none",
+              "labelByLanguage": {
+                "en": "Original accessories",
+                "zh-CN": "原有配饰"
+              },
+              "semanticByLanguage": {
+                "en": "no added accessories",
+                "zh-CN": "不增加配饰"
+              }
+            },
+            {
+              "id": "gold-leaf-clip",
+              "labelByLanguage": {
+                "en": "Gold leaf hair clip",
+                "zh-CN": "金色叶片发夹"
+              },
+              "semanticByLanguage": {
+                "en": "one a small gold leaf hair clip fitted to the hair above the ear and following the short-hair silhouette",
+                "zh-CN": "贴合在耳侧短发上的小巧金色叶片发夹"
+              }
+            }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "rust-girl-default",
+          "selections": {
+            "appearance": "wavy-bob",
+            "colors": "rust",
+            "face": "open",
+            "clothing": "jacket",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "rust-girl-appearance",
+          "selections": {
+            "appearance": "curl-puffs",
+            "colors": "rust",
+            "face": "open",
+            "clothing": "jacket",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "rust-girl-colors",
+          "selections": {
+            "appearance": "wavy-bob",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "jacket",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "rust-girl-face",
+          "selections": {
+            "appearance": "wavy-bob",
+            "colors": "rust",
+            "face": "closed",
+            "clothing": "jacket",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "rust-girl-clothing",
+          "selections": {
+            "appearance": "wavy-bob",
+            "colors": "rust",
+            "face": "open",
+            "clothing": "ivory-cardigan",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "rust-girl-accessories",
+          "selections": {
+            "appearance": "wavy-bob",
+            "colors": "rust",
+            "face": "open",
+            "clothing": "jacket",
+            "accessories": "gold-leaf-clip"
+          }
+        }
+      ],
+      "conflicts": [
+        {
+          "when": {
+            "appearance": "curl-puffs",
+            "colors": "teal"
+          },
+          "code": "appearance-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "curl-puffs",
+            "face": "closed"
+          },
+          "code": "appearance-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "curl-puffs",
+            "clothing": "ivory-cardigan"
+          },
+          "code": "appearance-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "curl-puffs",
+            "accessories": "gold-leaf-clip"
+          },
+          "code": "appearance-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "teal",
+            "face": "closed"
+          },
+          "code": "colors-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "teal",
+            "clothing": "ivory-cardigan"
+          },
+          "code": "colors-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "teal",
+            "accessories": "gold-leaf-clip"
+          },
+          "code": "colors-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "clothing": "ivory-cardigan"
+          },
+          "code": "face-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "accessories": "gold-leaf-clip"
+          },
+          "code": "face-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "clothing": "ivory-cardigan",
+            "accessories": "gold-leaf-clip"
+          },
+          "code": "clothing-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:base",
+          "field": "base",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+          "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4"
+        },
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:appearance",
+          "field": "appearance",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-curl-puffs.png",
+          "sha256": "725fd6b3f734d15f3bbd792061285022b1fe932dfec64f00e75e9b810e6b1f28"
+        },
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:colors",
+          "field": "colors",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-teal-jacket.png",
+          "sha256": "34af0c2a5404438962db8d620bcab0bef43d537df4e699f11f2c5686c507ad71"
+        },
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:face",
+          "field": "face",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-closed-eyes.png",
+          "sha256": "0b82658aa7c1d4ba579c4813d026d15c81161cde58decb11e57f594b3198cd1f"
+        },
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:clothing",
+          "field": "clothing",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-ivory-cardigan.png",
+          "sha256": "de5fdc49d558fec76a8582546157e957409b9df96ac613cef03cda62e0c4dbe2"
+        },
+        {
+          "assetId": "template:human-rust-girl-adjustments-v2:accessories",
+          "field": "accessories",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/rust-girl-gold-leaf-clip.png",
+          "sha256": "a9ad172dc078a111054f200e6d20190e24986e5902290d137d58630e69f16875"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sourceRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/prompts/human-adjustments-full-character-v2-provenance.md; Template manifest is authoritative for all option semantics and assets.",
+    "provenance": {
+      "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+      "correctionRecord": "../prompts/human-adjustments-v2-bilingual-semantics-correction.md"
+    },
+    "license": "unknown",
+    "engineering": {
+      "status": "engineering-passed",
+      "path": ".artifacts/character-adjustments/human-rust-girl-adjustments-v2/report.json",
+      "sha256": "ce8bd2cd0a2c6b6580f35bce938adfea504e45f77615551cb685dfde3f17a55b",
+      "recipeCount": 6,
+      "optionChecks": 10,
+      "conflictChecks": 20,
+      "viewports": 4,
+      "errors": []
+    },
+    "visualReview": {
+      "status": "internal-review-only",
+      "contactSheet": ".artifacts/character-adjustments/rust-girl-six-branches-dark-light.jpg",
+      "sha256": "d339fc9bee399a12f20b6ab08184a1cf6f8e17a7cc571ae5d65c8a0ebf6849ac",
+      "note": "Root visually reviewed all six-branch dark/warm contacts and reported identity, hair, clothing, skin and hand occlusion acceptable; a separate hash-bound co-review record is pending. User art approval remains pending."
+    },
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": null,
+      "note": "This approval applies to the new Template branches only; existing source Artwork remains unchanged."
+    },
+    "integration": "not-applied",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

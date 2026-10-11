@@ -1,0 +1,75 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-butter-beret-adjustments-v1-four-tabs-review.json",
+  "manifestSha256": "3e4b672f2638ea7e6fce78efc2ee7b17eff2c881acd18d53cf4485b45b0660da",
+  "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+  "artworkBinding": {
+    "artworkId": "dots-butter-beret",
+    "artworkVersion": "v2"
+  },
+  "originalSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+  "engineeringReport": ".artifacts/character-adjustments/dots-butter-beret-adjustments-v1-four-tabs-candidate/report.json",
+  "engineeringReportSha256": "e8f87a4d1036c3571d84427a9d1cb3013f248d5224e096a35856a4cc8362197f",
+  "checkedRecipes": [
+    {
+      "id": "triangle-butter-yellow-open-beret",
+      "sha256": "ad741f15f261c97d4ca97e2e991e59566993bded0db94f5af848a8f39f8568ac"
+    },
+    {
+      "id": "triangle-butter-yellow-open-none",
+      "sha256": "eef6dee40b7991df9b3379737fe20ab9359bd4f4526974f76c62d1db6874a710"
+    },
+    {
+      "id": "triangle-butter-yellow-closed-none",
+      "sha256": "62d1cfd416751fbd8f6c9219854543ab983a4c9fd8370e858e41da8af6419259"
+    },
+    {
+      "id": "triangle-butter-yellow-closed-beret",
+      "sha256": "c9f26392375f3066e0f32631805a373775dbd57be3a0e883a86f81f4404644e2"
+    },
+    {
+      "id": "triangle-blue-open-none",
+      "sha256": "9ea5bb705f041a3381bdd8af8ff3237193ab06bc2587e085c178fc57df3467f4"
+    },
+    {
+      "id": "triangle-blue-open-beret",
+      "sha256": "9517f36bc569c1ebd92c1d080237562d15c7b463527f6a0df3be70d19747cbc9"
+    },
+    {
+      "id": "triangle-blue-closed-none",
+      "sha256": "d3adcaf8e756d3c04364326ac9ea182a91fa4fa10757ba17630601b86fb44c9c"
+    },
+    {
+      "id": "triangle-blue-closed-beret",
+      "sha256": "54b1f55967490c21840072e16c74aa758a0436b9e8591116203ca10e7d940cf8"
+    },
+    {
+      "id": "cloud-butter-yellow-open-none",
+      "sha256": "1193b5b523ade8ef83c3f392e5f53aaf2b2b5e37e2987493420b4f1e86ff58c4"
+    },
+    {
+      "id": "cloud-butter-yellow-closed-none",
+      "sha256": "e3eefd0d3fe1590a03a9144d0863278c8819a7e4298b28691e7b43e21c7be40b"
+    },
+    {
+      "id": "cloud-blue-open-none",
+      "sha256": "a8955ab2a24f7ea2a27def9aab5336cb47af6b1d8b169112a72a28d1be226ef2"
+    },
+    {
+      "id": "cloud-blue-closed-none",
+      "sha256": "b0a386b1235c676856674a9eb43344166c9ae29c7c9edf7dca78d11823eb4cd2"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

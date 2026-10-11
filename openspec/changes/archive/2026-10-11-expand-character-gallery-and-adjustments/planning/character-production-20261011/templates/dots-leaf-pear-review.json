@@ -1,0 +1,690 @@
+{
+  "status": "pending",
+  "scope": "Four-category Dots candidate; whole-character finite branches; clothing is not supported. Neither Artwork nor Template is user approved.",
+  "artwork": {
+    "id": "dots-leaf-pear",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "芽叶梨团",
+      "en": "Leaf Pear"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-candidate-v2.png",
+    "sha256": "12a092ddf983cc03e3382a9f0c82e1d97f3d2f233c5b0f5b309521c63e37cdc9"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-leaf-pear-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-leaf-pear",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1214,
+      "height": 1295
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。",
+      "en": "One Dots character with a continuous short-dense-plush body and simple paired black eyes. No arms, hands, legs, feet, mouth, screen face or clothing."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典轮廓",
+            "en": "Classic outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "带两片顶芽叶的柔圆梨形连续身体",
+            "en": "a continuous rounded pear body with two top sprout leaves"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "柔圆轮廓",
+            "en": "Softer outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更低宽的饱满梨形身体，保留两片芽叶",
+            "en": "a lower wider pear body preserving both sprout leaves"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "薄荷绿",
+            "en": "Mint green"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "薄荷绿短密绒",
+            "en": "Mint green short dense plush"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#84d3b4"
+          ],
+          "zoneColors": {
+            "body": "#84d3b4"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "杏橙色",
+            "en": "Apricot orange"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "仅主身体改为杏橙短绒，两片顶芽叶保持薄荷绿",
+            "en": "apricot-orange short plush on the main body only; both top leaves stay mint green"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#ec974e"
+          ],
+          "zoneColors": {
+            "body": "#ec974e"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色双眼",
+            "en": "Black paired eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色眼睛，无嘴",
+            "en": "simple paired black eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色闭合弧线眼，无嘴；静态表情",
+            "en": "simple paired black closed curved eyelids, no mouth; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "fitted",
+          "labelByLanguage": {
+            "zh-CN": "芽叶布结",
+            "en": "Sprout bow"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "海军蓝小布结系在右侧顶芽叶根部",
+            "en": "a small navy bow tied to the base of the right top sprout leaf"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-leaf-pear-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "fitted"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "fitted"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "fitted"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-leaf-pear-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-leaf-pear-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-leaf-pear-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-leaf-pear-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-fitted",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "fitted"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-leaf-pear-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-leaf-pear-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-leaf-pear-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-candidate-v2.png",
+      "sha256": "12a092ddf983cc03e3382a9f0c82e1d97f3d2f233c5b0f5b309521c63e37cdc9",
+      "byteSize": 1610333,
+      "width": 1214,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "transparentPixels": 841134,
+        "bboxAtAlphaThreshold16": [
+          150,
+          81,
+          1066,
+          1228
+        ]
+      },
+      "owner": {
+        "templateId": "dots-leaf-pear-adjustments-v1",
+        "artworkId": "dots-leaf-pear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1214,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-leaf-pear-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-leaf-pear-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-appearance-full-candidate-v2.png",
+      "sha256": "d7c6d0a2fe33a13d54df34eb567d6d74429379627d9d682336739ed299243110",
+      "byteSize": 1718001,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 741661,
+        "bboxAtAlphaThreshold16": [
+          77,
+          82,
+          1178,
+          1182
+        ]
+      },
+      "owner": {
+        "templateId": "dots-leaf-pear-adjustments-v1",
+        "artworkId": "dots-leaf-pear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1214,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -46.3114,
+          -4.5036
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0427272727272727,
+            1.0427272727272727
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-leaf-pear-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-leaf-pear-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-face-full-candidate-v2.png",
+      "sha256": "bebe7202a020f2d05540b45d7e2304edc7fdf002526acb06ba971804941cb553",
+      "byteSize": 1568993,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 843479,
+        "bboxAtAlphaThreshold16": [
+          171,
+          60,
+          1093,
+          1205
+        ]
+      },
+      "owner": {
+        "templateId": "dots-leaf-pear-adjustments-v1",
+        "artworkId": "dots-leaf-pear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1214,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -25.1039,
+          20.8952
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0017467248908296,
+            1.0017467248908296
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-leaf-pear-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-leaf-pear-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-colors-full-candidate-v2.png",
+      "sha256": "c8e49f4f993380f083479b3fee4037158a2882adfb39b54b12d82e807c4e6ea4",
+      "byteSize": 1641954,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 818827,
+        "bboxAtAlphaThreshold16": [
+          162,
+          34,
+          1095,
+          1198
+        ]
+      },
+      "owner": {
+        "templateId": "dots-leaf-pear-adjustments-v1",
+        "artworkId": "dots-leaf-pear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1214,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -11.3209,
+          47.4966
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9853951890034365,
+            0.9853951890034365
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-leaf-pear-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-leaf-pear-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-accessories-full-candidate-v2.png",
+      "sha256": "9cdceab7f838e04856ff45097c2efbe58cbdef14cd7ef3bd59d604e13cc53d48",
+      "byteSize": 1526900,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 835831,
+        "bboxAtAlphaThreshold16": [
+          173,
+          62,
+          1091,
+          1205
+        ]
+      },
+      "owner": {
+        "templateId": "dots-leaf-pear-adjustments-v1",
+        "artworkId": "dots-leaf-pear",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1214,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -26.2117,
+          18.783
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0034995625546808,
+            1.0034995625546808
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    }
+  ]
+}

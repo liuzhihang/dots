@@ -1,0 +1,60 @@
+{
+  "artworkId": "animal-gray-husky",
+  "artworkVersion": "v1",
+  "originalSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+  "templateId": "animal-gray-husky-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-gray-husky-review.json",
+  "manifestSha256": "727c7cbc3ba8232af8a74ad4273f8c1d723fa92f8c0cc63ef3d179acff35f5fc",
+  "engineeringReport": ".artifacts/character-adjustments/animal-gray-husky-adjustments-v1/report.json",
+  "engineeringReportSha256": "6f9b6d5fc26a12da04b6edabd3295dbf674f78c11598221dc8643dbd2d38776b",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "81228a07a3b69030924ad92a97a6b6b5ad1a34ba461e1eaf5458bb8c7e9b36c0"
+    },
+    {
+      "id": "broad-original-open-none-none",
+      "sha256": "8425df1b966cb06b1f06546a753e49deb719c1799ba90dd8d584f2a380ea6a9a"
+    },
+    {
+      "id": "classic-alternate-open-none-none",
+      "sha256": "d273dbf95b234ed15ca985737a9dbdc9db392200fb64d7581853e04bde18740d"
+    },
+    {
+      "id": "classic-original-closed-none-none",
+      "sha256": "e59e481b7f26217ab2897eb7a146cd72c5e0d0a155126f1443767057d9bb547a"
+    },
+    {
+      "id": "classic-original-open-vest-none",
+      "sha256": "398aafbe22f5f9de28946479d5fb989a86495938c52a3108d40568660229a89b"
+    },
+    {
+      "id": "classic-original-open-none-collar",
+      "sha256": "d344ffea30719a52166b56f1eb70372500d75511c058aa5cac99f4e06ff66ca1"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部6合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "保留每个物种独立耳形、口鼻、四爪和尾部解剖",
+      "局部毛色变化保留口鼻、眼睛、鼻部和足垫的独立颜色",
+      "完整穿戴分支的衣领与肩部贴合，前爪处于服装前方",
+      "静态闭眼与小配饰有真实图像结果，不宣称动画",
+      "每个分支可从默认状态单字段选择，未制作组合明确禁用且给出原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

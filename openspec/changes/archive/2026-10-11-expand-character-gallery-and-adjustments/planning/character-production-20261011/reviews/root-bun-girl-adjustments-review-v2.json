@@ -1,0 +1,51 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/bun-girl-adjustments-review-v2.json",
+  "manifestSha256": "10deb7a84928e22d56c9fa1625c244e8875beb4d8a42120a5191a0c6070980ed",
+  "templateId": "human-bun-girl-adjustments-v2",
+  "artworkBinding": {
+    "artworkId": "human-bun-yellow",
+    "artworkVersion": "v1"
+  },
+  "originalSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+  "engineeringReport": ".artifacts/character-adjustments/human-bun-girl-adjustments-v2/report.json",
+  "engineeringReportSha256": "dfece4f03363b9ed388d0777c0ad8c307ae18d0f33e4d6ca14a6b88b3beeee26",
+  "checkedRecipes": [
+    {
+      "id": "bun-girl-default",
+      "sha256": "998ed1598ebd1400b29b8e5c6851f7e52451869d75ae939f2399eda9815acea5"
+    },
+    {
+      "id": "bun-girl-appearance",
+      "sha256": "d793770b2a9332e13b416e0f1578ea80857eee7439e02ea079267c5c286eccde"
+    },
+    {
+      "id": "bun-girl-colors",
+      "sha256": "960da2bf920ef7052ba72656ca2b771bd6981b265fa4e6314f78c7a84c01d481"
+    },
+    {
+      "id": "bun-girl-face",
+      "sha256": "af9e6e6b81fcb501ef29e844469f3a497c5dfc48700ed91b7486993173a43517"
+    },
+    {
+      "id": "bun-girl-clothing",
+      "sha256": "ccc64f8322fc46932dc4833b439271d8f59d45fe051e556152267863a4898c4f"
+    },
+    {
+      "id": "bun-girl-accessories",
+      "sha256": "f6df0b6494bbc44b717661e420f4273052da0c55fbce0a9361a4a1fe702f6566"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

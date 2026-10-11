@@ -1,0 +1,790 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Template bound to the exact existing gallery Artwork; six complete-character recipes are mutually exclusive single-field choices. Generated branches are not public or approved.",
+  "artwork": {
+    "id": "candidate-humans-20261005",
+    "version": "v1",
+    "seriesId": "humans",
+    "status": "current-source",
+    "publicationStatus": "existing-gallery-artwork",
+    "titleByLanguage": {
+      "en": "Chestnut-Haired Person",
+      "zh-CN": "栗发青绿人物"
+    },
+    "descriptionByLanguage": {
+      "en": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together.",
+      "zh-CN": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "asset:candidate-humans-20261005:original"
+    },
+    "sourcePath": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+    "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+    "artApproval": {
+      "status": "existing-source",
+      "record": null,
+      "scope": "Existing gallery source remains unchanged; only the new Template and generated branches are pending review."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "human-chestnut-boy-adjustments-v2",
+    "version": "v2",
+    "family": "humans",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only full-character edit branches and recipe set; does not approve or replace the existing Artwork."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-humans-20261005",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One original chibi person. Preserve the same individual, facial identity, skin tone, age impression, body proportions, original pose, hand count and hand placement. Hair arrangement, garment color, facial expression, clothing and accessories may change only when selected by a registered option. Keep the complete person in a single transparent PNG; do not add another character, props, typography or a scene.",
+      "zh-CN": "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例、原始姿势、手部数量与位置。只有选择对应注册选项时，才允许改变发型整理、衣料配色、面部表情、衣着或配饰。完整人物保留在单张透明 PNG 中；不得增加其他人物、道具、文字或场景。"
+    },
+    "defaultOptions": {
+      "appearance": "layered-chestnut",
+      "colors": "teal",
+      "face": "open",
+      "clothing": "knit-top",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "layered-chestnut",
+          "labelByLanguage": {
+            "en": "Original hairstyle",
+            "zh-CN": "原有发型"
+          },
+          "semanticByLanguage": {
+            "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+            "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "neat-side-swept-crop",
+          "labelByLanguage": {
+            "en": "Neat side-swept crop",
+            "zh-CN": "整齐侧梳短发"
+          },
+          "semanticByLanguage": {
+            "en": "the same person with a neat short side-swept crop with a clearly open forehead wedge; preserve chestnut hair color, face, expression, knit top, clasped hands and standing pose",
+            "zh-CN": "同一人物，整齐的短款侧梳发型，额前留出明显侧向分开的额头区域；保留栗色发色、脸、表情、针织上衣、交握双手与站姿"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "teal",
+          "labelByLanguage": {
+            "en": "Teal knit",
+            "zh-CN": "青绿色针织"
+          },
+          "semanticByLanguage": {
+            "en": "the original teal knit top color; preserve skin, hair and all other garment zones",
+            "zh-CN": "保留原有青绿色针织上衣配色；肤色、头发和其他衣物区域不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "garment": "#38AFA4"
+          }
+        },
+        {
+          "id": "periwinkle",
+          "labelByLanguage": {
+            "en": "Periwinkle knit",
+            "zh-CN": "薰衣草蓝针织"
+          },
+          "semanticByLanguage": {
+            "en": "periwinkle knit top; preserve original skin, chestnut hair, shorts and shoes",
+            "zh-CN": "薰衣草蓝针织上衣；保留原肤色、栗色头发、短裤和鞋子"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "garment": "#9D9BE8"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open-eye smile",
+            "zh-CN": "睁眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "the original open eyes and gentle smile",
+            "zh-CN": "保留原有睁眼与柔和微笑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "two matching gentle closed eyes; preserve the original smile, face shape, hair, outfit and clasped hands",
+            "zh-CN": "两只对称柔和的闭合眼睛；保留原有微笑、脸型、发型、衣着和交握双手"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "knit-top",
+          "labelByLanguage": {
+            "en": "Original outfit",
+            "zh-CN": "原有衣着"
+          },
+          "semanticByLanguage": {
+            "en": "the original outfit with its fit and natural hand occlusion",
+            "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "navy-vest",
+          "labelByLanguage": {
+            "en": "Navy vest",
+            "zh-CN": "藏青背心"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted navy vest layered over the original knit top, following the torso contour; preserve clasped-hand occlusion and pose",
+            "zh-CN": "在原针织上衣外穿合体藏青背心，沿躯干贴合；保留交握双手的遮挡关系与姿势"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "Original accessories",
+            "zh-CN": "原有配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no added accessories",
+            "zh-CN": "不增加配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "mustard-beret",
+          "labelByLanguage": {
+            "en": "Mustard beret",
+            "zh-CN": "芥末黄贝雷帽"
+          },
+          "semanticByLanguage": {
+            "en": "one a fitted mustard-yellow wool beret following the hair and head perspective without covering the eyes",
+            "zh-CN": "贴合头顶并顺应发型和透视的芥末黄色羊毛贝雷帽，不遮眼睛"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:human-chestnut-boy-adjustments-v2:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "neat-side-swept-crop",
+          "colors": "periwinkle"
+        },
+        "code": "appearance-colors-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "neat-side-swept-crop",
+          "face": "closed"
+        },
+        "code": "appearance-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "neat-side-swept-crop",
+          "clothing": "navy-vest"
+        },
+        "code": "appearance-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "neat-side-swept-crop",
+          "accessories": "mustard-beret"
+        },
+        "code": "appearance-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "periwinkle",
+          "face": "closed"
+        },
+        "code": "colors-face-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "periwinkle",
+          "clothing": "navy-vest"
+        },
+        "code": "colors-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "colors": "periwinkle",
+          "accessories": "mustard-beret"
+        },
+        "code": "colors-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "clothing": "navy-vest"
+        },
+        "code": "face-clothing-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "mustard-beret"
+        },
+        "code": "face-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      },
+      {
+        "when": {
+          "clothing": "navy-vest",
+          "accessories": "mustard-beret"
+        },
+        "code": "clothing-accessories-whole-character-branch-conflict",
+        "messageByLanguage": {
+          "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+          "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "chestnut-boy-default",
+        "selections": {
+          "appearance": "layered-chestnut",
+          "colors": "teal",
+          "face": "open",
+          "clothing": "knit-top",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "chestnut-boy-appearance",
+        "selections": {
+          "appearance": "neat-side-swept-crop",
+          "colors": "teal",
+          "face": "open",
+          "clothing": "knit-top",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "chestnut-boy-colors",
+        "selections": {
+          "appearance": "layered-chestnut",
+          "colors": "periwinkle",
+          "face": "open",
+          "clothing": "knit-top",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "chestnut-boy-face",
+        "selections": {
+          "appearance": "layered-chestnut",
+          "colors": "teal",
+          "face": "closed",
+          "clothing": "knit-top",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "chestnut-boy-clothing",
+        "selections": {
+          "appearance": "layered-chestnut",
+          "colors": "teal",
+          "face": "open",
+          "clothing": "navy-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "chestnut-boy-accessories",
+        "selections": {
+          "appearance": "layered-chestnut",
+          "colors": "teal",
+          "face": "open",
+          "clothing": "knit-top",
+          "accessories": "mustard-beret"
+        },
+        "layers": [
+          {
+            "slot": "whole-character",
+            "asset": {
+              "id": "template:human-chestnut-boy-adjustments-v2:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/source-original.png",
+      "sourcePath": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "byteSize": 1151483,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1069183,
+        "opaquePixels": 514,
+        "partialAlphaPixels": 502819,
+        "bboxAtAlphaThreshold16": [
+          284,
+          37,
+          971,
+          1226
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/chestnut-boy-neat-side-swept-crop.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-neat-side-swept-crop.png",
+      "sha256": "95f4b702f5322c9864c988db58d9b63412214bc2de39fcca6bcd15b284446059",
+      "byteSize": 1084154,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1089074,
+        "opaquePixels": 464,
+        "partialAlphaPixels": 482978,
+        "bboxAtAlphaThreshold16": [
+          312,
+          62,
+          948,
+          1226
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/chestnut-boy-periwinkle-sweater.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-periwinkle-sweater.png",
+      "sha256": "93bd3ef3848715814f5479316eb461cd00feae4318738cc6f98e8483e4b2228b",
+      "byteSize": 1135896,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1064760,
+        "opaquePixels": 429,
+        "partialAlphaPixels": 507327,
+        "bboxAtAlphaThreshold16": [
+          284,
+          36,
+          971,
+          1227
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/chestnut-boy-closed-eyes.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-closed-eyes.png",
+      "sha256": "8425076ef81901290192df70ced916df7e936b788b558a30afd3ebc2a38df4be",
+      "byteSize": 1127694,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1063026,
+        "opaquePixels": 502,
+        "partialAlphaPixels": 508988,
+        "bboxAtAlphaThreshold16": [
+          282,
+          34,
+          973,
+          1227
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:clothing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/chestnut-boy-navy-vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-navy-vest.png",
+      "sha256": "a1295dc3f6af529c63faaa7e5f610d8ce45ea300f46f66f75f9e3181cca40053",
+      "byteSize": 1116340,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1062635,
+        "opaquePixels": 308,
+        "partialAlphaPixels": 509573,
+        "bboxAtAlphaThreshold16": [
+          284,
+          35,
+          971,
+          1227
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    },
+    {
+      "id": "template:human-chestnut-boy-adjustments-v2:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/human-chestnut-boy-adjustments-v2/chestnut-boy-mustard-beret.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-mustard-beret.png",
+      "sha256": "9a3b06b29c8fb27cf295a9fd170e7b334fdd67f0dbebf23a38fd46d8a34734fa",
+      "byteSize": 1123420,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1055425,
+        "opaquePixels": 336,
+        "partialAlphaPixels": 516755,
+        "bboxAtAlphaThreshold16": [
+          282,
+          23,
+          973,
+          1227
+        ]
+      },
+      "owner": {
+        "templateId": "human-chestnut-boy-adjustments-v2",
+        "artworkId": "candidate-humans-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Full-character ImageGen branch using the exact existing transparent gallery Artwork as reference; one named edit dimension only; not approved for publication."
+    }
+  ]
+}

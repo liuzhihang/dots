@@ -1,0 +1,1130 @@
+{
+  "recordType": "internal-candidate-review-evidence",
+  "status": "awaiting-human-art-review",
+  "decision": null,
+  "candidate": "robot-capsule-independent-adjustments-v1@v1",
+  "scope": "All 32 finite recipes in the candidate manifest; no public art approval or gallery acceptance.",
+  "sourceArtwork": {
+    "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-ivory-capsule-face-v98-candidate-v2.png",
+    "id": "robot-ivory-capsule-face-v98-candidate",
+    "version": "v2",
+    "sha256": "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c",
+    "actualSha256": "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c"
+  },
+  "manifest": {
+    "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/robot-capsule-independent-adjustments-review.json",
+    "sha256": "e4af72c450c96a14ec6ce62a0e6a6511e0285d4a42df3e327dd98d13fd0c528d"
+  },
+  "engineeringQa": {
+    "path": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/report.json",
+    "sha256": "bf1511207c28255a9dd1baf08a90c19168b8e6f3305eda3fe08d4d11f8d445cf",
+    "status": "engineering-passed",
+    "artApproval": "pending",
+    "browser": "Chromium / Playwright; project automated regression, separate from in-app manual review",
+    "combinations": 32,
+    "optionChecks": 10,
+    "conflictChecks": 0,
+    "errors": []
+  },
+  "contactSheet": {
+    "path": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/all-32-recipes-dark-warm-contact-sheet.jpg",
+    "sha256": "8d5b8ee332a5fdb6d5bbb046d68d90ad4c21e9111f9b3c091b731ebb39c3a3c9",
+    "tiles": 32,
+    "eachRecipeShownOn": [
+      "dark #1A1E2B",
+      "warm light #F7F4EE"
+    ],
+    "qaOnly": true
+  },
+  "reviewInstructions": "Review all tiles for consistent identity, geometry, attachment, layer order, color coverage, and alpha edge quality. Engineering success does not approve art. Mark a decision only after direct visual review; keep rejected findings and previous reports intact.",
+  "recipes": [
+    {
+      "recipeId": "standard-ivory-capsule-eyes-none-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "ca0a920c6cc1e0aa4ecb0eebf1797464410060130cf6c288f8ca3f0dbe3960f3",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=none&colors=ivory&face=capsule-eyes|recipe=standard-ivory-capsule-eyes-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-capsule-eyes-none-none.png",
+      "exportSha256": "2afd9eeb33639b4b4e2a655ded447db3a40ad75505db650a0ac0eb1bec1b6886",
+      "renderedPixels": {
+        "clear": 864965,
+        "visible": 708460,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 0,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-capsule-eyes-none-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "c490b7496bc6fafee2179ac209918f9f13ea2b68f93e9cb4377ca9d82c4dbb78",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=none&colors=ivory&face=capsule-eyes|recipe=standard-ivory-capsule-eyes-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-capsule-eyes-none-mint-antenna.png",
+      "exportSha256": "1525497ddff37e42d6e8f41565ed3ffc9915da316d3940fc444cb6353d6d1113",
+      "renderedPixels": {
+        "clear": 862625,
+        "visible": 710800,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 1,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-capsule-eyes-seam-collar-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "b3bee1e48db96c44effc5a1d141c51ebed12b21a7c300d90441140928916a8e2",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=seam-collar&colors=ivory&face=capsule-eyes|recipe=standard-ivory-capsule-eyes-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-capsule-eyes-seam-collar-none.png",
+      "exportSha256": "9f04015e7e71e508a7e8f5210db5c40ccb0fce98f2688da82d2c582fdb704145",
+      "renderedPixels": {
+        "clear": 864950,
+        "visible": 708475,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 2,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-capsule-eyes-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "0b874e2f917c5caad77b5e3b13438b122b16e9ddaa373dd0678704ace8ad2119",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=seam-collar&colors=ivory&face=capsule-eyes|recipe=standard-ivory-capsule-eyes-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-capsule-eyes-seam-collar-mint-antenna.png",
+      "exportSha256": "5be2753940ef8727148df23c4123e5c4c3b9561446f8011c31487addb9be4367",
+      "renderedPixels": {
+        "clear": 862610,
+        "visible": 710815,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 3,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-closed-cyan-none-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "2e6ac0de28f8dbdd73307565a9a8be1268db105805dda959d87fb6363f08b51a",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=none&colors=ivory&face=closed-cyan|recipe=standard-ivory-closed-cyan-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-closed-cyan-none-none.png",
+      "exportSha256": "06f98e620fbc7486760636e8c6f2c729884ea8817627600aafb8e60afcb525f1",
+      "renderedPixels": {
+        "clear": 864965,
+        "visible": 708460,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 4,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-closed-cyan-none-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "ff499f07d41e6374ff2c5ca636e8bec75a6a2d92f15dfd0a9e88fd7cbfbe3e08",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=none&colors=ivory&face=closed-cyan|recipe=standard-ivory-closed-cyan-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-closed-cyan-none-mint-antenna.png",
+      "exportSha256": "7cc100d854deb7dc653111f083bf0471234217431a247e6e017995480e32d3c2",
+      "renderedPixels": {
+        "clear": 862625,
+        "visible": 710800,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 5,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-closed-cyan-seam-collar-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "42d2a338f137fd830784a61b812a616a4f5a9fe57f8bcd6c0ab78c700fd04ca7",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=seam-collar&colors=ivory&face=closed-cyan|recipe=standard-ivory-closed-cyan-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-closed-cyan-seam-collar-none.png",
+      "exportSha256": "ccde0fd6d6fa20864051ef3c020428e62e15b8a70bbbc665173dfcc15e83368e",
+      "renderedPixels": {
+        "clear": 864950,
+        "visible": 708475,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 6,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-ivory-closed-cyan-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "10819398f2caeb67f8e393051960c832aa303a534344c3894a1f179aad62504b",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=seam-collar&colors=ivory&face=closed-cyan|recipe=standard-ivory-closed-cyan-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-ivory@v1:1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-ivory-closed-cyan-seam-collar-mint-antenna.png",
+      "exportSha256": "7c1979099beb19835dd5d32cc6d49f9024edeac016fd1c320699a5b0318cf02c",
+      "renderedPixels": {
+        "clear": 862610,
+        "visible": 710815,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 7,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-capsule-eyes-none-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "f4b2f83d76df876aa706a294b0f1da062ad92261ecf5f097401e2bd5f74c50b4",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=none&colors=glacier-blue&face=capsule-eyes|recipe=standard-glacier-blue-capsule-eyes-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-capsule-eyes-none-none.png",
+      "exportSha256": "f0374c72684f0acd615cd0941088a2538e67f31249187a4954d60a69d093e86a",
+      "renderedPixels": {
+        "clear": 861654,
+        "visible": 711771,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 8,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-capsule-eyes-none-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "19a6ac2e9f6d0dce887934597ca6fd1f11a56be5c0b0b57d120dec882dd13eeb",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=none&colors=glacier-blue&face=capsule-eyes|recipe=standard-glacier-blue-capsule-eyes-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-capsule-eyes-none-mint-antenna.png",
+      "exportSha256": "87eeae85aeb6bcebd4d18c7cf6846cd27e58bb4ccb301e6953e861354119b14b",
+      "renderedPixels": {
+        "clear": 859322,
+        "visible": 714103,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 9,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-capsule-eyes-seam-collar-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "e648d452b97159d85444b722348586c79ba6c6b920c659144246fb552a67cf2b",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=seam-collar&colors=glacier-blue&face=capsule-eyes|recipe=standard-glacier-blue-capsule-eyes-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-capsule-eyes-seam-collar-none.png",
+      "exportSha256": "f67b7f93bdb61265e776e4cb2a3ecfa4df4c939648ea5e8e7d1692d8b6dde67d",
+      "renderedPixels": {
+        "clear": 861645,
+        "visible": 711780,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 10,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "93cbeb2cac74e79e1dc3bceef4b6edd8eefe484ca097fdec8bc77e6ef964c5cb",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=seam-collar&colors=glacier-blue&face=capsule-eyes|recipe=standard-glacier-blue-capsule-eyes-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-capsule-eyes-seam-collar-mint-antenna.png",
+      "exportSha256": "d563cd288c4f720b64c609c37e0ef7f9ca8b86e0e08641c66582c31f1bcaae5d",
+      "renderedPixels": {
+        "clear": 859313,
+        "visible": 714112,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 11,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-closed-cyan-none-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "a665c3099680e6a2819d08e3ed3a72bdeb8e0b3b7160bf5c327928e7738dea4f",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=none&colors=glacier-blue&face=closed-cyan|recipe=standard-glacier-blue-closed-cyan-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-closed-cyan-none-none.png",
+      "exportSha256": "1987bb3f7b1269fe5e55323730ef0ba734bf1d8f027569c02de4e045001b2a95",
+      "renderedPixels": {
+        "clear": 861654,
+        "visible": 711771,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 12,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-closed-cyan-none-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "8d3748fecf2b5a014f2771587642c7ac79db0087ca0618a49829fa41c00739e7",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=none&colors=glacier-blue&face=closed-cyan|recipe=standard-glacier-blue-closed-cyan-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-closed-cyan-none-mint-antenna.png",
+      "exportSha256": "49281026a6b3419ca7d57a4c159244ef81b3a61d5885baecc66709efb83d4199",
+      "renderedPixels": {
+        "clear": 859322,
+        "visible": 714103,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 13,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-closed-cyan-seam-collar-none",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "3e311f84f259b7d5cb58a0c39e38b42b1a2af1503a90dd053e25d17a28777efd",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=standard&clothing=seam-collar&colors=glacier-blue&face=closed-cyan|recipe=standard-glacier-blue-closed-cyan-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-closed-cyan-seam-collar-none.png",
+      "exportSha256": "e0e9eb280c3fc649d43395c9c140ef9f2f3ea7fbea08d2ea614eb26d112dca6c",
+      "renderedPixels": {
+        "clear": 861645,
+        "visible": 711780,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 14,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "standard-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "standard",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "b71bad258f0919a6316329c1910092975f31857354a0ef38a0f842663e87f74a",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=standard&clothing=seam-collar&colors=glacier-blue&face=closed-cyan|recipe=standard-glacier-blue-closed-cyan-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-standard-blue@v1:c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/standard-glacier-blue-closed-cyan-seam-collar-mint-antenna.png",
+      "exportSha256": "ae0d64f19b1357842b2dc7cbead49e88a80624afe7dff06b4e321ade7814db67",
+      "renderedPixels": {
+        "clear": 859313,
+        "visible": 714112,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 15,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-capsule-eyes-none-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "ff8d16e41d36460716af907bb6b891e758b610d991b223a6e7bd0a7e3292994c",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=none&colors=ivory&face=capsule-eyes|recipe=broad-torso-ivory-capsule-eyes-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-capsule-eyes-none-none.png",
+      "exportSha256": "45f4c47698f5b275b66db2132d55c531121ac5b103e9f6311a27eaaea479223b",
+      "renderedPixels": {
+        "clear": 858302,
+        "visible": 715123,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 16,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-capsule-eyes-none-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "6d4bd4cdd8fed0931ac867e6993e2a73c65d39e4bca4cf8ce06c042770016832",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=none&colors=ivory&face=capsule-eyes|recipe=broad-torso-ivory-capsule-eyes-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-capsule-eyes-none-mint-antenna.png",
+      "exportSha256": "4a56b7fde04316a97e2f3244d8607f2878f0d514a333e7e1e59aafe17b37513b",
+      "renderedPixels": {
+        "clear": 855985,
+        "visible": 717440,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 17,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-capsule-eyes-seam-collar-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "9af35c1b8b273799edf13f6fd644bdc5d1d0e6cec1224e817dc5441f4363837a",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=seam-collar&colors=ivory&face=capsule-eyes|recipe=broad-torso-ivory-capsule-eyes-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-capsule-eyes-seam-collar-none.png",
+      "exportSha256": "0f347bb7d694d0bdf2c50cdec61d585ab33d3f976f604dfeba6f55cf94a8a8b7",
+      "renderedPixels": {
+        "clear": 858295,
+        "visible": 715130,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 18,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-capsule-eyes-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "1882ca1252b7e01832b63f17e36b7fd78417a2987c3286e888b9a96cbdb179bc",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=seam-collar&colors=ivory&face=capsule-eyes|recipe=broad-torso-ivory-capsule-eyes-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-capsule-eyes-seam-collar-mint-antenna.png",
+      "exportSha256": "698b20875cb1f0a07aeb1355bc56f0b7110e27229d0bdb22a47407e9f729c771",
+      "renderedPixels": {
+        "clear": 855978,
+        "visible": 717447,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 19,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-closed-cyan-none-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "fb9cd000fa8cc3833f9f98c6ff3d97af41a4dea252d0cd1208b87a9427912bec",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=none&colors=ivory&face=closed-cyan|recipe=broad-torso-ivory-closed-cyan-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-closed-cyan-none-none.png",
+      "exportSha256": "8d11d0abea53e473e90f11f8fda9fe2b6fcf40c7835e53b135a840c44f8e2fd3",
+      "renderedPixels": {
+        "clear": 858302,
+        "visible": 715123,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 20,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-closed-cyan-none-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "594cefc640cd792ec23c1b31e67c88eecac1563dfea68ffda86f811cfc496724",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=none&colors=ivory&face=closed-cyan|recipe=broad-torso-ivory-closed-cyan-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-closed-cyan-none-mint-antenna.png",
+      "exportSha256": "3a560a95ef338dff1fd8ab2100dd969dc3fd1baee8ccacae771bd4cdd69a7cc5",
+      "renderedPixels": {
+        "clear": 855985,
+        "visible": 717440,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 21,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-closed-cyan-seam-collar-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "6f35d3623c0606d4d242bca76604453f31a2cc77024f99dfea94f0d9058e3b70",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=seam-collar&colors=ivory&face=closed-cyan|recipe=broad-torso-ivory-closed-cyan-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-closed-cyan-seam-collar-none.png",
+      "exportSha256": "e45f6223ff2d5806329c3cf2b5eac4b881d5e4ef9549fa781205c9894fbad411",
+      "renderedPixels": {
+        "clear": 858295,
+        "visible": 715130,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 22,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-ivory-closed-cyan-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "ivory",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "ad2c7a9751bbef88182d8c9d21ff9f705c1bb59dc831c7a6d92419e49c86650b",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=seam-collar&colors=ivory&face=closed-cyan|recipe=broad-torso-ivory-closed-cyan-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-ivory@v1:d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-ivory-closed-cyan-seam-collar-mint-antenna.png",
+      "exportSha256": "9cfdd357d2d1565e2aa39c89114115955049f4d393072bb5204fbf6d8aaf005e",
+      "renderedPixels": {
+        "clear": 855978,
+        "visible": 717447,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 23,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-capsule-eyes-none-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "c9e603e7803bb77c8db9547fa72f65f6ffcc78e4a82a8555405d5d1199d11348",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=none&colors=glacier-blue&face=capsule-eyes|recipe=broad-torso-glacier-blue-capsule-eyes-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-capsule-eyes-none-none.png",
+      "exportSha256": "e193bcd42a445cae3bed1d033d19da86aef4a1856f3a8748c15ec04a0839bf35",
+      "renderedPixels": {
+        "clear": 859402,
+        "visible": 714023,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 24,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-capsule-eyes-none-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "2cb4f7667a09049014fdaa90b13c075fc901e7068c074a00e28f43cde8a04aa6",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=none&colors=glacier-blue&face=capsule-eyes|recipe=broad-torso-glacier-blue-capsule-eyes-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-capsule-eyes-none-mint-antenna.png",
+      "exportSha256": "c5a2c16b358d62e23526564249ec5707f995cf72023de6dd2fdd08290a76c804",
+      "renderedPixels": {
+        "clear": 857107,
+        "visible": 716318,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 25,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-capsule-eyes-seam-collar-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "86f3aaef5ff8755885d9e8916e0366521794188815f239f7fa7f3199d90493e7",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=seam-collar&colors=glacier-blue&face=capsule-eyes|recipe=broad-torso-glacier-blue-capsule-eyes-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-capsule-eyes-seam-collar-none.png",
+      "exportSha256": "748d55903b6ddffe38eec438603faa3dd1738b9bfe680ac375fb1826479efa08",
+      "renderedPixels": {
+        "clear": 859387,
+        "visible": 714038,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 26,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "capsule-eyes",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "d43ec9ec61d338c0bdc5ee36df8824e5167f8c2d1dca50089262e288276d0bdf",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=seam-collar&colors=glacier-blue&face=capsule-eyes|recipe=broad-torso-glacier-blue-capsule-eyes-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-capsules@v1:bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-capsule-eyes-seam-collar-mint-antenna.png",
+      "exportSha256": "4d7c8b855c51b0d9d7780e4cd041820c61e4c3df2d47f408e00eda9951c36440",
+      "renderedPixels": {
+        "clear": 857092,
+        "visible": 716333,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 27,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-closed-cyan-none-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "b8f40eac13e23736a1f2fd301f3d7084d269337a3164e1cda54d82602abd8415",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=none&colors=glacier-blue&face=closed-cyan|recipe=broad-torso-glacier-blue-closed-cyan-none-none|layer-order=body>face|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-closed-cyan-none-none.png",
+      "exportSha256": "1dc98a2cc8ac531d2d70ea1512a6940b06c789215176c1eaf8999a5f3d953a79",
+      "renderedPixels": {
+        "clear": 859402,
+        "visible": 714023,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 28,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-closed-cyan-none-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "none",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "c7abddcd70b862c03254ae74b520a3d8aea7fe8e213cda8570bfad8eb076f4dd",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=none&colors=glacier-blue&face=closed-cyan|recipe=broad-torso-glacier-blue-closed-cyan-none-mint-antenna|layer-order=body>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-closed-cyan-none-mint-antenna.png",
+      "exportSha256": "810b6b5b8e6b5d2a097896ecd8d166dc2d9a2f678386b377a8682265acdaf5f4",
+      "renderedPixels": {
+        "clear": 857107,
+        "visible": 716318,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 29,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-closed-cyan-seam-collar-none",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "none"
+      },
+      "recipeKeySha256": "669348e2caf04b28be5a23e7d4208d99b998e3aab5635b4b5cb3207d23362b39",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=none&appearance=broad-torso&clothing=seam-collar&colors=glacier-blue&face=closed-cyan|recipe=broad-torso-glacier-blue-closed-cyan-seam-collar-none|layer-order=body>clothing-front>face|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-closed-cyan-seam-collar-none.png",
+      "exportSha256": "5b959f01762af894f480e4c57dd8c20a7afb77000d57fc5013122e91af08e2d4",
+      "renderedPixels": {
+        "clear": 859387,
+        "visible": 714038,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 30,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    },
+    {
+      "recipeId": "broad-torso-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+      "options": {
+        "appearance": "broad-torso",
+        "colors": "glacier-blue",
+        "face": "closed-cyan",
+        "clothing": "seam-collar",
+        "accessories": "mint-antenna"
+      },
+      "recipeKeySha256": "af09732904a33f082eacf1a3f1b1ade2162dd3263f38c179673c7d5c91db35e1",
+      "recipeKey": "studio-renderer-20261011-v100-declarative-recipes-1|robot-capsule-independent-adjustments-v1@v1|robot-ivory-capsule-face-v98-candidate@v2|accessories=mint-antenna&appearance=broad-torso&clothing=seam-collar&colors=glacier-blue&face=closed-cyan|recipe=broad-torso-glacier-blue-closed-cyan-seam-collar-mint-antenna|layer-order=body>clothing-front>face>accessory-front|template:robot-capsule-independent-adjustments-v1:body-broad-blue@v1:7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:collar@v1:5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:face-closed@v1:f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:robot-capsule-independent-adjustments-v1:antenna@v1:b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a:placement=0,0;anchor=crown;source=610,713;pivot=610,713;scale=0.25,0.25;shear=0,0;rotation=0",
+      "exportPath": ".artifacts/character-adjustments/robot-capsule-independent-adjustments-v1/broad-torso-glacier-blue-closed-cyan-seam-collar-mint-antenna.png",
+      "exportSha256": "6c027d0de929594b95a93c7169a07eddd23e9e59023713f074cb0c34cf85c898",
+      "renderedPixels": {
+        "clear": 857092,
+        "visible": 716333,
+        "width": 1215,
+        "height": 1295
+      },
+      "rendererRevision": "studio-renderer-20261011-v100-declarative-recipes-1",
+      "layerOrder": [
+        "body",
+        "clothing-front",
+        "face",
+        "accessory-front"
+      ],
+      "exportSnapshot": {
+        "schemaVersion": 2,
+        "revision": 31,
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "templateVersion": "v1",
+        "baseArtworkId": "robot-ivory-capsule-face-v98-candidate",
+        "baseArtworkVersion": "v2"
+      }
+    }
+  ]
+}

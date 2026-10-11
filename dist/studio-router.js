@@ -1,4 +1,4 @@
-import { normalizeGalleryQuery } from './studio-tags.js?v=99';
+import { normalizeGalleryQuery } from './studio-tags.js?v=100';
 export function parseRoute(hash='') {
   const raw = String(hash || '#/');
   if (!raw.startsWith('#/')) return {page:'notFound'};

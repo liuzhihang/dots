@@ -6,9 +6,9 @@ import {execFileSync} from 'node:child_process';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
-const revision = 99;
+const revision = 100;
 const cacheQuery = `?v=${revision}`;
-const catalogRevision = 'artwork-catalog-20261010-v99';
+const catalogRevision = 'artwork-catalog-20261011-v100';
 const evidenceDirectory = resolveEvidenceDirectory('.artifacts/build');
 const templateSourcesPath = 'dist/assets/templates/sources.json';
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
@@ -117,6 +117,17 @@ function collectLayerReferences(value, output = []) {
   return output;
 }
 
+// Include every finite recipe, tint/clipping mask, and real option thumbnail.
+// Limiting the traversal to asset-bearing declarations avoids treating identity
+// metadata as assets while retaining the legacy fixed-layer contract.
+export function collectTemplateAssetReferences(template) {
+  const declarations = template.schemaVersion === 2
+    ? [template.recipes, Object.values(template.options ?? {}).flatMap(options => options.map(option => option.thumbnailAssets ?? []))]
+    : template.layers;
+  const unique = new Map(collectLayerReferences(declarations).map(reference => [tupleKey(reference), reference]));
+  return [...unique.values()];
+}
+
 function tupleKey(asset) {
   return `${asset.id}\u0000${asset.version}\u0000${asset.purpose}`;
 }
@@ -134,8 +145,10 @@ async function verifyTemplateSources({actual, expectedAssets, previewFiles, regi
   expectedAssets.add(sourcesPath);
   const sourceManifest = JSON.parse(await fs.readFile(path.join(root, templateSourcesPath), 'utf8'));
   assert.equal(sourceManifest.schemaVersion, 1, 'Template source manifest schemaVersion');
-  const canvas = dimOf(sourceManifest.canvas);
-  assert(canvas && Number.isInteger(canvas.width) && canvas.width > 0 && Number.isInteger(canvas.height) && canvas.height > 0, 'Template source canvas dimensions');
+  for (const template of registry) {
+    const canvas = dimOf(template.canvas);
+    assert(canvas && Number.isInteger(canvas.width) && canvas.width > 0 && Number.isInteger(canvas.height) && canvas.height > 0, `Template canvas dimensions: ${template.id}`);
+  }
   assert(Array.isArray(sourceManifest.assets), 'Template source manifest assets must be an array');
   const sourceRows = sourceManifest.assets;
   const sourceByTuple = new Map();
@@ -160,7 +173,7 @@ async function verifyTemplateSources({actual, expectedAssets, previewFiles, regi
     assert.equal(bytes.length, asset.byteSize, `Template source byte size ${asset.id}`);
     assert.equal(hash(bytes), asset.sha256, `Template source hash ${asset.id}`);
     assert.deepEqual(pngDimensions(bytes, filePath), dim, `Template source dimensions ${asset.id}`);
-    const template = registry.find(item => collectLayerReferences(item.layers).some(reference => tupleKey(reference) === key));
+    const template = registry.find(item => collectTemplateAssetReferences(item).some(reference => tupleKey(reference) === key));
     assert(template, `Template source asset is not referenced by a registered layer: ${asset.id}`);
     const sourcePending = asset.status === 'pending';
     if (sourcePending) previewFiles.add(filePath);
@@ -173,7 +186,7 @@ async function verifyTemplateSources({actual, expectedAssets, previewFiles, regi
 
   const refs = new Map();
   for (const template of registry) {
-    for (const reference of collectLayerReferences(template.layers)) refs.set(tupleKey(reference), reference);
+    for (const reference of collectTemplateAssetReferences(template)) refs.set(tupleKey(reference), reference);
   }
   assert.deepEqual(templateIds(sourceManifest.templates), registry.map(item => item.id).sort(), 'Template source manifest template IDs differ from the runtime registry');
   const sourceTemplateRows = Array.isArray(sourceManifest.templates)
@@ -199,7 +212,7 @@ async function verifyTemplateSources({actual, expectedAssets, previewFiles, regi
     assert(source, `Template layer ref has no exact source registration: ${reference.id}`);
     assert.equal(source.version, reference.version, `Template source version mismatch ${reference.id}`);
     assert.equal(source.purpose, reference.purpose, `Template source purpose mismatch ${reference.id}`);
-    const template = registry.find(item => collectLayerReferences(item.layers).some(candidate => tupleKey(candidate) === tupleKey(reference)));
+    const template = registry.find(item => collectTemplateAssetReferences(item).some(candidate => tupleKey(candidate) === tupleKey(reference)));
     if (template.status !== 'approved') assert.equal(source.status, 'pending', `Pending template ${template.id} has an unmarked source layer ${reference.id}`);
   }
 
@@ -238,7 +251,7 @@ export async function build() {
 
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
   assert(html.includes(`data-cache="${revision}"`), `HTML cache ${revision}`);
-  const catalog = await import('../dist/studio-artwork-catalog.js?v=99');
+  const catalog = await import('../dist/studio-artwork-catalog.js?v=100');
   assert.equal(catalog.CATALOG_REVISION, catalogRevision);
   assert(Array.isArray(catalog.ARTWORKS) && catalog.ARTWORKS.length > 0, 'Approved Artwork catalog must not be empty');
   assert(Array.isArray(catalog.PREVIEW_ARTWORKS), 'PREVIEW_ARTWORKS must be an explicit array');
@@ -275,7 +288,7 @@ export async function build() {
   }
   assert.equal(catalog.PREVIEW_PROMPTS.length, catalog.PREVIEW_ARTWORKS.length * 2, 'Pending artworks must have separate bilingual Prompts');
 
-  const content = await import('../dist/studio-content.js?v=99');
+  const content = await import('../dist/studio-content.js?v=100');
   const pendingUIAssets = (content.BRAND_ASSETS ?? []).filter(asset => asset.publicationStatus === 'preview-only');
   const registered = [...catalog.ASSETS, ...catalog.PREVIEW_ASSETS, ...(content.BRAND_ASSETS ?? [])].filter(asset => asset?.path);
   const registeredPaths = new Set();
@@ -295,14 +308,14 @@ export async function build() {
     previewFiles.add(assetPathFromReference(original.path));
   }
 
-  const templates = await import('../dist/studio-edit-templates.js?v=99');
-  assert.equal(templates.EDIT_TEMPLATE_REVISION, 'edit-templates-20261010-v99');
+  const templates = await import('../dist/studio-edit-templates.js?v=100');
+  assert.equal(templates.EDIT_TEMPLATE_REVISION, 'edit-templates-20261011-v100');
   assert(Array.isArray(templates.TEMPLATE_REGISTRY), 'Runtime template registry must be explicit');
-  for (const binding of [
-    ['candidate-dots-20261005', 'v2'],
-    ['candidate-grok-20261005', 'v2']
-  ]) assert(templates.TEMPLATE_REGISTRY.some(item => item.artworkBinding?.artworkId === binding[0]
-    && item.artworkBinding?.artworkVersion === binding[1]), `Missing representative template binding ${binding.join('@')}`);
+  for (const artwork of approvedArtworks) {
+    const matches = templates.TEMPLATE_REGISTRY.filter(item => item.artworkBinding?.artworkId === artwork.id && item.artworkBinding?.artworkVersion === artwork.version);
+    assert.equal(matches.length, 1, `Every current Artwork needs one exact Template: ${artwork.id}@${artwork.version}`);
+    assert(templates.getTemplateForArtwork(artwork), `The current Artwork Template must be publicly eligible: ${artwork.id}`);
+  }
   const {sourceManifest: templateSources, sourceRows: templateAssets} = await verifyTemplateSources({
     actual, expectedAssets, previewFiles, registry: templates.TEMPLATE_REGISTRY
   });
@@ -315,6 +328,17 @@ export async function build() {
     const source = await fs.readFile(path.join(root, filePath), 'utf8');
     if (filePath.endsWith('.html')) collectHtmlAssets(source, expectedAssets);
     if (filePath.endsWith('.css')) collectCssAssets(source, expectedAssets);
+  }
+  const retained = manifest.retainedHistoricalAssets || [];
+  assert.equal(new Set(retained.map(row => row.path)).size, retained.length, 'Retained historical asset paths are unique');
+  for (const asset of retained) {
+    assert(isSafePublishPath(asset.path) && asset.path.startsWith('dist/assets/'), `Invalid retained historical asset path: ${asset.path}`);
+    assert(!expectedAssets.has(asset.path), `A retained-only historical asset is still registered as current: ${asset.path}`);
+    assert.equal(typeof asset.sourceRecord, 'string', `Retained asset needs its historical source record: ${asset.path}`);
+    const bytes = await fs.readFile(path.join(root, asset.path));
+    assert.equal(bytes.length, asset.byteSize, `Retained asset byte size: ${asset.path}`);
+    assert.equal(hash(bytes), asset.sha256, `Retained asset hash: ${asset.path}`);
+    expectedAssets.add(asset.path);
   }
   checkInventory(actual.filter(filePath => filePath.startsWith('dist/assets/')), [...expectedAssets]);
   const expectedPendingFiles = [...previewFiles].sort();
@@ -334,7 +358,7 @@ export async function build() {
     revision,
     catalogRevision,
     evidenceDirectory: path.relative(root, evidenceDirectory),
-    scope: 'v99 static build and registered content readiness; this report does not claim that deployment has run or succeeded.',
+    scope: 'v100 local static build and registered content readiness; this report does not claim that deployment has run or succeeded.',
     deploymentReady: deploymentBlockers.length === 0,
     deploymentBlockers,
     approvedArtworkCount: approvedArtworks.length,

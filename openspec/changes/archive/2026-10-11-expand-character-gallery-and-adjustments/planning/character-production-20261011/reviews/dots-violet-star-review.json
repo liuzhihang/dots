@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-violet-star",
+  "artworkVersion": "v1",
+  "originalSha256": "1dde58d2eb78c4a7025ba60e0f3a62a492a3a076a647f9a615f989e4665393c8",
+  "templateId": "dots-violet-star-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-violet-star-review.json",
+  "manifestSha256": "61b88c87705beab92b250bf17d1f04e52022973443b905e25d0eab2012c9cfec",
+  "engineeringReport": ".artifacts/character-adjustments/dots-violet-star-adjustments-v1/report.json",
+  "engineeringReportSha256": "f60f2b9bf7a3ac12137e768f56e6f784fa7514036ce9f07ecf92c3c56f6cd6c4",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none",
+      "sha256": "27b9b98fad62e5faddec64a755d3ba27cc32b59c856f3276114aa214e0c8c60b"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "e0122a96b781d1461036c5b5f7f66cdef6a3b7d7296634c762fe28ec22e086db"
+    },
+    {
+      "id": "classic-alternate-open-none",
+      "sha256": "75cda599c0d4b82e7b32a1bfe10f5ab82591d7e1211e0260a60b511909e7ba25"
+    },
+    {
+      "id": "classic-original-closed-none",
+      "sha256": "b9bc03fdecf381924ffb5b870c03768674c2d0250860e15393fbff2e981586dc"
+    },
+    {
+      "id": "classic-original-open-fitted",
+      "sha256": "887f102ffda0ea3fce8dec4c7232701a5c2408b262300cfb75d0da76d04161e7"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

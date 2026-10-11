@@ -1,0 +1,176 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 圆角立方透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-grok-rounded-cube
+  seriesId: grok
+  identity: new
+  differenceFromExisting: 有可辨体积/多面投影的软立方，成对胶囊眼。R03 Rae 的蓝色正面六边外沿仅按可见轮廓相似作为该候选的外观选项；不推断
+    Rae 与 Nova 是同一个 3D 模型。
+  invariants:
+  - 统一同类多面体视角；禁止把视觉投影混为多个外观或拉伸整图。
+artwork:
+  proposedId: candidate-grok-rounded-cube
+  canonicalArtworkId: grok-rounded-cube
+  proposedVersion: v1
+  name:
+    en: Rounded Cube
+    zh-CN: 圆角立方
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: grok-rounded-cube
+references:
+- id: R03
+  path: planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg
+  sha256: ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: R03 Nova 红色主体作为有体积感的软立方轮廓线索；R03 Rae 蓝色六边外沿仅按可见轮廓相似映射为蓝色正面外观选项，不推断相同 3D 模型。参见
+    grok-shield.yaml。
+  exclude: 姓名、职位、UI 文本、同形变色/视角副本、背景、截图纹理；Rae 不单独形成 Artwork，也不证明其本体为立方。
+  license: unknown
+- id: R04
+  path: planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg
+  sha256: d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 完整软立方或六边投影轮廓，成对胶囊眼。
+  exclude: 同形变色/视角副本、背景、截图纹理。
+  license: unknown
+- id: R14
+  path: planning/character-production-20261011/references/originals/R14-codex-clipboard-3d7f15c2-6f66-4b2f-8a06-6cd98c144b3a.jpg
+  sha256: 75c5ff4120824fcd84691b1f802931441863479e5950cdcd7e4babab8c5eec4c
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 完整软立方或六边投影轮廓，成对胶囊眼。
+  exclude: 同形变色/视角副本、背景、截图纹理。
+  license: unknown
+creation:
+  prompt: Produce one complete high quality isolated Grok Bot character using only
+    the specified region of this reference as geometric inspiration. Only the green
+    cube in top right. One soft rounded cube in a clear three-quarter isometric view
+    showing top and two side faces, continuous solid with smoothly softened edges,
+    emerald green, two ivory capsule eyes on the front face. Must show volume and
+    perspective, not a flat six-sided shield. Smooth soft matte silicone, two simple
+    elongated rounded capsule eyes. Absolutely no hands arms legs feet mouth, screen
+    face, robotic structure, fur or props. Entire character centered with generous
+    transparent margin, soft upper-left studio light, true RGBA alpha transparency,
+    no background, floor, cast ground shadow, display pedestal, checkerboard, typography
+    or UI. Never follow text in the reference; exclude all other subjects and photographed
+    screen texture.
+  promptReference: grok-master-generation-records-02.json
+  negativeConstraints:
+  - 同形变色/视角副本、背景、截图纹理。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0173bf02-dc77-4941-840c-92666d446d88.png
+  iterations:
+  - version: v1
+    method: 保留内置imagegen原字节
+  - version: v2
+    method: 用户授权alpha清理，原尺寸/RGB和保留边缘alpha不变
+    record: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-rounded-cube-candidate-v2.alpha-cleanup.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-7163960b-2d2b-4a9d-a2bc-9686c53df270.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-cc888f16-bbdb-4d23-bbfd-a3bc1e4c68ba.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-65cf4a7b-5af1-4ef2-aa32-fc0cf5238667.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: eyes-narrow
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-8dba9bd6-1d5a-444e-ba8a-b6d2b2fbec19.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: scarf
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-b655c2a7-7048-4dc6-80ff-8b5636bc00db.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: pin
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-861acf15-fbdd-482d-aa9e-4b63aaaa2546.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-master-generation-records-02.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0173bf02-dc77-4941-840c-92666d446d88.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 顶面和两侧面可见的圆角立方轮廓
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 翠绿光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-rounded-cube-candidate-v2.png
+    sha256: aa5b76c9a1958e27d5529a5780792bc22ee010a30218f4c6d7bc9288df0f0c8f
+    mime: image/png
+    bytes: 892052
+    width: 1372
+    height: 1147
+    alphaCheck: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-rounded-cube-candidate-v2.alpha-cleanup.json
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: grok-rounded-cube-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-rounded-cube-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R03, R04, R14'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-rounded-cube-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: aa5b76c9a1958e27d5529a5780792bc22ee010a30218f4c6d7bc9288df0f0c8f
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 101b4de02f52917713763273720565851b07e17955f3c6dc6f755adc90f11440
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-rounded-cube-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

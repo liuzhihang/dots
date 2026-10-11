@@ -1,4 +1,4 @@
-export { DISPLAY_ASSETS, APPROVED_DISPLAY_ASSETS, PREVIEW_DISPLAY_ASSETS, THUMBNAIL_ASSETS, DETAIL_PREVIEW_ASSETS } from './studio-display-assets.js?v=99';
+export { DISPLAY_ASSETS, APPROVED_DISPLAY_ASSETS, PREVIEW_DISPLAY_ASSETS, THUMBNAIL_ASSETS, DETAIL_PREVIEW_ASSETS } from './studio-display-assets.js?v=100';
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -10,8 +10,8 @@ export const SERIES = deepFreeze([
   { id: 'dots', labelByLanguage: { en: 'Dots', 'zh-CN': 'Dots' } },
   { id: 'grok', labelByLanguage: { en: 'Grok Bot', 'zh-CN': 'Grok Bot' } },
   { id: 'meta-muse', labelByLanguage: { en: 'Muse', 'zh-CN': 'Muse' } },
-  { id: 'humans', labelByLanguage: { en: 'People', 'zh-CN': '人物' } },
-  { id: 'animals', labelByLanguage: { en: 'Animals', 'zh-CN': '动物' } }
+  { id: 'animals', labelByLanguage: { en: 'Animals', 'zh-CN': '动物' } },
+  { id: 'humans', labelByLanguage: { en: 'People', 'zh-CN': '人物' } }
 ]);
 
 export const DOTS_PROMPT = deepFreeze({

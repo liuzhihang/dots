@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-11",
+  "change": "expand-character-gallery-and-adjustments",
+  "progress": {
+    "complete": 40,
+    "total": 51
+  },
+  "scope": "Materials, shared implementation, candidate QA and current-public regression before art approval. Not final 44-character public integration.",
+  "package": {
+    "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/gallery-adjustments-review-package-v1.json",
+    "sha256": "c9d1096258291a9d62e185a274ecf0bb0f1deba97010f96f96b688e41f01c49c",
+    "artworkCount": 44,
+    "recipeCount": 540,
+    "artApproval": "pending"
+  },
+  "currentPublicRegression": {
+    "path": ".artifacts/character-adjustments/core-preintegration-results.json",
+    "sha256": "470c2cfc5b0e9146d4e2889a0635ea8a152d3af58cd5d4c4de7da2ceca78ac5b",
+    "artworkCount": 24,
+    "templateCount": 2,
+    "recipeCount": 28
+  },
+  "inAppBrowser": {
+    "galleryScreenshot": ".artifacts/character-adjustments/all-44-gallery-iab.png",
+    "fourTabScreenshot": ".artifacts/character-adjustments/final-four-tabs-iab.png",
+    "actualExport": {
+      "path": ".artifacts/character-adjustments/final-four-tabs-iab-export.json",
+      "sha256": "4d5edcbdfb7eaf3facc9d1d7015bd3da0d1fc1a5d3eb92dea0ceaeeb92b528a7"
+    }
+  },
+  "remaining": [
+    "Precise user art approval (task 8.3)",
+    "Approved catalog/template/source/derivative integration (9.1 and 9.3)",
+    "Integrated 44-character UI/flow verification (4.1-4.4 and 10.1-10.3)",
+    "Final inventory/protected-file/release-summary check (10.4)"
+  ],
+  "device": "not-run",
+  "gitCommit": "not-authorized",
+  "deployment": "not-authorized"
+}

@@ -1,0 +1,3916 @@
+{
+  "schemaVersion": 1,
+  "change": "expand-character-gallery-and-adjustments",
+  "capturedAt": "2026-10-11",
+  "purpose": "锁定本 change 开始前已批准的 24 个 Artwork 身份/精确源版本，展示新五类角色调整的工程、美术及批准缺口。历史批准原范围不扩大。",
+  "baseline": {
+    "head": "4652430",
+    "worktreeAtStart": "clean except active untracked OpenSpec change",
+    "seriesCounts": {
+      "dots": 6,
+      "grok": 4,
+      "meta-muse": 4,
+      "animals": 5,
+      "humans": 4,
+      "independent-original": 1
+    },
+    "denominator": 24,
+    "artworkIds": [
+      "candidate-dots-20261005",
+      "dots-rose-glasses",
+      "dots-lilac-bucket",
+      "dots-butter-beret",
+      "dots-lime-frog-bow",
+      "dots-pink-heart-shades",
+      "candidate-grok-20261005",
+      "grok-green-cloud",
+      "grok-teal-square",
+      "grok-coral-drop",
+      "candidate-meta-muse-20261005",
+      "muse-rose-flowers",
+      "muse-sage-reading",
+      "muse-lavender-lantern",
+      "candidate-animals-20261005",
+      "animal-white-cat",
+      "animal-gray-husky",
+      "animal-white-rabbit-v98-candidate",
+      "animal-cocoa-bear",
+      "candidate-humans-20261005",
+      "human-bun-yellow",
+      "human-blond-glasses",
+      "human-rust-jacket",
+      "robot-ivory-capsule-face-v98-candidate"
+    ]
+  },
+  "requiredCategories": [
+    {
+      "id": "appearance",
+      "minimumDistinctReachableResults": 2,
+      "criterion": "需要两个真实轮廓/外观结果和精确 Artwork 绑定的已验收资源。"
+    },
+    {
+      "id": "colors",
+      "minimumDistinctReachableResults": 2,
+      "criterion": "需要两个实际可达、符合材质且分区正确的配色结果。"
+    },
+    {
+      "id": "face",
+      "minimumDistinctReachableResults": 2,
+      "criterion": "需要两个实际可达的五官/静态表情结果。"
+    },
+    {
+      "id": "clothing",
+      "minimumDistinctReachableResults": 2,
+      "criterion": "需要无服装与至少一件真实适配服装等两个结果。"
+    },
+    {
+      "id": "accessories",
+      "minimumDistinctReachableResults": 2,
+      "criterion": "需要无配饰与至少一件真实适配配件/物品等两个结果。"
+    }
+  ],
+  "observedExistingTemplates": [
+    {
+      "id": "dots-orb-v1",
+      "version": "v1",
+      "artworkBinding": {
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "status": "approved",
+      "engineeringStatus": "passed",
+      "approval": "approved",
+      "legacyLegalRecipeCount": 12,
+      "scope": "dots-orb-v1@v1 + candidate-dots-20261005@v2; 12 registered configurations"
+    },
+    {
+      "id": "grok-orb-v1",
+      "version": "v1",
+      "artworkBinding": {
+        "artworkId": "candidate-grok-20261005",
+        "artworkVersion": "v2"
+      },
+      "status": "approved",
+      "engineeringStatus": "passed",
+      "approval": "approved",
+      "legacyLegalRecipeCount": 16,
+      "scope": "grok-orb-v1@v1 + candidate-grok-20261005@v2; 16 registered configurations"
+    }
+  ],
+  "additionalArtworkCandidates": "subject-map.md and briefs/README.md enumerate planning candidates; they are not in the baseline or current public Artwork denominator until actual Artwork is registered. Once approved for the default Gallery, add each exact Artwork/version to the coverage matrix; pending candidates never count.",
+  "rows": [
+    {
+      "artwork": {
+        "id": "candidate-dots-20261005",
+        "version": "v2",
+        "seriesId": "dots",
+        "characterId": "dots-core",
+        "titleByLanguage": {
+          "en": "Headphones",
+          "zh-CN": "耳机"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:candidate-dots-20261005:original",
+        "version": "v2",
+        "path": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "mime": "image/png",
+        "byteSize": 1720054,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 742591,
+          "opaquePixels": 478,
+          "partialAlphaPixels": 829447,
+          "visibleBounds": {
+            "x": 35,
+            "y": 21,
+            "width": 1187,
+            "height": 1169,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": {
+        "id": "dots-orb-v1",
+        "version": "v1",
+        "registryRevision": "edit-templates-20261010-v99",
+        "exactBinding": {
+          "artworkId": "candidate-dots-20261005",
+          "artworkVersion": "v2"
+        },
+        "status": "approved",
+        "engineeringStatus": "passed",
+        "artApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "approvalId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "dots-orb-v1@v1 + candidate-dots-20261005@v2; 12 registered configurations"
+        },
+        "legacyLegalRecipeCount": 12,
+        "legacyLegalRecipes": [
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "headphones"
+            }
+          },
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "headphones"
+            }
+          },
+          {
+            "options": {
+              "color": "blue",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "none",
+              "accessory": "headphones"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "original",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "none",
+              "accessory": "headphones"
+            }
+          },
+          {
+            "options": {
+              "color": "warm-yellow",
+              "shape": "orb",
+              "eyes": "closed",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          }
+        ],
+        "assetReferences": [
+          {
+            "id": "template:dots-orb-v1:body-neutral",
+            "version": "v1",
+            "purpose": "body-neutral",
+            "path": "./assets/templates/dots-orb-v1/body-neutral.png",
+            "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+            "byteSize": 1675380,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:eyes:original",
+            "version": "v1",
+            "purpose": "eyes",
+            "path": "./assets/templates/dots-orb-v1/eyes/original.png",
+            "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+            "byteSize": 113720,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:headphones:default:rear",
+            "version": "v1",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/dots-orb-v1/headphones/rear.png",
+            "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0",
+            "byteSize": 216883,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:headphones:default:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/dots-orb-v1/headphones/front.png",
+            "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9",
+            "byteSize": 371080,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:glasses:round:rear",
+            "version": "v1",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/dots-orb-v1/glasses/round-rear.png",
+            "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5",
+            "byteSize": 78452,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:glasses:round:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/dots-orb-v1/glasses/round-front.png",
+            "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae",
+            "byteSize": 111958,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:eyes:closed",
+            "version": "v1",
+            "purpose": "eyes",
+            "path": "./assets/templates/dots-orb-v1/eyes/closed.png",
+            "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+            "byteSize": 72043,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          }
+        ]
+      },
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "blue",
+            "warm-yellow"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "original",
+            "closed"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "none",
+            "round",
+            "none",
+            "headphones"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "legacy-template-engineering-passed; not five-category coverage",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v2",
+        "originalAssetIdAtCapture": "asset:candidate-dots-20261005:original",
+        "originalAssetSha256AtCapture": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "templateIdAtCapture": "dots-orb-v1",
+        "templateVersionAtCapture": "v1",
+        "templateEngineeringStatusAtCapture": "passed",
+        "templateArtApprovalStatusAtCapture": "approved",
+        "legalRecipeCountAtCapture": 12,
+        "templateResourcesAtCapture": [
+          {
+            "id": "template:dots-orb-v1:body-neutral",
+            "version": "v1",
+            "purpose": "body-neutral",
+            "path": "./assets/templates/dots-orb-v1/body-neutral.png",
+            "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+            "byteSize": 1675380,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:eyes:original",
+            "version": "v1",
+            "purpose": "eyes",
+            "path": "./assets/templates/dots-orb-v1/eyes/original.png",
+            "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+            "byteSize": 113720,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:headphones:default:rear",
+            "version": "v1",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/dots-orb-v1/headphones/rear.png",
+            "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0",
+            "byteSize": 216883,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:headphones:default:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/dots-orb-v1/headphones/front.png",
+            "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9",
+            "byteSize": 371080,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:glasses:round:rear",
+            "version": "v1",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/dots-orb-v1/glasses/round-rear.png",
+            "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5",
+            "byteSize": 78452,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:glasses:round:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/dots-orb-v1/glasses/round-front.png",
+            "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae",
+            "byteSize": 111958,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:dots-orb-v1:eyes:closed",
+            "version": "v1",
+            "purpose": "eyes",
+            "path": "./assets/templates/dots-orb-v1/eyes/closed.png",
+            "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+            "byteSize": 72043,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          }
+        ],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v2",
+        "currentOriginalAssetId": "asset:candidate-dots-20261005:original",
+        "currentOriginalAssetSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+        "currentTemplateId": "dots-orb-v1",
+        "currentTemplateVersion": "v1",
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "dots-rose-glasses",
+        "version": "v1",
+        "seriesId": "dots",
+        "characterId": "dots-core",
+        "titleByLanguage": {
+          "en": "Rose Glasses",
+          "zh-CN": "莓粉眼镜"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:dots-rose-glasses:original",
+        "version": "v1",
+        "path": "dist/assets/looks/dots-rose-glasses.png",
+        "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "mime": "image/png",
+        "byteSize": 1860436,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 731940,
+          "opaquePixels": 26,
+          "partialAlphaPixels": 840550,
+          "visibleBounds": {
+            "x": 0,
+            "y": 57,
+            "width": 1214,
+            "height": 1197,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-rose-glasses.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:dots-rose-glasses:original",
+        "originalAssetSha256AtCapture": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:dots-rose-glasses:original",
+        "currentOriginalAssetSha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "dots-lilac-bucket",
+        "version": "v1",
+        "seriesId": "dots",
+        "characterId": "dots-core",
+        "titleByLanguage": {
+          "en": "Bucket Hat",
+          "zh-CN": "渔夫帽"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:dots-lilac-bucket:original",
+        "version": "v1",
+        "path": "dist/assets/looks/dots-lilac-bucket.png",
+        "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "mime": "image/png",
+        "byteSize": 1605008,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 808076,
+          "opaquePixels": 66,
+          "partialAlphaPixels": 764374,
+          "visibleBounds": {
+            "x": 79,
+            "y": 17,
+            "width": 1095,
+            "height": 1163,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/dots-lilac-bucket.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:dots-lilac-bucket:original",
+        "originalAssetSha256AtCapture": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:dots-lilac-bucket:original",
+        "currentOriginalAssetSha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "dots-butter-beret",
+        "version": "v2",
+        "seriesId": "dots",
+        "characterId": "dots-butter-beret",
+        "titleByLanguage": {
+          "en": "Butter Beret",
+          "zh-CN": "奶油黄贝雷帽"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:dots-butter-beret:original",
+        "version": "v2",
+        "path": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "mime": "image/png",
+        "byteSize": 1541746,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 816738,
+          "opaquePixels": 438,
+          "partialAlphaPixels": 755340
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/generated/dots-butter-beret-candidate-v2.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/dots-butter-beret/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v2",
+        "originalAssetIdAtCapture": "asset:dots-butter-beret:original",
+        "originalAssetSha256AtCapture": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v2",
+        "currentOriginalAssetId": "asset:dots-butter-beret:original",
+        "currentOriginalAssetSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "dots-lime-frog-bow",
+        "version": "v1",
+        "seriesId": "dots",
+        "characterId": "dots-lime-frog-bow",
+        "titleByLanguage": {
+          "en": "Lime Frog",
+          "zh-CN": "青柠蛙形"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:dots-lime-frog-bow:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+        "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+        "mime": "image/png",
+        "byteSize": 1087340,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1061852,
+          "opaquePixels": 164,
+          "partialAlphaPixels": 510500
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-lime-frog-bow-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/dots-lime-frog-bow/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:dots-lime-frog-bow:original",
+        "originalAssetSha256AtCapture": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:dots-lime-frog-bow:original",
+        "currentOriginalAssetSha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "dots-pink-heart-shades",
+        "version": "v1",
+        "seriesId": "dots",
+        "characterId": "dots-pink-heart-shades",
+        "titleByLanguage": {
+          "en": "Pink Heart",
+          "zh-CN": "粉色爱心"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:dots-pink-heart-shades:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+        "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+        "mime": "image/png",
+        "byteSize": 905104,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1136516,
+          "opaquePixels": 7,
+          "partialAlphaPixels": 435993
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/character-production-20261010-builtins/generated/dots-pink-heart-shades-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/dots-pink-heart-shades/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:dots-pink-heart-shades:original",
+        "originalAssetSha256AtCapture": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:dots-pink-heart-shades:original",
+        "currentOriginalAssetSha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "candidate-grok-20261005",
+        "version": "v2",
+        "seriesId": "grok",
+        "characterId": "grok-core",
+        "titleByLanguage": {
+          "en": "Purple",
+          "zh-CN": "紫色"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:candidate-grok-20261005:original",
+        "version": "v2",
+        "path": "dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "sha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "mime": "image/png",
+        "byteSize": 971168,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 780111,
+          "opaquePixels": 1168,
+          "partialAlphaPixels": 791237,
+          "visibleBounds": {
+            "x": 0,
+            "y": 81,
+            "width": 1192,
+            "height": 1173,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/grok-bot-purple-orb-candidate-v2.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": {
+        "id": "grok-orb-v1",
+        "version": "v1",
+        "registryRevision": "edit-templates-20261010-v99",
+        "exactBinding": {
+          "artworkId": "candidate-grok-20261005",
+          "artworkVersion": "v2"
+        },
+        "status": "approved",
+        "engineeringStatus": "passed",
+        "artApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "approvalId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "grok-orb-v1@v1 + candidate-grok-20261005@v2; 16 registered configurations"
+        },
+        "legacyLegalRecipeCount": 16,
+        "legacyLegalRecipes": [
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "purple",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "angled-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "none",
+              "accessory": "soft-cap"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "none"
+            }
+          },
+          {
+            "options": {
+              "color": "mint",
+              "shape": "orb",
+              "eyes": "upright-capsules",
+              "glasses": "round",
+              "accessory": "soft-cap"
+            }
+          }
+        ],
+        "assetReferences": [
+          {
+            "id": "template:grok-orb-v1:body-neutral",
+            "version": "v1",
+            "purpose": "body-neutral",
+            "path": "./assets/templates/grok-orb-v1/body-neutral.png",
+            "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+            "byteSize": 1106046,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:eyes:angled-capsules",
+            "version": "v2",
+            "purpose": "eyes",
+            "path": "./assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+            "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+            "byteSize": 109511,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:cap:soft:rear",
+            "version": "v2",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/grok-orb-v1/cap/rear-v2.png",
+            "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+            "byteSize": 648210,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:cap:soft:front",
+            "version": "v2",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/grok-orb-v1/cap/front-v2.png",
+            "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+            "byteSize": 222431,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:glasses:round:rear",
+            "version": "v2",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+            "sha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f",
+            "byteSize": 72835,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:glasses:round:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/grok-orb-v1/glasses/round-front.png",
+            "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34",
+            "byteSize": 99090,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:eyes:upright-capsules",
+            "version": "v2",
+            "purpose": "eyes",
+            "path": "./assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+            "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+            "byteSize": 92782,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          }
+        ]
+      },
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "purple",
+            "mint"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "angled-capsules",
+            "upright-capsules"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [
+            "none",
+            "round",
+            "none",
+            "soft-cap"
+          ],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "legacy-template-engineering-passed; not five-category coverage",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v2",
+        "originalAssetIdAtCapture": "asset:candidate-grok-20261005:original",
+        "originalAssetSha256AtCapture": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "templateIdAtCapture": "grok-orb-v1",
+        "templateVersionAtCapture": "v1",
+        "templateEngineeringStatusAtCapture": "passed",
+        "templateArtApprovalStatusAtCapture": "approved",
+        "legalRecipeCountAtCapture": 16,
+        "templateResourcesAtCapture": [
+          {
+            "id": "template:grok-orb-v1:body-neutral",
+            "version": "v1",
+            "purpose": "body-neutral",
+            "path": "./assets/templates/grok-orb-v1/body-neutral.png",
+            "sha256": "a6faa2a5280c3311aa0969ef3e63192650afb989646cc7ba0fa06493bd6a3d6f",
+            "byteSize": 1106046,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:eyes:angled-capsules",
+            "version": "v2",
+            "purpose": "eyes",
+            "path": "./assets/templates/grok-orb-v1/eyes/angled-capsules-v2.png",
+            "sha256": "1d95935949f6bc711af727a7c0f07d87fcf943ba3610fb34b5500e5f2e0f1d3f",
+            "byteSize": 109511,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:cap:soft:rear",
+            "version": "v2",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/grok-orb-v1/cap/rear-v2.png",
+            "sha256": "cc42f8e839462c382d86e1cc1bda712f09affc2da4476dde5b528b8d83c453c0",
+            "byteSize": 648210,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:cap:soft:front",
+            "version": "v2",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/grok-orb-v1/cap/front-v2.png",
+            "sha256": "0976dbab904eeffe4cd87a1930cbfef13b362e9785371d6849fa65bf33f18644",
+            "byteSize": 222431,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:glasses:round:rear",
+            "version": "v2",
+            "purpose": "accessory-rear",
+            "path": "./assets/templates/grok-orb-v1/glasses/round-rear-v2.png",
+            "sha256": "4efbd1627580e705e802cd03ee47dd43450af21ce0ec1372b8930098eb04106f",
+            "byteSize": 72835,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:glasses:round:front",
+            "version": "v1",
+            "purpose": "accessory-front",
+            "path": "./assets/templates/grok-orb-v1/glasses/round-front.png",
+            "sha256": "635710f3acab81502840e8cd557c44811fe1a9b80f622fd27452921ce3cc9f34",
+            "byteSize": 99090,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          },
+          {
+            "id": "template:grok-orb-v1:eyes:upright-capsules",
+            "version": "v2",
+            "purpose": "eyes",
+            "path": "./assets/templates/grok-orb-v1/eyes/upright-capsules-v2.png",
+            "sha256": "f36719d33bdde55b7835542fa4b414e723630dea032bfa733619af0fc4e9d697",
+            "byteSize": 92782,
+            "mime": "image/png",
+            "resourceStatus": "manifest-registered; exact file check delegated to validator"
+          }
+        ],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v2",
+        "currentOriginalAssetId": "asset:candidate-grok-20261005:original",
+        "currentOriginalAssetSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+        "currentTemplateId": "grok-orb-v1",
+        "currentTemplateVersion": "v1",
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "grok-green-cloud",
+        "version": "v1",
+        "seriesId": "grok",
+        "characterId": "grok-core",
+        "titleByLanguage": {
+          "en": "Green Cloud",
+          "zh-CN": "青绿云"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:grok-green-cloud:original",
+        "version": "v1",
+        "path": "dist/assets/looks/grok-green-cloud.png",
+        "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "mime": "image/png",
+        "byteSize": 790009,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 949952,
+          "opaquePixels": 956,
+          "partialAlphaPixels": 621608,
+          "visibleBounds": {
+            "x": 49,
+            "y": 0,
+            "width": 1129,
+            "height": 1254,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-green-cloud.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:grok-green-cloud:original",
+        "originalAssetSha256AtCapture": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:grok-green-cloud:original",
+        "currentOriginalAssetSha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "grok-teal-square",
+        "version": "v1",
+        "seriesId": "grok",
+        "characterId": "grok-core",
+        "titleByLanguage": {
+          "en": "Teal Square",
+          "zh-CN": "蓝绿方"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:grok-teal-square:original",
+        "version": "v1",
+        "path": "dist/assets/looks/grok-teal-square.png",
+        "sha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "mime": "image/png",
+        "byteSize": 828844,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 816693,
+          "opaquePixels": 264,
+          "partialAlphaPixels": 755559,
+          "visibleBounds": {
+            "x": 0,
+            "y": 9,
+            "width": 1214,
+            "height": 1245,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/grok-teal-square.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:grok-teal-square:original",
+        "originalAssetSha256AtCapture": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:grok-teal-square:original",
+        "currentOriginalAssetSha256": "81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "grok-coral-drop",
+        "version": "v1",
+        "seriesId": "grok",
+        "characterId": "grok-coral-drop",
+        "titleByLanguage": {
+          "en": "Coral Drop",
+          "zh-CN": "珊瑚水滴"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:grok-coral-drop:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/grok-coral-drop-candidate-v1.png",
+        "sha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+        "mime": "image/png",
+        "byteSize": 871631,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 904562,
+          "opaquePixels": 976,
+          "partialAlphaPixels": 666978
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/generated/grok-coral-drop-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/grok-coral-drop/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:grok-coral-drop:original",
+        "originalAssetSha256AtCapture": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:grok-coral-drop:original",
+        "currentOriginalAssetSha256": "443d0143546c74822387f898471030621c011d2b549bf48ee60857dd1e3d1af8",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "candidate-meta-muse-20261005",
+        "version": "v1",
+        "seriesId": "meta-muse",
+        "characterId": "meta-muse-core",
+        "titleByLanguage": {
+          "en": "Cream",
+          "zh-CN": "奶油"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:candidate-meta-muse-20261005:original",
+        "version": "v1",
+        "path": "dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "sha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+        "mime": "image/png",
+        "byteSize": 1003955,
+        "width": 1235,
+        "height": 1274,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 985428,
+          "opaquePixels": 21,
+          "partialAlphaPixels": 587941,
+          "visibleBounds": {
+            "x": 33,
+            "y": 20,
+            "width": 1188,
+            "height": 1182,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/meta-muse-cream-hooded-candidate-v1.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:candidate-meta-muse-20261005:original",
+        "originalAssetSha256AtCapture": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:candidate-meta-muse-20261005:original",
+        "currentOriginalAssetSha256": "12ec7cee17f4948d5dd4258b3ad0fe5b44a38e9506b13f5ff39aa3856b3b3ea6",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "muse-rose-flowers",
+        "version": "v1",
+        "seriesId": "meta-muse",
+        "characterId": "meta-muse-core",
+        "titleByLanguage": {
+          "en": "Daisy",
+          "zh-CN": "花束"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:muse-rose-flowers:original",
+        "version": "v1",
+        "path": "dist/assets/looks/muse-rose-flowers.png",
+        "sha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "mime": "image/png",
+        "byteSize": 1185166,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 966879,
+          "opaquePixels": 193,
+          "partialAlphaPixels": 605444,
+          "visibleBounds": {
+            "x": 0,
+            "y": 20,
+            "width": 1216,
+            "height": 1164,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-rose-flowers.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:muse-rose-flowers:original",
+        "originalAssetSha256AtCapture": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:muse-rose-flowers:original",
+        "currentOriginalAssetSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "muse-sage-reading",
+        "version": "v1",
+        "seriesId": "meta-muse",
+        "characterId": "meta-muse-core",
+        "titleByLanguage": {
+          "en": "Sage",
+          "zh-CN": "鼠尾草"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:muse-sage-reading:original",
+        "version": "v1",
+        "path": "dist/assets/looks/muse-sage-reading.png",
+        "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "mime": "image/png",
+        "byteSize": 1142481,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1009482,
+          "opaquePixels": 32,
+          "partialAlphaPixels": 563002,
+          "visibleBounds": {
+            "x": 33,
+            "y": 20,
+            "width": 1193,
+            "height": 1210,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/muse-sage-reading.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:muse-sage-reading:original",
+        "originalAssetSha256AtCapture": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:muse-sage-reading:original",
+        "currentOriginalAssetSha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "muse-lavender-lantern",
+        "version": "v1",
+        "seriesId": "meta-muse",
+        "characterId": "muse-lavender-lantern",
+        "titleByLanguage": {
+          "en": "Lantern",
+          "zh-CN": "灯笼"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:muse-lavender-lantern:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+        "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+        "mime": "image/png",
+        "byteSize": 1014161,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1033310,
+          "opaquePixels": 101,
+          "partialAlphaPixels": 539105
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/generated/muse-lavender-lantern-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/muse-lavender-lantern/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:muse-lavender-lantern:original",
+        "originalAssetSha256AtCapture": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:muse-lavender-lantern:original",
+        "currentOriginalAssetSha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "candidate-animals-20261005",
+        "version": "v1",
+        "seriesId": "animals",
+        "characterId": "animal-shiba",
+        "titleByLanguage": {
+          "en": "Shiba Inu",
+          "zh-CN": "柴犬"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:candidate-animals-20261005:original",
+        "version": "v1",
+        "path": "dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+        "mime": "image/png",
+        "byteSize": 1413426,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 832059,
+          "opaquePixels": 48,
+          "partialAlphaPixels": 740409,
+          "visibleBounds": {
+            "x": 0,
+            "y": 19,
+            "width": 1242,
+            "height": 1235,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/animals-original-shiba-candidate-v1.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:candidate-animals-20261005:original",
+        "originalAssetSha256AtCapture": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:candidate-animals-20261005:original",
+        "currentOriginalAssetSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "animal-white-cat",
+        "version": "v1",
+        "seriesId": "animals",
+        "characterId": "animal-white-cat",
+        "titleByLanguage": {
+          "en": "White Cat",
+          "zh-CN": "奶油白猫"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:animal-white-cat:original",
+        "version": "v1",
+        "path": "dist/assets/looks/animal-white-cat.png",
+        "sha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "mime": "image/png",
+        "byteSize": 1382027,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 790208,
+          "opaquePixels": 16,
+          "partialAlphaPixels": 782292,
+          "visibleBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1238,
+            "height": 1231,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-white-cat.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:animal-white-cat:original",
+        "originalAssetSha256AtCapture": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:animal-white-cat:original",
+        "currentOriginalAssetSha256": "6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "animal-gray-husky",
+        "version": "v1",
+        "seriesId": "animals",
+        "characterId": "animal-gray-husky",
+        "titleByLanguage": {
+          "en": "Husky",
+          "zh-CN": "灰白哈士奇"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:animal-gray-husky:original",
+        "version": "v1",
+        "path": "dist/assets/looks/animal-gray-husky.png",
+        "sha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "mime": "image/png",
+        "byteSize": 1623665,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 790161,
+          "opaquePixels": 24,
+          "partialAlphaPixels": 782331,
+          "visibleBounds": {
+            "x": 0,
+            "y": 23,
+            "width": 1230,
+            "height": 1231,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/animal-gray-husky.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:animal-gray-husky:original",
+        "originalAssetSha256AtCapture": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:animal-gray-husky:original",
+        "currentOriginalAssetSha256": "21fa19552ec9c93282985aecf80a1c89d38d15064cf27c3a8bafc8cacdb315ca",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "animal-white-rabbit-v98-candidate",
+        "version": "v1",
+        "seriesId": "animals",
+        "characterId": "original-rabbit-v98-candidate",
+        "titleByLanguage": {
+          "en": "White Rabbit",
+          "zh-CN": "白兔"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:animal-white-rabbit-v98-candidate:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png",
+        "sha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+        "mime": "image/png",
+        "byteSize": 1443408,
+        "width": 1133,
+        "height": 1388,
+        "alpha": {
+          "hasAlpha": false,
+          "hasTransparency": false
+        },
+        "resourceKind": "opaque-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "design/acceptance/current-20261009-v98/asset-sources/animal-white-rabbit-v98-studio-candidate.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/animal-white-rabbit-v98-candidate/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:animal-white-rabbit-v98-candidate:original",
+        "originalAssetSha256AtCapture": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:animal-white-rabbit-v98-candidate:original",
+        "currentOriginalAssetSha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "animal-cocoa-bear",
+        "version": "v1",
+        "seriesId": "animals",
+        "characterId": "animal-cocoa-bear",
+        "titleByLanguage": {
+          "en": "Cocoa Bear",
+          "zh-CN": "可可熊"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:animal-cocoa-bear:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/animal-cocoa-bear-candidate-v1.png",
+        "sha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+        "mime": "image/png",
+        "byteSize": 956169,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1136537,
+          "opaquePixels": 5,
+          "partialAlphaPixels": 435974
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/generated/animal-cocoa-bear-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/animal-cocoa-bear/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:animal-cocoa-bear:original",
+        "originalAssetSha256AtCapture": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:animal-cocoa-bear:original",
+        "currentOriginalAssetSha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "candidate-humans-20261005",
+        "version": "v1",
+        "seriesId": "humans",
+        "characterId": "human-chestnut-knit",
+        "titleByLanguage": {
+          "en": "Chestnut",
+          "zh-CN": "栗发"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:candidate-humans-20261005:original",
+        "version": "v1",
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "mime": "image/png",
+        "byteSize": 1151483,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1069183,
+          "opaquePixels": 514,
+          "partialAlphaPixels": 502819,
+          "visibleBounds": {
+            "x": 33,
+            "y": 21,
+            "width": 1193,
+            "height": 1217,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:candidate-humans-20261005:original",
+        "originalAssetSha256AtCapture": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:candidate-humans-20261005:original",
+        "currentOriginalAssetSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "human-bun-yellow",
+        "version": "v1",
+        "seriesId": "humans",
+        "characterId": "human-bun-yellow",
+        "titleByLanguage": {
+          "en": "Yellow Hoodie",
+          "zh-CN": "黄衣丸子头"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:human-bun-yellow:original",
+        "version": "v1",
+        "path": "dist/assets/looks/human-bun-yellow.png",
+        "sha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "mime": "image/png",
+        "byteSize": 1086214,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1087604,
+          "opaquePixels": 328,
+          "partialAlphaPixels": 484584,
+          "visibleBounds": {
+            "x": 0,
+            "y": 1,
+            "width": 1228,
+            "height": 1253,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-bun-yellow.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:human-bun-yellow:original",
+        "originalAssetSha256AtCapture": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:human-bun-yellow:original",
+        "currentOriginalAssetSha256": "f7a5f87daa25e1171f8c42db6ed8b668b695bf6f40cbed0aa31d5f8ca7052ccc",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "human-blond-glasses",
+        "version": "v1",
+        "seriesId": "humans",
+        "characterId": "human-blond-glasses",
+        "titleByLanguage": {
+          "en": "Blond Glasses",
+          "zh-CN": "金发眼镜"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:human-blond-glasses:original",
+        "version": "v1",
+        "path": "dist/assets/looks/human-blond-glasses.png",
+        "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "mime": "image/png",
+        "byteSize": 1058375,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1099076,
+          "opaquePixels": 410,
+          "partialAlphaPixels": 473030,
+          "visibleBounds": {
+            "x": 19,
+            "y": 21,
+            "width": 1195,
+            "height": 1233,
+            "alphaThreshold": 1
+          }
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "historical-runtime/dist/studio-creation-assets.js:16-17",
+        "sourceSnapshotRef": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json#dist/assets/looks/human-blond-glasses.png",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+          "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+          "scope": "scope.registeredLooks",
+          "assetSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:human-blond-glasses:original",
+        "originalAssetSha256AtCapture": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:human-blond-glasses:original",
+        "currentOriginalAssetSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "human-rust-jacket",
+        "version": "v1",
+        "seriesId": "humans",
+        "characterId": "human-rust-jacket",
+        "titleByLanguage": {
+          "en": "Rust Jacket",
+          "zh-CN": "铁锈夹克"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:human-rust-jacket:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v99/human-rust-jacket-candidate-v1.png",
+        "sha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+        "mime": "image/png",
+        "byteSize": 944230,
+        "width": 1254,
+        "height": 1254,
+        "alpha": {
+          "hasAlpha": true,
+          "hasTransparency": true,
+          "min": 0,
+          "max": 255,
+          "transparentPixels": 1133821,
+          "opaquePixels": 1423,
+          "partialAlphaPixels": 437272
+        },
+        "resourceKind": "transparent-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/generated/human-rust-jacket-candidate-v1.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/human-rust-jacket/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:human-rust-jacket:original",
+        "originalAssetSha256AtCapture": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:human-rust-jacket:original",
+        "currentOriginalAssetSha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    },
+    {
+      "artwork": {
+        "id": "robot-ivory-capsule-face-v98-candidate",
+        "version": "v1",
+        "seriesId": "independent-original",
+        "characterId": "original-robot-v98-candidate",
+        "titleByLanguage": {
+          "en": "Ivory Bot",
+          "zh-CN": "奶白机器人"
+        },
+        "publicationStatus": "published"
+      },
+      "originalAsset": {
+        "id": "asset:robot-ivory-capsule-face-v98-candidate:original",
+        "version": "v1",
+        "path": "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png",
+        "sha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+        "mime": "image/png",
+        "byteSize": 1292849,
+        "width": 1215,
+        "height": 1295,
+        "alpha": {
+          "hasAlpha": false,
+          "hasTransparency": false
+        },
+        "resourceKind": "opaque-character-still",
+        "resourceStatus": "verified-source",
+        "sourceRef": "design/acceptance/current-20261009-v98/asset-sources/robot-ivory-capsule-face-v98-studio-candidate.png",
+        "sourceSnapshotRef": "design/acceptance/current-20261010-v99/release-20261011/approval.json#scope/artworks/robot-ivory-capsule-face-v98-candidate/original",
+        "sourceSnapshotMatch": true,
+        "preChangeArtApproval": {
+          "status": "approved",
+          "record": "design/acceptance/current-20261010-v99/release-20261011/approval.json",
+          "sourceId": "dots-current-v99-artwork-ui-template-approval-20261011",
+          "scope": "scope.currentV99ArtworkApproval",
+          "assetSha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+          "appliesOnlyToThisPreChangeArtworkVersion": true
+        }
+      },
+      "priorTemplate": null,
+      "fiveCategoryCoverage": {
+        "appearance": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "colors": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "face": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "clothing": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        },
+        "accessories": {
+          "requiredDistinctReachableResults": 2,
+          "status": "gap",
+          "acceptedResultIds": [],
+          "baselineObservation": [],
+          "evidenceStatus": "not-evaluated-for-five-category-change-contract",
+          "acceptanceEvidence": [],
+          "visualReviewStatus": "not-run",
+          "artApprovalStatus": "pending",
+          "evidenceRef": null
+        }
+      },
+      "currentChangeEvidence": {
+        "engineeringStatus": "not-run",
+        "visualReview": "not-run-for-this-five-category-recipe-set",
+        "artApproval": "pending-for-this-five-category-template-and-recipes",
+        "publicationDecision": "not-covered-by-new-five-category-contract",
+        "artworkVersionAtCapture": "v1",
+        "originalAssetIdAtCapture": "asset:robot-ivory-capsule-face-v98-candidate:original",
+        "originalAssetSha256AtCapture": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+        "templateIdAtCapture": null,
+        "templateVersionAtCapture": null,
+        "templateEngineeringStatusAtCapture": "missing",
+        "templateArtApprovalStatusAtCapture": "missing",
+        "legalRecipeCountAtCapture": 0,
+        "templateResourcesAtCapture": [],
+        "coverageSpecStatus": "not-run",
+        "currentArtworkVersion": "v1",
+        "currentOriginalAssetId": "asset:robot-ivory-capsule-face-v98-candidate:original",
+        "currentOriginalAssetSha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+        "currentTemplateId": null,
+        "currentTemplateVersion": null,
+        "recipeReviewStatus": "not-run",
+        "reviewedLegalRecipeCount": 0,
+        "reviewedRecipeSetSha256": null,
+        "newContractArtApprovalStatus": "pending"
+      },
+      "status": "gap",
+      "gaps": []
+    }
+  ]
+}

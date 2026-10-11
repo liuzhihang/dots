@@ -1,0 +1,147 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 花束 Muse透明素材与五类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: muse-rose-flowers
+  seriesId: muse
+  identity: existing
+  invariants:
+  - 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。
+artwork:
+  proposedId: muse-rose-flowers
+  canonicalArtworkId: muse-rose-flowers
+  proposedVersion: v1
+  name:
+    zh-CN: 花束 Muse
+    en: Flower Muse
+  resolvedId: muse-rose-flowers
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/looks/muse-rose-flowers.png
+  sha256: d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/looks/muse-rose-flowers.png
+    sha256: d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be
+    mime: image/png
+    bytes: 1185166
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: muse-rose-flowers-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-rose-flowers-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  reviewedRecipeCount: 13
+  manifestSha256: f577c53ad47a5b0d4d77e0ee8ee9dc683c0716e70783b2103d3245eb4747a6a6
+visibleFacts:
+  appearance:
+    state: known
+    evidence: 经典连续包覆身体与内嵌脸，双手自然捧白色雏菊花束
+  facialFeatures:
+    state: known
+    evidence: 内嵌桃色脸、睁开小圆眼与轻柔微笑
+  colorMaterial:
+    state: known
+    evidence: 玫瑰粉短绒身体，肤色与道具保持原色
+  clothing:
+    state: known
+    evidence: 原作没有额外衣装；浅蓝针织背心属于已检查的调整选项
+  headAccessory:
+    state: known
+    evidence: 原作没有头饰；雏菊花冠属于已检查的调整选项
+  bodyAccessory:
+    state: known
+    evidence: 原作没有其他身体穿戴配饰
+  prop:
+    state: known
+    evidence: 双手自然捧白色雏菊花束，不戴头饰
+promptText:
+  zh-CN: 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。 经典连续包覆身体与内嵌脸，双手自然捧白色雏菊花束；玫瑰粉短绒身体，肤色与道具保持原色；内嵌桃色脸、睁开小圆眼与轻柔微笑。完整单体，真正透明背景，无地面背景或额外文字。
+  en: One Muse character with a continuous soft plush hooded body, inset peach face,
+    small eyes and short rounded limbs. Preserve the unified hood/body and natural
+    support of any held prop. a continuous hooded body with an inset face; keep the
+    white daisy bouquet naturally held by both short round hands. One complete standalone
+    character on true alpha transparency, no background or text.
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- clothing
+- accessories
+finiteRecipes:
+  count: 13
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-rose-flowers-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  appearance:
+    state: known
+    description: 经典连续包覆身体与内嵌脸，双手自然捧白色雏菊花束
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  facialFeatures:
+    state: known
+    description: 内嵌桃色脸、睁开小圆眼与轻柔微笑
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  colorMaterial:
+    state: known
+    description: 玫瑰粉短绒身体，肤色与道具保持原色
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  clothing:
+    state: none
+    description: 原有绒布包覆身体，不另穿外套
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  headAccessory:
+    state: none
+    description: 双手自然捧白色雏菊花束，不戴头饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-rose-flowers-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: body-alternate
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-e15164db-b093-4814-b8d4-7199efa5177b.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: plush-mask
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-8b01dae7-4e3c-417e-8e00-8e0aa81e1f46.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: face-closed
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-faecf42c-af54-47ab-b62a-8282dd444b50.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: knit-vest
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-fd06f1fd-6006-441a-9849-786290d8c8d6.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: flower-crown
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-57a3442c-f78e-4074-8f6a-3b4dac68d06a.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-fullbody-generation-records-02.json
+    kind: color-body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9801c87a-00f6-4fa9-8e91-dc050f040196.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-fullbody-generation-records-02.json
+    kind: clothed-body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-dd925bb5-5194-4f8b-a911-a53ea410d1e5.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

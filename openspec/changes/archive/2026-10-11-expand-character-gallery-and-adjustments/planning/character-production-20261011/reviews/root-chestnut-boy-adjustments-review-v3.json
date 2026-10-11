@@ -1,0 +1,60 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/chestnut-boy-adjustments-review-v3.json",
+  "manifestSha256": "e3bc22df4e4fa166858583af13e421b1b9e4a8d91cde7454b4a6a9f744c7f087",
+  "templateId": "human-chestnut-boy-adjustments-v3",
+  "artworkBinding": {
+    "artworkId": "candidate-humans-20261005",
+    "artworkVersion": "v1"
+  },
+  "originalSha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+  "engineeringReport": ".artifacts/character-adjustments/human-chestnut-boy-adjustments-v3/report.json",
+  "engineeringReportSha256": "31dc0fe394ffc8b9b758f14899e3d25af36671db8312f4c96a9ef060ac8ae470",
+  "checkedRecipes": [
+    {
+      "id": "chestnut-boy-default",
+      "sha256": "3495edf7775323e44baa793ca3c1655edf95ebaa89934574cace798f5b6746e2"
+    },
+    {
+      "id": "chestnut-boy-appearance",
+      "sha256": "b32e96d37e4a1bce59c6f479c981a8e84a9e7fda256873792625165e23f6b47b"
+    },
+    {
+      "id": "chestnut-boy-colors",
+      "sha256": "371105e6d311f1510d3f9af024e11a12818ff36f0d1e6d95d063a9cec46b5ce3"
+    },
+    {
+      "id": "chestnut-boy-face",
+      "sha256": "22911aa33b641b2dfd3a12ae70e1b1d4936b274801aa430f0f7212236949cfa4"
+    },
+    {
+      "id": "chestnut-boy-clothing",
+      "sha256": "f574ea78a643a051e5cb8d75fcca89a8db58d073a41e41bfd35781bdc51125bc"
+    },
+    {
+      "id": "chestnut-boy-accessories",
+      "sha256": "8ea907036ace57c4a1387149798047ea4416640a5b8a8e6c430cbfc0a16d1599"
+    },
+    {
+      "id": "chestnut-boy-ready-to-hold",
+      "sha256": "3cac2bf10a6a34afd4beff8d748eb2aea95232e6aa78752bfa37a4c85c3d51d5"
+    },
+    {
+      "id": "chestnut-boy-holding-prop",
+      "sha256": "12e63baceb14ad3528ce452d5239b84656dd34c6c9b570959bb68142200e134a"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied",
+  "edgeReviewResolution": "最终clean-v2全部8配方深浅实际合成正常；下颌疑似鲜色ROI的像素alpha最大3，单独透明图显示夸大了隐藏RGB，并非实际深浅底可见残边。保留初次待修记录，未继续侵蚀主体边缘。"
+}

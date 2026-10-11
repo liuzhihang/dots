@@ -1,0 +1,145 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 柔角三角透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-grok-soft-triangle
+  seriesId: grok
+  identity: new
+  differenceFromExisting: 软圆角三角几何体、两枚白色胶囊眼。
+  invariants:
+  - 无肢体；与Dots短绒三角在表面材质/眼睛/身份上分离。
+artwork:
+  proposedId: candidate-grok-soft-triangle
+  canonicalArtworkId: grok-soft-triangle
+  proposedVersion: v1
+  name:
+    en: Soft Triangle
+    zh-CN: 柔角三角
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: grok-soft-triangle
+references:
+- id: R03
+  path: planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg
+  sha256: ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 软圆角三角几何体、两枚白色胶囊眼。
+  exclude: 颜色差异、R03姓名/职位、背景和截图像素。
+  license: unknown
+- id: R04
+  path: planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg
+  sha256: d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 软圆角三角几何体、两枚白色胶囊眼。
+  exclude: 颜色差异、R03姓名/职位、背景和截图像素。
+  license: unknown
+- id: R14
+  path: planning/character-production-20261011/references/originals/R14-codex-clipboard-3d7f15c2-6f66-4b2f-8a06-6cd98c144b3a.jpg
+  sha256: 75c5ff4120824fcd84691b1f802931441863479e5950cdcd7e4babab8c5eec4c
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 软圆角三角几何体、两枚白色胶囊眼。
+  exclude: 颜色差异、R03姓名/职位、背景和截图像素。
+  license: unknown
+creation:
+  prompt: null
+  promptReference: prompts/grok-soft-triangle-candidate-v1.txt
+  negativeConstraints:
+  - 颜色差异、R03姓名/职位、背景和截图像素。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-soft-triangle-candidate-v1.png
+  iterations:
+  - version: v1
+    method: imagegen 原始生成，原字节保留
+  - version: v2
+    method: 用户授权本地 alpha 清理；RGB/保留边缘 alpha/尺寸不变
+    record: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-soft-triangle-candidate-v2.alpha-cleanup.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-generation-records.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-4dfc1149-5031-4ae2-81f0-58550b5ac86a.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 软三角轮廓
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 珊瑚粉光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-soft-triangle-candidate-v2.png
+    sha256: ce81ee389e047a8c0abc6012f78cbbc39ccbf46fd634b993c02168e5383307a1
+    mime: image/png
+    bytes: 628413
+    width: 1254
+    height: 1254
+    alphaCheck: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-soft-triangle-candidate-v2.alpha-cleanup.json
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: grok-soft-triangle-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-soft-triangle-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R03, R04, R14'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-soft-triangle-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: ce81ee389e047a8c0abc6012f78cbbc39ccbf46fd634b993c02168e5383307a1
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: df577604a82ea7032b6828cd6fb90260271acf14ef3241dabb6b3e2f33a99fe1
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-soft-triangle-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

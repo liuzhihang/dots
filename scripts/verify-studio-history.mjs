@@ -172,7 +172,7 @@ try {
   outcomes.push('Accepting the overlay close performs exactly one history traversal to Gallery.');
   await closeAccept.close();
 
-  const report={revision:99,browser:browser.version(),scenarios:outcomes.length,outcomes,route:'#/?series=grok',physicalDevice:false};
+  const report={revision:100,browser:browser.version(),scenarios:outcomes.length,outcomes,route:'#/?series=grok',physicalDevice:false};
   await fs.writeFile(path.join(evidenceDir,'history.json'),JSON.stringify(report,null,2)+'\n');
   console.log(`Studio history: ${outcomes.length} focused browser scenarios passed.`);
   for (const outcome of outcomes) console.log(`- ${outcome}`);

@@ -1,0 +1,668 @@
+{
+  "status": "pending",
+  "scope": "Four-category heart Dots candidate. Original opaque shades do not provide observed eye evidence. Bare eyes are a documented Dots-family completion. Clothing not supported. User art approval pending.",
+  "artwork": {
+    "id": "dots-pink-heart-shades",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "粉色心形墨镜",
+      "en": "Pink Heart Shades"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+    "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-pink-heart-shades-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-pink-heart-shades",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个连续心形 Dots，短密绒身体。无手臂、手、腿、脚、嘴、屏幕脸和服装。去除墨镜后的眼型按 Dots 家族补足，原始不透明镜片后的眼睛不可见。",
+      "en": "One continuous heart-shaped Dots with short dense plush. No arms, hands, legs, feet, mouth, screen face or clothing. Bare eye design is completed from Dots family rules; the original opaque lenses conceal the eyes."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "pink",
+      "face": "open",
+      "accessories": "shades"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典心形",
+            "en": "Classic heart"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "两个圆瓣与圆钝下尖构成连续心形",
+            "en": "a continuous heart with two rounded lobes and a softly pointed bottom"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "plump",
+          "labelByLanguage": {
+            "zh-CN": "饱满心形",
+            "en": "Plump heart"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更横宽饱满的心形，圆瓣加宽、下尖缩短",
+            "en": "a wider plumper heart with broader lobes and a shorter lower tip"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "pink",
+          "labelByLanguage": {
+            "zh-CN": "玫瑰粉",
+            "en": "Rose pink"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "玫瑰粉短密绒，墨镜保持黑色",
+            "en": "rose-pink short dense plush; sunglasses remain black"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#ef38a7"
+          ],
+          "zoneColors": {
+            "body": "#ef38a7"
+          }
+        },
+        {
+          "id": "lavender",
+          "labelByLanguage": {
+            "zh-CN": "薰衣草紫",
+            "en": "Lavender"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "薰衣草紫短密绒，墨镜保持黑色",
+            "en": "lavender-purple short dense plush; sunglasses remain black"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#b16ae4"
+          ],
+          "zoneColors": {
+            "body": "#b16ae4"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色双眼",
+            "en": "Black paired eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "去掉墨镜时显露成对黑色竖椭圆眼；墨镜佩戴时遮住眼睛",
+            "en": "paired black vertical oval eyes when sunglasses are removed; opaque lenses conceal eyes when worn"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:bare",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "无墨镜时，双眼为两条小型黑色闭合弧线，无嘴",
+            "en": "without sunglasses, two small black gently closed curved eyelids, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "shades",
+          "labelByLanguage": {
+            "zh-CN": "黑色圆墨镜",
+            "en": "Round black shades"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合心形正面的黑色圆框不透明墨镜，镜腿贴合两侧",
+            "en": "opaque black round sunglasses fitted to the heart front, with temples touching both sides"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "完全去除墨镜、镜腿和镜框，露出眼睛",
+            "en": "remove sunglasses, temples and frames completely to reveal the eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:bare",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "plump",
+          "colors": "lavender"
+        },
+        "code": "appearance-colors-fit-conflict",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options have no matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "plump",
+          "accessories": "none"
+        },
+        "code": "appearance-accessories-fit-conflict",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options have no matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "lavender",
+          "accessories": "none"
+        },
+        "code": "colors-accessories-fit-conflict",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options have no matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "shades"
+        },
+        "code": "face-accessories-fit-conflict",
+        "messageByLanguage": {
+          "zh-CN": "不透明墨镜会遮住表情，请先移除墨镜再选择闭眼。",
+          "en": "Opaque lenses hide the expression. Remove the sunglasses before choosing closed eyes."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-pink-open-shades",
+        "selections": {
+          "appearance": "classic",
+          "colors": "pink",
+          "face": "open",
+          "accessories": "shades"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "plump-pink-open-shades",
+        "selections": {
+          "appearance": "plump",
+          "colors": "pink",
+          "face": "open",
+          "accessories": "shades"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-lavender-open-shades",
+        "selections": {
+          "appearance": "classic",
+          "colors": "lavender",
+          "face": "open",
+          "accessories": "shades"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-pink-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "pink",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:bare",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-pink-closed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "pink",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-pink-heart-shades-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-pink-heart-shades-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-pink-heart-shades-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png",
+      "sha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+      "byteSize": 905104,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1136516,
+        "bboxAtAlphaThreshold16": [
+          213,
+          277,
+          1040,
+          992
+        ]
+      },
+      "owner": {
+        "templateId": "dots-pink-heart-shades-adjustments-v1",
+        "artworkId": "dots-pink-heart-shades",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Exact original or ImageGen full-character branch, authorized alpha-only cleanup; original preserved. Uniform scene registration only."
+    },
+    {
+      "id": "template:dots-pink-heart-shades-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-pink-heart-shades-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-pink-heart-shades-colors-full-candidate-v2.png",
+      "sha256": "48ec9f9d2f94ac5b9f49ca54941cfdba91b09b0227478e1be42832da87b3e2ae",
+      "byteSize": 1224109,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 996669,
+        "bboxAtAlphaThreshold16": [
+          147,
+          238,
+          1107,
+          1064
+        ]
+      },
+      "owner": {
+        "templateId": "dots-pink-heart-shades-adjustments-v1",
+        "artworkId": "dots-pink-heart-shades",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          83.7579,
+          70.9831
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8656174334140436,
+            0.8656174334140436
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Exact original or ImageGen full-character branch, authorized alpha-only cleanup; original preserved. Uniform scene registration only."
+    },
+    {
+      "id": "template:dots-pink-heart-shades-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-pink-heart-shades-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-pink-heart-shades-appearance-full-candidate-v2.png",
+      "sha256": "e8e6da81988a4ccd15c21fe1d8af5b7d853d0e86880c3a2042e1e53e7c187f22",
+      "byteSize": 1456548,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "transparentPixels": 852584,
+        "bboxAtAlphaThreshold16": [
+          71,
+          237,
+          1182,
+          1089
+        ]
+      },
+      "owner": {
+        "templateId": "dots-pink-heart-shades-adjustments-v1",
+        "artworkId": "dots-pink-heart-shades",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          100.74,
+          78.1092
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8392018779342723,
+            0.8392018779342723
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Exact original or ImageGen full-character branch, authorized alpha-only cleanup; original preserved. Uniform scene registration only."
+    },
+    {
+      "id": "template:dots-pink-heart-shades-adjustments-v1:bare",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-pink-heart-shades-adjustments-v1/bare.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-pink-heart-shades-bare-full-candidate-v2.png",
+      "sha256": "0168525ddfb3331767c3258cfdfae3d42ab82bea700858de340b52fca583fc5e",
+      "byteSize": 1296141,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 943172,
+        "bboxAtAlphaThreshold16": [
+          124,
+          230,
+          1130,
+          1093
+        ]
+      },
+      "owner": {
+        "templateId": "dots-pink-heart-shades-adjustments-v1",
+        "artworkId": "dots-pink-heart-shades",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          107.0272,
+          86.4438
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.828505214368482,
+            0.828505214368482
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Exact original or ImageGen full-character branch, authorized alpha-only cleanup; original preserved. Uniform scene registration only."
+    },
+    {
+      "id": "template:dots-pink-heart-shades-adjustments-v1:closed",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-pink-heart-shades-adjustments-v1/closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-pink-heart-shades-closed-full-candidate-v2.png",
+      "sha256": "0ff81e89ad1aa6c067cb256cbea674b37efff79602639225536fa9d9a417106d",
+      "byteSize": 1225684,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "transparentPixels": 963315,
+        "bboxAtAlphaThreshold16": [
+          130,
+          235,
+          1123,
+          1082
+        ]
+      },
+      "owner": {
+        "templateId": "dots-pink-heart-shades-adjustments-v1",
+        "artworkId": "dots-pink-heart-shades",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          97.6364,
+          78.6234
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8441558441558441,
+            0.8441558441558441
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "Exact original or ImageGen full-character branch, authorized alpha-only cleanup; original preserved. Uniform scene registration only."
+    }
+  ]
+}

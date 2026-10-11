@@ -1,0 +1,573 @@
+{
+  "audit": "post-archive read-only spec synchronization check",
+  "changeName": "expand-character-gallery-and-adjustments",
+  "archivePath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments",
+  "archivedChangeExists": true,
+  "activeChangeDirectoryAbsent": true,
+  "deltaSpecCount": 11,
+  "operationCounts": {
+    "ADDED": 0,
+    "MODIFIED": 39,
+    "REMOVED": 0,
+    "RENAMED": 0
+  },
+  "modifiedRequirementsMatched": 39,
+  "modifiedRequirementsTotal": 39,
+  "oldScenarioTitlePreservationVerified": true,
+  "taskCheckboxes": {
+    "total": 51,
+    "completed": 51,
+    "incomplete": 0
+  },
+  "allDeltaOperationsMatchMainSpecs": true,
+  "failures": [],
+  "capabilities": [
+    {
+      "capability": "artwork-catalog",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/artwork-catalog/spec.md",
+      "mainPath": "openspec/specs/artwork-catalog/spec.md",
+      "deltaSha256": "c10121c57ce059c06269a32f4b9b3fadc39729c1e0b0064c4a247e69ee089b71",
+      "mainSha256": "8c375ce889d267cbb6db898c75b874abe3fb1d916abfaa33a9a178b41cc3fb76",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "完整作品必须拥有稳定的资源与提示词关联",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "发布资格必须同时满足内容资源与批准边界",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 7,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "作品资源必须来自可校验的登记引用",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 5,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "同角色变体必须由明确关系与真实作品构成",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "扩充作品与标签不得要求组件适配",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 5,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "所有结果操作必须使用同一冻结作品快照",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 2,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 6,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "bounded-character-editing",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/bounded-character-editing/spec.md",
+      "mainPath": "openspec/specs/bounded-character-editing/spec.md",
+      "deltaSha256": "09170ea61f73df320f3a67e7006fa8164fb00c77532563fc63986eece5f3c304",
+      "mainSha256": "00f4ca57d76c0ba314eeb1d685a8168f077cc00df3c76960d131be2544e45ce7",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "模板能力必须由实际资源和可见图层声明",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 2,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "模板选项必须遵守角色身份与合法组合",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "编辑选项必须提供真实可视素材选择",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 9,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "编辑草稿必须与原 Artwork 和已发布目录隔离",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 5,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "预览与 Draft 导出必须使用同一渲染配方",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "单一 Export 控件必须按作品状态返回正确资源",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "超出 Template 能力的修改必须转为外部二创意图",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 1,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 7,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "catalog-tags",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/catalog-tags/spec.md",
+      "mainPath": "openspec/specs/catalog-tags/spec.md",
+      "deltaSha256": "a9be69206594dd71a2913faaabb663e24ec61b4bc8a49edb9987ca2efafcc311",
+      "mainSha256": "ac7fa147f508ec37a03ddf5e5343451c2c18884b243b7cbc2f16c8bd2fb9568c",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "已发布 Artwork 必须按事实标签和特征建立可扩展目录",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "画廊搜索必须组合标签、事实特征和文本条件",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 2,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "character-contact-and-motion",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/character-contact-and-motion/spec.md",
+      "mainPath": "openspec/specs/character-contact-and-motion/spec.md",
+      "deltaSha256": "4bc4606d5236d9c2755b87f3e75d13cd62e6d8d1f0493d9a368fbfd1e2eaffeb",
+      "mainSha256": "22c6aea13b24a7d0c3b489517b2a5783263a9cb3e41df63684ac3983ca704f4b",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "已发布完整作品必须符合身份和画面中的真实接触关系",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "角色 Artwork 和透明导出必须保持真实 alpha",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 2,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "character-families",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/character-families/spec.md",
+      "mainPath": "openspec/specs/character-families/spec.md",
+      "deltaSha256": "34f6564a8df315c6762059f13e73030958c3fd76067e426bb083f5c2f9c04483",
+      "mainSha256": "db5a917ca571fcbadb2b00158547e71e375cf75c5c8adb0bffc7c81e35b8c21a",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "首批视觉身份必须保留差异且不构成固定家族模型",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "原创身份、来源和角色特征必须能分别核对",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "美术确认必须绑定明确 Artwork 和资源范围",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 3,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "character-visual-acceptance",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/character-visual-acceptance/spec.md",
+      "mainPath": "openspec/specs/character-visual-acceptance/spec.md",
+      "deltaSha256": "7996303c86842c2c7f6f65b24a545b8f98d41cdf7555e70f3618f53d30afe445",
+      "mainSha256": "3a3026d233fdce64f177901e4aacdbf50a3503f5222400cbf0ebcc4495c264e2",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "作品资源工程状态、美术批准、目标验证和发布状态必须分别记录",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "页面和资源验收必须绑定本次实际版本与观察范围",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "代表 Template 必须完成素材、能力和美术边界验收",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "模板视觉验收必须逐项对比预览与导出",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 4,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "family-navigation",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/family-navigation/spec.md",
+      "mainPath": "openspec/specs/family-navigation/spec.md",
+      "deltaSha256": "5253166970b0f88b49105455012bb6a64ecf51fe7a382ec7f87b3bff1f16d75b",
+      "mainSha256": "e0ae07902d8a6b12537e447f180bb4a62d82d300f4a446615a39d46ef3ecd967",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "全站弹窗必须由单一活动 overlay 协调",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 7,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "新页面与筛选必须适配窄屏和平板",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 3,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 2,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "reference-creation",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/reference-creation/spec.md",
+      "mainPath": "openspec/specs/reference-creation/spec.md",
+      "deltaSha256": "93d1c01e97d09220492c2567236765c8922d2741cf969f543b6d17c9c107f7bb",
+      "mainSha256": "342423e89889b0d0fcccd26365de5281d504b3e87ac81d079bd4a053f30adaaf",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "模板必须使用条件式参考图要求",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "ChatGPT入口应携带当前Prompt并由用户发送",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 6,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 2,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "studio-creation-experience",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/studio-creation-experience/spec.md",
+      "mainPath": "openspec/specs/studio-creation-experience/spec.md",
+      "deltaSha256": "075f067bace8bd958456257f6530c53a79917bbc95eaff09dafc0d374a17310a",
+      "mainSha256": "f99c7bc42d050cbcd075607ef1eddb7dc3d82c8830a2bd644a7c2653967c6622",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "作品详情必须直接提供实际图片及带走操作",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "详情信息层级必须优先作品与直接操作",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 11,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "详情资源必须分层加载并避免过时结果",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 3,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "studio-visual-experience",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/studio-visual-experience/spec.md",
+      "mainPath": "openspec/specs/studio-visual-experience/spec.md",
+      "deltaSha256": "cde9801e114d08260b42d73194b9bc73a5ec82752bcc22e131f541ae5dc98d44",
+      "mainSha256": "bf155825ee5913f2782a719534bbaf6d7bc7287655b5e10f1b2869044d865aa5",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "首页只能承诺真实存在的作品发现能力",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 2,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "新产品页面必须在桌面和指定模拟视口可读可操作",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 2,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "发布静态页面资源必须与作品清单版本一致",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "Dots 首页必须以 D01 深色角色库为唯一主视觉",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 6,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "界面和操作提示必须支持英文与简体中文",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 2,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "CharacterStudio 的主操作与滚动必须无遮挡",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 1,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 6,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    },
+    {
+      "capability": "target-resources",
+      "deltaPath": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/target-resources/spec.md",
+      "mainPath": "openspec/specs/target-resources/spec.md",
+      "deltaSha256": "09d41136f1b1b93bf7f2624b4c73818f4daec3acaf8bab608444cc7d137f053d",
+      "mainSha256": "5535255177fb5a98cfe82517a3b2914b1ac21dfa27a9b24c27d13bc343e432d5",
+      "operations": [
+        {
+          "operation": "MODIFIED",
+          "requirement": "普通PNG不得标为已验证的Dot或Pet安装包",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 4,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        },
+        {
+          "operation": "MODIFIED",
+          "requirement": "页面底色作品背景与目标alpha必须分开",
+          "mainMatchCount": 1,
+          "deltaBlockMatchesMain": true,
+          "oldScenarioTitles": 5,
+          "oldScenarioTitlesPreserved": true,
+          "missingOldScenarioTitles": []
+        }
+      ],
+      "operationCounts": {
+        "ADDED": 0,
+        "MODIFIED": 2,
+        "REMOVED": 0,
+        "RENAMED": 0
+      },
+      "allOperationsMatched": true
+    }
+  ],
+  "auditedAt": "2026-10-11",
+  "archiveFileCount": 1215,
+  "archiveFilesBytePreserved": true,
+  "provenancePathMapping": {
+    "originalPrefix": "openspec/changes/expand-character-gallery-and-adjustments",
+    "archivedPrefix": "openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments",
+    "policy": "Frozen approval packages, candidate manifests and runtime provenance strings retain their original bytes; current local verification/review readers resolve this recorded move."
+  },
+  "validation": {
+    "normalSpecs": "11 passed, 0 failed",
+    "strictSpecs": "not passed: 12 existing MODIFIED requirement descriptions exceed 500 characters; retained whole as required by OpenSpec",
+    "frozenWhitespaceExceptions": "5 archived original files retain Markdown hard breaks or EOF blank lines; no unexpected warnings",
+    "runtimeFilesUnchanged": 551,
+    "archivedReview": {
+      "status": "passed",
+      "original": true,
+      "assets": 8,
+      "manifestLoadedUsingOriginalPath": true
+    }
+  }
+}

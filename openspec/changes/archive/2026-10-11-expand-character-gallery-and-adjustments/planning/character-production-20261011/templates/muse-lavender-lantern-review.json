@@ -1,0 +1,959 @@
+{
+  "status": "pending",
+  "scope": "candidate only; exact complete branches and registered face/headwear layers; user art approval pending",
+  "artwork": {
+    "id": "muse-lavender-lantern",
+    "version": "v1",
+    "seriesId": "muse",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "提灯 Muse",
+      "en": "Lantern Muse"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+    "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "muse-lavender-lantern-adjustments-v1",
+    "version": "v1",
+    "family": "muse",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "muse-lavender-lantern",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。",
+      "en": "One Muse character with a continuous soft plush hooded body, inset peach face, small eyes and short rounded limbs. Preserve the unified hood/body and natural support of any held prop."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典包覆体",
+            "en": "Classic hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "经典连续包覆身体与内嵌脸，双手提暖光黄铜灯笼",
+            "en": "a continuous hooded body with an inset face; keep the warm brass lantern naturally held by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "宽圆包覆体",
+            "en": "Broader hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更宽圆的包覆身体与内嵌脸，双手提暖光黄铜灯笼",
+            "en": "a broader squat hooded body with an inset face; keep the warm brass lantern naturally held by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "浅薰衣草紫",
+            "en": "pale lavender"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "浅薰衣草紫短绒身体，肤色与道具保持原色",
+            "en": "pale lavender short-plush body; preserve peach face and prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#d4cbdc"
+          ],
+          "zoneColors": {
+            "plush": "#d4cbdc"
+          }
+        },
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "zh-CN": "柔雾蓝",
+            "en": "Powder blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "仅绒布包覆体和短圆肢体为柔雾蓝，脸部肤色、所有道具保持原色",
+            "en": "powder blue plush hood, body and short limbs only; preserve peach skin and all prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#a2bfdc"
+          ],
+          "zoneColors": {
+            "plush": "#a2bfdc"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、睁开小圆眼与轻柔微笑",
+            "en": "an inset peach face with small open dark eyes and a gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、双眼放松闭合并轻柔微笑，静态表情",
+            "en": "an inset peach face with relaxed closed curved eyes and a gentle smile; static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无外套",
+            "en": "No vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有绒布包覆身体，不另穿外套",
+            "en": "the original plush-covered body without an extra vest"
+          }
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合身体的浅蓝针织背心，位于手臂和持物后方",
+            "en": "a fitted powder-blue knit vest behind the arms and held object"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无头饰",
+            "en": "No headwear"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双手提暖光黄铜灯笼，不戴头饰",
+            "en": "keep the warm brass lantern naturally held by both short round hands; no headwear"
+          }
+        },
+        {
+          "id": "crown",
+          "labelByLanguage": {
+            "zh-CN": "雏菊花冠",
+            "en": "Daisy crown"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双手提暖光黄铜灯笼，小型雏菊花冠贴合帽兜顶部",
+            "en": "keep the warm brass lantern naturally held by both short round hands; a small daisy crown fitted on top of the hood"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "blue"
+        },
+        "code": "classic-fit-colors",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "classic-fit-face",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "classic-fit-clothing",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "crown"
+        },
+        "code": "classic-fit-accessories",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "colors": "blue",
+          "clothing": "vest"
+        },
+        "code": "vest-original-colors",
+        "messageByLanguage": {
+          "zh-CN": "这件背心适配原色身体。请先选择原色或脱下背心。",
+          "en": "This vest fits the original body colors. Choose the original color or remove the vest first."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-lavender-lantern-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/muse-lavender-lantern-candidate-v1.png",
+      "sha256": "ecf97bcb22678cd4461da27c0ec2a7a4721137081c1b42e25cef115666137574",
+      "byteSize": 1014161,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1033310,
+        "bboxAtAlphaThreshold16": [
+          306,
+          121,
+          951,
+          1127
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:broad",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/broad.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-lavender-lantern-body-alternate-candidate-v2.png",
+      "sha256": "c64386471b46710a5d59f639a790b06b2d5a05064ee0e8970687be6ff82dfa85",
+      "byteSize": 1152866,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 886950,
+        "bboxAtAlphaThreshold16": [
+          185,
+          187,
+          1071,
+          1128
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-lavender-lantern-color-body-candidate-v2.png",
+      "sha256": "b9a66d1c8e7df0559cb733a462ae83baca63c866e82d2bff32aa5e52fcb28e3d",
+      "byteSize": 1041142,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1041426,
+        "bboxAtAlphaThreshold16": [
+          305,
+          118,
+          954,
+          1129
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:vest",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-lavender-lantern-clothed-body-candidate-v2.png",
+      "sha256": "04d5cef6a88ee534e0d0cc80ee8363ddb58f2863c1b450bf300f717c55f2e6d8",
+      "byteSize": 983373,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1044908,
+        "bboxAtAlphaThreshold16": [
+          307,
+          119,
+          952,
+          1130
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-lavender-lantern-face-closed-candidate-v2.png",
+      "sha256": "a993e351353531017e663eb3793d0e42e3370c1d02985d8f2bca82922863a9f2",
+      "byteSize": 236824,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1425115,
+        "bboxAtAlphaThreshold16": [
+          363,
+          444,
+          892,
+          772
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          178.1266540642722,
+          -116.2439024390244
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.7296786389413988,
+            0.7865853658536586
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-lavender-lantern-adjustments-v1:crown",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/muse-lavender-lantern-adjustments-v1/crown.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-lavender-lantern-flower-crown-candidate-v2.png",
+      "sha256": "834fb29c11e6bc0c12ba393a7ed10dedbf733b5d6f9c1e6fd4344b016e9453c3",
+      "byteSize": 176332,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1510468,
+        "bboxAtAlphaThreshold16": [
+          292,
+          241,
+          964,
+          475
+        ]
+      },
+      "owner": {
+        "templateId": "muse-lavender-lantern-adjustments-v1",
+        "artworkId": "muse-lavender-lantern",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          197.11904761904762,
+          -94.9702380952381
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.6845238095238095,
+            0.6845238095238095
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    }
+  ]
+}

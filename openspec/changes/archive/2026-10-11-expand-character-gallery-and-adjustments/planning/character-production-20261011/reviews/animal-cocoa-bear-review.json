@@ -1,0 +1,62 @@
+{
+  "artworkId": "animal-cocoa-bear",
+  "artworkVersion": "v1",
+  "originalSha256": "3eb35d93bccd37542bbbca3aa0216b5102bf25183168aeca9392b959061d5f57",
+  "templateId": "animal-cocoa-bear-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-cocoa-bear-review.json",
+  "manifestSha256": "c7d1f8f03ce3ff4ba9da79199f0826715551897dbccfca4ed466544328270844",
+  "engineeringReport": ".artifacts/character-adjustments/animal-cocoa-bear-adjustments-v1/report.json",
+  "engineeringReportSha256": "a1c64a75e93441f0a94de6392ce51a203b362d4edbfed2f0c0d2c65a7968cd2e",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "6e6f47e5b79fe398609b267fccc3d07aabd4b1689fa5b6dc38824573416efe15"
+    },
+    {
+      "id": "broad-original-open-none-none",
+      "sha256": "7b066b53646f546cba83deb9a0993a2a5e886094f0172fe141ce8dfb350d6d3a"
+    },
+    {
+      "id": "classic-alternate-open-none-none",
+      "sha256": "1004a062a89a8323fd81395f5540f47123e579c05d73b0db19d721b6a7d7f7f1"
+    },
+    {
+      "id": "classic-original-closed-none-none",
+      "sha256": "8199c03f57ad01354332fe295fe4d35ff7cff823ec90a61bc85cdf2c2e060357"
+    },
+    {
+      "id": "classic-original-open-vest-none",
+      "sha256": "07d9c6edab99fc6b25a2cd95efb84a528cb851e5364d1be7889b6c54f7cdd352"
+    },
+    {
+      "id": "classic-original-open-none-bow",
+      "sha256": "225015b709c68a87ec4ad33207b9ed20455bbfb162afc56129c13c7f66637c78"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部6合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "保留每个物种独立耳形、口鼻、四爪和尾部解剖",
+      "局部毛色变化保留口鼻、眼睛、鼻部和足垫的独立颜色",
+      "完整穿戴分支的衣领与肩部贴合，前爪处于服装前方",
+      "静态闭眼与小配饰有真实图像结果，不宣称动画",
+      "每个分支可从默认状态单字段选择，未制作组合明确禁用且给出原因"
+    ],
+    "fixes": [
+      "生成分支原构图大小不一致，使用统一缩放的场景placement匹配原作角色高度、水平中心与足部基线，完整PNG源字节未缩放或覆盖。"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

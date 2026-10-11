@@ -1,0 +1,1747 @@
+{
+  "status": "pending",
+  "scope": "candidate review only; neither Artwork nor Template has user art approval",
+  "artwork": {
+    "id": "dots-blue-beret-cloud",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Blue Beret Cloud",
+      "zh-CN": "蓝帽云团"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-beret-cloud-candidate-v1.png",
+    "sha256": "7035905930586409378f8cce212c393c94e3fe2860a4fb62e38108a3349f332d"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-blue-cloud-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-blue-beret-cloud",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Dots character with a continuous short-dense-plush body and simple paired black eyes. No arms, hands, legs, feet, mouth or screen face.",
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴或屏幕脸。"
+    },
+    "defaultOptions": {
+      "appearance": "cloud",
+      "colors": "blue",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "beret"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "cloud",
+          "labelByLanguage": {
+            "en": "Cloud",
+            "zh-CN": "云团"
+          },
+          "semanticByLanguage": {
+            "en": "a low continuous cloud mound with rounded scallops",
+            "zh-CN": "低矮连续、带圆润起伏的云团"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad-lobes",
+          "labelByLanguage": {
+            "en": "Broad cloud",
+            "zh-CN": "宽圆云团"
+          },
+          "semanticByLanguage": {
+            "en": "a continuous cloud mound with three broad lower lobes",
+            "zh-CN": "下缘呈三个宽圆起伏的连续云团"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "en": "Electric blue",
+            "zh-CN": "亮蓝色"
+          },
+          "semanticByLanguage": {
+            "en": "electric blue short dense fur",
+            "zh-CN": "亮蓝色短密绒"
+          },
+          "zoneColors": {
+            "body": "#2389f1"
+          }
+        },
+        {
+          "id": "rose",
+          "labelByLanguage": {
+            "en": "Rose pink",
+            "zh-CN": "玫瑰粉"
+          },
+          "semanticByLanguage": {
+            "en": "rose pink short dense fur",
+            "zh-CN": "玫瑰粉色短密绒"
+          },
+          "zoneColors": {
+            "body": "#e36cb7"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Oval eyes",
+            "zh-CN": "椭圆眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy black vertical oval eyes",
+            "zh-CN": "两枚有高光的黑色竖椭圆眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed eyes",
+            "zh-CN": "闭眼"
+          },
+          "semanticByLanguage": {
+            "en": "two black closed-eye arcs, a static expression",
+            "zh-CN": "两道黑色闭眼弧线，静态表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "不穿服装"
+          }
+        },
+        {
+          "id": "knit-wrap",
+          "labelByLanguage": {
+            "en": "Knit wrap",
+            "zh-CN": "针织包覆"
+          },
+          "semanticByLanguage": {
+            "en": "an ivory rib-knit sleeveless wrap fitted to the lower body",
+            "zh-CN": "贴合身体下部的象牙白罗纹无袖针织包覆"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "beret",
+          "labelByLanguage": {
+            "en": "Black beret",
+            "zh-CN": "黑色贝雷帽"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted black wool beret",
+            "zh-CN": "贴合头顶的黑色毛呢贝雷帽"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        },
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessories",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          }
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad-lobes",
+          "clothing": "knit-wrap"
+        },
+        "code": "wrap-needs-scalloped-cloud",
+        "messageByLanguage": {
+          "en": "This wrap fits the Cloud silhouette. Choose Cloud or remove the wrap first.",
+          "zh-CN": "这件针织包覆仅适配原云团轮廓。请先选择云团或脱下包覆。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "cloud-blue-open-none-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-knit-wrap-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-knit-wrap-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-none-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-knit-wrap-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-none-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-knit-wrap-beret",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-knit-wrap-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "knit-wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-blue-open-none-beret",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-blue-open-none-none",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-blue-closed-none-beret",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-blue-closed-none-none",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-rose-open-none-beret",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-rose-open-none-none",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-rose-closed-none-beret",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "beret-front",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-lobes-rose-closed-none-none",
+        "selections": {
+          "appearance": "broad-lobes",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:round",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:body",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/body.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-body-candidate-v1.png",
+      "sha256": "2d2adae634e1140a13052101853d3261e23972c69be85a2290c503ed85e817ed",
+      "byteSize": 1103579,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 957603,
+        "bboxAtAlphaThreshold16": [
+          70,
+          443,
+          1214,
+          1133
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:round",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/round.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-body-round-candidate-v1.png",
+      "sha256": "2075b2ccb6386572f4bd860769fa492989e7d737af8b07fcc9a44333bca34793",
+      "byteSize": 1001554,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1009276,
+        "bboxAtAlphaThreshold16": [
+          57,
+          494,
+          1202,
+          1139
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:eyesOpen",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/eyesOpen.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-eyes-open-candidate-v1.png",
+      "sha256": "245af97694f129d8146a2463aecc68dc096552a84e9ed328a9b1de01c326d622",
+      "byteSize": 91094,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1549914,
+        "bboxAtAlphaThreshold16": [
+          583,
+          634,
+          869,
+          793
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:eyesClosed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/eyesClosed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-eyes-closed-candidate-v1.png",
+      "sha256": "b24a6339aaaf89615d771b5f3aec3f9835dbeeb3fb8832d059ecb3e114953f95",
+      "byteSize": 73619,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1563782,
+        "bboxAtAlphaThreshold16": [
+          612,
+          765,
+          931,
+          822
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -35,
+          -83
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:beret",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/beret.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-beret-candidate-v1.png",
+      "sha256": "6d93769ec156e80d5275bae383470a3f65ee74909e623f152e9c6fa33a8f3969",
+      "byteSize": 642470,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1315628,
+        "bboxAtAlphaThreshold16": [
+          160,
+          146,
+          1078,
+          622
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:wrap",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/wrap.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-knit-wrap-candidate-v1.png",
+      "sha256": "f0d6da9d4a6130defffb2539dfa4b673d28b134d33f83b1074a09547472baec9",
+      "byteSize": 859111,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1207892,
+        "bboxAtAlphaThreshold16": [
+          69,
+          729,
+          1210,
+          1133
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:bodyMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/bodyMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-body-candidate-v1.png",
+      "sha256": "2d2adae634e1140a13052101853d3261e23972c69be85a2290c503ed85e817ed",
+      "byteSize": 1103579,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 957603,
+        "bboxAtAlphaThreshold16": [
+          70,
+          443,
+          1214,
+          1133
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    },
+    {
+      "id": "template:dots-blue-cloud-adjustments-v1:roundMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-blue-cloud-adjustments-v1/roundMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-blue-cloud-body-round-candidate-v1.png",
+      "sha256": "2075b2ccb6386572f4bd860769fa492989e7d737af8b07fcc9a44333bca34793",
+      "byteSize": 1001554,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1009276,
+        "bboxAtAlphaThreshold16": [
+          57,
+          494,
+          1202,
+          1139
+        ]
+      },
+      "owner": {
+        "templateId": "dots-blue-cloud-adjustments-v1",
+        "artworkId": "dots-blue-beret-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived candidate; mask reads the actual single-material body alpha without altering its pixels"
+    }
+  ]
+}

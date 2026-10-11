@@ -3,8 +3,8 @@ import {inflateSync} from 'node:zlib';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=99';
-import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=99';
+import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=100';
+import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=100';
 function paeth(a,b,c) {
   const p=a+b-c, pa=Math.abs(p-a), pb=Math.abs(p-b), pc=Math.abs(p-c);
   return pa<=pb&&pa<=pc?a:pb<=pc?b:c;
@@ -57,43 +57,49 @@ function readPngAlphaStats(bytes, label) {
 const folder=resolveEvidenceDirectory('.artifacts/browser-acceptance');
 const report=JSON.parse(await fs.readFile(folder+'/report.json'));
 assert.equal(PREVIEW_ARTWORKS.length,0,'There are no preview-only Artworks in the published catalog.');
-assert.equal(report.downloads.length,ARTWORKS.length,'Every public Artwork journey has an actual browser download.');
-assert.equal(new Set(report.downloads.map(item=>item.artworkId)).size,ARTWORKS.length,'Every actual browser download belongs to a unique registered identity.');
-const approvedRecords=[],templateRecords=[];
+const originalDownloads=report.downloads.filter(item=>item.exportKind==='unchanged-default-original'||item.exportKind==='registered-original');
+const editedDownloads=report.downloads.filter(item=>item.exportKind==='changed-successful-snapshot');
+assert.equal(originalDownloads.length,ARTWORKS.length,'Every public Artwork journey has one actual original-byte browser download.');
+assert.equal(editedDownloads.length,ARTWORKS.length,'Every public Artwork journey has one actual changed-Draft browser download.');
+assert.equal(report.downloads.length,originalDownloads.length+editedDownloads.length,'Every download has an explicit supported export kind.');
+for(const downloads of [originalDownloads,editedDownloads])assert.equal(new Set(downloads.map(item=>item.artworkId)).size,ARTWORKS.length,'Each export kind covers every registered identity once.');
+const approvedRecords=[],templateRecords=[],editedRecords=[];
 for(const artwork of ARTWORKS){
- const download=report.downloads.find(d=>d.artworkId===artwork.id);assert(download,`${artwork.id}: actual browser download`);
+ const download=originalDownloads.find(d=>d.artworkId===artwork.id);assert(download,`${artwork.id}: actual browser download`);
  const bytes=await fs.readFile(download.file),digest=crypto.createHash('sha256').update(bytes).digest('hex'),stats=readPngAlphaStats(bytes,artwork.id),asset=getAsset(artwork.assetRefs.original),template=getTemplateForArtwork(artwork);
  assert.equal(digest,download.sha256,`${artwork.id}: actual downloaded bytes match the browser report.`);
  assert.equal(bytes.length,download.byteSize,`${artwork.id}: byte count matches the browser report.`);
  if(template){
-  assert.equal(download.exportKind,'successful-template-revision',`${artwork.id}: approved Template export kind.`);
-  assert.equal(download.templateId,template.id,`${artwork.id}: browser report identifies the exact approved Template.`);
-  assert.equal(download.canvasSha256,digest,`${artwork.id}: downloaded bytes match the successful preview Canvas.`);
-  assert(Number.isInteger(download.revision)&&download.revision>=0,`${artwork.id}: exported revision is recorded.`);
-  assert.equal(stats.width,template.canvas.width,`${artwork.id}: edited PNG width.`);assert.equal(stats.height,template.canvas.height,`${artwork.id}: edited PNG height.`);
-  assert.equal(stats.colorType,6,`${artwork.id}: edited export retains an RGBA alpha channel.`);
-  assert(stats.transparentPixels>0&&stats.partialAlphaPixels>0&&stats.opaquePixels>0,`${artwork.id}: edited PNG contains transparent, partial-alpha, and opaque pixels.`);
-  templateRecords.push({artworkId:artwork.id,templateId:template.id,revision:download.revision,sha256:digest,byteSize:bytes.length,...stats});
+  assert.equal(download.exportKind,'unchanged-default-original',`${artwork.id}: unchanged Template uses original bytes.`);
+  assert.equal(download.templateId,template.id,`${artwork.id}: exact approved Template.`);
+  assert(Number.isInteger(download.revision)&&download.revision>=0,`${artwork.id}: successful preview revision is recorded.`);
+  templateRecords.push({artworkId:artwork.id,templateId:template.id,revision:download.revision,exportKind:download.exportKind,sha256:digest,byteSize:bytes.length,...stats});
+ }else assert.equal(download.exportKind,'registered-original',`${artwork.id}: static Export kind.`);
+ assert.equal(digest,asset.sha256,`${artwork.id}: unmodified Export is byte-identical to the registered original.`);
+ assert.equal(stats.width,asset.width,`${artwork.id}: original PNG width.`);assert.equal(stats.height,asset.height,`${artwork.id}: original PNG height.`);
+ if(asset.resourceKind==='transparent-character-still'){
+  assert.equal(stats.colorType,6,`${artwork.id}: registered transparent original has RGBA encoding.`);
+  assert(stats.transparentPixels>0&&stats.partialAlphaPixels+stats.opaquePixels>0,`${artwork.id}: original has transparent exterior and visible character pixels.`);
+  assert.equal(stats.transparentPixels,asset.alpha.transparentPixels,`${artwork.id}: original transparent pixel count.`);
+  assert.equal(stats.partialAlphaPixels,asset.alpha.partialAlphaPixels,`${artwork.id}: original partial-alpha pixel count.`);
  }else{
-  assert.equal(download.exportKind,'registered-original',`${artwork.id}: static Export kind.`);
-  assert.equal(digest,asset.sha256,`${artwork.id}: static Export is byte-identical to the registered original.`);
-  assert.equal(stats.width,asset.width,`${artwork.id}: source PNG width.`);assert.equal(stats.height,asset.height,`${artwork.id}: source PNG height.`);
-  if(asset.resourceKind==='transparent-character-still'){
-   assert.equal(stats.colorType,6,`${artwork.id}: registered transparent source has RGBA encoding.`);
-   assert(stats.transparentPixels>0&&stats.partialAlphaPixels>0&&stats.opaquePixels>0,`${artwork.id}: source contains transparent, partial-alpha, and opaque pixels.`);
-   assert.equal(stats.transparentPixels,asset.alpha.transparentPixels,`${artwork.id}: original transparent pixel count.`);
-   assert.equal(stats.partialAlphaPixels,asset.alpha.partialAlphaPixels,`${artwork.id}: original partial-alpha pixel count.`);
-  }else{
-   assert.equal(asset.resourceKind,'opaque-character-still',`${artwork.id}: static source kind is explicit.`);
-   assert.equal(stats.colorType,2,`${artwork.id}: registered opaque source has RGB encoding.`);
-   assert.equal(stats.transparentPixels,0,`${artwork.id}: original has no transparent pixels.`);
-   assert.equal(stats.partialAlphaPixels,0,`${artwork.id}: original has no partial-alpha pixels.`);
-   assert.equal(stats.opaquePixels,stats.width*stats.height,`${artwork.id}: every pixel in the opaque source is opaque.`);
-  }
-  approvedRecords.push({artworkId:artwork.id,status:'approved-static-original',resourceKind:asset.resourceKind,sha256:digest,byteSize:bytes.length,...stats});
+  assert.equal(asset.resourceKind,'opaque-character-still',`${artwork.id}: historical source kind is explicit.`);
+  assert.equal(stats.colorType,2,`${artwork.id}: historical RGB encoding.`);
+  assert.equal(stats.transparentPixels,0);assert.equal(stats.partialAlphaPixels,0);
+  assert.equal(stats.opaquePixels,stats.width*stats.height,`${artwork.id}: historical opaque original.`);
  }
+ approvedRecords.push({artworkId:artwork.id,status:asset.alpha?.hasTransparency?'approved-transparent-original':'historical-opaque-original',resourceKind:asset.resourceKind,sha256:digest,byteSize:bytes.length,...stats});
+ const edited=editedDownloads.find(item=>item.artworkId===artwork.id);assert(edited,`${artwork.id}: actual changed-Draft download`);
+ const editedBytes=await fs.readFile(edited.file),editedDigest=crypto.createHash('sha256').update(editedBytes).digest('hex'),editedStats=readPngAlphaStats(editedBytes,`${artwork.id}: changed Draft`);
+ assert.equal(editedDigest,edited.sha256);assert.equal(editedDigest,edited.canvasSha256,`${artwork.id}: export matches the successful preview snapshot.`);assert.notEqual(editedDigest,asset.sha256);
+ assert.equal(editedBytes.length,edited.byteSize);assert.equal(edited.templateId,template.id);assert(Number.isInteger(edited.revision)&&edited.revision>download.revision);assert(edited.changedFields.length>0);
+ assert.equal(editedStats.colorType,6);assert.equal(editedStats.width,template.canvas.width);assert.equal(editedStats.height,template.canvas.height);
+ // Compositing registered soft masks can leave interior alpha at 254; actual
+ // transparent exterior and visible character pixels are the export contract.
+ assert(editedStats.transparentPixels>0&&editedStats.partialAlphaPixels+editedStats.opaquePixels>0,`${artwork.id}: changed PNG has actual transparent exterior and visible character pixels.`);
+ editedRecords.push({artworkId:artwork.id,templateId:template.id,revision:edited.revision,exportKind:edited.exportKind,sha256:editedDigest,byteSize:editedBytes.length,...editedStats});
 }
-assert.equal(templateRecords.length,2,'Both publicly approved editable Templates have a real exported PNG.');
+assert.equal(templateRecords.length,ARTWORKS.filter(artwork=>getTemplateForArtwork(artwork)).length,'Each eligible template baseline has an actual original-byte download.');
 const opaque=readPngAlphaStats(await fs.readFile('historical-runtime/retired-assets/dist/assets/characters/hero-background.png'),'opaque source negative');assert.equal(opaque.transparentPixels,0);
-await fs.writeFile(folder+'/download-alpha.json',JSON.stringify({approvedRecords,templateRecords,approvedStaticCount:approvedRecords.length,approvedTemplateCount:templateRecords.length,previewOnlyCount:PREVIEW_ARTWORKS.length,opaqueNegativeAllPixelsOpaque:true,visualReview:'alpha and exact-byte checks complement rendered dark/light browser review; alpha alone does not prove no shadow'},null,2)+'\n');
-console.log(`Actual browser PNG downloads verified: ${approvedRecords.length} static originals and ${templateRecords.length} approved-template revisions with PNG alpha; no preview-only artworks; opaque negative excluded from approved Artwork.`);
+await fs.writeFile(folder+'/download-alpha.json',JSON.stringify({approvedRecords,templateRecords,editedRecords,approvedOriginalCount:approvedRecords.length,approvedTemplateCount:templateRecords.length,changedDraftCount:editedRecords.length,previewOnlyCount:PREVIEW_ARTWORKS.length,opaqueNegativeAllPixelsOpaque:true,visualReview:'alpha and exact-byte checks complement rendered dark/light browser review; alpha alone does not prove no shadow'},null,2)+'\n');
+console.log(`Actual browser PNG downloads verified: ${approvedRecords.length} registered originals and ${editedRecords.length} changed Drafts; exact source/snapshot hashes and real PNG alpha verified for every identity; no preview-only artworks.`);

@@ -1,0 +1,1794 @@
+{
+  "status": "pending",
+  "scope": "candidate review only; neither Artwork nor Template has user art approval",
+  "artwork": {
+    "id": "robot-ivory-capsule-face-v98-candidate",
+    "version": "v2",
+    "seriesId": "independent-original",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Ivory Bot",
+      "zh-CN": "奶白机器人"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-ivory-capsule-face-v98-candidate-v2.png",
+    "sha256": "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "robot-capsule-independent-adjustments-v1",
+    "version": "v1",
+    "family": "independent-original",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "robot-ivory-capsule-face-v98-candidate",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1215,
+      "height": 1295
+    },
+    "anchors": {
+      "crown": [
+        607,
+        80
+      ]
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One independent friendly capsule robot with a smooth shell, one inset dark display, two side pods, short rounded arms, two feet and one amber chest light. Preserve the same robot identity, count and placement of these parts, the dark display and amber lamp. The registered appearance option may broaden only the lower torso; the registered colors option may recolor the enamel shell; the selected face and accessory options may change only their named details. No extra characters or unregistered anatomy.",
+      "zh-CN": "单个独立的友好胶囊机器人，具有光滑外壳、一块内嵌深色屏幕、两个侧舱、短圆手臂、两只脚和一盏琥珀胸灯。保持同一机器人身份、部件数量与位置、深色屏幕和琥珀灯。已注册的外观选项只可加宽下躯干，配色选项只可改变釉面外壳颜色；五官与配件选项只改变各自对应细节。不得增加其他角色或未注册的身体部件。"
+    },
+    "defaultOptions": {
+      "appearance": "standard",
+      "colors": "ivory",
+      "face": "capsule-eyes",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "standard",
+          "labelByLanguage": {
+            "en": "Original balance",
+            "zh-CN": "原始比例"
+          },
+          "semanticByLanguage": {
+            "en": "the original balanced capsule silhouette",
+            "zh-CN": "原始均衡的胶囊外形"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad-torso",
+          "labelByLanguage": {
+            "en": "Broader torso",
+            "zh-CN": "宽圆躯干"
+          },
+          "semanticByLanguage": {
+            "en": "a visibly broader rounded torso while keeping the head, screen, side pods and limbs unchanged",
+            "zh-CN": "更宽圆的躯干，头部、屏幕、侧舱和肢体保持不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "ivory",
+          "labelByLanguage": {
+            "en": "Ivory enamel",
+            "zh-CN": "象牙白釉面"
+          },
+          "semanticByLanguage": {
+            "en": "soft ivory enamel on all shell parts, with the black display and amber chest light unchanged",
+            "zh-CN": "所有外壳部件为柔和象牙白釉面，黑色屏幕与琥珀胸灯不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "shell": "#f1e6d4"
+          }
+        },
+        {
+          "id": "glacier-blue",
+          "labelByLanguage": {
+            "en": "Glacier blue",
+            "zh-CN": "冰川蓝"
+          },
+          "semanticByLanguage": {
+            "en": "soft glacier-blue enamel on all shell parts, with the black display and amber chest light unchanged",
+            "zh-CN": "所有外壳部件为柔和冰川蓝釉面，黑色屏幕与琥珀胸灯不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "shell": "#8fc8ed"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "capsule-eyes",
+          "labelByLanguage": {
+            "en": "Capsule eyes",
+            "zh-CN": "胶囊眼"
+          },
+          "semanticByLanguage": {
+            "en": "two softly glowing white vertical capsule eyes on the dark display",
+            "zh-CN": "深色屏幕上的两枚柔和发光白色竖胶囊眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-cyan",
+          "labelByLanguage": {
+            "en": "Sleepy cyan",
+            "zh-CN": "青色闭眼"
+          },
+          "semanticByLanguage": {
+            "en": "two small softly glowing cyan closed-eye arcs on the dark display, a static expression",
+            "zh-CN": "深色屏幕上的两道小巧柔和发光青色闭眼弧线，静态表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "不穿服装"
+          }
+        },
+        {
+          "id": "seam-collar",
+          "labelByLanguage": {
+            "en": "Teal seam collar",
+            "zh-CN": "青绿色接缝衣领"
+          },
+          "semanticByLanguage": {
+            "en": "a slim muted-teal fabric collar fitted flush around the head-to-torso seam below the head",
+            "zh-CN": "紧贴头部下沿与躯干接缝处的低矮灰青绿色布质衣领"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessory",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          }
+        },
+        {
+          "id": "mint-antenna",
+          "labelByLanguage": {
+            "en": "Mint antenna",
+            "zh-CN": "薄荷色天线"
+          },
+          "semanticByLanguage": {
+            "en": "one compact mint orb antenna mounted at the top center of the head",
+            "zh-CN": "一枚安装在头顶中央的小巧薄荷色球形天线"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [],
+    "recipes": [
+      {
+        "id": "standard-ivory-capsule-eyes-none-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-capsule-eyes-none-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-capsule-eyes-seam-collar-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-capsule-eyes-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-closed-cyan-none-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-closed-cyan-none-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-closed-cyan-seam-collar-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-ivory-closed-cyan-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-capsule-eyes-none-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-capsule-eyes-none-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-capsule-eyes-seam-collar-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-closed-cyan-none-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-closed-cyan-none-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-closed-cyan-seam-collar-none",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standard-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "standard",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-capsule-eyes-none-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-capsule-eyes-none-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-capsule-eyes-seam-collar-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-capsule-eyes-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-closed-cyan-none-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-closed-cyan-none-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-closed-cyan-seam-collar-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-ivory-closed-cyan-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "ivory",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-capsule-eyes-none-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-capsule-eyes-none-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-capsule-eyes-seam-collar-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-capsule-eyes-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "capsule-eyes",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-closed-cyan-none-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-closed-cyan-none-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "none",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-closed-cyan-seam-collar-none",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-torso-glacier-blue-closed-cyan-seam-collar-mint-antenna",
+        "selections": {
+          "appearance": "broad-torso",
+          "colors": "glacier-blue",
+          "face": "closed-cyan",
+          "clothing": "seam-collar",
+          "accessories": "mint-antenna"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:collar",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "colorApplication": "Registered image-generated full-body variants only. No runtime tint; dark display, bronze seams and amber chest lamp remain unchanged.",
+      "composition": "Transparent full-canvas body, seam collar before face overlay, display face and optional top-mounted antenna in explicit source-over order."
+    }
+  },
+  "assets": [
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:body-standard-ivory",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/body-standard-ivory.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/body-standard-ivory-v1.png",
+      "sha256": "1d973f4fd5dcab9ca1adb3d648b30f23c4dfb978818f280aed295c80f5330213",
+      "byteSize": 878029,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 864965,
+        "bboxAtAlphaThreshold16": [
+          132,
+          79,
+          1016,
+          1202
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:body-broad-ivory",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/body-broad-ivory.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/body-broad-ivory-v1.png",
+      "sha256": "d0ca926c6dc0488ad3a095e55f11899be4a59414e4de84fc387280b8db8185b8",
+      "byteSize": 901642,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 858302,
+        "bboxAtAlphaThreshold16": [
+          131,
+          78,
+          1018,
+          1202
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:body-standard-blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/body-standard-blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/body-standard-glacier-blue-v1.png",
+      "sha256": "c61b9a2e41719b048541da08878ef1380ac85945d993eaab8bba44d57b1aefbe",
+      "byteSize": 934908,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 861654,
+        "bboxAtAlphaThreshold16": [
+          133,
+          79,
+          1018,
+          1202
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:body-broad-blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/body-broad-blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/body-broad-glacier-blue-v1.png",
+      "sha256": "7c1ebe0588f9a021cd4f652e068465dbe748cbcaf4aa57e8a96ac51f18b20dd5",
+      "byteSize": 965063,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 859402,
+        "bboxAtAlphaThreshold16": [
+          131,
+          78,
+          1018,
+          1202
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:face-capsules",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/face-capsules.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/face-open-capsules-v1.png",
+      "sha256": "bccf440d24feef6a0acfcf9a7586543c4c28d3c2fc85a85f8e0884095072cbb3",
+      "byteSize": 72909,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1544926,
+        "bboxAtAlphaThreshold16": [
+          398,
+          312,
+          705,
+          524
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:face-closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/face-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/face-closed-cyan-arcs-v1.png",
+      "sha256": "f0bd4f9401be7833dcd208f885f11cd9d45b45739756d4603de4fc7cc6d9fc6e",
+      "byteSize": 63234,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1556639,
+        "bboxAtAlphaThreshold16": [
+          390,
+          409,
+          703,
+          528
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:collar",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/collar.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/clothing-seam-collar-v1.png",
+      "sha256": "5d92ec7496684e8af18480000230b596e778c81497bc8e0d918574f9acf714af",
+      "byteSize": 63294,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1553854,
+        "bboxAtAlphaThreshold16": [
+          408,
+          615,
+          827,
+          712
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    },
+    {
+      "id": "template:robot-capsule-independent-adjustments-v1:antenna",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/robot-capsule-independent-adjustments-v1/antenna.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-adjustments-v2/accessory-mint-antenna-v1.png",
+      "sha256": "b4a9882ca5fbe96fddeb742a1ac20544b72b0a3be907bddf9f1f99a7319e148a",
+      "byteSize": 76969,
+      "width": 1215,
+      "height": 1295,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1535756,
+        "bboxAtAlphaThreshold16": [
+          527,
+          400,
+          693,
+          713
+        ]
+      },
+      "owner": {
+        "templateId": "robot-capsule-independent-adjustments-v1",
+        "artworkId": "robot-ivory-capsule-face-v98-candidate",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1215,
+          1295
+        ],
+        "anchor": "crown",
+        "sourceAnchor": [
+          610,
+          713
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            610,
+            713
+          ],
+          "scale": [
+            0.25,
+            0.25
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-generated isolated transparent layer; user-authorized alpha edge cleanup preserved retained RGB, alpha and canvas dimensions."
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {checkInventory,checkPreviewOnlyFiles} from './build-studio.mjs';
+import {checkInventory,checkPreviewOnlyFiles,collectTemplateAssetReferences} from './build-studio.mjs';
+import {FIXTURE_TEMPLATE} from './fixtures/character-adjustment-v2.mjs';
 const published=['dist/index.html','dist/new-approved.png','dist/assets/templates/sources.json'];
 checkInventory(published,published);
 assert.throws(()=>checkInventory([...published,'dist/orphan.png'],published),'An orphan dist file must fail the exact closure check.');
@@ -16,4 +17,14 @@ assert.throws(()=>checkPreviewOnlyFiles(complete,[...pending,...pending],pending
 assert.throws(()=>checkPreviewOnlyFiles(complete,['dist/new-approved.png'],pending),'An otherwise published but unregistered approved file cannot be declared pending.');
 assert.throws(()=>checkPreviewOnlyFiles(complete,[],pending),'A missing registered pending path must fail.');
 assert.throws(()=>checkPreviewOnlyFiles(complete,['openspec/pending.png'],['openspec/pending.png']),'An external path cannot be declared pending.');
+const refs=collectTemplateAssetReferences(FIXTURE_TEMPLATE);
+assert.equal(refs.length,8,'All recipe layers and masks are included once.');
+assert(refs.some(ref=>ref.purpose==='color-zone-mask'));
+assert(refs.some(ref=>ref.purpose==='accessory-rear-layer'));
+assert(refs.some(ref=>ref.purpose==='accessory-front-layer'));
+const thumbnail={id:'thumbnail-only',version:'fixture-v1',purpose:'option-thumbnail'};
+const withThumbnail=structuredClone(FIXTURE_TEMPLATE);
+withThumbnail.options.appearance[0].thumbnailAssets.push(thumbnail);
+assert.deepEqual(collectTemplateAssetReferences(withThumbnail).find(ref=>ref.id===thumbnail.id),thumbnail,'Thumbnail-only resources are part of the exact publish closure.');
+assert.deepEqual(collectTemplateAssetReferences({schemaVersion:1,layers:{body:refs[0],face:[refs[1],refs[0]]}}),refs.slice(0,2),'Legacy fixed layers remain supported and deduplicated.');
 console.log('Publish inventory: exact dist closure, missing/orphan, duplicate, traversal, and registered pending-set fixtures passed');

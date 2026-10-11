@@ -1,0 +1,959 @@
+{
+  "status": "pending",
+  "scope": "candidate only; exact complete branches and registered face/headwear layers; user art approval pending",
+  "artwork": {
+    "id": "muse-sage-reading",
+    "version": "v1",
+    "seriesId": "muse",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "读书 Muse",
+      "en": "Reading Muse"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png",
+    "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "muse-sage-reading-adjustments-v1",
+    "version": "v1",
+    "family": "muse",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "muse-sage-reading",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。",
+      "en": "One Muse character with a continuous soft plush hooded body, inset peach face, small eyes and short rounded limbs. Preserve the unified hood/body and natural support of any held prop."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典包覆体",
+            "en": "Classic hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "经典连续包覆身体与内嵌脸，双手真实承托鼠尾草绿布面书本",
+            "en": "a continuous hooded body with an inset face; keep the sage cloth-bound book naturally held by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "宽圆包覆体",
+            "en": "Broader hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更宽圆的包覆身体与内嵌脸，双手真实承托鼠尾草绿布面书本",
+            "en": "a broader squat hooded body with an inset face; keep the sage cloth-bound book naturally held by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "鼠尾草绿",
+            "en": "sage green"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "鼠尾草绿短绒身体，肤色与道具保持原色",
+            "en": "sage green short-plush body; preserve peach face and prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#a6b69a"
+          ],
+          "zoneColors": {
+            "plush": "#a6b69a"
+          }
+        },
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "zh-CN": "柔雾蓝",
+            "en": "Powder blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "仅绒布包覆体和短圆肢体为柔雾蓝，脸部肤色、所有道具保持原色",
+            "en": "powder blue plush hood, body and short limbs only; preserve peach skin and all prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#a2bfdc"
+          ],
+          "zoneColors": {
+            "plush": "#a2bfdc"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、睁开小圆眼与轻柔微笑",
+            "en": "an inset peach face with small open dark eyes and a gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、双眼放松闭合并轻柔微笑，静态表情",
+            "en": "an inset peach face with relaxed closed curved eyes and a gentle smile; static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无外套",
+            "en": "No vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有绒布包覆身体，不另穿外套",
+            "en": "the original plush-covered body without an extra vest"
+          }
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合身体的浅蓝针织背心，位于手臂和持物后方",
+            "en": "a fitted powder-blue knit vest behind the arms and held object"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无头饰",
+            "en": "No headwear"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双手真实承托鼠尾草绿布面书本，不戴头饰",
+            "en": "keep the sage cloth-bound book naturally held by both short round hands; no headwear"
+          }
+        },
+        {
+          "id": "crown",
+          "labelByLanguage": {
+            "zh-CN": "雏菊花冠",
+            "en": "Daisy crown"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双手真实承托鼠尾草绿布面书本，小型雏菊花冠贴合帽兜顶部",
+            "en": "keep the sage cloth-bound book naturally held by both short round hands; a small daisy crown fitted on top of the hood"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "blue"
+        },
+        "code": "classic-fit-colors",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "classic-fit-face",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "classic-fit-clothing",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "crown"
+        },
+        "code": "classic-fit-accessories",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "colors": "blue",
+          "clothing": "vest"
+        },
+        "code": "vest-original-colors",
+        "messageByLanguage": {
+          "zh-CN": "这件背心适配原色身体。请先选择原色或脱下背心。",
+          "en": "This vest fits the original body colors. Choose the original color or remove the vest first."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-sage-reading-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png",
+      "sha256": "82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a",
+      "byteSize": 1142481,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1009482,
+        "bboxAtAlphaThreshold16": [
+          293,
+          131,
+          970,
+          1140
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:broad",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/broad.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-sage-reading-body-alternate-candidate-v2.png",
+      "sha256": "89d243ee0291dc2b1723e4dd2a807377feeada9eba59fd98052ed4d791c48f4f",
+      "byteSize": 1330965,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 892937,
+        "bboxAtAlphaThreshold16": [
+          194,
+          159,
+          1062,
+          1138
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-sage-reading-color-body-candidate-v2.png",
+      "sha256": "93f921b008251e5e1e9a50342d6e32b6d067a0559e9a7b9cf4148ac1981da2df",
+      "byteSize": 1069595,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1018251,
+        "bboxAtAlphaThreshold16": [
+          294,
+          129,
+          973,
+          1141
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:vest",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-sage-reading-clothed-body-candidate-v2.png",
+      "sha256": "f96f671c16f47bef14bc5ac72b718e25f8962602fa3e92291fa67571767ff286",
+      "byteSize": 1181586,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 993639,
+        "bboxAtAlphaThreshold16": [
+          286,
+          115,
+          979,
+          1148
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-sage-reading-face-closed-candidate-v2.png",
+      "sha256": "82c0202c40a40c44f5b1a6424dccc1486840594435d56634b75b6d8ea9d68999",
+      "byteSize": 192443,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1448012,
+        "bboxAtAlphaThreshold16": [
+          389,
+          270,
+          862,
+          581
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          105.92389006342495,
+          6.59485530546624
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8562367864693446,
+            0.8681672025723473
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-sage-reading-adjustments-v1:crown",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/muse-sage-reading-adjustments-v1/crown.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-sage-reading-flower-crown-candidate-v2.png",
+      "sha256": "475bea9b7800f37dd72537bda81d1490aeadd4ab9bcd8120f313bc14302805cf",
+      "byteSize": 208625,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1491093,
+        "bboxAtAlphaThreshold16": [
+          283,
+          418,
+          1003,
+          680
+        ]
+      },
+      "owner": {
+        "templateId": "muse-sage-reading-adjustments-v1",
+        "artworkId": "muse-sage-reading",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          216.19444444444446,
+          -197.05555555555554
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.6388888888888888,
+            0.6388888888888888
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    }
+  ]
+}

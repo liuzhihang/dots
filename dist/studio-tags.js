@@ -1,5 +1,5 @@
-import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=99';
-import { SERIES } from './studio-content.js?v=99';
+import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=100';
+import { SERIES } from './studio-content.js?v=100';
 
 const DIMENSION_LABELS = Object.freeze({
   style: '风格 / 角色', 'object-type': '对象类型', shape: '外形', 'facial-features': '五官特征',
@@ -102,6 +102,7 @@ export const TAGS = Object.freeze([...knownIds].map((id, order) => {
 
 const tagById = new Map(TAGS.map(tag => [tag.id, tag]));
 const seriesIds = new Set(SERIES.map(series => series.id));
+const curatedSeriesOrder = new Map(SERIES.map((series, index) => [series.id, index]));
 
 /** Text terms are ANDed; one series is then combined with the text query. */
 export function normalizeGalleryQuery(query = {}) {
@@ -145,6 +146,15 @@ export function queryArtworks(query = {}, catalog = ARTWORKS, validationContext 
     const haystack = searchableText(artwork);
     return tokens.every(token => haystack.includes(token));
   });
-  if (normalized.sort === 'name') results.sort((a,b)=>(a.titleByLanguage?.[normalized.language] || a.title).localeCompare(b.titleByLanguage?.[normalized.language] || b.title, normalized.language) || a.id.localeCompare(b.id));
+  if (normalized.sort === 'name') {
+    results.sort((a,b)=>(a.titleByLanguage?.[normalized.language] || a.title).localeCompare(b.titleByLanguage?.[normalized.language] || b.title, normalized.language) || a.id.localeCompare(b.id));
+  } else {
+    const sourceOrder = new Map(catalog.map((artwork, index) => [artwork, index]));
+    results.sort((a,b) => {
+      const aFamily = curatedSeriesOrder.get(a.seriesId) ?? SERIES.length;
+      const bFamily = curatedSeriesOrder.get(b.seriesId) ?? SERIES.length;
+      return aFamily - bFamily || sourceOrder.get(a) - sourceOrder.get(b);
+    });
+  }
   return results;
 }

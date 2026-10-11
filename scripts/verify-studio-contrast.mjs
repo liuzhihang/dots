@@ -4,8 +4,8 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=99';
-import {TEMPLATE_REGISTRY,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=99';
+import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=100';
+import {TEMPLATE_REGISTRY,getTemplateForArtwork,getTemplateOptionFields} from '../dist/studio-edit-templates.js?v=100';
 
 const output=resolveEvidenceDirectory('.artifacts/studio-contrast');
 await fs.mkdir(output,{recursive:true});
@@ -13,24 +13,34 @@ const server=await createServer({configFile:path.resolve('vite.config.mjs'),serv
 await server.listen();
 const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
 const html=(await fs.readFile('dist/index.html','utf8'))
-  .replace('data-cache="99"','data-cache="99" data-studio-boot="manual"')
+  .replace('data-cache="100"','data-cache="100" data-studio-boot="manual"')
   .replace('<head>',`<head><base href="${origin}/">`)
-  .replace('<script type="module" src="./studio.js?v=99"></script>','<script type="module">import {bootStudio} from "/studio.js?v=99";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
+  .replace('<script type="module" src="./studio.js?v=100"></script>','<script type="module">import {bootStudio} from "/studio.js?v=100";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
 const browser=await launchBrowser({headless:true});
 const rows=[];
 const failures=[];
 const staticFixture=ARTWORKS.find(item=>!getTemplateForArtwork(item));
-assert(staticFixture,'The approved catalog retains a real Artwork without a public edit template.');
 const templateCases=TEMPLATE_REGISTRY.map(template=>{
   const artwork=ARTWORKS.find(item=>item.id===template.artworkBinding.artworkId&&item.version===template.artworkBinding.artworkVersion);
   assert(artwork,`${template.id} has an exact catalog binding.`);
   assert.equal(getTemplateForArtwork(artwork)?.id,template.id,`${template.id} is eligible through public access.`);
-  return {series:template.family,id:artwork.id,version:artwork.version,templateId:template.id};
+  const tabs=template.schemaVersion===2?getTemplateOptionFields(template).map(field=>field.key):['colors','face','accessories'];
+  return {series:template.id,id:artwork.id,version:artwork.version,templateId:template.id,tabs};
 });
-assert.equal(templateCases.length,2,'Both approved templates receive rendered contrast checks.');
+assert.equal(templateCases.length,ARTWORKS.filter(item=>getTemplateForArtwork(item)).length,'Every current publicly editable Artwork receives rendered contrast checks.');
+assert(templateCases.length>0,'The current catalog has real publicly editable Artworks.');
 
 async function contrastSample(page,{name,selectors,threshold=4.5}){
   const targets=await page.evaluate(({selectors,threshold})=>{
+    const clippedRect=(rect,element)=>{
+      let left=Math.max(0,rect.left),top=Math.max(0,rect.top),right=Math.min(innerWidth,rect.right),bottom=Math.min(innerHeight,rect.bottom);
+      for(let ancestor=element;ancestor;ancestor=ancestor.parentElement){
+        const style=getComputedStyle(ancestor),box=ancestor.getBoundingClientRect();
+        if(/auto|scroll|hidden|clip/.test(style.overflowX)){left=Math.max(left,box.left+ancestor.clientLeft);right=Math.min(right,box.left+ancestor.clientLeft+ancestor.clientWidth);}
+        if(/auto|scroll|hidden|clip/.test(style.overflowY)){top=Math.max(top,box.top+ancestor.clientTop);bottom=Math.min(bottom,box.top+ancestor.clientTop+ancestor.clientHeight);}
+      }
+      return right>left&&bottom>top?{x:left,y:top,width:right-left,height:bottom-top}:null;
+    };
     const found=new Map();
     for(const selector of selectors){
       for(const element of document.querySelectorAll(selector)){
@@ -44,7 +54,7 @@ async function contrastSample(page,{name,selectors,threshold=4.5}){
           const textNode=walker.currentNode;
           if(!textNode.nodeValue?.trim())continue;
           const range=document.createRange();range.selectNodeContents(textNode);
-          const rects=[...range.getClientRects()].filter(rect=>rect.width>0&&rect.height>0&&rect.right>0&&rect.bottom>0&&rect.left<innerWidth&&rect.top<innerHeight);
+          const rects=[...range.getClientRects()].map(rect=>clippedRect(rect,textNode.parentElement||element)).filter(Boolean);
           if(!rects.length)continue;
           const style=getComputedStyle(textNode.parentElement||element);
           const values=style.color.match(/[\d.]+/g)?.map(Number)||[];
@@ -152,11 +162,13 @@ try{
     assert.equal(await page.locator('html').getAttribute('lang'),language);
     await contrastSample(page,{name:`${language}-gallery`,selectors:['.hero-title-line[data-home-copy="titleFirst"]','.intro-description','#browseCharacters','.gallery-series-filter__button[aria-pressed="true"]','.result-count','.artwork-name','.artwork-series']});
     await gradientTextContrastSample(page,{name:`${language}-hero-gradient-title`,selector:'.hero-title-line[data-home-copy="titleSecond"]',threshold:3});
-    const artwork=staticFixture;
-    await page.goto(`${origin}/#/artwork/${artwork.id}?v=${artwork.version}`);
-    await page.waitForFunction(()=>document.querySelector('.character-studio')?.dataset.preview==='ready');
-    assert.equal(await page.locator('.character-studio').getAttribute('data-editable'),'false');
-    await contrastSample(page,{name:`${language}-static-detail`,selectors:['.artwork-detail__title','.studio-series','.artwork-detail__description','.artwork-detail__tag','.studio-actions button','.prompt-direction>span','.studio-prompt-actions .prompt-direction-note','.studio-prompt-actions .chatgpt-hint','.studio-prompt>summary']});
+    if(staticFixture){
+      const artwork=staticFixture;
+      await page.goto(`${origin}/#/artwork/${artwork.id}?v=${artwork.version}`);
+      await page.waitForFunction(()=>document.querySelector('.character-studio')?.dataset.preview==='ready');
+      assert.equal(await page.locator('.character-studio').getAttribute('data-editable'),'false');
+      await contrastSample(page,{name:`${language}-static-detail`,selectors:['.artwork-detail__title','.studio-series','.artwork-detail__description','.artwork-detail__tag','.studio-actions button','.prompt-direction>span','.studio-prompt-actions .prompt-direction-note','.studio-prompt-actions .chatgpt-hint','.studio-prompt>summary']});
+    }
     await page.close();await context.close();
 
     for(const templateCase of templateCases){
@@ -171,11 +183,14 @@ try{
       assert.equal(await reviewPage.locator('.studio-editor-controls').getAttribute('data-review-only'),'false',
         `${templateCase.templateId} is measured through the public production eligibility path.`);
       assert.equal(await reviewPage.locator('html').getAttribute('lang'),language);
-      for(const group of ['appearance','face','accessories']){
+      assert.deepEqual(await reviewPage.locator('.studio-editor-tab[role="tab"]').evaluateAll(tabs=>tabs.map(tab=>tab.dataset.editorTab)),templateCase.tabs,'Rendered tabs match the exact Template capability.');
+      for(const group of templateCase.tabs){
         await reviewPage.locator(`.studio-editor-tab[role="tab"][data-editor-tab="${group}"]`).click();
         await reviewPage.waitForFunction(expected=>document.querySelector(`.studio-editor-tab[data-editor-tab="${expected}"]`)?.getAttribute('aria-selected')==='true'&&!document.querySelector(`.studio-editor-category[role="tabpanel"][data-editor-tab="${expected}"]`)?.hidden,group);
-        await contrastSample(reviewPage,{name:`${language}-${series}-editor-${group}`,selectors:['.overlay-header h2','#overlayBack','#overlayClose','.artwork-detail__title','.studio-editor-tabs .studio-editor-tab','.studio-editor-field-title','.studio-editor-option-label','.studio-editor-controls [data-action="retry"]:not([hidden])','.studio-actions button','.prompt-direction>span','.studio-prompt-actions .prompt-direction-note','.studio-prompt-actions .chatgpt-hint']});
+        await contrastSample(reviewPage,{name:`${language}-${series}-editor-${group}`,selectors:['.overlay-header h2','#overlayBack','#overlayClose','.artwork-detail__title','.studio-editor-tabs .studio-editor-tab','.studio-editor-field-title','.studio-editor-option-label','.studio-editor-option-reason:not([hidden])','.studio-editor-controls [data-action="retry"]:not([hidden])']});
       }
+      await reviewPage.locator('.studio-actions').scrollIntoViewIfNeeded();
+      await contrastSample(reviewPage,{name:`${language}-${series}-editor-actions`,selectors:['.studio-actions button','.prompt-direction>span','.studio-prompt-actions .prompt-direction-note','.studio-prompt-actions .chatgpt-hint']});
       const originalSummary=reviewPage.locator('.studio-original>summary');
       await originalSummary.scrollIntoViewIfNeeded();
       assert.equal(await originalSummary.isVisible(),true,'The collapsed original-materials disclosure remains visible when scrolled into view.');
@@ -185,7 +200,7 @@ try{
   }
   const ratios=rows.map(row=>row.minRatio).filter(Number.isFinite);
   const minimum=ratios.length?Math.min(...ratios):null;
-  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:99,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
+  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:100,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
   console.log(`Contrast: ${rows.length} rendered text targets sampled in both languages; minimum ${minimum?.toFixed(2)??'n/a'}:1; failures ${failures.length}.`);
   if(failures.length){console.error(`Contrast failures: ${JSON.stringify(failures,null,2)}`);process.exitCode=1;}
 }finally{await browser.close();await server.close();}

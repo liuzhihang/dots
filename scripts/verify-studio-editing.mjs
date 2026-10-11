@@ -8,6 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=100';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -24,7 +25,29 @@ const WIDTH = 1440;
 const HEIGHT = 900;
 const focusedRaceOnly = process.argv.includes('--focused-race-only');
 const focusedCycleOnly = process.argv.includes('--focused-cycle-only');
-const TAB_FOR_FIELD = Object.freeze({ color: 'appearance', eyes: 'face', glasses: 'accessories', accessory: 'accessories' });
+const TAB_FOR_FIELD = Object.freeze({ appearance: 'appearance', colors: 'colors', face: 'face', clothing: 'clothing', accessories: 'accessories', color: 'colors', eyes: 'face', glasses: 'accessories', accessory: 'accessories' });
+
+function configurationFlow(template) {
+  const fields = getTemplateOptionFields(template).map(row => row.key);
+  const key = options => JSON.stringify(fields.map(field => options[field]));
+  const configurations = enumerateValidConfigurations(template);
+  const paths = new Map([[key(template.defaultOptions), []]]);
+  const queue = [template.defaultOptions];
+  while (queue.length) {
+    const current = queue.shift();
+    for (const next of configurations) {
+      const changes = fields.filter(field => current[field] !== next[field]);
+      if (changes.length !== 1 || paths.has(key(next))) continue;
+      paths.set(key(next), [...paths.get(key(current)), [changes[0], next[changes[0]]]]);
+      queue.push(next);
+    }
+  }
+  assert.equal(paths.size, configurations.length, `${template.id}: every legal recipe is reachable through visible single-option controls.`);
+  const target = configurations.reduce((best, row) => paths.get(key(row)).length > paths.get(key(best)).length ? row : best);
+  const steps = paths.get(key(target));
+  assert(steps.length > 0, `${template.id}: public editing has an actual changed recipe.`);
+  return { label: template.id, templateId: template.id, artworkId: template.artworkBinding.artworkId, artworkVersion: template.artworkBinding.artworkVersion, options: Object.fromEntries(fields.map(field => [field, target[field]])), steps };
+}
 
 for (const directory of [runRoot, compositeRoot, downloadRoot, screenshotRoot, videoStageRoot]) {
   await fs.mkdir(directory, { recursive: true });
@@ -33,36 +56,32 @@ for (const directory of [runRoot, compositeRoot, downloadRoot, screenshotRoot, v
 const sourceBytes = await fs.readFile(manifestPath);
 const sourceManifest = JSON.parse(sourceBytes.toString('utf8'));
 assert.equal(sourceManifest.schemaVersion, 1, 'Runtime template manifest must use the installed schema.');
-assert.deepEqual(sourceManifest.canvas, { width: 1254, height: 1254 }, 'Both templates share the declared 1254×1254 canvas.');
-assert.equal(sourceManifest.assets.length, 14, 'The two templates have seven physical layers each.');
-assert.equal(sourceManifest.templates.length, 2, 'The runtime manifest declares both approved public Templates.');
-const approvalPath = path.join(repoRoot, 'design/acceptance/current-20261010-v99/release-20261011/approval.json');
-const approval = JSON.parse(await fs.readFile(approvalPath, 'utf8'));
-assert.equal(approval.scope.revision, 99, 'The approval record is bound to current v99.');
-assert.equal(approval.scope.artworkCount, 24, 'The approval record covers all 24 public Artwork records.');
-const approvedTemplateIds = approval.scope.publicEditability.approvedTemplateIds;
-assert.deepEqual(new Set(approvedTemplateIds), new Set(['dots-orb-v1', 'grok-orb-v1']), 'Both exact Template families are explicitly approved.');
-const approvedTemplateRecords = new Map(approval.scope.templates.map(row => [row.id, row]));
-const approvedLayerRecords = new Map(approval.scope.templates.flatMap(template => template.sourceAssets.map(asset => [asset.id, asset])));
-assert.equal(approvedTemplateRecords.size, 2, 'The approval record covers both Templates.');
+assert.deepEqual(new Set(sourceManifest.templates.map(row => row.id)), new Set(TEMPLATE_REGISTRY.map(row => row.id)), 'The runtime manifest covers the actual public Template registry.');
+const approvedLayerRecords = new Map();
 for (const template of sourceManifest.templates) {
-  assert(approvedTemplateIds.includes(template.id), `${template.id} is in the approval record.`);
+  const approvalPath = path.resolve(repoRoot, template.artApproval.record);
+  const approval = JSON.parse(await fs.readFile(approvalPath, 'utf8'));
+  const approvedTemplate = approval.scope.templates.find(row => row.id === template.id);
+  assert(approval.scope.publicEditability.approvedTemplateIds.includes(template.id), `${template.id} is explicitly in its exact approval record.`);
+  assert(approvedTemplate, `${template.id} has a versioned approved template record.`);
   assert.equal(template.status, 'approved', `${template.id} runtime status follows approval.`);
   assert.equal(template.engineeringStatus, 'passed', `${template.id} has passed engineering checks.`);
   assert.equal(template.publicEditable, true, `${template.id} is publicly editable.`);
   assert.equal(template.artApproval.approvalId, approval.approvalId, `${template.id} points to the current approval record.`);
   assert.equal(template.artApproval.record, path.relative(repoRoot, approvalPath), `${template.id} names the current approval evidence.`);
-  assert.equal(approvedTemplateRecords.get(template.id)?.version, template.version, `${template.id} version is exact.`);
+  assert.equal(approvedTemplate.version, template.version, `${template.id} version is exact.`);
+  for (const asset of approvedTemplate.sourceAssets) approvedLayerRecords.set(`${asset.id}|${asset.version}|${asset.purpose}`, asset);
 }
 for (const row of sourceManifest.assets) {
   const bytes = await fs.readFile(path.join(repoRoot, 'dist', row.path.replace(/^\.\//, '')));
   assert.equal(bytes.length, row.byteSize, `Byte size matches ${row.id}.`);
   assert.equal(createHash('sha256').update(bytes).digest('hex'), row.sha256, `SHA-256 matches ${row.id}.`);
-  assert.equal(row.width, 1254, `Width matches the common canvas for ${row.id}.`);
-  assert.equal(row.height, 1254, `Height matches the common canvas for ${row.id}.`);
+  const header = parsePngHeader(bytes);
+  assert.equal(row.width, header.width, `Registered width matches the actual PNG for ${row.id}.`);
+  assert.equal(row.height, header.height, `Registered height matches the actual PNG for ${row.id}.`);
   assert.equal(row.mime, 'image/png', `Template source is PNG: ${row.id}.`);
   assert.equal(row.status, 'approved', `The public Template layer is approved: ${row.id}.`);
-  const approvedAsset = approvedLayerRecords.get(row.id);
+  const approvedAsset = approvedLayerRecords.get(`${row.id}|${row.version}|${row.purpose}`);
   assert(approvedAsset, `${row.id} is registered in the exact approval record.`);
   for (const key of ['version', 'purpose', 'path', 'sha256', 'byteSize']) assert.equal(row[key], approvedAsset[key], `${row.id}: ${key} matches approved bytes.`);
 }
@@ -123,6 +142,7 @@ async function newRecordedPage(segmentName) {
   const context = await browser.newContext({
     viewport: { width: WIDTH, height: HEIGHT },
     acceptDownloads: true,
+    permissions: ['clipboard-read', 'clipboard-write'],
     reducedMotion: 'reduce',
     recordVideo: { dir: videoStageRoot, size: { width: WIDTH, height: HEIGHT } }
   });
@@ -154,14 +174,15 @@ async function finishSegment({ context, page, segmentName }, outputPath) {
   allVideoSegments.push({ segmentName, path: outputPath });
 }
 
-async function openArtwork(page, artworkId) {
-  const result = await page.evaluate(async id => {
-    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=99');
-    const artwork = ARTWORKS.find(row => row.id === id);
+async function openArtwork(page, artworkId, artworkVersion) {
+  const result = await page.evaluate(async ({ id, version }) => {
+    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=100');
+    const artwork = ARTWORKS.find(row => row.id === id && row.version === version);
     if (!artwork) throw new Error(`Artwork not found: ${id}`);
     const opened = window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
     return { id: artwork.id, version: artwork.version, opened, publicationStatus: artwork.publicationStatus, asset: getAsset(artwork.assetRefs?.original) };
-  }, artworkId);
+  }, { id: artworkId, version: artworkVersion });
+  assert.equal(result.version, artworkVersion, 'The UI journey opens the exact template-bound Artwork version.');
   assert.equal(result.opened, undefined, 'The root bootstrap openArtwork method completes synchronously.');
   await page.waitForFunction(id => {
     const detail = document.querySelector('.character-studio');
@@ -219,6 +240,8 @@ async function waitForPreview(page, { expectNoOriginal = false } = {}) {
 }
 
 async function waitForEditor(page, config) {
+  const fields = getTemplateOptionFields(TEMPLATE_REGISTRY.find(row => row.id === config.templateId)).map(row => row.key);
+  const tabs = [...new Set(fields.map(field => TAB_FOR_FIELD[field]))];
   const state = await page.evaluate(() => window.__dotsQAApp.detail.getState());
   assert.equal(state.editable, true, `${config.templateId} is bound to its exact publicly approved Artwork.`);
   assert.equal(state.templateId, config.templateId);
@@ -232,7 +255,7 @@ async function waitForEditor(page, config) {
   }, null, { timeout: 30_000 });
   const initialTab = await page.locator('.studio-editor-tabs .studio-editor-tab[role="tab"][aria-selected="true"]').getAttribute('data-editor-tab');
   const visualOptions = [];
-  for (const tabKey of ['appearance', 'face', 'accessories']) {
+  for (const tabKey of tabs) {
     const tab = page.locator(`.studio-editor-tabs .studio-editor-tab[role="tab"][data-editor-tab="${tabKey}"]`);
     await tab.click();
     await page.waitForFunction(expected => {
@@ -245,7 +268,7 @@ async function waitForEditor(page, config) {
       const buttons = [...(panel?.querySelectorAll('button.studio-editor-option[data-field][data-option-id]') || [])];
       return buttons.length > 0 && buttons.every(button => {
         const visual = button.querySelector('.studio-editor-option-visual');
-        return button.dataset.field === 'color'
+        return ['color', 'colors'].includes(button.dataset.field)
           ? visual?.classList.contains('studio-editor-color-swatch')
           : button.dataset.optionId === 'none'
             ? visual?.dataset.thumbnailState === 'empty'
@@ -263,6 +286,7 @@ async function waitForEditor(page, config) {
         optionId: button.dataset.optionId,
         pressed: button.getAttribute('aria-pressed') === 'true',
         disabled: button.disabled,
+        conflict: button.dataset.conflict || '',
         colorSwatch: visual?.classList.contains('studio-editor-color-swatch') === true,
         thumbnailState: visual?.dataset.thumbnailState || null,
         thumbnailCanvas: Boolean(thumbnail && thumbnail.width > 0 && thumbnail.height > 0),
@@ -273,13 +297,14 @@ async function waitForEditor(page, config) {
   }
   if (initialTab) await page.locator(`.studio-editor-tabs .studio-editor-tab[role="tab"][data-editor-tab="${initialTab}"]`).click();
   assert.ok(visualOptions.length > 0, `${config.templateId} renders real visual option buttons.`);
-  for (const field of ['color', 'eyes', 'glasses', 'accessory']) {
+  for (const field of fields) {
     assert.equal(visualOptions.filter(option => option.field === field && option.pressed).length, 1, `${config.templateId} exposes one visibly selected ${field} button.`);
   }
-  assert.ok(visualOptions.every(option => !option.disabled), `${config.templateId} keeps registered visual options available.`);
-  assert.ok(visualOptions.filter(option => option.field === 'color').every(option => option.colorSwatch), `${config.templateId} color choices use visible swatches.`);
-  assert.ok(visualOptions.filter(option => option.field !== 'color' && option.optionId === 'none').every(option => option.thumbnailState === 'empty'), `${config.templateId} explicit no-layer options are visibly empty.`);
-  assert.ok(visualOptions.filter(option => option.field !== 'color' && option.optionId !== 'none').every(option => option.thumbnailState === 'ready' && option.thumbnailCanvas && option.thumbnailAssets.length > 0 && option.thumbnailAlphaPixels > 0), `${config.templateId} real layer choices show nonempty-alpha canvas thumbnails.`);
+  assert.ok(visualOptions.every(option => option.disabled === Boolean(option.conflict)), `${config.templateId} disables only incompatible choices and supplies their reason.`);
+  assert.ok(visualOptions.filter(option => option.pressed).every(option => !option.disabled), 'The selected legal recipe remains available.');
+  assert.ok(visualOptions.filter(option => ['color', 'colors'].includes(option.field)).every(option => option.colorSwatch), `${config.templateId} color choices use visible swatches.`);
+  assert.ok(visualOptions.filter(option => !['color', 'colors'].includes(option.field) && option.optionId === 'none').every(option => option.thumbnailState === 'empty'), `${config.templateId} explicit no-layer options are visibly empty.`);
+  assert.ok(visualOptions.filter(option => !['color', 'colors'].includes(option.field) && option.optionId !== 'none').every(option => option.thumbnailState === 'ready' && option.thumbnailCanvas && option.thumbnailAssets.length > 0 && option.thumbnailAlphaPixels > 0), `${config.templateId} real layer choices show nonempty-alpha canvas thumbnails.`);
   const review = await page.evaluate(() => ({
     reviewOnly: document.querySelector('.studio-editor-controls[data-template-id]')?.dataset.reviewOnly,
     oldLongCopy: /not approved for public editing/i.test(document.querySelector('.studio-editor-review')?.textContent || '')
@@ -328,6 +353,7 @@ async function choose(page, field, value) {
     return buttons.filter(button => button.getAttribute('aria-pressed') === 'true').length === 1
       && buttons.some(button => button.dataset.optionId === expectedOption && button.getAttribute('aria-pressed') === 'true');
   }, { expectedField: field, expectedOption: value }, { timeout: 5_000 });
+  await page.waitForFunction(() => { const state=window.__dotsQAApp.detail.getState();const canvas=document.querySelector('.studio-editor-canvas');return state.promptReady&&state.exportReady&&canvas&&Number(canvas.dataset.renderRevision)===state.draft?.revision; }, null, { timeout: 30_000 });
 }
 
 function parsePngHeader(bytes) {
@@ -349,30 +375,74 @@ function parsePngHeader(bytes) {
   return { width, height, bitDepth, colorType };
 }
 
+let downloadSequence = 0;
 async function saveDownloadedPng(page, target, evidenceKind) {
+  const expected = await page.locator('.studio-editor-canvas').evaluate(canvas => ({ width: canvas.width, height: canvas.height }));
   const [download] = await Promise.all([
     page.waitForEvent('download', { timeout: 45_000 }),
     target.click()
   ]);
-  const filePath = path.join(downloadRoot, download.suggestedFilename());
+  const filePath = path.join(downloadRoot, `${String(++downloadSequence).padStart(4, '0')}-${download.suggestedFilename()}`);
   await download.saveAs(filePath);
   const bytes = await fs.readFile(filePath);
   const header = parsePngHeader(bytes);
-  assert.equal(header.width, 1254, `${evidenceKind} PNG has the canonical 1254px width.`);
-  assert.equal(header.height, 1254, `${evidenceKind} PNG has the canonical 1254px height.`);
+  assert.equal(header.width, expected.width, `${evidenceKind} PNG has the successful preview width.`);
+  assert.equal(header.height, expected.height, `${evidenceKind} PNG has the successful preview height.`);
   assert.equal(header.bitDepth, 8, `${evidenceKind} PNG uses 8-bit channels.`);
   assert.equal(header.colorType, 6, `${evidenceKind} PNG stores real RGBA alpha.`);
   return { filePath, filename: download.suggestedFilename(), sha256: createHash('sha256').update(bytes).digest('hex'), byteSize: bytes.length, header };
 }
 
+async function verifyEveryRecipeThroughControls(page, template, artwork, rendererReport) {
+  const fields = getTemplateOptionFields(template).map(field => field.key);
+  const configurations = enumerateValidConfigurations(template);
+  const key = options => JSON.stringify(fields.map(field => options[field]));
+  async function navigateTo(target) {
+    const current = await page.evaluate(() => window.__dotsQAApp.detail.getState().draft.options);
+    const routes = new Map([[key(current), []]]), queue = [current];
+    while (queue.length && !routes.has(key(target))) {
+      const from = queue.shift();
+      for (const next of configurations) {
+        const differences = fields.filter(field => from[field] !== next[field]);
+        if (differences.length !== 1 || routes.has(key(next))) continue;
+        routes.set(key(next), [...routes.get(key(from)), [differences[0], next[differences[0]]]]);
+        queue.push(next);
+      }
+    }
+    assert(routes.has(key(target)), `${template.id}: target is reachable by legal UI changes.`);
+    for (const [field, value] of routes.get(key(target))) await choose(page, field, value);
+  }
+  const records = [];
+  for (const options of configurations) {
+    await navigateTo(options);
+    const state = await page.evaluate(() => window.__dotsQAApp.detail.getState());
+    assert.equal(key(state.draft.options), key(options));
+    assert(state.promptReady && state.exportReady, 'Only the matching successful revision is exported.');
+    await page.locator('.studio-actions [data-action="copy-prompt"]').click();
+    await page.waitForFunction(async expected => await navigator.clipboard.readText() === expected, state.modifiedPrompt, { timeout: 5000 });
+    const clipboard = await page.evaluate(() => navigator.clipboard.readText());
+    assert.equal(clipboard, state.modifiedPrompt, 'Real browser clipboard contains this recipe’s successful Prompt.');
+    const downloaded = await saveDownloadedPng(page, page.locator('.studio-actions [data-action="export"]'), 'Every-recipe UI export');
+    const baseline = key(options) === key(template.defaultOptions);
+    const rendered = rendererReport.configurations.find(row => key(row.options) === key(options));
+    assert(rendered, 'The UI recipe has independent renderer evidence.');
+    assert.equal(downloaded.sha256, baseline ? artwork.asset.sha256 : rendered.outputSha256, baseline ? 'Default export preserves approved original bytes.' : 'Changed export matches the independently rendered transparent recipe.');
+    records.push({ options, recipeKey: rendered.recipeKey, revision: state.draft.revision, clipboardSha256: createHash('sha256').update(clipboard).digest('hex'), clipboardMatched: true, originalByteExport: baseline, download: downloaded });
+  }
+  await navigateTo(template.defaultOptions);
+  assert.equal(records.length, configurations.length);
+  return records;
+}
+
 async function renderAllRealConfigurations(page) {
   const browserOutput = await page.evaluate(async () => {
-    const [catalog, templates, draftAPI, renderer, loaderAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=99'),
-      import('/studio-edit-templates.js?v=99'),
-      import('/studio-draft.js?v=99'),
-      import('/studio-renderer.js?v=99'),
-      import('/studio-preview-loader.js?v=99')
+    const [catalog, templates, draftAPI, renderer, loaderAPI, promptAPI] = await Promise.all([
+      import('/studio-artwork-catalog.js?v=100'),
+      import('/studio-edit-templates.js?v=100'),
+      import('/studio-draft.js?v=100'),
+      import('/studio-renderer.js?v=100'),
+      import('/studio-preview-loader.js?v=100'),
+      import('/studio-prompt.js?v=100')
     ]);
     const manifestResponse = await fetch('/assets/templates/sources.json', { cache: 'no-cache' });
     if (!manifestResponse.ok) throw new Error(`Manifest fetch failed (${manifestResponse.status}).`);
@@ -380,21 +450,15 @@ async function renderAllRealConfigurations(page) {
     const loader = loaderAPI.createPreviewLoader();
     loader.registerAssets(manifest.assets);
     const report = { manifestAssetCount: manifest.assets.length, templates: [], reviewBackgrounds: [], loaderBeforeRelease: null, loaderAfterRelease: null };
-    const reviewBackgroundRecipes = new Set([
-      'dots-orb-v1|blue|original|none|headphones',
-      'dots-orb-v1|blue|original|round|none',
-      'grok-orb-v1|purple|angled-capsules|none|none',
-      'grok-orb-v1|purple|angled-capsules|round|none',
-      'grok-orb-v1|purple|angled-capsules|none|soft-cap',
-      'grok-orb-v1|purple|angled-capsules|round|soft-cap'
-    ]);
     for (const templateDefinition of templates.TEMPLATE_REGISTRY) {
       const artwork = catalog.ARTWORKS.find(row => row.id === templateDefinition.artworkBinding.artworkId && row.version === templateDefinition.artworkBinding.artworkVersion);
       if (!artwork) throw new Error(`No exact Artwork binding for ${templateDefinition.id}.`);
       const template = templates.getTemplateForArtwork(artwork);
       if (!template || template.status !== 'approved' || template.engineeringStatus !== 'passed' || template.artApproval?.status !== 'approved') throw new Error(`Public approved-template access is unavailable for ${templateDefinition.id}.`);
-      const rows = manifest.assets.filter(row => row.id.startsWith(`template:${template.id}:`));
       const configurations = templates.enumerateValidConfigurations(template);
+      const references = configurations.flatMap(options => templates.getRequiredTemplateAssets(template, options));
+      const rows = manifest.assets.filter(row => references.some(ref => ref.id === row.id && ref.version === row.version && ref.purpose === row.purpose));
+      if (references.some(ref => !rows.some(row => ref.id === row.id && ref.version === row.version && ref.purpose === row.purpose))) throw new Error(`${template.id}: a required layer or thumbnail is unregistered.`);
       const baseDraft = draftAPI.createDraft({ artwork, template, sessionId: `all-configs-${template.id}` });
       const templateReport = { templateId: template.id, artworkId: artwork.id, artworkVersion: artwork.version, status: template.status, engineeringStatus: template.engineeringStatus, artApprovalId: template.artApproval.approvalId, publicEditable: true, assetCount: rows.length, legalCount: configurations.length, configurations: [] };
       for (let index = 0; index < configurations.length; index += 1) {
@@ -402,6 +466,16 @@ async function renderAllRealConfigurations(page) {
         const draft = draftAPI.updateDraft(baseDraft, options, { template });
         const result = await renderer.renderDraft({ draft, template, loader, assetRegistry: rows, sessionId: draft.sessionId });
         const snapshot = renderer.createExportSnapshot(result);
+        const promptChecks = ['en', 'zh'].map(language => {
+          const text = promptAPI.buildConfigurationPrompt({ artwork, template, snapshot, language });
+          const locale = language === 'en' ? 'en' : 'zh-CN';
+          for (const field of templates.getTemplateOptionFields(template)) {
+            const option = field.options.find(row => row.id === snapshot.options[field.key]);
+            const semantic = option.semanticByLanguage?.[locale] || option.labelByLanguage?.[locale];
+            if (!semantic || !text.includes(semantic)) throw new Error(`${template.id}: ${language} Prompt differs from successful ${field.key} semantics.`);
+          }
+          return { language, text, revision: snapshot.revision, recipeKey: snapshot.recipeKey };
+        });
         const blob = await renderer.exportSnapshot(snapshot);
         const directBlob = await new Promise((resolve, reject) => result.canvas.toBlob(value => value ? resolve(value) : reject(new Error('canvas.toBlob returned empty output.')), 'image/png'));
         const [outBytes, directBytes] = await Promise.all([blob.arrayBuffer(), directBlob.arrayBuffer()]);
@@ -421,14 +495,14 @@ async function renderAllRealConfigurations(page) {
           minX = Math.min(minX, x); minY = Math.min(minY, y); maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
         }
         const alphaHash = await crypto.subtle.digest('SHA-256', alpha).then(value => [...new Uint8Array(value)].map(byte => byte.toString(16).padStart(2, '0')).join(''));
-        const sample = context.getImageData(627, 800, 1, 1).data;
+        if (!alphaNonzero || !alphaTransparent) throw new Error(`${template.id}: recipe must contain actual subject pixels and transparent pixels.`);
+        const sample = context.getImageData(Math.floor(result.width / 2), Math.floor(result.height * 0.64), 1, 1).data;
         const stem = `${template.id}-${String(index + 1).padStart(2, '0')}`;
         const bytes = new Uint8Array(outBytes);
         let binary = '';
         for (let offset = 0; offset < bytes.length; offset += 0x8000) binary += String.fromCharCode(...bytes.subarray(offset, Math.min(offset + 0x8000, bytes.length)));
         await window.__writeStudioEvidence(`composites/${stem}.png`, btoa(binary));
-        const reviewKey = `${template.id}|${options.color}|${options.eyes}|${options.glasses}|${options.accessory}`;
-        if (reviewBackgroundRecipes.has(reviewKey)) {
+        {
           const backgrounds = [];
           for (const [name, color] of [['dark', '#0b0d12'], ['white', '#ffffff']]) {
             const reviewCanvas = document.createElement('canvas');
@@ -458,6 +532,7 @@ async function renderAllRealConfigurations(page) {
           outputSha256: outputHash,
           outputByteSize: blob.size,
           previewAndExportSha256Match: outputHash === directHash,
+          promptChecks,
           canvas: [result.width, result.height],
           alphaSha256: alphaHash,
           alphaNonzero,
@@ -470,8 +545,17 @@ async function renderAllRealConfigurations(page) {
         if (loader.stats().activeLeases !== 0 || loader.stats().pendingRequests !== 0) throw new Error(`Loader did not settle after ${stem}.`);
       }
       templateReport.distinctOutputCount = new Set(templateReport.configurations.map(row => row.outputSha256)).size;
-      if (templateReport.distinctOutputCount !== templateReport.legalCount) throw new Error(`${template.id}: some legally selectable configurations produced identical PNG bytes.`);
-      if (rows.length !== 7) throw new Error(`${template.id} expected seven exact source rows, got ${rows.length}.`);
+      const fieldKeys = templates.getTemplateOptionFields(template).map(row => row.key);
+      templateReport.optionPixelWitnesses = templates.getTemplateOptionFields(template).flatMap(field => field.options.map(option => {
+        for (const selected of templateReport.configurations.filter(row => row.options[field.key] === option.id)) {
+          const neighbor = templateReport.configurations.find(row => row.options[field.key] !== option.id
+            && fieldKeys.filter(key => key !== field.key).every(key => row.options[key] === selected.options[key])
+            && row.outputSha256 !== selected.outputSha256);
+          if (neighbor) return { field: field.key, option: option.id, selectedRecipe: selected.recipeKey, comparisonRecipe: neighbor.recipeKey };
+        }
+        throw new Error(`${template.id}: ${field.key}=${option.id} lacks a legal single-field pixel-change witness.`);
+      }));
+      if (!rows.length) throw new Error(`${template.id} has no exact source rows.`);
       report.templates.push(templateReport);
     }
     report.loaderBeforeRelease = loader.stats();
@@ -479,9 +563,10 @@ async function renderAllRealConfigurations(page) {
     report.loaderAfterRelease = loader.stats();
     return report;
   });
-  assert.equal(browserOutput.templates.reduce((sum, row) => sum + row.legalCount, 0), 28,
-    'The real renderer completed all 12 Dots and 16 Grok valid recipes.');
-  assert.equal(browserOutput.templates.length, 2, 'Both source templates were rendered exactly.');
+  const expectedRecipeCount = TEMPLATE_REGISTRY.reduce((sum, template) => sum + enumerateValidConfigurations(template).length, 0);
+  assert.equal(browserOutput.templates.reduce((sum, row) => sum + row.legalCount, 0), expectedRecipeCount, 'The real renderer completed every registered legal recipe.');
+  assert.equal(browserOutput.templates.length, TEMPLATE_REGISTRY.length, 'Every actual public template was rendered exactly.');
+  assert.equal(browserOutput.reviewBackgrounds.length, expectedRecipeCount, 'Every recipe has actual deep/light inspection composites.');
   assert.ok(browserOutput.templates.every(row => row.status === 'approved' && row.engineeringStatus === 'passed' && row.publicEditable), 'Real asset Templates pass the exact public approval path.');
   assert.equal(browserOutput.loaderAfterRelease.activeLeases, 0);
   assert.equal(browserOutput.loaderAfterRelease.pendingRequests, 0);
@@ -500,20 +585,75 @@ const writeEvidence = async (relativePath, base64) => {
 };
 
 async function runTwentyEditCycles(page) {
-  await page.evaluate(async () => {
+  const plansByTemplate = new Map(TEMPLATE_REGISTRY.map(template => {
+    const fields = getTemplateOptionFields(template).map(row => row.key);
+    const key = options => JSON.stringify(fields.map(field => options[field]));
+    const configurations = enumerateValidConfigurations(template);
+    const paths = new Map([[key(template.defaultOptions), []]]);
+    const queue = [template.defaultOptions];
+    while (queue.length) {
+      const current = queue.shift();
+      for (const next of configurations) {
+        const changes = fields.filter(field => current[field] !== next[field]);
+        if (changes.length !== 1 || paths.has(key(next))) continue;
+        paths.set(key(next), [...paths.get(key(current)), [changes[0], next[changes[0]]]]);
+        queue.push(next);
+      }
+    }
+    assert.equal(paths.size, configurations.length, `${template.id}: every legal recipe is reachable through real single-field controls.`);
+    const recipes = configurations.filter(options => key(options) !== key(template.defaultOptions)).map(options => ({
+      templateId: template.id,
+      artworkId: template.artworkBinding.artworkId,
+      fields,
+      options: Object.fromEntries(fields.map(field => [field, options[field]])),
+      steps: paths.get(key(options))
+    }));
+    assert.ok(recipes.length > 0, `${template.id}: at least one non-default reachable recipe drives lifecycle stress.`);
+    return [template.id, recipes];
+  }));
+  const cyclePlans = Array.from({ length: 20 }, (_, index) => {
+    const templateDefinition = TEMPLATE_REGISTRY[index % TEMPLATE_REGISTRY.length];
+    const recipes = plansByTemplate.get(templateDefinition.id);
+    return recipes[Math.floor(index / TEMPLATE_REGISTRY.length) % recipes.length];
+  });
+
+  await page.evaluate(async ({ cyclePlans, tabForField }) => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=99'),
-      import('/studio-edit-templates.js?v=99'),
-      import('/studio-draft.js?v=99'),
-      import('/studio-renderer.js?v=99'),
-      import('/studio-preview-loader.js?v=99'),
-      import('/studio-editor.js?v=99')
+      import('/studio-artwork-catalog.js?v=100'),
+      import('/studio-edit-templates.js?v=100'),
+      import('/studio-draft.js?v=100'),
+      import('/studio-renderer.js?v=100'),
+      import('/studio-preview-loader.js?v=100'),
+      import('/studio-editor.js?v=100')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error(`Manifest fetch failed (${response.status}).`);
       return response.json();
     });
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const referenceKey = reference => `${reference?.id || ''}\u0000${reference?.version || ''}\u0000${reference?.purpose || ''}`;
+    const rowsForTemplate = template => {
+      const references = new Map();
+      const add = reference => {
+        if (reference?.id && reference?.version && reference?.purpose) references.set(referenceKey(reference), reference);
+      };
+      for (const options of templates.enumerateValidConfigurations(template)) {
+        for (const reference of templates.getRequiredTemplateAssets(template, options, { includeAllOptionThumbnails: true })) add(reference);
+      }
+      for (const field of templates.getTemplateOptionFields(template)) {
+        for (const option of field.options) {
+          const refs = templates.getTemplateOptionAssetRefs(template, field.key, option.id);
+          for (const reference of [...refs.thumbnailAssets, ...refs.layerAssets, ...refs.maskAssets]) add(reference);
+        }
+      }
+      const rows = [...references.values()].map(reference => {
+        const row = manifest.assets.find(candidate => referenceKey(candidate) === referenceKey(reference));
+        if (!row || typeof row.path !== 'string') throw new Error(`${template.id}: registered resource ${reference.id} has no exact manifest path/version/purpose.`);
+        return row;
+      });
+      if (!rows.length) throw new Error(`${template.id}: no exact registered resources were found for its recipes.`);
+      return rows;
+    };
     const createObservedLoader = fetchImpl => {
       const delegate = loaderAPI.createPreviewLoader({ fetchImpl });
       let canceledConsumers = 0;
@@ -531,11 +671,13 @@ async function runTwentyEditCycles(page) {
         getCanceledConsumers: () => canceledConsumers
       };
     };
-    window.__dotsRunEditorCycle = async index => {
-      const templateDefinition = templates.TEMPLATE_REGISTRY[index % 2];
+    window.__dotsRunEditorCycle = async (index, plan) => {
+      const templateDefinition = templates.TEMPLATE_REGISTRY.find(row => row.id === plan.templateId);
+      if (!templateDefinition) throw new Error(`Cycle ${index}: Template ${plan.templateId} is not in the runtime registry.`);
       const artwork = catalog.ARTWORKS.find(row => row.id === templateDefinition.artworkBinding.artworkId && row.version === templateDefinition.artworkBinding.artworkVersion);
+      if (!artwork) throw new Error(`Cycle ${index}: exact bound Artwork is missing for ${templateDefinition.id}.`);
       const template = templates.getTemplateForArtwork(artwork);
-      const rows = manifest.assets.filter(row => row.id.startsWith(`template:${template.id}:`));
+      const rows = rowsForTemplate(template);
       let transportAbortCount = 0;
       const delayedFetch = (url, options = {}) => new Promise((resolve, reject) => {
         let settled = false;
@@ -598,30 +740,27 @@ async function runTwentyEditCycles(page) {
         }
       });
       host.append(editor.previewElement);
-      // Let the initial real render and its shared thumbnail consumers attach
-      // to the same pending resources before superseding its Draft revision.
+      // Allow the default render and its real thumbnail consumers to share pending resource requests.
       await wait(35);
       const set = (field, value) => {
-        const tabKey = ({ color: 'appearance', eyes: 'face', glasses: 'accessories', accessory: 'accessories' })[field];
+        const tabKey = tabForField[field] || field;
         const tab = editor.element.querySelector('.studio-editor-tab[data-editor-tab="' + tabKey + '"]');
-        if (!tab) throw new Error('Cycle is missing the ' + field + ' tab.');
+        if (!tab) throw new Error(`Cycle is missing the registered ${field} tab (${tabKey}).`);
         tab.click();
         const panel = editor.element.querySelector('.studio-editor-category[role="tabpanel"][data-editor-tab="' + tabKey + '"]');
-        if (tab.getAttribute('aria-selected') !== 'true' || !panel || panel.hidden) throw new Error('Cycle failed to activate the visible ' + field + ' panel.');
+        if (tab.getAttribute('aria-selected') !== 'true' || !panel || panel.hidden) throw new Error(`Cycle failed to activate the visible ${field} panel.`);
         const control = panel.querySelector('button.studio-editor-option[data-field="' + field + '"][data-option-id="' + value + '"]');
-        if (!control) throw new Error('Cycle is missing visual ' + field + ' option ' + value + '.');
+        if (!control || control.disabled) throw new Error(`Cycle cannot reach registered ${field} option ${value} through the UI.`);
         control.click();
+        if (editor.getDraft().options[field] !== value) throw new Error(`Cycle UI did not apply ${field}=${value}.`);
       };
-      const dots = template.id === 'dots-orb-v1';
-      const finalOptions = dots
-        ? { color: index % 2 ? 'warm-yellow' : 'blue', eyes: 'closed', glasses: 'none', accessory: index % 2 ? 'none' : 'headphones' }
-        : { color: index % 2 ? 'mint' : 'purple', eyes: 'upright-capsules', glasses: 'round', accessory: index % 2 ? 'soft-cap' : 'none' };
-      set('color', finalOptions.color);
-      const disabledDuringPending = editor.getSnapshot() === null;
-      await wait(8);
-      set('eyes', finalOptions.eyes);
-      set('glasses', finalOptions.glasses);
-      set('accessory', finalOptions.accessory);
+      if (!Array.isArray(plan.steps) || plan.steps.length === 0) throw new Error(`Cycle ${index}: selected recipe has no legal UI route.`);
+      let disabledDuringPending = false;
+      for (let step = 0; step < plan.steps.length; step += 1) {
+        const [field, value] = plan.steps[step];
+        set(field, value);
+        if (step === 0) disabledDuringPending = editor.getSnapshot() === null;
+      }
       await wait(0);
       const canceledConsumersAfterRapidChange = loader.getCanceledConsumers();
       const sharedRequestsAfterRapidChange = loader.stats().pendingRequests;
@@ -630,11 +769,22 @@ async function runTwentyEditCycles(page) {
         await wait(10);
       }
       if (!status?.canExport || status.snapshot?.revision !== editor.getDraft().revision) throw new Error(`Cycle ${index} never rendered its current Draft revision.`);
+      for (const field of plan.fields) {
+        if (editor.getDraft().options[field] !== plan.options[field]) throw new Error(`Cycle ${index} did not reach selected recipe field ${field}.`);
+      }
+      const finalOptions = Object.fromEntries(plan.fields.map(field => [field, editor.getDraft().options[field]]));
       const expectedRevision = editor.getDraft().revision;
       const currentCanvas = editor.previewElement.querySelector('canvas[data-render-revision]');
       if (Number(currentCanvas?.dataset.renderRevision) !== expectedRevision) throw new Error(`Cycle ${index} Canvas revision is stale.`);
+      // A successful preview need not wait for every option thumbnail. Verify
+      // those independent consumers eventually settle before measuring teardown.
+      for (let attempt = 0; attempt < 300; attempt += 1) {
+        const stats = loader.stats();
+        if (stats.pendingRequests === 0 && stats.activeLeases === 0) break;
+        await wait(10);
+      }
       const statsBeforeExport = loader.stats();
-      if (statsBeforeExport.pendingRequests !== 0 || statsBeforeExport.activeLeases !== 0) throw new Error(`Cycle ${index} has unsettled requests/leases before export.`);
+      if (statsBeforeExport.pendingRequests !== 0 || statsBeforeExport.activeLeases !== 0) throw new Error(`Cycle ${index} has unsettled requests/leases before export: ${JSON.stringify(statsBeforeExport)}.`);
       const exportAccepted = await editor.exportPNG();
       if (!exportAccepted || exportCaptures.length !== 1 || exportCaptures[0].revision !== expectedRevision) throw new Error(`Cycle ${index} did not export its latest successful snapshot through the Editor API.`);
       const exportedFilename = exportCaptures[0].filename;
@@ -665,10 +815,12 @@ async function runTwentyEditCycles(page) {
       };
     };
     window.__dotsDestroyPendingEditor = async () => {
-      const templateDefinition = templates.TEMPLATE_REGISTRY.find(row => row.id === 'dots-orb-v1');
+      const templateDefinition = templates.TEMPLATE_REGISTRY.find(row => templates.enumerateValidConfigurations(row).length > 1);
+      if (!templateDefinition) throw new Error('No registered editable Template is available for the pending-destroy check.');
       const artwork = catalog.ARTWORKS.find(row => row.id === templateDefinition.artworkBinding.artworkId && row.version === templateDefinition.artworkBinding.artworkVersion);
+      if (!artwork) throw new Error(`Exact bound Artwork is missing for ${templateDefinition.id}.`);
       const template = templates.getTemplateForArtwork(artwork);
-      const rows = manifest.assets.filter(row => row.id.startsWith(`template:${template.id}:`));
+      const rows = rowsForTemplate(template);
       let pendingFetchAborts = 0;
       let pendingFetchCalls = 0;
       const pendingFetch = (_url, options = {}) => new Promise((_resolve, reject) => {
@@ -687,9 +839,7 @@ async function runTwentyEditCycles(page) {
       host.style.cssText = 'position:fixed;left:-5000px;top:0;width:360px;height:420px;overflow:hidden;';
       document.body.append(host);
       const draft = draftAPI.createDraft({ artwork, template, sessionId: 'destroy-pending-editor' });
-      const editor = editorAPI.createEditor({
-        root: host, artwork, template, draft, loader, assetRegistry: rows
-      });
+      const editor = editorAPI.createEditor({ root: host, artwork, template, draft, loader, assetRegistry: rows });
       host.append(editor.previewElement);
       for (let attempt = 0; attempt < 100; attempt += 1) {
         if (loader.stats().activeRequests > 0 && pendingFetchCalls > 0) break;
@@ -706,21 +856,16 @@ async function runTwentyEditCycles(page) {
       const statsAfterDestroy = loader.stats();
       loader.releaseAll();
       const statsAfterRelease = loader.stats();
-      return {
-        pendingFetchCalls,
-        pendingFetchAborts,
-        canceledConsumers: loader.getCanceledConsumers(),
-        statsBeforeDestroy,
-        statsAfterDestroy,
-        statsAfterRelease
-      };
+      return { pendingFetchCalls, pendingFetchAborts, canceledConsumers: loader.getCanceledConsumers(), statsBeforeDestroy, statsAfterDestroy, statsAfterRelease };
     };
-  });
+  }, { cyclePlans, tabForField: TAB_FOR_FIELD });
 
   const cycles = [];
-  for (let index = 0; index < 20; index += 1) {
-    const cycle = await page.evaluate(index => window.__dotsRunEditorCycle(index), index);
+  for (let index = 0; index < cyclePlans.length; index += 1) {
+    const plan = cyclePlans[index];
+    const cycle = await page.evaluate(({ index, plan }) => window.__dotsRunEditorCycle(index, plan), { index, plan });
     assert.equal(cycle.index, index + 1);
+    assert.equal(cycle.templateId, plan.templateId, `Cycle ${index + 1} uses its registry-selected Template.`);
     assert.equal(cycle.disabledDuringPending, true, `Cycle ${index + 1} disables export while a new revision is rendering.`);
     assert.equal(cycle.statsAfterDestroy.activeLeases, 0, `Cycle ${index + 1} destroys all render leases.`);
     assert.equal(cycle.statsAfterDestroy.pendingRequests, 0, `Cycle ${index + 1} settles/aborts pending resources.`);
@@ -730,7 +875,7 @@ async function runTwentyEditCycles(page) {
     assert.equal(cycle.statsAfterRelease.cachedDecodedBytes, 0, `Cycle ${index + 1} releases cached decoded memory.`);
     assert.ok(cycle.exportCapture.filename.endsWith('.png'), `Cycle ${index + 1} created a PNG through the isolated Editor export API.`);
     assert.equal(cycle.exportCapture.bytes > 100_000, true, `Cycle ${index + 1} produced nonempty PNG bytes.`);
-    if (index === 0 || index === 19) {
+    if (index === 0 || index === cyclePlans.length - 1) {
       const target = path.join(downloadRoot, `cycle-${String(index + 1).padStart(2, '0')}.png`);
       const base64 = cycle.exportCapture.base64;
       assert.equal(typeof base64, 'string', `Cycle ${index + 1} captures the PNG bytes for alpha verification.`);
@@ -754,7 +899,6 @@ async function runTwentyEditCycles(page) {
     pendingDestroy
   };
 }
-
 function assertCycleEvidence(cycleReport) {
   for (const cycle of cycleReport.cycles) {
     assert.ok(cycle.canceledConsumersAfterRapidChange > 0, `Cycle ${cycle.index} canceled stale renderer consumers after rapid Draft edits (observed ${cycle.canceledConsumersAfterRapidChange}).`);
@@ -772,43 +916,71 @@ function assertCycleEvidence(cycleReport) {
 }
 
 async function runFocusedEditorRaces(page) {
-  return page.evaluate(async () => {
+  return page.evaluate(async tabForField => {
     const [catalog, templates, draftAPI, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=99'),
-      import('/studio-edit-templates.js?v=99'),
-      import('/studio-draft.js?v=99'),
-      import('/studio-preview-loader.js?v=99'),
-      import('/studio-editor.js?v=99')
+      import('/studio-artwork-catalog.js?v=100'),
+      import('/studio-edit-templates.js?v=100'),
+      import('/studio-draft.js?v=100'),
+      import('/studio-preview-loader.js?v=100'),
+      import('/studio-editor.js?v=100')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error('Manifest fetch failed (' + response.status + ').');
       return response.json();
     });
-    const dotsDefinition = templates.TEMPLATE_REGISTRY.find(row => row.id === 'dots-orb-v1');
-    const artwork = catalog.ARTWORKS.find(row => row.id === dotsDefinition.artworkBinding.artworkId && row.version === dotsDefinition.artworkBinding.artworkVersion);
-    const template = templates.getTemplateForArtwork(artwork);
-    const allRows = manifest.assets.filter(row => row.id.startsWith('template:' + template.id + ':'));
-    const closedEye = allRows.find(row => row.id === 'template:dots-orb-v1:eyes:closed');
-    if (!closedEye) throw new Error('The Dots controlled template is missing its registered closed-eye layer.');
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-    const createHost = name => {
-      const host = document.createElement('div');
-      host.dataset.raceHost = name;
-      host.style.cssText = 'position:fixed;left:-8000px;top:0;width:420px;height:520px;overflow:hidden;';
-      document.body.append(host);
-      return host;
+    const referenceKey = reference => `${reference?.id || ''}\u0000${reference?.version || ''}\u0000${reference?.purpose || ''}`;
+    const rowForReference = reference => manifest.assets.find(row => referenceKey(row) === referenceKey(reference)) || null;
+    const rowsForTemplate = template => {
+      const references = new Map();
+      const add = reference => {
+        if (reference?.id && reference?.version && reference?.purpose) references.set(referenceKey(reference), reference);
+      };
+      for (const options of templates.enumerateValidConfigurations(template)) {
+        for (const reference of templates.getRequiredTemplateAssets(template, options, { includeAllOptionThumbnails: true })) add(reference);
+      }
+      for (const field of templates.getTemplateOptionFields(template)) {
+        for (const option of field.options) {
+          const refs = templates.getTemplateOptionAssetRefs(template, field.key, option.id);
+          for (const reference of [...refs.thumbnailAssets, ...refs.layerAssets, ...refs.maskAssets]) add(reference);
+        }
+      }
+      return [...references.values()].map(reference => {
+        const row = rowForReference(reference);
+        if (!row || typeof row.path !== 'string') throw new Error(`${template.id}: registered resource ${reference.id} has no exact manifest path/version/purpose.`);
+        return row;
+      });
     };
-    const chooseVisualOption = (editor, field, value) => {
-      const tabKey = ({ color: 'appearance', eyes: 'face', glasses: 'accessories', accessory: 'accessories' })[field];
-      const tab = editor.element.querySelector('.studio-editor-tab[data-editor-tab="' + tabKey + '"]');
-      if (!tab) throw new Error('Editor tab is missing: ' + field);
-      tab.click();
-      const panel = editor.element.querySelector('.studio-editor-category[role="tabpanel"][data-editor-tab="' + tabKey + '"]');
-      if (tab.getAttribute('aria-selected') !== 'true' || !panel || panel.hidden) throw new Error('Editor failed to activate the visible ' + field + ' panel.');
-      const option = panel.querySelector('button.studio-editor-option[data-field="' + field + '"][data-option-id="' + value + '"]');
-      if (!option) throw new Error('Editor visual option is missing: ' + field + '=' + value);
-      option.click();
-    };
+    const candidateScenarios = [];
+    for (const definition of templates.TEMPLATE_REGISTRY) {
+      const artwork = catalog.ARTWORKS.find(row => row.id === definition.artworkBinding.artworkId && row.version === definition.artworkBinding.artworkVersion);
+      if (!artwork) continue;
+      const template = templates.getTemplateForArtwork(artwork);
+      const fields = templates.getTemplateOptionFields(template);
+      const configurations = templates.enumerateValidConfigurations(template);
+      const baselineKeys = new Set(templates.getRequiredTemplateAssets(template, template.defaultOptions, { includeAllOptionThumbnails: false }).map(referenceKey));
+      for (const field of fields) {
+        if (field.key === 'color' || field.key === 'colors') continue;
+        const defaultOption = template.defaultOptions[field.key];
+        for (const option of field.options) {
+          if (option.id === defaultOption || option.id === 'none') continue;
+          const targetOptions = configurations.find(configuration => fields.every(row => configuration[row.key] === (row.key === field.key ? option.id : template.defaultOptions[row.key])));
+          if (!targetOptions) continue;
+          const targetReferences = templates.getRequiredTemplateAssets(template, targetOptions, { includeAllOptionThumbnails: false });
+          const renderAsset = targetReferences.find(reference => !baselineKeys.has(referenceKey(reference)) && rowForReference(reference));
+          const optionReferences = templates.getTemplateOptionAssetRefs(template, field.key, option.id);
+          const thumbnailReferences = optionReferences.thumbnailAssets.length ? optionReferences.thumbnailAssets : optionReferences.layerAssets;
+          const thumbnailAsset = thumbnailReferences.map(rowForReference).find(row => row && !baselineKeys.has(referenceKey(row)));
+          if (!renderAsset || !thumbnailAsset) continue;
+          candidateScenarios.push({ definition, artwork, template, field: field.key, defaultOption, alternateOption: option.id, targetOptions, renderAsset: rowForReference(renderAsset), thumbnailAsset });
+        }
+      }
+    }
+    const scenario = candidateScenarios[0];
+    if (!scenario) throw new Error('No registered Template has a reachable non-default option with real render and thumbnail assets for lifecycle races.');
+    const { artwork, template, field: raceField, defaultOption, alternateOption, renderAsset, thumbnailAsset } = scenario;
+    const allRows = rowsForTemplate(template);
+    if (!allRows.length) throw new Error(`${template.id}: focused race has no manifest-backed resources.`);
     const waitFor = async (predicate, label, timeout = 8000) => {
       const deadline = Date.now() + timeout;
       while (Date.now() < deadline) {
@@ -816,6 +988,25 @@ async function runFocusedEditorRaces(page) {
         await wait(10);
       }
       throw new Error('Timed out waiting for ' + label + '.');
+    };
+    const createHost = name => {
+      const host = document.createElement('div');
+      host.dataset.raceHost = name;
+      host.style.cssText = 'position:fixed;left:-8000px;top:0;width:420px;height:520px;overflow:hidden;';
+      document.body.append(host);
+      return host;
+    };
+    const chooseVisualOption = (editor, optionField, value) => {
+      const tabKey = tabForField[optionField] || optionField;
+      const tab = editor.element.querySelector('.studio-editor-tab[data-editor-tab="' + tabKey + '"]');
+      if (!tab) throw new Error(`Editor tab is missing for registered field ${optionField} (${tabKey}).`);
+      tab.click();
+      const panel = editor.element.querySelector('.studio-editor-category[role="tabpanel"][data-editor-tab="' + tabKey + '"]');
+      if (tab.getAttribute('aria-selected') !== 'true' || !panel || panel.hidden) throw new Error(`Editor failed to activate the visible ${optionField} panel.`);
+      const option = panel.querySelector('button.studio-editor-option[data-field="' + optionField + '"][data-option-id="' + value + '"]');
+      if (!option || option.disabled) throw new Error(`Editor visual option is not reachable: ${optionField}=${value}.`);
+      option.click();
+      if (editor.getDraft().options[optionField] !== value) throw new Error(`Editor did not apply ${optionField}=${value}.`);
     };
     const newEditor = ({ name, rows = allRows, fetchImpl, decorateLoader, sessionId }) => {
       const host = createHost(name);
@@ -832,23 +1023,37 @@ async function runFocusedEditorRaces(page) {
       host.append(editor.previewElement);
       return { host, loader, editor, statuses, exports };
     };
-    const waitReady = async (state, expectedEyes) => waitFor(() => state.statuses.at(-1)?.canExport
+    const waitReady = async (state, expectedOptions = {}) => waitFor(() => state.statuses.at(-1)?.canExport
       && state.editor.getSnapshot()?.revision === state.editor.getDraft().revision
-      && (!expectedEyes || state.editor.getSnapshot()?.options.eyes === expectedEyes), 'current ' + (expectedEyes || 'default') + ' render');
+      && Object.entries(expectedOptions).every(([optionField, value]) => state.editor.getSnapshot()?.options[optionField] === value),
+    'current render' + (Object.keys(expectedOptions).length ? ' with ' + JSON.stringify(expectedOptions) : ''));
+    const thumbnailOption = editor => {
+      const category = tabForField[raceField] || raceField;
+      const tab = editor.element.querySelector('.studio-editor-tab[data-editor-tab="' + category + '"]');
+      if (!tab) throw new Error(`Editor is missing the ${raceField} tab.`);
+      tab.click();
+      const button = editor.element.querySelector('button.studio-editor-option[data-field="' + raceField + '"][data-option-id="' + alternateOption + '"]');
+      const visual = button?.querySelector('.studio-editor-option-visual');
+      if (!button || !visual) throw new Error(`Editor is missing the selected ${raceField} option thumbnail.`);
+      return { button, visual };
+    };
+    const waitForThumbnail = async editor => {
+      const { button, visual } = thumbnailOption(editor);
+      await waitFor(() => visual.dataset.thumbnailState === 'ready', `real ${raceField} option thumbnail`);
+      return { button, visual };
+    };
 
-    let delayClosedAcquire = false;
-    let closedAcquireCount = 0;
+    let delayRenderAsset = false;
+    let delayedRenderAcquisitions = 0;
     const outOfOrder = newEditor({
       name: 'a-b-a',
       sessionId: 'race-a-b-a',
       decorateLoader: raw => ({
         acquire(asset, options = {}) {
-          if (delayClosedAcquire && asset.id === closedEye.id) {
-            closedAcquireCount += 1;
-            const delay = closedAcquireCount === 1 ? 260 : 35;
-            // Hold the old acquisition outside the abortable cache. When it
-            // returns with an aborted render signal, the renderer must discard
-            // that obsolete completion without publishing status or pixels.
+          if (delayRenderAsset && asset.id === renderAsset.id) {
+            delayedRenderAcquisitions += 1;
+            const delay = delayedRenderAcquisitions === 1 ? 260 : 35;
+            // Keep the older acquisition outside the abortable cache until the newer A→B→A revision wins.
             return wait(delay).then(() => raw.acquire(asset, options));
           }
           return raw.acquire(asset, options);
@@ -860,31 +1065,34 @@ async function runFocusedEditorRaces(page) {
       })
     });
     await waitReady(outOfOrder);
-    outOfOrder.editor.element.querySelector('.studio-editor-tab[data-editor-tab="face"]').click();
-    await waitFor(() => outOfOrder.editor.element.querySelector('button[data-field="eyes"][data-option-id="closed"] .studio-editor-option-visual')?.dataset.thumbnailState === 'ready', 'the closed-eye thumbnail to load before injecting render delays');
-    delayClosedAcquire = true;
-    chooseVisualOption(outOfOrder.editor, 'eyes', 'closed');
+    await waitForThumbnail(outOfOrder.editor);
+    delayRenderAsset = true;
+    chooseVisualOption(outOfOrder.editor, raceField, alternateOption);
     await wait(12);
     const firstPendingExportDisabled = outOfOrder.editor.getSnapshot() === null;
     const firstPendingExportAccepted = await outOfOrder.editor.exportPNG();
-    chooseVisualOption(outOfOrder.editor, 'eyes', 'original');
-    await waitReady(outOfOrder, 'original');
-    chooseVisualOption(outOfOrder.editor, 'eyes', 'closed');
+    chooseVisualOption(outOfOrder.editor, raceField, defaultOption);
+    await waitReady(outOfOrder, { [raceField]: defaultOption });
+    chooseVisualOption(outOfOrder.editor, raceField, alternateOption);
     const latestPendingExportDisabled = outOfOrder.editor.getSnapshot() === null;
     const latestPendingExportAccepted = await outOfOrder.editor.exportPNG();
     if (firstPendingExportAccepted || latestPendingExportAccepted) throw new Error('Editor.exportPNG accepted an obsolete out-of-order revision before its render completed.');
-    await waitReady(outOfOrder, 'closed');
+    await waitReady(outOfOrder, { [raceField]: alternateOption });
     const finalSnapshot = outOfOrder.editor.getSnapshot();
     const statusCountBeforeLateCompletion = outOfOrder.statuses.length;
     await wait(300);
-    if (closedAcquireCount < 2) throw new Error('Expected two deliberately reordered closed-eye render acquisitions, got ' + closedAcquireCount + '.');
+    if (delayedRenderAcquisitions < 2) throw new Error(`Expected two deliberately reordered ${renderAsset.id} acquisitions, got ${delayedRenderAcquisitions}.`);
     if (outOfOrder.statuses.length !== statusCountBeforeLateCompletion) throw new Error('A late obsolete render emitted a status after the latest revision had succeeded.');
-    if (outOfOrder.editor.getSnapshot()?.revision !== finalSnapshot.revision || outOfOrder.editor.getSnapshot()?.options.eyes !== 'closed') {
+    if (outOfOrder.editor.getSnapshot()?.revision !== finalSnapshot.revision || outOfOrder.editor.getSnapshot()?.options[raceField] !== alternateOption) {
       throw new Error('A late obsolete A→B→A render replaced the latest successful Draft snapshot.');
     }
     const outOfOrderReport = {
-      sequence: ['closed', 'original', 'closed'],
-      delayedClosedEyeAcquisitions: closedAcquireCount,
+      templateId: template.id,
+      field: raceField,
+      sequence: [defaultOption, alternateOption, defaultOption, alternateOption],
+      delayedAssetId: renderAsset.id,
+      delayedAssetPath: renderAsset.path,
+      delayedAcquisitions: delayedRenderAcquisitions,
       firstPendingExportDisabled,
       firstPendingExportAccepted,
       latestPendingExportDisabled,
@@ -898,15 +1106,15 @@ async function runFocusedEditorRaces(page) {
     outOfOrder.host.remove();
     outOfOrder.loader.releaseAll();
 
-    let failLatestClosedAcquire = false;
+    let failLatestRenderAsset = false;
     let latestFailureInjected = false;
     const failedLatest = newEditor({
       name: 'latest-failure',
       sessionId: 'race-latest-failure',
       decorateLoader: raw => ({
         acquire(asset, options = {}) {
-          if (failLatestClosedAcquire && asset.id === closedEye.id) {
-            failLatestClosedAcquire = false;
+          if (failLatestRenderAsset && asset.id === renderAsset.id) {
+            failLatestRenderAsset = false;
             latestFailureInjected = true;
             return Promise.reject(Object.assign(new Error('Injected one current-revision layer failure.'), { code: 'missing-template-layer', assetId: asset.id }));
           }
@@ -919,10 +1127,9 @@ async function runFocusedEditorRaces(page) {
       })
     });
     await waitReady(failedLatest);
-    failedLatest.editor.element.querySelector('.studio-editor-tab[data-editor-tab="face"]').click();
-    await waitFor(() => failedLatest.editor.element.querySelector('button[data-field="eyes"][data-option-id="closed"] .studio-editor-option-visual')?.dataset.thumbnailState === 'ready', 'closed-eye thumbnail before injecting current render failure');
-    failLatestClosedAcquire = true;
-    chooseVisualOption(failedLatest.editor, 'eyes', 'closed');
+    await waitForThumbnail(failedLatest.editor);
+    failLatestRenderAsset = true;
+    chooseVisualOption(failedLatest.editor, raceField, alternateOption);
     await waitFor(() => failedLatest.statuses.at(-1)?.error?.code === 'missing-template-layer', 'latest missing-layer render failure');
     const failedState = {
       canExport: failedLatest.statuses.at(-1).canExport,
@@ -932,61 +1139,66 @@ async function runFocusedEditorRaces(page) {
       retryVisible: !failedLatest.editor.element.querySelector('[data-action="retry"]').hidden,
       error: failedLatest.statuses.at(-1).error
     };
-    if (failedState.canExport || !failedState.exportDisabled || failedState.exportAccepted || failedState.snapshot || !failedState.retryVisible) {
-      throw new Error('A failed latest revision must disable export and offer explicit Retry.');
+    if (failedState.canExport || !failedState.exportDisabled || failedState.exportAccepted || failedState.snapshot || !failedState.retryVisible || !latestFailureInjected) {
+      throw new Error('A failed latest revision must disable export, report the real failed layer, and offer explicit Retry.');
     }
     failedLatest.editor.element.querySelector('[data-action="retry"]').click();
-    await waitReady(failedLatest, 'closed');
+    await waitReady(failedLatest, { [raceField]: alternateOption });
     const retryState = { canExport: failedLatest.statuses.at(-1).canExport, snapshot: failedLatest.editor.getSnapshot(), failureWasInjected: latestFailureInjected };
+    if (!retryState.canExport || !retryState.failureWasInjected) throw new Error('Explicit Retry did not recover the failed latest recipe.');
     failedLatest.editor.destroy();
     failedLatest.host.remove();
     failedLatest.loader.releaseAll();
 
-    let closedThumbnailFetches = 0;
-    const failClosedThumbnailOnce = async (url, options = {}) => {
-      if (new URL(url).pathname.endsWith('/eyes/closed.png')) {
-        closedThumbnailFetches += 1;
-        if (closedThumbnailFetches === 1) return new Response('temporary thumbnail failure', { status: 503, headers: { 'content-type': 'text/plain' } });
+    let thumbnailFetches = 0;
+    const thumbnailPath = new URL('/' + thumbnailAsset.path.replace(/^\.\//, ''), location.origin).pathname;
+    const failThumbnailOnce = async (url, options = {}) => {
+      if (new URL(url).pathname === thumbnailPath) {
+        thumbnailFetches += 1;
+        if (thumbnailFetches === 1) return new Response('temporary option thumbnail failure', { status: 503, headers: { 'content-type': 'text/plain' } });
       }
       return fetch(url, options);
     };
-    const thumbnailRetry = newEditor({ name: 'thumbnail-retry', fetchImpl: failClosedThumbnailOnce, sessionId: 'race-thumbnail-retry' });
+    const thumbnailRetry = newEditor({ name: 'thumbnail-retry', fetchImpl: failThumbnailOnce, sessionId: 'race-thumbnail-retry' });
     await waitReady(thumbnailRetry);
-    thumbnailRetry.editor.element.querySelector('.studio-editor-tab[data-editor-tab="face"]').click();
-    const closedButton = thumbnailRetry.editor.element.querySelector('button.studio-editor-option[data-field="eyes"][data-option-id="closed"]');
-    const closedVisual = closedButton?.querySelector('.studio-editor-option-visual');
-    await waitFor(() => closedButton?.disabled === true
-      && closedButton.dataset.unavailableReason === 'thumbnail-load-failed'
-      && closedVisual?.dataset.thumbnailState === 'error'
+    const { button: alternateButton, visual: alternateVisual } = thumbnailOption(thumbnailRetry.editor);
+    await waitFor(() => alternateButton?.disabled === true
+      && alternateButton.dataset.unavailableReason === 'thumbnail-load-failed'
+      && alternateVisual?.dataset.thumbnailState === 'error'
       && !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
     'thumbnail failure to disable its option and show Retry');
     const failedThumbnail = {
-      disabled: closedButton.disabled,
-      reason: closedButton.dataset.unavailableReason,
+      disabled: alternateButton.disabled,
+      reason: alternateButton.dataset.unavailableReason,
       retryVisible: !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
-      failedFetchCount: closedThumbnailFetches
+      failedFetchCount: thumbnailFetches,
+      assetId: thumbnailAsset.id,
+      assetPath: thumbnailAsset.path
     };
     thumbnailRetry.editor.element.querySelector('[data-action="retry"]').click();
-    await waitFor(() => closedVisual.dataset.thumbnailState === 'ready'
-      && closedVisual.querySelector('canvas.studio-editor-option-thumbnail')
-      && closedButton.disabled === false,
+    await waitFor(() => alternateVisual.dataset.thumbnailState === 'ready'
+      && alternateVisual.querySelector('canvas.studio-editor-option-thumbnail')
+      && alternateButton.disabled === false,
     'failed option thumbnail retry to recover a selectable canvas');
-    chooseVisualOption(thumbnailRetry.editor, 'eyes', 'closed');
-    await waitReady(thumbnailRetry, 'closed');
-    const recoveredThumbnailCanvas = closedVisual.querySelector('canvas.studio-editor-option-thumbnail');
+    chooseVisualOption(thumbnailRetry.editor, raceField, alternateOption);
+    await waitReady(thumbnailRetry, { [raceField]: alternateOption });
+    const recoveredThumbnailCanvas = alternateVisual.querySelector('canvas.studio-editor-option-thumbnail');
     const recoveredThumbnailPixels = recoveredThumbnailCanvas.getContext('2d', { willReadFrequently: true }).getImageData(0, 0, recoveredThumbnailCanvas.width, recoveredThumbnailCanvas.height).data;
     let recoveredThumbnailAlphaPixels = 0;
     for (let offset = 3; offset < recoveredThumbnailPixels.length; offset += 4) if (recoveredThumbnailPixels[offset] > 0) recoveredThumbnailAlphaPixels += 1;
     const thumbnailRecovery = {
+      templateId: template.id,
+      field: raceField,
+      option: alternateOption,
       failedThumbnail,
-      retryCount: closedThumbnailFetches,
-      recovered: closedVisual.dataset.thumbnailState === 'ready' && recoveredThumbnailAlphaPixels > 0,
+      retryCount: thumbnailFetches,
+      recovered: alternateVisual.dataset.thumbnailState === 'ready' && recoveredThumbnailAlphaPixels > 0,
       alphaPixels: recoveredThumbnailAlphaPixels,
-      pressed: closedButton.getAttribute('aria-pressed') === 'true',
-      canExport: thumbnailRetry.editor.getSnapshot()?.options.eyes === 'closed'
+      pressed: alternateButton.getAttribute('aria-pressed') === 'true',
+      canExport: thumbnailRetry.editor.getSnapshot()?.options[raceField] === alternateOption
     };
-    if (closedThumbnailFetches < 2 || !thumbnailRecovery.recovered || !thumbnailRecovery.pressed || !thumbnailRecovery.canExport) {
-      throw new Error('Retry did not recover a real thumbnail canvas and selectable rendered option.');
+    if (thumbnailFetches < 2 || !thumbnailRecovery.recovered || !thumbnailRecovery.pressed || !thumbnailRecovery.canExport) {
+      throw new Error('Retry did not recover a real thumbnail canvas and selectable rendered recipe.');
     }
     thumbnailRetry.editor.destroy();
     thumbnailRetry.host.remove();
@@ -999,7 +1211,7 @@ async function runFocusedEditorRaces(page) {
       sessionId: 'race-closed-session',
       decorateLoader: raw => ({
         acquire(asset, options = {}) {
-          if (delayCloseAcquire && asset.id === closedEye.id) {
+          if (delayCloseAcquire && asset.id === renderAsset.id) {
             closeDelayedAcquisitions += 1;
             return wait(260).then(() => raw.acquire(asset, options));
           }
@@ -1012,10 +1224,9 @@ async function runFocusedEditorRaces(page) {
       })
     });
     await waitReady(closing);
-    closing.editor.element.querySelector('.studio-editor-tab[data-editor-tab="face"]').click();
-    await waitFor(() => closing.editor.element.querySelector('button[data-field="eyes"][data-option-id="closed"] .studio-editor-option-visual')?.dataset.thumbnailState === 'ready', 'closed-eye thumbnail before close-late race');
+    await waitForThumbnail(closing.editor);
     delayCloseAcquire = true;
-    chooseVisualOption(closing.editor, 'eyes', 'closed');
+    chooseVisualOption(closing.editor, raceField, alternateOption);
     await waitFor(() => closeDelayedAcquisitions > 0, 'the delayed close-race acquisition');
     closing.editor.destroy();
     closing.host.remove();
@@ -1026,28 +1237,36 @@ async function runFocusedEditorRaces(page) {
     await wait(300);
     if (closing.statuses.length !== oldStatusCountAfterDestroy) throw new Error('A closed editor emitted a late status callback after its session was destroyed.');
     if (replacement.editor.getSnapshot()?.sessionId !== replacementSnapshot.sessionId
-      || replacement.editor.getSnapshot()?.revision !== replacementSnapshot.revision) {
-      throw new Error('A closed session late callback changed the replacement editor session.');
+      || replacement.editor.getSnapshot()?.revision !== replacementSnapshot.revision
+      || replacement.editor.getSnapshot()?.options[raceField] !== defaultOption) {
+      throw new Error('A closed session late callback changed the replacement editor session or its default recipe.');
+    }
+    const closeStats = closing.loader.stats();
+    if (closeStats.pendingRequests !== 0 || closeStats.activeLeases !== 0 || closeStats.objectURLs !== 0) {
+      throw new Error('The destroyed editor retained pending requests, leases, or object URLs after its delayed completion settled.');
     }
     const closeReport = {
+      templateId: template.id,
+      field: raceField,
+      delayedAssetId: renderAsset.id,
       delayedLateAcquisitions: closeDelayedAcquisitions,
       oldSessionStatusCountUnchanged: true,
       replacementSession: replacementSnapshot,
-      oldLoaderBeforeRelease: closing.loader.stats()
+      oldLoaderBeforeRelease: closeStats
     };
     closing.loader.releaseAll();
     replacement.editor.destroy();
     replacement.host.remove();
     replacement.loader.releaseAll();
     return {
+      selectedScenario: { templateId: template.id, field: raceField, defaultOption, alternateOption, renderAsset: { id: renderAsset.id, path: renderAsset.path }, thumbnailAsset: { id: thumbnailAsset.id, path: thumbnailAsset.path } },
       outOfOrder: outOfOrderReport,
       latestFailure: { ...failedState, retry: retryState },
       thumbnailFailureRecovery: thumbnailRecovery,
       closeLateCallback: closeReport
     };
-  });
+  }, TAB_FOR_FIELD);
 }
-
 try {
   if (focusedCycleOnly) {
     const context = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, acceptDownloads: true, reducedMotion: 'reduce' });
@@ -1074,7 +1293,7 @@ try {
     await fs.writeFile(path.join(runRoot, 'focused-editor-races.json'), JSON.stringify({
       runId,
       sourceManifestSha256: createHash('sha256').update(sourceBytes).digest('hex'),
-      scope: 'Focused current visual-editor asynchronous races and failed-thumbnail retry; no full 28-recipe, journey-video, or lifecycle-cycle claims.',
+      scope: 'Focused current visual-editor asynchronous races and failed-thumbnail retry; no full recipe, journey-video, or lifecycle-cycle claims.',
       focusedReport,
       consoleErrors,
       browserFailures,
@@ -1085,50 +1304,40 @@ try {
     console.log('PASS: focused asynchronous editor races, failed thumbnail disable/Retry/recovery, and late-session isolation.');
     console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
   } else {
-  const engineeringSession = await newRecordedPage('real-28-recipes');
+  const engineeringSession = await newRecordedPage('real-registered-recipes');
   await engineeringSession.page.exposeFunction('__writeStudioEvidence', writeEvidence);
   engineeringReport = await renderAllRealConfigurations(engineeringSession.page);
-  await fs.writeFile(path.join(runRoot, 'real-28-recipes.json'), JSON.stringify(engineeringReport, null, 2));
-  assertNoRuntimeErrors('real 28-recipe browser renderer');
-  await finishSegment(engineeringSession, path.join(videoStageRoot, 'real-28-recipes.webm'));
+  await fs.writeFile(path.join(runRoot, 'real-registered-recipes.json'), JSON.stringify(engineeringReport, null, 2));
+  assertNoRuntimeErrors('all registered recipe browser renderer');
+  await finishSegment(engineeringSession, path.join(videoStageRoot, 'real-registered-recipes.webm'));
 
-  const characterFlows = [
-    {
-      label: 'dots',
-      artworkId: 'candidate-dots-20261005',
-      options: { color: 'warm-yellow', eyes: 'closed', glasses: 'none', accessory: 'none' },
-      expectedRecipe: options => options.color === 'warm-yellow' && options.eyes === 'closed' && options.glasses === 'none' && options.accessory === 'none'
-    },
-    {
-      label: 'grok',
-      artworkId: 'candidate-grok-20261005',
-      options: { color: 'mint', eyes: 'upright-capsules', glasses: 'round', accessory: 'soft-cap' },
-      expectedRecipe: options => options.color === 'mint' && options.eyes === 'upright-capsules' && options.glasses === 'round' && options.accessory === 'soft-cap'
-    }
-  ];
+  const characterFlows = TEMPLATE_REGISTRY.map(configurationFlow);
   const selectedCharacterFlows = characterFlows;
   const flowEvidence = [];
   for (const config of selectedCharacterFlows) {
     const appSession = await newRecordedPage(`${config.label}-wysiwyg-export`);
     const { page } = appSession;
-    const artwork = await openArtwork(page, config.artworkId);
+    const artwork = await openArtwork(page, config.artworkId, config.artworkVersion);
     assert.ok(artwork.version, 'The selected Artwork has a pinned version.');
     const initialPreview = await waitForPreview(page, { expectNoOriginal: true });
     assert.equal(initialPreview.editable, true, 'This Artwork opens through its publicly approved exact Template binding.');
-    const templateId = config.label === 'dots' ? 'dots-orb-v1' : 'grok-orb-v1';
+    const templateId = config.templateId;
+    const template = TEMPLATE_REGISTRY.find(item => item.id === templateId);
     await waitForEditor(page, { templateId });
     assert.equal(await page.locator('.studio-original').evaluate(details => details.open), false, 'Editable Artwork keeps original metadata and original actions collapsed.');
     await fs.writeFile(path.join(screenshotRoot, `${config.label}-studio-initial.png`), await page.screenshot({ fullPage: false }));
-    for (const [field, value] of Object.entries(config.options)) await choose(page, field, value);
+    const allRecipeUI = await verifyEveryRecipeThroughControls(page, template, artwork, engineeringReport.templates.find(row => row.templateId === template.id || row.id === template.id));
+    console.log(`UI recipes: ${template.id} ${allRecipeUI.length}/${enumerateValidConfigurations(template).length} clipboard and PNG verified.`);
+    for (const [field, value] of config.steps) await choose(page, field, value);
     await waitForEditor(page, { templateId });
     const rendered = await page.evaluate(() => {
       const canvas = document.querySelector('.studio-editor-canvas');
       const draft = window.__dotsQAApp.detail.getState().draft;
       const context = canvas.getContext('2d', { alpha: true, willReadFrequently: true });
-      const data = context.getImageData(627, 800, 1, 1).data;
+      const data = context.getImageData(Math.floor(canvas.width / 2), Math.floor(canvas.height * 0.64), 1, 1).data;
       return { options: draft.options, revision: draft.revision, sessionId: draft.sessionId, canvasRevision: Number(canvas.dataset.renderRevision), recipeKey: canvas.dataset.recipeKey, colorSample: [...data], previewWidth: canvas.width, previewHeight: canvas.height, canExport: document.querySelector('.studio-editor-controls[data-can-export]')?.dataset.canExport };
     });
-    assert.deepEqual(Object.fromEntries(Object.entries(config.options)), Object.fromEntries(Object.entries(rendered.options).filter(([key]) => key !== 'shape')));
+    assert.deepEqual(Object.fromEntries(Object.entries(config.options)), Object.fromEntries(Object.keys(config.options).map(key => [key, rendered.options[key]])));
     assert.equal(rendered.revision, rendered.canvasRevision, 'The visible preview uses the latest Draft revision.');
     assert.equal(rendered.canExport, 'true', 'The latest real composition is exportable only after successful render.');
     await fs.writeFile(path.join(screenshotRoot, `${config.label}-studio-current.png`), await page.screenshot({ fullPage: false }));
@@ -1137,15 +1346,18 @@ try {
     assert.equal(await page.locator('.studio-editor-controls button[data-action="export"],.studio-editor-controls button[data-action="reset"],.studio-editor-controls button[data-action="cancel"]').count(),0,'The Editor controls contain no duplicate export or Reset/Cancel actions.');
     const baseCanvas=await page.locator('.studio-draft-host canvas.studio-editor-canvas').evaluate(canvas=>canvas.toDataURL());
     const stateBeforeIntent=await page.evaluate(()=>window.__dotsQAApp.detail.getState());
-    const extraDirection=config.label==='dots'?'Keep the compact round body and do not add limbs.':'Keep the paired soft capsule eyes and do not add limbs.';
+    const extraDirection='Preserve the family identity and the final selected configuration.';
     await page.locator('.artwork-detail__additional-direction').fill(extraDirection);
     const stateAfterIntent=await page.evaluate(()=>window.__dotsQAApp.detail.getState());
     const canvasAfterIntent=await page.locator('.studio-draft-host canvas.studio-editor-canvas').evaluate(canvas=>canvas.toDataURL());
     assert.equal(canvasAfterIntent,baseCanvas,'Additional prompt text does not redraw or alter the successful preview pixels.');
     assert.equal(stateAfterIntent.draft.revision,stateBeforeIntent.draft.revision,'Additional prompt text does not change the local render revision.');
     assert.equal(stateAfterIntent.promptReady,true);assert.equal(stateAfterIntent.exportReady,true);
-    assert(stateAfterIntent.modifiedPrompt.includes(`${templateId}@v1, revision ${rendered.revision}`),'The unified Prompt describes the latest successful local preview revision.');
-    for (const [field, value] of Object.entries(config.options)) assert(stateAfterIntent.modifiedPrompt.includes(`${field}: ${value}`), `Unified Prompt includes successful ${field}=${value}.`);
+    assert(!stateAfterIntent.modifiedPrompt.includes(templateId), 'The user-facing Prompt excludes internal Template identifiers.');
+    for (const [field, value] of Object.entries(config.options)) {
+      const selected = template.options[field]?.find(option => option.id === value);
+      if (selected) assert(stateAfterIntent.modifiedPrompt.includes((selected.semanticByLanguage?.en || selected.labelByLanguage.en)), `Unified Prompt describes the successful ${field} in readable language.`);
+    }
     assert(stateAfterIntent.modifiedPrompt.includes(extraDirection),'The additional intent is appended to the successful configuration Prompt.');
     assert.equal(JSON.stringify(stateAfterIntent.artwork),JSON.stringify(stateBeforeIntent.artwork),'Prompt-only intent leaves the registered Artwork facts unchanged.');
     await page.evaluate(() => {window.__copiedPrompt='';window.__openedPromptUrls=[];Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async value=>{window.__copiedPrompt=value;}}});window.__realWindowOpen=window.open;window.open=url=>{window.__openedPromptUrls.push(String(url));return null;};});
@@ -1158,7 +1370,7 @@ try {
     const pngViewer = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT } });
     const pngPage = await pngViewer.newPage();
     await pngPage.goto(pathToFileURL(editedExport.filePath).href, { waitUntil: 'load' });
-    await pngPage.waitForFunction(() => document.contentType === 'image/png' || document.querySelector('img')?.naturalWidth === 1254, null, { timeout: 10_000 });
+    await pngPage.waitForFunction(() => document.contentType === 'image/png' || document.querySelector('img')?.naturalWidth > 0, null, { timeout: 10_000 });
     await fs.writeFile(path.join(screenshotRoot, `${config.label}-export-open.png`), await pngPage.screenshot({ fullPage: false }));
     await pngViewer.close();
 
@@ -1184,6 +1396,7 @@ try {
     const report = {
       artwork: { id: artwork.id, version: artwork.version, originalSha256: artwork.asset.sha256 },
       initialStudioPreview: initialPreview,
+      allRecipeUI,
       editedOptions: rendered.options,
       editedRevision: rendered.revision,
       editedRecipeKey: rendered.recipeKey,
@@ -1207,25 +1420,25 @@ try {
   for (const config of selectedCharacterFlows) {
     const journeySession = await newRecordedPage(`${config.label}-app-png-app-journey`);
     const { page } = journeySession;
-    const firstArtwork = await openArtwork(page, config.artworkId);
+    const firstArtwork = await openArtwork(page, config.artworkId, config.artworkVersion);
     await waitForPreview(page, { expectNoOriginal: true });
-    const templateId = config.label === 'dots' ? 'dots-orb-v1' : 'grok-orb-v1';
+    const templateId = config.templateId;
     await waitForEditor(page, { templateId });
-    for (const [field, value] of Object.entries(config.options)) await choose(page, field, value);
+    for (const [field, value] of config.steps) await choose(page, field, value);
     await waitForEditor(page, { templateId });
     const edited = await saveDownloadedPng(page, page.locator('.studio-actions [data-action="export"]'), 'Journey edited Draft');
     await page.goto(pathToFileURL(edited.filePath).href, { waitUntil: 'load' });
-    await page.waitForFunction(() => document.contentType === 'image/png' || document.querySelector('img')?.naturalWidth === 1254, null, { timeout: 10_000 });
+    await page.waitForFunction(() => document.contentType === 'image/png' || document.querySelector('img')?.naturalWidth > 0, null, { timeout: 10_000 });
     await page.waitForTimeout(900);
     await fs.writeFile(path.join(screenshotRoot, `${config.label}-journey-png-view.png`), await page.screenshot({ fullPage: false }));
 
     await page.goto(harnessURL, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => Boolean(window.__dotsQAApp), null, { timeout: 15_000 });
-    const reopenedArtwork = await openArtwork(page, config.artworkId);
+    const reopenedArtwork = await openArtwork(page, config.artworkId, config.artworkVersion);
     assert.equal(reopenedArtwork.asset.sha256, firstArtwork.asset.sha256, 'The round-trip reopens the exact same registered Artwork.');
     const reopenedPreview = await waitForPreview(page, { expectNoOriginal: true });
     assert.equal(reopenedPreview.editable, true, 'The pinned Artwork reopens directly into its one eligible CharacterStudio.');
-    const reopenedBaseline=await page.evaluate(async()=>{const {TEMPLATE_REGISTRY}=await import('/studio-edit-templates.js?v=99');const state=window.__dotsQAApp.detail.getState();const template=TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);return{options:state.draft.options,defaults:template.defaultOptions,dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
+    const reopenedBaseline=await page.evaluate(async()=>{const {TEMPLATE_REGISTRY,normalizeTemplateOptions}=await import('/studio-edit-templates.js?v=100');const state=window.__dotsQAApp.detail.getState();const template=TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);return{options:state.draft.options,defaults:normalizeTemplateOptions(template,template.defaultOptions),dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
     assert.deepEqual(reopenedBaseline.options,reopenedBaseline.defaults,'Opening the same Artwork again starts at the approved template default, not the prior in-memory Draft.');assert.equal(reopenedBaseline.dirty,false);assert.equal(await page.locator('.studio-original').evaluate(details=>details.open),false);assert.equal(await page.locator('.studio-original button,.artwork-detail__download-original').count(),0);
     assertNoRuntimeErrors(`${config.label} recorded App → exported PNG → App journey`);
     const videoPath = path.join(videoStageRoot, `${config.label}-app-png-app-journey.webm`);
@@ -1246,11 +1459,12 @@ try {
   let raceReport = null;
   const guardSession = await newRecordedPage('dirty-exit-guards');
   const guardPage = guardSession.page;
-  await openArtwork(guardPage, 'candidate-dots-20261005');
-  await waitForEditor(guardPage, { templateId: 'dots-orb-v1' });
-  await choose(guardPage, 'color', 'warm-yellow');
-  await waitForEditor(guardPage, { templateId: 'dots-orb-v1' });
-  await guardPage.locator('.artwork-detail__additional-direction').fill('Keep the Dots material compact and soft.');
+  const guardConfig = selectedCharacterFlows[0];
+  await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
+  await waitForEditor(guardPage, guardConfig);
+  for (const [field, value] of guardConfig.steps) await choose(guardPage, field, value);
+  await waitForEditor(guardPage, guardConfig);
+  await guardPage.locator('.artwork-detail__additional-direction').fill('Preserve the character identity and material.');
   const dirtyState = await guardPage.evaluate(() => ({ dirty: window.__dotsQAApp.detail.hasDirty(), hash: location.hash, promptReady: window.__dotsQAApp.detail.getState().promptReady, exportReady: window.__dotsQAApp.detail.getState().exportReady }));
   assert.equal(dirtyState.dirty, true, 'A local option change marks the current Studio dirty.');
   assert.equal(dirtyState.promptReady,true);assert.equal(dirtyState.exportReady,true);
@@ -1318,7 +1532,7 @@ try {
   await cycleContext.close();
   const report = {
     runId,
-    scope: 'Complete public approval-path Dots and Grok Template editing acceptance.',
+    scope: 'Complete editing acceptance for the actual public approved Template registry.',
     baseURL,
     harnessURL,
     browser: 'Project Playwright QA runner with installed local Chrome; automated interaction and downloads are from Playwright. Codex in-app browser was used for visual inspection only; no interaction pass is claimed.',
@@ -1339,7 +1553,7 @@ try {
   };
   await fs.writeFile(path.join(runRoot, 'report.json'), JSON.stringify(report, null, 2));
   console.log(`PASS: ${engineeringReport.templates.map(row => row.legalCount + ' ' + row.templateId).join(' + ')} real-source recipes rendered and exported.`);
-  console.log('PASS: preview Canvas and PNG export hashes match for all 28 legal recipes through public approved-template access.');
+  console.log('PASS: preview Canvas and PNG export hashes match for all registered legal recipes through public approved-template access.');
   if (cycleReport.cycles) console.log(`PASS: ${cycleReport.cycles.length} rapid edit/render/export/destroy cycles; ${cycleReport.totalCanceledConsumerCount} stale consumers canceled during edits; ${cycleReport.pendingDestroy.pendingFetchAborts} pending fetch aborts observed on Editor.destroy(); all per-cycle resources released.`);
   if (raceReport.outOfOrder) console.log('PASS: A→B→A out-of-order render, latest missing-layer failure/retry, and close-late-session races.');
   console.log(`PASS: ${selectedCharacterFlows.map(config => config.label).join(' and ')} automatic CharacterStudio editing → unified Prompt → transparent PNG export → original-materials disclosure.`);

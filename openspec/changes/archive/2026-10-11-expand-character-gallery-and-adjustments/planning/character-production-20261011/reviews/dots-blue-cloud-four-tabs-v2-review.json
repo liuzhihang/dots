@@ -1,0 +1,215 @@
+{
+  "artworkId": "dots-blue-beret-cloud",
+  "artworkVersion": "v1",
+  "originalSha256": "7035905930586409378f8cce212c393c94e3fe2860a4fb62e38108a3349f332d",
+  "templateId": "dots-blue-cloud-adjustments-v2",
+  "templateVersion": "v2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-blue-cloud-four-tabs-v2-review.json",
+  "manifestSha256": "0bba1ead7212776759d4dea97cc516861dc20576cb0e232e0ebd9e05d6ff0d70",
+  "engineeringReport": ".artifacts/character-adjustments/dots-blue-cloud-adjustments-v2/report.json",
+  "engineeringReportSha256": "2590947090fa24c172e4b9bf56763eaa0d1f4bd5f2584d9f2c386bd0d80d376c",
+  "legalRecipes": [
+    {
+      "id": "cloud-blue-open-beret",
+      "sha256": "fdec0bcd4e1f2f7ec14263267ffbdbd45159f3553c3da2b63f687538c66477d0"
+    },
+    {
+      "id": "cloud-blue-open-none",
+      "sha256": "82eb872215b1be311b6bde6902d46f5bb212a80823a783bca15d606dfbea602d"
+    },
+    {
+      "id": "cloud-blue-closed-beret",
+      "sha256": "f615f6b8cfcab788bafe28af653e213aaf584b41edbb06ebaf50df66f96de714"
+    },
+    {
+      "id": "cloud-blue-closed-none",
+      "sha256": "c4ae9a9e1239e8eca8c44f49aa5c5156b816eb912ac32f797ef354e18887b5c8"
+    },
+    {
+      "id": "cloud-rose-open-beret",
+      "sha256": "5e4fcab76c70daf055f997ec39cbfcb7fd48d214f1b1ec677826d9e33ec256a9"
+    },
+    {
+      "id": "cloud-rose-open-none",
+      "sha256": "fb8cedd4d80b157f617972aff596c91e14f035da0af9ff6a583b2173434dfd88"
+    },
+    {
+      "id": "cloud-rose-closed-beret",
+      "sha256": "7d282ceb7bb490b72f16bd4067f99ade8dacf337bee3be117be8d3075bf87266"
+    },
+    {
+      "id": "cloud-rose-closed-none",
+      "sha256": "543a219801a4a2e1778d0e21f18ffce7892250768dff2caa034a71196b0d15ae"
+    },
+    {
+      "id": "broad-lobes-blue-open-beret",
+      "sha256": "1d1537352148d8ebd58d536eb321872c44c4b67e095465f4cb4385049486dd85"
+    },
+    {
+      "id": "broad-lobes-blue-open-none",
+      "sha256": "b131c272f36c3684483d45c08f183fec1f3280cbabc4586ce3abafa7b950428d"
+    },
+    {
+      "id": "broad-lobes-blue-closed-beret",
+      "sha256": "c2ef69624568e2b76677629f4ff9b49b9c714634e3a2684ddd85b575e299cb2f"
+    },
+    {
+      "id": "broad-lobes-blue-closed-none",
+      "sha256": "47da154079c47f98c89791c768afd8da109d57ef9a6ecb5222815bfa378986b1"
+    },
+    {
+      "id": "broad-lobes-rose-open-beret",
+      "sha256": "eb5eca9d077106ffb1804464a1e569ae392539a2ac395075abbe9696f5b900e6"
+    },
+    {
+      "id": "broad-lobes-rose-open-none",
+      "sha256": "b39f70f3d3a8f5dc6e22ed03d057205f1c0083dc9bb2a05be3f5b990ae68d65b"
+    },
+    {
+      "id": "broad-lobes-rose-closed-beret",
+      "sha256": "ea95ab9874b02ee73debb4ffef12df56398641cd6a598693ff306734cb15a22e"
+    },
+    {
+      "id": "broad-lobes-rose-closed-none",
+      "sha256": "ba110f7539c7d59442f36e3cb24deb38727bbef2c2de88309ab04b0fec5e65a5"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "method": "新四类配方实际重渲染、导出与浏览器控件复验；所有 PNG 字节与此前已逐项视觉核对的无衣物配方完全一致。仅复用精确相同的像素证据，不沿用旧服装配方的评价。",
+    "previousReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-blue-cloud-review.json",
+    "previousReviewSha256": "554e6bfd58e86c55f4e4a9c799739d662b8eb0ea8a40e0984828f990403d84cc",
+    "exactPixelCorrespondence": [
+      {
+        "recipeId": "cloud-blue-open-beret",
+        "sha256": "fdec0bcd4e1f2f7ec14263267ffbdbd45159f3553c3da2b63f687538c66477d0",
+        "oldRecipeId": "cloud-blue-open-none-beret",
+        "oldSha256": "fdec0bcd4e1f2f7ec14263267ffbdbd45159f3553c3da2b63f687538c66477d0",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-open-none",
+        "sha256": "82eb872215b1be311b6bde6902d46f5bb212a80823a783bca15d606dfbea602d",
+        "oldRecipeId": "cloud-blue-open-none-none",
+        "oldSha256": "82eb872215b1be311b6bde6902d46f5bb212a80823a783bca15d606dfbea602d",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-closed-beret",
+        "sha256": "f615f6b8cfcab788bafe28af653e213aaf584b41edbb06ebaf50df66f96de714",
+        "oldRecipeId": "cloud-blue-closed-none-beret",
+        "oldSha256": "f615f6b8cfcab788bafe28af653e213aaf584b41edbb06ebaf50df66f96de714",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-closed-none",
+        "sha256": "c4ae9a9e1239e8eca8c44f49aa5c5156b816eb912ac32f797ef354e18887b5c8",
+        "oldRecipeId": "cloud-blue-closed-none-none",
+        "oldSha256": "c4ae9a9e1239e8eca8c44f49aa5c5156b816eb912ac32f797ef354e18887b5c8",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-open-beret",
+        "sha256": "5e4fcab76c70daf055f997ec39cbfcb7fd48d214f1b1ec677826d9e33ec256a9",
+        "oldRecipeId": "cloud-rose-open-none-beret",
+        "oldSha256": "5e4fcab76c70daf055f997ec39cbfcb7fd48d214f1b1ec677826d9e33ec256a9",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-open-none",
+        "sha256": "fb8cedd4d80b157f617972aff596c91e14f035da0af9ff6a583b2173434dfd88",
+        "oldRecipeId": "cloud-rose-open-none-none",
+        "oldSha256": "fb8cedd4d80b157f617972aff596c91e14f035da0af9ff6a583b2173434dfd88",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-closed-beret",
+        "sha256": "7d282ceb7bb490b72f16bd4067f99ade8dacf337bee3be117be8d3075bf87266",
+        "oldRecipeId": "cloud-rose-closed-none-beret",
+        "oldSha256": "7d282ceb7bb490b72f16bd4067f99ade8dacf337bee3be117be8d3075bf87266",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-closed-none",
+        "sha256": "543a219801a4a2e1778d0e21f18ffce7892250768dff2caa034a71196b0d15ae",
+        "oldRecipeId": "cloud-rose-closed-none-none",
+        "oldSha256": "543a219801a4a2e1778d0e21f18ffce7892250768dff2caa034a71196b0d15ae",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-blue-open-beret",
+        "sha256": "1d1537352148d8ebd58d536eb321872c44c4b67e095465f4cb4385049486dd85",
+        "oldRecipeId": "broad-lobes-blue-open-none-beret",
+        "oldSha256": "1d1537352148d8ebd58d536eb321872c44c4b67e095465f4cb4385049486dd85",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-blue-open-none",
+        "sha256": "b131c272f36c3684483d45c08f183fec1f3280cbabc4586ce3abafa7b950428d",
+        "oldRecipeId": "broad-lobes-blue-open-none-none",
+        "oldSha256": "b131c272f36c3684483d45c08f183fec1f3280cbabc4586ce3abafa7b950428d",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-blue-closed-beret",
+        "sha256": "c2ef69624568e2b76677629f4ff9b49b9c714634e3a2684ddd85b575e299cb2f",
+        "oldRecipeId": "broad-lobes-blue-closed-none-beret",
+        "oldSha256": "c2ef69624568e2b76677629f4ff9b49b9c714634e3a2684ddd85b575e299cb2f",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-blue-closed-none",
+        "sha256": "47da154079c47f98c89791c768afd8da109d57ef9a6ecb5222815bfa378986b1",
+        "oldRecipeId": "broad-lobes-blue-closed-none-none",
+        "oldSha256": "47da154079c47f98c89791c768afd8da109d57ef9a6ecb5222815bfa378986b1",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-rose-open-beret",
+        "sha256": "eb5eca9d077106ffb1804464a1e569ae392539a2ac395075abbe9696f5b900e6",
+        "oldRecipeId": "broad-lobes-rose-open-none-beret",
+        "oldSha256": "eb5eca9d077106ffb1804464a1e569ae392539a2ac395075abbe9696f5b900e6",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-rose-open-none",
+        "sha256": "b39f70f3d3a8f5dc6e22ed03d057205f1c0083dc9bb2a05be3f5b990ae68d65b",
+        "oldRecipeId": "broad-lobes-rose-open-none-none",
+        "oldSha256": "b39f70f3d3a8f5dc6e22ed03d057205f1c0083dc9bb2a05be3f5b990ae68d65b",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-rose-closed-beret",
+        "sha256": "ea95ab9874b02ee73debb4ffef12df56398641cd6a598693ff306734cb15a22e",
+        "oldRecipeId": "broad-lobes-rose-closed-none-beret",
+        "oldSha256": "ea95ab9874b02ee73debb4ffef12df56398641cd6a598693ff306734cb15a22e",
+        "identical": true
+      },
+      {
+        "recipeId": "broad-lobes-rose-closed-none",
+        "sha256": "ba110f7539c7d59442f36e3cb24deb38727bbef2c2de88309ab04b0fec5e65a5",
+        "oldRecipeId": "broad-lobes-rose-closed-none-none",
+        "oldSha256": "ba110f7539c7d59442f36e3cb24deb38727bbef2c2de88309ab04b0fec5e65a5",
+        "identical": true
+      }
+    ],
+    "surfaces": [
+      "174px 深灰/浅灰检查底",
+      "4 个模拟视口",
+      "蓝云四标签 IAB 实际选择、Prompt 和透明下载"
+    ],
+    "checks": [
+      "家族身份和眼型保持",
+      "无手脚、无服装层、无隐藏服装选项",
+      "配色、五官与配饰独立，接触及层序保留",
+      "全部配方可从默认逐字段抵达"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

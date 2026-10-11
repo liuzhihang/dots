@@ -1,8 +1,10 @@
 # Dots 角色与外观新增规范
 
-本目录是后续会话的稳定入口。适用于新增完整静态作品、同角色新外观，以及另行获准的模板适配。每系列可以有多个独立 Artwork；静态作品不要求都有编辑模板。当前产品合同以 `openspec/specs/` 为准。
+本目录是后续会话的稳定入口。适用于新增完整静态作品、同角色新外观，以及另行获准的模板适配。每系列可以有多个独立 Artwork；制作候选可先有完整静态图而暂时无模板，但不能据此进入本 change 的默认 Gallery。
 
-Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录规范](../../openspec/specs/artwork-catalog/spec.md)、[角色系列规范](../../openspec/specs/character-families/spec.md) 与 [模板编辑规范](../../openspec/specs/bounded-character-editing/spec.md)。当前审批范围及精确资源 hash 通过 [精选发布记录](../releases/20261011-site47-v99/README.md) 查找；历史报告保持原文。
+`expand-character-gallery-and-adjustments` 要求保留 change 开始前的全部 24 件 Artwork，并为这 24 件及本轮每一件获准进入默认 Gallery 的新增 Artwork 分别绑定精确 Artwork/version 的获批 Template。每个公开作品按家族提供真实调整：Dots/Grok 为外观、配色、五官、配饰四类；Muse、动物、人物与独立机器人另含服装，共五类。Dots/Grok 不提供衣物层，也不将围衣转入配饰；每类至少两个可达、身份兼容、实际改变成功预览的结果。pending、历史、静态降级或资源异常可以按各自访问资格安全查看与下载，但不算全角色覆盖；不能删除基线角色缩小分母。当前产品行为以 `openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/specs/` 和 `openspec/specs/` 为准。
+
+Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录规范](../../openspec/specs/artwork-catalog/spec.md)、[角色系列规范](../../openspec/specs/character-families/spec.md) 与 [模板编辑规范](../../openspec/specs/bounded-character-editing/spec.md)。本轮角色与调整模板的精确批准/hash 见 [20261011 角色调整批准记录](../acceptance/20261011-character-adjustments-v1/approval.json)，本地接入见 [v100 集成记录](../releases/20261011-gallery-adjustments-v100/README.md)；已部署版本仍见 [Site 47 发布记录](../releases/20261011-site47-v99/README.md)。历史报告保持原文。
 
 ## 先明确交付对象
 
@@ -14,13 +16,13 @@ Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录�
 | 本地模板 Template | 显式绑定作品版本、真实分层、有限能力、合法组合及独立验收 | 一张透明 PNG 或静态配饰不等于可编辑层 |
 | 用户 Draft | 当前 Studio 会话与成功 revision | 不自动登记为公共作品、动画或 Pet |
 
-五系列均允许多个外观。具体公开数量与当前批准版本由静态目录和对应批准记录共同确定，不在本规范重复维护。后续按用户指定的系列、数量和区别增加作品；每项 Artwork 或 Template 都必须以精确版本取得相应确认后才公开。
+五系列均允许多个外观。具体公开数量与当前批准版本由静态目录和对应批准记录共同确定，不在本规范重复维护。后续按用户指定的系列、数量和区别增加作品；候选可先登记为 pending，只有当时适用的内容资源、精确版本、Template 能力、美术审核与资格条件齐备后才进入默认 Gallery。本 change 的 24 件锁定基线及新增发布门槛按上一段执行。
 
 ## 从参考到可入库作品
 
 1. **回读实际状态。** 阅读项目 AGENTS、DESIGN、README、OpenSpec 配置、主规范及 active change；检查 HEAD/dirty、目录、批准记录和重复外观。保留用户未提交改动。沿用已安装的 OpenSpec，相关 active change 优先修订；没有才在确有规范/实现变更时新建，不因纯素材候选机械新建 change。未经用户明确授权不初始化或升级 OpenSpec；sync、archive、提交和发布均按本轮明确授权的范围执行。判断本轮授权到素材、接入、艺术确认还是发布，已有授权不重复索取。
 2. **填写制作 Brief。** 复制 [character-brief.yaml](templates/character-brief.yaml) 到本轮工作目录，写新身份还是现有身份新外观、所属系列、与已有作品区别、参考角色、保留和排除项。用户只有参考图也可以由 Codex 创作；无需用户提供分层生产素材。除用户另有要求，采用少量有明确区别的作品，不生成大量排列组合。
-3. **制作原始完整作品。** 使用当前可用 imagegen 工作流，逐张明确输入是身份基准、材质参考还是外观灵感。角色为真实透明背景 PNG；完整呈现该角色应有的帽、耳、肢体、尾巴等外形并留合理边距。Dots 与 Grok 必须保持无手脚，不得为了“完整”添加肢体；其他系列依据身份和物种真实呈现。原型只指导网页，截图中的 UI、字幕、数字、Logo、地台和背景不进入角色。记录准确提示词、参考文件、工具返回路径和迭代裁决；项目资产复制到仓库，保留原输出，不覆盖已批准图。生成尺寸与请求不一致时记录实际值。
+3. **制作原始完整作品。** 使用当前可用 imagegen 工作流，逐张明确输入是身份基准、材质参考还是外观灵感。角色为真实透明背景 PNG；完整呈现该角色应有的帽、耳、肢体、尾巴等外形并留合理边距。Dots 与 Grok 必须保持无手脚，不得为了“完整”添加肢体；其他系列依据身份和物种真实呈现。原型只指导网页，截图中的 UI、字幕、数字、Logo、地台和背景不进入角色。记录准确提示词、参考文件、工具返回路径和迭代裁决；若原提示词未保存在源日志或提示词档，明确写“逐字原文未留档”，不能把事后摘要冒称原提示词。每次重生成都保留原始工具输出、另存清理版本，并登记对应路径和 hash；失败版本保留为历史并标明不再用于当前配方。项目资产复制到仓库，不覆盖已批准图。生成尺寸与请求不一致时记录实际值。
 4. **检查并登记真实结果。** 人工检查身份/材质/肢体、接触遮挡、深浅及棋盘检查底上的边缘；工具只读核实 MIME、字节、hash、实际尺寸、alpha 和边界。低 alpha 散点或色边不能因“有透明通道”就视为合格。纠错另存版本，保存原因；不得把生成成功写成用户批准。用户参考只说明创作输入与身份/外观依据，不代表其来源许可已核实，也不批准由此制作的 Artwork、Template、Gallery 资格或发布。
 5. **仅在接入获准时维护静态数据。** 原图、展示资源、来源记录、Character/Artwork/Asset/Prompt 与真实 facts 按当时唯一 schema 登记。待审集合与默认查询分离；有效且已批准的数据通过共用卡片、详情、搜索和 Prompt 出现，不新建角色专用页面/ID 分支。仅素材阶段的文件留在 design/change 的制作区，不加入 dist 或发布闭包。
 6. **完成对应验收。** 工程、人工视觉核对、用户美术批准、设备与发布分别记录。用户的确认可覆盖明确的一批，但必须能对应精确文件/版本/hash，不从“继续实现”、参考图、来源记录或旧母图批准推断新作品批准。Artwork 的用户美术批准与可发布资格分开记录；接入或模板批准也不自动授权 Sites 发布。获准接入后做真实复制与原图下载；发布另按当时授权执行，不能随新增素材自动部署。
@@ -55,7 +57,7 @@ Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录�
 - **展示资源**为独立、有来源引用的 thumbnail 与 display preview。目标 thumb 256px、detail 512/1024px 按显示需要制作并记录实际尺寸，保持比例、不裁掉肢体、不冒充图层；原尺寸不足时不虚报高清。当前通过 studio-display-assets.js 登记 256 poster 和 512/1024 detail preview，studio-preview-loader.js 按需加载；原图仅在实际下载时校验。原始参考与其派生资源都不能替代精确 Artwork/version/hash 的用户艺术确认。
 - **事实**沿用实际 `CORE_FACT_DIMENSIONS`：`characterStyle`、`appearance`、`facialFeatures`、`colorMaterial`、`clothing`、`headAccessory`、`bodyAccessory`、`prop`。`known`=有证据；`none`=确实没有；`notApplicable`=不适用；`unknown`=未确定，后者不能自动改 none。额外动作/表情等 typed facts 也须真实，静态持书不声称阅读动画。
 - **双语**名称、简述、别名、可复制 Prompt 根据实际最终图写，沿用具体模块的语言键（目前内容 `en`/`zh-CN`，Prompt target 的 language 字段由现有 schema 决定），不照搬制作愿望。无依据不写动作、尺寸、许可、安装或可编辑标签。
-- **资格**候选与已批准作品分开；有效且获准的作品进入统一 eligible 查询。配饰 tag 不授予可编辑能力；未适配角色可完整查看、复制 Prompt 和下载原图。
+- **资格**候选与已批准作品分开；有效且获准的作品进入统一 eligible 查询。配饰 tag 不授予可编辑能力。本 change 中历史、pending、异常或资源失败的只读降级不提供虚假编辑入口且不能计作全覆盖；新公开作品须先有精确获批 Template。
 - **发布树**仅在接入获准后逐路径维护 `design/static-publish-manifest.json`。`files` 是 dist 精确闭包，`previewOnlyFiles` 是其中 pending 子集，不是物理隔离。`dist/` 不整体清空。生成记录和未接入候选不塞入发布树。
 
 ## 实际接入点与验证
@@ -69,6 +71,10 @@ Artwork 身份、数据、可见资格和模板绑定分别见 [Artwork 目录�
 验收使用一个不进入发布的额外 Artwork fixture：只加有效资源/数据即可在共用查询、卡片、详情和 Prompt 中出现；无 Template 时无 Edit；pending 时不进入默认搜索。需要页面专用分支才能通过则扩展合同未完成。缺原图/错 hash/双语缺失/虚假 approval/重复 ID/非法 Template 绑定必须被拒绝。
 
 接入后按影响运行现有 `npm run build`、`npm test`、`npm run test:browser`、`npm run test:downloads`，新增模板还需当时真实存在的 renderer/template 验证。先读取 package scripts，未实施的脚本不声称已跑。四视口 1440×900、390×844、320/768 边界、EN/zh-CN、键盘返回、实际下载均按任务影响检查。只交付制作候选时报告资产检查，不把全站运行验收写成已通过。
+
+### 2026-10-11 Gallery 扩展制作记录
+
+本 change 的 21 张原始用户参考、逐主体身份/复用/变体/排除映射与新外观候选 brief 位于 [`references/README.md`](../../openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/planning/character-production-20261011/references/README.md)、[`subject-map.md`](../../openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/planning/character-production-20261011/references/subject-map.md) 与 [`briefs/README.md`](../../openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/planning/character-production-20261011/briefs/README.md)。参考附件只是创作线索，不是原始角色素材或批准。当前 24 件逐版本/素材 hash/旧模板配方基线与家族适用类别能力缺口在 [`coverage/README.md`](../../openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/planning/character-production-20261011/coverage/README.md)。核验工具 `scripts/verify-character-coverage.mjs` 锁定原 24 个 ID；如果公开目录丢失其中一件会显式报缺，不会缩小分母。删掉覆盖行、pending 或静态降级也不算通过。
 
 后续会话可以直接要求：“按角色新增规范，为 Animals 增加 1 件新外观，先制作候选”；或在有精确批准后要求“将该作品接入现有图库并验证”。规范提供可复用路径，不把素材请求扩大为全站重构，也不额外强加未要求的模板、动画或发布。
 

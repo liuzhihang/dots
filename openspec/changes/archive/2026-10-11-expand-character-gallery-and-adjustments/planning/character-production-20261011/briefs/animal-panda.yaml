@@ -1,0 +1,131 @@
+# 本记录是制作候选，不是已登记Artwork/Template或批准。
+briefVersion: 1
+request:
+  summary: "动物 熊猫；原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "candidate-animal-panda"
+  seriesId: "animals"
+  identity: new
+  differenceFromExisting: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+  invariants:
+    - "不能以可可熊整体滤色代替熊猫物种结构；透明完整图。"
+artwork:
+  proposedId: "candidate-animal-panda"
+  canonicalArtworkId: "animal-panda"
+  proposedVersion: v2
+  name: {en: "Panda Cub", zh-CN: "熊猫幼崽"}
+  description: {en: "A compact ivory plush panda cub with charcoal eye patches, round ears, and a friendly muzzle.", zh-CN: "一只紧凑的象牙白绒面熊猫幼崽，带炭黑眼斑、圆耳与友好口鼻。"}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R05"
+    path: "planning/character-production-20261011/references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"
+    sha256: "8cbc97096d2b3d30ce52955497837fe2bc4e104ab106b7adaa1dd5a176aa8ffc"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+  - id: "R10"
+    path: "planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg"
+    sha256: "7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+  - id: "R11"
+    path: "planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg"
+    sha256: "e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+  - id: "R15"
+    path: "planning/character-production-20261011/references/originals/R15-codex-clipboard-175d9e66-38e4-40c8-bcc5-e8470a81d2fd.jpg"
+    sha256: "a4a621120fcbcbee5cd5f17c2bb32a5526f5129f7e0124d3f01126a903d673c2"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+  - id: "R17"
+    path: "planning/character-production-20261011/references/originals/R17-codex-clipboard-9c39de9b-0f59-4fad-bfd5-fbcc165bfa97.png"
+    sha256: "196ed83cefe5397500bfdaff8d3e4d8ac88bdddb20f37c645a2b2a9361702fde"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+  - id: "R18"
+    path: "planning/character-production-20261011/references/originals/R18-codex-clipboard-4a9ac8b2-f44a-4d73-81d1-a17902e2bde5.png"
+    sha256: "1de9eb60994c426d229deef1af54391f27786ae3f75bbd2c9f9fa2c211eed2f5"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "原创完整熊猫，具有可辨熊猫耳、眼周毛色、口鼻与四肢结构。"
+    exclude: "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    license: unknown
+relations:
+  templateBinding:
+    id: "candidate-animal-panda-adjustments-v1"
+    version: v1
+    manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/panda-adjustments-review.json"
+creation:
+  prompt: "Create one original, unmistakably recognizable plush panda cub as an isolated character; see the exact recorded prompt."
+  promptReference: "../prompts/candidate-animal-panda-prompts.md"
+  negativeConstraints:
+    - "熊的简单黑白染色、周边宠物、场景和标签文字。"
+    - "不得使用参考截图像素、UI、Logo、图中文字或背景场景。"
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-942df9e7-dc59-4c73-ab20-865218c0517d.png"
+  iterations:
+    - kind: fitted-vest-open-eyes-fullbody
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-e6454a44-30a8-459f-b0c8-3fac6b0f296a.png"
+      rawCandidate: "../generated/candidate-animal-panda-clothing-knit-vest-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-panda-clothing-knit-vest-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "98e83747f8fe97ab6e8abde9982148ca74227623a41796c817ba3b5d6f897178"
+      status: pending
+    - kind: fitted-vest-closed-eyes-fullbody
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-a451bff7-66cb-4445-83b1-fa4d0a83b985.png"
+      rawCandidate: "../generated/candidate-animal-panda-face-closed-clothing-vest-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-panda-face-closed-clothing-vest-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "9d0cf0a5206fafee08e61bd34ed1f901ec058ec36dac9a0cede878399c8ce826"
+      status: pending
+facts:
+  characterStyle: {state: known, description: "单只柔软短绒质感的3D熊猫幼崽。", evidence: "原始候选的480px目视及animal-panda-review.json"}
+  appearance: {state: known, description: "正面坐姿，圆头与短小一体四肢。", evidence: "原始候选的480px目视及animal-panda-review.json"}
+  facialFeatures: {state: known, description: "炭黑眼斑内有大而明亮的双眼、黑鼻与小幅微笑。", evidence: "原始候选的480px目视及animal-panda-review.json"}
+  colorMaterial: {state: known, description: "象牙白短绒主体，炭黑圆耳、眼斑、前臂和足部。", evidence: "原始候选的480px目视及animal-panda-review.json"}
+  clothing: {state: none, description: "原始Artwork不穿衣物；完整针织背心只作为pending调整候选。", evidence: "原始Artwork与调整模板记录"}
+  headAccessory: {state: none, evidence: "原始Artwork没有头部配饰；叶夹为pending调整候选"}
+  bodyAccessory: {state: none, evidence: "原始Artwork没有身体配饰"}
+  prop: {state: none, evidence: "原始Artwork没有独立持物"}
+resources:
+  original:
+    path: "../generated/candidate-animal-panda-candidate-v2-alpha-clean.png"
+    sha256: "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3"
+    mime: "image/png"
+    bytes: 1624595
+    width: 1230
+    height: 1278
+    alphaCheck: "RGBA with transparency; authorized isolated-alpha cleanup; raw tool output remains preserved"
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+applicableAdjustmentCategories:
+  - appearance
+  - colors
+  - face
+  - clothing
+  - accessories
+finiteRecipes:
+  count: 10
+  manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/panda-adjustments-review.json"
+  combinationPolicy: "仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。"
+evidence:
+  sourceRecord: "references/manifest.json; source records: R05, R10, R11, R15, R17, R18"
+  license: unknown
+  engineering: passed-candidate
+  visualReview: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-panda-review.json"
+  artApproval: {status: pending, record: null, exactAssetHash: "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3"}
+  integration: not-applied
+  manifestSha256: "49ee409c1b9b70443cd019051e5749226629bcdb7e8477e90f38460b5c2e59be"
+  deviceCheck: not-run
+  deployment: not-authorized
+materialPolicy: "所有原始图像生成输出均保留；仅对透明 alpha 执行授权的保守边缘清理。完整候选角色和图层仍须独立人工批准后才能成为发布资产。"

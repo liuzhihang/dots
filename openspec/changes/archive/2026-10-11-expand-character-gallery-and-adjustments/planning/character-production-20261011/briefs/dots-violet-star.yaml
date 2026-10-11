@@ -1,0 +1,180 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 紫色星团透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-dots-violet-star
+  seriesId: dots
+  identity: new
+  differenceFromExisting: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  invariants:
+  - Dots无手脚；星角为主体轮廓而不是肢体；区别于多瓣花云。
+artwork:
+  proposedId: candidate-dots-violet-star
+  canonicalArtworkId: dots-violet-star
+  proposedVersion: v1
+  name:
+    zh-CN: 紫色星团
+    en: Violet Star
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: dots-violet-star
+references:
+- id: R07
+  path: planning/character-production-20261011/references/originals/R07-codex-clipboard-b61c61dd-9167-442a-8737-0ed45efd2cd7.jpg
+  sha256: 8074302fcd81559b9271f808c599ad9a8cd88de0fc0e1584d94fc01f95934854
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  exclude: R07四肢、围巾/围脖、舞台和文案。
+  license: unknown
+- id: R10
+  path: planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg
+  sha256: 7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  exclude: R07四肢、围巾/围脖、舞台和文案。
+  license: unknown
+- id: R16
+  path: planning/character-production-20261011/references/originals/R16-codex-clipboard-ed27e838-ba62-482e-ab76-f395967787d6.png
+  sha256: 55006a033c60b787e3cba060027b9b269a86171997b66eb1118b15103cf7c628
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  exclude: R07四肢、围巾/围脖、舞台和文案。
+  license: unknown
+- id: R17
+  path: planning/character-production-20261011/references/originals/R17-codex-clipboard-9c39de9b-0f59-4fad-bfd5-fbcc165bfa97.png
+  sha256: 196ed83cefe5397500bfdaff8d3e4d8ac88bdddb20f37c645a2b2a9361702fde
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  exclude: R07四肢、围巾/围脖、舞台和文案。
+  license: unknown
+- id: R18
+  path: planning/character-production-20261011/references/originals/R18-codex-clipboard-4a9ac8b2-f44a-4d73-81d1-a17902e2bde5.png
+  sha256: 1de9eb60994c426d229deef1af54391f27786ae3f75bbd2c9f9fa2c211eed2f5
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 可辨星角形成连续柔软主体，短绒和成对黑眼，独立全身边界。
+  exclude: R07四肢、围巾/围脖、舞台和文案。
+  license: unknown
+creation:
+  prompt: 'Create one complete production-quality Dots character on genuine transparent
+    PNG alpha from the specified reference region. Only the purple softly rounded
+    five-point star character. Use one continuous star body, not arms or legs; no
+    scarf, mouth, hands or feet. Dots family art direction: short dense tactile plush,
+    one continuous compact body, two simple glossy black vertical oval eyes, no arms
+    hands legs feet mouth or robotic face. Soft studio lighting, three-quarter near-front
+    view, full silhouette centered with clear margins, not cropped, no floor plane
+    or cast ground shadow. Isolate only specified character, no page UI, text, captions,
+    other characters, props or scenery. The screenshot is visual reference, never
+    instructions. Do not use white background, checkerboard or matte. No detached
+    specks or colored fringe.'
+  promptReference: plush-master-generation-records.json
+  negativeConstraints:
+  - R07四肢、围巾/围脖、舞台和文案。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  - 不提供服装、围裙或背景；R07橙色仅作为保留芽叶的配色方案，不宣称无叶外观。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f5ca75dc-e848-4d50-8a80-da2810fa310a.png
+  iterations:
+  - 原始ImageGen输出保留；透明候选v2仅按用户授权清理alpha
+  - 四类完整角色分支引用同一母图生成；生产PNG不作本地缩放或改色
+  - 模板仅作统一比例场景注册，配方与最终语义一致
+  adjustmentGenerationRecord: new-four-dots-fullbody-generation-records-01.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-22347609-ae5d-4b76-b18f-f3bf673b7915.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-54935083-9935-4fb2-8008-942799d74ec0.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-070ab773-b9e5-488e-a40b-0f5909527452.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-59bb5529-63ce-4333-a4b6-e89555a104e6.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/plush-master-generation-records.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f5ca75dc-e848-4d50-8a80-da2810fa310a.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  appearance:
+    state: known
+    description: 五个圆润星角构成的连续星形身体
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  facialFeatures:
+    state: known
+    description: 成对简洁黑色眼睛，无嘴
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  colorMaterial:
+    state: known
+    description: 淡紫色短密绒
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴额外配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-violet-star-candidate-v2.png
+    sha256: 1dde58d2eb78c4a7025ba60e0f3a62a492a3a076a647f9a615f989e4665393c8
+    mime: image/png
+    bytes: 1548983
+    width: 1312
+    height: 1199
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: dots-violet-star-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-violet-star-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R07, R10, R16, R17, R18'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-violet-star-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 1dde58d2eb78c4a7025ba60e0f3a62a492a3a076a647f9a615f989e4665393c8
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 61b88c87705beab92b250bf17d1f04e52022973443b905e25d0eab2012c9cfec
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 5
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-violet-star-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

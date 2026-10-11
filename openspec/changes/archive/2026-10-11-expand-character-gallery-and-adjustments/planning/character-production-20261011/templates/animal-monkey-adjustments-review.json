@@ -1,0 +1,1067 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Artwork and Template. Source artwork is an original generated change candidate; all derivatives are pending and excluded from Gallery and release.",
+  "artwork": {
+    "id": "candidate-animal-monkey",
+    "version": "v2",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Monkey",
+      "zh-CN": "原创毛绒猴"
+    },
+    "descriptionByLanguage": {
+      "en": "An original seated chestnut plush monkey with a tan heart-shaped face, rounded ears, and an attached curved tail.",
+      "zh-CN": "原创坐姿栗棕绒面猴，带暖棕心形脸、圆耳和相连卷尾。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "candidate-animal-monkey@v2-alpha-clean"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-candidate-v1-v2-alpha-clean.png",
+    "sha256": "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Original v1 and alpha-clean review derivative remain pending; no approval transfers."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "candidate-animal-monkey-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only Template and recompositions; no Artwork or layer approval transfers."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animal-monkey",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1245,
+      "height": 1263
+    },
+    "anchors": {
+      "face.center": {
+        "point": [
+          620,
+          470
+        ]
+      },
+      "monkey.left-eye": {
+        "point": [
+          418,
+          452
+        ]
+      },
+      "monkey.right-eye": {
+        "point": [
+          696,
+          500
+        ]
+      },
+      "monkey.chest": {
+        "point": [
+          620,
+          900
+        ]
+      },
+      "monkey.left-ear.clip": {
+        "point": [
+          165,
+          350
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One compact seated chestnut plush monkey with a tan heart-shaped face, rounded ears, large brown eyes, cream chest patch, short animal hands and feet, and an attached curved tail. Preserve primate anatomy and the same original candidate identity; never add human hands, detached parts, or extra limbs.",
+      "zh-CN": "一只紧凑坐姿的栗棕绒面猴，带暖棕心形脸、圆耳、大棕眼、奶油色胸口斑、短动物手足和相连卷尾。保持灵长类结构与同一原创候选身份，不添加人手、脱离主体的部件或多余肢体。"
+    },
+    "defaultOptions": {
+      "appearance": "seated",
+      "colors": "chestnut",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "seated",
+          "labelByLanguage": {
+            "en": "Seated",
+            "zh-CN": "坐姿"
+          },
+          "semanticByLanguage": {
+            "en": "the original seated pose, with the full attached tail visible",
+            "zh-CN": "原始坐姿，完整相连卷尾清晰可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "standing",
+          "labelByLanguage": {
+            "en": "Standing",
+            "zh-CN": "站姿"
+          },
+          "semanticByLanguage": {
+            "en": "the same monkey in a natural four-limbed standing pose, with a clear attached tail",
+            "zh-CN": "同一只猴子的自然四肢站姿，卷尾清楚相连"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-standing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "chestnut",
+          "labelByLanguage": {
+            "en": "Chestnut",
+            "zh-CN": "栗棕"
+          },
+          "semanticByLanguage": {
+            "en": "warm chestnut coat, tan face and chest patch, cocoa details",
+            "zh-CN": "暖栗棕毛色、浅棕脸与胸口斑、可可色细节"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "coat": "#A7653D"
+          }
+        },
+        {
+          "id": "golden-caramel",
+          "labelByLanguage": {
+            "en": "Golden caramel",
+            "zh-CN": "金棕"
+          },
+          "semanticByLanguage": {
+            "en": "golden-caramel body and darker cocoa ears and tail; tan face and chest retained",
+            "zh-CN": "金棕色身体、深可可色耳尾，保留浅棕脸和胸口斑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-golden",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "coat": "#D09A5F"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Bright eyes",
+            "zh-CN": "明亮睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "the original two large friendly brown open eyes and smile",
+            "zh-CN": "原始两只明亮棕色眼睛与微笑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-smile",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "the same seated monkey with gently closed smiling eyes and the exact same body, mouth, fur, and pose",
+            "zh-CN": "同一只坐姿猴子的轻柔闭眼微笑，身体、嘴型、绒毛与姿势保持一致"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing; preserve the original chest patch",
+            "zh-CN": "不穿衣服，保留原有胸口斑"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "knit-vest",
+          "labelByLanguage": {
+            "en": "Forest knit vest",
+            "zh-CN": "森林绿针织背心"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted sleeveless forest-green knit vest with cream piping and two wooden buttons",
+            "zh-CN": "贴身森林绿无袖针织背心，带奶油色滚边和两颗木扣"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "None",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no head or body accessory",
+            "zh-CN": "不添加头部或身体配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "blue-bow-clip",
+          "labelByLanguage": {
+            "en": "Blue bow clip",
+            "zh-CN": "蓝色蝴蝶结夹"
+          },
+          "semanticByLanguage": {
+            "en": "one small sky-blue felt bow attached to the outer rim of the viewer-left ear",
+            "zh-CN": "一个小号天蓝毛毡蝴蝶结，附着在画面左侧耳朵外缘"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "standing",
+          "colors": "golden-caramel"
+        },
+        "code": "monkey-standing-palette-unverified",
+        "messageByLanguage": {
+          "en": "The standing pose and golden palette have not been composed together. Return to the seated chestnut combination.",
+          "zh-CN": "站姿与金棕配色尚未合成验证。请切回坐姿栗棕组合。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "face": "closed-smile"
+        },
+        "code": "monkey-standing-face-unverified",
+        "messageByLanguage": {
+          "en": "The closed-eye patches are aligned to the seated face. Return to Seated or Bright eyes.",
+          "zh-CN": "闭眼补丁按坐姿面部定位。请切回坐姿或选择睁眼。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "clothing": "knit-vest"
+        },
+        "code": "monkey-standing-clothing-unverified",
+        "messageByLanguage": {
+          "en": "The vest is fitted to the seated torso. Return to Seated or remove the vest.",
+          "zh-CN": "背心按坐姿躯干定位。请切回坐姿或脱下背心。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "accessories": "blue-bow-clip"
+        },
+        "code": "monkey-standing-accessory-unverified",
+        "messageByLanguage": {
+          "en": "The bow clip is positioned for the seated ear. Return to Seated or remove the clip.",
+          "zh-CN": "蝴蝶结夹按坐姿耳朵定位。请切回坐姿或取下配饰。"
+        }
+      },
+      {
+        "when": {
+          "colors": "golden-caramel",
+          "face": "closed-smile"
+        },
+        "code": "monkey-golden-face-unverified",
+        "messageByLanguage": {
+          "en": "The closed-eye patches are color-matched to the chestnut face. Return to Chestnut or Bright eyes.",
+          "zh-CN": "闭眼补丁按栗棕版本的脸部颜色制作。请切回栗棕或选择睁眼。"
+        }
+      },
+      {
+        "when": {
+          "colors": "golden-caramel",
+          "clothing": "knit-vest"
+        },
+        "code": "monkey-golden-clothing-unverified",
+        "messageByLanguage": {
+          "en": "The vest is fitted to the chestnut body. Return to Chestnut or remove the vest.",
+          "zh-CN": "背心按栗棕版本的身体定位。请切回栗棕或脱下背心。"
+        }
+      },
+      {
+        "when": {
+          "colors": "golden-caramel",
+          "accessories": "blue-bow-clip"
+        },
+        "code": "monkey-golden-accessory-unverified",
+        "messageByLanguage": {
+          "en": "The bow clip is positioned for the chestnut artwork. Return to Chestnut or remove the clip.",
+          "zh-CN": "蝴蝶结夹按栗棕作品定位。请切回栗棕或取下配饰。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "seated-chestnut-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-open-none-blue-bow-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "blue-bow-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "ear-bow",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-open-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-open-knit-vest-blue-bow-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "blue-bow-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "ear-bow",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-closed-smile-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-closed-smile-none-blue-bow-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "blue-bow-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "ear-bow",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-closed-smile-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-chestnut-closed-smile-knit-vest-blue-bow-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "chestnut",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "blue-bow-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing-front",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          },
+          {
+            "slot": "ear-bow",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-chestnut-open-none-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "chestnut",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-standing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-golden-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "golden-caramel",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-monkey-adjustments-v1:body-golden",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:body-seated",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/body-seated.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-candidate-v1-v2-alpha-clean.png",
+      "sha256": "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a",
+      "byteSize": 1853281,
+      "width": 1245,
+      "height": 1263,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 706314,
+        "bboxAtAlphaThreshold1": [
+          49,
+          26,
+          1222,
+          1242
+        ],
+        "bboxAtAlphaThreshold8": [
+          51,
+          28,
+          1221,
+          1240
+        ],
+        "bboxAtAlphaThreshold16": [
+          51,
+          28,
+          1220,
+          1240
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-master-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-44eea603-ad53-4b48-8fca-1fedf99334ce.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:body-standing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/body-standing.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-appearance-standing-candidate-v2-alpha-clean.png",
+      "sha256": "a62ec2349af886a34f37246bb341a95188ecb27717343956f9668deaeca7cb54",
+      "byteSize": 1710453,
+      "width": 1245,
+      "height": 1263,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 777064,
+        "bboxAtAlphaThreshold1": [
+          33,
+          42,
+          1224,
+          1217
+        ],
+        "bboxAtAlphaThreshold8": [
+          35,
+          44,
+          1222,
+          1215
+        ],
+        "bboxAtAlphaThreshold16": [
+          35,
+          44,
+          1222,
+          1215
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-standing-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-f8ad79be-caa5-4c91-a283-ca03fd703ef2.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-appearance-standing-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-appearance-standing-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:body-golden",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/body-golden.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-color-golden-candidate-v2-alpha-clean.png",
+      "sha256": "78366e689ff8f4db66b7fa9a341694a65d6d778452c0b3b32facb82b61168a0a",
+      "byteSize": 1786391,
+      "width": 1245,
+      "height": 1263,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 699416,
+        "bboxAtAlphaThreshold1": [
+          47,
+          21,
+          1223,
+          1244
+        ],
+        "bboxAtAlphaThreshold8": [
+          49,
+          23,
+          1221,
+          1242
+        ],
+        "bboxAtAlphaThreshold16": [
+          49,
+          23,
+          1221,
+          1242
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-golden-palette-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-b81fffb4-0a8a-4bf9-89fd-29266385aa64.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-color-golden-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-color-golden-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:clothing-knit-vest",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/clothing-knit-vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-clothing-knit-vest-candidate-v2-alpha-clean.png",
+      "sha256": "118bd53168b555e854d2aa70dbd29b3801128c8bfbbde19f48767ed9b5d078e4",
+      "byteSize": 692022,
+      "width": 1350,
+      "height": 1165,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1295873,
+        "bboxAtAlphaThreshold1": [
+          313,
+          532,
+          1040,
+          1016
+        ],
+        "bboxAtAlphaThreshold8": [
+          314,
+          534,
+          1038,
+          1014
+        ],
+        "bboxAtAlphaThreshold16": [
+          315,
+          534,
+          1038,
+          1014
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "monkey.chest",
+        "offset": [
+          0,
+          0
+        ],
+        "sourceAnchor": [
+          676.5,
+          774.0
+        ],
+        "transform": {
+          "pivot": [
+            676.5,
+            774.0
+          ],
+          "scale": [
+            0.46,
+            0.46
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-knit-vest-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-591cd665-556c-4ea7-99ff-4d7d21d95666.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-clothing-knit-vest-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-clothing-knit-vest-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:accessory-blue-bow",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/accessory-blue-bow.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-accessory-blue-bow-clip-small-candidate-v2-alpha-clean.png",
+      "sha256": "7d5333330627d9541256c3b1da4fffd21735652f2c28098a292939acdb5167f0",
+      "byteSize": 173576,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1505277,
+        "bboxAtAlphaThreshold1": [
+          422,
+          519,
+          853,
+          771
+        ],
+        "bboxAtAlphaThreshold8": [
+          424,
+          521,
+          852,
+          770
+        ],
+        "bboxAtAlphaThreshold16": [
+          424,
+          521,
+          851,
+          769
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "monkey.left-ear.clip",
+        "offset": [
+          0,
+          0
+        ],
+        "sourceAnchor": [
+          637.5,
+          645
+        ],
+        "transform": {
+          "pivot": [
+            637.5,
+            645
+          ],
+          "scale": [
+            0.25,
+            0.25
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-small-blue-bow-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-b33bfea5-51f0-46da-be70-78c53dbaf8d3.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-accessory-blue-bow-clip-small-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-accessory-blue-bow-clip-small-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-monkey-adjustments-v1:body-closed-face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-monkey-adjustments-v1/body-closed-face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-face-closed-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "43632fcd99ec82b7a0eb4e6b5f95fc6fa8a6ef46153333f4c83594e870d2936a",
+      "byteSize": 1687228,
+      "width": 1246,
+      "height": 1263,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 703577,
+        "bboxAtAlphaThreshold1": [
+          49,
+          25,
+          1225,
+          1244
+        ],
+        "bboxAtAlphaThreshold8": [
+          50,
+          26,
+          1223,
+          1243
+        ],
+        "bboxAtAlphaThreshold16": [
+          51,
+          27,
+          1223,
+          1242
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-monkey-adjustments-v1",
+        "artworkId": "candidate-animal-monkey",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1245,
+          1263
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Change-local candidate only; no production artwork or layer approval is implied."
+      },
+      "source": {
+        "method": "monkey-closed-eye-complete-body-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-2b6d6683-58e5-41f9-9700-d3cd42685e8c.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-face-closed-fullbody-candidate-v1.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-monkey-face-closed-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2974 @@
+{
+  "status": "pending",
+  "scope": "Review-only v6 four-field Template for candidate-dots-20261005@v2. Adds dedicated, transparent ImageGen body assets for ivory and charcoal on the orb silhouette, maps ivory to the chef toque and charcoal to cool sunglasses, and rejects closed-eye recipes behind opaque glasses. All added assets and combinations remain pending visual/art approval.",
+  "artwork": {
+    "id": "candidate-dots-20261005",
+    "version": "v2",
+    "seriesId": "dots",
+    "status": "published",
+    "publicationStatus": "published",
+    "titleByLanguage": {
+      "en": "Headphones",
+      "zh-CN": "耳机"
+    },
+    "descriptionByLanguage": {
+      "en": "A blue short-pile plush orb with black oval eyes and over-ear headphones. It has no visible mouth or limbs.",
+      "zh-CN": "蓝色短绒圆球角色，佩戴包耳式耳机，黑色椭圆眼睛，无嘴与肢体。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "asset:candidate-dots-20261005:original"
+    },
+    "sourcePath": "dist/assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png",
+    "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+    "artApproval": {
+      "status": "approved",
+      "record": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json",
+      "sourceSnapshot": "openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json",
+      "sourceId": "30c3dfa7bb709a2eda4dd4ebfdf4df0390a4e5f5291998defcb178cc7cc9d451",
+      "artworkId": "candidate-dots-20261005",
+      "assetSha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+    "version": "v6",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Pending v6 review candidate. Uses dedicated transparent ivory and charcoal body artwork assets on the Orb silhouette, with fitted chef-toque and cool-sunglasses recipes. Previous v5 remains preserved; no art approval is implied."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-dots-20261005",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "anchors": {
+      "face.center": {
+        "point": [
+          627,
+          626
+        ]
+      },
+      "body.lower.orb": {
+        "point": [
+          627,
+          940
+        ]
+      },
+      "body.lower.cloud": {
+        "point": [
+          627,
+          930
+        ]
+      },
+      "accessory.head": {
+        "point": [
+          627,
+          240
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Dots character with a continuous plush body and two simple eyes. No arms, hands, legs, feet, mouth, screen face, props, or background.",
+      "zh-CN": "单个连续绒面身体、两只简洁眼睛的 Dots 角色。无手臂、手、腿、脚、嘴、屏幕脸、道具或背景。"
+    },
+    "defaultOptions": {
+      "appearance": "orb",
+      "colors": "blue",
+      "face": "open",
+      "accessories": "headphones"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "orb",
+          "labelByLanguage": {
+            "en": "Orb",
+            "zh-CN": "圆球"
+          },
+          "semanticByLanguage": {
+            "en": "a round plush orb-shaped Dots body",
+            "zh-CN": "圆球形绒面 Dots 身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "cloud",
+          "labelByLanguage": {
+            "en": "Cloud",
+            "zh-CN": "云团"
+          },
+          "semanticByLanguage": {
+            "en": "a low continuous three-lobed plush cloud Dots body",
+            "zh-CN": "低矮连续、三处圆润起伏的云团绒面 Dots 身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "blue",
+          "hex": "#3989e5",
+          "swatches": [
+            "#3989e5"
+          ],
+          "zoneColors": {
+            "body": "#3989e5"
+          },
+          "labelByLanguage": {
+            "en": "Blue",
+            "zh-CN": "蓝色"
+          },
+          "semanticByLanguage": {
+            "en": "blue short-pile plush body",
+            "zh-CN": "蓝色短绒身体"
+          }
+        },
+        {
+          "id": "rose",
+          "hex": "#e36cb7",
+          "swatches": [
+            "#e36cb7"
+          ],
+          "zoneColors": {
+            "body": "#e36cb7"
+          },
+          "labelByLanguage": {
+            "en": "Rose",
+            "zh-CN": "玫瑰粉"
+          },
+          "semanticByLanguage": {
+            "en": "rose-pink short-pile plush body",
+            "zh-CN": "玫瑰粉短绒身体"
+          }
+        },
+        {
+          "id": "ivory",
+          "hex": "#F3F0E8",
+          "swatches": [
+            "#F3F0E8"
+          ],
+          "labelByLanguage": {
+            "en": "Ivory white",
+            "zh-CN": "象牙白"
+          },
+          "semanticByLanguage": {
+            "en": "warm ivory plush body",
+            "zh-CN": "暖象牙色绒面身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "charcoal",
+          "hex": "#27282D",
+          "swatches": [
+            "#27282D"
+          ],
+          "labelByLanguage": {
+            "en": "Charcoal",
+            "zh-CN": "炭黑色"
+          },
+          "semanticByLanguage": {
+            "en": "deep charcoal plush body",
+            "zh-CN": "深炭黑色绒面身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:charcoal",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two simple glossy black upright oval eyes",
+            "zh-CN": "两只简洁、带高光的黑色竖椭圆眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed eyes",
+            "zh-CN": "闭眼"
+          },
+          "semanticByLanguage": {
+            "en": "two gently curved closed-eye marks as a static expression",
+            "zh-CN": "两道柔和弯曲的闭眼线，作为静态表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "None",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "无配饰"
+          }
+        },
+        {
+          "id": "headphones",
+          "labelByLanguage": {
+            "en": "Headphones",
+            "zh-CN": "耳机"
+          },
+          "semanticByLanguage": {
+            "en": "a black headband with violet over-ear headphone cups",
+            "zh-CN": "黑色头带与紫色包耳式耳罩"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        },
+        {
+          "id": "round-glasses",
+          "labelByLanguage": {
+            "en": "Round glasses",
+            "zh-CN": "圆框眼镜"
+          },
+          "semanticByLanguage": {
+            "en": "round black-framed glasses aligned over the eyes",
+            "zh-CN": "对齐眼睛位置的黑色圆框眼镜"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        },
+        {
+          "id": "chef-toque",
+          "labelByLanguage": {
+            "en": "Chef toque",
+            "zh-CN": "厨师帽"
+          },
+          "semanticByLanguage": {
+            "en": "a soft ivory plush chef toque fitted to the crown, with no head or body added",
+            "zh-CN": "贴合头顶的柔软象牙白绒面厨师帽，不增加头部或身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        },
+        {
+          "id": "cool-sunglasses",
+          "labelByLanguage": {
+            "en": "Black cool sunglasses",
+            "zh-CN": "黑色酷墨镜"
+          },
+          "semanticByLanguage": {
+            "en": "wide black opaque oval sunglasses fitted across the open eyes",
+            "zh-CN": "贴合睁眼位置的黑色不透明宽椭圆墨镜"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cool-sunglasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        },
+        {
+          "id": "cyber-glasses",
+          "labelByLanguage": {
+            "en": "Cyber glasses",
+            "zh-CN": "赛博眼镜"
+          },
+          "semanticByLanguage": {
+            "en": "black-framed cyan cyber glasses with opaque lenses fitted across the eyes",
+            "zh-CN": "贴合眼睛位置、带不透明青色镜片的黑框赛博眼镜"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cyber-glasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "headphones"
+        },
+        "code": "cloud-headphones-fit-conflict",
+        "messageByLanguage": {
+          "en": "These over-ear cups and headband are registered for the round orb silhouette. Choose the cloud with no accessory or round glasses, or choose the orb to keep the headphones.",
+          "zh-CN": "这副包耳耳罩与头带仅按圆球轮廓制作。云团可选择无配饰或圆框眼镜；若要耳机，请切换为圆球。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "chef-toque"
+        },
+        "code": "cloud-chef-toque-fit-conflict",
+        "messageByLanguage": {
+          "en": "The chef toque layer is fitted to the round orb only. Choose Orb for this accessory, or choose the cloud with another registered accessory.",
+          "zh-CN": "厨师帽图层仅按圆球轮廓适配。若要此配饰请切换圆球；云团可改用其他已登记配饰。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "cool-sunglasses"
+        },
+        "code": "cloud-cool-sunglasses-fit-conflict",
+        "messageByLanguage": {
+          "en": "The black cool sunglasses layer is fitted to the round orb only. Choose Orb for this accessory, or choose the cloud with another registered accessory.",
+          "zh-CN": "黑色酷墨镜图层仅按圆球轮廓适配。若要此配饰请切换圆球；云团可改用其他已登记配饰。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "cyber-glasses"
+        },
+        "code": "cloud-cyber-glasses-fit-conflict",
+        "messageByLanguage": {
+          "en": "The cyber glasses layer is fitted to the round orb only. Choose Orb for this accessory, or choose the cloud with another registered accessory.",
+          "zh-CN": "赛博眼镜图层仅按圆球轮廓适配。若要此配饰请切换圆球；云团可改用其他已登记配饰。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "cool-sunglasses"
+        },
+        "code": "cool-sunglasses-closed-eyes-conflict",
+        "messageByLanguage": {
+          "en": "The opaque dark lenses conceal the closed-eye expression. Choose open eyes or another accessory.",
+          "zh-CN": "深色不透明镜片会遮住闭眼表情。请选择睁眼或其他配饰。"
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "cyber-glasses"
+        },
+        "code": "cyber-glasses-conceal-closed-eyes",
+        "messageByLanguage": {
+          "en": "The opaque cyan lenses conceal the closed-eye expression. Choose open eyes or another accessory.",
+          "zh-CN": "青色不透明镜片会遮住闭眼表情。请选择睁眼或其他配饰。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "cloud",
+          "colors": "ivory"
+        },
+        "code": "cloud-ivory-body-unavailable",
+        "messageByLanguage": {
+          "en": "This transparent ivory body asset is fitted to the round orb only. Choose Orb for ivory, or choose the cloud in blue or rose.",
+          "zh-CN": "象牙色透明身体素材仅适配圆球。若要象牙色请切换圆球；云团可选择蓝色或玫瑰粉。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "cloud",
+          "colors": "charcoal"
+        },
+        "code": "cloud-charcoal-body-unavailable",
+        "messageByLanguage": {
+          "en": "This transparent charcoal body asset is fitted to the round orb only. Choose Orb for charcoal, or choose the cloud in blue or rose.",
+          "zh-CN": "炭黑色透明身体素材仅适配圆球。若要炭黑色请切换圆球；云团可选择蓝色或玫瑰粉。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "orb-blue-open-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-round-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-round-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-round-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-closed-none-none",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-closed-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-closed-none-round-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-none-round-glasses",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none-round-glasses",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-open-none-round-glasses",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-none-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-rose-closed-none-round-glasses",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "round-glasses"
+        },
+        "layers": [
+          {
+            "slot": "glasses-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-chef-toque",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "chef-toque"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-chef-toque",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-closed-none-chef-toque",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "chef-toque"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-chef-toque",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-chef-toque",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "chef-toque"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-chef-toque",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-closed-none-chef-toque",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "closed",
+          "accessories": "chef-toque"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-chef-toque",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-cool-sunglasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "cool-sunglasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-cool-sunglasses",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cool-sunglasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-cool-sunglasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "cool-sunglasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-cool-sunglasses",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cool-sunglasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-blue-open-none-cyber-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "cyber-glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-cyber-glasses",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cyber-glasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-rose-open-none-cyber-glasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "rose",
+          "face": "open",
+          "accessories": "cyber-glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-cyber-glasses",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cyber-glasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-ivory-open-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "ivory",
+          "face": "open",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-charcoal-open-none-headphones",
+        "selections": {
+          "appearance": "orb",
+          "colors": "charcoal",
+          "face": "open",
+          "accessories": "headphones"
+        },
+        "layers": [
+          {
+            "slot": "headphones-rear",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+              "version": "v1",
+              "purpose": "accessory-rear-layer"
+            }
+          },
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:charcoal",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "headphones-front",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-ivory-open-none-chef-toque",
+        "selections": {
+          "appearance": "orb",
+          "colors": "ivory",
+          "face": "open",
+          "accessories": "chef-toque"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:ivory",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-chef-toque",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "orb-charcoal-open-none-cool-sunglasses",
+        "selections": {
+          "appearance": "orb",
+          "colors": "charcoal",
+          "face": "open",
+          "accessories": "cool-sunglasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:charcoal",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-cool-sunglasses",
+            "asset": {
+              "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cool-sunglasses",
+              "version": "v1",
+              "purpose": "accessory-front-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:orb",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/body-neutral.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "byteSize": 1675380,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          0,
+          1244,
+          1254
+        ],
+        "bboxAtAlphaThreshold16": [
+          129,
+          151,
+          1124,
+          1145
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:body-neutral",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:orb",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/body-neutral.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "byteSize": 1675380,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          0,
+          1244,
+          1254
+        ],
+        "bboxAtAlphaThreshold16": [
+          129,
+          151,
+          1124,
+          1145
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:body-neutral",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:silhouette:orb",
+      "version": "v1",
+      "purpose": "silhouette-mask",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/body-neutral.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+      "sha256": "0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba",
+      "byteSize": 1675380,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          0,
+          1244,
+          1254
+        ],
+        "bboxAtAlphaThreshold16": [
+          129,
+          151,
+          1124,
+          1145
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:body-neutral",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/body-neutral.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/original.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+      "sha256": "c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb",
+      "byteSize": 113720,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          33,
+          290,
+          1224,
+          875
+        ],
+        "bboxAtAlphaThreshold16": [
+          469,
+          522,
+          786,
+          731
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          626
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:eyes:original",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/original.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/closed.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+      "sha256": "f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea",
+      "byteSize": 72043,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          49,
+          224,
+          1146,
+          1002
+        ],
+        "bboxAtAlphaThreshold16": [
+          446,
+          619,
+          808,
+          676
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          648
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:eyes:closed",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/eyes/closed.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:rear",
+      "version": "v1",
+      "purpose": "accessory-rear-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/rear.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/headphones/rear.png",
+      "sha256": "473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0",
+      "byteSize": 216883,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          110,
+          80,
+          1186,
+          1198
+        ],
+        "bboxAtAlphaThreshold16": [
+          114,
+          83,
+          1139,
+          508
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:headphones:default:rear",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/headphones/rear.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:headphones:front",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/front.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/headphones/front.png",
+      "sha256": "eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9",
+      "byteSize": 371080,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          13,
+          21,
+          1240,
+          1166
+        ],
+        "bboxAtAlphaThreshold16": [
+          17,
+          451,
+          1237,
+          878
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:headphones:default:front",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/headphones/front.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear",
+      "version": "v1",
+      "purpose": "accessory-rear-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/round-rear.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/glasses/round-rear.png",
+      "sha256": "776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5",
+      "byteSize": 78452,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          0,
+          278,
+          1184,
+          866
+        ],
+        "bboxAtAlphaThreshold16": [
+          156,
+          593,
+          1098,
+          684
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          630
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:glasses:round:rear",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/glasses/round-rear.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/round-front.png",
+      "sourcePath": "dist/assets/templates/dots-orb-v1/glasses/round-front.png",
+      "sha256": "1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae",
+      "byteSize": 111958,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          132,
+          29,
+          1073,
+          1131
+        ],
+        "bboxAtAlphaThreshold16": [
+          405,
+          536,
+          850,
+          725
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          630
+        ],
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "reused-approved-layer-as-pending-review-source",
+        "originalAssetId": "template:dots-orb-v1:glasses:round:front",
+        "originalTemplateId": "dots-orb-v1@v1",
+        "sourcePath": "dist/assets/templates/dots-orb-v1/glasses/round-front.png",
+        "approvalTransferred": false
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/dots-orb-v2-cloud-body-clean-v1.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+      "sha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+      "byteSize": 1601010,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          15,
+          236,
+          1239,
+          1038
+        ],
+        "bboxAtAlphaThreshold16": [
+          17,
+          238,
+          1237,
+          1036
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "imagegen-candidate-alpha-cleaned-copy",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-candidate-v2.png",
+        "sourceSha256": "0abf35afad9ce362ebb89ead075e5a6fad9cfebc74a7b1e96831fe4d304c6d32",
+        "imageGenerationOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-a1726fad-52ff-4dd0-ba47-a3eb2666f5b0.png",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png.alpha-cleanup.json",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/dots-orb-v2-cloud-body-clean-v1.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+      "sha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+      "byteSize": 1601010,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          15,
+          236,
+          1239,
+          1038
+        ],
+        "bboxAtAlphaThreshold16": [
+          17,
+          238,
+          1237,
+          1036
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "same-pending-appearance-source-alpha-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+        "sourceSha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:silhouette:cloud",
+      "version": "v1",
+      "purpose": "silhouette-mask",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/dots-orb-v2-cloud-body-clean-v1.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+      "sha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+      "byteSize": 1601010,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          15,
+          236,
+          1239,
+          1038
+        ],
+        "bboxAtAlphaThreshold16": [
+          17,
+          238,
+          1237,
+          1036
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Review-only ownership for this new Template/Artwork binding; no previous approval transfers."
+      },
+      "source": {
+        "method": "same-pending-appearance-source-alpha-mask",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v2-cloud-body-clean-v1.png",
+        "sourceSha256": "6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:chef-toque",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/chef-toque.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/chef-toque-clean-v1.png",
+      "sha256": "11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677",
+      "byteSize": 906950,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          40,
+          300,
+          1216,
+          998
+        ],
+        "bboxAtAlphaThreshold16": [
+          42,
+          302,
+          1214,
+          996
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "accessory.head",
+        "sourceAnchor": [
+          627,
+          998
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            627,
+            998
+          ],
+          "scale": [
+            0.62,
+            0.32
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New independent transparent accessory candidate. Pending visual review; no prior approval transfers."
+      },
+      "source": {
+        "method": "imagegen-accessory-alpha-cleaned",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/chef-toque-clean-v1.png",
+        "sourceSha256": "11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/chef-toque-clean-v1.png.alpha-cleanup.json",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cool-sunglasses",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/cool-sunglasses.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cool-sunglasses-clean-v1.png",
+      "sha256": "b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106",
+      "byteSize": 215685,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          189,
+          515,
+          1064,
+          754
+        ],
+        "bboxAtAlphaThreshold16": [
+          191,
+          517,
+          1062,
+          752
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          626
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            627,
+            626
+          ],
+          "scale": [
+            0.72,
+            1
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New independent transparent accessory candidate. Pending visual review; no prior approval transfers."
+      },
+      "source": {
+        "method": "imagegen-accessory-alpha-cleaned",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cool-sunglasses-clean-v1.png",
+        "sourceSha256": "b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cool-sunglasses-clean-v1.png.alpha-cleanup.json",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:cyber-glasses",
+      "version": "v1",
+      "purpose": "accessory-front-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v3-candidate/cyber-glasses.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cyber-glasses-clean-v1.png",
+      "sha256": "d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260",
+      "byteSize": 324393,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          176,
+          503,
+          1078,
+          743
+        ],
+        "bboxAtAlphaThreshold16": [
+          178,
+          505,
+          1076,
+          741
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "face.center",
+        "sourceAnchor": [
+          627,
+          626
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            627,
+            626
+          ],
+          "scale": [
+            0.7,
+            1
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New independent transparent accessory candidate. Pending visual review; no prior approval transfers."
+      },
+      "source": {
+        "method": "imagegen-accessory-alpha-cleaned",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cyber-glasses-clean-v1.png",
+        "sourceSha256": "d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260",
+        "cleanupReport": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v3-core-accessories/cyber-glasses-clean-v1.png.alpha-cleanup.json",
+        "artApproval": "pending"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:ivory",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v6-four-tabs-candidate/orb-body-ivory-alpha-clean-v1.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-alpha-clean-v1.png",
+      "sha256": "1a17bc947172f66de7d794b1b0fb277e782559c632f90b515a3d72f121dbbdc7",
+      "byteSize": 1184060,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          124,
+          150,
+          1128,
+          1150
+        ],
+        "bboxAtAlphaThreshold16": [
+          126,
+          152,
+          1126,
+          1148
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New ImageGen color body and alpha-cleanup remain pending visual approval; no prior artwork approval transfers."
+      },
+      "source": {
+        "method": "imagegen-color-variant-with-authorized-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-imagegen-raw-v1.png",
+        "sourceSha256": "557591fcf4b3c8e6af0317e100cd583b59198ce5c67c1fa23bb3dbd43aa923de",
+        "cleanupReportPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-alpha-clean-v1.alpha-cleanup.json",
+        "cleanupReportSha256": "0a681b377001670165f960d090a39f37dcadf94baef4ec80acac279814dd68e3",
+        "approvalTransferred": false,
+        "visualReview": "required"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:charcoal",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-orb-core-adjustments-v6-four-tabs-candidate/orb-body-charcoal-alpha-clean-v1.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-alpha-clean-v1.png",
+      "sha256": "0094b75936ee25eea12adcc5e711e9ba3f0edd21973dd02747cc8a51f1c9f975",
+      "byteSize": 1506678,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          125,
+          148,
+          1129,
+          1150
+        ],
+        "bboxAtAlphaThreshold16": [
+          127,
+          150,
+          1127,
+          1148
+        ]
+      },
+      "owner": {
+        "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+        "artworkId": "candidate-dots-20261005",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New ImageGen color body and alpha-cleanup remain pending visual approval; no prior artwork approval transfers."
+      },
+      "source": {
+        "method": "imagegen-color-variant-with-authorized-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-imagegen-raw-v1.png",
+        "sourceSha256": "c2cbac8359bba5c00374d2cc8110aff3a60e60859da558e8cf54fd30e36fcd1d",
+        "cleanupReportPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-alpha-clean-v1.alpha-cleanup.json",
+        "cleanupReportSha256": "0726db3f315af372d49037cadcaf5251ff523337bc4bdad6bc8b2769231147e7",
+        "approvalTransferred": false,
+        "visualReview": "required"
+      }
+    }
+  ]
+}

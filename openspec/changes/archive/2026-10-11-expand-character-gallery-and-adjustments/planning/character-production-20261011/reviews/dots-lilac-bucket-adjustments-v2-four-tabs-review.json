@@ -1,0 +1,217 @@
+{
+  "reviewType": "four-field-template-engineering-review",
+  "reviewer": "editing_audit subagent",
+  "reviewedAt": "2026-10-11",
+  "status": "engineering-passed-awaiting-root-review",
+  "scope": "Pending Dots family migration candidate. The clothing field and all clothing compositions are omitted. Engineering/browser evidence does not approve artwork or template visuals.",
+  "artwork": {
+    "id": "dots-lilac-bucket",
+    "version": "v1",
+    "sha256": "50ddea9f24e82c02b14cc5374d4b3ae08b00954aa4bcdcbb6aa24dc2a8b3d615"
+  },
+  "template": {
+    "id": "dots-lilac-bucket-adjustments-v2-four-tabs-candidate",
+    "version": "v2",
+    "status": "pending",
+    "manifest": "templates/dots-lilac-bucket-adjustments-v2-four-tabs-review.json",
+    "manifestSha256": "826ff735fe9837a32413f44ed23127d5de0059b4aaf0ab1e96915ef1698a64bf"
+  },
+  "previousCandidate": {
+    "templateManifest": "templates/dots-lilac-bucket-adjustments-v1-review.json",
+    "templateManifestSha256": "131cf7802f6825dd8bc24fa1928ebbfad20243cf61ad61158ec42a42f72a1ec2",
+    "review": "reviews/dots-lilac-bucket-adjustments-v1-internal-review.json",
+    "reviewSha256": "1b21f6a47495cb1ab984bb3dfc0cf218d2c423789926c40c9144775d5ed28ce2",
+    "previousReviewStatus": "passed-for-root-review"
+  },
+  "recipeSet": {
+    "count": 12,
+    "hashInput": "JSON.stringify(recipes sorted by id, each represented as [id, selections sorted by option-field key])",
+    "recipes": [
+      {
+        "id": "orb-lilac-open-none-none",
+        "sha256": "9af2a6211582f1d16f736e6b50ede98afbc0dbb51aebef1d789192064022195d"
+      },
+      {
+        "id": "orb-lilac-open-none-bucket-hat",
+        "sha256": "dd7b57aaa750a99d439c67154c139b66e05dff99bb090c9953921bebcd3cc22c"
+      },
+      {
+        "id": "orb-lilac-closed-none-none",
+        "sha256": "f79170617574a696447891e3f6ed89cf345af69b52681f5535b3b8592094b1e0"
+      },
+      {
+        "id": "orb-lilac-closed-none-bucket-hat",
+        "sha256": "2fb563e1bb3cc21430c2cbf56b06474295bd07e616b3f6cd0f0e2ef306afc558"
+      },
+      {
+        "id": "orb-blue-open-none-none",
+        "sha256": "6970bed709dea4ce81bf40af2936be2aca3daaeda09c75701a183f3e4da990f9"
+      },
+      {
+        "id": "orb-blue-open-none-bucket-hat",
+        "sha256": "37a287982405ac2d4a3a5b0b3373e65add625fb66a0d9cd15ccf96a89574f274"
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "sha256": "8bf7c10353a5be1b8eb9a0a7855f26560fd4e6c81388091a35daf632ca565e06"
+      },
+      {
+        "id": "orb-blue-closed-none-bucket-hat",
+        "sha256": "682cbe9a0bd697f59e11c04215201490a14e1cbdb765a450791be2b1c17c0919"
+      },
+      {
+        "id": "cloud-lilac-open-none-none",
+        "sha256": "5c5bb1d24e74292476ceeb884e76440d436a1f99d87ac593237387a2a48ee719"
+      },
+      {
+        "id": "cloud-lilac-closed-none-none",
+        "sha256": "9b6896f4bca936094ac0a1083d26f74302420abe890341b8dae9823b55feb8b4"
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "sha256": "21ac54f855b86a07606829b23aa68e245d4cb30e164e6293cc4cb8e9dc6a6e6a"
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "sha256": "2e5d780f6fa0a39b2e32338315357475b04a75c02409487ab344404c865de731"
+      }
+    ]
+  },
+  "engineering": {
+    "status": "engineering-passed",
+    "report": ".artifacts/character-adjustments/dots-lilac-bucket-adjustments-v2-four-tabs-candidate/report.json",
+    "reportSha256": "60c134357f8ed2831a470447cc061550d2842f4a2e19b25f48fd61d90574ed83",
+    "browser": "Chromium / Playwright review harness",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 700
+      },
+      {
+        "width": 768,
+        "height": 1024
+      }
+    ],
+    "tabs": [
+      "appearance",
+      "colors",
+      "face",
+      "accessories"
+    ],
+    "checks": [
+      "four visible fields only",
+      "each option reachable through a legal single-field change",
+      "finite recipe acceptance",
+      "transparent PNG output and alpha",
+      "Prompt excludes clothing semantics",
+      "no horizontal overflow at tested viewports"
+    ]
+  },
+  "visualComparison": {
+    "status": "exact-pixel-match-to-previously-reviewed-unclothed-recipes",
+    "comparedRecipes": 12,
+    "totalRecipes": 12,
+    "exactMatches": 12,
+    "comparisons": [
+      {
+        "recipeId": "orb-lilac-open-none-none",
+        "sha256": "9af2a6211582f1d16f736e6b50ede98afbc0dbb51aebef1d789192064022195d",
+        "oldRecipeId": "orb-lilac-open-none-none",
+        "oldSha256": "9af2a6211582f1d16f736e6b50ede98afbc0dbb51aebef1d789192064022195d",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-lilac-open-none-bucket-hat",
+        "sha256": "dd7b57aaa750a99d439c67154c139b66e05dff99bb090c9953921bebcd3cc22c",
+        "oldRecipeId": "orb-lilac-open-none-bucket-hat",
+        "oldSha256": "dd7b57aaa750a99d439c67154c139b66e05dff99bb090c9953921bebcd3cc22c",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-lilac-closed-none-none",
+        "sha256": "f79170617574a696447891e3f6ed89cf345af69b52681f5535b3b8592094b1e0",
+        "oldRecipeId": "orb-lilac-closed-none-none",
+        "oldSha256": "f79170617574a696447891e3f6ed89cf345af69b52681f5535b3b8592094b1e0",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-lilac-closed-none-bucket-hat",
+        "sha256": "2fb563e1bb3cc21430c2cbf56b06474295bd07e616b3f6cd0f0e2ef306afc558",
+        "oldRecipeId": "orb-lilac-closed-none-bucket-hat",
+        "oldSha256": "2fb563e1bb3cc21430c2cbf56b06474295bd07e616b3f6cd0f0e2ef306afc558",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-none",
+        "sha256": "6970bed709dea4ce81bf40af2936be2aca3daaeda09c75701a183f3e4da990f9",
+        "oldRecipeId": "orb-blue-open-none-none",
+        "oldSha256": "6970bed709dea4ce81bf40af2936be2aca3daaeda09c75701a183f3e4da990f9",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-bucket-hat",
+        "sha256": "37a287982405ac2d4a3a5b0b3373e65add625fb66a0d9cd15ccf96a89574f274",
+        "oldRecipeId": "orb-blue-open-none-bucket-hat",
+        "oldSha256": "37a287982405ac2d4a3a5b0b3373e65add625fb66a0d9cd15ccf96a89574f274",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-closed-none-none",
+        "sha256": "8bf7c10353a5be1b8eb9a0a7855f26560fd4e6c81388091a35daf632ca565e06",
+        "oldRecipeId": "orb-blue-closed-none-none",
+        "oldSha256": "8bf7c10353a5be1b8eb9a0a7855f26560fd4e6c81388091a35daf632ca565e06",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-closed-none-bucket-hat",
+        "sha256": "682cbe9a0bd697f59e11c04215201490a14e1cbdb765a450791be2b1c17c0919",
+        "oldRecipeId": "orb-blue-closed-none-bucket-hat",
+        "oldSha256": "682cbe9a0bd697f59e11c04215201490a14e1cbdb765a450791be2b1c17c0919",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-lilac-open-none-none",
+        "sha256": "5c5bb1d24e74292476ceeb884e76440d436a1f99d87ac593237387a2a48ee719",
+        "oldRecipeId": "cloud-lilac-open-none-none",
+        "oldSha256": "5c5bb1d24e74292476ceeb884e76440d436a1f99d87ac593237387a2a48ee719",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-lilac-closed-none-none",
+        "sha256": "9b6896f4bca936094ac0a1083d26f74302420abe890341b8dae9823b55feb8b4",
+        "oldRecipeId": "cloud-lilac-closed-none-none",
+        "oldSha256": "9b6896f4bca936094ac0a1083d26f74302420abe890341b8dae9823b55feb8b4",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-open-none-none",
+        "sha256": "21ac54f855b86a07606829b23aa68e245d4cb30e164e6293cc4cb8e9dc6a6e6a",
+        "oldRecipeId": "cloud-blue-open-none-none",
+        "oldSha256": "21ac54f855b86a07606829b23aa68e245d4cb30e164e6293cc4cb8e9dc6a6e6a",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-closed-none-none",
+        "sha256": "2e5d780f6fa0a39b2e32338315357475b04a75c02409487ab344404c865de731",
+        "oldRecipeId": "cloud-blue-closed-none-none",
+        "oldSha256": "2e5d780f6fa0a39b2e32338315357475b04a75c02409487ab344404c865de731",
+        "identical": true
+      }
+    ],
+    "note": "Each exact hash matches the corresponding no-clothing recipe in the prior review. This reuses only those pixel results; art approval remains pending."
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

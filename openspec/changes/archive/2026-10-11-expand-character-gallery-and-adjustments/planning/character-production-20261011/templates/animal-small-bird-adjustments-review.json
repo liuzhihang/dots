@@ -1,0 +1,1150 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Artwork and Template. Generated assets and alpha-clean derivatives remain unapproved and unpublished.",
+  "artwork": {
+    "id": "candidate-animal-small-bird",
+    "version": "v2",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Little Songbird",
+      "zh-CN": "小蓝鸟"
+    },
+    "descriptionByLanguage": {
+      "en": "A turquoise-blue plush songbird with a butter-yellow belly, small orange beak, feather tuft, wings and feet.",
+      "zh-CN": "一只青蓝色绒面小鸟，配奶油黄色腹部、橙色小喙、羽冠、翅膀和双脚。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "candidate-animal-small-bird@v2-alpha-clean"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.png",
+    "sha256": "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Candidate only; no gallery approval transfers."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "candidate-animal-small-bird-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only Template and recompositions; no Artwork or layer approval transfers."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animal-small-bird",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1374,
+      "height": 1145
+    },
+    "anchors": {
+      "bird.crown.clip": {
+        "point": [
+          780,
+          170
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One small plush songbird with a rounded turquoise-blue head and back, butter-yellow belly, short orange beak, two expressive eyes, paired feathered wings, a short crest, tail feathers, and two small orange feet. Preserve its bird anatomy, silhouette, and plush material; do not add human arms or hands.",
+      "zh-CN": "一只小型绒面鸣禽，圆润青蓝色头背、奶油黄腹部、短橙喙、双眼、一对羽翼、短羽冠、尾羽与两只小橙脚。保持鸟类结构、轮廓和毛绒材质，不添加人手或人类手臂。"
+    },
+    "defaultOptions": {
+      "appearance": "standing",
+      "colors": "blue-yellow",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "standing",
+          "labelByLanguage": {
+            "en": "Blue-yellow",
+            "zh-CN": "蓝黄原色"
+          },
+          "semanticByLanguage": {
+            "en": "the original standing plush songbird with a compact upright body and visible feet",
+            "zh-CN": "原始站姿绒面小鸟，身体紧凑直立且双脚清楚可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "turned",
+          "labelByLanguage": {
+            "en": "Turned pose",
+            "zh-CN": "转身姿态"
+          },
+          "semanticByLanguage": {
+            "en": "the same bird in a taller turned three-quarter pose with its feather tail clearly visible",
+            "zh-CN": "同一小鸟采用较高的三分之四转身姿态，尾羽清晰可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "blue-yellow",
+          "labelByLanguage": {
+            "en": "Blue and butter yellow",
+            "zh-CN": "蓝黄配色"
+          },
+          "semanticByLanguage": {
+            "en": "turquoise-blue plumage with a pale butter-yellow belly and orange beak and feet",
+            "zh-CN": "青蓝色羽毛、浅奶油黄色腹部、橙色喙和双脚"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "plumage": "#36B9C6",
+            "belly": "#F8DE9A"
+          }
+        },
+        {
+          "id": "teal-cream",
+          "labelByLanguage": {
+            "en": "Soft teal and cream",
+            "zh-CN": "柔青奶油色"
+          },
+          "semanticByLanguage": {
+            "en": "a softer teal-blue plumage with a warm cream-yellow belly, preserving the orange beak and feet",
+            "zh-CN": "更柔和的青绿色羽毛和暖奶油黄腹部，保留橙色喙和双脚"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-color",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "plumage": "#47C4C2",
+            "belly": "#FAE6B1"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy brown open eyes and the original small open beak",
+            "zh-CN": "两只亮泽棕色睁眼和原有微张小喙"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-smile",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "two dark embroidered curved closed eyelids, keeping the beak and blush unchanged",
+            "zh-CN": "两条深色刺绣弧形闭眼，喙和腮红保持不变"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "the original feathered body without clothing",
+            "zh-CN": "保留原羽毛身体，不穿服装"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "butter-bib",
+          "labelByLanguage": {
+            "en": "Butter knit bib",
+            "zh-CN": "奶油黄针织围兜"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted butter-yellow knitted bib with teal edging and shoulder straps wrapped over the torso, wings in front, tail and feet clear",
+            "zh-CN": "合身奶油黄针织围兜，青蓝滚边与肩带贴合躯干，翅膀位于衣物前方，尾羽和双脚清楚"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessory",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no extra accessory",
+            "zh-CN": "不添加额外配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "coral-flower-clip",
+          "labelByLanguage": {
+            "en": "Coral flower clip",
+            "zh-CN": "珊瑚花夹"
+          },
+          "semanticByLanguage": {
+            "en": "a small coral plush flower clip placed on the upper crown without covering the eyes or feather tuft",
+            "zh-CN": "位于头顶上部的小型珊瑚色绒面花夹，不遮挡双眼或羽冠"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "turned",
+          "colors": "teal-cream"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "turned",
+          "face": "closed-smile"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "turned",
+          "clothing": "butter-bib"
+        },
+        "code": "appearance-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "appearance": "turned",
+          "accessories": "coral-flower-clip"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "teal-cream",
+          "face": "closed-smile"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "teal-cream",
+          "clothing": "butter-bib"
+        },
+        "code": "colors-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      },
+      {
+        "when": {
+          "colors": "teal-cream",
+          "accessories": "coral-flower-clip"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项目前没有匹配的组合素材。先将另一项恢复默认，再切换此项。",
+          "en": "These selections have no matching combined asset yet. Restore the other option to its default before changing this one."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "standing-blue-yellow-open-none-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-open-none-coral-flower-clip",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "coral-flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-open-butter-bib-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "open",
+          "clothing": "butter-bib",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-open-butter-bib-coral-flower-clip",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "open",
+          "clothing": "butter-bib",
+          "accessories": "coral-flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-open",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-closed-smile-none-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-closed-smile-none-coral-flower-clip",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "coral-flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-closed-smile-butter-bib-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "closed-smile",
+          "clothing": "butter-bib",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-blue-yellow-closed-smile-butter-bib-coral-flower-clip",
+        "selections": {
+          "appearance": "standing",
+          "colors": "blue-yellow",
+          "face": "closed-smile",
+          "clothing": "butter-bib",
+          "accessories": "coral-flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-closed",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "turned-blue-yellow-open-none-none",
+        "selections": {
+          "appearance": "turned",
+          "colors": "blue-yellow",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-teal-cream-open-none-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "teal-cream",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-small-bird-adjustments-v1:body-color",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-base.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.png",
+      "sha256": "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791",
+      "byteSize": 1188034,
+      "width": 1374,
+      "height": 1145,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1003672,
+        "bboxAtAlphaThreshold1": [
+          196,
+          76,
+          1162,
+          1084
+        ],
+        "bboxAtAlphaThreshold8": [
+          197,
+          78,
+          1160,
+          1082
+        ],
+        "bboxAtAlphaThreshold16": [
+          198,
+          78,
+          1160,
+          1082
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-master-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-46ca15ea-14dd-4980-8cb1-c65f2cc1d79e.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-appearance-perched-candidate-v2-alpha-clean.png",
+      "sha256": "4f8a153848ba08bee07acf62258768841c6e65f6026902bf2e82fc51e4896339",
+      "byteSize": 1474223,
+      "width": 1122,
+      "height": 1402,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 823725,
+        "bboxAtAlphaThreshold1": [
+          33,
+          127,
+          1065,
+          1296
+        ],
+        "bboxAtAlphaThreshold8": [
+          35,
+          128,
+          1063,
+          1294
+        ],
+        "bboxAtAlphaThreshold16": [
+          35,
+          129,
+          1063,
+          1294
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          249.9,
+          25.2
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.78,
+            0.78
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-perched-pose-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4149c53d-abb8-49ce-a9b1-1beb7660abf3.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-appearance-perched-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-appearance-perched-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-color",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-color.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-color-teal-cream-candidate-v2-alpha-clean.png",
+      "sha256": "ef53d1a1714fce2c984d463d4a6c0dbd0aa2247b27670cf025e4d54d27f307d8",
+      "byteSize": 1074129,
+      "width": 1374,
+      "height": 1145,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1000032,
+        "bboxAtAlphaThreshold1": [
+          193,
+          73,
+          1161,
+          1086
+        ],
+        "bboxAtAlphaThreshold8": [
+          195,
+          75,
+          1159,
+          1084
+        ],
+        "bboxAtAlphaThreshold16": [
+          195,
+          75,
+          1159,
+          1084
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-teal-cream-palette-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-96d5ffd3-784e-4b75-a3ae-1be7b29dba4d.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-color-teal-cream-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-color-teal-cream-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-closed",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-smile-candidate-v2-alpha-clean.png",
+      "sha256": "912f1e229f640e2f6f931bef9021ca46e4d9c3891752adec5e0eb5db4f0cbe16",
+      "byteSize": 1096991,
+      "width": 1374,
+      "height": 1145,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1000518,
+        "bboxAtAlphaThreshold1": [
+          195,
+          76,
+          1164,
+          1085
+        ],
+        "bboxAtAlphaThreshold8": [
+          196,
+          77,
+          1162,
+          1083
+        ],
+        "bboxAtAlphaThreshold16": [
+          197,
+          78,
+          1162,
+          1083
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-closed-eye-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-35745e2c-29ea-4b30-ba60-80eea23072be.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-smile-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-smile-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-open",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-clothing-open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "667b31d7eacaec66c5decbe3c3e6780dbe6622249b7614aa07965f169399ea85",
+      "byteSize": 1253880,
+      "width": 1374,
+      "height": 1145,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 966938,
+        "bboxAtAlphaThreshold1": [
+          166,
+          70,
+          1165,
+          1107
+        ],
+        "bboxAtAlphaThreshold8": [
+          168,
+          72,
+          1163,
+          1105
+        ],
+        "bboxAtAlphaThreshold16": [
+          168,
+          72,
+          1163,
+          1105
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-fullbody-bib-open-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-2c9d438a-a948-4deb-9feb-40c155ae3291.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:body-clothing-closed",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/body-clothing-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "309bd7e88ec0fcc966697f5abd5d4b593fb3d023090188182fe33157d69faf72",
+      "byteSize": 1207722,
+      "width": 1374,
+      "height": 1145,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 962227,
+        "bboxAtAlphaThreshold1": [
+          164,
+          67,
+          1167,
+          1108
+        ],
+        "bboxAtAlphaThreshold8": [
+          166,
+          69,
+          1165,
+          1108
+        ],
+        "bboxAtAlphaThreshold16": [
+          166,
+          69,
+          1165,
+          1106
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-fullbody-bib-closed-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4f243237-c858-4901-b677-14f1f13edbdc.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-small-bird-adjustments-v1:accessory",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/candidate-animal-small-bird-adjustments-v1/accessory.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v2-alpha-clean.png",
+      "sha256": "0ae18a0aebf667592509dcba650ca15ababf206a5360fefc05a0df99cfbbbaf9",
+      "byteSize": 387350,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1425849,
+        "bboxAtAlphaThreshold1": [
+          403,
+          405,
+          928,
+          843
+        ],
+        "bboxAtAlphaThreshold8": [
+          404,
+          406,
+          926,
+          841
+        ],
+        "bboxAtAlphaThreshold16": [
+          405,
+          407,
+          926,
+          841
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-small-bird-adjustments-v1",
+        "artworkId": "candidate-animal-small-bird",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1374,
+          1145
+        ],
+        "anchor": "canvas",
+        "offset": [
+          580.35,
+          17.8
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.3,
+            0.3
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; image generation and authorized alpha cleanup do not imply art approval."
+      },
+      "source": {
+        "method": "bird-coral-flower-accessory-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-ada6d72e-b3d0-47d2-a29a-915de4edd875.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    }
+  ]
+}

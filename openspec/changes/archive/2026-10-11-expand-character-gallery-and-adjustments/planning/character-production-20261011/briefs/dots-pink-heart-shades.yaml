@@ -1,0 +1,107 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 粉色心形墨镜透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: dots-pink-heart-shades
+  seriesId: dots
+  identity: existing
+  invariants:
+  - 单个连续心形 Dots，短密绒身体。无手臂、手、腿、脚、嘴、屏幕脸和服装。去除墨镜后的眼型按 Dots 家族补足，原始不透明镜片后的眼睛不可见。
+artwork:
+  proposedId: dots-pink-heart-shades
+  canonicalArtworkId: dots-pink-heart-shades
+  proposedVersion: v1
+  name:
+    zh-CN: 粉色心形墨镜
+    en: Pink Heart Shades
+  resolvedId: dots-pink-heart-shades
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png
+  sha256: df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-pink-heart-shades-candidate-v1.png
+    sha256: df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384
+    mime: image/png
+    bytes: 905104
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: dots-pink-heart-shades-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-pink-heart-shades-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: e3bcc14a193ac3af8149557575047736f788b9bf5b2614801368332e484c7590
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 5
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-pink-heart-shades-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单个连续心形 Dots，短密绒身体。无手臂、手、腿、脚、嘴、屏幕脸和服装。去除墨镜后的眼型按 Dots 家族补足，原始不透明镜片后的眼睛不可见。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  appearance:
+    state: known
+    description: 两个圆瓣与圆钝下尖构成连续心形
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  facialFeatures:
+    state: unknown
+    description: 原 Artwork 不透明墨镜遮住眼睛；去除镜片后的黑色双眼是依照 Dots 家族规范补足，不能当成原图可见事实
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  colorMaterial:
+    state: known
+    description: 玫瑰粉短密绒，墨镜保持黑色
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  headAccessory:
+    state: known
+    description: 贴合心形正面的黑色圆框不透明墨镜，镜腿贴合两侧
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-pink-heart-shades-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/heart-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-c9332edc-7b1a-4ca5-889d-a3b196f77bce.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/heart-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-3b86db45-b219-4e8f-adec-5071cc60616e.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/heart-fullbody-generation-records-01.json
+    kind: bare
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f520a3b7-005f-4ee4-992a-adae8999d3b3.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/heart-fullbody-generation-records-01.json
+    kind: closed
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-6e150c03-e783-46d9-bcbe-b695e6634169.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

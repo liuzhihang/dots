@@ -1,0 +1,166 @@
+# 本记录是制作候选，不是已登记Artwork/Template或批准。
+briefVersion: 1
+request:
+  summary: "动物 企鹅；若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "candidate-animal-penguin"
+  seriesId: "animals"
+  identity: new
+  differenceFromExisting: "若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+  invariants:
+    - "不与小鸟合并成一个模糊物种；如果原图不能支持，保持pending/excluded并报告。"
+artwork:
+  proposedId: "candidate-animal-penguin"
+  canonicalArtworkId: "animal-penguin"
+  proposedVersion: v2
+  name: {en: "Penguin Chick", zh-CN: "绒绒企鹅"}
+  description: {en: "A charcoal-and-ivory plush penguin chick with orange beak, flippers and webbed feet.", zh-CN: "一只炭灰与象牙白配色的绒面企鹅幼崽，带橙色短喙、鳍肢和蹼足。"}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R05"
+    path: "planning/character-production-20261011/references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"
+    sha256: "8cbc97096d2b3d30ce52955497837fe2bc4e104ab106b7adaa1dd5a176aa8ffc"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+    exclude: "普通小鸟的物种特征、UI背景及周边动物。"
+    license: unknown
+  - id: "R10"
+    path: "planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg"
+    sha256: "7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+    exclude: "普通小鸟的物种特征、UI背景及周边动物。"
+    license: unknown
+  - id: "R11"
+    path: "planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg"
+    sha256: "e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+    exclude: "普通小鸟的物种特征、UI背景及周边动物。"
+    license: unknown
+  - id: "R15"
+    path: "planning/character-production-20261011/references/originals/R15-codex-clipboard-175d9e66-38e4-40c8-bcc5-e8470a81d2fd.jpg"
+    sha256: "a4a621120fcbcbee5cd5f17c2bb32a5526f5129f7e0124d3f01126a903d673c2"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "若原参考区域能辨认黑白体块/翅形，制作独立企鹅结构候选；身份经复核后定稿。"
+    exclude: "普通小鸟的物种特征、UI背景及周边动物。"
+    license: unknown
+creation:
+  prompt: "Create one original charcoal-and-ivory plush penguin chick; the source references do not verify an exact character identity. The exact master prompt is retained in the prompt log."
+  promptReference: "../prompts/candidate-animal-penguin-prompts.md"
+  negativeConstraints:
+    - "不借用普通鸣禽物种特征；不复用截图像素、UI、Logo、文字或场景背景。"
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-dd11fc49-a627-4a9b-bfc3-bdde5f1c1cd8.png"
+  originalRawCandidate: "../generated/candidate-animal-penguin-candidate-v1.png"
+  originalRawSha256: "147f6b04c05c10cb1935992ee074bcb13827c43df06bdd02859f37c734bb9edd"
+  originalAlphaCleanCandidate: "../generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.png"
+  originalAlphaCleanSha256: "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e"
+  masterPromptRecord: verbatim-retained-in-prompts-file
+  iterations:
+    - kind: appearance-raised-flipper
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-0f7b2735-826c-4878-a22a-250b15726abb.png"
+      rawCandidate: "../generated/candidate-animal-penguin-appearance-three-quarter-candidate-v1.png"
+      rawSha256: "a962cddbed85964cb93efd59ee4fbcfdf56da4c7d250b16a2a47c3eceb8df487"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-appearance-three-quarter-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "901ea4d9458122313c590badea82d0034cd76534e6749dbb1b9d41e994575bcd"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-appearance-three-quarter-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Same penguin in a three-quarter pose with one flipper raised; preserve the species silhouette and both feet."
+      status: candidate-pending
+    - kind: alternate-navy-ivory-palette
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-d51aa46d-c6ad-403f-b21d-89ef4ddaa851.png"
+      rawCandidate: "../generated/candidate-animal-penguin-color-navy-ivory-candidate-v1.png"
+      rawSha256: "fedc3d59b7099d66167e011a6b1c10a075b8c6e090029928cda4ba22d41d1df4"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-color-navy-ivory-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "a6cbe251423e3ef65b582aa53a7cfcef90644d67a4435a487f8fb54d525036f9"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-color-navy-ivory-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Alternate deep-navy plush body palette with ivory face and belly and orange beak/feet retained."
+      status: candidate-pending
+    - kind: closed-eye-smile
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-1d2678a2-fd00-4751-8faa-dd9f8d35d66e.png"
+      rawCandidate: "../generated/candidate-animal-penguin-face-closed-smile-candidate-v1.png"
+      rawSha256: "df4c641e056e50e32e9c55e27266959844eb4101243bbbfea13ef30296953dc2"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-face-closed-smile-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "f38e868afd89684d618f7dd24221b354b0bc019eeb1541db52af4285c45fb5af"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-face-closed-smile-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Replace the open eyes with two closed embroidered arcs; preserve the beak and cheek blush."
+      status: candidate-pending
+    - kind: coral-knitted-beanie
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-e635abd1-544d-47e6-ac29-f01c02c3ff28.png"
+      rawCandidate: "../generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v1.png"
+      rawSha256: "2624afa76b9c69b624cb5abc3b2be5ff39c774843cd879605808f36b916ac96a"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "c5419965c8bfd8a88095b92027c2c580abe0e6c44d6b1a0c64792034b1eb8e6d"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-accessory-coral-beanie-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Compact coral knitted beanie positioned above the eyes and beak."
+      status: candidate-pending
+    - kind: fullbody-teal-scarf-open-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-25da703d-98e9-43fb-a93d-59a138356830.png"
+      rawCandidate: "../generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v1.png"
+      rawSha256: "030fa1112baa9eefa8d1090496cdec6037d160e44a2c640e05c3c6580712e324"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "350dbcad64a6113076cd0a8024d868e66cdd03da1f9100281eb934f9a04e9771"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-clothing-teal-scarf-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-retained-in-prompts-file
+      promptSummary: "Full-body scarf wraps the neck and upper chest, with flippers overlapping naturally and feet unobstructed."
+      status: candidate-pending
+    - kind: fullbody-teal-scarf-closed-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-e327639c-90da-4393-9a4a-bf17fa1f9461.png"
+      rawCandidate: "../generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v1.png"
+      rawSha256: "7491ff3a13ca084b11afd2b104e861f3f41d462e8c24fbc9f89ad000ebe0e4e0"
+      alphaCleanCandidate: "../generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "d3b38c510a1b3423c3f6af9235ce59bdd1fc033b3b275980ea8fd785272051fe"
+      alphaCleanupRecord: "../generated/candidate-animal-penguin-face-closed-clothing-scarf-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-retained-in-prompts-file
+      promptSummary: "Closed-eye smile matched to the full-body scarf variant; preserve natural flipper layering and visible feet."
+      status: candidate-pending
+facts:
+  characterStyle: {state: known, description: "单只炭灰、象牙白和橙色的软绒3D企鹅候选。", evidence: "原始候选、character template及reviews/animal-penguin-review.json"}
+  appearance: {state: known, description: "圆润水滴形躯干、炭灰头背、两侧鳍肢与橙色蹼足；另有抬起单侧鳍肢的三分之四姿态候选。", evidence: "原始候选、appearance recipes及完整10配方联系图"}
+  facialFeatures: {state: known, description: "象牙白面部与腹部、橙色短喙、亮泽双眼与腮红；可选刺绣闭眼弧线。", evidence: "face recipes及完整10配方联系图"}
+  colorMaterial: {state: known, description: "炭灰短绒头背与鳍肢、暖白面腹、橙色喙和蹼足；另有深海军蓝身体配色候选。", evidence: "原始透明候选、颜色recipe及浅深底检查"}
+  clothing: {state: none, description: "原始候选无衣物；青绿色针织围巾仅作为待批准完整穿戴调整。", evidence: "原始角色与完整10配方浅深底目视检查"}
+  headAccessory: {state: none, description: "原始候选无头饰；珊瑚色针织帽仅为待批准调整。", evidence: "配饰recipe及完整10配方联系图"}
+  bodyAccessory: {state: none, evidence: "当前Artwork无独立身体配件。"}
+  prop: {state: none, evidence: "当前Artwork无独立持物。"}
+resources:
+  original:
+    path: "../generated/candidate-animal-penguin-candidate-v1-v2-alpha-clean.png"
+    sha256: "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e"
+    mime: "image/png"
+    bytes: 1377810
+    width: 1230
+    height: 1278
+    alphaCheck: "RGBA with transparency; isolated alpha cleanup record is preserved beside the raw original."
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+applicableAdjustmentCategories: [appearance, colors, face, clothing, accessories]
+finiteRecipes:
+  count: 10
+  manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-penguin-adjustments-review.json"
+  report: ".artifacts/character-adjustments/candidate-animal-penguin-adjustments-v1/report.json"
+  combinationPolicy: "只采用清单中的完整合法配方；无素材组合禁用并说明冲突，不静默改动其他选项。"
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-penguin-adjustments-review.json"
+evidence:
+  sourceRecord: "references/manifest.json; source records: R05, R10, R11, R15"
+  license: unknown
+  engineering: passed-candidate
+  engineeringReportSha256: "e68906888bc0e87478d7a352103376c4a4ad424b5a850cd1b0961b40e63089a9"
+  visualReview: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-penguin-review.json"
+  artApproval: {status: pending, record: null, exactAssetHash: "7fb006b5216dd7a7d58d1f131ea17a495fc06b3f2ee61e5915beae56fa11101e"}
+  integration: not-applied
+  manifestSha256: "0f8666b5c7d467d7957248fb96c71f07a4cd48eb412a9b2ae769a330e0a47555"
+  deviceCheck: not-run
+  deployment: not-authorized
+materialPolicy: "原始imagegen输出不可覆盖；仅使用已记录的保守alpha清理副本。完整Artwork、图层与配方仍需单独美术批准。"

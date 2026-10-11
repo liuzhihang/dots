@@ -1,0 +1,1633 @@
+{
+  "status": "pending",
+  "scope": "candidate review only; neither Artwork nor Template has user art approval",
+  "artwork": {
+    "id": "grok-green-cloud",
+    "version": "v1",
+    "seriesId": "grok",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Green Cloud",
+      "zh-CN": "绿色云朵"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/looks/grok-green-cloud.png",
+    "sha256": "d186c5b0837b15c6177b476729b463a7542fdc559d606c6d5818bbad274bad96"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "grok-green-cloud-adjustments-v1",
+    "version": "v1",
+    "family": "grok",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "grok-green-cloud",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Grok Bot character with one continuous smooth soft geometric body and paired capsule eyes. No arms, hands, legs, feet, mouth, fur, robotic mechanism or screen face.",
+      "zh-CN": "单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。"
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "en": "Classic outline",
+            "zh-CN": "经典轮廓"
+          },
+          "semanticByLanguage": {
+            "en": "a cloud silhouette of connected round lobes",
+            "zh-CN": "圆瓣相连的云朵轮廓"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "en": "Softer outline",
+            "zh-CN": "柔圆轮廓"
+          },
+          "semanticByLanguage": {
+            "en": "a wider cloud silhouette with spread round lobes",
+            "zh-CN": "更横向舒展的多瓣云朵"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "en": "green",
+            "zh-CN": "鲜绿"
+          },
+          "semanticByLanguage": {
+            "en": "green smooth soft silicone",
+            "zh-CN": "鲜绿光滑软硅胶材质"
+          },
+          "zoneColors": {
+            "body": "#5bcc64"
+          },
+          "swatches": [
+            "#5bcc64"
+          ]
+        },
+        {
+          "id": "mint",
+          "labelByLanguage": {
+            "en": "Soft blue",
+            "zh-CN": "浅蓝"
+          },
+          "semanticByLanguage": {
+            "en": "soft blue smooth soft silicone",
+            "zh-CN": "浅蓝色光滑软硅胶材质"
+          },
+          "zoneColors": {
+            "body": "#6f9bd8"
+          },
+          "swatches": [
+            "#6f9bd8"
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Capsule eyes",
+            "zh-CN": "胶囊眼"
+          },
+          "semanticByLanguage": {
+            "en": "paired vertical ivory capsule eyes",
+            "zh-CN": "成对竖向象牙白胶囊眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "relaxed",
+          "labelByLanguage": {
+            "en": "Short capsule eyes",
+            "zh-CN": "短胶囊眼"
+          },
+          "semanticByLanguage": {
+            "en": "paired shorter vertical ivory capsules, a static relaxed expression",
+            "zh-CN": "成对短竖胶囊眼，静态放松表情"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "不穿服装"
+          }
+        },
+        {
+          "id": "wrap",
+          "labelByLanguage": {
+            "en": "Knit wrap",
+            "zh-CN": "针织围衣"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted navy rib-knit lower-body wrap with ivory piping",
+            "zh-CN": "身体下部贴合深蓝针织围衣与象牙白滚边"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessories",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          }
+        },
+        {
+          "id": "pin",
+          "labelByLanguage": {
+            "en": "Star pin",
+            "zh-CN": "星形胸针"
+          },
+          "semanticByLanguage": {
+            "en": "one small gold star pin fitted on the side front of the body",
+            "zh-CN": "身体侧前方贴合一枚小型金色星形胸针"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "clothing": "wrap"
+        },
+        "code": "wrap-needs-classic-outline",
+        "messageByLanguage": {
+          "en": "This wrap fits the Classic outline. Choose Classic or remove the wrap first.",
+          "zh-CN": "这件围衣仅适配经典轮廓。请先选择经典轮廓或脱下围衣。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-wrap-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-none-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-relaxed-wrap-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "wrap",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-none-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-open-wrap-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-none-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-mint-relaxed-wrap-pin",
+        "selections": {
+          "appearance": "classic",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "wrap",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-relaxed-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-relaxed-none-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-open-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-open-none-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-relaxed-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-mint-relaxed-none-pin",
+        "selections": {
+          "appearance": "soft",
+          "colors": "mint",
+          "face": "relaxed",
+          "clothing": "none",
+          "accessories": "pin"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:grok-green-cloud-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory",
+            "asset": {
+              "id": "template:grok-green-cloud-adjustments-v1:pin",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:body",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/body.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-body-candidate-v2.png",
+      "sha256": "ad270758700021d9930f24b47aabe6627038679489de13ffeb7640e016166e3b",
+      "byteSize": 822272,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 952200,
+        "bboxAtAlphaThreshold16": [
+          86,
+          228,
+          1177,
+          1058
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:soft",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/soft.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-body-soft-candidate-v2.png",
+      "sha256": "f10aefc0ad4e7736df181883e130f6314202f282d7866fa1d207ea44c3113ded",
+      "byteSize": 730463,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 937408,
+        "bboxAtAlphaThreshold16": [
+          33,
+          244,
+          1222,
+          1041
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-eyes-open-candidate-v2.png",
+      "sha256": "49cd9ddf08716f95f0bcd5989c9f59530858b6c0ad7bf78ecd6e35c2aed6a1bd",
+      "byteSize": 56651,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1546937,
+        "bboxAtAlphaThreshold16": [
+          697,
+          484,
+          936,
+          697
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:relaxed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/relaxed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-eyes-narrow-candidate-v2.png",
+      "sha256": "875faf622c018e3d20df8d7e4a8e6b822d7882396fd89bc92659acea07062491",
+      "byteSize": 45677,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1556489,
+        "bboxAtAlphaThreshold16": [
+          712,
+          543,
+          922,
+          694
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          -28
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:wrap",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/wrap.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-scarf-candidate-v2.png",
+      "sha256": "aab7c72726243c3091add53413882563854d93cd713dad59ecd7b83425e5f673",
+      "byteSize": 719217,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1244622,
+        "bboxAtAlphaThreshold16": [
+          80,
+          592,
+          1176,
+          1047
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          129
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:pin",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/pin.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-pin-candidate-v2.png",
+      "sha256": "cce1fc4e68253433c082243b9f372ed73e83bd38a686ae0bfe42d62830ba7d32",
+      "byteSize": 124697,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1527933,
+        "bboxAtAlphaThreshold16": [
+          242,
+          385,
+          504,
+          641
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:bodyMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/bodyMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-body-candidate-v2.png",
+      "sha256": "ad270758700021d9930f24b47aabe6627038679489de13ffeb7640e016166e3b",
+      "byteSize": 822272,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 952200,
+        "bboxAtAlphaThreshold16": [
+          86,
+          228,
+          1177,
+          1058
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    },
+    {
+      "id": "template:grok-green-cloud-adjustments-v1:softMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/grok-green-cloud-adjustments-v1/softMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-green-cloud-body-soft-candidate-v2.png",
+      "sha256": "f10aefc0ad4e7736df181883e130f6314202f282d7866fa1d207ea44c3113ded",
+      "byteSize": 730463,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 937408,
+        "bboxAtAlphaThreshold16": [
+          33,
+          244,
+          1222,
+          1041
+        ]
+      },
+      "owner": {
+        "templateId": "grok-green-cloud-adjustments-v1",
+        "artworkId": "grok-green-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "imagegen-derived exact silhouette; local alpha-only cleanup authorized, original retained. Body masks use the exact continuous single-material body alpha."
+    }
+  ]
+}

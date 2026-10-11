@@ -1,0 +1,57 @@
+{
+  "decision": "user-decision-no-dots-grok-clothing-20261011.md",
+  "createdAt": "2026-10-11",
+  "records": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "oldManifest": "templates/dots-orb-core-adjustments-v3-review.json",
+      "oldManifestSha256": "dcc26fd9779248250465bc6ef913db893f2f64f683dd774c5903a6d40c819605",
+      "oldReview": "reviews/dots-orb-core-adjustments-v3-internal-precheck.json",
+      "oldReviewSha256": "002613008784e1db1f9045e6da99d8f39fe7d921339cc988ecbe587b5d571932",
+      "newManifest": "templates/dots-orb-core-adjustments-v4-four-tabs-review.json",
+      "newManifestSha256": "0288064155c6c45b1d341f53b050c7fa28020df5c549aba53424ca7e25d8cc6a",
+      "templateId": "dots-orb-core-adjustments-v4-four-tabs-candidate",
+      "templateVersion": "v4",
+      "review": "reviews/dots-orb-core-adjustments-v4-four-tabs-review.json",
+      "reviewSha256": "0508b602bdf6b072bd76d0df4a81c0659c9cf98dc1d29b4467c0d6f5696343cc",
+      "recipes": 30,
+      "assets": 15,
+      "artApproval": "pending",
+      "reviewStatus": "engineering-passed-awaiting-root-review"
+    },
+    {
+      "artworkId": "dots-rose-glasses",
+      "oldManifest": "templates/dots-rose-glasses-adjustments-v2-eyes-fit-review.json",
+      "oldManifestSha256": "25b827ed0ee9e59bac15b8387139ed2bb16b2b1011cbbe869cfbb18a42b75803",
+      "oldReview": "reviews/dots-rose-glasses-adjustments-v2-eyes-fit-internal-review.json",
+      "oldReviewSha256": "8c6ddf07b27cc73a585412027e6c7ca3eff036384619b725cfa0b281f9563c8b",
+      "newManifest": "templates/dots-rose-glasses-adjustments-v3-four-tabs-review.json",
+      "newManifestSha256": "326230f7f78e602d41fa899740ea2bb01c7ffec56fb2aefd07d478dec4b32632",
+      "templateId": "dots-rose-glasses-adjustments-v3-four-tabs-candidate",
+      "templateVersion": "v3",
+      "review": "reviews/dots-rose-glasses-adjustments-v3-four-tabs-review.json",
+      "reviewSha256": "f07125c85bdbb349967c0e4fe72920bb9914f5088085a428461d99010a2ca046",
+      "recipes": 16,
+      "assets": 11,
+      "artApproval": "pending",
+      "reviewStatus": "engineering-passed-awaiting-root-review"
+    },
+    {
+      "artworkId": "dots-lilac-bucket",
+      "oldManifest": "templates/dots-lilac-bucket-adjustments-v1-review.json",
+      "oldManifestSha256": "131cf7802f6825dd8bc24fa1928ebbfad20243cf61ad61158ec42a42f72a1ec2",
+      "oldReview": "reviews/dots-lilac-bucket-adjustments-v1-internal-review.json",
+      "oldReviewSha256": "1b21f6a47495cb1ab984bb3dfc0cf218d2c423789926c40c9144775d5ed28ce2",
+      "newManifest": "templates/dots-lilac-bucket-adjustments-v2-four-tabs-review.json",
+      "newManifestSha256": "826ff735fe9837a32413f44ed23127d5de0059b4aaf0ab1e96915ef1698a64bf",
+      "templateId": "dots-lilac-bucket-adjustments-v2-four-tabs-candidate",
+      "templateVersion": "v2",
+      "review": "reviews/dots-lilac-bucket-adjustments-v2-four-tabs-review.json",
+      "reviewSha256": "e76bd3ffa4f394a6ad1ca2186ec5309120767b014be6a3a5ef7f79972d5e08f5",
+      "recipes": 12,
+      "assets": 9,
+      "artApproval": "pending",
+      "reviewStatus": "engineering-passed-awaiting-root-review"
+    }
+  ]
+}

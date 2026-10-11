@@ -1,0 +1,122 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "sourceReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lilac-bucket-adjustments-v1-internal-review.json",
+  "sourceReviewSha256": "1b21f6a47495cb1ab984bb3dfc0cf218d2c423789926c40c9144775d5ed28ce2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lilac-bucket-adjustments-v1-review.json",
+  "manifestSha256": "131cf7802f6825dd8bc24fa1928ebbfad20243cf61ad61158ec42a42f72a1ec2",
+  "templateId": "dots-lilac-bucket-adjustments-v1-candidate",
+  "artworkBinding": {
+    "artworkId": "dots-lilac-bucket",
+    "artworkVersion": "v1"
+  },
+  "engineeringReport": ".artifacts/character-adjustments/dots-lilac-bucket-adjustments-v1-candidate/report.json",
+  "engineeringReportSha256": "04b98d03e8503c2eff4f6525135e7560023a4844a9405d9cc97e8c48b8f5039d",
+  "checkedRecipes": [
+    {
+      "id": "orb-lilac-open-none-none",
+      "sha256": "9af2a6211582f1d16f736e6b50ede98afbc0dbb51aebef1d789192064022195d"
+    },
+    {
+      "id": "orb-lilac-open-none-bucket-hat",
+      "sha256": "dd7b57aaa750a99d439c67154c139b66e05dff99bb090c9953921bebcd3cc22c"
+    },
+    {
+      "id": "orb-lilac-open-knit-wrap-none",
+      "sha256": "4553ff8f02fdbae835e3a22f890c6f96f3c51303c16bda88053d302fce146e93"
+    },
+    {
+      "id": "orb-lilac-open-knit-wrap-bucket-hat",
+      "sha256": "87759c383f0516d498e8dbb5372bd165a9a489a94a4cc50fc60cfce0d5b25ecf"
+    },
+    {
+      "id": "orb-lilac-closed-none-none",
+      "sha256": "f79170617574a696447891e3f6ed89cf345af69b52681f5535b3b8592094b1e0"
+    },
+    {
+      "id": "orb-lilac-closed-none-bucket-hat",
+      "sha256": "2fb563e1bb3cc21430c2cbf56b06474295bd07e616b3f6cd0f0e2ef306afc558"
+    },
+    {
+      "id": "orb-lilac-closed-knit-wrap-none",
+      "sha256": "92412b01f4888ef8cac05090710e8674ea127aff6146d2a15cbfde74da6bacbf"
+    },
+    {
+      "id": "orb-lilac-closed-knit-wrap-bucket-hat",
+      "sha256": "bfab61c06f505565b9c6793a78560303880e4e91a45c34737b5970c62623d0af"
+    },
+    {
+      "id": "orb-blue-open-none-none",
+      "sha256": "6970bed709dea4ce81bf40af2936be2aca3daaeda09c75701a183f3e4da990f9"
+    },
+    {
+      "id": "orb-blue-open-none-bucket-hat",
+      "sha256": "37a287982405ac2d4a3a5b0b3373e65add625fb66a0d9cd15ccf96a89574f274"
+    },
+    {
+      "id": "orb-blue-open-knit-wrap-none",
+      "sha256": "d71da807414bd25e6b1b4e7012cffe143bdce2d027279d7664adaa730ab5e8fd"
+    },
+    {
+      "id": "orb-blue-open-knit-wrap-bucket-hat",
+      "sha256": "306337258ed08ea12b07675e620e1a56bcca3e2e766802689e46aba8ba7384e8"
+    },
+    {
+      "id": "orb-blue-closed-none-none",
+      "sha256": "8bf7c10353a5be1b8eb9a0a7855f26560fd4e6c81388091a35daf632ca565e06"
+    },
+    {
+      "id": "orb-blue-closed-none-bucket-hat",
+      "sha256": "682cbe9a0bd697f59e11c04215201490a14e1cbdb765a450791be2b1c17c0919"
+    },
+    {
+      "id": "orb-blue-closed-knit-wrap-none",
+      "sha256": "e63c91e03f01c919dbb853a90061efdceb38dada0d3998da733efad1e8b14024"
+    },
+    {
+      "id": "orb-blue-closed-knit-wrap-bucket-hat",
+      "sha256": "306b1366d0eb8cbb1663381d56a9d341dbfb24805f928927483216b514aceda0"
+    },
+    {
+      "id": "cloud-lilac-open-none-none",
+      "sha256": "5c5bb1d24e74292476ceeb884e76440d436a1f99d87ac593237387a2a48ee719"
+    },
+    {
+      "id": "cloud-lilac-open-knit-wrap-none",
+      "sha256": "5da142f3858dfa6f19ff4c485aac35d09845e3ce8d5471889f93a739b2c8951e"
+    },
+    {
+      "id": "cloud-lilac-closed-none-none",
+      "sha256": "9b6896f4bca936094ac0a1083d26f74302420abe890341b8dae9823b55feb8b4"
+    },
+    {
+      "id": "cloud-lilac-closed-knit-wrap-none",
+      "sha256": "a883e53847286956a02466eb73b53ed7b0de17070eaa13a42e91dfd3a9d8340f"
+    },
+    {
+      "id": "cloud-blue-open-none-none",
+      "sha256": "21ac54f855b86a07606829b23aa68e245d4cb30e164e6293cc4cb8e9dc6a6e6a"
+    },
+    {
+      "id": "cloud-blue-open-knit-wrap-none",
+      "sha256": "f30046ae948d98924d217defa0ecd02fdf6aa81c534123027ba92580ccc8b5a5"
+    },
+    {
+      "id": "cloud-blue-closed-none-none",
+      "sha256": "2e5d780f6fa0a39b2e32338315357475b04a75c02409487ab344404c865de731"
+    },
+    {
+      "id": "cloud-blue-closed-knit-wrap-none",
+      "sha256": "618898e53874b682b8cba2f0187d27dc080a45029154ac2b665f7f0c2dd61684"
+    }
+  ],
+  "visualChecks": [
+    "全部合法配方在深浅检查底逐项核对，查看眼型、材质、轮廓、衣物和配饰接触",
+    "Dots无手脚、眼睛与眼镜贴合、围衣沿角色轮廓贴合",
+    "配色与真实服装/配饰分离，全部结果保持alpha透明"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  }
+}

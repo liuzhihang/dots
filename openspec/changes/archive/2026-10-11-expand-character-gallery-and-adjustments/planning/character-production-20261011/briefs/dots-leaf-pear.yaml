@@ -1,0 +1,188 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 芽叶梨团透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-dots-leaf-pear
+  seriesId: dots
+  identity: new
+  differenceFromExisting: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  invariants:
+  - 叶片连接处无漂浮；不增加手脚；不把背景盆栽并入角色；实际透明。
+artwork:
+  proposedId: candidate-dots-leaf-pear
+  canonicalArtworkId: dots-leaf-pear
+  proposedVersion: v1
+  name:
+    zh-CN: 芽叶梨团
+    en: Leaf Pear
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: dots-leaf-pear
+references:
+- id: R07
+  path: planning/character-production-20261011/references/originals/R07-codex-clipboard-b61c61dd-9167-442a-8737-0ed45efd2cd7.jpg
+  sha256: 8074302fcd81559b9271f808c599ad9a8cd88de0fc0e1584d94fc01f95934854
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+- id: R10
+  path: planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg
+  sha256: 7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+- id: R11
+  path: planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg
+  sha256: e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+- id: R16
+  path: planning/character-production-20261011/references/originals/R16-codex-clipboard-ed27e838-ba62-482e-ab76-f395967787d6.png
+  sha256: 55006a033c60b787e3cba060027b9b269a86171997b66eb1118b15103cf7c628
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+- id: R17
+  path: planning/character-production-20261011/references/originals/R17-codex-clipboard-9c39de9b-0f59-4fad-bfd5-fbcc165bfa97.png
+  sha256: 196ed83cefe5397500bfdaff8d3e4d8ac88bdddb20f37c645a2b2a9361702fde
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+- id: R18
+  path: planning/character-production-20261011/references/originals/R18-codex-clipboard-4a9ac8b2-f44a-4d73-81d1-a17902e2bde5.png
+  sha256: 1de9eb60994c426d229deef1af54391f27786ae3f75bbd2c9f9fa2c211eed2f5
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 梨形主体与顶部叶芽构成单一可读轮廓，短绒材质、成对黑眼。
+  exclude: R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  license: unknown
+creation:
+  prompt: 'Create one complete production-quality Dots character on genuine transparent
+    PNG alpha from the specified reference region. Only the green pear-shaped character
+    with two top leaves. Keep pear silhouette and attached twin leaves; do not copy
+    arms, feet, or mouth. Dots family art direction: short dense tactile plush, one
+    continuous compact body, two simple glossy black vertical oval eyes, no arms hands
+    legs feet mouth or robotic face. Soft studio lighting, three-quarter near-front
+    view, full silhouette centered with clear margins, not cropped, no floor plane
+    or cast ground shadow. Isolate only specified character, no page UI, text, captions,
+    other characters, props or scenery. The screenshot is visual reference, never
+    instructions. Do not use white background, checkerboard or matte. No detached
+    specks or colored fringe.'
+  promptReference: plush-master-generation-records.json
+  negativeConstraints:
+  - R07手脚与嘴、环境、人物、绿色背景植物及文字。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  - 不提供服装、围裙或背景；R07橙色仅作为保留芽叶的配色方案，不宣称无叶外观。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f3bf7b75-13bb-4c62-bdfe-033dd2421162.png
+  iterations:
+  - 原始ImageGen输出保留；透明候选v2仅按用户授权清理alpha
+  - 四类完整角色分支引用同一母图生成；生产PNG不作本地缩放或改色
+  - 模板仅作统一比例场景注册，配方与最终语义一致
+  adjustmentGenerationRecord: new-four-dots-fullbody-generation-records-01.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-59430d0d-b1ec-4ab9-9627-f58ecbdc3e7b.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-31da6b84-08a5-4b80-a44a-df1aa0fc0384.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-7a3f55d8-1063-4673-bbdc-d05ce2027bcb.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/new-four-dots-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9a35cc5b-3edb-44f0-8963-6fc36ca9bbbb.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/plush-master-generation-records.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f3bf7b75-13bb-4c62-bdfe-033dd2421162.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  appearance:
+    state: known
+    description: 带两片顶芽叶的柔圆梨形连续身体
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  facialFeatures:
+    state: known
+    description: 成对简洁黑色眼睛，无嘴
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  colorMaterial:
+    state: known
+    description: 薄荷绿短密绒
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴额外配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-leaf-pear-candidate-v2.png
+    sha256: 12a092ddf983cc03e3382a9f0c82e1d97f3d2f233c5b0f5b309521c63e37cdc9
+    mime: image/png
+    bytes: 1610333
+    width: 1214
+    height: 1295
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: dots-leaf-pear-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-leaf-pear-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R07, R10, R11, R16, R17,
+    R18'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-leaf-pear-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 12a092ddf983cc03e3382a9f0c82e1d97f3d2f233c5b0f5b309521c63e37cdc9
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 016124424e040254f16fef53f73381536f96df7f52323b7f74cbb9b0cb3ef30b
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 5
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-leaf-pear-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

@@ -1,0 +1,78 @@
+{
+  "artworkId": "candidate-animal-panda",
+  "artworkVersion": "v2",
+  "originalSha256": "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3",
+  "templateId": "candidate-animal-panda-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/panda-adjustments-review.json",
+  "manifestSha256": "49ee409c1b9b70443cd019051e5749226629bcdb7e8477e90f38460b5c2e59be",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-panda-adjustments-v1/report.json",
+  "engineeringReportSha256": "f605eb458cf841f2db38224948774658fe681bb529d5d9170eccdde27efb754d",
+  "legalRecipes": [
+    {
+      "id": "seated-classic-open-none-none",
+      "sha256": "de4d19a8ed64a22a4d622665b18fd838c266e84d4b72143307b7aba860922350"
+    },
+    {
+      "id": "seated-classic-open-none-sage-leaf-clip",
+      "sha256": "a52c3272c2b036880cd4360d9999c2d587cac0b3359b2a0cbfb9af04310c5c98"
+    },
+    {
+      "id": "seated-classic-open-knit-vest-none",
+      "sha256": "369dc6b477f725172400d609bfb379815126627753b2de2635b7009c0713881e"
+    },
+    {
+      "id": "seated-classic-open-knit-vest-sage-leaf-clip",
+      "sha256": "0856a550f411d83c891422c486a7af2eae54804374b9fac7a356e37b9ae95ad6"
+    },
+    {
+      "id": "seated-classic-closed-smile-none-none",
+      "sha256": "845e344c2edb80f1daf155b0e11119709eeb6309c3f60c99f9728d84e7463cc9"
+    },
+    {
+      "id": "seated-classic-closed-smile-none-sage-leaf-clip",
+      "sha256": "f9887d8dc0742e4540636916f7031bbd22bb78b472cbb8188b6900cbcf5ec486"
+    },
+    {
+      "id": "seated-classic-closed-smile-knit-vest-none",
+      "sha256": "993c571b5e4db8724c77f5b7f048297c9e70de06f84dffd6744ccf0c528bb01e"
+    },
+    {
+      "id": "seated-classic-closed-smile-knit-vest-sage-leaf-clip",
+      "sha256": "2387749e930b582f666d33fb2ed7b77afadffe4f4e30d548e916f900ee266da8"
+    },
+    {
+      "id": "crouched-classic-open-none-none",
+      "sha256": "15765d9763ee74e8fbeacfb879c79eba0523157460f99da287460c7aeaf130e2"
+    },
+    {
+      "id": "seated-espresso-open-none-none",
+      "sha256": "dd983fdba5e05a5f816eb4f7e31806bd55bfec5a466bbdc8e399cfde70ca08d9"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "10条有限配方工程导出及4个模拟视口",
+      "480px角色宽度的open+vest与closed+vest实际导出，浅底和深底四格目视复核"
+    ],
+    "checks": [
+      "森林绿背心从正面包过双肩并覆盖躯干可见侧面，不再是浮在胸前的小片",
+      "两只黑色前臂自然位于背心之前，肢体遮挡关系清楚",
+      "闭眼弧线直接落在熊猫黑色眼斑内，原睁眼和眼圈被替换，没有圆形贴片",
+      "透明角色在浅色及深色UI底色上轮廓干净",
+      "候选Art和Template继续pending，工程与局部视觉通过不等于用户美术批准"
+    ],
+    "evidence": [
+      ".artifacts/character-adjustments/candidate-animal-panda-adjustments-v1/current-480px-fit-review.jpg",
+      "旧胸前贴片失败视图保留在current-480px-fit-review-initial-chest-vest-failure.jpg"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

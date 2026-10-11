@@ -1,0 +1,51 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/blond-child-adjustments-review-v2.json",
+  "manifestSha256": "2d424bb0c5ebcedd767d14f2b4efa73d9a9e95e75fe4cc7ae394830343da83cc",
+  "templateId": "human-blond-child-adjustments-v2",
+  "artworkBinding": {
+    "artworkId": "human-blond-glasses",
+    "artworkVersion": "v1"
+  },
+  "originalSha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+  "engineeringReport": ".artifacts/character-adjustments/human-blond-child-adjustments-v2/report.json",
+  "engineeringReportSha256": "6ec7ea3a63011e18249b48ff9fe67cbd98f52a3fb50dcd83cedae62767006053",
+  "checkedRecipes": [
+    {
+      "id": "blond-child-default",
+      "sha256": "52adc720e115adc48cad3d6165a7bc8f9ed953bb49c8b55ec72724fb6769fff3"
+    },
+    {
+      "id": "blond-child-appearance",
+      "sha256": "e475cfd3dd092f131531698554518e6c83be909f960d4f1c4c3c943fd0a14535"
+    },
+    {
+      "id": "blond-child-colors",
+      "sha256": "99fd303578b76b7ab750ede82768d238f75598c4d64a3189042aa6c6b03e9e30"
+    },
+    {
+      "id": "blond-child-face",
+      "sha256": "56e015fcf6a048d90a2d5f0923e1159f8b87d87c8cf27e14214de7aefe673e08"
+    },
+    {
+      "id": "blond-child-clothing",
+      "sha256": "66219541b2eef2af66e810e943c8474048466d1bc77142a5dbbd99e84a786e76"
+    },
+    {
+      "id": "blond-child-accessories",
+      "sha256": "045b9812439c9fc03ec808d92ab4ab7bb51d86611a0c1d165bcbc44be50c8021"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

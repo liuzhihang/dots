@@ -1,0 +1,111 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 白猫透明素材与五类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: animal-white-cat
+  seriesId: animals
+  identity: existing
+  invariants:
+  - 单只短绒猫，尖耳、猫科口鼻、四爪与尾巴，不改变物种解剖。
+artwork:
+  proposedId: animal-white-cat
+  canonicalArtworkId: animal-white-cat
+  proposedVersion: v1
+  name:
+    zh-CN: 白猫
+    en: White Cat
+  resolvedId: animal-white-cat
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/looks/animal-white-cat.png
+  sha256: 6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/looks/animal-white-cat.png
+    sha256: 6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a
+    mime: image/png
+    bytes: 1382027
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: animal-white-cat-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-white-cat-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 6b6e0cc65b7edef88b0b19a948444a261a4050ccdcba942fd5941bc2aa2f499a
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: af98d7b1e8306b631b145a4f55283a703d3231e049f2fefcdb3236318986046f
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- clothing
+- accessories
+finiteRecipes:
+  count: 6
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-white-cat-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单只短绒猫，尖耳、猫科口鼻、四爪与尾巴，不改变物种解剖。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  appearance:
+    state: known
+    description: 原有圆头坐姿，保留该物种耳形、口鼻、四爪与尾部结构
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  facialFeatures:
+    state: known
+    description: 双眼睁开，保留鼻和轻柔微笑
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  colorMaterial:
+    state: known
+    description: 白色短绒、灰色耳内与尾部，保留蓝色眼睛和粉鼻
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  clothing:
+    state: none
+    description: 保留原有毛绒身体，不穿衣物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴额外配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-white-cat-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/cat-bear-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9ecdd75b-5abf-4356-ac3e-55fdbd0b3c97.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/cat-bear-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-859e9ccb-ddf2-4ba1-9e92-45fe084c483a.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/cat-bear-fullbody-generation-records-01.json
+    kind: clothing
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-a39d8ce7-4ef0-4d65-9b57-4698fdf402ba.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/cat-bear-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-b4caa0c0-eb55-4645-878e-00f272b9776d.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/cat-bear-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9a60d9b3-206d-4c28-914f-385c07164cd3.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

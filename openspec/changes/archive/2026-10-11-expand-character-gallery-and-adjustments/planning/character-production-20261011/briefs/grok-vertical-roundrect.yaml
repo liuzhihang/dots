@@ -1,0 +1,76 @@
+# 参考裁决记录：撤回独立 Artwork 候选，不生成该 ID。
+briefVersion: 2
+disposition: reuse-no-distinct-identity
+retiredProposalId: "candidate-grok-vertical-roundrect"
+request:
+  summary: "对照 R01 软块与现有 Grok 圆角方形；当前不能证实独立纵向圆角矩形。"
+  scope: reference-adjudication
+  count: 0
+character:
+  proposedId: null
+  seriesId: "grok"
+  identity: existing-reference
+  reuse: "grok-teal-square"
+  differenceFromExisting: "R01 紫色块可见比例接近方形且下部被白拱/橙体遮挡；R01 青绿色块同样接近方形。当前图证不足以确立新纵向矩形身份。"
+  invariants:
+    - "不按颜色差异创建 Artwork。"
+    - "R03 Ashley 归入圆柱候选；其外形与圆眼不能用作纵向矩形证据。"
+    - "R03 Pete 作为现有近方形 Grok 外观参照。"
+artwork:
+  proposedId: null
+  proposedVersion: null
+  name: {en: null, zh-CN: null}
+  description: {en: null, zh-CN: null}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R01"
+    path: "planning/character-production-20261011/references/originals/R01-codex-clipboard-a534f72e-b3a3-4281-b129-788ca23f6937.jpg"
+    sha256: "8fdfe5cc5113f09d29af2904d88713ea4ae3e736873c8825efa530ff6eab0150"
+    role: "指定主体/区域的形体线索；不是可发布原图"
+    use: "紫色软块与青绿色软块都只作为圆角方形外观参照。"
+    exclude: "遮挡下缘的紫色块不能证明独立纵向比例；颜色不创建身份。"
+    license: unknown
+  - id: "R03"
+    path: "planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg"
+    sha256: "ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d"
+    role: "指定角色区域的形体对照；不是可发布原图"
+    use: "Pete 近方块为 grok-teal-square 参照；Ashley 的棕色倾斜主体单独归为圆柱几何。"
+    exclude: "职位、姓名、眼型及 UI 文本不形成角色或编辑能力。"
+    license: unknown
+creation:
+  prompt: null
+  promptReference: null
+  negativeConstraints:
+    - "不得为本撤回提案生成新 Artwork。"
+    - "不得按颜色、遮挡投影或职位文字新增角色。"
+  tool: null
+  originalOutputPath: null
+  iterations: []
+facts:
+  characterStyle: {state: unknown, evidence: "未制作独立 Artwork；本记录仅确定复用/取消范围"}
+  appearance: {state: unknown, evidence: "R01 可见软块均不足以证明新纵向圆角矩形"}
+  facialFeatures: {state: unknown, evidence: "不从参照截图声明新能力"}
+  colorMaterial: {state: unknown, evidence: "仅作既有 grok-teal-square 的配色参照"}
+  clothing: {state: unknown, evidence: "不适用"}
+  headAccessory: {state: unknown, evidence: "不适用"}
+  bodyAccessory: {state: unknown, evidence: "不适用"}
+  prop: {state: unknown, evidence: "不适用"}
+resources:
+  original: {path: null, sha256: null, mime: null, bytes: null, width: null, height: null, alphaCheck: null}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+relations:
+  variantGroup: "grok-teal-square"
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: "references/manifest.json; source records R01 and R03"
+  license: unknown
+  engineering: not-applicable
+  visualReview: "reference adjudication only; no generated candidate"
+  artApproval: {status: not-applicable, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

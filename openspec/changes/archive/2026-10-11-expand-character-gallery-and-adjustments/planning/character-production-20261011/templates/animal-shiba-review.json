@@ -1,0 +1,860 @@
+{
+  "status": "pending",
+  "scope": "candidate only; five classes each have a real image branch with explicit finite-combination conflicts; user approval pending",
+  "artwork": {
+    "id": "candidate-animals-20261005",
+    "version": "v1",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "柴犬",
+      "en": "Shiba"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+    "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "animal-shiba-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animals-20261005",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单只短绒柴犬，三角立耳、犬科口鼻、四爪和卷尾；保留物种结构。",
+      "en": "One short-plush Shiba with upright triangular ears, a canine muzzle, four paws and a curled tail. Preserve species anatomy."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典坐姿",
+            "en": "Classic seated"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有圆头坐姿，保留立耳、口鼻、四爪与卷尾结构",
+            "en": "the original round-headed seated silhouette with upright ears, muzzle, four paws and curled tail"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "蓬松宽圆",
+            "en": "Fluffy broad silhouette"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "脸颊和身体更蓬松宽圆，仍为原物种坐姿与卷尾",
+            "en": "fluffier broader cheeks and torso preserving the original species, seated pose and curled tail"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "赤柴毛色",
+            "en": "Red Shiba"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "橙褐色主毛、奶油白口鼻胸口与爪，保留棕眼黑鼻",
+            "en": "orange-tan fur with cream-white muzzle, chest and paws; preserve brown eyes and black nose"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#dd9149"
+          ],
+          "zoneColors": {
+            "fur": "#dd9149"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "黑褐毛色",
+            "en": "Black and tan"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "炭黑与褐色主毛，保留奶油白口鼻胸口与爪及棕眼黑鼻",
+            "en": "charcoal and tan main fur preserving cream-white muzzle, chest and paws, brown eyes and black nose"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#302b27"
+          ],
+          "zoneColors": {
+            "fur": "#302b27"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "双眼睁开，保留犬鼻与轻柔微笑",
+            "en": "open brown eyes with the original canine nose and gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "两条闭合弧形眼睑，保留犬鼻与轻柔微笑；静态表情",
+            "en": "two softly closed curved eyelids preserving the canine nose and smile; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无服装",
+            "en": "No clothing"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "保留原有毛绒身体，不穿衣物",
+            "en": "original fur-covered body without clothing"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合肩颈与胸部的鼠尾草绿针织背心，前爪在衣物前方",
+            "en": "a fitted sage-green knitted vest supported by the shoulders, with front paws in front of the garment"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "collar",
+          "labelByLanguage": {
+            "zh-CN": "小吊牌项圈",
+            "en": "Collar and tag"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "靛蓝细项圈贴合颈部，小黄铜圆牌位于口鼻下方",
+            "en": "a narrow indigo collar fitted around the neck with a small brass tag below the muzzle"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:animal-shiba-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "appearance-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "collar"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "clothing": "vest"
+        },
+        "code": "colors-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "collar"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "clothing": "vest"
+        },
+        "code": "face-clothing-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "collar"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "clothing": "vest",
+          "accessories": "collar"
+        },
+        "code": "clothing-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:clothing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-collar",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "collar"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:animal-shiba-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:animal-shiba-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/characters/animals-original-shiba-candidate-v1.png",
+      "sha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+      "byteSize": 1413426,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 832059,
+        "bboxAtAlphaThreshold16": [
+          213,
+          50,
+          1097,
+          1201
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-shiba-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-shiba-appearance-full-candidate-v2.png",
+      "sha256": "0e036c440d2b845dba1861d7c4ed6c0c33cd76b1eaeccd1fa758d727fc645010",
+      "byteSize": 1570572,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 742919,
+        "bboxAtAlphaThreshold16": [
+          183,
+          39,
+          1137,
+          1233
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          18.7688,
+          12.4045
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9639865996649917,
+            0.9639865996649917
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-shiba-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-shiba-colors-full-candidate-v2.png",
+      "sha256": "2d4f988179f0d29e3f15cfd293f9bc0276f7761049ab572befd7639fab03d3ca",
+      "byteSize": 1549517,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 833638,
+        "bboxAtAlphaThreshold16": [
+          210,
+          48,
+          1103,
+          1204
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          1.3395,
+          2.2076
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.995674740484429,
+            0.995674740484429
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-shiba-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-shiba-face-full-candidate-v2.png",
+      "sha256": "786f6459ad6791d78ac98a651c423ce3f95bbd8eeb8389f9e75ebfb1a338f2a1",
+      "byteSize": 1403059,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 829509,
+        "bboxAtAlphaThreshold16": [
+          209,
+          45,
+          1100,
+          1203
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          4.4564,
+          5.272
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9939550949913645,
+            0.9939550949913645
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-shiba-adjustments-v1:clothing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/clothing.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-shiba-clothing-full-candidate-v2.png",
+      "sha256": "0ddcd522505cc8d7759dd32873ad858e4b1284535271894e4e304071170d7b1f",
+      "byteSize": 1442090,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 836939,
+        "bboxAtAlphaThreshold16": [
+          211,
+          48,
+          1099,
+          1204
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          2.833,
+          2.2076
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.995674740484429,
+            0.995674740484429
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    },
+    {
+      "id": "template:animal-shiba-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/animal-shiba-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-shiba-accessories-full-candidate-v2.png",
+      "sha256": "3595745e602ba758907bb12ce3ac6dfb2562a8afaaf1dd1bfccac6a5937883aa",
+      "byteSize": 1411189,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 833915,
+        "bboxAtAlphaThreshold16": [
+          208,
+          47,
+          1102,
+          1204
+        ]
+      },
+      "owner": {
+        "templateId": "animal-shiba-adjustments-v1",
+        "artworkId": "candidate-animals-20261005",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          3.3967,
+          3.2437
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9948141745894555,
+            0.9948141745894555
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit of exact Artwork. Full coherent anatomy branch; original output retained; authorized alpha-only cleanup. Scene placement uniformly registers original height/center/foot baseline without changing source pixels."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=99';
+import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=100';
 
 // A single bounded loader serves approved detail covers and explicitly pending
 // View-only previews by default. Template layers are absent until Edit registers
@@ -21,6 +21,7 @@ export class PreviewLoaderError extends Error {
 const freezePlacement = placement => Object.freeze({
   canvas: Object.freeze([...placement.canvas]),
   anchor: placement.anchor,
+  ...(placement.sourceAnchor ? { sourceAnchor: Object.freeze([...placement.sourceAnchor]) } : {}),
   offset: Object.freeze([...placement.offset]),
   transform: Object.freeze({
     pivot: Object.freeze([...placement.transform.pivot]),
@@ -31,33 +32,57 @@ const freezePlacement = placement => Object.freeze({
 });
 
 /** Validate and normalize the fixed, manifest-owned placement of one template PNG. */
-export function normalizeTemplatePlacement(asset, expectedCanvas = [asset?.width, asset?.height]) {
+export function normalizeTemplatePlacement(asset, expectedCanvas = asset?.placement?.canvas || [asset?.width, asset?.height], anchors = null) {
   const width = expectedCanvas?.[0], height = expectedCanvas?.[1];
   if (!Number.isSafeInteger(width) || width < 1 || !Number.isSafeInteger(height) || height < 1) {
     throw new PreviewLoaderError('template-placement-canvas-invalid', 'Template placement needs a positive canvas size.', { assetId: asset?.id || null });
   }
+  const sourceWidth = asset?.width, sourceHeight = asset?.height;
+  if (!Number.isSafeInteger(sourceWidth) || sourceWidth < 1 || !Number.isSafeInteger(sourceHeight) || sourceHeight < 1) {
+    throw new PreviewLoaderError('template-placement-source-invalid', 'Template placement needs positive source bitmap dimensions.', { assetId: asset?.id || null });
+  }
   const raw = asset?.placement;
   if (raw == null) {
+    if (sourceWidth !== width || sourceHeight !== height) {
+      throw new PreviewLoaderError('template-placement-invalid', 'A source bitmap with independent dimensions needs an explicit Template placement.', { assetId: asset?.id || null });
+    }
     return freezePlacement({
       canvas: [width, height], anchor: 'canvas', offset: [0, 0],
       transform: { pivot: [0, 0], scale: [1, 1], shear: [0, 0], rotationDegrees: 0 }
     });
   }
   const fail = message => { throw new PreviewLoaderError('template-placement-invalid', message, { assetId: asset?.id || null }); };
-  const allowedPlacementKeys = new Set(['canvas', 'anchor', 'offset', 'transform']);
+  const allowedPlacementKeys = new Set(['canvas', 'anchor', 'sourceAnchor', 'offset', 'transform']);
   if (!raw || typeof raw !== 'object' || Array.isArray(raw) || Object.keys(raw).some(key => !allowedPlacementKeys.has(key))) {
     fail('Template placement contains unsupported fields.');
   }
   const canvas = raw.canvas;
   const offset = raw.offset;
+  const semanticAnchor = typeof raw.anchor === 'string' && raw.anchor !== 'canvas';
+  const sourceAnchor = raw.sourceAnchor;
   if (!Array.isArray(canvas) || canvas.length !== 2 || canvas[0] !== width || canvas[1] !== height
-    || raw.anchor !== 'canvas'
+    || typeof raw.anchor !== 'string' || !/^[a-z][a-z0-9.-]*$/i.test(raw.anchor)
     || !Array.isArray(offset) || offset.length !== 2 || !offset.every(Number.isFinite)
     || Math.abs(offset[0]) > width || Math.abs(offset[1]) > height) {
-    fail('Template placement must use the exact canvas anchor and a bounded finite [dx,dy] offset.');
+    fail('Template placement must use a declared anchor and a bounded finite [dx,dy] offset.');
+  }
+  if (semanticAnchor) {
+    if (!Array.isArray(sourceAnchor) || sourceAnchor.length !== 2 || !sourceAnchor.every(Number.isFinite)
+      || sourceAnchor[0] < 0 || sourceAnchor[0] > sourceWidth || sourceAnchor[1] < 0 || sourceAnchor[1] > sourceHeight) {
+      fail('A named Template anchor needs a sourceAnchor inside the resource bitmap.');
+    }
+    if (anchors) {
+      const registered = Array.isArray(anchors[raw.anchor]) ? anchors[raw.anchor] : anchors[raw.anchor]?.point;
+      if (!Array.isArray(registered) || registered.length !== 2 || !registered.every(Number.isFinite)
+        || registered[0] < 0 || registered[0] > width || registered[1] < 0 || registered[1] > height) {
+        fail(`Template anchor ${raw.anchor} is not registered at an in-canvas point.`);
+      }
+    }
+  } else if (sourceAnchor != null) {
+    fail('The canvas anchor cannot declare a sourceAnchor.');
   }
   const sourceTransform = raw.transform;
-  let transform = { pivot: [0, 0], scale: [1, 1], shear: [0, 0], rotationDegrees: 0 };
+  let transform = { pivot: semanticAnchor ? [...sourceAnchor] : [0, 0], scale: [1, 1], shear: [0, 0], rotationDegrees: 0 };
   if (sourceTransform != null) {
     const allowedTransformKeys = new Set(['pivot', 'scale', 'shear', 'rotationDegrees']);
     if (!sourceTransform || typeof sourceTransform !== 'object' || Array.isArray(sourceTransform)
@@ -69,7 +94,7 @@ export function normalizeTemplatePlacement(asset, expectedCanvas = [asset?.width
     const shear = sourceTransform.shear ?? [0, 0];
     const rotationDegrees = sourceTransform.rotationDegrees;
     if (!Array.isArray(pivot) || pivot.length !== 2 || !pivot.every(Number.isFinite)
-      || pivot[0] < 0 || pivot[0] > width || pivot[1] < 0 || pivot[1] > height
+      || pivot[0] < 0 || pivot[0] > sourceWidth || pivot[1] < 0 || pivot[1] > sourceHeight
       || !Array.isArray(scale) || scale.length !== 2 || !scale.every(Number.isFinite)
       || scale.some(value => value < 0.25 || value > 4)
       || !Array.isArray(shear) || shear.length !== 2 || !shear.every(Number.isFinite)
@@ -78,13 +103,16 @@ export function normalizeTemplatePlacement(asset, expectedCanvas = [asset?.width
       fail('Template placement transform needs an in-canvas pivot, scale in [0.25,4], shear in [-2,2], and rotation in [-45,45] degrees.');
     }
     transform = { pivot: [...pivot], scale: [...scale], shear: [...shear], rotationDegrees };
+    if (semanticAnchor && (pivot[0] !== sourceAnchor[0] || pivot[1] !== sourceAnchor[1])) {
+      fail('Named-anchor layers must transform around their sourceAnchor.');
+    }
   }
-  return freezePlacement({ canvas: [width, height], anchor: 'canvas', offset: [...offset], transform });
+  return freezePlacement({ canvas: [width, height], anchor: raw.anchor, ...(semanticAnchor ? { sourceAnchor: [...sourceAnchor] } : {}), offset: [...offset], transform });
 }
 
 /** Return the shared Canvas 2D matrix for a manifest-owned template placement. */
-export function templatePlacementMatrix(asset, expectedCanvas = [asset?.width, asset?.height]) {
-  const placement = normalizeTemplatePlacement(asset, expectedCanvas);
+export function templatePlacementMatrix(asset, expectedCanvas = asset?.placement?.canvas || [asset?.width, asset?.height], anchors = null) {
+  const placement = normalizeTemplatePlacement(asset, expectedCanvas, anchors);
   const { pivot: [pivotX, pivotY], scale: [scaleX, scaleY], shear: [shearX, shearY], rotationDegrees } = placement.transform;
   const radians = rotationDegrees * Math.PI / 180;
   const cosine = Math.cos(radians);
@@ -94,20 +122,29 @@ export function templatePlacementMatrix(asset, expectedCanvas = [asset?.width, a
   const c = cosine * shearX - sine * scaleY;
   const d = sine * shearX + cosine * scaleY;
   const [offsetX, offsetY] = placement.offset;
-  const e = pivotX + offsetX - a * pivotX - c * pivotY;
-  const f = pivotY + offsetY - b * pivotX - d * pivotY;
+  const targetAnchor = placement.anchor === 'canvas' ? [pivotX, pivotY]
+    : Array.isArray(anchors?.[placement.anchor]) ? anchors[placement.anchor]
+      : anchors?.[placement.anchor]?.point;
+  if (!targetAnchor) throw new PreviewLoaderError('template-anchor-unregistered', `Template anchor ${placement.anchor} is not registered.`, { assetId: asset?.id || null });
+  const sourceAnchor = placement.anchor === 'canvas' ? [pivotX, pivotY] : placement.sourceAnchor;
+  const e = targetAnchor[0] + offsetX - a * sourceAnchor[0] - c * sourceAnchor[1];
+  const f = targetAnchor[1] + offsetY - b * sourceAnchor[0] - d * sourceAnchor[1];
   return Object.freeze({ a, b, c, d, e, f, placement });
 }
 
-export function transformTemplatePoint(x, y, asset, expectedCanvas = [asset?.width, asset?.height]) {
+export function transformTemplatePoint(x, y, asset, expectedCanvas = asset?.placement?.canvas || [asset?.width, asset?.height], anchors = null) {
   if (!Number.isFinite(x) || !Number.isFinite(y)) throw new TypeError('Template point must use finite coordinates.');
-  const { a, b, c, d, e, f } = templatePlacementMatrix(asset, expectedCanvas);
+  const { a, b, c, d, e, f } = templatePlacementMatrix(asset, expectedCanvas, anchors);
   return [a * x + c * y + e, b * x + d * y + f];
 }
 
 const recordPurpose = asset => typeof asset?.purpose === 'string' ? asset.purpose : '';
 const tupleKey = asset => [asset.id, asset.version, recordPurpose(asset), asset.sha256, asset.path].join('\u0000');
-const cacheKey = (asset, purpose) => `${tupleKey(asset)}\u0000${purpose}\u0000${asset.byteSize}\u0000${asset.width}x${asset.height}`;
+// Authorization remains keyed by the full canonical asset tuple and requested
+// purpose. Once that validation succeeds, decoding may be shared by aliases
+// that point at the same immutable physical bytes.
+const resourceKey = asset => [normalizedPath(asset), asset.version, asset.sha256.toLowerCase(), asset.mime,
+  asset.byteSize, `${asset.width}x${asset.height}`].join('\u0000');
 const abortError = () => typeof DOMException === 'function'
   ? new DOMException('The preview request was aborted.', 'AbortError')
   : Object.assign(new Error('The preview request was aborted.'), { name: 'AbortError' });
@@ -153,7 +190,7 @@ function assertAssetShape(asset) {
     if (asset.alpha?.hasAlpha === false || asset.alpha?.hasTransparency === false) {
       throw new PreviewLoaderError('opaque-template-asset', 'Template layers must preserve real alpha transparency.');
     }
-    normalizeTemplatePlacement(asset, [asset.width, asset.height]);
+    normalizeTemplatePlacement(asset);
   } else {
     const previewRecord = asset.resourceKind === 'gallery-poster'
       ? asset.publicationStatus === 'published-derivative' && path.startsWith('assets/posters/')
@@ -369,14 +406,17 @@ export function createPreviewLoader({
     }
   }
 
-  function makeLease(item) {
+  function makeLease(item, asset) {
     if (disposed || item.released) throw new PreviewLoaderError('loader-disposed', 'Preview resource is no longer available.');
     item.references += 1;
     activeLeases += 1;
     item.lastUsed = ++clock;
     let released = false;
     const lease = {
-      asset: item.asset,
+      // A physical image can back multiple canonical Template resources (for
+      // example a body and its silhouette mask). Preserve caller identity and
+      // placement on each lease while sharing only Blob/bitmap ownership.
+      asset,
       bitmap: item.bitmap,
       get blob() { return released ? null : item.blob; },
       get url() {
@@ -425,7 +465,7 @@ export function createPreviewLoader({
         consumer.active = false;
         consumer.signal?.removeEventListener?.('abort', consumer.onAbort);
         job.consumers.delete(consumer);
-        try { consumer.resolve(makeLease(item)); } catch (leaseError) { consumer.reject(leaseError); }
+        try { consumer.resolve(makeLease(item, consumer.asset)); } catch (leaseError) { consumer.reject(leaseError); }
       }
       prune();
     } else {
@@ -458,10 +498,10 @@ export function createPreviewLoader({
     }
   }
 
-  function attachConsumer(job, signal) {
+  function attachConsumer(job, signal, asset) {
     if (signal?.aborted) return Promise.reject(abortError());
     return new Promise((resolve, reject) => {
-      const consumer = { active: true, signal, resolve, reject, onAbort: null };
+      const consumer = { active: true, signal, asset, resolve, reject, onAbort: null };
       consumer.onAbort = () => cancelConsumer(job, consumer);
       job.consumers.add(consumer);
       signal?.addEventListener?.('abort', consumer.onAbort, { once: true });
@@ -477,10 +517,10 @@ export function createPreviewLoader({
       usePurpose = requestedPurpose(asset, purpose);
     } catch (error) { return Promise.reject(error); }
     if (signal?.aborted) return Promise.reject(abortError());
-    const key = cacheKey(asset, usePurpose);
+    const key = resourceKey(asset);
     const cached = cache.get(key);
     if (cached) {
-      try { return Promise.resolve(makeLease(cached)); } catch (error) { return Promise.reject(error); }
+      try { return Promise.resolve(makeLease(cached, asset)); } catch (error) { return Promise.reject(error); }
     }
     let job = inflight.get(key);
     if (!job) {
@@ -488,7 +528,7 @@ export function createPreviewLoader({
       inflight.set(key, job);
       queue.push(job);
     }
-    const consumerPromise = attachConsumer(job, signal);
+    const consumerPromise = attachConsumer(job, signal, asset);
     pump();
     return consumerPromise;
   }

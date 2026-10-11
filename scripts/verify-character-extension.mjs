@@ -5,6 +5,8 @@ import path from 'node:path';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
+import { ARTWORKS, CATALOG_REVISION } from '../dist/studio-artwork-catalog.js?v=100';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork } from '../dist/studio-edit-templates.js?v=100';
 
 const root = process.cwd();
 const outputDir = resolveEvidenceDirectory('.artifacts/character-extension');
@@ -19,6 +21,11 @@ page.setDefaultTimeout(15000);
 const errors = [];
 const requests = [];
 const checks = [];
+assert.equal(ARTWORKS.length, 44, 'The production catalog contains the full approved Artwork set.');
+assert.equal(TEMPLATE_REGISTRY.length, 44, 'Every approved Artwork has a registered adjustment Template.');
+assert.equal(new Set(TEMPLATE_REGISTRY.map(template => template.artworkBinding.artworkId)).size, 44);
+assert.ok(ARTWORKS.every(artwork => getTemplateForArtwork(artwork)), 'No approved production Artwork falls back to the static detail route.');
+assert.equal(CATALOG_REVISION, 'artwork-catalog-20261011-v100');
 page.on('pageerror', error => errors.push(error.message));
 page.on('request', request => requests.push(new URL(request.url()).pathname));
 page.addInitScript(() => {
@@ -29,7 +36,7 @@ page.addInitScript(() => {
 });
 
 const fixtureUrl = `/@fs/${path.join(root, 'scripts/fixtures/new-artwork.mjs').split(path.sep).join('/')}`;
-const shell = `<!doctype html><html lang="zh-CN"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=99"><link rel="stylesheet" href="/studio-detail.css?v=99"></head><body><main><section id="gallery" aria-label="测试图库"></section><section id="detail"></section></main></body></html>`;
+const shell = `<!doctype html><html lang="zh-CN"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=100"><link rel="stylesheet" href="/studio-detail.css?v=100"></head><body><main><section id="gallery" aria-label="测试图库"></section><section id="detail"></section></main></body></html>`;
 const check = (condition, message) => {
   assert.ok(condition, message);
   checks.push(message);
@@ -41,13 +48,13 @@ try {
   const setup = await page.evaluate(async fixtureModuleUrl => {
     const [fixtureModule, cardModule, detailModule, catalog, tags, prompt, actions, previews] = await Promise.all([
       import(fixtureModuleUrl),
-      import('/studio-card.js?v=99'),
-      import('/studio-detail.js?v=99'),
-      import('/studio-artwork-catalog.js?v=99'),
-      import('/studio-tags.js?v=99'),
-      import('/studio-prompt.js?v=99'),
-      import('/studio-asset-loader.js?v=99'),
-      import('/studio-preview-loader.js?v=99')
+      import('/studio-card.js?v=100'),
+      import('/studio-detail.js?v=100'),
+      import('/studio-artwork-catalog.js?v=100'),
+      import('/studio-tags.js?v=100'),
+      import('/studio-prompt.js?v=100'),
+      import('/studio-asset-loader.js?v=100'),
+      import('/studio-preview-loader.js?v=100')
     ]);
     const fixture = fixtureModule.createNewArtworkFixture();
     const matches = fixture.queryArtworks({ text: '测试奶油白猫新外观', seriesId: 'animals', sort: 'curated', language: 'zh-CN' });
@@ -138,7 +145,7 @@ try {
   assert.deepEqual(errors, []);
   await fs.mkdir(path.dirname(output), { recursive: true });
   await fs.writeFile(output, `${JSON.stringify({
-    revision: 99,
+    revision: 100,
     fixture: { artworkId: setup.fixtureArtworkId, characterId: setup.fixtureCharacterId, scope: 'fixture-only', sourceSha256: setup.sourceSha256 },
     query: { text: '测试奶油白猫新外观', seriesId: 'animals', sort: 'curated', matchIds: setup.matchIds },
     checks,

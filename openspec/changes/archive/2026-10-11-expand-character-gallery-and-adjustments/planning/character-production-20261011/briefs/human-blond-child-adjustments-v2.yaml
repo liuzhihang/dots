@@ -1,0 +1,551 @@
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "原创浅金短发 Q 版人物，戴透明圆框眼镜，穿浅蓝衬衣、米白针织开衫和浅蓝长裤，双手自然交握。 的局部调整候选 Template；原 Gallery Artwork 不替换，所有外观分支保持同一人物身份。",
+    "scope": "existing-artwork-adjustment-template-candidate",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "human-blond-glasses",
+    "seriesId": "humans",
+    "identity": "existing gallery Artwork human-blond-glasses@v1",
+    "differenceFromExisting": "Adds a pending bounded-adjustment Template to the exact existing gallery Artwork human-blond-glasses@v1; the original gallery file remains unchanged.",
+    "invariants": [
+      "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例、原始姿势、手部数量与位置。只有选择对应注册选项时，才允许改变发型整理、衣料配色、面部表情、衣着或配饰。完整人物保留在单张透明 PNG 中；不得增加其他人物、道具、文字或场景。",
+      "默认透明完整单体；分支是完整角色图，使用有界配方并拒绝互斥组合。"
+    ]
+  },
+  "artwork": {
+    "proposedId": "human-blond-glasses",
+    "canonicalArtworkId": "human-blond-glasses",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Blond Glasses Person",
+      "zh-CN": "金发圆框伙伴"
+    },
+    "description": {
+      "en": "An original chibi person with short fluffy blond hair, clear round glasses, a light-blue shirt, ivory knit cardigan and pale-blue trousers, with hands resting together.",
+      "zh-CN": "原创浅金短发 Q 版人物，戴透明圆框眼镜，穿浅蓝衬衣、米白针织开衫和浅蓝长裤，双手自然交握。"
+    },
+    "aliases": {
+      "en": [],
+      "zh-CN": []
+    },
+    "sourceStatus": "current-source",
+    "publicationStatus": "existing-gallery-artwork"
+  },
+  "references": [
+    {
+      "id": "human-blond-glasses@v1",
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "role": "exact existing Artwork identity and pose reference",
+      "use": "Preserve the exact same character identity, face, pose, body proportions and unselected details; registered options define permitted changes.",
+      "exclude": "Do not replace or overwrite the existing source Artwork; no UI, background, text, props or extra subject.",
+      "license": "unknown"
+    }
+  ],
+  "creation": {
+    "prompt": "See linked provenance and Template semantics; do not fabricate missing historical ImageGen prompts.",
+    "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+    "negativeConstraints": [
+      "Keep the selected Artwork identity and preserve all unselected character details.",
+      "Transparent full-character PNG; no background, UI, text, watermark or additional subjects.",
+      "Combine only exact finite recipes registered by the pending Template; reject conflicting choices."
+    ],
+    "tool": "built-in image_gen.imagegen for the recorded complete-character branch assets; local browser renderer for finite recipes",
+    "originalOutputPath": null,
+    "iterations": [
+      {
+        "field": "appearance",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-short-soft-curls.png",
+        "sha256": "1cb7ced98474a7d5277f067387db2adb4a39480994a638fc3030d28c3382a9cc",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "colors",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-sage-cardigan.png",
+        "sha256": "c8e028e5ca798edeaf1316fa3b07baab94b086c0d934f73ea4e087ff28653873",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "face",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-closed-eyes.png",
+        "sha256": "3e8ad70eb9e87bdfbc991cc9e535945792c6a35285a78d05910e29c021e7f2a3",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "clothing",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-sky-duffle-coat.png",
+        "sha256": "219d3561b5315243e115bcce91bb8826509005df2aa2070796c23c91b01db6a7",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "accessories",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-teal-bowtie.png",
+        "sha256": "68c9191fb9857370ca9aaccde597e5a1abe0a69b8ecb58fc3e92d55ce84c5edd",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Existing transparent chibi character artwork, visually checked with the bound source and preview branches."
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "An original chibi person with short fluffy blond hair, clear round glasses, a light-blue shirt, ivory knit cardigan and pale-blue trousers, with hands resting together."
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "Preserve the source identity and facial placement; expression options are bound in the Template."
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "Use only registered color variant semantics; never infer unregistered recoloring from enum IDs or palette values."
+    },
+    "clothing": {
+      "state": "present",
+      "evidence": "See selected clothing option and exact source image; options are template-bound."
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "Only the registered accessory options may add or change head-worn details."
+    },
+    "bodyAccessory": {
+      "state": "unknown",
+      "evidence": "No independent body accessory is registered in this Template."
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "No prop is registered in this Template."
+    }
+  },
+  "resources": {
+    "original": {
+      "path": "dist/assets/looks/human-blond-glasses.png",
+      "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6",
+      "mime": "image/png",
+      "bytes": 1058375,
+      "width": 1254,
+      "height": 1254,
+      "alphaCheck": "RGBA; alpha range 0..255; all four canvas corners are fully transparent; decoded source sampled."
+    },
+    "thumbnail": null,
+    "displayPreview": null
+  },
+  "promptText": {
+    "en": "An original chibi person with short fluffy blond hair, clear round glasses, a light-blue shirt, ivory knit cardigan and pale-blue trousers, with hands resting together.",
+    "zh-CN": "原创浅金短发 Q 版人物，戴透明圆框眼镜，穿浅蓝衬衣、米白针织开衫和浅蓝长裤，双手自然交握。"
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": {
+      "manifestPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/blond-child-adjustments-review-v2.json",
+      "manifestSha256": "2d424bb0c5ebcedd767d14f2b4efa73d9a9e95e75fe4cc7ae394830343da83cc",
+      "templateId": "human-blond-child-adjustments-v2",
+      "templateVersion": "v2",
+      "schemaVersion": 2,
+      "status": "pending; preview-only",
+      "engineeringStatus": "passed",
+      "artApproval": "pending",
+      "canonicalFields": [
+        {
+          "field": "appearance",
+          "values": [
+            {
+              "id": "short-blond",
+              "labelByLanguage": {
+                "en": "Original hairstyle",
+                "zh-CN": "原有发型"
+              },
+              "semanticByLanguage": {
+                "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+                "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+              }
+            },
+            {
+              "id": "short-soft-curls",
+              "labelByLanguage": {
+                "en": "Short soft curls",
+                "zh-CN": "柔软短卷发"
+              },
+              "semanticByLanguage": {
+                "en": "the same person with short soft golden curls with distinct rounded curl texture around the crown and sides; preserve blond color, clear round glasses, face, outfit and clasped hands",
+                "zh-CN": "同一人物，头顶与两侧具有清楚圆润卷曲质感的浅金短卷发；保留浅金发色、透明圆框眼镜、脸、衣物与交握双手"
+              }
+            }
+          ]
+        },
+        {
+          "field": "colors",
+          "values": [
+            {
+              "id": "ivory",
+              "labelByLanguage": {
+                "en": "Ivory cardigan",
+                "zh-CN": "米白开衫"
+              },
+              "semanticByLanguage": {
+                "en": "the original ivory knit cardigan color; preserve skin, hair and all other garment zones",
+                "zh-CN": "保留原有米白针织开衫配色；肤色、头发和其他衣物区域不变"
+              }
+            },
+            {
+              "id": "sage",
+              "labelByLanguage": {
+                "en": "Sage cardigan",
+                "zh-CN": "鼠尾草绿开衫"
+              },
+              "semanticByLanguage": {
+                "en": "only the knit cardigan changes to sage green; preserve skin, blond hair, shirt, trousers and clear round glasses",
+                "zh-CN": "仅针织开衫改为鼠尾草绿；保留肤色、浅金头发、衬衣、裤子和透明圆框眼镜"
+              }
+            }
+          ]
+        },
+        {
+          "field": "face",
+          "values": [
+            {
+              "id": "open",
+              "labelByLanguage": {
+                "en": "Open-eye smile",
+                "zh-CN": "睁眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "the original open eyes and gentle smile",
+                "zh-CN": "保留原有睁眼与柔和微笑"
+              }
+            },
+            {
+              "id": "closed",
+              "labelByLanguage": {
+                "en": "Closed-eye smile",
+                "zh-CN": "闭眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "two matching gentle closed eyes visible behind the glasses; preserve frames, lenses, nose, smile and clasped hands",
+                "zh-CN": "眼镜后方两只对称柔和的闭合眼睛；镜框、镜片、鼻子、微笑和交握双手保持不变"
+              }
+            }
+          ]
+        },
+        {
+          "field": "clothing",
+          "values": [
+            {
+              "id": "cardigan",
+              "labelByLanguage": {
+                "en": "Original outfit",
+                "zh-CN": "原有衣着"
+              },
+              "semanticByLanguage": {
+                "en": "the original outfit with its fit and natural hand occlusion",
+                "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+              }
+            },
+            {
+              "id": "sky-duffle",
+              "labelByLanguage": {
+                "en": "Sky-blue duffle coat",
+                "zh-CN": "天蓝色牛角扣外套"
+              },
+              "semanticByLanguage": {
+                "en": "a fitted sky-blue duffle coat with natural front closure and sleeves; keep clasped hands unobstructed and preserve shirt, trousers and glasses",
+                "zh-CN": "合体天蓝色牛角扣外套，门襟和袖子贴合自然；不遮住交握双手，保留衬衣、裤子和眼镜"
+              }
+            }
+          ]
+        },
+        {
+          "field": "accessories",
+          "values": [
+            {
+              "id": "clear-glasses",
+              "labelByLanguage": {
+                "en": "Original accessories",
+                "zh-CN": "原有配饰"
+              },
+              "semanticByLanguage": {
+                "en": "clear round glasses",
+                "zh-CN": "透明圆框眼镜"
+              }
+            },
+            {
+              "id": "glasses-bowtie",
+              "labelByLanguage": {
+                "en": "Glasses with teal bow tie",
+                "zh-CN": "圆框眼镜与蓝绿色领结"
+              },
+              "semanticByLanguage": {
+                "en": "clear round glasses plus a teal bow tie fitted naturally to the shirt collar",
+                "zh-CN": "透明圆框眼镜与自然贴合衬衣领口的蓝绿色领结"
+              }
+            }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "blond-child-default",
+          "selections": {
+            "appearance": "short-blond",
+            "colors": "ivory",
+            "face": "open",
+            "clothing": "cardigan",
+            "accessories": "clear-glasses"
+          }
+        },
+        {
+          "id": "blond-child-appearance",
+          "selections": {
+            "appearance": "short-soft-curls",
+            "colors": "ivory",
+            "face": "open",
+            "clothing": "cardigan",
+            "accessories": "clear-glasses"
+          }
+        },
+        {
+          "id": "blond-child-colors",
+          "selections": {
+            "appearance": "short-blond",
+            "colors": "sage",
+            "face": "open",
+            "clothing": "cardigan",
+            "accessories": "clear-glasses"
+          }
+        },
+        {
+          "id": "blond-child-face",
+          "selections": {
+            "appearance": "short-blond",
+            "colors": "ivory",
+            "face": "closed",
+            "clothing": "cardigan",
+            "accessories": "clear-glasses"
+          }
+        },
+        {
+          "id": "blond-child-clothing",
+          "selections": {
+            "appearance": "short-blond",
+            "colors": "ivory",
+            "face": "open",
+            "clothing": "sky-duffle",
+            "accessories": "clear-glasses"
+          }
+        },
+        {
+          "id": "blond-child-accessories",
+          "selections": {
+            "appearance": "short-blond",
+            "colors": "ivory",
+            "face": "open",
+            "clothing": "cardigan",
+            "accessories": "glasses-bowtie"
+          }
+        }
+      ],
+      "conflicts": [
+        {
+          "when": {
+            "appearance": "short-soft-curls",
+            "colors": "sage"
+          },
+          "code": "appearance-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "short-soft-curls",
+            "face": "closed"
+          },
+          "code": "appearance-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "short-soft-curls",
+            "clothing": "sky-duffle"
+          },
+          "code": "appearance-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "short-soft-curls",
+            "accessories": "glasses-bowtie"
+          },
+          "code": "appearance-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "sage",
+            "face": "closed"
+          },
+          "code": "colors-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "sage",
+            "clothing": "sky-duffle"
+          },
+          "code": "colors-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "sage",
+            "accessories": "glasses-bowtie"
+          },
+          "code": "colors-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "clothing": "sky-duffle"
+          },
+          "code": "face-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "accessories": "glasses-bowtie"
+          },
+          "code": "face-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "clothing": "sky-duffle",
+            "accessories": "glasses-bowtie"
+          },
+          "code": "clothing-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:base",
+          "field": "base",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "dist/assets/looks/human-blond-glasses.png",
+          "sha256": "84d20915564eac63f5e33834e221bd73ef7530c8ea331c730503e9de0dafc0f6"
+        },
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:appearance",
+          "field": "appearance",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-short-soft-curls.png",
+          "sha256": "1cb7ced98474a7d5277f067387db2adb4a39480994a638fc3030d28c3382a9cc"
+        },
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:colors",
+          "field": "colors",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-sage-cardigan.png",
+          "sha256": "c8e028e5ca798edeaf1316fa3b07baab94b086c0d934f73ea4e087ff28653873"
+        },
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:face",
+          "field": "face",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-closed-eyes.png",
+          "sha256": "3e8ad70eb9e87bdfbc991cc9e535945792c6a35285a78d05910e29c021e7f2a3"
+        },
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:clothing",
+          "field": "clothing",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-sky-duffle-coat.png",
+          "sha256": "219d3561b5315243e115bcce91bb8826509005df2aa2070796c23c91b01db6a7"
+        },
+        {
+          "assetId": "template:human-blond-child-adjustments-v2:accessories",
+          "field": "accessories",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/blond-child-teal-bowtie.png",
+          "sha256": "68c9191fb9857370ca9aaccde597e5a1abe0a69b8ecb58fc3e92d55ce84c5edd"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sourceRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/prompts/human-adjustments-full-character-v2-provenance.md; Template manifest is authoritative for all option semantics and assets.",
+    "provenance": {
+      "promptReference": "../prompts/human-adjustments-full-character-v2-provenance.md",
+      "correctionRecord": "../prompts/human-adjustments-v2-bilingual-semantics-correction.md"
+    },
+    "license": "unknown",
+    "engineering": {
+      "status": "engineering-passed",
+      "path": ".artifacts/character-adjustments/human-blond-child-adjustments-v2/report.json",
+      "sha256": "6ec7ea3a63011e18249b48ff9fe67cbd98f52a3fb50dcd83cedae62767006053",
+      "recipeCount": 6,
+      "optionChecks": 10,
+      "conflictChecks": 20,
+      "viewports": 4,
+      "errors": []
+    },
+    "visualReview": {
+      "status": "internal-review-only",
+      "contactSheet": ".artifacts/character-adjustments/blond-child-six-branches-dark-light.jpg",
+      "sha256": "9d8bd8b846c362b703352ceebec68dc68a8adccff95e06dc6ad9efd718a4c56a",
+      "note": "Root visually reviewed all six-branch dark/warm contacts and reported identity, hair, clothing, skin and hand occlusion acceptable; a separate hash-bound co-review record is pending. User art approval remains pending."
+    },
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": null,
+      "note": "This approval applies to the new Template branches only; existing source Artwork remains unchanged."
+    },
+    "integration": "not-applied",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

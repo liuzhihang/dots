@@ -14,7 +14,11 @@
 
 历史 `design/acceptance/`、归档 acceptance 目录与 `historical-runtime/` 不再接收新的日常输出。`.gitignore` 忽略这些目录中的未跟踪文件；其中已经跟踪的审批、来源与必要测试输入仍保留。
 
-候选审阅工具只生成独立包，不修改素材登记或已有批准状态。`capture-candidate-review.mjs` 从当前 pending Artwork 制作审阅包；没有候选时明确退出。模板审阅使用本次真实编辑验收与构建报告：
+候选审阅工具只生成独立包，不修改素材登记或已有批准状态。`capture-candidate-review.mjs` 从当前 pending Artwork 制作审阅包；没有候选时明确退出。
+
+当前 v100 的 44 套模板审阅范围见 [完整审核包](../openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/gallery-adjustments-review-package-v1.md)，集成后的真实编辑、导出与构建结果见 [本地集成记录](releases/20261011-gallery-adjustments-v100/README.md)。新的日常工程结果由 `npm run test:editing` 写入 `.artifacts/studio-editing/run-*/`，其完整模板及组合清单来自实际目录。
+
+`capture-template-review.mjs` 保留为 **v99 两套 legacy orb 模板的历史审阅工具**，仍要求旧字段与旧清单，不能用于当前 v100。以下命令只在独立恢复的 v99 工作树内，配合该旧树的编辑验收与构建报告使用：
 
 ```sh
 node scripts/capture-template-review.mjs \

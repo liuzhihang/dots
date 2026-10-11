@@ -1,16 +1,16 @@
-import { createDraft, updateDraft } from './studio-draft.js?v=99';
-import { getTemplateForArtwork, TEMPLATE_REGISTRY } from './studio-edit-templates.js?v=99';
-import { createExportSnapshot, exportSnapshot, isRenderResultCurrent, renderDraft } from './studio-renderer.js?v=99';
-import { enumerateValidConfigurations, getRequiredTemplateAssets } from './studio-edit-templates.js?v=99';
-import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=99';
+import { createDraft, updateDraft } from './studio-draft.js?v=100';
+import { getTemplateForArtwork, TEMPLATE_REGISTRY } from './studio-edit-templates.js?v=100';
+import { createExportSnapshot, exportSnapshot, isRenderResultCurrent, renderDraft } from './studio-renderer.js?v=100';
+import { enumerateValidConfigurations, getRequiredTemplateAssets, getTemplateOptionFields, getTemplateOptionAssetRefs, assertValidTemplateOptions } from './studio-edit-templates.js?v=100';
+import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=100';
 
 export const STUDIO_EDITOR_REVISION = 'studio-editor-20261010-v99';
 let editorInstance = 0;
 
 const labels = {
   en: {
-    title: 'Fine-tune artwork', hint: 'Your preview and Prompt update as you choose.', tabs: 'Customize your character',
-    appearance: 'Appearance', face: 'Face', clothing: 'Clothing', accessories: 'Accessories', objects: 'Objects',
+    title: 'Character adjustments', hint: 'Preview and Prompt update with each selection.', tabs: 'Customize your character',
+    appearance: 'Appearance', colors: 'Colors', face: 'Face', clothing: 'Clothing', accessories: 'Accessories',
     color: 'Color', eyes: 'Eyes', glasses: 'Glasses', accessory: 'Accessory',
     
     rendering: 'Rendering the selected configuration…', ready: '',
@@ -21,8 +21,8 @@ const labels = {
     unknown: 'The selected option is not supported by this template.', unavailable: 'Unavailable in this template'
   },
   'zh-CN': {
-    title: '微调作品', hint: '预览与 Prompt 随选择同步更新。', tabs: '角色微调分类',
-    appearance: '外观', face: '五官', clothing: '服装', accessories: '配饰', objects: '物品',
+    title: '角色调整', hint: '预览与 Prompt 随选择同步更新。', tabs: '角色调整分类',
+    appearance: '外观', colors: '配色', face: '五官', clothing: '服装', accessories: '配饰',
     color: '颜色', eyes: '眼睛', glasses: '眼镜', accessory: '配件',
     
     rendering: '正在渲染当前配置…', ready: '',
@@ -34,18 +34,12 @@ const labels = {
   }
 };
 
-const copyOptions = options => Object.freeze({
-  color: options.color,
-  shape: options.shape,
-  eyes: options.eyes,
-  glasses: options.glasses,
-  accessory: options.accessory
-});
+const copyOptions = options => Object.freeze({ ...options });
 
 function languageKey(value) { return value === 'zh-CN' ? 'zh-CN' : 'en'; }
 function optionLabel(option, language) { return option?.labelByLanguage?.[language] || option?.labelByLanguage?.en || option?.id || ''; }
 function localErrorMessage(error, language) { return error?.messageByLanguage?.[language] || error?.message || labels[language].unknown; }
-function sameOptions(a, b) { return a && b && ['color', 'shape', 'eyes', 'glasses', 'accessory'].every(key => a[key] === b[key]); }
+function sameOptions(a, b) { return a && b && Object.keys(a).length === Object.keys(b).length && Object.keys(a).every(key => a[key] === b[key]); }
 function filenameFor(artwork, template, revision) {
   const stem = `${artwork?.id || artwork?.artworkId || 'artwork'}-${template.id}-draft-r${revision}`;
   return stem.replace(/[^a-z0-9._-]+/gi, '-').replace(/-+/g, '-').toLowerCase() + '.png';
@@ -85,7 +79,7 @@ export function createEditor({
   loader,
   assetRegistry,
   resolveAsset,
-  assetManifestUrl = './assets/templates/sources.json',
+  assetManifestUrl = './assets/templates/sources.json?v=100',
   fetchImpl = globalThis.fetch?.bind(globalThis),
   language: initialLanguage = 'en',
   reviewHarness = false,
@@ -138,15 +132,15 @@ export function createEditor({
   tabs.setAttribute('aria-orientation', 'horizontal');
   form.append(tabs);
   const tabIdPrefix = `studio-editor-${++editorInstance}`;
-  const editableFields = ['color', 'eyes', 'glasses', 'accessory'].filter(field => template.options[field]?.length);
-  const categories = [
-    { id: 'appearance', fields: ['color'] },
-    { id: 'face', fields: ['eyes'] },
-    { id: 'clothing', fields: [] },
-    { id: 'accessories', fields: ['glasses', 'accessory'] },
-    { id: 'objects', fields: [] }
-  ].map(category => ({ ...category, fields: category.fields.filter(field => editableFields.includes(field)) }))
-    .filter(category => category.fields.length);
+  const editableFields = getTemplateOptionFields(template).map(field => field.key);
+  const categories = template.schemaVersion === 2
+    ? editableFields.map(field => ({ id: field, fields: [field] }))
+    : [
+      { id: 'colors', fields: ['color'] },
+      { id: 'face', fields: ['eyes'] },
+      { id: 'accessories', fields: ['glasses', 'accessory'] }
+    ].map(category => ({ ...category, fields: category.fields.filter(field => editableFields.includes(field)) }))
+      .filter(category => category.fields.length);
   const categoryIds = categories.map(category => category.id);
   let activeCategory = categoryIds[0];
   const tabButtons = new Map();
@@ -180,7 +174,7 @@ export function createEditor({
 
   function currentSnapshot() {
     if (!lastResult || !isRenderResultCurrent(lastResult, draft, template) || latestRequestedRevision !== draft.revision) return null;
-    return Object.freeze({ revision: lastResult.revision, recipeKey: lastResult.recipeKey, options: copyOptions(lastResult.options) });
+    return Object.freeze({ schemaVersion: lastResult.schemaVersion, revision: lastResult.revision, sessionId: lastResult.sessionId, recipeKey: lastResult.recipeKey, options: copyOptions(lastResult.options), semantics: lastResult.semantics, layerRefs: lastResult.layerRefs, layerOrder: lastResult.layerOrder, rendererRevision: lastResult.rendererRevision, templateId: template.id, templateVersion: template.version, baseArtworkId: draft.baseArtworkId, baseArtworkVersion: draft.baseArtworkVersion });
   }
 
   function canExport() { return Boolean(renderReady && currentSnapshot()); }
@@ -222,27 +216,31 @@ export function createEditor({
         button.setAttribute('aria-label', `${text[field]}: ${name}${button.dataset.optionUnavailable === 'true' ? ` — ${text.unavailable}` : ''}`);
       }
     }
+    syncButtons();
   }
 
   function optionLayerRefs(field, optionId) {
-    if (field === 'eyes') {
-      const reference = template.layers?.eyes?.[optionId];
-      return reference?.id ? [reference] : null;
-    }
-    if (field === 'glasses' || field === 'accessory') {
-      if (optionId === 'none') return [];
-      const group = field === 'glasses' ? template.layers?.glasses : template.layers?.accessories;
-      const entry = group?.[optionId];
-      if (!entry || typeof entry !== 'object') return null;
-      const references = ['rear', 'front'].map(plane => entry[plane]).filter(reference => reference?.id);
-      return references.length ? references : null;
-    }
-    return [];
+    if (optionId === 'none') return [];
+    const refs = getTemplateOptionAssetRefs(template, field, optionId);
+    return refs.thumbnailAssets.length ? refs.thumbnailAssets : refs.layerAssets;
   }
 
   function syncButtons() {
     for (const [field, buttons] of optionButtons) {
-      for (const button of buttons) button.setAttribute('aria-pressed', button.value === draft.options[field] ? 'true' : 'false');
+      for (const button of buttons) {
+        button.setAttribute('aria-pressed', String(button.value === draft.options[field]));
+        let conflict = '';
+        try { assertValidTemplateOptions(template, { ...draft.options, [field]: button.value }); }
+        catch (error) { conflict = localErrorMessage(error, language); }
+        button.disabled = Boolean(conflict || button.dataset.optionUnavailable === 'true');
+        button.setAttribute('aria-disabled', String(button.disabled));
+        button.dataset.conflict = conflict;
+        button.title = conflict;
+        const name = optionLabel(optionDetails.get(button)?.option, language);
+        button.setAttribute('aria-label', `${labels[language][field]}: ${name}${conflict ? ` — ${conflict}` : ''}`);
+        const reason = button.querySelector('.studio-editor-option-reason');
+        if (reason) { reason.textContent = conflict; reason.hidden = !conflict; }
+      }
     }
   }
 
@@ -282,9 +280,9 @@ export function createEditor({
   }
 
   function placedThumbnailBounds(record) {
-    const placement = normalizeTemplatePlacement(record, [template.canvas.width, template.canvas.height]);
+    const placement = normalizeTemplatePlacement(record, [template.canvas.width, template.canvas.height], template.anchors);
     const [x0, y0, x1, y1] = thumbnailBounds(record);
-    const matrix = templatePlacementMatrix(record, placement.canvas);
+    const matrix = templatePlacementMatrix(record, placement.canvas, template.anchors);
     const points = [
       [x0, y0], [x1, y0], [x0, y1], [x1, y1]
     ].map(([x, y]) => [
@@ -305,7 +303,7 @@ export function createEditor({
     const recordsByKey = new Map((Array.isArray(rows) ? rows : [])
       .map(record => [`${record.id}\u0000${record.version}\u0000${record.purpose}`, record]));
     for (const [field, buttons] of optionButtons) {
-      if (field === 'color') continue;
+      if (field === 'color' || field === 'colors') continue;
       for (const button of buttons) {
         const visual = button.querySelector('.studio-editor-option-visual');
         if (retry) {
@@ -330,7 +328,7 @@ export function createEditor({
           || resolveAsset?.(reference));
         if (records.some((record, index) => !record
           || record.id !== references[index].id || record.version !== references[index].version || record.purpose !== references[index].purpose
-          || record.width !== template.canvas.width || record.height !== template.canvas.height || typeof record.path !== 'string')) {
+          || (template.schemaVersion !== 2 && (record.width !== template.canvas.width || record.height !== template.canvas.height)) || typeof record.path !== 'string')) {
           markOptionUnavailable(button, visual);
           continue;
         }
@@ -380,7 +378,7 @@ export function createEditor({
             context.imageSmoothingQuality = 'high';
             leases.forEach((lease, index) => {
               const record = records[index];
-              const matrix = templatePlacementMatrix(record, [template.canvas.width, template.canvas.height]);
+              const matrix = templatePlacementMatrix(record, [template.canvas.width, template.canvas.height], template.anchors);
               context.save();
               context.setTransform(
                 matrix.a * pixelScale,
@@ -399,8 +397,7 @@ export function createEditor({
             button.removeAttribute('aria-disabled');
             button.removeAttribute('data-option-unavailable');
             button.removeAttribute('data-unavailable-reason');
-            const detail = optionDetails.get(button);
-            button.setAttribute('aria-label', `${labels[language][button.dataset.field]}: ${optionLabel(detail?.option, language)}`);
+            syncButtons();
             if (!hasRetryableThumbnailFailure() && canExport()) {
               retryButton.hidden = true;
               retryButton.disabled = true;
@@ -496,9 +493,10 @@ export function createEditor({
           const visual = documentRef.createElement('span');
           visual.className = 'studio-editor-option-visual';
           visual.setAttribute('aria-hidden', 'true');
-          if (field === 'color') {
+          if (field === 'color' || field === 'colors') {
             visual.classList.add('studio-editor-color-swatch');
-            if (/^#[\da-f]{6}$/i.test(option.hex || '')) visual.style.setProperty('--option-color', option.hex);
+            const swatch = option.hex || option.swatches?.[0] || Object.values(option.zoneColors || {})[0];
+            if (/^#[\da-f]{6}$/i.test(swatch || '')) visual.style.setProperty('--option-color', swatch);
             else {
               button.disabled = true;
               button.setAttribute('aria-disabled', 'true');
@@ -528,7 +526,10 @@ export function createEditor({
           const label = documentRef.createElement('span');
           label.className = 'studio-editor-option-label';
           label.textContent = optionLabel(option, language);
-          button.append(visual, label);
+          const reason = documentRef.createElement('span');
+          reason.className = 'studio-editor-option-reason';
+          reason.hidden = true;
+          button.append(visual, label, reason);
           optionDetails.set(button, { option });
           button.addEventListener('click', () => {
             if (button.disabled) return;
@@ -554,6 +555,7 @@ export function createEditor({
       }
     }
     activateCategory(activeCategory);
+    syncButtons();
   }
 
   function requiredManifestRows(manifest) {
@@ -562,7 +564,7 @@ export function createEditor({
     }
     const required = new Map();
     for (const options of enumerateValidConfigurations(template)) {
-      for (const reference of getRequiredTemplateAssets(template, options)) required.set(reference.id, reference);
+      for (const reference of getRequiredTemplateAssets(template, options, { includeAllOptionThumbnails: true })) required.set(reference.id, reference);
     }
     const allRows = manifest.assets;
     for (const reference of required.values()) {
@@ -570,7 +572,7 @@ export function createEditor({
       if (!record || record.version !== reference.version || record.purpose !== reference.purpose) {
         throw Object.assign(new Error(`The template source manifest does not bind required layer ${reference.id}.`), { code: 'missing-template-layer', assetId: reference.id });
       }
-      if (record.width !== template.canvas.width || record.height !== template.canvas.height || record.mime !== 'image/png') {
+      if ((template.schemaVersion !== 2 && (record.width !== template.canvas.width || record.height !== template.canvas.height)) || record.mime !== 'image/png') {
         throw Object.assign(new Error(`Template layer metadata does not match the registered ${template.canvas.width}×${template.canvas.height} PNG canvas: ${reference.id}.`), { code: 'template-layer-canvas-mismatch', assetId: reference.id });
       }
     }
@@ -584,7 +586,6 @@ export function createEditor({
   async function ensureAssetManifest() {
     if (resolvedAssetRegistry) {
       loader.registerAssets?.(resolvedAssetRegistry);
-      populateOptionThumbnails(resolvedAssetRegistry);
       return resolvedAssetRegistry;
     }
     if (typeof fetchImpl !== 'function' || typeof loader.registerAssets !== 'function') {
@@ -600,13 +601,12 @@ export function createEditor({
         const contentType = (response.headers?.get?.('content-type') || '').split(';', 1)[0].trim().toLowerCase();
         if (contentType !== 'application/json' && !contentType.endsWith('+json')) throw Object.assign(new Error('Template source manifest did not return JSON.'), { code: 'template-manifest-mime-mismatch' });
         const manifest = await response.json();
-        if (manifest.canvas?.width !== template.canvas.width || manifest.canvas?.height !== template.canvas.height) {
+        if (template.schemaVersion !== 2 && (manifest.canvas?.width !== template.canvas.width || manifest.canvas?.height !== template.canvas.height)) {
           throw Object.assign(new Error('Template source manifest canvas does not match this editor.'), { code: 'template-manifest-canvas-mismatch' });
         }
         const rows = requiredManifestRows(manifest);
         loader.registerAssets(rows);
         resolvedAssetRegistry = rows;
-        populateOptionThumbnails(rows);
         return rows;
       })().catch(error => {
         manifestPromise = null;
@@ -683,6 +683,8 @@ export function createEditor({
       retryButton.hidden = !canRetry;
       retryButton.disabled = !canRetry;
       emitStatus(labels[language].ready, true);
+      // Current character layers take priority over optional control thumbnails.
+      populateOptionThumbnails(registryRows);
       return currentSnapshot();
     } catch (error) {
       if (destroyed || token !== activeToken || error?.name === 'AbortError') return null;

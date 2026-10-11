@@ -1,0 +1,69 @@
+# Same existing Artwork identity; transparent source repair candidate only.
+briefVersion: 1
+request:
+  summary: "为已存在的白兔 Artwork 制作透明背景 v2 原图候选；仅移除旧浅蓝灰摄影棚背景。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "animal-white-rabbit-v98-candidate"
+  seriesId: "animals"
+  identity: "original-rabbit-v98-candidate"
+  differenceFromExisting: "保持现有坐姿白兔的身份、角度、长立耳、棕眼、粉鼻、白毛、爪掌和圆尾；只将 RGB 摄影棚背景变为真实透明 alpha。"
+  invariants:
+    - "保留同一只完整白兔和现有姿势，不增添衣物、配件、角色或场景。"
+    - "保留耳尖、爪掌、尾部完整并置于画布内；原 v1 字节与记录不变。"
+    - "只生成待审透明源图，不登记、不接入图库、不宣称批准。"
+artwork:
+  proposedId: "animal-white-rabbit-v98-candidate"
+  proposedVersion: v2
+  name: {en: "White Rabbit", zh-CN: "白兔"}
+  description: {en: "A little white rabbit with upright pink-lined ears and a round tail.", zh-CN: "一只小白兔，长耳内侧透着粉色，身后有一团圆尾巴。"}
+  aliases: {en: ["White Bunny", "seated white rabbit"], zh-CN: ["白兔伙伴", "坐姿白兔"]}
+references:
+  - id: "animal-white-rabbit-v98-candidate v1 original"
+    path: "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png"
+    sha256: "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963"
+    role: "exact edit target and identity reference"
+    use: "Preserve the existing seated white rabbit, pink inner ears, brown eyes, pink nose, white fur, paws and round tail."
+    exclude: "Remove only the pale blue-gray studio background; do not add shadows, props, text, logos, or other subjects."
+    license: unknown
+creation:
+  prompt: "See exact extraction and alpha cleanup prompts in the linked record."
+  promptReference: "../prompts/animal-white-rabbit-v98-candidate-v2-prompts.md"
+  negativeConstraints:
+    - "Do not alter the identity, pose, facial features, ears, tail, or proportions."
+    - "No background, scene, floor, platform, shadow, text, logo, watermark, or checkerboard."
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-b31180f8-b1aa-45bb-9bd0-b9ad2fc9f649.png"
+  iterations:
+    - output: "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-1a516aad-a973-4cc1-aa98-dac645fbac25.png"
+      sha256: "eb4c8624847285fa2931653bb304793ad88ba88318a75a0622af7e668b1cbf5e"
+      decision: "Refined once to remove visible detached edge flecks while retaining attached fur detail."
+facts:
+  characterStyle: {state: known, evidence: "Soft 3D plush-style rabbit, matching the existing character."}
+  appearance: {state: known, evidence: "Seated white rabbit with two upright pink-lined ears, paws and a round tail."}
+  facialFeatures: {state: known, evidence: "Large brown eyes and a small pink nose/muzzle."}
+  colorMaterial: {state: known, evidence: "White fine fur with pink inner ears and nose."}
+  clothing: {state: none, evidence: "No clothing is present in the existing character or candidate."}
+  headAccessory: {state: none, evidence: "No head accessory is present."}
+  bodyAccessory: {state: none, evidence: "No body accessory is present."}
+  prop: {state: none, evidence: "No prop is present."}
+resources:
+  original: {path: "../generated/animal-white-rabbit-v98-candidate-v2.png", sha256: "e98a689faeebafc98fce9ed52d0686982be80e5836b7ec154102e1fc5006c794", mime: "image/png", bytes: 1234792, width: 1133, height: 1388, alphaCheck: "RGBA; all four corners alpha 0; body center alpha 253; reviewed over dark and warm-light composites."}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: "generated/animal-white-rabbit-v98-candidate-v2.json; exact source SHA-256 recorded above"
+  license: unknown
+  engineering: "PNG metadata and alpha sampled; catalog/export integration not run"
+  visualReview: "Reviewed on dark and warm-light backgrounds; user art approval pending"
+  artApproval: {status: pending, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

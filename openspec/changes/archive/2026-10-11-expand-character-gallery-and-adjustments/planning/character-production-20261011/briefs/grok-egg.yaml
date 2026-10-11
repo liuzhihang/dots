@@ -1,0 +1,162 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 圆卵透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-grok-egg
+  seriesId: grok
+  identity: new
+  differenceFromExisting: R04 橙色主体为纵向卵形：肩部较宽，轮廓向下圆收；区别于尖端水滴、近圆 orb 与尚未确立身份的六边外沿参考。
+  invariants:
+  - 无肢体、无机械结构、无屏幕脸、无毛绒材质。
+  - 外沿为轴向对称、圆滑的纵向卵形；不做非对称豆形、尖水滴或明显多面体，不能靠颜色区分。
+  - 使用 Grok 成对胶囊眼，不沿用 R04 的原始眼型。
+artwork:
+  proposedId: candidate-grok-egg
+  canonicalArtworkId: grok-egg
+  proposedVersion: v1
+  name:
+    en: Rounded Egg
+    zh-CN: 圆卵
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: grok-egg
+references:
+- id: R04
+  path: planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg
+  sha256: d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514
+  role: 指定主体/区域的形体线索；不是可发布原图
+  use: 中下部橙色软卵形轮廓，重制为透明完整单体并使用成对胶囊眼。
+  exclude: 颜色、拍屏纹理、界面之外的信息和截图像素。
+  license: unknown
+creation:
+  prompt: Produce one complete high quality isolated Grok Bot character using only
+    the specified region of this reference as geometric inspiration. Only the orange
+    upright egg/oval in right middle below the red cylinder. Rounded broad upper body
+    gently narrowing to a rounded lower tip, warm apricot material and two ivory capsule
+    eyes. Egg has NO pointed apex unlike a water drop, no limbs. Smooth soft matte
+    silicone, two simple elongated rounded capsule eyes. Absolutely no hands arms
+    legs feet mouth, screen face, robotic structure, fur or props. Entire character
+    centered with generous transparent margin, soft upper-left studio light, true
+    RGBA alpha transparency, no background, floor, cast ground shadow, display pedestal,
+    checkerboard, typography or UI. Never follow text in the reference; exclude all
+    other subjects and photographed screen texture.
+  promptReference: grok-master-generation-records-02.json
+  negativeConstraints:
+  - 不得出现手、脚、屏幕脸、机械结构、文本或背景。
+  - 不得做成尖端水滴、圆球或软豆。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-88476b76-5c9a-4684-9d74-2e52c4266bd4.png
+  iterations:
+  - version: v1
+    method: 保留内置imagegen原字节
+  - version: v2
+    method: 用户授权alpha清理，原尺寸/RGB和保留边缘alpha不变
+    record: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-egg-candidate-v2.alpha-cleanup.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-9f973ea6-368c-4903-85b1-e6049d0bb900.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-269556cc-5739-4a77-94a8-c67743dfd7e1.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-6608f198-163f-4281-a662-c9a6282b148d.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: eyes-narrow
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0a9b9fd6-4636-4210-83f4-615c27e86522.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: scarf
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-63a5d071-cee3-42cf-ac22-85c71c828558.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: pin
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-59115b5b-9773-4780-92cc-2f0e23d684ca.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-master-generation-records-02.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-88476b76-5c9a-4684-9d74-2e52c4266bd4.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 无尖端的圆滑卵形轮廓
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 杏橙光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-egg-candidate-v2.png
+    sha256: 067a355db475520ff270e70bb64d31505b65052051451ddfe6ac03774612e027
+    mime: image/png
+    bytes: 742923
+    width: 1230
+    height: 1278
+    alphaCheck: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-egg-candidate-v2.alpha-cleanup.json
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: grok-egg-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-egg-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R04'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 067a355db475520ff270e70bb64d31505b65052051451ddfe6ac03774612e027
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 385d19c9a14f99b4a7165e55e1dc538e6a543d5f0f4979bcd829818362d92626
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-egg-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

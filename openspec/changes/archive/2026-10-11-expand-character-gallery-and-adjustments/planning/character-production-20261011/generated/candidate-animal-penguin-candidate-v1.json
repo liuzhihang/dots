@@ -1,0 +1,42 @@
+{
+  "proposedArtworkId": "candidate-animal-penguin",
+  "version": "v1",
+  "status": "pending",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "referenceIds": ["R05", "R11"],
+  "referenceFiles": [
+    "../references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg",
+    "../references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg"
+  ],
+  "referenceConfidence": "low; no exact penguin artwork verified",
+  "promptFile": "../prompts/candidate-animal-penguin-prompts.md",
+  "promptSha256": "d80c7bebfd1f3f47bd08a32bdf080ebf0ebece56209df0cd6c51fff3435ab21c",
+  "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-dd11fc49-a627-4a9b-bfc3-bdde5f1c1cd8.png",
+  "workspaceOutput": "candidate-animal-penguin-candidate-v1.png",
+  "mime": "image/png",
+  "bytes": 1428818,
+  "width": 1230,
+  "height": 1278,
+  "sha256": "147f6b04c05c10cb1935992ee074bcb13827c43df06bdd02859f37c734bb9edd",
+  "alphaInspection": {
+    "format": "RGBA PNG, 8-bit, non-interlaced",
+    "hasAlpha": true,
+    "extrema": [0, 255],
+    "cornerValues": [0, 0, 0, 0],
+    "visibleBoundsAlphaAtLeast8": [96, 98, 1129, 1179],
+    "lowAlphaPixels1To7": 12188,
+    "note": "Small low-alpha values extend outside the visible character; inspect edge quality before acceptance."
+  },
+  "engineering": "not-run",
+  "visualReview": "pending human edge and silhouette review",
+  "artApproval": {
+    "status": "pending",
+    "record": null,
+    "exactAssetHash": null
+  },
+  "integration": "not-applied",
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

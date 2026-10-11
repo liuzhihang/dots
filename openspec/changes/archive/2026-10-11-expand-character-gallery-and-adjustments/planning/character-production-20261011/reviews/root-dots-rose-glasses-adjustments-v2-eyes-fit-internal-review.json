@@ -1,0 +1,154 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "sourceReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-rose-glasses-adjustments-v2-eyes-fit-internal-review.json",
+  "sourceReviewSha256": "8c6ddf07b27cc73a585412027e6c7ca3eff036384619b725cfa0b281f9563c8b",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-rose-glasses-adjustments-v2-eyes-fit-review.json",
+  "manifestSha256": "25b827ed0ee9e59bac15b8387139ed2bb16b2b1011cbbe869cfbb18a42b75803",
+  "templateId": "dots-rose-glasses-adjustments-v2-eyes-fit-candidate",
+  "artworkBinding": {
+    "artworkId": "dots-rose-glasses",
+    "artworkVersion": "v1"
+  },
+  "engineeringReport": ".artifacts/character-adjustments/dots-rose-glasses-adjustments-v2-eyes-fit-candidate/report.json",
+  "engineeringReportSha256": "24e0b2fde06aa958b7ba403e9793d90755dc70465d2613fb84f15e9271c71565",
+  "checkedRecipes": [
+    {
+      "id": "orb-rose-open-none-none",
+      "sha256": "45ba7a47494eb90a1424d9af2cf68821ecff0929309a1be003ccd16d2e44c1e2"
+    },
+    {
+      "id": "orb-rose-open-none-rose-round-glasses",
+      "sha256": "3f5f0a72abc73f13de5ae76270e9b0b03d4d8bd3ab2f68a46137b40887743b56"
+    },
+    {
+      "id": "orb-rose-open-knit-wrap-none",
+      "sha256": "a6be43e09e2677b3830317595bc62a62cb112f6a6a0462d0022fbda28cdc89d5"
+    },
+    {
+      "id": "orb-rose-open-knit-wrap-rose-round-glasses",
+      "sha256": "85e86d4ae70920c210057889d494aace6e887b3f62d49d52e57be80121bbbc26"
+    },
+    {
+      "id": "orb-rose-closed-none-none",
+      "sha256": "5ea3fba44cab7404ccbce2ae4a9ec059b9226b7df11150ae2450ceebfcecd23f"
+    },
+    {
+      "id": "orb-rose-closed-none-rose-round-glasses",
+      "sha256": "4fea2c97d57998f5aad93d150628b7136c002d62f719122ac701b3967b8bd131"
+    },
+    {
+      "id": "orb-rose-closed-knit-wrap-none",
+      "sha256": "666b16ef4f36b4fc3338706513030b6ac020905b1fd58054301c40c521f795a2"
+    },
+    {
+      "id": "orb-rose-closed-knit-wrap-rose-round-glasses",
+      "sha256": "dc46848920f368215248d5c5ee4d954787f84b2474b53fa8742b890f2cbf3b3c"
+    },
+    {
+      "id": "orb-blue-open-none-none",
+      "sha256": "64dc3ddde233a9a11192f346d5c37ff91629caa412388a1ce8c3b1d97dbaaeae"
+    },
+    {
+      "id": "orb-blue-open-none-rose-round-glasses",
+      "sha256": "3f2634fc2c50a6875126972d31040e6bec6fbb82da29040e3b17db9f6746fa75"
+    },
+    {
+      "id": "orb-blue-open-knit-wrap-none",
+      "sha256": "883e02ee6fa4dd6c6c3c92cbdb91c2c07397f1ff757e7d2f1405b27cc647a907"
+    },
+    {
+      "id": "orb-blue-open-knit-wrap-rose-round-glasses",
+      "sha256": "3bfdb8e6ffa72e276c95669680e7674f28cc1374fc13c37762b0e3d02ecda032"
+    },
+    {
+      "id": "orb-blue-closed-none-none",
+      "sha256": "03f6698e2e646fb147c4d01fc92991c986871b7a0d56fe59683c8339ee825746"
+    },
+    {
+      "id": "orb-blue-closed-none-rose-round-glasses",
+      "sha256": "cbdea9bff4e6619ec1c086f356c3a29b73ad5b3c1d2aa59969a3e03c19c36914"
+    },
+    {
+      "id": "orb-blue-closed-knit-wrap-none",
+      "sha256": "79108ee2f95d151eb7f5e9755421cb7e1c3ec5ffac530cb7a2223c54ab0052c4"
+    },
+    {
+      "id": "orb-blue-closed-knit-wrap-rose-round-glasses",
+      "sha256": "75a1ed929854b036f4090b8b471fb55916ee67eae26ccb46031deba1074488fa"
+    },
+    {
+      "id": "cloud-rose-open-none-none",
+      "sha256": "1711e248b1813f82c380db4759613955bc0f4cdfe43048fea6d72d3b291bed2f"
+    },
+    {
+      "id": "cloud-rose-open-none-rose-round-glasses",
+      "sha256": "58be5123207e3de67b888ee5016b3e7a3fa80ae4a229486e63b0960b4d40c8aa"
+    },
+    {
+      "id": "cloud-rose-open-knit-wrap-none",
+      "sha256": "d8735ec1c4ca5427f09546e26d7b32a479f7a65c46b606efd0cdff5629630c9b"
+    },
+    {
+      "id": "cloud-rose-open-knit-wrap-rose-round-glasses",
+      "sha256": "8bd5a4aabf40e2d86371054ddc4050a8aeb9f3f16ba1d2e331498f6c7e628acd"
+    },
+    {
+      "id": "cloud-rose-closed-none-none",
+      "sha256": "c2275e26e054af24c3f106c8121ce285f2baafd0fc0637129e3cbcc0cd0f737d"
+    },
+    {
+      "id": "cloud-rose-closed-none-rose-round-glasses",
+      "sha256": "b037cf16d13a238e28ef7e2143f10771f09507ca24a438c4325118ef931ec999"
+    },
+    {
+      "id": "cloud-rose-closed-knit-wrap-none",
+      "sha256": "49e1f01335c3a16e11ced669c5f919bb7e1c2e21dd22985e7f52d34afb393cb3"
+    },
+    {
+      "id": "cloud-rose-closed-knit-wrap-rose-round-glasses",
+      "sha256": "c02c9674a0f3afb610905631d9ba3a70da51d4a67afb1a2fb5ef05ad42ac7dcd"
+    },
+    {
+      "id": "cloud-blue-open-none-none",
+      "sha256": "86d44b5e080dc7642476407c02057a29c8179d90261a62747959245c37785734"
+    },
+    {
+      "id": "cloud-blue-open-none-rose-round-glasses",
+      "sha256": "f25220b5ea5ccf84bb8ac65c7d8fb32ae413bc9283794a89346fd379e8a6e72a"
+    },
+    {
+      "id": "cloud-blue-open-knit-wrap-none",
+      "sha256": "9006d2d11a703f2be633f08f8eabfaff4fa4101de03f5d05c14d666cc2fbfaf0"
+    },
+    {
+      "id": "cloud-blue-open-knit-wrap-rose-round-glasses",
+      "sha256": "d870a5f9cb2bed8efd9fe72759ed119ecc8fee3c52890331c1ff078d85184527"
+    },
+    {
+      "id": "cloud-blue-closed-none-none",
+      "sha256": "6596556f4a44c331c2ed17d75398d6e754490e59622dba81af63e41ee88d5ccf"
+    },
+    {
+      "id": "cloud-blue-closed-none-rose-round-glasses",
+      "sha256": "62154a04f810adde2fef9a34cce68d08511bdb5e11436607785b528cc97f9150"
+    },
+    {
+      "id": "cloud-blue-closed-knit-wrap-none",
+      "sha256": "1218f57b7b12a98b042d81e8775820104739f83341807e2d971737ea565e6d29"
+    },
+    {
+      "id": "cloud-blue-closed-knit-wrap-rose-round-glasses",
+      "sha256": "8df3126748d1ea9a7ecb22a038c4e11441423cb40f1810398faf44756df134d4"
+    }
+  ],
+  "visualChecks": [
+    "全部合法配方在深浅检查底逐项核对，查看眼型、材质、轮廓、衣物和配饰接触",
+    "Dots无手脚、眼睛与眼镜贴合、围衣沿角色轮廓贴合",
+    "配色与真实服装/配饰分离，全部结果保持alpha透明"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  }
+}

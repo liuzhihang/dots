@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-lime-frog-bow",
+  "artworkVersion": "v1",
+  "originalSha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+  "templateId": "dots-lime-frog-bow-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-frog-bow-review.json",
+  "manifestSha256": "abd1e5e6e7e29c812322d097cde669417b1224f195bc1ff3ab46ee709981af68",
+  "engineeringReport": ".artifacts/character-adjustments/dots-lime-frog-bow-adjustments-v1/report.json",
+  "engineeringReportSha256": "f9cf7b7668699520ef323440996c97afdd94e2c655044b8d61284854cc481136",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-bow",
+      "sha256": "122e32c3a90b6c989549f236e5b735d950b41a1ba8b1735152d30d987936de20"
+    },
+    {
+      "id": "soft-original-open-bow",
+      "sha256": "19c42ca4728ece8a170e9197ffa292a516c1838306f941419711e8379b4fa6a0"
+    },
+    {
+      "id": "classic-alternate-open-bow",
+      "sha256": "6bcc594b75fcd914fce8133b19b7b1fea564993899f32ebf3f40815d005e25fe"
+    },
+    {
+      "id": "classic-original-closed-bow",
+      "sha256": "b18db9770a9afc6896f57b08fa2f2d142622ab2b0e11d03c8e63db5e4447267b"
+    },
+    {
+      "id": "classic-original-open-none",
+      "sha256": "faa624c33eb934bdfc53d0f1000301c7ea93e52e94657681f1c6696825362ca3"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

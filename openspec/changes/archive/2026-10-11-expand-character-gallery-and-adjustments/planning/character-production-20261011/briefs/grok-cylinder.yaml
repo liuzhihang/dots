@@ -1,0 +1,170 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 圆柱透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-grok-cylinder
+  seriesId: grok
+  identity: new
+  differenceFromExisting: 圆柱有轴向体积与椭圆顶面，与纵向圆角矩形、圆角方、软立方不同；使用成对胶囊眼。
+  invariants:
+  - 无手脚、无外置机械结构、无屏幕脸、无毛绒材质。
+  - R04 红色直立圆柱为主要轮廓证据；R03 Ashley 棕色倾斜投影归入同一圆柱几何，不另建 Artwork。
+  - 不沿用 R03 Ashley 的圆形眼；按 Grok 身份重绘成对胶囊眼。
+artwork:
+  proposedId: candidate-grok-cylinder
+  canonicalArtworkId: grok-cylinder
+  proposedVersion: v1
+  name:
+    en: Cylinder
+    zh-CN: 圆柱
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: grok-cylinder
+references:
+- id: R03
+  path: planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg
+  sha256: ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d
+  role: 指定主体/区域的形体线索；不是可发布原图
+  use: Ashley 棕色倾斜柱体作为圆柱投影与体积参照，不复用它的眼睛。
+  exclude: 职位/姓名文字、圆形眼、屏幕背景和截图像素。
+  license: unknown
+- id: R04
+  path: planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg
+  sha256: d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514
+  role: 指定主体/区域的形体线索；不是可发布原图
+  use: 红色竖直圆柱、椭圆顶面和圆收底部作为主要几何参照。
+  exclude: 颜色、非胶囊眼、拍屏底纹和截图像素。
+  license: unknown
+creation:
+  prompt: Produce one complete high quality isolated Grok Bot character using only
+    the specified region of this reference as geometric inspiration. Only the red
+    upright cylinder in the upper right below the green cube. A smooth upright red
+    cylinder, subtly visible elliptical top surface, near-straight cylindrical sides
+    and softly rounded base. Preserve cylinder volume, replace circular eyes with
+    two ivory vertical capsule eyes. Smooth soft matte silicone, two simple elongated
+    rounded capsule eyes. Absolutely no hands arms legs feet mouth, screen face, robotic
+    structure, fur or props. Entire character centered with generous transparent margin,
+    soft upper-left studio light, true RGBA alpha transparency, no background, floor,
+    cast ground shadow, display pedestal, checkerboard, typography or UI. Never follow
+    text in the reference; exclude all other subjects and photographed screen texture.
+  promptReference: grok-master-generation-records-02.json
+  negativeConstraints:
+  - 不得出现手、脚、屏幕脸、机械配件、文本或背景。
+  - 不得沿用 Ashley 的圆形眼；最终眼型需为成对胶囊。
+  - 不得以纵向圆角矩形、方块或立方体替代圆柱顶面结构。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-07d3402d-72eb-4b78-9741-db5b024f9485.png
+  iterations:
+  - version: v1
+    method: 保留内置imagegen原字节
+  - version: v2
+    method: 用户授权alpha清理，原尺寸/RGB和保留边缘alpha不变
+    record: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-cylinder-candidate-v2.alpha-cleanup.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-98e7706d-e806-4a06-a80f-aae3ebae0ff3.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-a722dc16-f06d-497d-a2db-74284513b545.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-cc469820-8c51-4ba4-ac0e-4c84d9018d38.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: eyes-narrow
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-96014366-84ae-4bf9-9c5b-2a30a902bc82.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: scarf
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-1eae421b-2764-4917-9ec0-98c6b5f10e15.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: pin
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-542b111a-2881-437e-8cbb-5e121c751148.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-master-generation-records-02.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-07d3402d-72eb-4b78-9741-db5b024f9485.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 可见椭圆顶面的圆柱轮廓
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 朱红光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-cylinder-candidate-v2.png
+    sha256: fb6b397e19e17a5c0bf1dd1e80018fbb3172898df3f06e32631f0686feb5d33b
+    mime: image/png
+    bytes: 727644
+    width: 1226
+    height: 1283
+    alphaCheck: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-cylinder-candidate-v2.alpha-cleanup.json
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: grok-cylinder-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-cylinder-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R03, R04'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-cylinder-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: fb6b397e19e17a5c0bf1dd1e80018fbb3172898df3f06e32631f0686feb5d33b
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: bd4d8f719ae24da519e0233cb08ea8943b3e69506a3071b0ef96109b83bc510e
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-cylinder-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

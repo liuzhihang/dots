@@ -1,0 +1,56 @@
+{
+  "proposedArtworkId": "candidate-animal-panda",
+  "version": "v1",
+  "status": "pending",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "referenceIds": [
+    "R10",
+    "R11"
+  ],
+  "referenceFiles": [
+    "../references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg",
+    "../references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg"
+  ],
+  "promptFile": "../prompts/candidate-animal-panda-prompts.md",
+  "promptSha256": "e8578f04b545600883d47ff7dee636f1587ed4d92f0abcdbf6802fdb265e4561",
+  "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-942df9e7-dc59-4c73-ab20-865218c0517d.png",
+  "workspaceOutput": "candidate-animal-panda-candidate-v1.png",
+  "mime": "image/png",
+  "bytes": 1691743,
+  "width": 1230,
+  "height": 1278,
+  "sha256": "508218a27461287f7415cc75777e61c9700549cb3745c83b31626c6c5de2f1d6",
+  "alphaInspection": {
+    "format": "RGBA PNG, 8-bit, non-interlaced",
+    "hasAlpha": true,
+    "extrema": [
+      0,
+      254
+    ],
+    "cornerValues": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "visibleBoundsAlphaAtLeast8": [
+      145,
+      115,
+      1087,
+      1211
+    ],
+    "note": "Low alpha values 1-7 reach the canvas bounds; inspect the isolated edges before accepting."
+  },
+  "engineering": "not-run",
+  "visualReview": "pending human edge and silhouette review",
+  "artApproval": {
+    "status": "pending",
+    "record": null,
+    "exactAssetHash": null
+  },
+  "integration": "not-applied",
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

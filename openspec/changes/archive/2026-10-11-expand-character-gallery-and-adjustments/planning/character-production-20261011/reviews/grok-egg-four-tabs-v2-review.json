@@ -1,0 +1,215 @@
+{
+  "artworkId": "grok-egg",
+  "artworkVersion": "v1",
+  "originalSha256": "067a355db475520ff270e70bb64d31505b65052051451ddfe6ac03774612e027",
+  "templateId": "grok-egg-adjustments-v2",
+  "templateVersion": "v2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-egg-four-tabs-v2-review.json",
+  "manifestSha256": "385d19c9a14f99b4a7165e55e1dc538e6a543d5f0f4979bcd829818362d92626",
+  "engineeringReport": ".artifacts/character-adjustments/grok-egg-adjustments-v2/report.json",
+  "engineeringReportSha256": "53d921607127972c867fbf5d91358462763d2eb17bbf954290e1fa00c56e4892",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none",
+      "sha256": "1a89daccaa4331e34c07f4bf960d8ef3ebe1e18102f528baa3363a444e50157f"
+    },
+    {
+      "id": "classic-original-open-pin",
+      "sha256": "9fef71da1cdece1ba0fb87433745705314ff437a252ec9deb8f24330858771d7"
+    },
+    {
+      "id": "classic-original-relaxed-none",
+      "sha256": "dde296b347b5aab6a5e5b4c2d99f1b6372b7234bc921680dba953dd827bf377c"
+    },
+    {
+      "id": "classic-original-relaxed-pin",
+      "sha256": "314bddc9777706d3ec8b878c14e34d7a18a9de67f6d49d308266159823f18309"
+    },
+    {
+      "id": "classic-mint-open-none",
+      "sha256": "fd2df4ecc526fdf5f1bba82214a3c87c0733524e4ae2562551484b33dfdee4d2"
+    },
+    {
+      "id": "classic-mint-open-pin",
+      "sha256": "468d7acf5d5ef10953ccd98f1418ef3bf4367cbd6128a55fc64974d620076297"
+    },
+    {
+      "id": "classic-mint-relaxed-none",
+      "sha256": "b77ad398fccef536c69bf5ea3e7306fec14a9f8d1aad2164d8cb26e1cb46ba19"
+    },
+    {
+      "id": "classic-mint-relaxed-pin",
+      "sha256": "079e1c5242db0511f859740cf24d3d421527cc4709c9deebdeaf2ab63f117c29"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "555f63f5250a58bf76debd8751c16f1283df960e5fc191da08b2b0f8358460de"
+    },
+    {
+      "id": "soft-original-open-pin",
+      "sha256": "bc317c31ca472ac6bd92367ccd9ec21feebb539852c49925252dfdc449345738"
+    },
+    {
+      "id": "soft-original-relaxed-none",
+      "sha256": "cb0647c36b101528f0e61c0b293ec11e19e6bfc496fd5eba714dcaef0f0db331"
+    },
+    {
+      "id": "soft-original-relaxed-pin",
+      "sha256": "a876eabdbb37bb489988f72e50ce1c4653c29d32a87f0ccf7883b0f0155e5a9c"
+    },
+    {
+      "id": "soft-mint-open-none",
+      "sha256": "6fe4952ee5a859e31bb7670f22d12bd4041aaa2b73245825e923fbed022a90d9"
+    },
+    {
+      "id": "soft-mint-open-pin",
+      "sha256": "fb54abb73ffc157579e831974d2ba19e030572a49a8bc6fda09a5b288b392922"
+    },
+    {
+      "id": "soft-mint-relaxed-none",
+      "sha256": "1d6ce8944ac1c148abb0f6aa10492738318d3be76502aafd5beedda37fa811fc"
+    },
+    {
+      "id": "soft-mint-relaxed-pin",
+      "sha256": "c2dabd49a28f427d1a7070f20a39aeb14bd524e03b1ef639a5450ab93d462661"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "method": "新四类配方实际重渲染、导出与浏览器控件复验；所有 PNG 字节与此前已逐项视觉核对的无衣物配方完全一致。仅复用精确相同的像素证据，不沿用旧服装配方的评价。",
+    "previousReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-egg-review.json",
+    "previousReviewSha256": "e33e60e0e2b97109d73cf7fed443a3aa8369e372e8004bbc4467d29787d36ece",
+    "exactPixelCorrespondence": [
+      {
+        "recipeId": "classic-original-open-none",
+        "sha256": "1a89daccaa4331e34c07f4bf960d8ef3ebe1e18102f528baa3363a444e50157f",
+        "oldRecipeId": "classic-original-open-none-none",
+        "oldSha256": "1a89daccaa4331e34c07f4bf960d8ef3ebe1e18102f528baa3363a444e50157f",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-open-pin",
+        "sha256": "9fef71da1cdece1ba0fb87433745705314ff437a252ec9deb8f24330858771d7",
+        "oldRecipeId": "classic-original-open-none-pin",
+        "oldSha256": "9fef71da1cdece1ba0fb87433745705314ff437a252ec9deb8f24330858771d7",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-relaxed-none",
+        "sha256": "dde296b347b5aab6a5e5b4c2d99f1b6372b7234bc921680dba953dd827bf377c",
+        "oldRecipeId": "classic-original-relaxed-none-none",
+        "oldSha256": "dde296b347b5aab6a5e5b4c2d99f1b6372b7234bc921680dba953dd827bf377c",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-relaxed-pin",
+        "sha256": "314bddc9777706d3ec8b878c14e34d7a18a9de67f6d49d308266159823f18309",
+        "oldRecipeId": "classic-original-relaxed-none-pin",
+        "oldSha256": "314bddc9777706d3ec8b878c14e34d7a18a9de67f6d49d308266159823f18309",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-open-none",
+        "sha256": "fd2df4ecc526fdf5f1bba82214a3c87c0733524e4ae2562551484b33dfdee4d2",
+        "oldRecipeId": "classic-mint-open-none-none",
+        "oldSha256": "fd2df4ecc526fdf5f1bba82214a3c87c0733524e4ae2562551484b33dfdee4d2",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-open-pin",
+        "sha256": "468d7acf5d5ef10953ccd98f1418ef3bf4367cbd6128a55fc64974d620076297",
+        "oldRecipeId": "classic-mint-open-none-pin",
+        "oldSha256": "468d7acf5d5ef10953ccd98f1418ef3bf4367cbd6128a55fc64974d620076297",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-relaxed-none",
+        "sha256": "b77ad398fccef536c69bf5ea3e7306fec14a9f8d1aad2164d8cb26e1cb46ba19",
+        "oldRecipeId": "classic-mint-relaxed-none-none",
+        "oldSha256": "b77ad398fccef536c69bf5ea3e7306fec14a9f8d1aad2164d8cb26e1cb46ba19",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-mint-relaxed-pin",
+        "sha256": "079e1c5242db0511f859740cf24d3d421527cc4709c9deebdeaf2ab63f117c29",
+        "oldRecipeId": "classic-mint-relaxed-none-pin",
+        "oldSha256": "079e1c5242db0511f859740cf24d3d421527cc4709c9deebdeaf2ab63f117c29",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-open-none",
+        "sha256": "555f63f5250a58bf76debd8751c16f1283df960e5fc191da08b2b0f8358460de",
+        "oldRecipeId": "soft-original-open-none-none",
+        "oldSha256": "555f63f5250a58bf76debd8751c16f1283df960e5fc191da08b2b0f8358460de",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-open-pin",
+        "sha256": "bc317c31ca472ac6bd92367ccd9ec21feebb539852c49925252dfdc449345738",
+        "oldRecipeId": "soft-original-open-none-pin",
+        "oldSha256": "bc317c31ca472ac6bd92367ccd9ec21feebb539852c49925252dfdc449345738",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-relaxed-none",
+        "sha256": "cb0647c36b101528f0e61c0b293ec11e19e6bfc496fd5eba714dcaef0f0db331",
+        "oldRecipeId": "soft-original-relaxed-none-none",
+        "oldSha256": "cb0647c36b101528f0e61c0b293ec11e19e6bfc496fd5eba714dcaef0f0db331",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-relaxed-pin",
+        "sha256": "a876eabdbb37bb489988f72e50ce1c4653c29d32a87f0ccf7883b0f0155e5a9c",
+        "oldRecipeId": "soft-original-relaxed-none-pin",
+        "oldSha256": "a876eabdbb37bb489988f72e50ce1c4653c29d32a87f0ccf7883b0f0155e5a9c",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-open-none",
+        "sha256": "6fe4952ee5a859e31bb7670f22d12bd4041aaa2b73245825e923fbed022a90d9",
+        "oldRecipeId": "soft-mint-open-none-none",
+        "oldSha256": "6fe4952ee5a859e31bb7670f22d12bd4041aaa2b73245825e923fbed022a90d9",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-open-pin",
+        "sha256": "fb54abb73ffc157579e831974d2ba19e030572a49a8bc6fda09a5b288b392922",
+        "oldRecipeId": "soft-mint-open-none-pin",
+        "oldSha256": "fb54abb73ffc157579e831974d2ba19e030572a49a8bc6fda09a5b288b392922",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-relaxed-none",
+        "sha256": "1d6ce8944ac1c148abb0f6aa10492738318d3be76502aafd5beedda37fa811fc",
+        "oldRecipeId": "soft-mint-relaxed-none-none",
+        "oldSha256": "1d6ce8944ac1c148abb0f6aa10492738318d3be76502aafd5beedda37fa811fc",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-mint-relaxed-pin",
+        "sha256": "c2dabd49a28f427d1a7070f20a39aeb14bd524e03b1ef639a5450ab93d462661",
+        "oldRecipeId": "soft-mint-relaxed-none-pin",
+        "oldSha256": "c2dabd49a28f427d1a7070f20a39aeb14bd524e03b1ef639a5450ab93d462661",
+        "identical": true
+      }
+    ],
+    "surfaces": [
+      "174px 深灰/浅灰检查底",
+      "4 个模拟视口",
+      "蓝云四标签 IAB 实际选择、Prompt 和透明下载"
+    ],
+    "checks": [
+      "家族身份和眼型保持",
+      "无手脚、无服装层、无隐藏服装选项",
+      "配色、五官与配饰独立，接触及层序保留",
+      "全部配方可从默认逐字段抵达"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

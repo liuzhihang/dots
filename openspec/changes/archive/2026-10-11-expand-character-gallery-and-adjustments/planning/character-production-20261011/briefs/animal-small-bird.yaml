@@ -1,0 +1,166 @@
+# 本记录是制作候选，不是已登记Artwork/Template或批准。
+briefVersion: 1
+request:
+  summary: "动物 小鸟；以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "candidate-animal-small-bird"
+  seriesId: "animals"
+  identity: new
+  differenceFromExisting: "以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+  invariants:
+    - "同企鹅分开记录；低清不能辨认的细节保持unknown，原创补足须明示。"
+artwork:
+  proposedId: "candidate-animal-small-bird"
+  canonicalArtworkId: "animal-small-bird"
+  proposedVersion: v2
+  name: {en: "Little Songbird", zh-CN: "小蓝鸟"}
+  description: {en: "A turquoise-blue plush songbird with a butter-yellow belly, small orange beak, feather tuft, wings and feet.", zh-CN: "一只青蓝色绒面小鸟，配奶油黄色腹部、橙色小喙、羽冠、翅膀和双脚。"}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R05"
+    path: "planning/character-production-20261011/references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"
+    sha256: "8cbc97096d2b3d30ce52955497837fe2bc4e104ab106b7adaa1dd5a176aa8ffc"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+    exclude: "企鹅的黑白体块特征不得借用；截图和背景。"
+    license: unknown
+  - id: "R10"
+    path: "planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg"
+    sha256: "7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+    exclude: "企鹅的黑白体块特征不得借用；截图和背景。"
+    license: unknown
+  - id: "R11"
+    path: "planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg"
+    sha256: "e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+    exclude: "企鹅的黑白体块特征不得借用；截图和背景。"
+    license: unknown
+  - id: "R15"
+    path: "planning/character-production-20261011/references/originals/R15-codex-clipboard-175d9e66-38e4-40c8-bcc5-e8470a81d2fd.jpg"
+    sha256: "a4a621120fcbcbee5cd5f17c2bb32a5526f5129f7e0124d3f01126a903d673c2"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "以小型鸟形轮廓创作单体，具体物种按可见喙/翅/体型再确认。"
+    exclude: "企鹅的黑白体块特征不得借用；截图和背景。"
+    license: unknown
+creation:
+  prompt: "Create one original turquoise and butter-yellow plush songbird; the references do not verify an exact species. The exact master prompt is retained in the prompt log."
+  promptReference: "../prompts/candidate-animal-small-bird-prompts.md"
+  negativeConstraints:
+    - "不得借用企鹅的黑白体块；不复用截图像素、UI、Logo、文字或场景背景。"
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-46ca15ea-14dd-4980-8cb1-c65f2cc1d79e.png"
+  originalRawCandidate: "../generated/candidate-animal-small-bird-candidate-v1.png"
+  originalRawSha256: "68fc06fc97b5c131480e32c771a53b93034612c332c3d0c1f541a0de330133ed"
+  originalAlphaCleanCandidate: "../generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.png"
+  originalAlphaCleanSha256: "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791"
+  masterPromptRecord: verbatim-retained-in-prompts-file
+  iterations:
+    - kind: appearance-turned-perched
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4149c53d-abb8-49ce-a9b1-1beb7660abf3.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-appearance-perched-candidate-v1.png"
+      rawSha256: "a315c3d4a133a78db7dc3cf0140d57a624b3ff08323009e3927436765dadb4db"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-appearance-perched-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "4f8a153848ba08bee07acf62258768841c6e65f6026902bf2e82fc51e4896339"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-appearance-perched-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Same candidate bird in a turned/perched three-quarter stance with the tail visible."
+      status: candidate-pending
+    - kind: alternate-teal-cream-palette
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-96d5ffd3-784e-4b75-a3ae-1be7b29dba4d.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-color-teal-cream-candidate-v1.png"
+      rawSha256: "600a066664a974d0602703ea732b0d5991dd0249ebacba351a40a384da49d3eb"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-color-teal-cream-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "ef53d1a1714fce2c984d463d4a6c0dbd0aa2247b27670cf025e4d54d27f307d8"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-color-teal-cream-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Softer teal-blue plumage and cream-yellow belly; beak and feet remain orange."
+      status: candidate-pending
+    - kind: closed-eye-smile
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-35745e2c-29ea-4b30-ba60-80eea23072be.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-face-closed-smile-candidate-v1.png"
+      rawSha256: "027d84bc871ee01ca367e1e620ab1a7ad2ad5615888da61f84291fe9e0f17406"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-face-closed-smile-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "912f1e229f640e2f6f931bef9021ca46e4d9c3891752adec5e0eb5db4f0cbe16"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-face-closed-smile-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Replace the open eyes with two dark embroidered smiling arcs; preserve beak and blush."
+      status: candidate-pending
+    - kind: coral-flower-crown-clip
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-ada6d72e-b3d0-47d2-a29a-915de4edd875.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v1.png"
+      rawSha256: "aa91e48817096091fd893b532d05934fd3945311291fc5225033bc0d1ed4aeb5"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "0ae18a0aebf667592509dcba650ca15ababf206a5360fefc05a0df99cfbbbaf9"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-accessory-coral-flower-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Isolated small coral plush flower clip sized to sit at the upper crown, clear of face and feather tuft."
+      status: candidate-pending
+    - kind: fullbody-butter-bib-open-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-2c9d438a-a948-4deb-9feb-40c155ae3291.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v1.png"
+      rawSha256: "97c6898d605e0c8a5fb85171e87d57d75f7509a0fdf3bf929727c2161126c849"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "667b31d7eacaec66c5decbe3c3e6780dbe6622249b7614aa07965f169399ea85"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-clothing-butter-bib-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-retained-in-prompts-file
+      promptSummary: "Full-body bib fitted around the torso with wrapped shoulder straps; wings overlap the bib naturally and tail/feet stay clear."
+      status: candidate-pending
+    - kind: fullbody-butter-bib-closed-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4f243237-c858-4901-b677-14f1f13edbdc.png"
+      rawCandidate: "../generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v1.png"
+      rawSha256: "4bfdd72ee158d2d0c5ef127a35afcc3f48ceb444437e2c247eea5cbadb5bc290"
+      alphaCleanCandidate: "../generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v2-alpha-clean.png"
+      alphaCleanSha256: "309bd7e88ec0fcc966697f5abd5d4b593fb3d023090188182fe33157d69faf72"
+      alphaCleanupRecord: "../generated/candidate-animal-small-bird-face-closed-clothing-bib-fullbody-candidate-v2-alpha-clean.alpha-cleanup.json"
+      promptRecord: verbatim-retained-in-prompts-file
+      promptSummary: "Closed-eye smile matched to the full-body bib variant; preserve shoulder wrap and clear wings."
+      status: candidate-pending
+facts:
+  characterStyle: {state: known, description: "单只青蓝与奶油黄色的软绒3D小鸟候选。", evidence: "原始候选、character template及reviews/animal-small-bird-review.json"}
+  appearance: {state: known, description: "紧凑圆润站姿小鸟，短喙、贴身双翅、尾羽与双脚；另有转身三分之四姿态候选。", evidence: "原始候选、appearance recipes及完整10配方联系图"}
+  facialFeatures: {state: known, description: "短橙喙、棕色睁眼；可选两条刺绣闭眼弧线。", evidence: "face recipes及完整10配方联系图"}
+  colorMaterial: {state: known, description: "青蓝羽背与翅膀、奶油黄腹部、橙喙橙脚，柔软短绒质感；另有柔青奶油调色候选。", evidence: "原始透明候选、颜色recipe及浅深底检查"}
+  clothing: {state: none, description: "原始候选无衣物；奶油黄针织围兜仅作为待批准完整穿戴调整。", evidence: "原始角色与完整10配方浅深底目视检查"}
+  headAccessory: {state: none, description: "原始候选无头饰；珊瑚色花夹仅为待批准调整。", evidence: "配饰recipe及完整10配方联系图"}
+  bodyAccessory: {state: none, evidence: "当前Artwork无独立身体配件。"}
+  prop: {state: none, evidence: "当前Artwork无独立持物。"}
+resources:
+  original:
+    path: "../generated/candidate-animal-small-bird-candidate-v1-v2-alpha-clean.png"
+    sha256: "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791"
+    mime: "image/png"
+    bytes: 1188034
+    width: 1374
+    height: 1145
+    alphaCheck: "RGBA with transparency; isolated alpha cleanup record is preserved beside the raw original."
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+applicableAdjustmentCategories: [appearance, colors, face, clothing, accessories]
+finiteRecipes:
+  count: 10
+  manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-small-bird-adjustments-review.json"
+  report: ".artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/report.json"
+  combinationPolicy: "只采用清单中的完整合法配方；无素材组合禁用并说明冲突，不静默改动其他选项。"
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-small-bird-adjustments-review.json"
+evidence:
+  sourceRecord: "references/manifest.json; source records: R05, R10, R11, R15"
+  license: unknown
+  engineering: passed-candidate
+  engineeringReportSha256: "2399f77ad9a4a16b5457b6d237f9e9929d4254c33dc02aeeca16f1d4a1490290"
+  visualReview: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-small-bird-review.json"
+  artApproval: {status: pending, record: null, exactAssetHash: "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791"}
+  integration: not-applied
+  manifestSha256: "fd823db93d63087b18845a9e2c8a1b443a0286d89455e5d7829733b1646d358d"
+  deviceCheck: not-run
+  deployment: not-authorized
+materialPolicy: "原始imagegen输出不可覆盖；仅使用已记录的保守alpha清理副本。完整Artwork、图层与配方仍需单独美术批准。"

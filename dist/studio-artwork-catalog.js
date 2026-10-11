@@ -1,7 +1,7 @@
-import { ARTWORK_CONTENT, CHARACTER_IDENTITIES, LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, PREVIEW_PROMPT_ROWS, SERIES } from './studio-content.js?v=99';
-import { DISPLAY_ASSETS, DETAIL_PREVIEW_ASSETS, THUMBNAIL_ASSETS } from './studio-display-assets.js?v=99';
-export { SERIES, CHARACTER_IDENTITIES };
-export { DETAIL_PREVIEW_ASSETS, THUMBNAIL_ASSETS };
+import { LEGACY_ARTWORK_TEXT, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS, PREVIEW_PROMPT_ROWS, SERIES } from './studio-content.js?v=100';
+import { DISPLAY_ASSETS as RAW_DISPLAY_ASSETS } from './studio-display-assets.js?v=100';
+import { V100_ADDITIONAL_CONTENT, V100_ADDITIONAL_IDENTITIES, V100_APPROVAL_ID, V100_APPROVAL_RECORD, V100_APPROVAL_RECORD_SHA256, V100_ARTWORK_ROWS, V100_CHARACTER_IDENTITIES, V100_CONTENT_BY_ID, V100_ORIGINAL_ASSETS, V100_PROMPT_ROWS, V100_REVIEW_PACKAGE, V100_REVIEW_PACKAGE_SHA256, V100_SERIES_NORMALIZATION } from './studio-content-v100.js?v=100';
+export { SERIES };
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -9,7 +9,7 @@ const deepFreeze = value => {
   return Object.freeze(value);
 };
 
-export const CATALOG_REVISION = 'artwork-catalog-20261010-v99';
+export const CATALOG_REVISION = 'artwork-catalog-20261011-v100';
 
 const SOURCE_SNAPSHOT = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/source-snapshot.json';
 const ART_APPROVAL_RECORD = 'openspec/changes/archive/2026-10-06-rebuild-character-system/acceptance/current-20261005-v83/gallery-workbench-user-art-approval.json';
@@ -27,6 +27,23 @@ const RELEASED_CANDIDATE_ARTWORKS = deepFreeze({
   'dots-lime-frog-bow': { version: 'v1', sha256: 'bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f' },
   'dots-pink-heart-shades': { version: 'v1', sha256: 'df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384' }
 });
+
+export const CHARACTER_IDENTITIES = V100_CHARACTER_IDENTITIES;
+
+const runtimeSourcePathFor = asset => {
+  if (typeof asset?.path === 'string' && asset.path.startsWith('./assets/')) return `dist/${asset.path.slice(2)}`;
+  const sourcePath = String(asset?.sourcePath || '');
+  const distIndex = sourcePath.lastIndexOf('/dist/');
+  if (distIndex >= 0) return sourcePath.slice(distIndex + 1);
+  if (sourcePath.startsWith('dist/')) return sourcePath;
+  return sourcePath || asset?.path || null;
+};
+
+for (const [approvalSeriesId, mapping] of Object.entries(V100_SERIES_NORMALIZATION)) {
+  if (mapping.approvalSeriesId !== approvalSeriesId || mapping.runtimeSeriesId !== 'meta-muse') throw new Error(`Invalid approved series normalization for ${approvalSeriesId}`);
+  const museRows = V100_ARTWORK_ROWS.filter(row => row.approvalSeriesId === approvalSeriesId);
+  if (!museRows.length || museRows.some(row => row.seriesId !== mapping.runtimeSeriesId)) throw new Error(`Muse approval series must normalize to runtime series ${mapping.runtimeSeriesId}`);
+}
 
 const assetRows = [
   ['asset:candidate-dots-20261005:original', 'v2', './assets/characters/dots-blue-plush-orb-headphones-candidate-v2.png', 1720054, '2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455', 1254, 1254, [742591, 478, 829447], 'candidate-dots-20261005', 'artwork'],
@@ -116,6 +133,7 @@ const releaseArtworkAssetRows = PREVIEW_ORIGINAL_ASSETS.filter(asset => RELEASED
   if (asset.version !== approved.version || asset.sha256 !== approved.sha256) throw new Error(`Release approval does not match original Artwork bytes: ${asset.artworkId}`);
   return {
     ...asset,
+    sourcePath: runtimeSourcePathFor(asset),
     publicationStatus: 'published',
     resourceStatus: 'verified-source',
     sourceSnapshotRef: `${RELEASE_APPROVAL_RECORD}#scope/artworks/${asset.artworkId}/original`,
@@ -133,12 +151,75 @@ const releaseAssetById = new Map(releaseArtworkAssetRows.map(asset => [asset.id,
 const pendingPreviewContent = Object.fromEntries(Object.entries(PREVIEW_ARTWORK_CONTENT).filter(([id]) => !RELEASED_CANDIDATE_ARTWORKS[id]));
 const pendingPreviewOriginalAssetRows = PREVIEW_ORIGINAL_ASSETS.filter(asset => !RELEASED_CANDIDATE_ARTWORKS[asset.artworkId]).map(asset => ({ ...asset, ownerArtworkId: asset.artworkId }));
 const previewOriginalAssetRows = pendingPreviewOriginalAssetRows;
-const allSourceAssetsById = new Map([...artworkAssets, ...releaseArtworkAssetRows, ...previewOriginalAssetRows].map(asset => [asset.id, asset]));
+const priorOriginalAssetByArtworkId = new Map([...artworkAssets, ...releaseArtworkAssetRows].map(asset => [asset.ownerArtworkId, asset]));
+const v100OriginalAssetByArtworkId = new Map(V100_ORIGINAL_ASSETS.map(asset => [asset.id.replace(/^asset:/, '').replace(/:original$/, ''), asset]));
+const v100ArtworkById = new Map(V100_ARTWORK_ROWS.map(row => [row.id, row]));
+if (V100_ARTWORK_ROWS.length !== 44 || new Set(V100_ARTWORK_ROWS.map(row => row.id)).size !== 44) throw new Error('The frozen v100 approval must bind 44 unique Artwork identities.');
+if (V100_ADDITIONAL_CONTENT && Object.keys(V100_ADDITIONAL_CONTENT).length !== 20) throw new Error('The v100 integration must add exactly 20 new Artwork content rows.');
+const makeV100Approval = (row, asset) => ({
+  status: 'approved', record: V100_APPROVAL_RECORD, sourceSnapshot: V100_APPROVAL_RECORD,
+  sourceId: V100_APPROVAL_ID, approvalId: V100_APPROVAL_ID, localRevision: 100,
+  scope: `scope.artworks[${row.approvalScopeIndex}].original`, artworkId: row.id,
+  assetSha256: asset.sha256, byteSize: asset.byteSize, version: row.version,
+  templateId: row.template.id, templateVersion: row.template.version,
+  reviewManifest: row.template.reviewManifest, reviewManifestSha256: row.template.reviewManifestSha256,
+  recipeSetSha256: row.template.recipeSetSha256,
+  approvalSeriesId: row.approvalSeriesId,
+  note: 'Approved local v100 Artwork source; this approval records material integration and does not claim a Site deployment.'
+});
+const currentArtworkAssetRows = V100_ARTWORK_ROWS.map(row => {
+  const prior = priorOriginalAssetByArtworkId.get(row.id);
+  const source = row.change === 'existing-original-retained' ? prior : v100OriginalAssetByArtworkId.get(row.id);
+  if (!source || source.version !== row.version || source.sha256 !== row.original.sha256 || source.byteSize !== row.original.byteSize) {
+    throw new Error(`v100 Artwork original does not match its frozen approval: ${row.id}`);
+  }
+  if (source.path !== row.original.path) throw new Error(`v100 Artwork path does not match its frozen approval: ${row.id}`);
+  const original = {
+    ...source,
+    id: row.originalAssetId,
+    artworkId: row.id,
+    ownerArtworkId: row.id,
+    version: row.version,
+    path: row.original.path,
+    sourcePath: runtimeSourcePathFor({ path: row.original.path, sourcePath: row.original.sourcePath || source.sourcePath }),
+    publicationStatus: 'published',
+    mime: 'image/png',
+    resourceKind: 'transparent-character-still',
+    resourceStatus: 'verified-source',
+    runtimeVerification: 'not-browser-checked',
+    sourceSnapshotRef: `${V100_APPROVAL_RECORD}#scope.artworks[${row.approvalScopeIndex}].original`,
+    sourceSnapshotMatch: true,
+    artApproval: makeV100Approval(row, source),
+    previousArtApproval: prior?.artApproval || null,
+    approvalSeriesId: row.approvalSeriesId,
+    templateBinding: row.template,
+    approvalPackage: { path: V100_REVIEW_PACKAGE, sha256: V100_REVIEW_PACKAGE_SHA256 }
+  };
+  return original;
+});
+const currentArtworkAssetById = new Map(currentArtworkAssetRows.map(asset => [asset.id, asset]));
+const currentArtworkAssetByArtworkId = new Map(currentArtworkAssetRows.map(asset => [asset.ownerArtworkId, asset]));
+const historicalReplacementAssetRows = ['animal-white-rabbit-v98-candidate', 'robot-ivory-capsule-face-v98-candidate'].map(artworkId => {
+  const prior = releaseAssetById.get(`asset:${artworkId}:original`);
+  if (!prior) throw new Error(`Missing retained v99 source for transparent replacement ${artworkId}`);
+  return {
+    ...prior,
+    id: `asset:${artworkId}:original:v1-historical`,
+    publicationStatus: 'historical-only',
+    resourceKind: 'opaque-character-still',
+    sourceSnapshotMatch: false,
+    ownerArtworkId: artworkId,
+    historicalOnly: true,
+    historyNote: 'Preserved original v1 bytes; superseded by the approved transparent v2 Artwork and not used by current Artwork or display references.'
+  };
+});
+const historicalReplacementAssetByArtworkId = new Map(historicalReplacementAssetRows.map(asset => [asset.ownerArtworkId, asset]));
 const legacyPosterAssets = POSTER_ASSETS.map(poster => {
-  const sourceAsset = originalAssetByArtworkId.get(poster.artworkId);
+  const sourceAsset = currentArtworkAssetByArtworkId.get(poster.artworkId) || originalAssetByArtworkId.get(poster.artworkId);
   if (!sourceAsset) throw new Error(`Poster ${poster.id} has no registered original source`);
   return {
     ...poster,
+    sourcePath: runtimeSourcePathFor(poster),
     publicationStatus: 'published-derivative',
     resourceStatus: 'verified-local-derivative',
     runtimeVerification: 'not-browser-checked',
@@ -149,15 +230,21 @@ const legacyPosterAssets = POSTER_ASSETS.map(poster => {
     ownerArtworkId: poster.artworkId
   };
 });
-const displayAssetRows = DISPLAY_ASSETS.map(displayAsset => {
-  const sourceAsset = allSourceAssetsById.get(displayAsset.originalAssetId);
-  if (!sourceAsset || sourceAsset.sha256 !== displayAsset.sourceAssetSha256 || sourceAsset.ownerArtworkId !== displayAsset.artworkId) {
+const displayAssetRows = RAW_DISPLAY_ASSETS.map(displayAsset => {
+  const activeSource = currentArtworkAssetByArtworkId.get(displayAsset.artworkId);
+  const historicalSource = historicalReplacementAssetByArtworkId.get(displayAsset.artworkId);
+  const sourceAsset = activeSource?.sha256 === displayAsset.sourceAssetSha256 ? activeSource
+    : historicalSource?.sha256 === displayAsset.sourceAssetSha256 ? historicalSource : null;
+  if (!sourceAsset || sourceAsset.ownerArtworkId !== displayAsset.artworkId) {
     throw new Error(`Display derivative ${displayAsset.id} has no exact registered source`);
   }
   const previewOnly = displayAsset.publicationStatus === 'preview-only';
+  const historicalOnly = sourceAsset.publicationStatus === 'historical-only';
   return {
     ...displayAsset,
-    publicationStatus: previewOnly ? 'preview-only' : 'published-derivative',
+    sourcePath: runtimeSourcePathFor(displayAsset),
+    originalAssetId: sourceAsset.id,
+    publicationStatus: historicalOnly ? 'historical-only' : previewOnly ? 'preview-only' : 'published-derivative',
     resourceStatus: 'verified-local-derivative',
     runtimeVerification: 'not-browser-checked',
     sourceRef: `derived from ${sourceAsset.id} sha256:${sourceAsset.sha256}; ${displayAsset.transformation}`,
@@ -169,7 +256,7 @@ const displayAssetRows = DISPLAY_ASSETS.map(displayAsset => {
       hasAlpha: sourceAsset.alpha?.hasAlpha === true,
       hasTransparency: sourceAsset.alpha?.hasTransparency === true
     },
-    sourceSnapshotMatch: !previewOnly,
+    sourceSnapshotMatch: !previewOnly && !historicalOnly,
     ...(previewOnly ? { artApproval: {
       status: 'pending', record: null, sourceSnapshot: null, sourceId: null,
       scope: 'local-preview-only', artworkId: displayAsset.artworkId, assetSha256: displayAsset.sha256,
@@ -178,8 +265,12 @@ const displayAssetRows = DISPLAY_ASSETS.map(displayAsset => {
   };
 });
 const approvedDisplayAssetRows = displayAssetRows.filter(asset => asset.publicationStatus === 'published-derivative');
+const historicalDisplayAssetRows = displayAssetRows.filter(asset => asset.publicationStatus === 'historical-only');
 const previewDisplayAssetRows = displayAssetRows.filter(asset => asset.publicationStatus === 'preview-only');
-export const ASSETS = deepFreeze([...artworkAssets, ...releaseArtworkAssetRows, ...legacyPosterAssets, ...approvedDisplayAssetRows]);
+export const DISPLAY_ASSETS = deepFreeze(displayAssetRows);
+export const THUMBNAIL_ASSETS = deepFreeze(displayAssetRows.filter(asset => asset.purpose === 'poster'));
+export const DETAIL_PREVIEW_ASSETS = deepFreeze(displayAssetRows.filter(asset => asset.purpose === 'detail512' || asset.purpose === 'detail1024'));
+export const ASSETS = deepFreeze([...currentArtworkAssetRows, ...historicalReplacementAssetRows, ...legacyPosterAssets, ...approvedDisplayAssetRows, ...historicalDisplayAssetRows]);
 export const PREVIEW_ASSETS = deepFreeze([...previewOriginalAssetRows, ...previewDisplayAssetRows].map(asset => ({
   ...asset,
   publicationStatus: 'preview-only',
@@ -220,7 +311,8 @@ const promptRows = [
 
 const approvedCandidatePromptRows = PREVIEW_PROMPT_ROWS.filter(([artworkId]) => RELEASED_CANDIDATE_ARTWORKS[artworkId]);
 const pendingCandidatePromptRows = PREVIEW_PROMPT_ROWS.filter(([artworkId]) => !RELEASED_CANDIDATE_ARTWORKS[artworkId]);
-export const PROMPTS = deepFreeze([...promptRows, ...approvedCandidatePromptRows].flatMap(([artworkId, zh, en]) => [
+const currentV99PromptRows = approvedCandidatePromptRows.filter(([artworkId]) => !['animal-white-rabbit-v98-candidate', 'robot-ivory-capsule-face-v98-candidate'].includes(artworkId));
+export const PROMPTS = deepFreeze([...promptRows, ...currentV99PromptRows, ...V100_PROMPT_ROWS].flatMap(([artworkId, zh, en]) => [
   { id: `prompt:${artworkId}:zh-image`, artworkId, language: 'zh', target: 'image', text: zh, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' },
   { id: `prompt:${artworkId}:en-image`, artworkId, language: 'en', target: 'image', text: en, source: 'maintainer-authored-from-verified-artwork-facts', revision: '1' }
 ]));
@@ -318,18 +410,13 @@ const categoryFacts = {
 };
 for (const [artworkId, facts] of Object.entries(categoryFacts)) visualFacts[artworkId].push(...facts);
 
-const historicalApprovalIds = new Set([
-  'candidate-dots-20261005', 'candidate-grok-20261005', 'candidate-meta-muse-20261005', 'candidate-humans-20261005', 'candidate-animals-20261005',
-  'dots-rose-glasses', 'dots-lilac-bucket', 'grok-green-cloud', 'grok-teal-square', 'muse-rose-flowers', 'muse-sage-reading',
-  'human-bun-yellow', 'human-blond-glasses', 'animal-white-cat', 'animal-gray-husky'
-]);
-const approvalIds = new Set([...historicalApprovalIds, ...Object.keys(RELEASED_CANDIDATE_ARTWORKS)]);
+const approvalIds = new Set(V100_ARTWORK_ROWS.map(row => row.id));
 
 const thumbnailAssetByArtworkId = new Map(THUMBNAIL_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').map(asset => [asset.artworkId, asset]));
 const legacyPosterAssetByArtworkId = new Map(legacyPosterAssets.map(asset => [asset.artworkId, asset]));
 const detailAssetByKey = new Map(DETAIL_PREVIEW_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').map(asset => [`${asset.artworkId}:${asset.purpose}`, asset]));
 const characterById = new Map(CHARACTER_IDENTITIES.map(character => [character.id, character]));
-const artworkAsset = new Map([...artworkAssets, ...releaseArtworkAssetRows].map(asset => [asset.ownerArtworkId, asset]));
+const artworkAsset = currentArtworkAssetByArtworkId;
 
 const CORE_FACT_DIMENSIONS = deepFreeze({
   characterStyle: ['style'],
@@ -353,8 +440,10 @@ function coreFactsFor(features) {
 }
 
 export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
-  const content = ARTWORK_CONTENT[id] || PREVIEW_ARTWORK_CONTENT[id];
+  const content = V100_CONTENT_BY_ID[id];
   if (!content) throw new Error(`Missing localized static content for ${id}`);
+  const approvalRow = v100ArtworkById.get(id);
+  if (!approvalRow || content.seriesId !== approvalRow.seriesId) throw new Error(`v100 Artwork content does not match its approved series: ${id}`);
   const legacyText = LEGACY_ARTWORK_TEXT[id];
   const title = content.titleByLanguage['zh-CN'];
   const description = legacyText?.description || content.descriptionByLanguage['zh-CN'];
@@ -364,12 +453,12 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
   const poster512 = legacyPosterAssetByArtworkId.get(id);
   const detail512 = detailAssetByKey.get(`${id}:detail512`);
   const detail1024 = detailAssetByKey.get(`${id}:detail1024`);
-  if (!asset || !poster || (!RELEASED_CANDIDATE_ARTWORKS[id] && !poster512) || !detail512 || !detail1024 || !character) throw new Error(`Artwork ${id} is missing registered identity or display resources`);
+  if (!asset || !poster || !detail512 || !detail1024 || !character) throw new Error(`Artwork ${id} is missing registered identity or display resources`);
   const facts = visualFacts[id] || content.facts.map(item => ({
     id: item.id,
     label: item.labelByLanguage['zh-CN'],
     labelByLanguage: item.labelByLanguage,
-    state: 'known'
+    state: item.state || 'known'
   }));
   const groupedFacts = new Map();
   for (const item of facts) {
@@ -389,24 +478,17 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
     const label = group.facts.map(item => item.label).join(' · ');
     return [dimension, { id: ids[0], ids, labelsById, labelsByLanguage, label, value: label, state }];
   }));
-  const isReleaseApproval = Boolean(RELEASED_CANDIDATE_ARTWORKS[id]);
   return {
     id,
     title,
     description,
-    source: isReleaseApproval ? {
-      id: content.sourceId,
+    source: {
+      id: content.sourceId || asset.id,
       kind: 'generated-original-artwork',
-      registrationRef: content.sourcePath,
+      registrationRef: asset.sourcePath || asset.path,
       promptRef: content.sourcePromptRef || null,
-      sourceSnapshot: RELEASE_APPROVAL_RECORD,
-      sourceId: RELEASE_APPROVAL_ID
-    } : {
-      id: 'imagegen-20261005',
-      kind: 'generated-original-artwork',
-      registrationRef: 'historical-runtime/dist/studio-creation-assets.js:16-17',
-      sourceSnapshot: SOURCE_SNAPSHOT,
-      sourceId: V83_SOURCE_ID
+      sourceSnapshot: V100_APPROVAL_RECORD,
+      sourceId: V100_APPROVAL_ID
     },
     status: 'published',
     publicationStatus: 'published',
@@ -415,11 +497,15 @@ export const ARTWORKS = deepFreeze([...approvalIds].map(id => {
     tagIds: facts.map(item => item.id),
     featureIds: facts.map(item => item.id),
     features,
-    featureReview: { status: 'verified-visible-facts', method: isReleaseApproval ? 'user-approved current v99 source/hash and visible facts' : 'current PNG visually inspected against registered source/hash' },
+    featureReview: { status: 'verified-visible-facts', method: 'frozen v100 approval package, approved originals, and bilingual default facts' },
     titleByLanguage: content.titleByLanguage,
     descriptionByLanguage: content.descriptionByLanguage,
     aliases: content.aliases,
     seriesId: content.seriesId,
+    approvalSeriesId: approvalRow.approvalSeriesId,
+    artworkChange: approvalRow.change,
+    templateBinding: approvalRow.template,
+    approvalPackage: { path: V100_REVIEW_PACKAGE, sha256: V100_REVIEW_PACKAGE_SHA256 },
     ...(content.seriesLabelByLanguage ? { seriesLabelByLanguage: content.seriesLabelByLanguage } : {}),
     detailFactIds: content.detailFactIds,
     coreFacts: coreFactsFor(features),
@@ -700,15 +786,26 @@ export function createSnapshot(id, context = {}) {
 }
 
 export const CATALOG_INVENTORY = deepFreeze({
+  catalogRevision: CATALOG_REVISION,
   approvedArtworkCount: ARTWORKS.length,
+  approvedArtworkIdCount: new Set(ARTWORKS.map(artwork => artwork.id)).size,
+  originalAssetCount: ASSETS.filter(asset => ['transparent-character-still', 'opaque-character-still'].includes(asset.resourceKind) && asset.publicationStatus === 'published').length,
   posterAssetCount: THUMBNAIL_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').length,
   legacyPoster512AssetCount: POSTER_ASSETS.length,
   detailPreviewAssetCount: DETAIL_PREVIEW_ASSETS.filter(asset => asset.publicationStatus === 'published-derivative').length,
+  historicalOriginalAssetCount: historicalReplacementAssetRows.length,
+  historicalDisplayAssetCount: historicalDisplayAssetRows.length,
   previewArtworkCount: PREVIEW_ARTWORKS.length,
   previewDerivativeAssetCount: DISPLAY_DERIVATIVES.filter(asset => asset.publicationStatus === 'preview-only').length,
   coreFactCategoryCount: Object.keys(CORE_FACT_DIMENSIONS).length,
-  approvalRecord: ART_APPROVAL_RECORD,
-  sourceSnapshot: SOURCE_SNAPSHOT,
-  sourceId: V83_SOURCE_ID,
-  queriedAt: '2026-10-07T02:05:02+08:00'
+  approvalRecord: V100_APPROVAL_RECORD,
+  approvalRecordSha256: V100_APPROVAL_RECORD_SHA256,
+  approvalId: V100_APPROVAL_ID,
+  approvalPackage: V100_REVIEW_PACKAGE,
+  approvalPackageSha256: V100_REVIEW_PACKAGE_SHA256,
+  retainedHistoricalApprovalRecord: ART_APPROVAL_RECORD,
+  retainedHistoricalSourceSnapshot: SOURCE_SNAPSHOT,
+  retainedHistoricalSourceId: V83_SOURCE_ID,
+  approvalScope: { artworks: V100_ARTWORK_ROWS.length, templates: V100_ARTWORK_ROWS.length, recipes: V100_ARTWORK_ROWS.reduce((sum, row) => sum + row.template.recipeCount, 0) },
+  queriedAt: '2026-10-11T00:00:00+08:00'
 });

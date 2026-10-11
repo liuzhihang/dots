@@ -1,0 +1,73 @@
+{
+  "artworkId": "candidate-animal-monkey",
+  "artworkVersion": "v2",
+  "originalSha256": "1d7fa9e559773bfbe7628d99c926ccda8a9e59dc9a8a3912097c4ebe67a5595a",
+  "templateId": "candidate-animal-monkey-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-monkey-adjustments-review.json",
+  "manifestSha256": "614e2fe6e413be87300e3444e5261e8ced97afa756bf4070c237f5db090ba3b2",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-monkey-adjustments-v1/report.json",
+  "engineeringReportSha256": "034a4c866e8bd561e6694825f0a19f57574c877864df7bd9ad1e055bc83d36ea",
+  "legalRecipes": [
+    {
+      "id": "seated-chestnut-open-none-none",
+      "sha256": "bdb19cf9a60d5ec931b6656f638674c05844407a4919f5b9218d82484b354427"
+    },
+    {
+      "id": "seated-chestnut-open-none-blue-bow-clip",
+      "sha256": "38a7422578479483a0591d8d2acd67da518359a0d25127817a8576f3b1f599fb"
+    },
+    {
+      "id": "seated-chestnut-open-knit-vest-none",
+      "sha256": "5efa88dcaa090e23ccbec966f2967ca9085bb50cf08f2ea3753b5785bdc69afd"
+    },
+    {
+      "id": "seated-chestnut-open-knit-vest-blue-bow-clip",
+      "sha256": "b4237296f677b7a25cb6728d1ff510f8910f779e5ab1cef55182cff1e8ecca4c"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-none-none",
+      "sha256": "0d4a302077eacd9dcf3a2615ec989c9db14f1057ac7bc06186952339097c7911"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-none-blue-bow-clip",
+      "sha256": "aec41c83ca50781146813d47832c1c3137067c6b1d8f74b662ad25c61270f08f"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-knit-vest-none",
+      "sha256": "fd56fc5962f22d5bbce66ebc228ed5b87b102c27dfa2ff275843af54fff2ffdf"
+    },
+    {
+      "id": "seated-chestnut-closed-smile-knit-vest-blue-bow-clip",
+      "sha256": "fce1268d3e2ead80c338e09ccf022541615da43ccb426f362198af5d36e26c46"
+    },
+    {
+      "id": "standing-chestnut-open-none-none",
+      "sha256": "93c49de8df0f583178675bd9dbb0bdae72efb72b7eb0c4f48747f7d7478250df"
+    },
+    {
+      "id": "seated-golden-open-none-none",
+      "sha256": "0a526b6760be9aed274c869fdf764810d609ae543f5443d85cd1135bbc5a92fc"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      ".artifacts/character-adjustments/candidate-animal-monkey-adjustments-v1/contact-01.jpg"
+    ],
+    "checks": [
+      "10条有限配方工程导出通过；10项合成contact sheet在常规画廊尺寸、浅灰与深灰底核对。",
+      "闭眼为一张完整角色版本，未使用旧的浮起眼片；短小蓝蝴蝶结贴在观察者左耳外缘。",
+      "穿背心分支保留手臂在衣物前层，尾部和四肢保持同一角色身份。",
+      "候选 Artwork/Template 仍pending；工程与局部视觉通过不等于用户美术批准."
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

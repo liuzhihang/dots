@@ -23,3 +23,7 @@
 - [Artwork 与资格](openspec/specs/artwork-catalog/spec.md)、[筛选标签](openspec/specs/catalog-tags/spec.md) 与 [角色系列身份](openspec/specs/character-families/spec.md)
 - [模板编辑边界](openspec/specs/bounded-character-editing/spec.md) 与 [视觉验收](openspec/specs/character-visual-acceptance/spec.md)
 - 制作/接入流程见 [角色新增规范](design/character-authoring/README.md)；当前站点回执从 [精选发布记录](design/releases/20261011-site47-v99/README.md) 进入。
+
+## 全角色调整接入
+
+本轮接入沿用上述主视觉。角色素材与有限组合以 [精确批准记录](design/acceptance/20261011-character-adjustments-v1/approval.json) 和 [当前 change](openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/design.md) 为准：角色 PNG 保留真实透明；Dots / Grok Bot 无肢体、不提供服装；其余家族按真实模板提供服装。详情统一使用“角色调整”，所有选项驱动同一预览、Prompt 和透明导出。当前文件与验证入口见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)，不改变 Site 47 的发布状态。

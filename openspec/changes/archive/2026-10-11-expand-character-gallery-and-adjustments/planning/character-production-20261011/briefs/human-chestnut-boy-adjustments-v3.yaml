@@ -1,0 +1,753 @@
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。 的有界角色调整 Template v3 候选；为精确 Artwork 增加注册的持物准备姿势与完整持物分支，原图库 Artwork 保持不变。",
+    "scope": "existing-artwork-adjustment-template-candidate",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "candidate-humans-20261005",
+    "seriesId": "humans",
+    "identity": "existing gallery Artwork candidate-humans-20261005@v1",
+    "differenceFromExisting": "Adds a pending v3 bounded-adjustment Template to exact existing gallery Artwork candidate-humans-20261005@v1; registered pose and held-silver laptop branches are preview-only, and the original gallery file remains unchanged.",
+    "invariants": [
+      "单个原创 Q 版人物。保持同一人物、面部身份、肤色、年龄感、身体比例和手部数量。原始姿势、手部位置、发型整理、衣料配色、表情、衣着和配饰，只有在所选注册选项明确说明时才允许改变。完整人物保留在单张透明 PNG 中；不得增加其他人物、文字或场景。",
+      "默认仍输出完整透明单体；只有 Template 明确注册的准备姿势和持物配方可以改变相应手臂/手部位置或加入指定物件，其他字段与角色身份保持不变。"
+    ]
+  },
+  "artwork": {
+    "proposedId": "candidate-humans-20261005",
+    "canonicalArtworkId": "candidate-humans-20261005",
+    "proposedVersion": "v1",
+    "name": {
+      "en": "Chestnut-Haired Person",
+      "zh-CN": "栗发青绿人物"
+    },
+    "description": {
+      "en": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together.",
+      "zh-CN": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。"
+    },
+    "aliases": {
+      "en": [],
+      "zh-CN": []
+    },
+    "sourceStatus": "current-source",
+    "publicationStatus": "existing-gallery-artwork"
+  },
+  "references": [
+    {
+      "id": "candidate-humans-20261005@v1",
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "role": "exact existing Artwork identity and appearance reference",
+      "use": "Preserve the same character identity, face, skin, age impression, body proportions, clothing and unselected details; exact registered options define permitted pose and prop changes.",
+      "exclude": "Do not replace or overwrite the source Artwork; no UI, background, text, additional characters or unregistered props.",
+      "license": "unknown"
+    },
+    {
+      "id": "human-chestnut-boy-adjustments-v3:ready-pose-v1",
+      "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-ready-standing-v1.png",
+      "sha256": "0df6eadb474bd7c5e68376bdb87311bc25d830417ce5c47c7958cb6a28ccf5dd",
+      "role": "exact generated intermediate pose reference used by the held-prop branch",
+      "use": "Preserve this registered pose when adding the specified handheld object; keep hand contact and occlusion natural.",
+      "exclude": "This is a same-character full-body reference, not a separate gallery Artwork; do not inherit a different identity or add a scene.",
+      "license": "unknown"
+    }
+  ],
+  "creation": {
+    "prompt": "Use the v3 Template semantic options and linked provenance. The historical ImageGen request text was not persisted, so no verbatim generation prompt is reconstructed.",
+    "promptReference": "../prompts/human-hold-prop-v3-provenance.md",
+    "negativeConstraints": [
+      "Preserve the bound Artwork identity and all unselected registered details; only an explicitly selected v3 pose or held-prop branch can change the corresponding arms or hand placement.",
+      "Output one complete transparent character PNG with no background, UI, text, watermark, extra characters or unregistered objects.",
+      "Use only exact finite recipes registered by the pending Template; preserve real hand-object contact, overlap and occlusion, and reject conflicting selections."
+    ],
+    "tool": "built-in image_gen.imagegen for the recorded complete-character branch assets; local browser renderer for finite recipes",
+    "originalOutputPath": null,
+    "iterations": [
+      {
+        "field": "appearance",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-neat-side-swept-crop.png",
+        "sha256": "95f4b702f5322c9864c988db58d9b63412214bc2de39fcca6bcd15b284446059",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "colors",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-periwinkle-sweater.png",
+        "sha256": "93bd3ef3848715814f5479316eb461cd00feae4318738cc6f98e8483e4b2228b",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "face",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-closed-eyes.png",
+        "sha256": "8425076ef81901290192df70ced916df7e936b788b558a30afd3ebc2a38df4be",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "clothing",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-navy-vest.png",
+        "sha256": "a1295dc3f6af529c63faaa7e5f610d8ce45ea300f46f66f75f9e3181cca40053",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "accessories",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-mustard-beret.png",
+        "sha256": "9a3b06b29c8fb27cf295a9fd170e7b334fdd67f0dbebf23a38fd46d8a34734fa",
+        "decision": "Whole-character transparent branch bound to one selectable option; exact historical ImageGen output ID/path is indexed in the linked provenance record."
+      },
+      {
+        "field": "appearance",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-ready-standing-clean-v2.png",
+        "sha256": "5636db4d33e6f88d10acc1244ae525d7f7ba81a8f2e33abb22ed8618e5d25f46",
+        "decision": "Registered intermediate pose: standing with forearms forward, open palms up and fingers curved to support a laptop; no object in this intermediate option; the clean-v2 candidate is an alpha-only derivative of the preserved ImageGen v1 output; see linked provenance. Exact submitted prompt text was not persisted.",
+        "rawOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-5902f69e-54fc-4093-88b1-e3895f4fcb1b.png",
+        "rawOutputId": "5902f69e-54fc-4093-88b1-e3895f4fcb1b",
+        "rawOutputSha256": "0df6eadb474bd7c5e68376bdb87311bc25d830417ce5c47c7958cb6a28ccf5dd",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-ready-standing-clean-v2.alpha-cleanup.json"
+      },
+      {
+        "field": "accessories",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-held-clean-v2.png",
+        "sha256": "7b54e32efebeb938fd410a28283108aa7432067cbae68b839e0a858dff2e191a",
+        "decision": "Registered full-character held-silver laptop branch: both palms support the lower corners of an open silver laptop base, fingers naturally contact and wrap the edges with clear hand-object occlusion; the clean-v2 candidate is an alpha-only derivative of the preserved ImageGen v1 output; see linked provenance. Exact submitted prompt text was not persisted.",
+        "rawOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-a59763ac-115f-43d4-b58c-0a87212ff786.png",
+        "rawOutputId": "a59763ac-115f-43d4-b58c-0a87212ff786",
+        "rawOutputSha256": "5d93a3a3368609e4652d958367afa2710f0f4119f2eac41ebc38d85360bad1f6",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-held-clean-v2.alpha-cleanup.json"
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Existing transparent chibi character artwork, visually checked with the bound source and preview branches."
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "The exact Artwork starts standing with hands together; v3 adds a registered upright ready-to-hold laptop pose and a separate laptop-held full-character branch. Only the selected recipe changes arm/hand placement."
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "Preserve the source identity and facial placement; expression options are bound in the Template."
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "Use only registered color variant semantics; never infer unregistered recoloring from enum IDs or palette values."
+    },
+    "clothing": {
+      "state": "present",
+      "evidence": "See selected clothing option and exact source image; options are template-bound."
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "Only the registered accessory options may add or change head-worn details."
+    },
+    "bodyAccessory": {
+      "state": "unknown",
+      "evidence": "No separate unregistered body-worn accessory is implied by the held-prop branch."
+    },
+    "prop": {
+      "state": "present",
+      "evidence": "The v3 Template registers only the exact silver laptop held branch and its compatible empty ready pose; see the options and finite recipes bound to this Artwork."
+    }
+  },
+  "resources": {
+    "original": {
+      "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+      "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521",
+      "mime": "image/png",
+      "bytes": 1151483,
+      "width": 1254,
+      "height": 1254,
+      "alphaCheck": "RGBA; alpha range 0..255; all four canvas corners are fully transparent; decoded source sampled."
+    },
+    "thumbnail": null,
+    "displayPreview": null
+  },
+  "promptText": {
+    "en": "An original chibi person with layered chestnut hair, a teal knit top, ivory shorts and light shoes, with both hands resting together.",
+    "zh-CN": "原创栗发 Q 版人物，青绿色针织上衣、米白短裤和浅色运动鞋，双手自然交握。"
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": {
+      "manifestPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/chestnut-boy-adjustments-review-v3.json",
+      "manifestSha256": "e3bc22df4e4fa166858583af13e421b1b9e4a8d91cde7454b4a6a9f744c7f087",
+      "templateId": "human-chestnut-boy-adjustments-v3",
+      "templateVersion": "v3",
+      "schemaVersion": 2,
+      "status": "pending; preview-only",
+      "engineeringStatus": "passed",
+      "artApproval": "pending",
+      "canonicalFields": [
+        {
+          "field": "appearance",
+          "values": [
+            {
+              "id": "layered-chestnut",
+              "labelByLanguage": {
+                "en": "Original hairstyle",
+                "zh-CN": "原有发型"
+              },
+              "semanticByLanguage": {
+                "en": "the original hairstyle and hair color; preserve the face, body scale, pose and outfit",
+                "zh-CN": "保留原有发型和发色，脸、体型比例、姿势与衣着不变"
+              }
+            },
+            {
+              "id": "neat-side-swept-crop",
+              "labelByLanguage": {
+                "en": "Neat side-swept crop",
+                "zh-CN": "整齐侧梳短发"
+              },
+              "semanticByLanguage": {
+                "en": "the same person with a neat short side-swept crop with a clearly open forehead wedge; preserve chestnut hair color, face, expression, knit top, clasped hands and standing pose",
+                "zh-CN": "同一人物，整齐的短款侧梳发型，额前留出明显侧向分开的额头区域；保留栗色发色、脸、表情、针织上衣、交握双手与站姿"
+              }
+            },
+            {
+              "id": "laptop-ready-standing",
+              "labelByLanguage": {
+                "en": "Standing, ready to hold laptop",
+                "zh-CN": "站姿，准备托住笔电"
+              },
+              "semanticByLanguage": {
+                "en": "the same person standing upright with the same lower-body pose, chestnut hair, face, teal knit top, ivory shorts and light shoes; move both forearms forward and apart at mid-torso, with relaxed open palms facing upward and fingers naturally curved to support a laptop; hands are empty in this option",
+                "zh-CN": "同一人物保持直立站姿、下半身姿势、栗色头发、面容、青绿针织上衣、米白短裤和浅色鞋不变；仅将双前臂调整到躯干前方并自然分开，双掌放松朝上、手指微弯以便托住笔电；此选项双手保持空置"
+              }
+            }
+          ]
+        },
+        {
+          "field": "colors",
+          "values": [
+            {
+              "id": "teal",
+              "labelByLanguage": {
+                "en": "Teal knit",
+                "zh-CN": "青绿色针织"
+              },
+              "semanticByLanguage": {
+                "en": "the original teal knit top color; preserve skin, hair and all other garment zones",
+                "zh-CN": "保留原有青绿色针织上衣配色；肤色、头发和其他衣物区域不变"
+              }
+            },
+            {
+              "id": "periwinkle",
+              "labelByLanguage": {
+                "en": "Periwinkle knit",
+                "zh-CN": "薰衣草蓝针织"
+              },
+              "semanticByLanguage": {
+                "en": "periwinkle knit top; preserve original skin, chestnut hair, shorts and shoes",
+                "zh-CN": "薰衣草蓝针织上衣；保留原肤色、栗色头发、短裤和鞋子"
+              }
+            }
+          ]
+        },
+        {
+          "field": "face",
+          "values": [
+            {
+              "id": "open",
+              "labelByLanguage": {
+                "en": "Open-eye smile",
+                "zh-CN": "睁眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "the original open eyes and gentle smile",
+                "zh-CN": "保留原有睁眼与柔和微笑"
+              }
+            },
+            {
+              "id": "closed",
+              "labelByLanguage": {
+                "en": "Closed-eye smile",
+                "zh-CN": "闭眼微笑"
+              },
+              "semanticByLanguage": {
+                "en": "two matching gentle closed eyes; preserve the original smile, face shape, hair, outfit and clasped hands",
+                "zh-CN": "两只对称柔和的闭合眼睛；保留原有微笑、脸型、发型、衣着和交握双手"
+              }
+            }
+          ]
+        },
+        {
+          "field": "clothing",
+          "values": [
+            {
+              "id": "knit-top",
+              "labelByLanguage": {
+                "en": "Original outfit",
+                "zh-CN": "原有衣着"
+              },
+              "semanticByLanguage": {
+                "en": "the original outfit with its fit and natural hand occlusion",
+                "zh-CN": "保留原有衣着、合身关系与手部自然遮挡"
+              }
+            },
+            {
+              "id": "navy-vest",
+              "labelByLanguage": {
+                "en": "Navy vest",
+                "zh-CN": "藏青背心"
+              },
+              "semanticByLanguage": {
+                "en": "a fitted navy vest layered over the original knit top, following the torso contour; preserve clasped-hand occlusion and pose",
+                "zh-CN": "在原针织上衣外穿合体藏青背心，沿躯干贴合；保留交握双手的遮挡关系与姿势"
+              }
+            }
+          ]
+        },
+        {
+          "field": "accessories",
+          "values": [
+            {
+              "id": "none",
+              "labelByLanguage": {
+                "en": "Original accessories",
+                "zh-CN": "原有配饰"
+              },
+              "semanticByLanguage": {
+                "en": "no added accessories",
+                "zh-CN": "不增加配饰"
+              }
+            },
+            {
+              "id": "mustard-beret",
+              "labelByLanguage": {
+                "en": "Mustard beret",
+                "zh-CN": "芥末黄贝雷帽"
+              },
+              "semanticByLanguage": {
+                "en": "one a fitted mustard-yellow wool beret following the hair and head perspective without covering the eyes",
+                "zh-CN": "贴合头顶并顺应发型和透视的芥末黄色羊毛贝雷帽，不遮眼睛"
+              }
+            },
+            {
+              "id": "laptop-held",
+              "labelByLanguage": {
+                "en": "Holding a laptop",
+                "zh-CN": "手持笔电"
+              },
+              "semanticByLanguage": {
+                "en": "a compact open silver laptop held at mid-torso; both palms visibly support the lower corners of its base, fingers contact and naturally wrap the edges, with clear hand-object occlusion and no floating parts",
+                "zh-CN": "一台在躯干中部打开的紧凑银色笔电；双掌清楚托住底座下方两角，手指与边缘接触并自然环抱，手与物体有明确遮挡关系，笔电不悬浮"
+              }
+            }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "chestnut-boy-default",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-appearance",
+          "selections": {
+            "appearance": "neat-side-swept-crop",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-colors",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "periwinkle",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-face",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "closed",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-clothing",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "navy-vest",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-accessories",
+          "selections": {
+            "appearance": "layered-chestnut",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "mustard-beret"
+          }
+        },
+        {
+          "id": "chestnut-boy-ready-to-hold",
+          "selections": {
+            "appearance": "laptop-ready-standing",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "chestnut-boy-holding-prop",
+          "selections": {
+            "appearance": "laptop-ready-standing",
+            "colors": "teal",
+            "face": "open",
+            "clothing": "knit-top",
+            "accessories": "laptop-held"
+          }
+        }
+      ],
+      "conflicts": [
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "colors": "periwinkle"
+          },
+          "code": "appearance-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "face": "closed"
+          },
+          "code": "appearance-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "clothing": "navy-vest"
+          },
+          "code": "appearance-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "appearance": "neat-side-swept-crop",
+            "accessories": "mustard-beret"
+          },
+          "code": "appearance-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "face": "closed"
+          },
+          "code": "colors-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "clothing": "navy-vest"
+          },
+          "code": "colors-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "colors": "periwinkle",
+            "accessories": "mustard-beret"
+          },
+          "code": "colors-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "clothing": "navy-vest"
+          },
+          "code": "face-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "face": "closed",
+            "accessories": "mustard-beret"
+          },
+          "code": "face-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "clothing": "navy-vest",
+            "accessories": "mustard-beret"
+          },
+          "code": "clothing-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "These options are separate complete-character artwork branches. Return to the original choices before selecting a different edit category.",
+            "zh-CN": "这些选项分别对应完整角色图分支。更换调整类别前，请先恢复原有选择。"
+          }
+        },
+        {
+          "when": {
+            "laptop-ready-standing": "laptop-ready-standing",
+            "colors": "periwinkle"
+          },
+          "code": "ready-pose-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-ready-standing": "laptop-ready-standing",
+            "face": "closed"
+          },
+          "code": "ready-pose-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-ready-standing": "laptop-ready-standing",
+            "clothing": "navy-vest"
+          },
+          "code": "ready-pose-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-ready-standing": "laptop-ready-standing",
+            "accessories": "mustard-beret"
+          },
+          "code": "ready-pose-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "appearance": "layered-chestnut"
+          },
+          "code": "held-prop-appearance-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "appearance": "neat-side-swept-crop"
+          },
+          "code": "held-prop-appearance-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "colors": "periwinkle"
+          },
+          "code": "held-prop-colors-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "face": "closed"
+          },
+          "code": "held-prop-face-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "clothing": "navy-vest"
+          },
+          "code": "held-prop-clothing-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        },
+        {
+          "when": {
+            "laptop-held": "laptop-held",
+            "accessories": "mustard-beret"
+          },
+          "code": "held-prop-accessories-whole-character-branch-conflict",
+          "messageByLanguage": {
+            "en": "This complete-character branch is compatible only with the registered ready-to-hold pose and its matching prop. Return to the default choices before changing another field.",
+            "zh-CN": "此完整角色分支只兼容对应的“准备托持”姿势与配套道具。更改其他字段前，请恢复默认选项。"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:base",
+          "field": "base",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+          "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:appearance",
+          "field": "appearance",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-neat-side-swept-crop.png",
+          "sha256": "95f4b702f5322c9864c988db58d9b63412214bc2de39fcca6bcd15b284446059"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:colors",
+          "field": "colors",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-periwinkle-sweater.png",
+          "sha256": "93bd3ef3848715814f5479316eb461cd00feae4318738cc6f98e8483e4b2228b"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:face",
+          "field": "face",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-closed-eyes.png",
+          "sha256": "8425076ef81901290192df70ced916df7e936b788b558a30afd3ebc2a38df4be"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:clothing",
+          "field": "clothing",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-navy-vest.png",
+          "sha256": "a1295dc3f6af529c63faaa7e5f610d8ce45ea300f46f66f75f9e3181cca40053"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:accessories",
+          "field": "accessories",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v1/full-character-branches-v2/chestnut-boy-mustard-beret.png",
+          "sha256": "9a3b06b29c8fb27cf295a9fd170e7b334fdd67f0dbebf23a38fd46d8a34734fa"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:ready-pose",
+          "field": "ready-pose",
+          "version": "v2",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-ready-standing-clean-v2.png",
+          "sha256": "5636db4d33e6f88d10acc1244ae525d7f7ba81a8f2e33abb22ed8618e5d25f46"
+        },
+        {
+          "assetId": "template:human-chestnut-boy-adjustments-v3:held-prop",
+          "field": "held-prop",
+          "version": "v2",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/human-adjustments-v3/chestnut-boy-laptop-held-clean-v2.png",
+          "sha256": "7b54e32efebeb938fd410a28283108aa7432067cbae68b839e0a858dff2e191a"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sourceRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/prompts/human-hold-prop-v3-provenance.md; Template manifest is authoritative for every selected option and asset.",
+    "provenance": {
+      "promptReference": "../prompts/human-hold-prop-v3-provenance.md",
+      "historicalPromptText": "not-persisted; not reconstructed",
+      "sourceArtwork": {
+        "path": "dist/assets/characters/humans-chestnut-chibi-teal-knit-candidate-v1.png",
+        "sha256": "56423f860f47bbad212875aeecdda40e6c86382b6d15a61b5c1a2ffd723fc521"
+      },
+      "alphaCleanup": "Authorized alpha-only clean-v2 derivation; preserve both v1 original and sidecar records."
+    },
+    "license": "unknown",
+    "engineering": {
+      "status": "engineering-passed",
+      "path": ".artifacts/character-adjustments/human-chestnut-boy-adjustments-v3/report.json",
+      "sha256": "31dc0fe394ffc8b9b758f14899e3d25af36671db8312f4c96a9ef060ac8ae470",
+      "recipeCount": 8,
+      "optionChecks": 12,
+      "conflictChecks": 40,
+      "viewports": 4,
+      "errors": []
+    },
+    "visualReview": {
+      "status": "internal-review-only",
+      "contactSheet": ".artifacts/character-adjustments/human-chestnut-boy-adjustments-v3/all-recipes-dark-warm-contact.png",
+      "sha256": "f950c3729332badcbc3a4d49c685e9372fc929fdea40984a4f176e4bfee2e418",
+      "note": "Root reviewed the current clean-v2 full-size held prop and eight-recipe dark/warm contact. A separate exact-hash co-review record is pending; user art approval remains pending."
+    },
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": null,
+      "note": "The v3 branches are preview-only and do not approve or replace the existing source Artwork."
+    },
+    "integration": "not-applied",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "artworkId": "candidate-animal-small-bird",
+  "artworkVersion": "v2",
+  "originalSha256": "b797eba8697b45d58440769444f8e2afecaad59b96478de6bd2a259605c40791",
+  "templateId": "candidate-animal-small-bird-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-small-bird-adjustments-review.json",
+  "manifestSha256": "fd823db93d63087b18845a9e2c8a1b443a0286d89455e5d7829733b1646d358d",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/report.json",
+  "engineeringReportSha256": "2399f77ad9a4a16b5457b6d237f9e9929d4254c33dc02aeeca16f1d4a1490290",
+  "legalRecipes": [
+    {
+      "id": "standing-blue-yellow-open-none-none",
+      "sha256": "75424c64d95adc8d9d44db0ac02ff4b7da2b305d568b4849e5c89cc25d9317ce"
+    },
+    {
+      "id": "standing-blue-yellow-open-none-coral-flower-clip",
+      "sha256": "de44c09d8513909ebdc11f300057f2ce9ec6a916845c76c3e3e47f0fdb6edcba"
+    },
+    {
+      "id": "standing-blue-yellow-open-butter-bib-none",
+      "sha256": "b8fd6cd01cc0e752ba2109f4c3a3af7d208fba67abf17cd8787b1a1cca961678"
+    },
+    {
+      "id": "standing-blue-yellow-open-butter-bib-coral-flower-clip",
+      "sha256": "161e5247af368be6fd36cd69fb4d51e55dd7b7b06e51c8f2e1c467d5c1e6c511"
+    },
+    {
+      "id": "standing-blue-yellow-closed-smile-none-none",
+      "sha256": "7a8af502768f37cbf925b251da0fd3afaaa05fac508c6175aa1be54a9e521c20"
+    },
+    {
+      "id": "standing-blue-yellow-closed-smile-none-coral-flower-clip",
+      "sha256": "eded93081768717237d9388f4c78be83b76045341f7110fd1df3dd50ed06a92d"
+    },
+    {
+      "id": "standing-blue-yellow-closed-smile-butter-bib-none",
+      "sha256": "c7ee167347a1533d8f4d95a24c966299c9663a12491aeeb801e2c0ce40269d59"
+    },
+    {
+      "id": "standing-blue-yellow-closed-smile-butter-bib-coral-flower-clip",
+      "sha256": "58efc6d0548581c017584ec02947d64772451e79fdb873f4f4def07354f82a13"
+    },
+    {
+      "id": "turned-blue-yellow-open-none-none",
+      "sha256": "38a6014c49c221d73630361485074907b2ba037a915b6846b01d41338c2aaba6"
+    },
+    {
+      "id": "standing-teal-cream-open-none-none",
+      "sha256": "127c719dacd3e76e3100742849cade60c156a9440832e5056d355b85b17d0d10"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      ".artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/all-recipes-480px-light-dark-contact.jpg",
+      "/Users/liuzhihang/workspace/dots/.artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/review-1440x900.png",
+      "/Users/liuzhihang/workspace/dots/.artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/review-390x844.png",
+      "/Users/liuzhihang/workspace/dots/.artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/review-320x700.png",
+      "/Users/liuzhihang/workspace/dots/.artifacts/character-adjustments/candidate-animal-small-bird-adjustments-v1/review-768x1024.png"
+    ],
+    "checks": [
+      "围兜以整身候选呈现，青蓝肩带贴合躯干；双翼位于围兜前方，尾羽与双脚完整可见。",
+      "闭眼候选直接更换双眼，睁眼不会残留成圆形贴片；围兜与闭眼组合的遮挡关系一致。",
+      "珊瑚花夹放在冠部，眼睛、喙和双脚清楚；浅底与深底均检查了全部10个真实导出。",
+      "站姿、转身候选、蓝黄与柔青奶油色候选均有独立像素证据；角色仍是pending。"
+    ],
+    "limits": [
+      "本地headless Chromium工程回归及导出PNG目视；不代表in-app浏览器、设备或线上验收。",
+      "Artwork、Template、图层、配方均仍pending，等待用户美术批准。"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-pink-heart-shades",
+  "artworkVersion": "v1",
+  "originalSha256": "df3dcfc4468f6fe24f202395dd98957c4d439adb8c80b1357f4a91f9b07a1384",
+  "templateId": "dots-pink-heart-shades-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-pink-heart-shades-review.json",
+  "manifestSha256": "e3bcc14a193ac3af8149557575047736f788b9bf5b2614801368332e484c7590",
+  "engineeringReport": ".artifacts/character-adjustments/dots-pink-heart-shades-adjustments-v1/report.json",
+  "engineeringReportSha256": "afdc3067fb983cdd140835bf1beff1d5390d26655c6791407cb28a280158b427",
+  "legalRecipes": [
+    {
+      "id": "classic-pink-open-shades",
+      "sha256": "2644da0fec3747f7eb28a7f0063689bcacda9422298f3a4000745d109020d320"
+    },
+    {
+      "id": "plump-pink-open-shades",
+      "sha256": "b70338127f2b489f98d69c6c543147f4659963906708c3230417247c0dcf1d50"
+    },
+    {
+      "id": "classic-lavender-open-shades",
+      "sha256": "ce96ad09d1d1699a087acea3de5363773f5750677a2e33b9c981d6a50d0cfcc4"
+    },
+    {
+      "id": "classic-pink-open-none",
+      "sha256": "2733aa2c5ac7bba44b615389ccf8b97de96c9860fa750452a47385d6a0a5eb4a"
+    },
+    {
+      "id": "classic-pink-closed-none",
+      "sha256": "83c44367bcb1b2b1aa53bcc60e24a32ca3e22fba1c7db33203eb2f5fe97f7a19"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

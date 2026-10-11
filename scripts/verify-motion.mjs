@@ -3,8 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ASSETS} from '../dist/studio-artwork-catalog.js?v=99';
-import {createMotionController} from '../dist/studio-motion.js?v=99';
+import {ASSETS} from '../dist/studio-artwork-catalog.js?v=100';
+import {createMotionController} from '../dist/studio-motion.js?v=100';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/motion');
@@ -147,5 +147,5 @@ assert.equal(listeners.size, 0);
 check(true, 'The production catalog remains static and controller teardown removes browser listeners.');
 
 await fs.mkdir(output, {recursive: true});
-await fs.writeFile(path.join(output, 'motion-report.json'), JSON.stringify({revision: 99, productionAnimationCount: unsupportedAssets.length, checks, pauseReasons: ['offscreen', 'pageHidden', 'detailOpen', 'reducedMotion', 'user']}, null, 2) + '\n');
+await fs.writeFile(path.join(output, 'motion-report.json'), JSON.stringify({revision: 100, productionAnimationCount: unsupportedAssets.length, checks, pauseReasons: ['offscreen', 'pageHidden', 'detailOpen', 'reducedMotion', 'user']}, null, 2) + '\n');
 console.log(`Motion controller checks passed: ${checks.length}; production animations: ${unsupportedAssets.length}.`);

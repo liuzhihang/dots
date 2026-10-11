@@ -1,0 +1,106 @@
+# 已有 Dots Artwork 的四字段调整 Template 候选；用户美术批准仍 pending。
+briefVersion: 1
+request:
+  summary: 为现有奶油黄贝雷帽 Dots Artwork 制作真实可达的外观、配色、五官和配饰调整
+  scope: existing-artwork-adjustment-template-candidate
+  count: 1
+character:
+  proposedId: dots-butter-beret
+  seriesId: dots
+  identity: existing Artwork dots-butter-beret@v2
+  invariants:
+  - 保持单个无肢体、无嘴的连续短绒 Dots；不提供服装、道具或背景配置。
+  - 保留原角色身份；只允许已登记轮廓、身体颜色、眼型和贝雷帽选项。
+artwork:
+  canonicalArtworkId: dots-butter-beret
+  version: v2
+  sourcePath: dist/assets/companions/v99/dots-butter-beret-candidate-v2.png
+  sha256: 284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00
+  status: existing-artwork-unchanged
+  defaultRecipe: 原 Artwork master 以原字节/像素注册为默认配方；源文件未修改。
+template:
+  id: dots-butter-beret-adjustments-v1-four-tabs-candidate
+  version: v1
+  schemaVersion: 2
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-butter-beret-adjustments-v1-four-tabs-review.json
+  manifestSha256: 3e4b672f2638ea7e6fce78efc2ee7b17eff2c881acd18d53cf4485b45b0660da
+  engineeringStatus: passed
+  engineeringReport: .artifacts/character-adjustments/dots-butter-beret-adjustments-v1-four-tabs-candidate/report.json
+  engineeringReportSha256: e8f87a4d1036c3571d84427a9d1cb3013f248d5224e096a35856a4cc8362197f
+  internalVisualReview: pending-root-review
+  artApproval:
+    status: pending
+    record: null
+fields:
+  appearance:
+    triangle: 圆角三角连续绒面身体
+    cloud: 低矮连续三瓣云团身体
+  colors:
+    butter-yellow: 奶油黄色短密绒身体
+    blue: 明亮中蓝色短密绒身体
+  face:
+    open: 两只黑色竖椭圆睁眼
+    closed: 两道静态弯曲闭眼线，不增加嘴部
+  accessories:
+    none: 无配饰
+    beret: 按三角顶部定位的海军蓝毛毡贝雷帽
+  clothing: not-applicable-by-user-direction
+  legalRecipeCount: 12
+  conflicts:
+  - cloud + beret：贝雷帽按三角形状贴合；必须先移除贝雷帽再切换云团。
+creation:
+  promptReference: openspec/changes/archive/2026-10-11-simplify-reveal-cards-and-staging/planning/gallery-expansion-20261010/prompts/dots-butter-beret-prompts.md
+  layerProvenance: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/provenance.md
+  exactLayerPromptStatus: historical ImageGen prompt prose was not retained; adjacent record labels request descriptions as summaries, not verbatim prompts.
+  generationRecords:
+  - purpose: 分离奶油黄圆角三角身体层，原Artwork master不变。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-38e74e23-c916-4b7b-8092-495e92c607ad.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-raw-v1.png
+    rawSha256: 9415f80515a12924cbc5f9a10cf57faf1656ef2c8b8e708334c0add568e59fd1
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-clean-v1.png
+    cleanedSha256: c65280baca78d417709a0fc912c02302d7e38c8a466739747989990b5b5c3360
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-clean-v1.alpha-cleanup.json
+  - purpose: 生成相同三角外形的蓝色短绒分支。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-141af9d5-7017-4875-a165-3d2a5c55f9dd.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-imagegen-raw-v1.png
+    rawSha256: bc7950b23fe133cdb7458df7957aa9f48d755f325a711c91fd8155d2c8c7aad4
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-alpha-clean-v1.png
+    cleanedSha256: 9a1ad5ea7448e9541b504e80deb3208cfadadb8c054f96f4f0da3fbce444323f
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-alpha-clean-v1.alpha-cleanup.json
+  - purpose: 分离低矮三瓣奶油黄云团身体层。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-3b1b11fe-518b-4538-828d-59479b0cb88d.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-imagegen-raw-v1.png
+    rawSha256: 7ae52b1f9d86ada80029370961e8f3d1b395a00465f5857a9228397d1caffcf8
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-alpha-clean-v1.png
+    cleanedSha256: bea674e519e3a2b0509bcf7a4174de755bd2d9a5ef0cbd9a244e723fd234fec5
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-alpha-clean-v1.alpha-cleanup.json
+  - purpose: 生成相同云团轮廓/定位的蓝色分支。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-c80fc6f0-ee94-4c02-9979-9003016fe459.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-imagegen-raw-v1.png
+    rawSha256: 01f8fbc193da6384317458ee98c7bb38ea5db30c63046a764ea720e239f96810
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-alpha-clean-v1.png
+    cleanedSha256: d452f7f6dcce582204946a6e40d80f54124730031700437cc9ca2091ce1c0c9f
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-alpha-clean-v1.alpha-cleanup.json
+  - purpose: 单独生成睁眼与闭眼图层；两者不含嘴。
+    imagegenOutputs:
+    - /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-d39af33b-c254-4e47-81ba-c647c723974d.png
+    - /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-b1a79ef9-1a0b-4871-b13a-4117a76aebd1.png
+    cleanedAssets:
+    - openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-open-eyes-alpha-clean-v1.png
+    - openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-closed-eyes-alpha-clean-v1.png
+    cleanedSha256:
+    - fda4077e350d0956a6eaf7fe14211c8d80c44c84439e0e8b1135e9e5081087bb
+    - 953b11313fd80f9033d967118a907092435244c2d762508ad52cc0e84b5973ac
+  - purpose: 独立海军蓝毛毡贝雷帽部件；清理后仅以manifest placement transform调整叠放，不缩放源文件。
+    imagegenOutput: /Users/liuzhihang/.codex/generated_images/01a12762-51c3-7612-8626-27d06c834062/exec-069e2bb1-df8c-4fab-ae1d-527bb0863b0b.png
+    rawAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-raw-v1.png
+    rawSha256: 71b5749a171e034d781d525f6c02d40c6a35e2acee578b03ef5341937bbc163f
+    cleanedAsset: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-clean-v1.png
+    cleanedSha256: 50d1926f81b46fa7395053d4730d7dc2435bba4f95b11c2ff8ba1caf4dc22a33
+    alphaCleanup: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-clean-v1.alpha-cleanup.json
+  layerGeometry:
+    triangleColorAlphaIoU: 0.993449
+    cloudColorAlphaIoU: 0.995958
+    beretTransform: { scale: 0.65, offset: [150, -5], sourcePixelsResampled: false }
+  darkLightCompositeQA: .artifacts/character-adjustments/dots-butter-beret-adjustments-v1-four-tabs-candidate/contact-dark.jpg, .artifacts/character-adjustments/dots-butter-beret-adjustments-v1-four-tabs-candidate/contact-light.jpg
+combinationPolicy: 仅 12 个显式配方可渲染；不支持服装；云团+贝雷帽显式冲突。原Artwork默认配方保持原像素，其它配方为新透明分层输出；模板及所有新组合等待用户美术批准。

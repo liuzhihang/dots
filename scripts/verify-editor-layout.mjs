@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { launchBrowser } from './browser-runtime.mjs';
 import { resolveEvidenceDirectory } from './evidence-paths.mjs';
-import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=99';
-import { TEMPLATE_REGISTRY, getTemplateForArtwork } from '../dist/studio-edit-templates.js?v=99';
+import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=100';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=100';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/editor-layout');
@@ -47,13 +47,15 @@ const templateCases = TEMPLATE_REGISTRY.map(template => {
   assert(artwork, `${template.id} has an exact Artwork binding.`);
   assert.equal(getTemplateForArtwork(artwork)?.id, template.id,
     `${template.id} is available through the public eligibility path.`);
-  return { series: template.family, id: artwork.id, templateId: template.id };
+  const fields = getTemplateOptionFields(template);
+  return { series: template.id, seriesId: artwork.seriesId, id: artwork.id, templateId: template.id, fields, tabs: template.schemaVersion === 2 ? fields.map(field => field.key) : ['colors', 'face', 'accessories'], colorField: template.schemaVersion === 2 ? 'colors' : 'color', faceField: template.schemaVersion === 2 ? 'face' : 'eyes' };
 });
-assert.equal(templateCases.length, 2, 'Both approved template families are checked through public access.');
+assert.equal(templateCases.length, ARTWORKS.filter(item => getTemplateForArtwork(item)).length, 'Every publicly editable Artwork is checked through public access.');
+assert(templateCases.length > 0);
 
 async function openArtwork(page, id) {
   await page.evaluate(async artworkId => {
-    const { getArtwork } = await import('/studio-artwork-catalog.js?v=99');
+    const { getArtwork } = await import('/studio-artwork-catalog.js?v=100');
     const artwork = getArtwork(artworkId);
     if (!artwork) throw new Error(`Artwork is unavailable: ${artworkId}`);
     window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -76,7 +78,7 @@ async function openArtwork(page, id) {
     throw error;
   }
   await page.waitForFunction(() => {
-    const buttons = [...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')].filter(button => button.dataset.field !== 'color');
+    const buttons = [...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')].filter(button => !['color', 'colors'].includes(button.dataset.field));
     return buttons.length > 0 && buttons.every(button => {
       const visual = button.querySelector('.studio-editor-option-visual');
       return button.dataset.optionId === 'none' ? visual?.dataset.thumbnailState === 'empty'
@@ -181,15 +183,15 @@ try {
       await originalSummary.click({ position: trailingHit });
       assert.equal(await page.locator('.studio-original').evaluate(details => details.open), false, 'The same chevron hit area closes the original-material disclosure.');
       assert.equal(await page.locator('.studio-editor-tabs[role="tablist"]').count(), 1);
-      assert.equal(await page.locator('.studio-editor-tab[role="tab"]').count(), 3);
-      assert.equal(await page.locator('.studio-editor-category[role="tabpanel"]').count(), 3);
-      assert.equal(await page.locator('.studio-editor-tab[data-editor-tab="clothing"]').count(), 0, 'No empty Clothing tab is rendered for these templates.');
+      assert.equal(await page.locator('.studio-editor-tab[role="tab"]').count(), templateCase.tabs.length);
+      assert.equal(await page.locator('.studio-editor-category[role="tabpanel"]').count(), templateCase.tabs.length);
+      assert.equal(await page.locator('.studio-editor-tab[data-editor-tab="clothing"]').count(), Number(templateCase.tabs.includes('clothing')), 'Clothing appears only when declared by this exact Template.');
       assert.equal(await page.locator('.studio-editor-options select').count(), 0, 'Visual editing uses option buttons, never text dropdowns.');
       assert.equal(await page.locator('.studio-editor-controls button[data-action="export"],.studio-editor-controls button[data-action="reset"],.studio-editor-controls button[data-action="cancel"]').count(), 0);
       assert.equal(await page.locator('.studio-actions [data-action="copy-prompt"],.studio-actions [data-action="open-chatgpt"],.studio-actions [data-action="export"]').count(), 3);
       assert.deepEqual(await page.locator('.studio-editor-tab[role="tab"]').allTextContents(), language === 'en'
-        ? ['Appearance', 'Face', 'Accessories']
-        : ['外观', '五官', '配饰'], 'Only supported localized tabs are shown; option field IDs stay stable inside their capability-driven group.');
+        ? templateCase.tabs.map(key => ({ appearance: 'Appearance', colors: 'Colors', face: 'Face', clothing: 'Clothing', accessories: 'Accessories' })[key])
+        : templateCase.tabs.map(key => ({ appearance: '外观', colors: '配色', face: '五官', clothing: '服装', accessories: '配饰' })[key]), 'Only supported localized tabs are shown; option field IDs stay stable inside their capability-driven group.');
       assert.deepEqual(await page.locator('.studio-actions button').allTextContents(), language === 'en'
         ? ['Copy Prompt', 'Use in ChatGPT', 'Export PNG']
         : ['复制 Prompt', '在 ChatGPT 中使用', '导出 PNG']);
@@ -214,39 +216,31 @@ try {
           roving: tabs.filter(tab => tab.tabIndex === 0).map(tab => tab.dataset.editorTab)
         };
       });
-      assert.deepEqual(tabsState.selected, ['appearance']);
-      assert.deepEqual(tabsState.visible, ['appearance']);
+      assert.deepEqual(tabsState.selected, [templateCase.tabs[0]]);
+      assert.deepEqual(tabsState.visible, [templateCase.tabs[0]]);
       assert.equal(tabsState.everyPanelHasOptions, true, 'Each capability-driven tab contains actual registered choices.');
       assert.equal(tabsState.linked, true);
-      assert.deepEqual(tabsState.roving, ['appearance']);
+      assert.deepEqual(tabsState.roving, [templateCase.tabs[0]]);
       const beforeTabs = await page.evaluate(() => { const state = window.__dotsQAApp.detail.getState(); return { sessionId: state.draft.sessionId, revision: state.draft.revision, canvas: document.querySelector('.studio-draft-host canvas.studio-editor-canvas').toDataURL() }; });
       await tabs.nth(0).focus();
-      await page.keyboard.press('ArrowRight');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="face"]')?.getAttribute('aria-selected') === 'true');
-      await page.keyboard.press('Home');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="appearance"]')?.getAttribute('aria-selected') === 'true');
-      await page.keyboard.press('End');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="accessories"]')?.getAttribute('aria-selected') === 'true');
-      await page.keyboard.press('ArrowRight');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="appearance"]')?.getAttribute('aria-selected') === 'true');
-      await page.keyboard.press('ArrowLeft');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="accessories"]')?.getAttribute('aria-selected') === 'true');
-      await page.keyboard.press('ArrowRight');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="appearance"]')?.getAttribute('aria-selected') === 'true');
+      for (const [key, expected] of [['ArrowRight', templateCase.tabs[1]], ['Home', templateCase.tabs[0]], ['End', templateCase.tabs.at(-1)], ['ArrowRight', templateCase.tabs[0]], ['ArrowLeft', templateCase.tabs.at(-1)], ['ArrowRight', templateCase.tabs[0]]]) {
+        await page.keyboard.press(key);
+        await page.waitForFunction(expected => document.querySelector(`.studio-editor-tab[data-editor-tab="${expected}"]`)?.getAttribute('aria-selected') === 'true', expected);
+      }
       await page.locator('.studio-editor-tab[data-editor-tab="face"]').focus();
       await page.keyboard.press('Space');
       await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="face"]')?.getAttribute('aria-selected') === 'true');
-      await page.locator('.studio-editor-tab[data-editor-tab="appearance"]').focus();
+      await tabs.nth(0).focus();
       await page.keyboard.press('Enter');
-      await page.waitForFunction(() => document.querySelector('.studio-editor-tab[data-editor-tab="appearance"]')?.getAttribute('aria-selected') === 'true');
+      await page.waitForFunction(expected => document.querySelector(`.studio-editor-tab[data-editor-tab="${expected}"]`)?.getAttribute('aria-selected') === 'true', templateCase.tabs[0]);
       const afterTabs = await page.evaluate(() => { const state = window.__dotsQAApp.detail.getState(); return { sessionId: state.draft.sessionId, revision: state.draft.revision, canvas: document.querySelector('.studio-draft-host canvas.studio-editor-canvas').toDataURL() }; });
       assert.deepEqual(afterTabs, beforeTabs, 'Tab keyboard navigation changes no Draft, revision, session, or preview pixels.');
       assert.equal(await panels.evaluateAll(items => items.filter(panel => !panel.hidden && panel.getClientRects().length).length), 1);
 
       const visualSummary = await page.evaluate(() => {
         const optionButtons = [...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')];
-        const colors = optionButtons.filter(button => button.dataset.field === 'color');
-        const layers = optionButtons.filter(button => button.dataset.field !== 'color' && button.dataset.optionId !== 'none');
+        const colors = optionButtons.filter(button => ['color', 'colors'].includes(button.dataset.field));
+        const layers = optionButtons.filter(button => !['color', 'colors'].includes(button.dataset.field) && button.dataset.optionId !== 'none');
         const none = optionButtons.filter(button => button.dataset.optionId === 'none');
         const thumbnails = layers.map(button => {
           const visual = button.querySelector('.studio-editor-option-visual');
@@ -275,7 +269,7 @@ try {
           selectedCount: optionButtons.filter(button => button.getAttribute('aria-pressed') === 'true').length
         };
       });
-      assert.equal(visualSummary.colorCount, 2);
+      assert.equal(visualSummary.colorCount, templateCase.fields.find(field => field.key === templateCase.colorField).options.length);
       assert.equal(visualSummary.colorsHaveRealSwatches, true);
       assert.equal(visualSummary.colorsHaveText, true);
       assert(visualSummary.thumbnails.length > 0);
@@ -283,8 +277,9 @@ try {
         && item.alphaPixels > 0 && item.transparentPixels > 0 && item.assetIds && item.backgroundImage === 'none'
         && (/rgba\([^)]*,\s*0\s*\)/.test(item.backgroundColor) || item.backgroundColor === 'transparent')),
       `Real layer thumbnails retain transparent pixels and have no checker/gray surface: ${JSON.stringify(visualSummary.thumbnails)}`);
-      assert(visualSummary.noneCount > 0 && visualSummary.noneHasText);
-      assert.equal(visualSummary.selectedCount, 4, 'Each option group has exactly one selected value, including the hidden tabs.');
+      assert.equal(visualSummary.noneCount, templateCase.fields.reduce((count, field) => count + field.options.filter(option => option.id === 'none').length, 0));
+      assert(visualSummary.noneHasText);
+      assert.equal(visualSummary.selectedCount, templateCase.fields.length, 'Each option group has exactly one selected value, including the hidden tabs.');
 
       for (const [width, height] of sizes) {
         await page.setViewportSize({ width, height });
@@ -341,7 +336,7 @@ try {
         }
         if (width <= 390) {
           await page.locator('.studio-editor-tab[data-editor-tab="face"]').click();
-          const eyeOption = page.locator('.studio-editor-option[data-field="eyes"][data-option-id]:not([disabled])').first();
+          const eyeOption = page.locator(`.studio-editor-option[data-field="${templateCase.faceField}"][data-option-id]:not([disabled])`).first();
           await eyeOption.scrollIntoViewIfNeeded();
           const eyeHit = await eyeOption.evaluate(element => { const r = element.getBoundingClientRect(); const x = r.left + r.width / 2, y = r.top + r.height / 2, hit = document.elementFromPoint(x, y); return { hit: hit === element || element.contains(hit), rect: { left: r.left, right: r.right, top: r.top, bottom: r.bottom }, preview: document.querySelector('.studio-preview').getBoundingClientRect().toJSON() }; });
           assert.equal(eyeHit.hit, true, `${width}×${height}: visual option remains clickable after scrolling: ${JSON.stringify(eyeHit)}`);
@@ -360,19 +355,30 @@ try {
         rows.push({ language, series: templateCase.series, width, height, opened, actions, relatedGeometry, visualSummary: { colorCount: visualSummary.colorCount, thumbnailCount: visualSummary.thumbnails.length, noneCount: visualSummary.noneCount } });
       }
 
-      // Exercise the body scroll reset when a related Artwork replaces the current one, then when a new Artwork opens.
+      // Exercise related switching only when the catalog has a same-series sibling; every detail still gets a close/reopen reset check.
       await page.setViewportSize({ width: 390, height: 844 });
       const body = page.locator('#overlayBody');
-      await page.locator('.studio-related').scrollIntoViewIfNeeded();
-      await body.evaluate(element => { element.scrollTop = element.scrollHeight; });
-      await page.locator('.related-character').first().click();
-      await page.waitForFunction(id => window.__dotsQAApp.detail.getState().id !== id
-        && document.querySelector('#overlayBody').scrollTop === 0
-        && document.querySelector('.artwork-detail__title')?.getClientRects().length > 0,
-      templateCase.id, { timeout: 15_000 });
-      const changedArtwork = await page.evaluate(() => ({ id: window.__dotsQAApp.detail.getState().id, scrollTop: document.querySelector('#overlayBody').scrollTop }));
-      assert.notEqual(changedArtwork.id, templateCase.id);
-      assert.equal(changedArtwork.scrollTop, 0, 'Switching to a related Artwork resets the scrollport and reveals its identity.');
+      const relatedCount = await page.locator('.related-character').count();
+      const hasRelatedSiblings = ARTWORKS.some(item => item.seriesId === templateCase.seriesId && item.id !== templateCase.id);
+      assert.equal(relatedCount > 0, hasRelatedSiblings, `${templateCase.id}: related cards match the catalog's same-series siblings.`);
+      let changedArtwork = null;
+      let lifecycle = 'reopen-without-related-siblings';
+      if (hasRelatedSiblings) {
+        await page.locator('.studio-related').scrollIntoViewIfNeeded();
+        await body.evaluate(element => { element.scrollTop = element.scrollHeight; });
+        await page.locator('.related-character').first().click();
+        await page.waitForFunction(id => window.__dotsQAApp.detail.getState().id !== id
+          && document.querySelector('#overlayBody').scrollTop === 0
+          && document.querySelector('.artwork-detail__title')?.getClientRects().length > 0,
+        templateCase.id, { timeout: 15_000 });
+        changedArtwork = await page.evaluate(() => ({ id: window.__dotsQAApp.detail.getState().id, scrollTop: document.querySelector('#overlayBody').scrollTop }));
+        assert.notEqual(changedArtwork.id, templateCase.id);
+        assert.equal(changedArtwork.scrollTop, 0, 'Switching to a related Artwork resets the scrollport and reveals its identity.');
+        lifecycle = 'related-switch-and-reopen';
+      } else {
+        assert.equal(await page.locator('.studio-related').evaluate(section => section.hidden), true,
+          `${templateCase.id}: related content is hidden when its series has no sibling Artworks.`);
+      }
       await page.locator('#overlayClose').click();
       await page.waitForFunction(() => !document.querySelector('#studioOverlay').open && document.body.dataset.screen === 'gallery');
       const closedDialog = await page.locator('#studioOverlay').evaluate(dialog => ({ display: getComputedStyle(dialog).display, rect: dialog.getBoundingClientRect().toJSON() }));
@@ -384,12 +390,12 @@ try {
         && document.querySelector('#overlayBody').scrollTop === 0
         && document.querySelector('.artwork-detail__title')?.getClientRects().length > 0,
       templateCase.id, { timeout: 20_000 });
-      rows.push({ language, series: templateCase.series, lifecycle: 'related-switch-and-reopen', changedArtwork, reopenedScrollTop: await body.evaluate(element => element.scrollTop) });
+      rows.push({ language, series: templateCase.series, lifecycle, changedArtwork, reopenedScrollTop: await body.evaluate(element => element.scrollTop) });
       await context.close();
     }
   }
   assert.deepEqual(errors, []);
-  const report = { revision: 99, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; Codex in-app browser was used for visual opening only, not interaction acceptance.', sizes, cases: rows.length, captures, rows, errors };
+  const report = { revision: 100, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; Codex in-app browser was used for visual opening only, not interaction acceptance.', sizes, cases: rows.length, captures, rows, errors };
   await fs.writeFile(path.join(output, 'layout.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(`Editor layout: ${rows.length} bilingual/template/viewport cases passed; ${captures.length} screenshots.`);
 } finally {

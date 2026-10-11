@@ -1,0 +1,181 @@
+{
+  "artworkId": "candidate-grok-20261005",
+  "artworkVersion": "v2",
+  "originalSha256": "e4730f2957d64b8b2b7eb49c09a21f7a9c1ea352870bd2bf4c0649c7eeec0874",
+  "templateId": "grok-purple-orb-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-purple-orb-review.json",
+  "manifestSha256": "34b4f68827ad078933a8ba9d45ed9316783f5bdf575dca9a873c644b41967bd4",
+  "engineeringReport": ".artifacts/character-adjustments/grok-purple-orb-adjustments-v1/report.json",
+  "engineeringReportSha256": "7893ff1945e3003c7ad85c1f421d90a46d513c67326f17bf1069c2a7ea30ef28",
+  "legalRecipes": [
+    {
+      "id": "classic-original-angled-none-none",
+      "sha256": "d88075b676ce1cecbf48c37848376aedab59218346bd63f49ad7190dc11e02b3"
+    },
+    {
+      "id": "classic-original-angled-none-glasses",
+      "sha256": "420749bb744b9d0b07e0106f9517d7758ab192b980bbce5858599002effddaa0"
+    },
+    {
+      "id": "classic-original-angled-none-cap",
+      "sha256": "412df306def32eaa17bf7ce64c3cc1718b363d9bd3e3c514dd6aec14fe890a04"
+    },
+    {
+      "id": "classic-original-angled-none-glasses-cap",
+      "sha256": "df1d2142da8d25a4d6db5407ed56154d548b14bb8fc92c8505220192069f7317"
+    },
+    {
+      "id": "classic-original-angled-wrap-none",
+      "sha256": "227bf8399d9224704d58474c475119667be4b6702143e2ff787f856853a4e9a7"
+    },
+    {
+      "id": "classic-original-angled-wrap-glasses",
+      "sha256": "0fb1d001a5d27a8b0fc4875ba08ba43e19a055aa2c34012f6eb196ce0a02bfca"
+    },
+    {
+      "id": "classic-original-angled-wrap-cap",
+      "sha256": "8f93446d900cb2fe69af5325d15d48dca0551966da3b312def8409ea7d615329"
+    },
+    {
+      "id": "classic-original-angled-wrap-glasses-cap",
+      "sha256": "bd25fdfc539a3f2588be6c3a71084c847de4cdc335edb24445f6bcddf7f41d51"
+    },
+    {
+      "id": "classic-original-upright-none-none",
+      "sha256": "59584583e4da4e150e92d8c0c0d9bae492196668ad151c6b84893b19898f2a5f"
+    },
+    {
+      "id": "classic-original-upright-none-glasses",
+      "sha256": "1a4e7e1b2af60b220aa8ceecb181057a07e43f7b69fa07cea750f74da83784d7"
+    },
+    {
+      "id": "classic-original-upright-none-cap",
+      "sha256": "11705ebd57261353f04e56f405ea9af2e85c9a82f045150fb6f9cdc0c837bd9a"
+    },
+    {
+      "id": "classic-original-upright-none-glasses-cap",
+      "sha256": "57f9e90b84d4b496787ea8a60695e117414679e714f77b1282fcbdd3b2e59b3c"
+    },
+    {
+      "id": "classic-original-upright-wrap-none",
+      "sha256": "b2895f9139f0083b96947f26bff7d3524da6bfcb658d4035d4a78392f140d9a8"
+    },
+    {
+      "id": "classic-original-upright-wrap-glasses",
+      "sha256": "5894a099184c313c8376e44044b06b26d6e5efbdf53cf890ea322b21159d2161"
+    },
+    {
+      "id": "classic-original-upright-wrap-cap",
+      "sha256": "f8cc5702e9d7ad3142411ecf44c4b9e3a6d86727b803ce0442ed451b1955a494"
+    },
+    {
+      "id": "classic-original-upright-wrap-glasses-cap",
+      "sha256": "2ed87d6dd78a597ad1177c6a75fc0af18d6c9af1e98b20678c0aa7e57d2ffa6d"
+    },
+    {
+      "id": "classic-mint-angled-none-none",
+      "sha256": "a449e107a544842e6a91f679edf75e07ec6bd9e9d0a8d4c24f3a28055c01f173"
+    },
+    {
+      "id": "classic-mint-angled-none-glasses",
+      "sha256": "4b3d35eebf96cc63e55b87ce3e0e1328a7864709190bc1612127a47c8f777d7e"
+    },
+    {
+      "id": "classic-mint-angled-none-cap",
+      "sha256": "3114cc0675bad7a2a6663ede8d9ec73b6b636e43d0676f0d01caffadea596da5"
+    },
+    {
+      "id": "classic-mint-angled-none-glasses-cap",
+      "sha256": "14c7f275b5f0b5fc7e1b20caba05d216f7da897982bff4fabb51acbb72cec516"
+    },
+    {
+      "id": "classic-mint-angled-wrap-none",
+      "sha256": "a729088fbcd628600ab059a86ab537de517c343f31bf3ed57838457f6385b174"
+    },
+    {
+      "id": "classic-mint-angled-wrap-glasses",
+      "sha256": "33e28777ffd6645e529bf68f698d634e58b2f45738c8a61be8323730b71d0941"
+    },
+    {
+      "id": "classic-mint-angled-wrap-cap",
+      "sha256": "b48e83638939b5c30fbfd05895884fd9507bf77920f1bce2b4149a3c03d0cb27"
+    },
+    {
+      "id": "classic-mint-angled-wrap-glasses-cap",
+      "sha256": "480368912c09840d2715fb5442eab38b739954c66463995758e8c47bb7651d07"
+    },
+    {
+      "id": "classic-mint-upright-none-none",
+      "sha256": "ef63a025179339adcc04a1234fad9ba6a0b0deb8d97745b6f031166f9617ee52"
+    },
+    {
+      "id": "classic-mint-upright-none-glasses",
+      "sha256": "0cfd7150de0f5281b008dc67d641b46263f1869486057760851ca214b84bc043"
+    },
+    {
+      "id": "classic-mint-upright-none-cap",
+      "sha256": "884eb82802177e23e37c7dbacf2688e7f50f1ec35d72a80b5f3a77d23a49ec02"
+    },
+    {
+      "id": "classic-mint-upright-none-glasses-cap",
+      "sha256": "deb75fe251a6c4aed033ba88ab6a6159a7c43de07d6716964013b044f0c829ad"
+    },
+    {
+      "id": "classic-mint-upright-wrap-none",
+      "sha256": "4c904b14668ab0d7b80079bc5e1c4cd560403b6253b1efbe8ff6f54e3d98fef0"
+    },
+    {
+      "id": "classic-mint-upright-wrap-glasses",
+      "sha256": "d6066e50d8d40b27f0455b0bd90ca2aee45566829c74c56b2f5b7fcb705450ae"
+    },
+    {
+      "id": "classic-mint-upright-wrap-cap",
+      "sha256": "fb75f9e1d2b2fbc9ad0e5d09af488740ee6e9d21a692cfb20d090af0ea9e0b19"
+    },
+    {
+      "id": "classic-mint-upright-wrap-glasses-cap",
+      "sha256": "338f10cf585c881747ef2dbbe1e818d5c2266651e35cd0eeb0429dba26cb5ff3"
+    },
+    {
+      "id": "soft-original-angled-none-none",
+      "sha256": "917808d22a3c80938be03f9386ba886ba08b76e451f805064f8e5a76053c7a91"
+    },
+    {
+      "id": "soft-original-upright-none-none",
+      "sha256": "7196da687388d5ff4cf1706e944ed7a273073bc19193981aadb5582f7128c7ed"
+    },
+    {
+      "id": "soft-mint-angled-none-none",
+      "sha256": "177a0012af7999834c5c45919b87ec116b4da1ef1e26b1060b78431ed1575b4a"
+    },
+    {
+      "id": "soft-mint-upright-none-none",
+      "sha256": "00ad3be78de2fc38d5b17724cee3b8c60a5c9d43790df65222bd936d3ac91426"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部36合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "家族材质、成对眼型、无手脚/嘴/屏幕脸约束",
+      "改色仅身体，衣物和眼睛颜色独立",
+      "服装不遮眼、配件接触身体且不悬空",
+      "真实图层和原始输出保留，批准状态仍pending"
+    ],
+    "fixes": [
+      "低宽椭团使用独立眼位，不继承经典圆团配饰锚点；不适配组合明确禁用。"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

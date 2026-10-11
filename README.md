@@ -19,7 +19,7 @@ npm run verify:release-safety
 openspec validate --specs
 ```
 
-`npm run dev:review` 在 `127.0.0.1:5182/__dots_review__/` 提供本地审阅入口。候选 fixture 仅供本地 harness 审阅，不改变 Artwork 或 Template 的批准状态，也不进入公开资格。浏览器检查优先使用本地 Playwright，缺少时自动解析 Codex bundled runtime；需要时可用 `DOTS_PLAYWRIGHT_MODULE` 和 `DOTS_CHROME_PATH` 指定运行时或浏览器。更新命令以 `package.json` 的 scripts 为准。`npm test` 运行当前功能检查；需要 Git 完整历史的仓库保留验证单独运行 `npm run verify:release-safety`。
+`npm run dev:review` 在 `127.0.0.1:5182/__dots_review__/` 提供本地审阅入口。候选 fixture 仅供本地 harness 审阅，不改变 Artwork 或 Template 的批准状态，也不进入公开资格。页面调试和人工交互验收优先使用 Codex 内置 Browser；项目自动化检查使用 Playwright，缺少时自动解析 Codex bundled runtime；需要时可用 `DOTS_PLAYWRIGHT_MODULE` 和 `DOTS_CHROME_PATH` 指定运行时或浏览器。更新命令以 `package.json` 的 scripts 为准。`npm test` 运行当前功能检查；需要 Git 完整历史的仓库保留验证单独运行 `npm run verify:release-safety`。
 
 ## 代码与内容入口
 
@@ -31,7 +31,9 @@ openspec validate --specs
 - `.artifacts/`：本地临时构建、测试与 QA 输出；不作为发布素材。
 - `design/releases/`：精选发布摘要与当前版本入口；`design/acceptance/` 保留精选审批、来源和验收记录。更早的历史 QA 文件按 `design/repository-history.json` 从 Git 恢复，历史原文不回写。
 
-当前生产站点及本轮精选回执见 [Site 47 / v99 发布记录](design/releases/20261011-site47-v99/README.md)。该摘要链接到完整审批、归档、部署与验证回执。
+本地正在接入的全角色调整版本见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)；该版本不代表线上发布。
+
+当前生产站点及精选回执见 [Site 47 / v99 发布记录](design/releases/20261011-site47-v99/README.md)。该摘要链接到完整审批、归档、部署与验证回执。
 
 ## 维护提示
 

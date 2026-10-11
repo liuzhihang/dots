@@ -1,0 +1,107 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 青柠蛙形 Dots透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: dots-lime-frog-bow
+  seriesId: dots
+  identity: existing
+  invariants:
+  - 单个蛙形意象 Dots，连续短密绒身体与两个顶部眼部突起。不是生物青蛙。无手臂、手、腿、脚、嘴、屏幕脸和服装。
+artwork:
+  proposedId: dots-lime-frog-bow
+  canonicalArtworkId: dots-lime-frog-bow
+  proposedVersion: v1
+  name:
+    zh-CN: 青柠蛙形 Dots
+    en: Lime Frog Dots
+  resolvedId: dots-lime-frog-bow
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png
+  sha256: bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png
+    sha256: bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f
+    mime: image/png
+    bytes: 1087340
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: dots-lime-frog-bow-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-frog-bow-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: abd1e5e6e7e29c812322d097cde669417b1224f195bc1ff3ab46ee709981af68
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 5
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-frog-bow-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单个蛙形意象 Dots，连续短密绒身体与两个顶部眼部突起。不是生物青蛙。无手臂、手、腿、脚、嘴、屏幕脸和服装。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  appearance:
+    state: known
+    description: 连续圆润蛙形绒面身体，顶部两个突起含奶油眼圈与黑瞳
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  facialFeatures:
+    state: known
+    description: 两处顶部眼窝各有奶油色眼圈与黑色瞳孔，无嘴
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  colorMaterial:
+    state: known
+    description: 青柠绿短密绒
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  bodyAccessory:
+    state: known
+    description: 贴合身体下方的黑色布领结
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  headAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lime-frog-bow-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/frog-fullbody-generation-records-01.json
+    kind: appearance
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-5f1103d5-81b5-4537-9af3-ab538b7fa1a5.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/frog-fullbody-generation-records-01.json
+    kind: colors
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-2802606d-abe4-4caf-b099-8a358cd512f3.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/frog-fullbody-generation-records-01.json
+    kind: face
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-4384fd89-5b10-4b8e-bd3a-0abad89464fc.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/frog-fullbody-generation-records-01.json
+    kind: accessories
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f7acf59e-f4bf-413c-885b-cd70e2513a9f.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

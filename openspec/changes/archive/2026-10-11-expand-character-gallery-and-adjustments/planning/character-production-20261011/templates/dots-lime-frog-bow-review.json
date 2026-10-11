@@ -1,0 +1,690 @@
+{
+  "status": "pending",
+  "scope": "Four-category Dots candidate; whole-character finite branches; clothing is not supported. Neither Artwork nor Template is user approved.",
+  "artwork": {
+    "id": "dots-lime-frog-bow",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "青柠蛙形 Dots",
+      "en": "Lime Frog Dots"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+    "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-lime-frog-bow-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-lime-frog-bow",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个蛙形意象 Dots，连续短密绒身体与两个顶部眼部突起。不是生物青蛙。无手臂、手、腿、脚、嘴、屏幕脸和服装。",
+      "en": "One frog-inspired Dots character with a continuous short-dense-plush body and two raised eye bumps. Not a biological frog. No arms, hands, legs, feet, mouth, screen face or clothing."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "bow"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典轮廓",
+            "en": "Classic outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "连续圆润蛙形绒面身体，顶部两个突起含奶油眼圈与黑瞳",
+            "en": "a continuous rounded frog-inspired plush body with two raised cream-rimmed black eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "柔圆轮廓",
+            "en": "Softer outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更低宽的连续身体，保留顶部两处眼部突起",
+            "en": "a lower wider continuous body preserving the two raised eye bumps"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "青柠绿",
+            "en": "Lime green"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "青柠绿短密绒",
+            "en": "Lime green short dense plush"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#b7e941"
+          ],
+          "zoneColors": {
+            "body": "#b7e941"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "天空蓝",
+            "en": "Sky blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "天空蓝短绒，奶油眼圈、黑色瞳孔和黑领结保持原色",
+            "en": "sky-blue short plush preserving cream eye rims, black pupils and the black bow"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#79c5f3"
+          ],
+          "zoneColors": {
+            "body": "#79c5f3"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑瞳双眼",
+            "en": "Cream-rimmed dark eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "两处顶部眼窝各有奶油色眼圈与黑色瞳孔，无嘴",
+            "en": "two raised eyes with cream rims and dark pupils, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "奶油眼圈内两条黑色闭合弧线，无嘴；静态表情",
+            "en": "two black closed curved eyelids within cream eye insets, no mouth; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "bow",
+          "labelByLanguage": {
+            "zh-CN": "黑色领结",
+            "en": "Black bow"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合身体下方的黑色布领结",
+            "en": "a black fabric bow fitted to the lower front"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "移除领结",
+            "en": "Remove bow"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "完整去除黑领结，身体下方恢复连续青柠短绒",
+            "en": "remove the black bow completely, leaving uninterrupted lime plush on the lower front"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "none"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "none"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "none"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-bow",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "bow"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-bow",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "bow"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-bow",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "accessories": "bow"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-bow",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "accessories": "bow"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-lime-frog-bow-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-lime-frog-bow-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-frog-bow-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/dist/assets/companions/v99/dots-lime-frog-bow-candidate-v1.png",
+      "sha256": "bc8aa7fa0fe4ea5e4ba2bf36f74703ed33d80036fdfd1cb7027571ed365c2d0f",
+      "byteSize": 1087340,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1061852,
+        "bboxAtAlphaThreshold16": [
+          192,
+          275,
+          1058,
+          1009
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-frog-bow-adjustments-v1",
+        "artworkId": "dots-lime-frog-bow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-frog-bow-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-frog-bow-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-frog-bow-appearance-full-candidate-v2.png",
+      "sha256": "f9346de076ed2e463d60207f02975323495895ee574109689159e663daf990f0",
+      "byteSize": 1209741,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 983457,
+        "bboxAtAlphaThreshold16": [
+          80,
+          312,
+          1170,
+          1025
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-frog-bow-adjustments-v1",
+        "artworkId": "dots-lime-frog-bow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -18.4081,
+          -46.1893
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.02945301542777,
+            1.02945301542777
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-frog-bow-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-frog-bow-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-frog-bow-colors-full-candidate-v2.png",
+      "sha256": "e1043f07b40d8c31cc406542c1a4e56a05c3d1547e27244176f12f5030942599",
+      "byteSize": 970996,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1067721,
+        "bboxAtAlphaThreshold16": [
+          191,
+          274,
+          1059,
+          1010
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-frog-bow-adjustments-v1",
+        "artworkId": "dots-lime-frog-bow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          1.6984,
+          1.7446
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9972826086956522,
+            0.9972826086956522
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-frog-bow-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-frog-bow-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-frog-bow-face-full-candidate-v2.png",
+      "sha256": "7611dd550c31847f090a7eb83c08281c809bb05edf97b2461a112c1b7f3190e4",
+      "byteSize": 980103,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1067906,
+        "bboxAtAlphaThreshold16": [
+          191,
+          274,
+          1060,
+          1011
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-frog-bow-adjustments-v1",
+        "artworkId": "dots-lime-frog-bow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          2.0461,
+          2.1153
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.9959294436906377,
+            0.9959294436906377
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-lime-frog-bow-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-lime-frog-bow-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-lime-frog-bow-accessories-full-candidate-v2.png",
+      "sha256": "d419f2d1efe63945759c64fcde1a0d672f17fbeea469a99df6078aabf2c65163",
+      "byteSize": 994654,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1063229,
+        "bboxAtAlphaThreshold16": [
+          184,
+          271,
+          1066,
+          993
+        ]
+      },
+      "owner": {
+        "templateId": "dots-lime-frog-bow-adjustments-v1",
+        "artworkId": "dots-lime-frog-bow",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -10.3878,
+          -0.5042
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0166204986149585,
+            1.0166204986149585
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    }
+  ]
+}

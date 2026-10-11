@@ -1,0 +1,147 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 读书 Muse透明素材与五类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: muse-sage-reading
+  seriesId: muse
+  identity: existing
+  invariants:
+  - 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。
+artwork:
+  proposedId: muse-sage-reading
+  canonicalArtworkId: muse-sage-reading
+  proposedVersion: v1
+  name:
+    zh-CN: 读书 Muse
+    en: Reading Muse
+  resolvedId: muse-sage-reading
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png
+  sha256: 82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/looks/muse-sage-reading.png
+    sha256: 82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a
+    mime: image/png
+    bytes: 1142481
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: muse-sage-reading-adjustments-v1
+    version: v1
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-sage-reading-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 82f85f8abce3d425381c54c3d54b116a4e9ab6af2f782792377bbd6ed79f0f3a
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  reviewedRecipeCount: 13
+  manifestSha256: 719c9c63ea83d3a92aa676e485e26583a393fe35ba013990fa3ae9fbd07428cc
+visibleFacts:
+  appearance:
+    state: known
+    evidence: 经典连续包覆身体与内嵌脸，双手真实承托鼠尾草绿布面书本
+  facialFeatures:
+    state: known
+    evidence: 内嵌桃色脸、睁开小圆眼与轻柔微笑
+  colorMaterial:
+    state: known
+    evidence: 鼠尾草绿短绒身体，肤色与道具保持原色
+  clothing:
+    state: known
+    evidence: 原作没有额外衣装；浅蓝针织背心属于已检查的调整选项
+  headAccessory:
+    state: known
+    evidence: 原作没有头饰；雏菊花冠属于已检查的调整选项
+  bodyAccessory:
+    state: known
+    evidence: 原作没有其他身体穿戴配饰
+  prop:
+    state: known
+    evidence: 双手真实承托鼠尾草绿布面书本，不戴头饰
+promptText:
+  zh-CN: 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。 经典连续包覆身体与内嵌脸，双手真实承托鼠尾草绿布面书本；鼠尾草绿短绒身体，肤色与道具保持原色；内嵌桃色脸、睁开小圆眼与轻柔微笑。完整单体，真正透明背景，无地面背景或额外文字。
+  en: One Muse character with a continuous soft plush hooded body, inset peach face,
+    small eyes and short rounded limbs. Preserve the unified hood/body and natural
+    support of any held prop. a continuous hooded body with an inset face; keep the
+    sage cloth-bound book naturally held by both short round hands. One complete standalone
+    character on true alpha transparency, no background or text.
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- clothing
+- accessories
+finiteRecipes:
+  count: 13
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-sage-reading-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  appearance:
+    state: known
+    description: 经典连续包覆身体与内嵌脸，双手真实承托鼠尾草绿布面书本
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  facialFeatures:
+    state: known
+    description: 内嵌桃色脸、睁开小圆眼与轻柔微笑
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  colorMaterial:
+    state: known
+    description: 鼠尾草绿短绒身体，肤色与道具保持原色
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  clothing:
+    state: none
+    description: 原有绒布包覆身体，不另穿外套
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  headAccessory:
+    state: none
+    description: 双手真实承托鼠尾草绿布面书本，不戴头饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+  prop:
+    state: known
+    description: 原Artwork有由双手承托的打开书本
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/muse-sage-reading-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: body-alternate
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-4e8fbb37-92a3-4b52-8579-546a9a270772.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: plush-mask
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-3a57bb8d-0f9d-4054-a683-5762594ed8cc.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: face-closed
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-dbde8474-5abf-49d0-b42b-7a5e83a834ba.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: knit-vest
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-6bbcace0-ebfb-46ed-b061-056e70b1e144.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-layer-generation-records-01.json
+    kind: flower-crown
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-3500c0ee-eada-4b53-b9a6-f1f81d4a09ce.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-fullbody-generation-records-02.json
+    kind: color-body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-a011ea6d-f15b-4de7-b5c8-87e7a08e64b9.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/muse-fullbody-generation-records-02.json
+    kind: clothed-body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0ba1fe86-d53e-4d72-994f-be20ca9a28bd.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

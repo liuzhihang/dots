@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
-import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=99';
-import { ASSETS } from '../dist/studio-artwork-catalog.js?v=99';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
+import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=100';
+import { ASSETS } from '../dist/studio-artwork-catalog.js?v=100';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets } from '../dist/studio-edit-templates.js?v=100';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const tick = async predicate => {
@@ -26,6 +29,10 @@ const templateAsset = (id, purpose, suffix) => ({
 });
 const body = templateAsset('template:dots-orb-v1:body-neutral', 'body-neutral', 'body-neutral');
 const eyes = templateAsset('template:dots-orb-v1:eyes:original', 'eyes', 'eyes-original');
+// Two independently authorized Template rows may intentionally reference the
+// same immutable file for separate layer roles.
+const bodyMaskAlias = { ...body, id: 'template:dots-orb-v1:body-silhouette-mask', purpose: 'silhouette-mask' };
+const eyesMaskAlias = { ...eyes, id: 'template:dots-orb-v1:eyes-silhouette-mask', purpose: 'silhouette-mask' };
 
 const transformFixture = {
   ...body,
@@ -45,6 +52,23 @@ const shearedPoint = transformTemplatePoint(0.6, 0.5, shearFixture, [1, 1]);
 assert.ok(Math.abs(shearedPoint[0] - 0.85) < 1e-12 && Math.abs(shearedPoint[1] + 0.05) < 1e-12, 'The trusted affine shear maps around the pivot before applying the final offset.');
 assert.throws(() => normalizeTemplatePlacement({ ...transformFixture, placement: { ...transformFixture.placement, transform: { ...transformFixture.placement.transform, scale: [0, 1] } } }, [1, 1]), error => error.code === 'template-placement-invalid', 'Malformed scale values are rejected.');
 assert.throws(() => normalizeTemplatePlacement({ ...transformFixture, placement: { ...transformFixture.placement, transform: { ...transformFixture.placement.transform, pivot: [2, 0] } } }, [1, 1]), error => error.code === 'template-placement-invalid', 'Transform pivots cannot escape the source canvas.');
+const anchoredFixture = {
+  ...body,
+  placement: { canvas: [1, 1], anchor: 'face.center', sourceAnchor: [0.25, 0.5], offset: [0.1, -0.05] }
+};
+const anchorPoints = { 'face.center': [0.75, 0.25] };
+const anchoredPoint = transformTemplatePoint(0.25, 0.5, anchoredFixture, [1, 1], anchorPoints);
+assert.ok(Math.abs(anchoredPoint[0] - 0.85) < 1e-12 && Math.abs(anchoredPoint[1] - 0.2) < 1e-12, 'Named anchors map the registered source point to the exact Template target plus offset.');
+assert.throws(() => templatePlacementMatrix(anchoredFixture, [1, 1], {}), error => error.code === 'template-placement-invalid', 'A named anchor that is absent from the exact Template is rejected.');
+const independentCanvasFixture = {
+  ...body,
+  width: 4,
+  height: 2,
+  placement: { canvas: [10, 10], anchor: 'face.center', sourceAnchor: [2, 1], offset: [1, 0] }
+};
+const independentAnchorPoint = transformTemplatePoint(2, 1, independentCanvasFixture, undefined, { 'face.center': [5, 4] });
+assert.deepEqual(independentAnchorPoint, [6, 4], 'A smaller independent source canvas maps its source anchor to the registered point on the target Template canvas.');
+assert.throws(() => normalizeTemplatePlacement({ ...independentCanvasFixture, placement: undefined }, [10, 10]), error => error.code === 'template-placement-invalid', 'Independent source dimensions require explicit Template placement rather than implicit top-left rendering.');
 
 let fetchCount = 0;
 const fetchUrls = [];
@@ -69,7 +93,7 @@ const createImageBitmapImpl = async () => {
 };
 
 const loader = createPreviewLoader({
-  assetRegistry: [body, eyes],
+  assetRegistry: [body, bodyMaskAlias, eyes, eyesMaskAlias],
   baseURL: 'https://dots.example/',
   fetchImpl,
   createImageBitmapImpl,
@@ -81,31 +105,112 @@ const loader = createPreviewLoader({
 
 const [leaseA, leaseB] = await Promise.all([
   loader.acquire(body, { purpose: 'body-neutral' }),
-  loader.acquire(body, { purpose: 'body-neutral' })
+  loader.acquire(bodyMaskAlias, { purpose: 'silhouette-mask' })
 ]);
-assert.equal(fetchCount, 1, 'Identical inflight resource requests are deduplicated.');
+assert.equal(fetchCount, 1, 'Different canonical ids and purposes for one immutable physical resource share the inflight request.');
 const cachedResourceURL = new URL(fetchUrls[0]);
 assert.equal(cachedResourceURL.searchParams.get('v'), body.version, 'The HTTP cache key includes the immutable resource version.');
 assert.equal(cachedResourceURL.searchParams.get('sha256'), body.sha256, 'The HTTP cache key includes the exact content hash.');
-assert.equal(decodeCount, 1, 'A deduplicated key is decoded once.');
-assert.equal(loader.stats().activeLeases, 2, 'Each consumer receives its own lease.');
+assert.equal(decodeCount, 1, 'Different authorized aliases of one physical resource are decoded once.');
+assert.equal(leaseA.asset, loader.getRegisteredAsset(body), 'A shared-resource lease keeps the first caller’s exact canonical asset.');
+assert.equal(leaseB.asset, loader.getRegisteredAsset(bodyMaskAlias), 'A shared-resource lease keeps the second caller’s exact canonical asset and purpose.');
+assert.notEqual(leaseA.asset, leaseB.asset, 'Resource deduplication does not collapse canonical layer identity.');
+assert.equal(loader.stats().activeLeases, 2, 'Each consumer receives an independent lease to the shared decode.');
 assert.equal(loader.stats().pendingRequests, 0, 'Resolved consumers observe a settled request counter.');
 assert.match(leaseA.url, /^blob:/, 'A lease lazily creates its Blob URL only on use.');
 leaseA.release();
 assert.equal(loader.stats().activeLeases, 1, 'Releasing one consumer leaves the other lease active.');
 leaseB.release();
-const cached = await loader.acquire(body, { purpose: 'body-neutral' });
-assert.equal(fetchCount, 1, 'A released-but-cached bitmap is reused.');
+const cached = await loader.acquire(bodyMaskAlias, { purpose: 'silhouette-mask' });
+assert.equal(cached.asset, loader.getRegisteredAsset(bodyMaskAlias), 'A physical cache hit still returns the requesting alias’s exact canonical asset.');
+assert.equal(fetchCount, 1, 'A released-but-cached physical bitmap is reused across canonical ids and purposes.');
+assert.equal(decodeCount, 1, 'Cross-alias cache reuse does not decode the physical image again.');
 cached.release();
 
 const abortController = new AbortController();
+const beforeAliasAbortFetches = fetchCount;
+const beforeAliasAbortDecodes = decodeCount;
 const sharedA = loader.acquire(eyes, { purpose: 'eyes', signal: abortController.signal });
-const sharedB = loader.acquire(eyes, { purpose: 'eyes' });
+const sharedB = loader.acquire(eyesMaskAlias, { purpose: 'silhouette-mask' });
 abortController.abort();
 await assert.rejects(sharedA, error => error.name === 'AbortError', 'One aborted consumer releases only its own subscription.');
 const sharedLease = await sharedB;
-assert.equal(loader.stats().activeLeases, 1, 'The second consumer still owns the shared decode.');
+assert.equal(sharedLease.asset, loader.getRegisteredAsset(eyesMaskAlias), 'An alias survivor receives its own canonical asset after another consumer aborts.');
+assert.equal(loader.stats().activeLeases, 1, 'The surviving alias consumer still owns the shared decode.');
+assert.equal(fetchCount, beforeAliasAbortFetches + 1, 'Cancelling one alias does not abort the shared physical request while another consumer remains.');
+assert.equal(decodeCount, beforeAliasAbortDecodes + 1, 'The surviving alias consumer receives the one shared decode.');
 sharedLease.release();
+
+const beforeWrongPurpose = fetchCount;
+await assert.rejects(loader.acquire(bodyMaskAlias, { purpose: 'body-neutral' }), error => error.code === 'template-purpose-mismatch', 'A physical cache hit cannot bypass the alias asset’s exact purpose validation.');
+assert.equal(fetchCount, beforeWrongPurpose, 'An invalid purpose is rejected before joining or fetching a shared physical resource.');
+
+const identityDisplayPath = './assets/posters/identity-shared.png';
+const identityDisplayAsset = (id, overrides = {}) => ({
+  id: `asset:identity:${id}`,
+  version: 'v1',
+  path: identityDisplayPath,
+  sha256: 'a'.repeat(64),
+  byteSize: 4,
+  width: 1,
+  height: 1,
+  mime: 'image/png',
+  resourceKind: 'gallery-poster',
+  publicationStatus: 'published-derivative',
+  downloadable: false,
+  ...overrides
+});
+const identityBase = identityDisplayAsset('base');
+const identityVariants = [
+  identityBase,
+  identityDisplayAsset('version', { version: 'v2' }),
+  identityDisplayAsset('hash', { sha256: 'b'.repeat(64) }),
+  identityDisplayAsset('mime', { mime: 'image/webp' }),
+  identityDisplayAsset('bytes', { byteSize: 5 }),
+  identityDisplayAsset('dimensions', { width: 2, height: 1 })
+];
+const identityFetchUrls = [];
+let identityDecodeCount = 0;
+const identityLoader = createPreviewLoader({
+  assetRegistry: identityVariants,
+  baseURL: 'https://dots.example/',
+  fetchImpl: async url => {
+    identityFetchUrls.push(String(url));
+    return new Response(new Uint8Array([1, 2, 3, 4]), { status: 200, headers: { 'content-type': 'image/png' } });
+  },
+  createImageBitmapImpl: async () => {
+    identityDecodeCount += 1;
+    return { width: 1, height: 1, close() {} };
+  },
+  urlRef
+});
+const identityBaseLease = await identityLoader.acquire(identityBase, { purpose: 'detailPreview' });
+identityBaseLease.release();
+for (const variant of identityVariants.slice(1)) {
+  const beforeFetches = identityFetchUrls.length;
+  const beforeDecodes = identityDecodeCount;
+  if (variant === identityVariants[1] || variant === identityVariants[2]) {
+    const lease = await identityLoader.acquire(variant, { purpose: 'detailPreview' });
+    assert.equal(lease.asset, identityLoader.getRegisteredAsset(variant), `${variant.id}: distinct tuple keeps its own canonical lease asset.`);
+    lease.release();
+    assert.equal(identityFetchUrls.length, beforeFetches + 1, `${variant.id}: a different version or hash cannot reuse another physical identity.`);
+    assert.equal(identityDecodeCount, beforeDecodes + 1, `${variant.id}: a different version or hash is decoded independently.`);
+  } else if (variant === identityVariants[3]) {
+    await assert.rejects(identityLoader.acquire(variant, { purpose: 'detailPreview' }), error => error.code === 'mime-mismatch', 'Different MIME identity is fetched and checked independently.');
+    assert.equal(identityFetchUrls.length, beforeFetches + 1, 'Different MIME cannot piggyback on the PNG cache entry.');
+    assert.equal(identityDecodeCount, beforeDecodes, 'A MIME mismatch is rejected before decode.');
+  } else if (variant === identityVariants[4]) {
+    await assert.rejects(identityLoader.acquire(variant, { purpose: 'detailPreview' }), error => error.code === 'byte-size-mismatch', 'Different byte-size identity is fetched and checked independently.');
+    assert.equal(identityFetchUrls.length, beforeFetches + 1, 'Different byte size cannot piggyback on another cache entry.');
+    assert.equal(identityDecodeCount, beforeDecodes, 'A byte-size mismatch is rejected before decode.');
+  } else {
+    await assert.rejects(identityLoader.acquire(variant, { purpose: 'detailPreview' }), error => error.code === 'dimension-mismatch', 'Different dimensions cannot borrow another resource’s decoded bitmap.');
+    assert.equal(identityFetchUrls.length, beforeFetches + 1, 'Different dimensions require a separate physical-resource request.');
+    assert.equal(identityDecodeCount, beforeDecodes + 1, 'Different dimensions are decoded and independently verified.');
+  }
+}
+identityLoader.releaseAll();
+assert.equal(identityLoader.stats().cacheEntries, 0, 'Identity-isolation teardown drops every cached entry.');
 
 assert.throws(() => loader.registerAssets([ASSETS.find(asset => asset.resourceKind === 'transparent-character-still')]), error => error.code === 'not-a-display-preview', 'Registered original Artwork bytes are excluded from display preview loads.');
 await assert.rejects(loader.acquire(body, { purpose: 'eyes' }), error => error.code === 'template-purpose-mismatch', 'Template layers require their exact registered purpose.');
@@ -134,6 +239,68 @@ nextLease.release();
 assert.equal(loader2.stats().cacheEntries, 1, 'Least-recently-used decoded entries are evicted at the idle entry limit.');
 assert.ok(revoked.includes('blob:preview-2'), 'Evicting a resource revokes its lazily-created Blob URL.');
 
+const productionManifest = JSON.parse(fs.readFileSync(new URL('../dist/assets/templates/sources.json', import.meta.url), 'utf8'));
+assert.equal(TEMPLATE_REGISTRY.length, 44, 'The current registry contains all 44 approved Template definitions.');
+assert.equal(productionManifest.templates.length, TEMPLATE_REGISTRY.length, 'The current source manifest is bound to the active registry, not the retained legacy profiles.');
+assert.equal(productionManifest.assets.length, 309, 'The active runtime closure contains only currently referenced package tuples.');
+assert.equal(productionManifest.retainedSourceAssets?.length, 6, 'Six unreferenced approved mask tuples remain outside the active runtime closure.');
+const productionLoaderState = { fetchCount, decodeCount };
+const productionLoader = createPreviewLoader({ assetRegistry: productionManifest.assets, baseURL: 'https://dots.example/', fetchImpl, createImageBitmapImpl, urlRef });
+let requiredProductionReferences = 0;
+const requiredProductionAssetIds = new Set();
+const requiredProductionAssetTuples = new Set();
+let legalProductionRecipes = 0;
+const verifiedFilePaths = new Map();
+const activePublishedPaths = new Set(productionManifest.assets.map(asset => asset.path));
+for (const asset of [...productionManifest.assets, ...productionManifest.retainedSourceAssets]) {
+  const publishedPath = asset.path.replace(/^\.\//, '');
+  const target = new URL(`../dist/${publishedPath}`, import.meta.url);
+  const targetKey = target.href;
+  const previous = verifiedFilePaths.get(targetKey);
+  if (previous) {
+    assert.equal(previous.sha256, asset.sha256, `Shared published file keeps a single exact byte identity: ${publishedPath}`);
+    assert.equal(previous.byteSize, asset.byteSize, `Shared published file keeps a single exact size: ${publishedPath}`);
+    continue;
+  }
+  const bytes = fs.readFileSync(target);
+  assert.equal(bytes.length, asset.byteSize, `Published layer size matches its immutable tuple: ${asset.id}`);
+  assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'), asset.sha256, `Published layer hash matches its immutable tuple: ${asset.id}`);
+  verifiedFilePaths.set(targetKey, { sha256: asset.sha256, byteSize: asset.byteSize });
+}
+assert.equal(activePublishedPaths.size, 302, 'All unique paths in the active 309-tuple closure are preserved.');
+assert.equal(verifiedFilePaths.size, 306, 'All unique active and retained approved source files are hash-verified at their original paths.');
+for (const template of TEMPLATE_REGISTRY) {
+  const manifestTemplate = productionManifest.templates.find(row => row.id === template.id && row.version === template.version);
+  assert.ok(manifestTemplate && manifestTemplate.status === 'approved' && manifestTemplate.engineeringStatus === 'passed' && manifestTemplate.publicEditable === true,
+    `Production Template approval must match ${template.id}@${template.version}.`);
+  const configurations = enumerateValidConfigurations(template);
+  assert.equal(configurations.length, manifestTemplate.declaredLegalConfigurations, `Finite recipe count must match the source manifest for ${template.id}.`);
+  legalProductionRecipes += configurations.length;
+  for (const options of configurations) {
+    for (const reference of getRequiredTemplateAssets(template, options)) {
+      requiredProductionReferences += 1;
+      requiredProductionAssetIds.add(reference.id);
+      requiredProductionAssetTuples.add(`${reference.id}\u0000${reference.version}\u0000${reference.purpose}`);
+      const registered = productionManifest.assets.find(asset => asset.id === reference.id
+        && asset.version === reference.version && asset.purpose === reference.purpose);
+      assert.ok(registered, `Every production layer and option thumbnail is registered: ${reference.id}`);
+      assert.equal(registered.purpose, reference.purpose, `Every production asset keeps its exact purpose: ${reference.id}`);
+      assert.equal(registered.owner?.templateId, template.id, `Every production layer remains owned by its exact Template: ${reference.id}`);
+      assert.equal(registered.owner?.artworkId, template.artworkBinding.artworkId, `Every production layer remains bound to its exact Artwork: ${reference.id}`);
+      assert.equal(registered.owner?.artworkVersion, template.artworkBinding.artworkVersion, `Every production layer remains bound to its exact Artwork version: ${reference.id}`);
+      normalizeTemplatePlacement(registered, [template.canvas.width, template.canvas.height], template.anchors || null);
+    }
+  }
+}
+assert.equal(legalProductionRecipes, 540, 'All 540 approved finite recipes are declared in the current registry.');
+assert.equal(requiredProductionAssetIds.size, 309, 'The active registry uses exactly 309 approved source IDs.');
+assert.deepEqual([...requiredProductionAssetTuples].sort(), productionManifest.assets.map(asset => `${asset.id}\u0000${asset.version}\u0000${asset.purpose}`).sort(), 'The active manifest has every and only source tuple required by all recipes and thumbnails.');
+assert.equal(productionManifest.retainedSourceAssets.some(asset => requiredProductionAssetTuples.has(`${asset.id}\u0000${asset.version}\u0000${asset.purpose}`)), false, 'Retained source tuples are never exposed to the active Template loader.');
+assert.equal(new Set([...requiredProductionAssetTuples, ...productionManifest.retainedSourceAssets.map(asset => `${asset.id}\u0000${asset.version}\u0000${asset.purpose}`)]).size, 315, 'Active and retained inventories preserve all 315 package tuples.');
+productionLoader.releaseAll();
+assert.equal(productionLoader.stats().cacheEntries, 0, 'Registering the production closure performs no eager image loads.');
+assert.deepEqual({ fetchCount, decodeCount }, productionLoaderState, 'Registering the production closure performs no network fetch or image decode.');
+
 const transformedLoader = createPreviewLoader({
   assetRegistry: [transformFixture],
   baseURL: 'https://dots.example/',
@@ -154,8 +321,8 @@ await assert.rejects(transformedLoader.acquire({
 loader.releaseAll();
 loader2.releaseAll();
 transformedLoader.releaseAll();
-await tick(() => loader.stats().activeRequests === 0 && loader2.stats().activeRequests === 0);
-for (const current of [loader, loader2, transformedLoader]) {
+await tick(() => loader.stats().activeRequests === 0 && loader2.stats().activeRequests === 0 && identityLoader.stats().activeRequests === 0);
+for (const current of [loader, loader2, transformedLoader, identityLoader]) {
   const final = current.stats();
   assert.equal(final.pendingRequests, 0, 'Teardown leaves no queued or active request.');
   assert.equal(final.activeLeases, 0, 'Teardown releases all leases.');
@@ -166,8 +333,11 @@ for (const current of [loader, loader2, transformedLoader]) {
 }
 assert.ok(closeCount >= 2, 'Eviction and final teardown close browser image resources.');
 
-console.log('PASS inflight dedupe, independent leases, and decoded cache reuse');
+console.log('PASS physical-resource inflight/cache dedupe across canonical IDs and purposes, with exact per-consumer lease identity');
+console.log('PASS independent cross-alias cancellation/refcounts and version/hash/MIME/byte-size/dimension cache isolation');
 console.log('PASS explicit display-preview allowlist excludes original Artwork resources');
 console.log('PASS bounded LRU, Blob URL revocation, and ImageBitmap teardown');
 console.log('PASS manifest-owned affine placement validation, matrix math, and registration identity');
+console.log('PASS named source-to-template anchors and exact anchor registration');
+console.log(`PASS current manifest registers all 44 Templates and 540 recipes, with 309 active plus 6 retained immutable tuples; ${verifiedFilePaths.size} files are hash-verified and ${requiredProductionReferences} exact layer/thumbnail references remain lazy`);
 console.log(`PASS tracked ${decodeCount} decodes, ${created.length} Blob URLs, ${revoked.length} revocations`);

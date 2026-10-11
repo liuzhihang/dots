@@ -1,0 +1,42 @@
+{
+  "proposedArtworkId": "candidate-animal-small-bird",
+  "version": "v1",
+  "status": "pending",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "referenceIds": ["R05", "R10"],
+  "referenceFiles": [
+    "../references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg",
+    "../references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg"
+  ],
+  "referenceConfidence": "low; no exact small-bird species or official artwork verified",
+  "promptFile": "../prompts/candidate-animal-small-bird-prompts.md",
+  "promptSha256": "0b6ba0293cd2e9b937e39ab602c9873fb61ffe1e0f73defe0c63fdd2c5f5a929",
+  "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-46ca15ea-14dd-4980-8cb1-c65f2cc1d79e.png",
+  "workspaceOutput": "candidate-animal-small-bird-candidate-v1.png",
+  "mime": "image/png",
+  "bytes": 1180957,
+  "width": 1374,
+  "height": 1145,
+  "sha256": "68fc06fc97b5c131480e32c771a53b93034612c332c3d0c1f541a0de330133ed",
+  "alphaInspection": {
+    "format": "RGBA PNG, 8-bit, non-interlaced",
+    "hasAlpha": true,
+    "extrema": [0, 255],
+    "cornerValues": [0, 0, 0, 0],
+    "visibleBoundsAlphaAtLeast8": [197, 78, 1159, 1081],
+    "lowAlphaPixels1To7": 18132,
+    "note": "Small low-alpha values extend outside the character; inspect edge quality before acceptance."
+  },
+  "engineering": "not-run",
+  "visualReview": "pending human edge and species-cue review",
+  "artApproval": {
+    "status": "pending",
+    "record": null,
+    "exactAssetHash": null
+  },
+  "integration": "not-applied",
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

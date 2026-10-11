@@ -1,0 +1,22 @@
+{
+  "id": "animal-white-rabbit-v98-candidate",
+  "version": "v2",
+  "sourcePath": "dist/assets/companions/v98/animal-white-rabbit-v98-studio-candidate.png",
+  "sourceVersion": "v1",
+  "sourceSha256": "571920fb262079b49097b9f7f468264b65eacfc6dc6ffc0bfaffd451cc7c9963",
+  "promptRecord": "../prompts/animal-white-rabbit-v98-candidate-v2-prompts.md",
+  "prompt": "Use case: precise-object-edit. Asset type: clean transparent cutout cleanup, review-only White Rabbit candidate. Image 1 is the exact edit target. Keep the single seated White Rabbit unchanged: same white fluffy coat, two upright pink-lined ears, large brown eyes, small pink nose and muzzle, round tail, paws, proportions, pose, expression, soft 3D look, and lighting. Preserve connected fine fur detail at the silhouette. The current cutout contains a few isolated light-colored specks outside the rabbit. Remove detached pixels and background flecks around the silhouette; retain only fur wisps that visibly connect to the rabbit. Do not leave white or gray islands, halos, edge glow, or cast shadow outside the character. The remainder of the canvas must be genuinely transparent. Keep both ears, tail, and paws complete and in frame with a small transparent margin. Do not reshape or recolor the rabbit. No clothes, props, extra subject, floor, background, text, logo, watermark, white fill, or drawn checkerboard.",
+  "tool": "built-in image_gen.imagegen",
+  "toolOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-b31180f8-b1aa-45bb-9bd0-b9ad2fc9f649.png",
+  "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-white-rabbit-v98-candidate-v2.png",
+  "sha256": "e98a689faeebafc98fce9ed52d0686982be80e5836b7ec154102e1fc5006c794",
+  "bytes": 1234792,
+  "width": 1133,
+  "height": 1388,
+  "pixelFormat": "rgba",
+  "alphaQA": "RGBA PNG; all four canvas corners alpha=0; center alpha=253; reviewed on dark and warm-light composite backgrounds.",
+  "visualReview": "The original rabbit identity, upright pink-lined ears, brown eyes, seated body, paws and round tail read clearly. Candidate only; human art review and final approval pending.",
+  "status": "pending",
+  "artApproval": "pending",
+  "templateLayers": "not-created; this candidate only repairs the full transparent source artwork"
+}

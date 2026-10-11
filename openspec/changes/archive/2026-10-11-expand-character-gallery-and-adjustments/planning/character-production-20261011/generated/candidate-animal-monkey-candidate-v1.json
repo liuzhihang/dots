@@ -1,0 +1,39 @@
+{
+  "proposedArtworkId": "candidate-animal-monkey",
+  "version": "v1",
+  "status": "pending",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "transparentBackgroundRequested": true,
+  "referenceIds": ["R05"],
+  "referenceFiles": ["../references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"],
+  "referenceConfidence": "low; screenshot does not verify exact species, tail, or identity",
+  "promptFile": "../prompts/candidate-animal-monkey-prompts.md",
+  "promptSha256": "f39245edd1a839e33b66672052bd7ad4eb194099b79b2ee07a114521c5b7b00e",
+  "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-44eea603-ad53-4b48-8fca-1fedf99334ce.png",
+  "workspaceOutput": "candidate-animal-monkey-candidate-v1.png",
+  "mime": "image/png",
+  "bytes": 1912278,
+  "width": 1245,
+  "height": 1263,
+  "sha256": "c91bf3c53d91cc3b7ce1825da1273028eef9ed3acf079dca77ad885a25389b4d",
+  "alphaInspection": {
+    "format": "RGBA PNG, 8-bit, non-interlaced",
+    "hasAlpha": true,
+    "extrema": [0, 255],
+    "cornerValues": [0, 0, 0, 0],
+    "visibleBoundsAlphaAtLeast8": [51, 28, 1220, 1239],
+    "lowAlphaPixels1To7": 34144,
+    "note": "The tail approaches the right canvas edge; framing needs human review."
+  },
+  "engineering": "not-run",
+  "visualReview": "pending human framing and edge review",
+  "artApproval": {
+    "status": "pending",
+    "record": null,
+    "exactAssetHash": null
+  },
+  "integration": "not-applied",
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

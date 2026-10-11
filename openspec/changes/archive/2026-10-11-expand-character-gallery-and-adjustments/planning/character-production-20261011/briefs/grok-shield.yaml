@@ -1,0 +1,84 @@
+# 参考裁决记录：R03 Rae 映射到圆角立方候选的外观选项，不另建 Artwork。
+briefVersion: 2
+disposition: variant-option-only
+retiredProposalId: "candidate-grok-shield"
+request:
+  summary: "R03 Rae 的蓝色圆角六边外沿与圆角立方候选近似；仅作为该候选的蓝色正面外观参考，不另建身份。"
+  scope: reference-adjudication
+  count: 0
+character:
+  proposedId: null
+  seriesId: "grok"
+  identity: existing-reference
+  reuse: "candidate-grok-rounded-cube"
+  canonicalArtworkId: "grok-rounded-cube"
+  differenceFromExisting: "R03 Rae 的蓝色正面六边外沿与圆角立方候选存在可见轮廓相似；只将其用作正面/配色参考以合并雷同项，不声称 Rae 与 Nova 是同一个 3D 模型。Rae 无足够独立盾形证据，因此不再保留独立 Artwork。"
+  invariants:
+    - "不再生成 candidate-grok-shield，也不增加独立 Artwork 数量。"
+    - "Rae 只映射到 candidate-grok-rounded-cube 的蓝色正面/六边外沿外观参考；不宣称它与 Nova 是同一个 3D 模型。"
+    - "Rae 不单独增加 Artwork；保留原称呼和 R03 来源区域作为追溯证据。"
+artwork:
+  proposedId: null
+  proposedVersion: null
+  name: {en: null, zh-CN: null}
+  description: {en: null, zh-CN: null}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R03"
+    path: "planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg"
+    sha256: "ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d"
+    role: "指定主体/区域的轮廓线索；不是可发布原图"
+    use: "Rae 显示完整六边圆角蓝色外沿，作为 candidate-grok-rounded-cube 的正面/蓝色外观参考。映射基于可见轮廓相似以合并雷同项，不推断它与 Nova 是同一 3D 模型。"
+    exclude: "职位文字、姓名标签、截图背景；不添加盾牌、把手、面片或手脚，也不以角色标签推断身份。"
+    license: unknown
+  - id: "R04"
+    path: "planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg"
+    sha256: "d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514"
+    role: "同系列圆角立方轮廓对照；不是可发布原图"
+    use: "绿色立方主体支持 candidate-grok-rounded-cube 的立方几何，与 Rae 的正面/外沿参考互补；不把二者声明成同一 3D 模型。"
+    exclude: "低清拍屏纹理和其他颜色差异不产生额外角色。"
+    license: unknown
+  - id: "R14"
+    path: "planning/character-production-20261011/references/originals/R14-codex-clipboard-3d7f15c2-6f66-4b2f-8a06-6cd98c144b3a.jpg"
+    sha256: "75c5ff4120824fcd84691b1f802931441863479e5950cdcd7e4babab8c5eec4c"
+    role: "低清多面体对照；不是可发布原图"
+    use: "只作为 candidate-grok-rounded-cube 的多面体轮廓交叉参照，不用于断言 Rae/Nova 是同一 3D 模型。"
+    exclude: "裁切棕形、小尺寸与截断边缘不产生新角色。"
+    license: unknown
+creation:
+  prompt: null
+  promptReference: null
+  negativeConstraints:
+    - "不得为已撤回提案生成新 Artwork。"
+    - "不得把六边外沿自动称为盾牌、立方体或单独 Character。"
+  tool: null
+  originalOutputPath: null
+  iterations: []
+facts:
+  characterStyle: {state: unknown, evidence: "未制作独立 Artwork；仅映射为既有候选的形体外观参考"}
+  appearance: {state: unknown, evidence: "R03 的六边圆角外沿映射到圆角立方候选的蓝色正面/轮廓选项；不推断共同 3D 模型"}
+  facialFeatures: {state: unknown, evidence: "不从参照截图声明新能力"}
+  colorMaterial: {state: unknown, evidence: "蓝色仅为来源颜色，不产生新身份"}
+  clothing: {state: unknown, evidence: "不适用"}
+  headAccessory: {state: unknown, evidence: "不适用"}
+  bodyAccessory: {state: unknown, evidence: "不适用"}
+  prop: {state: unknown, evidence: "不推断盾牌或其他道具"}
+resources:
+  original: {path: null, sha256: null, mime: null, bytes: null, width: null, height: null, alphaCheck: null}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: "references/manifest.json; source records R03, R04 and R14"
+  license: unknown
+  engineering: not-applicable
+  visualReview: "reference adjudication only; no independent shield Artwork generated"
+  artApproval: {status: not-applicable, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

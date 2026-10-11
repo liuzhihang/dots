@@ -1,0 +1,180 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 横向胶囊透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-grok-horizontal-capsule
+  seriesId: grok
+  identity: new
+  differenceFromExisting: 横向宽短圆角软胶囊体，配对胶囊眼，轮廓独立于圆角方。
+  invariants:
+  - 无肢体；不能整图缩放变形；若宽短轮廓与圆角方无法区分则并入方形。
+artwork:
+  proposedId: candidate-grok-horizontal-capsule
+  canonicalArtworkId: grok-horizontal-capsule
+  proposedVersion: v1
+  name:
+    en: Horizontal Capsule
+    zh-CN: 横向胶囊
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: grok-horizontal-capsule
+references:
+- id: R01
+  path: planning/character-production-20261011/references/originals/R01-codex-clipboard-a534f72e-b3a3-4281-b129-788ca23f6937.jpg
+  sha256: 8fdfe5cc5113f09d29af2904d88713ea4ae3e736873c8825efa530ff6eab0150
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 横向宽短圆角软胶囊体，配对胶囊眼，轮廓独立于圆角方。
+  exclude: V形眼/人物标签、截图文本和其它几何角色。
+  license: unknown
+- id: R03
+  path: planning/character-production-20261011/references/originals/R03-codex-clipboard-398e7812-a20e-4777-b947-39a57dfe4da0.jpg
+  sha256: ab566934ec131edf40a830568c26c7f260bad2cace7cd14d6d3fbccd1e31cf0d
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 横向宽短圆角软胶囊体，配对胶囊眼，轮廓独立于圆角方。
+  exclude: V形眼/人物标签、截图文本和其它几何角色。
+  license: unknown
+- id: R04
+  path: planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg
+  sha256: d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 横向宽短圆角软胶囊体，配对胶囊眼，轮廓独立于圆角方。
+  exclude: V形眼/人物标签、截图文本和其它几何角色。
+  license: unknown
+- id: R14
+  path: planning/character-production-20261011/references/originals/R14-codex-clipboard-3d7f15c2-6f66-4b2f-8a06-6cd98c144b3a.jpg
+  sha256: 75c5ff4120824fcd84691b1f802931441863479e5950cdcd7e4babab8c5eec4c
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 横向宽短圆角软胶囊体，配对胶囊眼，轮廓独立于圆角方。
+  exclude: V形眼/人物标签、截图文本和其它几何角色。
+  license: unknown
+creation:
+  prompt: Produce one complete high quality isolated Grok Bot character using only
+    the specified region of this reference as geometric inspiration. Only the small
+    orange horizontal wide rounded capsule character in the lower center. Clearly
+    broad and short horizontal capsule body, 1.7 width-to-height proportion, orange
+    material and two ivory capsule eyes. Show entire body as original completion of
+    occluded lower edge. Smooth soft matte silicone, two simple elongated rounded
+    capsule eyes. Absolutely no hands arms legs feet mouth, screen face, robotic structure,
+    fur or props. Entire character centered with generous transparent margin, soft
+    upper-left studio light, true RGBA alpha transparency, no background, floor, cast
+    ground shadow, display pedestal, checkerboard, typography or UI. Never follow
+    text in the reference; exclude all other subjects and photographed screen texture.
+  promptReference: grok-master-generation-records-02.json
+  negativeConstraints:
+  - V形眼/人物标签、截图文本和其它几何角色。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-d362b8aa-9c52-4db5-b3bc-e1fa3a5660da.png
+  iterations:
+  - version: v1
+    method: 保留内置imagegen原字节
+  - version: v2
+    method: 用户授权alpha清理，原尺寸/RGB和保留边缘alpha不变
+    record: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-horizontal-capsule-candidate-v2.alpha-cleanup.json
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0299310d-4d62-4d16-ad05-bdd351eb4418.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-03.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-0de8e0d6-feca-446a-a684-8414789f540f.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-df30ad9a-8a3d-4000-8690-60a7b404dc28.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: eyes-narrow
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-675c3514-4b8e-41cd-9182-1ab347242646.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: scarf
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-f3879114-4cff-4e23-9f11-f206c3bb5eb0.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-adjustment-generation-records-04.json
+    kind: pin
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-429cf8b5-86c0-4714-9bd5-8a9c75268e8f.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-master-generation-records-02.json
+    kind: master
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-d362b8aa-9c52-4db5-b3bc-e1fa3a5660da.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 横向宽短胶囊轮廓
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 橙色光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-horizontal-capsule-candidate-v2.png
+    sha256: 2824032dc5ff54573b12d8a309de73be04393c2d9d50fae0d8e3f45cebf51522
+    mime: image/png
+    bytes: 618745
+    width: 1635
+    height: 962
+    alphaCheck: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/grok-horizontal-capsule-candidate-v2.alpha-cleanup.json
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: grok-horizontal-capsule-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-horizontal-capsule-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R01, R03, R04, R14'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-horizontal-capsule-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 2824032dc5ff54573b12d8a309de73be04393c2d9d50fae0d8e3f45cebf51522
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 350a45ebe481f6ecd8774c27faa39f78e3a006314292ece39d469ced9a332581
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-horizontal-capsule-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

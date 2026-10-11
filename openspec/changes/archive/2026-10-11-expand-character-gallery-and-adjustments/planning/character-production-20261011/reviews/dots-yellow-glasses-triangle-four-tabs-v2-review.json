@@ -1,0 +1,215 @@
+{
+  "artworkId": "dots-yellow-glasses-triangle",
+  "artworkVersion": "v1",
+  "originalSha256": "036264f59a5e0b355a863a41620e2394a7f31336fdf08ca25b4f583937444059",
+  "templateId": "dots-yellow-glasses-triangle-adjustments-v2",
+  "templateVersion": "v2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-yellow-glasses-triangle-four-tabs-v2-review.json",
+  "manifestSha256": "81dbf5fb46d289634cf5ec83ec3945a01484008bdc4bebbda5e8bd815fd91359",
+  "engineeringReport": ".artifacts/character-adjustments/dots-yellow-glasses-triangle-adjustments-v2/report.json",
+  "engineeringReportSha256": "e5faf8fd8bf7e0522bdaf72fe648cd2f4894bcc763a1c82f395b1c10f7ce0564",
+  "legalRecipes": [
+    {
+      "id": "classic-original-closed-none",
+      "sha256": "5423c0510b6c2cd5b3f44c158f450c31114483f8d58f695c11fc84df24c7d164"
+    },
+    {
+      "id": "classic-original-closed-glasses",
+      "sha256": "fd18e3d22c766c827501cd6ddf703272f0a95e5cf503232789ef7210d26ce56d"
+    },
+    {
+      "id": "classic-original-open-none",
+      "sha256": "9ea68ba7dfa89eeeefbec0073550212e8998831f2246a9f6d590bd3715254e57"
+    },
+    {
+      "id": "classic-original-open-glasses",
+      "sha256": "d1e00b5eb770f7cf1c61bbf76a359e2a31062f246f3d365cf3eb848fc4313176"
+    },
+    {
+      "id": "classic-rose-closed-none",
+      "sha256": "d986955ec07984898566bda9ba5e6e0caa2ac61e2ff0d5e066ce00a4fdf3e5b8"
+    },
+    {
+      "id": "classic-rose-closed-glasses",
+      "sha256": "c15c9dbedad3ce5b50c224ea6a6310b97f400622ec402e30b9c41e458ad5393e"
+    },
+    {
+      "id": "classic-rose-open-none",
+      "sha256": "66ba0560d4454a251629e6c78fc24d8b977fc9c1d01f62681bfd1ac187992be9"
+    },
+    {
+      "id": "classic-rose-open-glasses",
+      "sha256": "76ba84052c7abc8285a9123b0b7d7855b851bc0875203e11c39fe7d3c7c8c0f3"
+    },
+    {
+      "id": "soft-original-closed-none",
+      "sha256": "ed7c32dc1c3fac7cab72bb7c2ff8b1c503d44349d3719dcdf73c9da5f03c2042"
+    },
+    {
+      "id": "soft-original-closed-glasses",
+      "sha256": "0809ec3dbaa344365d48769bf79228764a72302026b887a8cb4e93254824d812"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "aff240db52a47367d18b43472f7ba2a63bce632aa63bcf84a8ed89a70aaac675"
+    },
+    {
+      "id": "soft-original-open-glasses",
+      "sha256": "fcfe4712517a762e24adc087ff62199f026566bd5699c6b782e24e27132c040a"
+    },
+    {
+      "id": "soft-rose-closed-none",
+      "sha256": "0384b824999c8c44295deeeb0d8db61dbb428598342c7d15b60f29edf1990479"
+    },
+    {
+      "id": "soft-rose-closed-glasses",
+      "sha256": "e264f0be10e179d73ce6eb18a95807128676ee7b736c1a10286b98888e2e18e9"
+    },
+    {
+      "id": "soft-rose-open-none",
+      "sha256": "e5df1315199a914dee9e40d89c4bce6eef1ad9dd450d2eb9e659d573a42814e0"
+    },
+    {
+      "id": "soft-rose-open-glasses",
+      "sha256": "26905f1e663b895fc51f392b20e3787bda733259446485d9c44a8f421fa1092a"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "method": "新四类配方实际重渲染、导出与浏览器控件复验；所有 PNG 字节与此前已逐项视觉核对的无衣物配方完全一致。仅复用精确相同的像素证据，不沿用旧服装配方的评价。",
+    "previousReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-review.json",
+    "previousReviewSha256": "0e1557e420a6074ef92d6c0596b431fc5cacc5cfc96c2c82d10e438c5a200b42",
+    "exactPixelCorrespondence": [
+      {
+        "recipeId": "classic-original-closed-none",
+        "sha256": "5423c0510b6c2cd5b3f44c158f450c31114483f8d58f695c11fc84df24c7d164",
+        "oldRecipeId": "classic-original-closed-none-none",
+        "oldSha256": "5423c0510b6c2cd5b3f44c158f450c31114483f8d58f695c11fc84df24c7d164",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-closed-glasses",
+        "sha256": "fd18e3d22c766c827501cd6ddf703272f0a95e5cf503232789ef7210d26ce56d",
+        "oldRecipeId": "classic-original-closed-none-glasses",
+        "oldSha256": "fd18e3d22c766c827501cd6ddf703272f0a95e5cf503232789ef7210d26ce56d",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-open-none",
+        "sha256": "9ea68ba7dfa89eeeefbec0073550212e8998831f2246a9f6d590bd3715254e57",
+        "oldRecipeId": "classic-original-open-none-none",
+        "oldSha256": "9ea68ba7dfa89eeeefbec0073550212e8998831f2246a9f6d590bd3715254e57",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-original-open-glasses",
+        "sha256": "d1e00b5eb770f7cf1c61bbf76a359e2a31062f246f3d365cf3eb848fc4313176",
+        "oldRecipeId": "classic-original-open-none-glasses",
+        "oldSha256": "d1e00b5eb770f7cf1c61bbf76a359e2a31062f246f3d365cf3eb848fc4313176",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-rose-closed-none",
+        "sha256": "d986955ec07984898566bda9ba5e6e0caa2ac61e2ff0d5e066ce00a4fdf3e5b8",
+        "oldRecipeId": "classic-rose-closed-none-none",
+        "oldSha256": "d986955ec07984898566bda9ba5e6e0caa2ac61e2ff0d5e066ce00a4fdf3e5b8",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-rose-closed-glasses",
+        "sha256": "c15c9dbedad3ce5b50c224ea6a6310b97f400622ec402e30b9c41e458ad5393e",
+        "oldRecipeId": "classic-rose-closed-none-glasses",
+        "oldSha256": "c15c9dbedad3ce5b50c224ea6a6310b97f400622ec402e30b9c41e458ad5393e",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-rose-open-none",
+        "sha256": "66ba0560d4454a251629e6c78fc24d8b977fc9c1d01f62681bfd1ac187992be9",
+        "oldRecipeId": "classic-rose-open-none-none",
+        "oldSha256": "66ba0560d4454a251629e6c78fc24d8b977fc9c1d01f62681bfd1ac187992be9",
+        "identical": true
+      },
+      {
+        "recipeId": "classic-rose-open-glasses",
+        "sha256": "76ba84052c7abc8285a9123b0b7d7855b851bc0875203e11c39fe7d3c7c8c0f3",
+        "oldRecipeId": "classic-rose-open-none-glasses",
+        "oldSha256": "76ba84052c7abc8285a9123b0b7d7855b851bc0875203e11c39fe7d3c7c8c0f3",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-closed-none",
+        "sha256": "ed7c32dc1c3fac7cab72bb7c2ff8b1c503d44349d3719dcdf73c9da5f03c2042",
+        "oldRecipeId": "soft-original-closed-none-none",
+        "oldSha256": "ed7c32dc1c3fac7cab72bb7c2ff8b1c503d44349d3719dcdf73c9da5f03c2042",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-closed-glasses",
+        "sha256": "0809ec3dbaa344365d48769bf79228764a72302026b887a8cb4e93254824d812",
+        "oldRecipeId": "soft-original-closed-none-glasses",
+        "oldSha256": "0809ec3dbaa344365d48769bf79228764a72302026b887a8cb4e93254824d812",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-open-none",
+        "sha256": "aff240db52a47367d18b43472f7ba2a63bce632aa63bcf84a8ed89a70aaac675",
+        "oldRecipeId": "soft-original-open-none-none",
+        "oldSha256": "aff240db52a47367d18b43472f7ba2a63bce632aa63bcf84a8ed89a70aaac675",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-original-open-glasses",
+        "sha256": "fcfe4712517a762e24adc087ff62199f026566bd5699c6b782e24e27132c040a",
+        "oldRecipeId": "soft-original-open-none-glasses",
+        "oldSha256": "fcfe4712517a762e24adc087ff62199f026566bd5699c6b782e24e27132c040a",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-rose-closed-none",
+        "sha256": "0384b824999c8c44295deeeb0d8db61dbb428598342c7d15b60f29edf1990479",
+        "oldRecipeId": "soft-rose-closed-none-none",
+        "oldSha256": "0384b824999c8c44295deeeb0d8db61dbb428598342c7d15b60f29edf1990479",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-rose-closed-glasses",
+        "sha256": "e264f0be10e179d73ce6eb18a95807128676ee7b736c1a10286b98888e2e18e9",
+        "oldRecipeId": "soft-rose-closed-none-glasses",
+        "oldSha256": "e264f0be10e179d73ce6eb18a95807128676ee7b736c1a10286b98888e2e18e9",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-rose-open-none",
+        "sha256": "e5df1315199a914dee9e40d89c4bce6eef1ad9dd450d2eb9e659d573a42814e0",
+        "oldRecipeId": "soft-rose-open-none-none",
+        "oldSha256": "e5df1315199a914dee9e40d89c4bce6eef1ad9dd450d2eb9e659d573a42814e0",
+        "identical": true
+      },
+      {
+        "recipeId": "soft-rose-open-glasses",
+        "sha256": "26905f1e663b895fc51f392b20e3787bda733259446485d9c44a8f421fa1092a",
+        "oldRecipeId": "soft-rose-open-none-glasses",
+        "oldSha256": "26905f1e663b895fc51f392b20e3787bda733259446485d9c44a8f421fa1092a",
+        "identical": true
+      }
+    ],
+    "surfaces": [
+      "174px 深灰/浅灰检查底",
+      "4 个模拟视口",
+      "蓝云四标签 IAB 实际选择、Prompt 和透明下载"
+    ],
+    "checks": [
+      "家族身份和眼型保持",
+      "无手脚、无服装层、无隐藏服装选项",
+      "配色、五官与配饰独立，接触及层序保留",
+      "全部配方可从默认逐字段抵达"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

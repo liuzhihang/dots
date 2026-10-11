@@ -1,0 +1,63 @@
+{
+  "reviewType": "internal-visual-precheck",
+  "reviewer": "editing_audit subagent",
+  "reviewedAt": "2026-10-11",
+  "status": "pending-parent-review",
+  "scope": "Visual and engineering precheck for a review-only accessory Template. This record is not an art approval or user approval.",
+  "artwork": {
+    "id": "candidate-dots-20261005",
+    "version": "v2",
+    "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+  },
+  "template": {
+    "id": "dots-orb-core-adjustments-v3-candidate",
+    "version": "v3",
+    "status": "pending",
+    "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-orb-core-adjustments-v3-review.json",
+    "manifestSha256": "dcc26fd9779248250465bc6ef913db893f2f64f683dd774c5903a6d40c819605"
+  },
+  "recipeSet": {
+    "count": 60,
+    "sha256": "94db0c4a8b72033c7cb67c42c9a612ca3078bdb7faf348da3a322c1898405980",
+    "hashInput": "JSON.stringify(recipes sorted by id, each represented as [id, selections sorted by option-field key])",
+    "representativeRenderedRecipes": [
+      {
+        "id": "orb-blue-open-none-chef-toque",
+        "sha256": "7ceb74b58e95213a78d7c03d665b6f5b92dc0be8c81075cc5a11dbd2b92f1dce"
+      },
+      {
+        "id": "orb-blue-open-none-cool-sunglasses",
+        "sha256": "8463abe75e54b462e435c76ce491a8612438b0a8308ee201feb7dbd91f48a791"
+      },
+      {
+        "id": "orb-blue-open-none-cyber-glasses",
+        "sha256": "04aaadbb7966b0b465ddc66f04f53568034ada779e268ec1d81013a88adffb79"
+      }
+    ]
+  },
+  "evidence": {
+    "engineeringReport": ".artifacts/character-adjustments/dots-orb-core-adjustments-v3-candidate/report.json",
+    "engineeringReportSha256": "14946ec62a3286c41411a1a8f721e04b752235a7aaec2e6d848044a816763b60",
+    "lightDarkContactSheet": ".artifacts/character-adjustments/dots-orb-core-adjustments-v3-candidate/contact-light-dark-accessories-v2.jpg",
+    "lightDarkContactSheetSha256": "01ec3358fede6a3057ecf874051bae18024749a65a785601ef37c7d790b87e71",
+    "reviewed": [
+      "60 declared recipes rendered and exported in Chromium",
+      "14 option choices traversed through direct single-field UI changes",
+      "dark and light composites for chef toque, black opaque sunglasses, and cyan cyber glasses with base and clothing variants",
+      "declared cloud/accessory and closed-eye/opaque-sunglasses conflicts"
+    ]
+  },
+  "findings": [
+    "The chef toque base aligns with the orb crown and remains above the eye field.",
+    "Black sunglasses now cover both open-eye marks completely; closed-eye use is explicitly blocked.",
+    "Translucent cyber lenses preserve eye visibility while containing both eye marks within their lens area.",
+    "The accessories remain separate transparent foreground layers; all new compositions remain pending parent and user review."
+  ],
+  "artApproval": {
+    "status": "pending",
+    "userApproved": false,
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

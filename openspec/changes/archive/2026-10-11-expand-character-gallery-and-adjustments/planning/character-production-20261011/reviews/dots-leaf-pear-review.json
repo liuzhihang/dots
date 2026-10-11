@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-leaf-pear",
+  "artworkVersion": "v1",
+  "originalSha256": "12a092ddf983cc03e3382a9f0c82e1d97f3d2f233c5b0f5b309521c63e37cdc9",
+  "templateId": "dots-leaf-pear-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-leaf-pear-review.json",
+  "manifestSha256": "016124424e040254f16fef53f73381536f96df7f52323b7f74cbb9b0cb3ef30b",
+  "engineeringReport": ".artifacts/character-adjustments/dots-leaf-pear-adjustments-v1/report.json",
+  "engineeringReportSha256": "48a5a24bb5345a3b182b0d465e6ed249f91131e594ee9b38f2d4666753497583",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none",
+      "sha256": "c4ccec5f4e72a8de6f4184102a4857bb753496de7f28a0941901b00a8f821d5f"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "743af7147feba5bbfd4317d97d2b2b9114b1299f03f0dc10463d81477e1d2c2e"
+    },
+    {
+      "id": "classic-alternate-open-none",
+      "sha256": "826b654f22382ea502e54fd8d3e01c46d8a67aa0e289d4e313996d5593e2848a"
+    },
+    {
+      "id": "classic-original-closed-none",
+      "sha256": "0cb02d84461b11700430b0561a3b2f7a1fb50e26ab83917abee146509939aa3e"
+    },
+    {
+      "id": "classic-original-open-fitted",
+      "sha256": "dffa656619d0428a52dd6d23cf0e9f4666639841c79dc407b3c41a4cf9c5b438"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

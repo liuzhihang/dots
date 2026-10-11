@@ -1,0 +1,690 @@
+{
+  "status": "pending",
+  "scope": "Four-category Dots candidate; whole-character finite branches; clothing is not supported. Neither Artwork nor Template is user approved.",
+  "artwork": {
+    "id": "dots-flower-cloud",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "紫色花云",
+      "en": "Flower Cloud"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-candidate-v2.png",
+    "sha256": "135e3c1438147383d0878479b694662706c0ceef2260e5ff2ba77aa6ff5fc11b"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-flower-cloud-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-flower-cloud",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1402,
+      "height": 1122
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与简洁成对黑眼。无手臂、手、腿、脚、嘴、屏幕脸和服装。",
+      "en": "One Dots character with a continuous short-dense-plush body and simple paired black eyes. No arms, hands, legs, feet, mouth, screen face or clothing."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典轮廓",
+            "en": "Classic outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "低矮连续、圆润起伏的紫色花云轮廓",
+            "en": "a low continuous purple flower-cloud outline with rounded scallops"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "柔圆轮廓",
+            "en": "Softer outline"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更低宽、三个上方圆瓣清晰的连续云团",
+            "en": "a lower wider continuous cloud mound with three pronounced upper lobes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "紫色",
+            "en": "Purple"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "紫色短密绒",
+            "en": "Purple short dense plush"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#944ae5"
+          ],
+          "zoneColors": {
+            "body": "#944ae5"
+          }
+        },
+        {
+          "id": "alternate",
+          "labelByLanguage": {
+            "zh-CN": "玫瑰粉",
+            "en": "Rose pink"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "玫瑰粉短绒，保持成对黑眼",
+            "en": "rose-pink short plush preserving the paired black eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#eb71af"
+          ],
+          "zoneColors": {
+            "body": "#eb71af"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色双眼",
+            "en": "Black paired eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色眼睛，无嘴",
+            "en": "simple paired black eyes, no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对简洁黑色闭合弧线眼，无嘴；静态表情",
+            "en": "simple paired black closed curved eyelids, no mouth; a static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessory"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴额外配饰",
+            "en": "no extra accessory"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "fitted",
+          "labelByLanguage": {
+            "zh-CN": "黑贝雷帽",
+            "en": "Black beret"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "黑色毛呢贝雷帽贴合中央云瓣顶部，双眼无遮挡",
+            "en": "a black wool beret fitted to the top of the center cloud lobe without covering either eye"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-flower-cloud-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "colors": "alternate"
+        },
+        "code": "appearance-colors-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "face": "closed"
+        },
+        "code": "appearance-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "appearance": "soft",
+          "accessories": "fitted"
+        },
+        "code": "appearance-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "face": "closed"
+        },
+        "code": "colors-face-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "colors": "alternate",
+          "accessories": "fitted"
+        },
+        "code": "colors-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      },
+      {
+        "when": {
+          "face": "closed",
+          "accessories": "fitted"
+        },
+        "code": "face-accessories-separate-fit",
+        "messageByLanguage": {
+          "zh-CN": "这两个选项尚无匹配的组合素材。请先将另一项切回默认，再选择这项调整。",
+          "en": "These options do not have a matching combined asset. Restore the other option to its default before choosing this adjustment."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-flower-cloud-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-flower-cloud-adjustments-v1:appearance",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-alternate-open-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "alternate",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-flower-cloud-adjustments-v1:colors",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-flower-cloud-adjustments-v1:face",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-fitted",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "accessories": "fitted"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-flower-cloud-adjustments-v1:accessories",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-flower-cloud-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-flower-cloud-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-candidate-v2.png",
+      "sha256": "135e3c1438147383d0878479b694662706c0ceef2260e5ff2ba77aa6ff5fc11b",
+      "byteSize": 1270982,
+      "width": 1402,
+      "height": 1122,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "transparentPixels": 1003112,
+        "bboxAtAlphaThreshold16": [
+          196,
+          191,
+          1206,
+          974
+        ]
+      },
+      "owner": {
+        "templateId": "dots-flower-cloud-adjustments-v1",
+        "artworkId": "dots-flower-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1402,
+          1122
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-flower-cloud-adjustments-v1:appearance",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-flower-cloud-adjustments-v1/appearance.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-appearance-full-candidate-v2.png",
+      "sha256": "5fea0515918c13972cd975ba6f2ad1a0a4bf056f36da3ac0051e99cd2d944542",
+      "byteSize": 1108427,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 254,
+        "transparentPixels": 1051636,
+        "bboxAtAlphaThreshold16": [
+          67,
+          351,
+          1188,
+          983
+        ]
+      },
+      "owner": {
+        "templateId": "dots-flower-cloud-adjustments-v1",
+        "artworkId": "dots-flower-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1402,
+          1122
+        ],
+        "anchor": "canvas",
+        "offset": [
+          -76.4248,
+          -243.8623
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            1.2389240506329113,
+            1.2389240506329113
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-flower-cloud-adjustments-v1:colors",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-flower-cloud-adjustments-v1/colors.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-colors-full-candidate-v2.png",
+      "sha256": "7dc9b6c65b7e50a2f66a75835205d4030391f3d7fe9cec8142d18d0e2bc85591",
+      "byteSize": 1499691,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 848866,
+        "bboxAtAlphaThreshold16": [
+          54,
+          200,
+          1199,
+          1083
+        ]
+      },
+      "owner": {
+        "templateId": "dots-flower-cloud-adjustments-v1",
+        "artworkId": "dots-flower-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1402,
+          1122
+        ],
+        "anchor": "canvas",
+        "offset": [
+          145.4513,
+          13.6501
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8867497168742922,
+            0.8867497168742922
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-flower-cloud-adjustments-v1:face",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-flower-cloud-adjustments-v1/face.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-face-full-candidate-v2.png",
+      "sha256": "db83d9338ce594c3d4f546a9565a7ac96fde9a22fd9ecb18d044767378d42053",
+      "byteSize": 1507160,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 839334,
+        "bboxAtAlphaThreshold16": [
+          48,
+          207,
+          1196,
+          1105
+        ]
+      },
+      "owner": {
+        "templateId": "dots-flower-cloud-adjustments-v1",
+        "artworkId": "dots-flower-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1402,
+          1122
+        ],
+        "anchor": "canvas",
+        "offset": [
+          158.6548,
+          10.5089
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8719376391982183,
+            0.8719376391982183
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    },
+    {
+      "id": "template:dots-flower-cloud-adjustments-v1:accessories",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-flower-cloud-adjustments-v1/accessories.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-flower-cloud-accessories-full-candidate-v2.png",
+      "sha256": "e84106e146ed4e68d7d0a5aaa2ed3ec284243c11070327c13f67327c40db7d27",
+      "byteSize": 1595172,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 811590,
+        "bboxAtAlphaThreshold16": [
+          68,
+          140,
+          1194,
+          1156
+        ]
+      },
+      "owner": {
+        "templateId": "dots-flower-cloud-adjustments-v1",
+        "artworkId": "dots-flower-cloud",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1402,
+          1122
+        ],
+        "anchor": "canvas",
+        "offset": [
+          214.7077,
+          83.1063
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.7706692913385826,
+            0.7706692913385826
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen complete character branch from exact master; raw retained; authorized alpha-only cleanup. Uniform scene registration; source pixels never stretched or recolored locally."
+    }
+  ]
+}

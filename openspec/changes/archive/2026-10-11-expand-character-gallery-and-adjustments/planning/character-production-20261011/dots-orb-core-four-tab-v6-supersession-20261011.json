@@ -1,0 +1,25 @@
+{
+  "reason": "Preserve the v5 tint-only candidate as a reconstructed historical interim version, and replace the ivory/charcoal tint mappings with dedicated transparent body artwork assets in v6.",
+  "records": [
+    {
+      "artworkId": "candidate-dots-20261005",
+      "artworkVersion": "v2",
+      "previousTemplateId": "dots-orb-core-adjustments-v5-four-tabs-candidate",
+      "previousTemplateVersion": "v5",
+      "previousManifest": "templates/dots-orb-core-adjustments-v5-four-tabs-review.json",
+      "historicalManifestSha256": "3d3695713336f8347c54ad02351fd0bee254d29763860d7e480d11d50481edef",
+      "reconstructedManifestSha256": "5d9f80f2ba53cad051c22da0762f609783a21ce65e02bdf58d693337f4a088ef",
+      "byteIdentityRecovered": false,
+      "newTemplateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+      "newTemplateVersion": "v6",
+      "newManifest": "templates/dots-orb-core-adjustments-v6-four-tabs-review.json",
+      "newManifestSha256": "f8032af64441e83fd24f3e6b024a05d74cb8638dcd5d05e6088c9d813f9a56d1",
+      "previousRecipeCount": 34,
+      "newRecipeCount": 32,
+      "artApproval": "pending",
+      "status": "v6 engineering and root visual review passed; awaiting user art approval",
+      "newReview": "reviews/dots-orb-core-adjustments-v6-four-tabs-review.json",
+      "newReviewSha256": "76e717cb5f0a3baa0df9b075d017bc2493c3ef02f125188fd8bb7c78015cd866"
+    }
+  ]
+}

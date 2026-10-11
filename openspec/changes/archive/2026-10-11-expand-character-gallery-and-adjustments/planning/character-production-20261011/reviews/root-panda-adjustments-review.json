@@ -1,0 +1,67 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/panda-adjustments-review.json",
+  "manifestSha256": "49ee409c1b9b70443cd019051e5749226629bcdb7e8477e90f38460b5c2e59be",
+  "templateId": "candidate-animal-panda-adjustments-v1",
+  "artworkBinding": {
+    "artworkId": "candidate-animal-panda",
+    "artworkVersion": "v2"
+  },
+  "originalSha256": "b0f058ad260ac76545164e0b927db00a3fe32f5d50ff08d30afa39bfe7b2ecd3",
+  "engineeringReport": ".artifacts/character-adjustments/candidate-animal-panda-adjustments-v1/report.json",
+  "engineeringReportSha256": "f605eb458cf841f2db38224948774658fe681bb529d5d9170eccdde27efb754d",
+  "checkedRecipes": [
+    {
+      "id": "seated-classic-open-none-none",
+      "sha256": "de4d19a8ed64a22a4d622665b18fd838c266e84d4b72143307b7aba860922350"
+    },
+    {
+      "id": "seated-classic-open-none-sage-leaf-clip",
+      "sha256": "a52c3272c2b036880cd4360d9999c2d587cac0b3359b2a0cbfb9af04310c5c98"
+    },
+    {
+      "id": "seated-classic-open-knit-vest-none",
+      "sha256": "369dc6b477f725172400d609bfb379815126627753b2de2635b7009c0713881e"
+    },
+    {
+      "id": "seated-classic-open-knit-vest-sage-leaf-clip",
+      "sha256": "0856a550f411d83c891422c486a7af2eae54804374b9fac7a356e37b9ae95ad6"
+    },
+    {
+      "id": "seated-classic-closed-smile-none-none",
+      "sha256": "845e344c2edb80f1daf155b0e11119709eeb6309c3f60c99f9728d84e7463cc9"
+    },
+    {
+      "id": "seated-classic-closed-smile-none-sage-leaf-clip",
+      "sha256": "f9887d8dc0742e4540636916f7031bbd22bb78b472cbb8188b6900cbcf5ec486"
+    },
+    {
+      "id": "seated-classic-closed-smile-knit-vest-none",
+      "sha256": "993c571b5e4db8724c77f5b7f048297c9e70de06f84dffd6744ccf0c528bb01e"
+    },
+    {
+      "id": "seated-classic-closed-smile-knit-vest-sage-leaf-clip",
+      "sha256": "2387749e930b582f666d33fb2ed7b77afadffe4f4e30d548e916f900ee266da8"
+    },
+    {
+      "id": "crouched-classic-open-none-none",
+      "sha256": "15765d9763ee74e8fbeacfb879c79eba0523157460f99da287460c7aeaf130e2"
+    },
+    {
+      "id": "seated-espresso-open-none-none",
+      "sha256": "dd983fdba5e05a5f816eb4f7e31806bd55bfec5a466bbdc8e399cfde70ca08d9"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

@@ -1,0 +1,78 @@
+# 参考裁决记录：撤回独立 Artwork 候选，不生成该 ID。
+briefVersion: 2
+disposition: reuse-existing-geometries
+retiredProposalId: "candidate-grok-bean"
+request:
+  summary: "核对 R04/R14 的软几何；现有像素分别映射 orb、水滴与蛋形，没有可证明的独立豆形。"
+  scope: reference-adjudication
+  count: 0
+character:
+  proposedId: null
+  seriesId: "grok"
+  identity: existing-reference
+  reuse:
+    - "candidate-grok-20261005"
+    - "grok-coral-drop"
+    - "candidate-grok-egg"
+  differenceFromExisting: "R04 中央紫色为近圆 orb，右下棕色也是圆团，R14 紫色为尖底水滴；R04 中下橙色则是纵向蛋形，已单独映射到 candidate-grok-egg。未见清楚内凹豆形轮廓。"
+  invariants:
+    - "不把 R04 紫色 orb、R14 水滴或 R04 橙蛋形改名为新豆形。"
+    - "不以颜色、照片纹理、眼型或模糊小图推断独立身份。"
+artwork:
+  proposedId: null
+  proposedVersion: null
+  name: {en: null, zh-CN: null}
+  description: {en: null, zh-CN: null}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R04"
+    path: "planning/character-production-20261011/references/originals/R04-codex-clipboard-0a793f59-f8b4-4277-93f7-b929c252eb78.jpg"
+    sha256: "d97d1ae41f8bde65f262c23f7ea9c4a4129ff83f5b327825f76139f6e0df7514"
+    role: "指定主体/区域的几何线索；不是可发布原图"
+    use: "中央紫团及右下棕团复用 orb；中下橙色蛋形由独立 egg 候选承接。"
+    exclude: "不将任何可见团块表述为已核实内凹豆形。"
+    license: unknown
+  - id: "R14"
+    path: "planning/character-production-20261011/references/originals/R14-codex-clipboard-3d7f15c2-6f66-4b2f-8a06-6cd98c144b3a.jpg"
+    sha256: "75c5ff4120824fcd84691b1f802931441863479e5950cdcd7e4babab8c5eec4c"
+    role: "指定主体/区域的几何线索；不是可发布原图"
+    use: "紫色尖底软体映射现有 grok-coral-drop。"
+    exclude: "裁切与小图不能证明另一独立豆形身份。"
+    license: unknown
+creation:
+  prompt: null
+  promptReference: null
+  negativeConstraints:
+    - "不得为本撤回提案生成新 Artwork。"
+    - "不得把 orb、水滴或蛋形重命名为豆形。"
+  tool: null
+  originalOutputPath: null
+  iterations: []
+facts:
+  characterStyle: {state: unknown, evidence: "未制作独立 Artwork；本记录仅确定复用/取消范围"}
+  appearance: {state: unknown, evidence: "R04/R14 外沿分别支持 orb、水滴、蛋形，不支持独立豆形"}
+  facialFeatures: {state: unknown, evidence: "不从截图声明新能力"}
+  colorMaterial: {state: unknown, evidence: "参考颜色不作为新身份依据"}
+  clothing: {state: unknown, evidence: "不适用"}
+  headAccessory: {state: unknown, evidence: "不适用"}
+  bodyAccessory: {state: unknown, evidence: "不适用"}
+  prop: {state: unknown, evidence: "不适用"}
+resources:
+  original: {path: null, sha256: null, mime: null, bytes: null, width: null, height: null, alphaCheck: null}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+relations:
+  variantGroup: "candidate-grok-20261005"
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: "references/manifest.json; source records R04 and R14"
+  license: unknown
+  engineering: not-applicable
+  visualReview: "reference adjudication only; no generated candidate"
+  artApproval: {status: not-applicable, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

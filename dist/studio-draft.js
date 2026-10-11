@@ -1,4 +1,4 @@
-import { assertValidTemplateOptions } from './studio-edit-templates.js?v=99';
+import { assertValidTemplateOptions, getTemplateOptionFields, templateSchemaVersion } from './studio-edit-templates.js?v=100';
 
 const freeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
@@ -29,7 +29,7 @@ function normalizeExternalIntent(value) {
 }
 
 function sameOptions(a, b) {
-  return a && b && ['color', 'shape', 'eyes', 'glasses', 'accessory'].every(key => a[key] === b[key]);
+  return a && b && stable(a) === stable(b);
 }
 
 function assertBinding(artwork, template) {
@@ -78,7 +78,9 @@ export function updateDraft(draft, patch, { template } = {}) {
   if (!draft || draft.kind !== 'character-studio-draft') throw new TypeError('A CharacterStudio Draft is required.');
   if (!template || template.id !== draft.templateId || template.version !== draft.templateVersion) throw new Error('Draft Template binding changed.');
   if (!patch || typeof patch !== 'object' || Array.isArray(patch)) throw new TypeError('Option patch must be an object.');
-  const supportedKeys = new Set(['color', 'shape', 'eyes', 'glasses', 'accessory']);
+  const supportedKeys = new Set(getTemplateOptionFields(template).map(field => field.key));
+  if (templateSchemaVersion(template) === 1) supportedKeys.add('shape');
+  else if (['dots', 'grok'].includes(template.family)) supportedKeys.add('clothing');
   const unsupported = Object.keys(patch).filter(key => !supportedKeys.has(key));
   if (unsupported.length) throw new Error(`Unsupported Draft field: ${unsupported.join(', ')}`);
   const options = assertValidTemplateOptions(template, { ...draft.options, ...patch });

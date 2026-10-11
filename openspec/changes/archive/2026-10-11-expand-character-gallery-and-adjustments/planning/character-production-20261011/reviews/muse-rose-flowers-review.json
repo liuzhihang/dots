@@ -1,0 +1,91 @@
+{
+  "artworkId": "muse-rose-flowers",
+  "artworkVersion": "v1",
+  "originalSha256": "d0865bc0a0df4e0e9451c702dac8db0a4bf7e6aa0820657edffa239d24b367be",
+  "templateId": "muse-rose-flowers-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-rose-flowers-review.json",
+  "manifestSha256": "f577c53ad47a5b0d4d77e0ee8ee9dc683c0716e70783b2103d3245eb4747a6a6",
+  "engineeringReport": ".artifacts/character-adjustments/muse-rose-flowers-adjustments-v1/report.json",
+  "engineeringReportSha256": "76651b58c8b15b95e77dbf3fa67e9fbacf6aab4a9ca62eefb04811e1315fd157",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "cd324702200bd0a2385973c649d87a2c974c4cae6ba5810fccb707801603df24"
+    },
+    {
+      "id": "classic-original-open-none-crown",
+      "sha256": "a9d7f68f9d03e7aa963b8c4bfbe3114973996cdecc4ff20dbc636760777152af"
+    },
+    {
+      "id": "classic-original-open-vest-none",
+      "sha256": "1ccd6f5409717a7d9af2aac63983d08928bbf3c73b020bd211ea337fb538f944"
+    },
+    {
+      "id": "classic-original-open-vest-crown",
+      "sha256": "ce5664228a8bcd31c109936ccbe2bdb4f6e8e2bd656217b9824c48b0221a36f3"
+    },
+    {
+      "id": "classic-original-closed-none-none",
+      "sha256": "57cb60df45d262a82b47a46ffdd1bde6660609a0dc0d907af947b727713cc329"
+    },
+    {
+      "id": "classic-original-closed-none-crown",
+      "sha256": "4e3f9b03b76894233b14a00bfe1d803e6ba0ae4a6837b6ca24c697ea52e4de30"
+    },
+    {
+      "id": "classic-original-closed-vest-none",
+      "sha256": "9666f1afb518adadbf9d6f24262bb0b2e5b9e18de9f4d82949de770fda527730"
+    },
+    {
+      "id": "classic-original-closed-vest-crown",
+      "sha256": "ea3eb610c6ecd05afca11e26ab8c92070e7b8bc1597ec022972653e49897892b"
+    },
+    {
+      "id": "classic-blue-open-none-none",
+      "sha256": "63df48b575013768031ea4fd92a2e840fa3ab7511583f9e484f3dba28c4f4078"
+    },
+    {
+      "id": "classic-blue-open-none-crown",
+      "sha256": "075dd1d2a8f11e4f41277555999ad857a3fe6cc42a5908fc2c1135b2e4d6529b"
+    },
+    {
+      "id": "classic-blue-closed-none-none",
+      "sha256": "2c98709a0ddcb07ac1a5c703123eea0c91a44f0c9de526f966d8d4b24d61ff41"
+    },
+    {
+      "id": "classic-blue-closed-none-crown",
+      "sha256": "0262907f47e4ab31c05d71888d5d392c84d7a2463cc897a01b32874d79d85a53"
+    },
+    {
+      "id": "broad-original-open-none-none",
+      "sha256": "d3bc5bc5d72814955e6d8bc95dd60b968bd7fb8fb9e8a1c5daed404b0605fd27"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部13合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续包覆体、内嵌脸及短圆肢体",
+      "绒布局部改色不改变皮肤、花束、书本、灯笼或星星",
+      "完整穿戴基底保留手部/道具前后遮挡",
+      "闭眼脸片和花冠各自固定锚点贴合，原始图层保留",
+      "有限合法组合均有明确冲突说明，不把静态表情与持物称为动画"
+    ],
+    "fixes": [
+      "初版独立背心层缺少手部/道具遮挡，未选入模板；改为引用原图生成完整穿戴分支。",
+      "初版局部改色mask未通过边界检查，未选入模板；采用保留脸部与道具原色的完整局部改色分支。"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

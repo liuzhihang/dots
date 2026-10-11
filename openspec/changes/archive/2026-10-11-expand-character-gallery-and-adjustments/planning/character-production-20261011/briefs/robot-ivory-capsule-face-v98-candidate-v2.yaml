@@ -1,0 +1,72 @@
+# Same existing Artwork identity; transparent source repair candidate only.
+briefVersion: 1
+request:
+  summary: "为已存在的独立原创 Ivory Bot Artwork 制作透明背景 v2 原图候选；仅移除旧浅蓝灰摄影棚背景。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "robot-ivory-capsule-face-v98-candidate"
+  seriesId: "independent-original"
+  identity: "original-robot-v98-candidate"
+  differenceFromExisting: "保持独立原创机器人的象牙白胶囊外壳、暗色显示脸、成对白色胶囊眼、侧耳舱、短手足、抬手姿势和琥珀胸灯；只将 RGB 摄影棚背景变为真实透明 alpha。"
+  invariants:
+    - "保持其独立机器人身份，不改成 Dots 或 Grok Bot。"
+    - "保留原有显示脸、两只手臂和双脚，不套用 Dots/Grok 无肢体限制。"
+    - "只生成待审透明源图，不登记、不接入图库、不宣称批准。"
+artwork:
+  proposedId: "robot-ivory-capsule-face-v98-candidate"
+  proposedVersion: v2
+  name: {en: "Ivory Bot", zh-CN: "奶白机器人"}
+  description: {en: "A curious little robot with an ivory shell and a warm amber glow.", zh-CN: "奶白外壳、温暖的琥珀胸灯，一位充满好奇心的小伙伴。"}
+  aliases: {en: ["Ivory Capsule Robot", "Ivory Robot", "white capsule robot"], zh-CN: ["象牙白胶囊脸机器人", "象牙白机器人", "白色胶囊机器人"]}
+references:
+  - id: "robot-ivory-capsule-face-v98-candidate v1 original"
+    path: "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png"
+    sha256: "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0"
+    role: "exact edit target and identity reference"
+    use: "Preserve the independent ivory capsule robot, dark face display with white capsule eyes, side housings, raised arm, other arm, legs, feet, and amber chest light."
+    exclude: "Remove only the pale blue-gray studio background; do not add shadows, props, text, logos, or other subjects."
+    license: unknown
+creation:
+  prompt: "See exact extraction and alpha cleanup prompts in the linked record."
+  promptReference: "../prompts/robot-ivory-capsule-face-v98-candidate-v2-prompts.md"
+  negativeConstraints:
+    - "Do not alter independent robot identity, face, body parts, pose, chest light, or proportions."
+    - "No background, scene, floor, platform, shadow, text, logo, watermark, or checkerboard."
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-327dbccb-35db-4a10-8781-babcb823c48c.png"
+  iterations:
+    - output: "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-caaa3a9c-5c06-43eb-b725-9eb89cd639d1.png"
+      sha256: "eaf462b91f33834df67b23e1687f0171b2e63b7254f74809d7b8dced41eb927c"
+      decision: "Refined alpha to remove visible isolated background flecks."
+    - output: "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-e8061070-05ae-4ae7-babf-1a938f120b70.png"
+      sha256: "568c94353cd7879e8f100b2b4da48f3a0ef627987fab87c3f9c1c5a6e0a29347"
+      decision: "One targeted edge cleanup retained all robot parts and smooth contours."
+facts:
+  characterStyle: {state: known, evidence: "Independent polished 3D robot character."}
+  appearance: {state: known, evidence: "Rounded ivory capsule shell, dark inset display, side housings, short arms and feet; one arm raised."}
+  facialFeatures: {state: known, evidence: "Dark screen face with two vertical white capsule eyes."}
+  colorMaterial: {state: known, evidence: "Smooth ivory shell with dark glossy display and amber chest light."}
+  clothing: {state: none, evidence: "No clothing is present in the existing character or candidate."}
+  headAccessory: {state: none, evidence: "Side housings are part of the robot's shell, not an accessory."}
+  bodyAccessory: {state: known, evidence: "One amber chest light is present."}
+  prop: {state: none, evidence: "No prop is present."}
+resources:
+  original: {path: "../generated/robot-ivory-capsule-face-v98-candidate-v2.png", sha256: "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c", mime: "image/png", bytes: 1023195, width: 1215, height: 1295, alphaCheck: "RGBA; all four corners alpha 0; body center alpha 253; reviewed over dark and warm-light composites."}
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding: null
+evidence:
+  sourceRecord: "generated/robot-ivory-capsule-face-v98-candidate-v2.json; exact source SHA-256 recorded above"
+  license: unknown
+  engineering: "PNG metadata and alpha sampled; catalog/export integration not run"
+  visualReview: "Reviewed on dark and warm-light backgrounds; user art approval pending"
+  artApproval: {status: pending, record: null, exactAssetHash: null}
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized

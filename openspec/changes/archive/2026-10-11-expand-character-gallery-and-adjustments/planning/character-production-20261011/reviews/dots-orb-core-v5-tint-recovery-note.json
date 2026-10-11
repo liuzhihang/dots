@@ -1,0 +1,11 @@
+{
+  "recordType": "candidate-manifest-recovery-note",
+  "createdAt": "2026-10-11",
+  "status": "reconstruction-does-not-match-original-bytes",
+  "expectedHistoricalManifestSha256": "3d3695713336f8347c54ad02351fd0bee254d29763860d7e480d11d50481edef",
+  "reconstructedManifest": "templates/dots-orb-core-adjustments-v5-four-tabs-review.json",
+  "reconstructedManifestSha256": "5d9f80f2ba53cad051c22da0762f609783a21ce65e02bdf58d693337f4a088ef",
+  "originalBytesRecovered": false,
+  "details": "The prior in-place tint-to-body edit replaced the only on-disk v5 manifest before the request to preserve it arrived. This file reconstructs the known tint version from the surviving supersession record and prior task context, but its byte hash does not match the historical hash. No v5-specific review JSON was found on disk; the supersession record remains unchanged. Do not treat the reconstructed file as the historical original.",
+  "report": "The original v5 QA report at .artifacts/character-adjustments/dots-orb-core-adjustments-v5-four-tabs-candidate/report.json was overwritten by a subsequent 32-recipe run. The current v5 report should be rerun after the recovered manifest is finalized; no claim of original report bytes is made."
+}

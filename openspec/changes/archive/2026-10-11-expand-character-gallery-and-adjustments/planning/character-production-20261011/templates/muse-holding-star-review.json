@@ -1,0 +1,959 @@
+{
+  "status": "pending",
+  "scope": "candidate only; exact complete branches and registered face/headwear layers; user art approval pending",
+  "artwork": {
+    "id": "muse-holding-star",
+    "version": "v1",
+    "seriesId": "muse",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "抱星 Muse",
+      "en": "Star Muse"
+    },
+    "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-candidate-v2.png",
+    "sha256": "b8f2e7f4fab8ea5abef60fef2ab87476fa90b9686463521c9949054330446ad1"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "muse-holding-star-adjustments-v1",
+    "version": "v1",
+    "family": "muse",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "muse-holding-star",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1203,
+      "height": 1308
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Muse 角色，柔软连续绒布包覆体、内嵌桃色脸、小眼睛与短圆肢体。保持头身一体和道具真实承托。",
+      "en": "One Muse character with a continuous soft plush hooded body, inset peach face, small eyes and short rounded limbs. Preserve the unified hood/body and natural support of any held prop."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "经典包覆体",
+            "en": "Classic hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "经典连续包覆身体与内嵌脸，坐姿，双手在胸前自然承托黄色星星",
+            "en": "a continuous hooded body with an inset face; keep the yellow star naturally supported by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "broad",
+          "labelByLanguage": {
+            "zh-CN": "宽圆包覆体",
+            "en": "Broader hood"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更宽圆的包覆身体与内嵌脸，坐姿，双手在胸前自然承托黄色星星",
+            "en": "a broader squat hooded body with an inset face; keep the yellow star naturally supported by both short round hands"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "奶油白",
+            "en": "cream white"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "奶油白短绒身体，肤色与道具保持原色",
+            "en": "cream white short-plush body; preserve peach face and prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#f2e6d4"
+          ],
+          "zoneColors": {
+            "plush": "#f2e6d4"
+          }
+        },
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "zh-CN": "柔雾蓝",
+            "en": "Powder blue"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "仅绒布包覆体和短圆肢体为柔雾蓝，脸部肤色、所有道具保持原色",
+            "en": "powder blue plush hood, body and short limbs only; preserve peach skin and all prop colors"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "swatches": [
+            "#a2bfdc"
+          ],
+          "zoneColors": {
+            "plush": "#a2bfdc"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "睁眼微笑",
+            "en": "Open eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、睁开小圆眼与轻柔微笑",
+            "en": "an inset peach face with small open dark eyes and a gentle smile"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "闭眼微笑",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "内嵌桃色脸、双眼放松闭合并轻柔微笑，静态表情",
+            "en": "an inset peach face with relaxed closed curved eyes and a gentle smile; static expression"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无外套",
+            "en": "No vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "原有绒布包覆身体，不另穿外套",
+            "en": "the original plush-covered body without an extra vest"
+          }
+        },
+        {
+          "id": "vest",
+          "labelByLanguage": {
+            "zh-CN": "针织背心",
+            "en": "Knit vest"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合身体的浅蓝针织背心，位于手臂和持物后方",
+            "en": "a fitted powder-blue knit vest behind the arms and held object"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无头饰",
+            "en": "No headwear"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "坐姿，双手在胸前自然承托黄色星星，不戴头饰",
+            "en": "keep the yellow star naturally supported by both short round hands; no headwear"
+          }
+        },
+        {
+          "id": "crown",
+          "labelByLanguage": {
+            "zh-CN": "雏菊花冠",
+            "en": "Daisy crown"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "坐姿，双手在胸前自然承托黄色星星，小型雏菊花冠贴合帽兜顶部",
+            "en": "keep the yellow star naturally supported by both short round hands; a small daisy crown fitted on top of the hood"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "broad",
+          "colors": "blue"
+        },
+        "code": "classic-fit-colors",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "face": "closed"
+        },
+        "code": "classic-fit-face",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "clothing": "vest"
+        },
+        "code": "classic-fit-clothing",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "appearance": "broad",
+          "accessories": "crown"
+        },
+        "code": "classic-fit-accessories",
+        "messageByLanguage": {
+          "zh-CN": "这项调整适配经典包覆体，请先切回经典外观，或移除该调整后切换宽圆外观。",
+          "en": "This adjustment fits the classic hood. Choose Classic first, or remove the adjustment before choosing Broader."
+        }
+      },
+      {
+        "when": {
+          "colors": "blue",
+          "clothing": "vest"
+        },
+        "code": "vest-original-colors",
+        "messageByLanguage": {
+          "zh-CN": "这件背心适配原色身体。请先选择原色或脱下背心。",
+          "en": "This vest fits the original body colors. Choose the original color or remove the vest first."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:base",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-vest-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "vest",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-open-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-blue-closed-none-crown",
+        "selections": {
+          "appearance": "classic",
+          "colors": "blue",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "crown"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "head-accessory",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:crown",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "broad-original-open-none-none",
+        "selections": {
+          "appearance": "broad",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:muse-holding-star-adjustments-v1:broad",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:muse-holding-star-adjustments-v1:base",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/base.png",
+      "sourcePath": "/Users/liuzhihang/workspace/dots/openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-candidate-v2.png",
+      "sha256": "b8f2e7f4fab8ea5abef60fef2ab87476fa90b9686463521c9949054330446ad1",
+      "byteSize": 1202099,
+      "width": 1203,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 891187,
+        "bboxAtAlphaThreshold16": [
+          187,
+          163,
+          1014,
+          1159
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-holding-star-adjustments-v1:broad",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/broad.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-body-alternate-candidate-v2.png",
+      "sha256": "2580e4ee6f32d08605711b462e1afb39e17d199b39ea61788e93128867bc9f26",
+      "byteSize": 1362429,
+      "width": 1202,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 761016,
+        "bboxAtAlphaThreshold16": [
+          55,
+          198,
+          1153,
+          1161
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-holding-star-adjustments-v1:blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-color-body-candidate-v2.png",
+      "sha256": "b051846c767a42465c8b6e3fb38de6f36354178697798571661698c2b2c61eef",
+      "byteSize": 1239970,
+      "width": 1202,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 883161,
+        "bboxAtAlphaThreshold16": [
+          185,
+          163,
+          1017,
+          1162
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-holding-star-adjustments-v1:vest",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-clothed-body-candidate-v2.png",
+      "sha256": "ecd91a2da794e1b42b7f207d68773a3e9ca96bac3551b12f0e653f3b3e7e3004",
+      "byteSize": 1108368,
+      "width": 1202,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 884703,
+        "bboxAtAlphaThreshold16": [
+          185,
+          163,
+          1017,
+          1166
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-holding-star-adjustments-v1:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-face-closed-candidate-v2.png",
+      "sha256": "639a3762257dacc20afcb3bcff5e2497435f5bc4486ac1c27332213d6c24c0cf",
+      "byteSize": 272274,
+      "width": 1202,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1411491,
+        "bboxAtAlphaThreshold16": [
+          333,
+          475,
+          887,
+          831
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          130.4963898916967,
+          -12.617977528089853
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.8393501805054152,
+            0.8539325842696629
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    },
+    {
+      "id": "template:muse-holding-star-adjustments-v1:crown",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/muse-holding-star-adjustments-v1/crown.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/muse-holding-star-flower-crown-candidate-v2.png",
+      "sha256": "c040edbeeefbda8c394d8e251b1c5d4970c4db43281b416e404ee477140ad826",
+      "byteSize": 217355,
+      "width": 1202,
+      "height": 1308,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1485514,
+        "bboxAtAlphaThreshold16": [
+          251,
+          275,
+          989,
+          566
+        ]
+      },
+      "owner": {
+        "templateId": "muse-holding-star-adjustments-v1",
+        "artworkId": "muse-holding-star",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1203,
+          1308
+        ],
+        "anchor": "canvas",
+        "offset": [
+          189.8468834688347,
+          -52.588075880758794
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.6639566395663956,
+            0.6639566395663956
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen edit from this exact character; originals retained; authorized alpha-only cleanup. Complete body branches preserve prop/hand occlusion and isolate cloth recoloring from skin/props."
+    }
+  ]
+}

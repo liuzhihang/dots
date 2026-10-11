@@ -1,0 +1,60 @@
+{
+  "artworkId": "candidate-animals-20261005",
+  "artworkVersion": "v1",
+  "originalSha256": "f6e731ad99f85a20681588e14e2f93279707897da7ff50769f6f29bb62893c62",
+  "templateId": "animal-shiba-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-shiba-review.json",
+  "manifestSha256": "b3408fe4a7c7bc7e2c4025a478dbfaf5c1cf6e9607a8eac713e4bb0c3ece20cc",
+  "engineeringReport": ".artifacts/character-adjustments/animal-shiba-adjustments-v1/report.json",
+  "engineeringReportSha256": "80692caba8b42659005c67dcf4f17e83ff5914bf4501d6e8ae1a0c5c50afaa25",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "32f17abaa1bbb6caf4309165ff71b64befc3c9a1375b231111730258f3817b6c"
+    },
+    {
+      "id": "broad-original-open-none-none",
+      "sha256": "c624935575dcb1d25b5574829f4485d0190a4b7dea55e826e4b40659d714e6e7"
+    },
+    {
+      "id": "classic-alternate-open-none-none",
+      "sha256": "ce928d169220c51e38a2b387f70b20b2eb2f7babde0f3804e91616b5ac2661c3"
+    },
+    {
+      "id": "classic-original-closed-none-none",
+      "sha256": "d0f6ce38197c4aa6f59b123ab58b3ae54b0dabc8c20db69063b038232c6aeda2"
+    },
+    {
+      "id": "classic-original-open-vest-none",
+      "sha256": "c90fc1c3d15108699a9696c289ded9b1590097cf5ad4aa089b6c00eda05e21ab"
+    },
+    {
+      "id": "classic-original-open-none-collar",
+      "sha256": "343869851d778618a2b9ee19aae0db04ac49509105d7dc7ad3f3ddc139d26dd3"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部6合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "保留每个物种独立耳形、口鼻、四爪和尾部解剖",
+      "局部毛色变化保留口鼻、眼睛、鼻部和足垫的独立颜色",
+      "完整穿戴分支的衣领与肩部贴合，前爪处于服装前方",
+      "静态闭眼与小配饰有真实图像结果，不宣称动画",
+      "每个分支可从默认状态单字段选择，未制作组合明确禁用且给出原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

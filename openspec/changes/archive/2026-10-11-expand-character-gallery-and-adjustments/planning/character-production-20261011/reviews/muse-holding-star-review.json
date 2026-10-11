@@ -1,0 +1,91 @@
+{
+  "artworkId": "muse-holding-star",
+  "artworkVersion": "v1",
+  "originalSha256": "b8f2e7f4fab8ea5abef60fef2ab87476fa90b9686463521c9949054330446ad1",
+  "templateId": "muse-holding-star-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/muse-holding-star-review.json",
+  "manifestSha256": "0e4175cbd7b2fa712f30b47fb0baa2bc8460aec6d349e9a142ad98ba3b2418ba",
+  "engineeringReport": ".artifacts/character-adjustments/muse-holding-star-adjustments-v1/report.json",
+  "engineeringReportSha256": "5b443efcd0b9e6cb3ca9025134a1d6108eb129cd4cad255b24230351ad202826",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "4ac3b452c471e06c410a858291663c5915927665e342800b9c67ac2fb0ed0829"
+    },
+    {
+      "id": "classic-original-open-none-crown",
+      "sha256": "43762e083e164e7b57a90ca71ac56d936daeddd270d63c7953f06faab44617fb"
+    },
+    {
+      "id": "classic-original-open-vest-none",
+      "sha256": "fe058c7eda31644437485454bd1c9a0a1e9ed73d7f6332200a70ec33fcb8ab0f"
+    },
+    {
+      "id": "classic-original-open-vest-crown",
+      "sha256": "340bc5e3006415418cbde3d9b949b65676967b02008549a465a9015b1a348db3"
+    },
+    {
+      "id": "classic-original-closed-none-none",
+      "sha256": "697fd80f36958fb3a03c63c89983b43199dbd2176765e90337a971e914c7a67d"
+    },
+    {
+      "id": "classic-original-closed-none-crown",
+      "sha256": "e5e4fd62dc0406e86509a75f4d348bd72538afabb766c41910e11dbe3fb1f44e"
+    },
+    {
+      "id": "classic-original-closed-vest-none",
+      "sha256": "2d221d45778ea9698614cd9f65c9d37e41ffa3e9dc8e7576b62fe560715eb7f9"
+    },
+    {
+      "id": "classic-original-closed-vest-crown",
+      "sha256": "72738db38b28ddb046cf71f0f24ec3f97240eadb0f20fd93f7a1190196544b34"
+    },
+    {
+      "id": "classic-blue-open-none-none",
+      "sha256": "915c408346943b80de6ccb62d6173e67013ff165eac6e3bd3f7e91e96b25616e"
+    },
+    {
+      "id": "classic-blue-open-none-crown",
+      "sha256": "5757b8507b7200d6bab8c398aaaaf799d4c4845abe189b981721430cceb70460"
+    },
+    {
+      "id": "classic-blue-closed-none-none",
+      "sha256": "ec0f20540bc4a5377786535b143302736838bb181d38d3ccb57e752783fc67fa"
+    },
+    {
+      "id": "classic-blue-closed-none-crown",
+      "sha256": "4aa8b30626c3641e42053d031a236deb9a3b7aea49f79eb9d7e024444a63906d"
+    },
+    {
+      "id": "broad-original-open-none-none",
+      "sha256": "60b697ae33483aa162b123cd2a4f5cde593c46911a3869c2b3391e85279dc5e8"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部13合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续包覆体、内嵌脸及短圆肢体",
+      "绒布局部改色不改变皮肤、花束、书本、灯笼或星星",
+      "完整穿戴基底保留手部/道具前后遮挡",
+      "闭眼脸片和花冠各自固定锚点贴合，原始图层保留",
+      "有限合法组合均有明确冲突说明，不把静态表情与持物称为动画"
+    ],
+    "fixes": [
+      "初版独立背心层缺少手部/道具遮挡，未选入模板；改为引用原图生成完整穿戴分支。",
+      "初版局部改色mask未通过边界检查，未选入模板；采用保留脸部与道具原色的完整局部改色分支。"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

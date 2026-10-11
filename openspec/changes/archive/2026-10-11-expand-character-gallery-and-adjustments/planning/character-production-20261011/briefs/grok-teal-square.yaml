@@ -1,0 +1,113 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 青色方块透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: grok-teal-square
+  seriesId: grok
+  identity: existing
+  invariants:
+  - 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+artwork:
+  proposedId: grok-teal-square
+  canonicalArtworkId: grok-teal-square
+  proposedVersion: v1
+  name:
+    en: Teal Square
+    zh-CN: 青色方块
+  resolvedId: grok-teal-square
+references:
+- path: /Users/liuzhihang/workspace/dots/dist/assets/looks/grok-teal-square.png
+  sha256: 81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d
+  role: 当前精确Artwork身份基准
+  exclude: 不更改旧批准及原图字节
+resources:
+  original:
+    path: /Users/liuzhihang/workspace/dots/dist/assets/looks/grok-teal-square.png
+    sha256: 81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d
+    mime: image/png
+    bytes: 828844
+    width: 1254
+    height: 1254
+relations:
+  templateBinding:
+    id: grok-teal-square-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-teal-square-four-tabs-v2-review.json
+evidence:
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 81b63d5a809c381f7617261ee4c186031acdc984bac7844d4820c732d44b5f6d
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 41823ec6aa34592348b7e5fcc7c857cd06c7dbfea7ad6d409e89d8e725d94b9a
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-teal-square-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Grok Bot 角色，连续光滑软几何身体与成对胶囊眼。无手臂、手、腿、脚、嘴、绒毛、机械构造或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 近方形柔圆块
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对竖向象牙白胶囊眼
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 青绿光滑软硅胶材质
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  headAccessory:
+    state: none
+    description: 不佩戴配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/grok-teal-square-four-tabs-v2-review.json
+creation:
+  tool: builtin image_gen
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-4a41a0a0-85a8-4bb8-b6e5-61a23cd3c2b9.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-cfd3f911-6af3-4a7e-9a02-1c7b3d1238a2.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-52709d60-deda-4787-8a7b-2fa00500f4e7.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: eyes-narrow
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-ffea9ea7-3801-42a7-ae23-29d809278d81.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: scarf
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-33e0b29b-d2ac-45bc-95f2-c164eb185a37.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/grok-layer-generation-records-05.json
+    kind: pin
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-dbbeb108-7e20-4db7-bac9-7ea01a874ac8.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。

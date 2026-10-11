@@ -1,0 +1,547 @@
+{
+  "briefVersion": 1,
+  "request": {
+    "summary": "白兔角色的局部调整候选 Template；现有 Artwork 版本不变，所有分支只在通过的配方里组合。",
+    "scope": "existing-artwork-adjustment-template-candidate",
+    "count": 1
+  },
+  "character": {
+    "proposedId": "animal-white-rabbit-v98-candidate",
+    "seriesId": "animals",
+    "identity": "existing candidate Artwork animal-white-rabbit-v98-candidate@v2",
+    "differenceFromExisting": "Adds a pending bounded-adjustment Template to the exact existing candidate Artwork; it does not register a new identity or publish any branch.",
+    "invariants": [
+      "单只坐姿白兔，具有完整的两只直立耳朵、粉色耳内、柔软宽口鼻、圆尾巴和四只爪子。保持同一角色身份、绒毛材质、五官位置和姿势；仅当用户选择对应外观时才改变身体轮廓。毛色只使用已注册的身体图层变体；耳内粉色保持独立。不得增加人类四肢、额外附肢、道具或其他角色。",
+      "默认透明完整单体；背景只用于预览合成，不进入 Artwork 或导出。"
+    ]
+  },
+  "artwork": {
+    "proposedId": "animal-white-rabbit-v98-candidate",
+    "canonicalArtworkId": "animal-white-rabbit-v98-candidate",
+    "proposedVersion": "v2",
+    "name": {
+      "en": "White Rabbit",
+      "zh-CN": "白兔"
+    },
+    "description": {
+      "en": "A seated white plush rabbit with long pink-lined ears and a compact soft silhouette.",
+      "zh-CN": "一只坐姿白色绒毛兔，具有完整的粉色耳内长耳朵与紧凑柔软的轮廓。"
+    },
+    "aliases": {
+      "en": [],
+      "zh-CN": []
+    },
+    "sourceStatus": "pending",
+    "publicationStatus": "preview-only"
+  },
+  "references": [
+    {
+      "id": "animal-white-rabbit-v98-candidate@v2",
+      "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-white-rabbit-v98-candidate-v2.png",
+      "sha256": "e98a689faeebafc98fce9ed52d0686982be80e5836b7ec154102e1fc5006c794",
+      "role": "exact existing Artwork identity and pose reference",
+      "use": "Preserve the exact same character identity, face, pose, body proportions and unselected details; registered options define permitted changes.",
+      "exclude": "Do not replace or overwrite the existing source Artwork; no UI, background, text, props or extra subject.",
+      "license": "unknown"
+    }
+  ],
+  "creation": {
+    "prompt": "See linked provenance and Template semantics; do not fabricate missing historical ImageGen prompts.",
+    "promptReference": "../prompts/animal-white-rabbit-adjustments-template-v2-prompts.md",
+    "negativeConstraints": [
+      "Keep the selected Artwork identity and preserve all unselected character details.",
+      "Transparent full-character PNG; no background, UI, text, watermark or additional subjects.",
+      "Combine only exact finite recipes registered by the pending Template; reject conflicting choices."
+    ],
+    "tool": "built-in image_gen.imagegen for the recorded complete-character branch assets; local browser renderer for finite recipes",
+    "originalOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-540435df-f405-4099-9994-d3aabd51d38f.png",
+    "iterations": [
+      {
+        "purpose": "full-character lavender over-ear headphone branch",
+        "outputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-540435df-f405-4099-9994-d3aabd51d38f.png",
+        "outputId": "540435df-f405-4099-9994-d3aabd51d38f",
+        "candidatePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v3/accessory-lavender-headphones-full-v1.png",
+        "sha256": "09b1500f325eece01edddc77e68c1291ed002daa1079183ada0823d9919a8aae",
+        "decision": "Kept as a complete transparent character variant; all other recipe assets are listed in the Template manifest."
+      }
+    ]
+  },
+  "facts": {
+    "characterStyle": {
+      "state": "known",
+      "evidence": "Existing transparent chibi character artwork, visually checked with the bound source and preview branches."
+    },
+    "appearance": {
+      "state": "known",
+      "evidence": "A seated white plush rabbit with long pink-lined ears and a compact soft silhouette."
+    },
+    "facialFeatures": {
+      "state": "known",
+      "evidence": "Preserve the source identity and facial placement; expression options are bound in the Template."
+    },
+    "colorMaterial": {
+      "state": "known",
+      "evidence": "Use only registered color variant semantics; never infer unregistered recoloring from enum IDs or palette values."
+    },
+    "clothing": {
+      "state": "present",
+      "evidence": "See selected clothing option and exact source image; options are template-bound."
+    },
+    "headAccessory": {
+      "state": "known",
+      "evidence": "Only the registered accessory options may add or change head-worn details."
+    },
+    "bodyAccessory": {
+      "state": "unknown",
+      "evidence": "No independent body accessory is registered in this Template."
+    },
+    "prop": {
+      "state": "none",
+      "evidence": "No prop is registered in this Template."
+    }
+  },
+  "resources": {
+    "original": {
+      "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/animal-white-rabbit-v98-candidate-v2.png",
+      "sha256": "e98a689faeebafc98fce9ed52d0686982be80e5836b7ec154102e1fc5006c794",
+      "mime": "image/png",
+      "bytes": 1234792,
+      "width": 1133,
+      "height": 1388,
+      "alphaCheck": "RGBA; alpha range 0..255; all four canvas corners are fully transparent; decoded source sampled."
+    },
+    "thumbnail": null,
+    "displayPreview": null
+  },
+  "promptText": {
+    "en": "A seated white plush rabbit with long pink-lined ears and a compact soft silhouette.",
+    "zh-CN": "一只坐姿白色绒毛兔，具有完整的粉色耳内长耳朵与紧凑柔软的轮廓。"
+  },
+  "relations": {
+    "variantGroup": null,
+    "animationAsset": null,
+    "targetPackage": null,
+    "templateBinding": {
+      "manifestPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-white-rabbit-adjustments-review-v2.json",
+      "manifestSha256": "e5d5dd6e47ffdd1e0830db638288cab59d5019999c1a0423b5a6dd06e5ff24ec",
+      "templateId": "animal-white-rabbit-adjustments-v2",
+      "templateVersion": "v2",
+      "schemaVersion": 2,
+      "status": "pending; preview-only",
+      "engineeringStatus": "passed",
+      "artApproval": "pending",
+      "canonicalFields": [
+        {
+          "field": "appearance",
+          "values": [
+            {
+              "id": "seated",
+              "labelByLanguage": {
+                "en": "Seated",
+                "zh-CN": "坐姿"
+              },
+              "semanticByLanguage": {
+                "en": "the original compact seated rabbit silhouette",
+                "zh-CN": "原本紧凑的坐姿兔子轮廓"
+              }
+            },
+            {
+              "id": "plump",
+              "labelByLanguage": {
+                "en": "Plumper",
+                "zh-CN": "更圆润"
+              },
+              "semanticByLanguage": {
+                "en": "a visibly fuller seated silhouette with broader rounded cheeks and torso",
+                "zh-CN": "脸颊与躯干更宽、更圆润的坐姿轮廓"
+              }
+            }
+          ]
+        },
+        {
+          "field": "colors",
+          "values": [
+            {
+              "id": "snow",
+              "labelByLanguage": {
+                "en": "Snow white",
+                "zh-CN": "雪白"
+              },
+              "semanticByLanguage": {
+                "en": "a cool snow-white plush coat, retaining distinct pink inner ears",
+                "zh-CN": "雪白色绒毛，保留清晰的粉色耳内"
+              }
+            },
+            {
+              "id": "warm-ivory",
+              "labelByLanguage": {
+                "en": "Warm ivory",
+                "zh-CN": "暖象牙白"
+              },
+              "semanticByLanguage": {
+                "en": "a warm ivory plush coat, with the pink inner ears unchanged",
+                "zh-CN": "暖象牙白绒毛，粉色耳内保持原样"
+              }
+            }
+          ]
+        },
+        {
+          "field": "face",
+          "values": [
+            {
+              "id": "open",
+              "labelByLanguage": {
+                "en": "Bright eyes",
+                "zh-CN": "明亮眼睛"
+              },
+              "semanticByLanguage": {
+                "en": "large glossy warm-brown open eyes with small brows, pink nose and a tiny mouth",
+                "zh-CN": "明亮的暖棕色大眼、细眉、粉鼻和小嘴"
+              }
+            },
+            {
+              "id": "closed",
+              "labelByLanguage": {
+                "en": "Gently closed",
+                "zh-CN": "轻轻闭眼"
+              },
+              "semanticByLanguage": {
+                "en": "gently closed curved warm-brown eyes with the same pink nose and tiny mouth",
+                "zh-CN": "轻弯的暖棕色闭眼，保留同样的粉鼻和小嘴"
+              }
+            }
+          ]
+        },
+        {
+          "field": "clothing",
+          "values": [
+            {
+              "id": "none",
+              "labelByLanguage": {
+                "en": "No clothing",
+                "zh-CN": "无服装"
+              },
+              "semanticByLanguage": {
+                "en": "no clothing",
+                "zh-CN": "不穿服装"
+              }
+            },
+            {
+              "id": "fitted-knit-bib",
+              "labelByLanguage": {
+                "en": "Fitted knit bib",
+                "zh-CN": "贴合针织小围兜"
+              },
+              "semanticByLanguage": {
+                "en": "a compact lavender-blue rib-knit chest bib collar tucked beneath the rabbit’s muzzle and fitted to the upper chest, ending above the front paws",
+                "zh-CN": "紧凑的薰衣草蓝罗纹针织小围兜，贴合上胸并藏在兔子口鼻下方，底边停在前爪上方"
+              }
+            }
+          ]
+        },
+        {
+          "field": "accessories",
+          "values": [
+            {
+              "id": "none",
+              "labelByLanguage": {
+                "en": "No accessory",
+                "zh-CN": "无配饰"
+              },
+              "semanticByLanguage": {
+                "en": "no accessories",
+                "zh-CN": "不佩戴配饰"
+              }
+            },
+            {
+              "id": "rose-bow",
+              "labelByLanguage": {
+                "en": "Rose bow",
+                "zh-CN": "玫瑰粉蝴蝶结"
+              },
+              "semanticByLanguage": {
+                "en": "one small dusty-rose fabric bow clipped at the base of the viewer-left ear",
+                "zh-CN": "一个小巧的灰玫瑰粉布蝴蝶结，夹在角色左侧耳根"
+              }
+            },
+            {
+              "id": "lavender-over-ear-headphones",
+              "labelByLanguage": {
+                "en": "Lavender over-ear headphones",
+                "zh-CN": "薰衣草紫头戴式耳机"
+              },
+              "semanticByLanguage": {
+                "en": "one compact pair of lavender over-ear headphones fitted against both sides of the rabbit’s head; the padded band follows the crown behind the ear roots, both long pink-lined ears remain upright and fully visible, and the cups touch the fur without covering the eyes or muzzle",
+                "zh-CN": "一副紧凑的薰衣草紫头戴式耳机，耳罩贴合兔子头部两侧，软垫头梁沿头顶并位于耳根之后；两只粉耳保持直立完整，耳罩贴合绒毛且不遮挡眼睛或口鼻"
+              }
+            }
+          ]
+        }
+      ],
+      "recipes": [
+        {
+          "id": "seated-snow-open-none-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "snow",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "plump-snow-open-none-none",
+          "selections": {
+            "appearance": "plump",
+            "colors": "snow",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-ivory-open-none-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "warm-ivory",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "plump-ivory-open-none-none",
+          "selections": {
+            "appearance": "plump",
+            "colors": "warm-ivory",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-snow-closed-none-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "snow",
+            "face": "closed",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-snow-open-fitted-knit-bib-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "snow",
+            "face": "open",
+            "clothing": "fitted-knit-bib",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-snow-open-none-bow",
+          "selections": {
+            "appearance": "seated",
+            "colors": "snow",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "rose-bow"
+          }
+        },
+        {
+          "id": "seated-ivory-closed-none-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "warm-ivory",
+            "face": "closed",
+            "clothing": "none",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-ivory-closed-fitted-knit-bib-none",
+          "selections": {
+            "appearance": "seated",
+            "colors": "warm-ivory",
+            "face": "closed",
+            "clothing": "fitted-knit-bib",
+            "accessories": "none"
+          }
+        },
+        {
+          "id": "seated-ivory-closed-fitted-knit-bib-bow",
+          "selections": {
+            "appearance": "seated",
+            "colors": "warm-ivory",
+            "face": "closed",
+            "clothing": "fitted-knit-bib",
+            "accessories": "rose-bow"
+          }
+        },
+        {
+          "id": "seated-snow-open-none-lavender-headphones",
+          "selections": {
+            "appearance": "seated",
+            "colors": "snow",
+            "face": "open",
+            "clothing": "none",
+            "accessories": "lavender-over-ear-headphones"
+          }
+        }
+      ],
+      "conflicts": [
+        {
+          "when": {
+            "accessories": "lavender-over-ear-headphones",
+            "appearance": "plump"
+          },
+          "code": "headphones-seated-only",
+          "messageByLanguage": {
+            "en": "These headphones were fitted to the original seated rabbit. Return to the seated appearance to use them.",
+            "zh-CN": "这副耳机按原坐姿兔子制作。请改回坐姿外观再使用。"
+          }
+        },
+        {
+          "when": {
+            "accessories": "lavender-over-ear-headphones",
+            "colors": "warm-ivory"
+          },
+          "code": "headphones-snow-only",
+          "messageByLanguage": {
+            "en": "This headphone variant is available with the snow-white coat.",
+            "zh-CN": "此耳机版本仅适配雪白毛色。"
+          }
+        },
+        {
+          "when": {
+            "accessories": "lavender-over-ear-headphones",
+            "face": "closed"
+          },
+          "code": "headphones-open-face-only",
+          "messageByLanguage": {
+            "en": "This headphone variant is paired with the bright open-eyed face.",
+            "zh-CN": "此耳机版本与明亮睁眼表情配套。"
+          }
+        },
+        {
+          "when": {
+            "accessories": "lavender-over-ear-headphones",
+            "clothing": "fitted-knit-bib"
+          },
+          "code": "headphones-bib-conflict",
+          "messageByLanguage": {
+            "en": "The full headphone artwork is paired with no clothing. Remove the bib to use it.",
+            "zh-CN": "耳机全角色版本与无服装造型配套。请移除围兜后使用。"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:body-seated-snow",
+          "field": "body-seated-snow",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/appearance-seated-body-v1.png",
+          "sha256": "a938dfa0e3cbefaec138099365f7ce82eb8c30ceda6f0d45e13ada78ce5cb05e"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:body-seated-ivory",
+          "field": "body-seated-ivory",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/appearance-seated-body-warm-ivory-v1.png",
+          "sha256": "48da5e2508c53d40ac47b9509eb90d0ed604d996fb20607c67543ccbf6396993"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:body-plump-snow",
+          "field": "body-plump-snow",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/appearance-plump-body-v1.png",
+          "sha256": "d3050b0434c3bed4a7df4da0b44dfd20ef6257306ae5ae715714cb870a9d7cc5"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:body-plump-ivory",
+          "field": "body-plump-ivory",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/appearance-plump-body-warm-ivory-v1.png",
+          "sha256": "8a0967990bc4b74ad2e7485aaa2c452402a51523ef354c614902c8ad528d65b7"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:face-open",
+          "field": "face-open",
+          "version": "v1",
+          "purpose": "face-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/face-open-v1.png",
+          "sha256": "49f2894519dde1b3bc5211e69f6a0467feacb520e5bef094caf2f0f5a3f0a381"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:face-closed",
+          "field": "face-closed",
+          "version": "v1",
+          "purpose": "face-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/face-closed-v1.png",
+          "sha256": "b4026d4a55d3fa618ab3644ae274115cd5fa4c36561120f9fb92f5592db74ade"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:fitted-bib",
+          "field": "fitted-bib",
+          "version": "v1",
+          "purpose": "clothing-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/clothing-lavender-fitted-bib-v1.png",
+          "sha256": "473beca1733bc88f3577cf8725982d560620c4e294001822f4a7b77432ae74e1"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:bow",
+          "field": "bow",
+          "version": "v1",
+          "purpose": "accessory-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v2/accessory-rose-bow-v1.png",
+          "sha256": "64fa2b7b94fbf2211c08eb9efb63240e65236681bda55ef5c1170ee51206e7f2"
+        },
+        {
+          "assetId": "template:animal-white-rabbit-adjustments-v2:headphones-full",
+          "field": "headphones-full",
+          "version": "v1",
+          "purpose": "body-layer",
+          "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/rabbit-adjustments-v3/accessory-lavender-headphones-full-v1.png",
+          "sha256": "09b1500f325eece01edddc77e68c1291ed002daa1079183ada0823d9919a8aae"
+        }
+      ]
+    }
+  },
+  "evidence": {
+    "sourceRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/prompts/animal-white-rabbit-adjustments-template-v2-prompts.md; Template manifest is authoritative for all option semantics and assets.",
+    "provenance": {
+      "promptReference": "../prompts/animal-white-rabbit-adjustments-template-v2-prompts.md",
+      "correctionRecord": null
+    },
+    "license": "unknown",
+    "engineering": {
+      "status": "engineering-passed",
+      "path": ".artifacts/character-adjustments/animal-white-rabbit-adjustments-v2/report.json",
+      "sha256": "7a57b4a75a2554560664122cde3e33ec11694ad05554eeb60b84210cf647e67c",
+      "recipeCount": 11,
+      "optionChecks": 11,
+      "conflictChecks": 40,
+      "viewports": 4,
+      "errors": []
+    },
+    "visualReview": {
+      "status": "internal-review-only",
+      "contactSheet": ".artifacts/character-adjustments/animal-white-rabbit-adjustments-v2/all-recipes-dark-light.jpg",
+      "sha256": "20807cd3c2a97c70a0893e78c51170ef0bd19e2077d109359b1379414fa7fa1e",
+      "note": "Root reported the 11-recipe dark/warm composite review visually acceptable; user art approval remains pending."
+    },
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "exactAssetHash": null
+    },
+    "integration": "not-applied",
+    "deviceCheck": "not-run",
+    "deployment": "not-authorized"
+  }
+}

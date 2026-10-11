@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-lime-rounded-square",
+  "artworkVersion": "v1",
+  "originalSha256": "0c743f839d3e356009ef41792f4cf3c2be60e6211a62a69cdcf45a1bae441fe4",
+  "templateId": "dots-lime-rounded-square-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lime-rounded-square-review.json",
+  "manifestSha256": "ae3489a1c776b6e3af78131aeaed896d24dca4fe8fd2f1650ec49cfbff11bc15",
+  "engineeringReport": ".artifacts/character-adjustments/dots-lime-rounded-square-adjustments-v1/report.json",
+  "engineeringReportSha256": "8d2b2a017497e4dde0a30bb1fd6e5674e7c148dac3370e483ddae214a63ac898",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none",
+      "sha256": "926cfe1fbfde409131058f942c11a42a8c6c857166a905086822bebe62499fe2"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "7250e584ca989e660895d6a88c03a176cbca0ef0b3c8acd6a4f7aaf11b0c43ce"
+    },
+    {
+      "id": "classic-alternate-open-none",
+      "sha256": "55ea314092389360c39f8b6a28b542dc48f874da5cf7680e90dae4fc3e217dc2"
+    },
+    {
+      "id": "classic-original-closed-none",
+      "sha256": "8f439b92f8a5d6d5ba2191294e0951ccb1feeb2c969620128be62b9909c41de6"
+    },
+    {
+      "id": "classic-original-open-fitted",
+      "sha256": "85fd0373e179400385188d13e18130d782551e72e22dead99600e30a828cf9ba"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

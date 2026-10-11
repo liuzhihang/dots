@@ -1,0 +1,51 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/rust-girl-adjustments-review-v2.json",
+  "manifestSha256": "dcd8d5aedb486067e24e4a24569c58bd8aa8c4778ceddc6a392f924ad5e59e92",
+  "templateId": "human-rust-girl-adjustments-v2",
+  "artworkBinding": {
+    "artworkId": "human-rust-jacket",
+    "artworkVersion": "v1"
+  },
+  "originalSha256": "f53049ad40e0781453ba90c8bcc88b6b30c460fd2b27c9302463df4076208cf4",
+  "engineeringReport": ".artifacts/character-adjustments/human-rust-girl-adjustments-v2/report.json",
+  "engineeringReportSha256": "ce8bd2cd0a2c6b6580f35bce938adfea504e45f77615551cb685dfde3f17a55b",
+  "checkedRecipes": [
+    {
+      "id": "rust-girl-default",
+      "sha256": "5a3937b4dc76121cb076b93dbe418d5cf3129bc146d000bb50f01e5df44c005c"
+    },
+    {
+      "id": "rust-girl-appearance",
+      "sha256": "74696309ad1da81db7cbf334735b9731061bdcf0b958d282f882b0a9ec19d1e3"
+    },
+    {
+      "id": "rust-girl-colors",
+      "sha256": "35411674b34aaaa903810f469b2c6c1df1d38c279e6aed51eb1457149ca59e24"
+    },
+    {
+      "id": "rust-girl-face",
+      "sha256": "8a4133c0d15b64e925556c796c71d7e32a0f31fd284cc38f735c957da3514493"
+    },
+    {
+      "id": "rust-girl-clothing",
+      "sha256": "e09d73808f804b4bdb8c6b3979b663d7703cf57683997a772c99cfdc28be1f44"
+    },
+    {
+      "id": "rust-girl-accessories",
+      "sha256": "e6a94b65fe71743279cc653d09d8c697a487b11a549eb9375e8f1029748b02d7"
+    }
+  ],
+  "visualChecks": [
+    "逐项查看全部合法配方在深浅检查底的实际PNG渲染",
+    "身份、眼型、材质保持；穿戴接触及遮挡符合物种/家族结构",
+    "真实alpha透明、边缘与轮廓没有白底或地台；静态表情及持物不冒充动画"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "integration": "not-applied"
+}

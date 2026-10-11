@@ -90,7 +90,7 @@ try{
     await context.close();
   }
   assert.deepEqual(errors,[],'The home hero produced no page errors.');
-  const report={revision:99,browser:browser.version(),environment:{platform:process.platform,hosting:'local-only'},banner:{path:bannerRelative,sha256:bannerSha256,byteSize:bannerBytes.length},viewports:rows,checks,errors};
+  const report={revision:100,browser:browser.version(),environment:{platform:process.platform,hosting:'local-only'},banner:{path:bannerRelative,sha256:bannerSha256,byteSize:bannerBytes.length},viewports:rows,checks,errors};
   await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
   console.log(`Home hero: ${checks.length} viewport/language cases passed; banner ${bannerSha256}; no page errors.`);
 }finally{await browser.close();await server.close();}

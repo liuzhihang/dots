@@ -1,0 +1,22 @@
+{
+  "id": "robot-ivory-capsule-face-v98-candidate",
+  "version": "v2",
+  "sourcePath": "dist/assets/companions/v98/robot-ivory-capsule-face-v98-studio-candidate.png",
+  "sourceVersion": "v1",
+  "sourceSha256": "9f4eb820cd9cb1d24deb64097279ff29693bc7c683fb3f775292983f7b1bc6c0",
+  "promptRecord": "../prompts/robot-ivory-capsule-face-v98-candidate-v2-prompts.md",
+  "prompt": "Use case: precise-object-edit. Asset type: clean isolated transparent artwork, review candidate. Edit Image 1. Keep exactly the central complete ivory robot: same large rounded shell and dark display with two vertical white capsule eyes, same side pods, both short arms and feet, raised left arm, amber chest light, pose, proportions, color, lighting, and polished smooth 3D material. Do not redesign it. The current file has unwanted tiny detached specks around the robot. Remove all detached colored and white marks and every shadow/glow outside the robot. Because this robot has a smooth shell, it has no loose fur or hair; use a clean tight antialiased cutout around its actual silhouette, with only a very narrow edge transition. Every pixel outside the main robot silhouette must be fully transparent. Preserve the robot's parts and all contact joins. Transparent alpha only: no black/white/gray backdrop, no scene, floor, platform, text, logo, watermark, checkerboard, or extra objects.",
+  "tool": "built-in image_gen.imagegen",
+  "toolOutputPath": "/Users/liuzhihang/.codex/generated_images/01a12762-8f4c-7403-9bd7-875a762a1a04/exec-327dbccb-35db-4a10-8781-babcb823c48c.png",
+  "path": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/robot-ivory-capsule-face-v98-candidate-v2.png",
+  "sha256": "0678c8f5747273c8cbc8ea7f993c02331eed41c6bc703f939344f91a59ae3b1c",
+  "bytes": 1023195,
+  "width": 1215,
+  "height": 1295,
+  "pixelFormat": "rgba",
+  "alphaQA": "RGBA PNG; all four canvas corners alpha=0; center alpha=253; reviewed on dark and warm-light composite backgrounds.",
+  "visualReview": "The independent ivory robot identity, paired screen eyes, ear housings, raised arm, chest light, legs and feet read clearly. Candidate only; human art review and final approval pending.",
+  "status": "pending",
+  "artApproval": "pending",
+  "templateLayers": "not-created; this candidate only repairs the full transparent source artwork"
+}

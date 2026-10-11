@@ -1,0 +1,56 @@
+{
+  "artworkId": "dots-flower-cloud",
+  "artworkVersion": "v1",
+  "originalSha256": "135e3c1438147383d0878479b694662706c0ceef2260e5ff2ba77aa6ff5fc11b",
+  "templateId": "dots-flower-cloud-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-flower-cloud-review.json",
+  "manifestSha256": "9e90e679e245916355bae54cbdfc9f4e60c9120bbc8ae60adf4bac05d7e1eae6",
+  "engineeringReport": ".artifacts/character-adjustments/dots-flower-cloud-adjustments-v1/report.json",
+  "engineeringReportSha256": "f1042d394d66cd97bf0ea44605f6a1c3554fdd446fa48f9280694a1986d8f88d",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none",
+      "sha256": "b76bad00833a81756a231b64b79f026cc83504cf9bdd5c82f3e0dff86a29041b"
+    },
+    {
+      "id": "soft-original-open-none",
+      "sha256": "c9edbaaf244729ded556889759464b9670b010d81ed3043dd662b4f32061d26a"
+    },
+    {
+      "id": "classic-alternate-open-none",
+      "sha256": "c9ec8f3952d2c6bc8e5ce69948308af7018341be07c7801d2edab6f94728a1ba"
+    },
+    {
+      "id": "classic-original-closed-none",
+      "sha256": "455b57f49cf6b2493498464fa9852426efef7d85799e9d9b7de17f2d9861ac75"
+    },
+    {
+      "id": "classic-original-open-fitted",
+      "sha256": "3dcea02ac77c393df10e0b4b3b4680ea8dbe47b6717a0c49bfbb64a0e5823a11"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "全部5合法配方在174px正常展示尺寸与深灰/浅灰检查底逐项核对",
+      "真实浏览器渲染、PNG下载像素对比和alpha检查",
+      "四个模拟视口工程验收，不等于实体设备"
+    ],
+    "checks": [
+      "连续短密绒身体、成对黑眼，无嘴、肢体或服装",
+      "四类均有真实完整图分支；外观不靠整图拉伸",
+      "局部配色保留黑眼及芽叶等指定区域",
+      "配饰接触真实轮廓；帽子、徽章、布结或耳机不漂浮",
+      "每个分支从默认单字段可达；未制作的组合明确禁用且说明原因"
+    ],
+    "fixes": []
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

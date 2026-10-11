@@ -1,0 +1,226 @@
+{
+  "reviewType": "four-field-template-engineering-review",
+  "reviewer": "editing_audit subagent",
+  "reviewedAt": "2026-10-11",
+  "status": "engineering-passed-awaiting-root-review",
+  "scope": "Pending Dots family migration candidate. The clothing field and all clothing compositions are omitted. Engineering/browser evidence does not approve artwork or template visuals.",
+  "artwork": {
+    "id": "candidate-dots-20261005",
+    "version": "v2",
+    "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455"
+  },
+  "template": {
+    "id": "dots-orb-core-adjustments-v4-four-tabs-candidate",
+    "version": "v4",
+    "status": "pending",
+    "manifest": "templates/dots-orb-core-adjustments-v4-four-tabs-review.json",
+    "manifestSha256": "0288064155c6c45b1d341f53b050c7fa28020df5c549aba53424ca7e25d8cc6a"
+  },
+  "previousCandidate": {
+    "templateManifest": "templates/dots-orb-core-adjustments-v3-review.json",
+    "templateManifestSha256": "dcc26fd9779248250465bc6ef913db893f2f64f683dd774c5903a6d40c819605",
+    "review": "reviews/dots-orb-core-adjustments-v3-internal-precheck.json",
+    "reviewSha256": "002613008784e1db1f9045e6da99d8f39fe7d921339cc988ecbe587b5d571932",
+    "previousReviewStatus": "pending-parent-review"
+  },
+  "recipeSet": {
+    "count": 30,
+    "hashInput": "JSON.stringify(recipes sorted by id, each represented as [id, selections sorted by option-field key])",
+    "recipes": [
+      {
+        "id": "orb-blue-open-none-none",
+        "sha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc"
+      },
+      {
+        "id": "orb-blue-open-none-headphones",
+        "sha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16"
+      },
+      {
+        "id": "orb-blue-open-none-round-glasses",
+        "sha256": "d175ef8b49a96f26f81af8086d62564019c9491ef7e8240a236de6e585cd2537"
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "sha256": "20695a32668c100f2afa6fcbe9bb1a939e005d44b0445806cce5360f567867ae"
+      },
+      {
+        "id": "orb-blue-closed-none-headphones",
+        "sha256": "68772123d718fcde40a6289e4368d4d2fc4b29e0f2115d720457201e326d8ae4"
+      },
+      {
+        "id": "orb-blue-closed-none-round-glasses",
+        "sha256": "077649e6c8c6515e87b636340e7e152e208ca8e5f3c2e78129bf4fb132120f44"
+      },
+      {
+        "id": "orb-rose-open-none-none",
+        "sha256": "41207a92457b363a89deefff609929f200862e1c86532517e93439e4490d2358"
+      },
+      {
+        "id": "orb-rose-open-none-headphones",
+        "sha256": "484fed72e54960b68388d2430d1be08636dc2db489d64a4a1ef0b772eeda4bc6"
+      },
+      {
+        "id": "orb-rose-open-none-round-glasses",
+        "sha256": "b4969de1f0f7d3be88ffe4a13e6c1bd48d93b1a0a1fdf06211b20c7ec89a22e7"
+      },
+      {
+        "id": "orb-rose-closed-none-none",
+        "sha256": "d07b3a354189d41ffbb8bd52ba051421b28a47077821227e1fb705a6605f1337"
+      },
+      {
+        "id": "orb-rose-closed-none-headphones",
+        "sha256": "13564dc3ef405d94e6d9183d52320b94a2d0b323d0e3d81305d014db6b7d4ae2"
+      },
+      {
+        "id": "orb-rose-closed-none-round-glasses",
+        "sha256": "5ec3f0a42a0b1c4e57544da1bda69089f7da51ea860b422754037cdc18319d31"
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "sha256": "3a2988fc0e4ef0a014480216126ec8e087df9311a9790087dab18715adc46672"
+      },
+      {
+        "id": "cloud-blue-open-none-round-glasses",
+        "sha256": "7f007f40567e30dd53d843765f8037d862204a77ae65fd68eb06c92549793a80"
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "sha256": "19384601793d62115145d4029e7bbfa4a4e3b62c0c6cb7d9a06210064120173f"
+      },
+      {
+        "id": "cloud-blue-closed-none-round-glasses",
+        "sha256": "acbb48481797834ada021e3d63a7883903f823c31b3046bd4b01cb1f0ed8556b"
+      },
+      {
+        "id": "cloud-rose-open-none-none",
+        "sha256": "19cf68058be0cad2bbe5454aba629e9d5ef7ae95903543f21aea56ed91a70920"
+      },
+      {
+        "id": "cloud-rose-open-none-round-glasses",
+        "sha256": "313cb4d7bcf715a518c7ac3f17bf40bec60e175610541393dc84164180a6c4a9"
+      },
+      {
+        "id": "cloud-rose-closed-none-none",
+        "sha256": "d7a80b44316af446c32e82d3a3d04d9ae0670fd3e52bc4af204c45d90cb6a1cd"
+      },
+      {
+        "id": "cloud-rose-closed-none-round-glasses",
+        "sha256": "09d19e9b1a93419f7d6b6074e394fd77f4289b171fffd15aba72ac331791bc8c"
+      },
+      {
+        "id": "orb-blue-open-none-chef-toque",
+        "sha256": "7ceb74b58e95213a78d7c03d665b6f5b92dc0be8c81075cc5a11dbd2b92f1dce"
+      },
+      {
+        "id": "orb-blue-closed-none-chef-toque",
+        "sha256": "42962683adfcfd0f4861151d713bc12421d80f44cd265e82e3bd51f33b4fbd79"
+      },
+      {
+        "id": "orb-rose-open-none-chef-toque",
+        "sha256": "012f77eb083f339847d2600e3a154a6d83fb55fe9fef95493cc4d2c9aedb3818"
+      },
+      {
+        "id": "orb-rose-closed-none-chef-toque",
+        "sha256": "7b7e3217d766138566acc8166c0195b9dea1b3ef7ba4d19051676150c71d4626"
+      },
+      {
+        "id": "orb-blue-open-none-cool-sunglasses",
+        "sha256": "8463abe75e54b462e435c76ce491a8612438b0a8308ee201feb7dbd91f48a791"
+      },
+      {
+        "id": "orb-rose-open-none-cool-sunglasses",
+        "sha256": "c508e9ada21fb5440e208ee7ac87cefec4c6a805f990c17ed566186e03d24659"
+      },
+      {
+        "id": "orb-blue-open-none-cyber-glasses",
+        "sha256": "04aaadbb7966b0b465ddc66f04f53568034ada779e268ec1d81013a88adffb79"
+      },
+      {
+        "id": "orb-blue-closed-none-cyber-glasses",
+        "sha256": "f59321a40934b69e1e432faf2b4abe51ef0d4e2f863ecbffeceaac398782ff4a"
+      },
+      {
+        "id": "orb-rose-open-none-cyber-glasses",
+        "sha256": "4a2612017ca21e5f1bb45ed05a5a82f386c5ee11bc4dba3eeaa06781d3ed1fa1"
+      },
+      {
+        "id": "orb-rose-closed-none-cyber-glasses",
+        "sha256": "cb5c5d5e30a2904fd10f3bb317d9977ed83f2267112f43c0712ecbf225afa513"
+      }
+    ]
+  },
+  "engineering": {
+    "status": "engineering-passed",
+    "report": ".artifacts/character-adjustments/dots-orb-core-adjustments-v4-four-tabs-candidate/report.json",
+    "reportSha256": "4916c3b9ef9c70f199c38b4e69b3b5d1d903ed07087e3e7e06d6d21890f333ff",
+    "browser": "Chromium / Playwright review harness",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 700
+      },
+      {
+        "width": 768,
+        "height": 1024
+      }
+    ],
+    "tabs": [
+      "appearance",
+      "colors",
+      "face",
+      "accessories"
+    ],
+    "checks": [
+      "four visible fields only",
+      "each option reachable through a legal single-field change",
+      "finite recipe acceptance",
+      "transparent PNG output and alpha",
+      "Prompt excludes clothing semantics",
+      "no horizontal overflow at tested viewports"
+    ]
+  },
+  "visualComparison": {
+    "status": "partial-or-no-exact-pixel-baseline",
+    "comparedRecipes": 3,
+    "totalRecipes": 30,
+    "exactMatches": 3,
+    "comparisons": [
+      {
+        "recipeId": "orb-blue-open-none-chef-toque",
+        "sha256": "7ceb74b58e95213a78d7c03d665b6f5b92dc0be8c81075cc5a11dbd2b92f1dce",
+        "oldRecipeId": "orb-blue-open-none-chef-toque",
+        "oldSha256": "7ceb74b58e95213a78d7c03d665b6f5b92dc0be8c81075cc5a11dbd2b92f1dce",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-cool-sunglasses",
+        "sha256": "8463abe75e54b462e435c76ce491a8612438b0a8308ee201feb7dbd91f48a791",
+        "oldRecipeId": "orb-blue-open-none-cool-sunglasses",
+        "oldSha256": "8463abe75e54b462e435c76ce491a8612438b0a8308ee201feb7dbd91f48a791",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-cyber-glasses",
+        "sha256": "04aaadbb7966b0b465ddc66f04f53568034ada779e268ec1d81013a88adffb79",
+        "oldRecipeId": "orb-blue-open-none-cyber-glasses",
+        "oldSha256": "04aaadbb7966b0b465ddc66f04f53568034ada779e268ec1d81013a88adffb79",
+        "identical": true
+      }
+    ],
+    "note": "Only 3 rendered recipe hashes were available in the preceding review. No additional visual approval is implied."
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

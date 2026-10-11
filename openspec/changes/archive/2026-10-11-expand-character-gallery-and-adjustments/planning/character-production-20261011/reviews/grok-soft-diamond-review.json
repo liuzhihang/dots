@@ -1,0 +1,135 @@
+{
+  "artworkId": "grok-soft-diamond",
+  "artworkVersion": "v1",
+  "originalSha256": "dc64e4b96a1c5a3cdee8988e5aae0f5343d5494fdf3abeb8f9ed7d75957c2456",
+  "templateId": "grok-soft-diamond-adjustments-v1",
+  "templateVersion": "v1",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/grok-soft-diamond-review.json",
+  "manifestSha256": "377b51ba73b23fc9ed79ab89df1b50ea6ee01c11f7af99974fd9ae0963a3cf09",
+  "engineeringReport": ".artifacts/character-adjustments/grok-soft-diamond-adjustments-v1/report.json",
+  "engineeringReportSha256": "800e440fb8586bb4653fc9522fb354ed7d82a0880cf51f18b4b8c91c3bc9178b",
+  "legalRecipes": [
+    {
+      "id": "classic-original-open-none-none",
+      "sha256": "c63b73a42275b5369015f90187bc8b653a8fcc8556ebae0b808d78e7998fb4c8"
+    },
+    {
+      "id": "classic-original-open-none-pin",
+      "sha256": "eada885a6e4ba0a2794d75d348e13d42f3b3d1488c79b2f24a0ecb1afba2f236"
+    },
+    {
+      "id": "classic-original-open-wrap-none",
+      "sha256": "4b0e48073eedf3f42c70df5e3f4cf7833991d56c39a41b98046f6ddea7444f4b"
+    },
+    {
+      "id": "classic-original-open-wrap-pin",
+      "sha256": "cb06b079328c3b8b2e0c7b05c08f151b14335f998cb9413c254672bbb3ffabee"
+    },
+    {
+      "id": "classic-original-relaxed-none-none",
+      "sha256": "ef6a1a2acce9946dddceca15634fb615768d477c829cc40704e8118d15b3409b"
+    },
+    {
+      "id": "classic-original-relaxed-none-pin",
+      "sha256": "7fe64eefb7845c23a5c6ec68069ee274b21e0e3f6ef11a51133f4939da4fdf1d"
+    },
+    {
+      "id": "classic-original-relaxed-wrap-none",
+      "sha256": "5e6c77422155005de80ef52d90fdb8896fd75604501596da248c68d6cc13de61"
+    },
+    {
+      "id": "classic-original-relaxed-wrap-pin",
+      "sha256": "c303d414153734f40314c4d14dd0a0049f8971ca5d4b4ffc072460f3fe3c304b"
+    },
+    {
+      "id": "classic-mint-open-none-none",
+      "sha256": "2a777c1df9ead58c5226f3d5a0e28defb2f25b9a109cd35531892e2c054842af"
+    },
+    {
+      "id": "classic-mint-open-none-pin",
+      "sha256": "db53ec35bd9dfcd7232b7e0ade91efec07265022addf2d980c360b6944d317cd"
+    },
+    {
+      "id": "classic-mint-open-wrap-none",
+      "sha256": "f9fbda1c45fd788fb4f6b3d63d2953f6d5b682b0c64ce5790802aba01908440a"
+    },
+    {
+      "id": "classic-mint-open-wrap-pin",
+      "sha256": "8e7647a4aeca375dff9322087bbe49a0f5884f506e1459bd54b45684f5c77ef0"
+    },
+    {
+      "id": "classic-mint-relaxed-none-none",
+      "sha256": "e0132eed6f73bb4f5055f188e77099ea615abfe29bf6cf26cc0a74a495c2aa15"
+    },
+    {
+      "id": "classic-mint-relaxed-none-pin",
+      "sha256": "6e0e8d875f892a876b3b41ea696efa32af67eab6d97c06a72e47fa1e9d7e4843"
+    },
+    {
+      "id": "classic-mint-relaxed-wrap-none",
+      "sha256": "afda9461fb57784934d624a6f5d2321e2ea94e4045f2269b5e5026df8f287f1d"
+    },
+    {
+      "id": "classic-mint-relaxed-wrap-pin",
+      "sha256": "2a853f802c35452ccab01b193da4e1eb17c80cd0150289fdd487f278b3717e60"
+    },
+    {
+      "id": "soft-original-open-none-none",
+      "sha256": "09691e882571331bacdbc9a5043fcf00f1bb8fe8ce36f50742b6dd5d843cf255"
+    },
+    {
+      "id": "soft-original-open-none-pin",
+      "sha256": "398e78e34ec08d2646a4233e4a96846f2e6221b1e2a3c837d9705a30c0264d42"
+    },
+    {
+      "id": "soft-original-relaxed-none-none",
+      "sha256": "48726bdd269babb70f69d6ff2537fac88925060a0001fe8fd8a98d827d72ab1d"
+    },
+    {
+      "id": "soft-original-relaxed-none-pin",
+      "sha256": "91dbffe9950454d82989e78192904a40f74d996f1e856921e492ca43f9ef7288"
+    },
+    {
+      "id": "soft-mint-open-none-none",
+      "sha256": "daa96ebbb808a7630034506b090687601f7eaf9fe411db0ce2d7d1dc338e712b"
+    },
+    {
+      "id": "soft-mint-open-none-pin",
+      "sha256": "8b8111530cff8f23023bea2142e15ea246f4fb38d7b1db26efa099622bd2f9e5"
+    },
+    {
+      "id": "soft-mint-relaxed-none-none",
+      "sha256": "a85cd691c635aac6650eb239bcb58ca07424578152432aced70eb39bfda21f12"
+    },
+    {
+      "id": "soft-mint-relaxed-none-pin",
+      "sha256": "85c97016f6af01413f982e94d5bbc899d2b44d222bff36455a2242984f22e129"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "assistant",
+    "status": "passed-at-review-sizes",
+    "surfaces": [
+      "24种全部合法组合，在174px角色缩略尺寸的深灰/浅灰背景逐项查看",
+      "真实1254px透明导出逐配方记录alpha与字节hash",
+      "四个模拟视口页面截图；不代表实体设备"
+    ],
+    "checks": [
+      "光滑连续软几何与成对胶囊眼",
+      "没有手脚/嘴/屏幕脸",
+      "配色只作用于身体，不染眼睛/围衣/胸针",
+      "围衣低于眼睛并由专属身体alpha裁定外沿",
+      "星形胸针位于身体内部，与面部不相交",
+      "所有原始工具输出和局部alpha清理副本分别保留"
+    ],
+    "fixes": [
+      "首次围衣过高，已将该角色专属衣层下移140px，再重新运行24配方并回读深浅底对照；旧原始图层字节保留"
+    ]
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

@@ -1,0 +1,261 @@
+{
+  "reviewType": "four-field-template-engineering-review",
+  "reviewer": "editing_audit subagent",
+  "reviewedAt": "2026-10-11",
+  "status": "engineering-passed-awaiting-root-review",
+  "scope": "Pending Dots family migration candidate. The clothing field and all clothing compositions are omitted. Engineering/browser evidence does not approve artwork or template visuals.",
+  "artwork": {
+    "id": "dots-rose-glasses",
+    "version": "v1",
+    "sha256": "a95261160aa0a6223bab0a3b38d080a4fa5b1b6315593bb6631d820732578d75"
+  },
+  "template": {
+    "id": "dots-rose-glasses-adjustments-v3-four-tabs-candidate",
+    "version": "v3",
+    "status": "pending",
+    "manifest": "templates/dots-rose-glasses-adjustments-v3-four-tabs-review.json",
+    "manifestSha256": "326230f7f78e602d41fa899740ea2bb01c7ffec56fb2aefd07d478dec4b32632"
+  },
+  "previousCandidate": {
+    "templateManifest": "templates/dots-rose-glasses-adjustments-v2-eyes-fit-review.json",
+    "templateManifestSha256": "25b827ed0ee9e59bac15b8387139ed2bb16b2b1011cbbe869cfbb18a42b75803",
+    "review": "reviews/dots-rose-glasses-adjustments-v2-eyes-fit-internal-review.json",
+    "reviewSha256": "8c6ddf07b27cc73a585412027e6c7ca3eff036384619b725cfa0b281f9563c8b",
+    "previousReviewStatus": "passed-for-root-review"
+  },
+  "recipeSet": {
+    "count": 16,
+    "hashInput": "JSON.stringify(recipes sorted by id, each represented as [id, selections sorted by option-field key])",
+    "recipes": [
+      {
+        "id": "orb-rose-open-none-none",
+        "sha256": "45ba7a47494eb90a1424d9af2cf68821ecff0929309a1be003ccd16d2e44c1e2"
+      },
+      {
+        "id": "orb-rose-open-none-rose-round-glasses",
+        "sha256": "3f5f0a72abc73f13de5ae76270e9b0b03d4d8bd3ab2f68a46137b40887743b56"
+      },
+      {
+        "id": "orb-rose-closed-none-none",
+        "sha256": "5ea3fba44cab7404ccbce2ae4a9ec059b9226b7df11150ae2450ceebfcecd23f"
+      },
+      {
+        "id": "orb-rose-closed-none-rose-round-glasses",
+        "sha256": "4fea2c97d57998f5aad93d150628b7136c002d62f719122ac701b3967b8bd131"
+      },
+      {
+        "id": "orb-blue-open-none-none",
+        "sha256": "64dc3ddde233a9a11192f346d5c37ff91629caa412388a1ce8c3b1d97dbaaeae"
+      },
+      {
+        "id": "orb-blue-open-none-rose-round-glasses",
+        "sha256": "3f2634fc2c50a6875126972d31040e6bec6fbb82da29040e3b17db9f6746fa75"
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "sha256": "03f6698e2e646fb147c4d01fc92991c986871b7a0d56fe59683c8339ee825746"
+      },
+      {
+        "id": "orb-blue-closed-none-rose-round-glasses",
+        "sha256": "cbdea9bff4e6619ec1c086f356c3a29b73ad5b3c1d2aa59969a3e03c19c36914"
+      },
+      {
+        "id": "cloud-rose-open-none-none",
+        "sha256": "1711e248b1813f82c380db4759613955bc0f4cdfe43048fea6d72d3b291bed2f"
+      },
+      {
+        "id": "cloud-rose-open-none-rose-round-glasses",
+        "sha256": "58be5123207e3de67b888ee5016b3e7a3fa80ae4a229486e63b0960b4d40c8aa"
+      },
+      {
+        "id": "cloud-rose-closed-none-none",
+        "sha256": "c2275e26e054af24c3f106c8121ce285f2baafd0fc0637129e3cbcc0cd0f737d"
+      },
+      {
+        "id": "cloud-rose-closed-none-rose-round-glasses",
+        "sha256": "b037cf16d13a238e28ef7e2143f10771f09507ca24a438c4325118ef931ec999"
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "sha256": "86d44b5e080dc7642476407c02057a29c8179d90261a62747959245c37785734"
+      },
+      {
+        "id": "cloud-blue-open-none-rose-round-glasses",
+        "sha256": "f25220b5ea5ccf84bb8ac65c7d8fb32ae413bc9283794a89346fd379e8a6e72a"
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "sha256": "6596556f4a44c331c2ed17d75398d6e754490e59622dba81af63e41ee88d5ccf"
+      },
+      {
+        "id": "cloud-blue-closed-none-rose-round-glasses",
+        "sha256": "62154a04f810adde2fef9a34cce68d08511bdb5e11436607785b528cc97f9150"
+      }
+    ]
+  },
+  "engineering": {
+    "status": "engineering-passed",
+    "report": ".artifacts/character-adjustments/dots-rose-glasses-adjustments-v3-four-tabs-candidate/report.json",
+    "reportSha256": "5788b0b5da130ae7da165c00d7e6b6f5a6d0d78d70b2cfbea05eb61696a99db7",
+    "browser": "Chromium / Playwright review harness",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 700
+      },
+      {
+        "width": 768,
+        "height": 1024
+      }
+    ],
+    "tabs": [
+      "appearance",
+      "colors",
+      "face",
+      "accessories"
+    ],
+    "checks": [
+      "four visible fields only",
+      "each option reachable through a legal single-field change",
+      "finite recipe acceptance",
+      "transparent PNG output and alpha",
+      "Prompt excludes clothing semantics",
+      "no horizontal overflow at tested viewports"
+    ]
+  },
+  "visualComparison": {
+    "status": "exact-pixel-match-to-previously-reviewed-unclothed-recipes",
+    "comparedRecipes": 16,
+    "totalRecipes": 16,
+    "exactMatches": 16,
+    "comparisons": [
+      {
+        "recipeId": "orb-rose-open-none-none",
+        "sha256": "45ba7a47494eb90a1424d9af2cf68821ecff0929309a1be003ccd16d2e44c1e2",
+        "oldRecipeId": "orb-rose-open-none-none",
+        "oldSha256": "45ba7a47494eb90a1424d9af2cf68821ecff0929309a1be003ccd16d2e44c1e2",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-rose-open-none-rose-round-glasses",
+        "sha256": "3f5f0a72abc73f13de5ae76270e9b0b03d4d8bd3ab2f68a46137b40887743b56",
+        "oldRecipeId": "orb-rose-open-none-rose-round-glasses",
+        "oldSha256": "3f5f0a72abc73f13de5ae76270e9b0b03d4d8bd3ab2f68a46137b40887743b56",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-rose-closed-none-none",
+        "sha256": "5ea3fba44cab7404ccbce2ae4a9ec059b9226b7df11150ae2450ceebfcecd23f",
+        "oldRecipeId": "orb-rose-closed-none-none",
+        "oldSha256": "5ea3fba44cab7404ccbce2ae4a9ec059b9226b7df11150ae2450ceebfcecd23f",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-rose-closed-none-rose-round-glasses",
+        "sha256": "4fea2c97d57998f5aad93d150628b7136c002d62f719122ac701b3967b8bd131",
+        "oldRecipeId": "orb-rose-closed-none-rose-round-glasses",
+        "oldSha256": "4fea2c97d57998f5aad93d150628b7136c002d62f719122ac701b3967b8bd131",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-none",
+        "sha256": "64dc3ddde233a9a11192f346d5c37ff91629caa412388a1ce8c3b1d97dbaaeae",
+        "oldRecipeId": "orb-blue-open-none-none",
+        "oldSha256": "64dc3ddde233a9a11192f346d5c37ff91629caa412388a1ce8c3b1d97dbaaeae",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-open-none-rose-round-glasses",
+        "sha256": "3f2634fc2c50a6875126972d31040e6bec6fbb82da29040e3b17db9f6746fa75",
+        "oldRecipeId": "orb-blue-open-none-rose-round-glasses",
+        "oldSha256": "3f2634fc2c50a6875126972d31040e6bec6fbb82da29040e3b17db9f6746fa75",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-closed-none-none",
+        "sha256": "03f6698e2e646fb147c4d01fc92991c986871b7a0d56fe59683c8339ee825746",
+        "oldRecipeId": "orb-blue-closed-none-none",
+        "oldSha256": "03f6698e2e646fb147c4d01fc92991c986871b7a0d56fe59683c8339ee825746",
+        "identical": true
+      },
+      {
+        "recipeId": "orb-blue-closed-none-rose-round-glasses",
+        "sha256": "cbdea9bff4e6619ec1c086f356c3a29b73ad5b3c1d2aa59969a3e03c19c36914",
+        "oldRecipeId": "orb-blue-closed-none-rose-round-glasses",
+        "oldSha256": "cbdea9bff4e6619ec1c086f356c3a29b73ad5b3c1d2aa59969a3e03c19c36914",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-open-none-none",
+        "sha256": "1711e248b1813f82c380db4759613955bc0f4cdfe43048fea6d72d3b291bed2f",
+        "oldRecipeId": "cloud-rose-open-none-none",
+        "oldSha256": "1711e248b1813f82c380db4759613955bc0f4cdfe43048fea6d72d3b291bed2f",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-open-none-rose-round-glasses",
+        "sha256": "58be5123207e3de67b888ee5016b3e7a3fa80ae4a229486e63b0960b4d40c8aa",
+        "oldRecipeId": "cloud-rose-open-none-rose-round-glasses",
+        "oldSha256": "58be5123207e3de67b888ee5016b3e7a3fa80ae4a229486e63b0960b4d40c8aa",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-closed-none-none",
+        "sha256": "c2275e26e054af24c3f106c8121ce285f2baafd0fc0637129e3cbcc0cd0f737d",
+        "oldRecipeId": "cloud-rose-closed-none-none",
+        "oldSha256": "c2275e26e054af24c3f106c8121ce285f2baafd0fc0637129e3cbcc0cd0f737d",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-rose-closed-none-rose-round-glasses",
+        "sha256": "b037cf16d13a238e28ef7e2143f10771f09507ca24a438c4325118ef931ec999",
+        "oldRecipeId": "cloud-rose-closed-none-rose-round-glasses",
+        "oldSha256": "b037cf16d13a238e28ef7e2143f10771f09507ca24a438c4325118ef931ec999",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-open-none-none",
+        "sha256": "86d44b5e080dc7642476407c02057a29c8179d90261a62747959245c37785734",
+        "oldRecipeId": "cloud-blue-open-none-none",
+        "oldSha256": "86d44b5e080dc7642476407c02057a29c8179d90261a62747959245c37785734",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-open-none-rose-round-glasses",
+        "sha256": "f25220b5ea5ccf84bb8ac65c7d8fb32ae413bc9283794a89346fd379e8a6e72a",
+        "oldRecipeId": "cloud-blue-open-none-rose-round-glasses",
+        "oldSha256": "f25220b5ea5ccf84bb8ac65c7d8fb32ae413bc9283794a89346fd379e8a6e72a",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-closed-none-none",
+        "sha256": "6596556f4a44c331c2ed17d75398d6e754490e59622dba81af63e41ee88d5ccf",
+        "oldRecipeId": "cloud-blue-closed-none-none",
+        "oldSha256": "6596556f4a44c331c2ed17d75398d6e754490e59622dba81af63e41ee88d5ccf",
+        "identical": true
+      },
+      {
+        "recipeId": "cloud-blue-closed-none-rose-round-glasses",
+        "sha256": "62154a04f810adde2fef9a34cce68d08511bdb5e11436607785b528cc97f9150",
+        "oldRecipeId": "cloud-blue-closed-none-rose-round-glasses",
+        "oldSha256": "62154a04f810adde2fef9a34cce68d08511bdb5e11436607785b528cc97f9150",
+        "identical": true
+      }
+    ],
+    "note": "Each exact hash matches the corresponding no-clothing recipe in the prior review. This reuses only those pixel results; art approval remains pending."
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

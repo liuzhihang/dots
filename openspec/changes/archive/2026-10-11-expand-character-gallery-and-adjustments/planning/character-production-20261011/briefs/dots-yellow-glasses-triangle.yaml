@@ -1,0 +1,183 @@
+# 当前待审制作记录，不是用户美术批准。
+briefVersion: 1
+request:
+  summary: 黄色眼镜三角透明素材与四类实际调整
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: candidate-dots-yellow-glasses-triangle
+  seriesId: dots
+  identity: new
+  differenceFromExisting: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  invariants:
+  - Dots 无手脚；须与 dots-butter-beret、dots-rose-glasses 的真实外形分别对照。
+artwork:
+  proposedId: candidate-dots-yellow-glasses-triangle
+  canonicalArtworkId: dots-yellow-glasses-triangle
+  proposedVersion: v1
+  name:
+    en: null
+    zh-CN: null
+  description:
+    en: null
+    zh-CN: null
+  aliases:
+    en: []
+    zh-CN: []
+  resolvedId: dots-yellow-glasses-triangle
+references:
+- id: R02
+  path: planning/character-production-20261011/references/originals/R02-codex-clipboard-3dd2e288-d89f-4e6f-83d5-fb97011432b4.jpg
+  sha256: c6f5320b9cf037fea637379db4451471ca92f6821bb7b48e0bc816a47fbd0656
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R10
+  path: planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg
+  sha256: 7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R11
+  path: planning/character-production-20261011/references/originals/R11-codex-clipboard-834a25ef-3457-4d40-8b6e-3725b92efe03.jpg
+  sha256: e7983a036ee3dc4e895faf6a1c7c7d283cc99c70e2a54b7d442d00c65fa44599
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R16
+  path: planning/character-production-20261011/references/originals/R16-codex-clipboard-ed27e838-ba62-482e-ab76-f395967787d6.png
+  sha256: 55006a033c60b787e3cba060027b9b269a86171997b66eb1118b15103cf7c628
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R17
+  path: planning/character-production-20261011/references/originals/R17-codex-clipboard-9c39de9b-0f59-4fad-bfd5-fbcc165bfa97.png
+  sha256: 196ed83cefe5397500bfdaff8d3e4d8ac88bdddb20f37c645a2b2a9361702fde
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R18
+  path: planning/character-production-20261011/references/originals/R18-codex-clipboard-4a9ac8b2-f44a-4d73-81d1-a17902e2bde5.png
+  sha256: 1de9eb60994c426d229deef1af54391f27786ae3f75bbd2c9f9fa2c211eed2f5
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+- id: R21
+  path: planning/character-production-20261011/references/originals/R21-codex-clipboard-a1a7d13c-ba21-4cdf-9ea8-25361ae9013a.png
+  sha256: 8c4b17f03d9e7c5fd386149632c1c5e83f860fe6b96ffd0eaed62ce5be9b664f
+  role: 指定主体/区域的形体、材质或配件线索；不是可发布原图
+  use: 暖黄色短绒、软圆角三角基底、成对黑眼及黑色圆眼镜，正面独立完整轮廓。
+  exclude: 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  license: unknown
+creation:
+  prompt: null
+  promptReference: null
+  negativeConstraints:
+  - 只在R02使用眼镜线索；排除R02被遮挡的身体轮廓、其他Dot、四肢和UI。
+  - 不得使用参考截图像素、UI、Logo、图中文字或背景场景。
+  tool: builtin image_gen
+  originalOutputPath: null
+  iterations: []
+  generationRecords:
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: body
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-31c06e7e-f1c9-496d-bc51-84ba0a44b825.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: body-soft
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-df126158-77f2-4685-996c-54a0429cb30a.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: eyes-closed
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-378aeeeb-0f76-4623-91c8-51eeb68c332e.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: eyes-open
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-b123179b-414e-49e6-8b07-cf2c6131d313.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: glasses
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-3a7019bf-083d-4694-a315-be69dddb8e50.png
+  - file: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/feature-layer-generation-records-06.json
+    kind: knit-wrap
+    originalOutputPath: /Users/liuzhihang/.codex/generated_images/01a12760-8354-7123-b5ed-2c7dba4d87c1/exec-015e3ab3-2452-44d2-bbac-2a7a4949dbcd.png
+  materialPolicy: 所有原始输出保留；仅授权alpha边缘清理。模板中的统一比例与平移用于配方注册，不修改PNG源像素。
+facts:
+  characterStyle:
+    state: known
+    description: 单个 Dots 角色，连续细密短绒身体，成对简单黑眼。无手臂、手、腿、脚、嘴或屏幕脸。
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  appearance:
+    state: known
+    description: 无肢体圆角三角身体
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  facialFeatures:
+    state: known
+    description: 成对黑色弯弯闭眼，无嘴
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  colorMaterial:
+    state: known
+    description: 暖黄色细密短绒
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  clothing:
+    state: notApplicable
+    description: 用户明确取消 Dots / Grok 服装
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  headAccessory:
+    state: known
+    description: 贴合双眼的黑色圆框眼镜
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  bodyAccessory:
+    state: none
+    description: 原 Artwork 无额外此类配饰
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  prop:
+    state: none
+    description: 原 Artwork 无独立持物
+    evidence: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+resources:
+  original:
+    path: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-candidate-v1.png
+    sha256: 036264f59a5e0b355a863a41620e2394a7f31336fdf08ca25b4f583937444059
+    mime: image/png
+    bytes: 1296941
+    width: 1254
+    height: 1254
+  thumbnail: null
+  displayPreview: null
+promptText:
+  en: null
+  zh-CN: null
+relations:
+  variantGroup: null
+  animationAsset: null
+  targetPackage: null
+  templateBinding:
+    id: dots-yellow-glasses-triangle-adjustments-v2
+    version: v2
+    manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+evidence:
+  sourceRecord: 'references/manifest.json; source records: R02, R10, R11, R16, R17,
+    R18, R21'
+  license: unknown
+  engineering: passed-candidate
+  visualReview: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  artApproval:
+    status: pending
+    record: null
+    exactAssetHash: 036264f59a5e0b355a863a41620e2394a7f31336fdf08ca25b4f583937444059
+  integration: not-applied
+  deviceCheck: not-run
+  deployment: not-authorized
+  manifestSha256: 81dbf5fb46d289634cf5ec83ec3945a01484008bdc4bebbda5e8bd815fd91359
+applicableAdjustmentCategories:
+- appearance
+- colors
+- face
+- accessories
+finiteRecipes:
+  count: 16
+  manifest: openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-yellow-glasses-triangle-four-tabs-v2-review.json
+  combinationPolicy: 仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。

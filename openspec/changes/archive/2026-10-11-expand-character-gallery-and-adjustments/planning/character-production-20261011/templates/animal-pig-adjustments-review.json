@@ -1,0 +1,1065 @@
+{
+  "status": "pending",
+  "scope": "Review-only candidate Artwork and Template. Generated assets and alpha-clean derivatives are not approved or published.",
+  "artwork": {
+    "id": "candidate-animal-pig",
+    "version": "v2",
+    "seriesId": "animals",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "en": "Piglet",
+      "zh-CN": "小粉猪"
+    },
+    "descriptionByLanguage": {
+      "en": "A blush-pink plush piglet with a broad snout, cloven hooves, and a curled tail.",
+      "zh-CN": "一只腮红粉色绒面小猪，带圆润鼻盘、分趾蹄和卷尾。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "candidate-animal-pig@v2-alpha-clean"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-candidate-v2-alpha-clean.png",
+    "sha256": "eec3e34b62e0f311900409f586d9feca191d780e4e730414ea4b320eed86d1aa",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "The original v1 and this cleaned derivative are review-only candidates."
+    }
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "candidate-animal-pig-adjustments-v1",
+    "version": "v1",
+    "family": "animals",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Review-only Template and recompositions; no Artwork or layer approval transfers."
+    },
+    "artworkBinding": {
+      "artworkId": "candidate-animal-pig",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1347,
+      "height": 1168
+    },
+    "anchors": {
+      "face.center": {
+        "point": [
+          674,
+          470
+        ]
+      },
+      "pig.left-eye": {
+        "point": [
+          486,
+          431
+        ]
+      },
+      "pig.right-eye": {
+        "point": [
+          791,
+          511
+        ]
+      },
+      "body.chest": {
+        "point": [
+          680,
+          820
+        ]
+      },
+      "pig.left-ear.clip": {
+        "point": [
+          320,
+          215
+        ]
+      }
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One compact blush-pink plush piglet with two projecting ears, a broad snout with exactly two nostrils, two friendly eyes, short integrated legs with cloven hooves, and a small curled tail. Preserve pig anatomy and the same identity. Do not add extra limbs or human hands.",
+      "zh-CN": "一只紧凑的腮红粉色绒面小猪，具有两只突出的耳朵、带两个鼻孔的宽鼻盘、两只友善的眼睛、带分趾蹄的短腿和小卷尾。保持猪的解剖特征与同一角色身份，不增加多余肢体或人手。"
+    },
+    "defaultOptions": {
+      "appearance": "seated",
+      "colors": "classic",
+      "face": "open",
+      "clothing": "none",
+      "accessories": "none"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "seated",
+          "labelByLanguage": {
+            "en": "Seated",
+            "zh-CN": "坐姿"
+          },
+          "semanticByLanguage": {
+            "en": "the original compact seated plush piglet with visible hooves and curled tail",
+            "zh-CN": "原始紧凑坐姿绒面小猪，蹄子和卷尾清楚可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "standing",
+          "labelByLanguage": {
+            "en": "Standing",
+            "zh-CN": "站姿"
+          },
+          "semanticByLanguage": {
+            "en": "the same piglet in a natural four-legged standing pose with a clear snout, hooves, and curled tail",
+            "zh-CN": "同一小猪采用自然四足站姿，猪鼻、蹄子和卷尾清楚可见"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-standing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "en": "Blush rose",
+            "zh-CN": "经典粉"
+          },
+          "semanticByLanguage": {
+            "en": "warm blush-pink plush coat with deeper rose snout, inner ears, and hooves",
+            "zh-CN": "暖腮红粉色绒毛，配较深玫瑰色鼻盘、耳内与蹄子"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "coat-palette": "#F2A19C"
+          }
+        },
+        {
+          "id": "peach-rose",
+          "labelByLanguage": {
+            "en": "Peach rose",
+            "zh-CN": "桃粉"
+          },
+          "semanticByLanguage": {
+            "en": "a complete alternate soft peach-pink plush palette with berry-rose snout and inner ears",
+            "zh-CN": "完整的柔和桃粉色替代配色，配莓果玫瑰色鼻盘和耳内"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-peach-rose",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ],
+          "zoneColors": {
+            "coat-palette": "#F3AC99"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Bright eyes",
+            "zh-CN": "睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy dark open eyes, as in the original seated artwork",
+            "zh-CN": "保留坐姿母图中的两只明亮深色睁眼"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed-smile",
+          "labelByLanguage": {
+            "en": "Closed-eye smile",
+            "zh-CN": "闭眼微笑"
+          },
+          "semanticByLanguage": {
+            "en": "a complete alternate seated body with both open eyes replaced by integrated curved closed eyelids",
+            "zh-CN": "完整坐姿替代母图，已将两只睁眼自然替换成闭眼弧线"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-closed-smile",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No clothing",
+            "zh-CN": "无服装"
+          },
+          "semanticByLanguage": {
+            "en": "no clothing",
+            "zh-CN": "不穿服装"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "knit-vest",
+          "labelByLanguage": {
+            "en": "Forest knit vest",
+            "zh-CN": "森林绿针织背心"
+          },
+          "semanticByLanguage": {
+            "en": "a complete seated body wearing a fitted sage-green knit vest wrapping the shoulders and torso, with the forelegs naturally in front",
+            "zh-CN": "完整坐姿替代母图，穿合身鼠尾草绿针织背心并包覆肩部和躯干，前腿自然位于衣服前方"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-knit-vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "No accessories",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessories",
+            "zh-CN": "不佩戴配饰"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "flower-clip",
+          "labelByLanguage": {
+            "en": "Marigold flower clip",
+            "zh-CN": "金盏花夹"
+          },
+          "semanticByLanguage": {
+            "en": "a compact warm-yellow felt flower clip placed at the outer edge of the viewer-left ear",
+            "zh-CN": "固定在画面左侧耳朵外沿的小号暖黄色毛毡花夹"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "standing",
+          "colors": "peach-rose"
+        },
+        "code": "pig-peach-palette-is-seated-artwork",
+        "messageByLanguage": {
+          "en": "The peach-rose palette is a complete seated artwork. Choose Seated or the classic palette.",
+          "zh-CN": "桃粉配色是一张完整坐姿作品。请切回坐姿或选择经典粉色。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "face": "closed-smile"
+        },
+        "code": "pig-closed-eyes-registered-for-seated-artwork",
+        "messageByLanguage": {
+          "en": "Closed-eye patches are anchored to the seated face. Choose Seated or open eyes.",
+          "zh-CN": "闭眼层目前锚定在坐姿面部。请切回坐姿或选择睁眼。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "clothing": "knit-vest"
+        },
+        "code": "pig-vest-registered-for-seated-artwork",
+        "messageByLanguage": {
+          "en": "The vest is fitted to the seated torso. Choose Seated or remove the vest.",
+          "zh-CN": "背心目前按坐姿躯干定位。请切回坐姿或脱下背心。"
+        }
+      },
+      {
+        "when": {
+          "appearance": "standing",
+          "accessories": "flower-clip"
+        },
+        "code": "pig-clip-registered-for-seated-artwork",
+        "messageByLanguage": {
+          "en": "The flower clip is anchored to the seated ear. Choose Seated or remove the clip.",
+          "zh-CN": "花夹目前锚定在坐姿作品的耳朵上。请切回坐姿或取下花夹。"
+        }
+      },
+      {
+        "when": {
+          "colors": "peach-rose",
+          "face": "closed-smile"
+        },
+        "code": "pig-closed-eyes-matched-to-classic-palette",
+        "messageByLanguage": {
+          "en": "Closed-eye fur patches are color-matched to the classic pig artwork. Choose Classic or open eyes.",
+          "zh-CN": "闭眼绒面替换层按经典粉色母图配色。请切回经典粉或选择睁眼。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "seated-classic-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-none-flower-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-knit-vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-open-knit-vest-flower-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "knit-vest",
+          "accessories": "flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-knit-vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-closed-smile",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-none-flower-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "none",
+          "accessories": "flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-closed-smile",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-knit-vest-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-closed-knit-vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-classic-closed-smile-knit-vest-flower-clip",
+        "selections": {
+          "appearance": "seated",
+          "colors": "classic",
+          "face": "closed-smile",
+          "clothing": "knit-vest",
+          "accessories": "flower-clip"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-closed-knit-vest",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "standing-classic-open-none-none",
+        "selections": {
+          "appearance": "standing",
+          "colors": "classic",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-standing",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "seated-peach-open-none-none",
+        "selections": {
+          "appearance": "seated",
+          "colors": "peach-rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:candidate-animal-pig-adjustments-v1:body-peach-rose",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-seated",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-seated.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-candidate-v2-alpha-clean.png",
+      "sha256": "eec3e34b62e0f311900409f586d9feca191d780e4e730414ea4b320eed86d1aa",
+      "byteSize": 1262869,
+      "width": 1347,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 917600,
+        "bboxAtAlphaThreshold1": [
+          222,
+          99,
+          1151,
+          1074
+        ],
+        "bboxAtAlphaThreshold8": [
+          223,
+          99,
+          1151,
+          1072
+        ],
+        "bboxAtAlphaThreshold16": [
+          224,
+          101,
+          1149,
+          1072
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "pig-master-v2-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-63bddc2e-c1b1-4b28-9773-0febbdd39990.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-candidate-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-candidate-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-standing",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-standing.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-appearance-standing-candidate-v1-v2-alpha-clean.png",
+      "sha256": "f2b3fc62a983bea161843a35e2bd3108ad6ee3cc6d0864ac66b4c14bfabe9649",
+      "byteSize": 1200896,
+      "width": 1347,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 888375,
+        "bboxAtAlphaThreshold1": [
+          188,
+          88,
+          1152,
+          1085
+        ],
+        "bboxAtAlphaThreshold8": [
+          190,
+          90,
+          1150,
+          1083
+        ],
+        "bboxAtAlphaThreshold16": [
+          190,
+          90,
+          1150,
+          1083
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "pig-standing-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-73d3ec18-ee64-4c7b-899c-4d76f5f718e2.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-appearance-standing-candidate-v1-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-appearance-standing-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-peach-rose",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-peach-rose.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-color-peach-rose-candidate-v1-v2-alpha-clean.png",
+      "sha256": "9ae0912776bd94275a785a515c84dd1c07289b2a09a324101ea7b96b2e001d0f",
+      "byteSize": 1249863,
+      "width": 1347,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 910223,
+        "bboxAtAlphaThreshold1": [
+          221,
+          94,
+          1156,
+          1076
+        ],
+        "bboxAtAlphaThreshold8": [
+          222,
+          96,
+          1155,
+          1074
+        ],
+        "bboxAtAlphaThreshold16": [
+          223,
+          96,
+          1154,
+          1074
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "pig-color-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-eee351a1-197f-4297-b3e2-8f2dead5c954.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-color-peach-rose-candidate-v1-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-color-peach-rose-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:accessory-flower-clip",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/accessory-flower-clip.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-accessory-flower-clip-candidate-v1-v2-alpha-clean.png",
+      "sha256": "9b3cf8520aded00a36e946fcc87a39ce1485d4069027d4491624db01e476c187",
+      "byteSize": 188266,
+      "width": 1347,
+      "height": 1167,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1497847,
+        "bboxAtAlphaThreshold1": [
+          339,
+          252,
+          711,
+          572
+        ],
+        "bboxAtAlphaThreshold8": [
+          341,
+          254,
+          709,
+          570
+        ],
+        "bboxAtAlphaThreshold16": [
+          341,
+          254,
+          709,
+          570
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "pig.left-ear.clip",
+        "sourceAnchor": [
+          525.0,
+          412.0
+        ],
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            525.0,
+            412.0
+          ],
+          "scale": [
+            0.25,
+            0.25
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "pig-flower-clip-v1-alpha-clean",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-827d3beb-5c53-42c7-b20c-c44c7288d3a8.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-accessory-flower-clip-candidate-v1-v2-alpha-clean.png",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-accessory-flower-clip-candidate-v1-v2-alpha-clean.alpha-cleanup.json"
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-closed-smile",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-closed-smile.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "349d758b67c4e14b17c08ec2faeeea4dc9bfcd9a55dcc1fbd5c597e3d481e36f",
+      "byteSize": 1107150,
+      "width": 1346,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 911862,
+        "bboxAtAlphaThreshold1": [
+          220,
+          97,
+          1156,
+          1075
+        ],
+        "bboxAtAlphaThreshold8": [
+          221,
+          98,
+          1154,
+          1073
+        ],
+        "bboxAtAlphaThreshold16": [
+          222,
+          99,
+          1154,
+          1073
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "full-body-imagegen-identity-preserving-edit",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-02800d82-1ffd-408a-974d-723325ce13d3.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-fullbody-candidate-v1.png",
+        "originalSha256": "220ffaf3b9e5d547604b35fdfbc6130bd757713965b90139d7a484c99577703a",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-fullbody-candidate-v2-alpha-clean.png.alpha-cleanup.json",
+        "reviewNote": "Complete-body closed-eye smile; both old eye-patch overlays are superseded."
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-knit-vest",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-knit-vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-clothing-knit-vest-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "cf6fe50535bdbc5ec4e09ef5ed95300331d12160a4286efc0e8ece6c8b1179c6",
+      "byteSize": 1191873,
+      "width": 1346,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 906115,
+        "bboxAtAlphaThreshold1": [
+          218,
+          94,
+          1154,
+          1080
+        ],
+        "bboxAtAlphaThreshold8": [
+          219,
+          95,
+          1153,
+          1078
+        ],
+        "bboxAtAlphaThreshold16": [
+          220,
+          96,
+          1152,
+          1078
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "full-body-imagegen-identity-preserving-edit",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4497ea2b-551d-41fd-8df8-854a7b3d135b.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-clothing-knit-vest-fullbody-candidate-v1.png",
+        "originalSha256": "9f1f8c9cd8644cb3ae43cfc2f12bc20fef534652f73c36a96e6a960d7f0a02ae",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-clothing-knit-vest-fullbody-candidate-v2-alpha-clean.png.alpha-cleanup.json",
+        "reviewNote": "Complete-body fitted knit vest; the old floating chest overlay is superseded."
+      }
+    },
+    {
+      "id": "template:candidate-animal-pig-adjustments-v1:body-closed-knit-vest",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/candidate-animal-pig-adjustments-v1/body-closed-knit-vest.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-clothing-vest-fullbody-candidate-v2-alpha-clean.png",
+      "sha256": "ac05f060c9b6124f723125d5caf5618d818dc357f200807309dd118798230c3b",
+      "byteSize": 1140176,
+      "width": 1346,
+      "height": 1168,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 903277,
+        "bboxAtAlphaThreshold1": [
+          218,
+          92,
+          1158,
+          1081
+        ],
+        "bboxAtAlphaThreshold8": [
+          220,
+          94,
+          1157,
+          1080
+        ],
+        "bboxAtAlphaThreshold16": [
+          220,
+          94,
+          1156,
+          1079
+        ]
+      },
+      "owner": {
+        "templateId": "candidate-animal-pig-adjustments-v1",
+        "artworkId": "candidate-animal-pig",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1347,
+          1168
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "status": "pending",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "Candidate only; generated output and authorized alpha cleanup do not transfer or imply art approval."
+      },
+      "source": {
+        "method": "full-body-imagegen-identity-preserving-edit",
+        "originalToolOutput": "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-a2c6ca56-f302-48cb-b862-05a1905b97d7.png",
+        "originalCandidate": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-clothing-vest-fullbody-candidate-v1.png",
+        "originalSha256": "648fb845cc9cf08a636eca9d53bc36a4c5b3a9251edaf3ec28c4f32da1540edf",
+        "alphaCleanupRecord": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/candidate-animal-pig-face-closed-clothing-vest-fullbody-candidate-v2-alpha-clean.png.alpha-cleanup.json",
+        "reviewNote": "Complete-body closed-eye smile and fitted knit vest combination."
+      }
+    }
+  ]
+}

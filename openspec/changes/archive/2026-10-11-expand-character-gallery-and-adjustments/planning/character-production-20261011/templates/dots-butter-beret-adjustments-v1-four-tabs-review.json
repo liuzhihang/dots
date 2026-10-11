@@ -1,0 +1,1039 @@
+{
+  "status": "pending",
+  "scope": "Four-field Dots Template review candidate for existing Artwork dots-butter-beret@v2. Clothing is not supported. The default recipe reuses the original Artwork master byte-for-byte; changed selections render declared transparent layer recipes. No user art approval is implied.",
+  "artwork": {
+    "id": "dots-butter-beret",
+    "version": "v2",
+    "seriesId": "dots",
+    "status": "published",
+    "publicationStatus": "published",
+    "titleByLanguage": {
+      "en": "Butter Beret Dots",
+      "zh-CN": "奶油黄贝雷帽 Dots"
+    },
+    "descriptionByLanguage": {
+      "en": "A butter-yellow rounded-triangle Dots in short micro-plush, with two black oval eyes and a navy felt beret; no mouth or limbs.",
+      "zh-CN": "奶油黄色短密绒圆角三角 Dots，双黑色椭圆眼，戴海军蓝毛毡贝雷帽；无嘴与肢体。"
+    },
+    "resourceKind": "transparent-character-still",
+    "assetRefs": {
+      "original": "asset:dots-butter-beret:original"
+    },
+    "sourcePath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+    "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null,
+      "scope": "Template and every new recipe/asset remain pending user art approval."
+    },
+    "artworkBinding": {
+      "artworkId": "dots-butter-beret",
+      "artworkVersion": "v2"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "en": "One Dots character with one continuous short-dense-plush body and two simple black eyes. No arms, hands, legs, feet, mouth, screen face, separate clothing, props, or background.",
+      "zh-CN": "单个 Dots 角色，连续短密绒身体与两只简洁黑眼。无手臂、手、腿、脚、嘴、屏幕脸、独立衣物、道具或背景。"
+    },
+    "defaultOptions": {
+      "appearance": "triangle",
+      "colors": "butter-yellow",
+      "face": "open",
+      "accessories": "beret"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "triangle",
+          "labelByLanguage": {
+            "en": "Rounded triangle",
+            "zh-CN": "圆角三角"
+          },
+          "semanticByLanguage": {
+            "en": "one rounded triangular Dots body with a broad lower edge",
+            "zh-CN": "一个下缘宽圆的圆角三角 Dots 身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:original-master",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "cloud",
+          "labelByLanguage": {
+            "en": "Low cloud",
+            "zh-CN": "低矮云团"
+          },
+          "semanticByLanguage": {
+            "en": "one low continuous three-lobed Dots body",
+            "zh-CN": "一个低矮、连续三瓣的 Dots 云团身体"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "butter-yellow",
+          "labelByLanguage": {
+            "en": "Butter yellow",
+            "zh-CN": "奶油黄"
+          },
+          "semanticByLanguage": {
+            "en": "warm butter-yellow short dense plush body",
+            "zh-CN": "暖奶油黄色短密绒身体"
+          },
+          "hex": "#F8C83C",
+          "swatches": [
+            "#F8C83C"
+          ],
+          "zoneColors": {
+            "body": "#F8C83C"
+          }
+        },
+        {
+          "id": "blue",
+          "labelByLanguage": {
+            "en": "Bright blue",
+            "zh-CN": "亮蓝色"
+          },
+          "semanticByLanguage": {
+            "en": "bright medium-blue short dense plush body",
+            "zh-CN": "明亮中蓝色短密绒身体"
+          },
+          "hex": "#328DF0",
+          "swatches": [
+            "#328DF0"
+          ],
+          "zoneColors": {
+            "body": "#328DF0"
+          }
+        }
+      ],
+      "face": [
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "en": "Open oval eyes",
+            "zh-CN": "椭圆睁眼"
+          },
+          "semanticByLanguage": {
+            "en": "two glossy black vertical oval eyes; no mouth",
+            "zh-CN": "两只黑色竖椭圆眼；无嘴"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "en": "Closed eyes",
+            "zh-CN": "闭眼"
+          },
+          "semanticByLanguage": {
+            "en": "two small black curved closed-eye marks as a static expression; no mouth",
+            "zh-CN": "两道黑色弯曲闭眼线，作为静态表情；无嘴"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "en": "None",
+            "zh-CN": "无配饰"
+          },
+          "semanticByLanguage": {
+            "en": "no accessory",
+            "zh-CN": "无配饰"
+          }
+        },
+        {
+          "id": "beret",
+          "labelByLanguage": {
+            "en": "Navy felt beret",
+            "zh-CN": "海军蓝毛毡贝雷帽"
+          },
+          "semanticByLanguage": {
+            "en": "a fitted tilted navy felt beret with a small fabric nub, placed on the rounded-triangle body",
+            "zh-CN": "贴合圆角三角身体、略微倾斜的海军蓝毛毡贝雷帽，带小布结"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:accessory:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "cloud",
+          "accessories": "beret"
+        },
+        "code": "butter-beret-cloud-fit-conflict",
+        "messageByLanguage": {
+          "en": "The beret is fitted to the rounded-triangle silhouette. Remove the beret before switching to the cloud body.",
+          "zh-CN": "贝雷帽按圆角三角轮廓贴合制作。切换云团外观前，请先移除贝雷帽。"
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "triangle-butter-yellow-open-beret",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "butter-yellow",
+          "face": "open",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "character-master",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:original-master",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-butter-yellow-open-none",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "butter-yellow",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-butter-yellow-closed-none",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "butter-yellow",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-butter-yellow-closed-beret",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "butter-yellow",
+          "face": "closed",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:accessory:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-blue-open-none",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-blue-open-beret",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:accessory:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-blue-closed-none",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "triangle-blue-closed-beret",
+        "selections": {
+          "appearance": "triangle",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "beret"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "accessory-front",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:accessory:beret",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-butter-yellow-open-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "butter-yellow",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-butter-yellow-closed-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "butter-yellow",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-yellow",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-open-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "open",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cloud-blue-closed-none",
+        "selections": {
+          "appearance": "cloud",
+          "colors": "blue",
+          "face": "closed",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-blue",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:original-master",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/master-original.png",
+      "sourcePath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+      "sha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+      "byteSize": 1541746,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 816738,
+        "bboxAtAlphaThreshold16": [
+          107,
+          143,
+          1145,
+          1129
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "exact-original-artwork-byte-reuse",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": null,
+        "rawGenerationSha256": null,
+        "alphaCleanupPath": null,
+        "requestIntent": null,
+        "requestVerbatimRetained": false,
+        "notes": "Exact existing Artwork master; bytes and pixels remain unchanged."
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-yellow",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/triangle-yellow.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-clean-v1.png",
+      "sha256": "c65280baca78d417709a0fc912c02302d7e38c8a466739747989990b5b5c3360",
+      "byteSize": 1198904,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 924144,
+        "bboxAtAlphaThreshold16": [
+          105,
+          261,
+          1148,
+          1125
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-body-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-raw-v1.png",
+        "rawGenerationSha256": "9415f80515a12924cbc5f9a10cf57faf1656ef2c8b8e708334c0add568e59fd1",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-imagegen-clean-v1.alpha-cleanup.json",
+        "requestIntent": "yellow rounded-triangle short-plush body without eyes or accessories; no face, accessory, clothing, scene, text, or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:triangle-blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/triangle-blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-alpha-clean-v1.png",
+      "sha256": "9a1ad5ea7448e9541b504e80deb3208cfadadb8c054f96f4f0da3fbce444323f",
+      "byteSize": 1219787,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 919860,
+        "bboxAtAlphaThreshold16": [
+          103,
+          260,
+          1151,
+          1127
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-body-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-imagegen-raw-v1.png",
+        "rawGenerationSha256": "bc7950b23fe133cdb7458df7957aa9f48d755f325a711c91fd8155d2c8c7aad4",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-body-blue-alpha-clean-v1.alpha-cleanup.json",
+        "requestIntent": "same rounded-triangle shape and placement with blue short-plush body color; no face, accessory, clothing, scene, text, or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-yellow",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/cloud-yellow.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-alpha-clean-v1.png",
+      "sha256": "bea674e519e3a2b0509bcf7a4174de755bd2d9a5ef0cbd9a244e723fd234fec5",
+      "byteSize": 1046437,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 994727,
+        "bboxAtAlphaThreshold16": [
+          38,
+          338,
+          1215,
+          1019
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-body-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-imagegen-raw-v1.png",
+        "rawGenerationSha256": "7ae52b1f9d86ada80029370961e8f3d1b395a00465f5857a9228397d1caffcf8",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-body-alpha-clean-v1.alpha-cleanup.json",
+        "requestIntent": "low continuous three-lobed cloud body in warm yellow short plush; no face, accessory, clothing, scene, text, or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:body:cloud-blue",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/cloud-blue.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-alpha-clean-v1.png",
+      "sha256": "d452f7f6dcce582204946a6e40d80f54124730031700437cc9ca2091ce1c0c9f",
+      "byteSize": 1074734,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 992729,
+        "bboxAtAlphaThreshold16": [
+          37,
+          338,
+          1218,
+          1019
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-body-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-imagegen-raw-v1.png",
+        "rawGenerationSha256": "01f8fbc193da6384317458ee98c7bb38ea5db30c63046a764ea720e239f96810",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-cloud-blue-alpha-clean-v1.alpha-cleanup.json",
+        "requestIntent": "same low three-lobed cloud shape and placement with blue short-plush body color; no face, accessory, clothing, scene, text, or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/face-open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-open-eyes-alpha-clean-v1.png",
+      "sha256": "fda4077e350d0956a6eaf7fe14211c8d80c44c84439e0e8b1135e9e5081087bb",
+      "byteSize": 62711,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1542352,
+        "bboxAtAlphaThreshold16": [
+          487,
+          569,
+          769,
+          756
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-face-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-open-eyes-imagegen-raw-v1.png",
+        "rawGenerationSha256": "c006b7ceb0764bf112d1d6f9f52e80aa9f1fa05e621927a610af7eebfcfca0b5",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-open-eyes-alpha-clean-v1.alpha-cleanup.json",
+        "requestIntent": "two glossy black vertical oval eyes aligned to the original face; no body or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:face:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/face-closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-closed-eyes-alpha-clean-v1.png",
+      "sha256": "953b11313fd80f9033d967118a907092435244c2d762508ad52cc0e84b5973ac",
+      "byteSize": 37630,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1558694,
+        "bboxAtAlphaThreshold16": [
+          459,
+          617,
+          795,
+          686
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-face-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-closed-eyes-imagegen-raw-v2.png",
+        "rawGenerationSha256": "51535984f0a1a18f3ba8dfafc380cac7d05b588a31ae08bbe103f19166cbef80",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/butter-closed-eyes-alpha-clean-v1.alpha-cleanup.json",
+        "requestIntent": "two small black curved closed-eye marks, no mouth or extra facial feature; no body or background.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    },
+    {
+      "id": "template:dots-butter-beret-adjustments-v1-four-tabs-candidate:accessory:beret",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/dots-butter-beret-adjustments-v1-four-tabs-candidate/beret.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-clean-v1.png",
+      "sha256": "50d1926f81b46fa7395053d4730d7dc2435bba4f95b11c2ff8ba1caf4dc22a33",
+      "byteSize": 718877,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1252243,
+        "bboxAtAlphaThreshold16": [
+          79,
+          229,
+          1103,
+          854
+        ]
+      },
+      "owner": {
+        "templateId": "dots-butter-beret-adjustments-v1-four-tabs-candidate",
+        "artworkId": "dots-butter-beret",
+        "artworkVersion": "v2"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          150,
+          -5
+        ],
+        "transform": {
+          "pivot": [
+            0,
+            0
+          ],
+          "scale": [
+            0.65,
+            0.65
+          ],
+          "shear": [
+            0,
+            0
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null,
+        "note": "New Template recipe pending user art approval; no approval is inherited."
+      },
+      "source": {
+        "method": "imagegen-isolated-navy-felt-beret-layer-with-authorized-alpha-only-cleanup",
+        "referenceArtworkPath": "dist/assets/companions/v99/dots-butter-beret-candidate-v2.png",
+        "referenceArtworkSha256": "284093696b5e244a8ebd6f5ef433c50059b81bdaf7709ba1d60bd68321ccae00",
+        "rawGenerationPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-raw-v1.png",
+        "rawGenerationSha256": "71b5749a171e034d781d525f6c02d40c6a35e2acee578b03ef5341937bbc163f",
+        "alphaCleanupPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-butter-beret-adjustments-v2/beret-imagegen-clean-v1.alpha-cleanup.json",
+        "requestIntent": "isolated navy felt beret with small fabric nub; no Dots body, face, scene, text, or background. A template placement alias fits the original rounded-triangle top; no source pixels were rescaled.",
+        "requestVerbatimRetained": false,
+        "notes": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "reviewType": "four-field-template-candidate-engineering-and-asset-provenance-review",
+  "reviewer": "editing_audit subagent",
+  "reviewedAt": "2026-10-11",
+  "status": "engineering-and-root-visual-review-passed-awaiting-user-art-approval",
+  "scope": "Pending Dots orb v6 candidate only. Dedicated ImageGen body assets replace tint-only mappings for ivory/charcoal. No artwork approval is implied.",
+  "artwork": {
+    "id": "candidate-dots-20261005",
+    "version": "v2",
+    "sha256": "2f680b276f76c2a1c6faeb7d496f16a41327f1186bca27d0acf5197997309455",
+    "approval": "approved"
+  },
+  "template": {
+    "id": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+    "version": "v6",
+    "status": "pending",
+    "manifest": "templates/dots-orb-core-adjustments-v6-four-tabs-review.json",
+    "manifestSha256": "f8032af64441e83fd24f3e6b024a05d74cb8638dcd5d05e6088c9d813f9a56d1",
+    "recipeCount": 32,
+    "recipeSetSha256": "2421967a291c747265054eda7c3392e1eb9e963c4de4202b60a2694403dae1ef"
+  },
+  "assets": [
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:ivory",
+      "version": "v1",
+      "sha256": "1a17bc947172f66de7d794b1b0fb277e782559c632f90b515a3d72f121dbbdc7",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-alpha-clean-v1.png",
+      "byteSize": 1184060,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          124,
+          150,
+          1128,
+          1150
+        ],
+        "bboxAtAlphaThreshold16": [
+          126,
+          152,
+          1126,
+          1148
+        ]
+      },
+      "source": {
+        "method": "imagegen-color-variant-with-authorized-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-imagegen-raw-v1.png",
+        "sourceSha256": "557591fcf4b3c8e6af0317e100cd583b59198ce5c67c1fa23bb3dbd43aa923de",
+        "cleanupReportPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-ivory-alpha-clean-v1.alpha-cleanup.json",
+        "cleanupReportSha256": "0a681b377001670165f960d090a39f37dcadf94baef4ec80acac279814dd68e3",
+        "approvalTransferred": false,
+        "visualReview": "required"
+      }
+    },
+    {
+      "id": "template:dots-orb-core-adjustments-v6-four-tabs-candidate:color:charcoal",
+      "version": "v1",
+      "sha256": "0094b75936ee25eea12adcc5e711e9ba3f0edd21973dd02747cc8a51f1c9f975",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-alpha-clean-v1.png",
+      "byteSize": 1506678,
+      "width": 1254,
+      "height": 1254,
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "bboxAtAlphaThreshold1": [
+          125,
+          148,
+          1129,
+          1150
+        ],
+        "bboxAtAlphaThreshold16": [
+          127,
+          150,
+          1127,
+          1148
+        ]
+      },
+      "source": {
+        "method": "imagegen-color-variant-with-authorized-alpha-cleanup",
+        "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-imagegen-raw-v1.png",
+        "sourceSha256": "c2cbac8359bba5c00374d2cc8110aff3a60e60859da558e8cf54fd30e36fcd1d",
+        "cleanupReportPath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/generated/dots-orb-v5-colors/orb-body-charcoal-alpha-clean-v1.alpha-cleanup.json",
+        "cleanupReportSha256": "0726db3f315af372d49037cadcaf5251ff523337bc4bdad6bc8b2769231147e7",
+        "approvalTransferred": false,
+        "visualReview": "required"
+      }
+    }
+  ],
+  "engineering": {
+    "status": "engineering-passed",
+    "report": ".artifacts/character-adjustments/dots-orb-core-adjustments-v6-four-tabs-candidate/report.json",
+    "reportSha256": "861176691ca28e2eefe2d2b431757d19156ded2dbc57510d16e0c31960b082f2",
+    "browser": "Chromium / Playwright; project automated regression, separate from in-app manual review",
+    "combinations": 32,
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 700
+      },
+      {
+        "width": 768,
+        "height": 1024
+      }
+    ],
+    "tabs": [
+      "appearance",
+      "colors",
+      "face",
+      "accessories"
+    ]
+  },
+  "visualInspection": {
+    "status": "root-visual-review-passed-awaiting-user-art-approval",
+    "darkContact": ".artifacts/character-adjustments/dots-orb-core-adjustments-v6-four-tabs-candidate/visual-dark-contact.jpg",
+    "lightContact": ".artifacts/character-adjustments/dots-orb-core-adjustments-v6-four-tabs-candidate/visual-light-contact.jpg",
+    "notes": "Root reviewed all 32 actual recipes against dark and light backgrounds and passed the visual fit check. This is root review evidence only; user art approval remains pending."
+  },
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "productionIntegration": "not-authorized"
+}

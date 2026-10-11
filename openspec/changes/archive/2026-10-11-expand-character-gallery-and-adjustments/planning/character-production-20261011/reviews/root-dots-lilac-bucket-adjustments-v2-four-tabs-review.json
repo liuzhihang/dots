@@ -1,0 +1,74 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "sourceReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-lilac-bucket-adjustments-v2-four-tabs-review.json",
+  "sourceReviewSha256": "e76bd3ffa4f394a6ad1ca2186ec5309120767b014be6a3a5ef7f79972d5e08f5",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-lilac-bucket-adjustments-v2-four-tabs-review.json",
+  "manifestSha256": "826ff735fe9837a32413f44ed23127d5de0059b4aaf0ab1e96915ef1698a64bf",
+  "templateId": "dots-lilac-bucket-adjustments-v2-four-tabs-candidate",
+  "artworkBinding": {
+    "artworkId": "dots-lilac-bucket",
+    "artworkVersion": "v1"
+  },
+  "engineeringReport": ".artifacts/character-adjustments/dots-lilac-bucket-adjustments-v2-four-tabs-candidate/report.json",
+  "engineeringReportSha256": "60c134357f8ed2831a470447cc061550d2842f4a2e19b25f48fd61d90574ed83",
+  "checkedRecipes": [
+    {
+      "id": "orb-lilac-open-none-none",
+      "sha256": "9af2a6211582f1d16f736e6b50ede98afbc0dbb51aebef1d789192064022195d"
+    },
+    {
+      "id": "orb-lilac-open-none-bucket-hat",
+      "sha256": "dd7b57aaa750a99d439c67154c139b66e05dff99bb090c9953921bebcd3cc22c"
+    },
+    {
+      "id": "orb-lilac-closed-none-none",
+      "sha256": "f79170617574a696447891e3f6ed89cf345af69b52681f5535b3b8592094b1e0"
+    },
+    {
+      "id": "orb-lilac-closed-none-bucket-hat",
+      "sha256": "2fb563e1bb3cc21430c2cbf56b06474295bd07e616b3f6cd0f0e2ef306afc558"
+    },
+    {
+      "id": "orb-blue-open-none-none",
+      "sha256": "6970bed709dea4ce81bf40af2936be2aca3daaeda09c75701a183f3e4da990f9"
+    },
+    {
+      "id": "orb-blue-open-none-bucket-hat",
+      "sha256": "37a287982405ac2d4a3a5b0b3373e65add625fb66a0d9cd15ccf96a89574f274"
+    },
+    {
+      "id": "orb-blue-closed-none-none",
+      "sha256": "8bf7c10353a5be1b8eb9a0a7855f26560fd4e6c81388091a35daf632ca565e06"
+    },
+    {
+      "id": "orb-blue-closed-none-bucket-hat",
+      "sha256": "682cbe9a0bd697f59e11c04215201490a14e1cbdb765a450791be2b1c17c0919"
+    },
+    {
+      "id": "cloud-lilac-open-none-none",
+      "sha256": "5c5bb1d24e74292476ceeb884e76440d436a1f99d87ac593237387a2a48ee719"
+    },
+    {
+      "id": "cloud-lilac-closed-none-none",
+      "sha256": "9b6896f4bca936094ac0a1083d26f74302420abe890341b8dae9823b55feb8b4"
+    },
+    {
+      "id": "cloud-blue-open-none-none",
+      "sha256": "21ac54f855b86a07606829b23aa68e245d4cb30e164e6293cc4cb8e9dc6a6e6a"
+    },
+    {
+      "id": "cloud-blue-closed-none-none",
+      "sha256": "2e5d780f6fa0a39b2e32338315357475b04a75c02409487ab344404c865de731"
+    }
+  ],
+  "visualChecks": [
+    "全部合法配方在深浅检查底逐项核对，查看眼型、材质、轮廓、衣物和配饰接触",
+    "Dots无手脚与服装；眼睛、眼镜和帽子贴合",
+    "配色与配饰分离，全部结果保持alpha透明"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  }
+}

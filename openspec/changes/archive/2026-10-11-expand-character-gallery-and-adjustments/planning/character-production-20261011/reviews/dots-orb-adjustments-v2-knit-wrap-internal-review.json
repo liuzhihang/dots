@@ -1,0 +1,202 @@
+{
+  "reviewType": "internal-visual-review",
+  "reviewer": "root",
+  "reviewedAt": "2026-10-11",
+  "status": "passed-for-pending-candidate-review",
+  "artworkId": "candidate-dots-20261005",
+  "artworkVersion": "candidate-v1",
+  "templateId": "dots-orb-adjustments-v2-candidate",
+  "templateVersion": "v2",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-orb-adjustments-v2-knit-wrap-review.json",
+  "manifestSha256": "1cbbcc0ff805db14b3f184a777fffa20e1baf944ee6dcc21b0b76b2d46ff17ce",
+  "recipeSet": {
+    "count": 40,
+    "sha256": "4e10b72f4fbc112b95a122664f1c6a984212caaa2a314d2b2af17671cf88eec7",
+    "hashInput": "JSON.stringify(recipes sorted by id, each represented as [id, selections sorted by option-field key])",
+    "renderedRecipePngs": [
+      {
+        "id": "orb-blue-open-none-none",
+        "sha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc"
+      },
+      {
+        "id": "orb-blue-open-none-headphones",
+        "sha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16"
+      },
+      {
+        "id": "orb-blue-open-none-round-glasses",
+        "sha256": "d175ef8b49a96f26f81af8086d62564019c9491ef7e8240a236de6e585cd2537"
+      },
+      {
+        "id": "orb-blue-open-knit-wrap-none",
+        "sha256": "4b6c949c602f120442cf200c7e4aa3e61eb9cb9c4c81942f077f05dd8edad03d"
+      },
+      {
+        "id": "orb-blue-open-knit-wrap-headphones",
+        "sha256": "436caedf2dd3f5f66483bf736b3dbf1b1ab85e4f9255e092eadc75c97cb38626"
+      },
+      {
+        "id": "orb-blue-open-knit-wrap-round-glasses",
+        "sha256": "7fa5631f17de16c9088df587c6e60aec54cf01a6f98a91fd07eaf640160cad27"
+      },
+      {
+        "id": "orb-blue-closed-none-none",
+        "sha256": "20695a32668c100f2afa6fcbe9bb1a939e005d44b0445806cce5360f567867ae"
+      },
+      {
+        "id": "orb-blue-closed-none-headphones",
+        "sha256": "68772123d718fcde40a6289e4368d4d2fc4b29e0f2115d720457201e326d8ae4"
+      },
+      {
+        "id": "orb-blue-closed-none-round-glasses",
+        "sha256": "077649e6c8c6515e87b636340e7e152e208ca8e5f3c2e78129bf4fb132120f44"
+      },
+      {
+        "id": "orb-blue-closed-knit-wrap-none",
+        "sha256": "a3a1185c7a98cfb3a0e9030166fe9679932ab41eb2f5488b8346fd907b85cb06"
+      },
+      {
+        "id": "orb-blue-closed-knit-wrap-headphones",
+        "sha256": "45ba070c86068004b5efa26d8359916fc97b5be182016448a323100c6de35479"
+      },
+      {
+        "id": "orb-blue-closed-knit-wrap-round-glasses",
+        "sha256": "b16b4de7a92e754c477481bdc3bd271364a90429f0dae8f7d4ffbfaf0ce4eb54"
+      },
+      {
+        "id": "orb-rose-open-none-none",
+        "sha256": "41207a92457b363a89deefff609929f200862e1c86532517e93439e4490d2358"
+      },
+      {
+        "id": "orb-rose-open-none-headphones",
+        "sha256": "484fed72e54960b68388d2430d1be08636dc2db489d64a4a1ef0b772eeda4bc6"
+      },
+      {
+        "id": "orb-rose-open-none-round-glasses",
+        "sha256": "b4969de1f0f7d3be88ffe4a13e6c1bd48d93b1a0a1fdf06211b20c7ec89a22e7"
+      },
+      {
+        "id": "orb-rose-open-knit-wrap-none",
+        "sha256": "5e15173f264890e64371b211f6043f7c839c3e33d67689cdb62a3d786a022d1f"
+      },
+      {
+        "id": "orb-rose-open-knit-wrap-headphones",
+        "sha256": "e90f8fb31f29d3d38c0d0d9bb6610920868bb3bfbc95b0f82ea77bf15a4ae076"
+      },
+      {
+        "id": "orb-rose-open-knit-wrap-round-glasses",
+        "sha256": "6b1cf2a33cb7060f3d1827f84b73df4280861c6e90a21e52b58f4a2c44a5b407"
+      },
+      {
+        "id": "orb-rose-closed-none-none",
+        "sha256": "d07b3a354189d41ffbb8bd52ba051421b28a47077821227e1fb705a6605f1337"
+      },
+      {
+        "id": "orb-rose-closed-none-headphones",
+        "sha256": "13564dc3ef405d94e6d9183d52320b94a2d0b323d0e3d81305d014db6b7d4ae2"
+      },
+      {
+        "id": "orb-rose-closed-none-round-glasses",
+        "sha256": "5ec3f0a42a0b1c4e57544da1bda69089f7da51ea860b422754037cdc18319d31"
+      },
+      {
+        "id": "orb-rose-closed-knit-wrap-none",
+        "sha256": "ef3eee7eaedc6132feddaedcdb85b45d3278806ff42c8ee3415d10991f26b2a5"
+      },
+      {
+        "id": "orb-rose-closed-knit-wrap-headphones",
+        "sha256": "1d9b97def90ccce95b49e76f690ac6116d0b26afd444962f18160b7794711536"
+      },
+      {
+        "id": "orb-rose-closed-knit-wrap-round-glasses",
+        "sha256": "f20671d51c8e02b08f0b0eb16834cf51419569336a766e5aada1147b43e114ac"
+      },
+      {
+        "id": "cloud-blue-open-none-none",
+        "sha256": "3a2988fc0e4ef0a014480216126ec8e087df9311a9790087dab18715adc46672"
+      },
+      {
+        "id": "cloud-blue-open-none-round-glasses",
+        "sha256": "7f007f40567e30dd53d843765f8037d862204a77ae65fd68eb06c92549793a80"
+      },
+      {
+        "id": "cloud-blue-open-knit-wrap-none",
+        "sha256": "0b2c3aaeab53c1f5def6d6d38a5c9255bfabacfbdde538a1826d13041ed1bc72"
+      },
+      {
+        "id": "cloud-blue-open-knit-wrap-round-glasses",
+        "sha256": "f017c138c783fc00c9d8173a1508bf08715f2a2617620d89e1dbd7e6cb661669"
+      },
+      {
+        "id": "cloud-blue-closed-none-none",
+        "sha256": "19384601793d62115145d4029e7bbfa4a4e3b62c0c6cb7d9a06210064120173f"
+      },
+      {
+        "id": "cloud-blue-closed-none-round-glasses",
+        "sha256": "acbb48481797834ada021e3d63a7883903f823c31b3046bd4b01cb1f0ed8556b"
+      },
+      {
+        "id": "cloud-blue-closed-knit-wrap-none",
+        "sha256": "5a11e107851d66aead06aeac10ec41b9e2c1644ef5e323625e97fb8ac6008d10"
+      },
+      {
+        "id": "cloud-blue-closed-knit-wrap-round-glasses",
+        "sha256": "2439b9ec36f12e942d78b2d7c75746f3158fdaf356a52722454b7b41a24a943c"
+      },
+      {
+        "id": "cloud-rose-open-none-none",
+        "sha256": "19cf68058be0cad2bbe5454aba629e9d5ef7ae95903543f21aea56ed91a70920"
+      },
+      {
+        "id": "cloud-rose-open-none-round-glasses",
+        "sha256": "313cb4d7bcf715a518c7ac3f17bf40bec60e175610541393dc84164180a6c4a9"
+      },
+      {
+        "id": "cloud-rose-open-knit-wrap-none",
+        "sha256": "6e2690a604d4f2670b8594baf0f9178fe9c30ab9a1eb08fb671a3d68b23e42d5"
+      },
+      {
+        "id": "cloud-rose-open-knit-wrap-round-glasses",
+        "sha256": "6defdd84f0246afd3431e53bd2011907f9b0ff46113b5d720c2db47b1af02d9d"
+      },
+      {
+        "id": "cloud-rose-closed-none-none",
+        "sha256": "d7a80b44316af446c32e82d3a3d04d9ae0670fd3e52bc4af204c45d90cb6a1cd"
+      },
+      {
+        "id": "cloud-rose-closed-none-round-glasses",
+        "sha256": "09d19e9b1a93419f7d6b6074e394fd77f4289b171fffd15aba72ac331791bc8c"
+      },
+      {
+        "id": "cloud-rose-closed-knit-wrap-none",
+        "sha256": "5898e855a4391abb48dcdb6e1b8e7384de93c8250adef0bf9a7fa5244ace2c1e"
+      },
+      {
+        "id": "cloud-rose-closed-knit-wrap-round-glasses",
+        "sha256": "915e877e9e62ebdff172db99499dc7d16fc9116d45501e2c79584d98ea5d1e52"
+      }
+    ]
+  },
+  "evidence": {
+    "contactSheet": ".artifacts/character-adjustments/dots-orb-adjustments-v2-candidate/contact-sheet-v2.jpg",
+    "contactSheetSha256": "b8003e9435974d661509b148a27a081de6186afe83cf3a3edc40548c25e2cd52",
+    "engineeringReport": ".artifacts/character-adjustments/dots-orb-adjustments-v2-candidate/report.json",
+    "engineeringReportSha256": "3662ba2014b3275a0b879dc6cc6e507db7dbf2a8f478c60c16c2efc496a75e8e",
+    "reviewedSurfaces": [
+      "All 40 declared recipes in the v2 contact sheet against light and dark backgrounds",
+      "Orb and cloud body variants with the wide knit lower-wrap clothing layer",
+      "Face visibility and garment/body silhouette alignment"
+    ]
+  },
+  "findings": [
+    "The wide knit wrap reads as lower-body clothing instead of a small mouth-like stripe or collar.",
+    "The wrap follows the lower body silhouette on both orb and cloud variants.",
+    "The wrap does not obscure the eyes in the reviewed recipes."
+  ],
+  "artApproval": {
+    "status": "pending",
+    "userApproved": false,
+    "record": null
+  },
+  "deviceCheck": "not-run",
+  "deployment": "not-authorized"
+}

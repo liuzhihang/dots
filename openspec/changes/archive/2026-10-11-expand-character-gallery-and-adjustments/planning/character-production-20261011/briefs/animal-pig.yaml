@@ -1,0 +1,117 @@
+# 本记录是制作候选，不是已登记Artwork/Template或批准。
+briefVersion: 1
+request:
+  summary: "动物 小猪；按可见粉色猪鼻/耳线索设计原创完整猪形动物，保留合理物种结构。"
+  scope: material-candidate
+  count: 1
+character:
+  proposedId: "candidate-animal-pig"
+  seriesId: "animals"
+  identity: new
+  differenceFromExisting: "按可见粉色猪鼻/耳线索设计原创完整猪形动物，保留合理物种结构。"
+  invariants:
+    - "低清细节标为推断；不能声称精确复刻官方角色。"
+artwork:
+  proposedId: "candidate-animal-pig"
+  canonicalArtworkId: "animal-pig"
+  proposedVersion: v2
+  name: {en: "Piglet", zh-CN: "小粉猪"}
+  description: {en: "A blush-pink plush piglet with a broad snout, cloven hooves, and a curled tail.", zh-CN: "一只腮红粉色绒面小猪，带圆润鼻盘、分趾蹄和卷尾。"}
+  aliases: {en: [], zh-CN: []}
+references:
+  - id: "R05"
+    path: "planning/character-production-20261011/references/originals/R05-codex-clipboard-47a8a9f2-9d41-4643-8d49-ec7b27576845.jpg"
+    sha256: "8cbc97096d2b3d30ce52955497837fe2bc4e104ab106b7adaa1dd5a176aa8ffc"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "按可见粉色猪鼻/耳线索设计原创完整猪形动物，保留合理物种结构。"
+    exclude: "不清晰画面中推断的衣服/动作、其它动物和营销背景。"
+    license: unknown
+  - id: "R10"
+    path: "planning/character-production-20261011/references/originals/R10-codex-clipboard-f7a09778-0aab-4e9f-8b69-6310d4ca48e0.jpg"
+    sha256: "7cee2c08f19c1fa18d046e3043067fe2d8af93de413f76f488932cde4038e4e0"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "按可见粉色猪鼻/耳线索设计原创完整猪形动物，保留合理物种结构。"
+    exclude: "不清晰画面中推断的衣服/动作、其它动物和营销背景。"
+    license: unknown
+  - id: "R15"
+    path: "planning/character-production-20261011/references/originals/R15-codex-clipboard-175d9e66-38e4-40c8-bcc5-e8470a81d2fd.jpg"
+    sha256: "a4a621120fcbcbee5cd5f17c2bb32a5526f5129f7e0124d3f01126a903d673c2"
+    role: "指定主体/区域的形体、材质或配件线索；不是可发布原图"
+    use: "按可见粉色猪鼻/耳线索设计原创完整猪形动物，保留合理物种结构。"
+    exclude: "不清晰画面中推断的衣服/动作、其它动物和营销背景。"
+    license: unknown
+creation:
+  prompt: "Create one original, clearly recognizable baby pig plush with visible snout, ears, hooves, and curled tail; see the exact recorded prompt."
+  promptReference: "../prompts/candidate-animal-pig-prompts.md"
+  negativeConstraints:
+    - "不清晰画面中推断的衣服/动作、其它动物和营销背景。"
+    - "不得使用参考截图像素、UI、Logo、图中文字或背景场景。"
+  tool: "built-in image_gen.imagegen"
+  originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-63bddc2e-c1b1-4b28-9773-0febbdd39990.png"
+  iterations:
+    - kind: fullbody-closed-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-02800d82-1ffd-408a-974d-723325ce13d3.png"
+      rawCandidate: "../generated/candidate-animal-pig-face-closed-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-pig-face-closed-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "349d758b67c4e14b17c08ec2faeeea4dc9bfcd9a55dcc1fbd5c597e3d481e36f"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Same full pig identity and pose, directly replace both open eyes with clean closed eyelids; no eye pads or rings."
+      status: pending
+    - kind: fullbody-fitted-knit-vest-open-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-4497ea2b-551d-41fd-8df8-854a7b3d135b.png"
+      rawCandidate: "../generated/candidate-animal-pig-clothing-knit-vest-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-pig-clothing-knit-vest-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "cf6fe50535bdbc5ec4e09ef5ed95300331d12160a4286f8f70c0e8ece6c8b1179c6"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Same full pig wearing a fitted vest that wraps shoulders/sides and belly while the forelegs remain clearly in front."
+      status: pending
+    - kind: fullbody-fitted-knit-vest-closed-eyes
+      originalOutputPath: "/Users/liuzhihang/.codex/generated_images/01a12762-1371-7f13-897b-00ee58c95ddb/exec-a2c6ca56-f302-48cb-b862-05a1905b97d7.png"
+      rawCandidate: "../generated/candidate-animal-pig-face-closed-clothing-vest-fullbody-candidate-v1.png"
+      alphaCleanCandidate: "../generated/candidate-animal-pig-face-closed-clothing-vest-fullbody-candidate-v2-alpha-clean.png"
+      sha256: "ac05f060c9b6124f723125d5caf5618d818dc357f200807309dd118798230c3b"
+      promptRecord: verbatim-not-retained
+      promptSummary: "Same full pig with natural closed eyelids and fitted vest; preserve visible snout, paws, legs and tail."
+      status: pending
+facts:
+  characterStyle: {state: known, description: "单只柔软短绒质感的3D小猪。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  appearance: {state: known, description: "坐姿略带三分之四侧转，大圆头与紧凑猪身，短小四肢和可见卷尾。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  facialFeatures: {state: known, description: "大而明亮的深色双眼、宽圆猪鼻与两枚鼻孔、张口微笑。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  colorMaterial: {state: known, description: "腮红粉短绒身体，鼻盘、耳内和蹄部为更深的玫瑰粉。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  clothing: {state: none, description: "原始Artwork不穿衣物；整身针织背心只在pending调整候选中。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  headAccessory: {state: none, description: "原始Artwork无头部配饰；花夹仅为pending调整候选。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  bodyAccessory: {state: none, description: "原始Artwork无身体配饰。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+  prop: {state: none, description: "原始Artwork无独立持物。", evidence: "原始候选目视与reviews/animal-pig-review.json"}
+resources:
+  original:
+    path: "../generated/candidate-animal-pig-candidate-v2-alpha-clean.png"
+    sha256: "eec3e34b62e0f311900409f586d9feca191d780e4e730414ea4b320eed86d1aa"
+    mime: "image/png"
+    bytes: 1262869
+    width: 1347
+    height: 1168
+    alphaCheck: "RGBA with transparency; authorized isolated-alpha cleanup recorded; raw tool output remains preserved"
+  thumbnail: null
+  displayPreview: null
+promptText: {en: null, zh-CN: null}
+applicableAdjustmentCategories:
+  - appearance
+  - colors
+  - face
+  - clothing
+  - accessories
+finiteRecipes:
+  count: 10
+  manifest: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/animal-pig-adjustments-review.json"
+  combinationPolicy: "仅列出的完整合法组合可选；无匹配资源的组合禁用并说明原因，不静默更改其他选项。"
+evidence:
+  sourceRecord: "references/manifest.json; source records: R05, R10, R15"
+  license: unknown
+  engineering: passed-candidate
+  visualReview: "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/animal-pig-review.json"
+  artApproval: {status: pending, record: null, exactAssetHash: "eec3e34b62e0f311900409f586d9feca191d780e4e730414ea4b320eed86d1aa"}
+  integration: not-applied
+  manifestSha256: "884f61970c667ef2517145e0f9916bebd3a9bd5a79686a3c42e840de386dc26d"
+  deviceCheck: not-run
+  deployment: not-authorized
+materialPolicy: "所有原始图像生成输出均保留；仅对透明 alpha 执行授权的保守边缘清理。完整候选角色和图层仍须独立人工批准后才能成为发布资产。"

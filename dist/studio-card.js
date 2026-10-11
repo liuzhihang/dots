@@ -1,5 +1,5 @@
-import {getAsset,SERIES} from './studio-artwork-catalog.js?v=99';
-import {label,t} from './studio-i18n.js?v=99';
+import {getAsset,SERIES} from './studio-artwork-catalog.js?v=100';
+import {label,t} from './studio-i18n.js?v=100';
 /** Data-only component. A new Character/Artwork uses the same card without branches. */
 export function createArtworkCard(artwork,{language='en',onOpen=()=>{},lookupAsset=getAsset,series=SERIES,context='card'}={}) {
   const asset=lookupAsset(artwork.assetRefs.poster);

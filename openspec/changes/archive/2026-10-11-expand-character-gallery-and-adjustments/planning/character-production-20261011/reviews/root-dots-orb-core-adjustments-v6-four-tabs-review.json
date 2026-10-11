@@ -1,0 +1,154 @@
+{
+  "status": "passed-internal-root-review",
+  "date": "2026-10-11",
+  "sourceReview": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/reviews/dots-orb-core-adjustments-v6-four-tabs-review.json",
+  "sourceReviewSha256": "76e717cb5f0a3baa0df9b075d017bc2493c3ef02f125188fd8bb7c78015cd866",
+  "manifest": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/templates/dots-orb-core-adjustments-v6-four-tabs-review.json",
+  "manifestSha256": "f8032af64441e83fd24f3e6b024a05d74cb8638dcd5d05e6088c9d813f9a56d1",
+  "templateId": "dots-orb-core-adjustments-v6-four-tabs-candidate",
+  "artworkBinding": {
+    "artworkId": "candidate-dots-20261005",
+    "artworkVersion": "v2"
+  },
+  "engineeringReport": ".artifacts/character-adjustments/dots-orb-core-adjustments-v6-four-tabs-candidate/report.json",
+  "engineeringReportSha256": "861176691ca28e2eefe2d2b431757d19156ded2dbc57510d16e0c31960b082f2",
+  "checkedRecipes": [
+    {
+      "id": "orb-blue-open-none-none",
+      "sha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc"
+    },
+    {
+      "id": "orb-blue-open-none-headphones",
+      "sha256": "7f032e1345a21caaa973e541d5a92ef40f905dbe0cedfe6bc6b635f3545e1b16"
+    },
+    {
+      "id": "orb-blue-open-none-round-glasses",
+      "sha256": "d175ef8b49a96f26f81af8086d62564019c9491ef7e8240a236de6e585cd2537"
+    },
+    {
+      "id": "orb-blue-closed-none-none",
+      "sha256": "20695a32668c100f2afa6fcbe9bb1a939e005d44b0445806cce5360f567867ae"
+    },
+    {
+      "id": "orb-blue-closed-none-headphones",
+      "sha256": "68772123d718fcde40a6289e4368d4d2fc4b29e0f2115d720457201e326d8ae4"
+    },
+    {
+      "id": "orb-blue-closed-none-round-glasses",
+      "sha256": "077649e6c8c6515e87b636340e7e152e208ca8e5f3c2e78129bf4fb132120f44"
+    },
+    {
+      "id": "orb-rose-open-none-none",
+      "sha256": "41207a92457b363a89deefff609929f200862e1c86532517e93439e4490d2358"
+    },
+    {
+      "id": "orb-rose-open-none-headphones",
+      "sha256": "484fed72e54960b68388d2430d1be08636dc2db489d64a4a1ef0b772eeda4bc6"
+    },
+    {
+      "id": "orb-rose-open-none-round-glasses",
+      "sha256": "b4969de1f0f7d3be88ffe4a13e6c1bd48d93b1a0a1fdf06211b20c7ec89a22e7"
+    },
+    {
+      "id": "orb-rose-closed-none-none",
+      "sha256": "d07b3a354189d41ffbb8bd52ba051421b28a47077821227e1fb705a6605f1337"
+    },
+    {
+      "id": "orb-rose-closed-none-headphones",
+      "sha256": "13564dc3ef405d94e6d9183d52320b94a2d0b323d0e3d81305d014db6b7d4ae2"
+    },
+    {
+      "id": "orb-rose-closed-none-round-glasses",
+      "sha256": "5ec3f0a42a0b1c4e57544da1bda69089f7da51ea860b422754037cdc18319d31"
+    },
+    {
+      "id": "cloud-blue-open-none-none",
+      "sha256": "3a2988fc0e4ef0a014480216126ec8e087df9311a9790087dab18715adc46672"
+    },
+    {
+      "id": "cloud-blue-open-none-round-glasses",
+      "sha256": "7f007f40567e30dd53d843765f8037d862204a77ae65fd68eb06c92549793a80"
+    },
+    {
+      "id": "cloud-blue-closed-none-none",
+      "sha256": "19384601793d62115145d4029e7bbfa4a4e3b62c0c6cb7d9a06210064120173f"
+    },
+    {
+      "id": "cloud-blue-closed-none-round-glasses",
+      "sha256": "acbb48481797834ada021e3d63a7883903f823c31b3046bd4b01cb1f0ed8556b"
+    },
+    {
+      "id": "cloud-rose-open-none-none",
+      "sha256": "19cf68058be0cad2bbe5454aba629e9d5ef7ae95903543f21aea56ed91a70920"
+    },
+    {
+      "id": "cloud-rose-open-none-round-glasses",
+      "sha256": "313cb4d7bcf715a518c7ac3f17bf40bec60e175610541393dc84164180a6c4a9"
+    },
+    {
+      "id": "cloud-rose-closed-none-none",
+      "sha256": "d7a80b44316af446c32e82d3a3d04d9ae0670fd3e52bc4af204c45d90cb6a1cd"
+    },
+    {
+      "id": "cloud-rose-closed-none-round-glasses",
+      "sha256": "09d19e9b1a93419f7d6b6074e394fd77f4289b171fffd15aba72ac331791bc8c"
+    },
+    {
+      "id": "orb-blue-open-none-chef-toque",
+      "sha256": "7ceb74b58e95213a78d7c03d665b6f5b92dc0be8c81075cc5a11dbd2b92f1dce"
+    },
+    {
+      "id": "orb-blue-closed-none-chef-toque",
+      "sha256": "42962683adfcfd0f4861151d713bc12421d80f44cd265e82e3bd51f33b4fbd79"
+    },
+    {
+      "id": "orb-rose-open-none-chef-toque",
+      "sha256": "012f77eb083f339847d2600e3a154a6d83fb55fe9fef95493cc4d2c9aedb3818"
+    },
+    {
+      "id": "orb-rose-closed-none-chef-toque",
+      "sha256": "7b7e3217d766138566acc8166c0195b9dea1b3ef7ba4d19051676150c71d4626"
+    },
+    {
+      "id": "orb-blue-open-none-cool-sunglasses",
+      "sha256": "8463abe75e54b462e435c76ce491a8612438b0a8308ee201feb7dbd91f48a791"
+    },
+    {
+      "id": "orb-rose-open-none-cool-sunglasses",
+      "sha256": "c508e9ada21fb5440e208ee7ac87cefec4c6a805f990c17ed566186e03d24659"
+    },
+    {
+      "id": "orb-blue-open-none-cyber-glasses",
+      "sha256": "04aaadbb7966b0b465ddc66f04f53568034ada779e268ec1d81013a88adffb79"
+    },
+    {
+      "id": "orb-rose-open-none-cyber-glasses",
+      "sha256": "4a2612017ca21e5f1bb45ed05a5a82f386c5ee11bc4dba3eeaa06781d3ed1fa1"
+    },
+    {
+      "id": "orb-ivory-open-none-headphones",
+      "sha256": "6e6684a2e0346b42bca97f5ee2696d283d8470f7b85b6105139e25263805a726"
+    },
+    {
+      "id": "orb-charcoal-open-none-headphones",
+      "sha256": "af8f5f770a7e9174eb36c36d6cddf1ff8ab58d67781a468443df43c208133fd1"
+    },
+    {
+      "id": "orb-ivory-open-none-chef-toque",
+      "sha256": "5e90b65b8d8b2cdee62737c11d957a99cb1253a5adef97b04f808a7fe61b1d89"
+    },
+    {
+      "id": "orb-charcoal-open-none-cool-sunglasses",
+      "sha256": "b59fa2cb7bf4455260d7cd95ed2d0d9a886139274573b2d5dd848f6c721971fe"
+    }
+  ],
+  "visualChecks": [
+    "全部合法配方在深浅检查底逐项核对，查看眼型、材质、轮廓、衣物和配饰接触",
+    "Dots无手脚与服装；眼睛、眼镜和帽子贴合",
+    "配色与配饰分离，全部结果保持alpha透明"
+  ],
+  "artApproval": {
+    "status": "pending",
+    "record": null
+  }
+}

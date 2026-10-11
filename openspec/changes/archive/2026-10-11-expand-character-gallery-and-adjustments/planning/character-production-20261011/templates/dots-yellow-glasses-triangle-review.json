@@ -1,0 +1,1644 @@
+{
+  "status": "pending",
+  "scope": "complete candidate review, user art approval pending",
+  "artwork": {
+    "id": "dots-yellow-glasses-triangle",
+    "version": "v1",
+    "seriesId": "dots",
+    "status": "pending",
+    "publicationStatus": "preview-only",
+    "titleByLanguage": {
+      "zh-CN": "黄色眼镜三角",
+      "en": "Yellow Glasses Triangle"
+    },
+    "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-candidate-v1.png",
+    "sha256": "036264f59a5e0b355a863a41620e2394a7f31336fdf08ca25b4f583937444059"
+  },
+  "template": {
+    "schemaVersion": 2,
+    "id": "dots-yellow-glasses-triangle-adjustments-v1",
+    "version": "v1",
+    "family": "dots",
+    "status": "pending",
+    "engineeringStatus": "passed",
+    "artApproval": {
+      "status": "pending",
+      "record": null
+    },
+    "artworkBinding": {
+      "artworkId": "dots-yellow-glasses-triangle",
+      "artworkVersion": "v1"
+    },
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "identitySemanticsByLanguage": {
+      "zh-CN": "单个 Dots 角色，连续细密短绒身体，成对简单黑眼。无手臂、手、腿、脚、嘴或屏幕脸。",
+      "en": "One Dots character with one continuous dense short-plush body and paired simple black eyes. No arms, hands, legs, feet, mouth or screen face."
+    },
+    "defaultOptions": {
+      "appearance": "classic",
+      "colors": "original",
+      "face": "closed",
+      "clothing": "none",
+      "accessories": "glasses"
+    },
+    "options": {
+      "appearance": [
+        {
+          "id": "classic",
+          "labelByLanguage": {
+            "zh-CN": "圆角三角",
+            "en": "Rounded triangle"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "无肢体圆角三角身体",
+            "en": "one rounded triangular body without limbs"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        },
+        {
+          "id": "soft",
+          "labelByLanguage": {
+            "zh-CN": "高窄三角",
+            "en": "Taller triangle"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "更高窄的圆角三角身体",
+            "en": "a taller narrower rounded triangle"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          ]
+        }
+      ],
+      "colors": [
+        {
+          "id": "original",
+          "labelByLanguage": {
+            "zh-CN": "暖黄",
+            "en": "Warm yellow"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "暖黄色细密短绒",
+            "en": "warm yellow dense short plush"
+          },
+          "zoneColors": {
+            "body": "#f3bf43"
+          },
+          "swatches": [
+            "#f3bf43"
+          ]
+        },
+        {
+          "id": "rose",
+          "labelByLanguage": {
+            "zh-CN": "玫瑰粉",
+            "en": "Rose pink"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "玫瑰粉色细密短绒",
+            "en": "rose pink dense short plush"
+          },
+          "zoneColors": {
+            "body": "#e76695"
+          },
+          "swatches": [
+            "#e76695"
+          ]
+        }
+      ],
+      "face": [
+        {
+          "id": "closed",
+          "labelByLanguage": {
+            "zh-CN": "弯弯闭眼",
+            "en": "Closed eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对黑色弯弯闭眼，无嘴",
+            "en": "paired simple black curved closed eyes; no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        },
+        {
+          "id": "open",
+          "labelByLanguage": {
+            "zh-CN": "黑色圆眼",
+            "en": "Black oval eyes"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "成对黑色椭圆眼，无嘴",
+            "en": "paired simple black oval eyes; no mouth"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          ]
+        }
+      ],
+      "clothing": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无服装",
+            "en": "No clothing"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不穿衣装",
+            "en": "no clothing"
+          }
+        },
+        {
+          "id": "wrap",
+          "labelByLanguage": {
+            "zh-CN": "针织围衣",
+            "en": "Knit wrap"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "下身贴合深蓝针织围衣与象牙白滚边",
+            "en": "a fitted navy rib-knit lower-body wrap with ivory piping"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            }
+          ]
+        }
+      ],
+      "accessories": [
+        {
+          "id": "none",
+          "labelByLanguage": {
+            "zh-CN": "无配饰",
+            "en": "No accessories"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "不佩戴配饰",
+            "en": "no accessories"
+          }
+        },
+        {
+          "id": "glasses",
+          "labelByLanguage": {
+            "zh-CN": "圆框眼镜",
+            "en": "Round glasses"
+          },
+          "semanticByLanguage": {
+            "zh-CN": "贴合双眼的黑色圆框眼镜",
+            "en": "fitted black round eyeglasses around both eyes"
+          },
+          "thumbnailAssets": [
+            {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          ]
+        }
+      ]
+    },
+    "conflicts": [
+      {
+        "when": {
+          "appearance": "soft",
+          "clothing": "wrap"
+        },
+        "code": "wrap-classic-only",
+        "messageByLanguage": {
+          "zh-CN": "这件围衣适配经典轮廓，请先切回经典轮廓或脱下围衣。",
+          "en": "This wrap fits the classic outline. Choose Classic or remove the wrap first."
+        }
+      }
+    ],
+    "recipes": [
+      {
+        "id": "classic-original-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-closed-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-original-open-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "original",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-closed-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-closed-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-closed-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-closed-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-open-none-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-open-none-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-open-wrap-none",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "classic-rose-open-wrap-glasses",
+        "selections": {
+          "appearance": "classic",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "wrap",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "clothing",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+              "version": "v1",
+              "purpose": "clothing-layer"
+            },
+            "mask": {
+              "asset": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "operation": "destination-in"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-closed-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-closed-none-glasses",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-original-open-none-glasses",
+        "selections": {
+          "appearance": "soft",
+          "colors": "original",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-rose-closed-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-rose-closed-none-glasses",
+        "selections": {
+          "appearance": "soft",
+          "colors": "rose",
+          "face": "closed",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-rose-open-none-none",
+        "selections": {
+          "appearance": "soft",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "none"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          }
+        ]
+      },
+      {
+        "id": "soft-rose-open-none-glasses",
+        "selections": {
+          "appearance": "soft",
+          "colors": "rose",
+          "face": "open",
+          "clothing": "none",
+          "accessories": "glasses"
+        },
+        "layers": [
+          {
+            "slot": "body",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+              "version": "v1",
+              "purpose": "body-layer"
+            },
+            "tint": {
+              "optionField": "colors",
+              "zone": "body",
+              "mask": {
+                "id": "template:dots-yellow-glasses-triangle-adjustments-v1:softMask",
+                "version": "v1",
+                "purpose": "color-zone-mask"
+              },
+              "mode": "preserve-lightness"
+            }
+          },
+          {
+            "slot": "face",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+              "version": "v1",
+              "purpose": "face-layer"
+            }
+          },
+          {
+            "slot": "glasses-front",
+            "asset": {
+              "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+              "version": "v1",
+              "purpose": "accessory-layer"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:body",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/body.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-body-candidate-v2.png",
+      "sha256": "e04c74bfdd08899e77092345fece0321bdc3cc586770e975f384465baa356b18",
+      "byteSize": 1238265,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 917541,
+        "bboxAtAlphaThreshold16": [
+          101,
+          223,
+          1154,
+          1071
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:soft",
+      "version": "v1",
+      "purpose": "body-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/soft.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-body-soft-candidate-v2.png",
+      "sha256": "4d4dd1bea55c33365b64e789585797dfed16eedcb47e230fcd153f113cbe760e",
+      "byteSize": 1229165,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 944243,
+        "bboxAtAlphaThreshold16": [
+          140,
+          182,
+          1114,
+          1136
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:open",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/open.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-eyes-open-isolated-candidate-v2.png",
+      "sha256": "601d05311fd5757c124d90b3d15be6e08d74dbb297da1f1295c6779f8bbed0ff",
+      "byteSize": 73969,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1536670,
+        "bboxAtAlphaThreshold16": [
+          410,
+          602,
+          844,
+          797
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:closed",
+      "version": "v1",
+      "purpose": "face-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/closed.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-eyes-closed-candidate-v2.png",
+      "sha256": "771da06ea122972744655c65be202cd4c4b2529eee1dec1f457b565a043739ed",
+      "byteSize": 58250,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1549366,
+        "bboxAtAlphaThreshold16": [
+          356,
+          659,
+          899,
+          755
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:wrap",
+      "version": "v1",
+      "purpose": "clothing-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/wrap.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-knit-wrap-candidate-v2.png",
+      "sha256": "4aadfcf94a577290be2f8ca41493b515451f3abf0cc19eceb53ad7f9f3185357",
+      "byteSize": 797423,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1208584,
+        "bboxAtAlphaThreshold16": [
+          97,
+          655,
+          1159,
+          1078
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          120
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:glasses",
+      "version": "v1",
+      "purpose": "accessory-layer",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/glasses.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-glasses-candidate-v2.png",
+      "sha256": "399f5f18e43436d46ea0c62cbdf0c0cb2f858a634aecdaaeea2644d8cdf339a6",
+      "byteSize": 224799,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 1459434,
+        "bboxAtAlphaThreshold16": [
+          109,
+          498,
+          1146,
+          863
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ],
+        "transform": {
+          "pivot": [
+            627,
+            674
+          ],
+          "scale": [
+            0.82,
+            0.82
+          ],
+          "rotationDegrees": 0
+        }
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:bodyMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/bodyMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-body-candidate-v2.png",
+      "sha256": "e04c74bfdd08899e77092345fece0321bdc3cc586770e975f384465baa356b18",
+      "byteSize": 1238265,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 917541,
+        "bboxAtAlphaThreshold16": [
+          101,
+          223,
+          1154,
+          1071
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    },
+    {
+      "id": "template:dots-yellow-glasses-triangle-adjustments-v1:softMask",
+      "version": "v1",
+      "purpose": "color-zone-mask",
+      "path": "./assets/templates/dots-yellow-glasses-triangle-adjustments-v1/softMask.png",
+      "sourcePath": "openspec/changes/expand-character-gallery-and-adjustments/planning/character-production-20261011/generated/dots-yellow-glasses-triangle-body-soft-candidate-v2.png",
+      "sha256": "4d4dd1bea55c33365b64e789585797dfed16eedcb47e230fcd153f113cbe760e",
+      "byteSize": 1229165,
+      "width": 1254,
+      "height": 1254,
+      "mime": "image/png",
+      "alpha": {
+        "hasAlpha": true,
+        "hasTransparency": true,
+        "min": 0,
+        "max": 255,
+        "transparentPixels": 944243,
+        "bboxAtAlphaThreshold16": [
+          140,
+          182,
+          1114,
+          1136
+        ]
+      },
+      "owner": {
+        "templateId": "dots-yellow-glasses-triangle-adjustments-v1",
+        "artworkId": "dots-yellow-glasses-triangle",
+        "artworkVersion": "v1"
+      },
+      "placement": {
+        "canvas": [
+          1254,
+          1254
+        ],
+        "anchor": "canvas",
+        "offset": [
+          0,
+          0
+        ]
+      },
+      "publicationStatus": "preview-only",
+      "artApproval": {
+        "status": "pending",
+        "record": null
+      },
+      "source": "ImageGen-derived candidate or exact approved source-byte reuse. New combinations pending independent art approval; no approval inherited."
+    }
+  ]
+}
