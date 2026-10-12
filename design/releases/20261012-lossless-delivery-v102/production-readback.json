@@ -1,0 +1,52 @@
+{
+  "revision": 102,
+  "siteVersion": 50,
+  "sourceCommit": "822b2a32a57870bfcfb4788f55ab6d8411e3defa",
+  "siteOrigin": "https://dots.liuzhihang.chatgpt.site",
+  "status": "verified-with-hosting-html-injection",
+  "staticFiles": {
+    "total": 496,
+    "exactByteAndSha256Matches": 495,
+    "initialMatches": 490,
+    "pngTimeoutsResolvedBySingleLongerRead": 5,
+    "unresolvedFailures": 0
+  },
+  "html": {
+    "path": "dist/index.html",
+    "rawResponseEqualsStage": false,
+    "stageBytes": 4886,
+    "stageSha256": "44713e38600e011adfdebaf67941f00e5c5334729c0a85fd65790842c77b5753",
+    "responseBytes": 5824,
+    "responseSha256": "191358518fcc1388e5978dc5b906b8fff7ec36ba73aaeddd70b21de156396e1b",
+    "onlyDifference": "One 938-byte inline insertion containing Cloudflare challenge markers and the same-origin challenge-platform loader path.",
+    "injectedByteOffset": 4872,
+    "injectedBytes": 938,
+    "injectedSha256": "1a1ec9dbd99b1d1e1b795b021a5dc1dc62808b9d8b5ca0e1521a8eb4353931ab",
+    "removingOnlyInsertedBytesReproducesStageExactly": true,
+    "normalizedSha256": "44713e38600e011adfdebaf67941f00e5c5334729c0a85fd65790842c77b5753",
+    "scriptPath": "/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+    "challengeScriptFetchedForInspection": false
+  },
+  "evidence": [
+    {
+      "path": ".artifacts/release-v102/production-readback-2026-10-12T01-52-03-937Z.json",
+      "sha256": "c4bffff2ac453190ccf525842d29bd41a6545f2000b33429b074ba0e638b042b"
+    },
+    {
+      "path": ".artifacts/release-v102/failed-assets-recheck-2026-10-12T02-15-06-641Z.json",
+      "sha256": "6762e73e56257e2190eda77b1a4ecab2bd4d1f0f37af0f64ae8b63e4e81fd7b9"
+    },
+    {
+      "path": ".artifacts/release-v102/production-index-diff.json",
+      "sha256": "9e774fc4247257b3585b97675612a31b84f5468687d49e492e89b4b21edc8576"
+    },
+    {
+      "path": ".artifacts/release-v102/production-index.html",
+      "sha256": "191358518fcc1388e5978dc5b906b8fff7ec36ba73aaeddd70b21de156396e1b"
+    }
+  ],
+  "notes": [
+    "The original failed readback report is preserved; 5 body timeouts were resolved by one additional read with a longer timeout.",
+    "The HTML raw response is not byte-identical to the uploaded source. Only the exact observed insertion is removed for the source-equivalence comparison."
+  ]
+}
