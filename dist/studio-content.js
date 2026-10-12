@@ -1,4 +1,4 @@
-export { DISPLAY_ASSETS, APPROVED_DISPLAY_ASSETS, PREVIEW_DISPLAY_ASSETS, THUMBNAIL_ASSETS, DETAIL_PREVIEW_ASSETS } from './studio-display-assets.js?v=100';
+export { DISPLAY_ASSETS, APPROVED_DISPLAY_ASSETS, PREVIEW_DISPLAY_ASSETS, THUMBNAIL_ASSETS, DETAIL_PREVIEW_ASSETS } from './studio-display-assets.js?v=102';
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;

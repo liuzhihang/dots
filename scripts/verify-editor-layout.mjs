@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { launchBrowser } from './browser-runtime.mjs';
 import { resolveEvidenceDirectory } from './evidence-paths.mjs';
-import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=100';
-import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=100';
+import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=102';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=102';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/editor-layout');
@@ -55,7 +55,7 @@ assert(templateCases.length > 0);
 
 async function openArtwork(page, id) {
   await page.evaluate(async artworkId => {
-    const { getArtwork } = await import('/studio-artwork-catalog.js?v=100');
+    const { getArtwork } = await import('/studio-artwork-catalog.js?v=102');
     const artwork = getArtwork(artworkId);
     if (!artwork) throw new Error(`Artwork is unavailable: ${artworkId}`);
     window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -395,7 +395,7 @@ try {
     }
   }
   assert.deepEqual(errors, []);
-  const report = { revision: 100, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; Codex in-app browser was used for visual opening only, not interaction acceptance.', sizes, cases: rows.length, captures, rows, errors };
+  const report = { revision: 102, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; Codex in-app browser was used for visual opening only, not interaction acceptance.', sizes, cases: rows.length, captures, rows, errors };
   await fs.writeFile(path.join(output, 'layout.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(`Editor layout: ${rows.length} bilingual/template/viewport cases passed; ${captures.length} screenshots.`);
 } finally {

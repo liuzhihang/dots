@@ -1,0 +1,197 @@
+{
+  "audit": "optimize-lossless-asset-delivery post-sync spec audit",
+  "baseline_HEAD": "bc90e14be52536989fcc19f843c521d5dc13c622",
+  "delta_count": 6,
+  "synced_count": 6,
+  "status": "passed",
+  "comparison": "Content compared against HEAD and delta; only extra terminal blank lines ignored to account for section appends. Title and Purpose compared byte-for-byte.",
+  "blocking_items": [],
+  "terminal_blank_line_only_differences": [
+    "artwork-catalog: terminal blank-line difference only in scenario 作品资源必须来自可校验的登记引用 / 托管服务以通用二进制 MIME 返回 WebP",
+    "bounded-character-editing: terminal blank-line difference only in scenario 模板能力必须由实际资源和可见图层声明 / Template 图层通过等像素 WebP 传输",
+    "character-visual-acceptance: terminal blank-line difference only in unmentioned requirement 模板视觉验收必须逐项对比预览与导出",
+    "studio-visual-experience: terminal blank-line difference only in scenario 发布静态页面资源必须与作品清单版本一致 / 上传 stage 与仓库源文件闭包分离"
+  ],
+  "specs": [
+    {
+      "capability": "artwork-catalog",
+      "main": "openspec/specs/artwork-catalog/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/artwork-catalog/spec.md",
+      "operations": [
+        {
+          "title": "作品资源必须来自可校验的登记引用",
+          "operation": "MODIFIED",
+          "delta_scenarios_in_main": [
+            "条件输入含未知资源引用",
+            "导出资源缺少校验资料",
+            "默认导出透明角色 PNG",
+            "界面展示底色不得进入透明角色文件",
+            "透明替换资源不覆盖不透明原图",
+            "WebP 传输派生与 PNG 源像素完全一致",
+            "WebP 源绑定或像素证明失败",
+            "托管服务以通用二进制 MIME 返回 WebP"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "完整作品必须拥有稳定的资源与提示词关联",
+        "事实特征不得与未来创作要求混淆",
+        "发布资格必须同时满足内容资源与批准边界",
+        "同角色变体必须由明确关系与真实作品构成",
+        "扩充作品与标签不得要求组件适配",
+        "所有结果操作必须使用同一冻结作品快照"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    },
+    {
+      "capability": "bounded-character-editing",
+      "main": "openspec/specs/bounded-character-editing/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/bounded-character-editing/spec.md",
+      "operations": [
+        {
+          "title": "模板能力必须由实际资源和可见图层声明",
+          "operation": "MODIFIED",
+          "delta_scenarios_in_main": [
+            "缺少图层或无配件基底",
+            "候选原图尚未拆分",
+            "Template 图层通过等像素 WebP 传输"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "模板选项必须遵守角色身份与合法组合",
+        "编辑选项必须提供真实可视素材选择",
+        "编辑草稿必须与原 Artwork 和已发布目录隔离",
+        "预览与 Draft 导出必须使用同一渲染配方",
+        "单一 Export 控件必须按作品状态返回正确资源",
+        "超出 Template 能力的修改必须转为外部二创意图",
+        "本地 Draft 不得获得动画或目标包资格"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    },
+    {
+      "capability": "character-families",
+      "main": "openspec/specs/character-families/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/character-families/spec.md",
+      "operations": [
+        {
+          "title": "美术确认必须绑定明确 Artwork 和资源范围",
+          "operation": "MODIFIED",
+          "delta_scenarios_in_main": [
+            "使用已有图库批准记录",
+            "更新作品文件或增加动作变体",
+            "新身份不得继承相似角色批准",
+            "等像素 WebP 派生不扩大美术批准范围",
+            "WebP 派生像素或放置关系发生变化"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "首批视觉身份必须保留差异且不构成固定家族模型",
+        "原创身份、来源和角色特征必须能分别核对"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    },
+    {
+      "capability": "character-visual-acceptance",
+      "main": "openspec/specs/character-visual-acceptance/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/character-visual-acceptance/spec.md",
+      "operations": [
+        {
+          "title": "无损传输派生的工程证明与美术批准分别记录",
+          "operation": "ADDED",
+          "delta_scenarios_in_main": [
+            "核验等像素 WebP 传输派生",
+            "WebP 派生工程证明不通过"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "作品资源工程状态、美术批准、目标验证和发布状态必须分别记录",
+        "页面和资源验收必须绑定本次实际版本与观察范围",
+        "取消范围和历史缺证不得转换为验收通过",
+        "原型裁决必须分别遵循 D01 主稿与 D02 补充稿",
+        "代表 Template 必须完成素材、能力和美术边界验收",
+        "模板视觉验收必须逐项对比预览与导出"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    },
+    {
+      "capability": "studio-creation-experience",
+      "main": "openspec/specs/studio-creation-experience/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/studio-creation-experience/spec.md",
+      "operations": [
+        {
+          "title": "详情资源必须分层加载并避免过时结果",
+          "operation": "MODIFIED",
+          "delta_scenarios_in_main": [
+            "打开详情但展示预览尚未返回",
+            "请求高分辨率展示资源",
+            "同一资源被多个状态请求",
+            "快速切换和释放资源",
+            "展示与编辑按需读取无损 WebP 派生",
+            "WebP 派生无法校验"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "作品详情必须直接提供实际图片及带走操作",
+        "详情变体必须原子切换已发布作品版本",
+        "详情信息层级必须优先作品与直接操作"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    },
+    {
+      "capability": "studio-visual-experience",
+      "main": "openspec/specs/studio-visual-experience/spec.md",
+      "delta": "openspec/changes/archive/2026-10-12-optimize-lossless-asset-delivery/specs/studio-visual-experience/spec.md",
+      "operations": [
+        {
+          "title": "发布静态页面资源必须与作品清单版本一致",
+          "operation": "MODIFIED",
+          "delta_scenarios_in_main": [
+            "加载新发布的目录",
+            "打开显式登记的 pending 详情",
+            "校验静态发布清单",
+            "发布清单缺少 Template 资源",
+            "上传 stage 与仓库源文件闭包分离"
+          ]
+        }
+      ],
+      "title_preserved_exact": true,
+      "purpose_preserved_exact": true,
+      "unmentioned_requirements_preserved": [
+        "首页只能承诺真实存在的作品发现能力",
+        "新产品页面必须在桌面和指定模拟视口可读可操作",
+        "Dots 首页必须以 D01 深色角色库为唯一主视觉",
+        "CharacterStudio 烟色玻璃必须透出背景并具备可读降级",
+        "D02 只补充手机细节",
+        "界面和操作提示必须支持英文与简体中文",
+        "CharacterStudio 的主操作与滚动必须无遮挡"
+      ],
+      "unmentioned_scenarios_preserved": [],
+      "additional_scenarios": [],
+      "blockers": []
+    }
+  ]
+}

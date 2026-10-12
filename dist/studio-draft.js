@@ -1,4 +1,4 @@
-import { assertValidTemplateOptions, getTemplateOptionFields, templateSchemaVersion } from './studio-edit-templates.js?v=100';
+import { assertValidTemplateOptions, getTemplateOptionFields, templateSchemaVersion } from './studio-edit-templates.js?v=102';
 
 const freeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;

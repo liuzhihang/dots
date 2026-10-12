@@ -1,5 +1,5 @@
-import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=100';
-import { SERIES } from './studio-content.js?v=100';
+import { ARTWORKS, validateArtwork } from './studio-artwork-catalog.js?v=102';
+import { SERIES } from './studio-content.js?v=102';
 
 const DIMENSION_LABELS = Object.freeze({
   style: '风格 / 角色', 'object-type': '对象类型', shape: '外形', 'facial-features': '五官特征',

@@ -1,12 +1,12 @@
-import {CATALOG_REVISION,getArtwork,canOpenArtwork} from './studio-artwork-catalog.js?v=100';
-import {normalizeGalleryQuery,queryArtworks} from './studio-tags.js?v=100';
-import {createGalleryFilters} from './studio-tag-browser.js?v=100';
-import {createArtworkCard} from './studio-card.js?v=100';
-import {createMotionController} from './studio-motion.js?v=100';
-import {createDetailController} from './studio-detail.js?v=100';
-import {createOverlay} from './studio-overlay.js?v=100';
-import {parseRoute,galleryURL,artworkURL} from './studio-router.js?v=100';
-import {t,storedPreference,savePreference} from './studio-i18n.js?v=100';
+import {CATALOG_REVISION,getArtwork,canOpenArtwork} from './studio-artwork-catalog.js?v=102';
+import {normalizeGalleryQuery,queryArtworks} from './studio-tags.js?v=102';
+import {createGalleryFilters} from './studio-tag-browser.js?v=102';
+import {createArtworkCard} from './studio-card.js?v=102';
+import {createMotionController} from './studio-motion.js?v=102';
+import {createDetailController} from './studio-detail.js?v=102';
+import {createOverlay} from './studio-overlay.js?v=102';
+import {parseRoute,galleryURL,artworkURL} from './studio-router.js?v=102';
+import {t,storedPreference,savePreference} from './studio-i18n.js?v=102';
 
 const HOME_COPY={
  en:{titleFirst:'Make It',titleSecond:'Your Dot.',description:'Pick a character. Make it yours in ChatGPT.'},

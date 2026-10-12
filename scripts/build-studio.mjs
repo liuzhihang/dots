@@ -4,9 +4,10 @@ import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
+import {getPublishFiles, verifyDeliveryAssets} from './lossless-delivery.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
-const revision = 100;
+const revision = 102;
 const cacheQuery = `?v=${revision}`;
 const catalogRevision = 'artwork-catalog-20261011-v100';
 const evidenceDirectory = resolveEvidenceDirectory('.artifacts/build');
@@ -251,7 +252,7 @@ export async function build() {
 
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
   assert(html.includes(`data-cache="${revision}"`), `HTML cache ${revision}`);
-  const catalog = await import('../dist/studio-artwork-catalog.js?v=100');
+  const catalog = await import('../dist/studio-artwork-catalog.js?v=102');
   assert.equal(catalog.CATALOG_REVISION, catalogRevision);
   assert(Array.isArray(catalog.ARTWORKS) && catalog.ARTWORKS.length > 0, 'Approved Artwork catalog must not be empty');
   assert(Array.isArray(catalog.PREVIEW_ARTWORKS), 'PREVIEW_ARTWORKS must be an explicit array');
@@ -288,7 +289,7 @@ export async function build() {
   }
   assert.equal(catalog.PREVIEW_PROMPTS.length, catalog.PREVIEW_ARTWORKS.length * 2, 'Pending artworks must have separate bilingual Prompts');
 
-  const content = await import('../dist/studio-content.js?v=100');
+  const content = await import('../dist/studio-content.js?v=102');
   const pendingUIAssets = (content.BRAND_ASSETS ?? []).filter(asset => asset.publicationStatus === 'preview-only');
   const registered = [...catalog.ASSETS, ...catalog.PREVIEW_ASSETS, ...(content.BRAND_ASSETS ?? [])].filter(asset => asset?.path);
   const registeredPaths = new Set();
@@ -308,7 +309,7 @@ export async function build() {
     previewFiles.add(assetPathFromReference(original.path));
   }
 
-  const templates = await import('../dist/studio-edit-templates.js?v=100');
+  const templates = await import('../dist/studio-edit-templates.js?v=102');
   assert.equal(templates.EDIT_TEMPLATE_REVISION, 'edit-templates-20261011-v100');
   assert(Array.isArray(templates.TEMPLATE_REGISTRY), 'Runtime template registry must be explicit');
   for (const artwork of approvedArtworks) {
@@ -340,6 +341,10 @@ export async function build() {
     assert.equal(hash(bytes), asset.sha256, `Retained asset hash: ${asset.path}`);
     expectedAssets.add(asset.path);
   }
+  const {DELIVERY_ASSETS} = await import('../dist/studio-delivery-assets.js?v=102');
+  const delivery = await verifyDeliveryAssets({root, rows: DELIVERY_ASSETS, actual,
+    sourceOnlyFiles: manifest.sourceOnlyFiles, expectedAssets});
+  const publishPaths = new Set(getPublishFiles(actual, manifest.sourceOnlyFiles));
   checkInventory(actual.filter(filePath => filePath.startsWith('dist/assets/')), [...expectedAssets]);
   const expectedPendingFiles = [...previewFiles].sort();
   assert.deepEqual(manifestPreviewFiles, expectedPendingFiles, 'previewOnlyFiles must exactly match pending Artwork and template source resources');
@@ -358,7 +363,7 @@ export async function build() {
     revision,
     catalogRevision,
     evidenceDirectory: path.relative(root, evidenceDirectory),
-    scope: 'v100 local static build and registered content readiness; this report does not claim that deployment has run or succeeded.',
+    scope: 'v101 repository source verification and explicit lossless delivery closure; deployment is verified separately.',
     deploymentReady: deploymentBlockers.length === 0,
     deploymentBlockers,
     approvedArtworkCount: approvedArtworks.length,
@@ -371,6 +376,10 @@ export async function build() {
     templateSourceManifest: templateSourcesPath,
     fileCount: files.length,
     files,
+    delivery,
+    sourceOnlyFiles: manifest.sourceOnlyFiles,
+    publishFileCount: publishPaths.size,
+    publishFiles: files.filter(file => publishPaths.has(file.path)),
   };
   await fs.mkdir(evidenceDirectory, {recursive: true});
   await fs.writeFile(path.join(evidenceDirectory, 'build-report.json'), `${JSON.stringify(report, null, 2)}\n`);

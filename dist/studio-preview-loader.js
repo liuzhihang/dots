@@ -1,9 +1,10 @@
-import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=100';
+import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=102';
+import { DELIVERY_ASSETS } from './studio-delivery-assets.js?v=102';
 
 // A single bounded loader serves approved detail covers and explicitly pending
 // View-only previews by default. Template layers are absent until Edit registers
 // the reviewed sources.json asset rows. Originals are never loadable here.
-export const PREVIEW_LOADER_REVISION = 'preview-loader-20261010-v99';
+export const PREVIEW_LOADER_REVISION = 'preview-loader-20261012-v101';
 const DEFAULT_LIMITS = Object.freeze({ maxConcurrent: 4, maxDecodedBytes: 64 * 1024 * 1024, maxIdleEntries: 16 });
 const DISPLAY_PURPOSE = 'detailPreview';
 const loaderModuleURL = String(import.meta.url);
@@ -164,6 +165,123 @@ function normalizedPath(asset) {
   return asset.path.replace(/^dist\//, '').replace(/^\.\//, '');
 }
 
+function normalizedResourcePath(path) {
+  return String(path || '').replace(/^dist\//, '').replace(/^\.\//, '');
+}
+
+const SHA256 = /^[a-f0-9]{64}$/i;
+const DELIVERY_SOURCE_PREFIXES = ['assets/templates/', 'assets/previews/'];
+
+function isDeliverySource(asset) {
+  const path = normalizedPath(asset);
+  return (assetKind(asset) === 'template' && path.startsWith('assets/templates/'))
+    || (assetKind(asset) === 'display' && asset.resourceKind === 'display-preview' && path.startsWith('assets/previews/'));
+}
+
+function deliverySourceKey(source) {
+  return [String(source.path), String(source.sha256).toLowerCase(), source.byteSize,
+    source.width, source.height, source.mime].join('\u0000');
+}
+
+function assertDeliveryShape(row) {
+  const source = row?.source;
+  const sourcePath = normalizedResourcePath(source?.path);
+  const outputPath = normalizedResourcePath(row?.path);
+  const sourceIsSupported = DELIVERY_SOURCE_PREFIXES.some(prefix => sourcePath.startsWith(prefix));
+  const safePath = path => Boolean(path) && !path.startsWith('/') && !path.includes('..') && !path.includes('\\') && !/[?#]/.test(path);
+  if (!row || typeof row !== 'object' || !source || typeof source !== 'object'
+    || !safePath(sourcePath) || !sourceIsSupported || source.mime !== 'image/png' || !SHA256.test(source.sha256 || '')
+    || !Number.isSafeInteger(source.byteSize) || source.byteSize < 1
+    || !Number.isSafeInteger(source.width) || source.width < 1
+    || !Number.isSafeInteger(source.height) || source.height < 1
+    || !safePath(outputPath) || !outputPath.startsWith('assets/delivery/')
+    || !outputPath.endsWith(`/${String(source.sha256).toLowerCase()}.webp`)
+    || row.version !== 'lossless-v1' || row.mime !== 'image/webp' || !SHA256.test(row.sha256 || '')
+    || !Number.isSafeInteger(row.byteSize) || row.byteSize < 1
+    || row.width !== source.width || row.height !== source.height
+    || typeof row.alpha?.hasAlpha !== 'boolean' || typeof row.alpha?.hasTransparency !== 'boolean'
+    || (row.alpha.hasTransparency && !row.alpha.hasAlpha)
+    || typeof row.encoding?.lossless !== 'boolean' || row.encoding.lossless !== true
+    || typeof row.encoding?.exact !== 'boolean' || row.encoding.exact !== true
+    || !SHA256.test(row.pixelSha256 || '')) {
+    throw new PreviewLoaderError('invalid-delivery-asset', 'Lossless delivery metadata is incomplete, unsafe, or inconsistent.');
+  }
+  return row;
+}
+
+function createDeliveryIndex(rows) {
+  if (!Array.isArray(rows) && !(rows instanceof Map)) {
+    throw new PreviewLoaderError('invalid-delivery-registry', 'Lossless delivery registry must be an array or Map.');
+  }
+  const index = new Map();
+  for (const row of asAssetRows(rows).map(assertDeliveryShape)) {
+    const key = deliverySourceKey(row.source);
+    if (index.has(key)) throw new PreviewLoaderError('duplicate-delivery-asset', 'A registered PNG source has more than one delivery derivative.');
+    index.set(key, row);
+  }
+  return index;
+}
+
+function fourCC(bytes, offset) {
+  return String.fromCharCode(bytes[offset], bytes[offset + 1], bytes[offset + 2], bytes[offset + 3]);
+}
+
+function inspectLosslessWebP(bytes, delivery, assetId) {
+  const fail = (code, message) => { throw new PreviewLoaderError(code, message, { assetId, deliveryPath: delivery.path }); };
+  if (!(bytes instanceof Uint8Array) || bytes.length < 25 || fourCC(bytes, 0) !== 'RIFF' || fourCC(bytes, 8) !== 'WEBP') {
+    fail('webp-signature-invalid', `Lossless delivery for ${assetId} is not a RIFF WebP image.`);
+  }
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (view.getUint32(4, true) !== bytes.length - 8) fail('webp-signature-invalid', `Lossless WebP container size changed for ${assetId}.`);
+  let cursor = 12;
+  let losslessHeader = null;
+  let extendedAlpha = null;
+  let extendedDimensions = null;
+  while (cursor < bytes.length) {
+    if (cursor + 8 > bytes.length) fail('webp-signature-invalid', `Lossless WebP chunk table is truncated for ${assetId}.`);
+    const kind = fourCC(bytes, cursor);
+    const length = view.getUint32(cursor + 4, true);
+    const start = cursor + 8;
+    const end = start + length;
+    const paddedEnd = end + (length & 1);
+    if (end > bytes.length || paddedEnd > bytes.length) fail('webp-signature-invalid', `Lossless WebP chunk is truncated for ${assetId}.`);
+    if ((length & 1) && bytes[end] !== 0) fail('webp-signature-invalid', `Lossless WebP chunk padding is invalid for ${assetId}.`);
+    if (kind === 'VP8 ' || kind === 'ALPH') fail('webp-lossless-required', `Delivery for ${assetId} contains a lossy image chunk.`);
+    if (kind === 'ANIM' || kind === 'ANMF') fail('webp-still-image-required', `Delivery for ${assetId} must be a still image.`);
+    if (kind === 'VP8X') {
+      if (extendedAlpha !== null || length < 10) fail('webp-signature-invalid', `Lossless WebP extended header is invalid for ${assetId}.`);
+      extendedAlpha = (bytes[start] & 0x10) !== 0;
+      extendedDimensions = {
+        width: 1 + bytes[start + 4] + (bytes[start + 5] << 8) + (bytes[start + 6] << 16),
+        height: 1 + bytes[start + 7] + (bytes[start + 8] << 8) + (bytes[start + 9] << 16)
+      };
+    }
+    if (kind === 'VP8L') {
+      if (losslessHeader || length < 5 || bytes[start] !== 0x2f) fail('webp-signature-invalid', `Lossless WebP must contain one valid VP8L bitstream for ${assetId}.`);
+      const bits = view.getUint32(start + 1, true);
+      losslessHeader = {
+        width: (bits & 0x3fff) + 1,
+        height: ((bits >>> 14) & 0x3fff) + 1,
+        // VP8L's alpha_is_used bit is only a hint in the WebP specification;
+        // actual transparency is pinned by the generated metadata and hash.
+        alphaHint: (bits & 0x10000000) !== 0,
+        version: bits >>> 29
+      };
+    }
+    cursor = paddedEnd;
+  }
+  if (!losslessHeader || losslessHeader.version !== 0) fail('webp-lossless-required', `Delivery for ${assetId} is not an exact VP8L lossless image.`);
+  if (losslessHeader.width !== delivery.width || losslessHeader.height !== delivery.height) {
+    fail('webp-header-dimensions-mismatch', `Lossless WebP header dimensions changed for ${assetId}.`);
+  }
+  if (extendedDimensions && (extendedDimensions.width !== delivery.width || extendedDimensions.height !== delivery.height)) {
+    fail('webp-header-dimensions-mismatch', `Lossless WebP canvas dimensions changed for ${assetId}.`);
+  }
+  if (extendedAlpha !== null && extendedAlpha !== delivery.alpha.hasAlpha) {
+    fail('webp-alpha-metadata-mismatch', `Lossless WebP alpha metadata changed for ${assetId}.`);
+  }
+}
+
 function assertAssetShape(asset) {
   const kind = assetKind(asset);
   const validMime = asset?.mime === 'image/png' || asset?.mime === 'image/webp';
@@ -220,7 +338,9 @@ function catalogDisplayAssets() {
 }
 
 export function createPreviewLoader({
-  assetRegistry = catalogDisplayAssets(),
+  assetRegistry,
+  deliveryRegistry,
+  requireDeliveryCoverage = assetRegistry === undefined,
   baseURL = defaultBaseURL,
   fetchImpl = globalThis.fetch?.bind(globalThis),
   createImageBitmapImpl = globalThis.createImageBitmap?.bind(globalThis),
@@ -238,6 +358,12 @@ export function createPreviewLoader({
     maxDecodedBytes: Math.max(1, Math.floor(maxDecodedBytes || DEFAULT_LIMITS.maxDecodedBytes)),
     maxIdleEntries: Math.max(0, Math.floor(maxIdleEntries ?? DEFAULT_LIMITS.maxIdleEntries))
   };
+  const initialRegistry = assetRegistry === undefined ? catalogDisplayAssets() : assetRegistry;
+  const usingDefaultDeliveryRegistry = deliveryRegistry === undefined;
+  const deliveryDisabled = Array.isArray(deliveryRegistry) && deliveryRegistry.length === 0;
+  const deliveryEnabled = !deliveryDisabled;
+  const deliveryIndex = createDeliveryIndex(usingDefaultDeliveryRegistry ? DELIVERY_ASSETS : deliveryRegistry);
+  const enforceDeliveryCoverage = requireDeliveryCoverage === true && deliveryEnabled;
   const registered = new Map();
   const cache = new Map();
   const inflight = new Map();
@@ -252,6 +378,13 @@ export function createPreviewLoader({
   function registerAssets(rows) {
     if (disposed) throw new PreviewLoaderError('loader-disposed', 'Preview loader has been released.');
     const accepted = asAssetRows(rows).map(assertAssetShape);
+    if (enforceDeliveryCoverage) {
+      for (const row of accepted) {
+        if (isDeliverySource(row) && !deliveryIndex.has(deliverySourceKey(row))) {
+          throw new PreviewLoaderError('delivery-missing', `No lossless delivery derivative is registered for ${row.id}@${row.version}.`, { assetId: row.id, sourcePath: row.path });
+        }
+      }
+    }
     const added = [];
     for (const row of accepted) {
       const key = tupleKey(row);
@@ -270,7 +403,7 @@ export function createPreviewLoader({
     return Object.freeze({ registered: accepted.length, added: added.length });
   }
 
-  registerAssets(assetRegistry);
+  registerAssets(initialRegistry);
 
   const decodedBytes = () => [...cache.values()].reduce((sum, item) => sum + item.decodedBytes, 0);
   const pinnedBytes = () => [...cache.values()].reduce((sum, item) => sum + (item.references > 0 ? item.decodedBytes : 0), 0);
@@ -325,10 +458,11 @@ export function createPreviewLoader({
     return purpose;
   }
 
-  function assetUrl(asset) {
+  function assetUrl(asset, isDelivery = false) {
     const normalized = normalizedPath(asset);
     const kind = assetKind(asset);
-    const allowed = kind === 'template' ? normalized.startsWith('assets/templates/')
+    const allowed = isDelivery ? normalized.startsWith('assets/delivery/')
+      : kind === 'template' ? normalized.startsWith('assets/templates/')
       : normalized.startsWith('assets/posters/') || normalized.startsWith('assets/previews/');
     if (!allowed) throw new PreviewLoaderError('untrusted-asset-path', 'Resolved preview URL escaped its registered same-origin asset directory.');
     const base = baseURL instanceof URL ? baseURL : new URL(String(baseURL), import.meta.url);
@@ -344,36 +478,46 @@ export function createPreviewLoader({
 
   async function readAndDecode(job) {
     const asset = job.asset;
-    const url = assetUrl(asset);
+    const physical = job.resource;
+    const delivery = job.delivery;
+    const url = assetUrl(physical, Boolean(delivery));
     const response = await fetchImpl(url.href, { signal: job.controller.signal, cache: 'force-cache', credentials: 'same-origin' });
     if (!response?.ok) throw new PreviewLoaderError('http-error', `Preview request failed (${response?.status ?? 'no response'}).`, { status: response?.status ?? 0, assetId: asset.id });
     const mime = (response.headers?.get?.('content-type') || '').split(';', 1)[0].trim().toLowerCase();
-    if (mime !== asset.mime) throw new PreviewLoaderError('mime-mismatch', `Expected ${asset.mime} for ${asset.id}, received ${mime || 'unknown MIME'}.`, { assetId: asset.id });
-    const blob = await response.blob();
-    if (blob.size !== asset.byteSize) throw new PreviewLoaderError('byte-size-mismatch', `Preview byte size changed for ${asset.id}.`, { expected: asset.byteSize, actual: blob.size, assetId: asset.id });
-    if (verifyHash) {
+    const normalizeGenericDeliveryMime = Boolean(delivery) && mime === 'application/octet-stream';
+    if (mime !== physical.mime && !normalizeGenericDeliveryMime) throw new PreviewLoaderError('mime-mismatch', `Expected ${physical.mime} for ${asset.id}, received ${mime || 'unknown MIME'}.`, { assetId: asset.id });
+    const responseBlob = await response.blob();
+    if (responseBlob.size !== physical.byteSize) throw new PreviewLoaderError('byte-size-mismatch', `Preview byte size changed for ${asset.id}.`, { expected: physical.byteSize, actual: responseBlob.size, assetId: asset.id });
+    if (delivery || verifyHash) {
       if (!globalThis.crypto?.subtle) throw new PreviewLoaderError('hash-unavailable', 'Web Crypto is required for requested preview hash verification.');
-      const bytes = await blob.arrayBuffer();
+      const bytes = await responseBlob.arrayBuffer();
       const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes);
       const hex = [...new Uint8Array(digest)].map(value => value.toString(16).padStart(2, '0')).join('');
-      if (hex.toLowerCase() !== asset.sha256.toLowerCase()) throw new PreviewLoaderError('hash-mismatch', `Preview hash changed for ${asset.id}.`, { expected: asset.sha256, actual: hex, assetId: asset.id });
+      if (hex.toLowerCase() !== physical.sha256.toLowerCase()) throw new PreviewLoaderError('hash-mismatch', `Preview hash changed for ${asset.id}.`, { expected: physical.sha256, actual: hex, assetId: asset.id });
+      if (delivery) inspectLosslessWebP(new Uint8Array(bytes), delivery, asset.id);
     }
+    // Some static hosts serve valid WebP bytes with a generic MIME header. Only
+    // an exact registered derivative reaches this branch, after byte/hash and
+    // lossless-container verification; give decode and Blob URLs its pinned type.
+    const blob = normalizeGenericDeliveryMime
+      ? responseBlob.slice(0, responseBlob.size, physical.mime)
+      : responseBlob;
 
-    const expectedDecodedBytes = asset.width * asset.height * 4;
+    const expectedDecodedBytes = physical.width * physical.height * 4;
     if (!prune({ neededBytes: expectedDecodedBytes })) {
       throw new PreviewLoaderError('decoded-budget-exceeded', 'Current preview resources are pinned above the decoded-memory budget; release a lease before loading another resource.', { pinnedBytes: pinnedBytes(), expectedDecodedBytes, maxDecodedBytes: config.maxDecodedBytes });
     }
     reservedBytes += expectedDecodedBytes;
     let bitmap;
     try {
-      bitmap = await createImageBitmapImpl(blob);
+      bitmap = await createImageBitmapImpl(blob, { premultiplyAlpha: 'none' });
       if (job.cancelled || job.controller.signal.aborted) {
         bitmap?.close?.();
         throw abortError();
       }
-      if (bitmap.width !== asset.width || bitmap.height !== asset.height) {
+      if (bitmap.width !== physical.width || bitmap.height !== physical.height) {
         bitmap.close?.();
-        throw new PreviewLoaderError('dimension-mismatch', `Preview dimensions changed for ${asset.id}.`, { expected: [asset.width, asset.height], actual: [bitmap.width, bitmap.height], assetId: asset.id });
+        throw new PreviewLoaderError('dimension-mismatch', `Preview dimensions changed for ${asset.id}.`, { expected: [physical.width, physical.height], actual: [bitmap.width, bitmap.height], assetId: asset.id });
       }
       reservedBytes -= expectedDecodedBytes;
       if (!prune({ neededBytes: expectedDecodedBytes })) {
@@ -517,14 +661,20 @@ export function createPreviewLoader({
       usePurpose = requestedPurpose(asset, purpose);
     } catch (error) { return Promise.reject(error); }
     if (signal?.aborted) return Promise.reject(abortError());
-    const key = resourceKey(asset);
+    let delivery = null;
+    if (deliveryEnabled && isDeliverySource(asset)) {
+      delivery = deliveryIndex.get(deliverySourceKey(asset)) || null;
+      if (!delivery) return Promise.reject(new PreviewLoaderError('delivery-missing', `No lossless delivery derivative is registered for ${asset.id}@${asset.version}.`, { assetId: asset.id, sourcePath: asset.path }));
+    }
+    const resource = delivery || asset;
+    const key = resourceKey(resource);
     const cached = cache.get(key);
     if (cached) {
       try { return Promise.resolve(makeLease(cached, asset)); } catch (error) { return Promise.reject(error); }
     }
     let job = inflight.get(key);
     if (!job) {
-      job = { key, asset, purpose: usePurpose, controller: new AbortController(), consumers: new Set(), state: 'queued', cancelled: false };
+      job = { key, asset, resource, delivery, purpose: usePurpose, controller: new AbortController(), consumers: new Set(), state: 'queued', cancelled: false };
       inflight.set(key, job);
       queue.push(job);
     }

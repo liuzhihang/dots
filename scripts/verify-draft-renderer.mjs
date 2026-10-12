@@ -51,10 +51,10 @@ try {
   await page.goto(`http://127.0.0.1:${port}/harness`);
   const result = await page.evaluate(async origin => {
     const [templatesModule, draftModule, rendererModule, loaderModule, fixtureModule] = await Promise.all([
-      import(`${origin}/dist/studio-edit-templates.js?v=100`),
-      import(`${origin}/dist/studio-draft.js?v=100`),
-      import(`${origin}/dist/studio-renderer.js?v=100`),
-      import(`${origin}/dist/studio-preview-loader.js?v=100`),
+      import(`${origin}/dist/studio-edit-templates.js?v=102`),
+      import(`${origin}/dist/studio-draft.js?v=102`),
+      import(`${origin}/dist/studio-renderer.js?v=102`),
+      import(`${origin}/dist/studio-preview-loader.js?v=102`),
       import(`${origin}/scripts/fixtures/character-adjustment-v2.mjs`)
     ]);
     const {TEMPLATE_REGISTRY, LEGACY_TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets} = templatesModule;
@@ -241,7 +241,7 @@ try {
     const loaders = [];
     const colorComposites = [];
     for (const template of LEGACY_TEMPLATE_REGISTRY) {
-      const loader = createPreviewLoader({ assetRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef });
+      const loader = createPreviewLoader({ deliveryRegistry: [], assetRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef });
       loaders.push(loader);
       const artwork = { id: template.artworkBinding.artworkId, version: template.artworkBinding.artworkVersion };
       const configurations = enumerateValidConfigurations(template);
@@ -318,7 +318,7 @@ try {
     const verifiedFamilies = new Set([...matched].map(key => key.split(':')[0]));
     if (verifiedFamilies.size !== LEGACY_TEMPLATE_REGISTRY.length) throw new Error('Could not verify alpha-preserving recolor for both controlled legacy template families.');
 
-    const fixtureLoader = createPreviewLoader({ assetRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef, verifyHash: true });
+    const fixtureLoader = createPreviewLoader({ deliveryRegistry: [], assetRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef, verifyHash: true });
     const v2Summaries = [];
     const v2PngHashes = new Set();
     const v2Renders = new Map();
@@ -407,7 +407,7 @@ try {
     const mismatchedOwnerRegistry = v2Fixture.assets.map(record => record.id === 'template:fixture-cloud-v2:body:cloud'
       ? { ...record, owner: { ...record.owner, artworkVersion: 'other-artwork-version' } }
       : record);
-    const mismatchedOwnerLoader = createPreviewLoader({ assetRegistry: mismatchedOwnerRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef });
+    const mismatchedOwnerLoader = createPreviewLoader({ deliveryRegistry: [], assetRegistry: mismatchedOwnerRegistry, baseURL: `${origin}/dist/`, fetchImpl, createImageBitmapImpl, urlRef });
     const ownerDraft = createDraft({ artwork: FIXTURE_ARTWORK, template: FIXTURE_TEMPLATE, reviewHarness: true, sessionId: 'fixture-v2-owner' });
     let ownerCode = null;
     try { await renderDraft({ draft: ownerDraft, template: FIXTURE_TEMPLATE, loader: mismatchedOwnerLoader, assetRegistry: mismatchedOwnerRegistry }); }

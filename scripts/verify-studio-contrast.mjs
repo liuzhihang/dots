@@ -4,8 +4,8 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=100';
-import {TEMPLATE_REGISTRY,getTemplateForArtwork,getTemplateOptionFields} from '../dist/studio-edit-templates.js?v=100';
+import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=102';
+import {TEMPLATE_REGISTRY,getTemplateForArtwork,getTemplateOptionFields} from '../dist/studio-edit-templates.js?v=102';
 
 const output=resolveEvidenceDirectory('.artifacts/studio-contrast');
 await fs.mkdir(output,{recursive:true});
@@ -13,9 +13,9 @@ const server=await createServer({configFile:path.resolve('vite.config.mjs'),serv
 await server.listen();
 const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
 const html=(await fs.readFile('dist/index.html','utf8'))
-  .replace('data-cache="100"','data-cache="100" data-studio-boot="manual"')
+  .replace('data-cache="102"','data-cache="102" data-studio-boot="manual"')
   .replace('<head>',`<head><base href="${origin}/">`)
-  .replace('<script type="module" src="./studio.js?v=100"></script>','<script type="module">import {bootStudio} from "/studio.js?v=100";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
+  .replace('<script type="module" src="./studio.js?v=102"></script>','<script type="module">import {bootStudio} from "/studio.js?v=102";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
 const browser=await launchBrowser({headless:true});
 const rows=[];
 const failures=[];
@@ -200,7 +200,7 @@ try{
   }
   const ratios=rows.map(row=>row.minRatio).filter(Number.isFinite);
   const minimum=ratios.length?Math.min(...ratios):null;
-  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:100,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
+  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:102,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
   console.log(`Contrast: ${rows.length} rendered text targets sampled in both languages; minimum ${minimum?.toFixed(2)??'n/a'}:1; failures ${failures.length}.`);
   if(failures.length){console.error(`Contrast failures: ${JSON.stringify(failures,null,2)}`);process.exitCode=1;}
 }finally{await browser.close();await server.close();}

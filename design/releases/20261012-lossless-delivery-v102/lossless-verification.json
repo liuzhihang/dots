@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "contract": {
+    "version": "lossless-v1",
+    "format": "image/webp",
+    "lossless": true,
+    "exact": true,
+    "rgbaByteEquality": true,
+    "iccProfilePreservedIfPresent": true,
+    "approvalRecordsModified": false,
+    "sourcePngsModified": false
+  },
+  "summary": {
+    "sourcePathCount": 412,
+    "templatePathCount": 320,
+    "detailPreviewPathCount": 92,
+    "uniqueSourcePngSha256Count": 356,
+    "uniqueWebpFileCount": 356,
+    "transparentSourceCount": 408,
+    "opaqueSourceCount": 4,
+    "iccProfileSourceCount": 0,
+    "sourceBytesByPath": 319481906,
+    "sourceBytesUniqueByHash": 280421857,
+    "deliveryBytesUniqueFiles": 174778118,
+    "deliveryBytesByPathIfRepeated": 199097230,
+    "uniqueFileSavingsBytes": 105643739,
+    "pathBasedSavingsBytes": 120384676,
+    "uniqueFileSavingsRatio": 0.376731472112033,
+    "pathBasedSavingsRatio": 0.3768121879177721,
+    "rgbaAndAlphaVerifiedUnique": 356
+  },
+  "evidence": ".artifacts/release-v101/lossless-delivery-qa.json",
+  "browserPixelVerification": {
+    "path": ".artifacts/release-v101/browser-pixels/report.json",
+    "status": "passed",
+    "uniqueImages": 356,
+    "sourceMappings": 412,
+    "decodeOptions": {
+      "premultiplyAlpha": "none"
+    }
+  },
+  "sourcePreservation": {
+    "path": ".artifacts/release-v101/preservation-verification.json",
+    "status": "passed",
+    "paths": 513
+  }
+}

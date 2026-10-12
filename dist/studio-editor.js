@@ -1,8 +1,8 @@
-import { createDraft, updateDraft } from './studio-draft.js?v=100';
-import { getTemplateForArtwork, TEMPLATE_REGISTRY } from './studio-edit-templates.js?v=100';
-import { createExportSnapshot, exportSnapshot, isRenderResultCurrent, renderDraft } from './studio-renderer.js?v=100';
-import { enumerateValidConfigurations, getRequiredTemplateAssets, getTemplateOptionFields, getTemplateOptionAssetRefs, assertValidTemplateOptions } from './studio-edit-templates.js?v=100';
-import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=100';
+import { createDraft, updateDraft } from './studio-draft.js?v=102';
+import { getTemplateForArtwork, TEMPLATE_REGISTRY } from './studio-edit-templates.js?v=102';
+import { createExportSnapshot, exportSnapshot, isRenderResultCurrent, renderDraft } from './studio-renderer.js?v=102';
+import { enumerateValidConfigurations, getRequiredTemplateAssets, getTemplateOptionFields, getTemplateOptionAssetRefs, assertValidTemplateOptions } from './studio-edit-templates.js?v=102';
+import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=102';
 
 export const STUDIO_EDITOR_REVISION = 'studio-editor-20261010-v99';
 let editorInstance = 0;
@@ -79,7 +79,7 @@ export function createEditor({
   loader,
   assetRegistry,
   resolveAsset,
-  assetManifestUrl = './assets/templates/sources.json?v=100',
+  assetManifestUrl = './assets/templates/sources.json?v=102',
   fetchImpl = globalThis.fetch?.bind(globalThis),
   language: initialLanguage = 'en',
   reviewHarness = false,

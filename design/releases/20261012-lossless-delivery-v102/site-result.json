@@ -1,0 +1,76 @@
+{
+  "siteVersion": 50,
+  "package": {
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "checkout_path": "/Users/liuzhihang/workspace/dots/.artifacts/release-v100/site-source",
+    "commit_sha": "9f47de8e1f1da89292e35bb126b2afd4f8e1df14",
+    "archive": "/Users/liuzhihang/workspace/dots/.artifacts/release-v102/site-v102.tar.gz"
+  },
+  "saved": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_f7326cd0d7a88191b7616b9dd01a3950",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 50,
+    "source": {
+      "commit_sha": "9f47de8e1f1da89292e35bb126b2afd4f8e1df14"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000137c8230b08057ccb5431c63",
+      "content_hash": "sha256:6919bb227c5cd910c6e3c0f9882b37a55b908f018551fc607af0b00057881740",
+      "size_bytes": 236288000,
+      "file_count": 497
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6acc3ced8f648191a2b537bba07d1d17",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_f7326cd0d7a88191b7616b9dd01a3950",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dots.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-12T01:50:51.228566+00:00"
+  },
+  "priorSite49": {
+    "saved": {
+      "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_f4b5d572ca888191a50ada7d21643a30",
+      "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+      "version_number": 49,
+      "source": {
+        "commit_sha": "f8761d37d15f19fd929381a99d4ad1133b8acc70"
+      },
+      "archive_storage": {
+        "archive_format": "tar",
+        "sediment_file_id": "file_00000000135481fbafc6c6e7b4373994",
+        "content_hash": "sha256:2a008ed5b61bb69bd485064c5dd6295389dd80cd54b1cd0f0b92b69aef8a1cfd",
+        "size_bytes": 236288000,
+        "file_count": 497
+      },
+      "screenshot_url": null,
+      "deployment_id": null
+    },
+    "deployment": {
+      "id": "appgdep_6acc3987f3c4819185fa41e68d40cb50",
+      "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+      "title": "Dots",
+      "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_f4b5d572ca888191a50ada7d21643a30",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://dots.liuzhihang.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+      "failure_message": null,
+      "env_set_revision": 0,
+      "updated_at": "2026-10-12T01:36:54.942174+00:00"
+    },
+    "issue": "WebP served as application/octet-stream; corrected in cache revision 102"
+  }
+}

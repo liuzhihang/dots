@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=100';
-import { ASSETS } from '../dist/studio-artwork-catalog.js?v=100';
-import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets } from '../dist/studio-edit-templates.js?v=100';
+import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=102';
+import { ASSETS } from '../dist/studio-artwork-catalog.js?v=102';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets } from '../dist/studio-edit-templates.js?v=102';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const tick = async predicate => {
@@ -33,6 +33,46 @@ const eyes = templateAsset('template:dots-orb-v1:eyes:original', 'eyes', 'eyes-o
 // same immutable file for separate layer roles.
 const bodyMaskAlias = { ...body, id: 'template:dots-orb-v1:body-silhouette-mask', purpose: 'silhouette-mask' };
 const eyesMaskAlias = { ...eyes, id: 'template:dots-orb-v1:eyes-silhouette-mask', purpose: 'silhouette-mask' };
+
+function makeLosslessWebP({ width = 1, height = 1, alphaHint = true, extendedAlpha = null } = {}) {
+  const vp8lOffset = extendedAlpha === null ? 12 : 30;
+  const bytes = Buffer.alloc(vp8lOffset + 14);
+  bytes.write('RIFF', 0, 'ascii');
+  bytes.writeUInt32LE(bytes.length - 8, 4);
+  bytes.write('WEBP', 8, 'ascii');
+  if (extendedAlpha !== null) {
+    bytes.write('VP8X', 12, 'ascii');
+    bytes.writeUInt32LE(10, 16);
+    bytes[20] = extendedAlpha ? 0x10 : 0;
+    bytes.writeUIntLE(width - 1, 24, 3);
+    bytes.writeUIntLE(height - 1, 27, 3);
+  }
+  bytes.write('VP8L', vp8lOffset, 'ascii');
+  bytes.writeUInt32LE(5, vp8lOffset + 4);
+  bytes[vp8lOffset + 8] = 0x2f;
+  const bits = ((width - 1) & 0x3fff)
+    | (((height - 1) & 0x3fff) << 14)
+    | (alphaHint ? 0x10000000 : 0);
+  bytes.writeUInt32LE(bits >>> 0, vp8lOffset + 9);
+  return bytes;
+}
+
+function makeDelivery(source, bytes, overrides = {}) {
+  return {
+    source: { path: source.path, sha256: source.sha256, byteSize: source.byteSize, width: source.width, height: source.height, mime: source.mime },
+    path: `./assets/delivery/${source.sha256}.webp`,
+    sha256: crypto.createHash('sha256').update(bytes).digest('hex'),
+    byteSize: bytes.length,
+    width: source.width,
+    height: source.height,
+    mime: 'image/webp',
+    version: 'lossless-v1',
+    pixelSha256: 'c'.repeat(64),
+    alpha: { hasAlpha: true, hasTransparency: true },
+    encoding: { lossless: true, exact: true },
+    ...overrides
+  };
+}
 
 const transformFixture = {
   ...body,
@@ -76,6 +116,7 @@ let decodeCount = 0;
 let closeCount = 0;
 const revoked = [];
 const created = [];
+const decodeOptions = [];
 let nextUrl = 0;
 const urlRef = {
   createObjectURL() { const value = `blob:preview-${++nextUrl}`; created.push(value); return value; },
@@ -87,13 +128,15 @@ const fetchImpl = async (url, { signal } = {}) => {
   if (signal?.aborted) throw Object.assign(new Error('aborted'), { name: 'AbortError' });
   return new Response(new Uint8Array([1, 2, 3, 4]), { status: 200, headers: { 'content-type': 'image/png' } });
 };
-const createImageBitmapImpl = async () => {
+const createImageBitmapImpl = async (_blob, options) => {
+  decodeOptions.push(options);
   decodeCount += 1;
   return { width: 1, height: 1, close() { closeCount += 1; } };
 };
 
 const loader = createPreviewLoader({
   assetRegistry: [body, bodyMaskAlias, eyes, eyesMaskAlias],
+  deliveryRegistry: [],
   baseURL: 'https://dots.example/',
   fetchImpl,
   createImageBitmapImpl,
@@ -223,6 +266,7 @@ assert.ok(cachedStats.cachedDecodedBytes <= cachedStats.maxDecodedBytes, 'Decode
 
 const loader2 = createPreviewLoader({
   assetRegistry: [body, eyes],
+  deliveryRegistry: [],
   baseURL: 'https://dots.example/',
   fetchImpl,
   createImageBitmapImpl,
@@ -245,7 +289,8 @@ assert.equal(productionManifest.templates.length, TEMPLATE_REGISTRY.length, 'The
 assert.equal(productionManifest.assets.length, 309, 'The active runtime closure contains only currently referenced package tuples.');
 assert.equal(productionManifest.retainedSourceAssets?.length, 6, 'Six unreferenced approved mask tuples remain outside the active runtime closure.');
 const productionLoaderState = { fetchCount, decodeCount };
-const productionLoader = createPreviewLoader({ assetRegistry: productionManifest.assets, baseURL: 'https://dots.example/', fetchImpl, createImageBitmapImpl, urlRef });
+const productionLoader = createPreviewLoader({ assetRegistry: productionManifest.assets, requireDeliveryCoverage: true, baseURL: 'https://dots.example/', fetchImpl, createImageBitmapImpl, urlRef });
+const productionDisplayLoader = createPreviewLoader({ requireDeliveryCoverage: true, baseURL: 'https://dots.example/', fetchImpl, createImageBitmapImpl, urlRef });
 let requiredProductionReferences = 0;
 const requiredProductionAssetIds = new Set();
 const requiredProductionAssetTuples = new Set();
@@ -298,11 +343,13 @@ assert.deepEqual([...requiredProductionAssetTuples].sort(), productionManifest.a
 assert.equal(productionManifest.retainedSourceAssets.some(asset => requiredProductionAssetTuples.has(`${asset.id}\u0000${asset.version}\u0000${asset.purpose}`)), false, 'Retained source tuples are never exposed to the active Template loader.');
 assert.equal(new Set([...requiredProductionAssetTuples, ...productionManifest.retainedSourceAssets.map(asset => `${asset.id}\u0000${asset.version}\u0000${asset.purpose}`)]).size, 315, 'Active and retained inventories preserve all 315 package tuples.');
 productionLoader.releaseAll();
+productionDisplayLoader.releaseAll();
 assert.equal(productionLoader.stats().cacheEntries, 0, 'Registering the production closure performs no eager image loads.');
 assert.deepEqual({ fetchCount, decodeCount }, productionLoaderState, 'Registering the production closure performs no network fetch or image decode.');
 
 const transformedLoader = createPreviewLoader({
   assetRegistry: [transformFixture],
+  deliveryRegistry: [],
   baseURL: 'https://dots.example/',
   fetchImpl,
   createImageBitmapImpl,
@@ -332,6 +379,161 @@ for (const current of [loader, loader2, transformedLoader, identityLoader]) {
   assert.equal(final.cachedDecodedBytes, 0, 'Teardown frees all decoded cache bytes.');
 }
 assert.ok(closeCount >= 2, 'Eviction and final teardown close browser image resources.');
+
+const losslessBytes = makeLosslessWebP();
+const losslessDelivery = makeDelivery(body, losslessBytes);
+const deliveryFetches = [];
+let deliveryDecodeCount = 0;
+const deliveryDecodeOptions = [];
+const deliveryDecodeBlobTypes = [];
+const deliveryObjectURLBlobTypes = [];
+const deliveryUrlRef = {
+  createObjectURL(blob) { deliveryObjectURLBlobTypes.push(blob.type); return `blob:delivery-${deliveryObjectURLBlobTypes.length}`; },
+  revokeObjectURL() {}
+};
+const deliveryLoader = createPreviewLoader({
+  assetRegistry: [body, bodyMaskAlias],
+  deliveryRegistry: [losslessDelivery],
+  baseURL: 'https://dots.example/',
+  fetchImpl: async url => {
+    deliveryFetches.push(String(url));
+    return new Response(losslessBytes, { status: 200, headers: { 'content-type': 'application/octet-stream' } });
+  },
+  createImageBitmapImpl: async (blob, options) => { deliveryDecodeBlobTypes.push(blob.type); deliveryDecodeOptions.push(options); deliveryDecodeCount += 1; return { width: 1, height: 1, close() {} }; },
+  urlRef: deliveryUrlRef
+});
+const [deliveredLease, deliveredAliasLease] = await Promise.all([
+  deliveryLoader.acquire(body, { purpose: body.purpose }),
+  deliveryLoader.acquire(bodyMaskAlias, { purpose: bodyMaskAlias.purpose })
+]);
+assert.equal(deliveredLease.asset, deliveryLoader.getRegisteredAsset(body), 'Lossless delivery keeps the exact canonical PNG asset and placement on its lease.');
+assert.equal(deliveredAliasLease.asset, deliveryLoader.getRegisteredAsset(bodyMaskAlias), 'An alias sharing the same derivative retains its separate canonical PNG lease identity.');
+assert.notEqual(deliveredLease.asset, deliveredAliasLease.asset, 'Derived physical-resource sharing does not collapse canonical template roles.');
+assert.equal(deliveryFetches.length, 1, 'Authorized aliases share a single derived WebP request.');
+assert.equal(deliveryDecodeCount, 1, 'Authorized aliases share a single derived WebP decode.');
+assert.deepEqual(deliveryDecodeOptions, [{ premultiplyAlpha: 'none' }], 'WebP delivery decodes without premultiplying alpha, preserving exact RGBA values.');
+assert.deepEqual(deliveryDecodeBlobTypes, ['image/webp'], 'A verified generic-MIME derivative is normalized before image decode.');
+assert.equal(deliveredLease.blob.type, 'image/webp', 'The physical preview lease contains the registered WebP delivery bytes.');
+assert.match(deliveredLease.url, /^blob:delivery-/, 'The derived lease creates a Blob URL for its verified physical bytes.');
+assert.deepEqual(deliveryObjectURLBlobTypes, ['image/webp'], 'A verified generic-MIME derivative is normalized before Blob URL creation.');
+assert.equal(new URL(deliveryFetches[0]).pathname, '/assets/delivery/' + body.sha256 + '.webp', 'Only the derived WebP path is fetched after canonical source authorization.');
+assert.equal(new URL(deliveryFetches[0]).searchParams.get('sha256'), losslessDelivery.sha256, 'The HTTP cache key uses the derived WebP hash.');
+assert.equal(deliveryFetches.some(url => new URL(url).pathname === '/assets/templates/dots-orb-v1/body-neutral.png'), false, 'A mapped delivery never silently falls back to the source PNG.');
+deliveredLease.release();
+assert.equal(deliveryLoader.stats().activeLeases, 1, 'Releasing one derived consumer preserves the other alias lease.');
+deliveredAliasLease.release();
+deliveryLoader.releaseAll();
+
+const unrelatedSource = { ...body, path: './assets/templates/dots-orb-v1/unrelated.png', sha256: 'b'.repeat(64) };
+assert.throws(() => createPreviewLoader({
+  assetRegistry: [body],
+  deliveryRegistry: [makeDelivery(unrelatedSource, losslessBytes)],
+  requireDeliveryCoverage: true,
+  fetchImpl,
+  createImageBitmapImpl
+}), error => error.code === 'delivery-missing', 'Required registered sources reject an absent exact path/hash/metadata delivery mapping before use.');
+const mismatchedMetadataSource = { ...body, byteSize: body.byteSize + 1 };
+assert.throws(() => createPreviewLoader({
+  assetRegistry: [body],
+  deliveryRegistry: [makeDelivery(mismatchedMetadataSource, losslessBytes)],
+  requireDeliveryCoverage: true,
+  fetchImpl,
+  createImageBitmapImpl
+}), error => error.code === 'delivery-missing', 'A source with the correct path and hash but a different byte-size tuple cannot borrow another derivative.');
+
+assert.throws(() => createPreviewLoader({
+  assetRegistry: [],
+  deliveryRegistry: [makeDelivery(body, losslessBytes, { encoding: { lossless: false, exact: true } })],
+  fetchImpl,
+  createImageBitmapImpl
+}), error => error.code === 'invalid-delivery-asset', 'A delivery registry cannot claim a lossy encoding is lossless.');
+
+async function rejectDerived({ delivery = losslessDelivery, bytes = losslessBytes, mime = 'image/webp', status = 200, bitmap = { width: 1, height: 1, close() {} }, code }) {
+  let requests = 0;
+  const requestedUrls = [];
+  const current = createPreviewLoader({
+    assetRegistry: [body],
+    deliveryRegistry: [delivery],
+    baseURL: 'https://dots.example/',
+    fetchImpl: async url => {
+      requests += 1;
+      requestedUrls.push(String(url));
+      return new Response(bytes, { status, headers: { 'content-type': mime } });
+    },
+    createImageBitmapImpl: async () => ({ ...bitmap, close() {} }),
+    urlRef
+  });
+  await assert.rejects(current.acquire(body, { purpose: body.purpose }), error => error.code === code, `Mapped delivery rejects ${code} without accepting PNG fallback.`);
+  assert.equal(requests, 1, `${code}: one derived request was made and no source fallback was attempted.`);
+  assert.equal(new URL(requestedUrls[0]).pathname.startsWith('/assets/delivery/'), true, `${code}: the only request was for the derived path.`);
+  current.releaseAll();
+}
+
+const badHashDelivery = { ...losslessDelivery, sha256: '0'.repeat(64) };
+await rejectDerived({ delivery: badHashDelivery, code: 'hash-mismatch' });
+await rejectDerived({ delivery: badHashDelivery, mime: 'application/octet-stream', code: 'hash-mismatch' });
+await rejectDerived({ delivery: { ...losslessDelivery, byteSize: losslessDelivery.byteSize + 1 }, code: 'byte-size-mismatch' });
+await rejectDerived({ delivery: losslessDelivery, mime: 'image/png', code: 'mime-mismatch' });
+await rejectDerived({ delivery: losslessDelivery, mime: 'application/octet-text', code: 'mime-mismatch' });
+await rejectDerived({ delivery: losslessDelivery, status: 404, code: 'http-error' });
+const lossyBytes = Buffer.from(losslessBytes);
+lossyBytes.write('VP8 ', 12, 'ascii');
+await rejectDerived({ delivery: makeDelivery(body, lossyBytes), bytes: lossyBytes, code: 'webp-lossless-required' });
+await rejectDerived({ delivery: losslessDelivery, bytes: makeLosslessWebP({ alphaHint: false }), code: 'hash-mismatch' });
+await rejectDerived({ delivery: losslessDelivery, bitmap: { width: 2, height: 1 }, code: 'dimension-mismatch' });
+
+let genericPngRequests = 0;
+const strictNonDeliveryMimeLoader = createPreviewLoader({
+  assetRegistry: [body],
+  deliveryRegistry: [],
+  baseURL: 'https://dots.example/',
+  fetchImpl: async () => {
+    genericPngRequests += 1;
+    return new Response(new Uint8Array([1, 2, 3, 4]), { status: 200, headers: { 'content-type': 'application/octet-stream' } });
+  },
+  createImageBitmapImpl,
+  urlRef
+});
+await assert.rejects(strictNonDeliveryMimeLoader.acquire(body, { purpose: body.purpose }), error => error.code === 'mime-mismatch', 'Generic MIME remains invalid for a canonical PNG source without a registered delivery derivative.');
+assert.equal(genericPngRequests, 1, 'The non-delivery MIME negative fixture reaches only the canonical PNG request.');
+strictNonDeliveryMimeLoader.releaseAll();
+
+const opaquePreview = {
+  id: 'asset:test-opaque-preview',
+  version: 'v99',
+  purpose: 'detail512',
+  path: './assets/previews/test-opaque-preview-detail512-v99.png',
+  sha256: 'd'.repeat(64),
+  byteSize: 4,
+  width: 1,
+  height: 1,
+  mime: 'image/png',
+  resourceKind: 'display-preview',
+  publicationStatus: 'preview-only',
+  downloadable: false
+};
+const opaqueBytes = makeLosslessWebP({ alphaHint: false });
+const opaqueDelivery = makeDelivery(opaquePreview, opaqueBytes, { alpha: { hasAlpha: false, hasTransparency: false } });
+const opaqueLoader = createPreviewLoader({
+  assetRegistry: [opaquePreview],
+  deliveryRegistry: [opaqueDelivery],
+  baseURL: 'https://dots.example/',
+  fetchImpl: async () => new Response(opaqueBytes, { status: 200, headers: { 'content-type': 'image/webp' } }),
+  createImageBitmapImpl: async () => ({ width: 1, height: 1, close() {} }),
+  urlRef
+});
+const opaqueLease = await opaqueLoader.acquire(opaquePreview, { purpose: 'detailPreview' });
+opaqueLease.release();
+opaqueLoader.releaseAll();
+
+const alphaMismatchBytes = makeLosslessWebP({ extendedAlpha: true });
+const alphaMismatchDelivery = makeDelivery(body, alphaMismatchBytes, { alpha: { hasAlpha: false, hasTransparency: false } });
+await rejectDerived({ delivery: alphaMismatchDelivery, bytes: alphaMismatchBytes, code: 'webp-alpha-metadata-mismatch' });
+
+console.log('PASS lossless delivery resolves only after canonical PNG authorization and preserves canonical lease identity');
+console.log('PASS source coverage, delivery MIME/size/hash, VP8L lossless signature, alpha metadata, and decoded dimensions fail closed without PNG fallback');
+assert.ok(decodeOptions.length > 0 && decodeOptions.every(options => options?.premultiplyAlpha === 'none'), 'All PNG source and WebP delivery decoding uses exact unpremultiplied RGBA values.');
+console.log('PASS PNG and WebP decode requests use premultiplyAlpha:none for exact pixel parity');
 
 console.log('PASS physical-resource inflight/cache dedupe across canonical IDs and purposes, with exact per-consumer lease identity');
 console.log('PASS independent cross-alias cancellation/refcounts and version/hash/MIME/byte-size/dimension cache isolation');

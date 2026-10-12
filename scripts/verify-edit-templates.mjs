@@ -11,7 +11,7 @@ import {
   resolveTemplateAsset,
   validateTemplateDefinition,
   validateTemplateOptions
-} from '../dist/studio-edit-templates.js?v=100';
+} from '../dist/studio-edit-templates.js?v=102';
 import {
   cancelDraft,
   createDraft,
@@ -20,7 +20,7 @@ import {
   resetDraft,
   updateDraft,
   updateDraftLanguage
-} from '../dist/studio-draft.js?v=100';
+} from '../dist/studio-draft.js?v=102';
 import { FIXTURE_ARTWORK, FIXTURE_ASSETS, FIXTURE_DOTS_TEMPLATE, FIXTURE_GROK_TEMPLATE, FIXTURE_TEMPLATE } from './fixtures/character-adjustment-v2.mjs';
 
 const dots = LEGACY_TEMPLATE_REGISTRY.find(template => template.id === 'dots-orb-v1');

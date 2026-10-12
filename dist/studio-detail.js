@@ -1,11 +1,11 @@
-import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=100';
-import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=100';
-import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=100';
-import { SERIES } from './studio-content.js?v=100';
-import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=100';
-import { downloadAsset } from './studio-asset-loader.js?v=100';
-import { createPreviewLoader } from './studio-preview-loader.js?v=100';
-import { getTemplateForArtwork } from './studio-edit-templates.js?v=100';
+import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=102';
+import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=102';
+import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=102';
+import { SERIES } from './studio-content.js?v=102';
+import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=102';
+import { downloadAsset } from './studio-asset-loader.js?v=102';
+import { createPreviewLoader } from './studio-preview-loader.js?v=102';
+import { getTemplateForArtwork } from './studio-edit-templates.js?v=102';
 const DEFAULT_DETAIL_API = { ARTWORKS, TAGS, TAG_DIMENSIONS, SERIES, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork, promptFor, downloadAsset };
 const FEATURE_PRIORITY = Object.freeze({ style: 100, series: 96, accessory: 94, prop: 92, color: 90, material: 88, action: 86, shape: 75, expression: 72, 'object-type': 60, theme: 48, content: 44 });
 const EXCLUDED_STATES = new Set(['none', 'not-applicable', 'notApplicable', 'unknown', 'unrecorded', 'not-recorded']);
@@ -181,7 +181,7 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
  async function ensureEditor(){
    if(!active||!template||editor)return;const token=session,request=++editorRequest,record=active;editorStatus.textContent=lang().editLoading;editorRetry.hidden=true;root.dataset.editor='loading';currentReady=false;syncActions();
    try{
-     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=100'),import('./studio-draft.js?v=100')]);
+     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=102'),import('./studio-draft.js?v=102')]);
      if(!current(token,record)||request!==editorRequest)return;draftModule=drafts;
      draft ||= drafts.createDraft({artwork:record.artwork,template,language:locale,sessionId:`studio-${token}`,reviewHarness});
      editor=module.createEditor({root:editorControls,artwork:record.artwork,template,draft,loader,language:locale,reviewHarness,

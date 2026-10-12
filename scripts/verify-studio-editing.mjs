@@ -8,7 +8,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=100';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=102';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -93,6 +93,7 @@ if (!baseURL) {
   const harnessScript = path.join(harnessFixtureRoot, 'harness.js');
   harnessServer = await createServer({
     configFile: path.join(repoRoot, 'vite.config.mjs'),
+    root: path.resolve(process.env.DOTS_QA_DIST || path.join(repoRoot, 'dist')),
     server: { host: '127.0.0.1', port: 0, strictPort: true, hmr: false },
     plugins: [{
       name: 'dots-editor-external-qa-harness',
@@ -153,7 +154,7 @@ async function newRecordedPage(segmentName) {
   page.on('response', response => { if (response.status() >= 400) httpFailures.push({ url: response.url(), status: response.status(), segmentName }); });
   page.on('request', request => {
     const url = request.url();
-    if (/\/assets\/(characters|previews|posters|templates)\//.test(url)) networkEvidence.push({ url, segmentName });
+    if (/\/assets\/(characters|previews|posters|templates|delivery)\//.test(url)) networkEvidence.push({ url, segmentName });
   });
   await page.goto(harnessURL, { waitUntil: 'domcontentloaded' });
   try {
@@ -176,7 +177,7 @@ async function finishSegment({ context, page, segmentName }, outputPath) {
 
 async function openArtwork(page, artworkId, artworkVersion) {
   const result = await page.evaluate(async ({ id, version }) => {
-    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=100');
+    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=102');
     const artwork = ARTWORKS.find(row => row.id === id && row.version === version);
     if (!artwork) throw new Error(`Artwork not found: ${id}`);
     const opened = window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -211,7 +212,7 @@ async function waitForPreview(page, { expectNoOriginal = false } = {}) {
       image: [...document.querySelectorAll('.artwork-detail__image')].map(image => ({ src: image.src, currentSrc: image.currentSrc, complete: image.complete, width: image.naturalWidth, hidden: image.hidden })),
       canvas: [...document.querySelectorAll('.studio-draft-host canvas')].map(canvas => ({ revision: canvas.dataset.renderRevision, hidden: canvas.closest('.studio-draft-host')?.hidden })),
       preview: [...document.querySelectorAll('.preview-status')].map(node => node.textContent),
-      requests: performance.getEntriesByType('resource').filter(entry => /assets\/(posters|previews|characters|templates)/.test(entry.name)).map(entry => entry.name)
+      requests: performance.getEntriesByType('resource').filter(entry => /assets\/(posters|previews|characters|templates|delivery)/.test(entry.name)).map(entry => entry.name)
     })), null, 2));
     throw error;
   }
@@ -228,11 +229,11 @@ async function waitForPreview(page, { expectNoOriginal = false } = {}) {
       editorReady: state.editorReady,
       draftRevision: state.draft?.revision ?? null,
       canvasRevision: canvas ? Number(canvas.dataset.renderRevision) : null,
-      assetRequests: performance.getEntriesByType('resource').map(entry => entry.name).filter(url => /\/assets\/(characters|previews|posters|templates)\//.test(url))
+      assetRequests: performance.getEntriesByType('resource').map(entry => entry.name).filter(url => /\/assets\/(characters|previews|posters|templates|delivery)\//.test(url))
     };
   });
   assert.ok(info.src.startsWith('blob:'), 'The registered sharper preview is decoded while the CharacterStudio canvas is active.');
-  assert.ok(info.assetRequests.some(url => /\/assets\/(posters|previews)\//.test(url)), 'The Artwork loaded a registered display derivative.');
+  assert.ok(info.assetRequests.some(url => /\/assets\/(posters|previews|delivery)\//.test(url)), 'The Artwork loaded a registered display derivative.');
   if (info.editable) assert.equal(info.canvasRevision, info.draftRevision, 'An eligible Artwork opens directly to a successful matching local preview.');
   if (expectNoOriginal) assert.ok(!info.assetRequests.some(url => url.includes('/assets/characters/')), 'Viewing and editing did not fetch the original artwork PNG.');
   assert.ok(info.assetRequests.every(url => !url.includes('/@fs/')), 'Studio did not request a Vite filesystem URL.');
@@ -437,12 +438,12 @@ async function verifyEveryRecipeThroughControls(page, template, artwork, rendere
 async function renderAllRealConfigurations(page) {
   const browserOutput = await page.evaluate(async () => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, promptAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=100'),
-      import('/studio-edit-templates.js?v=100'),
-      import('/studio-draft.js?v=100'),
-      import('/studio-renderer.js?v=100'),
-      import('/studio-preview-loader.js?v=100'),
-      import('/studio-prompt.js?v=100')
+      import('/studio-artwork-catalog.js?v=102'),
+      import('/studio-edit-templates.js?v=102'),
+      import('/studio-draft.js?v=102'),
+      import('/studio-renderer.js?v=102'),
+      import('/studio-preview-loader.js?v=102'),
+      import('/studio-prompt.js?v=102')
     ]);
     const manifestResponse = await fetch('/assets/templates/sources.json', { cache: 'no-cache' });
     if (!manifestResponse.ok) throw new Error(`Manifest fetch failed (${manifestResponse.status}).`);
@@ -619,12 +620,12 @@ async function runTwentyEditCycles(page) {
 
   await page.evaluate(async ({ cyclePlans, tabForField }) => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=100'),
-      import('/studio-edit-templates.js?v=100'),
-      import('/studio-draft.js?v=100'),
-      import('/studio-renderer.js?v=100'),
-      import('/studio-preview-loader.js?v=100'),
-      import('/studio-editor.js?v=100')
+      import('/studio-artwork-catalog.js?v=102'),
+      import('/studio-edit-templates.js?v=102'),
+      import('/studio-draft.js?v=102'),
+      import('/studio-renderer.js?v=102'),
+      import('/studio-preview-loader.js?v=102'),
+      import('/studio-editor.js?v=102')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error(`Manifest fetch failed (${response.status}).`);
@@ -918,11 +919,11 @@ function assertCycleEvidence(cycleReport) {
 async function runFocusedEditorRaces(page) {
   return page.evaluate(async tabForField => {
     const [catalog, templates, draftAPI, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=100'),
-      import('/studio-edit-templates.js?v=100'),
-      import('/studio-draft.js?v=100'),
-      import('/studio-preview-loader.js?v=100'),
-      import('/studio-editor.js?v=100')
+      import('/studio-artwork-catalog.js?v=102'),
+      import('/studio-edit-templates.js?v=102'),
+      import('/studio-draft.js?v=102'),
+      import('/studio-preview-loader.js?v=102'),
+      import('/studio-editor.js?v=102')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error('Manifest fetch failed (' + response.status + ').');
@@ -1042,6 +1043,10 @@ async function runFocusedEditorRaces(page) {
       await waitFor(() => visual.dataset.thumbnailState === 'ready', `real ${raceField} option thumbnail`);
       return { button, visual };
     };
+    const waitForThumbnailIdle = async state => waitFor(() => {
+      const visuals = [...state.editor.element.querySelectorAll('.studio-editor-option-visual')];
+      return visuals.every(visual => !['loading', 'waiting-for-manifest'].includes(visual.dataset.thumbnailState));
+    }, `${state.editor.getDraft().templateId} option thumbnails to settle before teardown`);
 
     let delayRenderAsset = false;
     let delayedRenderAcquisitions = 0;
@@ -1086,6 +1091,7 @@ async function runFocusedEditorRaces(page) {
     if (outOfOrder.editor.getSnapshot()?.revision !== finalSnapshot.revision || outOfOrder.editor.getSnapshot()?.options[raceField] !== alternateOption) {
       throw new Error('A late obsolete A→B→A render replaced the latest successful Draft snapshot.');
     }
+    await waitForThumbnailIdle(outOfOrder);
     const outOfOrderReport = {
       templateId: template.id,
       field: raceField,
@@ -1146,12 +1152,16 @@ async function runFocusedEditorRaces(page) {
     await waitReady(failedLatest, { [raceField]: alternateOption });
     const retryState = { canExport: failedLatest.statuses.at(-1).canExport, snapshot: failedLatest.editor.getSnapshot(), failureWasInjected: latestFailureInjected };
     if (!retryState.canExport || !retryState.failureWasInjected) throw new Error('Explicit Retry did not recover the failed latest recipe.');
+    await waitForThumbnailIdle(failedLatest);
     failedLatest.editor.destroy();
     failedLatest.host.remove();
     failedLatest.loader.releaseAll();
 
     let thumbnailFetches = 0;
-    const thumbnailPath = new URL('/' + thumbnailAsset.path.replace(/^\.\//, ''), location.origin).pathname;
+    const { DELIVERY_ASSETS } = await import('/studio-delivery-assets.js?v=102');
+    const thumbnailDelivery = DELIVERY_ASSETS.find(row => row.source.path === thumbnailAsset.path && row.source.sha256 === thumbnailAsset.sha256);
+    if (!thumbnailDelivery) throw new Error('Race fixture thumbnail has no exact registered delivery mapping.');
+    const thumbnailPath = new URL('/' + thumbnailDelivery.path.replace(/^\.\//, ''), location.origin).pathname;
     const failThumbnailOnce = async (url, options = {}) => {
       if (new URL(url).pathname === thumbnailPath) {
         thumbnailFetches += 1;
@@ -1200,6 +1210,7 @@ async function runFocusedEditorRaces(page) {
     if (thumbnailFetches < 2 || !thumbnailRecovery.recovered || !thumbnailRecovery.pressed || !thumbnailRecovery.canExport) {
       throw new Error('Retry did not recover a real thumbnail canvas and selectable rendered recipe.');
     }
+    await waitForThumbnailIdle(thumbnailRetry);
     thumbnailRetry.editor.destroy();
     thumbnailRetry.host.remove();
     thumbnailRetry.loader.releaseAll();
@@ -1225,6 +1236,7 @@ async function runFocusedEditorRaces(page) {
     });
     await waitReady(closing);
     await waitForThumbnail(closing.editor);
+    await waitForThumbnailIdle(closing);
     delayCloseAcquire = true;
     chooseVisualOption(closing.editor, raceField, alternateOption);
     await waitFor(() => closeDelayedAcquisitions > 0, 'the delayed close-race acquisition');
@@ -1241,6 +1253,7 @@ async function runFocusedEditorRaces(page) {
       || replacement.editor.getSnapshot()?.options[raceField] !== defaultOption) {
       throw new Error('A closed session late callback changed the replacement editor session or its default recipe.');
     }
+    await waitForThumbnailIdle(replacement);
     const closeStats = closing.loader.stats();
     if (closeStats.pendingRequests !== 0 || closeStats.activeLeases !== 0 || closeStats.objectURLs !== 0) {
       throw new Error('The destroyed editor retained pending requests, leases, or object URLs after its delayed completion settled.');
@@ -1438,7 +1451,7 @@ try {
     assert.equal(reopenedArtwork.asset.sha256, firstArtwork.asset.sha256, 'The round-trip reopens the exact same registered Artwork.');
     const reopenedPreview = await waitForPreview(page, { expectNoOriginal: true });
     assert.equal(reopenedPreview.editable, true, 'The pinned Artwork reopens directly into its one eligible CharacterStudio.');
-    const reopenedBaseline=await page.evaluate(async()=>{const {TEMPLATE_REGISTRY,normalizeTemplateOptions}=await import('/studio-edit-templates.js?v=100');const state=window.__dotsQAApp.detail.getState();const template=TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);return{options:state.draft.options,defaults:normalizeTemplateOptions(template,template.defaultOptions),dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
+    const reopenedBaseline=await page.evaluate(async()=>{const {TEMPLATE_REGISTRY,normalizeTemplateOptions}=await import('/studio-edit-templates.js?v=102');const state=window.__dotsQAApp.detail.getState();const template=TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);return{options:state.draft.options,defaults:normalizeTemplateOptions(template,template.defaultOptions),dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
     assert.deepEqual(reopenedBaseline.options,reopenedBaseline.defaults,'Opening the same Artwork again starts at the approved template default, not the prior in-memory Draft.');assert.equal(reopenedBaseline.dirty,false);assert.equal(await page.locator('.studio-original').evaluate(details=>details.open),false);assert.equal(await page.locator('.studio-original button,.artwork-detail__download-original').count(),0);
     assertNoRuntimeErrors(`${config.label} recorded App → exported PNG → App journey`);
     const videoPath = path.join(videoStageRoot, `${config.label}-app-png-app-journey.webm`);

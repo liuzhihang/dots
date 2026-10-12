@@ -12,7 +12,8 @@
     "test:performance": "node scripts/verify-studio-performance.mjs",
     "qa:design": "node scripts/capture-design-comparison.mjs",
     "dev:review": "node scripts/serve-review.mjs",
-    "verify:release-safety": "node scripts/verify-repository-retention.mjs"
+    "verify:release-safety": "node scripts/verify-repository-retention.mjs",
+    "test:delivery": "node scripts/verify-lossless-browser.mjs"
   },
   "devDependencies": {
     "vite": "8.3.2"

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {checkInventory,checkPreviewOnlyFiles,collectTemplateAssetReferences} from './build-studio.mjs';
 import {FIXTURE_TEMPLATE} from './fixtures/character-adjustment-v2.mjs';
+import {getPublishFiles, inspectLosslessWebp} from './lossless-delivery.mjs';
 const published=['dist/index.html','dist/new-approved.png','dist/assets/templates/sources.json'];
 checkInventory(published,published);
 assert.throws(()=>checkInventory([...published,'dist/orphan.png'],published),'An orphan dist file must fail the exact closure check.');
@@ -28,3 +29,17 @@ withThumbnail.options.appearance[0].thumbnailAssets.push(thumbnail);
 assert.deepEqual(collectTemplateAssetReferences(withThumbnail).find(ref=>ref.id===thumbnail.id),thumbnail,'Thumbnail-only resources are part of the exact publish closure.');
 assert.deepEqual(collectTemplateAssetReferences({schemaVersion:1,layers:{body:refs[0],face:[refs[1],refs[0]]}}),refs.slice(0,2),'Legacy fixed layers remain supported and deduplicated.');
 console.log('Publish inventory: exact dist closure, missing/orphan, duplicate, traversal, and registered pending-set fixtures passed');
+
+const png='dist/assets/templates/fixture/base.png';
+const webp='dist/assets/delivery/'+ 'a'.repeat(64)+'.webp';
+const deliveryTree=[...published,png,webp];
+assert.deepEqual(getPublishFiles(deliveryTree,[png]),[...published,webp].sort());
+assert.throws(()=>getPublishFiles(deliveryTree,[png,png]),'Duplicate source exclusions fail.');
+assert.throws(()=>getPublishFiles(deliveryTree,['dist/new-approved.png']),'Original downloads cannot be excluded.');
+assert.throws(()=>getPublishFiles(deliveryTree,['dist/assets/templates/missing.png']),'Missing source exclusions fail.');
+assert.throws(()=>getPublishFiles(deliveryTree,['dist/assets/templates/../original.png']),'Source traversal fails.');
+assert.throws(()=>inspectLosslessWebp(Buffer.from('not a WebP')),'Non-WebP bytes fail before decode.');
+const lossless=Buffer.alloc(26);lossless.write('RIFF');lossless.writeUInt32LE(18,4);lossless.write('WEBP',8);lossless.write('VP8L',12);lossless.writeUInt32LE(5,16);lossless[20]=0x2f;lossless.writeUInt32LE(1<<28,21);
+assert.deepEqual(inspectLosslessWebp(lossless),{width:1,height:1});
+const lossy=Buffer.from(lossless);lossy.write('VP8 ',12);assert.throws(()=>inspectLosslessWebp(lossy),'Lossy payloads are not approved delivery derivatives.');
+console.log('Lossless delivery inventory: source retention, PNG download protection, exact stage exclusions, and VP8L signature fixtures passed');
