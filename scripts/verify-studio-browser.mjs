@@ -43,6 +43,15 @@ async function assertLanguagePreference(targetPage,language){
  assert.equal(await targetPage.locator('html').getAttribute('lang'),language);
  const rect=await selector.boundingBox();assert(rect&&rect.height>=44&&rect.width>=44,'Language dropdown has at least a 44px target.');
 }
+async function assertModalLanguageLayout(targetPage){
+ const boxes=await targetPage.locator('#overlayBack,#overlayTitle,#overlayLanguageMount,#overlayClose').evaluateAll(items=>items.map(item=>{const r=item.getBoundingClientRect();return {id:item.id,left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};}));
+ const ordered=['overlayBack','overlayTitle','overlayLanguageMount','overlayClose'].map(id=>boxes.find(box=>box.id===id));
+ const header=await targetPage.locator('.overlay-header').boundingBox();
+ assert(ordered.every(box=>box.width>0&&box.height>0&&box.left>=header.x-1&&box.right<=header.x+header.width+1),'Header controls remain inside the header.');
+ for(let i=1;i<ordered.length;i++)assert(ordered[i].left>=ordered[i-1].right-1,'Header controls do not overlap.');
+ assert(ordered.every(box=>box.top<ordered[0].bottom&&box.bottom>ordered[0].top),'Header controls occupy the same row.');
+ assert.equal(await targetPage.locator('#studioOverlay #languagePreference').count(),1);
+}
 async function assertHomeHero(targetPage,language){
  const expected=language==='en'?['Make It','Your Dot.']:['创造','你的Dot.'];
  assert.deepEqual(await targetPage.locator('#galleryTitle [data-home-copy]').allTextContents(),expected,'The two localized hero lines match the approved Dots direction.');
@@ -124,11 +133,18 @@ try{
  page.once('dialog',d=>d.dismiss());await page.keyboard.press('Escape');assert.equal(await page.locator('#studioOverlay').evaluate(e=>e.open),true);
  page.once('dialog',d=>d.dismiss());await page.goBack();await page.waitForFunction(h=>location.href===h,dirtyURL);check(true,'Close, Escape and Back cancellation retain dirty intent, URL and panel.');
  assert.equal(await page.locator('#detailLanguage').count(),0,'Detail has no separate language control; it follows site language.');
- // The modal intentionally makes the site header inert; exercise its change handler directly to verify localization preserves the active Draft.
+ // The same global selector moves into the modal; real clicks and keyboard selection must preserve the active Draft.
  await page.locator('.studio-editor-tab[role="tab"]').nth(1).click();
  const beforeLanguage=await page.evaluate(()=>window.__dotsQAApp.detail.getState()),beforeLanguageCanvas=await renderedCanvasSnapshot(page),beforeLanguageTab=await page.locator('.studio-editor-tab[aria-selected="true"]').getAttribute('data-editor-tab');
  for(const language of ['zh-CN','en']){
-  await page.locator('#languagePreference').evaluate((element,value)=>{element.value=value;element.dispatchEvent(new Event('change',{bubbles:true}));},language);
+  assert.equal(await page.locator('#studioOverlay #languagePreference').count(),1,'The global language selector is inside the active modal.');
+  assert.equal(await page.locator('#languagePreference').evaluate(element=>Boolean(element.closest('[inert]'))),false);
+  await page.locator('#languagePreference').click();await page.keyboard.press('Home');
+  if(language==='zh-CN')await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('Enter');
+  await assertLanguagePreference(page,language);
+  await page.locator('#languagePreference').focus();
+  assert.equal(await page.evaluate(()=>document.activeElement?.id),'languagePreference','The modal focus scope includes the selector.');
   await waitForTemplatePreview(page,`language change ${language}`);const afterLanguage=await page.evaluate(()=>window.__dotsQAApp.detail.getState());
   assert.deepEqual(afterLanguage.draft,beforeLanguage.draft,'Changing site language preserves the complete Draft, selections, and revision.');
   assert.equal(afterLanguage.id,beforeLanguage.id);assert.equal(afterLanguage.version,beforeLanguage.version);assert.equal(afterLanguage.sessionId,beforeLanguage.sessionId);assert.equal(afterLanguage.templateId,beforeLanguage.templateId);assert.equal(await page.locator('.studio-editor-tab[aria-selected="true"]').getAttribute('data-editor-tab'),beforeLanguageTab,'Language changes preserve the active adjustment category.');assert.equal(page.url(),dirtyURL);assert.equal(await page.locator('.artwork-detail__additional-direction').inputValue(),note);
@@ -138,12 +154,32 @@ try{
  check(true,'Site-language changes preserve the open Artwork, complete Draft, external text, revision, URL, and successful preview pixels.');
 
  let closeConfirmations=0;const acceptClose=d=>{closeConfirmations++;return d.accept();};page.on('dialog',acceptClose);await page.evaluate(()=>{document.querySelector('#overlayClose').click();document.querySelector('#overlayClose').click();});await page.waitForFunction(()=>!document.querySelector('#studioOverlay').open);await page.waitForTimeout(100);page.off('dialog',acceptClose);assert.equal(page.url(),galleryURL);assert.equal(closeConfirmations,1);check(true,'Double close confirms once and performs exactly one history navigation.');
+ assert.equal(await page.locator('#pageShell #languagePreference').count(),1,'Closing restores the same selector to the page header.');
+ for(const exit of ['close','escape','back','history']){
+  await page.locator(`#card-${first.id}`).click();await waitForTemplatePreview(page,`language lifecycle ${exit}`);
+  assert.equal(await page.locator('#languagePreference').count(),1);
+  assert.equal(await page.locator('#studioOverlay #languagePreference').count(),1);
+  await page.locator('#overlayBack').focus();await page.keyboard.press('Tab');
+  assert.equal(await page.evaluate(()=>document.activeElement?.id),'languagePreference','Tab from Back reaches the language selector.');
+  await page.keyboard.press('Home');await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');
+  await assertLanguagePreference(page,'zh-CN');
+  assert.equal(await page.evaluate(()=>document.activeElement?.id),'languagePreference','Changing language preserves selector focus.');
+  if(exit==='escape')await page.keyboard.press('Escape');
+  else if(exit==='history')await page.goBack();
+  else await page.locator(exit==='back'?'#overlayBack':'#overlayClose').click();
+  await page.waitForFunction(()=>!document.querySelector('#studioOverlay').open);
+  assert.equal(await page.locator('#pageShell #languagePreference').count(),1);
+  assert.equal(await page.locator('#studioOverlay #languagePreference').count(),0);
+  assert.equal(await page.evaluate(()=>document.querySelector('#pageShell').inert),false);
+  await page.locator('#languagePreference').selectOption('en');
+ }
+ check(true,'The same global selector survives repeated modal opening, close, Escape, Back and history navigation with real keyboard/select actions.');
  // Four required viewports plus the supplied 1206×1257 viewport, in both site languages.
  const layouts=[];for(const [width,height] of [[1440,900],[1206,1257],[768,1024],[390,844],[320,700]])for(const language of ['en','zh-CN']){
   await page.setViewportSize({width,height});await page.goto(origin+'/#/');await page.locator('#languagePreference').selectOption(language);await assertLanguagePreference(page,language);await page.waitForFunction(()=>{const visible=[...document.querySelectorAll('.artwork-media img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;});return visible.length>0&&visible.every(img=>img.complete&&img.naturalWidth>0);},null,{timeout:30_000});await assertHomeHero(page,language);
   const museCaption=await assertMuseCardCaption(page,language);
   await shot(`gallery-${width}-${language}`);const layout=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,columns:getComputedStyle(document.querySelector('.artwork-grid')).gridTemplateColumns.split(' ').length,buttons:[...document.querySelectorAll('button:not([hidden]),.studio-nav a')].filter(e=>e.getClientRects().length).map(e=>({text:e.textContent.trim(),h:e.getBoundingClientRect().height})),contains:[...document.querySelectorAll('.artwork-media img')].every(img=>getComputedStyle(img).objectFit==='contain'),introArtworkCount:document.querySelectorAll('.gallery-intro-art[aria-hidden="true"] img').length,guideLinks:document.querySelectorAll('.studio-nav a[data-page="guide"],#guidePortal').length}));assert.equal(layout.overflow,false);if(width===1440)assert.equal(layout.columns,6);if(width===768)assert.equal(layout.columns,3);if(width===390||width===320)assert.equal(layout.columns,2);assert(layout.buttons.every(b=>b.h>=43.9));assert(layout.contains);assert.equal(layout.introArtworkCount,1);assert.equal(layout.guideLinks,0);
-  await page.locator(`#card-${first.id}`).click();const state=await waitForTemplatePreview(page,`${width}x${height} ${language}`);await shot(`studio-${width}-${language}`);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await assertMainActions(page,{language,expectedPrompt:state.modifiedPrompt});await close();await page.waitForFunction(()=>!document.querySelector('#studioOverlay').open);layouts.push({width,height,language,...layout,museCaption});
+  await page.locator(`#card-${first.id}`).click();const state=await waitForTemplatePreview(page,`${width}x${height} ${language}`);await assertModalLanguageLayout(page);await shot(`studio-${width}-${language}`);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await assertMainActions(page,{language,expectedPrompt:state.modifiedPrompt});await close();await page.waitForFunction(()=>!document.querySelector('#studioOverlay').open);layouts.push({width,height,language,...layout,museCaption});
  }
  check(true,'Five viewport sizes × both languages preserve gallery/banner layout, expected columns, complete contains, 44px targets, compact detail actions, fixed left-aligned related cards, and zero Guide routes without overflow.');
  // Every approved Template gets a true public detail journey, a transparent original export, and a legal rendered change.

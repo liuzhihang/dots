@@ -14,7 +14,7 @@
     "dev:review": "node scripts/serve-review.mjs",
     "verify:release-safety": "node scripts/verify-repository-retention.mjs",
     "test:delivery": "node scripts/verify-lossless-browser.mjs",
-    "test:recovery": "node scripts/verify-option-recovery.mjs && node scripts/verify-editor-recovery-state.mjs"
+    "test:recovery": "node scripts/verify-option-recovery.mjs && node scripts/verify-editor-recovery-state.mjs && node scripts/verify-overlay-language-state.mjs"
   },
   "devDependencies": {
     "vite": "8.3.2"

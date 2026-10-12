@@ -28,3 +28,9 @@
 ## Migration Plan
 
 仅提交开发分支与 Draft PR，保持 change 未归档；无需数据迁移。未来维护者审阅合并后按独立发布流程上线。回退该 PR 即恢复旧控件与调度，素材身份不受影响。
+
+## Modal language access correction
+
+全局 select 位于 pageShell 时会被 showModal 与 inert 排除出编辑面板的交互范围。修复采用同一 DOM 控件搬移：overlay 在锁定背景前将其移入标题栏挂载点；关闭、原生 close、打开失败和 destroy 恢复原父节点与相邻位置。状态处理器仍唯一，不添加独立详情语言偏好。标题栏显式四列和固定行，覆盖原三列规则，手机允许标题换行。
+
+真实浏览器验收必须用用户可执行的点击、Tab 与键盘选择，不得使用 DOM 赋值/dispatchEvent 绕过模态可访问性；检查四项标题栏控件同行、不重叠和不溢出。

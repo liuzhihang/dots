@@ -26,9 +26,19 @@ export function createOverlay({
   closeButton = document.getElementById('overlayClose'),
   backButton = document.getElementById('overlayBack'),
   background = document.getElementById('pageShell'),
+  languageControl = document.getElementById('languagePreference'),
+  languageMount = document.getElementById('overlayLanguageMount'),
   onClose = () => {}
 } = {}) {
   if (!dialog || !title || !body || !closeButton) throw new TypeError('Overlay requires the existing studioOverlay dialog DOM.');
+
+  const languageHome = languageControl?.parentElement || null;
+  const languageNextSibling = languageControl?.nextSibling || null;
+  const placeLanguage = inDialog => {
+    if (!languageControl || !languageMount || !languageHome) return;
+    if (inDialog) languageMount.append(languageControl);
+    else languageHome.insertBefore(languageControl, languageNextSibling?.parentNode === languageHome ? languageNextSibling : null);
+  };
 
   let returnFocus = null;
   let returnScrollY = 0;
@@ -111,11 +121,13 @@ export function createOverlay({
     closeRequested = false;
     body.scrollTop = 0;
     body.scrollLeft = 0;
+    placeLanguage(true);
     setPageLocked(true);
     try {
       if (!dialog.open) dialog.showModal();
       openState = true;
     } catch (error) {
+      placeLanguage(false);
       setPageLocked(false);
       throw error;
     }
@@ -138,6 +150,7 @@ export function createOverlay({
       ignoredCloseEvents += 1;
       dialog.close();
     }
+    placeLanguage(false);
     setPageLocked(false);
     const focusTarget = returnFocus;
     returnFocus = null;
@@ -163,6 +176,7 @@ export function createOverlay({
     }
     if (!openState) return;
     openState = false;
+    placeLanguage(false);
     setPageLocked(false);
     if (!internalClose && !closeRequested) {
       closeRequested = true;
