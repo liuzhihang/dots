@@ -1,41 +1,55 @@
 # Dots
 
-Dots 是深色角色库与统一 CharacterStudio。查看作品、复制 Prompt、在 ChatGPT 中使用或导出图片。产品行为以 [`openspec/specs/`](openspec/specs/) 为准；设计入口见 [`DESIGN.md`](DESIGN.md)。
+**Make It Your Dot.｜创造你的 Dot.**
 
-## 本地开发
+一个深色主题的角色图库与轻量角色调整工具：浏览角色、调整已支持的外观、复制提示词，再把透明 PNG 带到自己的创作中。
 
-新克隆后先运行 `npm ci`。项目使用 OpenSpec CLI 1.14.1 的 `spec-driven` 工作流，不需服务端：
+[在线体验](https://dots.liuzhihang.chatgpt.site) · [设计说明](DESIGN.md) · [角色制作指南](design/character-authoring/README.md) · [代码许可](LICENSE) · [素材使用说明](ASSET_LICENSE.md)
 
-```sh
-npm run dev -- --host 127.0.0.1 --port 5180 --strictPort
-npm run dev:review
-npm run build
-npm test
-npm run test:browser
-npm run test:downloads
-npm run test:editing
-npm run test:delivery
-npm run test:performance
-npm run verify:release-safety
-openspec validate --specs
-```
+> Dots is a static character gallery and a bounded character-customization studio. Browse characters, adjust supported options, copy prompts, and export transparent PNGs. The project is independent and is not an official OpenAI, xAI, or Meta product.
 
-`npm run dev:review` 在 `127.0.0.1:5182/__dots_review__/` 提供本地审阅入口。候选 fixture 仅供本地 harness 审阅，不改变 Artwork 或 Template 的批准状态，也不进入公开资格。页面调试和人工交互验收优先使用 Codex 内置 Browser；项目自动化检查使用 Playwright，缺少时自动解析 Codex bundled runtime；需要时可用 `DOTS_PLAYWRIGHT_MODULE` 和 `DOTS_CHROME_PATH` 指定运行时或浏览器。更新命令以 `package.json` 的 scripts 为准。`npm test` 运行当前功能检查；需要 Git 完整历史的仓库保留验证单独运行 `npm run verify:release-safety`。
+## 产品预览
 
-## 代码与内容入口
+![Dots 首页：深色角色图库与角色卡片](docs/images/homepage.jpg)
 
-- `dist/`：应用源码与 Sites 发布树；发布闭包由 [`design/static-publish-manifest.json`](design/static-publish-manifest.json) 精确维护。
-- `openspec/specs/`：当前产品及实现合同；`openspec/changes/`：尚未完成的变更提案；已完成 change 保存在 `openspec/changes/archive/`。
-- `design/character-authoring/`：新角色制作和组件扩展流程。
-- `historical-runtime/`：精选历史源码和来源/hash 记录；完整历史文件按仓库恢复清单取回。
-- 仓库保留、QA 输出和历史恢复流程见 [`design/repository-maintenance.md`](design/repository-maintenance.md)，逐路径历史清单见 `design/repository-history.json`。
-- `.artifacts/`：本地临时构建、测试与 QA 输出；不作为发布素材。
-- `design/releases/`：精选发布摘要与当前版本入口；`design/acceptance/` 保留精选审批、来源和验收记录。更早的历史 QA 文件按 `design/repository-history.json` 从 Git 恢复，历史原文不回写。
+> 在线演示站桌面首页，采集于 2026-10-12，视口 1180 × 1000；非设计稿，角色与页面会持续更新。
 
-当前生产站点是 [Site 50 / v102](https://dots.liuzhihang.chatgpt.site)，发布与验证回执见 [无损交付记录](design/releases/20261012-lossless-delivery-v102/README.md)。详情预览和调整图层使用经逐像素校验的无损 WebP 交付，批准的 PNG 原文件保留在源码中，原图下载和调整导出继续使用 PNG。
+## 可以做什么
 
-全角色调整的批准与接入过程见 [v100 本地集成记录](design/releases/20261011-gallery-adjustments-v100/README.md)。Site 48 的包体积阻挡记录保留在 [先前发布记录](design/releases/20261011-gallery-adjustments-publication/README.md)，不代表当前生产状态。发布时先运行 `node scripts/stage-static-publish.mjs .artifacts/<新的发布目录>`，从精确交付 stage 打包，不能直接把包含 PNG 源的整个 `dist/` 上传。
+- **浏览与筛选**：按角色系列筛选，或搜索名称与特征词，在统一的 CharacterStudio 中查看详情。
+- **角色调整**：使用作品实际支持的外观、配色、五官、配饰及适用家族的服装选项；预览、Prompt 与导出对应同一成功渲染结果。
+- **透明 PNG 导出**：默认未修改时下载登记的原图；修改后导出当前静态角色。界面底色不会写进图片。
+- **提示词交接**：复制当前 Prompt，或打开 ChatGPT 后由你检查、附图并发送。额外要求只加入提示词，不直接改变本地像素。
+- **中英文界面**：支持简体中文与英文，以及响应式布局、键盘操作和减少动效设置。
 
-## 维护提示
+### 能力边界
 
-角色身份、Artwork/Asset/Template 资格及可编辑能力以主规范和当前审批记录为准；README 不维护可变作品数量。制作候选、版本/hash、工程验证和用户美术确认分开记录。Sites 发布、代码提交和 OpenSpec 归档是不同操作，分别依据本轮授权执行。
+这里提供的是已登记素材的有限调整，不是任意图像生成模型。网站不接收或分析用户上传的参考图，不自动发送 ChatGPT 消息，也不提供可直接安装的 Dot/Pet 动画包。PNG 导出、素材权利与目标平台兼容性是不同问题，详见 [素材使用说明](ASSET_LICENSE.md) 和 [目标资源规范](openspec/specs/target-resources/spec.md)。
+
+## 使用流程
+
+1. 在角色图库里选择喜欢的作品，按系列筛选，或搜索名称与特征词缩小范围。
+2. 打开详情，在支持的类别中调整外观，查看同步更新的角色预览与提示词。
+3. 导出透明 PNG；或复制 Prompt / 打开 ChatGPT，由你自行附图并继续创作。
+
+本地调整是静态、有限的模板组合。额外要求交给外部创作流程处理，不会被误当成已经应用到本地图片的效果。
+
+## 为创作保留清楚的边界
+
+- 图片、Prompt 与成功渲染状态保持一致，失败时不伪报完成。
+- 预览采用无损 WebP 交付，原图与调整结果仍以 PNG 导出。
+- 原图、调整结果、参考素材与动画/安装包分别说明，不把单张图片包装成未实现的平台能力。
+
+## 许可证与素材权利
+
+- **项目自有代码及说明文档**采用 [MIT License](LICENSE)，允许依许可条件使用、修改和分发。
+- **角色图像、图层、参考图、原型、截图、品牌标识及其他视觉素材不自动适用代码的 MIT 许可**；范围与处理原则见 [ASSET_LICENSE.md](ASSET_LICENSE.md)。第三方依赖与第三方内容继续遵守各自条款。
+- 本项目与 OpenAI、xAI、Meta 及相关角色或商标权利人无官方隶属或背书关系。工程或美术上的“approved”不代表已经取得版权、商标、肖像或商用授权。
+
+公开源码不等于所有随附素材均可自由商用。部署、再分发素材或用于商业项目之前，请核对对应文件的明确授权。
+
+## 开发与贡献
+
+想在本地运行、修改或部署？请阅读 [开发指南](DEVELOPMENT.md)，其中包含环境要求、启动、测试、目录结构、静态发布与贡献流程。
+
+更多资料：[设计说明](DESIGN.md) · [产品规范](openspec/specs/) · [角色制作指南](design/character-authoring/README.md) · [反馈问题](https://github.com/liuzhihang/dots/issues)
