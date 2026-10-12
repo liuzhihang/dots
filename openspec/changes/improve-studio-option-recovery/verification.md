@@ -30,3 +30,13 @@
 - 增加 Close/Escape/Back/history 重复开关和多视口标题栏同行、不重叠、无溢出用例。
 - 新增 Node 模拟 overlay 生命周期测试，覆盖唯一节点、焦点范围、拒绝退出、原生 close、打开抛错和 destroy；模拟测试通过，不等同真实浏览器交互验收。
 - 真实浏览器仍受同一环境限制，4.2 仍未完成；没有借测试绕过宣称模态交互已通过。
+
+## PR 审查修复：Escape 测试的原生菜单前置状态（2026-10-12）
+
+本次修复基于 `28f4659540cf86295372790aac58a0bbb22efe65`，只修改浏览器测试和本验证记录，不修改产品的 Escape 行为、运行时代码、素材、依赖或配置。
+
+- 生命周期用例保留 Back → Tab 的焦点可达检查；先按 Space 打开原生语言菜单，再通过 Home / ArrowDown / Enter 选择并确认。新增 `:open` 断言，分别确认菜单确已打开、确认后确已关闭，再执行一次 Escape 关闭 dialog；不派发模拟 change，也不以第二次 Escape 掩盖前置状态错误。
+- 独立运行 `node --check scripts/verify-studio-browser.mjs`、`node scripts/verify-overlay-language-state.mjs` 和两项文件差异的 `git diff --check`，均通过。测试原文、overlay 源码及原验证记录的 Git blob SHA 已与基线校验一致。
+- 使用已安装的 Playwright Node API 与 Chromium `144.0.7559.96` 做离线 DOM fixture 定向回归：原始按键片段在 1440×900、390×844 两个视口均复现一次 Escape 后 dialog 仍打开并等待超时；直接提取修复后的测试按键片段执行，在 1440×900、1206×1257、768×1024、390×844、320×700 五个视口分别验证 Escape / Close / Back / 原生 close，共 20 项通过。验证了键盘产生的可信 change 事件、焦点、同一语言节点恢复及无控制台错误。
+- 证据边界：本轮 fixture 使用基线原始 overlay 模块，但 DOM、样式和语言文本更新为测试夹具；没有启动完整 Dots 应用，不代表真实 Draft / Prompt / history 路由、完整布局、美术、PNG 或下载验收通过。本轮容器无法解析 GitHub，浏览器访问本地服务器还受到 `ERR_BLOCKED_BY_ADMINISTRATOR` 限制，未修改策略或使用网络绕行。
+- 完整 `npm test`、`test:browser`、`test:editing`、focused race 与 PNG 下载集成未在本轮执行；原任务 4.2 保持未勾选，PR 保持 Draft，change 未归档，不合并或部署。定向回归脚本、日志和截图作为本轮对话附件交付，不写入发布树或冻结历史。

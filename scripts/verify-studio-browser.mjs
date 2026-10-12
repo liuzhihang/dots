@@ -161,7 +161,11 @@ try{
   assert.equal(await page.locator('#studioOverlay #languagePreference').count(),1);
   await page.locator('#overlayBack').focus();await page.keyboard.press('Tab');
   assert.equal(await page.evaluate(()=>document.activeElement?.id),'languagePreference','Tab from Back reaches the language selector.');
+  // Open the native picker before Enter confirms; otherwise Enter reopens it and consumes Escape.
+  await page.keyboard.press('Space');
+  assert.equal(await page.locator('#languagePreference').evaluate(element=>element.matches(':open')),true,'Space opens the native language picker.');
   await page.keyboard.press('Home');await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');
+  assert.equal(await page.locator('#languagePreference').evaluate(element=>element.matches(':open')),false,'Language selection closes the native picker before dialog exit.');
   await assertLanguagePreference(page,'zh-CN');
   assert.equal(await page.evaluate(()=>document.activeElement?.id),'languagePreference','Changing language preserves selector focus.');
   if(exit==='escape')await page.keyboard.press('Escape');
