@@ -42,6 +42,7 @@ npm run test:browser
 
 | 命令 | 用途 |
 | --- | --- |
+| `npm run test:recovery` | 组合恢复路径与编辑器状态回归（Node 模拟，不代替浏览器和像素验收） |
 | `npm run test:downloads` | 浏览器下载与透明输出检查 |
 | `npm run test:editing` | 角色调整、Prompt 和导出一致性检查 |
 | `npm run test:delivery` | 无损传输资源的浏览器检查 |

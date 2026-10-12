@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite --config vite.config.mjs",
     "build": "node scripts/build-studio.mjs",
-    "test": "node --test scripts/browser-runtime.test.mjs && node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-reference-detail.mjs && node scripts/verify-motion.mjs && node scripts/verify-publish-inventory.mjs && node scripts/verify-router.mjs && node scripts/verify-studio-history.mjs && node scripts/verify-edit-templates.mjs && node scripts/verify-draft-renderer.mjs && node scripts/verify-preview-loader.mjs && node scripts/verify-character-extension.mjs",
+    "test": "node --test scripts/browser-runtime.test.mjs && npm run test:recovery && node scripts/verify-artwork-catalog.mjs && node scripts/verify-artwork-query.mjs && node scripts/verify-reference-detail.mjs && node scripts/verify-motion.mjs && node scripts/verify-publish-inventory.mjs && node scripts/verify-router.mjs && node scripts/verify-studio-history.mjs && node scripts/verify-edit-templates.mjs && node scripts/verify-draft-renderer.mjs && node scripts/verify-preview-loader.mjs && node scripts/verify-character-extension.mjs",
     "test:browser": "node scripts/verify-studio-browser.mjs && node scripts/verify-studio-contrast.mjs && node scripts/verify-editor-layout.mjs",
     "test:downloads": "node scripts/verify-studio-browser.mjs && node scripts/verify-transparent-output.mjs",
     "test:editing": "node scripts/verify-studio-editing.mjs",
@@ -13,7 +13,8 @@
     "qa:design": "node scripts/capture-design-comparison.mjs",
     "dev:review": "node scripts/serve-review.mjs",
     "verify:release-safety": "node scripts/verify-repository-retention.mjs",
-    "test:delivery": "node scripts/verify-lossless-browser.mjs"
+    "test:delivery": "node scripts/verify-lossless-browser.mjs",
+    "test:recovery": "node scripts/verify-option-recovery.mjs && node scripts/verify-editor-recovery-state.mjs"
   },
   "devDependencies": {
     "vite": "8.3.2"

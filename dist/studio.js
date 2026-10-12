@@ -41,7 +41,7 @@ export function bootStudio({detailOptions={}}={}) {
    $('#galleryCount').textContent=query.valid?t(language,'count',works.length):t(language,'invalidQuery');$('#galleryEmpty').hidden=works.length!==0;
  }
  function localize(){document.documentElement.lang=language;document.title=language==='en'?'Dots · Make It Your Dot.':'创造你的Dot.';for(const element of document.querySelectorAll('[data-i18n]'))element.textContent=t(language,element.dataset.i18n);for(const element of document.querySelectorAll('[data-home-copy]'))element.textContent=HOME_COPY[language][element.dataset.homeCopy];$('.studio-nav').setAttribute('aria-label',language==='en'?'Main navigation':'主导航');$('#gallerySearch').placeholder=t(language,'searchPlaceholder');$('#overlayClose').setAttribute('aria-label',t(language,'close'));
-   for(const button of [$('#languagePreference')]){button.textContent=language==='en'?'中文':'EN';button.setAttribute('aria-label',language==='en'?'切换到简体中文':'Switch to English');}
+   const languagePreference=$('#languagePreference');languagePreference.value=language;languagePreference.setAttribute('aria-label',language==='en'?'Language':'语言');
    overlay.setTitle(language==='en'?'Character Studio':'角色工作室');void detail.setLanguage(language);renderGallery(true);
  }
  function updateQuery(next){baseRoute={page:'gallery',text:next.text??baseRoute.text??'',seriesId:next.seriesId??baseRoute.seriesId??'',sort:next.sort??baseRoute.sort??'curated'};currentHash=galleryURL(baseRoute);currentState={...currentState,route:baseRoute};history.replaceState(currentState,'',historyURL(currentHash));route=baseRoute;renderGallery();}
@@ -92,7 +92,7 @@ export function bootStudio({detailOptions={}}={}) {
  document.addEventListener('click',event=>{const link=event.target.closest('a[href^="#/"]');if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(link.getAttribute('href'));});
  addEventListener('beforeunload',event=>{if(detail.hasDirty()){event.preventDefault();event.returnValue='';}});
  $('#gallerySearch').oninput=()=>updateQuery({text:$('#gallerySearch').value});$('#gallerySort').onchange=()=>updateQuery({sort:$('#gallerySort').value});$('#clearSearch').onclick=()=>{updateQuery({text:''});$('#gallerySearch').focus();};$('#clearFilters').onclick=$('[data-command="clear-filters"]').onclick=()=>updateQuery({text:'',seriesId:'',sort:'curated'});
- const toggleLanguage=()=>{language=language==='en'?'zh-CN':'en';savePreference('language',language);localize();};$('#languagePreference').onclick=toggleLanguage;
+ $('#languagePreference').onchange=event=>{const selected=event.currentTarget.value;if(!['en','zh-CN'].includes(selected)||selected===language)return;language=selected;savePreference('language',language);localize();};
  $('#browseCharacters').onclick=()=>{$('#characters').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});if(searchBreakpoint.matches)$('#gallerySearch').focus({preventScroll:true});else($('#gallerySeries .gallery-series-filter__button')||$('#artworkGrid .artwork-select'))?.focus({preventScroll:true});};
  $('.skip-link').onclick=event=>{event.preventDefault();$('#mainContent').focus();};
  localize();renderRoute();document.documentElement.dataset.catalogRevision=CATALOG_REVISION;

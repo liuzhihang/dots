@@ -167,3 +167,11 @@
 .studio-editor-option-reason{grid-column:1/-1;font-size:10px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
 .studio-editor-option[disabled]{cursor:not-allowed;opacity:1}
 @media(max-width:600px){.studio-editor-tabs{grid-auto-columns:minmax(75px,1fr)}.studio-editor-tab{min-width:75px}}
+
+/* Resource recovery is separate from each option's compatibility state. */
+.studio-editor-selection-summary{font-size:11px;line-height:1.6;margin:0 0 12px;overflow-wrap:anywhere}
+.studio-editor-option-item{min-width:0;display:flex;flex-direction:column;gap:4px}
+.studio-editor-option-item>.studio-editor-option{flex:1}
+.studio-editor-thumbnail-retry{min-height:44px;width:100%;border:1px solid #7b8498;border-radius:7px;background:#191d28;color:#e1e5ef;font:inherit;font-size:11px;cursor:pointer}
+.studio-editor-thumbnail-retry[hidden]{display:none}
+.studio-editor-thumbnail-retry:focus-visible{outline:2px solid #e0ccff;outline-offset:2px}

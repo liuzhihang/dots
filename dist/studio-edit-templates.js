@@ -635,3 +635,32 @@ export function resolveTemplateAsset(reference, assetRegistry) {
     && assetRecord.version === reference.version
     && assetRecord.purpose === reference.purpose) ?? null;
 }
+
+/** Explain a blocked selection without changing capability data or the draft. */
+export function describeTemplateSelection(template, currentOptions, field, value) {
+  const candidate = { ...currentOptions, [field]: value };
+  const validation = validateTemplateOptions(template, candidate);
+  if (validation.valid) return { kind: 'available', error: null, restore: [] };
+  const error = validation.errors[0];
+  const kind = error.code === 'unregistered-recipe' || error.code.endsWith('-separate-fit')
+    ? 'missing-combination' : 'incompatible';
+  const fields = optionFieldKeys(template).filter(key => key !== field && currentOptions[key] !== template.defaultOptions[key]);
+  // A suggestion is actionable only if every manual restoration is itself
+  // legal. Breadth-first search prefers the shortest real UI path, not merely
+  // a valid final combination behind disabled intermediate controls.
+  const queue = [{ options: { ...currentOptions }, restore: [] }];
+  const visited = new Set([JSON.stringify(fields.map(key => currentOptions[key]))]);
+  while (queue.length) {
+    const step = queue.shift();
+    for (const key of fields) {
+      if (step.options[key] === template.defaultOptions[key]) continue;
+      const restored = { ...step.options, [key]: template.defaultOptions[key] };
+      if (!validateTemplateOptions(template, restored).valid) continue;
+      const restore = [...step.restore, { field: key, value: template.defaultOptions[key] }];
+      if (validateTemplateOptions(template, { ...restored, [field]: value }).valid) return { kind, error, restore };
+      const keyOfOptions = JSON.stringify(fields.map(key => restored[key]));
+      if (!visited.has(keyOfOptions)) { visited.add(keyOfOptions); queue.push({ options: restored, restore }); }
+    }
+  }
+  return { kind, error, restore: [] };
+}

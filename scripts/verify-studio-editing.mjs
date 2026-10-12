@@ -741,7 +741,7 @@ async function runTwentyEditCycles(page) {
         }
       });
       host.append(editor.previewElement);
-      // Allow the default render and its real thumbnail consumers to share pending resource requests.
+      // Allow the default render to enter the pending state before rapid edits preempt it.
       await wait(35);
       const set = (field, value) => {
         const tabKey = tabForField[field] || field;
@@ -764,7 +764,7 @@ async function runTwentyEditCycles(page) {
       }
       await wait(0);
       const canceledConsumersAfterRapidChange = loader.getCanceledConsumers();
-      const sharedRequestsAfterRapidChange = loader.stats().pendingRequests;
+      const pendingRequestsAfterRapidChange = loader.stats().pendingRequests;
       for (let attempt = 0; attempt < 300; attempt += 1) {
         if (status?.canExport && status.snapshot?.revision === editor.getDraft().revision) break;
         await wait(10);
@@ -806,7 +806,7 @@ async function runTwentyEditCycles(page) {
         exportAccepted,
         exportCapture: exportCaptures[0],
         canceledConsumersAfterRapidChange,
-        sharedRequestsAfterRapidChange,
+        pendingRequestsAfterRapidChange,
         successfulStatuses,
         transportAbortCount,
         statsBeforeExport,
@@ -903,7 +903,7 @@ async function runTwentyEditCycles(page) {
 function assertCycleEvidence(cycleReport) {
   for (const cycle of cycleReport.cycles) {
     assert.ok(cycle.canceledConsumersAfterRapidChange > 0, `Cycle ${cycle.index} canceled stale renderer consumers after rapid Draft edits (observed ${cycle.canceledConsumersAfterRapidChange}).`);
-    assert.ok(cycle.sharedRequestsAfterRapidChange > 0, `Cycle ${cycle.index} retained pending layer fetches while thumbnails still owned shared consumers (observed ${cycle.sharedRequestsAfterRapidChange}).`);
+    assert.ok(cycle.pendingRequestsAfterRapidChange > 0, `Cycle ${cycle.index} has pending work for the current render after optional thumbnail work is canceled (observed ${cycle.pendingRequestsAfterRapidChange}).`);
     assert.ok(cycle.successfulStatuses.every(status => status.snapshotRevision === status.draftRevision), `Cycle ${cycle.index} never published a stale successful revision.`);
   }
   const pendingDestroy = cycleReport.pendingDestroy;
@@ -1044,7 +1044,7 @@ async function runFocusedEditorRaces(page) {
       return { button, visual };
     };
     const waitForThumbnailIdle = async state => waitFor(() => {
-      const visuals = [...state.editor.element.querySelectorAll('.studio-editor-option-visual')];
+      const visuals = [...state.editor.element.querySelectorAll('.studio-editor-category:not([hidden]) .studio-editor-option-visual')];
       return visuals.every(visual => !['loading', 'waiting-for-manifest'].includes(visual.dataset.thumbnailState));
     }, `${state.editor.getDraft().templateId} option thumbnails to settle before teardown`);
 
@@ -1172,24 +1172,27 @@ async function runFocusedEditorRaces(page) {
     const thumbnailRetry = newEditor({ name: 'thumbnail-retry', fetchImpl: failThumbnailOnce, sessionId: 'race-thumbnail-retry' });
     await waitReady(thumbnailRetry);
     const { button: alternateButton, visual: alternateVisual } = thumbnailOption(thumbnailRetry.editor);
-    await waitFor(() => alternateButton?.disabled === true
-      && alternateButton.dataset.unavailableReason === 'thumbnail-load-failed'
+    const imageRetryButton = alternateButton.parentElement.querySelector('[data-action="retry-thumbnail"]');
+    await waitFor(() => alternateButton?.disabled === false
+      && alternateButton.dataset.thumbnailError === 'true'
       && alternateVisual?.dataset.thumbnailState === 'error'
-      && !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
-    'thumbnail failure to disable its option and show Retry');
+      && !imageRetryButton.hidden,
+    'thumbnail failure to preserve its legal option and show item Retry');
     const failedThumbnail = {
       disabled: alternateButton.disabled,
-      reason: alternateButton.dataset.unavailableReason,
-      retryVisible: !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
+      reason: alternateButton.dataset.thumbnailError,
+      retryVisible: !imageRetryButton.hidden,
       failedFetchCount: thumbnailFetches,
       assetId: thumbnailAsset.id,
       assetPath: thumbnailAsset.path
     };
-    thumbnailRetry.editor.element.querySelector('[data-action="retry"]').click();
+    const beforeThumbnailRetry = thumbnailRetry.editor.getSnapshot();
+    imageRetryButton.click();
     await waitFor(() => alternateVisual.dataset.thumbnailState === 'ready'
       && alternateVisual.querySelector('canvas.studio-editor-option-thumbnail')
       && alternateButton.disabled === false,
     'failed option thumbnail retry to recover a selectable canvas');
+    if (thumbnailRetry.editor.getSnapshot() !== beforeThumbnailRetry && thumbnailRetry.editor.getSnapshot()?.revision !== beforeThumbnailRetry?.revision) throw new Error('Thumbnail retry changed the draft revision.');
     chooseVisualOption(thumbnailRetry.editor, raceField, alternateOption);
     await waitReady(thumbnailRetry, { [raceField]: alternateOption });
     const recoveredThumbnailCanvas = alternateVisual.querySelector('canvas.studio-editor-option-thumbnail');

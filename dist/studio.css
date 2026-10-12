@@ -6,6 +6,9 @@
 #browseCharacters img{transform:rotate(-90deg)}
 /* Input boundaries remain identifiable on the dark canvas, including without blur. */
 .search-field,.sort-field select{border-color:#626b80}
+/* The native language picker shows the current language and keeps OS keyboard behavior. */
+select.preference-button{min-height:44px;min-width:88px;padding:0 10px;color:var(--text);background:var(--surface);border-color:#626b80;color-scheme:dark}
+select.preference-button option{color:var(--text);background:var(--surface)}
 .gallery-series-filter__button[aria-pressed=true]{border-color:#8a6aae}
 .search-field:focus-within{border-color:var(--focus)}
 
