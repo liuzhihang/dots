@@ -5,18 +5,18 @@ import crypto from 'node:crypto';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS,PREVIEW_ARTWORKS,getAsset,validateArtwork,CATALOG_REVISION} from '../dist/studio-artwork-catalog.js?v=110';
-import {GALLERY_LOOKS,getDefaultLook,getGalleryLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
-import {GALLERY_FIGURES,queryGalleryFigures,getFigureFields,getFigureForLook} from '../dist/studio-gallery-figures.js?v=110';
-import {TEMPLATE_REGISTRY,enumerateValidConfigurations,getTemplateOptionFields,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=110';
+import {ARTWORKS,PREVIEW_ARTWORKS,getAsset,validateArtwork,CATALOG_REVISION} from '../dist/studio-artwork-catalog.js?v=111';
+import {GALLERY_LOOKS,getDefaultLook,getGalleryLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=111';
+import {GALLERY_FIGURES,queryGalleryFigures,getFigureFields,getFigureForLook} from '../dist/studio-gallery-figures.js?v=111';
+import {TEMPLATE_REGISTRY,enumerateValidConfigurations,getTemplateOptionFields,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=111';
 const output=resolveEvidenceDirectory('.artifacts/shape-merge-20261013/public-browser');await fs.mkdir(output,{recursive:true});
 const staticRoot=path.resolve(process.env.DOTS_QA_DIST || 'dist');
 const vite=await createServer({configFile:path.resolve('vite.config.mjs'),root:staticRoot,server:{host:'127.0.0.1',port:0,strictPort:true,hmr:false}});await vite.listen();const origin=`http://127.0.0.1:${vite.httpServer.address().port}`;
 const browser=await launchBrowser({headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true,permissions:['clipboard-read','clipboard-write']});
-const appHtml=(await fs.readFile(path.join(staticRoot,'index.html'),'utf8')).replace('data-cache="110"','data-cache="110" data-studio-boot="manual"').replace('<head>',`<head><base href="${origin}/">`).replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
-await context.route('**/*',route=>{const url=new URL(route.request().url());if(url.origin===origin&&['/','/index.html'].includes(url.pathname))return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:appHtml});return route.continue();});
-const page=await context.newPage();page.setDefaultTimeout(10000);const errors=[],checks=[],downloads=[],screenshots=[],network=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>network.push(r.url()));
+const appHtml=(await fs.readFile(path.join(staticRoot,'index.html'),'utf8')).replace('data-cache="111"','data-cache="111" data-studio-boot="manual"').replace('<head>',`<head><base href="${origin}/">`).replace('<script type="module" src="./studio.js?v=111"></script>','<script type="module">import {bootStudio} from "/studio.js?v=111";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
+const interceptedGitHub=[];await context.route('**/*',route=>{const url=new URL(route.request().url());if(url.origin===origin&&['/','/index.html'].includes(url.pathname))return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:appHtml});if(url.hostname==='github.com'){interceptedGitHub.push(route.request().url());return route.fulfill({status:200,contentType:'text/html; charset=utf-8',body:'<!doctype html><html lang="en"><title>Mock GitHub destination</title><body>QA-only GitHub navigation target.</body></html>'});}return route.continue();});
+const page=await context.newPage();page.setDefaultTimeout(10000);const errors=[],checks=[],downloads=[],screenshots=[],network=[],communityNavigations=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>network.push(r.url()));
 const check=(value,message)=>{assert.ok(value,message);checks.push(message);};const hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const eligibleArtworks=ARTWORKS.filter(validateArtwork);
 const templateCases=TEMPLATE_REGISTRY.map(template=>{const artwork=eligibleArtworks.find(item=>item.id===template.artworkBinding.artworkId&&item.version===template.artworkBinding.artworkVersion);assert(artwork,`${template.id} has an exact eligible Artwork binding.`);assert.equal(getTemplateForArtwork(artwork)?.id,template.id,`${template.id} is publicly eligible.`);return{template,artwork};});
@@ -55,7 +55,8 @@ async function assertLanguagePreference(targetPage,language){
  assert.equal(await selector.locator('option:checked').textContent(),language==='en'?'English':'中文','The visible label identifies the current language.');
  assert.equal(await selector.getAttribute('aria-label'),language==='en'?'Language':'语言');
  assert.equal(await targetPage.locator('html').getAttribute('lang'),language);
- const rect=await selector.boundingBox();assert(rect&&rect.height>=44&&rect.width>=44,'Language dropdown has at least a 44px target.');
+ const minimum=await selector.evaluate(element=>element.closest('#studioOverlay[open]')&&matchMedia('(pointer:fine)').matches?36:44);
+ const rect=await selector.boundingBox();assert(rect&&rect.height>=minimum&&rect.width>=minimum,`Language dropdown has at least a ${minimum}px target for its pointer and container.`);
 }
 async function assertModalLanguageLayout(targetPage){
  const boxes=await targetPage.locator('#overlayBack,#overlayTitle,#overlayLanguageMount,#overlayClose').evaluateAll(items=>items.map(item=>{const r=item.getBoundingClientRect();return {id:item.id,left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height};}));
@@ -77,6 +78,96 @@ async function assertHomeHero(targetPage,language){
  const image=art.locator('img');assert.equal(await image.count(),1,'The banner is a single decorative image, not the retired three-poster composition.');
  assert.match(await image.getAttribute('src'),/dots-gallery-hero-ensemble-v99\.webp$/,'The homepage uses the approved, versioned multi-character banner asset.');
  await targetPage.waitForFunction(()=>{const img=document.querySelector('.gallery-intro-art img');return Boolean(img&&img.complete&&img.naturalWidth>0);},null,{timeout:20_000});
+}
+const COMMUNITY_URLS={headerGitHub:'https://github.com/liuzhihang/dots',footerGitHub:'https://github.com/liuzhihang/dots',headerFeedback:'https://github.com/liuzhihang/dots/issues/new/choose',footerFeedback:'https://github.com/liuzhihang/dots/issues/new/choose'};
+const expectedFeedbackLabel=(language,width)=>language==='en'?'Feedback':width<=600?'反馈':'反馈建议';
+async function assertCommunityLinks(targetPage,{language,width,label='community links'}={}){
+ assert.equal(await targetPage.locator('html').getAttribute('lang'),language,`${label}: links follow the active site language.`);
+ assert.equal(await targetPage.locator('.studio-nav a').count(),1,`${label}: Characters remains the only internal navigation link.`);
+ assert.equal(await targetPage.locator('.community-links').count(),1,`${label}: header links use one external community group.`);
+ assert.equal(await targetPage.locator('.footer-community-links').count(),1,`${label}: footer links use one external community group.`);
+ const feedbackLabel=expectedFeedbackLabel(language,width);
+ for(const [id,href] of Object.entries(COMMUNITY_URLS)){
+  const link=targetPage.locator(`#${id}`);assert.equal(await link.count(),1,`${label}: #${id} exists exactly once.`);
+  assert.equal(await link.getAttribute('href'),href,`${label}: #${id} targets its fixed HTTPS destination.`);
+  assert.equal(await link.getAttribute('target'),'_blank',`${label}: #${id} opens a new tab.`);
+  const rel=(await link.getAttribute('rel')||'').split(/\s+/);assert(rel.includes('noopener')&&rel.includes('noreferrer'),`${label}: #${id} isolates the new tab from its opener.`);
+  assert((await link.getAttribute('class')||'').split(/\s+/).includes('community-link'),`${label}: #${id} shares the community-link target style.`);
+  assert.equal(await link.evaluate(element=>element.matches('[data-i18n]')||Boolean(element.querySelector('[data-i18n]'))),true,`${label}: #${id} label participates in existing localization.`);
+  const descriptionIds=(await link.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean);
+  const description=await link.evaluate((element,ids)=>ids.map(id=>document.getElementById(id)?.textContent||'').join(' '),descriptionIds);
+  if(id.endsWith('Feedback'))assert(descriptionIds.includes('feedbackNotice')&&description.length>0,`${label}: #${id} describes the public GitHub submission notice.`);
+  const newTabHint=await link.locator('[data-i18n="opensNewTab"]').textContent();
+  assert(language==='en'?/new tab/i.test(newTabHint||''):/新标签页/.test(newTabHint||''),`${label}: #${id} announces that it opens in a new tab.`);
+  const size=await link.evaluate(element=>{const rect=element.getBoundingClientRect();return{width:rect.width,height:rect.height,visible:Boolean(rect.width&&rect.height&&getComputedStyle(element).visibility!=='hidden')};});
+  assert.equal(size.visible,await link.isVisible(),`${label}: #${id} visibility agrees with its layout box.`);
+  if(size.visible)assert(size.width>=44&&size.height>=44,`${label}: #${id} has a 44×44px target: ${JSON.stringify(size)}`);
+ }
+ for(const id of ['headerGitHub','headerFeedback','footerGitHub','footerFeedback']){
+  const link=targetPage.locator(`#${id}`);
+  assert((await link.innerText()).trim().length>0,`${label}: #${id} has a visible text label.`);
+ }
+ assert.equal(await targetPage.locator('#headerGitHub').isVisible(),width>1100,`${label}: header GitHub follows the 1100px breakpoint.`);
+ assert.equal(await targetPage.locator('#headerFeedback').isVisible(),true,`${label}: header feedback remains visible at every width.`);
+ const longLabel=targetPage.locator('#headerFeedback .feedback-label-long, #headerFeedback #feedback-label-long');
+ const shortLabel=targetPage.locator('#headerFeedback .feedback-label-short, #headerFeedback #feedback-label-short');
+ assert.equal(await longLabel.count(),1,`${label}: header feedback includes a complete label span.`);
+ assert.equal(await shortLabel.count(),1,`${label}: header feedback includes a compact label span.`);
+ assert.equal(await longLabel.isVisible(),width>600,`${label}: complete feedback label follows the 600px breakpoint.`);
+ assert.equal(await shortLabel.isVisible(),width<=600,`${label}: compact feedback label follows the 600px breakpoint.`);
+ assert.equal((await (width>600?longLabel:shortLabel).innerText()).trim(),feedbackLabel,`${label}: the visible feedback label is localized and complete.`);
+ const expectedNotice=language==='en'?'Submit on GitHub. Sign-in required; submissions are public.':'通过 GitHub 提交，需登录；内容公开。';
+ assert.equal((await targetPage.locator('#feedbackNotice').innerText()).trim(),expectedNotice,`${label}: the visible footer notice is localized.`);
+ assert.equal(await targetPage.locator('#feedbackNotice').getAttribute('data-i18n')!==null,true,`${label}: the footer notice uses existing localization.`);
+ const layout=await targetPage.evaluate(()=>{
+  const rect=element=>{if(!element)return null;const box=element.getBoundingClientRect();return{left:box.left,right:box.right,top:box.top,bottom:box.bottom,width:box.width,height:box.height,visible:Boolean(box.width&&box.height&&getComputedStyle(element).display!=='none'&&getComputedStyle(element).visibility!=='hidden')};};
+  const search=document.querySelector('#topbarSearchMount'),community=document.querySelector('.community-links'),language=document.querySelector('#languagePreference'),nav=document.querySelector('.studio-nav'),brand=document.querySelector('.brand'),footer=document.querySelector('.site-footer'),topbar=document.querySelector('.topbar');
+  return{overflow:document.documentElement.scrollWidth>innerWidth,topbar:rect(topbar),search:rect(search),community:rect(community),language:rect(language),nav:rect(nav),brand:rect(brand),brandImage:rect(brand?.querySelector('img')),brandWordmark:rect(brand?.querySelector('span')),footer:rect(footer),footerCommunity:rect(document.querySelector('.footer-community-links')),notice:rect(document.querySelector('#feedbackNotice'))};
+ });
+ assert.equal(layout.overflow,false,`${label}: the page has no horizontal overflow.`);
+ if(layout.search?.visible&&layout.community?.visible){const intersects=(a,b)=>a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;assert.equal(intersects(layout.search,layout.community),false,`${label}: centered search does not overlap community links.`);assert.equal(intersects(layout.search,layout.language),false,`${label}: centered search does not overlap language control.`);assert.equal(intersects(layout.search,layout.nav),false,`${label}: centered search does not overlap Characters.`);}
+ if(width<=600){
+  const groups=[['brand',layout.brand],['Characters',layout.nav],['feedback',layout.community],['language',layout.language]];
+  assert(Math.abs(layout.topbar.height-60)<=1,`${label}: the compact header remains 60px tall: ${JSON.stringify(layout.topbar)}`);
+  assert.equal(layout.brandImage.visible,false,`${label}: the compact header hides the brand image and retains the wordmark.`);
+  assert(layout.brandWordmark.visible,`${label}: the Dots wordmark remains visible.`);
+  assert(layout.brand.width>=44&&layout.brand.height>=44,`${label}: the Dots wordmark keeps a 44×44px link target: ${JSON.stringify(layout.brand)}`);
+  assert(groups.every(([,box])=>box?.visible),`${label}: brand, Characters, feedback, and language all remain visible in the compact header.`);
+  assert(groups.every(([,box])=>Math.abs((box.top+box.bottom)/2-(layout.brand.top+layout.brand.bottom)/2)<=1),`${label}: brand, Characters, feedback, and language share one row.`);
+  for(let i=1;i<groups.length;i++)assert(groups[i][1].left>=groups[i-1][1].right-1,`${label}: ${groups[i-1][0]} precedes ${groups[i][0]} without overlap: ${JSON.stringify(groups.map(([name,box])=>({name,left:box.left,right:box.right,top:box.top,bottom:box.bottom})))}`);
+  assert(layout.nav.width>=44&&layout.nav.height>=44,`${label}: Characters keeps a 44×44px target: ${JSON.stringify(layout.nav)}`);
+ }
+ const priorScroll=await targetPage.evaluate(()=>({x:scrollX,y:scrollY}));
+ await targetPage.locator('#feedbackNotice').scrollIntoViewIfNeeded();
+ const footerLinks=await targetPage.locator('.footer-community-links .community-link').evaluateAll(elements=>elements.map(element=>{const box=element.getBoundingClientRect();return{width:box.width,height:box.height,right:box.right,viewportWidth:innerWidth};}));
+ assert.equal(footerLinks.length,2,`${label}: the footer has both feedback destinations.`);
+ assert(footerLinks.every(link=>link.width>=44&&link.height>=44&&link.right<=link.viewportWidth+1),`${label}: both footer links retain 44px targets within the viewport: ${JSON.stringify(footerLinks)}`);
+ await targetPage.evaluate(({x,y})=>window.scrollTo(x,y),priorScroll);
+ await targetPage.waitForFunction(({x,y})=>Math.abs(scrollX-x)<2&&Math.abs(scrollY-y)<2,priorScroll);
+ return layout;
+}
+async function assertExternalOpenKeepsGallery(targetPage,{linkId,expectedUrl,keyboard=false,label}){
+ await targetPage.locator(`#${linkId}`).focus();
+ const focusedY=await targetPage.evaluate(()=>scrollY);await waitForStableScroll(targetPage,focusedY);
+ const before=await targetPage.evaluate(()=>({url:location.href,historyLength:history.length,historyState:JSON.stringify(history.state),search:document.querySelector('#gallerySearch')?.value||'',sort:document.querySelector('#gallerySort')?.value||'',series:[...document.querySelectorAll('#gallerySeries [data-series-id][aria-pressed="true"]')].map(button=>button.dataset.seriesId),scrollX:scrollX,scrollY:scrollY,popstate:window.__communityPopstate||0,hashchange:window.__communityHashchange||0}));
+ if(label.includes('footer'))assert(before.scrollY>0,`${label}: the preserved Gallery state includes a nonzero scroll position.`);else if(label.includes('header'))assert(before.scrollY<=1,`${label}: the header case starts at the stable top position.`);
+ const popupPromise=context.waitForEvent('page');
+ if(keyboard)await targetPage.keyboard.press('Enter');else await targetPage.locator(`#${linkId}`).click();
+ const popup=await popupPromise;await popup.waitForLoadState('domcontentloaded');
+ assert.equal(popup.url(),expectedUrl,`${label}: the new tab visits the exact fixed URL.`);
+ await popup.close();await targetPage.waitForTimeout(75);await waitForStableScroll(targetPage,before.scrollY);
+ const after=await targetPage.evaluate(()=>({url:location.href,historyLength:history.length,historyState:JSON.stringify(history.state),search:document.querySelector('#gallerySearch')?.value||'',sort:document.querySelector('#gallerySort')?.value||'',series:[...document.querySelectorAll('#gallerySeries [data-series-id][aria-pressed="true"]')].map(button=>button.dataset.seriesId),scrollX:scrollX,scrollY:scrollY,popstate:window.__communityPopstate||0,hashchange:window.__communityHashchange||0}));
+ assert.deepEqual(after,before,`${label}: opening the external link leaves the original URL, query, sort, scroll and history unchanged.`);
+ return{before,openedUrl:popup.url()};
+}
+async function waitForStableScroll(targetPage,expectedY){
+ await targetPage.waitForFunction(target=>Math.abs(window.scrollY-target)<=1,expectedY,{timeout:5_000});
+ const samples=await targetPage.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>{const first=scrollY;requestAnimationFrame(()=>resolve([first,scrollY]));})));
+ assert(Math.abs(samples[0]-expectedY)<=1&&Math.abs(samples[1]-samples[0])<=0.5,`Scroll position is stable at ${expectedY}px: ${JSON.stringify(samples)}`);
+}
+async function scrollToStablePosition(targetPage,requestedY){
+ const target=await targetPage.evaluate(value=>{document.documentElement.style.scrollBehavior='auto';const max=Math.max(0,document.documentElement.scrollHeight-innerHeight),position=Math.max(0,Math.min(max,value));window.scrollTo({left:0,top:position,behavior:'auto'});return position;},requestedY);
+ await waitForStableScroll(targetPage,target);return target;
 }
 async function assertMuseCardCaption(targetPage,language){
  const artwork=ARTWORKS.find(item=>item.id==='muse-rose-flowers');
@@ -138,6 +229,17 @@ try{
  await assertLanguagePreference(page,'zh-CN');
  assert.equal(await page.evaluate(()=>localStorage.getItem('dots-v99-language')),'zh-CN');await page.reload();await assertLanguagePreference(page,'zh-CN');
  await page.locator('#languagePreference').selectOption('en');await assertLanguagePreference(page,'en');check(true,'The native language dropdown updates the site language and restores the saved preference after reload.');
+ await assertCommunityLinks(page,{language:'en',width:1440,label:'1440px English home'});check(true,'English desktop GitHub and feedback links have fixed external targets, localized screen-reader descriptions, and 44px targets.');
+ const originalScrollBehavior=await page.evaluate(()=>document.documentElement.style.scrollBehavior);await page.evaluate(()=>{document.documentElement.style.scrollBehavior='auto';window.__communityPopstate=0;window.__communityHashchange=0;window.addEventListener('popstate',()=>window.__communityPopstate++);window.addEventListener('hashchange',()=>window.__communityHashchange++);});
+ await page.locator('#gallerySearch').fill('dot');await page.locator('#gallerySort').selectOption('name');assert(await page.locator('.artwork-card').count()>0,'The external-link journey has a nonempty filtered Gallery.');await scrollToStablePosition(page,0);
+ await page.locator('#headerGitHub').focus();await waitForStableScroll(page,0);await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement?.id),'headerFeedback','Tab moves from GitHub to the feedback link in visual order.');await waitForStableScroll(page,0);const feedbackFocus=await page.locator('#headerFeedback').evaluate(element=>({visible:element.matches(':focus-visible'),outline:getComputedStyle(element).outlineStyle,width:parseFloat(getComputedStyle(element).outlineWidth)}));assert(feedbackFocus.visible&&feedbackFocus.outline!=='none'&&feedbackFocus.width>=1.5,`Keyboard focus is visible on header feedback: ${JSON.stringify(feedbackFocus)}`);
+ communityNavigations.push(await assertExternalOpenKeepsGallery(page,{linkId:'headerFeedback',expectedUrl:COMMUNITY_URLS.headerFeedback,keyboard:true,label:'header feedback keyboard activation'}));
+ communityNavigations.push(await assertExternalOpenKeepsGallery(page,{linkId:'headerGitHub',expectedUrl:COMMUNITY_URLS.headerGitHub,keyboard:true,label:'header GitHub keyboard activation'}));
+ const footerScrollTarget=await page.locator('#footerGitHub').evaluate(element=>Math.max(0,element.getBoundingClientRect().top+scrollY-8));const footerScrollY=await scrollToStablePosition(page,footerScrollTarget);await page.locator('#footerGitHub').focus();await waitForStableScroll(page,footerScrollY);await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement?.id),'footerFeedback','Tab moves from footer GitHub to footer feedback.');await waitForStableScroll(page,footerScrollY);
+ communityNavigations.push(await assertExternalOpenKeepsGallery(page,{linkId:'footerFeedback',expectedUrl:COMMUNITY_URLS.footerFeedback,keyboard:true,label:'footer feedback keyboard activation'}));
+ assert(interceptedGitHub.includes(COMMUNITY_URLS.headerFeedback)&&interceptedGitHub.includes(COMMUNITY_URLS.headerGitHub)&&interceptedGitHub.includes(COMMUNITY_URLS.footerFeedback),`The browser opened both exact GitHub destinations in isolated new tabs: ${JSON.stringify(interceptedGitHub)}`);
+ check(true,'Header/footer feedback and repository links open exact GitHub URLs in new tabs via keyboard; filtered query, sort, scroll, URL and history remain unchanged.');
+ await page.locator('#clearFilters').click();await scrollToStablePosition(page,0);await page.evaluate(value=>document.documentElement.style.scrollBehavior=value,originalScrollBehavior);
  const browse=page.locator('#browseCharacters');const browseText=(await browse.innerText()).trim();const browseIcon=await browse.locator('img').evaluate(image=>{const icon=image.getBoundingClientRect(),label=image.parentElement.querySelector('span').getBoundingClientRect();return{alt:image.alt,left:icon.left,right:icon.right,top:icon.top,bottom:icon.bottom,labelRight:label.right,labelTop:label.top,labelBottom:label.bottom};});assert.equal(browseIcon.alt,'');assert(browseIcon.left>=browseIcon.labelRight-1&&browseIcon.top>=browseIcon.labelTop-1&&browseIcon.bottom<=browseIcon.labelBottom+1,`Browse icon follows and aligns with its label: ${JSON.stringify(browseIcon)}`);await browse.click();assert.equal(await page.evaluate(()=>document.activeElement?.matches('#gallerySearch,#gallerySeries .gallery-series-filter__button')),true);check(true,`Browse is the only homepage CTA and moves focus to the character library (${browseText}).`);
  await page.locator('#gallerySearch').fill('blue dots');assert.equal(await page.locator('.artwork-card').count(),queryGalleryFigures({text:'blue dots',language:'en'}).length);
  await page.locator('[data-series-id="grok"]').click();assert.equal(await page.locator('.artwork-card').count(),0);await page.locator('#clearSearch').click();assert.equal(await page.locator('.artwork-card').count(),queryGalleryFigures({seriesId:'grok',language:'en'}).length);
@@ -145,6 +247,7 @@ try{
  await page.evaluate(()=>location.hash='#/?series=unknown');await page.locator('#galleryEmpty').waitFor();assert.equal(await page.locator('.artwork-card').count(),0);await page.locator('[data-command="clear-filters"]').click();
  // Source route, DOM identity, focus, editing actions, and history restoration.
  await page.locator(`[data-series-id="${firstFigure.seriesId}"]`).click();await page.locator('#gallerySort').selectOption('name');const galleryURL=page.url(),card=page.locator(`#card-${firstFigure.id}`);await card.scrollIntoViewIfNeeded();await page.evaluate(id=>{window.savedGrid=document.querySelector('#artworkGrid');window.savedCard=document.querySelector('#card-'+id);},firstFigure.id);await card.click();await page.locator('.studio-actions [data-action="copy-prompt"]').waitFor();
+ assert.equal(await page.locator('.community-link').count(),4,'The two header/footer links remain outside the modal.');assert.equal(await page.locator('.community-link').evaluateAll(links=>links.every(link=>Boolean(link.closest('#pageShell')?.inert))),true,'Both header and footer community links are inert with the modal background.');assert.equal(await page.locator('#studioOverlay .community-link').count(),0,'External links are not copied into the modal or its focus scope.');
  assert.equal(new URL(page.url()).hash,firstFigureRoute,'Opening a Figure card uses the versioned Figure route.');
  assert.equal(await page.evaluate(id=>document.querySelector('#artworkGrid')===savedGrid&&document.querySelector('#card-'+id)===savedCard,firstFigure.id),true);check(true,'Opening a Figure preserves the same gallery and invoking card DOM.');
  const firstState=await waitForTemplatePreview(page,first.id),firstSnapshot=await renderedCanvasSnapshot(page);assert.equal(firstState.templateId,firstCase.template.id);assert.equal(firstState.lookId,firstFigure.defaultLookId,'The Figure opens its registered default Look.');assert(firstSnapshot.transparentPixels>0&&firstSnapshot.visiblePixels>0,'The editable Dots preview keeps visible pixels on a transparent canvas.');const firstLayout=await assertMainActions(page,{language:'en',expectedPrompt:firstState.modifiedPrompt,verifyOpen:true});
@@ -200,12 +303,14 @@ try{
  check(true,'The same global selector remains Tab-focusable across repeated modal lifecycles; dirty close, Escape, overlay Back and browser Back return to Gallery without prompting, and each reopen starts with default state.');
  // Four required viewports plus the supplied 1206×1257 viewport, in both site languages.
  const layouts=[];for(const [width,height] of [[1440,900],[1206,1257],[768,1024],[390,844],[320,700]])for(const language of ['en','zh-CN']){
-  await page.setViewportSize({width,height});await page.goto(origin+'/#/');await page.locator('#languagePreference').selectOption(language);await assertLanguagePreference(page,language);await page.waitForFunction(()=>{const visible=[...document.querySelectorAll('.artwork-media img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;});return visible.length>0&&visible.every(img=>img.complete&&img.naturalWidth>0);},null,{timeout:30_000});await assertHomeHero(page,language);
+  await page.setViewportSize({width,height});await page.goto(origin+'/#/');await page.locator('#languagePreference').selectOption(language);await assertLanguagePreference(page,language);await assertCommunityLinks(page,{language,width,label:`${width}px ${language}`});await page.waitForFunction(()=>{const visible=[...document.querySelectorAll('.artwork-media img')].filter(img=>{const r=img.getBoundingClientRect();return r.bottom>0&&r.top<innerHeight;});return visible.length>0&&visible.every(img=>img.complete&&img.naturalWidth>0);},null,{timeout:30_000});await assertHomeHero(page,language);
   const museCaption=await assertMuseCardCaption(page,language);
   await shot(`gallery-${width}-${language}`);const layout=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,columns:getComputedStyle(document.querySelector('.artwork-grid')).gridTemplateColumns.split(' ').length,buttons:[...document.querySelectorAll('button:not([hidden]),.studio-nav a')].filter(e=>e.getClientRects().length).map(e=>({text:e.textContent.trim(),h:e.getBoundingClientRect().height})),contains:[...document.querySelectorAll('.artwork-media img')].every(img=>getComputedStyle(img).objectFit==='contain'),introArtworkCount:document.querySelectorAll('.gallery-intro-art[aria-hidden="true"] img').length,guideLinks:document.querySelectorAll('.studio-nav a[data-page="guide"],#guidePortal').length}));assert.equal(layout.overflow,false);if(width===1440)assert.equal(layout.columns,6);if(width===768)assert.equal(layout.columns,3);if(width===390||width===320)assert.equal(layout.columns,2);assert(layout.buttons.every(b=>b.h>=43.9));assert(layout.contains);assert.equal(layout.introArtworkCount,1);assert.equal(layout.guideLinks,0);
   await page.locator(`#card-${firstFigure.id}`).click();const state=await waitForTemplatePreview(page,`${width}x${height} ${language}`);await assertModalLanguageLayout(page);await shot(`studio-${width}-${language}`);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await assertMainActions(page,{language,expectedPrompt:state.modifiedPrompt});await close();await page.waitForFunction(()=>!document.querySelector('#studioOverlay').open);layouts.push({width,height,language,...layout,museCaption});
  }
  check(true,'Five viewport sizes × both languages preserve gallery/banner layout, expected columns, complete contains, 44px targets, compact detail actions, fixed left-aligned related cards, and zero Guide routes without overflow.');
+ for(const width of [1100,1101,600,601,350,351])for(const language of ['en','zh-CN']){await page.setViewportSize({width,height:844});await page.goto(origin+'/#/');await page.locator('#languagePreference').selectOption(language);await assertLanguagePreference(page,language);await assertCommunityLinks(page,{language,width,label:`breakpoint ${width}px ${language}`});}
+ check(true,'The 1100/1101, 600/601 and 350/351 breakpoints keep GitHub visibility, complete/compact feedback labels, localized footer text, nonoverlapping controls and 44px targets in both languages.');
  // Every approved Template gets a true public detail journey, a transparent original export, and a legal rendered change.
  await page.setViewportSize({width:1440,height:900});for(const {template,artwork} of templateCases){
   // Isolate each role's downloads from Chromium's per-frame rapid-download limiter.
@@ -223,5 +328,5 @@ try{
  assert.equal(await page.evaluate(()=>localStorage.getItem('dots-language')),'legacy-value');assert.equal(await page.evaluate(()=>localStorage.getItem('dot-studio-draft')),'keep-this-old-data');check(true,'Reduced motion works and old storage is neither interpreted nor deleted.');
  // Unknown and retired URLs are not aliases.
  for(const hashRoute of ['#/home','#/gallery','#/random','#/workspace','#/artwork/unknown?v=v1',`#/artwork/${first.id}?v=wrong`,`#/artwork/${first.id}?v=${first.version}&mode=edit`,'#/figure/unknown?v=v1',`#/figure/${firstFigure.id}?v=wrong`]){await page.goto(origin+'/'+hashRoute);await page.locator('#notFoundPortal').waitFor();}check(true,'Unknown Figure and legacy Artwork versions, retired routes and removed mode query resolve to recoverable not-found.');
- assert.deepEqual(errors,[]);const recipeCount=TEMPLATE_REGISTRY.reduce((sum,template)=>sum+enumerateValidConfigurations(template).length,0),familyCounts=Object.fromEntries([...new Set(TEMPLATE_REGISTRY.map(template=>template.family))].map(family=>[family,TEMPLATE_REGISTRY.filter(template=>template.family===family).length]));const report={revision:103,catalogRevision:CATALOG_REVISION,environment:{browser:browser.version(),platform:process.platform,physicalDevice:false,hosting:'local-only'},catalog:{figureCount:GALLERY_FIGURES.length,registeredLookCount:GALLERY_LOOKS.length,figureLookMembershipCount:figureMemberIds.length,eligibleArtworkCount:eligibleArtworks.length,pendingPreviewCount:PREVIEW_ARTWORKS.length,approvedTemplateCount:TEMPLATE_REGISTRY.length,approvedRecipeCount:recipeCount,families:familyCounts,firstFigure:{id:firstFigure.id,version:firstFigure.version,defaultLookId:firstFigure.defaultLookId,sourceArtworkId:first.id},approvedTemplates:templateCases.map(({template,artwork})=>({templateId:template.id,artworkId:artwork.id,version:artwork.version,family:template.family,legalRecipeCount:enumerateValidConfigurations(template).length}))},checks,downloads,screenshots,layouts,errors,productionVariants:0,productionAnimations:0};await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2));console.log(`Browser: ${checks.length} checks; ${screenshots.length} captures; ${downloads.length} original/edited exports.`);
+ assert.deepEqual(errors,[]);const recipeCount=TEMPLATE_REGISTRY.reduce((sum,template)=>sum+enumerateValidConfigurations(template).length,0),familyCounts=Object.fromEntries([...new Set(TEMPLATE_REGISTRY.map(template=>template.family))].map(family=>[family,TEMPLATE_REGISTRY.filter(template=>template.family===family).length]));const report={revision:103,catalogRevision:CATALOG_REVISION,environment:{browser:browser.version(),platform:process.platform,physicalDevice:false,hosting:'local-only'},catalog:{figureCount:GALLERY_FIGURES.length,registeredLookCount:GALLERY_LOOKS.length,figureLookMembershipCount:figureMemberIds.length,eligibleArtworkCount:eligibleArtworks.length,pendingPreviewCount:PREVIEW_ARTWORKS.length,approvedTemplateCount:TEMPLATE_REGISTRY.length,approvedRecipeCount:recipeCount,families:familyCounts,firstFigure:{id:firstFigure.id,version:firstFigure.version,defaultLookId:firstFigure.defaultLookId,sourceArtworkId:first.id},approvedTemplates:templateCases.map(({template,artwork})=>({templateId:template.id,artworkId:artwork.id,version:artwork.version,family:template.family,legalRecipeCount:enumerateValidConfigurations(template).length}))},checks,communityNavigations,downloads,screenshots,layouts,errors,productionVariants:0,productionAnimations:0};await fs.writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2));console.log(`Browser: ${checks.length} checks; ${screenshots.length} captures; ${downloads.length} original/edited exports.`);
 }finally{await browser.close();await vite.close();}

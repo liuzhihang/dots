@@ -4,7 +4,7 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {DELIVERY_ASSETS} from '../dist/studio-delivery-assets.js?v=110';
+import {DELIVERY_ASSETS} from '../dist/studio-delivery-assets.js?v=111';
 
 const output=resolveEvidenceDirectory('.artifacts/lossless-browser');
 await fs.mkdir(output,{recursive:true});

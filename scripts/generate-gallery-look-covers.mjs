@@ -5,15 +5,15 @@ import http from 'node:http';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {launchBrowser} from './browser-runtime.mjs';
-import {ARTWORKS, validateArtwork} from '../dist/studio-artwork-catalog.js?v=110';
+import {ARTWORKS, validateArtwork} from '../dist/studio-artwork-catalog.js?v=111';
 import {
   TEMPLATE_REGISTRY,
   getRequiredTemplateAssets,
   getTemplateRecipe,
   validateTemplateDefinition
-} from '../dist/studio-edit-templates.js?v=110';
-import {GALLERY_LOOKS} from '../dist/studio-gallery-looks.js?v=110';
-import {STUDIO_RENDERER_REVISION} from '../dist/studio-renderer.js?v=110';
+} from '../dist/studio-edit-templates.js?v=111';
+import {GALLERY_LOOKS} from '../dist/studio-gallery-looks.js?v=111';
+import {STUDIO_RENDERER_REVISION} from '../dist/studio-renderer.js?v=111';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -143,10 +143,10 @@ try {
   await page.goto(`${origin}/harness`);
   const results = await page.evaluate(async ({origin, looks}) => {
     const [templateModule, draftModule, rendererModule, loaderModule] = await Promise.all([
-      import(`${origin}/dist/studio-edit-templates.js?v=110`),
-      import(`${origin}/dist/studio-draft.js?v=110`),
-      import(`${origin}/dist/studio-renderer.js?v=110`),
-      import(`${origin}/dist/studio-preview-loader.js?v=110`)
+      import(`${origin}/dist/studio-edit-templates.js?v=111`),
+      import(`${origin}/dist/studio-draft.js?v=111`),
+      import(`${origin}/dist/studio-renderer.js?v=111`),
+      import(`${origin}/dist/studio-preview-loader.js?v=111`)
     ]);
     const {TEMPLATE_REGISTRY, getTemplateRecipe} = templateModule;
     const {createDraft, updateDraft} = draftModule;

@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {ARTWORKS, getArtwork} from '../dist/studio-artwork-catalog.js?v=110';
+import {ARTWORKS, getArtwork} from '../dist/studio-artwork-catalog.js?v=111';
 import {
   TEMPLATE_REGISTRY,
   getTemplateForArtwork
-} from '../dist/studio-edit-templates.js?v=110';
-import {GALLERY_LOOKS, getGalleryLook} from '../dist/studio-gallery-looks.js?v=110';
+} from '../dist/studio-edit-templates.js?v=111';
+import {GALLERY_LOOKS, getGalleryLook} from '../dist/studio-gallery-looks.js?v=111';
 import {
   GALLERY_FIGURES,
   getGalleryFigure,
@@ -17,7 +17,7 @@ import {
   getFigureInitialState,
   getFigureFields,
   resolveFigureSelection
-} from '../dist/studio-gallery-figures.js?v=110';
+} from '../dist/studio-gallery-figures.js?v=111';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const reportDir = path.join(root, '.artifacts/shape-merge-20261013/core');

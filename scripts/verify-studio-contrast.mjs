@@ -4,9 +4,9 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=110';
-import {TEMPLATE_REGISTRY,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=110';
-import {getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
+import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=111';
+import {TEMPLATE_REGISTRY,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=111';
+import {getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=111';
 
 const output=resolveEvidenceDirectory('.artifacts/studio-contrast');
 await fs.mkdir(output,{recursive:true});
@@ -14,9 +14,9 @@ const server=await createServer({configFile:path.resolve('vite.config.mjs'),serv
 await server.listen();
 const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
 const html=(await fs.readFile('dist/index.html','utf8'))
-  .replace('data-cache="110"','data-cache="110" data-studio-boot="manual"')
+  .replace('data-cache="111"','data-cache="111" data-studio-boot="manual"')
   .replace('<head>',`<head><base href="${origin}/">`)
-  .replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
+  .replace('<script type="module" src="./studio.js?v=111"></script>','<script type="module">import {bootStudio} from "/studio.js?v=111";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
 const browser=await launchBrowser({headless:true});
 const rows=[];
 const failures=[];
@@ -163,8 +163,10 @@ try{
     const page=await context.newPage();
     await page.goto(`${origin}/#/`,{waitUntil:'networkidle'});
     assert.equal(await page.locator('html').getAttribute('lang'),language);
-    await contrastSample(page,{name:`${language}-gallery`,selectors:['.hero-title-line[data-home-copy="titleFirst"]','.intro-description','#browseCharacters','.gallery-series-filter__button[aria-pressed="true"]','.result-count','.artwork-name','.artwork-series']});
+    await contrastSample(page,{name:`${language}-gallery`,selectors:['.hero-title-line[data-home-copy="titleFirst"]','.intro-description','#browseCharacters','.gallery-series-filter__button[aria-pressed="true"]','.result-count','.artwork-name','.artwork-series','.community-links .community-link']});
     await gradientTextContrastSample(page,{name:`${language}-hero-gradient-title`,selector:'.hero-title-line[data-home-copy="titleSecond"]',threshold:3});
+    await page.locator('#feedbackNotice').scrollIntoViewIfNeeded();
+    await contrastSample(page,{name:`${language}-feedback-footer`,selectors:['.footer-community-links .community-link','#feedbackNotice']});
     if(staticFixture){
       const artwork=staticFixture;
       await page.goto(`${origin}/#/artwork/${artwork.id}?v=${artwork.version}`);

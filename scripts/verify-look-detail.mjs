@@ -5,9 +5,9 @@ import {createHash} from 'node:crypto';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {GALLERY_LOOKS, getLookAsset, validateGalleryLook} from '../dist/studio-gallery-looks.js?v=110';
-import {TEMPLATE_REGISTRY} from '../dist/studio-edit-templates.js?v=110';
-import {getArtwork,getAsset} from '../dist/studio-artwork-catalog.js?v=110';
+import {GALLERY_LOOKS, getLookAsset, validateGalleryLook} from '../dist/studio-gallery-looks.js?v=111';
+import {TEMPLATE_REGISTRY} from '../dist/studio-edit-templates.js?v=111';
+import {getArtwork,getAsset} from '../dist/studio-artwork-catalog.js?v=111';
 
 const output=resolveEvidenceDirectory('.artifacts/gallery-look-detail-browser');
 await fs.mkdir(output,{recursive:true});
@@ -41,10 +41,10 @@ page.setDefaultTimeout(15000);
 const errors=[],requests=[],checks=[];
 page.on('pageerror',error=>errors.push(error.message));
 page.on('request',request=>requests.push(new URL(request.url()).pathname));
-const html=`<!doctype html><html lang="en"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=110"><link rel="stylesheet" href="/studio-detail.css?v=110"></head><body><main id="pageShell"><div id="detail"></div></main><script type="module">
+const html=`<!doctype html><html lang="en"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=111"><link rel="stylesheet" href="/studio-detail.css?v=111"></head><body><main id="pageShell"><div id="detail"></div></main><script type="module">
   const [details,previews,catalog,looks,prompts]=await Promise.all([
-    import('/studio-detail.js?v=110'),import('/studio-preview-loader.js?v=110'),
-    import('/studio-artwork-catalog.js?v=110'),import('/studio-gallery-looks.js?v=110'),import('/studio-prompt.js?v=110')
+    import('/studio-detail.js?v=111'),import('/studio-preview-loader.js?v=111'),
+    import('/studio-artwork-catalog.js?v=111'),import('/studio-gallery-looks.js?v=111'),import('/studio-prompt.js?v=111')
   ]);
   const detail=details.createDetailController({language:'en',loader:previews.createPreviewLoader()});
   document.querySelector('#detail').append(detail.element);

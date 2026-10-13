@@ -4,10 +4,10 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=110';
-import {getDefaultLook,getGalleryLook} from '../dist/studio-gallery-looks.js?v=110';
-import {GALLERY_FIGURES,getFigureForLook,getFigureInitialState} from '../dist/studio-gallery-figures.js?v=110';
-import {TEMPLATE_REGISTRY} from '../dist/studio-edit-templates.js?v=110';
+import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=111';
+import {getDefaultLook,getGalleryLook} from '../dist/studio-gallery-looks.js?v=111';
+import {GALLERY_FIGURES,getFigureForLook,getFigureInitialState} from '../dist/studio-gallery-figures.js?v=111';
+import {TEMPLATE_REGISTRY} from '../dist/studio-edit-templates.js?v=111';
 
 const evidenceDir=resolveEvidenceDirectory('.artifacts/shape-merge-20261013/history');
 await fs.mkdir(evidenceDir,{recursive:true});
@@ -36,7 +36,7 @@ const vite=await createServer({
 await vite.listen();
 const origin=`http://127.0.0.1:${vite.httpServer.address().port}`;
 const browser=await launchBrowser({headless:true});
-const appHtml=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="110"','data-cache="110" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.__dotsQAApp=bootStudio();</script>');
+const appHtml=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="111"','data-cache="111" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=111"></script>','<script type="module">import {bootStudio} from "/studio.js?v=111";window.__dotsQAApp=bootStudio();</script>');
 
 async function newPage({dirty=true,forwardOnBack=false,entry='figure',figureTarget=firstCase}={}){
   const page=await browser.newPage({viewport:{width:1280,height:800}});

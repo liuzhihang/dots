@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" data-cache="110">
+<html lang="en" data-cache="111">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b0d12">
 <title>Dots · Make It Your Dot.</title>
 <meta name="description" content="Browse Dots characters, copy a prompt, and make something your own in ChatGPT.">
 <link rel="canonical" href="https://dots.liuzhihang.chatgpt.site"><meta property="og:url" content="https://dots.liuzhihang.chatgpt.site"><meta property="og:title" content="Dots · Make It Your Dot.">
 <link rel="icon" href="./assets/posters/brand-mark-display-v1.png">
-<link rel="stylesheet" href="./studio.css?v=110"><link rel="stylesheet" href="./studio-detail.css?v=110">
-<script type="module" src="./studio.js?v=110"></script>
+<link rel="stylesheet" href="./studio.css?v=111"><link rel="stylesheet" href="./studio-detail.css?v=111">
+<script type="module" src="./studio.js?v=111"></script>
 </head>
 <body data-screen="gallery">
 <a class="skip-link" href="#mainContent" data-i18n="skip">Skip to content</a>
@@ -16,6 +16,10 @@
 <a class="brand" href="#/" aria-label="Dots"><img src="./assets/posters/brand-mark-display-v1.png" alt=""><span>Dots<span class="brand-period">.</span></span></a>
 <nav class="studio-nav" aria-label="Main navigation"><a href="#/" data-page="gallery" data-i18n="gallery">Characters</a></nav>
 <div id="topbarSearchMount" class="topbar-search-mount"></div>
+<div class="community-links">
+<a id="headerGitHub" class="community-link community-github" href="https://github.com/liuzhihang/dots" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only" data-i18n="opensNewTab"> (opens in a new tab)</span></a>
+<a id="headerFeedback" class="community-link" href="https://github.com/liuzhihang/dots/issues/new/choose" target="_blank" rel="noopener noreferrer" aria-describedby="feedbackNotice"><span class="feedback-label-long" data-i18n="feedback">Feedback</span><span class="feedback-label-short" data-i18n="feedbackShort">Feedback</span><span class="sr-only" data-i18n="opensNewTab"> (opens in a new tab)</span></a>
+</div>
 <select id="languagePreference" class="preference-button" aria-label="Language"><option value="en" lang="en">English</option><option value="zh-CN" lang="zh-CN">中文</option></select>
 </div></header>
 <main id="mainContent" tabindex="-1">
@@ -29,7 +33,7 @@
 </section></section>
 <section id="notFoundPortal" class="page-portal empty-state" hidden><h1 tabindex="-1" data-i18n="notFound">This page isn’t here.</h1><p data-i18n="notFoundDescription">The link or artwork version is unavailable.</p><a class="button primary" href="#/" data-i18n="backGallery">Back to characters</a></section>
 </main>
-<footer class="site-footer"><a class="footer-brand" href="#/">Dots.</a><p data-i18n="footer">Small characters. New possibilities.</p></footer>
+<footer class="site-footer"><a class="footer-brand" href="#/">Dots.</a><div class="footer-copy"><p data-i18n="footer">Small characters. New possibilities.</p><p id="feedbackNotice" class="feedback-notice" data-i18n="feedbackNotice">Submit on GitHub. Sign-in required; submissions are public.</p></div><div class="footer-community-links"><a id="footerGitHub" class="community-link" href="https://github.com/liuzhihang/dots" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only" data-i18n="opensNewTab"> (opens in a new tab)</span></a><a id="footerFeedback" class="community-link" href="https://github.com/liuzhihang/dots/issues/new/choose" target="_blank" rel="noopener noreferrer" aria-describedby="feedbackNotice"><span data-i18n="feedback">Feedback</span><span class="sr-only" data-i18n="opensNewTab"> (opens in a new tab)</span></a></div></footer>
 </div>
 <dialog id="studioOverlay" aria-labelledby="overlayTitle"><div class="overlay-shell"><header class="overlay-header"><button id="overlayBack" class="button quiet"><img src="./assets/icons/chevron-left.svg" alt=""><span data-i18n="back">Back</span></button><h2 id="overlayTitle" tabindex="-1">Character Studio</h2><span id="overlayLanguageMount" class="overlay-language-mount"></span><button id="overlayClose" class="icon-button" aria-label="Close studio"><img src="./assets/icons/x.svg" alt=""></button></header><div id="overlayBody"></div></div></dialog>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

@@ -1,13 +1,13 @@
-import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=110';
-import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=110';
-import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=110';
-import { SERIES } from './studio-content.js?v=110';
-import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=110';
-import { downloadAsset } from './studio-asset-loader.js?v=110';
-import { createPreviewLoader } from './studio-preview-loader.js?v=110';
-import { getTemplateForArtwork } from './studio-edit-templates.js?v=110';
-import { getDefaultLook, getGalleryLook, getLookAsset, queryGalleryLooks, validateGalleryLook } from './studio-gallery-looks.js?v=110';
-import { GALLERY_FIGURES, getFigureForLook, getFigureInitialState, getFigureStates, getGalleryFigure, queryGalleryFigures } from './studio-gallery-figures.js?v=110';
+import { copyText, copyAndOpen, CHATGPT_URL_FOR_MANUAL_OPEN } from './studio-actions.js?v=111';
+import { ARTWORKS, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork } from './studio-artwork-catalog.js?v=111';
+import { TAGS, TAG_DIMENSIONS } from './studio-tags.js?v=111';
+import { SERIES } from './studio-content.js?v=111';
+import { buildArtworkEditPrompt, buildConfigurationPrompt, promptFor } from './studio-prompt.js?v=111';
+import { downloadAsset } from './studio-asset-loader.js?v=111';
+import { createPreviewLoader } from './studio-preview-loader.js?v=111';
+import { getTemplateForArtwork } from './studio-edit-templates.js?v=111';
+import { getDefaultLook, getGalleryLook, getLookAsset, queryGalleryLooks, validateGalleryLook } from './studio-gallery-looks.js?v=111';
+import { GALLERY_FIGURES, getFigureForLook, getFigureInitialState, getFigureStates, getGalleryFigure, queryGalleryFigures } from './studio-gallery-figures.js?v=111';
 const DEFAULT_DETAIL_API = { ARTWORKS, TAGS, TAG_DIMENSIONS, SERIES, canOpenArtwork, createSnapshot, getArtwork, getAsset, getVariants, isPreviewArtwork, promptFor, downloadAsset, getDefaultLook, getGalleryLook, getLookAsset, queryGalleryLooks, validateGalleryLook, GALLERY_FIGURES, getFigureForLook, getFigureInitialState, getFigureStates, getGalleryFigure, queryGalleryFigures };
 const FEATURE_PRIORITY = Object.freeze({ style: 100, series: 96, accessory: 94, prop: 92, color: 90, material: 88, action: 86, shape: 75, expression: 72, 'object-type': 60, theme: 48, content: 44 });
 const EXCLUDED_STATES = new Set(['none', 'not-applicable', 'notApplicable', 'unknown', 'unrecorded', 'not-recorded']);
@@ -226,7 +226,7 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
    try{
      if(activeFigure){
        const figure=activeFigure,initialState=activeFigureState;
-       const module=await import('./studio-figure-editor.js?v=110');
+       const module=await import('./studio-figure-editor.js?v=111');
        if(!current(token)||request!==editorRequest)return;
        figureEditorController=module.createFigureEditor({
          root:editorControls,previewRoot:draftHost,figure,initialState,sessionId:`studio-${token}`,loader,language:locale,
@@ -251,7 +251,7 @@ export function createDetailController({api=DEFAULT_DETAIL_API,language='en',not
        editor=figureEditorController;draft=figureEditorController.getDraft();editorReady=true;editorStatus.textContent='';root.dataset.editor='ready';
        syncExternalIntent();syncPresentation();syncActions();return;
      }
-     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=110'),import('./studio-draft.js?v=110')]);
+     const [module,drafts]=await Promise.all([import('./studio-editor.js?v=111'),import('./studio-draft.js?v=111')]);
      if(!current(token,record)||request!==editorRequest)return;draftModule=drafts;
      draft ||= drafts.createDraft({artwork:record.artwork,template,look:activeLook,language:locale,sessionId:`studio-${token}`,reviewHarness});
      editor=module.createEditor({root:editorControls,artwork:record.artwork,template,look:activeLook,draft,loader,language:locale,reviewHarness,

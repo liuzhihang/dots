@@ -1,5 +1,5 @@
-import {getAsset,SERIES} from './studio-artwork-catalog.js?v=110';
-import {label,t} from './studio-i18n.js?v=110';
+import {getAsset,SERIES} from './studio-artwork-catalog.js?v=111';
+import {label,t} from './studio-i18n.js?v=111';
 /** Data-only card shared by source Artworks, looks and public figures. */
 export function createArtworkCard(artwork,{language='en',onOpen=()=>{},lookupAsset=getAsset,series=SERIES,context='card'}={}) {
   const asset=lookupAsset(artwork.assetRefs.poster);

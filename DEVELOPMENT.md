@@ -100,7 +100,7 @@ node scripts/verify-option-thumbnail-ui.mjs .artifacts/release-local
 
 ## 参与贡献
 
-欢迎通过 [Issues](https://github.com/liuzhihang/dots/issues) 反馈问题，通过 Pull Request 提交改进。
+欢迎通过 [GitHub 反馈分类页](https://github.com/liuzhihang/dots/issues/new/choose) 选择问题反馈、申请新增形象或功能与体验建议，也可以通过 Pull Request 提交改进。提交需要登录 GitHub，Issue 内容公开；形象申请只是需求建议，不保证制作或采纳，参考素材必须可公开分享。
 
 1. 先阅读 [`AGENTS.md`](AGENTS.md)、[`DESIGN.md`](DESIGN.md)、[设计规则](.agents/rules/design.md) 和相关主规范。
 2. 每个 PR 聚焦一个问题，说明改动目的、验证命令及结果；涉及界面时附相关视口的前后对比。

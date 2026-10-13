@@ -7,7 +7,7 @@ import {resolveEvidenceDirectory} from './evidence-paths.mjs';
 import {getPublishFiles, verifyDeliveryAssets} from './lossless-delivery.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
-const revision = 110;
+const revision = 111;
 const cacheQuery = `?v=${revision}`;
 const catalogRevision = 'artwork-catalog-20261011-v100';
 const evidenceDirectory = resolveEvidenceDirectory('.artifacts/build');
@@ -256,10 +256,10 @@ async function verifyTemplateSources({actual, expectedAssets, previewFiles, regi
 }
 
 async function verifyGalleryLookAssets({actual, expectedAssets, artworks, templateRegistry, templateSourceRows}) {
-  const gallery = await import('../dist/studio-gallery-looks.js?v=110');
-  const galleryData = await import('../dist/studio-gallery-look-data.js?v=110');
-  const renderer = await import('../dist/studio-renderer.js?v=110');
-  const templateApi = await import('../dist/studio-edit-templates.js?v=110');
+  const gallery = await import('../dist/studio-gallery-looks.js?v=111');
+  const galleryData = await import('../dist/studio-gallery-look-data.js?v=111');
+  const renderer = await import('../dist/studio-renderer.js?v=111');
+  const templateApi = await import('../dist/studio-edit-templates.js?v=111');
   const looks = gallery.GALLERY_LOOKS;
   const assets = galleryData.GALLERY_LOOK_ASSETS;
   assert.equal(looks.length, 90, 'GalleryLook registry must have exactly 90 fixed appearances');
@@ -362,8 +362,8 @@ async function verifyGalleryLookAssets({actual, expectedAssets, artworks, templa
 }
 
 async function verifyGalleryFigures() {
-  const {GALLERY_FIGURES,getGalleryFigure,getFigureStates,getFigureInitialState} = await import('../dist/studio-gallery-figures.js?v=110');
-  const {GALLERY_LOOKS} = await import('../dist/studio-gallery-looks.js?v=110');
+  const {GALLERY_FIGURES,getGalleryFigure,getFigureStates,getFigureInitialState} = await import('../dist/studio-gallery-figures.js?v=111');
+  const {GALLERY_LOOKS} = await import('../dist/studio-gallery-looks.js?v=111');
   assert.equal(GALLERY_FIGURES.length,83,'Public gallery must deduplicate the confirmed three basic silhouettes');
   const members=GALLERY_FIGURES.flatMap(figure=>figure.memberLookIds);
   assert.equal(new Set(members).size,members.length,'A source look must belong to exactly one Figure');
@@ -423,7 +423,7 @@ export async function build() {
 
   const html = await fs.readFile(path.join(root, 'dist/index.html'), 'utf8');
   assert(html.includes(`data-cache="${revision}"`), `HTML cache ${revision}`);
-  const catalog = await import('../dist/studio-artwork-catalog.js?v=110');
+  const catalog = await import('../dist/studio-artwork-catalog.js?v=111');
   assert.equal(catalog.CATALOG_REVISION, catalogRevision);
   assert(Array.isArray(catalog.ARTWORKS) && catalog.ARTWORKS.length > 0, 'Approved Artwork catalog must not be empty');
   assert(Array.isArray(catalog.PREVIEW_ARTWORKS), 'PREVIEW_ARTWORKS must be an explicit array');
@@ -460,9 +460,9 @@ export async function build() {
   }
   assert.equal(catalog.PREVIEW_PROMPTS.length, catalog.PREVIEW_ARTWORKS.length * 2, 'Pending artworks must have separate bilingual Prompts');
 
-  const content = await import('../dist/studio-content.js?v=110');
+  const content = await import('../dist/studio-content.js?v=111');
   const pendingUIAssets = (content.BRAND_ASSETS ?? []).filter(asset => asset.publicationStatus === 'preview-only');
-  const galleryData = await import('../dist/studio-gallery-look-data.js?v=110');
+  const galleryData = await import('../dist/studio-gallery-look-data.js?v=111');
   const registered = [...catalog.ASSETS, ...catalog.PREVIEW_ASSETS, ...(content.BRAND_ASSETS ?? []),
     ...galleryData.GALLERY_LOOK_ASSETS].filter(asset => asset?.path);
   const registeredPaths = new Set();
@@ -482,7 +482,7 @@ export async function build() {
     previewFiles.add(assetPathFromReference(original.path));
   }
 
-  const templates = await import('../dist/studio-edit-templates.js?v=110');
+  const templates = await import('../dist/studio-edit-templates.js?v=111');
   assert.equal(templates.EDIT_TEMPLATE_REVISION, 'edit-templates-20261011-v100');
   assert(Array.isArray(templates.TEMPLATE_REGISTRY), 'Runtime template registry must be explicit');
   for (const artwork of approvedArtworks) {
@@ -517,7 +517,7 @@ export async function build() {
     assert.equal(hash(bytes), asset.sha256, `Retained asset hash: ${asset.path}`);
     expectedAssets.add(asset.path);
   }
-  const {DELIVERY_ASSETS} = await import('../dist/studio-delivery-assets.js?v=110');
+  const {DELIVERY_ASSETS} = await import('../dist/studio-delivery-assets.js?v=111');
   const delivery = await verifyDeliveryAssets({root, rows: DELIVERY_ASSETS, actual,
     sourceOnlyFiles: manifest.sourceOnlyFiles, expectedAssets});
   const publishPaths = new Set(getPublishFiles(actual, manifest.sourceOnlyFiles));
@@ -539,7 +539,7 @@ export async function build() {
     revision,
     catalogRevision,
     evidenceDirectory: path.relative(root, evidenceDirectory),
-    scope: 'v110 repository source, deduplicated Figures and explicit lossless delivery closure; deployment is verified separately.',
+    scope: 'v111 repository source, deduplicated Figures and explicit lossless delivery closure; deployment is verified separately.',
     deploymentReady: deploymentBlockers.length === 0,
     deploymentBlockers,
     approvedArtworkCount: approvedArtworks.length,

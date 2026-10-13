@@ -1,15 +1,15 @@
-import {ARTWORKS, getArtwork} from './studio-artwork-catalog.js?v=110';
+import {ARTWORKS, getArtwork} from './studio-artwork-catalog.js?v=111';
 import {
   TEMPLATE_REGISTRY,
   getTemplateForArtwork,
   getTemplateOptionFields
-} from './studio-edit-templates.js?v=110';
+} from './studio-edit-templates.js?v=111';
 import {
   GALLERY_LOOKS,
   getGalleryLook,
   queryGalleryLooks
-} from './studio-gallery-looks.js?v=110';
-import {normalizeGalleryQuery, normalizeSearch} from './studio-tags.js?v=110';
+} from './studio-gallery-looks.js?v=111';
+import {normalizeGalleryQuery, normalizeSearch} from './studio-tags.js?v=111';
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;

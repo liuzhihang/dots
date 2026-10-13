@@ -5,9 +5,9 @@ import {createHash} from 'node:crypto';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {GALLERY_LOOKS,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
-import {GALLERY_FIGURES} from '../dist/studio-gallery-figures.js?v=110';
-import {TEMPLATE_REGISTRY,enumerateValidConfigurations} from '../dist/studio-edit-templates.js?v=110';
+import {GALLERY_LOOKS,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=111';
+import {GALLERY_FIGURES} from '../dist/studio-gallery-figures.js?v=111';
+import {TEMPLATE_REGISTRY,enumerateValidConfigurations} from '../dist/studio-edit-templates.js?v=111';
 
 const output=resolveEvidenceDirectory('.artifacts/gallery-look-browser');
 await fs.mkdir(output,{recursive:true});
@@ -22,7 +22,7 @@ const vite=await createServer({configFile:path.resolve('vite.config.mjs'),server
 await vite.listen();const origin=`http://127.0.0.1:${vite.httpServer.address().port}`;
 const browser=await launchBrowser({headless:true});
 const context=await browser.newContext({viewport:{width:1440,height:900},acceptDownloads:true});
-const html=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="110"','data-cache="110" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.__dotsLookQA=bootStudio();</script>');
+const html=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="111"','data-cache="111" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=111"></script>','<script type="module">import {bootStudio} from "/studio.js?v=111";window.__dotsLookQA=bootStudio();</script>');
 await context.route(`${origin}/`,route=>route.fulfill({contentType:'text/html',body:html}));
 const page=await context.newPage(),errors=[],rows=[],exports=[];
 page.on('pageerror',error=>errors.push(error.message));

@@ -2,19 +2,19 @@
 // decoding are simulated; this is not browser, visual, pixel, or download QA.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import {createEditor} from '../dist/studio-editor.js?v=110';
-import {createDraft, updateDraft} from '../dist/studio-draft.js?v=110';
+import {createEditor} from '../dist/studio-editor.js?v=111';
+import {createDraft, updateDraft} from '../dist/studio-draft.js?v=111';
 import {
   describeTemplateSelection,
   getTemplateOptionFields,
   TEMPLATE_REGISTRY
-} from '../dist/studio-edit-templates.js?v=110';
+} from '../dist/studio-edit-templates.js?v=111';
 import {
   GALLERY_LOOKS,
   getLookOptionFields,
   validateGalleryLook
-} from '../dist/studio-gallery-looks.js?v=110';
-import {getArtwork} from '../dist/studio-artwork-catalog.js?v=110';
+} from '../dist/studio-gallery-looks.js?v=111';
+import {getArtwork} from '../dist/studio-artwork-catalog.js?v=111';
 
 class Element {
   constructor(tag, ownerDocument) {

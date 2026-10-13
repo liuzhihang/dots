@@ -1,5 +1,5 @@
-import { assertValidTemplateOptions, getTemplateOptionFields, templateSchemaVersion } from './studio-edit-templates.js?v=110';
-import { getLookOptionFields, validateGalleryLook } from './studio-gallery-looks.js?v=110';
+import { assertValidTemplateOptions, getTemplateOptionFields, templateSchemaVersion } from './studio-edit-templates.js?v=111';
+import { getLookOptionFields, validateGalleryLook } from './studio-gallery-looks.js?v=111';
 
 const freeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;

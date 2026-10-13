@@ -3,8 +3,8 @@ import {inflateSync} from 'node:zlib';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=110';
-import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=110';
+import {ARTWORKS,PREVIEW_ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=111';
+import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=111';
 function paeth(a,b,c) {
   const p=a+b-c, pa=Math.abs(p-a), pb=Math.abs(p-b), pc=Math.abs(p-c);
   return pa<=pb&&pa<=pc?a:pb<=pc?b:c;

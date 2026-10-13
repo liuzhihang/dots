@@ -2,9 +2,9 @@
 // is not pixel, browser, accessibility or visual acceptance evidence.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
-import { createEditor } from '../dist/studio-editor.js?v=110';
-import { TEMPLATE_REGISTRY } from '../dist/studio-edit-templates.js?v=110';
-import { getArtwork } from '../dist/studio-artwork-catalog.js?v=110';
+import { createEditor } from '../dist/studio-editor.js?v=111';
+import { TEMPLATE_REGISTRY } from '../dist/studio-edit-templates.js?v=111';
+import { getArtwork } from '../dist/studio-artwork-catalog.js?v=111';
 
 class Element {
   constructor(tag, ownerDocument) { this.tagName = tag.toUpperCase(); this.ownerDocument = ownerDocument; this.children = []; this.dataset = {}; this.attrs = {}; this.events = {}; this.hidden = false; this.disabled = false; this.className = ''; this.style = { setProperty() {} }; this.classList = { add: name => { this.className += ` ${name}`; }, contains: name => this.className.split(/\s+/).includes(name) }; }

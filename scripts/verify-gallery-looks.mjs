@@ -8,7 +8,7 @@ import {
   getAsset,
   getArtwork,
   validateArtwork
-} from '../dist/studio-artwork-catalog.js?v=110';
+} from '../dist/studio-artwork-catalog.js?v=111';
 import {
   TEMPLATE_REGISTRY,
   getTemplateForArtwork,
@@ -16,8 +16,8 @@ import {
   getTemplateRecipe,
   validateTemplateDefinition,
   validateTemplateOptions
-} from '../dist/studio-edit-templates.js?v=110';
-import {GALLERY_LOOK_ASSETS} from '../dist/studio-gallery-look-data.js?v=110';
+} from '../dist/studio-edit-templates.js?v=111';
+import {GALLERY_LOOK_ASSETS} from '../dist/studio-gallery-look-data.js?v=111';
 import {
   GALLERY_LOOKS,
   getDefaultLook,
@@ -26,7 +26,7 @@ import {
   getLookOptionFields,
   queryGalleryLooks,
   validateGalleryLook
-} from '../dist/studio-gallery-looks.js?v=110';
+} from '../dist/studio-gallery-looks.js?v=111';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const hash = bytes => crypto.createHash('sha256').update(bytes).digest('hex');

@@ -8,8 +8,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=110';
-import {getDefaultLook, getGalleryLook, getLookAsset, getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=111';
+import {getDefaultLook, getGalleryLook, getLookAsset, getLookOptionFields} from '../dist/studio-gallery-looks.js?v=111';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -390,7 +390,7 @@ async function openArtwork(page, artworkId, artworkVersion) {
     lookVersion: look?.version || null
   };
   const result = await page.evaluate(async ({ id, version }) => {
-    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=110');
+    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=111');
     const artwork = ARTWORKS.find(row => row.id === id && row.version === version);
     if (!artwork) throw new Error(`Artwork not found: ${id}`);
     const opened = window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -662,12 +662,12 @@ async function verifyEveryRecipeThroughControls(page, template, artwork, look, r
 async function renderAllRealConfigurations(page) {
   const browserOutput = await page.evaluate(async () => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, promptAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=110'),
-      import('/studio-edit-templates.js?v=110'),
-      import('/studio-draft.js?v=110'),
-      import('/studio-renderer.js?v=110'),
-      import('/studio-preview-loader.js?v=110'),
-      import('/studio-prompt.js?v=110')
+      import('/studio-artwork-catalog.js?v=111'),
+      import('/studio-edit-templates.js?v=111'),
+      import('/studio-draft.js?v=111'),
+      import('/studio-renderer.js?v=111'),
+      import('/studio-preview-loader.js?v=111'),
+      import('/studio-prompt.js?v=111')
     ]);
     const manifestResponse = await fetch('/assets/templates/sources.json', { cache: 'no-cache' });
     if (!manifestResponse.ok) throw new Error(`Manifest fetch failed (${manifestResponse.status}).`);
@@ -844,12 +844,12 @@ async function runTwentyEditCycles(page) {
 
   await page.evaluate(async ({ cyclePlans, tabForField }) => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=110'),
-      import('/studio-edit-templates.js?v=110'),
-      import('/studio-draft.js?v=110'),
-      import('/studio-renderer.js?v=110'),
-      import('/studio-preview-loader.js?v=110'),
-      import('/studio-editor.js?v=110')
+      import('/studio-artwork-catalog.js?v=111'),
+      import('/studio-edit-templates.js?v=111'),
+      import('/studio-draft.js?v=111'),
+      import('/studio-renderer.js?v=111'),
+      import('/studio-preview-loader.js?v=111'),
+      import('/studio-editor.js?v=111')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error(`Manifest fetch failed (${response.status}).`);
@@ -1154,11 +1154,11 @@ function assertCycleEvidence(cycleReport) {
 async function runFocusedEditorRaces(page) {
   return page.evaluate(async tabForField => {
     const [catalog, templates, draftAPI, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=110'),
-      import('/studio-edit-templates.js?v=110'),
-      import('/studio-draft.js?v=110'),
-      import('/studio-preview-loader.js?v=110'),
-      import('/studio-editor.js?v=110')
+      import('/studio-artwork-catalog.js?v=111'),
+      import('/studio-edit-templates.js?v=111'),
+      import('/studio-draft.js?v=111'),
+      import('/studio-preview-loader.js?v=111'),
+      import('/studio-editor.js?v=111')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error('Manifest fetch failed (' + response.status + ').');
@@ -1464,7 +1464,7 @@ async function runFocusedEditorRaces(page) {
     failedLatest.loader.releaseAll();
 
     let thumbnailFetches = 0;
-    const { DELIVERY_ASSETS } = await import('/studio-delivery-assets.js?v=110');
+    const { DELIVERY_ASSETS } = await import('/studio-delivery-assets.js?v=111');
     const thumbnailDelivery = DELIVERY_ASSETS.find(row => row.source.path === thumbnailAsset.path && row.source.sha256 === thumbnailAsset.sha256);
     if (!thumbnailDelivery) throw new Error('Race fixture thumbnail has no exact registered delivery mapping.');
     const thumbnailPath = new URL('/' + thumbnailDelivery.path.replace(/^\.\//, ''), location.origin).pathname;
@@ -1793,7 +1793,7 @@ try {
     assert.equal(reopenedArtwork.asset.sha256, firstArtwork.asset.sha256, 'The round-trip reopens the exact same registered Artwork.');
     const reopenedPreview = await waitForPreview(page, { expectNoOriginal: true });
     assert.equal(reopenedPreview.editable, true, 'The pinned Artwork reopens directly into its one eligible CharacterStudio.');
-    const reopenedBaseline=await page.evaluate(async()=>{const [templates,looks]=await Promise.all([import('/studio-edit-templates.js?v=110'),import('/studio-gallery-looks.js?v=110')]);const state=window.__dotsQAApp.detail.getState();const template=templates.TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);const look=looks.getGalleryLook(state.lookId,state.lookVersion);if(!look?.isDefault)throw new Error('Reopened public Artwork did not resolve its registered default GalleryLook.');return{options:state.draft.options,defaults:templates.normalizeTemplateOptions(template,look.defaultOptions),lookId:look.id,lookVersion:look.version,appearance:look.appearance,dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
+    const reopenedBaseline=await page.evaluate(async()=>{const [templates,looks]=await Promise.all([import('/studio-edit-templates.js?v=111'),import('/studio-gallery-looks.js?v=111')]);const state=window.__dotsQAApp.detail.getState();const template=templates.TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);const look=looks.getGalleryLook(state.lookId,state.lookVersion);if(!look?.isDefault)throw new Error('Reopened public Artwork did not resolve its registered default GalleryLook.');return{options:state.draft.options,defaults:templates.normalizeTemplateOptions(template,look.defaultOptions),lookId:look.id,lookVersion:look.version,appearance:look.appearance,dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
     assert.deepEqual(reopenedBaseline.options,reopenedBaseline.defaults,'Opening the same Artwork again starts at its registered default GalleryLook recipe, not the prior in-memory Draft.');assert.equal(reopenedBaseline.lookId,config.lookId);assert.equal(reopenedBaseline.lookVersion,config.lookVersion);assert.equal(reopenedBaseline.dirty,false);assert.equal(await page.locator('.studio-original').evaluate(details=>details.open),false);assert.equal(await page.locator('.studio-original button,.artwork-detail__download-original').count(),0);
     assertNoRuntimeErrors(`${config.label} recorded App → exported PNG → App journey`);
     const videoPath = path.join(videoStageRoot, `${config.label}-app-png-app-journey.webm`);
@@ -1835,7 +1835,7 @@ try {
     await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
     await waitForEditor(guardPage, guardConfig);
     const state = await guardPage.evaluate(async () => {
-      const [templates, looks] = await Promise.all([import('/studio-edit-templates.js?v=110'),import('/studio-gallery-looks.js?v=110')]);
+      const [templates, looks] = await Promise.all([import('/studio-edit-templates.js?v=111'),import('/studio-gallery-looks.js?v=111')]);
       const current = window.__dotsQAApp.detail.getState();
       const template = templates.TEMPLATE_REGISTRY.find(row => row.id === current.templateId);
       const look=looks.getGalleryLook(current.lookId,current.lookVersion);

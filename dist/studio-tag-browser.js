@@ -1,5 +1,5 @@
-import { SERIES } from './studio-content.js?v=110';
-import { normalizeGalleryQuery } from './studio-tags.js?v=110';
+import { SERIES } from './studio-content.js?v=111';
+import { normalizeGalleryQuery } from './studio-tags.js?v=111';
 
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'

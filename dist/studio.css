@@ -158,3 +158,29 @@ select.preference-button option{color:var(--text);background:var(--surface)}
 }
 @media(max-width:600px){.gallery-controls{grid-template-columns:minmax(0,1fr) auto}.sort-field{width:auto}#languagePreference,#gallerySort{font-size:12px}}
 @media(prefers-reduced-motion:reduce){#languagePreference,#gallerySort{transition:none}}
+
+/* Auxiliary community links stay outside the single internal page navigation. */
+.community-links{display:flex;align-items:center;gap:6px;margin-left:auto;flex:0 0 auto}
+.community-links+#languagePreference{margin-left:0}
+.community-link{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px;border-radius:8px;color:var(--muted);font-size:13px;font-weight:550;white-space:nowrap}
+.community-link:hover{color:var(--text);background:var(--surface)}
+.feedback-label-short{display:none}
+.site-footer{flex-wrap:wrap;gap:12px 24px}
+.footer-copy{flex:1 1 260px;min-width:0}
+.site-footer .feedback-notice{margin-top:4px;color:var(--muted);line-height:1.6}
+.footer-community-links{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px}
+@media(max-width:1100px){.community-github{display:none}}
+@media(max-width:600px){
+ .topbar-inner{gap:6px}
+ .brand{min-width:44px;min-height:44px}
+ .brand>img{display:none}
+ .studio-nav a{min-width:44px;justify-content:center}
+ .community-link{padding-inline:6px;font-size:12px}
+ .feedback-label-long{display:none}
+ .feedback-label-short{display:inline}
+ .footer-copy{flex-basis:220px}
+ .footer-community-links{margin-left:auto}
+}
+@media(max-width:350px){
+ .footer-copy{flex-basis:190px}
+}

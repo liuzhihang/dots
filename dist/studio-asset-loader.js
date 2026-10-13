@@ -1,4 +1,4 @@
-import { getAsset } from './studio-artwork-catalog.js?v=110';
+import { getAsset } from './studio-artwork-catalog.js?v=111';
 
 const PNG_SIGNATURE = [137, 80, 78, 71, 13, 10, 26, 10];
 const abortError = () => new DOMException('资源校验已取消。', 'AbortError');

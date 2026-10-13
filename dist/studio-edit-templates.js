@@ -1,8 +1,8 @@
 // Controlled editor profiles for the two exact orb artworks.  Layer references
 // are resolved from a separately reviewed asset registry at runtime; this file
 // deliberately contains no filesystem paths and cannot grant approval itself.
-import { normalizeTemplatePlacement } from './studio-preview-loader.js?v=110';
-import { CHARACTER_ADJUSTMENT_TEMPLATES } from './studio-edit-template-data.js?v=110';
+import { normalizeTemplatePlacement } from './studio-preview-loader.js?v=111';
+import { CHARACTER_ADJUSTMENT_TEMPLATES } from './studio-edit-template-data.js?v=111';
 
 export const EDIT_TEMPLATE_REVISION = 'edit-templates-20261011-v100';
 

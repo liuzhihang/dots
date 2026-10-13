@@ -3,7 +3,7 @@ import {
   getAsset,
   getArtwork,
   validateArtwork
-} from './studio-artwork-catalog.js?v=110';
+} from './studio-artwork-catalog.js?v=111';
 import {
   TEMPLATE_REGISTRY,
   getTemplateForArtwork,
@@ -11,9 +11,9 @@ import {
   getTemplateRecipe,
   validateTemplateDefinition,
   validateTemplateOptions
-} from './studio-edit-templates.js?v=110';
-import {normalizeGalleryQuery, normalizeSearch} from './studio-tags.js?v=110';
-import {GALLERY_LOOK_ASSETS} from './studio-gallery-look-data.js?v=110';
+} from './studio-edit-templates.js?v=111';
+import {normalizeGalleryQuery, normalizeSearch} from './studio-tags.js?v=111';
+import {GALLERY_LOOK_ASSETS} from './studio-gallery-look-data.js?v=111';
 
 const deepFreeze = value => {
   if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;

@@ -37,7 +37,7 @@ try {
  await page.keyboard.press('Home');assert.equal(await page.locator('[role=tab][aria-selected=true]').getAttribute('data-editor-tab'),'appearance');
  for(const recipe of manifest.template.recipes){
    await page.evaluate(async selections=>{
-     const {updateDraft}=await import('/studio-draft.js?v=110');const {editor,data}=window.__adjustmentReview;
+     const {updateDraft}=await import('/studio-draft.js?v=111');const {editor,data}=window.__adjustmentReview;
      editor.setDraft(updateDraft(editor.getDraft(),selections,{template:data.template}));
    },recipe.selections);
    await page.waitForFunction(expected=>Object.entries(expected).every(([field,value])=>window.__adjustmentReview.editor.getSnapshot()?.options[field]===value),recipe.selections,{timeout:45000});
@@ -54,7 +54,7 @@ try {
  // Every declared option has both a real UI path and a pixel-changing witness.
  const optionChecks=[];
  const selectRecipe=async selections=>{
-   await page.evaluate(async options=>{const{updateDraft}=await import('/studio-draft.js?v=110');const{editor,data}=window.__adjustmentReview;editor.setDraft(updateDraft(editor.getDraft(),options,{template:data.template}));},selections);
+   await page.evaluate(async options=>{const{updateDraft}=await import('/studio-draft.js?v=111');const{editor,data}=window.__adjustmentReview;editor.setDraft(updateDraft(editor.getDraft(),options,{template:data.template}));},selections);
    await page.waitForFunction(expected=>Object.entries(expected).every(([field,value])=>window.__adjustmentReview.editor.getSnapshot()?.options[field]===value),selections);
  };
  for(const field of fields){

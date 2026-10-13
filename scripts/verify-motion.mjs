@@ -3,8 +3,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ASSETS} from '../dist/studio-artwork-catalog.js?v=110';
-import {createMotionController} from '../dist/studio-motion.js?v=110';
+import {ASSETS} from '../dist/studio-artwork-catalog.js?v=111';
+import {createMotionController} from '../dist/studio-motion.js?v=111';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/motion');

@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
-import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=110';
-import { ASSETS } from '../dist/studio-artwork-catalog.js?v=110';
-import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets } from '../dist/studio-edit-templates.js?v=110';
+import { createPreviewLoader, normalizeTemplatePlacement, templatePlacementMatrix, transformTemplatePoint } from '../dist/studio-preview-loader.js?v=111';
+import { ASSETS } from '../dist/studio-artwork-catalog.js?v=111';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets } from '../dist/studio-edit-templates.js?v=111';
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const tick = async predicate => {

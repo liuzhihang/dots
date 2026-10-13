@@ -54,4 +54,6 @@
 
 想在本地运行、修改或部署？请阅读 [开发指南](DEVELOPMENT.md)，其中包含环境要求、启动、测试、目录结构、静态发布与贡献流程。
 
-更多资料：[设计说明](DESIGN.md) · [产品规范](openspec/specs/) · [角色制作指南](design/character-authoring/README.md) · [反馈问题](https://github.com/liuzhihang/dots/issues)
+发现问题、希望新增形象，或想提出功能与体验建议时，请从 [GitHub 反馈分类页](https://github.com/liuzhihang/dots/issues/new/choose) 选择对应表单。提交需要登录 GitHub，Issue 内容公开；形象申请只是需求建议，不保证制作或采纳，参考素材应可公开分享。
+
+更多资料：[设计说明](DESIGN.md) · [产品规范](openspec/specs/) · [角色制作指南](design/character-authoring/README.md)

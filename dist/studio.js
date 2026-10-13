@@ -1,14 +1,14 @@
-import {CATALOG_REVISION,getArtwork,canOpenArtwork} from './studio-artwork-catalog.js?v=110';
-import {normalizeGalleryQuery} from './studio-tags.js?v=110';
-import {getGalleryLook,getLookAsset} from './studio-gallery-looks.js?v=110';
-import {getGalleryFigure,queryGalleryFigures} from './studio-gallery-figures.js?v=110';
-import {createGalleryFilters} from './studio-tag-browser.js?v=110';
-import {createArtworkCard} from './studio-card.js?v=110';
-import {createMotionController} from './studio-motion.js?v=110';
-import {createDetailController} from './studio-detail.js?v=110';
-import {createOverlay} from './studio-overlay.js?v=110';
-import {parseRoute,galleryURL,artworkURL,lookURL,figureURL} from './studio-router.js?v=110';
-import {t,storedPreference,savePreference} from './studio-i18n.js?v=110';
+import {CATALOG_REVISION,getArtwork,canOpenArtwork} from './studio-artwork-catalog.js?v=111';
+import {normalizeGalleryQuery} from './studio-tags.js?v=111';
+import {getGalleryLook,getLookAsset} from './studio-gallery-looks.js?v=111';
+import {getGalleryFigure,queryGalleryFigures} from './studio-gallery-figures.js?v=111';
+import {createGalleryFilters} from './studio-tag-browser.js?v=111';
+import {createArtworkCard} from './studio-card.js?v=111';
+import {createMotionController} from './studio-motion.js?v=111';
+import {createDetailController} from './studio-detail.js?v=111';
+import {createOverlay} from './studio-overlay.js?v=111';
+import {parseRoute,galleryURL,artworkURL,lookURL,figureURL} from './studio-router.js?v=111';
+import {t,storedPreference,savePreference} from './studio-i18n.js?v=111';
 
 const HOME_COPY={
  en:{titleFirst:'Make It',titleSecond:'Your Dot.',description:'Pick a character. Make it yours in ChatGPT.'},

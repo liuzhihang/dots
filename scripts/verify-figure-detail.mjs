@@ -11,9 +11,9 @@ import {
   getFigureInitialState,
   getFigureStates,
   resolveFigureSelection
-} from '../dist/studio-gallery-figures.js?v=110';
-import {getRequiredTemplateAssets, getTemplateOptionAssetRefs} from '../dist/studio-edit-templates.js?v=110';
-import {getArtwork} from '../dist/studio-artwork-catalog.js?v=110';
+} from '../dist/studio-gallery-figures.js?v=111';
+import {getRequiredTemplateAssets, getTemplateOptionAssetRefs} from '../dist/studio-edit-templates.js?v=111';
+import {getArtwork} from '../dist/studio-artwork-catalog.js?v=111';
 
 const output = resolveEvidenceDirectory('.artifacts/figure-detail-browser');
 await fs.mkdir(output, {recursive: true});
@@ -84,9 +84,9 @@ const checks = [];
 page.on('pageerror', error => errors.push(error.message));
 page.on('requestfailed', request => requestFailures.push({url:new URL(request.url()).pathname,error:request.failure()?.errorText||'failed'}));
 
-const html = `<!doctype html><html lang="en"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=110"><link rel="stylesheet" href="/studio-detail.css?v=110"></head><body><main id="pageShell"><div id="detail"></div></main><script type="module">
+const html = `<!doctype html><html lang="en"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=111"><link rel="stylesheet" href="/studio-detail.css?v=111"></head><body><main id="pageShell"><div id="detail"></div></main><script type="module">
   const [details,previews] = await Promise.all([
-    import('/studio-detail.js?v=110'),import('/studio-preview-loader.js?v=110')
+    import('/studio-detail.js?v=111'),import('/studio-preview-loader.js?v=111')
   ]);
   const baseLoader=previews.createPreviewLoader();
   const gate={enabled:false,assetId:null,started:false,failNext:false,release:null};

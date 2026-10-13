@@ -1,8 +1,8 @@
-import { getFigureFields, getFigureStates, resolveFigureSelection } from './studio-gallery-figures.js?v=110';
-import { createDraft, updateDraft } from './studio-draft.js?v=110';
-import { createEditor, getTemplateManifestRows, renderTemplateOptionThumbnail } from './studio-editor.js?v=110';
-import { getTemplateOptionAssetRefs } from './studio-edit-templates.js?v=110';
-import { createPreviewLoader } from './studio-preview-loader.js?v=110';
+import { getFigureFields, getFigureStates, resolveFigureSelection } from './studio-gallery-figures.js?v=111';
+import { createDraft, updateDraft } from './studio-draft.js?v=111';
+import { createEditor, getTemplateManifestRows, renderTemplateOptionThumbnail } from './studio-editor.js?v=111';
+import { getTemplateOptionAssetRefs } from './studio-edit-templates.js?v=111';
+import { createPreviewLoader } from './studio-preview-loader.js?v=111';
 
 const FIELD_LABELS = Object.freeze({
   en: { color: 'Color', colors: 'Color', eyes: 'Face', face: 'Face', glasses: 'Glasses', accessory: 'Accessory', accessories: 'Accessories', clothing: 'Clothing' },
@@ -310,7 +310,7 @@ export function createFigureEditor({
     const signal = figureAssetController.signal;
     figureAssetRequest = (async () => {
       const sourceTemplates = [...new Map(states.map(state => [`${state.template.id}@${state.template.version}`, state.template])).values()];
-      const manifestUrl = new URL('./assets/templates/sources.json?v=110', documentRef.baseURI);
+      const manifestUrl = new URL('./assets/templates/sources.json?v=111', documentRef.baseURI);
       if (manifestUrl.origin !== globalThis.location?.origin) throw new Error('Template sources must be loaded from this site.');
       const response = await fetch(manifestUrl.href, { cache: 'force-cache', credentials: 'same-origin', signal });
       if (!response?.ok) throw new Error(`Template source manifest request failed (${response?.status ?? 'no response'}).`);
@@ -483,8 +483,8 @@ export function createFigureEditor({
     onStatus({ message: status.textContent, canExport: false, snapshot: null, state: currentState, record: currentRecord, figure, sessionId, pending: true });
     try {
       const [editorModule, drafts] = await Promise.all([
-        import('./studio-editor.js?v=110'),
-        import('./studio-draft.js?v=110')
+        import('./studio-editor.js?v=111'),
+        import('./studio-draft.js?v=111')
       ]);
       if (destroyed || pending !== candidate || token !== pendingToken) return false;
       const childRoot = documentRef.createElement('div');

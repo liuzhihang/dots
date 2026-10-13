@@ -51,10 +51,10 @@ try {
   await page.goto(`http://127.0.0.1:${port}/harness`);
   const result = await page.evaluate(async origin => {
     const [templatesModule, draftModule, rendererModule, loaderModule, fixtureModule] = await Promise.all([
-      import(`${origin}/dist/studio-edit-templates.js?v=110`),
-      import(`${origin}/dist/studio-draft.js?v=110`),
-      import(`${origin}/dist/studio-renderer.js?v=110`),
-      import(`${origin}/dist/studio-preview-loader.js?v=110`),
+      import(`${origin}/dist/studio-edit-templates.js?v=111`),
+      import(`${origin}/dist/studio-draft.js?v=111`),
+      import(`${origin}/dist/studio-renderer.js?v=111`),
+      import(`${origin}/dist/studio-preview-loader.js?v=111`),
       import(`${origin}/scripts/fixtures/character-adjustment-v2.mjs`)
     ]);
     const {TEMPLATE_REGISTRY, LEGACY_TEMPLATE_REGISTRY, enumerateValidConfigurations, getRequiredTemplateAssets} = templatesModule;

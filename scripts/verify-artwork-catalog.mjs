@@ -6,14 +6,14 @@ import {
   DISPLAY_ASSETS, PREVIEW_ARTWORKS, PREVIEW_ASSETS, PREVIEW_PROMPTS, PROMPTS, SERIES,
   canOpenArtwork, createSnapshot, getAsset, getArtwork, getPrompt, getVariants, isEligible,
   isPreviewArtwork, isTransparentCharacter, validateArtwork
-} from '../dist/studio-artwork-catalog.js?v=110';
-import { ARTWORK_CONTENT, CHARACTER_IDENTITIES as CONTENT_CHARACTERS, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS } from '../dist/studio-content.js?v=110';
+} from '../dist/studio-artwork-catalog.js?v=111';
+import { ARTWORK_CONTENT, CHARACTER_IDENTITIES as CONTENT_CHARACTERS, POSTER_ASSETS, PREVIEW_ARTWORK_CONTENT, PREVIEW_ORIGINAL_ASSETS } from '../dist/studio-content.js?v=111';
 import {
   V100_ADDITIONAL_CONTENT, V100_ADDITIONAL_IDENTITIES, V100_APPROVAL_ID,
   V100_APPROVAL_RECORD, V100_APPROVAL_RECORD_SHA256, V100_ARTWORK_ROWS,
   V100_REVIEW_PACKAGE, V100_REVIEW_PACKAGE_SHA256, V100_SERIES_NORMALIZATION
-} from '../dist/studio-content-v100.js?v=110';
-import { queryArtworks } from '../dist/studio-tags.js?v=110';
+} from '../dist/studio-content-v100.js?v=111';
+import { queryArtworks } from '../dist/studio-tags.js?v=111';
 import { createNewArtworkFixture } from './fixtures/new-artwork.mjs';
 import { resolveProvenancePath } from './resolve-provenance-path.mjs';
 

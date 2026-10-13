@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';import os from 'node:os';import {createServer} from 'vite';import {launchBrowser} from './browser-runtime.mjs';import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=110';import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=110';
+import {ARTWORKS,getAsset} from '../dist/studio-artwork-catalog.js?v=111';import {getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=111';
 const output=resolveEvidenceDirectory('.artifacts/studio-performance');await fs.mkdir(output,{recursive:true});
 const vite=await createServer({configFile:path.resolve('vite.config.mjs'),server:{host:'127.0.0.1',port:0,strictPort:true,hmr:false}});await vite.listen();const origin=`http://127.0.0.1:${vite.httpServer.address().port}`;
 const browser=await launchBrowser({headless:true});
-const html=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="110"','data-cache="110" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.app=bootStudio();</script>');
+const html=(await fs.readFile('dist/index.html','utf8')).replace('data-cache="111"','data-cache="111" data-studio-boot="manual"').replace('<script type="module" src="./studio.js?v=111"></script>','<script type="module">import {bootStudio} from "/studio.js?v=111";window.app=bootStudio();</script>');
 const staticFixture=ARTWORKS.find(artwork=>!getTemplateForArtwork(artwork));
 const performanceFixture=staticFixture || ARTWORKS[0];assert(performanceFixture,'A current public Artwork is available for performance checks.');
 const fixtureEditable=Boolean(getTemplateForArtwork(performanceFixture));

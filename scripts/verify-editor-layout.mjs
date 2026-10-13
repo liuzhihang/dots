@@ -5,9 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { launchBrowser } from './browser-runtime.mjs';
 import { resolveEvidenceDirectory } from './evidence-paths.mjs';
-import {GALLERY_LOOKS,getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
-import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=110';
-import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=110';
+import {GALLERY_LOOKS,getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=111';
+import {getFigureForLook,getFigureInitialState} from '../dist/studio-gallery-figures.js?v=111';
+import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=111';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=111';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/editor-layout');
@@ -49,14 +50,16 @@ const templateCases = TEMPLATE_REGISTRY.map(template => {
   assert.equal(getTemplateForArtwork(artwork)?.id, template.id,
     `${template.id} is available through the public eligibility path.`);
   const fields = getLookOptionFields(template, getDefaultLook(artwork));
-  return { series: template.id, seriesId: artwork.seriesId, id: artwork.id, templateId: template.id, fields, tabs: template.schemaVersion === 2 ? fields.map(field => field.key) : ['colors', 'face', 'accessories'], colorField: template.schemaVersion === 2 ? 'colors' : 'color', faceField: template.schemaVersion === 2 ? 'face' : 'eyes' };
+  const figure = getFigureForLook(getDefaultLook(artwork).id), initial = figure && getFigureInitialState(figure);
+  assert(initial, `${template.id} resolves to a registered public Figure and canonical state.`);
+  return { series: template.id, seriesId: artwork.seriesId, id: artwork.id, figureId: figure.id, figureStateId: initial.id, figureArtworkId: initial.artwork.id, templateId: template.id, fields, tabs: template.schemaVersion === 2 ? fields.map(field => field.key) : ['colors', 'face', 'accessories'], colorField: template.schemaVersion === 2 ? 'colors' : 'color', faceField: template.schemaVersion === 2 ? 'face' : 'eyes' };
 });
 assert.equal(templateCases.length, ARTWORKS.filter(item => getTemplateForArtwork(item)).length, 'Every publicly editable Artwork is checked through public access.');
 assert(templateCases.length > 0);
 
 async function openArtwork(page, id) {
   await page.evaluate(async artworkId => {
-    const { getArtwork } = await import('/studio-artwork-catalog.js?v=110');
+    const { getArtwork } = await import('/studio-artwork-catalog.js?v=111');
     const artwork = getArtwork(artworkId);
     if (!artwork) throw new Error(`Artwork is unavailable: ${artworkId}`);
     window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -103,6 +106,42 @@ async function assertHomeHero(page, language) {
     const image = document.querySelector('.gallery-intro-art img');
     return Boolean(image && image.complete && image.naturalWidth > 0);
   }, null, { timeout: 20_000 });
+}
+
+async function assertCommunityLinks(page, language, label) {
+  const targets = {
+    headerGitHub: 'https://github.com/liuzhihang/dots',
+    footerGitHub: 'https://github.com/liuzhihang/dots',
+    headerFeedback: 'https://github.com/liuzhihang/dots/issues/new/choose',
+    footerFeedback: 'https://github.com/liuzhihang/dots/issues/new/choose'
+  };
+  assert.equal(await page.locator('.community-links .community-link').count(), 2, `${label}: the header has both community links.`);
+  assert.equal(await page.locator('.footer-community-links .community-link').count(), 2, `${label}: the footer has both community links.`);
+  for (const [id, href] of Object.entries(targets)) {
+    const link = page.locator(`#${id}`);
+    assert.equal(await link.count(), 1, `${label}: #${id} exists exactly once.`);
+    assert.equal(await link.getAttribute('href'), href, `${label}: #${id} uses its fixed GitHub destination.`);
+    assert.equal(await link.getAttribute('target'), '_blank', `${label}: #${id} opens a new tab.`);
+    const rel = (await link.getAttribute('rel') || '').split(/\s+/);
+    assert(rel.includes('noopener') && rel.includes('noreferrer'), `${label}: #${id} isolates its new tab.`);
+    assert.equal(await link.evaluate(element => element.matches('[data-i18n]') || Boolean(element.querySelector('[data-i18n]'))), true, `${label}: #${id} participates in existing localization.`);
+    const target = await link.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const ids = (element.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+      return { width: rect.width, height: rect.height, visible: Boolean(rect.width && rect.height), descriptionIds: ids,
+        description: ids.map(id => document.getElementById(id)?.textContent || '').join(' ') };
+    });
+    assert(target.visible && target.width >= 44 && target.height >= 44, `${label}: #${id} has a 44×44px target: ${JSON.stringify(target)}`);
+    if (id.endsWith('Feedback')) assert(target.descriptionIds.includes('feedbackNotice') && target.description.length > 0, `${label}: #${id} describes the public submission notice.`);
+    const newTabHint = await link.locator('[data-i18n="opensNewTab"]').textContent();
+    assert(language === 'en' ? /new tab/i.test(newTabHint || '') : /新标签页/.test(newTabHint || ''), `${label}: #${id} announces its new-tab behavior.`);
+    if (id.endsWith('Feedback')) assert(target.descriptionIds.includes('feedbackNotice'), `${label}: #${id} describes the public submission notice.`);
+  }
+  const expectedNotice = language === 'en'
+    ? 'Submit on GitHub. Sign-in required; submissions are public.'
+    : '通过 GitHub 提交，需登录；内容公开。';
+  assert.equal((await page.locator('#feedbackNotice').innerText()).trim(), expectedNotice, `${label}: the public-submission notice is localized.`);
+  assert.equal(await page.locator('#feedbackNotice').getAttribute('data-i18n') !== null, true, `${label}: the notice uses the existing localization mechanism.`);
 }
 
 async function assertActionGeometry(page, name) {
@@ -163,8 +202,12 @@ try {
       await assertHomeHero(page, language);
       assert.equal(await page.locator('.studio-nav a').count(), 1);
       assert.equal(await page.locator('.studio-nav a[data-page="guide"],#guidePortal,#detailLanguage').count(), 0);
+      await assertCommunityLinks(page, language, `${language} editor harness`);
 
       await openArtwork(page, templateCase.id);
+      assert.equal(await page.locator('#pageShell').evaluate(shell => shell.inert), true, 'The Gallery background, including both community-link groups, is inert in CharacterStudio.');
+      assert.equal(await page.locator('.community-link').evaluateAll(links => links.every(link => Boolean(link.closest('#pageShell')?.inert))), true, 'Header and footer external links follow the inert background while the Studio is open.');
+      assert.equal(await page.locator('#studioOverlay .community-link').count(), 0, 'The modal does not duplicate external community links into its focus scope.');
       assert.equal(await page.locator('.studio-editor-controls[data-template-id]').getAttribute('data-review-only'), 'false',
         'The active editor is publicly eligible and not marked review-only.');
       assert.equal(await page.locator('.studio-original>summary').isVisible(), true);
@@ -394,15 +437,18 @@ try {
       }
       await page.locator('#overlayClose').click();
       await page.waitForFunction(() => !document.querySelector('#studioOverlay').open && document.body.dataset.screen === 'gallery');
+      assert.equal(await page.locator('#pageShell').evaluate(shell => shell.inert), false, 'Closing the Studio restores interaction with the Gallery links.');
       const closedDialog = await page.locator('#studioOverlay').evaluate(dialog => ({ display: getComputedStyle(dialog).display, rect: dialog.getBoundingClientRect().toJSON() }));
       assert.equal(closedDialog.display, 'none', `The closed dialog is removed from layout: ${JSON.stringify(closedDialog)}`);
       assert(closedDialog.rect.width === 0 || closedDialog.rect.height === 0, `The closed dialog has no visible bounds: ${JSON.stringify(closedDialog)}`);
-      await page.locator(`#card-${templateCase.id}`).scrollIntoViewIfNeeded();
-      await page.locator(`#card-${templateCase.id}`).click();
-      await page.waitForFunction(id => window.__dotsQAApp.detail.getState().id === id
+      await page.locator(`#card-${templateCase.figureId}`).scrollIntoViewIfNeeded();
+      await page.locator(`#card-${templateCase.figureId}`).click();
+      await page.waitForFunction(expected => window.__dotsQAApp.detail.getState().figureId === expected.figureId
+        && window.__dotsQAApp.detail.getState().figureStateId === expected.figureStateId
+        && window.__dotsQAApp.detail.getState().id === expected.figureArtworkId
         && document.querySelector('#overlayBody').scrollTop === 0
         && document.querySelector('.artwork-detail__title')?.getClientRects().length > 0,
-      templateCase.id, { timeout: 20_000 });
+      templateCase, { timeout: 20_000 });
       rows.push({ language, series: templateCase.series, lifecycle, changedArtwork, reopenedScrollTop: await body.evaluate(element => element.scrollTop) });
       await context.close();
     }

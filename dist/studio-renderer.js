@@ -6,8 +6,8 @@ import {
   resolveTemplateAsset,
   templateSchemaVersion,
   validateTemplateDefinition
-} from './studio-edit-templates.js?v=110';
-import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=110';
+} from './studio-edit-templates.js?v=111';
+import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=111';
 
 export const STUDIO_RENDERER_REVISION = 'studio-renderer-20261011-v100-declarative-recipes-1';
 const exportPixels = new WeakMap();

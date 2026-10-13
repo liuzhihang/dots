@@ -3,8 +3,8 @@ import {
   createSnapshot as catalogCreateSnapshot, getAsset as catalogGetAsset, getArtwork as catalogGetArtwork,
   getPrompt as catalogGetPrompt, getVariants as catalogGetVariants, isPreviewArtwork as catalogIsPreviewArtwork,
   validateArtwork
-} from '../../dist/studio-artwork-catalog.js?v=110';
-import { queryArtworks as catalogQueryArtworks } from '../../dist/studio-tags.js?v=110';
+} from '../../dist/studio-artwork-catalog.js?v=111';
+import { queryArtworks as catalogQueryArtworks } from '../../dist/studio-tags.js?v=111';
 
 const fixtureId = 'fixture-new-static-artwork';
 const fixtureCharacterId = 'fixture-white-cat-variation';
