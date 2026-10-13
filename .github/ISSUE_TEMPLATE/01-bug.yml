@@ -1,0 +1,60 @@
+name: 问题反馈 / Bug report
+description: 报告网站问题并提供复现信息 / Report a website problem with steps to reproduce
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        提交需要登录 GitHub，Issue 内容公开。请勿填写密码、密钥或无法公开的个人信息。
+        / Sign-in to GitHub is required, and issues are public. Do not include passwords, secrets, or personal information you cannot share publicly.
+  - type: textarea
+    id: actual_behavior
+    attributes:
+      label: 实际表现 / What happened
+      description: 描述你看到或遇到的情况 / Describe what you saw or experienced
+      placeholder: 请尽量具体 / Be as specific as you can
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: 预期表现 / What did you expect to happen?
+      description: 描述你原本预期发生的情况 / Describe what you expected to happen
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      description: 写下可以重现问题的操作步骤 / List the steps that reproduce the problem
+      placeholder: |
+        1. 打开…… / Open…
+        2. 点击…… / Click…
+        3. 观察到…… / Observe…
+    validations:
+      required: true
+  - type: input
+    id: affected_page_or_character
+    attributes:
+      label: 受影响的页面或角色 / Affected page or character
+      description: 可填写页面链接或角色名称 / Add a page link or character name
+      placeholder: https://… or character name
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: 浏览器、系统或设备 / Browser, system, or device
+      description: 选填；例如 Safari on macOS 或 Chrome on Android / Optional; for example, Safari on macOS or Chrome on Android
+    validations:
+      required: false
+  - type: upload
+    id: screenshots_or_recording
+    attributes:
+      label: 截图或录屏（选填） / Screenshot or screen recording (optional)
+      description: 仅上传可公开分享的图片或视频 / Upload only images or videos that can be shared publicly
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp,.mp4,.mov,.webm"

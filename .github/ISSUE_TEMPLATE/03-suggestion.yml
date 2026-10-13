@@ -1,0 +1,53 @@
+name: 功能与体验建议 / Suggestion
+description: 分享对功能或使用体验的改进建议 / Suggest an improvement to a feature or the user experience
+title: "[Suggestion] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        提交需要登录 GitHub，Issue 内容公开。请勿填写密码、密钥或无法公开的个人信息。
+        / Sign-in to GitHub is required, and issues are public. Do not include passwords, secrets, or personal information you cannot share publicly.
+  - type: textarea
+    id: current_problem_or_opportunity
+    attributes:
+      label: 当前问题或改进机会 / Current problem or opportunity
+      description: 描述你遇到的问题或发现的改进机会 / Describe a problem you encountered or an opportunity for improvement
+    validations:
+      required: true
+  - type: textarea
+    id: desired_outcome
+    attributes:
+      label: 期望结果 / Desired outcome
+      description: 说明什么结果会让体验更好 / Explain what outcome would improve the experience
+    validations:
+      required: true
+  - type: dropdown
+    id: suggestion_category
+    attributes:
+      label: 建议类别（选填） / Suggestion category (optional)
+      description: 可跳过此项，直接描述建议 / Optional; you can skip this and describe your suggestion
+      options:
+        - 功能 / Feature
+        - 视觉 / Visual design
+        - 易用性 / Usability
+        - 其他 / Other
+    validations:
+      required: false
+  - type: input
+    id: related_page
+    attributes:
+      label: 相关页面（选填） / Related page (optional)
+      description: 可填写页面链接或名称 / Add a page link or name
+      placeholder: https://… or page name
+    validations:
+      required: false
+  - type: upload
+    id: screenshot
+    attributes:
+      label: 截图（选填） / Screenshot (optional)
+      description: 仅在有帮助时上传可公开分享的图片 / Upload a publicly shareable image only if it helps
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp"

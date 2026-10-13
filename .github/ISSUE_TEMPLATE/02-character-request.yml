@@ -1,0 +1,64 @@
+name: 申请新增形象 / Character request
+description: 分享你希望看到的角色形象 / Suggest a character you would like to see
+title: "[Character] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: >-
+        提交需要登录 GitHub，Issue 内容公开。请只提供可公开分享的参考素材。
+        申请只是需求建议，不保证制作或采纳；不会自动生成形象、取得批准或加入图库。
+        / Sign-in to GitHub is required, and issues are public. Only share reference material that may be shared publicly.
+        A request is a suggestion and does not guarantee creation or acceptance; it will not automatically generate, approve, or add a character to the gallery.
+  - type: textarea
+    id: desired_appearance
+    attributes:
+      label: 想要的形象 / Character you would like to see
+      description: 描述希望新增的角色或形象 / Describe the character or appearance you would like added
+    validations:
+      required: true
+  - type: textarea
+    id: key_features
+    attributes:
+      label: 关键外观特征 / Key visual features
+      description: 描述能辨认该形象的主要特征 / Describe the main features that define the appearance
+    validations:
+      required: true
+  - type: input
+    id: colors
+    attributes:
+      label: 配色（选填） / Colors (optional)
+      description: 可填写偏好的颜色 / Add preferred colors if you have them
+    validations:
+      required: false
+  - type: input
+    id: clothing_or_accessories
+    attributes:
+      label: 服装或配饰（选填） / Clothing or accessories (optional)
+      description: 可填写希望出现的服装或配饰 / Add any clothing or accessories you have in mind
+    validations:
+      required: false
+  - type: textarea
+    id: intended_use
+    attributes:
+      label: 使用场景（选填） / Intended use (optional)
+      description: 可说明你希望如何使用或看到这个形象 / Describe how you would use or like to see this character
+    validations:
+      required: false
+  - type: input
+    id: reference_link
+    attributes:
+      label: 参考链接（选填） / Reference link (optional)
+      description: 请确认链接内容可以公开分享 / Make sure the linked material can be shared publicly
+      placeholder: https://…
+    validations:
+      required: false
+  - type: upload
+    id: reference_image
+    attributes:
+      label: 参考图片（选填） / Reference image (optional)
+      description: 仅上传你有权公开分享的图片 / Upload only images you are allowed to share publicly
+    validations:
+      required: false
+      accept: ".png,.jpg,.jpeg,.gif,.webp"
