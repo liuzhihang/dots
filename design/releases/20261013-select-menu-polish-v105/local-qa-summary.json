@@ -1,0 +1,43 @@
+{
+  "revision": 105,
+  "scope": "Dropdown surfaces and modal header typography/spacing; JS changes only cache queries",
+  "build": "passed; 1004 source files; 44 approved Artwork; no pending",
+  "automatedLayout": {
+    "passed": true,
+    "states": 18,
+    "controls": 30,
+    "detailHeaderStates": 6,
+    "keyboard": {
+      "tabOrder": "passed",
+      "enhancedPickerOpen": "passed",
+      "escapeKeepsDetailOpen": "passed",
+      "languageSelection": "passed",
+      "sortSelection": "passed",
+      "fallbackSelections": "passed"
+    },
+    "pageErrors": [],
+    "consoleErrors": [],
+    "cleanupErrors": []
+  },
+  "recovery": "passed: 44 templates, 540 unchanged recipes, 5015 selection explanations plus simulated editor/overlay lifecycle",
+  "sameTurnBeforeFinalHeaderFix": [
+    "browser-runtime node tests passed",
+    "router passed",
+    "publish inventory passed",
+    "release safety passed"
+  ],
+  "strictOpenSpec": "passed",
+  "actualLocalBrowser": [
+    "Desktop Chinese and English menu",
+    "320px English two-line title, single-line Back,44px controls",
+    "390px Chinese menu",
+    "Escape dismisses picker before dialog"
+  ],
+  "notRun": [
+    "full npm test suite this turn",
+    "physical phone",
+    "actual Safari/Firefox menus",
+    "ChatGPT send or generation"
+  ],
+  "v104FindingCorrected": "Desktop Chinese Back wrapped with 13px font and old 18px padding. Final v105 uses 12px desktop / 6px mobile inline padding and nowrap; text-line and equal-height regressions are covered."
+}

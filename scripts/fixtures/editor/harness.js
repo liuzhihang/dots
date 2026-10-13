@@ -11,6 +11,6 @@ document.body.replaceChildren(...[...source.body.childNodes].map(node => documen
 // This external QA harness imports the production bootstrap without bypassing
 // public template eligibility. Approved templates open through the same path
 // as the deployed application.
-const { bootStudio } = await import('/studio.js?v=102');
+const { bootStudio } = await import('/studio.js?v=110');
 window.__dotsQAApp = bootStudio({ detailOptions: { reviewHarness: false } });
 status.remove();

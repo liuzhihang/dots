@@ -1,0 +1,987 @@
+{
+  "startedAt": "2026-10-13T06:11:48.265Z",
+  "site": "https://dots.liuzhihang.chatgpt.site",
+  "revision": 105,
+  "deployment": {
+    "site": "Site54",
+    "deploymentId": "appgdep_6acdcb8804208191879db3790efee1dc",
+    "status": "succeeded",
+    "source": "7901afc139526e32523d06d8150a049d5bfa1d80"
+  },
+  "tlsVerification": "curl defaults; certificate validation enabled; no --insecure flag",
+  "manifests": {
+    "baselinePath": "/Users/liuzhihang/workspace/dots/.artifacts/select-polish-20261013/before.json",
+    "baselineFiles": 1009,
+    "stageManifestPath": "/Users/liuzhihang/workspace/dots/.artifacts/select-polish-20261013/v105/publish-stage/stage-verification.json",
+    "stageFileCount": 592,
+    "stageBytes": 238537027
+  },
+  "changedRuntimeScope": {
+    "count": 22,
+    "kindCounts": {
+      "html": 1,
+      "js": 19,
+      "css": 2
+    },
+    "onlyDistRuntimeCompared": true
+  },
+  "results": [
+    {
+      "path": "dist/studio-asset-loader.js",
+      "expected": {
+        "bytes": 7521,
+        "sha256": "abfdffbdb89e41622f37a263e783c0605f059de9fed62b82e99ce8fe48db6991"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 7521,
+        "sha256": "abfdffbdb89e41622f37a263e783c0605f059de9fed62b82e99ce8fe48db6991",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1310,
+          "downloadedBytes": 7521,
+          "receivedBytes": 7521,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:49 GMT",
+            "content-type": "text/javascript",
+            "content-length": "7521",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"12d77b02df3f969da46937fc39ae17de\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c306b4c522f3d-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-content.js",
+      "expected": {
+        "bytes": 54463,
+        "sha256": "eaea4ebfafac80afc1542e8409bb547a46a1aaea4802b1e8f17df46c13db590d"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 54463,
+        "sha256": "eaea4ebfafac80afc1542e8409bb547a46a1aaea4802b1e8f17df46c13db590d",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1503,
+          "downloadedBytes": 54463,
+          "receivedBytes": 54463,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:49 GMT",
+            "content-type": "text/javascript",
+            "content-length": "54463",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"3347eadbfea9485d090f0a5cbccfccd0\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c306a29e41418-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-card.js",
+      "expected": {
+        "bytes": 2822,
+        "sha256": "53ad9169cb1254e896afa73d2168171d0d150fcf7783c829541bff4d9a7bbcfb"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 2822,
+        "sha256": "53ad9169cb1254e896afa73d2168171d0d150fcf7783c829541bff4d9a7bbcfb",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1878,
+          "downloadedBytes": 2822,
+          "receivedBytes": 2822,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:50 GMT",
+            "content-type": "text/javascript",
+            "content-length": "2822",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"dab76816b32a98a756a0c35b80086a95\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c306e0db34e43-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-content-v100.js",
+      "expected": {
+        "bytes": 169898,
+        "sha256": "a7b249519cc1e6017cdea54fb88c39b3beb5f8232531fc0866db8780e1883271"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 169898,
+        "sha256": "a7b249519cc1e6017cdea54fb88c39b3beb5f8232531fc0866db8780e1883271",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1970,
+          "downloadedBytes": 169898,
+          "receivedBytes": 169898,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:49 GMT",
+            "content-type": "text/javascript",
+            "content-length": "169898",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"9687fbaba2c61fe3ab2435448ac2880b\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c306a395df8f7-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-draft.js",
+      "expected": {
+        "bytes": 8738,
+        "sha256": "b83baa73f7f787b4270f6e8407cec2d47c1c0024247aa9ed4f0a411f5c921ee7"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 8738,
+        "sha256": "b83baa73f7f787b4270f6e8407cec2d47c1c0024247aa9ed4f0a411f5c921ee7",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 956,
+          "downloadedBytes": 8738,
+          "receivedBytes": 8738,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:51 GMT",
+            "content-type": "text/javascript",
+            "content-length": "8738",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"5ce00771d084253cf89999d18b701675\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3074ff101e1d-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-detail.css",
+      "expected": {
+        "bytes": 31823,
+        "sha256": "fe534d8db15d6ff91da02750491db089a2cd2544175e52497d14ef07c22538b3"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 31823,
+        "sha256": "fe534d8db15d6ff91da02750491db089a2cd2544175e52497d14ef07c22538b3",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-detail.css?v=105",
+        "contentType": "text/css"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-detail.css?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1580,
+          "downloadedBytes": 31823,
+          "receivedBytes": 31823,
+          "contentType": "text/css",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:50 GMT",
+            "content-type": "text/css",
+            "content-length": "31823",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"c23eb46711cbb0948105dbe42d36a0e3\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c30724cbf281a-SEA"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-detail.js",
+      "expected": {
+        "bytes": 35518,
+        "sha256": "c2c181d19ff3e4689bfe91755c088d65f520529c315ffd15d26e0119bbfa8790"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 35518,
+        "sha256": "c2c181d19ff3e4689bfe91755c088d65f520529c315ffd15d26e0119bbfa8790",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2100,
+          "downloadedBytes": 35518,
+          "receivedBytes": 35518,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:51 GMT",
+            "content-type": "text/javascript",
+            "content-length": "35518",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"8129e96c285a4f475bf0aa6e3c0b1007\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3073df19a5f0-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-editor.js",
+      "expected": {
+        "bytes": 47086,
+        "sha256": "97d985d90a7f66955a030e48439ffe6e4f9c81f59b7e64234c52167c515cb215"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 47086,
+        "sha256": "97d985d90a7f66955a030e48439ffe6e4f9c81f59b7e64234c52167c515cb215",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1292,
+          "downloadedBytes": 47086,
+          "receivedBytes": 47086,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:52 GMT",
+            "content-type": "text/javascript",
+            "content-length": "47086",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"5a63370380e54adf32d5ca9c5d4470e3\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c307ac8147e62-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/index.html",
+      "expected": {
+        "bytes": 5019,
+        "sha256": "8b3f45a709d9dc40a08c04ad138d9737c587012daae454326204207171ed72a5"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 5957,
+        "sha256": "6f272744dfbf9daedab0106ead364de57906e427d31fc29d148dd2ae6c26c2f6",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/",
+        "contentType": "text/html"
+      },
+      "exactRawHash": false,
+      "sourceVerified": true,
+      "hostInsertion": {
+        "positionBytes": 5004,
+        "insertedBefore": "</body></html>",
+        "bytes": 938,
+        "sha256": "b9a3271fd0f1ae37d710b2650409d8de7bd6a30aa6e2ea6765fa6d5ba4f9395f",
+        "elementType": "inline classic script (no type/src attributes on script element)",
+        "references": "/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "executedDuringAudit": false,
+        "rawResponseHashStillDiffers": true,
+        "normalizedSourceMatchesStage": true
+      },
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/index.html",
+          "exitCode": 0,
+          "status": 307,
+          "elapsedMs": 1720,
+          "downloadedBytes": 0,
+          "receivedBytes": 0,
+          "contentType": null,
+          "stderr": null,
+          "redirectLocation": "https://dots.liuzhihang.chatgpt.site/",
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:49 GMT",
+            "content-length": "0",
+            "location": "/",
+            "server": "cloudflare",
+            "cf-ray": "a49c306aea2da666-SJC"
+          }
+        },
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2842,
+          "downloadedBytes": 5957,
+          "receivedBytes": 5957,
+          "contentType": "text/html",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:52 GMT",
+            "content-type": "text/html",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "server": "cloudflare",
+            "cf-ray": "a49c307a7c19a86a-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-gallery-figures.js",
+      "expected": {
+        "bytes": 19358,
+        "sha256": "d855aaba42dc063d2eba887a158e75138e5dc6287d661f40d148ed85ea2e4b48"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 19358,
+        "sha256": "d855aaba42dc063d2eba887a158e75138e5dc6287d661f40d148ed85ea2e4b48",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1265,
+          "downloadedBytes": 19358,
+          "receivedBytes": 19358,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:53 GMT",
+            "content-type": "text/javascript",
+            "content-length": "19358",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"6d0582a1359b6165335f43d0c8d60b9f\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3080acf321d6-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-edit-templates.js",
+      "expected": {
+        "bytes": 39127,
+        "sha256": "2451dd4209e9a57e4449785afd0bbcd49f42127097f0c7019e8f35662f09e96c"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 39127,
+        "sha256": "2451dd4209e9a57e4449785afd0bbcd49f42127097f0c7019e8f35662f09e96c",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 3236,
+          "downloadedBytes": 39127,
+          "receivedBytes": 39127,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:52 GMT",
+            "content-type": "text/javascript",
+            "content-length": "39127",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"d50afea03f51ec4332a9cab5ed53d5c1\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c307d1beff7b3-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-gallery-looks.js",
+      "expected": {
+        "bytes": 15769,
+        "sha256": "b7ab960b31c915a18a50cbbd6970d999346a77c3b86b2e466d182c3576c11c3b"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 15769,
+        "sha256": "b7ab960b31c915a18a50cbbd6970d999346a77c3b86b2e466d182c3576c11c3b",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1369,
+          "downloadedBytes": 15769,
+          "receivedBytes": 15769,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:53 GMT",
+            "content-type": "text/javascript",
+            "content-length": "15769",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"bd3be5f2e4cb52ed03778628bd3a64a2\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3082d9d02f09-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-figure-editor.js",
+      "expected": {
+        "bytes": 26443,
+        "sha256": "78de78d747246cc0449c9faa54a964ea99ec6bbdd7ae6549b3009e10c6bf8463"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 26443,
+        "sha256": "78de78d747246cc0449c9faa54a964ea99ec6bbdd7ae6549b3009e10c6bf8463",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2823,
+          "downloadedBytes": 26443,
+          "receivedBytes": 26443,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:53 GMT",
+            "content-type": "text/javascript",
+            "content-length": "26443",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"1d6e17d9ba18b11e2622da20f9c71295\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3082b8b34818-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-prompt.js",
+      "expected": {
+        "bytes": 13987,
+        "sha256": "246aed86d69d1a93f68ea73515580b9dd6e54cb61991b00bd54e586846090717"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 13987,
+        "sha256": "246aed86d69d1a93f68ea73515580b9dd6e54cb61991b00bd54e586846090717",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1230,
+          "downloadedBytes": 13987,
+          "receivedBytes": 13987,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:54 GMT",
+            "content-type": "text/javascript",
+            "content-length": "13987",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"e0a0ba382754b97e709fd9d3fd1d6587\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c3088cd815389-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-artwork-catalog.js",
+      "expected": {
+        "bytes": 68223,
+        "sha256": "9efec956758660ab1217982b5e1e20b505cdb01e976edb097d7fcbecb0e435bf"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 68223,
+        "sha256": "9efec956758660ab1217982b5e1e20b505cdb01e976edb097d7fcbecb0e435bf",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 6228,
+          "downloadedBytes": 68223,
+          "receivedBytes": 68223,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:49 GMT",
+            "content-type": "text/javascript",
+            "content-length": "68223",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"4b8816ad87a81728fe3ec02f5587415e\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c306b8a6817ea-SJC"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-preview-loader.js",
+      "expected": {
+        "bytes": 37691,
+        "sha256": "3b6053ac4e5206912565a86acc0a9e773b5db6cae18d8ddfc9a1634dc6812680"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 37691,
+        "sha256": "3b6053ac4e5206912565a86acc0a9e773b5db6cae18d8ddfc9a1634dc6812680",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2238,
+          "downloadedBytes": 37691,
+          "receivedBytes": 37691,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:54 GMT",
+            "content-type": "text/javascript",
+            "content-length": "37691",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"d9e18db80b7860d5a3dee7a22e2f6fb0\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c308a28610ab6-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-router.js",
+      "expected": {
+        "bytes": 1935,
+        "sha256": "fe0168f83473c377b938dc93b738dd0c4a9ddd07321e4c113cb5a6ee992d1561"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 1935,
+        "sha256": "fe0168f83473c377b938dc93b738dd0c4a9ddd07321e4c113cb5a6ee992d1561",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1312,
+          "downloadedBytes": 1935,
+          "receivedBytes": 1935,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:55 GMT",
+            "content-type": "text/javascript",
+            "content-length": "1935",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"0b5f3a565fb45f2954cd9260253b4742\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c308dede2d0c6-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-tag-browser.js",
+      "expected": {
+        "bytes": 2192,
+        "sha256": "2dd735450307a32f23d9f5a4a2c55103308b1579a4890be27def3023acf5f419"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 2192,
+        "sha256": "2dd735450307a32f23d9f5a4a2c55103308b1579a4890be27def3023acf5f419",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1713,
+          "downloadedBytes": 2192,
+          "receivedBytes": 2192,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:55 GMT",
+            "content-type": "text/javascript",
+            "content-length": "2192",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"40d2ae31b1da2855ce9948f67d4e108b\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c308e387f2ba2-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-renderer.js",
+      "expected": {
+        "bytes": 27204,
+        "sha256": "c8f19aa9490a4931811b1c02ac7365f26ecf2ac0be52f9227f536cb2a1c87d39"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 27204,
+        "sha256": "c8f19aa9490a4931811b1c02ac7365f26ecf2ac0be52f9227f536cb2a1c87d39",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2412,
+          "downloadedBytes": 27204,
+          "receivedBytes": 27204,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:55 GMT",
+            "content-type": "text/javascript",
+            "content-length": "27204",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"5683994b749723dcb7d35323878bfa8f\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c308e7a642760-SEA"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio-tags.js",
+      "expected": {
+        "bytes": 10792,
+        "sha256": "0f90f554bd4c40b682c1f6996f89629149bddcb66a50b2b5d386f1ea455c3d2b"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 10792,
+        "sha256": "0f90f554bd4c40b682c1f6996f89629149bddcb66a50b2b5d386f1ea455c3d2b",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1865,
+          "downloadedBytes": 10792,
+          "receivedBytes": 10792,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:56 GMT",
+            "content-type": "text/javascript",
+            "content-length": "10792",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"e6183cf21822c1d262f265058aa37ad7\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c30943cbecc9f-LAX"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio.js",
+      "expected": {
+        "bytes": 12699,
+        "sha256": "54db4ad56b1c3e3d63fb9cbd6d4a2165526513194de30d56f2c8b6a6601ba83c"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 12699,
+        "sha256": "54db4ad56b1c3e3d63fb9cbd6d4a2165526513194de30d56f2c8b6a6601ba83c",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio.js?v=105",
+        "contentType": "text/javascript"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio.js?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 1648,
+          "downloadedBytes": 12699,
+          "receivedBytes": 12699,
+          "contentType": "text/javascript",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:56 GMT",
+            "content-type": "text/javascript",
+            "content-length": "12699",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"320d2a8c6700c3cfee53419e7761e467\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c30967c22d049-SJC"
+          }
+        }
+      ]
+    },
+    {
+      "path": "dist/studio.css",
+      "expected": {
+        "bytes": 25001,
+        "sha256": "bb9c96f5ddb8f4e1122aff517d9e1cec2b0a4afc8bc91f03c0fa23beff72765e"
+      },
+      "observed": {
+        "status": 200,
+        "bytes": 25001,
+        "sha256": "bb9c96f5ddb8f4e1122aff517d9e1cec2b0a4afc8bc91f03c0fa23beff72765e",
+        "finalUrl": "https://dots.liuzhihang.chatgpt.site/studio.css?v=105",
+        "contentType": "text/css"
+      },
+      "exactRawHash": true,
+      "sourceVerified": true,
+      "hostInsertion": null,
+      "passed": true,
+      "reason": null,
+      "attempts": [
+        {
+          "url": "https://dots.liuzhihang.chatgpt.site/studio.css?v=105",
+          "exitCode": 0,
+          "status": 200,
+          "elapsedMs": 2535,
+          "downloadedBytes": 25001,
+          "receivedBytes": 25001,
+          "contentType": "text/css",
+          "stderr": null,
+          "responseHeaders": {
+            "date": "Tue, 13 Oct 2026 06:11:56 GMT",
+            "content-type": "text/css",
+            "content-length": "25001",
+            "cf-cache-status": "HIT",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "etag": "\"b2c3748145e577e31e9bdc7f938ead87\"",
+            "server": "cloudflare",
+            "cf-ray": "a49c30963e125cfd-LAX"
+          }
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "all592OnlineHashVerified": false,
+  "endedAt": "2026-10-13T06:11:57.142Z",
+  "elapsedMs": 8877,
+  "exactRawHashCount": 21,
+  "sourceVerifiedCount": 22,
+  "failedCount": 0,
+  "rawHashExceptions": [
+    {
+      "path": "dist/index.html",
+      "reason": "hosting platform appended an identified inline script; staged source matches after removing only that append",
+      "hostInsertion": {
+        "positionBytes": 5004,
+        "insertedBefore": "</body></html>",
+        "bytes": 938,
+        "sha256": "b9a3271fd0f1ae37d710b2650409d8de7bd6a30aa6e2ea6765fa6d5ba4f9395f",
+        "elementType": "inline classic script (no type/src attributes on script element)",
+        "references": "/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+        "executedDuringAudit": false,
+        "rawResponseHashStillDiffers": true,
+        "normalizedSourceMatchesStage": true
+      }
+    }
+  ],
+  "outputs": {
+    "report": "http-readback-2026-10-13T06-11-48.263Z.json",
+    "jsonl": "http-readback-2026-10-13T06-11-48.263Z.jsonl",
+    "progress": "http-readback-progress.json"
+  }
+}

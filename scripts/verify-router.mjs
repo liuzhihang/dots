@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict';
-import {parseRoute,galleryURL,artworkURL} from '../dist/studio-router.js';
+import {parseRoute,galleryURL,artworkURL,lookURL,figureURL} from '../dist/studio-router.js';
 import {canOpenArtwork,ARTWORKS} from '../dist/studio-artwork-catalog.js';
 assert.deepEqual(parseRoute(''),{page:'gallery',text:'',seriesId:'',sort:'curated'});
 assert.deepEqual(parseRoute(galleryURL({text:'蓝色 dots',seriesId:'dots',sort:'name'})),{page:'gallery',text:'蓝色 dots',seriesId:'dots',sort:'name'});
 assert.deepEqual(parseRoute(artworkURL('candidate-dots-20261005','v2')),{page:'artwork',id:'candidate-dots-20261005',version:'v2'});
+assert.deepEqual(parseRoute(lookURL('candidate-dots-20261005--cloud','v2-v6')),{page:'look',id:'candidate-dots-20261005--cloud',version:'v2-v6'});
+assert.deepEqual(parseRoute(figureURL('dots-cloud','v1')),{page:'figure',id:'dots-cloud',version:'v1'});
+for(const hash of ['#/figure/x','#/figure/a?v=v1&mode=edit','#/figure/a?v=x&v=y','#/figure/%XX?v=v1','#/figure/%2Fetc?v=v1','#/figure/%5Cetc?v=v1','#/figure/..?v=v1'])assert.equal(parseRoute(hash).page,'notFound',hash);
+for(const hash of ['#/look/x','#/look/a?v=v1&mode=edit','#/look/a?v=x&v=y','#/look/%XX?v=v1','#/look/%2Fetc?v=v1','#/look/%5Cetc?v=v1','#/look/..?v=v1'])assert.equal(parseRoute(hash).page,'notFound',hash);
 for(const hash of ['#home','#/home','#/gallery','#/random','#/workspace','#/game','#/guide','#/artwork/x','#/artwork/../y?v=v1','#/other','#/artwork/a?v=v1&mode=edit','#/artwork/a?v=v1&mode=view','#/artwork/a?v=x&v=y','#/?upload=yes','#/artwork/%XX?v=v1'])assert.equal(parseRoute(hash).page,'notFound',hash);
 assert.equal(canOpenArtwork('unknown','v1'),false);assert.equal(canOpenArtwork(ARTWORKS[0],'wrong'),false);
 console.log('Routes: canonical gallery, single CharacterStudio artwork route, unicode AND query and invalid/legacy rejection passed');

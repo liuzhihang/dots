@@ -1,0 +1,50 @@
+{
+  "revision": 107,
+  "version": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_52b06b41112c8191a145752f465a8430",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 56,
+    "source": {
+      "commit_sha": "2f1f7ee5147e8dc69c39e4f579ab0f1e5ab36c98"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000ccb481f593f1e855e8318624",
+      "content_hash": "sha256:80b2c61576db5a667f46099292bca9a46def9e7c641b5d65059f8a2ffb2d8301",
+      "size_bytes": 238991360,
+      "file_count": 593
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "source": {
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "checkout_path": "/Users/liuzhihang/workspace/dots/.artifacts/compact-select-publish-20261013/site-source",
+    "commit_sha": "2f1f7ee5147e8dc69c39e4f579ab0f1e5ab36c98",
+    "archive": "/Users/liuzhihang/workspace/dots/.artifacts/modal-typography-20261013/v107/site-v107.tar.gz"
+  },
+  "deployment": {
+    "id": "appgdep_6acdd5a8c6d88191817bd565c942b9db",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_52b06b41112c8191a145752f465a8430",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dots.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-13T06:54:44.379454+00:00"
+  },
+  "audience": "public",
+  "previousLive": {
+    "siteVersion": 54,
+    "applicationRevision": 105
+  },
+  "savedNotDeployed": {
+    "siteVersion": 55,
+    "applicationRevision": 106
+  }
+}

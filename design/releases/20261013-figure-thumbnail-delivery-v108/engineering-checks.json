@@ -1,0 +1,49 @@
+{
+  "revision": 108,
+  "checks": [
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "evidence": "build/build-report.json"
+    },
+    {
+      "command": "node scripts/verify-preview-loader.mjs",
+      "result": "passed",
+      "scope": "registered delivery coverage, canonical identity, mismatch rejection, no PNG fallback and resource lifecycle"
+    },
+    {
+      "command": "node scripts/verify-figure-detail.mjs",
+      "result": "passed",
+      "checks": 7
+    },
+    {
+      "command": "npm run test:recovery",
+      "result": "passed",
+      "templates": 44,
+      "recipes": 540,
+      "selectionExplanations": 5015
+    },
+    {
+      "command": "node scripts/verify-studio-history.mjs",
+      "result": "passed",
+      "scenarios": 7,
+      "evidence": "history/history.json"
+    },
+    {
+      "command": "npm run verify:release-safety",
+      "result": "passed"
+    },
+    {
+      "command": "openspec validate move-appearances-into-gallery --strict",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "boundaries": [
+    "Existing full suite passed in earlier stages; current v108 targeted affected checks were rerun.",
+    "A successful engineering check alone does not establish online/device acceptance."
+  ]
+}

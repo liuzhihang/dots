@@ -1,4 +1,4 @@
-import { normalizeGalleryQuery } from './studio-tags.js?v=102';
+import { normalizeGalleryQuery } from './studio-tags.js?v=110';
 export function parseRoute(hash='') {
   const raw = String(hash || '#/');
   if (!raw.startsWith('#/')) return {page:'notFound'};
@@ -9,11 +9,11 @@ export function parseRoute(hash='') {
     if([...params.keys()].some(key=>!['q','series','sort'].includes(key))) return {page:'notFound'};
     return {page:'gallery',text:params.get('q')||'',seriesId:params.get('series')||'',sort:params.get('sort')||'curated'};
   }
-  const match=path.match(/^\/artwork\/([^/]+)$/);
+  const match=path.match(/^\/(artwork|look|figure)\/([^/]+)$/);
   if(match && [...params.keys()].every(key=>['v'].includes(key))) {
-    let id;try{id=decodeURIComponent(match[1]);}catch{return {page:'notFound'};}
+    let id;try{id=decodeURIComponent(match[2]);}catch{return {page:'notFound'};}
     const version=params.get('v');
-    if(id && version)return {page:'artwork',id,version};
+    if(id && !/[\/\\\u0000]/.test(id) && !['.','..'].includes(id) && version)return {page:match[1],id,version};
   }
   return {page:'notFound'};
 }
@@ -25,5 +25,13 @@ export function galleryURL(query={}) {
 export function artworkURL(id,version) {
   const params=new URLSearchParams({v:version});
   return `#/artwork/${encodeURIComponent(id)}?${params}`;
+}
+export function lookURL(id,version) {
+  const params=new URLSearchParams({v:version});
+  return `#/look/${encodeURIComponent(id)}?${params}`;
+}
+export function figureURL(id,version) {
+  const params=new URLSearchParams({v:version});
+  return `#/figure/${encodeURIComponent(id)}?${params}`;
 }
 export function isGalleryQueryValid(query){return normalizeGalleryQuery(query).valid;}

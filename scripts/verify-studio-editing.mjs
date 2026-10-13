@@ -8,7 +8,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=102';
+import { TEMPLATE_REGISTRY, enumerateValidConfigurations, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=110';
+import {getDefaultLook, getGalleryLook, getLookAsset, getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
 
 const execFileAsync = promisify(execFile);
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -26,14 +27,18 @@ const HEIGHT = 900;
 const focusedRaceOnly = process.argv.includes('--focused-race-only');
 const focusedCycleOnly = process.argv.includes('--focused-cycle-only');
 const focusedCycleRaceOnly = process.argv.includes('--focused-cycle-race-only');
+const dirtyExitGuardOnly = process.argv.includes('--dirty-exit-guard-only');
 const TAB_FOR_FIELD = Object.freeze({ appearance: 'appearance', colors: 'colors', face: 'face', clothing: 'clothing', accessories: 'accessories', color: 'colors', eyes: 'face', glasses: 'accessories', accessory: 'accessories' });
 
 function configurationFlow(template) {
-  const fields = getTemplateOptionFields(template).map(row => row.key);
+  const look = getDefaultLook(template.artworkBinding.artworkId);
+  assert(look && look.isDefault, `${template.id}: the public Artwork route resolves its canonical default GalleryLook.`);
+  const fields = getLookOptionFields(template, look).map(row => row.key);
+  assert(fields.length > 0, `${look.id}: the default GalleryLook exposes at least one varying field.`);
   const key = options => JSON.stringify(fields.map(field => options[field]));
-  const configurations = enumerateValidConfigurations(template);
-  const paths = new Map([[key(template.defaultOptions), []]]);
-  const queue = [template.defaultOptions];
+  const configurations = enumerateValidConfigurations(template).filter(options => options.appearance === look.appearance);
+  const paths = new Map([[key(look.defaultOptions), []]]);
+  const queue = [look.defaultOptions];
   while (queue.length) {
     const current = queue.shift();
     for (const next of configurations) {
@@ -47,7 +52,7 @@ function configurationFlow(template) {
   const target = configurations.reduce((best, row) => paths.get(key(row)).length > paths.get(key(best)).length ? row : best);
   const steps = paths.get(key(target));
   assert(steps.length > 0, `${template.id}: public editing has an actual changed recipe.`);
-  return { label: template.id, templateId: template.id, artworkId: template.artworkBinding.artworkId, artworkVersion: template.artworkBinding.artworkVersion, options: Object.fromEntries(fields.map(field => [field, target[field]])), steps };
+  return { label: template.id, templateId: template.id, artworkId:template.artworkBinding.artworkId, artworkVersion:template.artworkBinding.artworkVersion, lookId: look.id, lookVersion: look.version, appearance: look.appearance, fields, options: Object.fromEntries(fields.map(field => [field, target[field]])), steps };
 }
 
 for (const directory of [runRoot, compositeRoot, downloadRoot, screenshotRoot, videoStageRoot]) {
@@ -179,6 +184,42 @@ function matchSignalAbortFailures(failures, observations, segmentName) {
   return allowed;
 }
 
+function matchSupersededPosterImageAborts(failures, { artwork, look, origin, segmentName }) {
+  const posterRef = look?.assetRefs?.poster512 || look?.assetRefs?.poster;
+  const poster = posterRef ? getLookAsset(posterRef) : null;
+  if (!poster) return [];
+  const expectedURL = new URL(poster.path, origin).href;
+  const expectedRoute = `#/artwork/${encodeURIComponent(artwork.id)}?v=${encodeURIComponent(artwork.version)}`;
+  return failures.filter(failure => {
+    let failedURL;
+    let startedRoute;
+    try {
+      failedURL = new URL(failure.url);
+      startedRoute = new URL(failure.requestFrameURL).hash;
+    } catch {
+      return false;
+    }
+    const dom = failure.failureDOM || {};
+    return failure.segmentName === segmentName
+      && failure.error === 'net::ERR_ABORTED'
+      && failure.requestResourceType === 'image'
+      && failure.requestMethod === 'GET'
+      && failure.requestAction === `openArtwork:${artwork.id}@${artwork.version}`
+      && failure.requestArtworkId === artwork.id
+      && failure.requestLookId === look.id
+      && failure.url === expectedURL
+      && failedURL.origin === new URL(origin).origin
+      && startedRoute === expectedRoute
+      && dom.hash === expectedRoute
+      && dom.artworkId === artwork.id
+      && dom.lookId === look.id
+      && dom.preview === 'ready'
+      && dom.editor === 'ready'
+      && typeof dom.imageSrc === 'string'
+      && dom.imageSrc.startsWith('blob:');
+  });
+}
+
 async function installPageFetchObserver(page, initialSegmentName) {
   await page.addInitScript(segmentName => {
     const nativeFetch = window.fetch.bind(window);
@@ -259,9 +300,62 @@ async function newRecordedPage(segmentName) {
     recordVideo: { dir: videoStageRoot, size: { width: WIDTH, height: HEIGHT } }
   });
   const page = await context.newPage();
+  const requestContexts = new WeakMap();
+  page.__dotsQAAction = segmentName;
+  page.__dotsQATrackFailureDom = false;
+  page.__dotsQARequestFailureTasks = [];
   page.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName }));
   page.on('console', message => { if (message.type() === 'error') consoleErrors.push({ type: 'console', text: message.text(), segmentName }); });
-  page.on('requestfailed', request => browserFailures.push({ url: request.url(), error: request.failure()?.errorText, segmentName }));
+  page.on('request', request => {
+    let requestFrameURL = null;
+    try { requestFrameURL = request.frame()?.url() || null; } catch {}
+    const active = page.__dotsQAActiveArtwork || {};
+    requestContexts.set(request, {
+      requestResourceType: request.resourceType(),
+      requestMethod: request.method(),
+      requestFrameURL,
+      requestAction: page.__dotsQAAction,
+      requestArtworkId: active.artworkId || null,
+      requestArtworkVersion: active.artworkVersion || null,
+      requestLookId: active.lookId || null,
+      requestLookVersion: active.lookVersion || null,
+      requestStartedAtMs: Date.now()
+    });
+  });
+  page.on('requestfailed', request => {
+    let requestFrameURL = null;
+    try { requestFrameURL = request.frame()?.url() || null; } catch {}
+    const failure = {
+      url: request.url(),
+      error: request.failure()?.errorText,
+      segmentName,
+      ...requestContexts.get(request),
+      requestFrameURL: requestContexts.get(request)?.requestFrameURL || requestFrameURL,
+      failureAction: page.__dotsQAAction,
+      failedAtMs: Date.now()
+    };
+    browserFailures.push(failure);
+    if (page.__dotsQATrackFailureDom) {
+      const task = page.evaluate(() => {
+        const root = document.querySelector('.character-studio');
+        const image = document.querySelector('.artwork-detail__image');
+        const state = window.__dotsQAApp?.detail?.getState?.();
+        return {
+          hash: location.hash,
+          artworkId: root?.dataset.artworkId || null,
+          lookId: root?.dataset.lookId || null,
+          preview: root?.dataset.preview || null,
+          editor: root?.dataset.editor || null,
+          imageSrc: image?.currentSrc || image?.src || null,
+          imageHidden: image?.hidden ?? null,
+          editorReady: state?.editorReady ?? null,
+          exportReady: state?.exportReady ?? null,
+          observedAtMs: Date.now()
+        };
+      }).then(dom => { failure.failureDOM = dom; }, error => { failure.failureDOMError = String(error); });
+      page.__dotsQARequestFailureTasks.push(task);
+    }
+  });
   page.on('response', response => { if (response.status() >= 400) httpFailures.push({ url: response.url(), status: response.status(), segmentName }); });
   page.on('request', request => {
     const url = request.url();
@@ -287,8 +381,16 @@ async function finishSegment({ context, page, segmentName }, outputPath) {
 }
 
 async function openArtwork(page, artworkId, artworkVersion) {
+  const look = getDefaultLook(artworkId);
+  page.__dotsQAAction = `openArtwork:${artworkId}@${artworkVersion}`;
+  page.__dotsQAActiveArtwork = {
+    artworkId,
+    artworkVersion,
+    lookId: look?.id || null,
+    lookVersion: look?.version || null
+  };
   const result = await page.evaluate(async ({ id, version }) => {
-    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=102');
+    const { ARTWORKS, getAsset } = await import('/studio-artwork-catalog.js?v=110');
     const artwork = ARTWORKS.find(row => row.id === id && row.version === version);
     if (!artwork) throw new Error(`Artwork not found: ${id}`);
     const opened = window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -352,11 +454,18 @@ async function waitForPreview(page, { expectNoOriginal = false } = {}) {
 }
 
 async function waitForEditor(page, config) {
-  const fields = getTemplateOptionFields(TEMPLATE_REGISTRY.find(row => row.id === config.templateId)).map(row => row.key);
+  const template=TEMPLATE_REGISTRY.find(row=>row.id===config.templateId);
+  assert(template,`${config.templateId} has a registered Template.`);
+  const look=config.lookId?getGalleryLook(config.lookId,config.lookVersion):getDefaultLook(template.artworkBinding.artworkId);
+  assert(look&&look.isDefault,`${config.templateId} public flow binds its canonical default GalleryLook.`);
+  const fields=getLookOptionFields(template,look).map(row=>row.key);
   const tabs = [...new Set(fields.map(field => TAB_FOR_FIELD[field]))];
   const state = await page.evaluate(() => window.__dotsQAApp.detail.getState());
   assert.equal(state.editable, true, `${config.templateId} is bound to its exact publicly approved Artwork.`);
   assert.equal(state.templateId, config.templateId);
+  assert.equal(state.lookId,look.id,`${config.templateId} public editing keeps the default GalleryLook identity.`);
+  assert.equal(state.lookVersion,look.version);
+  assert.equal(state.appearance,look.appearance);
   assert.equal(state.editorReady, true, 'An eligible CharacterStudio auto-loads its editor without a mode switch.');
   const editorRoot = page.locator('.studio-editor-controls[data-template-id]');
   await editorRoot.waitFor({ state: 'visible', timeout: 15_000 });
@@ -365,6 +474,9 @@ async function waitForEditor(page, config) {
     const draft = window.__dotsQAApp.detail.getState().draft;
     return canvas && draft && Number(canvas.dataset.renderRevision) === draft.revision && document.querySelector('.studio-editor-controls[data-can-export="true"]');
   }, null, { timeout: 30_000 });
+  const renderedTabs=await page.locator('.studio-editor-tabs .studio-editor-tab[role="tab"]').evaluateAll(rows=>rows.map(row=>row.dataset.editorTab));
+  assert.deepEqual(renderedTabs,tabs,`${look.id}: public controls show only categories that vary within the fixed look.`);
+  assert.equal(await page.locator('.studio-editor-tab[data-editor-tab="appearance"],.studio-editor-options button[data-field="appearance"]').count(),0,`${look.id}: Appearance remains fixed outside the editor controls.`);
   const initialTab = await page.locator('.studio-editor-tabs .studio-editor-tab[role="tab"][aria-selected="true"]').getAttribute('data-editor-tab');
   const visualOptions = [];
   for (const tabKey of tabs) {
@@ -505,10 +617,11 @@ async function saveDownloadedPng(page, target, evidenceKind) {
   return { filePath, filename: download.suggestedFilename(), sha256: createHash('sha256').update(bytes).digest('hex'), byteSize: bytes.length, header };
 }
 
-async function verifyEveryRecipeThroughControls(page, template, artwork, rendererReport) {
-  const fields = getTemplateOptionFields(template).map(field => field.key);
-  const configurations = enumerateValidConfigurations(template);
-  const key = options => JSON.stringify(fields.map(field => options[field]));
+async function verifyEveryRecipeThroughControls(page, template, artwork, look, rendererReport) {
+  assert(look?.isDefault===true&&look.artworkId===artwork.id&&look.artworkVersion===artwork.version,`${template.id}: recipe UI check is bound to its default public GalleryLook.`);
+  const fields = getLookOptionFields(template,look).map(field => field.key);
+  const configurations = enumerateValidConfigurations(template).filter(options=>options.appearance===look.appearance);
+  const key = options => JSON.stringify([look.appearance,...fields.map(field => options[field])]);
   async function navigateTo(target) {
     const current = await page.evaluate(() => window.__dotsQAApp.detail.getState().draft.options);
     const routes = new Map([[key(current), []]]), queue = [current];
@@ -535,13 +648,13 @@ async function verifyEveryRecipeThroughControls(page, template, artwork, rendere
     const clipboard = await page.evaluate(() => navigator.clipboard.readText());
     assert.equal(clipboard, state.modifiedPrompt, 'Real browser clipboard contains this recipe’s successful Prompt.');
     const downloaded = await saveDownloadedPng(page, page.locator('.studio-actions [data-action="export"]'), 'Every-recipe UI export');
-    const baseline = key(options) === key(template.defaultOptions);
+    const baseline = key(options) === key(look.defaultOptions);
     const rendered = rendererReport.configurations.find(row => key(row.options) === key(options));
     assert(rendered, 'The UI recipe has independent renderer evidence.');
     assert.equal(downloaded.sha256, baseline ? artwork.asset.sha256 : rendered.outputSha256, baseline ? 'Default export preserves approved original bytes.' : 'Changed export matches the independently rendered transparent recipe.');
     records.push({ options, recipeKey: rendered.recipeKey, revision: state.draft.revision, clipboardSha256: createHash('sha256').update(clipboard).digest('hex'), clipboardMatched: true, originalByteExport: baseline, download: downloaded });
   }
-  await navigateTo(template.defaultOptions);
+  await navigateTo(look.defaultOptions);
   assert.equal(records.length, configurations.length);
   return records;
 }
@@ -549,12 +662,12 @@ async function verifyEveryRecipeThroughControls(page, template, artwork, rendere
 async function renderAllRealConfigurations(page) {
   const browserOutput = await page.evaluate(async () => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, promptAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=102'),
-      import('/studio-edit-templates.js?v=102'),
-      import('/studio-draft.js?v=102'),
-      import('/studio-renderer.js?v=102'),
-      import('/studio-preview-loader.js?v=102'),
-      import('/studio-prompt.js?v=102')
+      import('/studio-artwork-catalog.js?v=110'),
+      import('/studio-edit-templates.js?v=110'),
+      import('/studio-draft.js?v=110'),
+      import('/studio-renderer.js?v=110'),
+      import('/studio-preview-loader.js?v=110'),
+      import('/studio-prompt.js?v=110')
     ]);
     const manifestResponse = await fetch('/assets/templates/sources.json', { cache: 'no-cache' });
     if (!manifestResponse.ok) throw new Error(`Manifest fetch failed (${manifestResponse.status}).`);
@@ -731,12 +844,12 @@ async function runTwentyEditCycles(page) {
 
   await page.evaluate(async ({ cyclePlans, tabForField }) => {
     const [catalog, templates, draftAPI, renderer, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=102'),
-      import('/studio-edit-templates.js?v=102'),
-      import('/studio-draft.js?v=102'),
-      import('/studio-renderer.js?v=102'),
-      import('/studio-preview-loader.js?v=102'),
-      import('/studio-editor.js?v=102')
+      import('/studio-artwork-catalog.js?v=110'),
+      import('/studio-edit-templates.js?v=110'),
+      import('/studio-draft.js?v=110'),
+      import('/studio-renderer.js?v=110'),
+      import('/studio-preview-loader.js?v=110'),
+      import('/studio-editor.js?v=110')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error(`Manifest fetch failed (${response.status}).`);
@@ -1041,11 +1154,11 @@ function assertCycleEvidence(cycleReport) {
 async function runFocusedEditorRaces(page) {
   return page.evaluate(async tabForField => {
     const [catalog, templates, draftAPI, loaderAPI, editorAPI] = await Promise.all([
-      import('/studio-artwork-catalog.js?v=102'),
-      import('/studio-edit-templates.js?v=102'),
-      import('/studio-draft.js?v=102'),
-      import('/studio-preview-loader.js?v=102'),
-      import('/studio-editor.js?v=102')
+      import('/studio-artwork-catalog.js?v=110'),
+      import('/studio-edit-templates.js?v=110'),
+      import('/studio-draft.js?v=110'),
+      import('/studio-preview-loader.js?v=110'),
+      import('/studio-editor.js?v=110')
     ]);
     const manifest = await fetch('/assets/templates/sources.json', { cache: 'no-cache' }).then(response => {
       if (!response.ok) throw new Error('Manifest fetch failed (' + response.status + ').');
@@ -1351,7 +1464,7 @@ async function runFocusedEditorRaces(page) {
     failedLatest.loader.releaseAll();
 
     let thumbnailFetches = 0;
-    const { DELIVERY_ASSETS } = await import('/studio-delivery-assets.js?v=102');
+    const { DELIVERY_ASSETS } = await import('/studio-delivery-assets.js?v=110');
     const thumbnailDelivery = DELIVERY_ASSETS.find(row => row.source.path === thumbnailAsset.path && row.source.sha256 === thumbnailAsset.sha256);
     if (!thumbnailDelivery) throw new Error('Race fixture thumbnail has no exact registered delivery mapping.');
     const thumbnailPath = new URL('/' + thumbnailDelivery.path.replace(/^\.\//, ''), location.origin).pathname;
@@ -1541,6 +1654,13 @@ try {
     console.log('PASS: focused asynchronous editor races, failed thumbnail disable/Retry/recovery, and late-session isolation.');
     console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
   } else {
+  const characterFlows = TEMPLATE_REGISTRY.map(configurationFlow);
+  const selectedCharacterFlows = dirtyExitGuardOnly ? [characterFlows[0]] : characterFlows;
+  const flowEvidence = [];
+  const journeyVideos = [];
+  let cycleReport = null;
+  let raceReport = null;
+  if (!dirtyExitGuardOnly) {
   const engineeringSession = await newRecordedPage('real-registered-recipes');
   await engineeringSession.page.exposeFunction('__writeStudioEvidence', writeEvidence);
   engineeringReport = await renderAllRealConfigurations(engineeringSession.page);
@@ -1548,9 +1668,6 @@ try {
   assertNoRuntimeErrors('all registered recipe browser renderer');
   await finishSegment(engineeringSession, path.join(videoStageRoot, 'real-registered-recipes.webm'));
 
-  const characterFlows = TEMPLATE_REGISTRY.map(configurationFlow);
-  const selectedCharacterFlows = characterFlows;
-  const flowEvidence = [];
   for (const config of selectedCharacterFlows) {
     const appSession = await newRecordedPage(`${config.label}-wysiwyg-export`);
     const { page } = appSession;
@@ -1560,13 +1677,15 @@ try {
     assert.equal(initialPreview.editable, true, 'This Artwork opens through its publicly approved exact Template binding.');
     const templateId = config.templateId;
     const template = TEMPLATE_REGISTRY.find(item => item.id === templateId);
-    await waitForEditor(page, { templateId });
+    const look=getGalleryLook(config.lookId,config.lookVersion);
+    await waitForEditor(page, config);
     assert.equal(await page.locator('.studio-original').evaluate(details => details.open), false, 'Editable Artwork keeps original metadata and original actions collapsed.');
     await fs.writeFile(path.join(screenshotRoot, `${config.label}-studio-initial.png`), await page.screenshot({ fullPage: false }));
-    const allRecipeUI = await verifyEveryRecipeThroughControls(page, template, artwork, engineeringReport.templates.find(row => row.templateId === template.id || row.id === template.id));
-    console.log(`UI recipes: ${template.id} ${allRecipeUI.length}/${enumerateValidConfigurations(template).length} clipboard and PNG verified.`);
+    const allRecipeUI = await verifyEveryRecipeThroughControls(page, template, artwork, look, engineeringReport.templates.find(row => row.templateId === template.id || row.id === template.id));
+    const publicLookRecipeCount=enumerateValidConfigurations(template).filter(options=>options.appearance===look.appearance).length;
+    console.log(`UI recipes: ${look.id} ${allRecipeUI.length}/${publicLookRecipeCount} clipboard and PNG verified.`);
     for (const [field, value] of config.steps) await choose(page, field, value);
-    await waitForEditor(page, { templateId });
+    await waitForEditor(page, config);
     const rendered = await page.evaluate(() => {
       const canvas = document.querySelector('.studio-editor-canvas');
       const draft = window.__dotsQAApp.detail.getState().draft;
@@ -1653,16 +1772,15 @@ try {
     await finishSegment(appSession, path.join(videoStageRoot, `${config.label}-app-flow.webm`));
   }
 
-  const journeyVideos = [];
   for (const config of selectedCharacterFlows) {
     const journeySession = await newRecordedPage(`${config.label}-app-png-app-journey`);
     const { page } = journeySession;
     const firstArtwork = await openArtwork(page, config.artworkId, config.artworkVersion);
     await waitForPreview(page, { expectNoOriginal: true });
     const templateId = config.templateId;
-    await waitForEditor(page, { templateId });
+    await waitForEditor(page, config);
     for (const [field, value] of config.steps) await choose(page, field, value);
-    await waitForEditor(page, { templateId });
+    await waitForEditor(page, config);
     const edited = await saveDownloadedPng(page, page.locator('.studio-actions [data-action="export"]'), 'Journey edited Draft');
     await page.goto(pathToFileURL(edited.filePath).href, { waitUntil: 'load' });
     await page.waitForFunction(() => document.contentType === 'image/png' || document.querySelector('img')?.naturalWidth > 0, null, { timeout: 10_000 });
@@ -1675,13 +1793,16 @@ try {
     assert.equal(reopenedArtwork.asset.sha256, firstArtwork.asset.sha256, 'The round-trip reopens the exact same registered Artwork.');
     const reopenedPreview = await waitForPreview(page, { expectNoOriginal: true });
     assert.equal(reopenedPreview.editable, true, 'The pinned Artwork reopens directly into its one eligible CharacterStudio.');
-    const reopenedBaseline=await page.evaluate(async()=>{const {TEMPLATE_REGISTRY,normalizeTemplateOptions}=await import('/studio-edit-templates.js?v=102');const state=window.__dotsQAApp.detail.getState();const template=TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);return{options:state.draft.options,defaults:normalizeTemplateOptions(template,template.defaultOptions),dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
-    assert.deepEqual(reopenedBaseline.options,reopenedBaseline.defaults,'Opening the same Artwork again starts at the approved template default, not the prior in-memory Draft.');assert.equal(reopenedBaseline.dirty,false);assert.equal(await page.locator('.studio-original').evaluate(details=>details.open),false);assert.equal(await page.locator('.studio-original button,.artwork-detail__download-original').count(),0);
+    const reopenedBaseline=await page.evaluate(async()=>{const [templates,looks]=await Promise.all([import('/studio-edit-templates.js?v=110'),import('/studio-gallery-looks.js?v=110')]);const state=window.__dotsQAApp.detail.getState();const template=templates.TEMPLATE_REGISTRY.find(item=>item.id===state.templateId);const look=looks.getGalleryLook(state.lookId,state.lookVersion);if(!look?.isDefault)throw new Error('Reopened public Artwork did not resolve its registered default GalleryLook.');return{options:state.draft.options,defaults:templates.normalizeTemplateOptions(template,look.defaultOptions),lookId:look.id,lookVersion:look.version,appearance:look.appearance,dirty:window.__dotsQAApp.detail.hasDirty(),sessionId:state.sessionId};});
+    assert.deepEqual(reopenedBaseline.options,reopenedBaseline.defaults,'Opening the same Artwork again starts at its registered default GalleryLook recipe, not the prior in-memory Draft.');assert.equal(reopenedBaseline.lookId,config.lookId);assert.equal(reopenedBaseline.lookVersion,config.lookVersion);assert.equal(reopenedBaseline.dirty,false);assert.equal(await page.locator('.studio-original').evaluate(details=>details.open),false);assert.equal(await page.locator('.studio-original button,.artwork-detail__download-original').count(),0);
     assertNoRuntimeErrors(`${config.label} recorded App → exported PNG → App journey`);
     const videoPath = path.join(videoStageRoot, `${config.label}-app-png-app-journey.webm`);
     await finishSegment(journeySession, videoPath);
     const journey = {
       artworkId: config.artworkId,
+      lookId: config.lookId,
+      lookVersion: config.lookVersion,
+      appearance: config.appearance,
       editedPNG: edited,
       reopenedDefaultOptions: reopenedBaseline.options,
       sourceArtworkSha256: firstArtwork.asset.sha256,
@@ -1691,16 +1812,16 @@ try {
     journeyVideos.push(journey);
     await fs.writeFile(path.join(runRoot, `${config.label}-recorded-journey.json`), JSON.stringify(journey, null, 2));
   }
-
-  let cycleReport = null;
-  let raceReport = null;
+  }
   const guardSession = await newRecordedPage('dirty-exit-guards');
   const guardPage = guardSession.page;
+  guardPage.__dotsQATrackFailureDom = true;
   const guardConfig = selectedCharacterFlows[0];
   let expectedGalleryHash = await guardPage.evaluate(() => location.hash);
   await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
   await waitForEditor(guardPage, guardConfig);
   const applyDirtyIntent = async label => {
+    guardPage.__dotsQAAction = `applyDirtyIntent:${label}`;
     for (const [field, value] of guardConfig.steps) await choose(guardPage, field, value);
     await waitForEditor(guardPage, guardConfig);
     await guardPage.locator('.artwork-detail__additional-direction').fill(`Preserve the character identity and material (${label}).`);
@@ -1714,17 +1835,24 @@ try {
     await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
     await waitForEditor(guardPage, guardConfig);
     const state = await guardPage.evaluate(async () => {
-      const { TEMPLATE_REGISTRY, normalizeTemplateOptions } = await import('/studio-edit-templates.js?v=102');
+      const [templates, looks] = await Promise.all([import('/studio-edit-templates.js?v=110'),import('/studio-gallery-looks.js?v=110')]);
       const current = window.__dotsQAApp.detail.getState();
-      const template = TEMPLATE_REGISTRY.find(row => row.id === current.templateId);
+      const template = templates.TEMPLATE_REGISTRY.find(row => row.id === current.templateId);
+      const look=looks.getGalleryLook(current.lookId,current.lookVersion);
+      if(!look?.isDefault)throw new Error('Reopened public Artwork did not resolve its registered default GalleryLook.');
       return {
         options: current.draft.options,
-        defaults: normalizeTemplateOptions(template, template.defaultOptions),
+        defaults: templates.normalizeTemplateOptions(template, look.defaultOptions),
+        lookId:look.id,
+        lookVersion:look.version,
+        appearance:look.appearance,
         dirty: window.__dotsQAApp.detail.hasDirty(),
         additionalDirection: document.querySelector('.artwork-detail__additional-direction')?.value ?? null
       };
     });
-    assert.deepEqual(state.options, state.defaults, `${label}: reopening starts at the registered Template defaults.`);
+    assert.deepEqual(state.options, state.defaults, `${label}: reopening starts at the registered default GalleryLook recipe.`);
+    assert.equal(state.lookId,guardConfig.lookId,`${label}: reopening retains its default GalleryLook identity.`);
+    assert.equal(state.lookVersion,guardConfig.lookVersion);
     assert.equal(state.dirty, false, `${label}: reopening does not restore the previous in-memory Draft.`);
     assert.equal(state.additionalDirection, '', `${label}: reopening clears prior external intent.`);
     return { artworkId: guardConfig.artworkId, artworkVersion: guardConfig.artworkVersion, ...state };
@@ -1742,6 +1870,7 @@ try {
     ['Characters gallery navigation', () => guardPage.evaluate(() => { location.hash = '#/?series=grok'; }), '#/?series=grok']
   ]) {
     if (unguardedExits.length > 0) await applyDirtyIntent(name);
+    guardPage.__dotsQAAction = `dirtyExit:${name}`;
     if (name === 'overlay close') await guardPage.locator('#overlayClose').focus();
     else if (name === 'overlay back') await guardPage.locator('#overlayBack').focus();
     else await guardPage.locator('.artwork-detail__additional-direction').focus();
@@ -1766,6 +1895,7 @@ try {
   assert.equal(await guardPage.locator('.studio-related').evaluate(section=>section.tagName==='SECTION'&&!section.querySelector('summary')) ,true,'Related artworks remain directly visible under the media preview.');
   await guardPage.locator('.related-character').first().waitFor({ state: 'visible', timeout: 10_000 });
   await applyDirtyIntent('related Artwork navigation');
+  guardPage.__dotsQAAction = 'related Artwork navigation';
   const relatedBefore = await guardPage.evaluate(() => location.hash);
   const relatedDialogPromise = guardPage.waitForEvent('dialog', { timeout: 5_000 });
   const relatedButton = guardPage.locator('.related-character').first();
@@ -1778,10 +1908,40 @@ try {
   assert.equal(await guardPage.evaluate(() => location.hash), relatedBefore, 'Canceling a related Artwork navigation leaves the same Studio open.');
   assert.equal(await relatedButton.evaluate(element => document.activeElement === element), true, 'Canceling related Artwork navigation preserves focus on its trigger.');
   assert.equal(await guardPage.evaluate(() => window.__dotsQAApp.detail.hasDirty()), true, 'Canceling related Artwork navigation preserves the current Draft.');
-  await fs.writeFile(path.join(runRoot, 'dirty-exit-guards.json'), JSON.stringify({ unguardedExits, guardedSwitches, dirtyState }, null, 2));
-  assertNoRuntimeErrors('dirty exit guard flow');
+  await Promise.all(guardPage.__dotsQARequestFailureTasks);
+  const dirtyExitBrowserFailures = browserFailures.filter(row => row.segmentName === 'dirty-exit-guards');
+  const allowedPosterImageAborts = matchSupersededPosterImageAborts(dirtyExitBrowserFailures, {
+    artwork: { id: guardConfig.artworkId, version: guardConfig.artworkVersion },
+    look: getGalleryLook(guardConfig.lookId, guardConfig.lookVersion),
+    origin: baseURL,
+    segmentName: 'dirty-exit-guards'
+  });
+  await fs.writeFile(path.join(runRoot, 'dirty-exit-guards.json'), JSON.stringify({ unguardedExits, guardedSwitches, dirtyState, observedSupersededPosterImageAborts: allowedPosterImageAborts }, null, 2));
+  assertNoRuntimeErrors('dirty exit guard flow', { allowedBrowserFailures: allowedPosterImageAborts, segmentName: 'dirty-exit-guards' });
   await finishSegment(guardSession, path.join(videoStageRoot, 'dirty-exit-guards.webm'));
 
+  if (dirtyExitGuardOnly) {
+    const report = {
+      runId,
+      scope: 'Focused public default GalleryLook dirty-exit confirmation and exact native poster-to-preview image transition; no recipe or lifecycle/race claims.',
+      baseURL,
+      harnessURL,
+      browser: 'This report records automated interaction from the project Playwright runner with installed local Chrome. Codex in-app Browser evidence is tracked separately.',
+      artwork: { id: guardConfig.artworkId, version: guardConfig.artworkVersion },
+      look: { id: guardConfig.lookId, version: guardConfig.lookVersion },
+      unguardedExits,
+      guardedSwitches,
+      observedSupersededPosterImageAborts: allowedPosterImageAborts,
+      consoleErrors: consoleErrors.filter(row => row.segmentName === 'dirty-exit-guards'),
+      browserFailures: dirtyExitBrowserFailures,
+      httpFailures: httpFailures.filter(row => row.segmentName === 'dirty-exit-guards'),
+      video: path.relative(evidenceRoot, path.join(videoStageRoot, 'dirty-exit-guards.webm'))
+    };
+    await fs.writeFile(path.join(runRoot, 'dirty-exit-guard-report.json'), JSON.stringify(report, null, 2));
+    console.log(`PASS: ${unguardedExits.length} dirty exits close without confirmation and reopen the default GalleryLook; related Artwork switching remains cancelable.`);
+    console.log(`PASS: ${allowedPosterImageAborts.length} exact registered poster-to-Blob image transition(s) observed; other request, console, and HTTP failures remain strict.`);
+    console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
+  } else {
   const cycleContext = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, acceptDownloads: true, reducedMotion: 'reduce' });
   const cyclePage = await cycleContext.newPage();
   let cyclePagePhase = '20-edit-cycles';
@@ -1822,7 +1982,7 @@ try {
     scope: 'Complete editing acceptance for the actual public approved Template registry.',
     baseURL,
     harnessURL,
-    browser: 'Project Playwright QA runner with installed local Chrome; automated interaction and downloads are from Playwright. Codex in-app browser was used for visual inspection only; no interaction pass is claimed.',
+    browser: 'This report records automated interaction and downloads from the project Playwright runner with installed local Chrome. Codex in-app Browser evidence is tracked separately.',
     viewport: [WIDTH, HEIGHT],
     sourceManifestSha256: createHash('sha256').update(sourceBytes).digest('hex'),
     actualAssetRows: sourceManifest.assets.length,
@@ -1847,6 +2007,7 @@ try {
   console.log(`PASS: Recorded ${selectedCharacterFlows.map(config => config.label).join(' and ')} single-page journeys reopen the same Artwork at its Template default after viewing the exported PNG.`);
   console.log('PASS: dirty Escape, Close, Back, and Characters navigation close without confirmation and reopen at Template defaults; related Artwork navigation remains cancelable.');
   console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
+  }
   }
 } finally {
   await browser.close();

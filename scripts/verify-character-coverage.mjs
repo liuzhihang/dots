@@ -4,13 +4,13 @@ import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveProvenancePath } from './resolve-provenance-path.mjs';
-import { ARTWORKS, ASSETS } from '../dist/studio-artwork-catalog.js?v=102';
+import { ARTWORKS, ASSETS } from '../dist/studio-artwork-catalog.js?v=110';
 import {
   TEMPLATE_REGISTRY,
   getTemplateOptionFields,
   enumerateValidConfigurations,
   getRequiredTemplateAssets
-} from '../dist/studio-edit-templates.js?v=102';
+} from '../dist/studio-edit-templates.js?v=110';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SCRIPT_DIR, '..');

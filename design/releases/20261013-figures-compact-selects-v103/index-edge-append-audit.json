@@ -1,0 +1,74 @@
+{
+  "path": "dist/index.html",
+  "request": {
+    "originalUrl": "https://dots.liuzhihang.chatgpt.site/index.html",
+    "redirectStatus": 307,
+    "redirectLocation": "https://dots.liuzhihang.chatgpt.site/",
+    "finalUrl": "https://dots.liuzhihang.chatgpt.site/",
+    "finalStatus": 200
+  },
+  "responseHeadersPath": ".artifacts/compact-select-publish-20261013/index-response-headers.json",
+  "responseHeaders": {
+    "finalStatus": "200",
+    "headers": {
+      "date": "Tue, 13 Oct 2026 05:35:40 GMT",
+      "content-type": "text/html",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "server": "cloudflare",
+      "cf-ray": "a49bfb778c3c1ae5-LAX"
+    },
+    "excludedSetCookie": true,
+    "bodyReadbackWasSavedEarlier": true
+  },
+  "staged": {
+    "bytes": 5019,
+    "sha256": "d78713c921a29b160a65fefc44d013831b2f445cb0aa0bcaa16c3343be96fcd6"
+  },
+  "onlineRaw": {
+    "bytes": 5957,
+    "sha256": "2cc15a1ea4d26dd414aed5c59edd5cf00d3736994eab06dd652aeb2443e5a440",
+    "bodyPath": ".artifacts/compact-select-publish-20261013/index-online.html"
+  },
+  "hostAppend": {
+    "sourceHost": "Cloudflare edge (server header cloudflare)",
+    "position": "5004 bytes, immediately before final </body></html>",
+    "bytes": 938,
+    "sha256": "5a6215ff5d0c06ccda2fded8ebebe7abcb2d36327382a84a0f4d548c404de8d9",
+    "elementCount": 1,
+    "elementType": "inline classic script (no type/src attributes on script element)",
+    "inlineBootstrapReferences": "/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+    "executedDuringAudit": false
+  },
+  "sourceComparison": {
+    "allStagedBytesBeforeClosingMatchOnlinePrefix": true,
+    "onlyExtraBytesBeforeClosing": 938,
+    "normalizedBytes": 5019,
+    "normalizedSha256": "d78713c921a29b160a65fefc44d013831b2f445cb0aa0bcaa16c3343be96fcd6",
+    "normalizedExactlyMatchesStage": true
+  },
+  "rawHashStatus": "mismatch due to platform-added script; retained as such",
+  "changedNewReadback": {
+    "stageFiles": 592,
+    "previousFiles": 496,
+    "changedOrNewFiles": 116,
+    "changedOrNewKinds": {
+      "webp": 92,
+      "html": 1,
+      "js": 21,
+      "css": 2
+    },
+    "httpRequests": 115,
+    "networkExactMatches": 114,
+    "preverifiedCssExactMatches": 1,
+    "rawExactCoverage": 115,
+    "rawExactFailures": 1,
+    "unchangedSamples": 7,
+    "full592OnlineHashVerified": false
+  },
+  "evidence": {
+    "networkReport": ".artifacts/compact-select-publish-20261013/http-changed-readback-2026-10-13T05-33-41.156Z.json",
+    "networkRows": ".artifacts/compact-select-publish-20261013/http-changed-readback-2026-10-13T05-33-41.156Z.jsonl",
+    "cloudflareAppendAudit": ".artifacts/compact-select-publish-20261013/index-edge-append-audit.json"
+  }
+}

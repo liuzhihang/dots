@@ -1,4 +1,4 @@
-import { getPrompt } from './studio-artwork-catalog.js?v=102';
+import { getPrompt } from './studio-artwork-catalog.js?v=110';
 
 const SEMANTIC_FIELDS = Object.freeze([
   ['appearance', 'Appearance', '外观'],

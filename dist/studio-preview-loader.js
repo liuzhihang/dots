@@ -1,5 +1,5 @@
-import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=102';
-import { DELIVERY_ASSETS } from './studio-delivery-assets.js?v=102';
+import { ASSETS, PREVIEW_ASSETS } from './studio-artwork-catalog.js?v=110';
+import { DELIVERY_ASSETS } from './studio-delivery-assets.js?v=110';
 
 // A single bounded loader serves approved detail covers and explicitly pending
 // View-only previews by default. Template layers are absent until Edit registers

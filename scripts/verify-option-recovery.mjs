@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { TEMPLATE_REGISTRY, describeTemplateSelection, enumerateValidConfigurations, validateTemplateOptions } from '../dist/studio-edit-templates.js?v=102';
+import { TEMPLATE_REGISTRY, describeTemplateSelection, enumerateValidConfigurations, validateTemplateOptions } from '../dist/studio-edit-templates.js?v=110';
 
 const husky = TEMPLATE_REGISTRY.find(row => row.id === 'animal-gray-husky-adjustments-v1');
 assert(husky);

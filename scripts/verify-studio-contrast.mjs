@@ -4,8 +4,9 @@ import path from 'node:path';
 import {createServer} from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=102';
-import {TEMPLATE_REGISTRY,getTemplateForArtwork,getTemplateOptionFields} from '../dist/studio-edit-templates.js?v=102';
+import {ARTWORKS} from '../dist/studio-artwork-catalog.js?v=110';
+import {TEMPLATE_REGISTRY,getTemplateForArtwork} from '../dist/studio-edit-templates.js?v=110';
+import {getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
 
 const output=resolveEvidenceDirectory('.artifacts/studio-contrast');
 await fs.mkdir(output,{recursive:true});
@@ -13,9 +14,9 @@ const server=await createServer({configFile:path.resolve('vite.config.mjs'),serv
 await server.listen();
 const origin=`http://127.0.0.1:${server.httpServer.address().port}`;
 const html=(await fs.readFile('dist/index.html','utf8'))
-  .replace('data-cache="102"','data-cache="102" data-studio-boot="manual"')
+  .replace('data-cache="110"','data-cache="110" data-studio-boot="manual"')
   .replace('<head>',`<head><base href="${origin}/">`)
-  .replace('<script type="module" src="./studio.js?v=102"></script>','<script type="module">import {bootStudio} from "/studio.js?v=102";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
+  .replace('<script type="module" src="./studio.js?v=110"></script>','<script type="module">import {bootStudio} from "/studio.js?v=110";window.__dotsQAApp=bootStudio({detailOptions:{reviewHarness:false}});</script>');
 const browser=await launchBrowser({headless:true});
 const rows=[];
 const failures=[];
@@ -24,8 +25,10 @@ const templateCases=TEMPLATE_REGISTRY.map(template=>{
   const artwork=ARTWORKS.find(item=>item.id===template.artworkBinding.artworkId&&item.version===template.artworkBinding.artworkVersion);
   assert(artwork,`${template.id} has an exact catalog binding.`);
   assert.equal(getTemplateForArtwork(artwork)?.id,template.id,`${template.id} is eligible through public access.`);
-  const tabs=template.schemaVersion===2?getTemplateOptionFields(template).map(field=>field.key):['colors','face','accessories'];
-  return {series:template.id,id:artwork.id,version:artwork.version,templateId:template.id,tabs};
+  const look=getDefaultLook(artwork);
+  if(template.schemaVersion===2)assert(look,`${template.id} has a public default GalleryLook.`);
+  const tabs=look?getLookOptionFields(template,look).map(field=>field.key):['colors','face','accessories'];
+  return {series:template.id,id:artwork.id,version:artwork.version,templateId:template.id,lookId:look?.id??null,tabs};
 });
 assert.equal(templateCases.length,ARTWORKS.filter(item=>getTemplateForArtwork(item)).length,'Every current publicly editable Artwork receives rendered contrast checks.');
 assert(templateCases.length>0,'The current catalog has real publicly editable Artworks.');
@@ -183,7 +186,7 @@ try{
       assert.equal(await reviewPage.locator('.studio-editor-controls').getAttribute('data-review-only'),'false',
         `${templateCase.templateId} is measured through the public production eligibility path.`);
       assert.equal(await reviewPage.locator('html').getAttribute('lang'),language);
-      assert.deepEqual(await reviewPage.locator('.studio-editor-tab[role="tab"]').evaluateAll(tabs=>tabs.map(tab=>tab.dataset.editorTab)),templateCase.tabs,'Rendered tabs match the exact Template capability.');
+      assert.deepEqual(await reviewPage.locator('.studio-editor-tab[role="tab"]').evaluateAll(tabs=>tabs.map(tab=>tab.dataset.editorTab)),templateCase.tabs,templateCase.lookId?`Rendered tabs match public default GalleryLook ${templateCase.lookId}.`:'Rendered tabs match the legacy Template editor categories.');
       for(const group of templateCase.tabs){
         await reviewPage.locator(`.studio-editor-tab[role="tab"][data-editor-tab="${group}"]`).click();
         await reviewPage.waitForFunction(expected=>document.querySelector(`.studio-editor-tab[data-editor-tab="${expected}"]`)?.getAttribute('aria-selected')==='true'&&!document.querySelector(`.studio-editor-category[role="tabpanel"][data-editor-tab="${expected}"]`)?.hidden,group);
@@ -200,7 +203,7 @@ try{
   }
   const ratios=rows.map(row=>row.minRatio).filter(Number.isFinite);
   const minimum=ratios.length?Math.min(...ratios):null;
-  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:102,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
+  await fs.writeFile(path.join(output,'contrast.json'),JSON.stringify({revision:103,browser:browser.version(),method:'Pixel-sampled foreground/background contrast from paired installed-Chrome screenshots. Each visible text target is captured normally and again with its text color transparent; the second screenshot retains the actual glass, gradient, and backdrop composite. Changed glyph pixels are paired with the corresponding underlying screenshot pixels; computed foreground alpha/ancestor opacity is composited over each sampled background. Text threshold is 4.5:1. Artwork pixels are not UI text.',passed:failures.length===0,minimumRatio:minimum,failures,rows},null,2)+'\n');
   console.log(`Contrast: ${rows.length} rendered text targets sampled in both languages; minimum ${minimum?.toFixed(2)??'n/a'}:1; failures ${failures.length}.`);
   if(failures.length){console.error(`Contrast failures: ${JSON.stringify(failures,null,2)}`);process.exitCode=1;}
 }finally{await browser.close();await server.close();}

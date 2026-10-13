@@ -1,0 +1,3476 @@
+{
+  "passed": true,
+  "testedViewports": [
+    1280,
+    390,
+    320
+  ],
+  "testedLanguages": [
+    "en",
+    "zh-CN"
+  ],
+  "testedSorts": [
+    "curated",
+    "name"
+  ],
+  "fieldSizingSupported": true,
+  "selectCapabilities": {
+    "baseSelect": true,
+    "pickerPseudo": true,
+    "pickerIconPseudo": true,
+    "optionCheckmarkPseudo": true,
+    "openPseudo": true
+  },
+  "selectMode": "enhanced",
+  "fallbackSimulation": {
+    "status": "passed-as-css-degradation-simulation",
+    "method": "Removed @supports (appearance:base-select) from the local stylesheet response; the Chromium engine still supports base-select.",
+    "browserSupportsBaseSelect": true,
+    "languageAppearance": "none",
+    "sortAppearance": "none",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "measuredControls": 2
+  },
+  "nonChromiumNativeMenu": "not-tested-by-this-Chromium-verifier",
+  "pickerPixelAppearance": "not-measured-by-headless-layout-verifier",
+  "responsiveWidths": {
+    "320": {
+      "en": {
+        "curated": {
+          "#languagePreference": 89.90625,
+          "#gallerySort": 94.375
+        },
+        "name": {
+          "#languagePreference": 89.90625,
+          "#gallerySort": 81.453125
+        }
+      },
+      "zh-CN": {
+        "curated": {
+          "#languagePreference": 72,
+          "#gallerySort": 96
+        },
+        "name": {
+          "#languagePreference": 72,
+          "#gallerySort": 84
+        }
+      }
+    },
+    "390": {
+      "en": {
+        "curated": {
+          "#languagePreference": 89.90625,
+          "#gallerySort": 94.375
+        },
+        "name": {
+          "#languagePreference": 89.90625,
+          "#gallerySort": 81.453125
+        }
+      },
+      "zh-CN": {
+        "curated": {
+          "#languagePreference": 72,
+          "#gallerySort": 96
+        },
+        "name": {
+          "#languagePreference": 72,
+          "#gallerySort": 84
+        }
+      }
+    },
+    "1280": {
+      "en": {
+        "curated": {
+          "#languagePreference": 92.875,
+          "#gallerySort": 97.703125
+        },
+        "name": {
+          "#languagePreference": 92.875,
+          "#gallerySort": 83.9375
+        }
+      },
+      "zh-CN": {
+        "curated": {
+          "#languagePreference": 74,
+          "#gallerySort": 100
+        },
+        "name": {
+          "#languagePreference": 74,
+          "#gallerySort": 87
+        }
+      }
+    }
+  },
+  "measurements": [
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "en",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1147.125,
+            "y": 9.5,
+            "width": 92.875,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 45,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 44.865234375,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.009765625,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1142.296875,
+            "y": 544.15625,
+            "width": 97.703125,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 50,
+          "selectedLabel": "Curated",
+          "selectedLabelWidth": 49.694732666015625,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.008392333984375,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "en",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1147.125,
+            "y": 9.5,
+            "width": 92.875,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 45,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 44.865234375,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.009765625,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1156.0625,
+            "y": 544.15625,
+            "width": 83.9375,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 36,
+          "selectedLabel": "Name",
+          "selectedLabelWidth": 35.927734375,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.009765625,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "zh-CN",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1166,
+            "y": 9.5,
+            "width": 74,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 26,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 26,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1140,
+            "y": 544.15625,
+            "width": 100,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 52,
+          "selectedLabel": "精选顺序",
+          "selectedLabelWidth": 52,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "zh-CN",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1166,
+            "y": 9.5,
+            "width": 74,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 26,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 26,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1153,
+            "y": 544.15625,
+            "width": 87,
+            "height": 44
+          },
+          "fontSize": 13,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 39,
+          "selectedLabel": "按名称",
+          "selectedLabelWidth": 39,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 284.09375,
+            "y": 7.5,
+            "width": 89.90625,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 279.625,
+            "y": 488.703125,
+            "width": 94.375,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 46,
+          "selectedLabel": "Curated",
+          "selectedLabelWidth": 46.3642578125,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.0107421875,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 284.09375,
+            "y": 7.5,
+            "width": 89.90625,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 292.546875,
+            "y": 488.703125,
+            "width": 81.453125,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 33,
+          "selectedLabel": "Name",
+          "selectedLabelWidth": 33.4453125,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.0078125,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "zh-CN",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 302,
+            "y": 7.5,
+            "width": 72,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 278,
+            "y": 488.703125,
+            "width": 96,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 48,
+          "selectedLabel": "精选顺序",
+          "selectedLabelWidth": 48,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "zh-CN",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 302,
+            "y": 7.5,
+            "width": 72,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 290,
+            "y": 488.703125,
+            "width": 84,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 36,
+          "selectedLabel": "按名称",
+          "selectedLabelWidth": 36,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "en",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 218.09375,
+            "y": 7.5,
+            "width": 89.90625,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 213.625,
+            "y": 432.9375,
+            "width": 94.375,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 46,
+          "selectedLabel": "Curated",
+          "selectedLabelWidth": 46.3642578125,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.0107421875,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "en",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 218.09375,
+            "y": 7.5,
+            "width": 89.90625,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 226.546875,
+            "y": 432.9375,
+            "width": 81.453125,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 33,
+          "selectedLabel": "Name",
+          "selectedLabelWidth": 33.4453125,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.0078125,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "zh-CN",
+      "sort": "curated",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 236,
+            "y": 7.5,
+            "width": 72,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 212,
+            "y": 432.9375,
+            "width": 96,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 48,
+          "selectedLabel": "精选顺序",
+          "selectedLabelWidth": 48,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "zh-CN",
+      "sort": "name",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 236,
+            "y": 7.5,
+            "width": 72,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 224,
+            "y": 432.9375,
+            "width": 84,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 36,
+          "selectedLabel": "按名称",
+          "selectedLabelWidth": 36,
+          "labels": [
+            "精选顺序",
+            "按名称"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "14px",
+            "minWidth": "144px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 13,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "en",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1061.09375,
+            "y": 29,
+            "width": 79.90625,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 81,
+              "y": 25,
+              "right": 1199,
+              "bottom": 69,
+              "width": 1118,
+              "height": 44,
+              "centerY": 47
+            },
+            "display": "grid",
+            "title": {
+              "x": 173.03125,
+              "y": 38.90625,
+              "right": 1053.09375,
+              "bottom": 55.09375,
+              "width": 880.0625,
+              "height": 16.1875,
+              "centerY": 47,
+              "text": "Character Studio",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 1061.09375,
+              "y": 29,
+              "right": 1141,
+              "bottom": 65,
+              "width": 79.90625,
+              "height": 36,
+              "centerY": 47,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 95,
+              "y": 29,
+              "right": 165.03125,
+              "bottom": 65,
+              "width": 70.03125,
+              "height": 36,
+              "centerY": 47
+            },
+            "backLabel": {
+              "x": 127,
+              "y": 38,
+              "right": 156.03125,
+              "bottom": 56,
+              "width": 29.03125,
+              "height": 18,
+              "centerY": 47,
+              "text": "Back",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 1149,
+              "y": 29,
+              "right": 1185,
+              "bottom": 65,
+              "width": 36,
+              "height": 36,
+              "centerY": 47
+            },
+            "controlTitleGap": 8,
+            "backTitleGap": 8,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 1149,
+            "right": 1185
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "zh-CN",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 1079,
+            "y": 29,
+            "width": 62,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 81,
+              "y": 25,
+              "right": 1199,
+              "bottom": 69,
+              "width": 1118,
+              "height": 44,
+              "centerY": 47
+            },
+            "display": "grid",
+            "title": {
+              "x": 168,
+              "y": 38.90625,
+              "right": 1071,
+              "bottom": 55.09375,
+              "width": 903,
+              "height": 16.1875,
+              "centerY": 47,
+              "text": "角色工作室",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 1079,
+              "y": 29,
+              "right": 1141,
+              "bottom": 65,
+              "width": 62,
+              "height": 36,
+              "centerY": 47,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 95,
+              "y": 29,
+              "right": 160,
+              "bottom": 65,
+              "width": 65,
+              "height": 36,
+              "centerY": 47
+            },
+            "backLabel": {
+              "x": 127,
+              "y": 38,
+              "right": 151,
+              "bottom": 56,
+              "width": 24,
+              "height": 18,
+              "centerY": 47,
+              "text": "返回",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 1149,
+              "y": 29,
+              "right": 1185,
+              "bottom": 65,
+              "width": 36,
+              "height": 36,
+              "centerY": 47
+            },
+            "controlTitleGap": 8,
+            "backTitleGap": 8,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 1149,
+            "right": 1185
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 260.09375,
+            "y": 4,
+            "width": 79.90625,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "right": 390,
+              "bottom": 44,
+              "width": 390,
+              "height": 44,
+              "centerY": 22
+            },
+            "display": "grid",
+            "title": {
+              "x": 80.03125,
+              "y": 13.90625,
+              "right": 256.09375,
+              "bottom": 30.09375,
+              "width": 176.0625,
+              "height": 16.1875,
+              "centerY": 22,
+              "text": "Character Studio",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 260.09375,
+              "y": 4,
+              "right": 340,
+              "bottom": 40,
+              "width": 79.90625,
+              "height": 36,
+              "centerY": 22,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 10,
+              "y": 4,
+              "right": 76.03125,
+              "bottom": 40,
+              "width": 66.03125,
+              "height": 36,
+              "centerY": 22
+            },
+            "backLabel": {
+              "x": 40,
+              "y": 13,
+              "right": 69.03125,
+              "bottom": 31,
+              "width": 29.03125,
+              "height": 18,
+              "centerY": 22,
+              "text": "Back",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 344,
+              "y": 4,
+              "right": 380,
+              "bottom": 40,
+              "width": 36,
+              "height": 36,
+              "centerY": 22
+            },
+            "controlTitleGap": 4,
+            "backTitleGap": 4,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 344,
+            "right": 380
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "zh-CN",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 278,
+            "y": 4,
+            "width": 62,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "right": 390,
+              "bottom": 44,
+              "width": 390,
+              "height": 44,
+              "centerY": 22
+            },
+            "display": "grid",
+            "title": {
+              "x": 75,
+              "y": 13.90625,
+              "right": 274,
+              "bottom": 30.09375,
+              "width": 199,
+              "height": 16.1875,
+              "centerY": 22,
+              "text": "角色工作室",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 278,
+              "y": 4,
+              "right": 340,
+              "bottom": 40,
+              "width": 62,
+              "height": 36,
+              "centerY": 22,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 10,
+              "y": 4,
+              "right": 71,
+              "bottom": 40,
+              "width": 61,
+              "height": 36,
+              "centerY": 22
+            },
+            "backLabel": {
+              "x": 40,
+              "y": 13,
+              "right": 64,
+              "bottom": 31,
+              "width": 24,
+              "height": 18,
+              "centerY": 22,
+              "text": "返回",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 344,
+              "y": 4,
+              "right": 380,
+              "bottom": 40,
+              "width": 36,
+              "height": 36,
+              "centerY": 22
+            },
+            "controlTitleGap": 4,
+            "backTitleGap": 4,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 344,
+            "right": 380
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "en",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 190.09375,
+            "y": 4,
+            "width": 79.90625,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "right": 320,
+              "bottom": 44,
+              "width": 320,
+              "height": 44,
+              "centerY": 22
+            },
+            "display": "grid",
+            "title": {
+              "x": 80.03125,
+              "y": 13.90625,
+              "right": 186.09375,
+              "bottom": 30.09375,
+              "width": 106.0625,
+              "height": 16.1875,
+              "centerY": 22,
+              "text": "Character Studio",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 190.09375,
+              "y": 4,
+              "right": 270,
+              "bottom": 40,
+              "width": 79.90625,
+              "height": 36,
+              "centerY": 22,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 10,
+              "y": 4,
+              "right": 76.03125,
+              "bottom": 40,
+              "width": 66.03125,
+              "height": 36,
+              "centerY": 22
+            },
+            "backLabel": {
+              "x": 40,
+              "y": 13,
+              "right": 69.03125,
+              "bottom": 31,
+              "width": 29.03125,
+              "height": 18,
+              "centerY": 22,
+              "text": "Back",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 274,
+              "y": 4,
+              "right": 310,
+              "bottom": 40,
+              "width": 36,
+              "height": 36,
+              "centerY": 22
+            },
+            "controlTitleGap": 4,
+            "backTitleGap": 4,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 274,
+            "right": 310
+          }
+        }
+      ]
+    },
+    {
+      "surface": "detail",
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "zh-CN",
+      "sort": "not-present",
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 208,
+            "y": 4,
+            "width": 62,
+            "height": 36
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "36px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          },
+          "headerLayout": {
+            "box": {
+              "x": 0,
+              "y": 0,
+              "right": 320,
+              "bottom": 44,
+              "width": 320,
+              "height": 44,
+              "centerY": 22
+            },
+            "display": "grid",
+            "title": {
+              "x": 75,
+              "y": 13.90625,
+              "right": 204,
+              "bottom": 30.09375,
+              "width": 129,
+              "height": 16.1875,
+              "centerY": 22,
+              "text": "角色工作室",
+              "fontSize": 12
+            },
+            "control": {
+              "x": 208,
+              "y": 4,
+              "right": 270,
+              "bottom": 40,
+              "width": 62,
+              "height": 36,
+              "centerY": 22,
+              "fontSize": 12
+            },
+            "back": {
+              "x": 10,
+              "y": 4,
+              "right": 71,
+              "bottom": 40,
+              "width": 61,
+              "height": 36,
+              "centerY": 22
+            },
+            "backLabel": {
+              "x": 40,
+              "y": 13,
+              "right": 64,
+              "bottom": 31,
+              "width": 24,
+              "height": 18,
+              "centerY": 22,
+              "text": "返回",
+              "fontSize": 12,
+              "lineHeight": 18,
+              "lineHeightValue": "18px"
+            },
+            "close": {
+              "x": 274,
+              "y": 4,
+              "right": 310,
+              "bottom": 40,
+              "width": 36,
+              "height": 36,
+              "centerY": 22
+            },
+            "controlTitleGap": 4,
+            "backTitleGap": 4,
+            "controlTopInset": 4,
+            "controlBottomInset": 4,
+            "controlCenterOffset": 0,
+            "titleCenterOffset": 0,
+            "backCenterOffset": 0,
+            "closeCenterOffset": 0
+          },
+          "closeButtonBox": {
+            "x": 274,
+            "right": 310
+          }
+        }
+      ]
+    }
+  ],
+  "detailHeaderMeasurements": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "en",
+      "box": {
+        "x": 81,
+        "y": 25,
+        "right": 1199,
+        "bottom": 69,
+        "width": 1118,
+        "height": 44,
+        "centerY": 47
+      },
+      "display": "grid",
+      "title": {
+        "x": 173.03125,
+        "y": 38.90625,
+        "right": 1053.09375,
+        "bottom": 55.09375,
+        "width": 880.0625,
+        "height": 16.1875,
+        "centerY": 47,
+        "text": "Character Studio",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 1061.09375,
+        "y": 29,
+        "right": 1141,
+        "bottom": 65,
+        "width": 79.90625,
+        "height": 36,
+        "centerY": 47,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 95,
+        "y": 29,
+        "right": 165.03125,
+        "bottom": 65,
+        "width": 70.03125,
+        "height": 36,
+        "centerY": 47
+      },
+      "backLabel": {
+        "x": 127,
+        "y": 38,
+        "right": 156.03125,
+        "bottom": 56,
+        "width": 29.03125,
+        "height": 18,
+        "centerY": 47,
+        "text": "Back",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 1149,
+        "y": 29,
+        "right": 1185,
+        "bottom": 65,
+        "width": 36,
+        "height": 36,
+        "centerY": 47
+      },
+      "controlTitleGap": 8,
+      "backTitleGap": 8,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "zh-CN",
+      "box": {
+        "x": 81,
+        "y": 25,
+        "right": 1199,
+        "bottom": 69,
+        "width": 1118,
+        "height": 44,
+        "centerY": 47
+      },
+      "display": "grid",
+      "title": {
+        "x": 168,
+        "y": 38.90625,
+        "right": 1071,
+        "bottom": 55.09375,
+        "width": 903,
+        "height": 16.1875,
+        "centerY": 47,
+        "text": "角色工作室",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 1079,
+        "y": 29,
+        "right": 1141,
+        "bottom": 65,
+        "width": 62,
+        "height": 36,
+        "centerY": 47,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 95,
+        "y": 29,
+        "right": 160,
+        "bottom": 65,
+        "width": 65,
+        "height": 36,
+        "centerY": 47
+      },
+      "backLabel": {
+        "x": 127,
+        "y": 38,
+        "right": 151,
+        "bottom": 56,
+        "width": 24,
+        "height": 18,
+        "centerY": 47,
+        "text": "返回",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 1149,
+        "y": 29,
+        "right": 1185,
+        "bottom": 65,
+        "width": 36,
+        "height": 36,
+        "centerY": 47
+      },
+      "controlTitleGap": 8,
+      "backTitleGap": 8,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "right": 390,
+        "bottom": 44,
+        "width": 390,
+        "height": 44,
+        "centerY": 22
+      },
+      "display": "grid",
+      "title": {
+        "x": 80.03125,
+        "y": 13.90625,
+        "right": 256.09375,
+        "bottom": 30.09375,
+        "width": 176.0625,
+        "height": 16.1875,
+        "centerY": 22,
+        "text": "Character Studio",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 260.09375,
+        "y": 4,
+        "right": 340,
+        "bottom": 40,
+        "width": 79.90625,
+        "height": 36,
+        "centerY": 22,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 10,
+        "y": 4,
+        "right": 76.03125,
+        "bottom": 40,
+        "width": 66.03125,
+        "height": 36,
+        "centerY": 22
+      },
+      "backLabel": {
+        "x": 40,
+        "y": 13,
+        "right": 69.03125,
+        "bottom": 31,
+        "width": 29.03125,
+        "height": 18,
+        "centerY": 22,
+        "text": "Back",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 344,
+        "y": 4,
+        "right": 380,
+        "bottom": 40,
+        "width": 36,
+        "height": 36,
+        "centerY": 22
+      },
+      "controlTitleGap": 4,
+      "backTitleGap": 4,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "zh-CN",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "right": 390,
+        "bottom": 44,
+        "width": 390,
+        "height": 44,
+        "centerY": 22
+      },
+      "display": "grid",
+      "title": {
+        "x": 75,
+        "y": 13.90625,
+        "right": 274,
+        "bottom": 30.09375,
+        "width": 199,
+        "height": 16.1875,
+        "centerY": 22,
+        "text": "角色工作室",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 278,
+        "y": 4,
+        "right": 340,
+        "bottom": 40,
+        "width": 62,
+        "height": 36,
+        "centerY": 22,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 10,
+        "y": 4,
+        "right": 71,
+        "bottom": 40,
+        "width": 61,
+        "height": 36,
+        "centerY": 22
+      },
+      "backLabel": {
+        "x": 40,
+        "y": 13,
+        "right": 64,
+        "bottom": 31,
+        "width": 24,
+        "height": 18,
+        "centerY": 22,
+        "text": "返回",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 344,
+        "y": 4,
+        "right": 380,
+        "bottom": 40,
+        "width": 36,
+        "height": 36,
+        "centerY": 22
+      },
+      "controlTitleGap": 4,
+      "backTitleGap": 4,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "en",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "right": 320,
+        "bottom": 44,
+        "width": 320,
+        "height": 44,
+        "centerY": 22
+      },
+      "display": "grid",
+      "title": {
+        "x": 80.03125,
+        "y": 13.90625,
+        "right": 186.09375,
+        "bottom": 30.09375,
+        "width": 106.0625,
+        "height": 16.1875,
+        "centerY": 22,
+        "text": "Character Studio",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 190.09375,
+        "y": 4,
+        "right": 270,
+        "bottom": 40,
+        "width": 79.90625,
+        "height": 36,
+        "centerY": 22,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 10,
+        "y": 4,
+        "right": 76.03125,
+        "bottom": 40,
+        "width": 66.03125,
+        "height": 36,
+        "centerY": 22
+      },
+      "backLabel": {
+        "x": 40,
+        "y": 13,
+        "right": 69.03125,
+        "bottom": 31,
+        "width": 29.03125,
+        "height": 18,
+        "centerY": 22,
+        "text": "Back",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 274,
+        "y": 4,
+        "right": 310,
+        "bottom": 40,
+        "width": 36,
+        "height": 36,
+        "centerY": 22
+      },
+      "controlTitleGap": 4,
+      "backTitleGap": 4,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "zh-CN",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "right": 320,
+        "bottom": 44,
+        "width": 320,
+        "height": 44,
+        "centerY": 22
+      },
+      "display": "grid",
+      "title": {
+        "x": 75,
+        "y": 13.90625,
+        "right": 204,
+        "bottom": 30.09375,
+        "width": 129,
+        "height": 16.1875,
+        "centerY": 22,
+        "text": "角色工作室",
+        "fontSize": 12
+      },
+      "control": {
+        "x": 208,
+        "y": 4,
+        "right": 270,
+        "bottom": 40,
+        "width": 62,
+        "height": 36,
+        "centerY": 22,
+        "fontSize": 12
+      },
+      "back": {
+        "x": 10,
+        "y": 4,
+        "right": 71,
+        "bottom": 40,
+        "width": 61,
+        "height": 36,
+        "centerY": 22
+      },
+      "backLabel": {
+        "x": 40,
+        "y": 13,
+        "right": 64,
+        "bottom": 31,
+        "width": 24,
+        "height": 18,
+        "centerY": 22,
+        "text": "返回",
+        "fontSize": 12,
+        "lineHeight": 18,
+        "lineHeightValue": "18px"
+      },
+      "close": {
+        "x": 274,
+        "y": 4,
+        "right": 310,
+        "bottom": 40,
+        "width": 36,
+        "height": 36,
+        "centerY": 22
+      },
+      "controlTitleGap": 4,
+      "backTitleGap": 4,
+      "controlTopInset": 4,
+      "controlBottomInset": 4,
+      "controlCenterOffset": 0,
+      "titleCenterOffset": 0,
+      "backCenterOffset": 0,
+      "closeCenterOffset": 0
+    }
+  ],
+  "editorTabMeasurements": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "en",
+      "pointer": "fine",
+      "box": {
+        "x": 715.71875,
+        "right": 926.859375,
+        "width": 211.140625,
+        "height": 44
+      },
+      "clientWidth": 209,
+      "scrollWidth": 209,
+      "overflowX": "auto",
+      "parentWidth": 453,
+      "controlsWidth": 453.265625,
+      "documentWidth": 1280,
+      "viewportWidth": 1280,
+      "tabs": [
+        {
+          "x": 719.71875,
+          "right": 773.53125,
+          "width": 53.8125,
+          "height": 36,
+          "text": "Color",
+          "textWidth": 31.8125,
+          "textHeight": 15,
+          "clientWidth": 52,
+          "scrollWidth": 52,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 776.53125,
+          "right": 826.21875,
+          "width": 49.6875,
+          "height": 36,
+          "text": "Face",
+          "textWidth": 27.6875,
+          "textHeight": 15,
+          "clientWidth": 48,
+          "scrollWidth": 48,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 829.21875,
+          "right": 922.859375,
+          "width": 93.640625,
+          "height": 36,
+          "text": "Accessories",
+          "textWidth": 71.640625,
+          "textHeight": 15,
+          "clientWidth": 92,
+          "scrollWidth": 92,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "language": "zh-CN",
+      "pointer": "fine",
+      "box": {
+        "x": 715.71875,
+        "right": 867.71875,
+        "width": 152,
+        "height": 44
+      },
+      "clientWidth": 150,
+      "scrollWidth": 150,
+      "overflowX": "auto",
+      "parentWidth": 453,
+      "controlsWidth": 453.265625,
+      "documentWidth": 1280,
+      "viewportWidth": 1280,
+      "tabs": [
+        {
+          "x": 719.71875,
+          "right": 765.71875,
+          "width": 46,
+          "height": 36,
+          "text": "颜色",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 768.71875,
+          "right": 814.71875,
+          "width": 46,
+          "height": 36,
+          "text": "五官",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 817.71875,
+          "right": 863.71875,
+          "width": 46,
+          "height": 36,
+          "text": "配饰",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "en",
+      "pointer": "fine",
+      "box": {
+        "x": 20,
+        "right": 231.140625,
+        "width": 211.140625,
+        "height": 44
+      },
+      "clientWidth": 209,
+      "scrollWidth": 209,
+      "overflowX": "auto",
+      "parentWidth": 350,
+      "controlsWidth": 350,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "tabs": [
+        {
+          "x": 24,
+          "right": 77.8125,
+          "width": 53.8125,
+          "height": 36,
+          "text": "Color",
+          "textWidth": 31.8125,
+          "textHeight": 15,
+          "clientWidth": 52,
+          "scrollWidth": 52,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 80.8125,
+          "right": 130.5,
+          "width": 49.6875,
+          "height": 36,
+          "text": "Face",
+          "textWidth": 27.6875,
+          "textHeight": 15,
+          "clientWidth": 48,
+          "scrollWidth": 48,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 133.5,
+          "right": 227.140625,
+          "width": 93.640625,
+          "height": 36,
+          "text": "Accessories",
+          "textWidth": 71.640625,
+          "textHeight": 15,
+          "clientWidth": 92,
+          "scrollWidth": 92,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "zh-CN",
+      "pointer": "fine",
+      "box": {
+        "x": 20,
+        "right": 172,
+        "width": 152,
+        "height": 44
+      },
+      "clientWidth": 150,
+      "scrollWidth": 150,
+      "overflowX": "auto",
+      "parentWidth": 350,
+      "controlsWidth": 350,
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "tabs": [
+        {
+          "x": 24,
+          "right": 70,
+          "width": 46,
+          "height": 36,
+          "text": "颜色",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 73,
+          "right": 119,
+          "width": 46,
+          "height": 36,
+          "text": "五官",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 122,
+          "right": 168,
+          "width": 46,
+          "height": 36,
+          "text": "配饰",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "en",
+      "pointer": "fine",
+      "box": {
+        "x": 16,
+        "right": 227.140625,
+        "width": 211.140625,
+        "height": 44
+      },
+      "clientWidth": 209,
+      "scrollWidth": 209,
+      "overflowX": "auto",
+      "parentWidth": 288,
+      "controlsWidth": 288,
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "tabs": [
+        {
+          "x": 20,
+          "right": 73.8125,
+          "width": 53.8125,
+          "height": 36,
+          "text": "Color",
+          "textWidth": 31.8125,
+          "textHeight": 15,
+          "clientWidth": 52,
+          "scrollWidth": 52,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 76.8125,
+          "right": 126.5,
+          "width": 49.6875,
+          "height": 36,
+          "text": "Face",
+          "textWidth": 27.6875,
+          "textHeight": 15,
+          "clientWidth": 48,
+          "scrollWidth": 48,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 129.5,
+          "right": 223.140625,
+          "width": 93.640625,
+          "height": 36,
+          "text": "Accessories",
+          "textWidth": 71.640625,
+          "textHeight": 15,
+          "clientWidth": 92,
+          "scrollWidth": 92,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 700
+      },
+      "language": "zh-CN",
+      "pointer": "fine",
+      "box": {
+        "x": 16,
+        "right": 168,
+        "width": 152,
+        "height": 44
+      },
+      "clientWidth": 150,
+      "scrollWidth": 150,
+      "overflowX": "auto",
+      "parentWidth": 288,
+      "controlsWidth": 288,
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "tabs": [
+        {
+          "x": 20,
+          "right": 66,
+          "width": 46,
+          "height": 36,
+          "text": "颜色",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 69,
+          "right": 115,
+          "width": 46,
+          "height": 36,
+          "text": "五官",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 118,
+          "right": 164,
+          "width": 46,
+          "height": 36,
+          "text": "配饰",
+          "textWidth": 24,
+          "textHeight": 15,
+          "clientWidth": 44,
+          "scrollWidth": 44,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    }
+  ],
+  "fallbackMeasurements": [
+    {
+      "surface": "gallery",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "controls": [
+        {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 284.09375,
+            "y": 7.5,
+            "width": 89.90625,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 42,
+          "selectedLabel": "English",
+          "selectedLabelWidth": 41.90625,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "none",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "Language",
+          "picker": {
+            "appearance": "none",
+            "display": "none",
+            "backgroundColor": "rgb(18, 18, 18)",
+            "borderRadius": "2px",
+            "minWidth": "0px"
+          },
+          "pickerIconDisplay": "block",
+          "selectedOptionStyle": {
+            "display": "block",
+            "fontSize": 12,
+            "minHeight": "24px",
+            "backgroundColor": "rgb(20, 24, 33)",
+            "checkmarkColor": "rgb(244, 246, 251)"
+          }
+        },
+        {
+          "selector": "#gallerySort",
+          "tagName": "SELECT",
+          "box": {
+            "x": 279.625,
+            "y": 488.703125,
+            "width": 94.375,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 12,
+          "paddingLeft": 12,
+          "paddingRight": 34,
+          "labelSlotWidth": 46,
+          "selectedLabel": "Curated",
+          "selectedLabelWidth": 46.3642578125,
+          "labels": [
+            "Curated",
+            "Name"
+          ],
+          "arrowWidth": 12,
+          "arrowRightInset": 12,
+          "arrowGap": 10.0107421875,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "none",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": null,
+          "picker": {
+            "appearance": "none",
+            "display": "none",
+            "backgroundColor": "rgb(18, 18, 18)",
+            "borderRadius": "2px",
+            "minWidth": "0px"
+          },
+          "pickerIconDisplay": "block",
+          "selectedOptionStyle": {
+            "display": "block",
+            "fontSize": 12,
+            "minHeight": "24px",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "checkmarkColor": "rgb(238, 234, 246)"
+          }
+        }
+      ]
+    }
+  ],
+  "coarsePointer": {
+    "status": "passed",
+    "measurements": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "pointer": "coarse",
+        "language": "zh-CN",
+        "control": {
+          "selector": "#languagePreference",
+          "tagName": "SELECT",
+          "box": {
+            "x": 270,
+            "y": 2,
+            "width": 62,
+            "height": 44
+          },
+          "fontSize": 12,
+          "borderRadius": 8,
+          "paddingLeft": 8,
+          "paddingRight": 28,
+          "labelSlotWidth": 24,
+          "selectedLabel": "中文",
+          "selectedLabelWidth": 24,
+          "labels": [
+            "English",
+            "中文"
+          ],
+          "arrowWidth": 10,
+          "arrowRightInset": 8,
+          "arrowGap": 10,
+          "textAlign": "left",
+          "textAlignLast": "left",
+          "appearance": "base-select",
+          "backgroundImage": "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E\"), linear-gradient(rgb(35, 35, 48), rgb(25, 26, 36))",
+          "fieldSizing": "content",
+          "ariaLabel": "语言",
+          "picker": {
+            "appearance": "base-select",
+            "display": "none",
+            "backgroundColor": "rgb(27, 27, 39)",
+            "borderRadius": "10px",
+            "minWidth": "128px"
+          },
+          "pickerIconDisplay": "none",
+          "selectedOptionStyle": {
+            "display": "flex",
+            "fontSize": 12,
+            "minHeight": "44px",
+            "backgroundColor": "rgba(173, 131, 243, 0.13)",
+            "checkmarkColor": "rgb(201, 166, 255)"
+          }
+        },
+        "header": {
+          "box": {
+            "x": 0,
+            "right": 390,
+            "width": 390,
+            "height": 48,
+            "centerY": 24
+          },
+          "display": "grid",
+          "back": {
+            "x": 10,
+            "right": 71,
+            "width": 61,
+            "height": 44,
+            "centerY": 24
+          },
+          "title": {
+            "x": 75,
+            "right": 266,
+            "width": 191,
+            "height": 16.1875,
+            "centerY": 24
+          },
+          "language": {
+            "x": 270,
+            "right": 332,
+            "width": 62,
+            "height": 44,
+            "centerY": 24
+          },
+          "close": {
+            "x": 336,
+            "right": 380,
+            "width": 44,
+            "height": 44,
+            "centerY": 24
+          },
+          "titleBackGap": 4,
+          "titleLanguageGap": 4,
+          "controlCloseGap": 4
+        },
+        "tabs": {
+          "box": {
+            "x": 20,
+            "right": 172,
+            "width": 152,
+            "height": 52
+          },
+          "clientWidth": 150,
+          "scrollWidth": 150,
+          "overflowX": "auto",
+          "parentWidth": 350,
+          "controlsWidth": 350,
+          "documentWidth": 390,
+          "viewportWidth": 390,
+          "tabs": [
+            {
+              "x": 24,
+              "right": 70,
+              "width": 46,
+              "height": 44,
+              "text": "颜色",
+              "textWidth": 24,
+              "textHeight": 15,
+              "clientWidth": 44,
+              "scrollWidth": 44,
+              "clientHeight": 42,
+              "scrollHeight": 42,
+              "fontSize": 12,
+              "lineHeight": 18,
+              "whiteSpace": "nowrap",
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "borderLeft": 1,
+              "borderRight": 1
+            },
+            {
+              "x": 73,
+              "right": 119,
+              "width": 46,
+              "height": 44,
+              "text": "五官",
+              "textWidth": 24,
+              "textHeight": 15,
+              "clientWidth": 44,
+              "scrollWidth": 44,
+              "clientHeight": 42,
+              "scrollHeight": 42,
+              "fontSize": 12,
+              "lineHeight": 18,
+              "whiteSpace": "nowrap",
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "borderLeft": 1,
+              "borderRight": 1
+            },
+            {
+              "x": 122,
+              "right": 168,
+              "width": 46,
+              "height": 44,
+              "text": "配饰",
+              "textWidth": 24,
+              "textHeight": 15,
+              "clientWidth": 44,
+              "scrollWidth": 44,
+              "clientHeight": 42,
+              "scrollHeight": 42,
+              "fontSize": 12,
+              "lineHeight": 18,
+              "whiteSpace": "nowrap",
+              "paddingLeft": 10,
+              "paddingRight": 10,
+              "borderLeft": 1,
+              "borderRight": 1
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "narrowFourTab": {
+    "status": "passed",
+    "language": "en",
+    "viewport": {
+      "width": 320,
+      "height": 700
+    },
+    "tabs": {
+      "box": {
+        "x": 16,
+        "right": 302.03125,
+        "width": 286.03125,
+        "height": 44
+      },
+      "clientWidth": 284,
+      "scrollWidth": 284,
+      "overflowX": "auto",
+      "parentWidth": 288,
+      "controlsWidth": 288,
+      "documentWidth": 320,
+      "viewportWidth": 320,
+      "tabs": [
+        {
+          "x": 20,
+          "right": 73.8125,
+          "width": 53.8125,
+          "height": 36,
+          "text": "Color",
+          "textWidth": 31.8125,
+          "textHeight": 15,
+          "clientWidth": 52,
+          "scrollWidth": 52,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 76.8125,
+          "right": 126.5,
+          "width": 49.6875,
+          "height": 36,
+          "text": "Face",
+          "textWidth": 27.6875,
+          "textHeight": 15,
+          "clientWidth": 48,
+          "scrollWidth": 48,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 129.5,
+          "right": 201.390625,
+          "width": 71.890625,
+          "height": 36,
+          "text": "Clothing",
+          "textWidth": 49.890625,
+          "textHeight": 15,
+          "clientWidth": 70,
+          "scrollWidth": 70,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        },
+        {
+          "x": 204.390625,
+          "right": 298.03125,
+          "width": 93.640625,
+          "height": 36,
+          "text": "Accessories",
+          "textWidth": 71.640625,
+          "textHeight": 15,
+          "clientWidth": 92,
+          "scrollWidth": 92,
+          "clientHeight": 34,
+          "scrollHeight": 34,
+          "fontSize": 12,
+          "lineHeight": 18,
+          "whiteSpace": "nowrap",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "borderLeft": 1,
+          "borderRight": 1
+        }
+      ]
+    },
+    "finalTab": {
+      "insideNav": true,
+      "receivesHit": true,
+      "text": "Accessories"
+    }
+  },
+  "keyboard": {
+    "tabOrder": "passed",
+    "enhancedPickerOpen": "passed",
+    "escapeKeepsDetailOpen": "passed",
+    "languageSelection": "passed",
+    "sortSelection": "passed",
+    "fallbackSelections": "passed"
+  },
+  "pageErrors": [],
+  "consoleErrors": [],
+  "cleanupErrors": [],
+  "detailFailures": []
+}

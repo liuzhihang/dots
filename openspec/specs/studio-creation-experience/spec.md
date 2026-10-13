@@ -7,10 +7,10 @@
 ## Requirements
 
 ### Requirement: 作品详情必须直接提供实际图片及带走操作
-CharacterStudio SHALL 在同一 Artwork 上下文中提供真实作品、名称、facts、只读原始资料和额外要求文本框。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作。变更前 24 件已批准 Artwork 与本 change 后续获批并加入默认 Gallery 的每件 Artwork SHALL 经同一详情提供精确 Artwork/version 绑定、逐件获批的角色调整 Template；编辑区统一命名为“角色调整 / Character adjustments”，按家族包含外观、配色、五官、配饰，Muse/动物/人物/独立机器人另含服装家族适用的非空一级 tabs，各类至少提供两个可达、身份兼容且实际改变成功预览像素的结果。角色调整使用真实素材、锚点、层序和已逐件验收的合法组合，不以 Prompt-only 代替本地编辑。默认成功像素预览是同一面板直接编辑和导出的唯一预览。当前 Gallery Artwork 与角色调整只导出透明 PNG；有效透明 Artwork 的默认未改配置可返回登记原图字节，已修改配置只可导出匹配最新成功 revision 的透明 PNG。渲染进行或失败时禁止新的 Draft PNG 导出。历史、pending、异常及资源失败记录可保留静态详情与单一 Export 的登记原始字节降级；历史不透明字节须标为历史原图，不得宣称透明或计入全角色调整覆盖。统一 Prompt 为原 Prompt 或最近成功配置 Prompt 加用户额外要求；额外要求不改变本地像素，ChatGPT MUST NOT 自动附图或发送。待审 Template 仅由外部 reviewHarness 打开，资格不变。查看不得依赖获取完整原图或等待 SHA 校验。界面不提供背景设置、背景 tab 或带背景导出；展示底色只属于 UI。
+CharacterStudio SHALL 在同一 Artwork 或 GalleryLook 上下文中提供真实作品、当前形象名称、facts、只读来源资料和额外要求文本框。GalleryLook 的标题、成功预览、配置 Prompt 与操作均描述当前固定形象；来源 Artwork 资料仍作为只读原始资料显示，不得冒充当前形象。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作。变更前 24 件已批准 Artwork 与本 change 后续获批并加入默认 Gallery 的每件源 Artwork SHALL 经详情提供精确 Artwork/version 绑定、逐件获批的角色调整 Template；该来源资格和 Template 能力不因 GalleryLook 改变。编辑区统一命名为“角色调整 / Character adjustments”。未绑定 GalleryLook 的原始 Template 编辑继续遵守其现有类别合同；绑定 GalleryLook 时 appearance 固定且不提供 Appearance 控件，只显示当前 look 合法配方中至少有两个可达、身份兼容且像素结果不同值的 colors、face、accessories 及适用 clothing 分类。24 个单配方形象不提供虚构编辑分类；本 change 的90个入口不要求每个固定形象都提供全部类别。角色调整使用真实素材、锚点、层序和已逐件验收的合法组合，不以 Prompt-only 代替本地编辑。默认成功像素预览是同一面板直接编辑和导出的唯一预览。原有 Artwork 静态详情与原始 Template 导出合同保持不变；GalleryLook 只导出透明 PNG，来源默认形象可在默认配置和预览成功时返回登记原图字节，派生形象即使未修改也须导出匹配成功默认预览的透明 renderer PNG，修改后的形象只可导出匹配最新成功 revision 的透明 PNG。渲染进行或失败时禁止新的 Draft PNG 导出。历史、pending、异常及资源失败记录可保留静态详情与单一 Export 的登记原始字节降级；历史不透明字节须标为历史原图，不得宣称透明或计入全角色调整覆盖。统一 Prompt 为原 Prompt 或最近成功配置 Prompt 加用户额外要求；额外要求不改变本地像素，ChatGPT MUST NOT 自动附图或发送。待审 Template 仅由外部 reviewHarness 打开，资格不变。查看不得依赖获取完整原图或等待 SHA 校验。界面不提供背景设置、背景 tab 或带背景导出；展示底色只属于 UI。
 
 
-系统 SHALL 按家族提供以下调整范围：Dots / Grok Bot 取消服装 tab，只保留外观、配色、五官、配饰四类；Muse、动物、人物和独立机器人保留服装，共五类。Dots / Grok 的服装能力不适用，不以 None 控件充数，也不将衣物改名塞进配饰。每个适用类别仍须至少两个真实、合法可达且改变像素的结果。原有含围衣候选及检查记录保留为历史制作证据，不作为当前推荐或美术通过依据。
+未绑定 GalleryLook 的原始 Template 编辑 SHALL 按家族提供以下调整范围；固定 GalleryLook 只显示当前外观内至少两个真实可达值的非外观分类，单配方形象不显示分类：Dots / Grok Bot 取消服装 tab，只保留外观、配色、五官、配饰四类；Muse、动物、人物和独立机器人保留服装，共五类。Dots / Grok 的服装能力不适用，不以 None 控件充数，也不将衣物改名塞进配饰。每个适用类别仍须至少两个真实、合法可达且改变像素的结果。原有含围衣候选及检查记录保留为历史制作证据，不作为当前推荐或美术通过依据。
 
 #### Scenario: 从画廊或随机结果打开详情
 - **WHEN** 用户从唯一角色库打开已发布 Artwork；旧随机结果入口已退役
@@ -29,7 +29,7 @@ CharacterStudio SHALL 在同一 Artwork 上下文中提供真实作品、名称�
 - **THEN** 该确切 Artwork/version 自动载入自身已批准 Template、默认选项与家族适用的非空调整 tabs；每类具有至少两个实际可达、逐件登记且经批准的不同像素结果，预览和单一 Export 遵循同一成功 revision；不得以删减 Gallery、静态降级、共享系列能力或外部 Prompt 补足覆盖
 
 ### Requirement: 详情变体必须原子切换已发布作品版本
-CharacterStudio SHALL 只显示同身份、实际制作、已发布且获对应批准的动作或表情变体；切换时图像、名称、facts、Prompt、原图引用和 URL MUST 一起更新。无合格变体时隐藏该区块；静态编辑结果不作为变体。切换 Artwork 或变体时，只在 Draft 配置或外部意图偏离基线的情况下触发可取消的 dirty guard。
+CharacterStudio SHALL 只显示同身份、实际制作、已发布且获对应批准的动作或表情变体；GalleryLook 之间的选择作为切换固定形象处理。切换 Artwork、GalleryLook 或合格变体时，当前形象图像、名称、facts、Prompt、原图引用和 URL MUST 一起更新。无合格变体时隐藏该区块；静态编辑结果不作为变体。切换 Artwork、GalleryLook、Figure或变体时直接替换当前临时会话，MUST NOT通过原生dirty确认阻断点击。
 
 #### Scenario: 切换真实动作变体
 - **WHEN** 用户在 CharacterStudio 中选择已登记且批准的真实变体并成功加载
@@ -40,11 +40,11 @@ CharacterStudio SHALL 只显示同身份、实际制作、已发布且获对应�
 - **THEN** 无变体时隐藏整个变体区块；加载失败时保留当前成功版本、Prompt、下载和 URL，不显示旧图配新描述
 
 #### Scenario: 切换作品或变体时 Draft dirty
-- **WHEN** Draft 配置或外部意图偏离初始基线，且用户选择另一 Artwork 或变体
-- **THEN** 先提供可取消的继续编辑或放弃修改；取消时保留当前 Artwork 与 Draft，放弃后才切换
+- **WHEN** Draft 配置或外部意图偏离初始基线，且用户选择另一 Artwork、GalleryLook 或变体
+- **THEN** 直接切换至目标默认配置，原临时Draft与额外要求被释放，不阻塞语言、分类、关闭或结果操作
 
 ### Requirement: 详情信息层级必须优先作品与直接操作
-CharacterStudio SHALL 在静态详情中优先显示原作品预览、名称、最多四个真实 facts 与原始资料；完整 Prompt 可展开并可复制。适配作品打开后在同一面板显示默认成功预览、家族适用类别真实可视选项、当前配置 Prompt 与单一 Export。`.studio-original` 只读且编辑作品默认收起、无 Template 静态作品默认展开。相关角色常显在主预览下方，以紧凑固定宽度左对齐。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作；不提供 Reset/Cancel 或重复原图按钮。有效透明 Gallery Artwork 默认配置未变时 Export 返回登记透明原图原字节，已修改配置的 Export 绑定最新成功 revision 的透明 PNG。无 Template 的历史、pending 或异常静态 Export 返回登记原图原字节；不透明历史资源必须明确标识为历史原图，不得宣称透明。额外要求只进入 Prompt，不改变像素；渲染中/失败时禁用 Draft PNG Export。家族适用的调整 tabs 只提供精确登记并符合身份的真实选项，不提供背景配置。不得要求动态生成编辑后的 facts/描述。标题稳定，未经登记的规格、许可、统计、Pet 能力或动作 MUST NOT 展示。
+CharacterStudio SHALL 在静态详情中优先显示原作品预览、名称、最多四个真实 facts 与原始资料；完整 Prompt 可展开并可复制。适配 Artwork 打开后由其默认 GalleryLook 解析当前形象，并在同一面板显示该固定 look 的默认成功预览、符合其合法配方范围的真实可视选项、当前配置 Prompt 与单一 Export。直接打开 GalleryLook 时，同一面板以该 look 而非来源 Artwork 作为当前形象；来源事实和素材继续只读。`.studio-original` 只读且编辑作品默认收起、无 Template 静态作品默认展开。相关角色常显在主预览下方，以紧凑固定宽度左对齐。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作；不提供 Reset/Cancel 或重复原图按钮。有效透明 Gallery Artwork 默认配置未变时 Export 返回登记透明原图原字节，已修改配置的 Export 绑定最新成功 revision 的透明 PNG。无 Template 的历史、pending 或异常静态 Export 返回登记原图原字节；不透明历史资源必须明确标识为历史原图，不得宣称透明。额外要求只进入 Prompt，不改变像素；渲染中/失败时禁用 Draft PNG Export。家族适用的调整 tabs 只提供精确登记并符合身份的真实选项，不提供背景配置。不得要求动态生成编辑后的 facts/描述。标题稳定，未经登记的规格、许可、统计、Pet 能力或动作 MUST NOT 展示。
 
 #### Scenario: 首次打开和重开详情
 - **WHEN** 用户首次打开或重新打开 Artwork
@@ -116,3 +116,28 @@ CharacterStudio SHALL 在静态详情中优先显示原作品预览、名称、�
 #### Scenario: WebP 派生无法校验
 - **WHEN** 按需加载的 WebP 传输派生缺失、源 hash 变化或解码证明失败
 - **THEN** 系统将对应资源标记为不可用并给出可恢复错误，不将失败派生当作有效预览或编辑图层，也不提前读取原 PNG 冒充成功
+
+### Requirement: 关闭角色调整必须直接退出且不弹出确认
+CharacterStudio SHALL 在用户选择关闭、面板返回、Escape、返回角色库、浏览器历史回到角色库或离开当前页面时直接退出，不因内存 Draft 或额外要求偏离基线而弹出放弃修改确认或 beforeunload 提示。退出 SHALL 释放当前编辑会话，重新打开同一 Artwork SHALL 从其已批准 Template 默认值开始。切换另一 Artwork、GalleryLook、Figure或已发布变体 SHALL 同样直接替换当前临时会话，不弹出dirty确认；同一基础形象内部的合法选项调整仍保留当前会话和补充要求。
+
+#### Scenario: 修改后关闭角色调整
+- **WHEN** 用户修改选项或额外要求，然后使用关闭按钮、面板返回、Escape 或导航返回角色库
+- **THEN** 面板直接关闭，URL、滚动位置和焦点按原导航合同恢复，不弹出确认；同一角色再次打开时选项与额外要求回到默认基线
+
+#### Scenario: 修改后通过浏览器历史退出或离开页面
+- **WHEN** 用户在有内存 Draft 的角色调整中通过浏览器 Back/Forward 回到角色库，或刷新、关闭当前网页
+- **THEN** 不产生放弃修改确认或 beforeunload 提示；Back/Forward 保持正确的路由和历史索引，过期编辑请求不能恢复已关闭会话
+
+### Requirement: 基础形象展示与当前来源操作必须一致
+公开Figure详情 SHALL 以基础形象名称、封面、相关形象和固定外观进行展示；选择真实成员配置时原始资料、Prompt和PNG MUST 绑定当前实际Artwork/Template/recipe。Figure默认与修改状态均导出当前成功renderer PNG，不因source是原始默认作品而下载另一套像素。旧Artwork/Look入口保持原登记原字节与编辑结果语义。
+
+#### Scenario: 默认云朵与跨来源导出
+- **WHEN** 用户直接打开dots-cloud或在其内改变颜色/配件并成功预览
+- **THEN** 单一Export返回当前画布成功快照的透明PNG，基础标题不变，当前source资料保持真实只读
+
+### Requirement: 弹窗导航必须紧凑且保留可操作性
+CharacterStudio SHALL 按当前分类文字宽度排列导航，不将少量分类等分拉满。精细指针下顶部返回、关闭、语言及分类按钮采用至少36px目标，原生语言菜单按较小内距和字号呈现；粗指针触屏保持至少44px目标。中英文文字 MUST 完整显示，超出窄屏的分类局部滚动，不造成页面横向溢出。该紧凑规则是全站语言与导航控件44px合同在精细指针弹窗中的明确例外；粗指针触屏仍至少44px，选项卡片及主操作尺寸不变。
+
+#### Scenario: 双语紧凑导航与语言菜单
+- **WHEN** 用户在桌面或窄屏打开详情并切换中英文
+- **THEN** 顶部控件与标题不重叠、返回和分类标签单行，语言文本与箭头间距紧凑，原生键盘和先收菜单再关弹窗的Escape顺序保持，当前角色与编辑选择不变

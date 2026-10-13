@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
-import { ARTWORKS, PREVIEW_ARTWORKS, SERIES } from '../dist/studio-artwork-catalog.js?v=102';
-import * as galleryQuery from '../dist/studio-tags.js?v=102';
+import { ARTWORKS, PREVIEW_ARTWORKS, SERIES } from '../dist/studio-artwork-catalog.js?v=110';
+import * as galleryQuery from '../dist/studio-tags.js?v=110';
 import { createNewArtworkFixture } from './fixtures/new-artwork.mjs';
 
 const { TAGS, TAG_DIMENSIONS, normalizeSearch, normalizeGalleryQuery, queryArtworks } = galleryQuery;

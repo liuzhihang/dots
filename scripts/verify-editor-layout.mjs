@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { launchBrowser } from './browser-runtime.mjs';
 import { resolveEvidenceDirectory } from './evidence-paths.mjs';
-import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=102';
-import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=102';
+import {GALLERY_LOOKS,getDefaultLook,getLookOptionFields} from '../dist/studio-gallery-looks.js?v=110';
+import { ARTWORKS } from '../dist/studio-artwork-catalog.js?v=110';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork, getTemplateOptionFields } from '../dist/studio-edit-templates.js?v=110';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolveEvidenceDirectory('.artifacts/editor-layout');
@@ -47,7 +48,7 @@ const templateCases = TEMPLATE_REGISTRY.map(template => {
   assert(artwork, `${template.id} has an exact Artwork binding.`);
   assert.equal(getTemplateForArtwork(artwork)?.id, template.id,
     `${template.id} is available through the public eligibility path.`);
-  const fields = getTemplateOptionFields(template);
+  const fields = getLookOptionFields(template, getDefaultLook(artwork));
   return { series: template.id, seriesId: artwork.seriesId, id: artwork.id, templateId: template.id, fields, tabs: template.schemaVersion === 2 ? fields.map(field => field.key) : ['colors', 'face', 'accessories'], colorField: template.schemaVersion === 2 ? 'colors' : 'color', faceField: template.schemaVersion === 2 ? 'face' : 'eyes' };
 });
 assert.equal(templateCases.length, ARTWORKS.filter(item => getTemplateForArtwork(item)).length, 'Every publicly editable Artwork is checked through public access.');
@@ -55,7 +56,7 @@ assert(templateCases.length > 0);
 
 async function openArtwork(page, id) {
   await page.evaluate(async artworkId => {
-    const { getArtwork } = await import('/studio-artwork-catalog.js?v=102');
+    const { getArtwork } = await import('/studio-artwork-catalog.js?v=110');
     const artwork = getArtwork(artworkId);
     if (!artwork) throw new Error(`Artwork is unavailable: ${artworkId}`);
     window.__dotsQAApp.openArtwork(artwork.id, artwork.version);
@@ -79,7 +80,7 @@ async function openArtwork(page, id) {
   }
   await page.waitForFunction(() => {
     const buttons = [...document.querySelectorAll('.studio-editor-category:not([hidden]) .studio-editor-option[data-field][data-option-id]')].filter(button => !['color', 'colors'].includes(button.dataset.field));
-    return buttons.length > 0 && buttons.every(button => {
+    return buttons.every(button => {
       const visual = button.querySelector('.studio-editor-option-visual');
       return button.dataset.optionId === 'none' ? visual?.dataset.thumbnailState === 'empty'
         : visual?.dataset.thumbnailState === 'ready' && visual.querySelector('canvas');
@@ -366,29 +367,30 @@ try {
         rows.push({ language, series: templateCase.series, width, height, opened, actions, relatedGeometry, visualSummary: { colorCount: visualSummary.colorCount, thumbnailCount: visualSummary.thumbnails.length, noneCount: visualSummary.noneCount } });
       }
 
-      // Exercise related switching only when the catalog has a same-series sibling; every detail still gets a close/reopen reset check.
+      // Related entries use look identity, including another appearance of the same source Artwork.
       await page.setViewportSize({ width: 390, height: 844 });
       const body = page.locator('#overlayBody');
       const relatedCount = await page.locator('.related-character').count();
-      const hasRelatedSiblings = ARTWORKS.some(item => item.seriesId === templateCase.seriesId && item.id !== templateCase.id);
-      assert.equal(relatedCount > 0, hasRelatedSiblings, `${templateCase.id}: related cards match the catalog's same-series siblings.`);
+      const defaultLook = getDefaultLook(templateCase.id);
+      const hasRelatedSiblings = GALLERY_LOOKS.some(item => item.seriesId === templateCase.seriesId && item.id !== defaultLook.id);
+      assert.equal(relatedCount > 0, hasRelatedSiblings, `${templateCase.id}: related cards match the gallery's same-series looks.`);
       let changedArtwork = null;
       let lifecycle = 'reopen-without-related-siblings';
       if (hasRelatedSiblings) {
         await page.locator('.studio-related').scrollIntoViewIfNeeded();
         await body.evaluate(element => { element.scrollTop = element.scrollHeight; });
         await page.locator('.related-character').first().click();
-        await page.waitForFunction(id => window.__dotsQAApp.detail.getState().id !== id
+        await page.waitForFunction(id => window.__dotsQAApp.detail.getState().lookId !== id
           && document.querySelector('#overlayBody').scrollTop === 0
           && document.querySelector('.artwork-detail__title')?.getClientRects().length > 0,
-        templateCase.id, { timeout: 15_000 });
-        changedArtwork = await page.evaluate(() => ({ id: window.__dotsQAApp.detail.getState().id, scrollTop: document.querySelector('#overlayBody').scrollTop }));
-        assert.notEqual(changedArtwork.id, templateCase.id);
-        assert.equal(changedArtwork.scrollTop, 0, 'Switching to a related Artwork resets the scrollport and reveals its identity.');
+        defaultLook.id, { timeout: 15_000 });
+        changedArtwork = await page.evaluate(() => ({ id: window.__dotsQAApp.detail.getState().id, lookId: window.__dotsQAApp.detail.getState().lookId, scrollTop: document.querySelector('#overlayBody').scrollTop }));
+        assert.notEqual(changedArtwork.lookId, defaultLook.id);
+        assert.equal(changedArtwork.scrollTop, 0, 'Switching to a related look resets the scrollport and reveals its identity.');
         lifecycle = 'related-switch-and-reopen';
       } else {
         assert.equal(await page.locator('.studio-related').evaluate(section => section.hidden), true,
-          `${templateCase.id}: related content is hidden when its series has no sibling Artworks.`);
+          `${templateCase.id}: related content is hidden when its series has no sibling looks.`);
       }
       await page.locator('#overlayClose').click();
       await page.waitForFunction(() => !document.querySelector('#studioOverlay').open && document.body.dataset.screen === 'gallery');
@@ -406,7 +408,7 @@ try {
     }
   }
   assert.deepEqual(errors, []);
-  const report = { revision: 102, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; Codex in-app browser was used for visual opening only, not interaction acceptance.', sizes, cases: rows.length, captures, rows, errors };
+  const report = { revision: 103, browser: browser.version(), evidence: 'Installed Chrome via project Playwright; this automated layout report is separate from Codex in-app Browser evidence.', sizes, cases: rows.length, captures, rows, errors };
   await fs.writeFile(path.join(output, 'layout.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(`Editor layout: ${rows.length} bilingual/template/viewport cases passed; ${captures.length} screenshots.`);
 } finally {

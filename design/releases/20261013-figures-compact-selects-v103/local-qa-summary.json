@@ -1,0 +1,22 @@
+{
+  "sourceRevision": 103,
+  "selectLayout": {
+    "passed": true,
+    "layoutGroups": 18,
+    "controlsMeasured": 30,
+    "nativeMenu": "Separately observed through Built-in Browser native AX actions"
+  },
+  "npmTest": {
+    "initialExitCode": 1,
+    "initialFailure": "headless native menu ArrowDown/Enter timeout",
+    "repair": "headless focus and Tab proof; native menu separately verified; removed mobile detail fixed-width CSS",
+    "passedPrefixLog": "npm-test.log",
+    "passedSelectAndRemainingLog": "npm-test-tail.log",
+    "remainingExitCode": 0,
+    "allRequiredChecksCompleted": true
+  },
+  "build": "final-build/build-report.json",
+  "releaseSafetyExitCode": 0,
+  "openspecStrictValid": true,
+  "physicalDevice": false
+}

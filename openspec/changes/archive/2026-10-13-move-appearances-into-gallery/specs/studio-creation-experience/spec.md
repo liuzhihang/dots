@@ -1,0 +1,114 @@
+# Spec Delta
+
+## MODIFIED Requirements
+
+### Requirement: 作品详情必须直接提供实际图片及带走操作
+CharacterStudio SHALL 在同一 Artwork 或 GalleryLook 上下文中提供真实作品、当前形象名称、facts、只读来源资料和额外要求文本框。GalleryLook 的标题、成功预览、配置 Prompt 与操作均描述当前固定形象；来源 Artwork 资料仍作为只读原始资料显示，不得冒充当前形象。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作。变更前 24 件已批准 Artwork 与本 change 后续获批并加入默认 Gallery 的每件源 Artwork SHALL 经详情提供精确 Artwork/version 绑定、逐件获批的角色调整 Template；该来源资格和 Template 能力不因 GalleryLook 改变。编辑区统一命名为“角色调整 / Character adjustments”。未绑定 GalleryLook 的原始 Template 编辑继续遵守其现有类别合同；绑定 GalleryLook 时 appearance 固定且不提供 Appearance 控件，只显示当前 look 合法配方中至少有两个可达、身份兼容且像素结果不同值的 colors、face、accessories 及适用 clothing 分类。24 个单配方形象不提供虚构编辑分类；本 change 的90个入口不要求每个固定形象都提供全部类别。角色调整使用真实素材、锚点、层序和已逐件验收的合法组合，不以 Prompt-only 代替本地编辑。默认成功像素预览是同一面板直接编辑和导出的唯一预览。原有 Artwork 静态详情与原始 Template 导出合同保持不变；GalleryLook 只导出透明 PNG，来源默认形象可在默认配置和预览成功时返回登记原图字节，派生形象即使未修改也须导出匹配成功默认预览的透明 renderer PNG，修改后的形象只可导出匹配最新成功 revision 的透明 PNG。渲染进行或失败时禁止新的 Draft PNG 导出。历史、pending、异常及资源失败记录可保留静态详情与单一 Export 的登记原始字节降级；历史不透明字节须标为历史原图，不得宣称透明或计入全角色调整覆盖。统一 Prompt 为原 Prompt 或最近成功配置 Prompt 加用户额外要求；额外要求不改变本地像素，ChatGPT MUST NOT 自动附图或发送。待审 Template 仅由外部 reviewHarness 打开，资格不变。查看不得依赖获取完整原图或等待 SHA 校验。界面不提供背景设置、背景 tab 或带背景导出；展示底色只属于 UI。
+
+
+未绑定 GalleryLook 的原始 Template 编辑 SHALL 按家族提供以下调整范围；固定 GalleryLook 只显示当前外观内至少两个真实可达值的非外观分类，单配方形象不显示分类：Dots / Grok Bot 取消服装 tab，只保留外观、配色、五官、配饰四类；Muse、动物、人物和独立机器人保留服装，共五类。Dots / Grok 的服装能力不适用，不以 None 控件充数，也不将衣物改名塞进配饰。每个适用类别仍须至少两个真实、合法可达且改变像素的结果。原有含围衣候选及检查记录保留为历史制作证据，不作为当前推荐或美术通过依据。
+
+#### Scenario: 从画廊或随机结果打开详情
+- **WHEN** 用户从唯一角色库打开已发布 Artwork；旧随机结果入口已退役
+- **THEN** CharacterStudio 先显示面板、封面、名称、facts 和可用操作；若存在精确获批 Template，则按需自动加载其默认配置与家族适用类别真实选项，并在首次成功渲染后以同一预览直接编辑；否则仅对历史、pending 或异常/资源失败条目保持完整静态详情，不将其计为全角色编辑覆盖
+
+#### Scenario: 无适配 Template
+- **WHEN** 用户查看没有已批准且可用 Template 的历史、pending 或异常 Artwork
+- **THEN** 仍可查看完整静态作品详情并复制原 Prompt；唯一 Export 返回登记原图字节，若其不透明则明确标识为历史原图且不宣称透明；不出现 View/Edit 切换、mode URL、本地编辑入口或虚构控件，该静态降级不计入当前全角色调整覆盖
+
+#### Scenario: 高清展示预览或原图加载失败
+- **WHEN** 按需加载的展示预览失败，或用户对无 Template 静态作品执行 Export 时原图资源失败
+- **THEN** 失败状态只影响对应资源，标题、元数据和其它可用操作保持可用；显示真实失败及重试，不伪报下载成功，也不宣称该 Artwork 已达到角色调整覆盖
+
+#### Scenario: 每件公开 Artwork 均从同一详情进入真实角色调整
+- **WHEN** 用户打开本 change 纳入默认 Gallery 的任一公开 Artwork
+- **THEN** 该确切 Artwork/version 自动载入自身已批准 Template、默认选项与家族适用的非空调整 tabs；每类具有至少两个实际可达、逐件登记且经批准的不同像素结果，预览和单一 Export 遵循同一成功 revision；不得以删减 Gallery、静态降级、共享系列能力或外部 Prompt 补足覆盖
+
+### Requirement: 详情变体必须原子切换已发布作品版本
+CharacterStudio SHALL 只显示同身份、实际制作、已发布且获对应批准的动作或表情变体；GalleryLook 之间的选择作为切换固定形象处理。切换 Artwork、GalleryLook 或合格变体时，当前形象图像、名称、facts、Prompt、原图引用和 URL MUST 一起更新。无合格变体时隐藏该区块；静态编辑结果不作为变体。切换 Artwork、GalleryLook、Figure或变体时直接替换当前临时会话，MUST NOT通过原生dirty确认阻断点击。
+
+#### Scenario: 切换真实动作变体
+- **WHEN** 用户在 CharacterStudio 中选择已登记且批准的真实变体并成功加载
+- **THEN** 同一 Studio 更新至该 Artwork 版本，图像、facts、Prompt、原图操作和版本保持一致；仅在该版本明确关联 Template 时提供相应本地编辑能力
+
+#### Scenario: 没有变体或变体加载失败
+- **WHEN** 当前作品没有合格变体，或选择的变体展示资源缺失、校验失败或解码失败
+- **THEN** 无变体时隐藏整个变体区块；加载失败时保留当前成功版本、Prompt、下载和 URL，不显示旧图配新描述
+
+#### Scenario: 切换作品或变体时 Draft dirty
+- **WHEN** Draft 配置或外部意图偏离初始基线，且用户选择另一 Artwork、GalleryLook 或变体
+- **THEN** 直接切换至目标默认配置，原临时Draft与额外要求被释放，不阻塞语言、分类、关闭或结果操作
+
+### Requirement: 详情信息层级必须优先作品与直接操作
+CharacterStudio SHALL 在静态详情中优先显示原作品预览、名称、最多四个真实 facts 与原始资料；完整 Prompt 可展开并可复制。适配 Artwork 打开后由其默认 GalleryLook 解析当前形象，并在同一面板显示该固定 look 的默认成功预览、符合其合法配方范围的真实可视选项、当前配置 Prompt 与单一 Export。直接打开 GalleryLook 时，同一面板以该 look 而非来源 Artwork 作为当前形象；来源事实和素材继续只读。`.studio-original` 只读且编辑作品默认收起、无 Template 静态作品默认展开。相关角色常显在主预览下方，以紧凑固定宽度左对齐。Copy Prompt 与在 ChatGPT 中使用是主操作，Export 为次级操作；不提供 Reset/Cancel 或重复原图按钮。有效透明 Gallery Artwork 默认配置未变时 Export 返回登记透明原图原字节，已修改配置的 Export 绑定最新成功 revision 的透明 PNG。无 Template 的历史、pending 或异常静态 Export 返回登记原图原字节；不透明历史资源必须明确标识为历史原图，不得宣称透明。额外要求只进入 Prompt，不改变像素；渲染中/失败时禁用 Draft PNG Export。家族适用的调整 tabs 只提供精确登记并符合身份的真实选项，不提供背景配置。不得要求动态生成编辑后的 facts/描述。标题稳定，未经登记的规格、许可、统计、Pet 能力或动作 MUST NOT 展示。
+
+#### Scenario: 首次打开和重开详情
+- **WHEN** 用户首次打开或重新打开 Artwork
+- **THEN** 面板先展示已登记摘要和可用操作；若绑定精确获批 Template，自动载入默认配置并在成功后直接编辑同一预览；无可用 Template 时仅对历史、pending 或异常/资源失败作品显示完整静态详情，不创建第二套详情，也不将静态降级计为全覆盖
+
+#### Scenario: 查看无证据能力
+- **WHEN** 清单没有证明某项许可、尺寸、配件或目标平台能力
+- **THEN** 界面不编造徽标、数值、Template 控件、动画或安装入口
+
+#### Scenario: 打开和切换状态时保持标题焦点
+- **WHEN** CharacterStudio 首次打开、重新打开或切换 Artwork
+- **THEN** 稳定的静态标题栏与正文层级保持可辨，初始焦点不导致正文滚动跳动，角色完整可见，键盘 focus-visible 保持清楚；界面不提供模式切换
+
+#### Scenario: 展开与复制完整 Prompt
+- **WHEN** 用户在静态详情检查原始 Artwork Prompt，或在编辑区复制配置 Prompt
+- **THEN** 完整双语 Prompt 和全文操作可达；可编辑作品的原 Prompt 位于独立 `.studio-original` 折叠区，当前配置 Prompt 遵循最近一次成功渲染 revision
+
+#### Scenario: 编辑期保留原作资料
+- **WHEN** 用户打开已适配作品并展开 `.studio-original`
+- **THEN** 可检查登记原图、原始 Prompt、原描述和原 tags；编辑区显示当前成功像素预览和对应配置 Prompt，原作品只读资料与单一 PNG Export 的用途语义清楚区分，不提供额外原图下载操作；原始描述与 tags 不冒充编辑后结果
+
+#### Scenario: Template 首次载入和配置 Prompt 一致
+- **WHEN** 用户打开精确获批 Template 作品，或更改任一受支持选项
+- **THEN** 在首次 Template 默认渲染成功前显示明确加载状态；之后预览、配置 Prompt 与 Export 绑定同一 Artwork、Template 和成功 revision，渲染未完成/失败时保留上一成功像素并禁止 Draft Export，不要求动态改写原始 facts/描述
+
+#### Scenario: 详情继承网站语言
+- **WHEN** 用户在网站切换英文或简体中文后打开或继续查看 CharacterStudio
+- **THEN** 面板使用当前网站语言且不提供独立 detailLanguage 控件；Artwork、Draft 选项、额外要求文本和 revision 不变
+
+#### Scenario: 相关角色位于主预览下方
+- **WHEN** CharacterStudio 展示相关角色
+- **THEN** 相关角色紧跟主预览、常显、不折叠，并以紧凑固定宽度左对齐；未进入可见范围时不请求缩略图
+
+#### Scenario: 单一主操作和静态/编辑 Export 语义
+- **WHEN** 用户查看无 Template 的历史、pending 或异常作品，或编辑适配作品
+- **THEN** Copy Prompt 与在 ChatGPT 中使用显示为主操作，单一 Export 显示为次级操作；静态降级返回登记原图原始字节，不透明历史资源明确标识为历史原图且不宣称透明；有效透明作品默认配置未改时返回登记原始透明 PNG，编辑配置时仅使用最新成功透明 PNG；没有重复原图按钮或 Reset/Cancel 控件，静态降级不计入全角色调整覆盖
+
+#### Scenario: 编辑区标题和说明
+- **WHEN** 用户打开支持直接编辑的作品
+- **THEN** 中文编辑区标题为“角色调整”，说明为“预览与 Prompt 随选择同步更新。”；英文显示“Character adjustments”及“Preview and Prompt update with each selection.”；不显示长篇审阅说明
+
+#### Scenario: 统一 Prompt 附加一个额外要求
+- **WHEN** 用户填写额外要求并复制 Prompt 或在 ChatGPT 中使用
+- **THEN** 输出为原始 Artwork Prompt（静态）或最近成功 Template 配置 Prompt（编辑）加额外要求；额外要求不进入本地渲染或导出，ChatGPT 不自动附图或发送
+
+### Requirement: 关闭角色调整必须直接退出且不弹出确认
+CharacterStudio SHALL 在用户选择关闭、面板返回、Escape、返回角色库、浏览器历史回到角色库或离开当前页面时直接退出，不因内存 Draft 或额外要求偏离基线而弹出放弃修改确认或 beforeunload 提示。退出 SHALL 释放当前编辑会话，重新打开同一 Artwork SHALL 从其已批准 Template 默认值开始。切换另一 Artwork、GalleryLook、Figure或已发布变体 SHALL 同样直接替换当前临时会话，不弹出dirty确认；同一基础形象内部的合法选项调整仍保留当前会话和补充要求。
+
+#### Scenario: 修改后关闭角色调整
+- **WHEN** 用户修改选项或额外要求，然后使用关闭按钮、面板返回、Escape 或导航返回角色库
+- **THEN** 面板直接关闭，URL、滚动位置和焦点按原导航合同恢复，不弹出确认；同一角色再次打开时选项与额外要求回到默认基线
+
+#### Scenario: 修改后通过浏览器历史退出或离开页面
+- **WHEN** 用户在有内存 Draft 的角色调整中通过浏览器 Back/Forward 回到角色库，或刷新、关闭当前网页
+- **THEN** 不产生放弃修改确认或 beforeunload 提示；Back/Forward 保持正确的路由和历史索引，过期编辑请求不能恢复已关闭会话
+
+## ADDED Requirements
+
+### Requirement: 基础形象展示与当前来源操作必须一致
+公开Figure详情 SHALL 以基础形象名称、封面、相关形象和固定外观进行展示；选择真实成员配置时原始资料、Prompt和PNG MUST 绑定当前实际Artwork/Template/recipe。Figure默认与修改状态均导出当前成功renderer PNG，不因source是原始默认作品而下载另一套像素。旧Artwork/Look入口保持原登记原字节与编辑结果语义。
+
+#### Scenario: 默认云朵与跨来源导出
+- **WHEN** 用户直接打开dots-cloud或在其内改变颜色/配件并成功预览
+- **THEN** 单一Export返回当前画布成功快照的透明PNG，基础标题不变，当前source资料保持真实只读
+
+### Requirement: 弹窗导航必须紧凑且保留可操作性
+CharacterStudio SHALL 按当前分类文字宽度排列导航，不将少量分类等分拉满。精细指针下顶部返回、关闭、语言及分类按钮采用至少36px目标，原生语言菜单按较小内距和字号呈现；粗指针触屏保持至少44px目标。中英文文字 MUST 完整显示，超出窄屏的分类局部滚动，不造成页面横向溢出。该紧凑规则是全站语言与导航控件44px合同在精细指针弹窗中的明确例外；粗指针触屏仍至少44px，选项卡片及主操作尺寸不变。
+
+#### Scenario: 双语紧凑导航与语言菜单
+- **WHEN** 用户在桌面或窄屏打开详情并切换中英文
+- **THEN** 顶部控件与标题不重叠、返回和分类标签单行，语言文本与箭头间距紧凑，原生键盘和先收菜单再关弹窗的Escape顺序保持，当前角色与编辑选择不变

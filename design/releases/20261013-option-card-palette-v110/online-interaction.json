@@ -1,0 +1,2807 @@
+{
+  "revision": 110,
+  "strictCacheRevision": 110,
+  "origin": "https://dots.liuzhihang.chatgpt.site",
+  "runLabel": "attempt-01",
+  "startedAt": "2026-10-13T08:11:44.015Z",
+  "engine": "Chromium headless through the repository existing Playwright runtime",
+  "playwrightModule": "file:///Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs",
+  "physicalDevice": false,
+  "viewportEvidence": {
+    "desktop": "1280x900",
+    "narrow": "390x844",
+    "isMobile": false,
+    "hasTouch": false
+  },
+  "browserFallback": "Builtin Browser interaction was blocked on this host; this targeted check uses the already-installed repository Playwright runtime. No dependency was added.",
+  "networkInterception": false,
+  "waitPolicy": {
+    "firstEditableCanvasTimeoutMs": 180000,
+    "laterInteractiveStepTimeoutMs": 120000,
+    "automaticRetries": 0,
+    "performanceClaim": "Cold start is a separate acceptance criterion; passing the functional timeout does not pass the 60-second target.",
+    "coldStartPerformanceTargetMs": 60000
+  },
+  "spinnerScope": "Online evidence checks aria-busy and loading pseudo-elements after assets settle. Controlled slow-network spinner visibility is measured by the separate local QA.",
+  "previousPngReference": {
+    "revision": 108,
+    "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "bytes": 2094940,
+    "width": 1254,
+    "height": 1254,
+    "transparentPixels": 688068
+  },
+  "screenshots": [
+    {
+      "file": "accessories-desktop-en.png",
+      "viewport": "desktop",
+      "locale": "en",
+      "field": "accessories",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 1,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "face-desktop-en.png",
+      "viewport": "desktop",
+      "locale": "en",
+      "field": "face",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "accessories-desktop-zh-CN.png",
+      "viewport": "desktop",
+      "locale": "zh-CN",
+      "field": "accessories",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "face-desktop-zh-CN.png",
+      "viewport": "desktop",
+      "locale": "zh-CN",
+      "field": "face",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "accessories-390-en.png",
+      "viewport": "390",
+      "locale": "en",
+      "field": "accessories",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "face-390-en.png",
+      "viewport": "390",
+      "locale": "en",
+      "field": "face",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "accessories-390-zh-CN.png",
+      "viewport": "390",
+      "locale": "zh-CN",
+      "field": "accessories",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    },
+    {
+      "file": "face-390-zh-CN.png",
+      "viewport": "390",
+      "locale": "zh-CN",
+      "field": "face",
+      "pointerCleared": true,
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "description": "Actual option panel after thumbnail load settles, pointer moved away, and finite CSS transitions complete."
+    }
+  ],
+  "checks": [
+    "Direct production Orb route reached a ready editable canvas with data-cache=\"110\".",
+    "Captured accessory and face option panels in English and Chinese at 1280px and 390px; non-color preview boxes are enlarged, loading state is settled, and no panel clips its options.",
+    "aria-busy and thumbnail loading states are cleared after successful online asset loading; local controlled slow-network QA covers spinner visibility.",
+    "Blue + Closed eyes + Chef toque selected in the production editor; downloaded PNG bytes match the current canvas and v108 reference SHA-256.",
+    "Related Orb→Cloud→Orb navigation cleared stale instructions and closing edited detail raised no confirmation dialog.",
+    "All observed studio JavaScript/CSS resources used ?v=110; no excluded source PNG requests or JavaScript dialogs occurred."
+  ],
+  "stepTimings": [
+    {
+      "name": "Direct Orb route: strict cache110 and first editable canvas",
+      "startedAt": "2026-10-13T08:11:45.364Z",
+      "status": "passed",
+      "durationMs": 116804,
+      "finishedAt": "2026-10-13T08:13:42.168Z"
+    },
+    {
+      "name": "Accessories and face clarity screenshots: desktop and 390px, English and Chinese",
+      "startedAt": "2026-10-13T08:13:42.168Z",
+      "status": "passed",
+      "durationMs": 36749,
+      "finishedAt": "2026-10-13T08:14:18.917Z"
+    },
+    {
+      "name": "Select Blue + Closed eyes + Chef toque and export the real PNG",
+      "startedAt": "2026-10-13T08:14:18.917Z",
+      "status": "passed",
+      "durationMs": 706,
+      "finishedAt": "2026-10-13T08:14:19.623Z"
+    },
+    {
+      "name": "Related Cloud return and edited-page close do not prompt",
+      "startedAt": "2026-10-13T08:14:19.623Z",
+      "status": "passed",
+      "durationMs": 21868,
+      "finishedAt": "2026-10-13T08:14:41.491Z"
+    }
+  ],
+  "coldStartReadyMs": 116804,
+  "firstAccessoryReadyMs": 32663,
+  "networkTimings": [
+    {
+      "resource": "/studio.css",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.109Z",
+      "startedAfterMs": 2094,
+      "status": 200,
+      "contentType": "text/css",
+      "finishedAt": "2026-10-13T08:11:47.017Z",
+      "durationMs": 908,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio.css?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 199,
+        "responseBodyMs": 235,
+        "transferSize": 6624,
+        "encodedBodySize": 6324,
+        "decodedBodySize": 25001
+      }
+    },
+    {
+      "resource": "/studio-detail.css",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.111Z",
+      "startedAfterMs": 2096,
+      "status": 200,
+      "contentType": "text/css",
+      "finishedAt": "2026-10-13T08:11:47.018Z",
+      "durationMs": 907,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.css?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 434,
+        "responseBodyMs": 0,
+        "transferSize": 7038,
+        "encodedBodySize": 6738,
+        "decodedBodySize": 35187
+      }
+    },
+    {
+      "resource": "/studio.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.111Z",
+      "startedAfterMs": 2096,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:47.047Z",
+      "durationMs": 936,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 434,
+        "responseBodyMs": 0,
+        "transferSize": 3979,
+        "encodedBodySize": 3679,
+        "decodedBodySize": 11232
+      }
+    },
+    {
+      "resource": "/studio-artwork-catalog.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 16160,
+        "encodedBodySize": 15860,
+        "decodedBodySize": 68223
+      }
+    },
+    {
+      "resource": "/studio-tags.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3803,
+        "responseBodyMs": 0,
+        "transferSize": 3930,
+        "encodedBodySize": 3630,
+        "decodedBodySize": 10792
+      }
+    },
+    {
+      "resource": "/studio-gallery-looks.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:47.762Z",
+      "durationMs": 713,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 612,
+        "responseBodyMs": 101,
+        "transferSize": 4496,
+        "encodedBodySize": 4196,
+        "decodedBodySize": 15769
+      }
+    },
+    {
+      "resource": "/studio-gallery-figures.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3803,
+        "responseBodyMs": 0,
+        "transferSize": 5558,
+        "encodedBodySize": 5258,
+        "decodedBodySize": 19358
+      }
+    },
+    {
+      "resource": "/studio-tag-browser.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 1297,
+        "encodedBodySize": 997,
+        "decodedBodySize": 2192
+      }
+    },
+    {
+      "resource": "/studio-card.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3373,
+        "responseBodyMs": 429,
+        "transferSize": 1372,
+        "encodedBodySize": 1072,
+        "decodedBodySize": 2822
+      }
+    },
+    {
+      "resource": "/studio-motion.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.422Z",
+      "durationMs": 3373,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-motion.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3288,
+        "responseBodyMs": 84,
+        "transferSize": 2548,
+        "encodedBodySize": 2248,
+        "decodedBodySize": 8433
+      }
+    },
+    {
+      "resource": "/studio-detail.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3802,
+        "responseBodyMs": 0,
+        "transferSize": 10410,
+        "encodedBodySize": 10110,
+        "decodedBodySize": 35518
+      }
+    },
+    {
+      "resource": "/studio-overlay.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-overlay.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 2626,
+        "encodedBodySize": 2326,
+        "decodedBodySize": 7603
+      }
+    },
+    {
+      "resource": "/studio-router.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.050Z",
+      "startedAfterMs": 3035,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3288,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3288,
+        "responseBodyMs": 0,
+        "transferSize": 1038,
+        "encodedBodySize": 738,
+        "decodedBodySize": 1935
+      }
+    },
+    {
+      "resource": "/studio-i18n.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.050Z",
+      "startedAfterMs": 3035,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3288,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-i18n.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3287,
+        "responseBodyMs": 0,
+        "transferSize": 1957,
+        "encodedBodySize": 1657,
+        "decodedBodySize": 3251
+      }
+    },
+    {
+      "resource": "/studio-edit-templates.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.762Z",
+      "startedAfterMs": 3747,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.054Z",
+      "durationMs": 3292,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3146,
+        "responseBodyMs": 144,
+        "transferSize": 9801,
+        "encodedBodySize": 9501,
+        "decodedBodySize": 39127
+      }
+    },
+    {
+      "resource": "/studio-gallery-look-data.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.762Z",
+      "startedAfterMs": 3747,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.565Z",
+      "durationMs": 3803,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-look-data.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3290,
+        "responseBodyMs": 511,
+        "transferSize": 15455,
+        "encodedBodySize": 15155,
+        "decodedBodySize": 169391
+      }
+    },
+    {
+      "resource": "/studio-content.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.338Z",
+      "startedAfterMs": 6323,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.851Z",
+      "durationMs": 1513,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1226,
+        "responseBodyMs": 286,
+        "transferSize": 13143,
+        "encodedBodySize": 12843,
+        "decodedBodySize": 54463
+      }
+    },
+    {
+      "resource": "/studio-display-assets.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.339Z",
+      "startedAfterMs": 6324,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.180Z",
+      "durationMs": 1841,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-display-assets.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1512,
+        "responseBodyMs": 329,
+        "transferSize": 14320,
+        "encodedBodySize": 14020,
+        "decodedBodySize": 161662
+      }
+    },
+    {
+      "resource": "/studio-content-v100.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.339Z",
+      "startedAfterMs": 6324,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.485Z",
+      "durationMs": 2146,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1841,
+        "responseBodyMs": 305,
+        "transferSize": 19456,
+        "encodedBodySize": 19156,
+        "decodedBodySize": 169898
+      }
+    },
+    {
+      "resource": "/studio-actions.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.565Z",
+      "durationMs": 1711,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-actions.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1631,
+        "responseBodyMs": 80,
+        "transferSize": 1962,
+        "encodedBodySize": 1662,
+        "decodedBodySize": 3885
+      }
+    },
+    {
+      "resource": "/studio-prompt.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.609Z",
+      "durationMs": 1755,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1712,
+        "responseBodyMs": 44,
+        "transferSize": 5341,
+        "encodedBodySize": 5041,
+        "decodedBodySize": 13987
+      }
+    },
+    {
+      "resource": "/studio-asset-loader.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.937Z",
+      "durationMs": 2083,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2083,
+        "responseBodyMs": 0,
+        "transferSize": 3281,
+        "encodedBodySize": 2981,
+        "decodedBodySize": 7521
+      }
+    },
+    {
+      "resource": "/studio-preview-loader.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.756Z",
+      "durationMs": 1902,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1756,
+        "responseBodyMs": 143,
+        "transferSize": 10182,
+        "encodedBodySize": 9882,
+        "decodedBodySize": 37691
+      }
+    },
+    {
+      "resource": "/studio-edit-template-data.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:51.054Z",
+      "startedAfterMs": 7039,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:53.756Z",
+      "durationMs": 2702,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-template-data.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1882,
+        "responseBodyMs": 817,
+        "transferSize": 47640,
+        "encodedBodySize": 47340,
+        "decodedBodySize": 892936
+      }
+    },
+    {
+      "resource": "/studio-delivery-assets.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:52.756Z",
+      "startedAfterMs": 8741,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:55.281Z",
+      "durationMs": 2525,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-delivery-assets.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 999,
+        "responseBodyMs": 1526,
+        "transferSize": 59650,
+        "encodedBodySize": 59350,
+        "decodedBodySize": 525620
+      }
+    },
+    {
+      "resource": "/studio-figure-editor.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.356Z",
+      "startedAfterMs": 11341,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:55.857Z",
+      "durationMs": 501,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 360,
+        "responseBodyMs": 143,
+        "transferSize": 7295,
+        "encodedBodySize": 6995,
+        "decodedBodySize": 26624
+      }
+    },
+    {
+      "resource": "/studio-draft.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.858Z",
+      "startedAfterMs": 11843,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:12:11.479Z",
+      "durationMs": 15621,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 15578,
+        "responseBodyMs": 42,
+        "transferSize": 2749,
+        "encodedBodySize": 2449,
+        "decodedBodySize": 8738
+      }
+    },
+    {
+      "resource": "/studio-editor.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.858Z",
+      "startedAfterMs": 11843,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:12:11.724Z",
+      "durationMs": 15866,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 15621,
+        "responseBodyMs": 244,
+        "transferSize": 11834,
+        "encodedBodySize": 11534,
+        "decodedBodySize": 47392
+      }
+    },
+    {
+      "resource": "/studio-renderer.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:12:11.724Z",
+      "startedAfterMs": 27709,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:13:04.668Z",
+      "durationMs": 52944,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 52902,
+        "responseBodyMs": 40,
+        "transferSize": 7258,
+        "encodedBodySize": 6958,
+        "decodedBodySize": 27204
+      }
+    },
+    {
+      "resource": "/assets/delivery/473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0.webp",
+      "query": "?v=lossless-v1&sha256=2caaedadb7ed078fbadaa9a24783e1fb6bc00cdc4eb5729a91bb223bac44729d",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:06.544Z",
+      "startedAfterMs": 82529,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:08.442Z",
+      "durationMs": 1898,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0.webp?v=lossless-v1&sha256=2caaedadb7ed078fbadaa9a24783e1fb6bc00cdc4eb5729a91bb223bac44729d",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 181,
+        "responseBodyMs": 1718,
+        "transferSize": 103152,
+        "encodedBodySize": 102852,
+        "decodedBodySize": 102852
+      }
+    },
+    {
+      "resource": "/assets/delivery/0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba.webp",
+      "query": "?v=lossless-v1&sha256=73ae2f1ee3225c9aaaa396860c5d25184a402acbf17f3544f3a6732f7503ba0a",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:08.461Z",
+      "startedAfterMs": 84446,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:35.080Z",
+      "durationMs": 26619,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba.webp?v=lossless-v1&sha256=73ae2f1ee3225c9aaaa396860c5d25184a402acbf17f3544f3a6732f7503ba0a",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 188,
+        "responseBodyMs": 26432,
+        "transferSize": 1186128,
+        "encodedBodySize": 1185828,
+        "decodedBodySize": 1185828
+      }
+    },
+    {
+      "resource": "/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp",
+      "query": "?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:35.111Z",
+      "startedAfterMs": 111096,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:36.598Z",
+      "durationMs": 1487,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 241,
+        "responseBodyMs": 1246,
+        "transferSize": 39692,
+        "encodedBodySize": 39392,
+        "decodedBodySize": 39392
+      }
+    },
+    {
+      "resource": "/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp",
+      "query": "?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:36.610Z",
+      "startedAfterMs": 112595,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:42.150Z",
+      "durationMs": 5540,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 240,
+        "responseBodyMs": 5299,
+        "transferSize": 208948,
+        "encodedBodySize": 208648,
+        "decodedBodySize": 208648
+      }
+    },
+    {
+      "resource": "/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp",
+      "query": "?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:42.274Z",
+      "startedAfterMs": 118259,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:42.275Z",
+      "durationMs": 1,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 240,
+        "responseBodyMs": 5299,
+        "transferSize": 208948,
+        "encodedBodySize": 208648,
+        "decodedBodySize": 208648
+      }
+    },
+    {
+      "resource": "/assets/delivery/1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae.webp",
+      "query": "?v=lossless-v1&sha256=524a5618e361096c276e22573314b1086fee922d151943947d2bd01bf6f0eca7",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:42.274Z",
+      "startedAfterMs": 118259,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:44.645Z",
+      "durationMs": 2371,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae.webp?v=lossless-v1&sha256=524a5618e361096c276e22573314b1086fee922d151943947d2bd01bf6f0eca7",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1182,
+        "responseBodyMs": 1189,
+        "transferSize": 38418,
+        "encodedBodySize": 38118,
+        "decodedBodySize": 38118
+      }
+    },
+    {
+      "resource": "/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp",
+      "query": "?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:42.285Z",
+      "startedAfterMs": 118270,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:13:58.343Z",
+      "durationMs": 16058,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2360,
+        "responseBodyMs": 13697,
+        "transferSize": 591564,
+        "encodedBodySize": 591264,
+        "decodedBodySize": 591264
+      }
+    },
+    {
+      "resource": "/assets/delivery/b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106.webp",
+      "query": "?v=lossless-v1&sha256=18ebc68a7bb6c07bc01e142381a3dba1315dcd3f7d64829ba31f0f4cac203f4e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:44.653Z",
+      "startedAfterMs": 120638,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:02.111Z",
+      "durationMs": 17458,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106.webp?v=lossless-v1&sha256=18ebc68a7bb6c07bc01e142381a3dba1315dcd3f7d64829ba31f0f4cac203f4e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 13689,
+        "responseBodyMs": 3769,
+        "transferSize": 131118,
+        "encodedBodySize": 130818,
+        "decodedBodySize": 130818
+      }
+    },
+    {
+      "resource": "/assets/delivery/d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260.webp",
+      "query": "?v=lossless-v1&sha256=f569ef8935a3647d801ac25e4e926e1231dbbc033ac62cc9958848c744e3d5ef",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:13:58.359Z",
+      "startedAfterMs": 134344,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:08.187Z",
+      "durationMs": 9828,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260.webp?v=lossless-v1&sha256=f569ef8935a3647d801ac25e4e926e1231dbbc033ac62cc9958848c744e3d5ef",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3752,
+        "responseBodyMs": 6076,
+        "transferSize": 221340,
+        "encodedBodySize": 221040,
+        "decodedBodySize": 221040
+      }
+    },
+    {
+      "resource": "/assets/delivery/50f272a99d7a2fa2cca797be070cb140bb7c0554a821a1128ee6baecab28725b.webp",
+      "query": "?v=lossless-v1&sha256=3d532ce6c319854465f009fc3f79c623eeb6c87a36f5cca7cc22a767ec9f14ee",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:02.121Z",
+      "startedAfterMs": 138106,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:14.908Z",
+      "durationMs": 12787,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/50f272a99d7a2fa2cca797be070cb140bb7c0554a821a1128ee6baecab28725b.webp?v=lossless-v1&sha256=3d532ce6c319854465f009fc3f79c623eeb6c87a36f5cca7cc22a767ec9f14ee",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 6065,
+        "responseBodyMs": 6721,
+        "transferSize": 377734,
+        "encodedBodySize": 377434,
+        "decodedBodySize": 377434
+      }
+    },
+    {
+      "resource": "/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp",
+      "query": "?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:15.156Z",
+      "startedAfterMs": 151141,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:15.168Z",
+      "durationMs": 12,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 241,
+        "responseBodyMs": 1246,
+        "transferSize": 39692,
+        "encodedBodySize": 39392,
+        "decodedBodySize": 39392
+      }
+    },
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:15.156Z",
+      "startedAfterMs": 151141,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:17.583Z",
+      "durationMs": 2427,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2283,
+        "responseBodyMs": 145,
+        "transferSize": 11286,
+        "encodedBodySize": 10986,
+        "decodedBodySize": 10986
+      }
+    },
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:19.121Z",
+      "startedAfterMs": 155106,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:19.125Z",
+      "durationMs": 4,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2283,
+        "responseBodyMs": 145,
+        "transferSize": 11286,
+        "encodedBodySize": 10986,
+        "decodedBodySize": 10986
+      }
+    },
+    {
+      "resource": "/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp",
+      "query": "?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:19.268Z",
+      "startedAfterMs": 155253,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:19.271Z",
+      "durationMs": 3,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2360,
+        "responseBodyMs": 13697,
+        "transferSize": 591564,
+        "encodedBodySize": 591264,
+        "decodedBodySize": 591264
+      }
+    },
+    {
+      "resource": "/assets/delivery/6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e.webp",
+      "query": "?v=lossless-v1&sha256=9578c23b63106b267ba17476ab76bc160b1a8d66d3522bdc98aae53d2d75ea74",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:14:19.693Z",
+      "startedAfterMs": 155678,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAt": "2026-10-13T08:14:41.327Z",
+      "durationMs": 21634,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e.webp?v=lossless-v1&sha256=9578c23b63106b267ba17476ab76bc160b1a8d66d3522bdc98aae53d2d75ea74",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 312,
+        "responseBodyMs": 21322,
+        "transferSize": 1117024,
+        "encodedBodySize": 1116724,
+        "decodedBodySize": 1116724
+      }
+    }
+  ],
+  "appModuleRequests": [
+    {
+      "resource": "/studio.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.111Z",
+      "startedAfterMs": 2096,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:47.047Z",
+      "durationMs": 936,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 434,
+        "responseBodyMs": 0,
+        "transferSize": 3979,
+        "encodedBodySize": 3679,
+        "decodedBodySize": 11232
+      }
+    },
+    {
+      "resource": "/studio-artwork-catalog.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 16160,
+        "encodedBodySize": 15860,
+        "decodedBodySize": 68223
+      }
+    },
+    {
+      "resource": "/studio-tags.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3803,
+        "responseBodyMs": 0,
+        "transferSize": 3930,
+        "encodedBodySize": 3630,
+        "decodedBodySize": 10792
+      }
+    },
+    {
+      "resource": "/studio-gallery-looks.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:47.762Z",
+      "durationMs": 713,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 612,
+        "responseBodyMs": 101,
+        "transferSize": 4496,
+        "encodedBodySize": 4196,
+        "decodedBodySize": 15769
+      }
+    },
+    {
+      "resource": "/studio-gallery-figures.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3803,
+        "responseBodyMs": 0,
+        "transferSize": 5558,
+        "encodedBodySize": 5258,
+        "decodedBodySize": 19358
+      }
+    },
+    {
+      "resource": "/studio-tag-browser.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 1297,
+        "encodedBodySize": 997,
+        "decodedBodySize": 2192
+      }
+    },
+    {
+      "resource": "/studio-card.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3373,
+        "responseBodyMs": 429,
+        "transferSize": 1372,
+        "encodedBodySize": 1072,
+        "decodedBodySize": 2822
+      }
+    },
+    {
+      "resource": "/studio-motion.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.422Z",
+      "durationMs": 3373,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-motion.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3288,
+        "responseBodyMs": 84,
+        "transferSize": 2548,
+        "encodedBodySize": 2248,
+        "decodedBodySize": 8433
+      }
+    },
+    {
+      "resource": "/studio-detail.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.853Z",
+      "durationMs": 3804,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3802,
+        "responseBodyMs": 0,
+        "transferSize": 10410,
+        "encodedBodySize": 10110,
+        "decodedBodySize": 35518
+      }
+    },
+    {
+      "resource": "/studio-overlay.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.049Z",
+      "startedAfterMs": 3034,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3289,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-overlay.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2228,
+        "responseBodyMs": 1060,
+        "transferSize": 2626,
+        "encodedBodySize": 2326,
+        "decodedBodySize": 7603
+      }
+    },
+    {
+      "resource": "/studio-router.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.050Z",
+      "startedAfterMs": 3035,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3288,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3288,
+        "responseBodyMs": 0,
+        "transferSize": 1038,
+        "encodedBodySize": 738,
+        "decodedBodySize": 1935
+      }
+    },
+    {
+      "resource": "/studio-i18n.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.050Z",
+      "startedAfterMs": 3035,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:50.338Z",
+      "durationMs": 3288,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-i18n.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3287,
+        "responseBodyMs": 0,
+        "transferSize": 1957,
+        "encodedBodySize": 1657,
+        "decodedBodySize": 3251
+      }
+    },
+    {
+      "resource": "/studio-edit-templates.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.762Z",
+      "startedAfterMs": 3747,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.054Z",
+      "durationMs": 3292,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3146,
+        "responseBodyMs": 144,
+        "transferSize": 9801,
+        "encodedBodySize": 9501,
+        "decodedBodySize": 39127
+      }
+    },
+    {
+      "resource": "/studio-gallery-look-data.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:47.762Z",
+      "startedAfterMs": 3747,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.565Z",
+      "durationMs": 3803,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-look-data.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3290,
+        "responseBodyMs": 511,
+        "transferSize": 15455,
+        "encodedBodySize": 15155,
+        "decodedBodySize": 169391
+      }
+    },
+    {
+      "resource": "/studio-content.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.338Z",
+      "startedAfterMs": 6323,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:51.851Z",
+      "durationMs": 1513,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1226,
+        "responseBodyMs": 286,
+        "transferSize": 13143,
+        "encodedBodySize": 12843,
+        "decodedBodySize": 54463
+      }
+    },
+    {
+      "resource": "/studio-display-assets.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.339Z",
+      "startedAfterMs": 6324,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.180Z",
+      "durationMs": 1841,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-display-assets.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1512,
+        "responseBodyMs": 329,
+        "transferSize": 14320,
+        "encodedBodySize": 14020,
+        "decodedBodySize": 161662
+      }
+    },
+    {
+      "resource": "/studio-content-v100.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.339Z",
+      "startedAfterMs": 6324,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.485Z",
+      "durationMs": 2146,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1841,
+        "responseBodyMs": 305,
+        "transferSize": 19456,
+        "encodedBodySize": 19156,
+        "decodedBodySize": 169898
+      }
+    },
+    {
+      "resource": "/studio-actions.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.565Z",
+      "durationMs": 1711,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-actions.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1631,
+        "responseBodyMs": 80,
+        "transferSize": 1962,
+        "encodedBodySize": 1662,
+        "decodedBodySize": 3885
+      }
+    },
+    {
+      "resource": "/studio-prompt.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.609Z",
+      "durationMs": 1755,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1712,
+        "responseBodyMs": 44,
+        "transferSize": 5341,
+        "encodedBodySize": 5041,
+        "decodedBodySize": 13987
+      }
+    },
+    {
+      "resource": "/studio-asset-loader.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.937Z",
+      "durationMs": 2083,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2083,
+        "responseBodyMs": 0,
+        "transferSize": 3281,
+        "encodedBodySize": 2981,
+        "decodedBodySize": 7521
+      }
+    },
+    {
+      "resource": "/studio-preview-loader.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:50.854Z",
+      "startedAfterMs": 6839,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:52.756Z",
+      "durationMs": 1902,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1756,
+        "responseBodyMs": 143,
+        "transferSize": 10182,
+        "encodedBodySize": 9882,
+        "decodedBodySize": 37691
+      }
+    },
+    {
+      "resource": "/studio-edit-template-data.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:51.054Z",
+      "startedAfterMs": 7039,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:53.756Z",
+      "durationMs": 2702,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-template-data.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1882,
+        "responseBodyMs": 817,
+        "transferSize": 47640,
+        "encodedBodySize": 47340,
+        "decodedBodySize": 892936
+      }
+    },
+    {
+      "resource": "/studio-delivery-assets.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:52.756Z",
+      "startedAfterMs": 8741,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:55.281Z",
+      "durationMs": 2525,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-delivery-assets.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 999,
+        "responseBodyMs": 1526,
+        "transferSize": 59650,
+        "encodedBodySize": 59350,
+        "decodedBodySize": 525620
+      }
+    },
+    {
+      "resource": "/studio-figure-editor.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.356Z",
+      "startedAfterMs": 11341,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:11:55.857Z",
+      "durationMs": 501,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 360,
+        "responseBodyMs": 143,
+        "transferSize": 7295,
+        "encodedBodySize": 6995,
+        "decodedBodySize": 26624
+      }
+    },
+    {
+      "resource": "/studio-draft.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.858Z",
+      "startedAfterMs": 11843,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:12:11.479Z",
+      "durationMs": 15621,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 15578,
+        "responseBodyMs": 42,
+        "transferSize": 2749,
+        "encodedBodySize": 2449,
+        "decodedBodySize": 8738
+      }
+    },
+    {
+      "resource": "/studio-editor.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:55.858Z",
+      "startedAfterMs": 11843,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:12:11.724Z",
+      "durationMs": 15866,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 15621,
+        "responseBodyMs": 244,
+        "transferSize": 11834,
+        "encodedBodySize": 11534,
+        "decodedBodySize": 47392
+      }
+    },
+    {
+      "resource": "/studio-renderer.js",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:12:11.724Z",
+      "startedAfterMs": 27709,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAt": "2026-10-13T08:13:04.668Z",
+      "durationMs": 52944,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 52902,
+        "responseBodyMs": 40,
+        "transferSize": 7258,
+        "encodedBodySize": 6958,
+        "decodedBodySize": 27204
+      }
+    }
+  ],
+  "studioStylesheetRequests": [
+    {
+      "resource": "/studio.css",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.109Z",
+      "startedAfterMs": 2094,
+      "status": 200,
+      "contentType": "text/css",
+      "finishedAt": "2026-10-13T08:11:47.017Z",
+      "durationMs": 908,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio.css?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 199,
+        "responseBodyMs": 235,
+        "transferSize": 6624,
+        "encodedBodySize": 6324,
+        "decodedBodySize": 25001
+      }
+    },
+    {
+      "resource": "/studio-detail.css",
+      "query": "?v=110",
+      "version": "110",
+      "method": "GET",
+      "startedAt": "2026-10-13T08:11:46.111Z",
+      "startedAfterMs": 2096,
+      "status": 200,
+      "contentType": "text/css",
+      "finishedAt": "2026-10-13T08:11:47.018Z",
+      "durationMs": 907,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.css?v=110",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 434,
+        "responseBodyMs": 0,
+        "transferSize": 7038,
+        "encodedBodySize": 6738,
+        "decodedBodySize": 35187
+      }
+    }
+  ],
+  "templatePngRequests": [],
+  "requestFailures": [
+    {
+      "resource": "/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.6948063047606204:1791875127:ZUpyD0W7KGeH4T8tZHMWWsr3QQnWddqN8ei_xX1Y8UY/a49ce01d9efeb586",
+      "query": "",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "dialogs": [],
+  "fieldSnapshots": [
+    {
+      "viewport": "desktop",
+      "locale": "en",
+      "field": "accessories",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "None",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": null,
+          "state": "empty",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "span.studio-editor-option-none-mark"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "Headphones",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "Round glasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "Chef toque",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "Black cool sunglasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "Cyber glasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "Yellow bucket hat",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 453,
+        "panelScrollWidth": 453,
+        "panelClientWidth": 453,
+        "optionRectsInside": true,
+        "viewportWidth": 1280,
+        "documentScrollWidth": 1280
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 1,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "desktop",
+      "locale": "en",
+      "field": "face",
+      "rows": [
+        {
+          "id": "face:open",
+          "label": "Open eyes",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "face:closed",
+          "label": "Closed eyes",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 453,
+        "panelScrollWidth": 453,
+        "panelClientWidth": 453,
+        "optionRectsInside": true,
+        "viewportWidth": 1280,
+        "documentScrollWidth": 1280
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "desktop",
+      "locale": "zh-CN",
+      "field": "accessories",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "无配饰",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": null,
+          "state": "empty",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "span.studio-editor-option-none-mark"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "耳机",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "圆框眼镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "厨师帽",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "黑色酷墨镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "赛博眼镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "黄色渔夫帽",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 453,
+        "panelScrollWidth": 453,
+        "panelClientWidth": 453,
+        "optionRectsInside": true,
+        "viewportWidth": 1280,
+        "documentScrollWidth": 1280
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "desktop",
+      "locale": "zh-CN",
+      "field": "face",
+      "rows": [
+        {
+          "id": "face:open",
+          "label": "睁眼",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "face:closed",
+          "label": "闭眼",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 93,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 453,
+        "panelScrollWidth": 453,
+        "panelClientWidth": 453,
+        "optionRectsInside": true,
+        "viewportWidth": 1280,
+        "documentScrollWidth": 1280
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "390",
+      "locale": "en",
+      "field": "accessories",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "None",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": null,
+          "state": "empty",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "span.studio-editor-option-none-mark"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "Headphones",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "Round glasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "Chef toque",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "Black cool sunglasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "Cyber glasses",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "Yellow bucket hat",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 350,
+        "panelScrollWidth": 350,
+        "panelClientWidth": 350,
+        "optionRectsInside": true,
+        "viewportWidth": 390,
+        "documentScrollWidth": 390
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "390",
+      "locale": "en",
+      "field": "face",
+      "rows": [
+        {
+          "id": "face:open",
+          "label": "Open eyes",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "face:closed",
+          "label": "Closed eyes",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 350,
+        "panelScrollWidth": 350,
+        "panelClientWidth": 350,
+        "optionRectsInside": true,
+        "viewportWidth": 390,
+        "documentScrollWidth": 390
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "390",
+      "locale": "zh-CN",
+      "field": "accessories",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "无配饰",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": null,
+          "state": "empty",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "span.studio-editor-option-none-mark"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "耳机",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "圆框眼镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "厨师帽",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "黑色酷墨镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "赛博眼镜",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "黄色渔夫帽",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 350,
+        "panelScrollWidth": 350,
+        "panelClientWidth": 350,
+        "optionRectsInside": true,
+        "viewportWidth": 390,
+        "documentScrollWidth": 390
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    },
+    {
+      "viewport": "390",
+      "locale": "zh-CN",
+      "field": "face",
+      "rows": [
+        {
+          "id": "face:open",
+          "label": "睁眼",
+          "selected": true,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        },
+        {
+          "id": "face:closed",
+          "label": "闭眼",
+          "selected": false,
+          "disabled": false,
+          "ariaBusy": "false",
+          "state": "ready",
+          "thumbnailError": null,
+          "thumbnailNodes": [
+            "canvas.studio-editor-option-thumbnail"
+          ],
+          "visualBox": {
+            "width": 97,
+            "height": 76
+          },
+          "visualBackground": {
+            "color": "rgba(0, 0, 0, 0)",
+            "image": "none",
+            "radius": "0px"
+          },
+          "loadingPseudoContent": "none"
+        }
+      ],
+      "layout": {
+        "panelWidth": 350,
+        "panelScrollWidth": 350,
+        "panelClientWidth": 350,
+        "optionRectsInside": true,
+        "viewportWidth": 390,
+        "documentScrollWidth": 390
+      },
+      "screenshotSettle": {
+        "pointerMovedTo": {
+          "x": 1,
+          "y": 1
+        },
+        "waitedMs": 0,
+        "pendingFiniteTransitions": 0
+      },
+      "spinnerGone": true
+    }
+  ],
+  "failures": [],
+  "chromiumVersion": "155.0.8059.40",
+  "currentStep": null,
+  "cacheRevision": "110",
+  "png": {
+    "file": "orb-blue-closed-chef-toque.png",
+    "suggestedFilename": "candidate-dots-20261005-candidate-dots-20261005-dots-orb-core-adjustments-v6-four-tabs-candidate-draft-r1.png",
+    "bytes": 2094940,
+    "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "currentCanvasSha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "matchesCurrentCanvas": true,
+    "matchesV108Reference": true,
+    "canvas": {
+      "width": 1254,
+      "height": 1254,
+      "revision": null,
+      "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque"
+    },
+    "alpha": {
+      "width": 1254,
+      "height": 1254,
+      "colorType": 6,
+      "transparentPixels": 688068,
+      "opaquePixels": 36259,
+      "partialAlphaPixels": 848189,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1244,
+        "height": 1254
+      }
+    }
+  },
+  "functionalStatus": "passed",
+  "status": "functional-passed-performance-failed",
+  "finishedAt": "2026-10-13T08:14:41.827Z",
+  "totalDurationMs": 177812,
+  "templatePngRequestCount": 0,
+  "requestFailureCount": 1,
+  "dialogCount": 0,
+  "reportFile": "/Users/liuzhihang/workspace/dots/.artifacts/modal-typography-20261013/v110/production/attempt-01/report.json",
+  "performanceAssessment": {
+    "criterion": "Direct Orb route reaches an editable canvas within 60 seconds.",
+    "targetMs": 60000,
+    "actualMs": 116804,
+    "passed": false,
+    "status": "failed",
+    "note": "Functional startup completed within the 180-second execution cap, but 116804ms exceeds the 60000ms performance acceptance target."
+  },
+  "overallAcceptance": "functional-passed-performance-failed",
+  "requestFailureAssessment": [
+    {
+      "resource": "/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.6948063047606204:1791875127:ZUpyD0W7KGeH4T8tZHMWWsr3QQnWddqN8ei_xX1Y8UY/a49ce01d9efeb586",
+      "query": "",
+      "failure": "net::ERR_ABORTED",
+      "classification": "hosting-injected Cloudflare challenge request",
+      "applicationAsset": false,
+      "blockingEffectObserved": false,
+      "impactEvidence": "Studio modules and delivery assets returned HTTP 200; editor, screenshots, PNG export, related navigation, and close flow all completed in this run."
+    }
+  ],
+  "requestFailureSummary": {
+    "total": 1,
+    "hostingInjectedChallenge": 1,
+    "applicationAssets": 0,
+    "note": "One /cdn-cgi/challenge-platform/ request ended with net::ERR_ABORTED. It was not an application asset and no required interaction impact was observed; this run does not claim zero network errors."
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "revision": 107,
+  "origin": "http://127.0.0.1:5180",
+  "evidenceName": "local",
+  "engine": "Chromium headless via existing Playwright runtime",
+  "playwrightModule": "file:///Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs",
+  "physicalDevice": false,
+  "deviceNote": "Responsive checks use Chromium viewport emulation; no physical phone or tablet was used.",
+  "builtinBrowserFallback": "The prior Builtin page had a blocking legacy confirm; the replacement Builtin page allowed read/fill but mouse and Enter actions did not operate. This existing Playwright runtime was used without adding dependencies.",
+  "screenshots": [
+    {
+      "file": "desktop-language-en.png",
+      "viewport": "1280x900",
+      "selectedLanguage": "en",
+      "nativePickerOpenAtCapture": true
+    },
+    {
+      "file": "desktop-language-zh-CN.png",
+      "viewport": "1280x900",
+      "selectedLanguage": "zh-CN",
+      "nativePickerOpenAtCapture": true
+    },
+    {
+      "file": "mobile-320-human-four-tabs-en.png",
+      "viewport": "320x850",
+      "selectedLanguage": "en",
+      "description": "Chestnut figure editor with four English category tabs."
+    }
+  ],
+  "checks": [
+    "desktop: gallery loaded from cache revision 107.",
+    "Desktop: opened Cloud in the real gallery and waited for a ready editable draft.",
+    "Desktop: selected Cloud Lilac and entered a unique additional instruction before related navigation.",
+    "Desktop: related Cloud→Orb navigation changed route and title, loaded a ready target, discarded the old request, and raised no JavaScript dialog.",
+    "Desktop language control captured in en; screenshot records whether Chromium exposed the native picker.",
+    "Desktop language control captured in zh-CN; screenshot records whether Chromium exposed the native picker.",
+    "Desktop: changed Orb accessory to 无配饰 while Chinese UI and Accessories tab were active.",
+    "Desktop: real Export PNG click produced a downloadable PNG; its SHA-256 matches current canvas toBlob and decoded alpha contains transparency.",
+    "Desktop: close returned to Gallery and reopening Orb produced a ready, interactive editor with no stale instructions or dialogs.",
+    "mobile-320: gallery loaded from cache revision 107.",
+    "320px: opened the Chestnut gallery card in English, displayed four editor tabs, and confirmed no horizontal document overflow."
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "dialogs": [],
+  "failures": [],
+  "chromiumVersion": "155.0.8059.40",
+  "accessory": {
+    "id": "accessories:none",
+    "label": "无配饰"
+  },
+  "png": {
+    "file": "candidate-dots-20261005-candidate-dots-20261005-dots-orb-core-adjustments-v6-four-tabs-candidate-draft-r1.png",
+    "bytes": 1906954,
+    "sha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc",
+    "currentCanvasSha256": "277209dc2324e9eb655f1d40590c7cb1df19b7c775a6733965e7e1d210b282dc",
+    "matchesCurrentCanvas": true,
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "alpha": {
+      "width": 1254,
+      "height": 1254,
+      "colorType": 6,
+      "transparentPixels": 780424,
+      "opaquePixels": 34593,
+      "partialAlphaPixels": 757499,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1244,
+        "height": 1254
+      }
+    }
+  },
+  "mobile": {
+    "tabData": [
+      {
+        "key": "colors",
+        "label": "Color",
+        "selected": true
+      },
+      {
+        "key": "face",
+        "label": "Face",
+        "selected": false
+      },
+      {
+        "key": "clothing",
+        "label": "Clothing",
+        "selected": false
+      },
+      {
+        "key": "accessories",
+        "label": "Accessories",
+        "selected": false
+      }
+    ],
+    "metrics": {
+      "viewport": {
+        "width": 320,
+        "height": 850
+      },
+      "documentWidth": 320,
+      "overlayWidth": 320,
+      "tablist": {
+        "left": 16,
+        "right": 302,
+        "width": 286,
+        "scrollWidth": 284,
+        "clientWidth": 284
+      },
+      "tabs": [
+        {
+          "key": "colors",
+          "left": 20,
+          "right": 74,
+          "visible": true
+        },
+        {
+          "key": "face",
+          "left": 77,
+          "right": 127,
+          "visible": true
+        },
+        {
+          "key": "clothing",
+          "left": 130,
+          "right": 201,
+          "visible": true
+        },
+        {
+          "key": "accessories",
+          "left": 204,
+          "right": 298,
+          "visible": true
+        }
+      ]
+    },
+    "screenshot": "mobile-320-human-four-tabs-en.png",
+    "viewport": "320x850",
+    "locale": "en"
+  },
+  "status": "passed",
+  "finishedAt": "2026-10-13T06:54:04.081Z"
+}

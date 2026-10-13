@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {PREVIEW_ARTWORKS, getAsset} from '../dist/studio-artwork-catalog.js?v=102';
+import {PREVIEW_ARTWORKS, getAsset} from '../dist/studio-artwork-catalog.js?v=110';
 import {launchBrowser} from './browser-runtime.mjs';
 import {createReviewOutputDirectory} from './review-output.mjs';
 

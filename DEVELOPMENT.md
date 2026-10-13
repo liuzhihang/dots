@@ -45,12 +45,16 @@ npm run test:browser
 | `npm run test:recovery` | 组合恢复路径与编辑器状态回归（Node 模拟，不代替浏览器和像素验收） |
 | `npm run test:downloads` | 浏览器下载与透明输出检查 |
 | `npm run test:editing` | 角色调整、Prompt 和导出一致性检查 |
+| `npm run test:looks` | 90 个内部来源 Look、540 条合法配置和精确来源 PNG 回归 |
+| `npm run test:figures` | 83 个公开基础形象、语义选项与真实配方绑定、跨来源 PNG 回归 |
 | `npm run test:delivery` | 无损传输资源的浏览器检查 |
 | `npm run test:performance` | 性能检查 |
 | `npm run verify:release-safety` | 仓库保留规则检查，需要完整 Git 历史 |
 | `npm run dev:review` | 本地候选审阅入口 `http://127.0.0.1:5182/__dots_review__/` |
 
 本地审阅不改变 Artwork 或 Template 的批准状态，也不会自动发布候选素材。测试通过不等于完成真实设备、人工美术或线上验收。
+
+`npm test` 包含来源 Look、去重 Figure、编辑边界和详情导出的回归。`npm run test:figures` 遍历公开基础形象的实际语义配置，每次结果都核对精确来源配方；`npm run test:looks` 保留90个内部来源的540条UI配方检查。可用 `DOTS_LOOK_BASELINE` 指向既有 `real-registered-recipes.json`，额外核对实际选中配方的旧像素 hash；不设置时仍验证形象身份、透明像素和实际下载的一致性。`DOTS_EVIDENCE_DIR` 指定本次验证的输出目录。
 
 ### 规范协作
 
@@ -84,11 +88,15 @@ openspec validate --specs
 
 ```sh
 node scripts/stage-static-publish.mjs .artifacts/release-local
+node scripts/verify-figure-thumbnails.mjs .artifacts/release-local
+node scripts/verify-option-thumbnail-ui.mjs .artifacts/release-local
 ```
 
 该目标目录必须尚不存在；实际网站文件位于生成目录的 `dist/` 子目录。以该子目录作为网站根目录交付文件，不要把整个含 PNG 源的 `dist/` 直接上传，也不要把私有参考、候选或 QA 输出纳入公开发布。预览和调整图层使用经验证的无损 WebP 传输；批准的 PNG 源保留，下载与调整导出仍为 PNG。其他托管平台需自行验证路径、MIME、缓存及复制/下载行为；不要复用维护者的托管配置直接发布到其站点。
 
-现有演示站的发布与回读证据见 [Site 50 / v102 记录](design/releases/20261012-lossless-delivery-v102/README.md)。源码提交、测试、OpenSpec 归档和站点部署是独立步骤。
+缩略图回归直接服务该发布目录，检查六个圆球配饰的真实图片、闭眼/睁眼组合可用性、当前透明 PNG 及 source-only PNG 零请求。不能只在保留完整 PNG 源的本地开发目录验收图片，否则可能掩盖发布后缺图问题；证据写入 stage 同级的独立 `.artifacts` 目录。
+
+现有演示站的发布与回读证据见 [Site 59 / v110 记录](design/releases/20261013-option-card-palette-v110/README.md)。源码提交、测试、OpenSpec 归档和站点部署是独立步骤。
 
 ## 参与贡献
 

@@ -1,0 +1,50 @@
+{
+  "revision": 109,
+  "passed": [
+    {
+      "check": "build",
+      "files": 1004,
+      "publishFiles": 592,
+      "deploymentReady": true
+    },
+    {
+      "check": "recovery",
+      "templates": 44,
+      "recipes": 540,
+      "explanations": 5015,
+      "simulatedEditor": true,
+      "simulatedOverlay": true
+    },
+    {
+      "check": "figure-detail",
+      "checks": 7
+    },
+    {
+      "check": "select-layout",
+      "viewports": [
+        1280,
+        390,
+        320
+      ],
+      "languages": [
+        "en",
+        "zh-CN"
+      ],
+      "controlsMeasured": 30,
+      "keyboard": true
+    },
+    {
+      "check": "OpenSpec strict"
+    },
+    {
+      "check": "release-safety",
+      "retiredFiles": 6835,
+      "recoverableBlobs": 5023
+    },
+    {
+      "check": "git diff --check"
+    }
+  ],
+  "unchangedLogicReference": "v108 preview-loader and history passed; no change to their runtime semantics in v109. They were not rerun as v109.",
+  "browserAndDeployment": "Recorded separately; this file does not claim online or device acceptance."
+}

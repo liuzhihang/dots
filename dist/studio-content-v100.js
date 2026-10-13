@@ -1,6 +1,6 @@
 // Frozen v100 Artwork integration metadata and approved default facts.
 const deepFreeze=value=>{if(!value||typeof value!=='object'||Object.isFrozen(value))return value;for(const child of Object.values(value))deepFreeze(child);return Object.freeze(value);};
-import { ARTWORK_CONTENT as BASE_ARTWORK_CONTENT, CHARACTER_IDENTITIES as BASE_CHARACTER_IDENTITIES, PREVIEW_ARTWORK_CONTENT } from './studio-content.js?v=102';
+import { ARTWORK_CONTENT as BASE_ARTWORK_CONTENT, CHARACTER_IDENTITIES as BASE_CHARACTER_IDENTITIES, PREVIEW_ARTWORK_CONTENT } from './studio-content.js?v=110';
 export const V100_APPROVAL_ID="character-adjustments-20261011-v1";
 export const V100_APPROVAL_RECORD='design/acceptance/20261011-character-adjustments-v1/approval.json';
 export const V100_APPROVAL_RECORD_SHA256='f2f4296013a1ccdb1eb8305720fabd21bd5f84a83b4412d2a1599a10312383d8';

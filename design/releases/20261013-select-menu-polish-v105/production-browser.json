@@ -1,0 +1,30 @@
+{
+  "site": "https://dots.liuzhihang.chatgpt.site",
+  "revisionObserved": "105",
+  "browser": "Codex built-in Browser",
+  "desktop": {
+    "viewport": "1280x720",
+    "headerHeight": 60,
+    "backHeight": 44,
+    "chineseBackTextSingleLine": true,
+    "languageFontSize": 13,
+    "languageMenu": "observed and selected both languages",
+    "sortMenu": "observed Chinese menu; choosing Name updated route sort=name",
+    "galleryCards": 83
+  },
+  "narrowViewports": [
+    {"viewport": "320x700", "language": "en", "headerHeight": 56, "backHeight": 44, "title": "two readable lines", "menuOptionLeft": 125, "menuOptionRight": 255, "optionHeight": 44},
+    {"viewport": "390x844", "language": "zh-CN", "headerHeight": 56, "menu": "inside viewport, selected Chinese option visible"}
+  ],
+  "interactions": {
+    "languageSelection": "passed",
+    "escapeOnlyDismissesOpenMenu": "passed",
+    "colorLilacCurrentPreview": "passed",
+    "actualPngDownload": "production-lilac.png",
+    "closeAfterEdit": "dialog closed; no JavaScript confirmation",
+    "languageReturnsToHeader": true,
+    "pageWarningsAndErrors": []
+  },
+  "viewportRestored": true,
+  "notCovered": ["physical mobile device", "actual Safari or Firefox menus", "ChatGPT sending or image generation"]
+}

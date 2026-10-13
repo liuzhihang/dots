@@ -1,0 +1,22 @@
+{
+  "revision": 108,
+  "browser": "155.0.8059.40",
+  "scenarios": 7,
+  "outcomes": [
+    "Legacy Artwork and Look routes still open the same approved source Artwork and Template.",
+    "Clean Cloud→Orb related navigation opens Orb at its default state; language, editor category, close, and Gallery series filtering remain interactive without JavaScript dialogs.",
+    "After changing Cloud to Lilac and entering additional instructions, explicit Cloud→Orb navigation loads Orb defaults without a dialog or stale instructions.",
+    "Dirty browser Back returns to Gallery without prompting; Forward reopens the Figure at history index 1 with default state.",
+    "Forward queued from the dirty Back popstate converges to the same Figure entry at index 1 with a clean Draft.",
+    "Dirty Forward from detail index 1 to filtered Gallery index 2 exits without prompting; Back reopens a default Draft at index 1.",
+    "Dirty double close returns to Gallery without prompting and produces exactly one popstate/history traversal at index 0."
+  ],
+  "route": "#/figure/dots-orb?v=v1",
+  "figureId": "dots-orb",
+  "defaultLookId": "candidate-dots-20261005",
+  "legacyRoutes": [
+    "artwork",
+    "look"
+  ],
+  "physicalDevice": false
+}

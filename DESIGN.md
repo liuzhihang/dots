@@ -22,8 +22,10 @@
 - [Studio 创建与导航行为](openspec/specs/studio-creation-experience/spec.md) 与 [系列导航](openspec/specs/family-navigation/spec.md)
 - [Artwork 与资格](openspec/specs/artwork-catalog/spec.md)、[筛选标签](openspec/specs/catalog-tags/spec.md) 与 [角色系列身份](openspec/specs/character-families/spec.md)
 - [模板编辑边界](openspec/specs/bounded-character-editing/spec.md) 与 [视觉验收](openspec/specs/character-visual-acceptance/spec.md)
-- 制作/接入流程见 [角色新增规范](design/character-authoring/README.md)；当前站点回执从 [Site 50 / v102 发布记录](design/releases/20261012-lossless-delivery-v102/README.md) 进入。
+- 制作/接入流程见 [角色新增规范](design/character-authoring/README.md)；当前站点回执从 [Site 59 / v110 发布记录](design/releases/20261013-option-card-palette-v110/README.md) 进入。
 
 ## 全角色调整接入
+
+当前基础外观归并方案见 [move-appearances-into-gallery](openspec/changes/archive/2026-10-13-move-appearances-into-gallery/design.md)：图库以 GalleryFigure 去重选择基础形象，颜色、五官和配饰留在形象内调整；同材质同基础轮廓不因来源作品不同而重复列出。GalleryLook 保留精确来源绑定，原 Artwork 与批准模板分别登记；每次选择仍使用真实注册配方，派生封面使用完整渲染结果，不改写下述历史批准资源。
 
 本轮接入沿用上述主视觉。角色素材与有限组合以 [精确批准记录](design/acceptance/20261011-character-adjustments-v1/approval.json) 和 [已归档 change](openspec/changes/archive/2026-10-11-expand-character-gallery-and-adjustments/design.md) 为准：角色 PNG 保留真实透明；Dots / Grok Bot 无肢体、不提供服装；其余家族按真实模板提供服装。详情统一使用“角色调整”，所有选项驱动同一预览、Prompt 和透明导出。当前站点通过无损 WebP 传输详情预览和调整图层，素材身份、图层锚点、批准的 PNG 原文和 PNG 导出保持不变；验证入口见 [v102 发布记录](design/releases/20261012-lossless-delivery-v102/README.md)。

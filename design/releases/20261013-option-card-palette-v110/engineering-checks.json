@@ -1,0 +1,46 @@
+{
+  "revision": 110,
+  "passed": [
+    {
+      "check": "static build",
+      "sourceFiles": 1004,
+      "publishFiles": 592,
+      "approvedArtworks": 44,
+      "deploymentReady": true
+    },
+    {
+      "check": "select-layout",
+      "controls": 30,
+      "viewports": [
+        1280,
+        390,
+        320
+      ],
+      "languages": [
+        "en",
+        "zh-CN"
+      ],
+      "keyboard": true
+    },
+    {
+      "check": "actual-publish-stage option UI",
+      "count": 24,
+      "failures": []
+    },
+    {
+      "check": "OpenSpec strict"
+    },
+    {
+      "check": "git diff --check"
+    },
+    {
+      "check": "source-readback",
+      "protectedFiles": 4,
+      "unchangedAssets": 974
+    }
+  ],
+  "priorChecks": {
+    "v109": "recovery, Figure detail, release safety passed; v110 changes only CSS plus cache labels, so those logic checks were not repeated."
+  },
+  "production": "Recorded separately."
+}

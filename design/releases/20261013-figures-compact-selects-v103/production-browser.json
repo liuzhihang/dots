@@ -1,0 +1,92 @@
+{
+  "url": "https://dots.liuzhihang.chatgpt.site",
+  "version": 52,
+  "cacheRevision": 103,
+  "browser": "Codex in-app Browser",
+  "galleryFigureCount": 83,
+  "dotsCloudFilterCount": 1,
+  "nativeKeyboard": {
+    "sort": "Expand / Down / Return selected Name and URL sort=name",
+    "language": "Expand / Up / Return selected English"
+  },
+  "selectedSourceState": {
+    "figure": "dots-cloud",
+    "intent": "保留云朵轮廓和透明背景。",
+    "languageWidth": 72,
+    "overflow": false,
+    "recipe": "studio-renderer-20261011-v100-declarative-recipes-1|dots-orb-core-adjustments-v6-four-tabs-candidate@v6|candidate-dots-20261005@v2|accessories=round-glasses&appearance=cloud&clothing=none&colors=rose&face=open|recipe=cloud-rose-open-none-round-glasses|layer-order=glasses-rear>body>face>glasses-front|template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:rear@v1:776caea7f5a0d4aa66b847ff12d6cf2dfbac2311760a59f259495028729dd9a5:placement=0,0;anchor=face.center;source=627,630;pivot=627,630;scale=1,1;shear=0,0;rotation=0|template:dots-orb-core-adjustments-v6-four-tabs-candidate:appearance:cloud@v1:6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0|template:dots-orb-core-adjustments-v6-four-tabs-candidate:face:open@v1:c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb:placement=0,0;anchor=face.center;source=627,626;pivot=627,626;scale=1,1;shear=0,0;rotation=0|template:dots-orb-core-adjustments-v6-four-tabs-candidate:accessories:glasses:front@v1:1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae:placement=0,0;anchor=face.center;source=627,630;pivot=627,630;scale=1,1;shear=0,0;rotation=0|template:dots-orb-core-adjustments-v6-four-tabs-candidate:mask:color:cloud@v1:6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e:placement=0,0;anchor=canvas;source=-;pivot=0,0;scale=1,1;shear=0,0;rotation=0",
+    "selected": [
+      {
+        "field": "colors",
+        "id": "colors:rose"
+      },
+      {
+        "field": "face",
+        "id": "face:open"
+      },
+      {
+        "field": "accessories",
+        "id": "accessories:round-glasses"
+      }
+    ],
+    "title": "云朵",
+    "url": "https://dots.liuzhihang.chatgpt.site/#/figure/dots-cloud?v=v1"
+  },
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 320,
+      "height": 700
+    }
+  ],
+  "narrow320": {
+    "controls": [
+      {
+        "height": 44,
+        "id": "languagePreference",
+        "value": "en",
+        "width": 88.8046875
+      },
+      {
+        "height": 44,
+        "id": "gallerySort",
+        "value": "curated",
+        "width": 89.9609375
+      }
+    ],
+    "overflow": false,
+    "width": 320
+  },
+  "prompt": {
+    "cloud": true,
+    "lilac": true,
+    "externalIntentPreserved": true,
+    "file": "production-lilac-prompt.txt"
+  },
+  "downloads": [
+    "production-lilac.png",
+    "production-390-rose-glasses.png"
+  ],
+  "dirtyClose": {
+    "dialog": null,
+    "restoredQuery": "q=云朵&series=dots&sort=name"
+  },
+  "consoleWarningsAndErrors": [],
+  "physicalDevice": false,
+  "screenshots": {
+    "home": "production-home.jpg",
+    "narrow320": "production-320.jpg",
+    "detail390": "production-detail-390.jpg"
+  },
+  "rejectedCapture": {
+    "file": "browser/attempts/14-viewport-transition-rejected.jpg",
+    "reason": "Viewport transition captured an intermediate 390x219 frame; replaced by stable 390x844 screenshot."
+  }
+}

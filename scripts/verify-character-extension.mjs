@@ -5,8 +5,8 @@ import path from 'node:path';
 import { createServer } from 'vite';
 import {launchBrowser} from './browser-runtime.mjs';
 import {resolveEvidenceDirectory} from './evidence-paths.mjs';
-import { ARTWORKS, CATALOG_REVISION } from '../dist/studio-artwork-catalog.js?v=102';
-import { TEMPLATE_REGISTRY, getTemplateForArtwork } from '../dist/studio-edit-templates.js?v=102';
+import { ARTWORKS, CATALOG_REVISION } from '../dist/studio-artwork-catalog.js?v=110';
+import { TEMPLATE_REGISTRY, getTemplateForArtwork } from '../dist/studio-edit-templates.js?v=110';
 
 const root = process.cwd();
 const outputDir = resolveEvidenceDirectory('.artifacts/character-extension');
@@ -36,7 +36,7 @@ page.addInitScript(() => {
 });
 
 const fixtureUrl = `/@fs/${path.join(root, 'scripts/fixtures/new-artwork.mjs').split(path.sep).join('/')}`;
-const shell = `<!doctype html><html lang="zh-CN"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=102"><link rel="stylesheet" href="/studio-detail.css?v=102"></head><body><main><section id="gallery" aria-label="测试图库"></section><section id="detail"></section></main></body></html>`;
+const shell = `<!doctype html><html lang="zh-CN"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=110"><link rel="stylesheet" href="/studio-detail.css?v=110"></head><body><main><section id="gallery" aria-label="测试图库"></section><section id="detail"></section></main></body></html>`;
 const check = (condition, message) => {
   assert.ok(condition, message);
   checks.push(message);
@@ -48,13 +48,13 @@ try {
   const setup = await page.evaluate(async fixtureModuleUrl => {
     const [fixtureModule, cardModule, detailModule, catalog, tags, prompt, actions, previews] = await Promise.all([
       import(fixtureModuleUrl),
-      import('/studio-card.js?v=102'),
-      import('/studio-detail.js?v=102'),
-      import('/studio-artwork-catalog.js?v=102'),
-      import('/studio-tags.js?v=102'),
-      import('/studio-prompt.js?v=102'),
-      import('/studio-asset-loader.js?v=102'),
-      import('/studio-preview-loader.js?v=102')
+      import('/studio-card.js?v=110'),
+      import('/studio-detail.js?v=110'),
+      import('/studio-artwork-catalog.js?v=110'),
+      import('/studio-tags.js?v=110'),
+      import('/studio-prompt.js?v=110'),
+      import('/studio-asset-loader.js?v=110'),
+      import('/studio-preview-loader.js?v=110')
     ]);
     const fixture = fixtureModule.createNewArtworkFixture();
     const matches = fixture.queryArtworks({ text: '测试奶油白猫新外观', seriesId: 'animals', sort: 'curated', language: 'zh-CN' });

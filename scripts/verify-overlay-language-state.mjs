@@ -1,6 +1,6 @@
 // Simulated DOM lifecycle only; not a replacement for native-dialog browser QA.
 import assert from 'node:assert/strict';
-import { createOverlay } from '../dist/studio-overlay.js?v=102';
+import { createOverlay } from '../dist/studio-overlay.js?v=110';
 class Element {
   constructor(name) { this.localName = name; this.children = []; this.events = {}; this.attrs = {}; this.style = {}; this.inert = false; this.hidden = false; this.disabled = false; this.isConnected = true; }
   get parentNode() { return this.parentElement; }

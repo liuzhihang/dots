@@ -1,0 +1,2567 @@
+{
+  "revision": 108,
+  "strictCacheRevision": 108,
+  "attempt": "attempt-02",
+  "origin": "https://dots.liuzhihang.chatgpt.site",
+  "startedAt": "2026-10-13T07:41:03.883Z",
+  "engine": "Chromium headless via the repository existing Playwright runtime",
+  "playwrightModule": "file:///Users/liuzhihang/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs",
+  "physicalDevice": false,
+  "viewportEvidence": {
+    "desktop": "1280x900",
+    "narrow": "390x844",
+    "isMobile": false,
+    "hasTouch": false
+  },
+  "builtinBrowserFallback": "The Builtin browser was unavailable for reliable interaction on the locked host; this run uses the existing Playwright runtime and adds no dependencies.",
+  "waitPolicy": {
+    "renderOrAssetTimeoutMs": 120000,
+    "automaticRetries": 0,
+    "performanceClaim": "Durations are recorded; this run does not mark a separate performance threshold as passed."
+  },
+  "priorEvidence": {
+    "v107": "The v107 production run exposed missing published delivery assets for thumbnails; v107 failures remain separate and are not counted as v108 results."
+  },
+  "productionColorChangeScope": "This online pass preserves the user-requested Blue + Closed eyes + Chef toque state for the real PNG export and exercises edited-state related navigation. The parent agent has separate v108 local history evidence for color changes; no unsupported Orb + Lilac + Chef combination is used here.",
+  "screenshots": [
+    {
+      "file": "accessory-options-orb-open-headphones-desktop.png",
+      "viewport": "1280x900",
+      "description": "Complete accessory option grid, including all six ready thumbnails and None."
+    },
+    {
+      "file": "accessory-options-orb-closed-chef-desktop.png",
+      "viewport": "1280x900",
+      "description": "Complete accessory option grid, including all six ready thumbnails and None."
+    },
+    {
+      "file": "language-desktop-en.png",
+      "viewport": "1280x900",
+      "selectedLanguage": "en",
+      "nativePickerOpenAtCapture": true,
+      "control": {
+        "left": 1061,
+        "right": 1141,
+        "width": 80,
+        "height": 36,
+        "viewportWidth": 1280,
+        "lang": "en"
+      }
+    },
+    {
+      "file": "language-desktop-zh-CN.png",
+      "viewport": "1280x900",
+      "selectedLanguage": "zh-CN",
+      "nativePickerOpenAtCapture": true,
+      "control": {
+        "left": 1079,
+        "right": 1141,
+        "width": 62,
+        "height": 36,
+        "viewportWidth": 1280,
+        "lang": "zh-CN"
+      }
+    },
+    {
+      "file": "language-390-en.png",
+      "viewport": "390x844",
+      "selectedLanguage": "en",
+      "nativePickerOpenAtCapture": true,
+      "control": {
+        "left": 260,
+        "right": 340,
+        "width": 80,
+        "height": 36,
+        "viewportWidth": 390,
+        "lang": "en"
+      }
+    },
+    {
+      "file": "language-390-zh-CN.png",
+      "viewport": "390x844",
+      "selectedLanguage": "zh-CN",
+      "nativePickerOpenAtCapture": true,
+      "control": {
+        "left": 278,
+        "right": 340,
+        "width": 62,
+        "height": 36,
+        "viewportWidth": 390,
+        "lang": "zh-CN"
+      }
+    },
+    {
+      "file": "accessory-options-orb-open-chef-desktop.png",
+      "viewport": "1280x900",
+      "description": "Complete accessory option grid, including all six ready thumbnails and None."
+    }
+  ],
+  "checks": [
+    "Direct Orb route opened only after confirming html[data-cache=\"108\"].",
+    "Direct Orb route reached a ready editable canvas.",
+    "Orb Accessories shows exactly six nonempty thumbnail choices in ready state; None is empty; no template PNG request occurred.",
+    "Selected Closed eyes then Chef toque; cool and cyber sunglasses are disabled while the six accessory thumbnails stay ready.",
+    "Captured the actual open language picker in English and Chinese at 1280px and 390px viewports.",
+    "After Open eyes, cool and cyber sunglasses are enabled and all six published thumbnails remain ready.",
+    "Returned to the registered Blue + Closed eyes + Chef toque recipe for PNG export.",
+    "A real Export PNG download exactly matches the current canvas toBlob SHA-256 and has decoded transparent plus opaque pixels.",
+    "An edited Blue + Closed eyes + Chef toque Orb navigated directly Orb→Cloud→Orb, cleared stale text, and closing an edited page raised no JavaScript dialog.",
+    "All observed studio modules used ?v=108; no /assets/templates/*.png requests occurred in the full run."
+  ],
+  "stepTimings": [
+    {
+      "name": "Direct-open production Orb route and require cache108",
+      "startedAt": "2026-10-13T07:41:04.922Z",
+      "status": "passed",
+      "durationMs": 16496,
+      "finishedAt": "2026-10-13T07:41:21.418Z"
+    },
+    {
+      "name": "Wait for direct Orb editor and canvas (180s cold-start cap)",
+      "startedAt": "2026-10-13T07:41:21.418Z",
+      "status": "passed",
+      "durationMs": 164738,
+      "finishedAt": "2026-10-13T07:44:06.156Z"
+    },
+    {
+      "name": "Open Accessories and load six published thumbnails",
+      "startedAt": "2026-10-13T07:44:06.156Z",
+      "status": "passed",
+      "durationMs": 40000,
+      "finishedAt": "2026-10-13T07:44:46.156Z"
+    },
+    {
+      "name": "Select Closed eyes, verify disabled eyewear, then select Chef toque",
+      "startedAt": "2026-10-13T07:44:46.156Z",
+      "status": "passed",
+      "durationMs": 1280,
+      "finishedAt": "2026-10-13T07:44:47.436Z"
+    },
+    {
+      "name": "Closed eyes render ready",
+      "startedAt": "2026-10-13T07:44:46.229Z",
+      "status": "passed",
+      "durationMs": 972,
+      "finishedAt": "2026-10-13T07:44:47.201Z"
+    },
+    {
+      "name": "Chef toque render ready",
+      "startedAt": "2026-10-13T07:44:47.277Z",
+      "status": "passed",
+      "durationMs": 62,
+      "finishedAt": "2026-10-13T07:44:47.339Z"
+    },
+    {
+      "name": "Capture compact bilingual language menus at desktop and 390px",
+      "startedAt": "2026-10-13T07:44:47.436Z",
+      "status": "passed",
+      "durationMs": 1132,
+      "finishedAt": "2026-10-13T07:44:48.568Z"
+    },
+    {
+      "name": "Recheck six thumbnails and enable sunglasses with Open eyes",
+      "startedAt": "2026-10-13T07:44:48.568Z",
+      "status": "passed",
+      "durationMs": 250,
+      "finishedAt": "2026-10-13T07:44:48.818Z"
+    },
+    {
+      "name": "Open eyes render ready",
+      "startedAt": "2026-10-13T07:44:48.646Z",
+      "status": "passed",
+      "durationMs": 40,
+      "finishedAt": "2026-10-13T07:44:48.686Z"
+    },
+    {
+      "name": "Return to the valid Blue + Closed eyes + Chef toque state",
+      "startedAt": "2026-10-13T07:44:48.818Z",
+      "status": "passed",
+      "durationMs": 160,
+      "finishedAt": "2026-10-13T07:44:48.978Z"
+    },
+    {
+      "name": "Closed eyes restored for PNG export",
+      "startedAt": "2026-10-13T07:44:48.893Z",
+      "status": "passed",
+      "durationMs": 36,
+      "finishedAt": "2026-10-13T07:44:48.929Z"
+    },
+    {
+      "name": "Download Blue + Closed eyes + Chef toque PNG and verify exact canvas bytes and alpha",
+      "startedAt": "2026-10-13T07:44:48.978Z",
+      "status": "passed",
+      "durationMs": 13625,
+      "finishedAt": "2026-10-13T07:45:02.603Z"
+    },
+    {
+      "name": "Related Orb→Cloud→Orb navigation and close without dialogs",
+      "startedAt": "2026-10-13T07:45:02.603Z",
+      "status": "passed",
+      "durationMs": 54291,
+      "finishedAt": "2026-10-13T07:45:56.894Z"
+    }
+  ],
+  "networkTimings": [
+    {
+      "resource": "/studio.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:07.698Z",
+      "startedAfterMs": 2782,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 3489,
+      "durationMs": 707,
+      "resourceTiming": {
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 556,
+        "responseBodyMs": 154,
+        "transferSize": 3979,
+        "encodedBodySize": 3679,
+        "decodedBodySize": 11232
+      }
+    },
+    {
+      "resource": "/studio-artwork-catalog.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.408Z",
+      "startedAfterMs": 3492,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8320,
+      "durationMs": 4828,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4520,
+        "responseBodyMs": 309,
+        "transferSize": 16160,
+        "encodedBodySize": 15860,
+        "decodedBodySize": 68223
+      }
+    },
+    {
+      "resource": "/studio-tags.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7440,
+      "durationMs": 3947,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3902,
+        "responseBodyMs": 49,
+        "transferSize": 3932,
+        "encodedBodySize": 3632,
+        "decodedBodySize": 10792
+      }
+    },
+    {
+      "resource": "/studio-gallery-looks.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8010,
+      "durationMs": 4517,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4412,
+        "responseBodyMs": 108,
+        "transferSize": 4497,
+        "encodedBodySize": 4197,
+        "decodedBodySize": 15769
+      }
+    },
+    {
+      "resource": "/studio-gallery-figures.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7593,
+      "durationMs": 4100,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3950,
+        "responseBodyMs": 153,
+        "transferSize": 5559,
+        "encodedBodySize": 5259,
+        "decodedBodySize": 19358
+      }
+    },
+    {
+      "resource": "/studio-tag-browser.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8010,
+      "durationMs": 4517,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4520,
+        "responseBodyMs": 0,
+        "transferSize": 1298,
+        "encodedBodySize": 998,
+        "decodedBodySize": 2192
+      }
+    },
+    {
+      "resource": "/studio-card.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7902,
+      "durationMs": 4409,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4364,
+        "responseBodyMs": 47,
+        "transferSize": 1372,
+        "encodedBodySize": 1072,
+        "decodedBodySize": 2822
+      }
+    },
+    {
+      "resource": "/studio-motion.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7239,
+      "durationMs": 3746,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-motion.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3747,
+        "responseBodyMs": 0,
+        "transferSize": 2548,
+        "encodedBodySize": 2248,
+        "decodedBodySize": 8433
+      }
+    },
+    {
+      "resource": "/studio-detail.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7855,
+      "durationMs": 4362,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4209,
+        "responseBodyMs": 155,
+        "transferSize": 10410,
+        "encodedBodySize": 10110,
+        "decodedBodySize": 35518
+      }
+    },
+    {
+      "resource": "/studio-overlay.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7285,
+      "durationMs": 3792,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-overlay.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3747,
+        "responseBodyMs": 47,
+        "transferSize": 2626,
+        "encodedBodySize": 2326,
+        "decodedBodySize": 7603
+      }
+    },
+    {
+      "resource": "/studio-router.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7700,
+      "durationMs": 4207,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4102,
+        "responseBodyMs": 107,
+        "transferSize": 1040,
+        "encodedBodySize": 740,
+        "decodedBodySize": 1935
+      }
+    },
+    {
+      "resource": "/studio-i18n.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7391,
+      "durationMs": 3898,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-i18n.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3794,
+        "responseBodyMs": 106,
+        "transferSize": 1957,
+        "encodedBodySize": 1657,
+        "decodedBodySize": 3251
+      }
+    },
+    {
+      "resource": "/studio-content.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.356Z",
+      "startedAfterMs": 7440,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8672,
+      "durationMs": 1232,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 877,
+        "responseBodyMs": 353,
+        "transferSize": 13143,
+        "encodedBodySize": 12843,
+        "decodedBodySize": 54463
+      }
+    },
+    {
+      "resource": "/studio-edit-templates.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.510Z",
+      "startedAfterMs": 7594,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8936,
+      "durationMs": 1342,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1077,
+        "responseBodyMs": 263,
+        "transferSize": 9802,
+        "encodedBodySize": 9502,
+        "decodedBodySize": 39127
+      }
+    },
+    {
+      "resource": "/studio-actions.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8935,
+      "durationMs": 1079,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-actions.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1078,
+        "responseBodyMs": 0,
+        "transferSize": 1962,
+        "encodedBodySize": 1662,
+        "decodedBodySize": 3885
+      }
+    },
+    {
+      "resource": "/studio-prompt.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9242,
+      "durationMs": 1386,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1232,
+        "responseBodyMs": 154,
+        "transferSize": 5343,
+        "encodedBodySize": 5043,
+        "decodedBodySize": 13987
+      }
+    },
+    {
+      "resource": "/studio-asset-loader.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9595,
+      "durationMs": 1739,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1386,
+        "responseBodyMs": 353,
+        "transferSize": 3281,
+        "encodedBodySize": 2981,
+        "decodedBodySize": 7521
+      }
+    },
+    {
+      "resource": "/studio-preview-loader.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9860,
+      "durationMs": 2004,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1738,
+        "responseBodyMs": 265,
+        "transferSize": 10183,
+        "encodedBodySize": 9883,
+        "decodedBodySize": 37691
+      }
+    },
+    {
+      "resource": "/studio-gallery-look-data.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.926Z",
+      "startedAfterMs": 8010,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 10322,
+      "durationMs": 2312,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-look-data.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1850,
+        "responseBodyMs": 462,
+        "transferSize": 15455,
+        "encodedBodySize": 15155,
+        "decodedBodySize": 169391
+      }
+    },
+    {
+      "resource": "/studio-display-assets.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.237Z",
+      "startedAfterMs": 8321,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 10831,
+      "durationMs": 2510,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-display-assets.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2001,
+        "responseBodyMs": 509,
+        "transferSize": 14320,
+        "encodedBodySize": 14020,
+        "decodedBodySize": 161662
+      }
+    },
+    {
+      "resource": "/studio-content-v100.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.237Z",
+      "startedAfterMs": 8321,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 11471,
+      "durationMs": 3150,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2510,
+        "responseBodyMs": 639,
+        "transferSize": 19456,
+        "encodedBodySize": 19156,
+        "decodedBodySize": 169898
+      }
+    },
+    {
+      "resource": "/studio-edit-template-data.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.852Z",
+      "startedAfterMs": 8936,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 13399,
+      "durationMs": 4463,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-template-data.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2534,
+        "responseBodyMs": 1928,
+        "transferSize": 47640,
+        "encodedBodySize": 47340,
+        "decodedBodySize": 892936
+      }
+    },
+    {
+      "resource": "/studio-delivery-assets.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:14.777Z",
+      "startedAfterMs": 9861,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 16389,
+      "durationMs": 6528,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-delivery-assets.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3536,
+        "responseBodyMs": 2990,
+        "transferSize": 59650,
+        "encodedBodySize": 59350,
+        "decodedBodySize": 525620
+      }
+    },
+    {
+      "resource": "/studio-figure-editor.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.355Z",
+      "startedAfterMs": 16439,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 16924,
+      "durationMs": 485,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 286,
+        "responseBodyMs": 200,
+        "transferSize": 7266,
+        "encodedBodySize": 6966,
+        "decodedBodySize": 26420
+      }
+    },
+    {
+      "resource": "/studio-draft.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.840Z",
+      "startedAfterMs": 16924,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 39144,
+      "durationMs": 22220,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 22219,
+        "responseBodyMs": 0,
+        "transferSize": 2750,
+        "encodedBodySize": 2450,
+        "decodedBodySize": 8738
+      }
+    },
+    {
+      "resource": "/studio-editor.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.840Z",
+      "startedAfterMs": 16924,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 39144,
+      "durationMs": 22220,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 21803,
+        "responseBodyMs": 416,
+        "transferSize": 11799,
+        "encodedBodySize": 11499,
+        "decodedBodySize": 47086
+      }
+    },
+    {
+      "resource": "/studio-renderer.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:44.060Z",
+      "startedAfterMs": 39144,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 111389,
+      "durationMs": 72245,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 71627,
+        "responseBodyMs": 616,
+        "transferSize": 7258,
+        "encodedBodySize": 6958,
+        "decodedBodySize": 27204
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:42:56.317Z",
+      "startedAfterMs": 111401,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 115344,
+      "durationMs": 3943,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/delivery/473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0.webp",
+      "query": "?v=lossless-v1&sha256=2caaedadb7ed078fbadaa9a24783e1fb6bc00cdc4eb5729a91bb223bac44729d",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:43:00.276Z",
+      "startedAfterMs": 115360,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 120603,
+      "durationMs": 5243,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/473f909d2682c298eb8cc0a94431da96d7a8e2436f16a465d1a9b474c381ffa0.webp?v=lossless-v1&sha256=2caaedadb7ed078fbadaa9a24783e1fb6bc00cdc4eb5729a91bb223bac44729d",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 289,
+        "responseBodyMs": 4955,
+        "transferSize": 103152,
+        "encodedBodySize": 102852,
+        "decodedBodySize": 102852
+      }
+    },
+    {
+      "resource": "/assets/delivery/0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba.webp",
+      "query": "?v=lossless-v1&sha256=73ae2f1ee3225c9aaaa396860c5d25184a402acbf17f3544f3a6732f7503ba0a",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:43:05.534Z",
+      "startedAfterMs": 120618,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 171115,
+      "durationMs": 50497,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/0a10b3814157c922ecd7297d7780c19be51f92951ff058c241d1057f765d4eba.webp?v=lossless-v1&sha256=73ae2f1ee3225c9aaaa396860c5d25184a402acbf17f3544f3a6732f7503ba0a",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 414,
+        "responseBodyMs": 50082,
+        "transferSize": 1186128,
+        "encodedBodySize": 1185828,
+        "decodedBodySize": 1185828
+      }
+    },
+    {
+      "resource": "/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp",
+      "query": "?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:43:56.061Z",
+      "startedAfterMs": 171145,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 172185,
+      "durationMs": 1040,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 268,
+        "responseBodyMs": 771,
+        "transferSize": 39692,
+        "encodedBodySize": 39392,
+        "decodedBodySize": 39392
+      }
+    },
+    {
+      "resource": "/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp",
+      "query": "?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:43:57.114Z",
+      "startedAfterMs": 172198,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 181221,
+      "durationMs": 9023,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 340,
+        "responseBodyMs": 8683,
+        "transferSize": 208948,
+        "encodedBodySize": 208648,
+        "decodedBodySize": 208648
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:06.198Z",
+      "startedAfterMs": 181282,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 181328,
+      "durationMs": 46,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp",
+      "query": "?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:06.249Z",
+      "startedAfterMs": 181333,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 181333,
+      "durationMs": 0,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/eca3407e60f2fd24362a09d9ec0287dd689e135233e082258b273e19c7ae86c9.webp?v=lossless-v1&sha256=a3c91392b20dca517984109b65512c311548cb04e049df599ec54f13f03239d8",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 340,
+        "responseBodyMs": 8683,
+        "transferSize": 208948,
+        "encodedBodySize": 208648,
+        "decodedBodySize": 208648
+      }
+    },
+    {
+      "resource": "/assets/delivery/1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae.webp",
+      "query": "?v=lossless-v1&sha256=524a5618e361096c276e22573314b1086fee922d151943947d2bd01bf6f0eca7",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:06.249Z",
+      "startedAfterMs": 181333,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 183800,
+      "durationMs": 2467,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/1560f5e47107f586c173c8c6fab32363d348eacb9eb3310554080c51886543ae.webp?v=lossless-v1&sha256=524a5618e361096c276e22573314b1086fee922d151943947d2bd01bf6f0eca7",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1024,
+        "responseBodyMs": 1443,
+        "transferSize": 38418,
+        "encodedBodySize": 38118,
+        "decodedBodySize": 38118
+      }
+    },
+    {
+      "resource": "/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp",
+      "query": "?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:06.259Z",
+      "startedAfterMs": 181343,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 197857,
+      "durationMs": 16514,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2457,
+        "responseBodyMs": 14057,
+        "transferSize": 591564,
+        "encodedBodySize": 591264,
+        "decodedBodySize": 591264
+      }
+    },
+    {
+      "resource": "/assets/delivery/b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106.webp",
+      "query": "?v=lossless-v1&sha256=18ebc68a7bb6c07bc01e142381a3dba1315dcd3f7d64829ba31f0f4cac203f4e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:08.725Z",
+      "startedAfterMs": 183809,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 200926,
+      "durationMs": 17117,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/b9ef74ef49f61ba3f83274d5ff7a0949a118ff6e232e367cee0c57f3ceaca106.webp?v=lossless-v1&sha256=18ebc68a7bb6c07bc01e142381a3dba1315dcd3f7d64829ba31f0f4cac203f4e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 14048,
+        "responseBodyMs": 3069,
+        "transferSize": 131118,
+        "encodedBodySize": 130818,
+        "decodedBodySize": 130818
+      }
+    },
+    {
+      "resource": "/assets/delivery/d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260.webp",
+      "query": "?v=lossless-v1&sha256=f569ef8935a3647d801ac25e4e926e1231dbbc033ac62cc9958848c744e3d5ef",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:22.789Z",
+      "startedAfterMs": 197873,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 208320,
+      "durationMs": 10447,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/d715e8b3736cfd0d0645585ace1b6ee62fa84c3668de42c44bd3652cbb961260.webp?v=lossless-v1&sha256=f569ef8935a3647d801ac25e4e926e1231dbbc033ac62cc9958848c744e3d5ef",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3052,
+        "responseBodyMs": 7395,
+        "transferSize": 221340,
+        "encodedBodySize": 221040,
+        "decodedBodySize": 221040
+      }
+    },
+    {
+      "resource": "/assets/delivery/50f272a99d7a2fa2cca797be070cb140bb7c0554a821a1128ee6baecab28725b.webp",
+      "query": "?v=lossless-v1&sha256=3d532ce6c319854465f009fc3f79c623eeb6c87a36f5cca7cc22a767ec9f14ee",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:25.854Z",
+      "startedAfterMs": 200938,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 221121,
+      "durationMs": 20183,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/50f272a99d7a2fa2cca797be070cb140bb7c0554a821a1128ee6baecab28725b.webp?v=lossless-v1&sha256=3d532ce6c319854465f009fc3f79c623eeb6c87a36f5cca7cc22a767ec9f14ee",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 7384,
+        "responseBodyMs": 12801,
+        "transferSize": 377734,
+        "encodedBodySize": 377434,
+        "decodedBodySize": 377434
+      }
+    },
+    {
+      "resource": "/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp",
+      "query": "?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:46.194Z",
+      "startedAfterMs": 221278,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 221289,
+      "durationMs": 11,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/c827bec549046bbbc09dee8651d829f050ea4a60164ecab35b7a3af70aa840bb.webp?v=lossless-v1&sha256=56e6a49b733328c4a81a161046c29ba2565256655aef883e811169b80455f12e",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 268,
+        "responseBodyMs": 771,
+        "transferSize": 39692,
+        "encodedBodySize": 39392,
+        "decodedBodySize": 39392
+      }
+    },
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:46.194Z",
+      "startedAfterMs": 221278,
+      "failure": "net::ERR_ABORTED",
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "nextHopProtocol": "",
+        "requestToFirstByteMs": 0,
+        "responseBodyMs": 221310,
+        "transferSize": 0,
+        "encodedBodySize": 0,
+        "decodedBodySize": 0
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:46.242Z",
+      "startedAfterMs": 221326,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 221328,
+      "durationMs": 2,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:46.258Z",
+      "startedAfterMs": 221342,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 222259,
+      "durationMs": 917,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "nextHopProtocol": "",
+        "requestToFirstByteMs": 0,
+        "responseBodyMs": 221310,
+        "transferSize": 0,
+        "encodedBodySize": 0,
+        "decodedBodySize": 0
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:47.291Z",
+      "startedAfterMs": 222375,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 222377,
+      "durationMs": 2,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp",
+      "query": "?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:47.304Z",
+      "startedAfterMs": 222388,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 222391,
+      "durationMs": 3,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/11c53ae61f3ad7010289361b6fb24c0b831aa193face99bb98367a5c6071f677.webp?v=lossless-v1&sha256=139f8493c73c7633fcd83dfc111f9eaf720815db17793aea1fc68d538e645d97",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2457,
+        "responseBodyMs": 14057,
+        "transferSize": 591564,
+        "encodedBodySize": 591264,
+        "decodedBodySize": 591264
+      }
+    },
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:48.609Z",
+      "startedAfterMs": 223693,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 223707,
+      "durationMs": 14,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "nextHopProtocol": "",
+        "requestToFirstByteMs": 0,
+        "responseBodyMs": 221310,
+        "transferSize": 0,
+        "encodedBodySize": 0,
+        "decodedBodySize": 0
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:48.659Z",
+      "startedAfterMs": 223743,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 223746,
+      "durationMs": 3,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:44:48.908Z",
+      "startedAfterMs": 223992,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 223993,
+      "durationMs": 1,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:45:02.675Z",
+      "startedAfterMs": 237759,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 237762,
+      "durationMs": 3,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    },
+    {
+      "resource": "/assets/delivery/6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e.webp",
+      "query": "?v=lossless-v1&sha256=9578c23b63106b267ba17476ab76bc160b1a8d66d3522bdc98aae53d2d75ea74",
+      "version": "lossless-v1",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:45:02.681Z",
+      "startedAfterMs": 237765,
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "finishedAfterMs": 291818,
+      "durationMs": 54053,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/delivery/6d18bc48e0b941a6ac23378b2e4148c9610eb2bbcfb6c43f31577daa7bdb791e.webp?v=lossless-v1&sha256=9578c23b63106b267ba17476ab76bc160b1a8d66d3522bdc98aae53d2d75ea74",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 459,
+        "responseBodyMs": 53593,
+        "transferSize": 1117024,
+        "encodedBodySize": 1116724,
+        "decodedBodySize": 1116724
+      }
+    },
+    {
+      "resource": "/assets/templates/sources.json",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:45:56.825Z",
+      "startedAfterMs": 291909,
+      "status": 200,
+      "contentType": "application/json",
+      "finishedAfterMs": 291912,
+      "durationMs": 3,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/assets/templates/sources.json?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1932,
+        "responseBodyMs": 2009,
+        "transferSize": 45279,
+        "encodedBodySize": 44979,
+        "decodedBodySize": 659370
+      }
+    }
+  ],
+  "appModuleRequests": [
+    {
+      "resource": "/studio.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:07.698Z",
+      "startedAfterMs": 2782,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 3489,
+      "durationMs": 707,
+      "resourceTiming": {
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 556,
+        "responseBodyMs": 154,
+        "transferSize": 3979,
+        "encodedBodySize": 3679,
+        "decodedBodySize": 11232
+      }
+    },
+    {
+      "resource": "/studio-artwork-catalog.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.408Z",
+      "startedAfterMs": 3492,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8320,
+      "durationMs": 4828,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-artwork-catalog.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4520,
+        "responseBodyMs": 309,
+        "transferSize": 16160,
+        "encodedBodySize": 15860,
+        "decodedBodySize": 68223
+      }
+    },
+    {
+      "resource": "/studio-tags.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7440,
+      "durationMs": 3947,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tags.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3902,
+        "responseBodyMs": 49,
+        "transferSize": 3932,
+        "encodedBodySize": 3632,
+        "decodedBodySize": 10792
+      }
+    },
+    {
+      "resource": "/studio-gallery-looks.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8010,
+      "durationMs": 4517,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-looks.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4412,
+        "responseBodyMs": 108,
+        "transferSize": 4497,
+        "encodedBodySize": 4197,
+        "decodedBodySize": 15769
+      }
+    },
+    {
+      "resource": "/studio-gallery-figures.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7593,
+      "durationMs": 4100,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-figures.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3950,
+        "responseBodyMs": 153,
+        "transferSize": 5559,
+        "encodedBodySize": 5259,
+        "decodedBodySize": 19358
+      }
+    },
+    {
+      "resource": "/studio-tag-browser.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8010,
+      "durationMs": 4517,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-tag-browser.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4520,
+        "responseBodyMs": 0,
+        "transferSize": 1298,
+        "encodedBodySize": 998,
+        "decodedBodySize": 2192
+      }
+    },
+    {
+      "resource": "/studio-card.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7902,
+      "durationMs": 4409,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-card.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4364,
+        "responseBodyMs": 47,
+        "transferSize": 1372,
+        "encodedBodySize": 1072,
+        "decodedBodySize": 2822
+      }
+    },
+    {
+      "resource": "/studio-motion.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7239,
+      "durationMs": 3746,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-motion.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3747,
+        "responseBodyMs": 0,
+        "transferSize": 2548,
+        "encodedBodySize": 2248,
+        "decodedBodySize": 8433
+      }
+    },
+    {
+      "resource": "/studio-detail.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7855,
+      "durationMs": 4362,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-detail.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4209,
+        "responseBodyMs": 155,
+        "transferSize": 10410,
+        "encodedBodySize": 10110,
+        "decodedBodySize": 35518
+      }
+    },
+    {
+      "resource": "/studio-overlay.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7285,
+      "durationMs": 3792,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-overlay.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3747,
+        "responseBodyMs": 47,
+        "transferSize": 2626,
+        "encodedBodySize": 2326,
+        "decodedBodySize": 7603
+      }
+    },
+    {
+      "resource": "/studio-router.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7700,
+      "durationMs": 4207,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-router.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 4102,
+        "responseBodyMs": 107,
+        "transferSize": 1040,
+        "encodedBodySize": 740,
+        "decodedBodySize": 1935
+      }
+    },
+    {
+      "resource": "/studio-i18n.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:08.409Z",
+      "startedAfterMs": 3493,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 7391,
+      "durationMs": 3898,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-i18n.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3794,
+        "responseBodyMs": 106,
+        "transferSize": 1957,
+        "encodedBodySize": 1657,
+        "decodedBodySize": 3251
+      }
+    },
+    {
+      "resource": "/studio-content.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.356Z",
+      "startedAfterMs": 7440,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8672,
+      "durationMs": 1232,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 877,
+        "responseBodyMs": 353,
+        "transferSize": 13143,
+        "encodedBodySize": 12843,
+        "decodedBodySize": 54463
+      }
+    },
+    {
+      "resource": "/studio-edit-templates.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.510Z",
+      "startedAfterMs": 7594,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8936,
+      "durationMs": 1342,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-templates.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1077,
+        "responseBodyMs": 263,
+        "transferSize": 9802,
+        "encodedBodySize": 9502,
+        "decodedBodySize": 39127
+      }
+    },
+    {
+      "resource": "/studio-actions.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 8935,
+      "durationMs": 1079,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-actions.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1078,
+        "responseBodyMs": 0,
+        "transferSize": 1962,
+        "encodedBodySize": 1662,
+        "decodedBodySize": 3885
+      }
+    },
+    {
+      "resource": "/studio-prompt.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9242,
+      "durationMs": 1386,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-prompt.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1232,
+        "responseBodyMs": 154,
+        "transferSize": 5343,
+        "encodedBodySize": 5043,
+        "decodedBodySize": 13987
+      }
+    },
+    {
+      "resource": "/studio-asset-loader.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9595,
+      "durationMs": 1739,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-asset-loader.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1386,
+        "responseBodyMs": 353,
+        "transferSize": 3281,
+        "encodedBodySize": 2981,
+        "decodedBodySize": 7521
+      }
+    },
+    {
+      "resource": "/studio-preview-loader.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.772Z",
+      "startedAfterMs": 7856,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 9860,
+      "durationMs": 2004,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-preview-loader.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1738,
+        "responseBodyMs": 265,
+        "transferSize": 10183,
+        "encodedBodySize": 9883,
+        "decodedBodySize": 37691
+      }
+    },
+    {
+      "resource": "/studio-gallery-look-data.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:12.926Z",
+      "startedAfterMs": 8010,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 10322,
+      "durationMs": 2312,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-gallery-look-data.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 1850,
+        "responseBodyMs": 462,
+        "transferSize": 15455,
+        "encodedBodySize": 15155,
+        "decodedBodySize": 169391
+      }
+    },
+    {
+      "resource": "/studio-display-assets.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.237Z",
+      "startedAfterMs": 8321,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 10831,
+      "durationMs": 2510,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-display-assets.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2001,
+        "responseBodyMs": 509,
+        "transferSize": 14320,
+        "encodedBodySize": 14020,
+        "decodedBodySize": 161662
+      }
+    },
+    {
+      "resource": "/studio-content-v100.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.237Z",
+      "startedAfterMs": 8321,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 11471,
+      "durationMs": 3150,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-content-v100.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2510,
+        "responseBodyMs": 639,
+        "transferSize": 19456,
+        "encodedBodySize": 19156,
+        "decodedBodySize": 169898
+      }
+    },
+    {
+      "resource": "/studio-edit-template-data.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:13.852Z",
+      "startedAfterMs": 8936,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 13399,
+      "durationMs": 4463,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-edit-template-data.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 2534,
+        "responseBodyMs": 1928,
+        "transferSize": 47640,
+        "encodedBodySize": 47340,
+        "decodedBodySize": 892936
+      }
+    },
+    {
+      "resource": "/studio-delivery-assets.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:14.777Z",
+      "startedAfterMs": 9861,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 16389,
+      "durationMs": 6528,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-delivery-assets.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 3536,
+        "responseBodyMs": 2990,
+        "transferSize": 59650,
+        "encodedBodySize": 59350,
+        "decodedBodySize": 525620
+      }
+    },
+    {
+      "resource": "/studio-figure-editor.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.355Z",
+      "startedAfterMs": 16439,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 16924,
+      "durationMs": 485,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-figure-editor.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 286,
+        "responseBodyMs": 200,
+        "transferSize": 7266,
+        "encodedBodySize": 6966,
+        "decodedBodySize": 26420
+      }
+    },
+    {
+      "resource": "/studio-draft.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.840Z",
+      "startedAfterMs": 16924,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 39144,
+      "durationMs": 22220,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-draft.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 22219,
+        "responseBodyMs": 0,
+        "transferSize": 2750,
+        "encodedBodySize": 2450,
+        "decodedBodySize": 8738
+      }
+    },
+    {
+      "resource": "/studio-editor.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:21.840Z",
+      "startedAfterMs": 16924,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 39144,
+      "durationMs": 22220,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-editor.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 21803,
+        "responseBodyMs": 416,
+        "transferSize": 11799,
+        "encodedBodySize": 11499,
+        "decodedBodySize": 47086
+      }
+    },
+    {
+      "resource": "/studio-renderer.js",
+      "query": "?v=108",
+      "version": "108",
+      "method": "GET",
+      "startedAt": "2026-10-13T07:41:44.060Z",
+      "startedAfterMs": 39144,
+      "status": 200,
+      "contentType": "text/javascript",
+      "finishedAfterMs": 111389,
+      "durationMs": 72245,
+      "resourceTiming": {
+        "name": "https://dots.liuzhihang.chatgpt.site/studio-renderer.js?v=108",
+        "nextHopProtocol": "h2",
+        "requestToFirstByteMs": 71627,
+        "responseBodyMs": 616,
+        "transferSize": 7258,
+        "encodedBodySize": 6958,
+        "decodedBodySize": 27204
+      }
+    }
+  ],
+  "templatePngRequests": [],
+  "relevantRequestFailures": [
+    {
+      "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+      "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+      "failure": "net::ERR_ABORTED",
+      "assessment": "Expected cancellation candidate: delivery asset maps in the published manifest to the face:closed thumbnail, which is outside the active Accessories field; the editor aborts thumbnail loads for inactive fields when switching tabs. This request has no HTTP failure status; all six active accessory thumbnails reached ready."
+    }
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "dialogs": [],
+  "thumbnailSnapshots": [
+    {
+      "name": "orb-open-headphones-desktop",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "None",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "empty",
+          "error": null,
+          "thumbnailNode": "span",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "Headphones",
+          "selected": true,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "Round glasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "Chef toque",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "Black cool sunglasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "Cyber glasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "Yellow bucket hat",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        }
+      ]
+    },
+    {
+      "name": "orb-closed-chef-desktop",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "None",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "empty",
+          "error": null,
+          "thumbnailNode": "span",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "Headphones",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "Round glasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "Chef toque",
+          "selected": true,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "Black cool sunglasses",
+          "selected": false,
+          "disabled": true,
+          "available": false,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "Cyber glasses",
+          "selected": false,
+          "disabled": true,
+          "available": false,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "Yellow bucket hat",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        }
+      ]
+    },
+    {
+      "name": "orb-open-chef-desktop",
+      "rows": [
+        {
+          "id": "accessories:none",
+          "label": "None",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "empty",
+          "error": null,
+          "thumbnailNode": "span",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:headphones",
+          "label": "Headphones",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:round-glasses",
+          "label": "Round glasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:chef-toque",
+          "label": "Chef toque",
+          "selected": true,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 91
+          }
+        },
+        {
+          "id": "accessories:cool-sunglasses",
+          "label": "Black cool sunglasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:cyber-glasses",
+          "label": "Cyber glasses",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        },
+        {
+          "id": "accessories:bucket-hat",
+          "label": "Yellow bucket hat",
+          "selected": false,
+          "disabled": false,
+          "available": true,
+          "state": "ready",
+          "error": null,
+          "thumbnailNode": "canvas",
+          "thumbnailBox": {
+            "width": 56,
+            "height": 56
+          },
+          "buttonBox": {
+            "width": 107,
+            "height": 102
+          }
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "chromiumVersion": "155.0.8059.40",
+  "currentStep": null,
+  "cacheRevision": "108",
+  "closedChefAccessorySnapshot": {
+    "name": "orb-closed-chef-desktop",
+    "rows": [
+      {
+        "id": "accessories:none",
+        "label": "None",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "empty",
+        "error": null,
+        "thumbnailNode": "span",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:headphones",
+        "label": "Headphones",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:round-glasses",
+        "label": "Round glasses",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:chef-toque",
+        "label": "Chef toque",
+        "selected": true,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:cool-sunglasses",
+        "label": "Black cool sunglasses",
+        "selected": false,
+        "disabled": true,
+        "available": false,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      },
+      {
+        "id": "accessories:cyber-glasses",
+        "label": "Cyber glasses",
+        "selected": false,
+        "disabled": true,
+        "available": false,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      },
+      {
+        "id": "accessories:bucket-hat",
+        "label": "Yellow bucket hat",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      }
+    ]
+  },
+  "openChefAccessorySnapshot": {
+    "name": "orb-open-chef-desktop",
+    "rows": [
+      {
+        "id": "accessories:none",
+        "label": "None",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "empty",
+        "error": null,
+        "thumbnailNode": "span",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:headphones",
+        "label": "Headphones",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:round-glasses",
+        "label": "Round glasses",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:chef-toque",
+        "label": "Chef toque",
+        "selected": true,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 91
+        }
+      },
+      {
+        "id": "accessories:cool-sunglasses",
+        "label": "Black cool sunglasses",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      },
+      {
+        "id": "accessories:cyber-glasses",
+        "label": "Cyber glasses",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      },
+      {
+        "id": "accessories:bucket-hat",
+        "label": "Yellow bucket hat",
+        "selected": false,
+        "disabled": false,
+        "available": true,
+        "state": "ready",
+        "error": null,
+        "thumbnailNode": "canvas",
+        "thumbnailBox": {
+          "width": 56,
+          "height": 56
+        },
+        "buttonBox": {
+          "width": 107,
+          "height": 102
+        }
+      }
+    ]
+  },
+  "png": {
+    "file": "orb-blue-closed-chef-candidate-dots-20261005-candidate-dots-20261005-dots-orb-core-adjustments-v6-four-tabs-candidate-draft-r1.png",
+    "bytes": 2094940,
+    "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "currentCanvasSha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "matchesCurrentCanvas": true,
+    "canvas": {
+      "width": 1254,
+      "height": 1254
+    },
+    "alpha": {
+      "width": 1254,
+      "height": 1254,
+      "colorType": 6,
+      "transparentPixels": 688068,
+      "opaquePixels": 36259,
+      "partialAlphaPixels": 848189,
+      "alphaBounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1244,
+        "height": 1254
+      }
+    }
+  },
+  "functionalStatus": "passed",
+  "status": "passed",
+  "finishedAt": "2026-10-13T07:45:57.215Z",
+  "totalDurationMs": 293332,
+  "templatePngRequestCount": 0,
+  "failedRelevantRequestCount": 1,
+  "dialogCount": 0,
+  "networkFailureAssessment": {
+    "count": 1,
+    "details": [
+      {
+        "resource": "/assets/delivery/f15aa5bf990da5cd5877815eb927aae2038416d0b678472f5b9ea6cad9b546ea.webp",
+        "query": "?v=lossless-v1&sha256=110be716063ca39589e118f0b56e55ea9515f6d4aa0ea70417dc50948ee6283b",
+        "failure": "net::ERR_ABORTED",
+        "assessment": "Expected cancellation candidate: delivery asset maps in the published manifest to the face:closed thumbnail, which is outside the active Accessories field; the editor aborts thumbnail loads for inactive fields when switching tabs. This request has no HTTP failure status; all six active accessory thumbnails reached ready."
+      }
+    ],
+    "functionalImpact": "No impact observed on the required accessory thumbnails, editor readiness, or PNG export."
+  },
+  "performanceAssessment": {
+    "status": "failed",
+    "coldEditorReadyMs": 164738,
+    "coldEditorTargetMs": 60000,
+    "coldEditorExceededTarget": true,
+    "accessoryThumbnailsReadyMs": 40000,
+    "note": "Interaction passed within the authorized 180s initial-ready and 120s thumbnail caps. Overall online acceptance is functional-passed/performance-failed because the cold editor exceeded the earlier 60s target."
+  },
+  "overallAcceptance": "functional-passed-performance-failed"
+}

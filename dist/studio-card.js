@@ -1,6 +1,6 @@
-import {getAsset,SERIES} from './studio-artwork-catalog.js?v=102';
-import {label,t} from './studio-i18n.js?v=102';
-/** Data-only component. A new Character/Artwork uses the same card without branches. */
+import {getAsset,SERIES} from './studio-artwork-catalog.js?v=110';
+import {label,t} from './studio-i18n.js?v=110';
+/** Data-only card shared by source Artworks, looks and public figures. */
 export function createArtworkCard(artwork,{language='en',onOpen=()=>{},lookupAsset=getAsset,series=SERIES,context='card'}={}) {
   const asset=lookupAsset(artwork.assetRefs.poster);
   const item=document.createElement('article');item.className='artwork-card';
@@ -13,6 +13,8 @@ export function createArtworkCard(artwork,{language='en',onOpen=()=>{},lookupAss
   const category=document.createElement('span');category.className='artwork-series';category.textContent=categoryLabel;
   caption.append(name);if(categoryLabel)caption.append(category);button.append(media,caption);button.onclick=()=>onOpen(artwork.id,artwork.version,button);item.append(button);
   const retry=document.createElement('button');retry.className='text-button card-retry';retry.textContent=t(language,'retry');retry.hidden=true;
+  if(artwork.artworkId){button.dataset.lookId=artwork.id;button.dataset.sourceArtworkId=artwork.artworkId;}
+  if(artwork.kind==='gallery-figure')button.dataset.figureId=artwork.id;
   img.onerror=()=>{img.hidden=true;error.hidden=false;retry.hidden=false;};img.onload=()=>{img.hidden=false;error.hidden=true;retry.hidden=true;};
   retry.onclick=()=>{if(!asset)return;img.hidden=false;img.src=asset.path;};item.append(retry);return item;
 }

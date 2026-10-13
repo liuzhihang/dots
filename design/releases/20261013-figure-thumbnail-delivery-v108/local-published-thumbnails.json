@@ -1,0 +1,554 @@
+{
+  "result": "passed",
+  "stageRevision": 108,
+  "stagePath": "/Users/liuzhihang/workspace/dots/.artifacts/modal-typography-20261013/v108/publish-stage",
+  "servedRoot": "/Users/liuzhihang/workspace/dots/.artifacts/modal-typography-20261013/v108/publish-stage/dist",
+  "staticClosure": {
+    "fileCount": 592,
+    "excludedSourcePngCount": 412,
+    "stagedSourceOnlyPaths": [],
+    "sourceOnlyRequestCount": 0,
+    "sourceOnlyRequests": [],
+    "allPngRequestCount": 21,
+    "allPngRequests": [
+      "/assets/posters/brand-mark-display-v1.png",
+      "/assets/posters/candidate-dots-20261005-thumb256-v99.png",
+      "/assets/posters/dots-butter-beret-thumb256-v99.png",
+      "/assets/posters/dots-lime-frog-bow-thumb256-v99.png",
+      "/assets/posters/dots-pink-heart-shades-thumb256-v99.png",
+      "/assets/posters/dots-leaf-pear-thumb256-v100.png",
+      "/assets/posters/dots-violet-star-thumb256-v100.png",
+      "/assets/posters/dots-flower-cloud-thumb256-v100.png",
+      "/assets/posters/dots-lime-rounded-square-thumb256-v100.png",
+      "/assets/posters/candidate-grok-20261005-thumb256-v99.png",
+      "/assets/posters/grok-green-cloud-thumb256-v99.png",
+      "/assets/posters/grok-teal-square-thumb256-v99.png",
+      "/assets/posters/grok-coral-drop-thumb256-v99.png",
+      "/assets/posters/grok-white-arch-thumb256-v100.png",
+      "/assets/posters/grok-horizontal-capsule-thumb256-v100.png",
+      "/assets/posters/grok-soft-triangle-thumb256-v100.png",
+      "/assets/posters/grok-soft-diamond-thumb256-v100.png",
+      "/assets/posters/grok-half-dome-thumb256-v100.png",
+      "/assets/posters/grok-cylinder-thumb256-v100.png",
+      "/assets/posters/brand-mark-display-v1.png",
+      "/assets/posters/brand-mark-display-v1.png"
+    ],
+    "serverErrors": []
+  },
+  "checks": [
+    {
+      "name": "Served the actual static publish closure and opened the Orb Figure in Character Studio.",
+      "passed": true,
+      "detail": {
+        "url": "http://127.0.0.1:55895/#/figure/dots-orb?v=v1",
+        "stageRevision": "108",
+        "stagePath": "/Users/liuzhihang/workspace/dots/.artifacts/modal-typography-20261013/v108/publish-stage"
+      }
+    },
+    {
+      "name": "All six non-empty accessory thumbnails render non-empty canvases.",
+      "passed": true,
+      "detail": {
+        "nonEmptyOptionCount": 6,
+        "readyCount": 6,
+        "thumbnails": [
+          {
+            "optionId": "accessories:none",
+            "state": "empty",
+            "isNone": true,
+            "canvasCount": 0,
+            "width": 0,
+            "height": 0,
+            "visiblePixels": 0,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:headphones",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 34,
+            "visiblePixels": 1303,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:round-glasses",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 41,
+            "visiblePixels": 1224,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:chef-toque",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 29,
+            "visiblePixels": 2390,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:cool-sunglasses",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 36,
+            "visiblePixels": 2734,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:cyber-glasses",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 36,
+            "visiblePixels": 3063,
+            "unavailableMark": false
+          },
+          {
+            "optionId": "accessories:bucket-hat",
+            "state": "ready",
+            "isNone": false,
+            "canvasCount": 1,
+            "width": 96,
+            "height": 52,
+            "visiblePixels": 2250,
+            "unavailableMark": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "The None accessory remains an intentional empty option, not a failed thumbnail.",
+      "passed": true,
+      "detail": {
+        "optionId": "accessories:none",
+        "state": "empty",
+        "isNone": true,
+        "canvasCount": 0,
+        "width": 0,
+        "height": 0,
+        "visiblePixels": 0,
+        "unavailableMark": false
+      }
+    },
+    {
+      "name": "Cool and Cyber glasses are disabled with closed eyes.",
+      "passed": true,
+      "detail": {
+        "accessories:cool-sunglasses": {
+          "found": true,
+          "disabled": true,
+          "available": "false"
+        },
+        "accessories:cyber-glasses": {
+          "found": true,
+          "disabled": true,
+          "available": "false"
+        }
+      }
+    },
+    {
+      "name": "Orb selection reaches Blue + Closed eyes + Chef toque and exports are enabled.",
+      "passed": true,
+      "detail": {
+        "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+        "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+        "recipeId": "orb-blue-closed-none-chef-toque",
+        "color": "colors:blue",
+        "face": "face:closed",
+        "accessory": "accessories:chef-toque",
+        "canvasWidth": 1254,
+        "canvasHeight": 1254,
+        "transparentPixels": 688068,
+        "visiblePixels": 884448,
+        "canvasRevision": "1",
+        "exportDisabled": false
+      }
+    },
+    {
+      "name": "Cool and Cyber glasses become available with open eyes.",
+      "passed": true,
+      "detail": {
+        "accessories:cool-sunglasses": {
+          "found": true,
+          "disabled": false,
+          "available": "true"
+        },
+        "accessories:cyber-glasses": {
+          "found": true,
+          "disabled": false,
+          "available": "true"
+        }
+      }
+    },
+    {
+      "name": "Returning to Closed eyes restores the Blue + Closed eyes + Chef toque selection.",
+      "passed": true,
+      "detail": {
+        "finalState": {
+          "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+          "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+          "recipeId": "orb-blue-closed-none-chef-toque",
+          "color": "colors:blue",
+          "face": "face:closed",
+          "accessory": "accessories:chef-toque",
+          "canvasWidth": 1254,
+          "canvasHeight": 1254,
+          "transparentPixels": 688068,
+          "visiblePixels": 884448,
+          "canvasRevision": "1",
+          "exportDisabled": false
+        },
+        "closedGlasses": {
+          "accessories:cool-sunglasses": {
+            "disabled": true,
+            "available": "false"
+          },
+          "accessories:cyber-glasses": {
+            "disabled": true,
+            "available": "false"
+          }
+        }
+      }
+    },
+    {
+      "name": "PNG export is valid and byte-identical to the current selected-state canvas.",
+      "passed": true,
+      "detail": {
+        "filename": "candidate-dots-20261005-candidate-dots-20261005-dots-orb-core-adjustments-v6-four-tabs-candidate-draft-r1.png",
+        "bytes": 2094940,
+        "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+        "canvasSha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+        "pngSignature": true,
+        "beforeExport": {
+          "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+          "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+          "recipeId": "orb-blue-closed-none-chef-toque",
+          "color": "colors:blue",
+          "face": "face:closed",
+          "accessory": "accessories:chef-toque",
+          "canvasWidth": 1254,
+          "canvasHeight": 1254,
+          "transparentPixels": 688068,
+          "visiblePixels": 884448,
+          "canvasRevision": "1",
+          "exportDisabled": false
+        },
+        "afterExport": {
+          "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+          "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+          "recipeId": "orb-blue-closed-none-chef-toque",
+          "color": "colors:blue",
+          "face": "face:closed",
+          "accessory": "accessories:chef-toque",
+          "canvasWidth": 1254,
+          "canvasHeight": 1254,
+          "transparentPixels": 688068,
+          "visiblePixels": 884448,
+          "canvasRevision": "1",
+          "exportDisabled": false
+        }
+      }
+    },
+    {
+      "name": "No excluded original source PNG is requested by the browser.",
+      "passed": true,
+      "detail": {
+        "count": 0,
+        "requests": []
+      }
+    },
+    {
+      "name": "The browser does not raise uncaught JavaScript errors or native dialogs.",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "failures": [],
+  "selections": {
+    "closedGlasses": {
+      "accessories:cool-sunglasses": {
+        "found": true,
+        "disabled": true,
+        "available": "false"
+      },
+      "accessories:cyber-glasses": {
+        "found": true,
+        "disabled": true,
+        "available": "false"
+      }
+    },
+    "openGlasses": {
+      "accessories:cool-sunglasses": {
+        "found": true,
+        "disabled": false,
+        "available": "true"
+      },
+      "accessories:cyber-glasses": {
+        "found": true,
+        "disabled": false,
+        "available": "true"
+      }
+    },
+    "selectedState": {
+      "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+      "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+      "recipeId": "orb-blue-closed-none-chef-toque",
+      "color": "colors:blue",
+      "face": "face:closed",
+      "accessory": "accessories:chef-toque",
+      "canvasWidth": 1254,
+      "canvasHeight": 1254,
+      "transparentPixels": 688068,
+      "visiblePixels": 884448,
+      "canvasRevision": "1",
+      "exportDisabled": false
+    },
+    "finalState": {
+      "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+      "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+      "recipeId": "orb-blue-closed-none-chef-toque",
+      "color": "colors:blue",
+      "face": "face:closed",
+      "accessory": "accessories:chef-toque",
+      "canvasWidth": 1254,
+      "canvasHeight": 1254,
+      "transparentPixels": 688068,
+      "visiblePixels": 884448,
+      "canvasRevision": "1",
+      "exportDisabled": false
+    }
+  },
+  "thumbnailAudit": [
+    {
+      "optionId": "accessories:none",
+      "state": "empty",
+      "isNone": true,
+      "canvasCount": 0,
+      "width": 0,
+      "height": 0,
+      "visiblePixels": 0,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:headphones",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 34,
+      "visiblePixels": 1303,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:round-glasses",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 41,
+      "visiblePixels": 1224,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:chef-toque",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 29,
+      "visiblePixels": 2390,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:cool-sunglasses",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 36,
+      "visiblePixels": 2734,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:cyber-glasses",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 36,
+      "visiblePixels": 3063,
+      "unavailableMark": false
+    },
+    {
+      "optionId": "accessories:bucket-hat",
+      "state": "ready",
+      "isNone": false,
+      "canvasCount": 1,
+      "width": 96,
+      "height": 52,
+      "visiblePixels": 2250,
+      "unavailableMark": false
+    }
+  ],
+  "thumbnailWaits": [
+    {
+      "settled": true,
+      "timeout": null,
+      "states": [
+        {
+          "optionId": "accessories:none",
+          "state": "empty"
+        },
+        {
+          "optionId": "accessories:headphones",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:round-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:chef-toque",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cool-sunglasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cyber-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:bucket-hat",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "settled": true,
+      "timeout": null,
+      "states": [
+        {
+          "optionId": "accessories:none",
+          "state": "empty"
+        },
+        {
+          "optionId": "accessories:headphones",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:round-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:chef-toque",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cool-sunglasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cyber-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:bucket-hat",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "settled": true,
+      "timeout": null,
+      "states": [
+        {
+          "optionId": "accessories:none",
+          "state": "empty"
+        },
+        {
+          "optionId": "accessories:headphones",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:round-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:chef-toque",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cool-sunglasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:cyber-glasses",
+          "state": "ready"
+        },
+        {
+          "optionId": "accessories:bucket-hat",
+          "state": "ready"
+        }
+      ]
+    }
+  ],
+  "exportAudit": {
+    "filename": "candidate-dots-20261005-candidate-dots-20261005-dots-orb-core-adjustments-v6-four-tabs-candidate-draft-r1.png",
+    "bytes": 2094940,
+    "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "canvasSha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+    "pngSignature": true,
+    "beforeExport": {
+      "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+      "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+      "recipeId": "orb-blue-closed-none-chef-toque",
+      "color": "colors:blue",
+      "face": "face:closed",
+      "accessory": "accessories:chef-toque",
+      "canvasWidth": 1254,
+      "canvasHeight": 1254,
+      "transparentPixels": 688068,
+      "visiblePixels": 884448,
+      "canvasRevision": "1",
+      "exportDisabled": false
+    },
+    "afterExport": {
+      "sha256": "b165c4f618c493c4183e4644a402eac9533a80a633a5cc2778e34357703aabd9",
+      "stateId": "dots-orb::candidate-dots-20261005::orb-blue-closed-none-chef-toque",
+      "recipeId": "orb-blue-closed-none-chef-toque",
+      "color": "colors:blue",
+      "face": "face:closed",
+      "accessory": "accessories:chef-toque",
+      "canvasWidth": 1254,
+      "canvasHeight": 1254,
+      "transparentPixels": 688068,
+      "visiblePixels": 884448,
+      "canvasRevision": "1",
+      "exportDisabled": false
+    }
+  },
+  "browserErrors": [],
+  "requestFailures": [],
+  "browser": "Project Playwright Chromium fallback after in-app Browser invocation was blocked by a native modal / locked Mac.",
+  "viewport": {
+    "width": 1440,
+    "height": 960
+  },
+  "browserStateAtFailure": null,
+  "screenshots": [
+    "accessory-thumbnails.png",
+    "orb-blue-closed-chef-toque.png",
+    "final-state-on-error.png"
+  ]
+}

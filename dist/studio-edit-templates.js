@@ -1,8 +1,8 @@
 // Controlled editor profiles for the two exact orb artworks.  Layer references
 // are resolved from a separately reviewed asset registry at runtime; this file
 // deliberately contains no filesystem paths and cannot grant approval itself.
-import { normalizeTemplatePlacement } from './studio-preview-loader.js?v=102';
-import { CHARACTER_ADJUSTMENT_TEMPLATES } from './studio-edit-template-data.js?v=102';
+import { normalizeTemplatePlacement } from './studio-preview-loader.js?v=110';
+import { CHARACTER_ADJUSTMENT_TEMPLATES } from './studio-edit-template-data.js?v=110';
 
 export const EDIT_TEMPLATE_REVISION = 'edit-templates-20261011-v100';
 
@@ -637,14 +637,41 @@ export function resolveTemplateAsset(reference, assetRegistry) {
 }
 
 /** Explain a blocked selection without changing capability data or the draft. */
-export function describeTemplateSelection(template, currentOptions, field, value) {
+export function describeTemplateSelection(template, currentOptions, field, value, {
+  fixedOptions = {},
+  defaultOptions = template?.defaultOptions || {}
+} = {}) {
+  const fixed = fixedOptions && typeof fixedOptions === 'object' && !Array.isArray(fixedOptions) ? fixedOptions : {};
+  const defaults = defaultOptions && typeof defaultOptions === 'object' && !Array.isArray(defaultOptions)
+    ? defaultOptions
+    : template?.defaultOptions || {};
+  const fixedMismatch = options => Object.entries(fixed).find(([key, fixedValue]) => options?.[key] !== fixedValue);
+  const validateSelection = options => {
+    const mismatch = fixedMismatch(options);
+    if (mismatch) {
+      const [fixedField, fixedValue] = mismatch;
+      return {
+        valid: false,
+        options: Object.freeze({ ...options }),
+        errors: [{
+          code: `fixed-${fixedField}`,
+          field: fixedField,
+          value: options?.[fixedField],
+          message: `${fixedField} is fixed to ${fixedValue} for this GalleryLook.`
+        }]
+      };
+    }
+    return validateTemplateOptions(template, options);
+  };
   const candidate = { ...currentOptions, [field]: value };
-  const validation = validateTemplateOptions(template, candidate);
+  const validation = validateSelection(candidate);
   if (validation.valid) return { kind: 'available', error: null, restore: [] };
   const error = validation.errors[0];
   const kind = error.code === 'unregistered-recipe' || error.code.endsWith('-separate-fit')
     ? 'missing-combination' : 'incompatible';
-  const fields = optionFieldKeys(template).filter(key => key !== field && currentOptions[key] !== template.defaultOptions[key]);
+  const fields = optionFieldKeys(template).filter(key => key !== field
+    && !Object.hasOwn(fixed, key)
+    && currentOptions[key] !== defaults[key]);
   // A suggestion is actionable only if every manual restoration is itself
   // legal. Breadth-first search prefers the shortest real UI path, not merely
   // a valid final combination behind disabled intermediate controls.
@@ -653,19 +680,20 @@ export function describeTemplateSelection(template, currentOptions, field, value
   while (queue.length) {
     const step = queue.shift();
     for (const key of fields) {
-      if (step.options[key] === template.defaultOptions[key]) continue;
-      const restored = { ...step.options, [key]: template.defaultOptions[key] };
-      if (!validateTemplateOptions(template, restored).valid) continue;
-      const restore = [...step.restore, { field: key, value: template.defaultOptions[key] }];
-      if (validateTemplateOptions(template, { ...restored, [field]: value }).valid) return { kind, error, restore };
+      if (step.options[key] === defaults[key]) continue;
+      const restored = { ...step.options, [key]: defaults[key] };
+      if (!validateSelection(restored).valid) continue;
+      const restore = [...step.restore, { field: key, value: defaults[key] }];
+      if (validateSelection({ ...restored, [field]: value }).valid) return { kind, error, restore };
       const keyOfOptions = JSON.stringify(fields.map(key => restored[key]));
       if (!visited.has(keyOfOptions)) { visited.add(keyOfOptions); queue.push({ options: restored, restore }); }
     }
   }
   // A default accessory can itself block another silhouette. In that case,
   // offer a real registered alternative, without applying it automatically.
-  const otherFields = optionFieldKeys(template).filter(key => key !== field);
-  const intermediates = enumerateValidConfigurations(template).filter(options => options[field] === currentOptions[field]);
+  const otherFields = optionFieldKeys(template).filter(key => key !== field && !Object.hasOwn(fixed, key));
+  const intermediates = enumerateValidConfigurations(template).filter(options => !fixedMismatch(options)
+    && options[field] === currentOptions[field]);
   const alternatives = [{ options: { ...currentOptions }, restore: [] }];
   const seen = new Set([JSON.stringify(otherFields.map(key => currentOptions[key]))]);
   while (alternatives.length) {
@@ -675,7 +703,7 @@ export function describeTemplateSelection(template, currentOptions, field, value
       if (changed.length !== 1) continue;
       const key = changed[0];
       const restore = [...step.restore, { field: key, value: options[key] }];
-      if (validateTemplateOptions(template, { ...options, [field]: value }).valid) return { kind, error, restore };
+      if (validateSelection({ ...options, [field]: value }).valid) return { kind, error, restore };
       const stateKey = JSON.stringify(otherFields.map(key => options[key]));
       if (!seen.has(stateKey)) { seen.add(stateKey); alternatives.push({ options, restore }); }
     }
