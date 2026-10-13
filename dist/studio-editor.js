@@ -1,7 +1,7 @@
 import { createDraft, updateDraft } from './studio-draft.js?v=102';
 import { getTemplateForArtwork, TEMPLATE_REGISTRY } from './studio-edit-templates.js?v=102';
 import { createExportSnapshot, exportSnapshot, isRenderResultCurrent, renderDraft } from './studio-renderer.js?v=102';
-import { enumerateValidConfigurations, getRequiredTemplateAssets, getTemplateOptionFields, getTemplateOptionAssetRefs, assertValidTemplateOptions } from './studio-edit-templates.js?v=102';
+import { enumerateValidConfigurations, getRequiredTemplateAssets, getTemplateOptionFields, getTemplateOptionAssetRefs, describeTemplateSelection } from './studio-edit-templates.js?v=102';
 import { normalizeTemplatePlacement, templatePlacementMatrix } from './studio-preview-loader.js?v=102';
 
 export const STUDIO_EDITOR_REVISION = 'studio-editor-20261010-v99';
@@ -15,7 +15,7 @@ const labels = {
     
     rendering: 'Rendering the selected configuration…', ready: '',
     failed: 'The latest configuration could not be rendered. Export is unavailable.',
-    retry: 'Retry preview and thumbnails',
+    retry: 'Retry preview', thumbnailFailed: 'Image failed to load', retryThumbnail: 'Retry image', selected: 'Selected', missingCombination: 'This combination has not been produced yet.', restoreFirst: 'First choose', adjustFirst: 'Adjust first', incompatible: 'Incompatible with the current selection.',
     stale: 'The previous preview remains visible while the latest selection renders.',
     exported: 'PNG download started.',
     unknown: 'The selected option is not supported by this template.', unavailable: 'Unavailable in this template'
@@ -27,7 +27,7 @@ const labels = {
     
     rendering: '正在渲染当前配置…', ready: '',
     failed: '最新配置渲染失败，暂不可导出。',
-    retry: '重试预览与缩略图',
+    retry: '重试预览', thumbnailFailed: '图片加载失败', retryThumbnail: '重试图片', selected: '当前选择', missingCombination: '此组合素材尚未制作。', restoreFirst: '请先选择', adjustFirst: '先调整', incompatible: '与当前选择不兼容。',
     stale: '最新选择正在渲染，当前暂显示上一版预览。',
     exported: '已开始下载 PNG。',
     unknown: '此模板不支持该选项。', unavailable: '此模板不支持'
@@ -144,6 +144,8 @@ export function createEditor({
   const categoryIds = categories.map(category => category.id);
   let activeCategory = categoryIds[0];
   const tabButtons = new Map();
+  const selectionSummary = documentRef.createElement('p');
+  selectionSummary.className = 'studio-editor-selection-summary helper';
   const status = documentRef.createElement('p');
   status.className = 'studio-editor-status';
   status.setAttribute('role', 'status');
@@ -153,7 +155,7 @@ export function createEditor({
   retryButton.dataset.action = 'retry';
   retryButton.hidden = true;
   retryButton.disabled = true;
-  element.append(heading, hint, form, status, retryButton);
+  element.append(heading, hint, selectionSummary, form, status, retryButton);
   root.append(element);
 
   let language = languageKey(draft.language || initialLanguage);
@@ -168,8 +170,8 @@ export function createEditor({
   const categoryPanels = new Map();
   const optionButtons = new Map();
   const optionDetails = new WeakMap();
-  const thumbnailControllers = new Set();
-  let thumbnailsStarted = false;
+  const thumbnailControllers = new Map();
+  const thumbnailRetries = new WeakMap();
   let thumbnailGeneration = 0;
 
   function currentSnapshot() {
@@ -216,6 +218,13 @@ export function createEditor({
         button.setAttribute('aria-label', `${text[field]}: ${name}${button.dataset.optionUnavailable === 'true' ? ` — ${text.unavailable}` : ''}`);
       }
     }
+    for (const buttons of optionButtons.values()) for (const button of buttons) {
+      const retry = thumbnailRetries.get(button);
+      if (retry) {
+        retry.textContent = text.retryThumbnail;
+        retry.setAttribute('aria-label', `${text.retryThumbnail}: ${optionLabel(optionDetails.get(button)?.option, language)}`);
+      }
+    }
     syncButtons();
   }
 
@@ -225,22 +234,51 @@ export function createEditor({
     return refs.thumbnailAssets.length ? refs.thumbnailAssets : refs.layerAssets;
   }
 
+  function selectionName(field, value) {
+    return `${labels[language][field]}: ${optionLabel(template.options[field]?.find(option => option.id === value), language)}`;
+  }
+
   function syncButtons() {
+    selectionSummary.textContent = `${labels[language].selected} — ${editableFields.map(field => selectionName(field, draft.options[field])).join(' · ')}`;
     for (const [field, buttons] of optionButtons) {
+      const guidance = panels.get(field)?.querySelector('.studio-editor-option-guidance');
+      if (guidance) guidance.replaceChildren();
       for (const button of buttons) {
         button.setAttribute('aria-pressed', String(button.value === draft.options[field]));
+        const availability = describeTemplateSelection(template, draft.options, field, button.value);
         let conflict = '';
-        try { assertValidTemplateOptions(template, { ...draft.options, [field]: button.value }); }
-        catch (error) { conflict = localErrorMessage(error, language); }
+        if (availability.kind !== 'available') {
+          conflict = availability.kind === 'missing-combination'
+            ? labels[language].missingCombination : localErrorMessage(availability.error, language);
+          if (availability.restore.length) conflict += ` ${labels[language].restoreFirst} ${availability.restore.map(row => selectionName(row.field, row.value)).join(' · ')}.`;
+        }
         button.disabled = Boolean(conflict || button.dataset.optionUnavailable === 'true');
         button.setAttribute('aria-disabled', String(button.disabled));
         button.dataset.conflict = conflict;
-        button.title = conflict;
+        button.dataset.compatibility = availability.kind;
+        const visual = button.querySelector('.studio-editor-option-visual');
+        const failure = visual?.dataset.thumbnailState === 'error' && button.dataset.thumbnailError === 'true'
+          ? labels[language].thumbnailFailed : '';
+        const message = [conflict, failure].filter(Boolean).join(' ');
+        button.title = message;
         const name = optionLabel(optionDetails.get(button)?.option, language);
-        button.setAttribute('aria-label', `${labels[language][field]}: ${name}${conflict ? ` — ${conflict}` : ''}`);
+        button.setAttribute('aria-label', `${labels[language][field]}: ${name}${message ? ` — ${message}` : ''}`);
         const reason = button.querySelector('.studio-editor-option-reason');
-        if (reason) { reason.textContent = conflict; reason.hidden = !conflict; }
+        if (reason) {
+          reason.textContent = conflict && availability.restore.length
+            ? `${labels[language].adjustFirst} ${[...new Set(availability.restore.map(row => labels[language][row.field]))].join(' / ')}`
+            : failure || (conflict ? labels[language].unavailable : '');
+          reason.hidden = !reason.textContent;
+        }
+        if (conflict && guidance) {
+          const explanation = documentRef.createElement('p');
+          const kind = availability.kind === 'missing-combination' ? labels[language].missingCombination : labels[language].incompatible;
+          explanation.textContent = `${name} — ${availability.restore.length ? kind : conflict}`;
+          if (availability.restore.length) explanation.textContent += ` ${labels[language].restoreFirst} ${availability.restore.map(row => selectionName(row.field, row.value)).join(' → ')}.`;
+          guidance.append(explanation);
+        }
       }
+      if (guidance) guidance.hidden = !guidance.children.length;
     }
   }
 
@@ -259,14 +297,30 @@ export function createEditor({
     const detail = optionDetails.get(button);
     const field = button.dataset.field;
     button.setAttribute('aria-label', `${labels[language][field]}: ${optionLabel(detail?.option, language)} — ${labels[language].unavailable}`);
-    if (reason === 'thumbnail-load-failed') {
-      retryButton.hidden = false;
-      retryButton.disabled = false;
-    }
   }
 
-  function hasRetryableThumbnailFailure() {
-    return [...optionButtons.values()].some(buttons => buttons.some(button => button.dataset.unavailableReason === 'thumbnail-load-failed'));
+  function markThumbnailFailure(button, visual) {
+    button.dataset.thumbnailError = 'true';
+    visual.dataset.thumbnailState = 'error';
+    visual.replaceChildren();
+    const mark = documentRef.createElement('span');
+    mark.textContent = '!';
+    visual.append(mark);
+    const retry = thumbnailRetries.get(button);
+    if (retry) { retry.hidden = false; retry.disabled = false; }
+    syncButtons();
+  }
+
+  function cancelThumbnails({ hiddenOnly = false } = {}) {
+    const fields = categories.find(category => category.id === activeCategory)?.fields || [];
+    for (const [button, controller] of thumbnailControllers) {
+      if (hiddenOnly && fields.includes(button.dataset.field)) continue;
+      controller.abort();
+      button.dataset.thumbnailGeneration = String(++thumbnailGeneration);
+      const visual = button.querySelector('.studio-editor-option-visual');
+      if (visual?.dataset.thumbnailState === 'loading') visual.dataset.thumbnailState = 'waiting-for-manifest';
+      thumbnailControllers.delete(button);
+    }
   }
 
   function thumbnailBounds(record) {
@@ -297,23 +351,20 @@ export function createEditor({
     };
   }
 
-  function populateOptionThumbnails(rows, { retry = false } = {}) {
-    if ((!retry && thumbnailsStarted) || destroyed) return;
-    thumbnailsStarted = true;
+  function populateOptionThumbnails(rows, { retryButton: targetButton = null } = {}) {
+    if (destroyed || !canExport()) return;
+    const visibleFields = categories.find(category => category.id === activeCategory)?.fields || [];
     const recordsByKey = new Map((Array.isArray(rows) ? rows : [])
       .map(record => [`${record.id}\u0000${record.version}\u0000${record.purpose}`, record]));
     for (const [field, buttons] of optionButtons) {
-      if (field === 'color' || field === 'colors') continue;
+      if (field === 'color' || field === 'colors' || !visibleFields.includes(field)) continue;
       for (const button of buttons) {
         const visual = button.querySelector('.studio-editor-option-visual');
-        if (retry) {
-          if (button.dataset.unavailableReason !== 'thumbnail-load-failed') continue;
-          button.disabled = false;
-          button.removeAttribute('aria-disabled');
-          button.removeAttribute('data-option-unavailable');
-          button.removeAttribute('data-unavailable-reason');
-          visual.replaceChildren();
-        }
+        if (targetButton && button !== targetButton) continue;
+        if (!targetButton && ['ready', 'empty', 'loading', 'error'].includes(visual.dataset.thumbnailState)) continue;
+        delete button.dataset.thumbnailError;
+        const retry = thumbnailRetries.get(button);
+        if (retry) { retry.hidden = true; retry.disabled = true; }
         const references = optionLayerRefs(field, button.value);
         if (references?.length === 0) {
           visual.dataset.thumbnailState = 'empty';
@@ -349,10 +400,11 @@ export function createEditor({
         const generation = ++thumbnailGeneration;
         button.dataset.thumbnailGeneration = String(generation);
         visual.dataset.thumbnailState = 'loading';
+        syncButtons();
         visual.dataset.assetIds = references.map(reference => reference.id).join(' ');
         visual.replaceChildren();
         const controller = new AbortController();
-        thumbnailControllers.add(controller);
+        thumbnailControllers.set(button, controller);
         void (async () => {
           const leases = [];
           try {
@@ -393,24 +445,17 @@ export function createEditor({
             });
             visual.replaceChildren(canvas);
             visual.dataset.thumbnailState = 'ready';
-            button.disabled = false;
-            button.removeAttribute('aria-disabled');
-            button.removeAttribute('data-option-unavailable');
-            button.removeAttribute('data-unavailable-reason');
+            delete button.dataset.thumbnailError;
             syncButtons();
-            if (!hasRetryableThumbnailFailure() && canExport()) {
-              retryButton.hidden = true;
-              retryButton.disabled = true;
-            }
           } catch (error) {
             if (!destroyed && !controller.signal.aborted && Number(button.dataset.thumbnailGeneration) === generation) {
-              markOptionUnavailable(button, visual, 'thumbnail-load-failed');
+              markThumbnailFailure(button, visual);
             }
           } finally {
             for (const lease of leases) {
               try { lease.release?.(); } catch { /* Release is best effort during editor teardown. */ }
             }
-            thumbnailControllers.delete(controller);
+            if (thumbnailControllers.get(button) === controller) thumbnailControllers.delete(button);
           }
         })();
       }
@@ -427,6 +472,8 @@ export function createEditor({
       button.tabIndex = selected ? 0 : -1;
       categoryPanels.get(key).hidden = !selected;
     }
+    cancelThumbnails({ hiddenOnly: true });
+    if (resolvedAssetRegistry) populateOptionThumbnails(resolvedAssetRegistry);
     if (focus) {
       const button = tabButtons.get(field);
       button.focus({ preventScroll: true });
@@ -546,9 +593,27 @@ export function createEditor({
             }
           });
           buttons.push(button);
-          group.append(button);
+          const item = documentRef.createElement('div');
+          item.className = 'studio-editor-option-item';
+          const imageRetry = documentRef.createElement('button');
+          imageRetry.type = 'button';
+          imageRetry.className = 'studio-editor-thumbnail-retry';
+          imageRetry.dataset.action = 'retry-thumbnail';
+          imageRetry.hidden = true;
+          imageRetry.disabled = true;
+          imageRetry.textContent = labels[language].retryThumbnail;
+          imageRetry.setAttribute('aria-label', `${labels[language].retryThumbnail}: ${optionLabel(option, language)}`);
+          imageRetry.addEventListener('click', () => {
+            if (resolvedAssetRegistry) populateOptionThumbnails(resolvedAssetRegistry, { retryButton: button });
+          });
+          thumbnailRetries.set(button, imageRetry);
+          item.append(button, imageRetry);
+          group.append(item);
         }
-        panel.append(title, group);
+        const guidance = documentRef.createElement('div');
+        guidance.className = 'studio-editor-option-guidance helper';
+        guidance.hidden = true;
+        panel.append(title, group, guidance);
         categoryPanel.append(panel);
         panels.set(field, panel);
         optionButtons.set(field, buttons);
@@ -644,6 +709,11 @@ export function createEditor({
   async function requestRender() {
     if (destroyed) return null;
     const token = ++activeToken;
+    cancelThumbnails();
+    for (const buttons of optionButtons.values()) for (const button of buttons) {
+      const retry = thumbnailRetries.get(button);
+      if (retry && !retry.hidden) retry.disabled = true;
+    }
     requestController?.abort();
     const controller = new AbortController();
     requestController = controller;
@@ -679,10 +749,13 @@ export function createEditor({
       if (lastResult && lastResult !== result) discardResult(lastResult);
       lastResult = result;
       setCanvas(result);
-      const canRetry = hasRetryableThumbnailFailure();
-      retryButton.hidden = !canRetry;
-      retryButton.disabled = !canRetry;
+      retryButton.hidden = true;
+      retryButton.disabled = true;
       emitStatus(labels[language].ready, true);
+      for (const buttons of optionButtons.values()) for (const button of buttons) {
+        const retry = thumbnailRetries.get(button);
+        if (retry && !retry.hidden) retry.disabled = false;
+      }
       // Current character layers take priority over optional control thumbnails.
       populateOptionThumbnails(registryRows);
       return currentSnapshot();
@@ -700,7 +773,6 @@ export function createEditor({
   }
 
   retryButton.addEventListener('click', () => {
-    if (resolvedAssetRegistry) populateOptionThumbnails(resolvedAssetRegistry, { retry: true });
     void requestRender();
   });
 
@@ -762,8 +834,7 @@ export function createEditor({
       manifestController?.abort();
       manifestController = null;
       thumbnailGeneration += 1;
-      for (const controller of thumbnailControllers) controller.abort();
-      thumbnailControllers.clear();
+      cancelThumbnails();
       if (lastResult) discardResult(lastResult);
       lastResult = null;
       element.remove();

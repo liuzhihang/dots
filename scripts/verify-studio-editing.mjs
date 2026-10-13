@@ -25,6 +25,7 @@ const WIDTH = 1440;
 const HEIGHT = 900;
 const focusedRaceOnly = process.argv.includes('--focused-race-only');
 const focusedCycleOnly = process.argv.includes('--focused-cycle-only');
+const focusedCycleRaceOnly = process.argv.includes('--focused-cycle-race-only');
 const TAB_FOR_FIELD = Object.freeze({ appearance: 'appearance', colors: 'colors', face: 'face', clothing: 'clothing', accessories: 'accessories', color: 'colors', eyes: 'face', glasses: 'accessories', accessory: 'accessories' });
 
 function configurationFlow(template) {
@@ -132,11 +133,121 @@ const networkEvidence = [];
 const allVideoSegments = [];
 let engineeringReport;
 
-function assertNoRuntimeErrors(label) {
-  const relevant = consoleErrors.filter(item => !item.text.includes('favicon.ico'));
+function assertNoRuntimeErrors(label, { allowedBrowserFailures = [], segmentName = null } = {}) {
+  const relevant = consoleErrors.filter(item => !item.text.includes('favicon.ico') && (!segmentName || item.segmentName === segmentName));
   assert.deepEqual(relevant, [], `${label}: browser console has no errors.`);
-  assert.deepEqual(browserFailures, [], `${label}: browser has no failed requests.`);
-  assert.deepEqual(httpFailures.filter(row => !row.url.endsWith('/favicon.ico')), [], `${label}: browser responses have no HTTP errors.`);
+  const allowed = new Set(allowedBrowserFailures);
+  assert.deepEqual(browserFailures.filter(item => (!segmentName || item.segmentName === segmentName) && !allowed.has(item)), [], `${label}: browser has no unexpected failed requests.`);
+  assert.deepEqual(httpFailures.filter(row => !row.url.endsWith('/favicon.ico') && (!segmentName || row.segmentName === segmentName)), [], `${label}: browser responses have no HTTP errors.`);
+}
+
+function matchSignalAbortFailures(failures, observations, segmentName) {
+  const keyForURL = value => {
+    const url = new URL(value);
+    return `${url.origin}${url.pathname}${url.search}`;
+  };
+  const abortsByURL = new Map();
+  for (const observation of observations) {
+    if (observation.segmentName !== segmentName || observation.signalAborted !== true || observation.outcome !== 'rejected' || observation.errorName !== 'AbortError') continue;
+    const key = keyForURL(observation.url);
+    if (!abortsByURL.has(key)) abortsByURL.set(key, []);
+    abortsByURL.get(key).push(observation);
+  }
+  const allowed = [];
+  for (const failure of failures) {
+    if (failure.segmentName !== segmentName || failure.error !== 'net::ERR_ABORTED') continue;
+    const key = keyForURL(failure.url);
+    const candidates = abortsByURL.get(key) || [];
+    if (candidates.length === 0) continue;
+    const observation = candidates.shift();
+    failure.matchedSignalAbort = {
+      url: observation.url,
+      origin: observation.origin,
+      pathAndQuery: observation.pathAndQuery,
+      segmentName: observation.segmentName,
+      signalAborted: observation.signalAborted,
+      outcome: observation.outcome,
+      errorName: observation.errorName,
+      rejectedStage: observation.rejectedStage,
+      responseStatus: observation.responseStatus,
+      startedAtMs: observation.startedAtMs,
+      abortedAtMs: observation.abortedAtMs,
+      initiatorStack: observation.initiatorStack
+    };
+    allowed.push(failure);
+  }
+  return allowed;
+}
+
+async function installPageFetchObserver(page, initialSegmentName) {
+  await page.addInitScript(segmentName => {
+    const nativeFetch = window.fetch.bind(window);
+    const observations = [];
+    window.__dotsQAFetchObservations = observations;
+    window.__dotsQAFetchPhase = segmentName;
+    window.fetch = (input, init = {}) => {
+      const requestURL = typeof input === 'string' || input instanceof URL ? String(input) : input.url;
+      const absoluteURL = new URL(requestURL, location.href);
+      if (!/\/assets\/(characters|delivery|previews|templates)\//.test(absoluteURL.pathname)) return nativeFetch(input, init);
+      const requestSignal = init.signal || (typeof Request !== 'undefined' && input instanceof Request ? input.signal : null);
+      const observation = {
+        url: absoluteURL.href,
+        origin: absoluteURL.origin,
+        pathAndQuery: `${absoluteURL.pathname}${absoluteURL.search}`,
+        method: init.method || (typeof Request !== 'undefined' && input instanceof Request ? input.method : 'GET'),
+        segmentName: window.__dotsQAFetchPhase || 'unattributed',
+        startedAtMs: performance.now(),
+        signalAborted: Boolean(requestSignal?.aborted),
+        responseStatus: null,
+        outcome: 'pending',
+        initiatorStack: new Error().stack?.split('\n').slice(2, 8) || []
+      };
+      observations.push(observation);
+      const onAbort = () => {
+        observation.signalAborted = true;
+        observation.abortedAtMs = performance.now();
+      };
+      requestSignal?.addEventListener('abort', onAbort, { once: true });
+      if (requestSignal?.aborted) onAbort();
+      let settled = false;
+      const settle = () => {
+        if (settled) return;
+        settled = true;
+        observation.settledAtMs = performance.now();
+        requestSignal?.removeEventListener('abort', onAbort);
+      };
+      return nativeFetch(input, init).then(response => {
+        observation.responseStatus = response.status;
+        observation.headersAtMs = performance.now();
+        observation.outcome = 'headers-received';
+        let bodyReaderInstalled = false;
+        for (const method of ['arrayBuffer', 'blob', 'formData', 'json', 'text']) {
+          if (typeof response[method] !== 'function') continue;
+          bodyReaderInstalled = true;
+          const readBody = response[method].bind(response);
+          response[method] = (...args) => Promise.resolve(readBody(...args)).then(value => {
+            observation.outcome = 'body-read';
+            return value;
+          }, error => {
+            observation.outcome = 'rejected';
+            observation.rejectedStage = 'body';
+            observation.errorName = error?.name || 'Error';
+            observation.errorMessage = String(error?.message || error);
+            throw error;
+          }).finally(settle);
+        }
+        if (!bodyReaderInstalled || response.body === null) settle();
+        return response;
+      }, error => {
+        observation.outcome = 'rejected';
+        observation.rejectedStage = 'fetch';
+        observation.errorName = error?.name || 'Error';
+        observation.errorMessage = String(error?.message || error);
+        settle();
+        throw error;
+      });
+    };
+  }, initialSegmentName);
 }
 
 async function newRecordedPage(segmentName) {
@@ -680,18 +791,27 @@ async function runTwentyEditCycles(page) {
       const template = templates.getTemplateForArtwork(artwork);
       const rows = rowsForTemplate(template);
       let transportAbortCount = 0;
+      const transportAbortURLs = [];
+      const transportAbortObservations = [];
       const delayedFetch = (url, options = {}) => new Promise((resolve, reject) => {
         let settled = false;
+        let networkFetchStarted = false;
         const signal = options.signal;
         const onAbort = () => {
           if (settled) return;
           settled = true;
           clearTimeout(timer);
           transportAbortCount += 1;
+          if (networkFetchStarted) {
+            const requestURL = new URL(String(url), location.href);
+            transportAbortURLs.push(`${requestURL.pathname}${requestURL.search}`);
+            transportAbortObservations.push({ url: requestURL.href, origin: requestURL.origin, pathAndQuery: `${requestURL.pathname}${requestURL.search}`, signalAborted: true, abortedAtMs: performance.now() });
+          }
           reject(new DOMException('Cycle fetch was canceled.', 'AbortError'));
         };
         const timer = setTimeout(() => {
           if (settled) return;
+          networkFetchStarted = true;
           fetch(url, options).then(value => {
             if (settled) return;
             settled = true;
@@ -741,7 +861,7 @@ async function runTwentyEditCycles(page) {
         }
       });
       host.append(editor.previewElement);
-      // Allow the default render and its real thumbnail consumers to share pending resource requests.
+      // Allow the default render to enter the pending state before rapid edits preempt it.
       await wait(35);
       const set = (field, value) => {
         const tabKey = tabForField[field] || field;
@@ -764,7 +884,7 @@ async function runTwentyEditCycles(page) {
       }
       await wait(0);
       const canceledConsumersAfterRapidChange = loader.getCanceledConsumers();
-      const sharedRequestsAfterRapidChange = loader.stats().pendingRequests;
+      const pendingRequestsAfterRapidChange = loader.stats().pendingRequests;
       for (let attempt = 0; attempt < 300; attempt += 1) {
         if (status?.canExport && status.snapshot?.revision === editor.getDraft().revision) break;
         await wait(10);
@@ -806,9 +926,11 @@ async function runTwentyEditCycles(page) {
         exportAccepted,
         exportCapture: exportCaptures[0],
         canceledConsumersAfterRapidChange,
-        sharedRequestsAfterRapidChange,
+        pendingRequestsAfterRapidChange,
         successfulStatuses,
         transportAbortCount,
+        transportAbortURLs,
+        transportAbortObservations,
         statsBeforeExport,
         statsAfterDestroy,
         statsAfterRelease,
@@ -903,7 +1025,7 @@ async function runTwentyEditCycles(page) {
 function assertCycleEvidence(cycleReport) {
   for (const cycle of cycleReport.cycles) {
     assert.ok(cycle.canceledConsumersAfterRapidChange > 0, `Cycle ${cycle.index} canceled stale renderer consumers after rapid Draft edits (observed ${cycle.canceledConsumersAfterRapidChange}).`);
-    assert.ok(cycle.sharedRequestsAfterRapidChange > 0, `Cycle ${cycle.index} retained pending layer fetches while thumbnails still owned shared consumers (observed ${cycle.sharedRequestsAfterRapidChange}).`);
+    assert.ok(cycle.pendingRequestsAfterRapidChange > 0, `Cycle ${cycle.index} has pending work for the current render after optional thumbnail work is canceled (observed ${cycle.pendingRequestsAfterRapidChange}).`);
     assert.ok(cycle.successfulStatuses.every(status => status.snapshotRevision === status.draftRevision), `Cycle ${cycle.index} never published a stale successful revision.`);
   }
   const pendingDestroy = cycleReport.pendingDestroy;
@@ -931,6 +1053,77 @@ async function runFocusedEditorRaces(page) {
     });
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     const referenceKey = reference => `${reference?.id || ''}\u0000${reference?.version || ''}\u0000${reference?.purpose || ''}`;
+    const observedFetches = [];
+    const nativeFetch = window.fetch.bind(window);
+    const observeFetch = (fetchImpl, ownerName) => (url, options = {}) => {
+      const absoluteURL = new URL(String(url), location.href);
+      const observation = {
+        url: absoluteURL.href,
+        origin: absoluteURL.origin,
+        pathAndQuery: `${absoluteURL.pathname}${absoluteURL.search}`,
+        method: options.method || 'GET',
+        ownerName,
+        startedAtMs: performance.now(),
+        signalAborted: Boolean(options.signal?.aborted),
+        responseStatus: null,
+        outcome: 'pending'
+      };
+      observedFetches.push(observation);
+      const signal = options.signal;
+      const onAbort = () => {
+        observation.signalAborted = true;
+        observation.abortedAtMs = performance.now();
+      };
+      signal?.addEventListener('abort', onAbort, { once: true });
+      if (signal?.aborted) onAbort();
+      let observationSettled = false;
+      const settleObservation = () => {
+        if (observationSettled) return;
+        observationSettled = true;
+        observation.settledAtMs = performance.now();
+        signal?.removeEventListener('abort', onAbort);
+      };
+      let result;
+      try {
+        result = fetchImpl ? fetchImpl(url, options) : nativeFetch(url, options);
+      } catch (error) {
+        observation.outcome = 'threw';
+        observation.errorName = error?.name || 'Error';
+        observation.errorMessage = String(error?.message || error);
+        settleObservation();
+        throw error;
+      }
+      return Promise.resolve(result).then(response => {
+        observation.responseStatus = response?.status ?? null;
+        observation.headersAtMs = performance.now();
+        observation.outcome = 'headers-received';
+        let bodyReaderInstalled = false;
+        for (const method of ['arrayBuffer', 'blob', 'formData', 'json', 'text']) {
+          if (typeof response?.[method] !== 'function') continue;
+          bodyReaderInstalled = true;
+          const readBody = response[method].bind(response);
+          response[method] = (...args) => Promise.resolve(readBody(...args)).then(value => {
+            observation.outcome = 'body-read';
+            return value;
+          }, error => {
+            observation.outcome = 'rejected';
+            observation.rejectedStage = 'body';
+            observation.errorName = error?.name || 'Error';
+            observation.errorMessage = String(error?.message || error);
+            throw error;
+          }).finally(settleObservation);
+        }
+        if (!bodyReaderInstalled || response.body === null) settleObservation();
+        return response;
+      }, error => {
+        observation.outcome = 'rejected';
+        observation.rejectedStage = 'fetch';
+        observation.errorName = error?.name || 'Error';
+        observation.errorMessage = String(error?.message || error);
+        settleObservation();
+        throw error;
+      });
+    };
     const rowForReference = reference => manifest.assets.find(row => referenceKey(row) === referenceKey(reference)) || null;
     const rowsForTemplate = template => {
       const references = new Map();
@@ -1011,7 +1204,7 @@ async function runFocusedEditorRaces(page) {
     };
     const newEditor = ({ name, rows = allRows, fetchImpl, decorateLoader, sessionId }) => {
       const host = createHost(name);
-      const rawLoader = loaderAPI.createPreviewLoader({ assetRegistry: rows, ...(fetchImpl ? { fetchImpl } : {}) });
+      const rawLoader = loaderAPI.createPreviewLoader({ assetRegistry: rows, fetchImpl: observeFetch(fetchImpl, name) });
       const loader = decorateLoader ? decorateLoader(rawLoader) : rawLoader;
       const draft = draftAPI.createDraft({ artwork, template, sessionId });
       const statuses = [];
@@ -1044,7 +1237,7 @@ async function runFocusedEditorRaces(page) {
       return { button, visual };
     };
     const waitForThumbnailIdle = async state => waitFor(() => {
-      const visuals = [...state.editor.element.querySelectorAll('.studio-editor-option-visual')];
+      const visuals = [...state.editor.element.querySelectorAll('.studio-editor-category:not([hidden]) .studio-editor-option-visual')];
       return visuals.every(visual => !['loading', 'waiting-for-manifest'].includes(visual.dataset.thumbnailState));
     }, `${state.editor.getDraft().templateId} option thumbnails to settle before teardown`);
 
@@ -1172,24 +1365,27 @@ async function runFocusedEditorRaces(page) {
     const thumbnailRetry = newEditor({ name: 'thumbnail-retry', fetchImpl: failThumbnailOnce, sessionId: 'race-thumbnail-retry' });
     await waitReady(thumbnailRetry);
     const { button: alternateButton, visual: alternateVisual } = thumbnailOption(thumbnailRetry.editor);
-    await waitFor(() => alternateButton?.disabled === true
-      && alternateButton.dataset.unavailableReason === 'thumbnail-load-failed'
+    const imageRetryButton = alternateButton.parentElement.querySelector('[data-action="retry-thumbnail"]');
+    await waitFor(() => alternateButton?.disabled === false
+      && alternateButton.dataset.thumbnailError === 'true'
       && alternateVisual?.dataset.thumbnailState === 'error'
-      && !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
-    'thumbnail failure to disable its option and show Retry');
+      && !imageRetryButton.hidden,
+    'thumbnail failure to preserve its legal option and show item Retry');
     const failedThumbnail = {
       disabled: alternateButton.disabled,
-      reason: alternateButton.dataset.unavailableReason,
-      retryVisible: !thumbnailRetry.editor.element.querySelector('[data-action="retry"]').hidden,
+      reason: alternateButton.dataset.thumbnailError,
+      retryVisible: !imageRetryButton.hidden,
       failedFetchCount: thumbnailFetches,
       assetId: thumbnailAsset.id,
       assetPath: thumbnailAsset.path
     };
-    thumbnailRetry.editor.element.querySelector('[data-action="retry"]').click();
+    const beforeThumbnailRetry = thumbnailRetry.editor.getSnapshot();
+    imageRetryButton.click();
     await waitFor(() => alternateVisual.dataset.thumbnailState === 'ready'
       && alternateVisual.querySelector('canvas.studio-editor-option-thumbnail')
       && alternateButton.disabled === false,
     'failed option thumbnail retry to recover a selectable canvas');
+    if (thumbnailRetry.editor.getSnapshot() !== beforeThumbnailRetry && thumbnailRetry.editor.getSnapshot()?.revision !== beforeThumbnailRetry?.revision) throw new Error('Thumbnail retry changed the draft revision.');
     chooseVisualOption(thumbnailRetry.editor, raceField, alternateOption);
     await waitReady(thumbnailRetry, { [raceField]: alternateOption });
     const recoveredThumbnailCanvas = alternateVisual.querySelector('canvas.studio-editor-option-thumbnail');
@@ -1276,26 +1472,49 @@ async function runFocusedEditorRaces(page) {
       outOfOrder: outOfOrderReport,
       latestFailure: { ...failedState, retry: retryState },
       thumbnailFailureRecovery: thumbnailRecovery,
-      closeLateCallback: closeReport
+      closeLateCallback: closeReport,
+      observedFetches
     };
   }, TAB_FOR_FIELD);
 }
 try {
-  if (focusedCycleOnly) {
+  if (focusedCycleOnly || focusedCycleRaceOnly) {
     const context = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, acceptDownloads: true, reducedMotion: 'reduce' });
     const page = await context.newPage();
-    page.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName: 'focused-editor-cycles' }));
+    let phase = 'focused-editor-cycles';
+    const requestPhases = new WeakMap();
+    await installPageFetchObserver(page, phase);
+    page.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName: phase }));
+    page.on('console', message => { if (message.type() === 'error') consoleErrors.push({ type: 'console', text: message.text(), segmentName: phase }); });
+    page.on('request', request => requestPhases.set(request, phase));
+    page.on('requestfailed', request => browserFailures.push({ url: request.url(), error: request.failure()?.errorText, segmentName: requestPhases.get(request) || phase }));
+    page.on('response', response => { if (response.status() >= 400) httpFailures.push({ url: response.url(), status: response.status(), segmentName: requestPhases.get(response.request()) || phase }); });
     await page.goto(harnessURL, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(() => Boolean(window.__dotsQAApp), null, { timeout: 15_000 });
+    await page.evaluate(segmentName => { window.__dotsQAFetchPhase = segmentName; }, phase);
     const report = await runTwentyEditCycles(page);
-    await fs.writeFile(path.join(runRoot, 'focused-editor-cycles.json'), JSON.stringify({ runId, sourceManifestSha256: createHash('sha256').update(sourceBytes).digest('hex'), scope: 'Focused real-source edit/export cycles and controlled pending-fetch destruction; no full recipe or journey claims.', report, consoleErrors }, null, 2));
-    assertNoRuntimeErrors('focused editor lifecycle checks');
+    let raceReport = null;
+    if (focusedCycleRaceOnly) {
+      phase = 'focused-editor-races';
+      await page.evaluate(segmentName => { window.__dotsQAFetchPhase = segmentName; }, phase);
+      raceReport = await runFocusedEditorRaces(page);
+    }
+    const pageFetchObservations = await page.evaluate(() => window.__dotsQAFetchObservations || []);
     await context.close();
+    const cycleFailures = browserFailures.filter(row => row.segmentName === 'focused-editor-cycles');
+    const allowedFailures = matchSignalAbortFailures(cycleFailures, pageFetchObservations, 'focused-editor-cycles');
+    const raceFailures = browserFailures.filter(row => row.segmentName === 'focused-editor-races');
+    const allowedRaceFailures = raceReport ? matchSignalAbortFailures(raceFailures, pageFetchObservations, 'focused-editor-races') : [];
+    await fs.writeFile(path.join(runRoot, focusedCycleRaceOnly ? 'focused-cycle-race.json' : 'focused-editor-cycles.json'), JSON.stringify({ runId, sourceManifestSha256: createHash('sha256').update(sourceBytes).digest('hex'), scope: focusedCycleRaceOnly ? 'Focused real-source edit/export cycles followed by focused editor races in the same harness page; no full recipe or journey claims.' : 'Focused real-source edit/export cycles and controlled pending-fetch destruction; no full recipe or journey claims.', report, raceReport, pageFetchObservations, observedIntentionalCycleRequestAborts: allowedFailures, observedIntentionalRaceRequestAborts: allowedRaceFailures, consoleErrors, browserFailures, httpFailures }, null, 2));
+    assertNoRuntimeErrors('focused editor lifecycle checks', { allowedBrowserFailures: allowedFailures, segmentName: 'focused-editor-cycles' });
+    if (raceReport) assertNoRuntimeErrors('focused editor races following lifecycle cycles', { allowedBrowserFailures: allowedRaceFailures, segmentName: 'focused-editor-races' });
+    assertNoRuntimeErrors('complete focused lifecycle/race acceptance', { allowedBrowserFailures: [...allowedFailures, ...allowedRaceFailures] });
     console.log(`PASS: ${report.cycles.length} cycles; ${report.totalCanceledConsumerCount} canceled consumers; ${report.pendingDestroy.pendingFetchAborts} controlled pending-fetch aborts.`);
     console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
   } else if (focusedRaceOnly) {
     const cycleContext = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, acceptDownloads: true, reducedMotion: 'reduce' });
     const focusedPage = await cycleContext.newPage();
+    await installPageFetchObserver(focusedPage, 'focused-editor-races');
     focusedPage.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName: 'focused-editor-races' }));
     focusedPage.on('console', message => { if (message.type() === 'error') consoleErrors.push({ type: 'console', text: message.text(), segmentName: 'focused-editor-races' }); });
     focusedPage.on('requestfailed', request => browserFailures.push({ url: request.url(), error: request.failure()?.errorText, segmentName: 'focused-editor-races' }));
@@ -1303,17 +1522,22 @@ try {
     await focusedPage.goto(harnessURL, { waitUntil: 'domcontentloaded' });
     await focusedPage.waitForFunction(() => Boolean(window.__dotsQAApp), null, { timeout: 15_000 });
     const focusedReport = await runFocusedEditorRaces(focusedPage);
+    const pageFetchObservations = await focusedPage.evaluate(() => window.__dotsQAFetchObservations || []);
+    await cycleContext.close();
+    const raceFailures = browserFailures.filter(row => row.segmentName === 'focused-editor-races');
+    const allowedFailures = matchSignalAbortFailures(raceFailures, pageFetchObservations, 'focused-editor-races');
     await fs.writeFile(path.join(runRoot, 'focused-editor-races.json'), JSON.stringify({
       runId,
       sourceManifestSha256: createHash('sha256').update(sourceBytes).digest('hex'),
       scope: 'Focused current visual-editor asynchronous races and failed-thumbnail retry; no full recipe, journey-video, or lifecycle-cycle claims.',
       focusedReport,
+      pageFetchObservations,
+      observedIntentionalRequestAborts: allowedFailures,
       consoleErrors,
       browserFailures,
       httpFailures
     }, null, 2));
-    assertNoRuntimeErrors('focused editor race and thumbnail retry browser checks');
-    await cycleContext.close();
+    assertNoRuntimeErrors('focused editor race and thumbnail retry browser checks', { allowedBrowserFailures: allowedFailures, segmentName: 'focused-editor-races' });
     console.log('PASS: focused asynchronous editor races, failed thumbnail disable/Retry/recovery, and late-session isolation.');
     console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
   } else {
@@ -1473,76 +1697,126 @@ try {
   const guardSession = await newRecordedPage('dirty-exit-guards');
   const guardPage = guardSession.page;
   const guardConfig = selectedCharacterFlows[0];
+  let expectedGalleryHash = await guardPage.evaluate(() => location.hash);
   await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
   await waitForEditor(guardPage, guardConfig);
-  for (const [field, value] of guardConfig.steps) await choose(guardPage, field, value);
-  await waitForEditor(guardPage, guardConfig);
-  await guardPage.locator('.artwork-detail__additional-direction').fill('Preserve the character identity and material.');
-  const dirtyState = await guardPage.evaluate(() => ({ dirty: window.__dotsQAApp.detail.hasDirty(), hash: location.hash, promptReady: window.__dotsQAApp.detail.getState().promptReady, exportReady: window.__dotsQAApp.detail.getState().exportReady }));
+  const applyDirtyIntent = async label => {
+    for (const [field, value] of guardConfig.steps) await choose(guardPage, field, value);
+    await waitForEditor(guardPage, guardConfig);
+    await guardPage.locator('.artwork-detail__additional-direction').fill(`Preserve the character identity and material (${label}).`);
+    const state = await guardPage.evaluate(() => ({ dirty: window.__dotsQAApp.detail.hasDirty(), hash: location.hash, promptReady: window.__dotsQAApp.detail.getState().promptReady, exportReady: window.__dotsQAApp.detail.getState().exportReady }));
+    assert.equal(state.dirty, true, `${label}: a local option change marks the current Studio dirty.`);
+    assert.equal(state.promptReady, true, `${label}: the successful Prompt remains available.`);
+    assert.equal(state.exportReady, true, `${label}: the successful PNG remains available.`);
+    return state;
+  };
+  const reopenedDefault = async label => {
+    await openArtwork(guardPage, guardConfig.artworkId, guardConfig.artworkVersion);
+    await waitForEditor(guardPage, guardConfig);
+    const state = await guardPage.evaluate(async () => {
+      const { TEMPLATE_REGISTRY, normalizeTemplateOptions } = await import('/studio-edit-templates.js?v=102');
+      const current = window.__dotsQAApp.detail.getState();
+      const template = TEMPLATE_REGISTRY.find(row => row.id === current.templateId);
+      return {
+        options: current.draft.options,
+        defaults: normalizeTemplateOptions(template, template.defaultOptions),
+        dirty: window.__dotsQAApp.detail.hasDirty(),
+        additionalDirection: document.querySelector('.artwork-detail__additional-direction')?.value ?? null
+      };
+    });
+    assert.deepEqual(state.options, state.defaults, `${label}: reopening starts at the registered Template defaults.`);
+    assert.equal(state.dirty, false, `${label}: reopening does not restore the previous in-memory Draft.`);
+    assert.equal(state.additionalDirection, '', `${label}: reopening clears prior external intent.`);
+    return { artworkId: guardConfig.artworkId, artworkVersion: guardConfig.artworkVersion, ...state };
+  };
+  const dirtyState = await applyDirtyIntent('initial dirty exit');
   assert.equal(dirtyState.dirty, true, 'A local option change marks the current Studio dirty.');
-  assert.equal(dirtyState.promptReady,true);assert.equal(dirtyState.exportReady,true);
-  const deniedExits = [];
-  for (const [name, action] of [
-    ['Escape', () => guardPage.keyboard.press('Escape')],
-    ['overlay close', () => guardPage.locator('#overlayClose').click()],
-    ['overlay back', () => guardPage.locator('#overlayBack').click()],
-    ['Characters gallery navigation', () => guardPage.evaluate(() => { location.hash = '#/?series=grok'; })]
+  assert.equal(dirtyState.promptReady, true);
+  assert.equal(dirtyState.exportReady, true);
+  const unguardedExits = [];
+  for (const [name, action, targetHash] of [
+    ['Escape', () => guardPage.keyboard.press('Escape'), null],
+    ['overlay close', () => guardPage.locator('#overlayClose').click(), null],
+    ['overlay back', () => guardPage.locator('#overlayBack').click(), null],
+    ['history back', () => guardPage.goBack(), null],
+    ['Characters gallery navigation', () => guardPage.evaluate(() => { location.hash = '#/?series=grok'; }), '#/?series=grok']
   ]) {
+    if (unguardedExits.length > 0) await applyDirtyIntent(name);
     if (name === 'overlay close') await guardPage.locator('#overlayClose').focus();
     else if (name === 'overlay back') await guardPage.locator('#overlayBack').focus();
     else await guardPage.locator('.artwork-detail__additional-direction').focus();
     const before = await guardPage.evaluate(() => location.hash);
-    const focusBefore = await guardPage.evaluate(() => ({ tag: document.activeElement?.tagName, id: document.activeElement?.id, className: typeof document.activeElement?.className === 'string' ? document.activeElement.className : '' }));
-    const dialogEvent = guardPage.waitForEvent('dialog', { timeout: 5_000 });
-    const actionResult = action().catch(error => error);
-    let dialog;
+    const dialogs = [];
+    const dismissUnexpectedDialog = dialog => { dialogs.push({ type: dialog.type(), message: dialog.message() }); void dialog.dismiss(); };
+    guardPage.on('dialog', dismissUnexpectedDialog);
     try {
-      dialog = await dialogEvent;
-    } catch (error) {
-      console.error(JSON.stringify({ failedExit: name, dialogOpen: await guardPage.locator('#studioOverlay').evaluate(element => element.open), focused: await guardPage.evaluate(() => ({ tag: document.activeElement?.tagName, id: document.activeElement?.id, className: document.activeElement?.className })), hash: await guardPage.evaluate(() => location.hash), dirty: await guardPage.evaluate(() => window.__dotsQAApp.detail.hasDirty()) }, null, 2));
-      throw error;
+      await action();
+      await guardPage.waitForTimeout(100);
+      assert.deepEqual(dialogs, [], `${name} closes or navigates away without a discard confirmation.`);
+      const expectedHash = targetHash ?? expectedGalleryHash;
+      await guardPage.waitForFunction(hash => location.hash === hash && !document.querySelector('#studioOverlay')?.open, expectedHash, { timeout: 10_000 });
+      expectedGalleryHash = expectedHash;
+      const reopened = await reopenedDefault(name);
+      unguardedExits.push({ name, fromHash: before, toHash: expectedHash, dialogs, reopened });
+    } finally {
+      guardPage.off('dialog', dismissUnexpectedDialog);
     }
-    deniedExits.push({ name, message: dialog.message() });
-    await dialog.dismiss();
-    await actionResult;
-    await guardPage.waitForTimeout(80);
-    assert.equal(await guardPage.evaluate(() => location.hash), before, `${name} dismissal keeps the current Artwork route.`);
-    assert.equal(await guardPage.evaluate(() => window.__dotsQAApp.detail.hasDirty()), true, `${name} dismissal keeps Draft intent.`);
-    const focusAfter = await guardPage.evaluate(() => ({ tag: document.activeElement?.tagName, id: document.activeElement?.id, className: typeof document.activeElement?.className === 'string' ? document.activeElement.className : '' }));
-    assert.deepEqual(focusAfter, focusBefore, `${name} dismissal preserves the focused control.`);
   }
   assert.equal(await guardPage.locator('.studio-nav a[data-page="guide"],#guidePortal').count(),0,'No Guide exit route remains in the shell.');
   assert.equal(await guardPage.locator('.studio-related').evaluate(section=>section.tagName==='SECTION'&&!section.querySelector('summary')) ,true,'Related artworks remain directly visible under the media preview.');
   await guardPage.locator('.related-character').first().waitFor({ state: 'visible', timeout: 10_000 });
+  await applyDirtyIntent('related Artwork navigation');
   const relatedBefore = await guardPage.evaluate(() => location.hash);
   const relatedDialogPromise = guardPage.waitForEvent('dialog', { timeout: 5_000 });
   const relatedButton = guardPage.locator('.related-character').first();
   const relatedClick = relatedButton.click().catch(error => error);
   const relatedDialog = await relatedDialogPromise;
-  deniedExits.push({ name: 'related Artwork navigation', message: relatedDialog.message() });
+  const guardedSwitches = [{ name: 'related Artwork navigation', type: relatedDialog.type(), message: relatedDialog.message() }];
   await relatedDialog.dismiss();
   await relatedClick;
   await guardPage.waitForTimeout(80);
   assert.equal(await guardPage.evaluate(() => location.hash), relatedBefore, 'Canceling a related Artwork navigation leaves the same Studio open.');
   assert.equal(await relatedButton.evaluate(element => document.activeElement === element), true, 'Canceling related Artwork navigation preserves focus on its trigger.');
-  await fs.writeFile(path.join(runRoot, 'dirty-exit-guards.json'), JSON.stringify({ tested: deniedExits, dirtyState }, null, 2));
+  assert.equal(await guardPage.evaluate(() => window.__dotsQAApp.detail.hasDirty()), true, 'Canceling related Artwork navigation preserves the current Draft.');
+  await fs.writeFile(path.join(runRoot, 'dirty-exit-guards.json'), JSON.stringify({ unguardedExits, guardedSwitches, dirtyState }, null, 2));
   assertNoRuntimeErrors('dirty exit guard flow');
   await finishSegment(guardSession, path.join(videoStageRoot, 'dirty-exit-guards.webm'));
 
   const cycleContext = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, acceptDownloads: true, reducedMotion: 'reduce' });
   const cyclePage = await cycleContext.newPage();
-  cyclePage.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName: '20-edit-cycles' }));
-  cyclePage.on('console', message => { if (message.type() === 'error') consoleErrors.push({ type: 'console', text: message.text(), segmentName: '20-edit-cycles' }); });
-  cyclePage.on('requestfailed', request => browserFailures.push({ url: request.url(), error: request.failure()?.errorText, segmentName: '20-edit-cycles' }));
-  cyclePage.on('response', response => { if (response.status() >= 400) httpFailures.push({ url: response.url(), status: response.status(), segmentName: '20-edit-cycles' }); });
+  let cyclePagePhase = '20-edit-cycles';
+  const cyclePageRequestPhases = new WeakMap();
+  await installPageFetchObserver(cyclePage, cyclePagePhase);
+  cyclePage.on('pageerror', error => consoleErrors.push({ type: 'pageerror', text: error.message, segmentName: cyclePagePhase }));
+  cyclePage.on('console', message => { if (message.type() === 'error') consoleErrors.push({ type: 'console', text: message.text(), segmentName: cyclePagePhase }); });
+  cyclePage.on('request', request => cyclePageRequestPhases.set(request, cyclePagePhase));
+  cyclePage.on('requestfailed', request => browserFailures.push({ url: request.url(), error: request.failure()?.errorText, segmentName: cyclePageRequestPhases.get(request) || cyclePagePhase }));
+  cyclePage.on('response', response => { if (response.status() >= 400) httpFailures.push({ url: response.url(), status: response.status(), segmentName: cyclePageRequestPhases.get(response.request()) || cyclePagePhase }); });
   await cyclePage.goto(harnessURL, { waitUntil: 'domcontentloaded' });
   await cyclePage.waitForFunction(() => Boolean(window.__dotsQAApp), null, { timeout: 15_000 });
+  await cyclePage.evaluate(segmentName => { window.__dotsQAFetchPhase = segmentName; }, cyclePagePhase);
   cycleReport = await runTwentyEditCycles(cyclePage);
+  const cycleBrowserFailures = browserFailures.filter(row => row.segmentName === '20-edit-cycles');
+  const cyclePageFetchObservations = await cyclePage.evaluate(() => window.__dotsQAFetchObservations || []);
+  const allowedCycleBrowserFailures = matchSignalAbortFailures(cycleBrowserFailures, cyclePageFetchObservations, '20-edit-cycles');
+  assert.deepEqual(allowedCycleBrowserFailures, cycleBrowserFailures, 'Only network requests recorded as actively aborted by a rapid-edit cycle may fail in that segment.');
+  assert.ok(allowedCycleBrowserFailures.length <= cycleReport.totalTransportAbortCount, 'Observed browser aborts do not exceed the Editor transport abort count.');
+  cycleReport.observedIntentionalRequestAborts = allowedCycleBrowserFailures;
+  cycleReport.pageFetchObservations = cyclePageFetchObservations;
   await fs.writeFile(path.join(runRoot, '20-edit-cycles.json'), JSON.stringify(cycleReport, null, 2));
+  cyclePagePhase = 'focused-editor-races';
+  await cyclePage.evaluate(segmentName => { window.__dotsQAFetchPhase = segmentName; }, cyclePagePhase);
   raceReport = await runFocusedEditorRaces(cyclePage);
-  await fs.writeFile(path.join(runRoot, 'editor-races.json'), JSON.stringify(raceReport, null, 2));
-  assertNoRuntimeErrors('20 real-source editor lifecycle cycles');
+  const racePageFetchObservations = await cyclePage.evaluate(() => window.__dotsQAFetchObservations || []);
   await cycleContext.close();
+  const raceBrowserFailures = browserFailures.filter(row => row.segmentName === 'focused-editor-races');
+  const allowedRaceBrowserFailures = matchSignalAbortFailures(raceBrowserFailures, racePageFetchObservations, 'focused-editor-races');
+  raceReport.observedIntentionalRequestAborts = allowedRaceBrowserFailures;
+  raceReport.pageFetchObservations = racePageFetchObservations;
+  await fs.writeFile(path.join(runRoot, 'editor-races.json'), JSON.stringify({ raceReport, consoleErrors, browserFailures, httpFailures }, null, 2));
+  assertNoRuntimeErrors('20 real-source editor lifecycle cycles', { allowedBrowserFailures: allowedCycleBrowserFailures, segmentName: '20-edit-cycles' });
+  assertNoRuntimeErrors('focused asynchronous editor races', { allowedBrowserFailures: allowedRaceBrowserFailures, segmentName: 'focused-editor-races' });
+  assertNoRuntimeErrors('complete editing browser acceptance', { allowedBrowserFailures: [...allowedCycleBrowserFailures, ...allowedRaceBrowserFailures] });
   const report = {
     runId,
     scope: 'Complete editing acceptance for the actual public approved Template registry.',
@@ -1571,7 +1845,7 @@ try {
   if (raceReport.outOfOrder) console.log('PASS: A→B→A out-of-order render, latest missing-layer failure/retry, and close-late-session races.');
   console.log(`PASS: ${selectedCharacterFlows.map(config => config.label).join(' and ')} automatic CharacterStudio editing → unified Prompt → transparent PNG export → original-materials disclosure.`);
   console.log(`PASS: Recorded ${selectedCharacterFlows.map(config => config.label).join(' and ')} single-page journeys reopen the same Artwork at its Template default after viewing the exported PNG.`);
-  console.log('PASS: dirty Escape, Close, Back, Characters navigation, and related Artwork navigation were canceled without leaving the Draft.');
+  console.log('PASS: dirty Escape, Close, Back, and Characters navigation close without confirmation and reopen at Template defaults; related Artwork navigation remains cancelable.');
   console.log(`EVIDENCE: ${path.relative(repoRoot, runRoot)}`);
   }
 } finally {

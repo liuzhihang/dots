@@ -6,6 +6,9 @@
 #browseCharacters img{transform:rotate(-90deg)}
 /* Input boundaries remain identifiable on the dark canvas, including without blur. */
 .search-field,.sort-field select{border-color:#626b80}
+/* The native language picker shows the current language and keeps OS keyboard behavior. */
+select.preference-button{min-height:44px;min-width:88px;padding:0 10px;color:var(--text);background:var(--surface);border-color:#626b80;color-scheme:dark}
+select.preference-button option{color:var(--text);background:var(--surface)}
 .gallery-series-filter__button[aria-pressed=true]{border-color:#8a6aae}
 .search-field:focus-within{border-color:var(--focus)}
 
@@ -133,3 +136,12 @@
 .artwork-caption .artwork-series{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;max-width:100%;min-height:22px;margin:0;padding:2px 7px;border:1px solid rgba(193,205,227,.3);border-radius:999px;background:rgba(255,255,255,.025);color:#c2cada;font-size:10px;line-height:1.2;text-align:center;white-space:nowrap}
 @media(max-width:600px){.artwork-caption{column-gap:6px;padding-inline:9px}.artwork-caption .artwork-name{font-size:11px}.artwork-caption .artwork-series{padding-inline:6px;font-size:9px}}
 @media(max-width:350px){.artwork-caption{column-gap:5px;padding-inline:8px}.artwork-caption .artwork-name{font-size:10px}.artwork-caption .artwork-series{padding-inline:5px;font-size:9px}}
+
+/* Keep the native selects, with one shared arrow and enough room for their labels. */
+:root{--select-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='m2 2 4 4 4-4' fill='none' stroke='%23cbd4e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.7'/%3E%3C/svg%3E")}
+#languagePreference,#gallerySort{box-sizing:border-box;min-height:44px;height:44px;padding:0 12px;appearance:none;-webkit-appearance:none;border:1px solid #626b80;border-radius:8px;text-align:center;text-align-last:center;font:inherit;font-size:12px;line-height:1.2;background-repeat:no-repeat;background-position:right 12px center;background-size:12px 8px}
+#languagePreference{width:108px;min-width:108px;color:var(--text);background-color:var(--surface);background-image:var(--select-chevron);color-scheme:dark}
+#gallerySort{min-width:132px;color:#d7ddec;background-color:#111722;background-image:var(--select-chevron),linear-gradient(145deg,#1a2436,#111722);background-repeat:no-repeat,no-repeat;background-position:right 12px center,center;background-size:12px 8px,100% 100%}
+.sort-field:after{content:none}
+#languagePreference:focus-visible,#gallerySort:focus-visible{outline:2px solid var(--focus);outline-offset:2px;box-shadow:none}
+@media(max-width:600px){#languagePreference{width:104px;min-width:104px}#gallerySort{width:100%;min-width:0;font-size:11px}}

@@ -78,7 +78,7 @@ async function openArtwork(page, id) {
     throw error;
   }
   await page.waitForFunction(() => {
-    const buttons = [...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')].filter(button => !['color', 'colors'].includes(button.dataset.field));
+    const buttons = [...document.querySelectorAll('.studio-editor-category:not([hidden]) .studio-editor-option[data-field][data-option-id]')].filter(button => !['color', 'colors'].includes(button.dataset.field));
     return buttons.length > 0 && buttons.every(button => {
       const visual = button.querySelector('.studio-editor-option-visual');
       return button.dataset.optionId === 'none' ? visual?.dataset.thumbnailState === 'empty'
@@ -236,6 +236,17 @@ try {
       const afterTabs = await page.evaluate(() => { const state = window.__dotsQAApp.detail.getState(); return { sessionId: state.draft.sessionId, revision: state.draft.revision, canvas: document.querySelector('.studio-draft-host canvas.studio-editor-canvas').toDataURL() }; });
       assert.deepEqual(afterTabs, beforeTabs, 'Tab keyboard navigation changes no Draft, revision, session, or preview pixels.');
       assert.equal(await panels.evaluateAll(items => items.filter(panel => !panel.hidden && panel.getClientRects().length).length), 1);
+
+      // Visit each category deliberately: hidden categories are now lazy, not broken.
+      for (const tabKey of templateCase.tabs) {
+        await page.locator(`.studio-editor-tab[data-editor-tab="${tabKey}"]`).click();
+        await page.waitForFunction(key => {
+          const panel = document.querySelector(`.studio-editor-category[data-editor-tab="${key}"]`);
+          return [...panel.querySelectorAll('.studio-editor-option')].every(button =>
+            ['color', 'colors'].includes(button.dataset.field) || ['ready', 'empty'].includes(button.querySelector('.studio-editor-option-visual')?.dataset.thumbnailState));
+        }, tabKey);
+      }
+      await tabs.nth(0).click();
 
       const visualSummary = await page.evaluate(() => {
         const optionButtons = [...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')];

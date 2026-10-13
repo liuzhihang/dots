@@ -48,6 +48,17 @@ const errors=[],checks=[],requests=[];page.on('pageerror',e=>errors.push(e.messa
 // Isolated unmatched-version fixture preserves static fallback coverage; all production Artworks are editable.
 const first={...ARTWORKS.find(a=>a.id==='muse-rose-flowers'),version:'static-fixture-v1'},source=createSnapshot(first.id),before=JSON.stringify(first),hash=bytes=>crypto.createHash('sha256').update(bytes).digest('hex');
 const check=(value,message)=>{assert.ok(value,message);checks.push(message);};
+const waitForVisibleCategoryThumbnails=category=>page.waitForFunction(expectedCategory=>{
+ const controls=document.querySelector('.studio-editor-controls[data-template-id]');
+ const panel=controls?.querySelector('.studio-editor-category:not([hidden])');
+ if(panel?.dataset.editorTab!==expectedCategory)return false;
+ const buttons=[...panel.querySelectorAll('.studio-editor-option[data-field][data-option-id]')];
+ return buttons.length>0&&buttons.every(button=>{
+  const visual=button.querySelector('.studio-editor-option-visual');
+  if(['colors','color'].includes(button.dataset.field))return visual?.classList.contains('studio-editor-color-swatch');
+  return visual?.dataset.thumbnailState==='empty'||visual?.dataset.thumbnailState==='ready'&&visual.querySelector('canvas');
+ });
+},category,{timeout:30_000});
 const shell=`<!doctype html><html lang="en"><head><base href="${origin}/"><link rel="stylesheet" href="/studio.css?v=102"><link rel="stylesheet" href="/studio-detail.css?v=102"></head><body><main id="pageShell"><button id="trigger">Open</button></main><dialog id="studioOverlay" aria-labelledby="overlayTitle"><div class="overlay-shell"><header class="overlay-header"><button id="overlayBack">Back</button><h2 id="overlayTitle" tabindex="-1">Character Studio</h2><button id="overlayClose">Close</button></header><div id="overlayBody"></div></div></dialog></body></html>`;
 try{
  await page.route('**/test-detail',r=>r.fulfill({contentType:'text/html',body:shell}));await page.goto(origin+'/test-detail');
@@ -102,7 +113,18 @@ try{
  },'candidate-dots-20261005');
  await page.waitForFunction(()=>{const state=fixture.detail.getState(),controls=document.querySelector('.studio-editor-controls[data-template-id]');return state.editable&&state.editorReady&&state.promptReady&&state.exportReady&&controls;});
  check(requests.some(url=>/studio-(editor|renderer|draft)\.js/.test(url)),'The explicitly approved Template automatically loads its editor in production when its bound Artwork opens.');
- try{await page.waitForFunction(()=>{const buttons=[...document.querySelectorAll('.studio-editor-option[data-field][data-option-id]')];return buttons.length>0&&buttons.every(button=>{const visual=button.querySelector('.studio-editor-option-visual');if(['colors','color'].includes(button.dataset.field))return visual?.classList.contains('studio-editor-color-swatch');return visual?.dataset.thumbnailState==='empty'||visual?.dataset.thumbnailState==='ready'&&visual.querySelector('canvas');});},null,{timeout:30_000});}catch(error){console.error('Thumbnail visual state at timeout:',JSON.stringify(await page.evaluate(()=>({buttons:[...document.querySelectorAll('.studio-editor-option')].map(button=>({field:button.dataset.field,id:button.dataset.optionId,disabled:button.disabled,reason:button.dataset.unavailableReason,state:button.querySelector('.studio-editor-option-visual')?.dataset.thumbnailState})),retry:[...document.querySelectorAll('.studio-editor-controls [data-action="retry"]')].map(button=>({hidden:button.hidden,disabled:button.disabled})),manifest:performance.getEntriesByType('resource').filter(entry=>entry.name.includes('sources.json')).map(entry=>entry.name)})),null,2));throw error;}
+ const initialCategory=await page.locator('.studio-editor-category:not([hidden])').getAttribute('data-editor-tab');
+ try{await waitForVisibleCategoryThumbnails(initialCategory);}catch(error){console.error('Visible thumbnail state at timeout:',JSON.stringify(await page.evaluate(()=>({activeCategory:document.querySelector('.studio-editor-category:not([hidden])')?.dataset.editorTab,buttons:[...document.querySelectorAll('.studio-editor-option')].map(button=>({field:button.dataset.field,id:button.dataset.optionId,visible:Boolean(button.getClientRects().length),disabled:button.disabled,reason:button.dataset.unavailableReason,state:button.querySelector('.studio-editor-option-visual')?.dataset.thumbnailState})),retry:[...document.querySelectorAll('.studio-editor-controls [data-action="retry"]')].map(button=>({hidden:button.hidden,disabled:button.disabled})),manifest:performance.getEntriesByType('resource').filter(entry=>entry.name.includes('sources.json')).map(entry=>entry.name)})),null,2));throw error;}
+ const hiddenThumbnailStates=await page.evaluate(()=>[...document.querySelectorAll('.studio-editor-category[hidden] .studio-editor-option[data-field][data-option-id]')]
+  .filter(button=>!['colors','color'].includes(button.dataset.field)&&button.dataset.optionId!=='none'&&button.dataset.optionUnavailable!=='true')
+  .map(button=>({field:button.dataset.field,id:button.dataset.optionId,state:button.querySelector('.studio-editor-option-visual')?.dataset.thumbnailState})));
+ assert(hiddenThumbnailStates.length>0&&hiddenThumbnailStates.every(option=>option.state==='waiting-for-manifest'),`Unopened categories must not preload their option thumbnails: ${JSON.stringify(hiddenThumbnailStates)}`);
+ check(true,'Opening an approved Template loads only the visible category thumbnails; unopened categories remain deferred.');
+ for(const category of ['face','accessories']){
+  await page.locator(`.studio-editor-tab[data-editor-tab="${category}"]`).click();
+  await waitForVisibleCategoryThumbnails(category);
+ }
+ check(true,'Activating Face and Accessories loads each visible category thumbnail without requiring hidden categories to preload.');
  await page.locator('.studio-editor-tab[data-editor-tab="colors"]').click();
  const defaultColorId=await page.locator('.studio-editor-options button[aria-pressed="true"]:visible').getAttribute('data-option-id');
  const colorOption=page.locator('.studio-editor-options button[data-option-id][aria-pressed="false"]:not([disabled]):visible').first();
