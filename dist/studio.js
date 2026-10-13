@@ -30,7 +30,7 @@ export function bootStudio({detailOptions={}}={}) {
  const requestExit=action=>{if(!approveExit())return false;restoreTarget=null;exitAuthorized=true;try{action();return true;}finally{exitAuthorized=false;}};
  const detail=createDetailController({...detailOptions,language,notify,requestExit,onVersion:artwork=>{$('#overlayBody').scrollTop=0;activeDetailKey=`${artwork.id}@${artwork.version}`;currentHash=artworkURL(artwork.id,artwork.version);history.replaceState(currentState,'',historyURL(currentHash));route=parseRoute(currentHash);},onRelated:artwork=>openArtwork(artwork.id,artwork.version)});
  $('#overlayBody').replaceChildren(detail.element);
- const overlay=createOverlay({onClose:()=>requestExit(closeDetail)});
+ const overlay=createOverlay({onClose:()=>{closeDetail();return true;}});
  const filters=createGalleryFilters($('#gallerySeries'),{getQuery:()=>baseRoute,onChange:updateQuery,getLocale:()=>language});
  let gallerySignature='';
  function renderGallery(force=false){
@@ -57,7 +57,7 @@ export function bootStudio({detailOptions={}}={}) {
    const wasDetail=activeDetailKey!==null;detail.close();overlay.close({restoreFocus:false});activeDetailKey=null;showBase(route);
    const restore=currentState.restore;if(wasDetail&&restore){requestAnimationFrame(()=>{scrollTo(0,restore.scrollY);(document.getElementById(restore.triggerId)||document.querySelector('#galleryTitle'))?.focus({preventScroll:true});});}else{scrollTo(0,0);if(wasDetail)requestAnimationFrame(()=>document.querySelector(`#${baseRoute.page}Portal h1`)?.focus({preventScroll:true}));}
  }
- function navigate(hash,{replace=false,state={}}={}){if(hash===currentHash)return;if(activeDetailKey&&!approveExit())return;restoreTarget=null;const idx=currentState.dotsIndex+(replace?0:1);currentState={...state,dotsIndex:idx};currentHash=hash;history[replace?'replaceState':'pushState'](currentState,'',historyURL(hash));renderRoute();}
+ function navigate(hash,{replace=false,state={}}={}){if(hash===currentHash)return;if(activeDetailKey&&parseRoute(hash).page==='artwork'&&!approveExit())return;restoreTarget=null;const idx=currentState.dotsIndex+(replace?0:1);currentState={...state,dotsIndex:idx};currentHash=hash;history[replace?'replaceState':'pushState'](currentState,'',historyURL(hash));renderRoute();}
  function openArtwork(id,version,trigger){
    if(activeDetailKey){navigate(artworkURL(id,version),{replace:true,state:currentState});return;}
    const origin={hash:currentHash,route:baseRoute,scrollY:window.scrollY,triggerId:trigger?.id||null};currentState={...currentState,route:baseRoute,restore:origin};history.replaceState(currentState,'',historyURL(currentHash));navigate(artworkURL(id,version),{state:{dotsDetail:true,origin}});
@@ -78,7 +78,7 @@ export function bootStudio({detailOptions={}}={}) {
    if(restoreTarget){scheduleHistoryRestore();return;}
    if(location.hash===currentHash)return;
    const targetHash=location.hash,targetState=history.state,targetRoute=parseRoute(targetHash),sameArtwork=route.page==='artwork'&&targetRoute.page==='artwork'&&route.id===targetRoute.id&&route.version===targetRoute.version;
-   if(activeDetailKey&&!sameArtwork&&!allowOneHistory&&!approveExit()){
+   if(activeDetailKey&&targetRoute.page==='artwork'&&!sameArtwork&&!allowOneHistory&&!approveExit()){
      restoreTarget={hash:currentHash,index:currentState.dotsIndex};scheduleHistoryRestore();return;
    }
    restoreTarget=null;allowOneHistory=false;currentHash=targetHash;
@@ -90,7 +90,6 @@ export function bootStudio({detailOptions={}}={}) {
  let scheduled=false;const schedule=()=>{if(!scheduled){scheduled=true;queueMicrotask(()=>{scheduled=false;historyChanged();});}};
  addEventListener('hashchange',schedule);addEventListener('popstate',schedule);
  document.addEventListener('click',event=>{const link=event.target.closest('a[href^="#/"]');if(!link||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;event.preventDefault();navigate(link.getAttribute('href'));});
- addEventListener('beforeunload',event=>{if(detail.hasDirty()){event.preventDefault();event.returnValue='';}});
  $('#gallerySearch').oninput=()=>updateQuery({text:$('#gallerySearch').value});$('#gallerySort').onchange=()=>updateQuery({sort:$('#gallerySort').value});$('#clearSearch').onclick=()=>{updateQuery({text:''});$('#gallerySearch').focus();};$('#clearFilters').onclick=$('[data-command="clear-filters"]').onclick=()=>updateQuery({text:'',seriesId:'',sort:'curated'});
  $('#languagePreference').onchange=event=>{const selected=event.currentTarget.value;if(!['en','zh-CN'].includes(selected)||selected===language)return;language=selected;savePreference('language',language);localize();};
  $('#browseCharacters').onclick=()=>{$('#characters').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});if(searchBreakpoint.matches)$('#gallerySearch').focus({preventScroll:true});else($('#gallerySeries .gallery-series-filter__button')||$('#artworkGrid .artwork-select'))?.focus({preventScroll:true});};

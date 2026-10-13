@@ -82,12 +82,17 @@ const vest = option('clothing', 'vest');
 assert.equal(vest.disabled, true);
 assert.equal(vest.dataset.compatibility, 'missing-combination');
 assert(vest.dataset.conflict.includes('Appearance'));
+assert.equal(vest.querySelector('.studio-editor-option-reason').textContent, 'Adjust first Appearance', 'The small option card keeps a short category hint.');
+const guidance = vest.parentElement.parentElement.parentElement.querySelector('.studio-editor-option-guidance');
+assert(guidance.children.some(row => row.textContent.includes('Appearance:') && row.textContent.includes('First choose')), 'The full-width guidance retains the executable recovery value.');
 assert(requests.includes(vestRef.id));
 const draft = editor.getDraft();
 editor.setLanguage('zh-CN');
 assert.equal(editor.getDraft(), draft);
 assert.equal(editor.element.dataset.activeCategory, 'clothing');
 assert(vest.dataset.conflict.includes('外观'));
+assert.equal(vest.querySelector('.studio-editor-option-reason').textContent, '先调整 外观');
+assert(guidance.children.some(row => row.textContent.includes('请先选择 外观:')), 'Recovery guidance follows the site language.');
 assert(editor.element.querySelector('.studio-editor-selection-summary').textContent.includes('当前选择'));
 // A canceled optional thumbnail returns to waiting, never a capability failure.
 hold = true;

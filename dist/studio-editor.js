@@ -15,7 +15,7 @@ const labels = {
     
     rendering: 'Rendering the selected configuration…', ready: '',
     failed: 'The latest configuration could not be rendered. Export is unavailable.',
-    retry: 'Retry preview', thumbnailFailed: 'Image failed to load', retryThumbnail: 'Retry image', selected: 'Selected', missingCombination: 'This combination has not been produced yet.', restoreFirst: 'First restore',
+    retry: 'Retry preview', thumbnailFailed: 'Image failed to load', retryThumbnail: 'Retry image', selected: 'Selected', missingCombination: 'This combination has not been produced yet.', restoreFirst: 'First choose', adjustFirst: 'Adjust first', incompatible: 'Incompatible with the current selection.',
     stale: 'The previous preview remains visible while the latest selection renders.',
     exported: 'PNG download started.',
     unknown: 'The selected option is not supported by this template.', unavailable: 'Unavailable in this template'
@@ -27,7 +27,7 @@ const labels = {
     
     rendering: '正在渲染当前配置…', ready: '',
     failed: '最新配置渲染失败，暂不可导出。',
-    retry: '重试预览', thumbnailFailed: '图片加载失败', retryThumbnail: '重试图片', selected: '当前选择', missingCombination: '此组合素材尚未制作。', restoreFirst: '请先恢复',
+    retry: '重试预览', thumbnailFailed: '图片加载失败', retryThumbnail: '重试图片', selected: '当前选择', missingCombination: '此组合素材尚未制作。', restoreFirst: '请先选择', adjustFirst: '先调整', incompatible: '与当前选择不兼容。',
     stale: '最新选择正在渲染，当前暂显示上一版预览。',
     exported: '已开始下载 PNG。',
     unknown: '此模板不支持该选项。', unavailable: '此模板不支持'
@@ -241,6 +241,8 @@ export function createEditor({
   function syncButtons() {
     selectionSummary.textContent = `${labels[language].selected} — ${editableFields.map(field => selectionName(field, draft.options[field])).join(' · ')}`;
     for (const [field, buttons] of optionButtons) {
+      const guidance = panels.get(field)?.querySelector('.studio-editor-option-guidance');
+      if (guidance) guidance.replaceChildren();
       for (const button of buttons) {
         button.setAttribute('aria-pressed', String(button.value === draft.options[field]));
         const availability = describeTemplateSelection(template, draft.options, field, button.value);
@@ -262,8 +264,21 @@ export function createEditor({
         const name = optionLabel(optionDetails.get(button)?.option, language);
         button.setAttribute('aria-label', `${labels[language][field]}: ${name}${message ? ` — ${message}` : ''}`);
         const reason = button.querySelector('.studio-editor-option-reason');
-        if (reason) { reason.textContent = message; reason.hidden = !message; }
+        if (reason) {
+          reason.textContent = conflict && availability.restore.length
+            ? `${labels[language].adjustFirst} ${[...new Set(availability.restore.map(row => labels[language][row.field]))].join(' / ')}`
+            : failure || (conflict ? labels[language].unavailable : '');
+          reason.hidden = !reason.textContent;
+        }
+        if (conflict && guidance) {
+          const explanation = documentRef.createElement('p');
+          const kind = availability.kind === 'missing-combination' ? labels[language].missingCombination : labels[language].incompatible;
+          explanation.textContent = `${name} — ${availability.restore.length ? kind : conflict}`;
+          if (availability.restore.length) explanation.textContent += ` ${labels[language].restoreFirst} ${availability.restore.map(row => selectionName(row.field, row.value)).join(' → ')}.`;
+          guidance.append(explanation);
+        }
       }
+      if (guidance) guidance.hidden = !guidance.children.length;
     }
   }
 
@@ -595,7 +610,10 @@ export function createEditor({
           item.append(button, imageRetry);
           group.append(item);
         }
-        panel.append(title, group);
+        const guidance = documentRef.createElement('div');
+        guidance.className = 'studio-editor-option-guidance helper';
+        guidance.hidden = true;
+        panel.append(title, group, guidance);
         categoryPanel.append(panel);
         panels.set(field, panel);
         optionButtons.set(field, buttons);

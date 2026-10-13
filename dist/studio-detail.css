@@ -180,3 +180,8 @@
 #studioOverlay[open] .overlay-language-mount{grid-row:1;grid-column:3;display:flex;flex:0 0 auto;align-items:center}
 .overlay-header h2{min-width:0;overflow-wrap:anywhere}
 @media(max-width:600px){.overlay-header{gap:6px}.overlay-language-mount #languagePreference{min-width:82px;padding-inline:8px}.overlay-header h2{font-size:11px;letter-spacing:0}.overlay-header #overlayBack{padding-inline:6px}}
+
+@media(max-width:600px){#studioOverlay[open] .overlay-language-mount #languagePreference{width:104px;min-width:104px;padding-inline:12px}}
+.studio-editor-option-guidance{width:100%;min-width:0;color:var(--muted);font-size:12px;line-height:1.65}
+.studio-editor-option-guidance p{margin:0 0 8px;color:var(--muted);line-height:1.65;overflow-wrap:anywhere}
+.studio-editor-option-guidance p:last-child{margin-bottom:0}

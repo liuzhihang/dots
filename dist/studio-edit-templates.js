@@ -662,5 +662,23 @@ export function describeTemplateSelection(template, currentOptions, field, value
       if (!visited.has(keyOfOptions)) { visited.add(keyOfOptions); queue.push({ options: restored, restore }); }
     }
   }
+  // A default accessory can itself block another silhouette. In that case,
+  // offer a real registered alternative, without applying it automatically.
+  const otherFields = optionFieldKeys(template).filter(key => key !== field);
+  const intermediates = enumerateValidConfigurations(template).filter(options => options[field] === currentOptions[field]);
+  const alternatives = [{ options: { ...currentOptions }, restore: [] }];
+  const seen = new Set([JSON.stringify(otherFields.map(key => currentOptions[key]))]);
+  while (alternatives.length) {
+    const step = alternatives.shift();
+    for (const options of intermediates) {
+      const changed = otherFields.filter(key => options[key] !== step.options[key]);
+      if (changed.length !== 1) continue;
+      const key = changed[0];
+      const restore = [...step.restore, { field: key, value: options[key] }];
+      if (validateTemplateOptions(template, { ...options, [field]: value }).valid) return { kind, error, restore };
+      const stateKey = JSON.stringify(otherFields.map(key => options[key]));
+      if (!seen.has(stateKey)) { seen.add(stateKey); alternatives.push({ options, restore }); }
+    }
+  }
   return { kind, error, restore: [] };
 }
