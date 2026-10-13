@@ -1,0 +1,42 @@
+{
+  "site": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "access_mode": "public",
+    "status": "active",
+    "current_live_url": "https://dots.liuzhihang.chatgpt.site",
+    "latest_version_number": 60
+  },
+  "savedVersion": {
+    "id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_4f10ebc0df8c8191b738a0c7e6ea2981",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "version_number": 60,
+    "source": {
+      "commit_sha": "3798af312466ea6d39c255c0d5eb12bf4279be44"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000d50881f58a6e85ad497d28c2",
+      "content_hash": "sha256:7af57246de94dc479a8538e96b2d87de5de83967c87930e5524a254427a51a96",
+      "size_bytes": 239001600,
+      "file_count": 593
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6ace0e8afc0c81919e1bc41d815c14ba",
+    "project_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704",
+    "title": "Dots",
+    "version_id": "appgprj_6abf8f3128308191b2f8a2a9c6003704~appgver_4f10ebc0df8c8191b738a0c7e6ea2981",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://dots.liuzhihang.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6abf8f3128308191b2f8a2a9c6003704",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-10-13T10:57:26.664068+00:00"
+  }
+}

@@ -34,7 +34,7 @@
 
 本地调整是静态、有限的模板组合。额外要求交给外部创作流程处理，不会被误当成已经应用到本地图片的效果。
 
-基础外观归并方案见 [OpenSpec change](openspec/changes/archive/2026-10-13-move-appearances-into-gallery/design.md)。图库有 83 个基础形象；短绒圆球、三瓣云朵和圆角三角的颜色/配饰来源归入同一形象内。90 个内部来源外观与现有 44 件已批准作品的 540 条合法配方保留，不新增 Artwork 批准记录。当前线上版本及独立验收边界见 [Site 59 / v110 发布记录](design/releases/20261013-option-card-palette-v110/README.md)。
+基础外观归并方案见 [OpenSpec change](openspec/changes/archive/2026-10-13-move-appearances-into-gallery/design.md)。图库有 83 个基础形象；短绒圆球、三瓣云朵和圆角三角的颜色/配饰来源归入同一形象内。90 个内部来源外观与现有 44 件已批准作品的 540 条合法配方保留，不新增 Artwork 批准记录。当前线上版本及独立验收边界见 [Site 60 / v111 发布记录](design/releases/20261013-github-feedback-v111/README.md)。
 
 ## 为创作保留清楚的边界
 

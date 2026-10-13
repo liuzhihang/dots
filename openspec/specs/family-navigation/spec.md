@@ -83,7 +83,7 @@
 - **THEN** 当前实际显示的配色、五官、配饰及适用服装分类均能辨认、键盘或触控操作及滚动到至少两个合法结果；固定形象仍可查看、复制 Prompt 和导出，不出现横向页面溢出或被固定面板遮挡
 
 ### Requirement: 角色库必须作为唯一页面与导航入口
-根路径 SHALL 直接呈现完整角色库，导航只提供 Characters。产品 MUST NOT 提供 Guide 页面、`#/guide` 路由、独立宣传首页、重复角色目录入口、收藏、统计、用户空间或独立工作台；未知路由按 not-found 处理，不保留隐藏页面或兼容 alias。
+根路径 SHALL 直接呈现完整角色库，唯一站内页面导航只提供 Characters；页头或页脚 SHALL 允许明确区分的 GitHub 仓库与 Issue 反馈辅助外链，外链不属于站内页面或角色路由。产品 MUST NOT 提供 Guide 页面、`#/guide` 路由、独立宣传首页、重复角色目录入口、收藏、统计、用户空间或独立工作台；未知路由按 not-found 处理，不保留隐藏页面或兼容 alias。
 
 #### Scenario: 打开根路径
 - **WHEN** 用户访问应用根路径
@@ -92,6 +92,10 @@
 #### Scenario: 已移除的 Guide 地址
 - **WHEN** 用户访问 `#/guide`
 - **THEN** 显示普通可恢复的 not-found 状态，不加载隐藏页面、别名或跳转状态
+
+#### Scenario: 外链不扩展站内页面
+- **WHEN** 用户在页头或页脚访问 GitHub 或反馈建议
+- **THEN** 通过新标签页打开仓库或 Issue 选择器，原图库查询、排序、滚动及历史保持；站内仍只有 Characters 页面，不建立反馈页、反馈弹窗或新的 hash 路由
 
 ### Requirement: 角色库与作品详情必须使用明确的新路由
 角色库 SHALL 使用 #/?q=&series=&sort=；内部来源外观 SHALL 保留 #/look/<id>?v=<version>；公开基础形象 SHALL 使用 #/figure/<id>?v=<version>；既有受信任 Artwork 路由 #/artwork/<id>?v=<version> MUST 继续有效并解析至该来源 Artwork 的登记默认 GalleryLook。新路由与旧路由均不得添加或消费 mode 参数。Guide 路径不属于有效路由。直接打开、刷新、复制链接及浏览器前进 MUST 在同一 CharacterStudio 恢复精确 GalleryLook id/version 与固定 appearance；来源 Artwork 路由解析到默认形象。未知 look、Artwork 或版本 MUST 显示可恢复的未找到状态，不回退到其它形象。pending Template 只由外部 reviewHarness 启用，不改变公开资格。

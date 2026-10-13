@@ -96,7 +96,7 @@ node scripts/verify-option-thumbnail-ui.mjs .artifacts/release-local
 
 缩略图回归直接服务该发布目录，检查六个圆球配饰的真实图片、闭眼/睁眼组合可用性、当前透明 PNG 及 source-only PNG 零请求。不能只在保留完整 PNG 源的本地开发目录验收图片，否则可能掩盖发布后缺图问题；证据写入 stage 同级的独立 `.artifacts` 目录。
 
-现有演示站的发布与回读证据见 [Site 59 / v110 记录](design/releases/20261013-option-card-palette-v110/README.md)。源码提交、测试、OpenSpec 归档和站点部署是独立步骤。
+现有演示站的发布与回读证据见 [Site 60 / v111 记录](design/releases/20261013-github-feedback-v111/README.md)。源码提交、测试、OpenSpec 归档和站点部署是独立步骤。
 
 ## 参与贡献
 

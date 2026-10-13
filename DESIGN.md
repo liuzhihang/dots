@@ -22,7 +22,7 @@
 - [Studio 创建与导航行为](openspec/specs/studio-creation-experience/spec.md) 与 [系列导航](openspec/specs/family-navigation/spec.md)
 - [Artwork 与资格](openspec/specs/artwork-catalog/spec.md)、[筛选标签](openspec/specs/catalog-tags/spec.md) 与 [角色系列身份](openspec/specs/character-families/spec.md)
 - [模板编辑边界](openspec/specs/bounded-character-editing/spec.md) 与 [视觉验收](openspec/specs/character-visual-acceptance/spec.md)
-- 制作/接入流程见 [角色新增规范](design/character-authoring/README.md)；当前站点回执从 [Site 59 / v110 发布记录](design/releases/20261013-option-card-palette-v110/README.md) 进入。
+- 制作/接入流程见 [角色新增规范](design/character-authoring/README.md)；当前站点回执从 [Site 60 / v111 发布记录](design/releases/20261013-github-feedback-v111/README.md) 进入。
 
 ## 全角色调整接入
 
